@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type IothubDpsCertificatesGetter interface {
 
 // IothubDpsCertificateInterface has methods to work with IothubDpsCertificate resources.
 type IothubDpsCertificateInterface interface {
-	Create(*v1alpha1.IothubDpsCertificate) (*v1alpha1.IothubDpsCertificate, error)
-	Update(*v1alpha1.IothubDpsCertificate) (*v1alpha1.IothubDpsCertificate, error)
-	UpdateStatus(*v1alpha1.IothubDpsCertificate) (*v1alpha1.IothubDpsCertificate, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.IothubDpsCertificate, error)
-	List(opts v1.ListOptions) (*v1alpha1.IothubDpsCertificateList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IothubDpsCertificate, err error)
+	Create(ctx context.Context, iothubDpsCertificate *v1alpha1.IothubDpsCertificate, opts v1.CreateOptions) (*v1alpha1.IothubDpsCertificate, error)
+	Update(ctx context.Context, iothubDpsCertificate *v1alpha1.IothubDpsCertificate, opts v1.UpdateOptions) (*v1alpha1.IothubDpsCertificate, error)
+	UpdateStatus(ctx context.Context, iothubDpsCertificate *v1alpha1.IothubDpsCertificate, opts v1.UpdateOptions) (*v1alpha1.IothubDpsCertificate, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.IothubDpsCertificate, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.IothubDpsCertificateList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IothubDpsCertificate, err error)
 	IothubDpsCertificateExpansion
 }
 
@@ -65,20 +66,20 @@ func newIothubDpsCertificates(c *AzurermV1alpha1Client, namespace string) *iothu
 }
 
 // Get takes name of the iothubDpsCertificate, and returns the corresponding iothubDpsCertificate object, and an error if there is any.
-func (c *iothubDpsCertificates) Get(name string, options v1.GetOptions) (result *v1alpha1.IothubDpsCertificate, err error) {
+func (c *iothubDpsCertificates) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IothubDpsCertificate, err error) {
 	result = &v1alpha1.IothubDpsCertificate{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("iothubdpscertificates").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of IothubDpsCertificates that match those selectors.
-func (c *iothubDpsCertificates) List(opts v1.ListOptions) (result *v1alpha1.IothubDpsCertificateList, err error) {
+func (c *iothubDpsCertificates) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IothubDpsCertificateList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *iothubDpsCertificates) List(opts v1.ListOptions) (result *v1alpha1.Ioth
 		Resource("iothubdpscertificates").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested iothubDpsCertificates.
-func (c *iothubDpsCertificates) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *iothubDpsCertificates) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *iothubDpsCertificates) Watch(opts v1.ListOptions) (watch.Interface, err
 		Resource("iothubdpscertificates").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a iothubDpsCertificate and creates it.  Returns the server's representation of the iothubDpsCertificate, and an error, if there is any.
-func (c *iothubDpsCertificates) Create(iothubDpsCertificate *v1alpha1.IothubDpsCertificate) (result *v1alpha1.IothubDpsCertificate, err error) {
+func (c *iothubDpsCertificates) Create(ctx context.Context, iothubDpsCertificate *v1alpha1.IothubDpsCertificate, opts v1.CreateOptions) (result *v1alpha1.IothubDpsCertificate, err error) {
 	result = &v1alpha1.IothubDpsCertificate{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("iothubdpscertificates").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iothubDpsCertificate).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a iothubDpsCertificate and updates it. Returns the server's representation of the iothubDpsCertificate, and an error, if there is any.
-func (c *iothubDpsCertificates) Update(iothubDpsCertificate *v1alpha1.IothubDpsCertificate) (result *v1alpha1.IothubDpsCertificate, err error) {
+func (c *iothubDpsCertificates) Update(ctx context.Context, iothubDpsCertificate *v1alpha1.IothubDpsCertificate, opts v1.UpdateOptions) (result *v1alpha1.IothubDpsCertificate, err error) {
 	result = &v1alpha1.IothubDpsCertificate{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iothubdpscertificates").
 		Name(iothubDpsCertificate.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iothubDpsCertificate).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *iothubDpsCertificates) UpdateStatus(iothubDpsCertificate *v1alpha1.IothubDpsCertificate) (result *v1alpha1.IothubDpsCertificate, err error) {
+func (c *iothubDpsCertificates) UpdateStatus(ctx context.Context, iothubDpsCertificate *v1alpha1.IothubDpsCertificate, opts v1.UpdateOptions) (result *v1alpha1.IothubDpsCertificate, err error) {
 	result = &v1alpha1.IothubDpsCertificate{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iothubdpscertificates").
 		Name(iothubDpsCertificate.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iothubDpsCertificate).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the iothubDpsCertificate and deletes it. Returns an error if one occurs.
-func (c *iothubDpsCertificates) Delete(name string, options *v1.DeleteOptions) error {
+func (c *iothubDpsCertificates) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iothubdpscertificates").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *iothubDpsCertificates) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *iothubDpsCertificates) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iothubdpscertificates").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched iothubDpsCertificate.
-func (c *iothubDpsCertificates) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IothubDpsCertificate, err error) {
+func (c *iothubDpsCertificates) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IothubDpsCertificate, err error) {
 	result = &v1alpha1.IothubDpsCertificate{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("iothubdpscertificates").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

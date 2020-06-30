@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var devspacecontrollersResource = schema.GroupVersionResource{Group: "azurerm.ku
 var devspacecontrollersKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "DevspaceController"}
 
 // Get takes name of the devspaceController, and returns the corresponding devspaceController object, and an error if there is any.
-func (c *FakeDevspaceControllers) Get(name string, options v1.GetOptions) (result *v1alpha1.DevspaceController, err error) {
+func (c *FakeDevspaceControllers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DevspaceController, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(devspacecontrollersResource, c.ns, name), &v1alpha1.DevspaceController{})
 
@@ -51,7 +53,7 @@ func (c *FakeDevspaceControllers) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of DevspaceControllers that match those selectors.
-func (c *FakeDevspaceControllers) List(opts v1.ListOptions) (result *v1alpha1.DevspaceControllerList, err error) {
+func (c *FakeDevspaceControllers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DevspaceControllerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(devspacecontrollersResource, devspacecontrollersKind, c.ns, opts), &v1alpha1.DevspaceControllerList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDevspaceControllers) List(opts v1.ListOptions) (result *v1alpha1.De
 }
 
 // Watch returns a watch.Interface that watches the requested devspaceControllers.
-func (c *FakeDevspaceControllers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDevspaceControllers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(devspacecontrollersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a devspaceController and creates it.  Returns the server's representation of the devspaceController, and an error, if there is any.
-func (c *FakeDevspaceControllers) Create(devspaceController *v1alpha1.DevspaceController) (result *v1alpha1.DevspaceController, err error) {
+func (c *FakeDevspaceControllers) Create(ctx context.Context, devspaceController *v1alpha1.DevspaceController, opts v1.CreateOptions) (result *v1alpha1.DevspaceController, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(devspacecontrollersResource, c.ns, devspaceController), &v1alpha1.DevspaceController{})
 
@@ -91,7 +93,7 @@ func (c *FakeDevspaceControllers) Create(devspaceController *v1alpha1.DevspaceCo
 }
 
 // Update takes the representation of a devspaceController and updates it. Returns the server's representation of the devspaceController, and an error, if there is any.
-func (c *FakeDevspaceControllers) Update(devspaceController *v1alpha1.DevspaceController) (result *v1alpha1.DevspaceController, err error) {
+func (c *FakeDevspaceControllers) Update(ctx context.Context, devspaceController *v1alpha1.DevspaceController, opts v1.UpdateOptions) (result *v1alpha1.DevspaceController, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(devspacecontrollersResource, c.ns, devspaceController), &v1alpha1.DevspaceController{})
 
@@ -103,7 +105,7 @@ func (c *FakeDevspaceControllers) Update(devspaceController *v1alpha1.DevspaceCo
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDevspaceControllers) UpdateStatus(devspaceController *v1alpha1.DevspaceController) (*v1alpha1.DevspaceController, error) {
+func (c *FakeDevspaceControllers) UpdateStatus(ctx context.Context, devspaceController *v1alpha1.DevspaceController, opts v1.UpdateOptions) (*v1alpha1.DevspaceController, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(devspacecontrollersResource, "status", c.ns, devspaceController), &v1alpha1.DevspaceController{})
 
@@ -114,7 +116,7 @@ func (c *FakeDevspaceControllers) UpdateStatus(devspaceController *v1alpha1.Devs
 }
 
 // Delete takes name of the devspaceController and deletes it. Returns an error if one occurs.
-func (c *FakeDevspaceControllers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDevspaceControllers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(devspacecontrollersResource, c.ns, name), &v1alpha1.DevspaceController{})
 
@@ -122,15 +124,15 @@ func (c *FakeDevspaceControllers) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDevspaceControllers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(devspacecontrollersResource, c.ns, listOptions)
+func (c *FakeDevspaceControllers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(devspacecontrollersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DevspaceControllerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched devspaceController.
-func (c *FakeDevspaceControllers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DevspaceController, err error) {
+func (c *FakeDevspaceControllers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DevspaceController, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(devspacecontrollersResource, c.ns, name, pt, data, subresources...), &v1alpha1.DevspaceController{})
 

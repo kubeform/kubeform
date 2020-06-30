@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var securitycenterworkspacesResource = schema.GroupVersionResource{Group: "azure
 var securitycenterworkspacesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "SecurityCenterWorkspace"}
 
 // Get takes name of the securityCenterWorkspace, and returns the corresponding securityCenterWorkspace object, and an error if there is any.
-func (c *FakeSecurityCenterWorkspaces) Get(name string, options v1.GetOptions) (result *v1alpha1.SecurityCenterWorkspace, err error) {
+func (c *FakeSecurityCenterWorkspaces) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SecurityCenterWorkspace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(securitycenterworkspacesResource, c.ns, name), &v1alpha1.SecurityCenterWorkspace{})
 
@@ -51,7 +53,7 @@ func (c *FakeSecurityCenterWorkspaces) Get(name string, options v1.GetOptions) (
 }
 
 // List takes label and field selectors, and returns the list of SecurityCenterWorkspaces that match those selectors.
-func (c *FakeSecurityCenterWorkspaces) List(opts v1.ListOptions) (result *v1alpha1.SecurityCenterWorkspaceList, err error) {
+func (c *FakeSecurityCenterWorkspaces) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SecurityCenterWorkspaceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(securitycenterworkspacesResource, securitycenterworkspacesKind, c.ns, opts), &v1alpha1.SecurityCenterWorkspaceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSecurityCenterWorkspaces) List(opts v1.ListOptions) (result *v1alph
 }
 
 // Watch returns a watch.Interface that watches the requested securityCenterWorkspaces.
-func (c *FakeSecurityCenterWorkspaces) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSecurityCenterWorkspaces) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(securitycenterworkspacesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a securityCenterWorkspace and creates it.  Returns the server's representation of the securityCenterWorkspace, and an error, if there is any.
-func (c *FakeSecurityCenterWorkspaces) Create(securityCenterWorkspace *v1alpha1.SecurityCenterWorkspace) (result *v1alpha1.SecurityCenterWorkspace, err error) {
+func (c *FakeSecurityCenterWorkspaces) Create(ctx context.Context, securityCenterWorkspace *v1alpha1.SecurityCenterWorkspace, opts v1.CreateOptions) (result *v1alpha1.SecurityCenterWorkspace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(securitycenterworkspacesResource, c.ns, securityCenterWorkspace), &v1alpha1.SecurityCenterWorkspace{})
 
@@ -91,7 +93,7 @@ func (c *FakeSecurityCenterWorkspaces) Create(securityCenterWorkspace *v1alpha1.
 }
 
 // Update takes the representation of a securityCenterWorkspace and updates it. Returns the server's representation of the securityCenterWorkspace, and an error, if there is any.
-func (c *FakeSecurityCenterWorkspaces) Update(securityCenterWorkspace *v1alpha1.SecurityCenterWorkspace) (result *v1alpha1.SecurityCenterWorkspace, err error) {
+func (c *FakeSecurityCenterWorkspaces) Update(ctx context.Context, securityCenterWorkspace *v1alpha1.SecurityCenterWorkspace, opts v1.UpdateOptions) (result *v1alpha1.SecurityCenterWorkspace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(securitycenterworkspacesResource, c.ns, securityCenterWorkspace), &v1alpha1.SecurityCenterWorkspace{})
 
@@ -103,7 +105,7 @@ func (c *FakeSecurityCenterWorkspaces) Update(securityCenterWorkspace *v1alpha1.
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSecurityCenterWorkspaces) UpdateStatus(securityCenterWorkspace *v1alpha1.SecurityCenterWorkspace) (*v1alpha1.SecurityCenterWorkspace, error) {
+func (c *FakeSecurityCenterWorkspaces) UpdateStatus(ctx context.Context, securityCenterWorkspace *v1alpha1.SecurityCenterWorkspace, opts v1.UpdateOptions) (*v1alpha1.SecurityCenterWorkspace, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(securitycenterworkspacesResource, "status", c.ns, securityCenterWorkspace), &v1alpha1.SecurityCenterWorkspace{})
 
@@ -114,7 +116,7 @@ func (c *FakeSecurityCenterWorkspaces) UpdateStatus(securityCenterWorkspace *v1a
 }
 
 // Delete takes name of the securityCenterWorkspace and deletes it. Returns an error if one occurs.
-func (c *FakeSecurityCenterWorkspaces) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSecurityCenterWorkspaces) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(securitycenterworkspacesResource, c.ns, name), &v1alpha1.SecurityCenterWorkspace{})
 
@@ -122,15 +124,15 @@ func (c *FakeSecurityCenterWorkspaces) Delete(name string, options *v1.DeleteOpt
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSecurityCenterWorkspaces) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(securitycenterworkspacesResource, c.ns, listOptions)
+func (c *FakeSecurityCenterWorkspaces) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(securitycenterworkspacesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SecurityCenterWorkspaceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched securityCenterWorkspace.
-func (c *FakeSecurityCenterWorkspaces) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SecurityCenterWorkspace, err error) {
+func (c *FakeSecurityCenterWorkspaces) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SecurityCenterWorkspace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(securitycenterworkspacesResource, c.ns, name, pt, data, subresources...), &v1alpha1.SecurityCenterWorkspace{})
 

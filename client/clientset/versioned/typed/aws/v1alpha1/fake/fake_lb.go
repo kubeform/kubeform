@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var lbsResource = schema.GroupVersionResource{Group: "aws.kubeform.com", Version
 var lbsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "Lb"}
 
 // Get takes name of the lb, and returns the corresponding lb object, and an error if there is any.
-func (c *FakeLbs) Get(name string, options v1.GetOptions) (result *v1alpha1.Lb, err error) {
+func (c *FakeLbs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Lb, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(lbsResource, c.ns, name), &v1alpha1.Lb{})
 
@@ -51,7 +53,7 @@ func (c *FakeLbs) Get(name string, options v1.GetOptions) (result *v1alpha1.Lb, 
 }
 
 // List takes label and field selectors, and returns the list of Lbs that match those selectors.
-func (c *FakeLbs) List(opts v1.ListOptions) (result *v1alpha1.LbList, err error) {
+func (c *FakeLbs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LbList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(lbsResource, lbsKind, c.ns, opts), &v1alpha1.LbList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLbs) List(opts v1.ListOptions) (result *v1alpha1.LbList, err error)
 }
 
 // Watch returns a watch.Interface that watches the requested lbs.
-func (c *FakeLbs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLbs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(lbsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a lb and creates it.  Returns the server's representation of the lb, and an error, if there is any.
-func (c *FakeLbs) Create(lb *v1alpha1.Lb) (result *v1alpha1.Lb, err error) {
+func (c *FakeLbs) Create(ctx context.Context, lb *v1alpha1.Lb, opts v1.CreateOptions) (result *v1alpha1.Lb, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(lbsResource, c.ns, lb), &v1alpha1.Lb{})
 
@@ -91,7 +93,7 @@ func (c *FakeLbs) Create(lb *v1alpha1.Lb) (result *v1alpha1.Lb, err error) {
 }
 
 // Update takes the representation of a lb and updates it. Returns the server's representation of the lb, and an error, if there is any.
-func (c *FakeLbs) Update(lb *v1alpha1.Lb) (result *v1alpha1.Lb, err error) {
+func (c *FakeLbs) Update(ctx context.Context, lb *v1alpha1.Lb, opts v1.UpdateOptions) (result *v1alpha1.Lb, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(lbsResource, c.ns, lb), &v1alpha1.Lb{})
 
@@ -103,7 +105,7 @@ func (c *FakeLbs) Update(lb *v1alpha1.Lb) (result *v1alpha1.Lb, err error) {
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLbs) UpdateStatus(lb *v1alpha1.Lb) (*v1alpha1.Lb, error) {
+func (c *FakeLbs) UpdateStatus(ctx context.Context, lb *v1alpha1.Lb, opts v1.UpdateOptions) (*v1alpha1.Lb, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(lbsResource, "status", c.ns, lb), &v1alpha1.Lb{})
 
@@ -114,7 +116,7 @@ func (c *FakeLbs) UpdateStatus(lb *v1alpha1.Lb) (*v1alpha1.Lb, error) {
 }
 
 // Delete takes name of the lb and deletes it. Returns an error if one occurs.
-func (c *FakeLbs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLbs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(lbsResource, c.ns, name), &v1alpha1.Lb{})
 
@@ -122,15 +124,15 @@ func (c *FakeLbs) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLbs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(lbsResource, c.ns, listOptions)
+func (c *FakeLbs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(lbsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LbList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched lb.
-func (c *FakeLbs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Lb, err error) {
+func (c *FakeLbs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Lb, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(lbsResource, c.ns, name, pt, data, subresources...), &v1alpha1.Lb{})
 

@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type ComputeTargetTcpProxiesGetter interface {
 
 // ComputeTargetTcpProxyInterface has methods to work with ComputeTargetTcpProxy resources.
 type ComputeTargetTcpProxyInterface interface {
-	Create(*v1alpha1.ComputeTargetTcpProxy) (*v1alpha1.ComputeTargetTcpProxy, error)
-	Update(*v1alpha1.ComputeTargetTcpProxy) (*v1alpha1.ComputeTargetTcpProxy, error)
-	UpdateStatus(*v1alpha1.ComputeTargetTcpProxy) (*v1alpha1.ComputeTargetTcpProxy, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ComputeTargetTcpProxy, error)
-	List(opts v1.ListOptions) (*v1alpha1.ComputeTargetTcpProxyList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeTargetTcpProxy, err error)
+	Create(ctx context.Context, computeTargetTcpProxy *v1alpha1.ComputeTargetTcpProxy, opts v1.CreateOptions) (*v1alpha1.ComputeTargetTcpProxy, error)
+	Update(ctx context.Context, computeTargetTcpProxy *v1alpha1.ComputeTargetTcpProxy, opts v1.UpdateOptions) (*v1alpha1.ComputeTargetTcpProxy, error)
+	UpdateStatus(ctx context.Context, computeTargetTcpProxy *v1alpha1.ComputeTargetTcpProxy, opts v1.UpdateOptions) (*v1alpha1.ComputeTargetTcpProxy, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ComputeTargetTcpProxy, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ComputeTargetTcpProxyList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeTargetTcpProxy, err error)
 	ComputeTargetTcpProxyExpansion
 }
 
@@ -65,20 +66,20 @@ func newComputeTargetTcpProxies(c *GoogleV1alpha1Client, namespace string) *comp
 }
 
 // Get takes name of the computeTargetTcpProxy, and returns the corresponding computeTargetTcpProxy object, and an error if there is any.
-func (c *computeTargetTcpProxies) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeTargetTcpProxy, err error) {
+func (c *computeTargetTcpProxies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeTargetTcpProxy, err error) {
 	result = &v1alpha1.ComputeTargetTcpProxy{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("computetargettcpproxies").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ComputeTargetTcpProxies that match those selectors.
-func (c *computeTargetTcpProxies) List(opts v1.ListOptions) (result *v1alpha1.ComputeTargetTcpProxyList, err error) {
+func (c *computeTargetTcpProxies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeTargetTcpProxyList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *computeTargetTcpProxies) List(opts v1.ListOptions) (result *v1alpha1.Co
 		Resource("computetargettcpproxies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested computeTargetTcpProxies.
-func (c *computeTargetTcpProxies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *computeTargetTcpProxies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *computeTargetTcpProxies) Watch(opts v1.ListOptions) (watch.Interface, e
 		Resource("computetargettcpproxies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a computeTargetTcpProxy and creates it.  Returns the server's representation of the computeTargetTcpProxy, and an error, if there is any.
-func (c *computeTargetTcpProxies) Create(computeTargetTcpProxy *v1alpha1.ComputeTargetTcpProxy) (result *v1alpha1.ComputeTargetTcpProxy, err error) {
+func (c *computeTargetTcpProxies) Create(ctx context.Context, computeTargetTcpProxy *v1alpha1.ComputeTargetTcpProxy, opts v1.CreateOptions) (result *v1alpha1.ComputeTargetTcpProxy, err error) {
 	result = &v1alpha1.ComputeTargetTcpProxy{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("computetargettcpproxies").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeTargetTcpProxy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a computeTargetTcpProxy and updates it. Returns the server's representation of the computeTargetTcpProxy, and an error, if there is any.
-func (c *computeTargetTcpProxies) Update(computeTargetTcpProxy *v1alpha1.ComputeTargetTcpProxy) (result *v1alpha1.ComputeTargetTcpProxy, err error) {
+func (c *computeTargetTcpProxies) Update(ctx context.Context, computeTargetTcpProxy *v1alpha1.ComputeTargetTcpProxy, opts v1.UpdateOptions) (result *v1alpha1.ComputeTargetTcpProxy, err error) {
 	result = &v1alpha1.ComputeTargetTcpProxy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computetargettcpproxies").
 		Name(computeTargetTcpProxy.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeTargetTcpProxy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *computeTargetTcpProxies) UpdateStatus(computeTargetTcpProxy *v1alpha1.ComputeTargetTcpProxy) (result *v1alpha1.ComputeTargetTcpProxy, err error) {
+func (c *computeTargetTcpProxies) UpdateStatus(ctx context.Context, computeTargetTcpProxy *v1alpha1.ComputeTargetTcpProxy, opts v1.UpdateOptions) (result *v1alpha1.ComputeTargetTcpProxy, err error) {
 	result = &v1alpha1.ComputeTargetTcpProxy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computetargettcpproxies").
 		Name(computeTargetTcpProxy.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeTargetTcpProxy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the computeTargetTcpProxy and deletes it. Returns an error if one occurs.
-func (c *computeTargetTcpProxies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *computeTargetTcpProxies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computetargettcpproxies").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *computeTargetTcpProxies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *computeTargetTcpProxies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computetargettcpproxies").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched computeTargetTcpProxy.
-func (c *computeTargetTcpProxies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeTargetTcpProxy, err error) {
+func (c *computeTargetTcpProxies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeTargetTcpProxy, err error) {
 	result = &v1alpha1.ComputeTargetTcpProxy{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("computetargettcpproxies").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

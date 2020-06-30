@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type DaxClustersGetter interface {
 
 // DaxClusterInterface has methods to work with DaxCluster resources.
 type DaxClusterInterface interface {
-	Create(*v1alpha1.DaxCluster) (*v1alpha1.DaxCluster, error)
-	Update(*v1alpha1.DaxCluster) (*v1alpha1.DaxCluster, error)
-	UpdateStatus(*v1alpha1.DaxCluster) (*v1alpha1.DaxCluster, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.DaxCluster, error)
-	List(opts v1.ListOptions) (*v1alpha1.DaxClusterList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DaxCluster, err error)
+	Create(ctx context.Context, daxCluster *v1alpha1.DaxCluster, opts v1.CreateOptions) (*v1alpha1.DaxCluster, error)
+	Update(ctx context.Context, daxCluster *v1alpha1.DaxCluster, opts v1.UpdateOptions) (*v1alpha1.DaxCluster, error)
+	UpdateStatus(ctx context.Context, daxCluster *v1alpha1.DaxCluster, opts v1.UpdateOptions) (*v1alpha1.DaxCluster, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.DaxCluster, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.DaxClusterList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DaxCluster, err error)
 	DaxClusterExpansion
 }
 
@@ -65,20 +66,20 @@ func newDaxClusters(c *AwsV1alpha1Client, namespace string) *daxClusters {
 }
 
 // Get takes name of the daxCluster, and returns the corresponding daxCluster object, and an error if there is any.
-func (c *daxClusters) Get(name string, options v1.GetOptions) (result *v1alpha1.DaxCluster, err error) {
+func (c *daxClusters) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DaxCluster, err error) {
 	result = &v1alpha1.DaxCluster{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("daxclusters").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of DaxClusters that match those selectors.
-func (c *daxClusters) List(opts v1.ListOptions) (result *v1alpha1.DaxClusterList, err error) {
+func (c *daxClusters) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DaxClusterList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *daxClusters) List(opts v1.ListOptions) (result *v1alpha1.DaxClusterList
 		Resource("daxclusters").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested daxClusters.
-func (c *daxClusters) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *daxClusters) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *daxClusters) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("daxclusters").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a daxCluster and creates it.  Returns the server's representation of the daxCluster, and an error, if there is any.
-func (c *daxClusters) Create(daxCluster *v1alpha1.DaxCluster) (result *v1alpha1.DaxCluster, err error) {
+func (c *daxClusters) Create(ctx context.Context, daxCluster *v1alpha1.DaxCluster, opts v1.CreateOptions) (result *v1alpha1.DaxCluster, err error) {
 	result = &v1alpha1.DaxCluster{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("daxclusters").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(daxCluster).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a daxCluster and updates it. Returns the server's representation of the daxCluster, and an error, if there is any.
-func (c *daxClusters) Update(daxCluster *v1alpha1.DaxCluster) (result *v1alpha1.DaxCluster, err error) {
+func (c *daxClusters) Update(ctx context.Context, daxCluster *v1alpha1.DaxCluster, opts v1.UpdateOptions) (result *v1alpha1.DaxCluster, err error) {
 	result = &v1alpha1.DaxCluster{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("daxclusters").
 		Name(daxCluster.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(daxCluster).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *daxClusters) UpdateStatus(daxCluster *v1alpha1.DaxCluster) (result *v1alpha1.DaxCluster, err error) {
+func (c *daxClusters) UpdateStatus(ctx context.Context, daxCluster *v1alpha1.DaxCluster, opts v1.UpdateOptions) (result *v1alpha1.DaxCluster, err error) {
 	result = &v1alpha1.DaxCluster{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("daxclusters").
 		Name(daxCluster.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(daxCluster).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the daxCluster and deletes it. Returns an error if one occurs.
-func (c *daxClusters) Delete(name string, options *v1.DeleteOptions) error {
+func (c *daxClusters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("daxclusters").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *daxClusters) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *daxClusters) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("daxclusters").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched daxCluster.
-func (c *daxClusters) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DaxCluster, err error) {
+func (c *daxClusters) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DaxCluster, err error) {
 	result = &v1alpha1.DaxCluster{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("daxclusters").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

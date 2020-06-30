@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/digitalocean/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var recordsResource = schema.GroupVersionResource{Group: "digitalocean.kubeform.
 var recordsKind = schema.GroupVersionKind{Group: "digitalocean.kubeform.com", Version: "v1alpha1", Kind: "Record"}
 
 // Get takes name of the record, and returns the corresponding record object, and an error if there is any.
-func (c *FakeRecords) Get(name string, options v1.GetOptions) (result *v1alpha1.Record, err error) {
+func (c *FakeRecords) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Record, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(recordsResource, c.ns, name), &v1alpha1.Record{})
 
@@ -51,7 +53,7 @@ func (c *FakeRecords) Get(name string, options v1.GetOptions) (result *v1alpha1.
 }
 
 // List takes label and field selectors, and returns the list of Records that match those selectors.
-func (c *FakeRecords) List(opts v1.ListOptions) (result *v1alpha1.RecordList, err error) {
+func (c *FakeRecords) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RecordList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(recordsResource, recordsKind, c.ns, opts), &v1alpha1.RecordList{})
 
@@ -73,14 +75,14 @@ func (c *FakeRecords) List(opts v1.ListOptions) (result *v1alpha1.RecordList, er
 }
 
 // Watch returns a watch.Interface that watches the requested records.
-func (c *FakeRecords) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeRecords) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(recordsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a record and creates it.  Returns the server's representation of the record, and an error, if there is any.
-func (c *FakeRecords) Create(record *v1alpha1.Record) (result *v1alpha1.Record, err error) {
+func (c *FakeRecords) Create(ctx context.Context, record *v1alpha1.Record, opts v1.CreateOptions) (result *v1alpha1.Record, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(recordsResource, c.ns, record), &v1alpha1.Record{})
 
@@ -91,7 +93,7 @@ func (c *FakeRecords) Create(record *v1alpha1.Record) (result *v1alpha1.Record, 
 }
 
 // Update takes the representation of a record and updates it. Returns the server's representation of the record, and an error, if there is any.
-func (c *FakeRecords) Update(record *v1alpha1.Record) (result *v1alpha1.Record, err error) {
+func (c *FakeRecords) Update(ctx context.Context, record *v1alpha1.Record, opts v1.UpdateOptions) (result *v1alpha1.Record, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(recordsResource, c.ns, record), &v1alpha1.Record{})
 
@@ -103,7 +105,7 @@ func (c *FakeRecords) Update(record *v1alpha1.Record) (result *v1alpha1.Record, 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeRecords) UpdateStatus(record *v1alpha1.Record) (*v1alpha1.Record, error) {
+func (c *FakeRecords) UpdateStatus(ctx context.Context, record *v1alpha1.Record, opts v1.UpdateOptions) (*v1alpha1.Record, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(recordsResource, "status", c.ns, record), &v1alpha1.Record{})
 
@@ -114,7 +116,7 @@ func (c *FakeRecords) UpdateStatus(record *v1alpha1.Record) (*v1alpha1.Record, e
 }
 
 // Delete takes name of the record and deletes it. Returns an error if one occurs.
-func (c *FakeRecords) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeRecords) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(recordsResource, c.ns, name), &v1alpha1.Record{})
 
@@ -122,15 +124,15 @@ func (c *FakeRecords) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeRecords) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(recordsResource, c.ns, listOptions)
+func (c *FakeRecords) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(recordsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.RecordList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched record.
-func (c *FakeRecords) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Record, err error) {
+func (c *FakeRecords) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Record, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(recordsResource, c.ns, name, pt, data, subresources...), &v1alpha1.Record{})
 

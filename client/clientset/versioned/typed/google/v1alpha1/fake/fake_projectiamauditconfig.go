@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var projectiamauditconfigsResource = schema.GroupVersionResource{Group: "google.
 var projectiamauditconfigsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ProjectIamAuditConfig"}
 
 // Get takes name of the projectIamAuditConfig, and returns the corresponding projectIamAuditConfig object, and an error if there is any.
-func (c *FakeProjectIamAuditConfigs) Get(name string, options v1.GetOptions) (result *v1alpha1.ProjectIamAuditConfig, err error) {
+func (c *FakeProjectIamAuditConfigs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ProjectIamAuditConfig, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(projectiamauditconfigsResource, c.ns, name), &v1alpha1.ProjectIamAuditConfig{})
 
@@ -51,7 +53,7 @@ func (c *FakeProjectIamAuditConfigs) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of ProjectIamAuditConfigs that match those selectors.
-func (c *FakeProjectIamAuditConfigs) List(opts v1.ListOptions) (result *v1alpha1.ProjectIamAuditConfigList, err error) {
+func (c *FakeProjectIamAuditConfigs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ProjectIamAuditConfigList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(projectiamauditconfigsResource, projectiamauditconfigsKind, c.ns, opts), &v1alpha1.ProjectIamAuditConfigList{})
 
@@ -73,14 +75,14 @@ func (c *FakeProjectIamAuditConfigs) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested projectIamAuditConfigs.
-func (c *FakeProjectIamAuditConfigs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeProjectIamAuditConfigs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(projectiamauditconfigsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a projectIamAuditConfig and creates it.  Returns the server's representation of the projectIamAuditConfig, and an error, if there is any.
-func (c *FakeProjectIamAuditConfigs) Create(projectIamAuditConfig *v1alpha1.ProjectIamAuditConfig) (result *v1alpha1.ProjectIamAuditConfig, err error) {
+func (c *FakeProjectIamAuditConfigs) Create(ctx context.Context, projectIamAuditConfig *v1alpha1.ProjectIamAuditConfig, opts v1.CreateOptions) (result *v1alpha1.ProjectIamAuditConfig, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(projectiamauditconfigsResource, c.ns, projectIamAuditConfig), &v1alpha1.ProjectIamAuditConfig{})
 
@@ -91,7 +93,7 @@ func (c *FakeProjectIamAuditConfigs) Create(projectIamAuditConfig *v1alpha1.Proj
 }
 
 // Update takes the representation of a projectIamAuditConfig and updates it. Returns the server's representation of the projectIamAuditConfig, and an error, if there is any.
-func (c *FakeProjectIamAuditConfigs) Update(projectIamAuditConfig *v1alpha1.ProjectIamAuditConfig) (result *v1alpha1.ProjectIamAuditConfig, err error) {
+func (c *FakeProjectIamAuditConfigs) Update(ctx context.Context, projectIamAuditConfig *v1alpha1.ProjectIamAuditConfig, opts v1.UpdateOptions) (result *v1alpha1.ProjectIamAuditConfig, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(projectiamauditconfigsResource, c.ns, projectIamAuditConfig), &v1alpha1.ProjectIamAuditConfig{})
 
@@ -103,7 +105,7 @@ func (c *FakeProjectIamAuditConfigs) Update(projectIamAuditConfig *v1alpha1.Proj
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeProjectIamAuditConfigs) UpdateStatus(projectIamAuditConfig *v1alpha1.ProjectIamAuditConfig) (*v1alpha1.ProjectIamAuditConfig, error) {
+func (c *FakeProjectIamAuditConfigs) UpdateStatus(ctx context.Context, projectIamAuditConfig *v1alpha1.ProjectIamAuditConfig, opts v1.UpdateOptions) (*v1alpha1.ProjectIamAuditConfig, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(projectiamauditconfigsResource, "status", c.ns, projectIamAuditConfig), &v1alpha1.ProjectIamAuditConfig{})
 
@@ -114,7 +116,7 @@ func (c *FakeProjectIamAuditConfigs) UpdateStatus(projectIamAuditConfig *v1alpha
 }
 
 // Delete takes name of the projectIamAuditConfig and deletes it. Returns an error if one occurs.
-func (c *FakeProjectIamAuditConfigs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeProjectIamAuditConfigs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(projectiamauditconfigsResource, c.ns, name), &v1alpha1.ProjectIamAuditConfig{})
 
@@ -122,15 +124,15 @@ func (c *FakeProjectIamAuditConfigs) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeProjectIamAuditConfigs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(projectiamauditconfigsResource, c.ns, listOptions)
+func (c *FakeProjectIamAuditConfigs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(projectiamauditconfigsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ProjectIamAuditConfigList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched projectIamAuditConfig.
-func (c *FakeProjectIamAuditConfigs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ProjectIamAuditConfig, err error) {
+func (c *FakeProjectIamAuditConfigs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ProjectIamAuditConfig, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(projectiamauditconfigsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ProjectIamAuditConfig{})
 

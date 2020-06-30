@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cloudformationstacksResource = schema.GroupVersionResource{Group: "aws.kubef
 var cloudformationstacksKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "CloudformationStack"}
 
 // Get takes name of the cloudformationStack, and returns the corresponding cloudformationStack object, and an error if there is any.
-func (c *FakeCloudformationStacks) Get(name string, options v1.GetOptions) (result *v1alpha1.CloudformationStack, err error) {
+func (c *FakeCloudformationStacks) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CloudformationStack, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cloudformationstacksResource, c.ns, name), &v1alpha1.CloudformationStack{})
 
@@ -51,7 +53,7 @@ func (c *FakeCloudformationStacks) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of CloudformationStacks that match those selectors.
-func (c *FakeCloudformationStacks) List(opts v1.ListOptions) (result *v1alpha1.CloudformationStackList, err error) {
+func (c *FakeCloudformationStacks) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CloudformationStackList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cloudformationstacksResource, cloudformationstacksKind, c.ns, opts), &v1alpha1.CloudformationStackList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCloudformationStacks) List(opts v1.ListOptions) (result *v1alpha1.C
 }
 
 // Watch returns a watch.Interface that watches the requested cloudformationStacks.
-func (c *FakeCloudformationStacks) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCloudformationStacks) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cloudformationstacksResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cloudformationStack and creates it.  Returns the server's representation of the cloudformationStack, and an error, if there is any.
-func (c *FakeCloudformationStacks) Create(cloudformationStack *v1alpha1.CloudformationStack) (result *v1alpha1.CloudformationStack, err error) {
+func (c *FakeCloudformationStacks) Create(ctx context.Context, cloudformationStack *v1alpha1.CloudformationStack, opts v1.CreateOptions) (result *v1alpha1.CloudformationStack, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cloudformationstacksResource, c.ns, cloudformationStack), &v1alpha1.CloudformationStack{})
 
@@ -91,7 +93,7 @@ func (c *FakeCloudformationStacks) Create(cloudformationStack *v1alpha1.Cloudfor
 }
 
 // Update takes the representation of a cloudformationStack and updates it. Returns the server's representation of the cloudformationStack, and an error, if there is any.
-func (c *FakeCloudformationStacks) Update(cloudformationStack *v1alpha1.CloudformationStack) (result *v1alpha1.CloudformationStack, err error) {
+func (c *FakeCloudformationStacks) Update(ctx context.Context, cloudformationStack *v1alpha1.CloudformationStack, opts v1.UpdateOptions) (result *v1alpha1.CloudformationStack, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cloudformationstacksResource, c.ns, cloudformationStack), &v1alpha1.CloudformationStack{})
 
@@ -103,7 +105,7 @@ func (c *FakeCloudformationStacks) Update(cloudformationStack *v1alpha1.Cloudfor
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCloudformationStacks) UpdateStatus(cloudformationStack *v1alpha1.CloudformationStack) (*v1alpha1.CloudformationStack, error) {
+func (c *FakeCloudformationStacks) UpdateStatus(ctx context.Context, cloudformationStack *v1alpha1.CloudformationStack, opts v1.UpdateOptions) (*v1alpha1.CloudformationStack, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cloudformationstacksResource, "status", c.ns, cloudformationStack), &v1alpha1.CloudformationStack{})
 
@@ -114,7 +116,7 @@ func (c *FakeCloudformationStacks) UpdateStatus(cloudformationStack *v1alpha1.Cl
 }
 
 // Delete takes name of the cloudformationStack and deletes it. Returns an error if one occurs.
-func (c *FakeCloudformationStacks) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCloudformationStacks) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cloudformationstacksResource, c.ns, name), &v1alpha1.CloudformationStack{})
 
@@ -122,15 +124,15 @@ func (c *FakeCloudformationStacks) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCloudformationStacks) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cloudformationstacksResource, c.ns, listOptions)
+func (c *FakeCloudformationStacks) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cloudformationstacksResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CloudformationStackList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cloudformationStack.
-func (c *FakeCloudformationStacks) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CloudformationStack, err error) {
+func (c *FakeCloudformationStacks) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CloudformationStack, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cloudformationstacksResource, c.ns, name, pt, data, subresources...), &v1alpha1.CloudformationStack{})
 

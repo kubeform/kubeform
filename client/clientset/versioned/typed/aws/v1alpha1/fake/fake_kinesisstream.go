@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var kinesisstreamsResource = schema.GroupVersionResource{Group: "aws.kubeform.co
 var kinesisstreamsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "KinesisStream"}
 
 // Get takes name of the kinesisStream, and returns the corresponding kinesisStream object, and an error if there is any.
-func (c *FakeKinesisStreams) Get(name string, options v1.GetOptions) (result *v1alpha1.KinesisStream, err error) {
+func (c *FakeKinesisStreams) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KinesisStream, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(kinesisstreamsResource, c.ns, name), &v1alpha1.KinesisStream{})
 
@@ -51,7 +53,7 @@ func (c *FakeKinesisStreams) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of KinesisStreams that match those selectors.
-func (c *FakeKinesisStreams) List(opts v1.ListOptions) (result *v1alpha1.KinesisStreamList, err error) {
+func (c *FakeKinesisStreams) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KinesisStreamList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(kinesisstreamsResource, kinesisstreamsKind, c.ns, opts), &v1alpha1.KinesisStreamList{})
 
@@ -73,14 +75,14 @@ func (c *FakeKinesisStreams) List(opts v1.ListOptions) (result *v1alpha1.Kinesis
 }
 
 // Watch returns a watch.Interface that watches the requested kinesisStreams.
-func (c *FakeKinesisStreams) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeKinesisStreams) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(kinesisstreamsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a kinesisStream and creates it.  Returns the server's representation of the kinesisStream, and an error, if there is any.
-func (c *FakeKinesisStreams) Create(kinesisStream *v1alpha1.KinesisStream) (result *v1alpha1.KinesisStream, err error) {
+func (c *FakeKinesisStreams) Create(ctx context.Context, kinesisStream *v1alpha1.KinesisStream, opts v1.CreateOptions) (result *v1alpha1.KinesisStream, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(kinesisstreamsResource, c.ns, kinesisStream), &v1alpha1.KinesisStream{})
 
@@ -91,7 +93,7 @@ func (c *FakeKinesisStreams) Create(kinesisStream *v1alpha1.KinesisStream) (resu
 }
 
 // Update takes the representation of a kinesisStream and updates it. Returns the server's representation of the kinesisStream, and an error, if there is any.
-func (c *FakeKinesisStreams) Update(kinesisStream *v1alpha1.KinesisStream) (result *v1alpha1.KinesisStream, err error) {
+func (c *FakeKinesisStreams) Update(ctx context.Context, kinesisStream *v1alpha1.KinesisStream, opts v1.UpdateOptions) (result *v1alpha1.KinesisStream, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(kinesisstreamsResource, c.ns, kinesisStream), &v1alpha1.KinesisStream{})
 
@@ -103,7 +105,7 @@ func (c *FakeKinesisStreams) Update(kinesisStream *v1alpha1.KinesisStream) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeKinesisStreams) UpdateStatus(kinesisStream *v1alpha1.KinesisStream) (*v1alpha1.KinesisStream, error) {
+func (c *FakeKinesisStreams) UpdateStatus(ctx context.Context, kinesisStream *v1alpha1.KinesisStream, opts v1.UpdateOptions) (*v1alpha1.KinesisStream, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(kinesisstreamsResource, "status", c.ns, kinesisStream), &v1alpha1.KinesisStream{})
 
@@ -114,7 +116,7 @@ func (c *FakeKinesisStreams) UpdateStatus(kinesisStream *v1alpha1.KinesisStream)
 }
 
 // Delete takes name of the kinesisStream and deletes it. Returns an error if one occurs.
-func (c *FakeKinesisStreams) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeKinesisStreams) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(kinesisstreamsResource, c.ns, name), &v1alpha1.KinesisStream{})
 
@@ -122,15 +124,15 @@ func (c *FakeKinesisStreams) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeKinesisStreams) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(kinesisstreamsResource, c.ns, listOptions)
+func (c *FakeKinesisStreams) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(kinesisstreamsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.KinesisStreamList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched kinesisStream.
-func (c *FakeKinesisStreams) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KinesisStream, err error) {
+func (c *FakeKinesisStreams) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KinesisStream, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(kinesisstreamsResource, c.ns, name, pt, data, subresources...), &v1alpha1.KinesisStream{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dnsaaaarecordsResource = schema.GroupVersionResource{Group: "azurerm.kubefor
 var dnsaaaarecordsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "DnsAaaaRecord"}
 
 // Get takes name of the dnsAaaaRecord, and returns the corresponding dnsAaaaRecord object, and an error if there is any.
-func (c *FakeDnsAaaaRecords) Get(name string, options v1.GetOptions) (result *v1alpha1.DnsAaaaRecord, err error) {
+func (c *FakeDnsAaaaRecords) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DnsAaaaRecord, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dnsaaaarecordsResource, c.ns, name), &v1alpha1.DnsAaaaRecord{})
 
@@ -51,7 +53,7 @@ func (c *FakeDnsAaaaRecords) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of DnsAaaaRecords that match those selectors.
-func (c *FakeDnsAaaaRecords) List(opts v1.ListOptions) (result *v1alpha1.DnsAaaaRecordList, err error) {
+func (c *FakeDnsAaaaRecords) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DnsAaaaRecordList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dnsaaaarecordsResource, dnsaaaarecordsKind, c.ns, opts), &v1alpha1.DnsAaaaRecordList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDnsAaaaRecords) List(opts v1.ListOptions) (result *v1alpha1.DnsAaaa
 }
 
 // Watch returns a watch.Interface that watches the requested dnsAaaaRecords.
-func (c *FakeDnsAaaaRecords) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDnsAaaaRecords) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dnsaaaarecordsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dnsAaaaRecord and creates it.  Returns the server's representation of the dnsAaaaRecord, and an error, if there is any.
-func (c *FakeDnsAaaaRecords) Create(dnsAaaaRecord *v1alpha1.DnsAaaaRecord) (result *v1alpha1.DnsAaaaRecord, err error) {
+func (c *FakeDnsAaaaRecords) Create(ctx context.Context, dnsAaaaRecord *v1alpha1.DnsAaaaRecord, opts v1.CreateOptions) (result *v1alpha1.DnsAaaaRecord, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dnsaaaarecordsResource, c.ns, dnsAaaaRecord), &v1alpha1.DnsAaaaRecord{})
 
@@ -91,7 +93,7 @@ func (c *FakeDnsAaaaRecords) Create(dnsAaaaRecord *v1alpha1.DnsAaaaRecord) (resu
 }
 
 // Update takes the representation of a dnsAaaaRecord and updates it. Returns the server's representation of the dnsAaaaRecord, and an error, if there is any.
-func (c *FakeDnsAaaaRecords) Update(dnsAaaaRecord *v1alpha1.DnsAaaaRecord) (result *v1alpha1.DnsAaaaRecord, err error) {
+func (c *FakeDnsAaaaRecords) Update(ctx context.Context, dnsAaaaRecord *v1alpha1.DnsAaaaRecord, opts v1.UpdateOptions) (result *v1alpha1.DnsAaaaRecord, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dnsaaaarecordsResource, c.ns, dnsAaaaRecord), &v1alpha1.DnsAaaaRecord{})
 
@@ -103,7 +105,7 @@ func (c *FakeDnsAaaaRecords) Update(dnsAaaaRecord *v1alpha1.DnsAaaaRecord) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDnsAaaaRecords) UpdateStatus(dnsAaaaRecord *v1alpha1.DnsAaaaRecord) (*v1alpha1.DnsAaaaRecord, error) {
+func (c *FakeDnsAaaaRecords) UpdateStatus(ctx context.Context, dnsAaaaRecord *v1alpha1.DnsAaaaRecord, opts v1.UpdateOptions) (*v1alpha1.DnsAaaaRecord, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dnsaaaarecordsResource, "status", c.ns, dnsAaaaRecord), &v1alpha1.DnsAaaaRecord{})
 
@@ -114,7 +116,7 @@ func (c *FakeDnsAaaaRecords) UpdateStatus(dnsAaaaRecord *v1alpha1.DnsAaaaRecord)
 }
 
 // Delete takes name of the dnsAaaaRecord and deletes it. Returns an error if one occurs.
-func (c *FakeDnsAaaaRecords) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDnsAaaaRecords) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dnsaaaarecordsResource, c.ns, name), &v1alpha1.DnsAaaaRecord{})
 
@@ -122,15 +124,15 @@ func (c *FakeDnsAaaaRecords) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDnsAaaaRecords) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dnsaaaarecordsResource, c.ns, listOptions)
+func (c *FakeDnsAaaaRecords) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dnsaaaarecordsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DnsAaaaRecordList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dnsAaaaRecord.
-func (c *FakeDnsAaaaRecords) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DnsAaaaRecord, err error) {
+func (c *FakeDnsAaaaRecords) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DnsAaaaRecord, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dnsaaaarecordsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DnsAaaaRecord{})
 

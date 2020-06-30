@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type KmsKeyRingIamBindingsGetter interface {
 
 // KmsKeyRingIamBindingInterface has methods to work with KmsKeyRingIamBinding resources.
 type KmsKeyRingIamBindingInterface interface {
-	Create(*v1alpha1.KmsKeyRingIamBinding) (*v1alpha1.KmsKeyRingIamBinding, error)
-	Update(*v1alpha1.KmsKeyRingIamBinding) (*v1alpha1.KmsKeyRingIamBinding, error)
-	UpdateStatus(*v1alpha1.KmsKeyRingIamBinding) (*v1alpha1.KmsKeyRingIamBinding, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.KmsKeyRingIamBinding, error)
-	List(opts v1.ListOptions) (*v1alpha1.KmsKeyRingIamBindingList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KmsKeyRingIamBinding, err error)
+	Create(ctx context.Context, kmsKeyRingIamBinding *v1alpha1.KmsKeyRingIamBinding, opts v1.CreateOptions) (*v1alpha1.KmsKeyRingIamBinding, error)
+	Update(ctx context.Context, kmsKeyRingIamBinding *v1alpha1.KmsKeyRingIamBinding, opts v1.UpdateOptions) (*v1alpha1.KmsKeyRingIamBinding, error)
+	UpdateStatus(ctx context.Context, kmsKeyRingIamBinding *v1alpha1.KmsKeyRingIamBinding, opts v1.UpdateOptions) (*v1alpha1.KmsKeyRingIamBinding, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.KmsKeyRingIamBinding, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.KmsKeyRingIamBindingList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KmsKeyRingIamBinding, err error)
 	KmsKeyRingIamBindingExpansion
 }
 
@@ -65,20 +66,20 @@ func newKmsKeyRingIamBindings(c *GoogleV1alpha1Client, namespace string) *kmsKey
 }
 
 // Get takes name of the kmsKeyRingIamBinding, and returns the corresponding kmsKeyRingIamBinding object, and an error if there is any.
-func (c *kmsKeyRingIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.KmsKeyRingIamBinding, err error) {
+func (c *kmsKeyRingIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KmsKeyRingIamBinding, err error) {
 	result = &v1alpha1.KmsKeyRingIamBinding{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("kmskeyringiambindings").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of KmsKeyRingIamBindings that match those selectors.
-func (c *kmsKeyRingIamBindings) List(opts v1.ListOptions) (result *v1alpha1.KmsKeyRingIamBindingList, err error) {
+func (c *kmsKeyRingIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KmsKeyRingIamBindingList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *kmsKeyRingIamBindings) List(opts v1.ListOptions) (result *v1alpha1.KmsK
 		Resource("kmskeyringiambindings").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested kmsKeyRingIamBindings.
-func (c *kmsKeyRingIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *kmsKeyRingIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *kmsKeyRingIamBindings) Watch(opts v1.ListOptions) (watch.Interface, err
 		Resource("kmskeyringiambindings").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a kmsKeyRingIamBinding and creates it.  Returns the server's representation of the kmsKeyRingIamBinding, and an error, if there is any.
-func (c *kmsKeyRingIamBindings) Create(kmsKeyRingIamBinding *v1alpha1.KmsKeyRingIamBinding) (result *v1alpha1.KmsKeyRingIamBinding, err error) {
+func (c *kmsKeyRingIamBindings) Create(ctx context.Context, kmsKeyRingIamBinding *v1alpha1.KmsKeyRingIamBinding, opts v1.CreateOptions) (result *v1alpha1.KmsKeyRingIamBinding, err error) {
 	result = &v1alpha1.KmsKeyRingIamBinding{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("kmskeyringiambindings").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(kmsKeyRingIamBinding).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a kmsKeyRingIamBinding and updates it. Returns the server's representation of the kmsKeyRingIamBinding, and an error, if there is any.
-func (c *kmsKeyRingIamBindings) Update(kmsKeyRingIamBinding *v1alpha1.KmsKeyRingIamBinding) (result *v1alpha1.KmsKeyRingIamBinding, err error) {
+func (c *kmsKeyRingIamBindings) Update(ctx context.Context, kmsKeyRingIamBinding *v1alpha1.KmsKeyRingIamBinding, opts v1.UpdateOptions) (result *v1alpha1.KmsKeyRingIamBinding, err error) {
 	result = &v1alpha1.KmsKeyRingIamBinding{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("kmskeyringiambindings").
 		Name(kmsKeyRingIamBinding.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(kmsKeyRingIamBinding).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *kmsKeyRingIamBindings) UpdateStatus(kmsKeyRingIamBinding *v1alpha1.KmsKeyRingIamBinding) (result *v1alpha1.KmsKeyRingIamBinding, err error) {
+func (c *kmsKeyRingIamBindings) UpdateStatus(ctx context.Context, kmsKeyRingIamBinding *v1alpha1.KmsKeyRingIamBinding, opts v1.UpdateOptions) (result *v1alpha1.KmsKeyRingIamBinding, err error) {
 	result = &v1alpha1.KmsKeyRingIamBinding{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("kmskeyringiambindings").
 		Name(kmsKeyRingIamBinding.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(kmsKeyRingIamBinding).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the kmsKeyRingIamBinding and deletes it. Returns an error if one occurs.
-func (c *kmsKeyRingIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *kmsKeyRingIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("kmskeyringiambindings").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *kmsKeyRingIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *kmsKeyRingIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("kmskeyringiambindings").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched kmsKeyRingIamBinding.
-func (c *kmsKeyRingIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KmsKeyRingIamBinding, err error) {
+func (c *kmsKeyRingIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KmsKeyRingIamBinding, err error) {
 	result = &v1alpha1.KmsKeyRingIamBinding{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("kmskeyringiambindings").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

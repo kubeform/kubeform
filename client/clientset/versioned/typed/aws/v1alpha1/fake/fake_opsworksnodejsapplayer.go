@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var opsworksnodejsapplayersResource = schema.GroupVersionResource{Group: "aws.ku
 var opsworksnodejsapplayersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "OpsworksNodejsAppLayer"}
 
 // Get takes name of the opsworksNodejsAppLayer, and returns the corresponding opsworksNodejsAppLayer object, and an error if there is any.
-func (c *FakeOpsworksNodejsAppLayers) Get(name string, options v1.GetOptions) (result *v1alpha1.OpsworksNodejsAppLayer, err error) {
+func (c *FakeOpsworksNodejsAppLayers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.OpsworksNodejsAppLayer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(opsworksnodejsapplayersResource, c.ns, name), &v1alpha1.OpsworksNodejsAppLayer{})
 
@@ -51,7 +53,7 @@ func (c *FakeOpsworksNodejsAppLayers) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of OpsworksNodejsAppLayers that match those selectors.
-func (c *FakeOpsworksNodejsAppLayers) List(opts v1.ListOptions) (result *v1alpha1.OpsworksNodejsAppLayerList, err error) {
+func (c *FakeOpsworksNodejsAppLayers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.OpsworksNodejsAppLayerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(opsworksnodejsapplayersResource, opsworksnodejsapplayersKind, c.ns, opts), &v1alpha1.OpsworksNodejsAppLayerList{})
 
@@ -73,14 +75,14 @@ func (c *FakeOpsworksNodejsAppLayers) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested opsworksNodejsAppLayers.
-func (c *FakeOpsworksNodejsAppLayers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeOpsworksNodejsAppLayers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(opsworksnodejsapplayersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a opsworksNodejsAppLayer and creates it.  Returns the server's representation of the opsworksNodejsAppLayer, and an error, if there is any.
-func (c *FakeOpsworksNodejsAppLayers) Create(opsworksNodejsAppLayer *v1alpha1.OpsworksNodejsAppLayer) (result *v1alpha1.OpsworksNodejsAppLayer, err error) {
+func (c *FakeOpsworksNodejsAppLayers) Create(ctx context.Context, opsworksNodejsAppLayer *v1alpha1.OpsworksNodejsAppLayer, opts v1.CreateOptions) (result *v1alpha1.OpsworksNodejsAppLayer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(opsworksnodejsapplayersResource, c.ns, opsworksNodejsAppLayer), &v1alpha1.OpsworksNodejsAppLayer{})
 
@@ -91,7 +93,7 @@ func (c *FakeOpsworksNodejsAppLayers) Create(opsworksNodejsAppLayer *v1alpha1.Op
 }
 
 // Update takes the representation of a opsworksNodejsAppLayer and updates it. Returns the server's representation of the opsworksNodejsAppLayer, and an error, if there is any.
-func (c *FakeOpsworksNodejsAppLayers) Update(opsworksNodejsAppLayer *v1alpha1.OpsworksNodejsAppLayer) (result *v1alpha1.OpsworksNodejsAppLayer, err error) {
+func (c *FakeOpsworksNodejsAppLayers) Update(ctx context.Context, opsworksNodejsAppLayer *v1alpha1.OpsworksNodejsAppLayer, opts v1.UpdateOptions) (result *v1alpha1.OpsworksNodejsAppLayer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(opsworksnodejsapplayersResource, c.ns, opsworksNodejsAppLayer), &v1alpha1.OpsworksNodejsAppLayer{})
 
@@ -103,7 +105,7 @@ func (c *FakeOpsworksNodejsAppLayers) Update(opsworksNodejsAppLayer *v1alpha1.Op
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeOpsworksNodejsAppLayers) UpdateStatus(opsworksNodejsAppLayer *v1alpha1.OpsworksNodejsAppLayer) (*v1alpha1.OpsworksNodejsAppLayer, error) {
+func (c *FakeOpsworksNodejsAppLayers) UpdateStatus(ctx context.Context, opsworksNodejsAppLayer *v1alpha1.OpsworksNodejsAppLayer, opts v1.UpdateOptions) (*v1alpha1.OpsworksNodejsAppLayer, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(opsworksnodejsapplayersResource, "status", c.ns, opsworksNodejsAppLayer), &v1alpha1.OpsworksNodejsAppLayer{})
 
@@ -114,7 +116,7 @@ func (c *FakeOpsworksNodejsAppLayers) UpdateStatus(opsworksNodejsAppLayer *v1alp
 }
 
 // Delete takes name of the opsworksNodejsAppLayer and deletes it. Returns an error if one occurs.
-func (c *FakeOpsworksNodejsAppLayers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeOpsworksNodejsAppLayers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(opsworksnodejsapplayersResource, c.ns, name), &v1alpha1.OpsworksNodejsAppLayer{})
 
@@ -122,15 +124,15 @@ func (c *FakeOpsworksNodejsAppLayers) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeOpsworksNodejsAppLayers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(opsworksnodejsapplayersResource, c.ns, listOptions)
+func (c *FakeOpsworksNodejsAppLayers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(opsworksnodejsapplayersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.OpsworksNodejsAppLayerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched opsworksNodejsAppLayer.
-func (c *FakeOpsworksNodejsAppLayers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.OpsworksNodejsAppLayer, err error) {
+func (c *FakeOpsworksNodejsAppLayers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.OpsworksNodejsAppLayer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(opsworksnodejsapplayersResource, c.ns, name, pt, data, subresources...), &v1alpha1.OpsworksNodejsAppLayer{})
 

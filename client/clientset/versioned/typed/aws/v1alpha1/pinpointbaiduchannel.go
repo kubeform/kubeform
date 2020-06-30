@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type PinpointBaiduChannelsGetter interface {
 
 // PinpointBaiduChannelInterface has methods to work with PinpointBaiduChannel resources.
 type PinpointBaiduChannelInterface interface {
-	Create(*v1alpha1.PinpointBaiduChannel) (*v1alpha1.PinpointBaiduChannel, error)
-	Update(*v1alpha1.PinpointBaiduChannel) (*v1alpha1.PinpointBaiduChannel, error)
-	UpdateStatus(*v1alpha1.PinpointBaiduChannel) (*v1alpha1.PinpointBaiduChannel, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.PinpointBaiduChannel, error)
-	List(opts v1.ListOptions) (*v1alpha1.PinpointBaiduChannelList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PinpointBaiduChannel, err error)
+	Create(ctx context.Context, pinpointBaiduChannel *v1alpha1.PinpointBaiduChannel, opts v1.CreateOptions) (*v1alpha1.PinpointBaiduChannel, error)
+	Update(ctx context.Context, pinpointBaiduChannel *v1alpha1.PinpointBaiduChannel, opts v1.UpdateOptions) (*v1alpha1.PinpointBaiduChannel, error)
+	UpdateStatus(ctx context.Context, pinpointBaiduChannel *v1alpha1.PinpointBaiduChannel, opts v1.UpdateOptions) (*v1alpha1.PinpointBaiduChannel, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.PinpointBaiduChannel, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.PinpointBaiduChannelList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PinpointBaiduChannel, err error)
 	PinpointBaiduChannelExpansion
 }
 
@@ -65,20 +66,20 @@ func newPinpointBaiduChannels(c *AwsV1alpha1Client, namespace string) *pinpointB
 }
 
 // Get takes name of the pinpointBaiduChannel, and returns the corresponding pinpointBaiduChannel object, and an error if there is any.
-func (c *pinpointBaiduChannels) Get(name string, options v1.GetOptions) (result *v1alpha1.PinpointBaiduChannel, err error) {
+func (c *pinpointBaiduChannels) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PinpointBaiduChannel, err error) {
 	result = &v1alpha1.PinpointBaiduChannel{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("pinpointbaiduchannels").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of PinpointBaiduChannels that match those selectors.
-func (c *pinpointBaiduChannels) List(opts v1.ListOptions) (result *v1alpha1.PinpointBaiduChannelList, err error) {
+func (c *pinpointBaiduChannels) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PinpointBaiduChannelList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *pinpointBaiduChannels) List(opts v1.ListOptions) (result *v1alpha1.Pinp
 		Resource("pinpointbaiduchannels").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested pinpointBaiduChannels.
-func (c *pinpointBaiduChannels) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *pinpointBaiduChannels) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *pinpointBaiduChannels) Watch(opts v1.ListOptions) (watch.Interface, err
 		Resource("pinpointbaiduchannels").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a pinpointBaiduChannel and creates it.  Returns the server's representation of the pinpointBaiduChannel, and an error, if there is any.
-func (c *pinpointBaiduChannels) Create(pinpointBaiduChannel *v1alpha1.PinpointBaiduChannel) (result *v1alpha1.PinpointBaiduChannel, err error) {
+func (c *pinpointBaiduChannels) Create(ctx context.Context, pinpointBaiduChannel *v1alpha1.PinpointBaiduChannel, opts v1.CreateOptions) (result *v1alpha1.PinpointBaiduChannel, err error) {
 	result = &v1alpha1.PinpointBaiduChannel{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("pinpointbaiduchannels").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(pinpointBaiduChannel).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a pinpointBaiduChannel and updates it. Returns the server's representation of the pinpointBaiduChannel, and an error, if there is any.
-func (c *pinpointBaiduChannels) Update(pinpointBaiduChannel *v1alpha1.PinpointBaiduChannel) (result *v1alpha1.PinpointBaiduChannel, err error) {
+func (c *pinpointBaiduChannels) Update(ctx context.Context, pinpointBaiduChannel *v1alpha1.PinpointBaiduChannel, opts v1.UpdateOptions) (result *v1alpha1.PinpointBaiduChannel, err error) {
 	result = &v1alpha1.PinpointBaiduChannel{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("pinpointbaiduchannels").
 		Name(pinpointBaiduChannel.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(pinpointBaiduChannel).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *pinpointBaiduChannels) UpdateStatus(pinpointBaiduChannel *v1alpha1.PinpointBaiduChannel) (result *v1alpha1.PinpointBaiduChannel, err error) {
+func (c *pinpointBaiduChannels) UpdateStatus(ctx context.Context, pinpointBaiduChannel *v1alpha1.PinpointBaiduChannel, opts v1.UpdateOptions) (result *v1alpha1.PinpointBaiduChannel, err error) {
 	result = &v1alpha1.PinpointBaiduChannel{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("pinpointbaiduchannels").
 		Name(pinpointBaiduChannel.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(pinpointBaiduChannel).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the pinpointBaiduChannel and deletes it. Returns an error if one occurs.
-func (c *pinpointBaiduChannels) Delete(name string, options *v1.DeleteOptions) error {
+func (c *pinpointBaiduChannels) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("pinpointbaiduchannels").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *pinpointBaiduChannels) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *pinpointBaiduChannels) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("pinpointbaiduchannels").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched pinpointBaiduChannel.
-func (c *pinpointBaiduChannels) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PinpointBaiduChannel, err error) {
+func (c *pinpointBaiduChannels) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PinpointBaiduChannel, err error) {
 	result = &v1alpha1.PinpointBaiduChannel{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("pinpointbaiduchannels").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

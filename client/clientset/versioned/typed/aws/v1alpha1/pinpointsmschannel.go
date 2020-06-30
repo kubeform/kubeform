@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type PinpointSmsChannelsGetter interface {
 
 // PinpointSmsChannelInterface has methods to work with PinpointSmsChannel resources.
 type PinpointSmsChannelInterface interface {
-	Create(*v1alpha1.PinpointSmsChannel) (*v1alpha1.PinpointSmsChannel, error)
-	Update(*v1alpha1.PinpointSmsChannel) (*v1alpha1.PinpointSmsChannel, error)
-	UpdateStatus(*v1alpha1.PinpointSmsChannel) (*v1alpha1.PinpointSmsChannel, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.PinpointSmsChannel, error)
-	List(opts v1.ListOptions) (*v1alpha1.PinpointSmsChannelList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PinpointSmsChannel, err error)
+	Create(ctx context.Context, pinpointSmsChannel *v1alpha1.PinpointSmsChannel, opts v1.CreateOptions) (*v1alpha1.PinpointSmsChannel, error)
+	Update(ctx context.Context, pinpointSmsChannel *v1alpha1.PinpointSmsChannel, opts v1.UpdateOptions) (*v1alpha1.PinpointSmsChannel, error)
+	UpdateStatus(ctx context.Context, pinpointSmsChannel *v1alpha1.PinpointSmsChannel, opts v1.UpdateOptions) (*v1alpha1.PinpointSmsChannel, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.PinpointSmsChannel, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.PinpointSmsChannelList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PinpointSmsChannel, err error)
 	PinpointSmsChannelExpansion
 }
 
@@ -65,20 +66,20 @@ func newPinpointSmsChannels(c *AwsV1alpha1Client, namespace string) *pinpointSms
 }
 
 // Get takes name of the pinpointSmsChannel, and returns the corresponding pinpointSmsChannel object, and an error if there is any.
-func (c *pinpointSmsChannels) Get(name string, options v1.GetOptions) (result *v1alpha1.PinpointSmsChannel, err error) {
+func (c *pinpointSmsChannels) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PinpointSmsChannel, err error) {
 	result = &v1alpha1.PinpointSmsChannel{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("pinpointsmschannels").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of PinpointSmsChannels that match those selectors.
-func (c *pinpointSmsChannels) List(opts v1.ListOptions) (result *v1alpha1.PinpointSmsChannelList, err error) {
+func (c *pinpointSmsChannels) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PinpointSmsChannelList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *pinpointSmsChannels) List(opts v1.ListOptions) (result *v1alpha1.Pinpoi
 		Resource("pinpointsmschannels").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested pinpointSmsChannels.
-func (c *pinpointSmsChannels) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *pinpointSmsChannels) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *pinpointSmsChannels) Watch(opts v1.ListOptions) (watch.Interface, error
 		Resource("pinpointsmschannels").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a pinpointSmsChannel and creates it.  Returns the server's representation of the pinpointSmsChannel, and an error, if there is any.
-func (c *pinpointSmsChannels) Create(pinpointSmsChannel *v1alpha1.PinpointSmsChannel) (result *v1alpha1.PinpointSmsChannel, err error) {
+func (c *pinpointSmsChannels) Create(ctx context.Context, pinpointSmsChannel *v1alpha1.PinpointSmsChannel, opts v1.CreateOptions) (result *v1alpha1.PinpointSmsChannel, err error) {
 	result = &v1alpha1.PinpointSmsChannel{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("pinpointsmschannels").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(pinpointSmsChannel).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a pinpointSmsChannel and updates it. Returns the server's representation of the pinpointSmsChannel, and an error, if there is any.
-func (c *pinpointSmsChannels) Update(pinpointSmsChannel *v1alpha1.PinpointSmsChannel) (result *v1alpha1.PinpointSmsChannel, err error) {
+func (c *pinpointSmsChannels) Update(ctx context.Context, pinpointSmsChannel *v1alpha1.PinpointSmsChannel, opts v1.UpdateOptions) (result *v1alpha1.PinpointSmsChannel, err error) {
 	result = &v1alpha1.PinpointSmsChannel{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("pinpointsmschannels").
 		Name(pinpointSmsChannel.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(pinpointSmsChannel).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *pinpointSmsChannels) UpdateStatus(pinpointSmsChannel *v1alpha1.PinpointSmsChannel) (result *v1alpha1.PinpointSmsChannel, err error) {
+func (c *pinpointSmsChannels) UpdateStatus(ctx context.Context, pinpointSmsChannel *v1alpha1.PinpointSmsChannel, opts v1.UpdateOptions) (result *v1alpha1.PinpointSmsChannel, err error) {
 	result = &v1alpha1.PinpointSmsChannel{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("pinpointsmschannels").
 		Name(pinpointSmsChannel.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(pinpointSmsChannel).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the pinpointSmsChannel and deletes it. Returns an error if one occurs.
-func (c *pinpointSmsChannels) Delete(name string, options *v1.DeleteOptions) error {
+func (c *pinpointSmsChannels) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("pinpointsmschannels").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *pinpointSmsChannels) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *pinpointSmsChannels) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("pinpointsmschannels").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched pinpointSmsChannel.
-func (c *pinpointSmsChannels) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PinpointSmsChannel, err error) {
+func (c *pinpointSmsChannels) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PinpointSmsChannel, err error) {
 	result = &v1alpha1.PinpointSmsChannel{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("pinpointsmschannels").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

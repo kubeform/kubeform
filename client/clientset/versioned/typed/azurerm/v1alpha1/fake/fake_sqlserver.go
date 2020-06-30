@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var sqlserversResource = schema.GroupVersionResource{Group: "azurerm.kubeform.co
 var sqlserversKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "SqlServer"}
 
 // Get takes name of the sqlServer, and returns the corresponding sqlServer object, and an error if there is any.
-func (c *FakeSqlServers) Get(name string, options v1.GetOptions) (result *v1alpha1.SqlServer, err error) {
+func (c *FakeSqlServers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SqlServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(sqlserversResource, c.ns, name), &v1alpha1.SqlServer{})
 
@@ -51,7 +53,7 @@ func (c *FakeSqlServers) Get(name string, options v1.GetOptions) (result *v1alph
 }
 
 // List takes label and field selectors, and returns the list of SqlServers that match those selectors.
-func (c *FakeSqlServers) List(opts v1.ListOptions) (result *v1alpha1.SqlServerList, err error) {
+func (c *FakeSqlServers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SqlServerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(sqlserversResource, sqlserversKind, c.ns, opts), &v1alpha1.SqlServerList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSqlServers) List(opts v1.ListOptions) (result *v1alpha1.SqlServerLi
 }
 
 // Watch returns a watch.Interface that watches the requested sqlServers.
-func (c *FakeSqlServers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSqlServers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(sqlserversResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a sqlServer and creates it.  Returns the server's representation of the sqlServer, and an error, if there is any.
-func (c *FakeSqlServers) Create(sqlServer *v1alpha1.SqlServer) (result *v1alpha1.SqlServer, err error) {
+func (c *FakeSqlServers) Create(ctx context.Context, sqlServer *v1alpha1.SqlServer, opts v1.CreateOptions) (result *v1alpha1.SqlServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(sqlserversResource, c.ns, sqlServer), &v1alpha1.SqlServer{})
 
@@ -91,7 +93,7 @@ func (c *FakeSqlServers) Create(sqlServer *v1alpha1.SqlServer) (result *v1alpha1
 }
 
 // Update takes the representation of a sqlServer and updates it. Returns the server's representation of the sqlServer, and an error, if there is any.
-func (c *FakeSqlServers) Update(sqlServer *v1alpha1.SqlServer) (result *v1alpha1.SqlServer, err error) {
+func (c *FakeSqlServers) Update(ctx context.Context, sqlServer *v1alpha1.SqlServer, opts v1.UpdateOptions) (result *v1alpha1.SqlServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(sqlserversResource, c.ns, sqlServer), &v1alpha1.SqlServer{})
 
@@ -103,7 +105,7 @@ func (c *FakeSqlServers) Update(sqlServer *v1alpha1.SqlServer) (result *v1alpha1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSqlServers) UpdateStatus(sqlServer *v1alpha1.SqlServer) (*v1alpha1.SqlServer, error) {
+func (c *FakeSqlServers) UpdateStatus(ctx context.Context, sqlServer *v1alpha1.SqlServer, opts v1.UpdateOptions) (*v1alpha1.SqlServer, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(sqlserversResource, "status", c.ns, sqlServer), &v1alpha1.SqlServer{})
 
@@ -114,7 +116,7 @@ func (c *FakeSqlServers) UpdateStatus(sqlServer *v1alpha1.SqlServer) (*v1alpha1.
 }
 
 // Delete takes name of the sqlServer and deletes it. Returns an error if one occurs.
-func (c *FakeSqlServers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSqlServers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(sqlserversResource, c.ns, name), &v1alpha1.SqlServer{})
 
@@ -122,15 +124,15 @@ func (c *FakeSqlServers) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSqlServers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(sqlserversResource, c.ns, listOptions)
+func (c *FakeSqlServers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(sqlserversResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SqlServerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched sqlServer.
-func (c *FakeSqlServers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SqlServer, err error) {
+func (c *FakeSqlServers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SqlServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(sqlserversResource, c.ns, name, pt, data, subresources...), &v1alpha1.SqlServer{})
 

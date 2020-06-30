@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type DirectoryServiceConditionalForwardersGetter interface {
 
 // DirectoryServiceConditionalForwarderInterface has methods to work with DirectoryServiceConditionalForwarder resources.
 type DirectoryServiceConditionalForwarderInterface interface {
-	Create(*v1alpha1.DirectoryServiceConditionalForwarder) (*v1alpha1.DirectoryServiceConditionalForwarder, error)
-	Update(*v1alpha1.DirectoryServiceConditionalForwarder) (*v1alpha1.DirectoryServiceConditionalForwarder, error)
-	UpdateStatus(*v1alpha1.DirectoryServiceConditionalForwarder) (*v1alpha1.DirectoryServiceConditionalForwarder, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.DirectoryServiceConditionalForwarder, error)
-	List(opts v1.ListOptions) (*v1alpha1.DirectoryServiceConditionalForwarderList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DirectoryServiceConditionalForwarder, err error)
+	Create(ctx context.Context, directoryServiceConditionalForwarder *v1alpha1.DirectoryServiceConditionalForwarder, opts v1.CreateOptions) (*v1alpha1.DirectoryServiceConditionalForwarder, error)
+	Update(ctx context.Context, directoryServiceConditionalForwarder *v1alpha1.DirectoryServiceConditionalForwarder, opts v1.UpdateOptions) (*v1alpha1.DirectoryServiceConditionalForwarder, error)
+	UpdateStatus(ctx context.Context, directoryServiceConditionalForwarder *v1alpha1.DirectoryServiceConditionalForwarder, opts v1.UpdateOptions) (*v1alpha1.DirectoryServiceConditionalForwarder, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.DirectoryServiceConditionalForwarder, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.DirectoryServiceConditionalForwarderList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DirectoryServiceConditionalForwarder, err error)
 	DirectoryServiceConditionalForwarderExpansion
 }
 
@@ -65,20 +66,20 @@ func newDirectoryServiceConditionalForwarders(c *AwsV1alpha1Client, namespace st
 }
 
 // Get takes name of the directoryServiceConditionalForwarder, and returns the corresponding directoryServiceConditionalForwarder object, and an error if there is any.
-func (c *directoryServiceConditionalForwarders) Get(name string, options v1.GetOptions) (result *v1alpha1.DirectoryServiceConditionalForwarder, err error) {
+func (c *directoryServiceConditionalForwarders) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DirectoryServiceConditionalForwarder, err error) {
 	result = &v1alpha1.DirectoryServiceConditionalForwarder{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("directoryserviceconditionalforwarders").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of DirectoryServiceConditionalForwarders that match those selectors.
-func (c *directoryServiceConditionalForwarders) List(opts v1.ListOptions) (result *v1alpha1.DirectoryServiceConditionalForwarderList, err error) {
+func (c *directoryServiceConditionalForwarders) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DirectoryServiceConditionalForwarderList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *directoryServiceConditionalForwarders) List(opts v1.ListOptions) (resul
 		Resource("directoryserviceconditionalforwarders").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested directoryServiceConditionalForwarders.
-func (c *directoryServiceConditionalForwarders) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *directoryServiceConditionalForwarders) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *directoryServiceConditionalForwarders) Watch(opts v1.ListOptions) (watc
 		Resource("directoryserviceconditionalforwarders").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a directoryServiceConditionalForwarder and creates it.  Returns the server's representation of the directoryServiceConditionalForwarder, and an error, if there is any.
-func (c *directoryServiceConditionalForwarders) Create(directoryServiceConditionalForwarder *v1alpha1.DirectoryServiceConditionalForwarder) (result *v1alpha1.DirectoryServiceConditionalForwarder, err error) {
+func (c *directoryServiceConditionalForwarders) Create(ctx context.Context, directoryServiceConditionalForwarder *v1alpha1.DirectoryServiceConditionalForwarder, opts v1.CreateOptions) (result *v1alpha1.DirectoryServiceConditionalForwarder, err error) {
 	result = &v1alpha1.DirectoryServiceConditionalForwarder{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("directoryserviceconditionalforwarders").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(directoryServiceConditionalForwarder).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a directoryServiceConditionalForwarder and updates it. Returns the server's representation of the directoryServiceConditionalForwarder, and an error, if there is any.
-func (c *directoryServiceConditionalForwarders) Update(directoryServiceConditionalForwarder *v1alpha1.DirectoryServiceConditionalForwarder) (result *v1alpha1.DirectoryServiceConditionalForwarder, err error) {
+func (c *directoryServiceConditionalForwarders) Update(ctx context.Context, directoryServiceConditionalForwarder *v1alpha1.DirectoryServiceConditionalForwarder, opts v1.UpdateOptions) (result *v1alpha1.DirectoryServiceConditionalForwarder, err error) {
 	result = &v1alpha1.DirectoryServiceConditionalForwarder{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("directoryserviceconditionalforwarders").
 		Name(directoryServiceConditionalForwarder.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(directoryServiceConditionalForwarder).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *directoryServiceConditionalForwarders) UpdateStatus(directoryServiceConditionalForwarder *v1alpha1.DirectoryServiceConditionalForwarder) (result *v1alpha1.DirectoryServiceConditionalForwarder, err error) {
+func (c *directoryServiceConditionalForwarders) UpdateStatus(ctx context.Context, directoryServiceConditionalForwarder *v1alpha1.DirectoryServiceConditionalForwarder, opts v1.UpdateOptions) (result *v1alpha1.DirectoryServiceConditionalForwarder, err error) {
 	result = &v1alpha1.DirectoryServiceConditionalForwarder{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("directoryserviceconditionalforwarders").
 		Name(directoryServiceConditionalForwarder.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(directoryServiceConditionalForwarder).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the directoryServiceConditionalForwarder and deletes it. Returns an error if one occurs.
-func (c *directoryServiceConditionalForwarders) Delete(name string, options *v1.DeleteOptions) error {
+func (c *directoryServiceConditionalForwarders) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("directoryserviceconditionalforwarders").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *directoryServiceConditionalForwarders) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *directoryServiceConditionalForwarders) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("directoryserviceconditionalforwarders").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched directoryServiceConditionalForwarder.
-func (c *directoryServiceConditionalForwarders) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DirectoryServiceConditionalForwarder, err error) {
+func (c *directoryServiceConditionalForwarders) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DirectoryServiceConditionalForwarder, err error) {
 	result = &v1alpha1.DirectoryServiceConditionalForwarder{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("directoryserviceconditionalforwarders").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

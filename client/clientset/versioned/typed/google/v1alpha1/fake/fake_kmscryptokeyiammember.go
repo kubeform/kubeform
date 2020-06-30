@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var kmscryptokeyiammembersResource = schema.GroupVersionResource{Group: "google.
 var kmscryptokeyiammembersKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "KmsCryptoKeyIamMember"}
 
 // Get takes name of the kmsCryptoKeyIamMember, and returns the corresponding kmsCryptoKeyIamMember object, and an error if there is any.
-func (c *FakeKmsCryptoKeyIamMembers) Get(name string, options v1.GetOptions) (result *v1alpha1.KmsCryptoKeyIamMember, err error) {
+func (c *FakeKmsCryptoKeyIamMembers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KmsCryptoKeyIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(kmscryptokeyiammembersResource, c.ns, name), &v1alpha1.KmsCryptoKeyIamMember{})
 
@@ -51,7 +53,7 @@ func (c *FakeKmsCryptoKeyIamMembers) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of KmsCryptoKeyIamMembers that match those selectors.
-func (c *FakeKmsCryptoKeyIamMembers) List(opts v1.ListOptions) (result *v1alpha1.KmsCryptoKeyIamMemberList, err error) {
+func (c *FakeKmsCryptoKeyIamMembers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KmsCryptoKeyIamMemberList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(kmscryptokeyiammembersResource, kmscryptokeyiammembersKind, c.ns, opts), &v1alpha1.KmsCryptoKeyIamMemberList{})
 
@@ -73,14 +75,14 @@ func (c *FakeKmsCryptoKeyIamMembers) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested kmsCryptoKeyIamMembers.
-func (c *FakeKmsCryptoKeyIamMembers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeKmsCryptoKeyIamMembers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(kmscryptokeyiammembersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a kmsCryptoKeyIamMember and creates it.  Returns the server's representation of the kmsCryptoKeyIamMember, and an error, if there is any.
-func (c *FakeKmsCryptoKeyIamMembers) Create(kmsCryptoKeyIamMember *v1alpha1.KmsCryptoKeyIamMember) (result *v1alpha1.KmsCryptoKeyIamMember, err error) {
+func (c *FakeKmsCryptoKeyIamMembers) Create(ctx context.Context, kmsCryptoKeyIamMember *v1alpha1.KmsCryptoKeyIamMember, opts v1.CreateOptions) (result *v1alpha1.KmsCryptoKeyIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(kmscryptokeyiammembersResource, c.ns, kmsCryptoKeyIamMember), &v1alpha1.KmsCryptoKeyIamMember{})
 
@@ -91,7 +93,7 @@ func (c *FakeKmsCryptoKeyIamMembers) Create(kmsCryptoKeyIamMember *v1alpha1.KmsC
 }
 
 // Update takes the representation of a kmsCryptoKeyIamMember and updates it. Returns the server's representation of the kmsCryptoKeyIamMember, and an error, if there is any.
-func (c *FakeKmsCryptoKeyIamMembers) Update(kmsCryptoKeyIamMember *v1alpha1.KmsCryptoKeyIamMember) (result *v1alpha1.KmsCryptoKeyIamMember, err error) {
+func (c *FakeKmsCryptoKeyIamMembers) Update(ctx context.Context, kmsCryptoKeyIamMember *v1alpha1.KmsCryptoKeyIamMember, opts v1.UpdateOptions) (result *v1alpha1.KmsCryptoKeyIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(kmscryptokeyiammembersResource, c.ns, kmsCryptoKeyIamMember), &v1alpha1.KmsCryptoKeyIamMember{})
 
@@ -103,7 +105,7 @@ func (c *FakeKmsCryptoKeyIamMembers) Update(kmsCryptoKeyIamMember *v1alpha1.KmsC
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeKmsCryptoKeyIamMembers) UpdateStatus(kmsCryptoKeyIamMember *v1alpha1.KmsCryptoKeyIamMember) (*v1alpha1.KmsCryptoKeyIamMember, error) {
+func (c *FakeKmsCryptoKeyIamMembers) UpdateStatus(ctx context.Context, kmsCryptoKeyIamMember *v1alpha1.KmsCryptoKeyIamMember, opts v1.UpdateOptions) (*v1alpha1.KmsCryptoKeyIamMember, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(kmscryptokeyiammembersResource, "status", c.ns, kmsCryptoKeyIamMember), &v1alpha1.KmsCryptoKeyIamMember{})
 
@@ -114,7 +116,7 @@ func (c *FakeKmsCryptoKeyIamMembers) UpdateStatus(kmsCryptoKeyIamMember *v1alpha
 }
 
 // Delete takes name of the kmsCryptoKeyIamMember and deletes it. Returns an error if one occurs.
-func (c *FakeKmsCryptoKeyIamMembers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeKmsCryptoKeyIamMembers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(kmscryptokeyiammembersResource, c.ns, name), &v1alpha1.KmsCryptoKeyIamMember{})
 
@@ -122,15 +124,15 @@ func (c *FakeKmsCryptoKeyIamMembers) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeKmsCryptoKeyIamMembers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(kmscryptokeyiammembersResource, c.ns, listOptions)
+func (c *FakeKmsCryptoKeyIamMembers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(kmscryptokeyiammembersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.KmsCryptoKeyIamMemberList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched kmsCryptoKeyIamMember.
-func (c *FakeKmsCryptoKeyIamMembers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KmsCryptoKeyIamMember, err error) {
+func (c *FakeKmsCryptoKeyIamMembers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KmsCryptoKeyIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(kmscryptokeyiammembersResource, c.ns, name, pt, data, subresources...), &v1alpha1.KmsCryptoKeyIamMember{})
 

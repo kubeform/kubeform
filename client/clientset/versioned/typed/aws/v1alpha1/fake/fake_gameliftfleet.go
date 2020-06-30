@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var gameliftfleetsResource = schema.GroupVersionResource{Group: "aws.kubeform.co
 var gameliftfleetsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "GameliftFleet"}
 
 // Get takes name of the gameliftFleet, and returns the corresponding gameliftFleet object, and an error if there is any.
-func (c *FakeGameliftFleets) Get(name string, options v1.GetOptions) (result *v1alpha1.GameliftFleet, err error) {
+func (c *FakeGameliftFleets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.GameliftFleet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(gameliftfleetsResource, c.ns, name), &v1alpha1.GameliftFleet{})
 
@@ -51,7 +53,7 @@ func (c *FakeGameliftFleets) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of GameliftFleets that match those selectors.
-func (c *FakeGameliftFleets) List(opts v1.ListOptions) (result *v1alpha1.GameliftFleetList, err error) {
+func (c *FakeGameliftFleets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.GameliftFleetList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(gameliftfleetsResource, gameliftfleetsKind, c.ns, opts), &v1alpha1.GameliftFleetList{})
 
@@ -73,14 +75,14 @@ func (c *FakeGameliftFleets) List(opts v1.ListOptions) (result *v1alpha1.Gamelif
 }
 
 // Watch returns a watch.Interface that watches the requested gameliftFleets.
-func (c *FakeGameliftFleets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeGameliftFleets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(gameliftfleetsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a gameliftFleet and creates it.  Returns the server's representation of the gameliftFleet, and an error, if there is any.
-func (c *FakeGameliftFleets) Create(gameliftFleet *v1alpha1.GameliftFleet) (result *v1alpha1.GameliftFleet, err error) {
+func (c *FakeGameliftFleets) Create(ctx context.Context, gameliftFleet *v1alpha1.GameliftFleet, opts v1.CreateOptions) (result *v1alpha1.GameliftFleet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(gameliftfleetsResource, c.ns, gameliftFleet), &v1alpha1.GameliftFleet{})
 
@@ -91,7 +93,7 @@ func (c *FakeGameliftFleets) Create(gameliftFleet *v1alpha1.GameliftFleet) (resu
 }
 
 // Update takes the representation of a gameliftFleet and updates it. Returns the server's representation of the gameliftFleet, and an error, if there is any.
-func (c *FakeGameliftFleets) Update(gameliftFleet *v1alpha1.GameliftFleet) (result *v1alpha1.GameliftFleet, err error) {
+func (c *FakeGameliftFleets) Update(ctx context.Context, gameliftFleet *v1alpha1.GameliftFleet, opts v1.UpdateOptions) (result *v1alpha1.GameliftFleet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(gameliftfleetsResource, c.ns, gameliftFleet), &v1alpha1.GameliftFleet{})
 
@@ -103,7 +105,7 @@ func (c *FakeGameliftFleets) Update(gameliftFleet *v1alpha1.GameliftFleet) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeGameliftFleets) UpdateStatus(gameliftFleet *v1alpha1.GameliftFleet) (*v1alpha1.GameliftFleet, error) {
+func (c *FakeGameliftFleets) UpdateStatus(ctx context.Context, gameliftFleet *v1alpha1.GameliftFleet, opts v1.UpdateOptions) (*v1alpha1.GameliftFleet, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(gameliftfleetsResource, "status", c.ns, gameliftFleet), &v1alpha1.GameliftFleet{})
 
@@ -114,7 +116,7 @@ func (c *FakeGameliftFleets) UpdateStatus(gameliftFleet *v1alpha1.GameliftFleet)
 }
 
 // Delete takes name of the gameliftFleet and deletes it. Returns an error if one occurs.
-func (c *FakeGameliftFleets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeGameliftFleets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(gameliftfleetsResource, c.ns, name), &v1alpha1.GameliftFleet{})
 
@@ -122,15 +124,15 @@ func (c *FakeGameliftFleets) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeGameliftFleets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(gameliftfleetsResource, c.ns, listOptions)
+func (c *FakeGameliftFleets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(gameliftfleetsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.GameliftFleetList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched gameliftFleet.
-func (c *FakeGameliftFleets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.GameliftFleet, err error) {
+func (c *FakeGameliftFleets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.GameliftFleet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(gameliftfleetsResource, c.ns, name, pt, data, subresources...), &v1alpha1.GameliftFleet{})
 

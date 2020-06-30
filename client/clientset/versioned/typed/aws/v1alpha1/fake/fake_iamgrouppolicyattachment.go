@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iamgrouppolicyattachmentsResource = schema.GroupVersionResource{Group: "aws.
 var iamgrouppolicyattachmentsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "IamGroupPolicyAttachment"}
 
 // Get takes name of the iamGroupPolicyAttachment, and returns the corresponding iamGroupPolicyAttachment object, and an error if there is any.
-func (c *FakeIamGroupPolicyAttachments) Get(name string, options v1.GetOptions) (result *v1alpha1.IamGroupPolicyAttachment, err error) {
+func (c *FakeIamGroupPolicyAttachments) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IamGroupPolicyAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iamgrouppolicyattachmentsResource, c.ns, name), &v1alpha1.IamGroupPolicyAttachment{})
 
@@ -51,7 +53,7 @@ func (c *FakeIamGroupPolicyAttachments) Get(name string, options v1.GetOptions) 
 }
 
 // List takes label and field selectors, and returns the list of IamGroupPolicyAttachments that match those selectors.
-func (c *FakeIamGroupPolicyAttachments) List(opts v1.ListOptions) (result *v1alpha1.IamGroupPolicyAttachmentList, err error) {
+func (c *FakeIamGroupPolicyAttachments) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IamGroupPolicyAttachmentList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iamgrouppolicyattachmentsResource, iamgrouppolicyattachmentsKind, c.ns, opts), &v1alpha1.IamGroupPolicyAttachmentList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIamGroupPolicyAttachments) List(opts v1.ListOptions) (result *v1alp
 }
 
 // Watch returns a watch.Interface that watches the requested iamGroupPolicyAttachments.
-func (c *FakeIamGroupPolicyAttachments) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIamGroupPolicyAttachments) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iamgrouppolicyattachmentsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iamGroupPolicyAttachment and creates it.  Returns the server's representation of the iamGroupPolicyAttachment, and an error, if there is any.
-func (c *FakeIamGroupPolicyAttachments) Create(iamGroupPolicyAttachment *v1alpha1.IamGroupPolicyAttachment) (result *v1alpha1.IamGroupPolicyAttachment, err error) {
+func (c *FakeIamGroupPolicyAttachments) Create(ctx context.Context, iamGroupPolicyAttachment *v1alpha1.IamGroupPolicyAttachment, opts v1.CreateOptions) (result *v1alpha1.IamGroupPolicyAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iamgrouppolicyattachmentsResource, c.ns, iamGroupPolicyAttachment), &v1alpha1.IamGroupPolicyAttachment{})
 
@@ -91,7 +93,7 @@ func (c *FakeIamGroupPolicyAttachments) Create(iamGroupPolicyAttachment *v1alpha
 }
 
 // Update takes the representation of a iamGroupPolicyAttachment and updates it. Returns the server's representation of the iamGroupPolicyAttachment, and an error, if there is any.
-func (c *FakeIamGroupPolicyAttachments) Update(iamGroupPolicyAttachment *v1alpha1.IamGroupPolicyAttachment) (result *v1alpha1.IamGroupPolicyAttachment, err error) {
+func (c *FakeIamGroupPolicyAttachments) Update(ctx context.Context, iamGroupPolicyAttachment *v1alpha1.IamGroupPolicyAttachment, opts v1.UpdateOptions) (result *v1alpha1.IamGroupPolicyAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iamgrouppolicyattachmentsResource, c.ns, iamGroupPolicyAttachment), &v1alpha1.IamGroupPolicyAttachment{})
 
@@ -103,7 +105,7 @@ func (c *FakeIamGroupPolicyAttachments) Update(iamGroupPolicyAttachment *v1alpha
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIamGroupPolicyAttachments) UpdateStatus(iamGroupPolicyAttachment *v1alpha1.IamGroupPolicyAttachment) (*v1alpha1.IamGroupPolicyAttachment, error) {
+func (c *FakeIamGroupPolicyAttachments) UpdateStatus(ctx context.Context, iamGroupPolicyAttachment *v1alpha1.IamGroupPolicyAttachment, opts v1.UpdateOptions) (*v1alpha1.IamGroupPolicyAttachment, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iamgrouppolicyattachmentsResource, "status", c.ns, iamGroupPolicyAttachment), &v1alpha1.IamGroupPolicyAttachment{})
 
@@ -114,7 +116,7 @@ func (c *FakeIamGroupPolicyAttachments) UpdateStatus(iamGroupPolicyAttachment *v
 }
 
 // Delete takes name of the iamGroupPolicyAttachment and deletes it. Returns an error if one occurs.
-func (c *FakeIamGroupPolicyAttachments) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIamGroupPolicyAttachments) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iamgrouppolicyattachmentsResource, c.ns, name), &v1alpha1.IamGroupPolicyAttachment{})
 
@@ -122,15 +124,15 @@ func (c *FakeIamGroupPolicyAttachments) Delete(name string, options *v1.DeleteOp
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIamGroupPolicyAttachments) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iamgrouppolicyattachmentsResource, c.ns, listOptions)
+func (c *FakeIamGroupPolicyAttachments) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iamgrouppolicyattachmentsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IamGroupPolicyAttachmentList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iamGroupPolicyAttachment.
-func (c *FakeIamGroupPolicyAttachments) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IamGroupPolicyAttachment, err error) {
+func (c *FakeIamGroupPolicyAttachments) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IamGroupPolicyAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iamgrouppolicyattachmentsResource, c.ns, name, pt, data, subresources...), &v1alpha1.IamGroupPolicyAttachment{})
 

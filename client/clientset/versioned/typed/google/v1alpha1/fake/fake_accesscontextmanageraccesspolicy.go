@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var accesscontextmanageraccesspoliciesResource = schema.GroupVersionResource{Gro
 var accesscontextmanageraccesspoliciesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "AccessContextManagerAccessPolicy"}
 
 // Get takes name of the accessContextManagerAccessPolicy, and returns the corresponding accessContextManagerAccessPolicy object, and an error if there is any.
-func (c *FakeAccessContextManagerAccessPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.AccessContextManagerAccessPolicy, err error) {
+func (c *FakeAccessContextManagerAccessPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AccessContextManagerAccessPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(accesscontextmanageraccesspoliciesResource, c.ns, name), &v1alpha1.AccessContextManagerAccessPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeAccessContextManagerAccessPolicies) Get(name string, options v1.Get
 }
 
 // List takes label and field selectors, and returns the list of AccessContextManagerAccessPolicies that match those selectors.
-func (c *FakeAccessContextManagerAccessPolicies) List(opts v1.ListOptions) (result *v1alpha1.AccessContextManagerAccessPolicyList, err error) {
+func (c *FakeAccessContextManagerAccessPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AccessContextManagerAccessPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(accesscontextmanageraccesspoliciesResource, accesscontextmanageraccesspoliciesKind, c.ns, opts), &v1alpha1.AccessContextManagerAccessPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAccessContextManagerAccessPolicies) List(opts v1.ListOptions) (resu
 }
 
 // Watch returns a watch.Interface that watches the requested accessContextManagerAccessPolicies.
-func (c *FakeAccessContextManagerAccessPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAccessContextManagerAccessPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(accesscontextmanageraccesspoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a accessContextManagerAccessPolicy and creates it.  Returns the server's representation of the accessContextManagerAccessPolicy, and an error, if there is any.
-func (c *FakeAccessContextManagerAccessPolicies) Create(accessContextManagerAccessPolicy *v1alpha1.AccessContextManagerAccessPolicy) (result *v1alpha1.AccessContextManagerAccessPolicy, err error) {
+func (c *FakeAccessContextManagerAccessPolicies) Create(ctx context.Context, accessContextManagerAccessPolicy *v1alpha1.AccessContextManagerAccessPolicy, opts v1.CreateOptions) (result *v1alpha1.AccessContextManagerAccessPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(accesscontextmanageraccesspoliciesResource, c.ns, accessContextManagerAccessPolicy), &v1alpha1.AccessContextManagerAccessPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeAccessContextManagerAccessPolicies) Create(accessContextManagerAcce
 }
 
 // Update takes the representation of a accessContextManagerAccessPolicy and updates it. Returns the server's representation of the accessContextManagerAccessPolicy, and an error, if there is any.
-func (c *FakeAccessContextManagerAccessPolicies) Update(accessContextManagerAccessPolicy *v1alpha1.AccessContextManagerAccessPolicy) (result *v1alpha1.AccessContextManagerAccessPolicy, err error) {
+func (c *FakeAccessContextManagerAccessPolicies) Update(ctx context.Context, accessContextManagerAccessPolicy *v1alpha1.AccessContextManagerAccessPolicy, opts v1.UpdateOptions) (result *v1alpha1.AccessContextManagerAccessPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(accesscontextmanageraccesspoliciesResource, c.ns, accessContextManagerAccessPolicy), &v1alpha1.AccessContextManagerAccessPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeAccessContextManagerAccessPolicies) Update(accessContextManagerAcce
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAccessContextManagerAccessPolicies) UpdateStatus(accessContextManagerAccessPolicy *v1alpha1.AccessContextManagerAccessPolicy) (*v1alpha1.AccessContextManagerAccessPolicy, error) {
+func (c *FakeAccessContextManagerAccessPolicies) UpdateStatus(ctx context.Context, accessContextManagerAccessPolicy *v1alpha1.AccessContextManagerAccessPolicy, opts v1.UpdateOptions) (*v1alpha1.AccessContextManagerAccessPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(accesscontextmanageraccesspoliciesResource, "status", c.ns, accessContextManagerAccessPolicy), &v1alpha1.AccessContextManagerAccessPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeAccessContextManagerAccessPolicies) UpdateStatus(accessContextManag
 }
 
 // Delete takes name of the accessContextManagerAccessPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeAccessContextManagerAccessPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAccessContextManagerAccessPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(accesscontextmanageraccesspoliciesResource, c.ns, name), &v1alpha1.AccessContextManagerAccessPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeAccessContextManagerAccessPolicies) Delete(name string, options *v1
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAccessContextManagerAccessPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(accesscontextmanageraccesspoliciesResource, c.ns, listOptions)
+func (c *FakeAccessContextManagerAccessPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(accesscontextmanageraccesspoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AccessContextManagerAccessPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched accessContextManagerAccessPolicy.
-func (c *FakeAccessContextManagerAccessPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AccessContextManagerAccessPolicy, err error) {
+func (c *FakeAccessContextManagerAccessPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AccessContextManagerAccessPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(accesscontextmanageraccesspoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.AccessContextManagerAccessPolicy{})
 

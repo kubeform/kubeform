@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dxgatewaysResource = schema.GroupVersionResource{Group: "aws.kubeform.com", 
 var dxgatewaysKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DxGateway"}
 
 // Get takes name of the dxGateway, and returns the corresponding dxGateway object, and an error if there is any.
-func (c *FakeDxGateways) Get(name string, options v1.GetOptions) (result *v1alpha1.DxGateway, err error) {
+func (c *FakeDxGateways) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DxGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dxgatewaysResource, c.ns, name), &v1alpha1.DxGateway{})
 
@@ -51,7 +53,7 @@ func (c *FakeDxGateways) Get(name string, options v1.GetOptions) (result *v1alph
 }
 
 // List takes label and field selectors, and returns the list of DxGateways that match those selectors.
-func (c *FakeDxGateways) List(opts v1.ListOptions) (result *v1alpha1.DxGatewayList, err error) {
+func (c *FakeDxGateways) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DxGatewayList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dxgatewaysResource, dxgatewaysKind, c.ns, opts), &v1alpha1.DxGatewayList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDxGateways) List(opts v1.ListOptions) (result *v1alpha1.DxGatewayLi
 }
 
 // Watch returns a watch.Interface that watches the requested dxGateways.
-func (c *FakeDxGateways) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDxGateways) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dxgatewaysResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dxGateway and creates it.  Returns the server's representation of the dxGateway, and an error, if there is any.
-func (c *FakeDxGateways) Create(dxGateway *v1alpha1.DxGateway) (result *v1alpha1.DxGateway, err error) {
+func (c *FakeDxGateways) Create(ctx context.Context, dxGateway *v1alpha1.DxGateway, opts v1.CreateOptions) (result *v1alpha1.DxGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dxgatewaysResource, c.ns, dxGateway), &v1alpha1.DxGateway{})
 
@@ -91,7 +93,7 @@ func (c *FakeDxGateways) Create(dxGateway *v1alpha1.DxGateway) (result *v1alpha1
 }
 
 // Update takes the representation of a dxGateway and updates it. Returns the server's representation of the dxGateway, and an error, if there is any.
-func (c *FakeDxGateways) Update(dxGateway *v1alpha1.DxGateway) (result *v1alpha1.DxGateway, err error) {
+func (c *FakeDxGateways) Update(ctx context.Context, dxGateway *v1alpha1.DxGateway, opts v1.UpdateOptions) (result *v1alpha1.DxGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dxgatewaysResource, c.ns, dxGateway), &v1alpha1.DxGateway{})
 
@@ -103,7 +105,7 @@ func (c *FakeDxGateways) Update(dxGateway *v1alpha1.DxGateway) (result *v1alpha1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDxGateways) UpdateStatus(dxGateway *v1alpha1.DxGateway) (*v1alpha1.DxGateway, error) {
+func (c *FakeDxGateways) UpdateStatus(ctx context.Context, dxGateway *v1alpha1.DxGateway, opts v1.UpdateOptions) (*v1alpha1.DxGateway, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dxgatewaysResource, "status", c.ns, dxGateway), &v1alpha1.DxGateway{})
 
@@ -114,7 +116,7 @@ func (c *FakeDxGateways) UpdateStatus(dxGateway *v1alpha1.DxGateway) (*v1alpha1.
 }
 
 // Delete takes name of the dxGateway and deletes it. Returns an error if one occurs.
-func (c *FakeDxGateways) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDxGateways) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dxgatewaysResource, c.ns, name), &v1alpha1.DxGateway{})
 
@@ -122,15 +124,15 @@ func (c *FakeDxGateways) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDxGateways) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dxgatewaysResource, c.ns, listOptions)
+func (c *FakeDxGateways) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dxgatewaysResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DxGatewayList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dxGateway.
-func (c *FakeDxGateways) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DxGateway, err error) {
+func (c *FakeDxGateways) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DxGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dxgatewaysResource, c.ns, name, pt, data, subresources...), &v1alpha1.DxGateway{})
 

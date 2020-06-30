@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type SesConfigurationSetsGetter interface {
 
 // SesConfigurationSetInterface has methods to work with SesConfigurationSet resources.
 type SesConfigurationSetInterface interface {
-	Create(*v1alpha1.SesConfigurationSet) (*v1alpha1.SesConfigurationSet, error)
-	Update(*v1alpha1.SesConfigurationSet) (*v1alpha1.SesConfigurationSet, error)
-	UpdateStatus(*v1alpha1.SesConfigurationSet) (*v1alpha1.SesConfigurationSet, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SesConfigurationSet, error)
-	List(opts v1.ListOptions) (*v1alpha1.SesConfigurationSetList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SesConfigurationSet, err error)
+	Create(ctx context.Context, sesConfigurationSet *v1alpha1.SesConfigurationSet, opts v1.CreateOptions) (*v1alpha1.SesConfigurationSet, error)
+	Update(ctx context.Context, sesConfigurationSet *v1alpha1.SesConfigurationSet, opts v1.UpdateOptions) (*v1alpha1.SesConfigurationSet, error)
+	UpdateStatus(ctx context.Context, sesConfigurationSet *v1alpha1.SesConfigurationSet, opts v1.UpdateOptions) (*v1alpha1.SesConfigurationSet, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SesConfigurationSet, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SesConfigurationSetList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SesConfigurationSet, err error)
 	SesConfigurationSetExpansion
 }
 
@@ -65,20 +66,20 @@ func newSesConfigurationSets(c *AwsV1alpha1Client, namespace string) *sesConfigu
 }
 
 // Get takes name of the sesConfigurationSet, and returns the corresponding sesConfigurationSet object, and an error if there is any.
-func (c *sesConfigurationSets) Get(name string, options v1.GetOptions) (result *v1alpha1.SesConfigurationSet, err error) {
+func (c *sesConfigurationSets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SesConfigurationSet, err error) {
 	result = &v1alpha1.SesConfigurationSet{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("sesconfigurationsets").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SesConfigurationSets that match those selectors.
-func (c *sesConfigurationSets) List(opts v1.ListOptions) (result *v1alpha1.SesConfigurationSetList, err error) {
+func (c *sesConfigurationSets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SesConfigurationSetList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *sesConfigurationSets) List(opts v1.ListOptions) (result *v1alpha1.SesCo
 		Resource("sesconfigurationsets").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested sesConfigurationSets.
-func (c *sesConfigurationSets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *sesConfigurationSets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *sesConfigurationSets) Watch(opts v1.ListOptions) (watch.Interface, erro
 		Resource("sesconfigurationsets").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a sesConfigurationSet and creates it.  Returns the server's representation of the sesConfigurationSet, and an error, if there is any.
-func (c *sesConfigurationSets) Create(sesConfigurationSet *v1alpha1.SesConfigurationSet) (result *v1alpha1.SesConfigurationSet, err error) {
+func (c *sesConfigurationSets) Create(ctx context.Context, sesConfigurationSet *v1alpha1.SesConfigurationSet, opts v1.CreateOptions) (result *v1alpha1.SesConfigurationSet, err error) {
 	result = &v1alpha1.SesConfigurationSet{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("sesconfigurationsets").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sesConfigurationSet).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a sesConfigurationSet and updates it. Returns the server's representation of the sesConfigurationSet, and an error, if there is any.
-func (c *sesConfigurationSets) Update(sesConfigurationSet *v1alpha1.SesConfigurationSet) (result *v1alpha1.SesConfigurationSet, err error) {
+func (c *sesConfigurationSets) Update(ctx context.Context, sesConfigurationSet *v1alpha1.SesConfigurationSet, opts v1.UpdateOptions) (result *v1alpha1.SesConfigurationSet, err error) {
 	result = &v1alpha1.SesConfigurationSet{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sesconfigurationsets").
 		Name(sesConfigurationSet.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sesConfigurationSet).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *sesConfigurationSets) UpdateStatus(sesConfigurationSet *v1alpha1.SesConfigurationSet) (result *v1alpha1.SesConfigurationSet, err error) {
+func (c *sesConfigurationSets) UpdateStatus(ctx context.Context, sesConfigurationSet *v1alpha1.SesConfigurationSet, opts v1.UpdateOptions) (result *v1alpha1.SesConfigurationSet, err error) {
 	result = &v1alpha1.SesConfigurationSet{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sesconfigurationsets").
 		Name(sesConfigurationSet.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sesConfigurationSet).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the sesConfigurationSet and deletes it. Returns an error if one occurs.
-func (c *sesConfigurationSets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *sesConfigurationSets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sesconfigurationsets").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *sesConfigurationSets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *sesConfigurationSets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sesconfigurationsets").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched sesConfigurationSet.
-func (c *sesConfigurationSets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SesConfigurationSet, err error) {
+func (c *sesConfigurationSets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SesConfigurationSet, err error) {
 	result = &v1alpha1.SesConfigurationSet{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("sesconfigurationsets").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

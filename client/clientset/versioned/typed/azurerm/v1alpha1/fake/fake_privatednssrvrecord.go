@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var privatednssrvrecordsResource = schema.GroupVersionResource{Group: "azurerm.k
 var privatednssrvrecordsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "PrivateDNSSrvRecord"}
 
 // Get takes name of the privateDNSSrvRecord, and returns the corresponding privateDNSSrvRecord object, and an error if there is any.
-func (c *FakePrivateDNSSrvRecords) Get(name string, options v1.GetOptions) (result *v1alpha1.PrivateDNSSrvRecord, err error) {
+func (c *FakePrivateDNSSrvRecords) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PrivateDNSSrvRecord, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(privatednssrvrecordsResource, c.ns, name), &v1alpha1.PrivateDNSSrvRecord{})
 
@@ -51,7 +53,7 @@ func (c *FakePrivateDNSSrvRecords) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of PrivateDNSSrvRecords that match those selectors.
-func (c *FakePrivateDNSSrvRecords) List(opts v1.ListOptions) (result *v1alpha1.PrivateDNSSrvRecordList, err error) {
+func (c *FakePrivateDNSSrvRecords) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PrivateDNSSrvRecordList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(privatednssrvrecordsResource, privatednssrvrecordsKind, c.ns, opts), &v1alpha1.PrivateDNSSrvRecordList{})
 
@@ -73,14 +75,14 @@ func (c *FakePrivateDNSSrvRecords) List(opts v1.ListOptions) (result *v1alpha1.P
 }
 
 // Watch returns a watch.Interface that watches the requested privateDNSSrvRecords.
-func (c *FakePrivateDNSSrvRecords) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakePrivateDNSSrvRecords) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(privatednssrvrecordsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a privateDNSSrvRecord and creates it.  Returns the server's representation of the privateDNSSrvRecord, and an error, if there is any.
-func (c *FakePrivateDNSSrvRecords) Create(privateDNSSrvRecord *v1alpha1.PrivateDNSSrvRecord) (result *v1alpha1.PrivateDNSSrvRecord, err error) {
+func (c *FakePrivateDNSSrvRecords) Create(ctx context.Context, privateDNSSrvRecord *v1alpha1.PrivateDNSSrvRecord, opts v1.CreateOptions) (result *v1alpha1.PrivateDNSSrvRecord, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(privatednssrvrecordsResource, c.ns, privateDNSSrvRecord), &v1alpha1.PrivateDNSSrvRecord{})
 
@@ -91,7 +93,7 @@ func (c *FakePrivateDNSSrvRecords) Create(privateDNSSrvRecord *v1alpha1.PrivateD
 }
 
 // Update takes the representation of a privateDNSSrvRecord and updates it. Returns the server's representation of the privateDNSSrvRecord, and an error, if there is any.
-func (c *FakePrivateDNSSrvRecords) Update(privateDNSSrvRecord *v1alpha1.PrivateDNSSrvRecord) (result *v1alpha1.PrivateDNSSrvRecord, err error) {
+func (c *FakePrivateDNSSrvRecords) Update(ctx context.Context, privateDNSSrvRecord *v1alpha1.PrivateDNSSrvRecord, opts v1.UpdateOptions) (result *v1alpha1.PrivateDNSSrvRecord, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(privatednssrvrecordsResource, c.ns, privateDNSSrvRecord), &v1alpha1.PrivateDNSSrvRecord{})
 
@@ -103,7 +105,7 @@ func (c *FakePrivateDNSSrvRecords) Update(privateDNSSrvRecord *v1alpha1.PrivateD
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakePrivateDNSSrvRecords) UpdateStatus(privateDNSSrvRecord *v1alpha1.PrivateDNSSrvRecord) (*v1alpha1.PrivateDNSSrvRecord, error) {
+func (c *FakePrivateDNSSrvRecords) UpdateStatus(ctx context.Context, privateDNSSrvRecord *v1alpha1.PrivateDNSSrvRecord, opts v1.UpdateOptions) (*v1alpha1.PrivateDNSSrvRecord, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(privatednssrvrecordsResource, "status", c.ns, privateDNSSrvRecord), &v1alpha1.PrivateDNSSrvRecord{})
 
@@ -114,7 +116,7 @@ func (c *FakePrivateDNSSrvRecords) UpdateStatus(privateDNSSrvRecord *v1alpha1.Pr
 }
 
 // Delete takes name of the privateDNSSrvRecord and deletes it. Returns an error if one occurs.
-func (c *FakePrivateDNSSrvRecords) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakePrivateDNSSrvRecords) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(privatednssrvrecordsResource, c.ns, name), &v1alpha1.PrivateDNSSrvRecord{})
 
@@ -122,15 +124,15 @@ func (c *FakePrivateDNSSrvRecords) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakePrivateDNSSrvRecords) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(privatednssrvrecordsResource, c.ns, listOptions)
+func (c *FakePrivateDNSSrvRecords) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(privatednssrvrecordsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.PrivateDNSSrvRecordList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched privateDNSSrvRecord.
-func (c *FakePrivateDNSSrvRecords) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PrivateDNSSrvRecord, err error) {
+func (c *FakePrivateDNSSrvRecords) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PrivateDNSSrvRecord, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(privatednssrvrecordsResource, c.ns, name, pt, data, subresources...), &v1alpha1.PrivateDNSSrvRecord{})
 

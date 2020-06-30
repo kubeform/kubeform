@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var botchannelslacksResource = schema.GroupVersionResource{Group: "azurerm.kubef
 var botchannelslacksKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "BotChannelSlack"}
 
 // Get takes name of the botChannelSlack, and returns the corresponding botChannelSlack object, and an error if there is any.
-func (c *FakeBotChannelSlacks) Get(name string, options v1.GetOptions) (result *v1alpha1.BotChannelSlack, err error) {
+func (c *FakeBotChannelSlacks) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BotChannelSlack, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(botchannelslacksResource, c.ns, name), &v1alpha1.BotChannelSlack{})
 
@@ -51,7 +53,7 @@ func (c *FakeBotChannelSlacks) Get(name string, options v1.GetOptions) (result *
 }
 
 // List takes label and field selectors, and returns the list of BotChannelSlacks that match those selectors.
-func (c *FakeBotChannelSlacks) List(opts v1.ListOptions) (result *v1alpha1.BotChannelSlackList, err error) {
+func (c *FakeBotChannelSlacks) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BotChannelSlackList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(botchannelslacksResource, botchannelslacksKind, c.ns, opts), &v1alpha1.BotChannelSlackList{})
 
@@ -73,14 +75,14 @@ func (c *FakeBotChannelSlacks) List(opts v1.ListOptions) (result *v1alpha1.BotCh
 }
 
 // Watch returns a watch.Interface that watches the requested botChannelSlacks.
-func (c *FakeBotChannelSlacks) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeBotChannelSlacks) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(botchannelslacksResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a botChannelSlack and creates it.  Returns the server's representation of the botChannelSlack, and an error, if there is any.
-func (c *FakeBotChannelSlacks) Create(botChannelSlack *v1alpha1.BotChannelSlack) (result *v1alpha1.BotChannelSlack, err error) {
+func (c *FakeBotChannelSlacks) Create(ctx context.Context, botChannelSlack *v1alpha1.BotChannelSlack, opts v1.CreateOptions) (result *v1alpha1.BotChannelSlack, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(botchannelslacksResource, c.ns, botChannelSlack), &v1alpha1.BotChannelSlack{})
 
@@ -91,7 +93,7 @@ func (c *FakeBotChannelSlacks) Create(botChannelSlack *v1alpha1.BotChannelSlack)
 }
 
 // Update takes the representation of a botChannelSlack and updates it. Returns the server's representation of the botChannelSlack, and an error, if there is any.
-func (c *FakeBotChannelSlacks) Update(botChannelSlack *v1alpha1.BotChannelSlack) (result *v1alpha1.BotChannelSlack, err error) {
+func (c *FakeBotChannelSlacks) Update(ctx context.Context, botChannelSlack *v1alpha1.BotChannelSlack, opts v1.UpdateOptions) (result *v1alpha1.BotChannelSlack, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(botchannelslacksResource, c.ns, botChannelSlack), &v1alpha1.BotChannelSlack{})
 
@@ -103,7 +105,7 @@ func (c *FakeBotChannelSlacks) Update(botChannelSlack *v1alpha1.BotChannelSlack)
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeBotChannelSlacks) UpdateStatus(botChannelSlack *v1alpha1.BotChannelSlack) (*v1alpha1.BotChannelSlack, error) {
+func (c *FakeBotChannelSlacks) UpdateStatus(ctx context.Context, botChannelSlack *v1alpha1.BotChannelSlack, opts v1.UpdateOptions) (*v1alpha1.BotChannelSlack, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(botchannelslacksResource, "status", c.ns, botChannelSlack), &v1alpha1.BotChannelSlack{})
 
@@ -114,7 +116,7 @@ func (c *FakeBotChannelSlacks) UpdateStatus(botChannelSlack *v1alpha1.BotChannel
 }
 
 // Delete takes name of the botChannelSlack and deletes it. Returns an error if one occurs.
-func (c *FakeBotChannelSlacks) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeBotChannelSlacks) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(botchannelslacksResource, c.ns, name), &v1alpha1.BotChannelSlack{})
 
@@ -122,15 +124,15 @@ func (c *FakeBotChannelSlacks) Delete(name string, options *v1.DeleteOptions) er
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeBotChannelSlacks) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(botchannelslacksResource, c.ns, listOptions)
+func (c *FakeBotChannelSlacks) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(botchannelslacksResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.BotChannelSlackList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched botChannelSlack.
-func (c *FakeBotChannelSlacks) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BotChannelSlack, err error) {
+func (c *FakeBotChannelSlacks) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BotChannelSlack, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(botchannelslacksResource, c.ns, name, pt, data, subresources...), &v1alpha1.BotChannelSlack{})
 

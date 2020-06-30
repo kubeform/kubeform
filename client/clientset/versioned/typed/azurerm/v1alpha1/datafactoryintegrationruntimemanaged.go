@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type DataFactoryIntegrationRuntimeManagedsGetter interface {
 
 // DataFactoryIntegrationRuntimeManagedInterface has methods to work with DataFactoryIntegrationRuntimeManaged resources.
 type DataFactoryIntegrationRuntimeManagedInterface interface {
-	Create(*v1alpha1.DataFactoryIntegrationRuntimeManaged) (*v1alpha1.DataFactoryIntegrationRuntimeManaged, error)
-	Update(*v1alpha1.DataFactoryIntegrationRuntimeManaged) (*v1alpha1.DataFactoryIntegrationRuntimeManaged, error)
-	UpdateStatus(*v1alpha1.DataFactoryIntegrationRuntimeManaged) (*v1alpha1.DataFactoryIntegrationRuntimeManaged, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.DataFactoryIntegrationRuntimeManaged, error)
-	List(opts v1.ListOptions) (*v1alpha1.DataFactoryIntegrationRuntimeManagedList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataFactoryIntegrationRuntimeManaged, err error)
+	Create(ctx context.Context, dataFactoryIntegrationRuntimeManaged *v1alpha1.DataFactoryIntegrationRuntimeManaged, opts v1.CreateOptions) (*v1alpha1.DataFactoryIntegrationRuntimeManaged, error)
+	Update(ctx context.Context, dataFactoryIntegrationRuntimeManaged *v1alpha1.DataFactoryIntegrationRuntimeManaged, opts v1.UpdateOptions) (*v1alpha1.DataFactoryIntegrationRuntimeManaged, error)
+	UpdateStatus(ctx context.Context, dataFactoryIntegrationRuntimeManaged *v1alpha1.DataFactoryIntegrationRuntimeManaged, opts v1.UpdateOptions) (*v1alpha1.DataFactoryIntegrationRuntimeManaged, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.DataFactoryIntegrationRuntimeManaged, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.DataFactoryIntegrationRuntimeManagedList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataFactoryIntegrationRuntimeManaged, err error)
 	DataFactoryIntegrationRuntimeManagedExpansion
 }
 
@@ -65,20 +66,20 @@ func newDataFactoryIntegrationRuntimeManageds(c *AzurermV1alpha1Client, namespac
 }
 
 // Get takes name of the dataFactoryIntegrationRuntimeManaged, and returns the corresponding dataFactoryIntegrationRuntimeManaged object, and an error if there is any.
-func (c *dataFactoryIntegrationRuntimeManageds) Get(name string, options v1.GetOptions) (result *v1alpha1.DataFactoryIntegrationRuntimeManaged, err error) {
+func (c *dataFactoryIntegrationRuntimeManageds) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DataFactoryIntegrationRuntimeManaged, err error) {
 	result = &v1alpha1.DataFactoryIntegrationRuntimeManaged{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("datafactoryintegrationruntimemanageds").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of DataFactoryIntegrationRuntimeManageds that match those selectors.
-func (c *dataFactoryIntegrationRuntimeManageds) List(opts v1.ListOptions) (result *v1alpha1.DataFactoryIntegrationRuntimeManagedList, err error) {
+func (c *dataFactoryIntegrationRuntimeManageds) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DataFactoryIntegrationRuntimeManagedList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *dataFactoryIntegrationRuntimeManageds) List(opts v1.ListOptions) (resul
 		Resource("datafactoryintegrationruntimemanageds").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested dataFactoryIntegrationRuntimeManageds.
-func (c *dataFactoryIntegrationRuntimeManageds) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *dataFactoryIntegrationRuntimeManageds) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *dataFactoryIntegrationRuntimeManageds) Watch(opts v1.ListOptions) (watc
 		Resource("datafactoryintegrationruntimemanageds").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a dataFactoryIntegrationRuntimeManaged and creates it.  Returns the server's representation of the dataFactoryIntegrationRuntimeManaged, and an error, if there is any.
-func (c *dataFactoryIntegrationRuntimeManageds) Create(dataFactoryIntegrationRuntimeManaged *v1alpha1.DataFactoryIntegrationRuntimeManaged) (result *v1alpha1.DataFactoryIntegrationRuntimeManaged, err error) {
+func (c *dataFactoryIntegrationRuntimeManageds) Create(ctx context.Context, dataFactoryIntegrationRuntimeManaged *v1alpha1.DataFactoryIntegrationRuntimeManaged, opts v1.CreateOptions) (result *v1alpha1.DataFactoryIntegrationRuntimeManaged, err error) {
 	result = &v1alpha1.DataFactoryIntegrationRuntimeManaged{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("datafactoryintegrationruntimemanageds").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dataFactoryIntegrationRuntimeManaged).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a dataFactoryIntegrationRuntimeManaged and updates it. Returns the server's representation of the dataFactoryIntegrationRuntimeManaged, and an error, if there is any.
-func (c *dataFactoryIntegrationRuntimeManageds) Update(dataFactoryIntegrationRuntimeManaged *v1alpha1.DataFactoryIntegrationRuntimeManaged) (result *v1alpha1.DataFactoryIntegrationRuntimeManaged, err error) {
+func (c *dataFactoryIntegrationRuntimeManageds) Update(ctx context.Context, dataFactoryIntegrationRuntimeManaged *v1alpha1.DataFactoryIntegrationRuntimeManaged, opts v1.UpdateOptions) (result *v1alpha1.DataFactoryIntegrationRuntimeManaged, err error) {
 	result = &v1alpha1.DataFactoryIntegrationRuntimeManaged{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("datafactoryintegrationruntimemanageds").
 		Name(dataFactoryIntegrationRuntimeManaged.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dataFactoryIntegrationRuntimeManaged).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *dataFactoryIntegrationRuntimeManageds) UpdateStatus(dataFactoryIntegrationRuntimeManaged *v1alpha1.DataFactoryIntegrationRuntimeManaged) (result *v1alpha1.DataFactoryIntegrationRuntimeManaged, err error) {
+func (c *dataFactoryIntegrationRuntimeManageds) UpdateStatus(ctx context.Context, dataFactoryIntegrationRuntimeManaged *v1alpha1.DataFactoryIntegrationRuntimeManaged, opts v1.UpdateOptions) (result *v1alpha1.DataFactoryIntegrationRuntimeManaged, err error) {
 	result = &v1alpha1.DataFactoryIntegrationRuntimeManaged{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("datafactoryintegrationruntimemanageds").
 		Name(dataFactoryIntegrationRuntimeManaged.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dataFactoryIntegrationRuntimeManaged).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the dataFactoryIntegrationRuntimeManaged and deletes it. Returns an error if one occurs.
-func (c *dataFactoryIntegrationRuntimeManageds) Delete(name string, options *v1.DeleteOptions) error {
+func (c *dataFactoryIntegrationRuntimeManageds) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("datafactoryintegrationruntimemanageds").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *dataFactoryIntegrationRuntimeManageds) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *dataFactoryIntegrationRuntimeManageds) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("datafactoryintegrationruntimemanageds").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched dataFactoryIntegrationRuntimeManaged.
-func (c *dataFactoryIntegrationRuntimeManageds) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataFactoryIntegrationRuntimeManaged, err error) {
+func (c *dataFactoryIntegrationRuntimeManageds) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataFactoryIntegrationRuntimeManaged, err error) {
 	result = &v1alpha1.DataFactoryIntegrationRuntimeManaged{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("datafactoryintegrationruntimemanageds").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

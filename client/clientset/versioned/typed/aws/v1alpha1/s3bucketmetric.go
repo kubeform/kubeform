@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type S3BucketMetricsGetter interface {
 
 // S3BucketMetricInterface has methods to work with S3BucketMetric resources.
 type S3BucketMetricInterface interface {
-	Create(*v1alpha1.S3BucketMetric) (*v1alpha1.S3BucketMetric, error)
-	Update(*v1alpha1.S3BucketMetric) (*v1alpha1.S3BucketMetric, error)
-	UpdateStatus(*v1alpha1.S3BucketMetric) (*v1alpha1.S3BucketMetric, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.S3BucketMetric, error)
-	List(opts v1.ListOptions) (*v1alpha1.S3BucketMetricList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.S3BucketMetric, err error)
+	Create(ctx context.Context, s3BucketMetric *v1alpha1.S3BucketMetric, opts v1.CreateOptions) (*v1alpha1.S3BucketMetric, error)
+	Update(ctx context.Context, s3BucketMetric *v1alpha1.S3BucketMetric, opts v1.UpdateOptions) (*v1alpha1.S3BucketMetric, error)
+	UpdateStatus(ctx context.Context, s3BucketMetric *v1alpha1.S3BucketMetric, opts v1.UpdateOptions) (*v1alpha1.S3BucketMetric, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.S3BucketMetric, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.S3BucketMetricList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.S3BucketMetric, err error)
 	S3BucketMetricExpansion
 }
 
@@ -65,20 +66,20 @@ func newS3BucketMetrics(c *AwsV1alpha1Client, namespace string) *s3BucketMetrics
 }
 
 // Get takes name of the s3BucketMetric, and returns the corresponding s3BucketMetric object, and an error if there is any.
-func (c *s3BucketMetrics) Get(name string, options v1.GetOptions) (result *v1alpha1.S3BucketMetric, err error) {
+func (c *s3BucketMetrics) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.S3BucketMetric, err error) {
 	result = &v1alpha1.S3BucketMetric{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("s3bucketmetrics").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of S3BucketMetrics that match those selectors.
-func (c *s3BucketMetrics) List(opts v1.ListOptions) (result *v1alpha1.S3BucketMetricList, err error) {
+func (c *s3BucketMetrics) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.S3BucketMetricList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *s3BucketMetrics) List(opts v1.ListOptions) (result *v1alpha1.S3BucketMe
 		Resource("s3bucketmetrics").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested s3BucketMetrics.
-func (c *s3BucketMetrics) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *s3BucketMetrics) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *s3BucketMetrics) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("s3bucketmetrics").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a s3BucketMetric and creates it.  Returns the server's representation of the s3BucketMetric, and an error, if there is any.
-func (c *s3BucketMetrics) Create(s3BucketMetric *v1alpha1.S3BucketMetric) (result *v1alpha1.S3BucketMetric, err error) {
+func (c *s3BucketMetrics) Create(ctx context.Context, s3BucketMetric *v1alpha1.S3BucketMetric, opts v1.CreateOptions) (result *v1alpha1.S3BucketMetric, err error) {
 	result = &v1alpha1.S3BucketMetric{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("s3bucketmetrics").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(s3BucketMetric).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a s3BucketMetric and updates it. Returns the server's representation of the s3BucketMetric, and an error, if there is any.
-func (c *s3BucketMetrics) Update(s3BucketMetric *v1alpha1.S3BucketMetric) (result *v1alpha1.S3BucketMetric, err error) {
+func (c *s3BucketMetrics) Update(ctx context.Context, s3BucketMetric *v1alpha1.S3BucketMetric, opts v1.UpdateOptions) (result *v1alpha1.S3BucketMetric, err error) {
 	result = &v1alpha1.S3BucketMetric{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("s3bucketmetrics").
 		Name(s3BucketMetric.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(s3BucketMetric).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *s3BucketMetrics) UpdateStatus(s3BucketMetric *v1alpha1.S3BucketMetric) (result *v1alpha1.S3BucketMetric, err error) {
+func (c *s3BucketMetrics) UpdateStatus(ctx context.Context, s3BucketMetric *v1alpha1.S3BucketMetric, opts v1.UpdateOptions) (result *v1alpha1.S3BucketMetric, err error) {
 	result = &v1alpha1.S3BucketMetric{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("s3bucketmetrics").
 		Name(s3BucketMetric.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(s3BucketMetric).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the s3BucketMetric and deletes it. Returns an error if one occurs.
-func (c *s3BucketMetrics) Delete(name string, options *v1.DeleteOptions) error {
+func (c *s3BucketMetrics) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("s3bucketmetrics").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *s3BucketMetrics) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *s3BucketMetrics) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("s3bucketmetrics").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched s3BucketMetric.
-func (c *s3BucketMetrics) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.S3BucketMetric, err error) {
+func (c *s3BucketMetrics) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.S3BucketMetric, err error) {
 	result = &v1alpha1.S3BucketMetric{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("s3bucketmetrics").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

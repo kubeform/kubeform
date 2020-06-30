@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var storageblobsResource = schema.GroupVersionResource{Group: "azurerm.kubeform.
 var storageblobsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "StorageBlob"}
 
 // Get takes name of the storageBlob, and returns the corresponding storageBlob object, and an error if there is any.
-func (c *FakeStorageBlobs) Get(name string, options v1.GetOptions) (result *v1alpha1.StorageBlob, err error) {
+func (c *FakeStorageBlobs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.StorageBlob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(storageblobsResource, c.ns, name), &v1alpha1.StorageBlob{})
 
@@ -51,7 +53,7 @@ func (c *FakeStorageBlobs) Get(name string, options v1.GetOptions) (result *v1al
 }
 
 // List takes label and field selectors, and returns the list of StorageBlobs that match those selectors.
-func (c *FakeStorageBlobs) List(opts v1.ListOptions) (result *v1alpha1.StorageBlobList, err error) {
+func (c *FakeStorageBlobs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.StorageBlobList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(storageblobsResource, storageblobsKind, c.ns, opts), &v1alpha1.StorageBlobList{})
 
@@ -73,14 +75,14 @@ func (c *FakeStorageBlobs) List(opts v1.ListOptions) (result *v1alpha1.StorageBl
 }
 
 // Watch returns a watch.Interface that watches the requested storageBlobs.
-func (c *FakeStorageBlobs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeStorageBlobs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(storageblobsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a storageBlob and creates it.  Returns the server's representation of the storageBlob, and an error, if there is any.
-func (c *FakeStorageBlobs) Create(storageBlob *v1alpha1.StorageBlob) (result *v1alpha1.StorageBlob, err error) {
+func (c *FakeStorageBlobs) Create(ctx context.Context, storageBlob *v1alpha1.StorageBlob, opts v1.CreateOptions) (result *v1alpha1.StorageBlob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(storageblobsResource, c.ns, storageBlob), &v1alpha1.StorageBlob{})
 
@@ -91,7 +93,7 @@ func (c *FakeStorageBlobs) Create(storageBlob *v1alpha1.StorageBlob) (result *v1
 }
 
 // Update takes the representation of a storageBlob and updates it. Returns the server's representation of the storageBlob, and an error, if there is any.
-func (c *FakeStorageBlobs) Update(storageBlob *v1alpha1.StorageBlob) (result *v1alpha1.StorageBlob, err error) {
+func (c *FakeStorageBlobs) Update(ctx context.Context, storageBlob *v1alpha1.StorageBlob, opts v1.UpdateOptions) (result *v1alpha1.StorageBlob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(storageblobsResource, c.ns, storageBlob), &v1alpha1.StorageBlob{})
 
@@ -103,7 +105,7 @@ func (c *FakeStorageBlobs) Update(storageBlob *v1alpha1.StorageBlob) (result *v1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeStorageBlobs) UpdateStatus(storageBlob *v1alpha1.StorageBlob) (*v1alpha1.StorageBlob, error) {
+func (c *FakeStorageBlobs) UpdateStatus(ctx context.Context, storageBlob *v1alpha1.StorageBlob, opts v1.UpdateOptions) (*v1alpha1.StorageBlob, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(storageblobsResource, "status", c.ns, storageBlob), &v1alpha1.StorageBlob{})
 
@@ -114,7 +116,7 @@ func (c *FakeStorageBlobs) UpdateStatus(storageBlob *v1alpha1.StorageBlob) (*v1a
 }
 
 // Delete takes name of the storageBlob and deletes it. Returns an error if one occurs.
-func (c *FakeStorageBlobs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeStorageBlobs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(storageblobsResource, c.ns, name), &v1alpha1.StorageBlob{})
 
@@ -122,15 +124,15 @@ func (c *FakeStorageBlobs) Delete(name string, options *v1.DeleteOptions) error 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeStorageBlobs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(storageblobsResource, c.ns, listOptions)
+func (c *FakeStorageBlobs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(storageblobsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.StorageBlobList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched storageBlob.
-func (c *FakeStorageBlobs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StorageBlob, err error) {
+func (c *FakeStorageBlobs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StorageBlob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(storageblobsResource, c.ns, name, pt, data, subresources...), &v1alpha1.StorageBlob{})
 

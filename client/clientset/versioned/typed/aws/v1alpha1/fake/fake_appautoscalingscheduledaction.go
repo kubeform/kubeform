@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var appautoscalingscheduledactionsResource = schema.GroupVersionResource{Group: 
 var appautoscalingscheduledactionsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "AppautoscalingScheduledAction"}
 
 // Get takes name of the appautoscalingScheduledAction, and returns the corresponding appautoscalingScheduledAction object, and an error if there is any.
-func (c *FakeAppautoscalingScheduledActions) Get(name string, options v1.GetOptions) (result *v1alpha1.AppautoscalingScheduledAction, err error) {
+func (c *FakeAppautoscalingScheduledActions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AppautoscalingScheduledAction, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(appautoscalingscheduledactionsResource, c.ns, name), &v1alpha1.AppautoscalingScheduledAction{})
 
@@ -51,7 +53,7 @@ func (c *FakeAppautoscalingScheduledActions) Get(name string, options v1.GetOpti
 }
 
 // List takes label and field selectors, and returns the list of AppautoscalingScheduledActions that match those selectors.
-func (c *FakeAppautoscalingScheduledActions) List(opts v1.ListOptions) (result *v1alpha1.AppautoscalingScheduledActionList, err error) {
+func (c *FakeAppautoscalingScheduledActions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AppautoscalingScheduledActionList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(appautoscalingscheduledactionsResource, appautoscalingscheduledactionsKind, c.ns, opts), &v1alpha1.AppautoscalingScheduledActionList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAppautoscalingScheduledActions) List(opts v1.ListOptions) (result *
 }
 
 // Watch returns a watch.Interface that watches the requested appautoscalingScheduledActions.
-func (c *FakeAppautoscalingScheduledActions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAppautoscalingScheduledActions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(appautoscalingscheduledactionsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a appautoscalingScheduledAction and creates it.  Returns the server's representation of the appautoscalingScheduledAction, and an error, if there is any.
-func (c *FakeAppautoscalingScheduledActions) Create(appautoscalingScheduledAction *v1alpha1.AppautoscalingScheduledAction) (result *v1alpha1.AppautoscalingScheduledAction, err error) {
+func (c *FakeAppautoscalingScheduledActions) Create(ctx context.Context, appautoscalingScheduledAction *v1alpha1.AppautoscalingScheduledAction, opts v1.CreateOptions) (result *v1alpha1.AppautoscalingScheduledAction, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(appautoscalingscheduledactionsResource, c.ns, appautoscalingScheduledAction), &v1alpha1.AppautoscalingScheduledAction{})
 
@@ -91,7 +93,7 @@ func (c *FakeAppautoscalingScheduledActions) Create(appautoscalingScheduledActio
 }
 
 // Update takes the representation of a appautoscalingScheduledAction and updates it. Returns the server's representation of the appautoscalingScheduledAction, and an error, if there is any.
-func (c *FakeAppautoscalingScheduledActions) Update(appautoscalingScheduledAction *v1alpha1.AppautoscalingScheduledAction) (result *v1alpha1.AppautoscalingScheduledAction, err error) {
+func (c *FakeAppautoscalingScheduledActions) Update(ctx context.Context, appautoscalingScheduledAction *v1alpha1.AppautoscalingScheduledAction, opts v1.UpdateOptions) (result *v1alpha1.AppautoscalingScheduledAction, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(appautoscalingscheduledactionsResource, c.ns, appautoscalingScheduledAction), &v1alpha1.AppautoscalingScheduledAction{})
 
@@ -103,7 +105,7 @@ func (c *FakeAppautoscalingScheduledActions) Update(appautoscalingScheduledActio
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAppautoscalingScheduledActions) UpdateStatus(appautoscalingScheduledAction *v1alpha1.AppautoscalingScheduledAction) (*v1alpha1.AppautoscalingScheduledAction, error) {
+func (c *FakeAppautoscalingScheduledActions) UpdateStatus(ctx context.Context, appautoscalingScheduledAction *v1alpha1.AppautoscalingScheduledAction, opts v1.UpdateOptions) (*v1alpha1.AppautoscalingScheduledAction, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(appautoscalingscheduledactionsResource, "status", c.ns, appautoscalingScheduledAction), &v1alpha1.AppautoscalingScheduledAction{})
 
@@ -114,7 +116,7 @@ func (c *FakeAppautoscalingScheduledActions) UpdateStatus(appautoscalingSchedule
 }
 
 // Delete takes name of the appautoscalingScheduledAction and deletes it. Returns an error if one occurs.
-func (c *FakeAppautoscalingScheduledActions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAppautoscalingScheduledActions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(appautoscalingscheduledactionsResource, c.ns, name), &v1alpha1.AppautoscalingScheduledAction{})
 
@@ -122,15 +124,15 @@ func (c *FakeAppautoscalingScheduledActions) Delete(name string, options *v1.Del
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAppautoscalingScheduledActions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(appautoscalingscheduledactionsResource, c.ns, listOptions)
+func (c *FakeAppautoscalingScheduledActions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(appautoscalingscheduledactionsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AppautoscalingScheduledActionList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched appautoscalingScheduledAction.
-func (c *FakeAppautoscalingScheduledActions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppautoscalingScheduledAction, err error) {
+func (c *FakeAppautoscalingScheduledActions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppautoscalingScheduledAction, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(appautoscalingscheduledactionsResource, c.ns, name, pt, data, subresources...), &v1alpha1.AppautoscalingScheduledAction{})
 

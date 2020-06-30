@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type PubsubSubscriptionsGetter interface {
 
 // PubsubSubscriptionInterface has methods to work with PubsubSubscription resources.
 type PubsubSubscriptionInterface interface {
-	Create(*v1alpha1.PubsubSubscription) (*v1alpha1.PubsubSubscription, error)
-	Update(*v1alpha1.PubsubSubscription) (*v1alpha1.PubsubSubscription, error)
-	UpdateStatus(*v1alpha1.PubsubSubscription) (*v1alpha1.PubsubSubscription, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.PubsubSubscription, error)
-	List(opts v1.ListOptions) (*v1alpha1.PubsubSubscriptionList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PubsubSubscription, err error)
+	Create(ctx context.Context, pubsubSubscription *v1alpha1.PubsubSubscription, opts v1.CreateOptions) (*v1alpha1.PubsubSubscription, error)
+	Update(ctx context.Context, pubsubSubscription *v1alpha1.PubsubSubscription, opts v1.UpdateOptions) (*v1alpha1.PubsubSubscription, error)
+	UpdateStatus(ctx context.Context, pubsubSubscription *v1alpha1.PubsubSubscription, opts v1.UpdateOptions) (*v1alpha1.PubsubSubscription, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.PubsubSubscription, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.PubsubSubscriptionList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PubsubSubscription, err error)
 	PubsubSubscriptionExpansion
 }
 
@@ -65,20 +66,20 @@ func newPubsubSubscriptions(c *GoogleV1alpha1Client, namespace string) *pubsubSu
 }
 
 // Get takes name of the pubsubSubscription, and returns the corresponding pubsubSubscription object, and an error if there is any.
-func (c *pubsubSubscriptions) Get(name string, options v1.GetOptions) (result *v1alpha1.PubsubSubscription, err error) {
+func (c *pubsubSubscriptions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PubsubSubscription, err error) {
 	result = &v1alpha1.PubsubSubscription{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("pubsubsubscriptions").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of PubsubSubscriptions that match those selectors.
-func (c *pubsubSubscriptions) List(opts v1.ListOptions) (result *v1alpha1.PubsubSubscriptionList, err error) {
+func (c *pubsubSubscriptions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PubsubSubscriptionList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *pubsubSubscriptions) List(opts v1.ListOptions) (result *v1alpha1.Pubsub
 		Resource("pubsubsubscriptions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested pubsubSubscriptions.
-func (c *pubsubSubscriptions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *pubsubSubscriptions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *pubsubSubscriptions) Watch(opts v1.ListOptions) (watch.Interface, error
 		Resource("pubsubsubscriptions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a pubsubSubscription and creates it.  Returns the server's representation of the pubsubSubscription, and an error, if there is any.
-func (c *pubsubSubscriptions) Create(pubsubSubscription *v1alpha1.PubsubSubscription) (result *v1alpha1.PubsubSubscription, err error) {
+func (c *pubsubSubscriptions) Create(ctx context.Context, pubsubSubscription *v1alpha1.PubsubSubscription, opts v1.CreateOptions) (result *v1alpha1.PubsubSubscription, err error) {
 	result = &v1alpha1.PubsubSubscription{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("pubsubsubscriptions").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(pubsubSubscription).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a pubsubSubscription and updates it. Returns the server's representation of the pubsubSubscription, and an error, if there is any.
-func (c *pubsubSubscriptions) Update(pubsubSubscription *v1alpha1.PubsubSubscription) (result *v1alpha1.PubsubSubscription, err error) {
+func (c *pubsubSubscriptions) Update(ctx context.Context, pubsubSubscription *v1alpha1.PubsubSubscription, opts v1.UpdateOptions) (result *v1alpha1.PubsubSubscription, err error) {
 	result = &v1alpha1.PubsubSubscription{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("pubsubsubscriptions").
 		Name(pubsubSubscription.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(pubsubSubscription).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *pubsubSubscriptions) UpdateStatus(pubsubSubscription *v1alpha1.PubsubSubscription) (result *v1alpha1.PubsubSubscription, err error) {
+func (c *pubsubSubscriptions) UpdateStatus(ctx context.Context, pubsubSubscription *v1alpha1.PubsubSubscription, opts v1.UpdateOptions) (result *v1alpha1.PubsubSubscription, err error) {
 	result = &v1alpha1.PubsubSubscription{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("pubsubsubscriptions").
 		Name(pubsubSubscription.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(pubsubSubscription).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the pubsubSubscription and deletes it. Returns an error if one occurs.
-func (c *pubsubSubscriptions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *pubsubSubscriptions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("pubsubsubscriptions").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *pubsubSubscriptions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *pubsubSubscriptions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("pubsubsubscriptions").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched pubsubSubscription.
-func (c *pubsubSubscriptions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PubsubSubscription, err error) {
+func (c *pubsubSubscriptions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PubsubSubscription, err error) {
 	result = &v1alpha1.PubsubSubscription{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("pubsubsubscriptions").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var opsworksrailsapplayersResource = schema.GroupVersionResource{Group: "aws.kub
 var opsworksrailsapplayersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "OpsworksRailsAppLayer"}
 
 // Get takes name of the opsworksRailsAppLayer, and returns the corresponding opsworksRailsAppLayer object, and an error if there is any.
-func (c *FakeOpsworksRailsAppLayers) Get(name string, options v1.GetOptions) (result *v1alpha1.OpsworksRailsAppLayer, err error) {
+func (c *FakeOpsworksRailsAppLayers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.OpsworksRailsAppLayer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(opsworksrailsapplayersResource, c.ns, name), &v1alpha1.OpsworksRailsAppLayer{})
 
@@ -51,7 +53,7 @@ func (c *FakeOpsworksRailsAppLayers) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of OpsworksRailsAppLayers that match those selectors.
-func (c *FakeOpsworksRailsAppLayers) List(opts v1.ListOptions) (result *v1alpha1.OpsworksRailsAppLayerList, err error) {
+func (c *FakeOpsworksRailsAppLayers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.OpsworksRailsAppLayerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(opsworksrailsapplayersResource, opsworksrailsapplayersKind, c.ns, opts), &v1alpha1.OpsworksRailsAppLayerList{})
 
@@ -73,14 +75,14 @@ func (c *FakeOpsworksRailsAppLayers) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested opsworksRailsAppLayers.
-func (c *FakeOpsworksRailsAppLayers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeOpsworksRailsAppLayers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(opsworksrailsapplayersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a opsworksRailsAppLayer and creates it.  Returns the server's representation of the opsworksRailsAppLayer, and an error, if there is any.
-func (c *FakeOpsworksRailsAppLayers) Create(opsworksRailsAppLayer *v1alpha1.OpsworksRailsAppLayer) (result *v1alpha1.OpsworksRailsAppLayer, err error) {
+func (c *FakeOpsworksRailsAppLayers) Create(ctx context.Context, opsworksRailsAppLayer *v1alpha1.OpsworksRailsAppLayer, opts v1.CreateOptions) (result *v1alpha1.OpsworksRailsAppLayer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(opsworksrailsapplayersResource, c.ns, opsworksRailsAppLayer), &v1alpha1.OpsworksRailsAppLayer{})
 
@@ -91,7 +93,7 @@ func (c *FakeOpsworksRailsAppLayers) Create(opsworksRailsAppLayer *v1alpha1.Opsw
 }
 
 // Update takes the representation of a opsworksRailsAppLayer and updates it. Returns the server's representation of the opsworksRailsAppLayer, and an error, if there is any.
-func (c *FakeOpsworksRailsAppLayers) Update(opsworksRailsAppLayer *v1alpha1.OpsworksRailsAppLayer) (result *v1alpha1.OpsworksRailsAppLayer, err error) {
+func (c *FakeOpsworksRailsAppLayers) Update(ctx context.Context, opsworksRailsAppLayer *v1alpha1.OpsworksRailsAppLayer, opts v1.UpdateOptions) (result *v1alpha1.OpsworksRailsAppLayer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(opsworksrailsapplayersResource, c.ns, opsworksRailsAppLayer), &v1alpha1.OpsworksRailsAppLayer{})
 
@@ -103,7 +105,7 @@ func (c *FakeOpsworksRailsAppLayers) Update(opsworksRailsAppLayer *v1alpha1.Opsw
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeOpsworksRailsAppLayers) UpdateStatus(opsworksRailsAppLayer *v1alpha1.OpsworksRailsAppLayer) (*v1alpha1.OpsworksRailsAppLayer, error) {
+func (c *FakeOpsworksRailsAppLayers) UpdateStatus(ctx context.Context, opsworksRailsAppLayer *v1alpha1.OpsworksRailsAppLayer, opts v1.UpdateOptions) (*v1alpha1.OpsworksRailsAppLayer, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(opsworksrailsapplayersResource, "status", c.ns, opsworksRailsAppLayer), &v1alpha1.OpsworksRailsAppLayer{})
 
@@ -114,7 +116,7 @@ func (c *FakeOpsworksRailsAppLayers) UpdateStatus(opsworksRailsAppLayer *v1alpha
 }
 
 // Delete takes name of the opsworksRailsAppLayer and deletes it. Returns an error if one occurs.
-func (c *FakeOpsworksRailsAppLayers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeOpsworksRailsAppLayers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(opsworksrailsapplayersResource, c.ns, name), &v1alpha1.OpsworksRailsAppLayer{})
 
@@ -122,15 +124,15 @@ func (c *FakeOpsworksRailsAppLayers) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeOpsworksRailsAppLayers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(opsworksrailsapplayersResource, c.ns, listOptions)
+func (c *FakeOpsworksRailsAppLayers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(opsworksrailsapplayersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.OpsworksRailsAppLayerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched opsworksRailsAppLayer.
-func (c *FakeOpsworksRailsAppLayers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.OpsworksRailsAppLayer, err error) {
+func (c *FakeOpsworksRailsAppLayers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.OpsworksRailsAppLayer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(opsworksrailsapplayersResource, c.ns, name, pt, data, subresources...), &v1alpha1.OpsworksRailsAppLayer{})
 

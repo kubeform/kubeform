@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var ebssnapshotsResource = schema.GroupVersionResource{Group: "aws.kubeform.com"
 var ebssnapshotsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "EbsSnapshot"}
 
 // Get takes name of the ebsSnapshot, and returns the corresponding ebsSnapshot object, and an error if there is any.
-func (c *FakeEbsSnapshots) Get(name string, options v1.GetOptions) (result *v1alpha1.EbsSnapshot, err error) {
+func (c *FakeEbsSnapshots) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.EbsSnapshot, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(ebssnapshotsResource, c.ns, name), &v1alpha1.EbsSnapshot{})
 
@@ -51,7 +53,7 @@ func (c *FakeEbsSnapshots) Get(name string, options v1.GetOptions) (result *v1al
 }
 
 // List takes label and field selectors, and returns the list of EbsSnapshots that match those selectors.
-func (c *FakeEbsSnapshots) List(opts v1.ListOptions) (result *v1alpha1.EbsSnapshotList, err error) {
+func (c *FakeEbsSnapshots) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.EbsSnapshotList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(ebssnapshotsResource, ebssnapshotsKind, c.ns, opts), &v1alpha1.EbsSnapshotList{})
 
@@ -73,14 +75,14 @@ func (c *FakeEbsSnapshots) List(opts v1.ListOptions) (result *v1alpha1.EbsSnapsh
 }
 
 // Watch returns a watch.Interface that watches the requested ebsSnapshots.
-func (c *FakeEbsSnapshots) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeEbsSnapshots) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(ebssnapshotsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a ebsSnapshot and creates it.  Returns the server's representation of the ebsSnapshot, and an error, if there is any.
-func (c *FakeEbsSnapshots) Create(ebsSnapshot *v1alpha1.EbsSnapshot) (result *v1alpha1.EbsSnapshot, err error) {
+func (c *FakeEbsSnapshots) Create(ctx context.Context, ebsSnapshot *v1alpha1.EbsSnapshot, opts v1.CreateOptions) (result *v1alpha1.EbsSnapshot, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(ebssnapshotsResource, c.ns, ebsSnapshot), &v1alpha1.EbsSnapshot{})
 
@@ -91,7 +93,7 @@ func (c *FakeEbsSnapshots) Create(ebsSnapshot *v1alpha1.EbsSnapshot) (result *v1
 }
 
 // Update takes the representation of a ebsSnapshot and updates it. Returns the server's representation of the ebsSnapshot, and an error, if there is any.
-func (c *FakeEbsSnapshots) Update(ebsSnapshot *v1alpha1.EbsSnapshot) (result *v1alpha1.EbsSnapshot, err error) {
+func (c *FakeEbsSnapshots) Update(ctx context.Context, ebsSnapshot *v1alpha1.EbsSnapshot, opts v1.UpdateOptions) (result *v1alpha1.EbsSnapshot, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(ebssnapshotsResource, c.ns, ebsSnapshot), &v1alpha1.EbsSnapshot{})
 
@@ -103,7 +105,7 @@ func (c *FakeEbsSnapshots) Update(ebsSnapshot *v1alpha1.EbsSnapshot) (result *v1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeEbsSnapshots) UpdateStatus(ebsSnapshot *v1alpha1.EbsSnapshot) (*v1alpha1.EbsSnapshot, error) {
+func (c *FakeEbsSnapshots) UpdateStatus(ctx context.Context, ebsSnapshot *v1alpha1.EbsSnapshot, opts v1.UpdateOptions) (*v1alpha1.EbsSnapshot, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(ebssnapshotsResource, "status", c.ns, ebsSnapshot), &v1alpha1.EbsSnapshot{})
 
@@ -114,7 +116,7 @@ func (c *FakeEbsSnapshots) UpdateStatus(ebsSnapshot *v1alpha1.EbsSnapshot) (*v1a
 }
 
 // Delete takes name of the ebsSnapshot and deletes it. Returns an error if one occurs.
-func (c *FakeEbsSnapshots) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeEbsSnapshots) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(ebssnapshotsResource, c.ns, name), &v1alpha1.EbsSnapshot{})
 
@@ -122,15 +124,15 @@ func (c *FakeEbsSnapshots) Delete(name string, options *v1.DeleteOptions) error 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeEbsSnapshots) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(ebssnapshotsResource, c.ns, listOptions)
+func (c *FakeEbsSnapshots) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(ebssnapshotsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.EbsSnapshotList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched ebsSnapshot.
-func (c *FakeEbsSnapshots) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EbsSnapshot, err error) {
+func (c *FakeEbsSnapshots) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EbsSnapshot, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(ebssnapshotsResource, c.ns, name, pt, data, subresources...), &v1alpha1.EbsSnapshot{})
 

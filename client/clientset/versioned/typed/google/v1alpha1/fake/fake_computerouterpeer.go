@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computerouterpeersResource = schema.GroupVersionResource{Group: "google.kube
 var computerouterpeersKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeRouterPeer"}
 
 // Get takes name of the computeRouterPeer, and returns the corresponding computeRouterPeer object, and an error if there is any.
-func (c *FakeComputeRouterPeers) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeRouterPeer, err error) {
+func (c *FakeComputeRouterPeers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeRouterPeer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computerouterpeersResource, c.ns, name), &v1alpha1.ComputeRouterPeer{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeRouterPeers) Get(name string, options v1.GetOptions) (result
 }
 
 // List takes label and field selectors, and returns the list of ComputeRouterPeers that match those selectors.
-func (c *FakeComputeRouterPeers) List(opts v1.ListOptions) (result *v1alpha1.ComputeRouterPeerList, err error) {
+func (c *FakeComputeRouterPeers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeRouterPeerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computerouterpeersResource, computerouterpeersKind, c.ns, opts), &v1alpha1.ComputeRouterPeerList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeRouterPeers) List(opts v1.ListOptions) (result *v1alpha1.Com
 }
 
 // Watch returns a watch.Interface that watches the requested computeRouterPeers.
-func (c *FakeComputeRouterPeers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeRouterPeers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computerouterpeersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeRouterPeer and creates it.  Returns the server's representation of the computeRouterPeer, and an error, if there is any.
-func (c *FakeComputeRouterPeers) Create(computeRouterPeer *v1alpha1.ComputeRouterPeer) (result *v1alpha1.ComputeRouterPeer, err error) {
+func (c *FakeComputeRouterPeers) Create(ctx context.Context, computeRouterPeer *v1alpha1.ComputeRouterPeer, opts v1.CreateOptions) (result *v1alpha1.ComputeRouterPeer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computerouterpeersResource, c.ns, computeRouterPeer), &v1alpha1.ComputeRouterPeer{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeRouterPeers) Create(computeRouterPeer *v1alpha1.ComputeRoute
 }
 
 // Update takes the representation of a computeRouterPeer and updates it. Returns the server's representation of the computeRouterPeer, and an error, if there is any.
-func (c *FakeComputeRouterPeers) Update(computeRouterPeer *v1alpha1.ComputeRouterPeer) (result *v1alpha1.ComputeRouterPeer, err error) {
+func (c *FakeComputeRouterPeers) Update(ctx context.Context, computeRouterPeer *v1alpha1.ComputeRouterPeer, opts v1.UpdateOptions) (result *v1alpha1.ComputeRouterPeer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computerouterpeersResource, c.ns, computeRouterPeer), &v1alpha1.ComputeRouterPeer{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeRouterPeers) Update(computeRouterPeer *v1alpha1.ComputeRoute
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeRouterPeers) UpdateStatus(computeRouterPeer *v1alpha1.ComputeRouterPeer) (*v1alpha1.ComputeRouterPeer, error) {
+func (c *FakeComputeRouterPeers) UpdateStatus(ctx context.Context, computeRouterPeer *v1alpha1.ComputeRouterPeer, opts v1.UpdateOptions) (*v1alpha1.ComputeRouterPeer, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computerouterpeersResource, "status", c.ns, computeRouterPeer), &v1alpha1.ComputeRouterPeer{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeRouterPeers) UpdateStatus(computeRouterPeer *v1alpha1.Comput
 }
 
 // Delete takes name of the computeRouterPeer and deletes it. Returns an error if one occurs.
-func (c *FakeComputeRouterPeers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeRouterPeers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computerouterpeersResource, c.ns, name), &v1alpha1.ComputeRouterPeer{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeRouterPeers) Delete(name string, options *v1.DeleteOptions) 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeRouterPeers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computerouterpeersResource, c.ns, listOptions)
+func (c *FakeComputeRouterPeers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computerouterpeersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeRouterPeerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeRouterPeer.
-func (c *FakeComputeRouterPeers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeRouterPeer, err error) {
+func (c *FakeComputeRouterPeers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeRouterPeer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computerouterpeersResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeRouterPeer{})
 

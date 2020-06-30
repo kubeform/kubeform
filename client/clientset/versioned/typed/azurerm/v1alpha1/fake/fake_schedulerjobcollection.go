@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var schedulerjobcollectionsResource = schema.GroupVersionResource{Group: "azurer
 var schedulerjobcollectionsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "SchedulerJobCollection"}
 
 // Get takes name of the schedulerJobCollection, and returns the corresponding schedulerJobCollection object, and an error if there is any.
-func (c *FakeSchedulerJobCollections) Get(name string, options v1.GetOptions) (result *v1alpha1.SchedulerJobCollection, err error) {
+func (c *FakeSchedulerJobCollections) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SchedulerJobCollection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(schedulerjobcollectionsResource, c.ns, name), &v1alpha1.SchedulerJobCollection{})
 
@@ -51,7 +53,7 @@ func (c *FakeSchedulerJobCollections) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of SchedulerJobCollections that match those selectors.
-func (c *FakeSchedulerJobCollections) List(opts v1.ListOptions) (result *v1alpha1.SchedulerJobCollectionList, err error) {
+func (c *FakeSchedulerJobCollections) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SchedulerJobCollectionList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(schedulerjobcollectionsResource, schedulerjobcollectionsKind, c.ns, opts), &v1alpha1.SchedulerJobCollectionList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSchedulerJobCollections) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested schedulerJobCollections.
-func (c *FakeSchedulerJobCollections) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSchedulerJobCollections) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(schedulerjobcollectionsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a schedulerJobCollection and creates it.  Returns the server's representation of the schedulerJobCollection, and an error, if there is any.
-func (c *FakeSchedulerJobCollections) Create(schedulerJobCollection *v1alpha1.SchedulerJobCollection) (result *v1alpha1.SchedulerJobCollection, err error) {
+func (c *FakeSchedulerJobCollections) Create(ctx context.Context, schedulerJobCollection *v1alpha1.SchedulerJobCollection, opts v1.CreateOptions) (result *v1alpha1.SchedulerJobCollection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(schedulerjobcollectionsResource, c.ns, schedulerJobCollection), &v1alpha1.SchedulerJobCollection{})
 
@@ -91,7 +93,7 @@ func (c *FakeSchedulerJobCollections) Create(schedulerJobCollection *v1alpha1.Sc
 }
 
 // Update takes the representation of a schedulerJobCollection and updates it. Returns the server's representation of the schedulerJobCollection, and an error, if there is any.
-func (c *FakeSchedulerJobCollections) Update(schedulerJobCollection *v1alpha1.SchedulerJobCollection) (result *v1alpha1.SchedulerJobCollection, err error) {
+func (c *FakeSchedulerJobCollections) Update(ctx context.Context, schedulerJobCollection *v1alpha1.SchedulerJobCollection, opts v1.UpdateOptions) (result *v1alpha1.SchedulerJobCollection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(schedulerjobcollectionsResource, c.ns, schedulerJobCollection), &v1alpha1.SchedulerJobCollection{})
 
@@ -103,7 +105,7 @@ func (c *FakeSchedulerJobCollections) Update(schedulerJobCollection *v1alpha1.Sc
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSchedulerJobCollections) UpdateStatus(schedulerJobCollection *v1alpha1.SchedulerJobCollection) (*v1alpha1.SchedulerJobCollection, error) {
+func (c *FakeSchedulerJobCollections) UpdateStatus(ctx context.Context, schedulerJobCollection *v1alpha1.SchedulerJobCollection, opts v1.UpdateOptions) (*v1alpha1.SchedulerJobCollection, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(schedulerjobcollectionsResource, "status", c.ns, schedulerJobCollection), &v1alpha1.SchedulerJobCollection{})
 
@@ -114,7 +116,7 @@ func (c *FakeSchedulerJobCollections) UpdateStatus(schedulerJobCollection *v1alp
 }
 
 // Delete takes name of the schedulerJobCollection and deletes it. Returns an error if one occurs.
-func (c *FakeSchedulerJobCollections) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSchedulerJobCollections) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(schedulerjobcollectionsResource, c.ns, name), &v1alpha1.SchedulerJobCollection{})
 
@@ -122,15 +124,15 @@ func (c *FakeSchedulerJobCollections) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSchedulerJobCollections) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(schedulerjobcollectionsResource, c.ns, listOptions)
+func (c *FakeSchedulerJobCollections) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(schedulerjobcollectionsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SchedulerJobCollectionList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched schedulerJobCollection.
-func (c *FakeSchedulerJobCollections) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SchedulerJobCollection, err error) {
+func (c *FakeSchedulerJobCollections) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SchedulerJobCollection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(schedulerjobcollectionsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SchedulerJobCollection{})
 

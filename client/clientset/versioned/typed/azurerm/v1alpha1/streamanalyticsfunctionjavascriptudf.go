@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type StreamAnalyticsFunctionJavascriptUdvesGetter interface {
 
 // StreamAnalyticsFunctionJavascriptUdfInterface has methods to work with StreamAnalyticsFunctionJavascriptUdf resources.
 type StreamAnalyticsFunctionJavascriptUdfInterface interface {
-	Create(*v1alpha1.StreamAnalyticsFunctionJavascriptUdf) (*v1alpha1.StreamAnalyticsFunctionJavascriptUdf, error)
-	Update(*v1alpha1.StreamAnalyticsFunctionJavascriptUdf) (*v1alpha1.StreamAnalyticsFunctionJavascriptUdf, error)
-	UpdateStatus(*v1alpha1.StreamAnalyticsFunctionJavascriptUdf) (*v1alpha1.StreamAnalyticsFunctionJavascriptUdf, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.StreamAnalyticsFunctionJavascriptUdf, error)
-	List(opts v1.ListOptions) (*v1alpha1.StreamAnalyticsFunctionJavascriptUdfList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StreamAnalyticsFunctionJavascriptUdf, err error)
+	Create(ctx context.Context, streamAnalyticsFunctionJavascriptUdf *v1alpha1.StreamAnalyticsFunctionJavascriptUdf, opts v1.CreateOptions) (*v1alpha1.StreamAnalyticsFunctionJavascriptUdf, error)
+	Update(ctx context.Context, streamAnalyticsFunctionJavascriptUdf *v1alpha1.StreamAnalyticsFunctionJavascriptUdf, opts v1.UpdateOptions) (*v1alpha1.StreamAnalyticsFunctionJavascriptUdf, error)
+	UpdateStatus(ctx context.Context, streamAnalyticsFunctionJavascriptUdf *v1alpha1.StreamAnalyticsFunctionJavascriptUdf, opts v1.UpdateOptions) (*v1alpha1.StreamAnalyticsFunctionJavascriptUdf, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.StreamAnalyticsFunctionJavascriptUdf, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.StreamAnalyticsFunctionJavascriptUdfList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StreamAnalyticsFunctionJavascriptUdf, err error)
 	StreamAnalyticsFunctionJavascriptUdfExpansion
 }
 
@@ -65,20 +66,20 @@ func newStreamAnalyticsFunctionJavascriptUdves(c *AzurermV1alpha1Client, namespa
 }
 
 // Get takes name of the streamAnalyticsFunctionJavascriptUdf, and returns the corresponding streamAnalyticsFunctionJavascriptUdf object, and an error if there is any.
-func (c *streamAnalyticsFunctionJavascriptUdves) Get(name string, options v1.GetOptions) (result *v1alpha1.StreamAnalyticsFunctionJavascriptUdf, err error) {
+func (c *streamAnalyticsFunctionJavascriptUdves) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.StreamAnalyticsFunctionJavascriptUdf, err error) {
 	result = &v1alpha1.StreamAnalyticsFunctionJavascriptUdf{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("streamanalyticsfunctionjavascriptudves").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of StreamAnalyticsFunctionJavascriptUdves that match those selectors.
-func (c *streamAnalyticsFunctionJavascriptUdves) List(opts v1.ListOptions) (result *v1alpha1.StreamAnalyticsFunctionJavascriptUdfList, err error) {
+func (c *streamAnalyticsFunctionJavascriptUdves) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.StreamAnalyticsFunctionJavascriptUdfList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *streamAnalyticsFunctionJavascriptUdves) List(opts v1.ListOptions) (resu
 		Resource("streamanalyticsfunctionjavascriptudves").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested streamAnalyticsFunctionJavascriptUdves.
-func (c *streamAnalyticsFunctionJavascriptUdves) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *streamAnalyticsFunctionJavascriptUdves) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *streamAnalyticsFunctionJavascriptUdves) Watch(opts v1.ListOptions) (wat
 		Resource("streamanalyticsfunctionjavascriptudves").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a streamAnalyticsFunctionJavascriptUdf and creates it.  Returns the server's representation of the streamAnalyticsFunctionJavascriptUdf, and an error, if there is any.
-func (c *streamAnalyticsFunctionJavascriptUdves) Create(streamAnalyticsFunctionJavascriptUdf *v1alpha1.StreamAnalyticsFunctionJavascriptUdf) (result *v1alpha1.StreamAnalyticsFunctionJavascriptUdf, err error) {
+func (c *streamAnalyticsFunctionJavascriptUdves) Create(ctx context.Context, streamAnalyticsFunctionJavascriptUdf *v1alpha1.StreamAnalyticsFunctionJavascriptUdf, opts v1.CreateOptions) (result *v1alpha1.StreamAnalyticsFunctionJavascriptUdf, err error) {
 	result = &v1alpha1.StreamAnalyticsFunctionJavascriptUdf{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("streamanalyticsfunctionjavascriptudves").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(streamAnalyticsFunctionJavascriptUdf).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a streamAnalyticsFunctionJavascriptUdf and updates it. Returns the server's representation of the streamAnalyticsFunctionJavascriptUdf, and an error, if there is any.
-func (c *streamAnalyticsFunctionJavascriptUdves) Update(streamAnalyticsFunctionJavascriptUdf *v1alpha1.StreamAnalyticsFunctionJavascriptUdf) (result *v1alpha1.StreamAnalyticsFunctionJavascriptUdf, err error) {
+func (c *streamAnalyticsFunctionJavascriptUdves) Update(ctx context.Context, streamAnalyticsFunctionJavascriptUdf *v1alpha1.StreamAnalyticsFunctionJavascriptUdf, opts v1.UpdateOptions) (result *v1alpha1.StreamAnalyticsFunctionJavascriptUdf, err error) {
 	result = &v1alpha1.StreamAnalyticsFunctionJavascriptUdf{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("streamanalyticsfunctionjavascriptudves").
 		Name(streamAnalyticsFunctionJavascriptUdf.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(streamAnalyticsFunctionJavascriptUdf).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *streamAnalyticsFunctionJavascriptUdves) UpdateStatus(streamAnalyticsFunctionJavascriptUdf *v1alpha1.StreamAnalyticsFunctionJavascriptUdf) (result *v1alpha1.StreamAnalyticsFunctionJavascriptUdf, err error) {
+func (c *streamAnalyticsFunctionJavascriptUdves) UpdateStatus(ctx context.Context, streamAnalyticsFunctionJavascriptUdf *v1alpha1.StreamAnalyticsFunctionJavascriptUdf, opts v1.UpdateOptions) (result *v1alpha1.StreamAnalyticsFunctionJavascriptUdf, err error) {
 	result = &v1alpha1.StreamAnalyticsFunctionJavascriptUdf{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("streamanalyticsfunctionjavascriptudves").
 		Name(streamAnalyticsFunctionJavascriptUdf.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(streamAnalyticsFunctionJavascriptUdf).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the streamAnalyticsFunctionJavascriptUdf and deletes it. Returns an error if one occurs.
-func (c *streamAnalyticsFunctionJavascriptUdves) Delete(name string, options *v1.DeleteOptions) error {
+func (c *streamAnalyticsFunctionJavascriptUdves) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("streamanalyticsfunctionjavascriptudves").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *streamAnalyticsFunctionJavascriptUdves) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *streamAnalyticsFunctionJavascriptUdves) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("streamanalyticsfunctionjavascriptudves").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched streamAnalyticsFunctionJavascriptUdf.
-func (c *streamAnalyticsFunctionJavascriptUdves) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StreamAnalyticsFunctionJavascriptUdf, err error) {
+func (c *streamAnalyticsFunctionJavascriptUdves) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StreamAnalyticsFunctionJavascriptUdf, err error) {
 	result = &v1alpha1.StreamAnalyticsFunctionJavascriptUdf{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("streamanalyticsfunctionjavascriptudves").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

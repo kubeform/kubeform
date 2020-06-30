@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var apimanagementidentityproviderfacebooksResource = schema.GroupVersionResource
 var apimanagementidentityproviderfacebooksKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "ApiManagementIdentityProviderFacebook"}
 
 // Get takes name of the apiManagementIdentityProviderFacebook, and returns the corresponding apiManagementIdentityProviderFacebook object, and an error if there is any.
-func (c *FakeApiManagementIdentityProviderFacebooks) Get(name string, options v1.GetOptions) (result *v1alpha1.ApiManagementIdentityProviderFacebook, err error) {
+func (c *FakeApiManagementIdentityProviderFacebooks) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApiManagementIdentityProviderFacebook, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(apimanagementidentityproviderfacebooksResource, c.ns, name), &v1alpha1.ApiManagementIdentityProviderFacebook{})
 
@@ -51,7 +53,7 @@ func (c *FakeApiManagementIdentityProviderFacebooks) Get(name string, options v1
 }
 
 // List takes label and field selectors, and returns the list of ApiManagementIdentityProviderFacebooks that match those selectors.
-func (c *FakeApiManagementIdentityProviderFacebooks) List(opts v1.ListOptions) (result *v1alpha1.ApiManagementIdentityProviderFacebookList, err error) {
+func (c *FakeApiManagementIdentityProviderFacebooks) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApiManagementIdentityProviderFacebookList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(apimanagementidentityproviderfacebooksResource, apimanagementidentityproviderfacebooksKind, c.ns, opts), &v1alpha1.ApiManagementIdentityProviderFacebookList{})
 
@@ -73,14 +75,14 @@ func (c *FakeApiManagementIdentityProviderFacebooks) List(opts v1.ListOptions) (
 }
 
 // Watch returns a watch.Interface that watches the requested apiManagementIdentityProviderFacebooks.
-func (c *FakeApiManagementIdentityProviderFacebooks) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeApiManagementIdentityProviderFacebooks) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(apimanagementidentityproviderfacebooksResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a apiManagementIdentityProviderFacebook and creates it.  Returns the server's representation of the apiManagementIdentityProviderFacebook, and an error, if there is any.
-func (c *FakeApiManagementIdentityProviderFacebooks) Create(apiManagementIdentityProviderFacebook *v1alpha1.ApiManagementIdentityProviderFacebook) (result *v1alpha1.ApiManagementIdentityProviderFacebook, err error) {
+func (c *FakeApiManagementIdentityProviderFacebooks) Create(ctx context.Context, apiManagementIdentityProviderFacebook *v1alpha1.ApiManagementIdentityProviderFacebook, opts v1.CreateOptions) (result *v1alpha1.ApiManagementIdentityProviderFacebook, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(apimanagementidentityproviderfacebooksResource, c.ns, apiManagementIdentityProviderFacebook), &v1alpha1.ApiManagementIdentityProviderFacebook{})
 
@@ -91,7 +93,7 @@ func (c *FakeApiManagementIdentityProviderFacebooks) Create(apiManagementIdentit
 }
 
 // Update takes the representation of a apiManagementIdentityProviderFacebook and updates it. Returns the server's representation of the apiManagementIdentityProviderFacebook, and an error, if there is any.
-func (c *FakeApiManagementIdentityProviderFacebooks) Update(apiManagementIdentityProviderFacebook *v1alpha1.ApiManagementIdentityProviderFacebook) (result *v1alpha1.ApiManagementIdentityProviderFacebook, err error) {
+func (c *FakeApiManagementIdentityProviderFacebooks) Update(ctx context.Context, apiManagementIdentityProviderFacebook *v1alpha1.ApiManagementIdentityProviderFacebook, opts v1.UpdateOptions) (result *v1alpha1.ApiManagementIdentityProviderFacebook, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(apimanagementidentityproviderfacebooksResource, c.ns, apiManagementIdentityProviderFacebook), &v1alpha1.ApiManagementIdentityProviderFacebook{})
 
@@ -103,7 +105,7 @@ func (c *FakeApiManagementIdentityProviderFacebooks) Update(apiManagementIdentit
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeApiManagementIdentityProviderFacebooks) UpdateStatus(apiManagementIdentityProviderFacebook *v1alpha1.ApiManagementIdentityProviderFacebook) (*v1alpha1.ApiManagementIdentityProviderFacebook, error) {
+func (c *FakeApiManagementIdentityProviderFacebooks) UpdateStatus(ctx context.Context, apiManagementIdentityProviderFacebook *v1alpha1.ApiManagementIdentityProviderFacebook, opts v1.UpdateOptions) (*v1alpha1.ApiManagementIdentityProviderFacebook, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(apimanagementidentityproviderfacebooksResource, "status", c.ns, apiManagementIdentityProviderFacebook), &v1alpha1.ApiManagementIdentityProviderFacebook{})
 
@@ -114,7 +116,7 @@ func (c *FakeApiManagementIdentityProviderFacebooks) UpdateStatus(apiManagementI
 }
 
 // Delete takes name of the apiManagementIdentityProviderFacebook and deletes it. Returns an error if one occurs.
-func (c *FakeApiManagementIdentityProviderFacebooks) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeApiManagementIdentityProviderFacebooks) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(apimanagementidentityproviderfacebooksResource, c.ns, name), &v1alpha1.ApiManagementIdentityProviderFacebook{})
 
@@ -122,15 +124,15 @@ func (c *FakeApiManagementIdentityProviderFacebooks) Delete(name string, options
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeApiManagementIdentityProviderFacebooks) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(apimanagementidentityproviderfacebooksResource, c.ns, listOptions)
+func (c *FakeApiManagementIdentityProviderFacebooks) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(apimanagementidentityproviderfacebooksResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ApiManagementIdentityProviderFacebookList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched apiManagementIdentityProviderFacebook.
-func (c *FakeApiManagementIdentityProviderFacebooks) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiManagementIdentityProviderFacebook, err error) {
+func (c *FakeApiManagementIdentityProviderFacebooks) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiManagementIdentityProviderFacebook, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(apimanagementidentityproviderfacebooksResource, c.ns, name, pt, data, subresources...), &v1alpha1.ApiManagementIdentityProviderFacebook{})
 

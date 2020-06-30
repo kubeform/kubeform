@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var lblistenerrulesResource = schema.GroupVersionResource{Group: "aws.kubeform.c
 var lblistenerrulesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "LbListenerRule"}
 
 // Get takes name of the lbListenerRule, and returns the corresponding lbListenerRule object, and an error if there is any.
-func (c *FakeLbListenerRules) Get(name string, options v1.GetOptions) (result *v1alpha1.LbListenerRule, err error) {
+func (c *FakeLbListenerRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LbListenerRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(lblistenerrulesResource, c.ns, name), &v1alpha1.LbListenerRule{})
 
@@ -51,7 +53,7 @@ func (c *FakeLbListenerRules) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of LbListenerRules that match those selectors.
-func (c *FakeLbListenerRules) List(opts v1.ListOptions) (result *v1alpha1.LbListenerRuleList, err error) {
+func (c *FakeLbListenerRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LbListenerRuleList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(lblistenerrulesResource, lblistenerrulesKind, c.ns, opts), &v1alpha1.LbListenerRuleList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLbListenerRules) List(opts v1.ListOptions) (result *v1alpha1.LbList
 }
 
 // Watch returns a watch.Interface that watches the requested lbListenerRules.
-func (c *FakeLbListenerRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLbListenerRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(lblistenerrulesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a lbListenerRule and creates it.  Returns the server's representation of the lbListenerRule, and an error, if there is any.
-func (c *FakeLbListenerRules) Create(lbListenerRule *v1alpha1.LbListenerRule) (result *v1alpha1.LbListenerRule, err error) {
+func (c *FakeLbListenerRules) Create(ctx context.Context, lbListenerRule *v1alpha1.LbListenerRule, opts v1.CreateOptions) (result *v1alpha1.LbListenerRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(lblistenerrulesResource, c.ns, lbListenerRule), &v1alpha1.LbListenerRule{})
 
@@ -91,7 +93,7 @@ func (c *FakeLbListenerRules) Create(lbListenerRule *v1alpha1.LbListenerRule) (r
 }
 
 // Update takes the representation of a lbListenerRule and updates it. Returns the server's representation of the lbListenerRule, and an error, if there is any.
-func (c *FakeLbListenerRules) Update(lbListenerRule *v1alpha1.LbListenerRule) (result *v1alpha1.LbListenerRule, err error) {
+func (c *FakeLbListenerRules) Update(ctx context.Context, lbListenerRule *v1alpha1.LbListenerRule, opts v1.UpdateOptions) (result *v1alpha1.LbListenerRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(lblistenerrulesResource, c.ns, lbListenerRule), &v1alpha1.LbListenerRule{})
 
@@ -103,7 +105,7 @@ func (c *FakeLbListenerRules) Update(lbListenerRule *v1alpha1.LbListenerRule) (r
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLbListenerRules) UpdateStatus(lbListenerRule *v1alpha1.LbListenerRule) (*v1alpha1.LbListenerRule, error) {
+func (c *FakeLbListenerRules) UpdateStatus(ctx context.Context, lbListenerRule *v1alpha1.LbListenerRule, opts v1.UpdateOptions) (*v1alpha1.LbListenerRule, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(lblistenerrulesResource, "status", c.ns, lbListenerRule), &v1alpha1.LbListenerRule{})
 
@@ -114,7 +116,7 @@ func (c *FakeLbListenerRules) UpdateStatus(lbListenerRule *v1alpha1.LbListenerRu
 }
 
 // Delete takes name of the lbListenerRule and deletes it. Returns an error if one occurs.
-func (c *FakeLbListenerRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLbListenerRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(lblistenerrulesResource, c.ns, name), &v1alpha1.LbListenerRule{})
 
@@ -122,15 +124,15 @@ func (c *FakeLbListenerRules) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLbListenerRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(lblistenerrulesResource, c.ns, listOptions)
+func (c *FakeLbListenerRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(lblistenerrulesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LbListenerRuleList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched lbListenerRule.
-func (c *FakeLbListenerRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LbListenerRule, err error) {
+func (c *FakeLbListenerRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LbListenerRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(lblistenerrulesResource, c.ns, name, pt, data, subresources...), &v1alpha1.LbListenerRule{})
 

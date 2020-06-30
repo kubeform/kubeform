@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type IamGroupPolicyAttachmentsGetter interface {
 
 // IamGroupPolicyAttachmentInterface has methods to work with IamGroupPolicyAttachment resources.
 type IamGroupPolicyAttachmentInterface interface {
-	Create(*v1alpha1.IamGroupPolicyAttachment) (*v1alpha1.IamGroupPolicyAttachment, error)
-	Update(*v1alpha1.IamGroupPolicyAttachment) (*v1alpha1.IamGroupPolicyAttachment, error)
-	UpdateStatus(*v1alpha1.IamGroupPolicyAttachment) (*v1alpha1.IamGroupPolicyAttachment, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.IamGroupPolicyAttachment, error)
-	List(opts v1.ListOptions) (*v1alpha1.IamGroupPolicyAttachmentList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IamGroupPolicyAttachment, err error)
+	Create(ctx context.Context, iamGroupPolicyAttachment *v1alpha1.IamGroupPolicyAttachment, opts v1.CreateOptions) (*v1alpha1.IamGroupPolicyAttachment, error)
+	Update(ctx context.Context, iamGroupPolicyAttachment *v1alpha1.IamGroupPolicyAttachment, opts v1.UpdateOptions) (*v1alpha1.IamGroupPolicyAttachment, error)
+	UpdateStatus(ctx context.Context, iamGroupPolicyAttachment *v1alpha1.IamGroupPolicyAttachment, opts v1.UpdateOptions) (*v1alpha1.IamGroupPolicyAttachment, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.IamGroupPolicyAttachment, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.IamGroupPolicyAttachmentList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IamGroupPolicyAttachment, err error)
 	IamGroupPolicyAttachmentExpansion
 }
 
@@ -65,20 +66,20 @@ func newIamGroupPolicyAttachments(c *AwsV1alpha1Client, namespace string) *iamGr
 }
 
 // Get takes name of the iamGroupPolicyAttachment, and returns the corresponding iamGroupPolicyAttachment object, and an error if there is any.
-func (c *iamGroupPolicyAttachments) Get(name string, options v1.GetOptions) (result *v1alpha1.IamGroupPolicyAttachment, err error) {
+func (c *iamGroupPolicyAttachments) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IamGroupPolicyAttachment, err error) {
 	result = &v1alpha1.IamGroupPolicyAttachment{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("iamgrouppolicyattachments").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of IamGroupPolicyAttachments that match those selectors.
-func (c *iamGroupPolicyAttachments) List(opts v1.ListOptions) (result *v1alpha1.IamGroupPolicyAttachmentList, err error) {
+func (c *iamGroupPolicyAttachments) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IamGroupPolicyAttachmentList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *iamGroupPolicyAttachments) List(opts v1.ListOptions) (result *v1alpha1.
 		Resource("iamgrouppolicyattachments").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested iamGroupPolicyAttachments.
-func (c *iamGroupPolicyAttachments) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *iamGroupPolicyAttachments) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *iamGroupPolicyAttachments) Watch(opts v1.ListOptions) (watch.Interface,
 		Resource("iamgrouppolicyattachments").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a iamGroupPolicyAttachment and creates it.  Returns the server's representation of the iamGroupPolicyAttachment, and an error, if there is any.
-func (c *iamGroupPolicyAttachments) Create(iamGroupPolicyAttachment *v1alpha1.IamGroupPolicyAttachment) (result *v1alpha1.IamGroupPolicyAttachment, err error) {
+func (c *iamGroupPolicyAttachments) Create(ctx context.Context, iamGroupPolicyAttachment *v1alpha1.IamGroupPolicyAttachment, opts v1.CreateOptions) (result *v1alpha1.IamGroupPolicyAttachment, err error) {
 	result = &v1alpha1.IamGroupPolicyAttachment{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("iamgrouppolicyattachments").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iamGroupPolicyAttachment).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a iamGroupPolicyAttachment and updates it. Returns the server's representation of the iamGroupPolicyAttachment, and an error, if there is any.
-func (c *iamGroupPolicyAttachments) Update(iamGroupPolicyAttachment *v1alpha1.IamGroupPolicyAttachment) (result *v1alpha1.IamGroupPolicyAttachment, err error) {
+func (c *iamGroupPolicyAttachments) Update(ctx context.Context, iamGroupPolicyAttachment *v1alpha1.IamGroupPolicyAttachment, opts v1.UpdateOptions) (result *v1alpha1.IamGroupPolicyAttachment, err error) {
 	result = &v1alpha1.IamGroupPolicyAttachment{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iamgrouppolicyattachments").
 		Name(iamGroupPolicyAttachment.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iamGroupPolicyAttachment).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *iamGroupPolicyAttachments) UpdateStatus(iamGroupPolicyAttachment *v1alpha1.IamGroupPolicyAttachment) (result *v1alpha1.IamGroupPolicyAttachment, err error) {
+func (c *iamGroupPolicyAttachments) UpdateStatus(ctx context.Context, iamGroupPolicyAttachment *v1alpha1.IamGroupPolicyAttachment, opts v1.UpdateOptions) (result *v1alpha1.IamGroupPolicyAttachment, err error) {
 	result = &v1alpha1.IamGroupPolicyAttachment{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iamgrouppolicyattachments").
 		Name(iamGroupPolicyAttachment.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iamGroupPolicyAttachment).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the iamGroupPolicyAttachment and deletes it. Returns an error if one occurs.
-func (c *iamGroupPolicyAttachments) Delete(name string, options *v1.DeleteOptions) error {
+func (c *iamGroupPolicyAttachments) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iamgrouppolicyattachments").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *iamGroupPolicyAttachments) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *iamGroupPolicyAttachments) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iamgrouppolicyattachments").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched iamGroupPolicyAttachment.
-func (c *iamGroupPolicyAttachments) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IamGroupPolicyAttachment, err error) {
+func (c *iamGroupPolicyAttachments) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IamGroupPolicyAttachment, err error) {
 	result = &v1alpha1.IamGroupPolicyAttachment{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("iamgrouppolicyattachments").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

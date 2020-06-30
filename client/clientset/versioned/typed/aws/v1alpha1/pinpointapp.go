@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type PinpointAppsGetter interface {
 
 // PinpointAppInterface has methods to work with PinpointApp resources.
 type PinpointAppInterface interface {
-	Create(*v1alpha1.PinpointApp) (*v1alpha1.PinpointApp, error)
-	Update(*v1alpha1.PinpointApp) (*v1alpha1.PinpointApp, error)
-	UpdateStatus(*v1alpha1.PinpointApp) (*v1alpha1.PinpointApp, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.PinpointApp, error)
-	List(opts v1.ListOptions) (*v1alpha1.PinpointAppList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PinpointApp, err error)
+	Create(ctx context.Context, pinpointApp *v1alpha1.PinpointApp, opts v1.CreateOptions) (*v1alpha1.PinpointApp, error)
+	Update(ctx context.Context, pinpointApp *v1alpha1.PinpointApp, opts v1.UpdateOptions) (*v1alpha1.PinpointApp, error)
+	UpdateStatus(ctx context.Context, pinpointApp *v1alpha1.PinpointApp, opts v1.UpdateOptions) (*v1alpha1.PinpointApp, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.PinpointApp, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.PinpointAppList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PinpointApp, err error)
 	PinpointAppExpansion
 }
 
@@ -65,20 +66,20 @@ func newPinpointApps(c *AwsV1alpha1Client, namespace string) *pinpointApps {
 }
 
 // Get takes name of the pinpointApp, and returns the corresponding pinpointApp object, and an error if there is any.
-func (c *pinpointApps) Get(name string, options v1.GetOptions) (result *v1alpha1.PinpointApp, err error) {
+func (c *pinpointApps) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PinpointApp, err error) {
 	result = &v1alpha1.PinpointApp{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("pinpointapps").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of PinpointApps that match those selectors.
-func (c *pinpointApps) List(opts v1.ListOptions) (result *v1alpha1.PinpointAppList, err error) {
+func (c *pinpointApps) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PinpointAppList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *pinpointApps) List(opts v1.ListOptions) (result *v1alpha1.PinpointAppLi
 		Resource("pinpointapps").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested pinpointApps.
-func (c *pinpointApps) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *pinpointApps) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *pinpointApps) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("pinpointapps").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a pinpointApp and creates it.  Returns the server's representation of the pinpointApp, and an error, if there is any.
-func (c *pinpointApps) Create(pinpointApp *v1alpha1.PinpointApp) (result *v1alpha1.PinpointApp, err error) {
+func (c *pinpointApps) Create(ctx context.Context, pinpointApp *v1alpha1.PinpointApp, opts v1.CreateOptions) (result *v1alpha1.PinpointApp, err error) {
 	result = &v1alpha1.PinpointApp{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("pinpointapps").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(pinpointApp).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a pinpointApp and updates it. Returns the server's representation of the pinpointApp, and an error, if there is any.
-func (c *pinpointApps) Update(pinpointApp *v1alpha1.PinpointApp) (result *v1alpha1.PinpointApp, err error) {
+func (c *pinpointApps) Update(ctx context.Context, pinpointApp *v1alpha1.PinpointApp, opts v1.UpdateOptions) (result *v1alpha1.PinpointApp, err error) {
 	result = &v1alpha1.PinpointApp{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("pinpointapps").
 		Name(pinpointApp.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(pinpointApp).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *pinpointApps) UpdateStatus(pinpointApp *v1alpha1.PinpointApp) (result *v1alpha1.PinpointApp, err error) {
+func (c *pinpointApps) UpdateStatus(ctx context.Context, pinpointApp *v1alpha1.PinpointApp, opts v1.UpdateOptions) (result *v1alpha1.PinpointApp, err error) {
 	result = &v1alpha1.PinpointApp{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("pinpointapps").
 		Name(pinpointApp.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(pinpointApp).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the pinpointApp and deletes it. Returns an error if one occurs.
-func (c *pinpointApps) Delete(name string, options *v1.DeleteOptions) error {
+func (c *pinpointApps) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("pinpointapps").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *pinpointApps) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *pinpointApps) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("pinpointapps").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched pinpointApp.
-func (c *pinpointApps) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PinpointApp, err error) {
+func (c *pinpointApps) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PinpointApp, err error) {
 	result = &v1alpha1.PinpointApp{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("pinpointapps").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

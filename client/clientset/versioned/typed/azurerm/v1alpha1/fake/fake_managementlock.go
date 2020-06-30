@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var managementlocksResource = schema.GroupVersionResource{Group: "azurerm.kubefo
 var managementlocksKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "ManagementLock"}
 
 // Get takes name of the managementLock, and returns the corresponding managementLock object, and an error if there is any.
-func (c *FakeManagementLocks) Get(name string, options v1.GetOptions) (result *v1alpha1.ManagementLock, err error) {
+func (c *FakeManagementLocks) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ManagementLock, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(managementlocksResource, c.ns, name), &v1alpha1.ManagementLock{})
 
@@ -51,7 +53,7 @@ func (c *FakeManagementLocks) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of ManagementLocks that match those selectors.
-func (c *FakeManagementLocks) List(opts v1.ListOptions) (result *v1alpha1.ManagementLockList, err error) {
+func (c *FakeManagementLocks) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ManagementLockList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(managementlocksResource, managementlocksKind, c.ns, opts), &v1alpha1.ManagementLockList{})
 
@@ -73,14 +75,14 @@ func (c *FakeManagementLocks) List(opts v1.ListOptions) (result *v1alpha1.Manage
 }
 
 // Watch returns a watch.Interface that watches the requested managementLocks.
-func (c *FakeManagementLocks) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeManagementLocks) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(managementlocksResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a managementLock and creates it.  Returns the server's representation of the managementLock, and an error, if there is any.
-func (c *FakeManagementLocks) Create(managementLock *v1alpha1.ManagementLock) (result *v1alpha1.ManagementLock, err error) {
+func (c *FakeManagementLocks) Create(ctx context.Context, managementLock *v1alpha1.ManagementLock, opts v1.CreateOptions) (result *v1alpha1.ManagementLock, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(managementlocksResource, c.ns, managementLock), &v1alpha1.ManagementLock{})
 
@@ -91,7 +93,7 @@ func (c *FakeManagementLocks) Create(managementLock *v1alpha1.ManagementLock) (r
 }
 
 // Update takes the representation of a managementLock and updates it. Returns the server's representation of the managementLock, and an error, if there is any.
-func (c *FakeManagementLocks) Update(managementLock *v1alpha1.ManagementLock) (result *v1alpha1.ManagementLock, err error) {
+func (c *FakeManagementLocks) Update(ctx context.Context, managementLock *v1alpha1.ManagementLock, opts v1.UpdateOptions) (result *v1alpha1.ManagementLock, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(managementlocksResource, c.ns, managementLock), &v1alpha1.ManagementLock{})
 
@@ -103,7 +105,7 @@ func (c *FakeManagementLocks) Update(managementLock *v1alpha1.ManagementLock) (r
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeManagementLocks) UpdateStatus(managementLock *v1alpha1.ManagementLock) (*v1alpha1.ManagementLock, error) {
+func (c *FakeManagementLocks) UpdateStatus(ctx context.Context, managementLock *v1alpha1.ManagementLock, opts v1.UpdateOptions) (*v1alpha1.ManagementLock, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(managementlocksResource, "status", c.ns, managementLock), &v1alpha1.ManagementLock{})
 
@@ -114,7 +116,7 @@ func (c *FakeManagementLocks) UpdateStatus(managementLock *v1alpha1.ManagementLo
 }
 
 // Delete takes name of the managementLock and deletes it. Returns an error if one occurs.
-func (c *FakeManagementLocks) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeManagementLocks) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(managementlocksResource, c.ns, name), &v1alpha1.ManagementLock{})
 
@@ -122,15 +124,15 @@ func (c *FakeManagementLocks) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeManagementLocks) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(managementlocksResource, c.ns, listOptions)
+func (c *FakeManagementLocks) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(managementlocksResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ManagementLockList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched managementLock.
-func (c *FakeManagementLocks) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ManagementLock, err error) {
+func (c *FakeManagementLocks) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ManagementLock, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(managementlocksResource, c.ns, name, pt, data, subresources...), &v1alpha1.ManagementLock{})
 

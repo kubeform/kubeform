@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var autoscalinglifecyclehooksResource = schema.GroupVersionResource{Group: "aws.
 var autoscalinglifecyclehooksKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "AutoscalingLifecycleHook"}
 
 // Get takes name of the autoscalingLifecycleHook, and returns the corresponding autoscalingLifecycleHook object, and an error if there is any.
-func (c *FakeAutoscalingLifecycleHooks) Get(name string, options v1.GetOptions) (result *v1alpha1.AutoscalingLifecycleHook, err error) {
+func (c *FakeAutoscalingLifecycleHooks) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AutoscalingLifecycleHook, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(autoscalinglifecyclehooksResource, c.ns, name), &v1alpha1.AutoscalingLifecycleHook{})
 
@@ -51,7 +53,7 @@ func (c *FakeAutoscalingLifecycleHooks) Get(name string, options v1.GetOptions) 
 }
 
 // List takes label and field selectors, and returns the list of AutoscalingLifecycleHooks that match those selectors.
-func (c *FakeAutoscalingLifecycleHooks) List(opts v1.ListOptions) (result *v1alpha1.AutoscalingLifecycleHookList, err error) {
+func (c *FakeAutoscalingLifecycleHooks) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AutoscalingLifecycleHookList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(autoscalinglifecyclehooksResource, autoscalinglifecyclehooksKind, c.ns, opts), &v1alpha1.AutoscalingLifecycleHookList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAutoscalingLifecycleHooks) List(opts v1.ListOptions) (result *v1alp
 }
 
 // Watch returns a watch.Interface that watches the requested autoscalingLifecycleHooks.
-func (c *FakeAutoscalingLifecycleHooks) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAutoscalingLifecycleHooks) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(autoscalinglifecyclehooksResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a autoscalingLifecycleHook and creates it.  Returns the server's representation of the autoscalingLifecycleHook, and an error, if there is any.
-func (c *FakeAutoscalingLifecycleHooks) Create(autoscalingLifecycleHook *v1alpha1.AutoscalingLifecycleHook) (result *v1alpha1.AutoscalingLifecycleHook, err error) {
+func (c *FakeAutoscalingLifecycleHooks) Create(ctx context.Context, autoscalingLifecycleHook *v1alpha1.AutoscalingLifecycleHook, opts v1.CreateOptions) (result *v1alpha1.AutoscalingLifecycleHook, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(autoscalinglifecyclehooksResource, c.ns, autoscalingLifecycleHook), &v1alpha1.AutoscalingLifecycleHook{})
 
@@ -91,7 +93,7 @@ func (c *FakeAutoscalingLifecycleHooks) Create(autoscalingLifecycleHook *v1alpha
 }
 
 // Update takes the representation of a autoscalingLifecycleHook and updates it. Returns the server's representation of the autoscalingLifecycleHook, and an error, if there is any.
-func (c *FakeAutoscalingLifecycleHooks) Update(autoscalingLifecycleHook *v1alpha1.AutoscalingLifecycleHook) (result *v1alpha1.AutoscalingLifecycleHook, err error) {
+func (c *FakeAutoscalingLifecycleHooks) Update(ctx context.Context, autoscalingLifecycleHook *v1alpha1.AutoscalingLifecycleHook, opts v1.UpdateOptions) (result *v1alpha1.AutoscalingLifecycleHook, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(autoscalinglifecyclehooksResource, c.ns, autoscalingLifecycleHook), &v1alpha1.AutoscalingLifecycleHook{})
 
@@ -103,7 +105,7 @@ func (c *FakeAutoscalingLifecycleHooks) Update(autoscalingLifecycleHook *v1alpha
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAutoscalingLifecycleHooks) UpdateStatus(autoscalingLifecycleHook *v1alpha1.AutoscalingLifecycleHook) (*v1alpha1.AutoscalingLifecycleHook, error) {
+func (c *FakeAutoscalingLifecycleHooks) UpdateStatus(ctx context.Context, autoscalingLifecycleHook *v1alpha1.AutoscalingLifecycleHook, opts v1.UpdateOptions) (*v1alpha1.AutoscalingLifecycleHook, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(autoscalinglifecyclehooksResource, "status", c.ns, autoscalingLifecycleHook), &v1alpha1.AutoscalingLifecycleHook{})
 
@@ -114,7 +116,7 @@ func (c *FakeAutoscalingLifecycleHooks) UpdateStatus(autoscalingLifecycleHook *v
 }
 
 // Delete takes name of the autoscalingLifecycleHook and deletes it. Returns an error if one occurs.
-func (c *FakeAutoscalingLifecycleHooks) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAutoscalingLifecycleHooks) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(autoscalinglifecyclehooksResource, c.ns, name), &v1alpha1.AutoscalingLifecycleHook{})
 
@@ -122,15 +124,15 @@ func (c *FakeAutoscalingLifecycleHooks) Delete(name string, options *v1.DeleteOp
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAutoscalingLifecycleHooks) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(autoscalinglifecyclehooksResource, c.ns, listOptions)
+func (c *FakeAutoscalingLifecycleHooks) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(autoscalinglifecyclehooksResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AutoscalingLifecycleHookList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched autoscalingLifecycleHook.
-func (c *FakeAutoscalingLifecycleHooks) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AutoscalingLifecycleHook, err error) {
+func (c *FakeAutoscalingLifecycleHooks) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AutoscalingLifecycleHook, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(autoscalinglifecyclehooksResource, c.ns, name, pt, data, subresources...), &v1alpha1.AutoscalingLifecycleHook{})
 

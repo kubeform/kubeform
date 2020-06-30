@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var vpcipv4cidrblockassociationsResource = schema.GroupVersionResource{Group: "a
 var vpcipv4cidrblockassociationsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "VpcIpv4CIDRBlockAssociation"}
 
 // Get takes name of the vpcIpv4CIDRBlockAssociation, and returns the corresponding vpcIpv4CIDRBlockAssociation object, and an error if there is any.
-func (c *FakeVpcIpv4CIDRBlockAssociations) Get(name string, options v1.GetOptions) (result *v1alpha1.VpcIpv4CIDRBlockAssociation, err error) {
+func (c *FakeVpcIpv4CIDRBlockAssociations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.VpcIpv4CIDRBlockAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(vpcipv4cidrblockassociationsResource, c.ns, name), &v1alpha1.VpcIpv4CIDRBlockAssociation{})
 
@@ -51,7 +53,7 @@ func (c *FakeVpcIpv4CIDRBlockAssociations) Get(name string, options v1.GetOption
 }
 
 // List takes label and field selectors, and returns the list of VpcIpv4CIDRBlockAssociations that match those selectors.
-func (c *FakeVpcIpv4CIDRBlockAssociations) List(opts v1.ListOptions) (result *v1alpha1.VpcIpv4CIDRBlockAssociationList, err error) {
+func (c *FakeVpcIpv4CIDRBlockAssociations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.VpcIpv4CIDRBlockAssociationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(vpcipv4cidrblockassociationsResource, vpcipv4cidrblockassociationsKind, c.ns, opts), &v1alpha1.VpcIpv4CIDRBlockAssociationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeVpcIpv4CIDRBlockAssociations) List(opts v1.ListOptions) (result *v1
 }
 
 // Watch returns a watch.Interface that watches the requested vpcIpv4CIDRBlockAssociations.
-func (c *FakeVpcIpv4CIDRBlockAssociations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeVpcIpv4CIDRBlockAssociations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(vpcipv4cidrblockassociationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a vpcIpv4CIDRBlockAssociation and creates it.  Returns the server's representation of the vpcIpv4CIDRBlockAssociation, and an error, if there is any.
-func (c *FakeVpcIpv4CIDRBlockAssociations) Create(vpcIpv4CIDRBlockAssociation *v1alpha1.VpcIpv4CIDRBlockAssociation) (result *v1alpha1.VpcIpv4CIDRBlockAssociation, err error) {
+func (c *FakeVpcIpv4CIDRBlockAssociations) Create(ctx context.Context, vpcIpv4CIDRBlockAssociation *v1alpha1.VpcIpv4CIDRBlockAssociation, opts v1.CreateOptions) (result *v1alpha1.VpcIpv4CIDRBlockAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(vpcipv4cidrblockassociationsResource, c.ns, vpcIpv4CIDRBlockAssociation), &v1alpha1.VpcIpv4CIDRBlockAssociation{})
 
@@ -91,7 +93,7 @@ func (c *FakeVpcIpv4CIDRBlockAssociations) Create(vpcIpv4CIDRBlockAssociation *v
 }
 
 // Update takes the representation of a vpcIpv4CIDRBlockAssociation and updates it. Returns the server's representation of the vpcIpv4CIDRBlockAssociation, and an error, if there is any.
-func (c *FakeVpcIpv4CIDRBlockAssociations) Update(vpcIpv4CIDRBlockAssociation *v1alpha1.VpcIpv4CIDRBlockAssociation) (result *v1alpha1.VpcIpv4CIDRBlockAssociation, err error) {
+func (c *FakeVpcIpv4CIDRBlockAssociations) Update(ctx context.Context, vpcIpv4CIDRBlockAssociation *v1alpha1.VpcIpv4CIDRBlockAssociation, opts v1.UpdateOptions) (result *v1alpha1.VpcIpv4CIDRBlockAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(vpcipv4cidrblockassociationsResource, c.ns, vpcIpv4CIDRBlockAssociation), &v1alpha1.VpcIpv4CIDRBlockAssociation{})
 
@@ -103,7 +105,7 @@ func (c *FakeVpcIpv4CIDRBlockAssociations) Update(vpcIpv4CIDRBlockAssociation *v
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeVpcIpv4CIDRBlockAssociations) UpdateStatus(vpcIpv4CIDRBlockAssociation *v1alpha1.VpcIpv4CIDRBlockAssociation) (*v1alpha1.VpcIpv4CIDRBlockAssociation, error) {
+func (c *FakeVpcIpv4CIDRBlockAssociations) UpdateStatus(ctx context.Context, vpcIpv4CIDRBlockAssociation *v1alpha1.VpcIpv4CIDRBlockAssociation, opts v1.UpdateOptions) (*v1alpha1.VpcIpv4CIDRBlockAssociation, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(vpcipv4cidrblockassociationsResource, "status", c.ns, vpcIpv4CIDRBlockAssociation), &v1alpha1.VpcIpv4CIDRBlockAssociation{})
 
@@ -114,7 +116,7 @@ func (c *FakeVpcIpv4CIDRBlockAssociations) UpdateStatus(vpcIpv4CIDRBlockAssociat
 }
 
 // Delete takes name of the vpcIpv4CIDRBlockAssociation and deletes it. Returns an error if one occurs.
-func (c *FakeVpcIpv4CIDRBlockAssociations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeVpcIpv4CIDRBlockAssociations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(vpcipv4cidrblockassociationsResource, c.ns, name), &v1alpha1.VpcIpv4CIDRBlockAssociation{})
 
@@ -122,15 +124,15 @@ func (c *FakeVpcIpv4CIDRBlockAssociations) Delete(name string, options *v1.Delet
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeVpcIpv4CIDRBlockAssociations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(vpcipv4cidrblockassociationsResource, c.ns, listOptions)
+func (c *FakeVpcIpv4CIDRBlockAssociations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(vpcipv4cidrblockassociationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.VpcIpv4CIDRBlockAssociationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched vpcIpv4CIDRBlockAssociation.
-func (c *FakeVpcIpv4CIDRBlockAssociations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.VpcIpv4CIDRBlockAssociation, err error) {
+func (c *FakeVpcIpv4CIDRBlockAssociations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.VpcIpv4CIDRBlockAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(vpcipv4cidrblockassociationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.VpcIpv4CIDRBlockAssociation{})
 

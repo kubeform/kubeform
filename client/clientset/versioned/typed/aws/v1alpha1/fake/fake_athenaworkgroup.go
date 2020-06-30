@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var athenaworkgroupsResource = schema.GroupVersionResource{Group: "aws.kubeform.
 var athenaworkgroupsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "AthenaWorkgroup"}
 
 // Get takes name of the athenaWorkgroup, and returns the corresponding athenaWorkgroup object, and an error if there is any.
-func (c *FakeAthenaWorkgroups) Get(name string, options v1.GetOptions) (result *v1alpha1.AthenaWorkgroup, err error) {
+func (c *FakeAthenaWorkgroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AthenaWorkgroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(athenaworkgroupsResource, c.ns, name), &v1alpha1.AthenaWorkgroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeAthenaWorkgroups) Get(name string, options v1.GetOptions) (result *
 }
 
 // List takes label and field selectors, and returns the list of AthenaWorkgroups that match those selectors.
-func (c *FakeAthenaWorkgroups) List(opts v1.ListOptions) (result *v1alpha1.AthenaWorkgroupList, err error) {
+func (c *FakeAthenaWorkgroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AthenaWorkgroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(athenaworkgroupsResource, athenaworkgroupsKind, c.ns, opts), &v1alpha1.AthenaWorkgroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAthenaWorkgroups) List(opts v1.ListOptions) (result *v1alpha1.Athen
 }
 
 // Watch returns a watch.Interface that watches the requested athenaWorkgroups.
-func (c *FakeAthenaWorkgroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAthenaWorkgroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(athenaworkgroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a athenaWorkgroup and creates it.  Returns the server's representation of the athenaWorkgroup, and an error, if there is any.
-func (c *FakeAthenaWorkgroups) Create(athenaWorkgroup *v1alpha1.AthenaWorkgroup) (result *v1alpha1.AthenaWorkgroup, err error) {
+func (c *FakeAthenaWorkgroups) Create(ctx context.Context, athenaWorkgroup *v1alpha1.AthenaWorkgroup, opts v1.CreateOptions) (result *v1alpha1.AthenaWorkgroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(athenaworkgroupsResource, c.ns, athenaWorkgroup), &v1alpha1.AthenaWorkgroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeAthenaWorkgroups) Create(athenaWorkgroup *v1alpha1.AthenaWorkgroup)
 }
 
 // Update takes the representation of a athenaWorkgroup and updates it. Returns the server's representation of the athenaWorkgroup, and an error, if there is any.
-func (c *FakeAthenaWorkgroups) Update(athenaWorkgroup *v1alpha1.AthenaWorkgroup) (result *v1alpha1.AthenaWorkgroup, err error) {
+func (c *FakeAthenaWorkgroups) Update(ctx context.Context, athenaWorkgroup *v1alpha1.AthenaWorkgroup, opts v1.UpdateOptions) (result *v1alpha1.AthenaWorkgroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(athenaworkgroupsResource, c.ns, athenaWorkgroup), &v1alpha1.AthenaWorkgroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeAthenaWorkgroups) Update(athenaWorkgroup *v1alpha1.AthenaWorkgroup)
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAthenaWorkgroups) UpdateStatus(athenaWorkgroup *v1alpha1.AthenaWorkgroup) (*v1alpha1.AthenaWorkgroup, error) {
+func (c *FakeAthenaWorkgroups) UpdateStatus(ctx context.Context, athenaWorkgroup *v1alpha1.AthenaWorkgroup, opts v1.UpdateOptions) (*v1alpha1.AthenaWorkgroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(athenaworkgroupsResource, "status", c.ns, athenaWorkgroup), &v1alpha1.AthenaWorkgroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeAthenaWorkgroups) UpdateStatus(athenaWorkgroup *v1alpha1.AthenaWork
 }
 
 // Delete takes name of the athenaWorkgroup and deletes it. Returns an error if one occurs.
-func (c *FakeAthenaWorkgroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAthenaWorkgroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(athenaworkgroupsResource, c.ns, name), &v1alpha1.AthenaWorkgroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeAthenaWorkgroups) Delete(name string, options *v1.DeleteOptions) er
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAthenaWorkgroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(athenaworkgroupsResource, c.ns, listOptions)
+func (c *FakeAthenaWorkgroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(athenaworkgroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AthenaWorkgroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched athenaWorkgroup.
-func (c *FakeAthenaWorkgroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AthenaWorkgroup, err error) {
+func (c *FakeAthenaWorkgroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AthenaWorkgroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(athenaworkgroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.AthenaWorkgroup{})
 

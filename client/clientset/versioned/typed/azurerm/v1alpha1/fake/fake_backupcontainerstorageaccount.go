@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var backupcontainerstorageaccountsResource = schema.GroupVersionResource{Group: 
 var backupcontainerstorageaccountsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "BackupContainerStorageAccount"}
 
 // Get takes name of the backupContainerStorageAccount, and returns the corresponding backupContainerStorageAccount object, and an error if there is any.
-func (c *FakeBackupContainerStorageAccounts) Get(name string, options v1.GetOptions) (result *v1alpha1.BackupContainerStorageAccount, err error) {
+func (c *FakeBackupContainerStorageAccounts) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BackupContainerStorageAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(backupcontainerstorageaccountsResource, c.ns, name), &v1alpha1.BackupContainerStorageAccount{})
 
@@ -51,7 +53,7 @@ func (c *FakeBackupContainerStorageAccounts) Get(name string, options v1.GetOpti
 }
 
 // List takes label and field selectors, and returns the list of BackupContainerStorageAccounts that match those selectors.
-func (c *FakeBackupContainerStorageAccounts) List(opts v1.ListOptions) (result *v1alpha1.BackupContainerStorageAccountList, err error) {
+func (c *FakeBackupContainerStorageAccounts) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BackupContainerStorageAccountList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(backupcontainerstorageaccountsResource, backupcontainerstorageaccountsKind, c.ns, opts), &v1alpha1.BackupContainerStorageAccountList{})
 
@@ -73,14 +75,14 @@ func (c *FakeBackupContainerStorageAccounts) List(opts v1.ListOptions) (result *
 }
 
 // Watch returns a watch.Interface that watches the requested backupContainerStorageAccounts.
-func (c *FakeBackupContainerStorageAccounts) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeBackupContainerStorageAccounts) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(backupcontainerstorageaccountsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a backupContainerStorageAccount and creates it.  Returns the server's representation of the backupContainerStorageAccount, and an error, if there is any.
-func (c *FakeBackupContainerStorageAccounts) Create(backupContainerStorageAccount *v1alpha1.BackupContainerStorageAccount) (result *v1alpha1.BackupContainerStorageAccount, err error) {
+func (c *FakeBackupContainerStorageAccounts) Create(ctx context.Context, backupContainerStorageAccount *v1alpha1.BackupContainerStorageAccount, opts v1.CreateOptions) (result *v1alpha1.BackupContainerStorageAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(backupcontainerstorageaccountsResource, c.ns, backupContainerStorageAccount), &v1alpha1.BackupContainerStorageAccount{})
 
@@ -91,7 +93,7 @@ func (c *FakeBackupContainerStorageAccounts) Create(backupContainerStorageAccoun
 }
 
 // Update takes the representation of a backupContainerStorageAccount and updates it. Returns the server's representation of the backupContainerStorageAccount, and an error, if there is any.
-func (c *FakeBackupContainerStorageAccounts) Update(backupContainerStorageAccount *v1alpha1.BackupContainerStorageAccount) (result *v1alpha1.BackupContainerStorageAccount, err error) {
+func (c *FakeBackupContainerStorageAccounts) Update(ctx context.Context, backupContainerStorageAccount *v1alpha1.BackupContainerStorageAccount, opts v1.UpdateOptions) (result *v1alpha1.BackupContainerStorageAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(backupcontainerstorageaccountsResource, c.ns, backupContainerStorageAccount), &v1alpha1.BackupContainerStorageAccount{})
 
@@ -103,7 +105,7 @@ func (c *FakeBackupContainerStorageAccounts) Update(backupContainerStorageAccoun
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeBackupContainerStorageAccounts) UpdateStatus(backupContainerStorageAccount *v1alpha1.BackupContainerStorageAccount) (*v1alpha1.BackupContainerStorageAccount, error) {
+func (c *FakeBackupContainerStorageAccounts) UpdateStatus(ctx context.Context, backupContainerStorageAccount *v1alpha1.BackupContainerStorageAccount, opts v1.UpdateOptions) (*v1alpha1.BackupContainerStorageAccount, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(backupcontainerstorageaccountsResource, "status", c.ns, backupContainerStorageAccount), &v1alpha1.BackupContainerStorageAccount{})
 
@@ -114,7 +116,7 @@ func (c *FakeBackupContainerStorageAccounts) UpdateStatus(backupContainerStorage
 }
 
 // Delete takes name of the backupContainerStorageAccount and deletes it. Returns an error if one occurs.
-func (c *FakeBackupContainerStorageAccounts) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeBackupContainerStorageAccounts) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(backupcontainerstorageaccountsResource, c.ns, name), &v1alpha1.BackupContainerStorageAccount{})
 
@@ -122,15 +124,15 @@ func (c *FakeBackupContainerStorageAccounts) Delete(name string, options *v1.Del
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeBackupContainerStorageAccounts) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(backupcontainerstorageaccountsResource, c.ns, listOptions)
+func (c *FakeBackupContainerStorageAccounts) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(backupcontainerstorageaccountsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.BackupContainerStorageAccountList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched backupContainerStorageAccount.
-func (c *FakeBackupContainerStorageAccounts) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BackupContainerStorageAccount, err error) {
+func (c *FakeBackupContainerStorageAccounts) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BackupContainerStorageAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(backupcontainerstorageaccountsResource, c.ns, name, pt, data, subresources...), &v1alpha1.BackupContainerStorageAccount{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var opsworksstaticweblayersResource = schema.GroupVersionResource{Group: "aws.ku
 var opsworksstaticweblayersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "OpsworksStaticWebLayer"}
 
 // Get takes name of the opsworksStaticWebLayer, and returns the corresponding opsworksStaticWebLayer object, and an error if there is any.
-func (c *FakeOpsworksStaticWebLayers) Get(name string, options v1.GetOptions) (result *v1alpha1.OpsworksStaticWebLayer, err error) {
+func (c *FakeOpsworksStaticWebLayers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.OpsworksStaticWebLayer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(opsworksstaticweblayersResource, c.ns, name), &v1alpha1.OpsworksStaticWebLayer{})
 
@@ -51,7 +53,7 @@ func (c *FakeOpsworksStaticWebLayers) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of OpsworksStaticWebLayers that match those selectors.
-func (c *FakeOpsworksStaticWebLayers) List(opts v1.ListOptions) (result *v1alpha1.OpsworksStaticWebLayerList, err error) {
+func (c *FakeOpsworksStaticWebLayers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.OpsworksStaticWebLayerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(opsworksstaticweblayersResource, opsworksstaticweblayersKind, c.ns, opts), &v1alpha1.OpsworksStaticWebLayerList{})
 
@@ -73,14 +75,14 @@ func (c *FakeOpsworksStaticWebLayers) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested opsworksStaticWebLayers.
-func (c *FakeOpsworksStaticWebLayers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeOpsworksStaticWebLayers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(opsworksstaticweblayersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a opsworksStaticWebLayer and creates it.  Returns the server's representation of the opsworksStaticWebLayer, and an error, if there is any.
-func (c *FakeOpsworksStaticWebLayers) Create(opsworksStaticWebLayer *v1alpha1.OpsworksStaticWebLayer) (result *v1alpha1.OpsworksStaticWebLayer, err error) {
+func (c *FakeOpsworksStaticWebLayers) Create(ctx context.Context, opsworksStaticWebLayer *v1alpha1.OpsworksStaticWebLayer, opts v1.CreateOptions) (result *v1alpha1.OpsworksStaticWebLayer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(opsworksstaticweblayersResource, c.ns, opsworksStaticWebLayer), &v1alpha1.OpsworksStaticWebLayer{})
 
@@ -91,7 +93,7 @@ func (c *FakeOpsworksStaticWebLayers) Create(opsworksStaticWebLayer *v1alpha1.Op
 }
 
 // Update takes the representation of a opsworksStaticWebLayer and updates it. Returns the server's representation of the opsworksStaticWebLayer, and an error, if there is any.
-func (c *FakeOpsworksStaticWebLayers) Update(opsworksStaticWebLayer *v1alpha1.OpsworksStaticWebLayer) (result *v1alpha1.OpsworksStaticWebLayer, err error) {
+func (c *FakeOpsworksStaticWebLayers) Update(ctx context.Context, opsworksStaticWebLayer *v1alpha1.OpsworksStaticWebLayer, opts v1.UpdateOptions) (result *v1alpha1.OpsworksStaticWebLayer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(opsworksstaticweblayersResource, c.ns, opsworksStaticWebLayer), &v1alpha1.OpsworksStaticWebLayer{})
 
@@ -103,7 +105,7 @@ func (c *FakeOpsworksStaticWebLayers) Update(opsworksStaticWebLayer *v1alpha1.Op
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeOpsworksStaticWebLayers) UpdateStatus(opsworksStaticWebLayer *v1alpha1.OpsworksStaticWebLayer) (*v1alpha1.OpsworksStaticWebLayer, error) {
+func (c *FakeOpsworksStaticWebLayers) UpdateStatus(ctx context.Context, opsworksStaticWebLayer *v1alpha1.OpsworksStaticWebLayer, opts v1.UpdateOptions) (*v1alpha1.OpsworksStaticWebLayer, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(opsworksstaticweblayersResource, "status", c.ns, opsworksStaticWebLayer), &v1alpha1.OpsworksStaticWebLayer{})
 
@@ -114,7 +116,7 @@ func (c *FakeOpsworksStaticWebLayers) UpdateStatus(opsworksStaticWebLayer *v1alp
 }
 
 // Delete takes name of the opsworksStaticWebLayer and deletes it. Returns an error if one occurs.
-func (c *FakeOpsworksStaticWebLayers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeOpsworksStaticWebLayers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(opsworksstaticweblayersResource, c.ns, name), &v1alpha1.OpsworksStaticWebLayer{})
 
@@ -122,15 +124,15 @@ func (c *FakeOpsworksStaticWebLayers) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeOpsworksStaticWebLayers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(opsworksstaticweblayersResource, c.ns, listOptions)
+func (c *FakeOpsworksStaticWebLayers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(opsworksstaticweblayersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.OpsworksStaticWebLayerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched opsworksStaticWebLayer.
-func (c *FakeOpsworksStaticWebLayers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.OpsworksStaticWebLayer, err error) {
+func (c *FakeOpsworksStaticWebLayers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.OpsworksStaticWebLayer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(opsworksstaticweblayersResource, c.ns, name, pt, data, subresources...), &v1alpha1.OpsworksStaticWebLayer{})
 

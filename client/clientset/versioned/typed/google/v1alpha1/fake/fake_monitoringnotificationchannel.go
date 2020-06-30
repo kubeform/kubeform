@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var monitoringnotificationchannelsResource = schema.GroupVersionResource{Group: 
 var monitoringnotificationchannelsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "MonitoringNotificationChannel"}
 
 // Get takes name of the monitoringNotificationChannel, and returns the corresponding monitoringNotificationChannel object, and an error if there is any.
-func (c *FakeMonitoringNotificationChannels) Get(name string, options v1.GetOptions) (result *v1alpha1.MonitoringNotificationChannel, err error) {
+func (c *FakeMonitoringNotificationChannels) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.MonitoringNotificationChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(monitoringnotificationchannelsResource, c.ns, name), &v1alpha1.MonitoringNotificationChannel{})
 
@@ -51,7 +53,7 @@ func (c *FakeMonitoringNotificationChannels) Get(name string, options v1.GetOpti
 }
 
 // List takes label and field selectors, and returns the list of MonitoringNotificationChannels that match those selectors.
-func (c *FakeMonitoringNotificationChannels) List(opts v1.ListOptions) (result *v1alpha1.MonitoringNotificationChannelList, err error) {
+func (c *FakeMonitoringNotificationChannels) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.MonitoringNotificationChannelList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(monitoringnotificationchannelsResource, monitoringnotificationchannelsKind, c.ns, opts), &v1alpha1.MonitoringNotificationChannelList{})
 
@@ -73,14 +75,14 @@ func (c *FakeMonitoringNotificationChannels) List(opts v1.ListOptions) (result *
 }
 
 // Watch returns a watch.Interface that watches the requested monitoringNotificationChannels.
-func (c *FakeMonitoringNotificationChannels) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeMonitoringNotificationChannels) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(monitoringnotificationchannelsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a monitoringNotificationChannel and creates it.  Returns the server's representation of the monitoringNotificationChannel, and an error, if there is any.
-func (c *FakeMonitoringNotificationChannels) Create(monitoringNotificationChannel *v1alpha1.MonitoringNotificationChannel) (result *v1alpha1.MonitoringNotificationChannel, err error) {
+func (c *FakeMonitoringNotificationChannels) Create(ctx context.Context, monitoringNotificationChannel *v1alpha1.MonitoringNotificationChannel, opts v1.CreateOptions) (result *v1alpha1.MonitoringNotificationChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(monitoringnotificationchannelsResource, c.ns, monitoringNotificationChannel), &v1alpha1.MonitoringNotificationChannel{})
 
@@ -91,7 +93,7 @@ func (c *FakeMonitoringNotificationChannels) Create(monitoringNotificationChanne
 }
 
 // Update takes the representation of a monitoringNotificationChannel and updates it. Returns the server's representation of the monitoringNotificationChannel, and an error, if there is any.
-func (c *FakeMonitoringNotificationChannels) Update(monitoringNotificationChannel *v1alpha1.MonitoringNotificationChannel) (result *v1alpha1.MonitoringNotificationChannel, err error) {
+func (c *FakeMonitoringNotificationChannels) Update(ctx context.Context, monitoringNotificationChannel *v1alpha1.MonitoringNotificationChannel, opts v1.UpdateOptions) (result *v1alpha1.MonitoringNotificationChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(monitoringnotificationchannelsResource, c.ns, monitoringNotificationChannel), &v1alpha1.MonitoringNotificationChannel{})
 
@@ -103,7 +105,7 @@ func (c *FakeMonitoringNotificationChannels) Update(monitoringNotificationChanne
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeMonitoringNotificationChannels) UpdateStatus(monitoringNotificationChannel *v1alpha1.MonitoringNotificationChannel) (*v1alpha1.MonitoringNotificationChannel, error) {
+func (c *FakeMonitoringNotificationChannels) UpdateStatus(ctx context.Context, monitoringNotificationChannel *v1alpha1.MonitoringNotificationChannel, opts v1.UpdateOptions) (*v1alpha1.MonitoringNotificationChannel, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(monitoringnotificationchannelsResource, "status", c.ns, monitoringNotificationChannel), &v1alpha1.MonitoringNotificationChannel{})
 
@@ -114,7 +116,7 @@ func (c *FakeMonitoringNotificationChannels) UpdateStatus(monitoringNotification
 }
 
 // Delete takes name of the monitoringNotificationChannel and deletes it. Returns an error if one occurs.
-func (c *FakeMonitoringNotificationChannels) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeMonitoringNotificationChannels) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(monitoringnotificationchannelsResource, c.ns, name), &v1alpha1.MonitoringNotificationChannel{})
 
@@ -122,15 +124,15 @@ func (c *FakeMonitoringNotificationChannels) Delete(name string, options *v1.Del
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeMonitoringNotificationChannels) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(monitoringnotificationchannelsResource, c.ns, listOptions)
+func (c *FakeMonitoringNotificationChannels) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(monitoringnotificationchannelsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.MonitoringNotificationChannelList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched monitoringNotificationChannel.
-func (c *FakeMonitoringNotificationChannels) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MonitoringNotificationChannel, err error) {
+func (c *FakeMonitoringNotificationChannels) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MonitoringNotificationChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(monitoringnotificationchannelsResource, c.ns, name, pt, data, subresources...), &v1alpha1.MonitoringNotificationChannel{})
 

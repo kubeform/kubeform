@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type GuarddutyThreatintelsetsGetter interface {
 
 // GuarddutyThreatintelsetInterface has methods to work with GuarddutyThreatintelset resources.
 type GuarddutyThreatintelsetInterface interface {
-	Create(*v1alpha1.GuarddutyThreatintelset) (*v1alpha1.GuarddutyThreatintelset, error)
-	Update(*v1alpha1.GuarddutyThreatintelset) (*v1alpha1.GuarddutyThreatintelset, error)
-	UpdateStatus(*v1alpha1.GuarddutyThreatintelset) (*v1alpha1.GuarddutyThreatintelset, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.GuarddutyThreatintelset, error)
-	List(opts v1.ListOptions) (*v1alpha1.GuarddutyThreatintelsetList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.GuarddutyThreatintelset, err error)
+	Create(ctx context.Context, guarddutyThreatintelset *v1alpha1.GuarddutyThreatintelset, opts v1.CreateOptions) (*v1alpha1.GuarddutyThreatintelset, error)
+	Update(ctx context.Context, guarddutyThreatintelset *v1alpha1.GuarddutyThreatintelset, opts v1.UpdateOptions) (*v1alpha1.GuarddutyThreatintelset, error)
+	UpdateStatus(ctx context.Context, guarddutyThreatintelset *v1alpha1.GuarddutyThreatintelset, opts v1.UpdateOptions) (*v1alpha1.GuarddutyThreatintelset, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.GuarddutyThreatintelset, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.GuarddutyThreatintelsetList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.GuarddutyThreatintelset, err error)
 	GuarddutyThreatintelsetExpansion
 }
 
@@ -65,20 +66,20 @@ func newGuarddutyThreatintelsets(c *AwsV1alpha1Client, namespace string) *guardd
 }
 
 // Get takes name of the guarddutyThreatintelset, and returns the corresponding guarddutyThreatintelset object, and an error if there is any.
-func (c *guarddutyThreatintelsets) Get(name string, options v1.GetOptions) (result *v1alpha1.GuarddutyThreatintelset, err error) {
+func (c *guarddutyThreatintelsets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.GuarddutyThreatintelset, err error) {
 	result = &v1alpha1.GuarddutyThreatintelset{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("guarddutythreatintelsets").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of GuarddutyThreatintelsets that match those selectors.
-func (c *guarddutyThreatintelsets) List(opts v1.ListOptions) (result *v1alpha1.GuarddutyThreatintelsetList, err error) {
+func (c *guarddutyThreatintelsets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.GuarddutyThreatintelsetList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *guarddutyThreatintelsets) List(opts v1.ListOptions) (result *v1alpha1.G
 		Resource("guarddutythreatintelsets").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested guarddutyThreatintelsets.
-func (c *guarddutyThreatintelsets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *guarddutyThreatintelsets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *guarddutyThreatintelsets) Watch(opts v1.ListOptions) (watch.Interface, 
 		Resource("guarddutythreatintelsets").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a guarddutyThreatintelset and creates it.  Returns the server's representation of the guarddutyThreatintelset, and an error, if there is any.
-func (c *guarddutyThreatintelsets) Create(guarddutyThreatintelset *v1alpha1.GuarddutyThreatintelset) (result *v1alpha1.GuarddutyThreatintelset, err error) {
+func (c *guarddutyThreatintelsets) Create(ctx context.Context, guarddutyThreatintelset *v1alpha1.GuarddutyThreatintelset, opts v1.CreateOptions) (result *v1alpha1.GuarddutyThreatintelset, err error) {
 	result = &v1alpha1.GuarddutyThreatintelset{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("guarddutythreatintelsets").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(guarddutyThreatintelset).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a guarddutyThreatintelset and updates it. Returns the server's representation of the guarddutyThreatintelset, and an error, if there is any.
-func (c *guarddutyThreatintelsets) Update(guarddutyThreatintelset *v1alpha1.GuarddutyThreatintelset) (result *v1alpha1.GuarddutyThreatintelset, err error) {
+func (c *guarddutyThreatintelsets) Update(ctx context.Context, guarddutyThreatintelset *v1alpha1.GuarddutyThreatintelset, opts v1.UpdateOptions) (result *v1alpha1.GuarddutyThreatintelset, err error) {
 	result = &v1alpha1.GuarddutyThreatintelset{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("guarddutythreatintelsets").
 		Name(guarddutyThreatintelset.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(guarddutyThreatintelset).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *guarddutyThreatintelsets) UpdateStatus(guarddutyThreatintelset *v1alpha1.GuarddutyThreatintelset) (result *v1alpha1.GuarddutyThreatintelset, err error) {
+func (c *guarddutyThreatintelsets) UpdateStatus(ctx context.Context, guarddutyThreatintelset *v1alpha1.GuarddutyThreatintelset, opts v1.UpdateOptions) (result *v1alpha1.GuarddutyThreatintelset, err error) {
 	result = &v1alpha1.GuarddutyThreatintelset{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("guarddutythreatintelsets").
 		Name(guarddutyThreatintelset.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(guarddutyThreatintelset).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the guarddutyThreatintelset and deletes it. Returns an error if one occurs.
-func (c *guarddutyThreatintelsets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *guarddutyThreatintelsets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("guarddutythreatintelsets").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *guarddutyThreatintelsets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *guarddutyThreatintelsets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("guarddutythreatintelsets").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched guarddutyThreatintelset.
-func (c *guarddutyThreatintelsets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.GuarddutyThreatintelset, err error) {
+func (c *guarddutyThreatintelsets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.GuarddutyThreatintelset, err error) {
 	result = &v1alpha1.GuarddutyThreatintelset{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("guarddutythreatintelsets").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

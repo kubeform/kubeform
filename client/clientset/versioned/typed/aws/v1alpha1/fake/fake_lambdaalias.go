@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var lambdaaliasesResource = schema.GroupVersionResource{Group: "aws.kubeform.com
 var lambdaaliasesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "LambdaAlias"}
 
 // Get takes name of the lambdaAlias, and returns the corresponding lambdaAlias object, and an error if there is any.
-func (c *FakeLambdaAliases) Get(name string, options v1.GetOptions) (result *v1alpha1.LambdaAlias, err error) {
+func (c *FakeLambdaAliases) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LambdaAlias, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(lambdaaliasesResource, c.ns, name), &v1alpha1.LambdaAlias{})
 
@@ -51,7 +53,7 @@ func (c *FakeLambdaAliases) Get(name string, options v1.GetOptions) (result *v1a
 }
 
 // List takes label and field selectors, and returns the list of LambdaAliases that match those selectors.
-func (c *FakeLambdaAliases) List(opts v1.ListOptions) (result *v1alpha1.LambdaAliasList, err error) {
+func (c *FakeLambdaAliases) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LambdaAliasList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(lambdaaliasesResource, lambdaaliasesKind, c.ns, opts), &v1alpha1.LambdaAliasList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLambdaAliases) List(opts v1.ListOptions) (result *v1alpha1.LambdaAl
 }
 
 // Watch returns a watch.Interface that watches the requested lambdaAliases.
-func (c *FakeLambdaAliases) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLambdaAliases) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(lambdaaliasesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a lambdaAlias and creates it.  Returns the server's representation of the lambdaAlias, and an error, if there is any.
-func (c *FakeLambdaAliases) Create(lambdaAlias *v1alpha1.LambdaAlias) (result *v1alpha1.LambdaAlias, err error) {
+func (c *FakeLambdaAliases) Create(ctx context.Context, lambdaAlias *v1alpha1.LambdaAlias, opts v1.CreateOptions) (result *v1alpha1.LambdaAlias, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(lambdaaliasesResource, c.ns, lambdaAlias), &v1alpha1.LambdaAlias{})
 
@@ -91,7 +93,7 @@ func (c *FakeLambdaAliases) Create(lambdaAlias *v1alpha1.LambdaAlias) (result *v
 }
 
 // Update takes the representation of a lambdaAlias and updates it. Returns the server's representation of the lambdaAlias, and an error, if there is any.
-func (c *FakeLambdaAliases) Update(lambdaAlias *v1alpha1.LambdaAlias) (result *v1alpha1.LambdaAlias, err error) {
+func (c *FakeLambdaAliases) Update(ctx context.Context, lambdaAlias *v1alpha1.LambdaAlias, opts v1.UpdateOptions) (result *v1alpha1.LambdaAlias, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(lambdaaliasesResource, c.ns, lambdaAlias), &v1alpha1.LambdaAlias{})
 
@@ -103,7 +105,7 @@ func (c *FakeLambdaAliases) Update(lambdaAlias *v1alpha1.LambdaAlias) (result *v
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLambdaAliases) UpdateStatus(lambdaAlias *v1alpha1.LambdaAlias) (*v1alpha1.LambdaAlias, error) {
+func (c *FakeLambdaAliases) UpdateStatus(ctx context.Context, lambdaAlias *v1alpha1.LambdaAlias, opts v1.UpdateOptions) (*v1alpha1.LambdaAlias, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(lambdaaliasesResource, "status", c.ns, lambdaAlias), &v1alpha1.LambdaAlias{})
 
@@ -114,7 +116,7 @@ func (c *FakeLambdaAliases) UpdateStatus(lambdaAlias *v1alpha1.LambdaAlias) (*v1
 }
 
 // Delete takes name of the lambdaAlias and deletes it. Returns an error if one occurs.
-func (c *FakeLambdaAliases) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLambdaAliases) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(lambdaaliasesResource, c.ns, name), &v1alpha1.LambdaAlias{})
 
@@ -122,15 +124,15 @@ func (c *FakeLambdaAliases) Delete(name string, options *v1.DeleteOptions) error
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLambdaAliases) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(lambdaaliasesResource, c.ns, listOptions)
+func (c *FakeLambdaAliases) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(lambdaaliasesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LambdaAliasList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched lambdaAlias.
-func (c *FakeLambdaAliases) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LambdaAlias, err error) {
+func (c *FakeLambdaAliases) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LambdaAlias, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(lambdaaliasesResource, c.ns, name, pt, data, subresources...), &v1alpha1.LambdaAlias{})
 

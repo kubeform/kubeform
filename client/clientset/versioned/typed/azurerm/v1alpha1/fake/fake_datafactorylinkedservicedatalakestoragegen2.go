@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var datafactorylinkedservicedatalakestoragegen2sResource = schema.GroupVersionRe
 var datafactorylinkedservicedatalakestoragegen2sKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "DataFactoryLinkedServiceDataLakeStorageGen2"}
 
 // Get takes name of the dataFactoryLinkedServiceDataLakeStorageGen2, and returns the corresponding dataFactoryLinkedServiceDataLakeStorageGen2 object, and an error if there is any.
-func (c *FakeDataFactoryLinkedServiceDataLakeStorageGen2s) Get(name string, options v1.GetOptions) (result *v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2, err error) {
+func (c *FakeDataFactoryLinkedServiceDataLakeStorageGen2s) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(datafactorylinkedservicedatalakestoragegen2sResource, c.ns, name), &v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2{})
 
@@ -51,7 +53,7 @@ func (c *FakeDataFactoryLinkedServiceDataLakeStorageGen2s) Get(name string, opti
 }
 
 // List takes label and field selectors, and returns the list of DataFactoryLinkedServiceDataLakeStorageGen2s that match those selectors.
-func (c *FakeDataFactoryLinkedServiceDataLakeStorageGen2s) List(opts v1.ListOptions) (result *v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2List, err error) {
+func (c *FakeDataFactoryLinkedServiceDataLakeStorageGen2s) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2List, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(datafactorylinkedservicedatalakestoragegen2sResource, datafactorylinkedservicedatalakestoragegen2sKind, c.ns, opts), &v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2List{})
 
@@ -73,14 +75,14 @@ func (c *FakeDataFactoryLinkedServiceDataLakeStorageGen2s) List(opts v1.ListOpti
 }
 
 // Watch returns a watch.Interface that watches the requested dataFactoryLinkedServiceDataLakeStorageGen2s.
-func (c *FakeDataFactoryLinkedServiceDataLakeStorageGen2s) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDataFactoryLinkedServiceDataLakeStorageGen2s) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(datafactorylinkedservicedatalakestoragegen2sResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dataFactoryLinkedServiceDataLakeStorageGen2 and creates it.  Returns the server's representation of the dataFactoryLinkedServiceDataLakeStorageGen2, and an error, if there is any.
-func (c *FakeDataFactoryLinkedServiceDataLakeStorageGen2s) Create(dataFactoryLinkedServiceDataLakeStorageGen2 *v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2) (result *v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2, err error) {
+func (c *FakeDataFactoryLinkedServiceDataLakeStorageGen2s) Create(ctx context.Context, dataFactoryLinkedServiceDataLakeStorageGen2 *v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2, opts v1.CreateOptions) (result *v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(datafactorylinkedservicedatalakestoragegen2sResource, c.ns, dataFactoryLinkedServiceDataLakeStorageGen2), &v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2{})
 
@@ -91,7 +93,7 @@ func (c *FakeDataFactoryLinkedServiceDataLakeStorageGen2s) Create(dataFactoryLin
 }
 
 // Update takes the representation of a dataFactoryLinkedServiceDataLakeStorageGen2 and updates it. Returns the server's representation of the dataFactoryLinkedServiceDataLakeStorageGen2, and an error, if there is any.
-func (c *FakeDataFactoryLinkedServiceDataLakeStorageGen2s) Update(dataFactoryLinkedServiceDataLakeStorageGen2 *v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2) (result *v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2, err error) {
+func (c *FakeDataFactoryLinkedServiceDataLakeStorageGen2s) Update(ctx context.Context, dataFactoryLinkedServiceDataLakeStorageGen2 *v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2, opts v1.UpdateOptions) (result *v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(datafactorylinkedservicedatalakestoragegen2sResource, c.ns, dataFactoryLinkedServiceDataLakeStorageGen2), &v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2{})
 
@@ -103,7 +105,7 @@ func (c *FakeDataFactoryLinkedServiceDataLakeStorageGen2s) Update(dataFactoryLin
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDataFactoryLinkedServiceDataLakeStorageGen2s) UpdateStatus(dataFactoryLinkedServiceDataLakeStorageGen2 *v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2) (*v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2, error) {
+func (c *FakeDataFactoryLinkedServiceDataLakeStorageGen2s) UpdateStatus(ctx context.Context, dataFactoryLinkedServiceDataLakeStorageGen2 *v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2, opts v1.UpdateOptions) (*v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(datafactorylinkedservicedatalakestoragegen2sResource, "status", c.ns, dataFactoryLinkedServiceDataLakeStorageGen2), &v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2{})
 
@@ -114,7 +116,7 @@ func (c *FakeDataFactoryLinkedServiceDataLakeStorageGen2s) UpdateStatus(dataFact
 }
 
 // Delete takes name of the dataFactoryLinkedServiceDataLakeStorageGen2 and deletes it. Returns an error if one occurs.
-func (c *FakeDataFactoryLinkedServiceDataLakeStorageGen2s) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDataFactoryLinkedServiceDataLakeStorageGen2s) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(datafactorylinkedservicedatalakestoragegen2sResource, c.ns, name), &v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2{})
 
@@ -122,15 +124,15 @@ func (c *FakeDataFactoryLinkedServiceDataLakeStorageGen2s) Delete(name string, o
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDataFactoryLinkedServiceDataLakeStorageGen2s) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(datafactorylinkedservicedatalakestoragegen2sResource, c.ns, listOptions)
+func (c *FakeDataFactoryLinkedServiceDataLakeStorageGen2s) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(datafactorylinkedservicedatalakestoragegen2sResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2List{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dataFactoryLinkedServiceDataLakeStorageGen2.
-func (c *FakeDataFactoryLinkedServiceDataLakeStorageGen2s) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2, err error) {
+func (c *FakeDataFactoryLinkedServiceDataLakeStorageGen2s) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(datafactorylinkedservicedatalakestoragegen2sResource, c.ns, name, pt, data, subresources...), &v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var apimanagementsubscriptionsResource = schema.GroupVersionResource{Group: "azu
 var apimanagementsubscriptionsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "ApiManagementSubscription"}
 
 // Get takes name of the apiManagementSubscription, and returns the corresponding apiManagementSubscription object, and an error if there is any.
-func (c *FakeApiManagementSubscriptions) Get(name string, options v1.GetOptions) (result *v1alpha1.ApiManagementSubscription, err error) {
+func (c *FakeApiManagementSubscriptions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApiManagementSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(apimanagementsubscriptionsResource, c.ns, name), &v1alpha1.ApiManagementSubscription{})
 
@@ -51,7 +53,7 @@ func (c *FakeApiManagementSubscriptions) Get(name string, options v1.GetOptions)
 }
 
 // List takes label and field selectors, and returns the list of ApiManagementSubscriptions that match those selectors.
-func (c *FakeApiManagementSubscriptions) List(opts v1.ListOptions) (result *v1alpha1.ApiManagementSubscriptionList, err error) {
+func (c *FakeApiManagementSubscriptions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApiManagementSubscriptionList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(apimanagementsubscriptionsResource, apimanagementsubscriptionsKind, c.ns, opts), &v1alpha1.ApiManagementSubscriptionList{})
 
@@ -73,14 +75,14 @@ func (c *FakeApiManagementSubscriptions) List(opts v1.ListOptions) (result *v1al
 }
 
 // Watch returns a watch.Interface that watches the requested apiManagementSubscriptions.
-func (c *FakeApiManagementSubscriptions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeApiManagementSubscriptions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(apimanagementsubscriptionsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a apiManagementSubscription and creates it.  Returns the server's representation of the apiManagementSubscription, and an error, if there is any.
-func (c *FakeApiManagementSubscriptions) Create(apiManagementSubscription *v1alpha1.ApiManagementSubscription) (result *v1alpha1.ApiManagementSubscription, err error) {
+func (c *FakeApiManagementSubscriptions) Create(ctx context.Context, apiManagementSubscription *v1alpha1.ApiManagementSubscription, opts v1.CreateOptions) (result *v1alpha1.ApiManagementSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(apimanagementsubscriptionsResource, c.ns, apiManagementSubscription), &v1alpha1.ApiManagementSubscription{})
 
@@ -91,7 +93,7 @@ func (c *FakeApiManagementSubscriptions) Create(apiManagementSubscription *v1alp
 }
 
 // Update takes the representation of a apiManagementSubscription and updates it. Returns the server's representation of the apiManagementSubscription, and an error, if there is any.
-func (c *FakeApiManagementSubscriptions) Update(apiManagementSubscription *v1alpha1.ApiManagementSubscription) (result *v1alpha1.ApiManagementSubscription, err error) {
+func (c *FakeApiManagementSubscriptions) Update(ctx context.Context, apiManagementSubscription *v1alpha1.ApiManagementSubscription, opts v1.UpdateOptions) (result *v1alpha1.ApiManagementSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(apimanagementsubscriptionsResource, c.ns, apiManagementSubscription), &v1alpha1.ApiManagementSubscription{})
 
@@ -103,7 +105,7 @@ func (c *FakeApiManagementSubscriptions) Update(apiManagementSubscription *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeApiManagementSubscriptions) UpdateStatus(apiManagementSubscription *v1alpha1.ApiManagementSubscription) (*v1alpha1.ApiManagementSubscription, error) {
+func (c *FakeApiManagementSubscriptions) UpdateStatus(ctx context.Context, apiManagementSubscription *v1alpha1.ApiManagementSubscription, opts v1.UpdateOptions) (*v1alpha1.ApiManagementSubscription, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(apimanagementsubscriptionsResource, "status", c.ns, apiManagementSubscription), &v1alpha1.ApiManagementSubscription{})
 
@@ -114,7 +116,7 @@ func (c *FakeApiManagementSubscriptions) UpdateStatus(apiManagementSubscription 
 }
 
 // Delete takes name of the apiManagementSubscription and deletes it. Returns an error if one occurs.
-func (c *FakeApiManagementSubscriptions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeApiManagementSubscriptions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(apimanagementsubscriptionsResource, c.ns, name), &v1alpha1.ApiManagementSubscription{})
 
@@ -122,15 +124,15 @@ func (c *FakeApiManagementSubscriptions) Delete(name string, options *v1.DeleteO
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeApiManagementSubscriptions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(apimanagementsubscriptionsResource, c.ns, listOptions)
+func (c *FakeApiManagementSubscriptions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(apimanagementsubscriptionsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ApiManagementSubscriptionList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched apiManagementSubscription.
-func (c *FakeApiManagementSubscriptions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiManagementSubscription, err error) {
+func (c *FakeApiManagementSubscriptions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiManagementSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(apimanagementsubscriptionsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ApiManagementSubscription{})
 

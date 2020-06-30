@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var kinesisfirehosedeliverystreamsResource = schema.GroupVersionResource{Group: 
 var kinesisfirehosedeliverystreamsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "KinesisFirehoseDeliveryStream"}
 
 // Get takes name of the kinesisFirehoseDeliveryStream, and returns the corresponding kinesisFirehoseDeliveryStream object, and an error if there is any.
-func (c *FakeKinesisFirehoseDeliveryStreams) Get(name string, options v1.GetOptions) (result *v1alpha1.KinesisFirehoseDeliveryStream, err error) {
+func (c *FakeKinesisFirehoseDeliveryStreams) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KinesisFirehoseDeliveryStream, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(kinesisfirehosedeliverystreamsResource, c.ns, name), &v1alpha1.KinesisFirehoseDeliveryStream{})
 
@@ -51,7 +53,7 @@ func (c *FakeKinesisFirehoseDeliveryStreams) Get(name string, options v1.GetOpti
 }
 
 // List takes label and field selectors, and returns the list of KinesisFirehoseDeliveryStreams that match those selectors.
-func (c *FakeKinesisFirehoseDeliveryStreams) List(opts v1.ListOptions) (result *v1alpha1.KinesisFirehoseDeliveryStreamList, err error) {
+func (c *FakeKinesisFirehoseDeliveryStreams) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KinesisFirehoseDeliveryStreamList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(kinesisfirehosedeliverystreamsResource, kinesisfirehosedeliverystreamsKind, c.ns, opts), &v1alpha1.KinesisFirehoseDeliveryStreamList{})
 
@@ -73,14 +75,14 @@ func (c *FakeKinesisFirehoseDeliveryStreams) List(opts v1.ListOptions) (result *
 }
 
 // Watch returns a watch.Interface that watches the requested kinesisFirehoseDeliveryStreams.
-func (c *FakeKinesisFirehoseDeliveryStreams) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeKinesisFirehoseDeliveryStreams) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(kinesisfirehosedeliverystreamsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a kinesisFirehoseDeliveryStream and creates it.  Returns the server's representation of the kinesisFirehoseDeliveryStream, and an error, if there is any.
-func (c *FakeKinesisFirehoseDeliveryStreams) Create(kinesisFirehoseDeliveryStream *v1alpha1.KinesisFirehoseDeliveryStream) (result *v1alpha1.KinesisFirehoseDeliveryStream, err error) {
+func (c *FakeKinesisFirehoseDeliveryStreams) Create(ctx context.Context, kinesisFirehoseDeliveryStream *v1alpha1.KinesisFirehoseDeliveryStream, opts v1.CreateOptions) (result *v1alpha1.KinesisFirehoseDeliveryStream, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(kinesisfirehosedeliverystreamsResource, c.ns, kinesisFirehoseDeliveryStream), &v1alpha1.KinesisFirehoseDeliveryStream{})
 
@@ -91,7 +93,7 @@ func (c *FakeKinesisFirehoseDeliveryStreams) Create(kinesisFirehoseDeliveryStrea
 }
 
 // Update takes the representation of a kinesisFirehoseDeliveryStream and updates it. Returns the server's representation of the kinesisFirehoseDeliveryStream, and an error, if there is any.
-func (c *FakeKinesisFirehoseDeliveryStreams) Update(kinesisFirehoseDeliveryStream *v1alpha1.KinesisFirehoseDeliveryStream) (result *v1alpha1.KinesisFirehoseDeliveryStream, err error) {
+func (c *FakeKinesisFirehoseDeliveryStreams) Update(ctx context.Context, kinesisFirehoseDeliveryStream *v1alpha1.KinesisFirehoseDeliveryStream, opts v1.UpdateOptions) (result *v1alpha1.KinesisFirehoseDeliveryStream, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(kinesisfirehosedeliverystreamsResource, c.ns, kinesisFirehoseDeliveryStream), &v1alpha1.KinesisFirehoseDeliveryStream{})
 
@@ -103,7 +105,7 @@ func (c *FakeKinesisFirehoseDeliveryStreams) Update(kinesisFirehoseDeliveryStrea
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeKinesisFirehoseDeliveryStreams) UpdateStatus(kinesisFirehoseDeliveryStream *v1alpha1.KinesisFirehoseDeliveryStream) (*v1alpha1.KinesisFirehoseDeliveryStream, error) {
+func (c *FakeKinesisFirehoseDeliveryStreams) UpdateStatus(ctx context.Context, kinesisFirehoseDeliveryStream *v1alpha1.KinesisFirehoseDeliveryStream, opts v1.UpdateOptions) (*v1alpha1.KinesisFirehoseDeliveryStream, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(kinesisfirehosedeliverystreamsResource, "status", c.ns, kinesisFirehoseDeliveryStream), &v1alpha1.KinesisFirehoseDeliveryStream{})
 
@@ -114,7 +116,7 @@ func (c *FakeKinesisFirehoseDeliveryStreams) UpdateStatus(kinesisFirehoseDeliver
 }
 
 // Delete takes name of the kinesisFirehoseDeliveryStream and deletes it. Returns an error if one occurs.
-func (c *FakeKinesisFirehoseDeliveryStreams) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeKinesisFirehoseDeliveryStreams) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(kinesisfirehosedeliverystreamsResource, c.ns, name), &v1alpha1.KinesisFirehoseDeliveryStream{})
 
@@ -122,15 +124,15 @@ func (c *FakeKinesisFirehoseDeliveryStreams) Delete(name string, options *v1.Del
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeKinesisFirehoseDeliveryStreams) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(kinesisfirehosedeliverystreamsResource, c.ns, listOptions)
+func (c *FakeKinesisFirehoseDeliveryStreams) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(kinesisfirehosedeliverystreamsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.KinesisFirehoseDeliveryStreamList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched kinesisFirehoseDeliveryStream.
-func (c *FakeKinesisFirehoseDeliveryStreams) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KinesisFirehoseDeliveryStream, err error) {
+func (c *FakeKinesisFirehoseDeliveryStreams) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KinesisFirehoseDeliveryStream, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(kinesisfirehosedeliverystreamsResource, c.ns, name, pt, data, subresources...), &v1alpha1.KinesisFirehoseDeliveryStream{})
 

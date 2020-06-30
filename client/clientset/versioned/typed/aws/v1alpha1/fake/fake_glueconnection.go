@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var glueconnectionsResource = schema.GroupVersionResource{Group: "aws.kubeform.c
 var glueconnectionsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "GlueConnection"}
 
 // Get takes name of the glueConnection, and returns the corresponding glueConnection object, and an error if there is any.
-func (c *FakeGlueConnections) Get(name string, options v1.GetOptions) (result *v1alpha1.GlueConnection, err error) {
+func (c *FakeGlueConnections) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.GlueConnection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(glueconnectionsResource, c.ns, name), &v1alpha1.GlueConnection{})
 
@@ -51,7 +53,7 @@ func (c *FakeGlueConnections) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of GlueConnections that match those selectors.
-func (c *FakeGlueConnections) List(opts v1.ListOptions) (result *v1alpha1.GlueConnectionList, err error) {
+func (c *FakeGlueConnections) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.GlueConnectionList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(glueconnectionsResource, glueconnectionsKind, c.ns, opts), &v1alpha1.GlueConnectionList{})
 
@@ -73,14 +75,14 @@ func (c *FakeGlueConnections) List(opts v1.ListOptions) (result *v1alpha1.GlueCo
 }
 
 // Watch returns a watch.Interface that watches the requested glueConnections.
-func (c *FakeGlueConnections) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeGlueConnections) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(glueconnectionsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a glueConnection and creates it.  Returns the server's representation of the glueConnection, and an error, if there is any.
-func (c *FakeGlueConnections) Create(glueConnection *v1alpha1.GlueConnection) (result *v1alpha1.GlueConnection, err error) {
+func (c *FakeGlueConnections) Create(ctx context.Context, glueConnection *v1alpha1.GlueConnection, opts v1.CreateOptions) (result *v1alpha1.GlueConnection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(glueconnectionsResource, c.ns, glueConnection), &v1alpha1.GlueConnection{})
 
@@ -91,7 +93,7 @@ func (c *FakeGlueConnections) Create(glueConnection *v1alpha1.GlueConnection) (r
 }
 
 // Update takes the representation of a glueConnection and updates it. Returns the server's representation of the glueConnection, and an error, if there is any.
-func (c *FakeGlueConnections) Update(glueConnection *v1alpha1.GlueConnection) (result *v1alpha1.GlueConnection, err error) {
+func (c *FakeGlueConnections) Update(ctx context.Context, glueConnection *v1alpha1.GlueConnection, opts v1.UpdateOptions) (result *v1alpha1.GlueConnection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(glueconnectionsResource, c.ns, glueConnection), &v1alpha1.GlueConnection{})
 
@@ -103,7 +105,7 @@ func (c *FakeGlueConnections) Update(glueConnection *v1alpha1.GlueConnection) (r
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeGlueConnections) UpdateStatus(glueConnection *v1alpha1.GlueConnection) (*v1alpha1.GlueConnection, error) {
+func (c *FakeGlueConnections) UpdateStatus(ctx context.Context, glueConnection *v1alpha1.GlueConnection, opts v1.UpdateOptions) (*v1alpha1.GlueConnection, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(glueconnectionsResource, "status", c.ns, glueConnection), &v1alpha1.GlueConnection{})
 
@@ -114,7 +116,7 @@ func (c *FakeGlueConnections) UpdateStatus(glueConnection *v1alpha1.GlueConnecti
 }
 
 // Delete takes name of the glueConnection and deletes it. Returns an error if one occurs.
-func (c *FakeGlueConnections) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeGlueConnections) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(glueconnectionsResource, c.ns, name), &v1alpha1.GlueConnection{})
 
@@ -122,15 +124,15 @@ func (c *FakeGlueConnections) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeGlueConnections) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(glueconnectionsResource, c.ns, listOptions)
+func (c *FakeGlueConnections) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(glueconnectionsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.GlueConnectionList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched glueConnection.
-func (c *FakeGlueConnections) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.GlueConnection, err error) {
+func (c *FakeGlueConnections) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.GlueConnection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(glueconnectionsResource, c.ns, name, pt, data, subresources...), &v1alpha1.GlueConnection{})
 

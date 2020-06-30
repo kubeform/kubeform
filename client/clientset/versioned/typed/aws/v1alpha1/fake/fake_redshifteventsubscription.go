@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var redshifteventsubscriptionsResource = schema.GroupVersionResource{Group: "aws
 var redshifteventsubscriptionsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "RedshiftEventSubscription"}
 
 // Get takes name of the redshiftEventSubscription, and returns the corresponding redshiftEventSubscription object, and an error if there is any.
-func (c *FakeRedshiftEventSubscriptions) Get(name string, options v1.GetOptions) (result *v1alpha1.RedshiftEventSubscription, err error) {
+func (c *FakeRedshiftEventSubscriptions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.RedshiftEventSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(redshifteventsubscriptionsResource, c.ns, name), &v1alpha1.RedshiftEventSubscription{})
 
@@ -51,7 +53,7 @@ func (c *FakeRedshiftEventSubscriptions) Get(name string, options v1.GetOptions)
 }
 
 // List takes label and field selectors, and returns the list of RedshiftEventSubscriptions that match those selectors.
-func (c *FakeRedshiftEventSubscriptions) List(opts v1.ListOptions) (result *v1alpha1.RedshiftEventSubscriptionList, err error) {
+func (c *FakeRedshiftEventSubscriptions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RedshiftEventSubscriptionList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(redshifteventsubscriptionsResource, redshifteventsubscriptionsKind, c.ns, opts), &v1alpha1.RedshiftEventSubscriptionList{})
 
@@ -73,14 +75,14 @@ func (c *FakeRedshiftEventSubscriptions) List(opts v1.ListOptions) (result *v1al
 }
 
 // Watch returns a watch.Interface that watches the requested redshiftEventSubscriptions.
-func (c *FakeRedshiftEventSubscriptions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeRedshiftEventSubscriptions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(redshifteventsubscriptionsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a redshiftEventSubscription and creates it.  Returns the server's representation of the redshiftEventSubscription, and an error, if there is any.
-func (c *FakeRedshiftEventSubscriptions) Create(redshiftEventSubscription *v1alpha1.RedshiftEventSubscription) (result *v1alpha1.RedshiftEventSubscription, err error) {
+func (c *FakeRedshiftEventSubscriptions) Create(ctx context.Context, redshiftEventSubscription *v1alpha1.RedshiftEventSubscription, opts v1.CreateOptions) (result *v1alpha1.RedshiftEventSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(redshifteventsubscriptionsResource, c.ns, redshiftEventSubscription), &v1alpha1.RedshiftEventSubscription{})
 
@@ -91,7 +93,7 @@ func (c *FakeRedshiftEventSubscriptions) Create(redshiftEventSubscription *v1alp
 }
 
 // Update takes the representation of a redshiftEventSubscription and updates it. Returns the server's representation of the redshiftEventSubscription, and an error, if there is any.
-func (c *FakeRedshiftEventSubscriptions) Update(redshiftEventSubscription *v1alpha1.RedshiftEventSubscription) (result *v1alpha1.RedshiftEventSubscription, err error) {
+func (c *FakeRedshiftEventSubscriptions) Update(ctx context.Context, redshiftEventSubscription *v1alpha1.RedshiftEventSubscription, opts v1.UpdateOptions) (result *v1alpha1.RedshiftEventSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(redshifteventsubscriptionsResource, c.ns, redshiftEventSubscription), &v1alpha1.RedshiftEventSubscription{})
 
@@ -103,7 +105,7 @@ func (c *FakeRedshiftEventSubscriptions) Update(redshiftEventSubscription *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeRedshiftEventSubscriptions) UpdateStatus(redshiftEventSubscription *v1alpha1.RedshiftEventSubscription) (*v1alpha1.RedshiftEventSubscription, error) {
+func (c *FakeRedshiftEventSubscriptions) UpdateStatus(ctx context.Context, redshiftEventSubscription *v1alpha1.RedshiftEventSubscription, opts v1.UpdateOptions) (*v1alpha1.RedshiftEventSubscription, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(redshifteventsubscriptionsResource, "status", c.ns, redshiftEventSubscription), &v1alpha1.RedshiftEventSubscription{})
 
@@ -114,7 +116,7 @@ func (c *FakeRedshiftEventSubscriptions) UpdateStatus(redshiftEventSubscription 
 }
 
 // Delete takes name of the redshiftEventSubscription and deletes it. Returns an error if one occurs.
-func (c *FakeRedshiftEventSubscriptions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeRedshiftEventSubscriptions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(redshifteventsubscriptionsResource, c.ns, name), &v1alpha1.RedshiftEventSubscription{})
 
@@ -122,15 +124,15 @@ func (c *FakeRedshiftEventSubscriptions) Delete(name string, options *v1.DeleteO
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeRedshiftEventSubscriptions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(redshifteventsubscriptionsResource, c.ns, listOptions)
+func (c *FakeRedshiftEventSubscriptions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(redshifteventsubscriptionsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.RedshiftEventSubscriptionList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched redshiftEventSubscription.
-func (c *FakeRedshiftEventSubscriptions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RedshiftEventSubscription, err error) {
+func (c *FakeRedshiftEventSubscriptions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RedshiftEventSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(redshifteventsubscriptionsResource, c.ns, name, pt, data, subresources...), &v1alpha1.RedshiftEventSubscription{})
 

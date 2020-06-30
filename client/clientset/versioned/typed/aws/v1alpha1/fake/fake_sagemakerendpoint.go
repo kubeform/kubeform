@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var sagemakerendpointsResource = schema.GroupVersionResource{Group: "aws.kubefor
 var sagemakerendpointsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "SagemakerEndpoint"}
 
 // Get takes name of the sagemakerEndpoint, and returns the corresponding sagemakerEndpoint object, and an error if there is any.
-func (c *FakeSagemakerEndpoints) Get(name string, options v1.GetOptions) (result *v1alpha1.SagemakerEndpoint, err error) {
+func (c *FakeSagemakerEndpoints) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SagemakerEndpoint, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(sagemakerendpointsResource, c.ns, name), &v1alpha1.SagemakerEndpoint{})
 
@@ -51,7 +53,7 @@ func (c *FakeSagemakerEndpoints) Get(name string, options v1.GetOptions) (result
 }
 
 // List takes label and field selectors, and returns the list of SagemakerEndpoints that match those selectors.
-func (c *FakeSagemakerEndpoints) List(opts v1.ListOptions) (result *v1alpha1.SagemakerEndpointList, err error) {
+func (c *FakeSagemakerEndpoints) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SagemakerEndpointList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(sagemakerendpointsResource, sagemakerendpointsKind, c.ns, opts), &v1alpha1.SagemakerEndpointList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSagemakerEndpoints) List(opts v1.ListOptions) (result *v1alpha1.Sag
 }
 
 // Watch returns a watch.Interface that watches the requested sagemakerEndpoints.
-func (c *FakeSagemakerEndpoints) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSagemakerEndpoints) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(sagemakerendpointsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a sagemakerEndpoint and creates it.  Returns the server's representation of the sagemakerEndpoint, and an error, if there is any.
-func (c *FakeSagemakerEndpoints) Create(sagemakerEndpoint *v1alpha1.SagemakerEndpoint) (result *v1alpha1.SagemakerEndpoint, err error) {
+func (c *FakeSagemakerEndpoints) Create(ctx context.Context, sagemakerEndpoint *v1alpha1.SagemakerEndpoint, opts v1.CreateOptions) (result *v1alpha1.SagemakerEndpoint, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(sagemakerendpointsResource, c.ns, sagemakerEndpoint), &v1alpha1.SagemakerEndpoint{})
 
@@ -91,7 +93,7 @@ func (c *FakeSagemakerEndpoints) Create(sagemakerEndpoint *v1alpha1.SagemakerEnd
 }
 
 // Update takes the representation of a sagemakerEndpoint and updates it. Returns the server's representation of the sagemakerEndpoint, and an error, if there is any.
-func (c *FakeSagemakerEndpoints) Update(sagemakerEndpoint *v1alpha1.SagemakerEndpoint) (result *v1alpha1.SagemakerEndpoint, err error) {
+func (c *FakeSagemakerEndpoints) Update(ctx context.Context, sagemakerEndpoint *v1alpha1.SagemakerEndpoint, opts v1.UpdateOptions) (result *v1alpha1.SagemakerEndpoint, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(sagemakerendpointsResource, c.ns, sagemakerEndpoint), &v1alpha1.SagemakerEndpoint{})
 
@@ -103,7 +105,7 @@ func (c *FakeSagemakerEndpoints) Update(sagemakerEndpoint *v1alpha1.SagemakerEnd
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSagemakerEndpoints) UpdateStatus(sagemakerEndpoint *v1alpha1.SagemakerEndpoint) (*v1alpha1.SagemakerEndpoint, error) {
+func (c *FakeSagemakerEndpoints) UpdateStatus(ctx context.Context, sagemakerEndpoint *v1alpha1.SagemakerEndpoint, opts v1.UpdateOptions) (*v1alpha1.SagemakerEndpoint, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(sagemakerendpointsResource, "status", c.ns, sagemakerEndpoint), &v1alpha1.SagemakerEndpoint{})
 
@@ -114,7 +116,7 @@ func (c *FakeSagemakerEndpoints) UpdateStatus(sagemakerEndpoint *v1alpha1.Sagema
 }
 
 // Delete takes name of the sagemakerEndpoint and deletes it. Returns an error if one occurs.
-func (c *FakeSagemakerEndpoints) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSagemakerEndpoints) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(sagemakerendpointsResource, c.ns, name), &v1alpha1.SagemakerEndpoint{})
 
@@ -122,15 +124,15 @@ func (c *FakeSagemakerEndpoints) Delete(name string, options *v1.DeleteOptions) 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSagemakerEndpoints) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(sagemakerendpointsResource, c.ns, listOptions)
+func (c *FakeSagemakerEndpoints) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(sagemakerendpointsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SagemakerEndpointList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched sagemakerEndpoint.
-func (c *FakeSagemakerEndpoints) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SagemakerEndpoint, err error) {
+func (c *FakeSagemakerEndpoints) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SagemakerEndpoint, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(sagemakerendpointsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SagemakerEndpoint{})
 

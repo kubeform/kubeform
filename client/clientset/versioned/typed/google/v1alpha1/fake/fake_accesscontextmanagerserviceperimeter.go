@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var accesscontextmanagerserviceperimetersResource = schema.GroupVersionResource{
 var accesscontextmanagerserviceperimetersKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "AccessContextManagerServicePerimeter"}
 
 // Get takes name of the accessContextManagerServicePerimeter, and returns the corresponding accessContextManagerServicePerimeter object, and an error if there is any.
-func (c *FakeAccessContextManagerServicePerimeters) Get(name string, options v1.GetOptions) (result *v1alpha1.AccessContextManagerServicePerimeter, err error) {
+func (c *FakeAccessContextManagerServicePerimeters) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AccessContextManagerServicePerimeter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(accesscontextmanagerserviceperimetersResource, c.ns, name), &v1alpha1.AccessContextManagerServicePerimeter{})
 
@@ -51,7 +53,7 @@ func (c *FakeAccessContextManagerServicePerimeters) Get(name string, options v1.
 }
 
 // List takes label and field selectors, and returns the list of AccessContextManagerServicePerimeters that match those selectors.
-func (c *FakeAccessContextManagerServicePerimeters) List(opts v1.ListOptions) (result *v1alpha1.AccessContextManagerServicePerimeterList, err error) {
+func (c *FakeAccessContextManagerServicePerimeters) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AccessContextManagerServicePerimeterList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(accesscontextmanagerserviceperimetersResource, accesscontextmanagerserviceperimetersKind, c.ns, opts), &v1alpha1.AccessContextManagerServicePerimeterList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAccessContextManagerServicePerimeters) List(opts v1.ListOptions) (r
 }
 
 // Watch returns a watch.Interface that watches the requested accessContextManagerServicePerimeters.
-func (c *FakeAccessContextManagerServicePerimeters) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAccessContextManagerServicePerimeters) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(accesscontextmanagerserviceperimetersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a accessContextManagerServicePerimeter and creates it.  Returns the server's representation of the accessContextManagerServicePerimeter, and an error, if there is any.
-func (c *FakeAccessContextManagerServicePerimeters) Create(accessContextManagerServicePerimeter *v1alpha1.AccessContextManagerServicePerimeter) (result *v1alpha1.AccessContextManagerServicePerimeter, err error) {
+func (c *FakeAccessContextManagerServicePerimeters) Create(ctx context.Context, accessContextManagerServicePerimeter *v1alpha1.AccessContextManagerServicePerimeter, opts v1.CreateOptions) (result *v1alpha1.AccessContextManagerServicePerimeter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(accesscontextmanagerserviceperimetersResource, c.ns, accessContextManagerServicePerimeter), &v1alpha1.AccessContextManagerServicePerimeter{})
 
@@ -91,7 +93,7 @@ func (c *FakeAccessContextManagerServicePerimeters) Create(accessContextManagerS
 }
 
 // Update takes the representation of a accessContextManagerServicePerimeter and updates it. Returns the server's representation of the accessContextManagerServicePerimeter, and an error, if there is any.
-func (c *FakeAccessContextManagerServicePerimeters) Update(accessContextManagerServicePerimeter *v1alpha1.AccessContextManagerServicePerimeter) (result *v1alpha1.AccessContextManagerServicePerimeter, err error) {
+func (c *FakeAccessContextManagerServicePerimeters) Update(ctx context.Context, accessContextManagerServicePerimeter *v1alpha1.AccessContextManagerServicePerimeter, opts v1.UpdateOptions) (result *v1alpha1.AccessContextManagerServicePerimeter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(accesscontextmanagerserviceperimetersResource, c.ns, accessContextManagerServicePerimeter), &v1alpha1.AccessContextManagerServicePerimeter{})
 
@@ -103,7 +105,7 @@ func (c *FakeAccessContextManagerServicePerimeters) Update(accessContextManagerS
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAccessContextManagerServicePerimeters) UpdateStatus(accessContextManagerServicePerimeter *v1alpha1.AccessContextManagerServicePerimeter) (*v1alpha1.AccessContextManagerServicePerimeter, error) {
+func (c *FakeAccessContextManagerServicePerimeters) UpdateStatus(ctx context.Context, accessContextManagerServicePerimeter *v1alpha1.AccessContextManagerServicePerimeter, opts v1.UpdateOptions) (*v1alpha1.AccessContextManagerServicePerimeter, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(accesscontextmanagerserviceperimetersResource, "status", c.ns, accessContextManagerServicePerimeter), &v1alpha1.AccessContextManagerServicePerimeter{})
 
@@ -114,7 +116,7 @@ func (c *FakeAccessContextManagerServicePerimeters) UpdateStatus(accessContextMa
 }
 
 // Delete takes name of the accessContextManagerServicePerimeter and deletes it. Returns an error if one occurs.
-func (c *FakeAccessContextManagerServicePerimeters) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAccessContextManagerServicePerimeters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(accesscontextmanagerserviceperimetersResource, c.ns, name), &v1alpha1.AccessContextManagerServicePerimeter{})
 
@@ -122,15 +124,15 @@ func (c *FakeAccessContextManagerServicePerimeters) Delete(name string, options 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAccessContextManagerServicePerimeters) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(accesscontextmanagerserviceperimetersResource, c.ns, listOptions)
+func (c *FakeAccessContextManagerServicePerimeters) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(accesscontextmanagerserviceperimetersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AccessContextManagerServicePerimeterList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched accessContextManagerServicePerimeter.
-func (c *FakeAccessContextManagerServicePerimeters) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AccessContextManagerServicePerimeter, err error) {
+func (c *FakeAccessContextManagerServicePerimeters) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AccessContextManagerServicePerimeter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(accesscontextmanagerserviceperimetersResource, c.ns, name, pt, data, subresources...), &v1alpha1.AccessContextManagerServicePerimeter{})
 

@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/linode/v1alpha1"
@@ -38,15 +39,15 @@ type DomainRecordsGetter interface {
 
 // DomainRecordInterface has methods to work with DomainRecord resources.
 type DomainRecordInterface interface {
-	Create(*v1alpha1.DomainRecord) (*v1alpha1.DomainRecord, error)
-	Update(*v1alpha1.DomainRecord) (*v1alpha1.DomainRecord, error)
-	UpdateStatus(*v1alpha1.DomainRecord) (*v1alpha1.DomainRecord, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.DomainRecord, error)
-	List(opts v1.ListOptions) (*v1alpha1.DomainRecordList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DomainRecord, err error)
+	Create(ctx context.Context, domainRecord *v1alpha1.DomainRecord, opts v1.CreateOptions) (*v1alpha1.DomainRecord, error)
+	Update(ctx context.Context, domainRecord *v1alpha1.DomainRecord, opts v1.UpdateOptions) (*v1alpha1.DomainRecord, error)
+	UpdateStatus(ctx context.Context, domainRecord *v1alpha1.DomainRecord, opts v1.UpdateOptions) (*v1alpha1.DomainRecord, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.DomainRecord, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.DomainRecordList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DomainRecord, err error)
 	DomainRecordExpansion
 }
 
@@ -65,20 +66,20 @@ func newDomainRecords(c *LinodeV1alpha1Client, namespace string) *domainRecords 
 }
 
 // Get takes name of the domainRecord, and returns the corresponding domainRecord object, and an error if there is any.
-func (c *domainRecords) Get(name string, options v1.GetOptions) (result *v1alpha1.DomainRecord, err error) {
+func (c *domainRecords) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DomainRecord, err error) {
 	result = &v1alpha1.DomainRecord{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("domainrecords").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of DomainRecords that match those selectors.
-func (c *domainRecords) List(opts v1.ListOptions) (result *v1alpha1.DomainRecordList, err error) {
+func (c *domainRecords) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DomainRecordList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *domainRecords) List(opts v1.ListOptions) (result *v1alpha1.DomainRecord
 		Resource("domainrecords").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested domainRecords.
-func (c *domainRecords) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *domainRecords) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *domainRecords) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("domainrecords").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a domainRecord and creates it.  Returns the server's representation of the domainRecord, and an error, if there is any.
-func (c *domainRecords) Create(domainRecord *v1alpha1.DomainRecord) (result *v1alpha1.DomainRecord, err error) {
+func (c *domainRecords) Create(ctx context.Context, domainRecord *v1alpha1.DomainRecord, opts v1.CreateOptions) (result *v1alpha1.DomainRecord, err error) {
 	result = &v1alpha1.DomainRecord{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("domainrecords").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(domainRecord).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a domainRecord and updates it. Returns the server's representation of the domainRecord, and an error, if there is any.
-func (c *domainRecords) Update(domainRecord *v1alpha1.DomainRecord) (result *v1alpha1.DomainRecord, err error) {
+func (c *domainRecords) Update(ctx context.Context, domainRecord *v1alpha1.DomainRecord, opts v1.UpdateOptions) (result *v1alpha1.DomainRecord, err error) {
 	result = &v1alpha1.DomainRecord{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("domainrecords").
 		Name(domainRecord.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(domainRecord).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *domainRecords) UpdateStatus(domainRecord *v1alpha1.DomainRecord) (result *v1alpha1.DomainRecord, err error) {
+func (c *domainRecords) UpdateStatus(ctx context.Context, domainRecord *v1alpha1.DomainRecord, opts v1.UpdateOptions) (result *v1alpha1.DomainRecord, err error) {
 	result = &v1alpha1.DomainRecord{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("domainrecords").
 		Name(domainRecord.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(domainRecord).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the domainRecord and deletes it. Returns an error if one occurs.
-func (c *domainRecords) Delete(name string, options *v1.DeleteOptions) error {
+func (c *domainRecords) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("domainrecords").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *domainRecords) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *domainRecords) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("domainrecords").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched domainRecord.
-func (c *domainRecords) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DomainRecord, err error) {
+func (c *domainRecords) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DomainRecord, err error) {
 	result = &v1alpha1.DomainRecord{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("domainrecords").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

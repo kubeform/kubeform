@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type LightsailInstancesGetter interface {
 
 // LightsailInstanceInterface has methods to work with LightsailInstance resources.
 type LightsailInstanceInterface interface {
-	Create(*v1alpha1.LightsailInstance) (*v1alpha1.LightsailInstance, error)
-	Update(*v1alpha1.LightsailInstance) (*v1alpha1.LightsailInstance, error)
-	UpdateStatus(*v1alpha1.LightsailInstance) (*v1alpha1.LightsailInstance, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.LightsailInstance, error)
-	List(opts v1.ListOptions) (*v1alpha1.LightsailInstanceList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LightsailInstance, err error)
+	Create(ctx context.Context, lightsailInstance *v1alpha1.LightsailInstance, opts v1.CreateOptions) (*v1alpha1.LightsailInstance, error)
+	Update(ctx context.Context, lightsailInstance *v1alpha1.LightsailInstance, opts v1.UpdateOptions) (*v1alpha1.LightsailInstance, error)
+	UpdateStatus(ctx context.Context, lightsailInstance *v1alpha1.LightsailInstance, opts v1.UpdateOptions) (*v1alpha1.LightsailInstance, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.LightsailInstance, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.LightsailInstanceList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LightsailInstance, err error)
 	LightsailInstanceExpansion
 }
 
@@ -65,20 +66,20 @@ func newLightsailInstances(c *AwsV1alpha1Client, namespace string) *lightsailIns
 }
 
 // Get takes name of the lightsailInstance, and returns the corresponding lightsailInstance object, and an error if there is any.
-func (c *lightsailInstances) Get(name string, options v1.GetOptions) (result *v1alpha1.LightsailInstance, err error) {
+func (c *lightsailInstances) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LightsailInstance, err error) {
 	result = &v1alpha1.LightsailInstance{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("lightsailinstances").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of LightsailInstances that match those selectors.
-func (c *lightsailInstances) List(opts v1.ListOptions) (result *v1alpha1.LightsailInstanceList, err error) {
+func (c *lightsailInstances) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LightsailInstanceList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *lightsailInstances) List(opts v1.ListOptions) (result *v1alpha1.Lightsa
 		Resource("lightsailinstances").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested lightsailInstances.
-func (c *lightsailInstances) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *lightsailInstances) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *lightsailInstances) Watch(opts v1.ListOptions) (watch.Interface, error)
 		Resource("lightsailinstances").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a lightsailInstance and creates it.  Returns the server's representation of the lightsailInstance, and an error, if there is any.
-func (c *lightsailInstances) Create(lightsailInstance *v1alpha1.LightsailInstance) (result *v1alpha1.LightsailInstance, err error) {
+func (c *lightsailInstances) Create(ctx context.Context, lightsailInstance *v1alpha1.LightsailInstance, opts v1.CreateOptions) (result *v1alpha1.LightsailInstance, err error) {
 	result = &v1alpha1.LightsailInstance{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("lightsailinstances").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lightsailInstance).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a lightsailInstance and updates it. Returns the server's representation of the lightsailInstance, and an error, if there is any.
-func (c *lightsailInstances) Update(lightsailInstance *v1alpha1.LightsailInstance) (result *v1alpha1.LightsailInstance, err error) {
+func (c *lightsailInstances) Update(ctx context.Context, lightsailInstance *v1alpha1.LightsailInstance, opts v1.UpdateOptions) (result *v1alpha1.LightsailInstance, err error) {
 	result = &v1alpha1.LightsailInstance{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("lightsailinstances").
 		Name(lightsailInstance.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lightsailInstance).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *lightsailInstances) UpdateStatus(lightsailInstance *v1alpha1.LightsailInstance) (result *v1alpha1.LightsailInstance, err error) {
+func (c *lightsailInstances) UpdateStatus(ctx context.Context, lightsailInstance *v1alpha1.LightsailInstance, opts v1.UpdateOptions) (result *v1alpha1.LightsailInstance, err error) {
 	result = &v1alpha1.LightsailInstance{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("lightsailinstances").
 		Name(lightsailInstance.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lightsailInstance).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the lightsailInstance and deletes it. Returns an error if one occurs.
-func (c *lightsailInstances) Delete(name string, options *v1.DeleteOptions) error {
+func (c *lightsailInstances) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("lightsailinstances").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *lightsailInstances) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *lightsailInstances) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("lightsailinstances").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched lightsailInstance.
-func (c *lightsailInstances) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LightsailInstance, err error) {
+func (c *lightsailInstances) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LightsailInstance, err error) {
 	result = &v1alpha1.LightsailInstance{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("lightsailinstances").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

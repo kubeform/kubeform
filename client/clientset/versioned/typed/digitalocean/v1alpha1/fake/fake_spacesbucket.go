@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/digitalocean/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var spacesbucketsResource = schema.GroupVersionResource{Group: "digitalocean.kub
 var spacesbucketsKind = schema.GroupVersionKind{Group: "digitalocean.kubeform.com", Version: "v1alpha1", Kind: "SpacesBucket"}
 
 // Get takes name of the spacesBucket, and returns the corresponding spacesBucket object, and an error if there is any.
-func (c *FakeSpacesBuckets) Get(name string, options v1.GetOptions) (result *v1alpha1.SpacesBucket, err error) {
+func (c *FakeSpacesBuckets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SpacesBucket, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(spacesbucketsResource, c.ns, name), &v1alpha1.SpacesBucket{})
 
@@ -51,7 +53,7 @@ func (c *FakeSpacesBuckets) Get(name string, options v1.GetOptions) (result *v1a
 }
 
 // List takes label and field selectors, and returns the list of SpacesBuckets that match those selectors.
-func (c *FakeSpacesBuckets) List(opts v1.ListOptions) (result *v1alpha1.SpacesBucketList, err error) {
+func (c *FakeSpacesBuckets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SpacesBucketList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(spacesbucketsResource, spacesbucketsKind, c.ns, opts), &v1alpha1.SpacesBucketList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSpacesBuckets) List(opts v1.ListOptions) (result *v1alpha1.SpacesBu
 }
 
 // Watch returns a watch.Interface that watches the requested spacesBuckets.
-func (c *FakeSpacesBuckets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSpacesBuckets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(spacesbucketsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a spacesBucket and creates it.  Returns the server's representation of the spacesBucket, and an error, if there is any.
-func (c *FakeSpacesBuckets) Create(spacesBucket *v1alpha1.SpacesBucket) (result *v1alpha1.SpacesBucket, err error) {
+func (c *FakeSpacesBuckets) Create(ctx context.Context, spacesBucket *v1alpha1.SpacesBucket, opts v1.CreateOptions) (result *v1alpha1.SpacesBucket, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(spacesbucketsResource, c.ns, spacesBucket), &v1alpha1.SpacesBucket{})
 
@@ -91,7 +93,7 @@ func (c *FakeSpacesBuckets) Create(spacesBucket *v1alpha1.SpacesBucket) (result 
 }
 
 // Update takes the representation of a spacesBucket and updates it. Returns the server's representation of the spacesBucket, and an error, if there is any.
-func (c *FakeSpacesBuckets) Update(spacesBucket *v1alpha1.SpacesBucket) (result *v1alpha1.SpacesBucket, err error) {
+func (c *FakeSpacesBuckets) Update(ctx context.Context, spacesBucket *v1alpha1.SpacesBucket, opts v1.UpdateOptions) (result *v1alpha1.SpacesBucket, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(spacesbucketsResource, c.ns, spacesBucket), &v1alpha1.SpacesBucket{})
 
@@ -103,7 +105,7 @@ func (c *FakeSpacesBuckets) Update(spacesBucket *v1alpha1.SpacesBucket) (result 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSpacesBuckets) UpdateStatus(spacesBucket *v1alpha1.SpacesBucket) (*v1alpha1.SpacesBucket, error) {
+func (c *FakeSpacesBuckets) UpdateStatus(ctx context.Context, spacesBucket *v1alpha1.SpacesBucket, opts v1.UpdateOptions) (*v1alpha1.SpacesBucket, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(spacesbucketsResource, "status", c.ns, spacesBucket), &v1alpha1.SpacesBucket{})
 
@@ -114,7 +116,7 @@ func (c *FakeSpacesBuckets) UpdateStatus(spacesBucket *v1alpha1.SpacesBucket) (*
 }
 
 // Delete takes name of the spacesBucket and deletes it. Returns an error if one occurs.
-func (c *FakeSpacesBuckets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSpacesBuckets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(spacesbucketsResource, c.ns, name), &v1alpha1.SpacesBucket{})
 
@@ -122,15 +124,15 @@ func (c *FakeSpacesBuckets) Delete(name string, options *v1.DeleteOptions) error
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSpacesBuckets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(spacesbucketsResource, c.ns, listOptions)
+func (c *FakeSpacesBuckets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(spacesbucketsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SpacesBucketList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched spacesBucket.
-func (c *FakeSpacesBuckets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SpacesBucket, err error) {
+func (c *FakeSpacesBuckets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SpacesBucket, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(spacesbucketsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SpacesBucket{})
 

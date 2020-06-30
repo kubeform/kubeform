@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type CosmosdbMongoCollectionsGetter interface {
 
 // CosmosdbMongoCollectionInterface has methods to work with CosmosdbMongoCollection resources.
 type CosmosdbMongoCollectionInterface interface {
-	Create(*v1alpha1.CosmosdbMongoCollection) (*v1alpha1.CosmosdbMongoCollection, error)
-	Update(*v1alpha1.CosmosdbMongoCollection) (*v1alpha1.CosmosdbMongoCollection, error)
-	UpdateStatus(*v1alpha1.CosmosdbMongoCollection) (*v1alpha1.CosmosdbMongoCollection, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.CosmosdbMongoCollection, error)
-	List(opts v1.ListOptions) (*v1alpha1.CosmosdbMongoCollectionList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CosmosdbMongoCollection, err error)
+	Create(ctx context.Context, cosmosdbMongoCollection *v1alpha1.CosmosdbMongoCollection, opts v1.CreateOptions) (*v1alpha1.CosmosdbMongoCollection, error)
+	Update(ctx context.Context, cosmosdbMongoCollection *v1alpha1.CosmosdbMongoCollection, opts v1.UpdateOptions) (*v1alpha1.CosmosdbMongoCollection, error)
+	UpdateStatus(ctx context.Context, cosmosdbMongoCollection *v1alpha1.CosmosdbMongoCollection, opts v1.UpdateOptions) (*v1alpha1.CosmosdbMongoCollection, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.CosmosdbMongoCollection, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.CosmosdbMongoCollectionList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CosmosdbMongoCollection, err error)
 	CosmosdbMongoCollectionExpansion
 }
 
@@ -65,20 +66,20 @@ func newCosmosdbMongoCollections(c *AzurermV1alpha1Client, namespace string) *co
 }
 
 // Get takes name of the cosmosdbMongoCollection, and returns the corresponding cosmosdbMongoCollection object, and an error if there is any.
-func (c *cosmosdbMongoCollections) Get(name string, options v1.GetOptions) (result *v1alpha1.CosmosdbMongoCollection, err error) {
+func (c *cosmosdbMongoCollections) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CosmosdbMongoCollection, err error) {
 	result = &v1alpha1.CosmosdbMongoCollection{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("cosmosdbmongocollections").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of CosmosdbMongoCollections that match those selectors.
-func (c *cosmosdbMongoCollections) List(opts v1.ListOptions) (result *v1alpha1.CosmosdbMongoCollectionList, err error) {
+func (c *cosmosdbMongoCollections) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CosmosdbMongoCollectionList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *cosmosdbMongoCollections) List(opts v1.ListOptions) (result *v1alpha1.C
 		Resource("cosmosdbmongocollections").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested cosmosdbMongoCollections.
-func (c *cosmosdbMongoCollections) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *cosmosdbMongoCollections) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *cosmosdbMongoCollections) Watch(opts v1.ListOptions) (watch.Interface, 
 		Resource("cosmosdbmongocollections").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a cosmosdbMongoCollection and creates it.  Returns the server's representation of the cosmosdbMongoCollection, and an error, if there is any.
-func (c *cosmosdbMongoCollections) Create(cosmosdbMongoCollection *v1alpha1.CosmosdbMongoCollection) (result *v1alpha1.CosmosdbMongoCollection, err error) {
+func (c *cosmosdbMongoCollections) Create(ctx context.Context, cosmosdbMongoCollection *v1alpha1.CosmosdbMongoCollection, opts v1.CreateOptions) (result *v1alpha1.CosmosdbMongoCollection, err error) {
 	result = &v1alpha1.CosmosdbMongoCollection{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("cosmosdbmongocollections").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cosmosdbMongoCollection).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a cosmosdbMongoCollection and updates it. Returns the server's representation of the cosmosdbMongoCollection, and an error, if there is any.
-func (c *cosmosdbMongoCollections) Update(cosmosdbMongoCollection *v1alpha1.CosmosdbMongoCollection) (result *v1alpha1.CosmosdbMongoCollection, err error) {
+func (c *cosmosdbMongoCollections) Update(ctx context.Context, cosmosdbMongoCollection *v1alpha1.CosmosdbMongoCollection, opts v1.UpdateOptions) (result *v1alpha1.CosmosdbMongoCollection, err error) {
 	result = &v1alpha1.CosmosdbMongoCollection{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("cosmosdbmongocollections").
 		Name(cosmosdbMongoCollection.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cosmosdbMongoCollection).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *cosmosdbMongoCollections) UpdateStatus(cosmosdbMongoCollection *v1alpha1.CosmosdbMongoCollection) (result *v1alpha1.CosmosdbMongoCollection, err error) {
+func (c *cosmosdbMongoCollections) UpdateStatus(ctx context.Context, cosmosdbMongoCollection *v1alpha1.CosmosdbMongoCollection, opts v1.UpdateOptions) (result *v1alpha1.CosmosdbMongoCollection, err error) {
 	result = &v1alpha1.CosmosdbMongoCollection{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("cosmosdbmongocollections").
 		Name(cosmosdbMongoCollection.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cosmosdbMongoCollection).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the cosmosdbMongoCollection and deletes it. Returns an error if one occurs.
-func (c *cosmosdbMongoCollections) Delete(name string, options *v1.DeleteOptions) error {
+func (c *cosmosdbMongoCollections) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("cosmosdbmongocollections").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *cosmosdbMongoCollections) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *cosmosdbMongoCollections) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("cosmosdbmongocollections").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched cosmosdbMongoCollection.
-func (c *cosmosdbMongoCollections) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CosmosdbMongoCollection, err error) {
+func (c *cosmosdbMongoCollections) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CosmosdbMongoCollection, err error) {
 	result = &v1alpha1.CosmosdbMongoCollection{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("cosmosdbmongocollections").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

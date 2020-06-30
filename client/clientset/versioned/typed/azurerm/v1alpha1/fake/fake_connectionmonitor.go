@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var connectionmonitorsResource = schema.GroupVersionResource{Group: "azurerm.kub
 var connectionmonitorsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "ConnectionMonitor"}
 
 // Get takes name of the connectionMonitor, and returns the corresponding connectionMonitor object, and an error if there is any.
-func (c *FakeConnectionMonitors) Get(name string, options v1.GetOptions) (result *v1alpha1.ConnectionMonitor, err error) {
+func (c *FakeConnectionMonitors) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ConnectionMonitor, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(connectionmonitorsResource, c.ns, name), &v1alpha1.ConnectionMonitor{})
 
@@ -51,7 +53,7 @@ func (c *FakeConnectionMonitors) Get(name string, options v1.GetOptions) (result
 }
 
 // List takes label and field selectors, and returns the list of ConnectionMonitors that match those selectors.
-func (c *FakeConnectionMonitors) List(opts v1.ListOptions) (result *v1alpha1.ConnectionMonitorList, err error) {
+func (c *FakeConnectionMonitors) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ConnectionMonitorList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(connectionmonitorsResource, connectionmonitorsKind, c.ns, opts), &v1alpha1.ConnectionMonitorList{})
 
@@ -73,14 +75,14 @@ func (c *FakeConnectionMonitors) List(opts v1.ListOptions) (result *v1alpha1.Con
 }
 
 // Watch returns a watch.Interface that watches the requested connectionMonitors.
-func (c *FakeConnectionMonitors) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeConnectionMonitors) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(connectionmonitorsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a connectionMonitor and creates it.  Returns the server's representation of the connectionMonitor, and an error, if there is any.
-func (c *FakeConnectionMonitors) Create(connectionMonitor *v1alpha1.ConnectionMonitor) (result *v1alpha1.ConnectionMonitor, err error) {
+func (c *FakeConnectionMonitors) Create(ctx context.Context, connectionMonitor *v1alpha1.ConnectionMonitor, opts v1.CreateOptions) (result *v1alpha1.ConnectionMonitor, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(connectionmonitorsResource, c.ns, connectionMonitor), &v1alpha1.ConnectionMonitor{})
 
@@ -91,7 +93,7 @@ func (c *FakeConnectionMonitors) Create(connectionMonitor *v1alpha1.ConnectionMo
 }
 
 // Update takes the representation of a connectionMonitor and updates it. Returns the server's representation of the connectionMonitor, and an error, if there is any.
-func (c *FakeConnectionMonitors) Update(connectionMonitor *v1alpha1.ConnectionMonitor) (result *v1alpha1.ConnectionMonitor, err error) {
+func (c *FakeConnectionMonitors) Update(ctx context.Context, connectionMonitor *v1alpha1.ConnectionMonitor, opts v1.UpdateOptions) (result *v1alpha1.ConnectionMonitor, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(connectionmonitorsResource, c.ns, connectionMonitor), &v1alpha1.ConnectionMonitor{})
 
@@ -103,7 +105,7 @@ func (c *FakeConnectionMonitors) Update(connectionMonitor *v1alpha1.ConnectionMo
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeConnectionMonitors) UpdateStatus(connectionMonitor *v1alpha1.ConnectionMonitor) (*v1alpha1.ConnectionMonitor, error) {
+func (c *FakeConnectionMonitors) UpdateStatus(ctx context.Context, connectionMonitor *v1alpha1.ConnectionMonitor, opts v1.UpdateOptions) (*v1alpha1.ConnectionMonitor, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(connectionmonitorsResource, "status", c.ns, connectionMonitor), &v1alpha1.ConnectionMonitor{})
 
@@ -114,7 +116,7 @@ func (c *FakeConnectionMonitors) UpdateStatus(connectionMonitor *v1alpha1.Connec
 }
 
 // Delete takes name of the connectionMonitor and deletes it. Returns an error if one occurs.
-func (c *FakeConnectionMonitors) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeConnectionMonitors) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(connectionmonitorsResource, c.ns, name), &v1alpha1.ConnectionMonitor{})
 
@@ -122,15 +124,15 @@ func (c *FakeConnectionMonitors) Delete(name string, options *v1.DeleteOptions) 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeConnectionMonitors) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(connectionmonitorsResource, c.ns, listOptions)
+func (c *FakeConnectionMonitors) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(connectionmonitorsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ConnectionMonitorList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched connectionMonitor.
-func (c *FakeConnectionMonitors) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ConnectionMonitor, err error) {
+func (c *FakeConnectionMonitors) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ConnectionMonitor, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(connectionmonitorsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ConnectionMonitor{})
 

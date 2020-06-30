@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dataprocjobiammembersResource = schema.GroupVersionResource{Group: "google.k
 var dataprocjobiammembersKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "DataprocJobIamMember"}
 
 // Get takes name of the dataprocJobIamMember, and returns the corresponding dataprocJobIamMember object, and an error if there is any.
-func (c *FakeDataprocJobIamMembers) Get(name string, options v1.GetOptions) (result *v1alpha1.DataprocJobIamMember, err error) {
+func (c *FakeDataprocJobIamMembers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DataprocJobIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dataprocjobiammembersResource, c.ns, name), &v1alpha1.DataprocJobIamMember{})
 
@@ -51,7 +53,7 @@ func (c *FakeDataprocJobIamMembers) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of DataprocJobIamMembers that match those selectors.
-func (c *FakeDataprocJobIamMembers) List(opts v1.ListOptions) (result *v1alpha1.DataprocJobIamMemberList, err error) {
+func (c *FakeDataprocJobIamMembers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DataprocJobIamMemberList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dataprocjobiammembersResource, dataprocjobiammembersKind, c.ns, opts), &v1alpha1.DataprocJobIamMemberList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDataprocJobIamMembers) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested dataprocJobIamMembers.
-func (c *FakeDataprocJobIamMembers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDataprocJobIamMembers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dataprocjobiammembersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dataprocJobIamMember and creates it.  Returns the server's representation of the dataprocJobIamMember, and an error, if there is any.
-func (c *FakeDataprocJobIamMembers) Create(dataprocJobIamMember *v1alpha1.DataprocJobIamMember) (result *v1alpha1.DataprocJobIamMember, err error) {
+func (c *FakeDataprocJobIamMembers) Create(ctx context.Context, dataprocJobIamMember *v1alpha1.DataprocJobIamMember, opts v1.CreateOptions) (result *v1alpha1.DataprocJobIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dataprocjobiammembersResource, c.ns, dataprocJobIamMember), &v1alpha1.DataprocJobIamMember{})
 
@@ -91,7 +93,7 @@ func (c *FakeDataprocJobIamMembers) Create(dataprocJobIamMember *v1alpha1.Datapr
 }
 
 // Update takes the representation of a dataprocJobIamMember and updates it. Returns the server's representation of the dataprocJobIamMember, and an error, if there is any.
-func (c *FakeDataprocJobIamMembers) Update(dataprocJobIamMember *v1alpha1.DataprocJobIamMember) (result *v1alpha1.DataprocJobIamMember, err error) {
+func (c *FakeDataprocJobIamMembers) Update(ctx context.Context, dataprocJobIamMember *v1alpha1.DataprocJobIamMember, opts v1.UpdateOptions) (result *v1alpha1.DataprocJobIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dataprocjobiammembersResource, c.ns, dataprocJobIamMember), &v1alpha1.DataprocJobIamMember{})
 
@@ -103,7 +105,7 @@ func (c *FakeDataprocJobIamMembers) Update(dataprocJobIamMember *v1alpha1.Datapr
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDataprocJobIamMembers) UpdateStatus(dataprocJobIamMember *v1alpha1.DataprocJobIamMember) (*v1alpha1.DataprocJobIamMember, error) {
+func (c *FakeDataprocJobIamMembers) UpdateStatus(ctx context.Context, dataprocJobIamMember *v1alpha1.DataprocJobIamMember, opts v1.UpdateOptions) (*v1alpha1.DataprocJobIamMember, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dataprocjobiammembersResource, "status", c.ns, dataprocJobIamMember), &v1alpha1.DataprocJobIamMember{})
 
@@ -114,7 +116,7 @@ func (c *FakeDataprocJobIamMembers) UpdateStatus(dataprocJobIamMember *v1alpha1.
 }
 
 // Delete takes name of the dataprocJobIamMember and deletes it. Returns an error if one occurs.
-func (c *FakeDataprocJobIamMembers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDataprocJobIamMembers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dataprocjobiammembersResource, c.ns, name), &v1alpha1.DataprocJobIamMember{})
 
@@ -122,15 +124,15 @@ func (c *FakeDataprocJobIamMembers) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDataprocJobIamMembers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dataprocjobiammembersResource, c.ns, listOptions)
+func (c *FakeDataprocJobIamMembers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dataprocjobiammembersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DataprocJobIamMemberList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dataprocJobIamMember.
-func (c *FakeDataprocJobIamMembers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataprocJobIamMember, err error) {
+func (c *FakeDataprocJobIamMembers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataprocJobIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dataprocjobiammembersResource, c.ns, name, pt, data, subresources...), &v1alpha1.DataprocJobIamMember{})
 

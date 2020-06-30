@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type ProjectIamCustomRolesGetter interface {
 
 // ProjectIamCustomRoleInterface has methods to work with ProjectIamCustomRole resources.
 type ProjectIamCustomRoleInterface interface {
-	Create(*v1alpha1.ProjectIamCustomRole) (*v1alpha1.ProjectIamCustomRole, error)
-	Update(*v1alpha1.ProjectIamCustomRole) (*v1alpha1.ProjectIamCustomRole, error)
-	UpdateStatus(*v1alpha1.ProjectIamCustomRole) (*v1alpha1.ProjectIamCustomRole, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ProjectIamCustomRole, error)
-	List(opts v1.ListOptions) (*v1alpha1.ProjectIamCustomRoleList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ProjectIamCustomRole, err error)
+	Create(ctx context.Context, projectIamCustomRole *v1alpha1.ProjectIamCustomRole, opts v1.CreateOptions) (*v1alpha1.ProjectIamCustomRole, error)
+	Update(ctx context.Context, projectIamCustomRole *v1alpha1.ProjectIamCustomRole, opts v1.UpdateOptions) (*v1alpha1.ProjectIamCustomRole, error)
+	UpdateStatus(ctx context.Context, projectIamCustomRole *v1alpha1.ProjectIamCustomRole, opts v1.UpdateOptions) (*v1alpha1.ProjectIamCustomRole, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ProjectIamCustomRole, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ProjectIamCustomRoleList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ProjectIamCustomRole, err error)
 	ProjectIamCustomRoleExpansion
 }
 
@@ -65,20 +66,20 @@ func newProjectIamCustomRoles(c *GoogleV1alpha1Client, namespace string) *projec
 }
 
 // Get takes name of the projectIamCustomRole, and returns the corresponding projectIamCustomRole object, and an error if there is any.
-func (c *projectIamCustomRoles) Get(name string, options v1.GetOptions) (result *v1alpha1.ProjectIamCustomRole, err error) {
+func (c *projectIamCustomRoles) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ProjectIamCustomRole, err error) {
 	result = &v1alpha1.ProjectIamCustomRole{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("projectiamcustomroles").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ProjectIamCustomRoles that match those selectors.
-func (c *projectIamCustomRoles) List(opts v1.ListOptions) (result *v1alpha1.ProjectIamCustomRoleList, err error) {
+func (c *projectIamCustomRoles) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ProjectIamCustomRoleList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *projectIamCustomRoles) List(opts v1.ListOptions) (result *v1alpha1.Proj
 		Resource("projectiamcustomroles").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested projectIamCustomRoles.
-func (c *projectIamCustomRoles) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *projectIamCustomRoles) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *projectIamCustomRoles) Watch(opts v1.ListOptions) (watch.Interface, err
 		Resource("projectiamcustomroles").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a projectIamCustomRole and creates it.  Returns the server's representation of the projectIamCustomRole, and an error, if there is any.
-func (c *projectIamCustomRoles) Create(projectIamCustomRole *v1alpha1.ProjectIamCustomRole) (result *v1alpha1.ProjectIamCustomRole, err error) {
+func (c *projectIamCustomRoles) Create(ctx context.Context, projectIamCustomRole *v1alpha1.ProjectIamCustomRole, opts v1.CreateOptions) (result *v1alpha1.ProjectIamCustomRole, err error) {
 	result = &v1alpha1.ProjectIamCustomRole{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("projectiamcustomroles").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(projectIamCustomRole).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a projectIamCustomRole and updates it. Returns the server's representation of the projectIamCustomRole, and an error, if there is any.
-func (c *projectIamCustomRoles) Update(projectIamCustomRole *v1alpha1.ProjectIamCustomRole) (result *v1alpha1.ProjectIamCustomRole, err error) {
+func (c *projectIamCustomRoles) Update(ctx context.Context, projectIamCustomRole *v1alpha1.ProjectIamCustomRole, opts v1.UpdateOptions) (result *v1alpha1.ProjectIamCustomRole, err error) {
 	result = &v1alpha1.ProjectIamCustomRole{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("projectiamcustomroles").
 		Name(projectIamCustomRole.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(projectIamCustomRole).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *projectIamCustomRoles) UpdateStatus(projectIamCustomRole *v1alpha1.ProjectIamCustomRole) (result *v1alpha1.ProjectIamCustomRole, err error) {
+func (c *projectIamCustomRoles) UpdateStatus(ctx context.Context, projectIamCustomRole *v1alpha1.ProjectIamCustomRole, opts v1.UpdateOptions) (result *v1alpha1.ProjectIamCustomRole, err error) {
 	result = &v1alpha1.ProjectIamCustomRole{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("projectiamcustomroles").
 		Name(projectIamCustomRole.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(projectIamCustomRole).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the projectIamCustomRole and deletes it. Returns an error if one occurs.
-func (c *projectIamCustomRoles) Delete(name string, options *v1.DeleteOptions) error {
+func (c *projectIamCustomRoles) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("projectiamcustomroles").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *projectIamCustomRoles) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *projectIamCustomRoles) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("projectiamcustomroles").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched projectIamCustomRole.
-func (c *projectIamCustomRoles) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ProjectIamCustomRole, err error) {
+func (c *projectIamCustomRoles) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ProjectIamCustomRole, err error) {
 	result = &v1alpha1.ProjectIamCustomRole{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("projectiamcustomroles").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

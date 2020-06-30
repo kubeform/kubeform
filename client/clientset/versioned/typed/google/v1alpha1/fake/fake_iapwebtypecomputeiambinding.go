@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iapwebtypecomputeiambindingsResource = schema.GroupVersionResource{Group: "g
 var iapwebtypecomputeiambindingsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "IapWebTypeComputeIamBinding"}
 
 // Get takes name of the iapWebTypeComputeIamBinding, and returns the corresponding iapWebTypeComputeIamBinding object, and an error if there is any.
-func (c *FakeIapWebTypeComputeIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.IapWebTypeComputeIamBinding, err error) {
+func (c *FakeIapWebTypeComputeIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IapWebTypeComputeIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iapwebtypecomputeiambindingsResource, c.ns, name), &v1alpha1.IapWebTypeComputeIamBinding{})
 
@@ -51,7 +53,7 @@ func (c *FakeIapWebTypeComputeIamBindings) Get(name string, options v1.GetOption
 }
 
 // List takes label and field selectors, and returns the list of IapWebTypeComputeIamBindings that match those selectors.
-func (c *FakeIapWebTypeComputeIamBindings) List(opts v1.ListOptions) (result *v1alpha1.IapWebTypeComputeIamBindingList, err error) {
+func (c *FakeIapWebTypeComputeIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IapWebTypeComputeIamBindingList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iapwebtypecomputeiambindingsResource, iapwebtypecomputeiambindingsKind, c.ns, opts), &v1alpha1.IapWebTypeComputeIamBindingList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIapWebTypeComputeIamBindings) List(opts v1.ListOptions) (result *v1
 }
 
 // Watch returns a watch.Interface that watches the requested iapWebTypeComputeIamBindings.
-func (c *FakeIapWebTypeComputeIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIapWebTypeComputeIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iapwebtypecomputeiambindingsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iapWebTypeComputeIamBinding and creates it.  Returns the server's representation of the iapWebTypeComputeIamBinding, and an error, if there is any.
-func (c *FakeIapWebTypeComputeIamBindings) Create(iapWebTypeComputeIamBinding *v1alpha1.IapWebTypeComputeIamBinding) (result *v1alpha1.IapWebTypeComputeIamBinding, err error) {
+func (c *FakeIapWebTypeComputeIamBindings) Create(ctx context.Context, iapWebTypeComputeIamBinding *v1alpha1.IapWebTypeComputeIamBinding, opts v1.CreateOptions) (result *v1alpha1.IapWebTypeComputeIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iapwebtypecomputeiambindingsResource, c.ns, iapWebTypeComputeIamBinding), &v1alpha1.IapWebTypeComputeIamBinding{})
 
@@ -91,7 +93,7 @@ func (c *FakeIapWebTypeComputeIamBindings) Create(iapWebTypeComputeIamBinding *v
 }
 
 // Update takes the representation of a iapWebTypeComputeIamBinding and updates it. Returns the server's representation of the iapWebTypeComputeIamBinding, and an error, if there is any.
-func (c *FakeIapWebTypeComputeIamBindings) Update(iapWebTypeComputeIamBinding *v1alpha1.IapWebTypeComputeIamBinding) (result *v1alpha1.IapWebTypeComputeIamBinding, err error) {
+func (c *FakeIapWebTypeComputeIamBindings) Update(ctx context.Context, iapWebTypeComputeIamBinding *v1alpha1.IapWebTypeComputeIamBinding, opts v1.UpdateOptions) (result *v1alpha1.IapWebTypeComputeIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iapwebtypecomputeiambindingsResource, c.ns, iapWebTypeComputeIamBinding), &v1alpha1.IapWebTypeComputeIamBinding{})
 
@@ -103,7 +105,7 @@ func (c *FakeIapWebTypeComputeIamBindings) Update(iapWebTypeComputeIamBinding *v
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIapWebTypeComputeIamBindings) UpdateStatus(iapWebTypeComputeIamBinding *v1alpha1.IapWebTypeComputeIamBinding) (*v1alpha1.IapWebTypeComputeIamBinding, error) {
+func (c *FakeIapWebTypeComputeIamBindings) UpdateStatus(ctx context.Context, iapWebTypeComputeIamBinding *v1alpha1.IapWebTypeComputeIamBinding, opts v1.UpdateOptions) (*v1alpha1.IapWebTypeComputeIamBinding, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iapwebtypecomputeiambindingsResource, "status", c.ns, iapWebTypeComputeIamBinding), &v1alpha1.IapWebTypeComputeIamBinding{})
 
@@ -114,7 +116,7 @@ func (c *FakeIapWebTypeComputeIamBindings) UpdateStatus(iapWebTypeComputeIamBind
 }
 
 // Delete takes name of the iapWebTypeComputeIamBinding and deletes it. Returns an error if one occurs.
-func (c *FakeIapWebTypeComputeIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIapWebTypeComputeIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iapwebtypecomputeiambindingsResource, c.ns, name), &v1alpha1.IapWebTypeComputeIamBinding{})
 
@@ -122,15 +124,15 @@ func (c *FakeIapWebTypeComputeIamBindings) Delete(name string, options *v1.Delet
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIapWebTypeComputeIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iapwebtypecomputeiambindingsResource, c.ns, listOptions)
+func (c *FakeIapWebTypeComputeIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iapwebtypecomputeiambindingsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IapWebTypeComputeIamBindingList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iapWebTypeComputeIamBinding.
-func (c *FakeIapWebTypeComputeIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IapWebTypeComputeIamBinding, err error) {
+func (c *FakeIapWebTypeComputeIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IapWebTypeComputeIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iapwebtypecomputeiambindingsResource, c.ns, name, pt, data, subresources...), &v1alpha1.IapWebTypeComputeIamBinding{})
 

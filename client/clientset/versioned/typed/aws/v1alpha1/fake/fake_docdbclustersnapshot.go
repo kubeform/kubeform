@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var docdbclustersnapshotsResource = schema.GroupVersionResource{Group: "aws.kube
 var docdbclustersnapshotsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DocdbClusterSnapshot"}
 
 // Get takes name of the docdbClusterSnapshot, and returns the corresponding docdbClusterSnapshot object, and an error if there is any.
-func (c *FakeDocdbClusterSnapshots) Get(name string, options v1.GetOptions) (result *v1alpha1.DocdbClusterSnapshot, err error) {
+func (c *FakeDocdbClusterSnapshots) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DocdbClusterSnapshot, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(docdbclustersnapshotsResource, c.ns, name), &v1alpha1.DocdbClusterSnapshot{})
 
@@ -51,7 +53,7 @@ func (c *FakeDocdbClusterSnapshots) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of DocdbClusterSnapshots that match those selectors.
-func (c *FakeDocdbClusterSnapshots) List(opts v1.ListOptions) (result *v1alpha1.DocdbClusterSnapshotList, err error) {
+func (c *FakeDocdbClusterSnapshots) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DocdbClusterSnapshotList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(docdbclustersnapshotsResource, docdbclustersnapshotsKind, c.ns, opts), &v1alpha1.DocdbClusterSnapshotList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDocdbClusterSnapshots) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested docdbClusterSnapshots.
-func (c *FakeDocdbClusterSnapshots) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDocdbClusterSnapshots) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(docdbclustersnapshotsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a docdbClusterSnapshot and creates it.  Returns the server's representation of the docdbClusterSnapshot, and an error, if there is any.
-func (c *FakeDocdbClusterSnapshots) Create(docdbClusterSnapshot *v1alpha1.DocdbClusterSnapshot) (result *v1alpha1.DocdbClusterSnapshot, err error) {
+func (c *FakeDocdbClusterSnapshots) Create(ctx context.Context, docdbClusterSnapshot *v1alpha1.DocdbClusterSnapshot, opts v1.CreateOptions) (result *v1alpha1.DocdbClusterSnapshot, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(docdbclustersnapshotsResource, c.ns, docdbClusterSnapshot), &v1alpha1.DocdbClusterSnapshot{})
 
@@ -91,7 +93,7 @@ func (c *FakeDocdbClusterSnapshots) Create(docdbClusterSnapshot *v1alpha1.DocdbC
 }
 
 // Update takes the representation of a docdbClusterSnapshot and updates it. Returns the server's representation of the docdbClusterSnapshot, and an error, if there is any.
-func (c *FakeDocdbClusterSnapshots) Update(docdbClusterSnapshot *v1alpha1.DocdbClusterSnapshot) (result *v1alpha1.DocdbClusterSnapshot, err error) {
+func (c *FakeDocdbClusterSnapshots) Update(ctx context.Context, docdbClusterSnapshot *v1alpha1.DocdbClusterSnapshot, opts v1.UpdateOptions) (result *v1alpha1.DocdbClusterSnapshot, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(docdbclustersnapshotsResource, c.ns, docdbClusterSnapshot), &v1alpha1.DocdbClusterSnapshot{})
 
@@ -103,7 +105,7 @@ func (c *FakeDocdbClusterSnapshots) Update(docdbClusterSnapshot *v1alpha1.DocdbC
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDocdbClusterSnapshots) UpdateStatus(docdbClusterSnapshot *v1alpha1.DocdbClusterSnapshot) (*v1alpha1.DocdbClusterSnapshot, error) {
+func (c *FakeDocdbClusterSnapshots) UpdateStatus(ctx context.Context, docdbClusterSnapshot *v1alpha1.DocdbClusterSnapshot, opts v1.UpdateOptions) (*v1alpha1.DocdbClusterSnapshot, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(docdbclustersnapshotsResource, "status", c.ns, docdbClusterSnapshot), &v1alpha1.DocdbClusterSnapshot{})
 
@@ -114,7 +116,7 @@ func (c *FakeDocdbClusterSnapshots) UpdateStatus(docdbClusterSnapshot *v1alpha1.
 }
 
 // Delete takes name of the docdbClusterSnapshot and deletes it. Returns an error if one occurs.
-func (c *FakeDocdbClusterSnapshots) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDocdbClusterSnapshots) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(docdbclustersnapshotsResource, c.ns, name), &v1alpha1.DocdbClusterSnapshot{})
 
@@ -122,15 +124,15 @@ func (c *FakeDocdbClusterSnapshots) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDocdbClusterSnapshots) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(docdbclustersnapshotsResource, c.ns, listOptions)
+func (c *FakeDocdbClusterSnapshots) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(docdbclustersnapshotsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DocdbClusterSnapshotList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched docdbClusterSnapshot.
-func (c *FakeDocdbClusterSnapshots) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DocdbClusterSnapshot, err error) {
+func (c *FakeDocdbClusterSnapshots) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DocdbClusterSnapshot, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(docdbclustersnapshotsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DocdbClusterSnapshot{})
 

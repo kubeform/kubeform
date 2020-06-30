@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type Route53RecordsGetter interface {
 
 // Route53RecordInterface has methods to work with Route53Record resources.
 type Route53RecordInterface interface {
-	Create(*v1alpha1.Route53Record) (*v1alpha1.Route53Record, error)
-	Update(*v1alpha1.Route53Record) (*v1alpha1.Route53Record, error)
-	UpdateStatus(*v1alpha1.Route53Record) (*v1alpha1.Route53Record, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.Route53Record, error)
-	List(opts v1.ListOptions) (*v1alpha1.Route53RecordList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Route53Record, err error)
+	Create(ctx context.Context, route53Record *v1alpha1.Route53Record, opts v1.CreateOptions) (*v1alpha1.Route53Record, error)
+	Update(ctx context.Context, route53Record *v1alpha1.Route53Record, opts v1.UpdateOptions) (*v1alpha1.Route53Record, error)
+	UpdateStatus(ctx context.Context, route53Record *v1alpha1.Route53Record, opts v1.UpdateOptions) (*v1alpha1.Route53Record, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.Route53Record, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.Route53RecordList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Route53Record, err error)
 	Route53RecordExpansion
 }
 
@@ -65,20 +66,20 @@ func newRoute53Records(c *AwsV1alpha1Client, namespace string) *route53Records {
 }
 
 // Get takes name of the route53Record, and returns the corresponding route53Record object, and an error if there is any.
-func (c *route53Records) Get(name string, options v1.GetOptions) (result *v1alpha1.Route53Record, err error) {
+func (c *route53Records) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Route53Record, err error) {
 	result = &v1alpha1.Route53Record{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("route53records").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of Route53Records that match those selectors.
-func (c *route53Records) List(opts v1.ListOptions) (result *v1alpha1.Route53RecordList, err error) {
+func (c *route53Records) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.Route53RecordList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *route53Records) List(opts v1.ListOptions) (result *v1alpha1.Route53Reco
 		Resource("route53records").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested route53Records.
-func (c *route53Records) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *route53Records) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *route53Records) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("route53records").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a route53Record and creates it.  Returns the server's representation of the route53Record, and an error, if there is any.
-func (c *route53Records) Create(route53Record *v1alpha1.Route53Record) (result *v1alpha1.Route53Record, err error) {
+func (c *route53Records) Create(ctx context.Context, route53Record *v1alpha1.Route53Record, opts v1.CreateOptions) (result *v1alpha1.Route53Record, err error) {
 	result = &v1alpha1.Route53Record{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("route53records").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(route53Record).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a route53Record and updates it. Returns the server's representation of the route53Record, and an error, if there is any.
-func (c *route53Records) Update(route53Record *v1alpha1.Route53Record) (result *v1alpha1.Route53Record, err error) {
+func (c *route53Records) Update(ctx context.Context, route53Record *v1alpha1.Route53Record, opts v1.UpdateOptions) (result *v1alpha1.Route53Record, err error) {
 	result = &v1alpha1.Route53Record{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("route53records").
 		Name(route53Record.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(route53Record).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *route53Records) UpdateStatus(route53Record *v1alpha1.Route53Record) (result *v1alpha1.Route53Record, err error) {
+func (c *route53Records) UpdateStatus(ctx context.Context, route53Record *v1alpha1.Route53Record, opts v1.UpdateOptions) (result *v1alpha1.Route53Record, err error) {
 	result = &v1alpha1.Route53Record{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("route53records").
 		Name(route53Record.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(route53Record).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the route53Record and deletes it. Returns an error if one occurs.
-func (c *route53Records) Delete(name string, options *v1.DeleteOptions) error {
+func (c *route53Records) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("route53records").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *route53Records) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *route53Records) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("route53records").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched route53Record.
-func (c *route53Records) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Route53Record, err error) {
+func (c *route53Records) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Route53Record, err error) {
 	result = &v1alpha1.Route53Record{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("route53records").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

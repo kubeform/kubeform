@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var serviceaccountiammembersResource = schema.GroupVersionResource{Group: "googl
 var serviceaccountiammembersKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ServiceAccountIamMember"}
 
 // Get takes name of the serviceAccountIamMember, and returns the corresponding serviceAccountIamMember object, and an error if there is any.
-func (c *FakeServiceAccountIamMembers) Get(name string, options v1.GetOptions) (result *v1alpha1.ServiceAccountIamMember, err error) {
+func (c *FakeServiceAccountIamMembers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ServiceAccountIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(serviceaccountiammembersResource, c.ns, name), &v1alpha1.ServiceAccountIamMember{})
 
@@ -51,7 +53,7 @@ func (c *FakeServiceAccountIamMembers) Get(name string, options v1.GetOptions) (
 }
 
 // List takes label and field selectors, and returns the list of ServiceAccountIamMembers that match those selectors.
-func (c *FakeServiceAccountIamMembers) List(opts v1.ListOptions) (result *v1alpha1.ServiceAccountIamMemberList, err error) {
+func (c *FakeServiceAccountIamMembers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ServiceAccountIamMemberList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(serviceaccountiammembersResource, serviceaccountiammembersKind, c.ns, opts), &v1alpha1.ServiceAccountIamMemberList{})
 
@@ -73,14 +75,14 @@ func (c *FakeServiceAccountIamMembers) List(opts v1.ListOptions) (result *v1alph
 }
 
 // Watch returns a watch.Interface that watches the requested serviceAccountIamMembers.
-func (c *FakeServiceAccountIamMembers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeServiceAccountIamMembers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(serviceaccountiammembersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a serviceAccountIamMember and creates it.  Returns the server's representation of the serviceAccountIamMember, and an error, if there is any.
-func (c *FakeServiceAccountIamMembers) Create(serviceAccountIamMember *v1alpha1.ServiceAccountIamMember) (result *v1alpha1.ServiceAccountIamMember, err error) {
+func (c *FakeServiceAccountIamMembers) Create(ctx context.Context, serviceAccountIamMember *v1alpha1.ServiceAccountIamMember, opts v1.CreateOptions) (result *v1alpha1.ServiceAccountIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(serviceaccountiammembersResource, c.ns, serviceAccountIamMember), &v1alpha1.ServiceAccountIamMember{})
 
@@ -91,7 +93,7 @@ func (c *FakeServiceAccountIamMembers) Create(serviceAccountIamMember *v1alpha1.
 }
 
 // Update takes the representation of a serviceAccountIamMember and updates it. Returns the server's representation of the serviceAccountIamMember, and an error, if there is any.
-func (c *FakeServiceAccountIamMembers) Update(serviceAccountIamMember *v1alpha1.ServiceAccountIamMember) (result *v1alpha1.ServiceAccountIamMember, err error) {
+func (c *FakeServiceAccountIamMembers) Update(ctx context.Context, serviceAccountIamMember *v1alpha1.ServiceAccountIamMember, opts v1.UpdateOptions) (result *v1alpha1.ServiceAccountIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(serviceaccountiammembersResource, c.ns, serviceAccountIamMember), &v1alpha1.ServiceAccountIamMember{})
 
@@ -103,7 +105,7 @@ func (c *FakeServiceAccountIamMembers) Update(serviceAccountIamMember *v1alpha1.
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeServiceAccountIamMembers) UpdateStatus(serviceAccountIamMember *v1alpha1.ServiceAccountIamMember) (*v1alpha1.ServiceAccountIamMember, error) {
+func (c *FakeServiceAccountIamMembers) UpdateStatus(ctx context.Context, serviceAccountIamMember *v1alpha1.ServiceAccountIamMember, opts v1.UpdateOptions) (*v1alpha1.ServiceAccountIamMember, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(serviceaccountiammembersResource, "status", c.ns, serviceAccountIamMember), &v1alpha1.ServiceAccountIamMember{})
 
@@ -114,7 +116,7 @@ func (c *FakeServiceAccountIamMembers) UpdateStatus(serviceAccountIamMember *v1a
 }
 
 // Delete takes name of the serviceAccountIamMember and deletes it. Returns an error if one occurs.
-func (c *FakeServiceAccountIamMembers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeServiceAccountIamMembers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(serviceaccountiammembersResource, c.ns, name), &v1alpha1.ServiceAccountIamMember{})
 
@@ -122,15 +124,15 @@ func (c *FakeServiceAccountIamMembers) Delete(name string, options *v1.DeleteOpt
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeServiceAccountIamMembers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(serviceaccountiammembersResource, c.ns, listOptions)
+func (c *FakeServiceAccountIamMembers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(serviceaccountiammembersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ServiceAccountIamMemberList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched serviceAccountIamMember.
-func (c *FakeServiceAccountIamMembers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ServiceAccountIamMember, err error) {
+func (c *FakeServiceAccountIamMembers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ServiceAccountIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(serviceaccountiammembersResource, c.ns, name, pt, data, subresources...), &v1alpha1.ServiceAccountIamMember{})
 

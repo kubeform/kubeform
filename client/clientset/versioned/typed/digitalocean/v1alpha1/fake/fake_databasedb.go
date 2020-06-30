@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/digitalocean/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var databasedbsResource = schema.GroupVersionResource{Group: "digitalocean.kubef
 var databasedbsKind = schema.GroupVersionKind{Group: "digitalocean.kubeform.com", Version: "v1alpha1", Kind: "DatabaseDb"}
 
 // Get takes name of the databaseDb, and returns the corresponding databaseDb object, and an error if there is any.
-func (c *FakeDatabaseDbs) Get(name string, options v1.GetOptions) (result *v1alpha1.DatabaseDb, err error) {
+func (c *FakeDatabaseDbs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DatabaseDb, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(databasedbsResource, c.ns, name), &v1alpha1.DatabaseDb{})
 
@@ -51,7 +53,7 @@ func (c *FakeDatabaseDbs) Get(name string, options v1.GetOptions) (result *v1alp
 }
 
 // List takes label and field selectors, and returns the list of DatabaseDbs that match those selectors.
-func (c *FakeDatabaseDbs) List(opts v1.ListOptions) (result *v1alpha1.DatabaseDbList, err error) {
+func (c *FakeDatabaseDbs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DatabaseDbList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(databasedbsResource, databasedbsKind, c.ns, opts), &v1alpha1.DatabaseDbList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDatabaseDbs) List(opts v1.ListOptions) (result *v1alpha1.DatabaseDb
 }
 
 // Watch returns a watch.Interface that watches the requested databaseDbs.
-func (c *FakeDatabaseDbs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDatabaseDbs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(databasedbsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a databaseDb and creates it.  Returns the server's representation of the databaseDb, and an error, if there is any.
-func (c *FakeDatabaseDbs) Create(databaseDb *v1alpha1.DatabaseDb) (result *v1alpha1.DatabaseDb, err error) {
+func (c *FakeDatabaseDbs) Create(ctx context.Context, databaseDb *v1alpha1.DatabaseDb, opts v1.CreateOptions) (result *v1alpha1.DatabaseDb, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(databasedbsResource, c.ns, databaseDb), &v1alpha1.DatabaseDb{})
 
@@ -91,7 +93,7 @@ func (c *FakeDatabaseDbs) Create(databaseDb *v1alpha1.DatabaseDb) (result *v1alp
 }
 
 // Update takes the representation of a databaseDb and updates it. Returns the server's representation of the databaseDb, and an error, if there is any.
-func (c *FakeDatabaseDbs) Update(databaseDb *v1alpha1.DatabaseDb) (result *v1alpha1.DatabaseDb, err error) {
+func (c *FakeDatabaseDbs) Update(ctx context.Context, databaseDb *v1alpha1.DatabaseDb, opts v1.UpdateOptions) (result *v1alpha1.DatabaseDb, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(databasedbsResource, c.ns, databaseDb), &v1alpha1.DatabaseDb{})
 
@@ -103,7 +105,7 @@ func (c *FakeDatabaseDbs) Update(databaseDb *v1alpha1.DatabaseDb) (result *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDatabaseDbs) UpdateStatus(databaseDb *v1alpha1.DatabaseDb) (*v1alpha1.DatabaseDb, error) {
+func (c *FakeDatabaseDbs) UpdateStatus(ctx context.Context, databaseDb *v1alpha1.DatabaseDb, opts v1.UpdateOptions) (*v1alpha1.DatabaseDb, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(databasedbsResource, "status", c.ns, databaseDb), &v1alpha1.DatabaseDb{})
 
@@ -114,7 +116,7 @@ func (c *FakeDatabaseDbs) UpdateStatus(databaseDb *v1alpha1.DatabaseDb) (*v1alph
 }
 
 // Delete takes name of the databaseDb and deletes it. Returns an error if one occurs.
-func (c *FakeDatabaseDbs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDatabaseDbs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(databasedbsResource, c.ns, name), &v1alpha1.DatabaseDb{})
 
@@ -122,15 +124,15 @@ func (c *FakeDatabaseDbs) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDatabaseDbs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(databasedbsResource, c.ns, listOptions)
+func (c *FakeDatabaseDbs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(databasedbsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DatabaseDbList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched databaseDb.
-func (c *FakeDatabaseDbs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DatabaseDb, err error) {
+func (c *FakeDatabaseDbs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DatabaseDb, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(databasedbsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DatabaseDb{})
 

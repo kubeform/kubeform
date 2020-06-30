@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var virtualmachinescalesetsResource = schema.GroupVersionResource{Group: "azurer
 var virtualmachinescalesetsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "VirtualMachineScaleSet"}
 
 // Get takes name of the virtualMachineScaleSet, and returns the corresponding virtualMachineScaleSet object, and an error if there is any.
-func (c *FakeVirtualMachineScaleSets) Get(name string, options v1.GetOptions) (result *v1alpha1.VirtualMachineScaleSet, err error) {
+func (c *FakeVirtualMachineScaleSets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.VirtualMachineScaleSet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(virtualmachinescalesetsResource, c.ns, name), &v1alpha1.VirtualMachineScaleSet{})
 
@@ -51,7 +53,7 @@ func (c *FakeVirtualMachineScaleSets) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of VirtualMachineScaleSets that match those selectors.
-func (c *FakeVirtualMachineScaleSets) List(opts v1.ListOptions) (result *v1alpha1.VirtualMachineScaleSetList, err error) {
+func (c *FakeVirtualMachineScaleSets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.VirtualMachineScaleSetList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(virtualmachinescalesetsResource, virtualmachinescalesetsKind, c.ns, opts), &v1alpha1.VirtualMachineScaleSetList{})
 
@@ -73,14 +75,14 @@ func (c *FakeVirtualMachineScaleSets) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested virtualMachineScaleSets.
-func (c *FakeVirtualMachineScaleSets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeVirtualMachineScaleSets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(virtualmachinescalesetsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a virtualMachineScaleSet and creates it.  Returns the server's representation of the virtualMachineScaleSet, and an error, if there is any.
-func (c *FakeVirtualMachineScaleSets) Create(virtualMachineScaleSet *v1alpha1.VirtualMachineScaleSet) (result *v1alpha1.VirtualMachineScaleSet, err error) {
+func (c *FakeVirtualMachineScaleSets) Create(ctx context.Context, virtualMachineScaleSet *v1alpha1.VirtualMachineScaleSet, opts v1.CreateOptions) (result *v1alpha1.VirtualMachineScaleSet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(virtualmachinescalesetsResource, c.ns, virtualMachineScaleSet), &v1alpha1.VirtualMachineScaleSet{})
 
@@ -91,7 +93,7 @@ func (c *FakeVirtualMachineScaleSets) Create(virtualMachineScaleSet *v1alpha1.Vi
 }
 
 // Update takes the representation of a virtualMachineScaleSet and updates it. Returns the server's representation of the virtualMachineScaleSet, and an error, if there is any.
-func (c *FakeVirtualMachineScaleSets) Update(virtualMachineScaleSet *v1alpha1.VirtualMachineScaleSet) (result *v1alpha1.VirtualMachineScaleSet, err error) {
+func (c *FakeVirtualMachineScaleSets) Update(ctx context.Context, virtualMachineScaleSet *v1alpha1.VirtualMachineScaleSet, opts v1.UpdateOptions) (result *v1alpha1.VirtualMachineScaleSet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(virtualmachinescalesetsResource, c.ns, virtualMachineScaleSet), &v1alpha1.VirtualMachineScaleSet{})
 
@@ -103,7 +105,7 @@ func (c *FakeVirtualMachineScaleSets) Update(virtualMachineScaleSet *v1alpha1.Vi
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeVirtualMachineScaleSets) UpdateStatus(virtualMachineScaleSet *v1alpha1.VirtualMachineScaleSet) (*v1alpha1.VirtualMachineScaleSet, error) {
+func (c *FakeVirtualMachineScaleSets) UpdateStatus(ctx context.Context, virtualMachineScaleSet *v1alpha1.VirtualMachineScaleSet, opts v1.UpdateOptions) (*v1alpha1.VirtualMachineScaleSet, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(virtualmachinescalesetsResource, "status", c.ns, virtualMachineScaleSet), &v1alpha1.VirtualMachineScaleSet{})
 
@@ -114,7 +116,7 @@ func (c *FakeVirtualMachineScaleSets) UpdateStatus(virtualMachineScaleSet *v1alp
 }
 
 // Delete takes name of the virtualMachineScaleSet and deletes it. Returns an error if one occurs.
-func (c *FakeVirtualMachineScaleSets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeVirtualMachineScaleSets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(virtualmachinescalesetsResource, c.ns, name), &v1alpha1.VirtualMachineScaleSet{})
 
@@ -122,15 +124,15 @@ func (c *FakeVirtualMachineScaleSets) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeVirtualMachineScaleSets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(virtualmachinescalesetsResource, c.ns, listOptions)
+func (c *FakeVirtualMachineScaleSets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(virtualmachinescalesetsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.VirtualMachineScaleSetList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched virtualMachineScaleSet.
-func (c *FakeVirtualMachineScaleSets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.VirtualMachineScaleSet, err error) {
+func (c *FakeVirtualMachineScaleSets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.VirtualMachineScaleSet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(virtualmachinescalesetsResource, c.ns, name, pt, data, subresources...), &v1alpha1.VirtualMachineScaleSet{})
 

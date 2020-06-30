@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var apimanagementidentityprovidertwittersResource = schema.GroupVersionResource{
 var apimanagementidentityprovidertwittersKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "ApiManagementIdentityProviderTwitter"}
 
 // Get takes name of the apiManagementIdentityProviderTwitter, and returns the corresponding apiManagementIdentityProviderTwitter object, and an error if there is any.
-func (c *FakeApiManagementIdentityProviderTwitters) Get(name string, options v1.GetOptions) (result *v1alpha1.ApiManagementIdentityProviderTwitter, err error) {
+func (c *FakeApiManagementIdentityProviderTwitters) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApiManagementIdentityProviderTwitter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(apimanagementidentityprovidertwittersResource, c.ns, name), &v1alpha1.ApiManagementIdentityProviderTwitter{})
 
@@ -51,7 +53,7 @@ func (c *FakeApiManagementIdentityProviderTwitters) Get(name string, options v1.
 }
 
 // List takes label and field selectors, and returns the list of ApiManagementIdentityProviderTwitters that match those selectors.
-func (c *FakeApiManagementIdentityProviderTwitters) List(opts v1.ListOptions) (result *v1alpha1.ApiManagementIdentityProviderTwitterList, err error) {
+func (c *FakeApiManagementIdentityProviderTwitters) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApiManagementIdentityProviderTwitterList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(apimanagementidentityprovidertwittersResource, apimanagementidentityprovidertwittersKind, c.ns, opts), &v1alpha1.ApiManagementIdentityProviderTwitterList{})
 
@@ -73,14 +75,14 @@ func (c *FakeApiManagementIdentityProviderTwitters) List(opts v1.ListOptions) (r
 }
 
 // Watch returns a watch.Interface that watches the requested apiManagementIdentityProviderTwitters.
-func (c *FakeApiManagementIdentityProviderTwitters) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeApiManagementIdentityProviderTwitters) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(apimanagementidentityprovidertwittersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a apiManagementIdentityProviderTwitter and creates it.  Returns the server's representation of the apiManagementIdentityProviderTwitter, and an error, if there is any.
-func (c *FakeApiManagementIdentityProviderTwitters) Create(apiManagementIdentityProviderTwitter *v1alpha1.ApiManagementIdentityProviderTwitter) (result *v1alpha1.ApiManagementIdentityProviderTwitter, err error) {
+func (c *FakeApiManagementIdentityProviderTwitters) Create(ctx context.Context, apiManagementIdentityProviderTwitter *v1alpha1.ApiManagementIdentityProviderTwitter, opts v1.CreateOptions) (result *v1alpha1.ApiManagementIdentityProviderTwitter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(apimanagementidentityprovidertwittersResource, c.ns, apiManagementIdentityProviderTwitter), &v1alpha1.ApiManagementIdentityProviderTwitter{})
 
@@ -91,7 +93,7 @@ func (c *FakeApiManagementIdentityProviderTwitters) Create(apiManagementIdentity
 }
 
 // Update takes the representation of a apiManagementIdentityProviderTwitter and updates it. Returns the server's representation of the apiManagementIdentityProviderTwitter, and an error, if there is any.
-func (c *FakeApiManagementIdentityProviderTwitters) Update(apiManagementIdentityProviderTwitter *v1alpha1.ApiManagementIdentityProviderTwitter) (result *v1alpha1.ApiManagementIdentityProviderTwitter, err error) {
+func (c *FakeApiManagementIdentityProviderTwitters) Update(ctx context.Context, apiManagementIdentityProviderTwitter *v1alpha1.ApiManagementIdentityProviderTwitter, opts v1.UpdateOptions) (result *v1alpha1.ApiManagementIdentityProviderTwitter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(apimanagementidentityprovidertwittersResource, c.ns, apiManagementIdentityProviderTwitter), &v1alpha1.ApiManagementIdentityProviderTwitter{})
 
@@ -103,7 +105,7 @@ func (c *FakeApiManagementIdentityProviderTwitters) Update(apiManagementIdentity
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeApiManagementIdentityProviderTwitters) UpdateStatus(apiManagementIdentityProviderTwitter *v1alpha1.ApiManagementIdentityProviderTwitter) (*v1alpha1.ApiManagementIdentityProviderTwitter, error) {
+func (c *FakeApiManagementIdentityProviderTwitters) UpdateStatus(ctx context.Context, apiManagementIdentityProviderTwitter *v1alpha1.ApiManagementIdentityProviderTwitter, opts v1.UpdateOptions) (*v1alpha1.ApiManagementIdentityProviderTwitter, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(apimanagementidentityprovidertwittersResource, "status", c.ns, apiManagementIdentityProviderTwitter), &v1alpha1.ApiManagementIdentityProviderTwitter{})
 
@@ -114,7 +116,7 @@ func (c *FakeApiManagementIdentityProviderTwitters) UpdateStatus(apiManagementId
 }
 
 // Delete takes name of the apiManagementIdentityProviderTwitter and deletes it. Returns an error if one occurs.
-func (c *FakeApiManagementIdentityProviderTwitters) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeApiManagementIdentityProviderTwitters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(apimanagementidentityprovidertwittersResource, c.ns, name), &v1alpha1.ApiManagementIdentityProviderTwitter{})
 
@@ -122,15 +124,15 @@ func (c *FakeApiManagementIdentityProviderTwitters) Delete(name string, options 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeApiManagementIdentityProviderTwitters) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(apimanagementidentityprovidertwittersResource, c.ns, listOptions)
+func (c *FakeApiManagementIdentityProviderTwitters) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(apimanagementidentityprovidertwittersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ApiManagementIdentityProviderTwitterList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched apiManagementIdentityProviderTwitter.
-func (c *FakeApiManagementIdentityProviderTwitters) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiManagementIdentityProviderTwitter, err error) {
+func (c *FakeApiManagementIdentityProviderTwitters) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiManagementIdentityProviderTwitter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(apimanagementidentityprovidertwittersResource, c.ns, name, pt, data, subresources...), &v1alpha1.ApiManagementIdentityProviderTwitter{})
 

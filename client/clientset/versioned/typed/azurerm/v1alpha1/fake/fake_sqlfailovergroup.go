@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var sqlfailovergroupsResource = schema.GroupVersionResource{Group: "azurerm.kube
 var sqlfailovergroupsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "SqlFailoverGroup"}
 
 // Get takes name of the sqlFailoverGroup, and returns the corresponding sqlFailoverGroup object, and an error if there is any.
-func (c *FakeSqlFailoverGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.SqlFailoverGroup, err error) {
+func (c *FakeSqlFailoverGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SqlFailoverGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(sqlfailovergroupsResource, c.ns, name), &v1alpha1.SqlFailoverGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeSqlFailoverGroups) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of SqlFailoverGroups that match those selectors.
-func (c *FakeSqlFailoverGroups) List(opts v1.ListOptions) (result *v1alpha1.SqlFailoverGroupList, err error) {
+func (c *FakeSqlFailoverGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SqlFailoverGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(sqlfailovergroupsResource, sqlfailovergroupsKind, c.ns, opts), &v1alpha1.SqlFailoverGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSqlFailoverGroups) List(opts v1.ListOptions) (result *v1alpha1.SqlF
 }
 
 // Watch returns a watch.Interface that watches the requested sqlFailoverGroups.
-func (c *FakeSqlFailoverGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSqlFailoverGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(sqlfailovergroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a sqlFailoverGroup and creates it.  Returns the server's representation of the sqlFailoverGroup, and an error, if there is any.
-func (c *FakeSqlFailoverGroups) Create(sqlFailoverGroup *v1alpha1.SqlFailoverGroup) (result *v1alpha1.SqlFailoverGroup, err error) {
+func (c *FakeSqlFailoverGroups) Create(ctx context.Context, sqlFailoverGroup *v1alpha1.SqlFailoverGroup, opts v1.CreateOptions) (result *v1alpha1.SqlFailoverGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(sqlfailovergroupsResource, c.ns, sqlFailoverGroup), &v1alpha1.SqlFailoverGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeSqlFailoverGroups) Create(sqlFailoverGroup *v1alpha1.SqlFailoverGro
 }
 
 // Update takes the representation of a sqlFailoverGroup and updates it. Returns the server's representation of the sqlFailoverGroup, and an error, if there is any.
-func (c *FakeSqlFailoverGroups) Update(sqlFailoverGroup *v1alpha1.SqlFailoverGroup) (result *v1alpha1.SqlFailoverGroup, err error) {
+func (c *FakeSqlFailoverGroups) Update(ctx context.Context, sqlFailoverGroup *v1alpha1.SqlFailoverGroup, opts v1.UpdateOptions) (result *v1alpha1.SqlFailoverGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(sqlfailovergroupsResource, c.ns, sqlFailoverGroup), &v1alpha1.SqlFailoverGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeSqlFailoverGroups) Update(sqlFailoverGroup *v1alpha1.SqlFailoverGro
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSqlFailoverGroups) UpdateStatus(sqlFailoverGroup *v1alpha1.SqlFailoverGroup) (*v1alpha1.SqlFailoverGroup, error) {
+func (c *FakeSqlFailoverGroups) UpdateStatus(ctx context.Context, sqlFailoverGroup *v1alpha1.SqlFailoverGroup, opts v1.UpdateOptions) (*v1alpha1.SqlFailoverGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(sqlfailovergroupsResource, "status", c.ns, sqlFailoverGroup), &v1alpha1.SqlFailoverGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeSqlFailoverGroups) UpdateStatus(sqlFailoverGroup *v1alpha1.SqlFailo
 }
 
 // Delete takes name of the sqlFailoverGroup and deletes it. Returns an error if one occurs.
-func (c *FakeSqlFailoverGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSqlFailoverGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(sqlfailovergroupsResource, c.ns, name), &v1alpha1.SqlFailoverGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeSqlFailoverGroups) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSqlFailoverGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(sqlfailovergroupsResource, c.ns, listOptions)
+func (c *FakeSqlFailoverGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(sqlfailovergroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SqlFailoverGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched sqlFailoverGroup.
-func (c *FakeSqlFailoverGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SqlFailoverGroup, err error) {
+func (c *FakeSqlFailoverGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SqlFailoverGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(sqlfailovergroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SqlFailoverGroup{})
 

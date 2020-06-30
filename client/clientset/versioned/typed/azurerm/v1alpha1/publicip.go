@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type PublicIPsGetter interface {
 
 // PublicIPInterface has methods to work with PublicIP resources.
 type PublicIPInterface interface {
-	Create(*v1alpha1.PublicIP) (*v1alpha1.PublicIP, error)
-	Update(*v1alpha1.PublicIP) (*v1alpha1.PublicIP, error)
-	UpdateStatus(*v1alpha1.PublicIP) (*v1alpha1.PublicIP, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.PublicIP, error)
-	List(opts v1.ListOptions) (*v1alpha1.PublicIPList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PublicIP, err error)
+	Create(ctx context.Context, publicIP *v1alpha1.PublicIP, opts v1.CreateOptions) (*v1alpha1.PublicIP, error)
+	Update(ctx context.Context, publicIP *v1alpha1.PublicIP, opts v1.UpdateOptions) (*v1alpha1.PublicIP, error)
+	UpdateStatus(ctx context.Context, publicIP *v1alpha1.PublicIP, opts v1.UpdateOptions) (*v1alpha1.PublicIP, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.PublicIP, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.PublicIPList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PublicIP, err error)
 	PublicIPExpansion
 }
 
@@ -65,20 +66,20 @@ func newPublicIPs(c *AzurermV1alpha1Client, namespace string) *publicIPs {
 }
 
 // Get takes name of the publicIP, and returns the corresponding publicIP object, and an error if there is any.
-func (c *publicIPs) Get(name string, options v1.GetOptions) (result *v1alpha1.PublicIP, err error) {
+func (c *publicIPs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PublicIP, err error) {
 	result = &v1alpha1.PublicIP{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("publicips").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of PublicIPs that match those selectors.
-func (c *publicIPs) List(opts v1.ListOptions) (result *v1alpha1.PublicIPList, err error) {
+func (c *publicIPs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PublicIPList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *publicIPs) List(opts v1.ListOptions) (result *v1alpha1.PublicIPList, er
 		Resource("publicips").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested publicIPs.
-func (c *publicIPs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *publicIPs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *publicIPs) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("publicips").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a publicIP and creates it.  Returns the server's representation of the publicIP, and an error, if there is any.
-func (c *publicIPs) Create(publicIP *v1alpha1.PublicIP) (result *v1alpha1.PublicIP, err error) {
+func (c *publicIPs) Create(ctx context.Context, publicIP *v1alpha1.PublicIP, opts v1.CreateOptions) (result *v1alpha1.PublicIP, err error) {
 	result = &v1alpha1.PublicIP{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("publicips").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(publicIP).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a publicIP and updates it. Returns the server's representation of the publicIP, and an error, if there is any.
-func (c *publicIPs) Update(publicIP *v1alpha1.PublicIP) (result *v1alpha1.PublicIP, err error) {
+func (c *publicIPs) Update(ctx context.Context, publicIP *v1alpha1.PublicIP, opts v1.UpdateOptions) (result *v1alpha1.PublicIP, err error) {
 	result = &v1alpha1.PublicIP{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("publicips").
 		Name(publicIP.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(publicIP).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *publicIPs) UpdateStatus(publicIP *v1alpha1.PublicIP) (result *v1alpha1.PublicIP, err error) {
+func (c *publicIPs) UpdateStatus(ctx context.Context, publicIP *v1alpha1.PublicIP, opts v1.UpdateOptions) (result *v1alpha1.PublicIP, err error) {
 	result = &v1alpha1.PublicIP{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("publicips").
 		Name(publicIP.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(publicIP).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the publicIP and deletes it. Returns an error if one occurs.
-func (c *publicIPs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *publicIPs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("publicips").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *publicIPs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *publicIPs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("publicips").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched publicIP.
-func (c *publicIPs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PublicIP, err error) {
+func (c *publicIPs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PublicIP, err error) {
 	result = &v1alpha1.PublicIP{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("publicips").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

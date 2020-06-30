@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var ssmassociationsResource = schema.GroupVersionResource{Group: "aws.kubeform.c
 var ssmassociationsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "SsmAssociation"}
 
 // Get takes name of the ssmAssociation, and returns the corresponding ssmAssociation object, and an error if there is any.
-func (c *FakeSsmAssociations) Get(name string, options v1.GetOptions) (result *v1alpha1.SsmAssociation, err error) {
+func (c *FakeSsmAssociations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SsmAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(ssmassociationsResource, c.ns, name), &v1alpha1.SsmAssociation{})
 
@@ -51,7 +53,7 @@ func (c *FakeSsmAssociations) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of SsmAssociations that match those selectors.
-func (c *FakeSsmAssociations) List(opts v1.ListOptions) (result *v1alpha1.SsmAssociationList, err error) {
+func (c *FakeSsmAssociations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SsmAssociationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(ssmassociationsResource, ssmassociationsKind, c.ns, opts), &v1alpha1.SsmAssociationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSsmAssociations) List(opts v1.ListOptions) (result *v1alpha1.SsmAss
 }
 
 // Watch returns a watch.Interface that watches the requested ssmAssociations.
-func (c *FakeSsmAssociations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSsmAssociations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(ssmassociationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a ssmAssociation and creates it.  Returns the server's representation of the ssmAssociation, and an error, if there is any.
-func (c *FakeSsmAssociations) Create(ssmAssociation *v1alpha1.SsmAssociation) (result *v1alpha1.SsmAssociation, err error) {
+func (c *FakeSsmAssociations) Create(ctx context.Context, ssmAssociation *v1alpha1.SsmAssociation, opts v1.CreateOptions) (result *v1alpha1.SsmAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(ssmassociationsResource, c.ns, ssmAssociation), &v1alpha1.SsmAssociation{})
 
@@ -91,7 +93,7 @@ func (c *FakeSsmAssociations) Create(ssmAssociation *v1alpha1.SsmAssociation) (r
 }
 
 // Update takes the representation of a ssmAssociation and updates it. Returns the server's representation of the ssmAssociation, and an error, if there is any.
-func (c *FakeSsmAssociations) Update(ssmAssociation *v1alpha1.SsmAssociation) (result *v1alpha1.SsmAssociation, err error) {
+func (c *FakeSsmAssociations) Update(ctx context.Context, ssmAssociation *v1alpha1.SsmAssociation, opts v1.UpdateOptions) (result *v1alpha1.SsmAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(ssmassociationsResource, c.ns, ssmAssociation), &v1alpha1.SsmAssociation{})
 
@@ -103,7 +105,7 @@ func (c *FakeSsmAssociations) Update(ssmAssociation *v1alpha1.SsmAssociation) (r
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSsmAssociations) UpdateStatus(ssmAssociation *v1alpha1.SsmAssociation) (*v1alpha1.SsmAssociation, error) {
+func (c *FakeSsmAssociations) UpdateStatus(ctx context.Context, ssmAssociation *v1alpha1.SsmAssociation, opts v1.UpdateOptions) (*v1alpha1.SsmAssociation, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(ssmassociationsResource, "status", c.ns, ssmAssociation), &v1alpha1.SsmAssociation{})
 
@@ -114,7 +116,7 @@ func (c *FakeSsmAssociations) UpdateStatus(ssmAssociation *v1alpha1.SsmAssociati
 }
 
 // Delete takes name of the ssmAssociation and deletes it. Returns an error if one occurs.
-func (c *FakeSsmAssociations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSsmAssociations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(ssmassociationsResource, c.ns, name), &v1alpha1.SsmAssociation{})
 
@@ -122,15 +124,15 @@ func (c *FakeSsmAssociations) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSsmAssociations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(ssmassociationsResource, c.ns, listOptions)
+func (c *FakeSsmAssociations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(ssmassociationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SsmAssociationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched ssmAssociation.
-func (c *FakeSsmAssociations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SsmAssociation, err error) {
+func (c *FakeSsmAssociations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SsmAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(ssmassociationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SsmAssociation{})
 

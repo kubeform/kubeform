@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var mariadbserversResource = schema.GroupVersionResource{Group: "azurerm.kubefor
 var mariadbserversKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "MariadbServer"}
 
 // Get takes name of the mariadbServer, and returns the corresponding mariadbServer object, and an error if there is any.
-func (c *FakeMariadbServers) Get(name string, options v1.GetOptions) (result *v1alpha1.MariadbServer, err error) {
+func (c *FakeMariadbServers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.MariadbServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(mariadbserversResource, c.ns, name), &v1alpha1.MariadbServer{})
 
@@ -51,7 +53,7 @@ func (c *FakeMariadbServers) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of MariadbServers that match those selectors.
-func (c *FakeMariadbServers) List(opts v1.ListOptions) (result *v1alpha1.MariadbServerList, err error) {
+func (c *FakeMariadbServers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.MariadbServerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(mariadbserversResource, mariadbserversKind, c.ns, opts), &v1alpha1.MariadbServerList{})
 
@@ -73,14 +75,14 @@ func (c *FakeMariadbServers) List(opts v1.ListOptions) (result *v1alpha1.Mariadb
 }
 
 // Watch returns a watch.Interface that watches the requested mariadbServers.
-func (c *FakeMariadbServers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeMariadbServers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(mariadbserversResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a mariadbServer and creates it.  Returns the server's representation of the mariadbServer, and an error, if there is any.
-func (c *FakeMariadbServers) Create(mariadbServer *v1alpha1.MariadbServer) (result *v1alpha1.MariadbServer, err error) {
+func (c *FakeMariadbServers) Create(ctx context.Context, mariadbServer *v1alpha1.MariadbServer, opts v1.CreateOptions) (result *v1alpha1.MariadbServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(mariadbserversResource, c.ns, mariadbServer), &v1alpha1.MariadbServer{})
 
@@ -91,7 +93,7 @@ func (c *FakeMariadbServers) Create(mariadbServer *v1alpha1.MariadbServer) (resu
 }
 
 // Update takes the representation of a mariadbServer and updates it. Returns the server's representation of the mariadbServer, and an error, if there is any.
-func (c *FakeMariadbServers) Update(mariadbServer *v1alpha1.MariadbServer) (result *v1alpha1.MariadbServer, err error) {
+func (c *FakeMariadbServers) Update(ctx context.Context, mariadbServer *v1alpha1.MariadbServer, opts v1.UpdateOptions) (result *v1alpha1.MariadbServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(mariadbserversResource, c.ns, mariadbServer), &v1alpha1.MariadbServer{})
 
@@ -103,7 +105,7 @@ func (c *FakeMariadbServers) Update(mariadbServer *v1alpha1.MariadbServer) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeMariadbServers) UpdateStatus(mariadbServer *v1alpha1.MariadbServer) (*v1alpha1.MariadbServer, error) {
+func (c *FakeMariadbServers) UpdateStatus(ctx context.Context, mariadbServer *v1alpha1.MariadbServer, opts v1.UpdateOptions) (*v1alpha1.MariadbServer, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(mariadbserversResource, "status", c.ns, mariadbServer), &v1alpha1.MariadbServer{})
 
@@ -114,7 +116,7 @@ func (c *FakeMariadbServers) UpdateStatus(mariadbServer *v1alpha1.MariadbServer)
 }
 
 // Delete takes name of the mariadbServer and deletes it. Returns an error if one occurs.
-func (c *FakeMariadbServers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeMariadbServers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(mariadbserversResource, c.ns, name), &v1alpha1.MariadbServer{})
 
@@ -122,15 +124,15 @@ func (c *FakeMariadbServers) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeMariadbServers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(mariadbserversResource, c.ns, listOptions)
+func (c *FakeMariadbServers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(mariadbserversResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.MariadbServerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched mariadbServer.
-func (c *FakeMariadbServers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MariadbServer, err error) {
+func (c *FakeMariadbServers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MariadbServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(mariadbserversResource, c.ns, name, pt, data, subresources...), &v1alpha1.MariadbServer{})
 

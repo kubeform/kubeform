@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var folderiambindingsResource = schema.GroupVersionResource{Group: "google.kubef
 var folderiambindingsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "FolderIamBinding"}
 
 // Get takes name of the folderIamBinding, and returns the corresponding folderIamBinding object, and an error if there is any.
-func (c *FakeFolderIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.FolderIamBinding, err error) {
+func (c *FakeFolderIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.FolderIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(folderiambindingsResource, c.ns, name), &v1alpha1.FolderIamBinding{})
 
@@ -51,7 +53,7 @@ func (c *FakeFolderIamBindings) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of FolderIamBindings that match those selectors.
-func (c *FakeFolderIamBindings) List(opts v1.ListOptions) (result *v1alpha1.FolderIamBindingList, err error) {
+func (c *FakeFolderIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.FolderIamBindingList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(folderiambindingsResource, folderiambindingsKind, c.ns, opts), &v1alpha1.FolderIamBindingList{})
 
@@ -73,14 +75,14 @@ func (c *FakeFolderIamBindings) List(opts v1.ListOptions) (result *v1alpha1.Fold
 }
 
 // Watch returns a watch.Interface that watches the requested folderIamBindings.
-func (c *FakeFolderIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeFolderIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(folderiambindingsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a folderIamBinding and creates it.  Returns the server's representation of the folderIamBinding, and an error, if there is any.
-func (c *FakeFolderIamBindings) Create(folderIamBinding *v1alpha1.FolderIamBinding) (result *v1alpha1.FolderIamBinding, err error) {
+func (c *FakeFolderIamBindings) Create(ctx context.Context, folderIamBinding *v1alpha1.FolderIamBinding, opts v1.CreateOptions) (result *v1alpha1.FolderIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(folderiambindingsResource, c.ns, folderIamBinding), &v1alpha1.FolderIamBinding{})
 
@@ -91,7 +93,7 @@ func (c *FakeFolderIamBindings) Create(folderIamBinding *v1alpha1.FolderIamBindi
 }
 
 // Update takes the representation of a folderIamBinding and updates it. Returns the server's representation of the folderIamBinding, and an error, if there is any.
-func (c *FakeFolderIamBindings) Update(folderIamBinding *v1alpha1.FolderIamBinding) (result *v1alpha1.FolderIamBinding, err error) {
+func (c *FakeFolderIamBindings) Update(ctx context.Context, folderIamBinding *v1alpha1.FolderIamBinding, opts v1.UpdateOptions) (result *v1alpha1.FolderIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(folderiambindingsResource, c.ns, folderIamBinding), &v1alpha1.FolderIamBinding{})
 
@@ -103,7 +105,7 @@ func (c *FakeFolderIamBindings) Update(folderIamBinding *v1alpha1.FolderIamBindi
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeFolderIamBindings) UpdateStatus(folderIamBinding *v1alpha1.FolderIamBinding) (*v1alpha1.FolderIamBinding, error) {
+func (c *FakeFolderIamBindings) UpdateStatus(ctx context.Context, folderIamBinding *v1alpha1.FolderIamBinding, opts v1.UpdateOptions) (*v1alpha1.FolderIamBinding, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(folderiambindingsResource, "status", c.ns, folderIamBinding), &v1alpha1.FolderIamBinding{})
 
@@ -114,7 +116,7 @@ func (c *FakeFolderIamBindings) UpdateStatus(folderIamBinding *v1alpha1.FolderIa
 }
 
 // Delete takes name of the folderIamBinding and deletes it. Returns an error if one occurs.
-func (c *FakeFolderIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeFolderIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(folderiambindingsResource, c.ns, name), &v1alpha1.FolderIamBinding{})
 
@@ -122,15 +124,15 @@ func (c *FakeFolderIamBindings) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeFolderIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(folderiambindingsResource, c.ns, listOptions)
+func (c *FakeFolderIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(folderiambindingsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.FolderIamBindingList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched folderIamBinding.
-func (c *FakeFolderIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.FolderIamBinding, err error) {
+func (c *FakeFolderIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.FolderIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(folderiambindingsResource, c.ns, name, pt, data, subresources...), &v1alpha1.FolderIamBinding{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var recoveryservicesfabricsResource = schema.GroupVersionResource{Group: "azurer
 var recoveryservicesfabricsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "RecoveryServicesFabric"}
 
 // Get takes name of the recoveryServicesFabric, and returns the corresponding recoveryServicesFabric object, and an error if there is any.
-func (c *FakeRecoveryServicesFabrics) Get(name string, options v1.GetOptions) (result *v1alpha1.RecoveryServicesFabric, err error) {
+func (c *FakeRecoveryServicesFabrics) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.RecoveryServicesFabric, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(recoveryservicesfabricsResource, c.ns, name), &v1alpha1.RecoveryServicesFabric{})
 
@@ -51,7 +53,7 @@ func (c *FakeRecoveryServicesFabrics) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of RecoveryServicesFabrics that match those selectors.
-func (c *FakeRecoveryServicesFabrics) List(opts v1.ListOptions) (result *v1alpha1.RecoveryServicesFabricList, err error) {
+func (c *FakeRecoveryServicesFabrics) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RecoveryServicesFabricList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(recoveryservicesfabricsResource, recoveryservicesfabricsKind, c.ns, opts), &v1alpha1.RecoveryServicesFabricList{})
 
@@ -73,14 +75,14 @@ func (c *FakeRecoveryServicesFabrics) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested recoveryServicesFabrics.
-func (c *FakeRecoveryServicesFabrics) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeRecoveryServicesFabrics) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(recoveryservicesfabricsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a recoveryServicesFabric and creates it.  Returns the server's representation of the recoveryServicesFabric, and an error, if there is any.
-func (c *FakeRecoveryServicesFabrics) Create(recoveryServicesFabric *v1alpha1.RecoveryServicesFabric) (result *v1alpha1.RecoveryServicesFabric, err error) {
+func (c *FakeRecoveryServicesFabrics) Create(ctx context.Context, recoveryServicesFabric *v1alpha1.RecoveryServicesFabric, opts v1.CreateOptions) (result *v1alpha1.RecoveryServicesFabric, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(recoveryservicesfabricsResource, c.ns, recoveryServicesFabric), &v1alpha1.RecoveryServicesFabric{})
 
@@ -91,7 +93,7 @@ func (c *FakeRecoveryServicesFabrics) Create(recoveryServicesFabric *v1alpha1.Re
 }
 
 // Update takes the representation of a recoveryServicesFabric and updates it. Returns the server's representation of the recoveryServicesFabric, and an error, if there is any.
-func (c *FakeRecoveryServicesFabrics) Update(recoveryServicesFabric *v1alpha1.RecoveryServicesFabric) (result *v1alpha1.RecoveryServicesFabric, err error) {
+func (c *FakeRecoveryServicesFabrics) Update(ctx context.Context, recoveryServicesFabric *v1alpha1.RecoveryServicesFabric, opts v1.UpdateOptions) (result *v1alpha1.RecoveryServicesFabric, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(recoveryservicesfabricsResource, c.ns, recoveryServicesFabric), &v1alpha1.RecoveryServicesFabric{})
 
@@ -103,7 +105,7 @@ func (c *FakeRecoveryServicesFabrics) Update(recoveryServicesFabric *v1alpha1.Re
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeRecoveryServicesFabrics) UpdateStatus(recoveryServicesFabric *v1alpha1.RecoveryServicesFabric) (*v1alpha1.RecoveryServicesFabric, error) {
+func (c *FakeRecoveryServicesFabrics) UpdateStatus(ctx context.Context, recoveryServicesFabric *v1alpha1.RecoveryServicesFabric, opts v1.UpdateOptions) (*v1alpha1.RecoveryServicesFabric, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(recoveryservicesfabricsResource, "status", c.ns, recoveryServicesFabric), &v1alpha1.RecoveryServicesFabric{})
 
@@ -114,7 +116,7 @@ func (c *FakeRecoveryServicesFabrics) UpdateStatus(recoveryServicesFabric *v1alp
 }
 
 // Delete takes name of the recoveryServicesFabric and deletes it. Returns an error if one occurs.
-func (c *FakeRecoveryServicesFabrics) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeRecoveryServicesFabrics) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(recoveryservicesfabricsResource, c.ns, name), &v1alpha1.RecoveryServicesFabric{})
 
@@ -122,15 +124,15 @@ func (c *FakeRecoveryServicesFabrics) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeRecoveryServicesFabrics) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(recoveryservicesfabricsResource, c.ns, listOptions)
+func (c *FakeRecoveryServicesFabrics) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(recoveryservicesfabricsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.RecoveryServicesFabricList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched recoveryServicesFabric.
-func (c *FakeRecoveryServicesFabrics) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RecoveryServicesFabric, err error) {
+func (c *FakeRecoveryServicesFabrics) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RecoveryServicesFabric, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(recoveryservicesfabricsResource, c.ns, name, pt, data, subresources...), &v1alpha1.RecoveryServicesFabric{})
 

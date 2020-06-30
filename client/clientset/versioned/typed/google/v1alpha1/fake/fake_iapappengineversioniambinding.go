@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iapappengineversioniambindingsResource = schema.GroupVersionResource{Group: 
 var iapappengineversioniambindingsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "IapAppEngineVersionIamBinding"}
 
 // Get takes name of the iapAppEngineVersionIamBinding, and returns the corresponding iapAppEngineVersionIamBinding object, and an error if there is any.
-func (c *FakeIapAppEngineVersionIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.IapAppEngineVersionIamBinding, err error) {
+func (c *FakeIapAppEngineVersionIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IapAppEngineVersionIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iapappengineversioniambindingsResource, c.ns, name), &v1alpha1.IapAppEngineVersionIamBinding{})
 
@@ -51,7 +53,7 @@ func (c *FakeIapAppEngineVersionIamBindings) Get(name string, options v1.GetOpti
 }
 
 // List takes label and field selectors, and returns the list of IapAppEngineVersionIamBindings that match those selectors.
-func (c *FakeIapAppEngineVersionIamBindings) List(opts v1.ListOptions) (result *v1alpha1.IapAppEngineVersionIamBindingList, err error) {
+func (c *FakeIapAppEngineVersionIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IapAppEngineVersionIamBindingList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iapappengineversioniambindingsResource, iapappengineversioniambindingsKind, c.ns, opts), &v1alpha1.IapAppEngineVersionIamBindingList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIapAppEngineVersionIamBindings) List(opts v1.ListOptions) (result *
 }
 
 // Watch returns a watch.Interface that watches the requested iapAppEngineVersionIamBindings.
-func (c *FakeIapAppEngineVersionIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIapAppEngineVersionIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iapappengineversioniambindingsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iapAppEngineVersionIamBinding and creates it.  Returns the server's representation of the iapAppEngineVersionIamBinding, and an error, if there is any.
-func (c *FakeIapAppEngineVersionIamBindings) Create(iapAppEngineVersionIamBinding *v1alpha1.IapAppEngineVersionIamBinding) (result *v1alpha1.IapAppEngineVersionIamBinding, err error) {
+func (c *FakeIapAppEngineVersionIamBindings) Create(ctx context.Context, iapAppEngineVersionIamBinding *v1alpha1.IapAppEngineVersionIamBinding, opts v1.CreateOptions) (result *v1alpha1.IapAppEngineVersionIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iapappengineversioniambindingsResource, c.ns, iapAppEngineVersionIamBinding), &v1alpha1.IapAppEngineVersionIamBinding{})
 
@@ -91,7 +93,7 @@ func (c *FakeIapAppEngineVersionIamBindings) Create(iapAppEngineVersionIamBindin
 }
 
 // Update takes the representation of a iapAppEngineVersionIamBinding and updates it. Returns the server's representation of the iapAppEngineVersionIamBinding, and an error, if there is any.
-func (c *FakeIapAppEngineVersionIamBindings) Update(iapAppEngineVersionIamBinding *v1alpha1.IapAppEngineVersionIamBinding) (result *v1alpha1.IapAppEngineVersionIamBinding, err error) {
+func (c *FakeIapAppEngineVersionIamBindings) Update(ctx context.Context, iapAppEngineVersionIamBinding *v1alpha1.IapAppEngineVersionIamBinding, opts v1.UpdateOptions) (result *v1alpha1.IapAppEngineVersionIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iapappengineversioniambindingsResource, c.ns, iapAppEngineVersionIamBinding), &v1alpha1.IapAppEngineVersionIamBinding{})
 
@@ -103,7 +105,7 @@ func (c *FakeIapAppEngineVersionIamBindings) Update(iapAppEngineVersionIamBindin
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIapAppEngineVersionIamBindings) UpdateStatus(iapAppEngineVersionIamBinding *v1alpha1.IapAppEngineVersionIamBinding) (*v1alpha1.IapAppEngineVersionIamBinding, error) {
+func (c *FakeIapAppEngineVersionIamBindings) UpdateStatus(ctx context.Context, iapAppEngineVersionIamBinding *v1alpha1.IapAppEngineVersionIamBinding, opts v1.UpdateOptions) (*v1alpha1.IapAppEngineVersionIamBinding, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iapappengineversioniambindingsResource, "status", c.ns, iapAppEngineVersionIamBinding), &v1alpha1.IapAppEngineVersionIamBinding{})
 
@@ -114,7 +116,7 @@ func (c *FakeIapAppEngineVersionIamBindings) UpdateStatus(iapAppEngineVersionIam
 }
 
 // Delete takes name of the iapAppEngineVersionIamBinding and deletes it. Returns an error if one occurs.
-func (c *FakeIapAppEngineVersionIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIapAppEngineVersionIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iapappengineversioniambindingsResource, c.ns, name), &v1alpha1.IapAppEngineVersionIamBinding{})
 
@@ -122,15 +124,15 @@ func (c *FakeIapAppEngineVersionIamBindings) Delete(name string, options *v1.Del
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIapAppEngineVersionIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iapappengineversioniambindingsResource, c.ns, listOptions)
+func (c *FakeIapAppEngineVersionIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iapappengineversioniambindingsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IapAppEngineVersionIamBindingList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iapAppEngineVersionIamBinding.
-func (c *FakeIapAppEngineVersionIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IapAppEngineVersionIamBinding, err error) {
+func (c *FakeIapAppEngineVersionIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IapAppEngineVersionIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iapappengineversioniambindingsResource, c.ns, name, pt, data, subresources...), &v1alpha1.IapAppEngineVersionIamBinding{})
 

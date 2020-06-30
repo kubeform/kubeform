@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type CodedeployDeploymentConfigsGetter interface {
 
 // CodedeployDeploymentConfigInterface has methods to work with CodedeployDeploymentConfig resources.
 type CodedeployDeploymentConfigInterface interface {
-	Create(*v1alpha1.CodedeployDeploymentConfig) (*v1alpha1.CodedeployDeploymentConfig, error)
-	Update(*v1alpha1.CodedeployDeploymentConfig) (*v1alpha1.CodedeployDeploymentConfig, error)
-	UpdateStatus(*v1alpha1.CodedeployDeploymentConfig) (*v1alpha1.CodedeployDeploymentConfig, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.CodedeployDeploymentConfig, error)
-	List(opts v1.ListOptions) (*v1alpha1.CodedeployDeploymentConfigList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CodedeployDeploymentConfig, err error)
+	Create(ctx context.Context, codedeployDeploymentConfig *v1alpha1.CodedeployDeploymentConfig, opts v1.CreateOptions) (*v1alpha1.CodedeployDeploymentConfig, error)
+	Update(ctx context.Context, codedeployDeploymentConfig *v1alpha1.CodedeployDeploymentConfig, opts v1.UpdateOptions) (*v1alpha1.CodedeployDeploymentConfig, error)
+	UpdateStatus(ctx context.Context, codedeployDeploymentConfig *v1alpha1.CodedeployDeploymentConfig, opts v1.UpdateOptions) (*v1alpha1.CodedeployDeploymentConfig, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.CodedeployDeploymentConfig, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.CodedeployDeploymentConfigList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CodedeployDeploymentConfig, err error)
 	CodedeployDeploymentConfigExpansion
 }
 
@@ -65,20 +66,20 @@ func newCodedeployDeploymentConfigs(c *AwsV1alpha1Client, namespace string) *cod
 }
 
 // Get takes name of the codedeployDeploymentConfig, and returns the corresponding codedeployDeploymentConfig object, and an error if there is any.
-func (c *codedeployDeploymentConfigs) Get(name string, options v1.GetOptions) (result *v1alpha1.CodedeployDeploymentConfig, err error) {
+func (c *codedeployDeploymentConfigs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CodedeployDeploymentConfig, err error) {
 	result = &v1alpha1.CodedeployDeploymentConfig{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("codedeploydeploymentconfigs").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of CodedeployDeploymentConfigs that match those selectors.
-func (c *codedeployDeploymentConfigs) List(opts v1.ListOptions) (result *v1alpha1.CodedeployDeploymentConfigList, err error) {
+func (c *codedeployDeploymentConfigs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CodedeployDeploymentConfigList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *codedeployDeploymentConfigs) List(opts v1.ListOptions) (result *v1alpha
 		Resource("codedeploydeploymentconfigs").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested codedeployDeploymentConfigs.
-func (c *codedeployDeploymentConfigs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *codedeployDeploymentConfigs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *codedeployDeploymentConfigs) Watch(opts v1.ListOptions) (watch.Interfac
 		Resource("codedeploydeploymentconfigs").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a codedeployDeploymentConfig and creates it.  Returns the server's representation of the codedeployDeploymentConfig, and an error, if there is any.
-func (c *codedeployDeploymentConfigs) Create(codedeployDeploymentConfig *v1alpha1.CodedeployDeploymentConfig) (result *v1alpha1.CodedeployDeploymentConfig, err error) {
+func (c *codedeployDeploymentConfigs) Create(ctx context.Context, codedeployDeploymentConfig *v1alpha1.CodedeployDeploymentConfig, opts v1.CreateOptions) (result *v1alpha1.CodedeployDeploymentConfig, err error) {
 	result = &v1alpha1.CodedeployDeploymentConfig{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("codedeploydeploymentconfigs").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(codedeployDeploymentConfig).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a codedeployDeploymentConfig and updates it. Returns the server's representation of the codedeployDeploymentConfig, and an error, if there is any.
-func (c *codedeployDeploymentConfigs) Update(codedeployDeploymentConfig *v1alpha1.CodedeployDeploymentConfig) (result *v1alpha1.CodedeployDeploymentConfig, err error) {
+func (c *codedeployDeploymentConfigs) Update(ctx context.Context, codedeployDeploymentConfig *v1alpha1.CodedeployDeploymentConfig, opts v1.UpdateOptions) (result *v1alpha1.CodedeployDeploymentConfig, err error) {
 	result = &v1alpha1.CodedeployDeploymentConfig{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("codedeploydeploymentconfigs").
 		Name(codedeployDeploymentConfig.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(codedeployDeploymentConfig).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *codedeployDeploymentConfigs) UpdateStatus(codedeployDeploymentConfig *v1alpha1.CodedeployDeploymentConfig) (result *v1alpha1.CodedeployDeploymentConfig, err error) {
+func (c *codedeployDeploymentConfigs) UpdateStatus(ctx context.Context, codedeployDeploymentConfig *v1alpha1.CodedeployDeploymentConfig, opts v1.UpdateOptions) (result *v1alpha1.CodedeployDeploymentConfig, err error) {
 	result = &v1alpha1.CodedeployDeploymentConfig{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("codedeploydeploymentconfigs").
 		Name(codedeployDeploymentConfig.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(codedeployDeploymentConfig).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the codedeployDeploymentConfig and deletes it. Returns an error if one occurs.
-func (c *codedeployDeploymentConfigs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *codedeployDeploymentConfigs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("codedeploydeploymentconfigs").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *codedeployDeploymentConfigs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *codedeployDeploymentConfigs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("codedeploydeploymentconfigs").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched codedeployDeploymentConfig.
-func (c *codedeployDeploymentConfigs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CodedeployDeploymentConfig, err error) {
+func (c *codedeployDeploymentConfigs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CodedeployDeploymentConfig, err error) {
 	result = &v1alpha1.CodedeployDeploymentConfig{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("codedeploydeploymentconfigs").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type ApplicationInsightsesGetter interface {
 
 // ApplicationInsightsInterface has methods to work with ApplicationInsights resources.
 type ApplicationInsightsInterface interface {
-	Create(*v1alpha1.ApplicationInsights) (*v1alpha1.ApplicationInsights, error)
-	Update(*v1alpha1.ApplicationInsights) (*v1alpha1.ApplicationInsights, error)
-	UpdateStatus(*v1alpha1.ApplicationInsights) (*v1alpha1.ApplicationInsights, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ApplicationInsights, error)
-	List(opts v1.ListOptions) (*v1alpha1.ApplicationInsightsList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApplicationInsights, err error)
+	Create(ctx context.Context, applicationInsights *v1alpha1.ApplicationInsights, opts v1.CreateOptions) (*v1alpha1.ApplicationInsights, error)
+	Update(ctx context.Context, applicationInsights *v1alpha1.ApplicationInsights, opts v1.UpdateOptions) (*v1alpha1.ApplicationInsights, error)
+	UpdateStatus(ctx context.Context, applicationInsights *v1alpha1.ApplicationInsights, opts v1.UpdateOptions) (*v1alpha1.ApplicationInsights, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ApplicationInsights, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ApplicationInsightsList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApplicationInsights, err error)
 	ApplicationInsightsExpansion
 }
 
@@ -65,20 +66,20 @@ func newApplicationInsightses(c *AzurermV1alpha1Client, namespace string) *appli
 }
 
 // Get takes name of the applicationInsights, and returns the corresponding applicationInsights object, and an error if there is any.
-func (c *applicationInsightses) Get(name string, options v1.GetOptions) (result *v1alpha1.ApplicationInsights, err error) {
+func (c *applicationInsightses) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApplicationInsights, err error) {
 	result = &v1alpha1.ApplicationInsights{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("applicationinsightses").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ApplicationInsightses that match those selectors.
-func (c *applicationInsightses) List(opts v1.ListOptions) (result *v1alpha1.ApplicationInsightsList, err error) {
+func (c *applicationInsightses) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApplicationInsightsList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *applicationInsightses) List(opts v1.ListOptions) (result *v1alpha1.Appl
 		Resource("applicationinsightses").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested applicationInsightses.
-func (c *applicationInsightses) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *applicationInsightses) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *applicationInsightses) Watch(opts v1.ListOptions) (watch.Interface, err
 		Resource("applicationinsightses").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a applicationInsights and creates it.  Returns the server's representation of the applicationInsights, and an error, if there is any.
-func (c *applicationInsightses) Create(applicationInsights *v1alpha1.ApplicationInsights) (result *v1alpha1.ApplicationInsights, err error) {
+func (c *applicationInsightses) Create(ctx context.Context, applicationInsights *v1alpha1.ApplicationInsights, opts v1.CreateOptions) (result *v1alpha1.ApplicationInsights, err error) {
 	result = &v1alpha1.ApplicationInsights{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("applicationinsightses").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(applicationInsights).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a applicationInsights and updates it. Returns the server's representation of the applicationInsights, and an error, if there is any.
-func (c *applicationInsightses) Update(applicationInsights *v1alpha1.ApplicationInsights) (result *v1alpha1.ApplicationInsights, err error) {
+func (c *applicationInsightses) Update(ctx context.Context, applicationInsights *v1alpha1.ApplicationInsights, opts v1.UpdateOptions) (result *v1alpha1.ApplicationInsights, err error) {
 	result = &v1alpha1.ApplicationInsights{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("applicationinsightses").
 		Name(applicationInsights.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(applicationInsights).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *applicationInsightses) UpdateStatus(applicationInsights *v1alpha1.ApplicationInsights) (result *v1alpha1.ApplicationInsights, err error) {
+func (c *applicationInsightses) UpdateStatus(ctx context.Context, applicationInsights *v1alpha1.ApplicationInsights, opts v1.UpdateOptions) (result *v1alpha1.ApplicationInsights, err error) {
 	result = &v1alpha1.ApplicationInsights{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("applicationinsightses").
 		Name(applicationInsights.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(applicationInsights).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the applicationInsights and deletes it. Returns an error if one occurs.
-func (c *applicationInsightses) Delete(name string, options *v1.DeleteOptions) error {
+func (c *applicationInsightses) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("applicationinsightses").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *applicationInsightses) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *applicationInsightses) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("applicationinsightses").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched applicationInsights.
-func (c *applicationInsightses) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApplicationInsights, err error) {
+func (c *applicationInsightses) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApplicationInsights, err error) {
 	result = &v1alpha1.ApplicationInsights{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("applicationinsightses").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

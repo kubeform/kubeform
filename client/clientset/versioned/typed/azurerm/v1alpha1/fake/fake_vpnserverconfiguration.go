@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var vpnserverconfigurationsResource = schema.GroupVersionResource{Group: "azurer
 var vpnserverconfigurationsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "VpnServerConfiguration"}
 
 // Get takes name of the vpnServerConfiguration, and returns the corresponding vpnServerConfiguration object, and an error if there is any.
-func (c *FakeVpnServerConfigurations) Get(name string, options v1.GetOptions) (result *v1alpha1.VpnServerConfiguration, err error) {
+func (c *FakeVpnServerConfigurations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.VpnServerConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(vpnserverconfigurationsResource, c.ns, name), &v1alpha1.VpnServerConfiguration{})
 
@@ -51,7 +53,7 @@ func (c *FakeVpnServerConfigurations) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of VpnServerConfigurations that match those selectors.
-func (c *FakeVpnServerConfigurations) List(opts v1.ListOptions) (result *v1alpha1.VpnServerConfigurationList, err error) {
+func (c *FakeVpnServerConfigurations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.VpnServerConfigurationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(vpnserverconfigurationsResource, vpnserverconfigurationsKind, c.ns, opts), &v1alpha1.VpnServerConfigurationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeVpnServerConfigurations) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested vpnServerConfigurations.
-func (c *FakeVpnServerConfigurations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeVpnServerConfigurations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(vpnserverconfigurationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a vpnServerConfiguration and creates it.  Returns the server's representation of the vpnServerConfiguration, and an error, if there is any.
-func (c *FakeVpnServerConfigurations) Create(vpnServerConfiguration *v1alpha1.VpnServerConfiguration) (result *v1alpha1.VpnServerConfiguration, err error) {
+func (c *FakeVpnServerConfigurations) Create(ctx context.Context, vpnServerConfiguration *v1alpha1.VpnServerConfiguration, opts v1.CreateOptions) (result *v1alpha1.VpnServerConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(vpnserverconfigurationsResource, c.ns, vpnServerConfiguration), &v1alpha1.VpnServerConfiguration{})
 
@@ -91,7 +93,7 @@ func (c *FakeVpnServerConfigurations) Create(vpnServerConfiguration *v1alpha1.Vp
 }
 
 // Update takes the representation of a vpnServerConfiguration and updates it. Returns the server's representation of the vpnServerConfiguration, and an error, if there is any.
-func (c *FakeVpnServerConfigurations) Update(vpnServerConfiguration *v1alpha1.VpnServerConfiguration) (result *v1alpha1.VpnServerConfiguration, err error) {
+func (c *FakeVpnServerConfigurations) Update(ctx context.Context, vpnServerConfiguration *v1alpha1.VpnServerConfiguration, opts v1.UpdateOptions) (result *v1alpha1.VpnServerConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(vpnserverconfigurationsResource, c.ns, vpnServerConfiguration), &v1alpha1.VpnServerConfiguration{})
 
@@ -103,7 +105,7 @@ func (c *FakeVpnServerConfigurations) Update(vpnServerConfiguration *v1alpha1.Vp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeVpnServerConfigurations) UpdateStatus(vpnServerConfiguration *v1alpha1.VpnServerConfiguration) (*v1alpha1.VpnServerConfiguration, error) {
+func (c *FakeVpnServerConfigurations) UpdateStatus(ctx context.Context, vpnServerConfiguration *v1alpha1.VpnServerConfiguration, opts v1.UpdateOptions) (*v1alpha1.VpnServerConfiguration, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(vpnserverconfigurationsResource, "status", c.ns, vpnServerConfiguration), &v1alpha1.VpnServerConfiguration{})
 
@@ -114,7 +116,7 @@ func (c *FakeVpnServerConfigurations) UpdateStatus(vpnServerConfiguration *v1alp
 }
 
 // Delete takes name of the vpnServerConfiguration and deletes it. Returns an error if one occurs.
-func (c *FakeVpnServerConfigurations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeVpnServerConfigurations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(vpnserverconfigurationsResource, c.ns, name), &v1alpha1.VpnServerConfiguration{})
 
@@ -122,15 +124,15 @@ func (c *FakeVpnServerConfigurations) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeVpnServerConfigurations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(vpnserverconfigurationsResource, c.ns, listOptions)
+func (c *FakeVpnServerConfigurations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(vpnserverconfigurationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.VpnServerConfigurationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched vpnServerConfiguration.
-func (c *FakeVpnServerConfigurations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.VpnServerConfiguration, err error) {
+func (c *FakeVpnServerConfigurations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.VpnServerConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(vpnserverconfigurationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.VpnServerConfiguration{})
 

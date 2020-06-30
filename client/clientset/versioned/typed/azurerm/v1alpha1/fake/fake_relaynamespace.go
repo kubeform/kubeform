@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var relaynamespacesResource = schema.GroupVersionResource{Group: "azurerm.kubefo
 var relaynamespacesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "RelayNamespace"}
 
 // Get takes name of the relayNamespace, and returns the corresponding relayNamespace object, and an error if there is any.
-func (c *FakeRelayNamespaces) Get(name string, options v1.GetOptions) (result *v1alpha1.RelayNamespace, err error) {
+func (c *FakeRelayNamespaces) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.RelayNamespace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(relaynamespacesResource, c.ns, name), &v1alpha1.RelayNamespace{})
 
@@ -51,7 +53,7 @@ func (c *FakeRelayNamespaces) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of RelayNamespaces that match those selectors.
-func (c *FakeRelayNamespaces) List(opts v1.ListOptions) (result *v1alpha1.RelayNamespaceList, err error) {
+func (c *FakeRelayNamespaces) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RelayNamespaceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(relaynamespacesResource, relaynamespacesKind, c.ns, opts), &v1alpha1.RelayNamespaceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeRelayNamespaces) List(opts v1.ListOptions) (result *v1alpha1.RelayN
 }
 
 // Watch returns a watch.Interface that watches the requested relayNamespaces.
-func (c *FakeRelayNamespaces) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeRelayNamespaces) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(relaynamespacesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a relayNamespace and creates it.  Returns the server's representation of the relayNamespace, and an error, if there is any.
-func (c *FakeRelayNamespaces) Create(relayNamespace *v1alpha1.RelayNamespace) (result *v1alpha1.RelayNamespace, err error) {
+func (c *FakeRelayNamespaces) Create(ctx context.Context, relayNamespace *v1alpha1.RelayNamespace, opts v1.CreateOptions) (result *v1alpha1.RelayNamespace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(relaynamespacesResource, c.ns, relayNamespace), &v1alpha1.RelayNamespace{})
 
@@ -91,7 +93,7 @@ func (c *FakeRelayNamespaces) Create(relayNamespace *v1alpha1.RelayNamespace) (r
 }
 
 // Update takes the representation of a relayNamespace and updates it. Returns the server's representation of the relayNamespace, and an error, if there is any.
-func (c *FakeRelayNamespaces) Update(relayNamespace *v1alpha1.RelayNamespace) (result *v1alpha1.RelayNamespace, err error) {
+func (c *FakeRelayNamespaces) Update(ctx context.Context, relayNamespace *v1alpha1.RelayNamespace, opts v1.UpdateOptions) (result *v1alpha1.RelayNamespace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(relaynamespacesResource, c.ns, relayNamespace), &v1alpha1.RelayNamespace{})
 
@@ -103,7 +105,7 @@ func (c *FakeRelayNamespaces) Update(relayNamespace *v1alpha1.RelayNamespace) (r
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeRelayNamespaces) UpdateStatus(relayNamespace *v1alpha1.RelayNamespace) (*v1alpha1.RelayNamespace, error) {
+func (c *FakeRelayNamespaces) UpdateStatus(ctx context.Context, relayNamespace *v1alpha1.RelayNamespace, opts v1.UpdateOptions) (*v1alpha1.RelayNamespace, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(relaynamespacesResource, "status", c.ns, relayNamespace), &v1alpha1.RelayNamespace{})
 
@@ -114,7 +116,7 @@ func (c *FakeRelayNamespaces) UpdateStatus(relayNamespace *v1alpha1.RelayNamespa
 }
 
 // Delete takes name of the relayNamespace and deletes it. Returns an error if one occurs.
-func (c *FakeRelayNamespaces) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeRelayNamespaces) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(relaynamespacesResource, c.ns, name), &v1alpha1.RelayNamespace{})
 
@@ -122,15 +124,15 @@ func (c *FakeRelayNamespaces) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeRelayNamespaces) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(relaynamespacesResource, c.ns, listOptions)
+func (c *FakeRelayNamespaces) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(relaynamespacesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.RelayNamespaceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched relayNamespace.
-func (c *FakeRelayNamespaces) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RelayNamespace, err error) {
+func (c *FakeRelayNamespaces) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RelayNamespace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(relaynamespacesResource, c.ns, name, pt, data, subresources...), &v1alpha1.RelayNamespace{})
 

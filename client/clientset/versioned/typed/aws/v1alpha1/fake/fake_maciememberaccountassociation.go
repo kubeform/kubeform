@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var maciememberaccountassociationsResource = schema.GroupVersionResource{Group: 
 var maciememberaccountassociationsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "MacieMemberAccountAssociation"}
 
 // Get takes name of the macieMemberAccountAssociation, and returns the corresponding macieMemberAccountAssociation object, and an error if there is any.
-func (c *FakeMacieMemberAccountAssociations) Get(name string, options v1.GetOptions) (result *v1alpha1.MacieMemberAccountAssociation, err error) {
+func (c *FakeMacieMemberAccountAssociations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.MacieMemberAccountAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(maciememberaccountassociationsResource, c.ns, name), &v1alpha1.MacieMemberAccountAssociation{})
 
@@ -51,7 +53,7 @@ func (c *FakeMacieMemberAccountAssociations) Get(name string, options v1.GetOpti
 }
 
 // List takes label and field selectors, and returns the list of MacieMemberAccountAssociations that match those selectors.
-func (c *FakeMacieMemberAccountAssociations) List(opts v1.ListOptions) (result *v1alpha1.MacieMemberAccountAssociationList, err error) {
+func (c *FakeMacieMemberAccountAssociations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.MacieMemberAccountAssociationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(maciememberaccountassociationsResource, maciememberaccountassociationsKind, c.ns, opts), &v1alpha1.MacieMemberAccountAssociationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeMacieMemberAccountAssociations) List(opts v1.ListOptions) (result *
 }
 
 // Watch returns a watch.Interface that watches the requested macieMemberAccountAssociations.
-func (c *FakeMacieMemberAccountAssociations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeMacieMemberAccountAssociations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(maciememberaccountassociationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a macieMemberAccountAssociation and creates it.  Returns the server's representation of the macieMemberAccountAssociation, and an error, if there is any.
-func (c *FakeMacieMemberAccountAssociations) Create(macieMemberAccountAssociation *v1alpha1.MacieMemberAccountAssociation) (result *v1alpha1.MacieMemberAccountAssociation, err error) {
+func (c *FakeMacieMemberAccountAssociations) Create(ctx context.Context, macieMemberAccountAssociation *v1alpha1.MacieMemberAccountAssociation, opts v1.CreateOptions) (result *v1alpha1.MacieMemberAccountAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(maciememberaccountassociationsResource, c.ns, macieMemberAccountAssociation), &v1alpha1.MacieMemberAccountAssociation{})
 
@@ -91,7 +93,7 @@ func (c *FakeMacieMemberAccountAssociations) Create(macieMemberAccountAssociatio
 }
 
 // Update takes the representation of a macieMemberAccountAssociation and updates it. Returns the server's representation of the macieMemberAccountAssociation, and an error, if there is any.
-func (c *FakeMacieMemberAccountAssociations) Update(macieMemberAccountAssociation *v1alpha1.MacieMemberAccountAssociation) (result *v1alpha1.MacieMemberAccountAssociation, err error) {
+func (c *FakeMacieMemberAccountAssociations) Update(ctx context.Context, macieMemberAccountAssociation *v1alpha1.MacieMemberAccountAssociation, opts v1.UpdateOptions) (result *v1alpha1.MacieMemberAccountAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(maciememberaccountassociationsResource, c.ns, macieMemberAccountAssociation), &v1alpha1.MacieMemberAccountAssociation{})
 
@@ -103,7 +105,7 @@ func (c *FakeMacieMemberAccountAssociations) Update(macieMemberAccountAssociatio
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeMacieMemberAccountAssociations) UpdateStatus(macieMemberAccountAssociation *v1alpha1.MacieMemberAccountAssociation) (*v1alpha1.MacieMemberAccountAssociation, error) {
+func (c *FakeMacieMemberAccountAssociations) UpdateStatus(ctx context.Context, macieMemberAccountAssociation *v1alpha1.MacieMemberAccountAssociation, opts v1.UpdateOptions) (*v1alpha1.MacieMemberAccountAssociation, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(maciememberaccountassociationsResource, "status", c.ns, macieMemberAccountAssociation), &v1alpha1.MacieMemberAccountAssociation{})
 
@@ -114,7 +116,7 @@ func (c *FakeMacieMemberAccountAssociations) UpdateStatus(macieMemberAccountAsso
 }
 
 // Delete takes name of the macieMemberAccountAssociation and deletes it. Returns an error if one occurs.
-func (c *FakeMacieMemberAccountAssociations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeMacieMemberAccountAssociations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(maciememberaccountassociationsResource, c.ns, name), &v1alpha1.MacieMemberAccountAssociation{})
 
@@ -122,15 +124,15 @@ func (c *FakeMacieMemberAccountAssociations) Delete(name string, options *v1.Del
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeMacieMemberAccountAssociations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(maciememberaccountassociationsResource, c.ns, listOptions)
+func (c *FakeMacieMemberAccountAssociations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(maciememberaccountassociationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.MacieMemberAccountAssociationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched macieMemberAccountAssociation.
-func (c *FakeMacieMemberAccountAssociations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MacieMemberAccountAssociation, err error) {
+func (c *FakeMacieMemberAccountAssociations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MacieMemberAccountAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(maciememberaccountassociationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.MacieMemberAccountAssociation{})
 

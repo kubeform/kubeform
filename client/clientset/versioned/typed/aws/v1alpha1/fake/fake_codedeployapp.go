@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var codedeployappsResource = schema.GroupVersionResource{Group: "aws.kubeform.co
 var codedeployappsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "CodedeployApp"}
 
 // Get takes name of the codedeployApp, and returns the corresponding codedeployApp object, and an error if there is any.
-func (c *FakeCodedeployApps) Get(name string, options v1.GetOptions) (result *v1alpha1.CodedeployApp, err error) {
+func (c *FakeCodedeployApps) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CodedeployApp, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(codedeployappsResource, c.ns, name), &v1alpha1.CodedeployApp{})
 
@@ -51,7 +53,7 @@ func (c *FakeCodedeployApps) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of CodedeployApps that match those selectors.
-func (c *FakeCodedeployApps) List(opts v1.ListOptions) (result *v1alpha1.CodedeployAppList, err error) {
+func (c *FakeCodedeployApps) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CodedeployAppList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(codedeployappsResource, codedeployappsKind, c.ns, opts), &v1alpha1.CodedeployAppList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCodedeployApps) List(opts v1.ListOptions) (result *v1alpha1.Codedep
 }
 
 // Watch returns a watch.Interface that watches the requested codedeployApps.
-func (c *FakeCodedeployApps) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCodedeployApps) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(codedeployappsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a codedeployApp and creates it.  Returns the server's representation of the codedeployApp, and an error, if there is any.
-func (c *FakeCodedeployApps) Create(codedeployApp *v1alpha1.CodedeployApp) (result *v1alpha1.CodedeployApp, err error) {
+func (c *FakeCodedeployApps) Create(ctx context.Context, codedeployApp *v1alpha1.CodedeployApp, opts v1.CreateOptions) (result *v1alpha1.CodedeployApp, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(codedeployappsResource, c.ns, codedeployApp), &v1alpha1.CodedeployApp{})
 
@@ -91,7 +93,7 @@ func (c *FakeCodedeployApps) Create(codedeployApp *v1alpha1.CodedeployApp) (resu
 }
 
 // Update takes the representation of a codedeployApp and updates it. Returns the server's representation of the codedeployApp, and an error, if there is any.
-func (c *FakeCodedeployApps) Update(codedeployApp *v1alpha1.CodedeployApp) (result *v1alpha1.CodedeployApp, err error) {
+func (c *FakeCodedeployApps) Update(ctx context.Context, codedeployApp *v1alpha1.CodedeployApp, opts v1.UpdateOptions) (result *v1alpha1.CodedeployApp, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(codedeployappsResource, c.ns, codedeployApp), &v1alpha1.CodedeployApp{})
 
@@ -103,7 +105,7 @@ func (c *FakeCodedeployApps) Update(codedeployApp *v1alpha1.CodedeployApp) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCodedeployApps) UpdateStatus(codedeployApp *v1alpha1.CodedeployApp) (*v1alpha1.CodedeployApp, error) {
+func (c *FakeCodedeployApps) UpdateStatus(ctx context.Context, codedeployApp *v1alpha1.CodedeployApp, opts v1.UpdateOptions) (*v1alpha1.CodedeployApp, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(codedeployappsResource, "status", c.ns, codedeployApp), &v1alpha1.CodedeployApp{})
 
@@ -114,7 +116,7 @@ func (c *FakeCodedeployApps) UpdateStatus(codedeployApp *v1alpha1.CodedeployApp)
 }
 
 // Delete takes name of the codedeployApp and deletes it. Returns an error if one occurs.
-func (c *FakeCodedeployApps) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCodedeployApps) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(codedeployappsResource, c.ns, name), &v1alpha1.CodedeployApp{})
 
@@ -122,15 +124,15 @@ func (c *FakeCodedeployApps) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCodedeployApps) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(codedeployappsResource, c.ns, listOptions)
+func (c *FakeCodedeployApps) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(codedeployappsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CodedeployAppList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched codedeployApp.
-func (c *FakeCodedeployApps) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CodedeployApp, err error) {
+func (c *FakeCodedeployApps) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CodedeployApp, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(codedeployappsResource, c.ns, name, pt, data, subresources...), &v1alpha1.CodedeployApp{})
 

@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type ComputeRoutersGetter interface {
 
 // ComputeRouterInterface has methods to work with ComputeRouter resources.
 type ComputeRouterInterface interface {
-	Create(*v1alpha1.ComputeRouter) (*v1alpha1.ComputeRouter, error)
-	Update(*v1alpha1.ComputeRouter) (*v1alpha1.ComputeRouter, error)
-	UpdateStatus(*v1alpha1.ComputeRouter) (*v1alpha1.ComputeRouter, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ComputeRouter, error)
-	List(opts v1.ListOptions) (*v1alpha1.ComputeRouterList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeRouter, err error)
+	Create(ctx context.Context, computeRouter *v1alpha1.ComputeRouter, opts v1.CreateOptions) (*v1alpha1.ComputeRouter, error)
+	Update(ctx context.Context, computeRouter *v1alpha1.ComputeRouter, opts v1.UpdateOptions) (*v1alpha1.ComputeRouter, error)
+	UpdateStatus(ctx context.Context, computeRouter *v1alpha1.ComputeRouter, opts v1.UpdateOptions) (*v1alpha1.ComputeRouter, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ComputeRouter, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ComputeRouterList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeRouter, err error)
 	ComputeRouterExpansion
 }
 
@@ -65,20 +66,20 @@ func newComputeRouters(c *GoogleV1alpha1Client, namespace string) *computeRouter
 }
 
 // Get takes name of the computeRouter, and returns the corresponding computeRouter object, and an error if there is any.
-func (c *computeRouters) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeRouter, err error) {
+func (c *computeRouters) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeRouter, err error) {
 	result = &v1alpha1.ComputeRouter{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("computerouters").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ComputeRouters that match those selectors.
-func (c *computeRouters) List(opts v1.ListOptions) (result *v1alpha1.ComputeRouterList, err error) {
+func (c *computeRouters) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeRouterList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *computeRouters) List(opts v1.ListOptions) (result *v1alpha1.ComputeRout
 		Resource("computerouters").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested computeRouters.
-func (c *computeRouters) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *computeRouters) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *computeRouters) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("computerouters").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a computeRouter and creates it.  Returns the server's representation of the computeRouter, and an error, if there is any.
-func (c *computeRouters) Create(computeRouter *v1alpha1.ComputeRouter) (result *v1alpha1.ComputeRouter, err error) {
+func (c *computeRouters) Create(ctx context.Context, computeRouter *v1alpha1.ComputeRouter, opts v1.CreateOptions) (result *v1alpha1.ComputeRouter, err error) {
 	result = &v1alpha1.ComputeRouter{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("computerouters").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeRouter).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a computeRouter and updates it. Returns the server's representation of the computeRouter, and an error, if there is any.
-func (c *computeRouters) Update(computeRouter *v1alpha1.ComputeRouter) (result *v1alpha1.ComputeRouter, err error) {
+func (c *computeRouters) Update(ctx context.Context, computeRouter *v1alpha1.ComputeRouter, opts v1.UpdateOptions) (result *v1alpha1.ComputeRouter, err error) {
 	result = &v1alpha1.ComputeRouter{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computerouters").
 		Name(computeRouter.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeRouter).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *computeRouters) UpdateStatus(computeRouter *v1alpha1.ComputeRouter) (result *v1alpha1.ComputeRouter, err error) {
+func (c *computeRouters) UpdateStatus(ctx context.Context, computeRouter *v1alpha1.ComputeRouter, opts v1.UpdateOptions) (result *v1alpha1.ComputeRouter, err error) {
 	result = &v1alpha1.ComputeRouter{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computerouters").
 		Name(computeRouter.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeRouter).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the computeRouter and deletes it. Returns an error if one occurs.
-func (c *computeRouters) Delete(name string, options *v1.DeleteOptions) error {
+func (c *computeRouters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computerouters").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *computeRouters) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *computeRouters) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computerouters").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched computeRouter.
-func (c *computeRouters) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeRouter, err error) {
+func (c *computeRouters) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeRouter, err error) {
 	result = &v1alpha1.ComputeRouter{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("computerouters").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

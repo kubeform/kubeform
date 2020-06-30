@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var configdeliverychannelsResource = schema.GroupVersionResource{Group: "aws.kub
 var configdeliverychannelsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ConfigDeliveryChannel"}
 
 // Get takes name of the configDeliveryChannel, and returns the corresponding configDeliveryChannel object, and an error if there is any.
-func (c *FakeConfigDeliveryChannels) Get(name string, options v1.GetOptions) (result *v1alpha1.ConfigDeliveryChannel, err error) {
+func (c *FakeConfigDeliveryChannels) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ConfigDeliveryChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(configdeliverychannelsResource, c.ns, name), &v1alpha1.ConfigDeliveryChannel{})
 
@@ -51,7 +53,7 @@ func (c *FakeConfigDeliveryChannels) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of ConfigDeliveryChannels that match those selectors.
-func (c *FakeConfigDeliveryChannels) List(opts v1.ListOptions) (result *v1alpha1.ConfigDeliveryChannelList, err error) {
+func (c *FakeConfigDeliveryChannels) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ConfigDeliveryChannelList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(configdeliverychannelsResource, configdeliverychannelsKind, c.ns, opts), &v1alpha1.ConfigDeliveryChannelList{})
 
@@ -73,14 +75,14 @@ func (c *FakeConfigDeliveryChannels) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested configDeliveryChannels.
-func (c *FakeConfigDeliveryChannels) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeConfigDeliveryChannels) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(configdeliverychannelsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a configDeliveryChannel and creates it.  Returns the server's representation of the configDeliveryChannel, and an error, if there is any.
-func (c *FakeConfigDeliveryChannels) Create(configDeliveryChannel *v1alpha1.ConfigDeliveryChannel) (result *v1alpha1.ConfigDeliveryChannel, err error) {
+func (c *FakeConfigDeliveryChannels) Create(ctx context.Context, configDeliveryChannel *v1alpha1.ConfigDeliveryChannel, opts v1.CreateOptions) (result *v1alpha1.ConfigDeliveryChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(configdeliverychannelsResource, c.ns, configDeliveryChannel), &v1alpha1.ConfigDeliveryChannel{})
 
@@ -91,7 +93,7 @@ func (c *FakeConfigDeliveryChannels) Create(configDeliveryChannel *v1alpha1.Conf
 }
 
 // Update takes the representation of a configDeliveryChannel and updates it. Returns the server's representation of the configDeliveryChannel, and an error, if there is any.
-func (c *FakeConfigDeliveryChannels) Update(configDeliveryChannel *v1alpha1.ConfigDeliveryChannel) (result *v1alpha1.ConfigDeliveryChannel, err error) {
+func (c *FakeConfigDeliveryChannels) Update(ctx context.Context, configDeliveryChannel *v1alpha1.ConfigDeliveryChannel, opts v1.UpdateOptions) (result *v1alpha1.ConfigDeliveryChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(configdeliverychannelsResource, c.ns, configDeliveryChannel), &v1alpha1.ConfigDeliveryChannel{})
 
@@ -103,7 +105,7 @@ func (c *FakeConfigDeliveryChannels) Update(configDeliveryChannel *v1alpha1.Conf
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeConfigDeliveryChannels) UpdateStatus(configDeliveryChannel *v1alpha1.ConfigDeliveryChannel) (*v1alpha1.ConfigDeliveryChannel, error) {
+func (c *FakeConfigDeliveryChannels) UpdateStatus(ctx context.Context, configDeliveryChannel *v1alpha1.ConfigDeliveryChannel, opts v1.UpdateOptions) (*v1alpha1.ConfigDeliveryChannel, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(configdeliverychannelsResource, "status", c.ns, configDeliveryChannel), &v1alpha1.ConfigDeliveryChannel{})
 
@@ -114,7 +116,7 @@ func (c *FakeConfigDeliveryChannels) UpdateStatus(configDeliveryChannel *v1alpha
 }
 
 // Delete takes name of the configDeliveryChannel and deletes it. Returns an error if one occurs.
-func (c *FakeConfigDeliveryChannels) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeConfigDeliveryChannels) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(configdeliverychannelsResource, c.ns, name), &v1alpha1.ConfigDeliveryChannel{})
 
@@ -122,15 +124,15 @@ func (c *FakeConfigDeliveryChannels) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeConfigDeliveryChannels) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(configdeliverychannelsResource, c.ns, listOptions)
+func (c *FakeConfigDeliveryChannels) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(configdeliverychannelsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ConfigDeliveryChannelList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched configDeliveryChannel.
-func (c *FakeConfigDeliveryChannels) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ConfigDeliveryChannel, err error) {
+func (c *FakeConfigDeliveryChannels) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ConfigDeliveryChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(configdeliverychannelsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ConfigDeliveryChannel{})
 

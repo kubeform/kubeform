@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var ramresourcesharesResource = schema.GroupVersionResource{Group: "aws.kubeform
 var ramresourcesharesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "RamResourceShare"}
 
 // Get takes name of the ramResourceShare, and returns the corresponding ramResourceShare object, and an error if there is any.
-func (c *FakeRamResourceShares) Get(name string, options v1.GetOptions) (result *v1alpha1.RamResourceShare, err error) {
+func (c *FakeRamResourceShares) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.RamResourceShare, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(ramresourcesharesResource, c.ns, name), &v1alpha1.RamResourceShare{})
 
@@ -51,7 +53,7 @@ func (c *FakeRamResourceShares) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of RamResourceShares that match those selectors.
-func (c *FakeRamResourceShares) List(opts v1.ListOptions) (result *v1alpha1.RamResourceShareList, err error) {
+func (c *FakeRamResourceShares) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RamResourceShareList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(ramresourcesharesResource, ramresourcesharesKind, c.ns, opts), &v1alpha1.RamResourceShareList{})
 
@@ -73,14 +75,14 @@ func (c *FakeRamResourceShares) List(opts v1.ListOptions) (result *v1alpha1.RamR
 }
 
 // Watch returns a watch.Interface that watches the requested ramResourceShares.
-func (c *FakeRamResourceShares) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeRamResourceShares) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(ramresourcesharesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a ramResourceShare and creates it.  Returns the server's representation of the ramResourceShare, and an error, if there is any.
-func (c *FakeRamResourceShares) Create(ramResourceShare *v1alpha1.RamResourceShare) (result *v1alpha1.RamResourceShare, err error) {
+func (c *FakeRamResourceShares) Create(ctx context.Context, ramResourceShare *v1alpha1.RamResourceShare, opts v1.CreateOptions) (result *v1alpha1.RamResourceShare, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(ramresourcesharesResource, c.ns, ramResourceShare), &v1alpha1.RamResourceShare{})
 
@@ -91,7 +93,7 @@ func (c *FakeRamResourceShares) Create(ramResourceShare *v1alpha1.RamResourceSha
 }
 
 // Update takes the representation of a ramResourceShare and updates it. Returns the server's representation of the ramResourceShare, and an error, if there is any.
-func (c *FakeRamResourceShares) Update(ramResourceShare *v1alpha1.RamResourceShare) (result *v1alpha1.RamResourceShare, err error) {
+func (c *FakeRamResourceShares) Update(ctx context.Context, ramResourceShare *v1alpha1.RamResourceShare, opts v1.UpdateOptions) (result *v1alpha1.RamResourceShare, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(ramresourcesharesResource, c.ns, ramResourceShare), &v1alpha1.RamResourceShare{})
 
@@ -103,7 +105,7 @@ func (c *FakeRamResourceShares) Update(ramResourceShare *v1alpha1.RamResourceSha
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeRamResourceShares) UpdateStatus(ramResourceShare *v1alpha1.RamResourceShare) (*v1alpha1.RamResourceShare, error) {
+func (c *FakeRamResourceShares) UpdateStatus(ctx context.Context, ramResourceShare *v1alpha1.RamResourceShare, opts v1.UpdateOptions) (*v1alpha1.RamResourceShare, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(ramresourcesharesResource, "status", c.ns, ramResourceShare), &v1alpha1.RamResourceShare{})
 
@@ -114,7 +116,7 @@ func (c *FakeRamResourceShares) UpdateStatus(ramResourceShare *v1alpha1.RamResou
 }
 
 // Delete takes name of the ramResourceShare and deletes it. Returns an error if one occurs.
-func (c *FakeRamResourceShares) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeRamResourceShares) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(ramresourcesharesResource, c.ns, name), &v1alpha1.RamResourceShare{})
 
@@ -122,15 +124,15 @@ func (c *FakeRamResourceShares) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeRamResourceShares) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(ramresourcesharesResource, c.ns, listOptions)
+func (c *FakeRamResourceShares) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(ramresourcesharesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.RamResourceShareList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched ramResourceShare.
-func (c *FakeRamResourceShares) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RamResourceShare, err error) {
+func (c *FakeRamResourceShares) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RamResourceShare, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(ramresourcesharesResource, c.ns, name, pt, data, subresources...), &v1alpha1.RamResourceShare{})
 

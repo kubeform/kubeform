@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type DataFactoryLinkedServiceMysqlsGetter interface {
 
 // DataFactoryLinkedServiceMysqlInterface has methods to work with DataFactoryLinkedServiceMysql resources.
 type DataFactoryLinkedServiceMysqlInterface interface {
-	Create(*v1alpha1.DataFactoryLinkedServiceMysql) (*v1alpha1.DataFactoryLinkedServiceMysql, error)
-	Update(*v1alpha1.DataFactoryLinkedServiceMysql) (*v1alpha1.DataFactoryLinkedServiceMysql, error)
-	UpdateStatus(*v1alpha1.DataFactoryLinkedServiceMysql) (*v1alpha1.DataFactoryLinkedServiceMysql, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.DataFactoryLinkedServiceMysql, error)
-	List(opts v1.ListOptions) (*v1alpha1.DataFactoryLinkedServiceMysqlList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataFactoryLinkedServiceMysql, err error)
+	Create(ctx context.Context, dataFactoryLinkedServiceMysql *v1alpha1.DataFactoryLinkedServiceMysql, opts v1.CreateOptions) (*v1alpha1.DataFactoryLinkedServiceMysql, error)
+	Update(ctx context.Context, dataFactoryLinkedServiceMysql *v1alpha1.DataFactoryLinkedServiceMysql, opts v1.UpdateOptions) (*v1alpha1.DataFactoryLinkedServiceMysql, error)
+	UpdateStatus(ctx context.Context, dataFactoryLinkedServiceMysql *v1alpha1.DataFactoryLinkedServiceMysql, opts v1.UpdateOptions) (*v1alpha1.DataFactoryLinkedServiceMysql, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.DataFactoryLinkedServiceMysql, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.DataFactoryLinkedServiceMysqlList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataFactoryLinkedServiceMysql, err error)
 	DataFactoryLinkedServiceMysqlExpansion
 }
 
@@ -65,20 +66,20 @@ func newDataFactoryLinkedServiceMysqls(c *AzurermV1alpha1Client, namespace strin
 }
 
 // Get takes name of the dataFactoryLinkedServiceMysql, and returns the corresponding dataFactoryLinkedServiceMysql object, and an error if there is any.
-func (c *dataFactoryLinkedServiceMysqls) Get(name string, options v1.GetOptions) (result *v1alpha1.DataFactoryLinkedServiceMysql, err error) {
+func (c *dataFactoryLinkedServiceMysqls) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DataFactoryLinkedServiceMysql, err error) {
 	result = &v1alpha1.DataFactoryLinkedServiceMysql{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("datafactorylinkedservicemysqls").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of DataFactoryLinkedServiceMysqls that match those selectors.
-func (c *dataFactoryLinkedServiceMysqls) List(opts v1.ListOptions) (result *v1alpha1.DataFactoryLinkedServiceMysqlList, err error) {
+func (c *dataFactoryLinkedServiceMysqls) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DataFactoryLinkedServiceMysqlList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *dataFactoryLinkedServiceMysqls) List(opts v1.ListOptions) (result *v1al
 		Resource("datafactorylinkedservicemysqls").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested dataFactoryLinkedServiceMysqls.
-func (c *dataFactoryLinkedServiceMysqls) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *dataFactoryLinkedServiceMysqls) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *dataFactoryLinkedServiceMysqls) Watch(opts v1.ListOptions) (watch.Inter
 		Resource("datafactorylinkedservicemysqls").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a dataFactoryLinkedServiceMysql and creates it.  Returns the server's representation of the dataFactoryLinkedServiceMysql, and an error, if there is any.
-func (c *dataFactoryLinkedServiceMysqls) Create(dataFactoryLinkedServiceMysql *v1alpha1.DataFactoryLinkedServiceMysql) (result *v1alpha1.DataFactoryLinkedServiceMysql, err error) {
+func (c *dataFactoryLinkedServiceMysqls) Create(ctx context.Context, dataFactoryLinkedServiceMysql *v1alpha1.DataFactoryLinkedServiceMysql, opts v1.CreateOptions) (result *v1alpha1.DataFactoryLinkedServiceMysql, err error) {
 	result = &v1alpha1.DataFactoryLinkedServiceMysql{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("datafactorylinkedservicemysqls").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dataFactoryLinkedServiceMysql).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a dataFactoryLinkedServiceMysql and updates it. Returns the server's representation of the dataFactoryLinkedServiceMysql, and an error, if there is any.
-func (c *dataFactoryLinkedServiceMysqls) Update(dataFactoryLinkedServiceMysql *v1alpha1.DataFactoryLinkedServiceMysql) (result *v1alpha1.DataFactoryLinkedServiceMysql, err error) {
+func (c *dataFactoryLinkedServiceMysqls) Update(ctx context.Context, dataFactoryLinkedServiceMysql *v1alpha1.DataFactoryLinkedServiceMysql, opts v1.UpdateOptions) (result *v1alpha1.DataFactoryLinkedServiceMysql, err error) {
 	result = &v1alpha1.DataFactoryLinkedServiceMysql{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("datafactorylinkedservicemysqls").
 		Name(dataFactoryLinkedServiceMysql.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dataFactoryLinkedServiceMysql).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *dataFactoryLinkedServiceMysqls) UpdateStatus(dataFactoryLinkedServiceMysql *v1alpha1.DataFactoryLinkedServiceMysql) (result *v1alpha1.DataFactoryLinkedServiceMysql, err error) {
+func (c *dataFactoryLinkedServiceMysqls) UpdateStatus(ctx context.Context, dataFactoryLinkedServiceMysql *v1alpha1.DataFactoryLinkedServiceMysql, opts v1.UpdateOptions) (result *v1alpha1.DataFactoryLinkedServiceMysql, err error) {
 	result = &v1alpha1.DataFactoryLinkedServiceMysql{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("datafactorylinkedservicemysqls").
 		Name(dataFactoryLinkedServiceMysql.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dataFactoryLinkedServiceMysql).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the dataFactoryLinkedServiceMysql and deletes it. Returns an error if one occurs.
-func (c *dataFactoryLinkedServiceMysqls) Delete(name string, options *v1.DeleteOptions) error {
+func (c *dataFactoryLinkedServiceMysqls) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("datafactorylinkedservicemysqls").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *dataFactoryLinkedServiceMysqls) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *dataFactoryLinkedServiceMysqls) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("datafactorylinkedservicemysqls").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched dataFactoryLinkedServiceMysql.
-func (c *dataFactoryLinkedServiceMysqls) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataFactoryLinkedServiceMysql, err error) {
+func (c *dataFactoryLinkedServiceMysqls) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataFactoryLinkedServiceMysql, err error) {
 	result = &v1alpha1.DataFactoryLinkedServiceMysql{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("datafactorylinkedservicemysqls").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

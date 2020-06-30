@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cloudfrontdistributionsResource = schema.GroupVersionResource{Group: "aws.ku
 var cloudfrontdistributionsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "CloudfrontDistribution"}
 
 // Get takes name of the cloudfrontDistribution, and returns the corresponding cloudfrontDistribution object, and an error if there is any.
-func (c *FakeCloudfrontDistributions) Get(name string, options v1.GetOptions) (result *v1alpha1.CloudfrontDistribution, err error) {
+func (c *FakeCloudfrontDistributions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CloudfrontDistribution, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cloudfrontdistributionsResource, c.ns, name), &v1alpha1.CloudfrontDistribution{})
 
@@ -51,7 +53,7 @@ func (c *FakeCloudfrontDistributions) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of CloudfrontDistributions that match those selectors.
-func (c *FakeCloudfrontDistributions) List(opts v1.ListOptions) (result *v1alpha1.CloudfrontDistributionList, err error) {
+func (c *FakeCloudfrontDistributions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CloudfrontDistributionList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cloudfrontdistributionsResource, cloudfrontdistributionsKind, c.ns, opts), &v1alpha1.CloudfrontDistributionList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCloudfrontDistributions) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested cloudfrontDistributions.
-func (c *FakeCloudfrontDistributions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCloudfrontDistributions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cloudfrontdistributionsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cloudfrontDistribution and creates it.  Returns the server's representation of the cloudfrontDistribution, and an error, if there is any.
-func (c *FakeCloudfrontDistributions) Create(cloudfrontDistribution *v1alpha1.CloudfrontDistribution) (result *v1alpha1.CloudfrontDistribution, err error) {
+func (c *FakeCloudfrontDistributions) Create(ctx context.Context, cloudfrontDistribution *v1alpha1.CloudfrontDistribution, opts v1.CreateOptions) (result *v1alpha1.CloudfrontDistribution, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cloudfrontdistributionsResource, c.ns, cloudfrontDistribution), &v1alpha1.CloudfrontDistribution{})
 
@@ -91,7 +93,7 @@ func (c *FakeCloudfrontDistributions) Create(cloudfrontDistribution *v1alpha1.Cl
 }
 
 // Update takes the representation of a cloudfrontDistribution and updates it. Returns the server's representation of the cloudfrontDistribution, and an error, if there is any.
-func (c *FakeCloudfrontDistributions) Update(cloudfrontDistribution *v1alpha1.CloudfrontDistribution) (result *v1alpha1.CloudfrontDistribution, err error) {
+func (c *FakeCloudfrontDistributions) Update(ctx context.Context, cloudfrontDistribution *v1alpha1.CloudfrontDistribution, opts v1.UpdateOptions) (result *v1alpha1.CloudfrontDistribution, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cloudfrontdistributionsResource, c.ns, cloudfrontDistribution), &v1alpha1.CloudfrontDistribution{})
 
@@ -103,7 +105,7 @@ func (c *FakeCloudfrontDistributions) Update(cloudfrontDistribution *v1alpha1.Cl
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCloudfrontDistributions) UpdateStatus(cloudfrontDistribution *v1alpha1.CloudfrontDistribution) (*v1alpha1.CloudfrontDistribution, error) {
+func (c *FakeCloudfrontDistributions) UpdateStatus(ctx context.Context, cloudfrontDistribution *v1alpha1.CloudfrontDistribution, opts v1.UpdateOptions) (*v1alpha1.CloudfrontDistribution, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cloudfrontdistributionsResource, "status", c.ns, cloudfrontDistribution), &v1alpha1.CloudfrontDistribution{})
 
@@ -114,7 +116,7 @@ func (c *FakeCloudfrontDistributions) UpdateStatus(cloudfrontDistribution *v1alp
 }
 
 // Delete takes name of the cloudfrontDistribution and deletes it. Returns an error if one occurs.
-func (c *FakeCloudfrontDistributions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCloudfrontDistributions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cloudfrontdistributionsResource, c.ns, name), &v1alpha1.CloudfrontDistribution{})
 
@@ -122,15 +124,15 @@ func (c *FakeCloudfrontDistributions) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCloudfrontDistributions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cloudfrontdistributionsResource, c.ns, listOptions)
+func (c *FakeCloudfrontDistributions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cloudfrontdistributionsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CloudfrontDistributionList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cloudfrontDistribution.
-func (c *FakeCloudfrontDistributions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CloudfrontDistribution, err error) {
+func (c *FakeCloudfrontDistributions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CloudfrontDistribution, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cloudfrontdistributionsResource, c.ns, name, pt, data, subresources...), &v1alpha1.CloudfrontDistribution{})
 

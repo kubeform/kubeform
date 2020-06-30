@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/digitalocean/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dropletsResource = schema.GroupVersionResource{Group: "digitalocean.kubeform
 var dropletsKind = schema.GroupVersionKind{Group: "digitalocean.kubeform.com", Version: "v1alpha1", Kind: "Droplet"}
 
 // Get takes name of the droplet, and returns the corresponding droplet object, and an error if there is any.
-func (c *FakeDroplets) Get(name string, options v1.GetOptions) (result *v1alpha1.Droplet, err error) {
+func (c *FakeDroplets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Droplet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dropletsResource, c.ns, name), &v1alpha1.Droplet{})
 
@@ -51,7 +53,7 @@ func (c *FakeDroplets) Get(name string, options v1.GetOptions) (result *v1alpha1
 }
 
 // List takes label and field selectors, and returns the list of Droplets that match those selectors.
-func (c *FakeDroplets) List(opts v1.ListOptions) (result *v1alpha1.DropletList, err error) {
+func (c *FakeDroplets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DropletList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dropletsResource, dropletsKind, c.ns, opts), &v1alpha1.DropletList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDroplets) List(opts v1.ListOptions) (result *v1alpha1.DropletList, 
 }
 
 // Watch returns a watch.Interface that watches the requested droplets.
-func (c *FakeDroplets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDroplets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dropletsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a droplet and creates it.  Returns the server's representation of the droplet, and an error, if there is any.
-func (c *FakeDroplets) Create(droplet *v1alpha1.Droplet) (result *v1alpha1.Droplet, err error) {
+func (c *FakeDroplets) Create(ctx context.Context, droplet *v1alpha1.Droplet, opts v1.CreateOptions) (result *v1alpha1.Droplet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dropletsResource, c.ns, droplet), &v1alpha1.Droplet{})
 
@@ -91,7 +93,7 @@ func (c *FakeDroplets) Create(droplet *v1alpha1.Droplet) (result *v1alpha1.Dropl
 }
 
 // Update takes the representation of a droplet and updates it. Returns the server's representation of the droplet, and an error, if there is any.
-func (c *FakeDroplets) Update(droplet *v1alpha1.Droplet) (result *v1alpha1.Droplet, err error) {
+func (c *FakeDroplets) Update(ctx context.Context, droplet *v1alpha1.Droplet, opts v1.UpdateOptions) (result *v1alpha1.Droplet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dropletsResource, c.ns, droplet), &v1alpha1.Droplet{})
 
@@ -103,7 +105,7 @@ func (c *FakeDroplets) Update(droplet *v1alpha1.Droplet) (result *v1alpha1.Dropl
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDroplets) UpdateStatus(droplet *v1alpha1.Droplet) (*v1alpha1.Droplet, error) {
+func (c *FakeDroplets) UpdateStatus(ctx context.Context, droplet *v1alpha1.Droplet, opts v1.UpdateOptions) (*v1alpha1.Droplet, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dropletsResource, "status", c.ns, droplet), &v1alpha1.Droplet{})
 
@@ -114,7 +116,7 @@ func (c *FakeDroplets) UpdateStatus(droplet *v1alpha1.Droplet) (*v1alpha1.Drople
 }
 
 // Delete takes name of the droplet and deletes it. Returns an error if one occurs.
-func (c *FakeDroplets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDroplets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dropletsResource, c.ns, name), &v1alpha1.Droplet{})
 
@@ -122,15 +124,15 @@ func (c *FakeDroplets) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDroplets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dropletsResource, c.ns, listOptions)
+func (c *FakeDroplets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dropletsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DropletList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched droplet.
-func (c *FakeDroplets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Droplet, err error) {
+func (c *FakeDroplets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Droplet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dropletsResource, c.ns, name, pt, data, subresources...), &v1alpha1.Droplet{})
 

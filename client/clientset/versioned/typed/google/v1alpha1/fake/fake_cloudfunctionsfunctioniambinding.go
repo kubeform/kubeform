@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cloudfunctionsfunctioniambindingsResource = schema.GroupVersionResource{Grou
 var cloudfunctionsfunctioniambindingsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "CloudfunctionsFunctionIamBinding"}
 
 // Get takes name of the cloudfunctionsFunctionIamBinding, and returns the corresponding cloudfunctionsFunctionIamBinding object, and an error if there is any.
-func (c *FakeCloudfunctionsFunctionIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.CloudfunctionsFunctionIamBinding, err error) {
+func (c *FakeCloudfunctionsFunctionIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CloudfunctionsFunctionIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cloudfunctionsfunctioniambindingsResource, c.ns, name), &v1alpha1.CloudfunctionsFunctionIamBinding{})
 
@@ -51,7 +53,7 @@ func (c *FakeCloudfunctionsFunctionIamBindings) Get(name string, options v1.GetO
 }
 
 // List takes label and field selectors, and returns the list of CloudfunctionsFunctionIamBindings that match those selectors.
-func (c *FakeCloudfunctionsFunctionIamBindings) List(opts v1.ListOptions) (result *v1alpha1.CloudfunctionsFunctionIamBindingList, err error) {
+func (c *FakeCloudfunctionsFunctionIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CloudfunctionsFunctionIamBindingList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cloudfunctionsfunctioniambindingsResource, cloudfunctionsfunctioniambindingsKind, c.ns, opts), &v1alpha1.CloudfunctionsFunctionIamBindingList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCloudfunctionsFunctionIamBindings) List(opts v1.ListOptions) (resul
 }
 
 // Watch returns a watch.Interface that watches the requested cloudfunctionsFunctionIamBindings.
-func (c *FakeCloudfunctionsFunctionIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCloudfunctionsFunctionIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cloudfunctionsfunctioniambindingsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cloudfunctionsFunctionIamBinding and creates it.  Returns the server's representation of the cloudfunctionsFunctionIamBinding, and an error, if there is any.
-func (c *FakeCloudfunctionsFunctionIamBindings) Create(cloudfunctionsFunctionIamBinding *v1alpha1.CloudfunctionsFunctionIamBinding) (result *v1alpha1.CloudfunctionsFunctionIamBinding, err error) {
+func (c *FakeCloudfunctionsFunctionIamBindings) Create(ctx context.Context, cloudfunctionsFunctionIamBinding *v1alpha1.CloudfunctionsFunctionIamBinding, opts v1.CreateOptions) (result *v1alpha1.CloudfunctionsFunctionIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cloudfunctionsfunctioniambindingsResource, c.ns, cloudfunctionsFunctionIamBinding), &v1alpha1.CloudfunctionsFunctionIamBinding{})
 
@@ -91,7 +93,7 @@ func (c *FakeCloudfunctionsFunctionIamBindings) Create(cloudfunctionsFunctionIam
 }
 
 // Update takes the representation of a cloudfunctionsFunctionIamBinding and updates it. Returns the server's representation of the cloudfunctionsFunctionIamBinding, and an error, if there is any.
-func (c *FakeCloudfunctionsFunctionIamBindings) Update(cloudfunctionsFunctionIamBinding *v1alpha1.CloudfunctionsFunctionIamBinding) (result *v1alpha1.CloudfunctionsFunctionIamBinding, err error) {
+func (c *FakeCloudfunctionsFunctionIamBindings) Update(ctx context.Context, cloudfunctionsFunctionIamBinding *v1alpha1.CloudfunctionsFunctionIamBinding, opts v1.UpdateOptions) (result *v1alpha1.CloudfunctionsFunctionIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cloudfunctionsfunctioniambindingsResource, c.ns, cloudfunctionsFunctionIamBinding), &v1alpha1.CloudfunctionsFunctionIamBinding{})
 
@@ -103,7 +105,7 @@ func (c *FakeCloudfunctionsFunctionIamBindings) Update(cloudfunctionsFunctionIam
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCloudfunctionsFunctionIamBindings) UpdateStatus(cloudfunctionsFunctionIamBinding *v1alpha1.CloudfunctionsFunctionIamBinding) (*v1alpha1.CloudfunctionsFunctionIamBinding, error) {
+func (c *FakeCloudfunctionsFunctionIamBindings) UpdateStatus(ctx context.Context, cloudfunctionsFunctionIamBinding *v1alpha1.CloudfunctionsFunctionIamBinding, opts v1.UpdateOptions) (*v1alpha1.CloudfunctionsFunctionIamBinding, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cloudfunctionsfunctioniambindingsResource, "status", c.ns, cloudfunctionsFunctionIamBinding), &v1alpha1.CloudfunctionsFunctionIamBinding{})
 
@@ -114,7 +116,7 @@ func (c *FakeCloudfunctionsFunctionIamBindings) UpdateStatus(cloudfunctionsFunct
 }
 
 // Delete takes name of the cloudfunctionsFunctionIamBinding and deletes it. Returns an error if one occurs.
-func (c *FakeCloudfunctionsFunctionIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCloudfunctionsFunctionIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cloudfunctionsfunctioniambindingsResource, c.ns, name), &v1alpha1.CloudfunctionsFunctionIamBinding{})
 
@@ -122,15 +124,15 @@ func (c *FakeCloudfunctionsFunctionIamBindings) Delete(name string, options *v1.
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCloudfunctionsFunctionIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cloudfunctionsfunctioniambindingsResource, c.ns, listOptions)
+func (c *FakeCloudfunctionsFunctionIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cloudfunctionsfunctioniambindingsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CloudfunctionsFunctionIamBindingList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cloudfunctionsFunctionIamBinding.
-func (c *FakeCloudfunctionsFunctionIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CloudfunctionsFunctionIamBinding, err error) {
+func (c *FakeCloudfunctionsFunctionIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CloudfunctionsFunctionIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cloudfunctionsfunctioniambindingsResource, c.ns, name, pt, data, subresources...), &v1alpha1.CloudfunctionsFunctionIamBinding{})
 

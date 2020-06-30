@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var mariadbconfigurationsResource = schema.GroupVersionResource{Group: "azurerm.
 var mariadbconfigurationsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "MariadbConfiguration"}
 
 // Get takes name of the mariadbConfiguration, and returns the corresponding mariadbConfiguration object, and an error if there is any.
-func (c *FakeMariadbConfigurations) Get(name string, options v1.GetOptions) (result *v1alpha1.MariadbConfiguration, err error) {
+func (c *FakeMariadbConfigurations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.MariadbConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(mariadbconfigurationsResource, c.ns, name), &v1alpha1.MariadbConfiguration{})
 
@@ -51,7 +53,7 @@ func (c *FakeMariadbConfigurations) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of MariadbConfigurations that match those selectors.
-func (c *FakeMariadbConfigurations) List(opts v1.ListOptions) (result *v1alpha1.MariadbConfigurationList, err error) {
+func (c *FakeMariadbConfigurations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.MariadbConfigurationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(mariadbconfigurationsResource, mariadbconfigurationsKind, c.ns, opts), &v1alpha1.MariadbConfigurationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeMariadbConfigurations) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested mariadbConfigurations.
-func (c *FakeMariadbConfigurations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeMariadbConfigurations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(mariadbconfigurationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a mariadbConfiguration and creates it.  Returns the server's representation of the mariadbConfiguration, and an error, if there is any.
-func (c *FakeMariadbConfigurations) Create(mariadbConfiguration *v1alpha1.MariadbConfiguration) (result *v1alpha1.MariadbConfiguration, err error) {
+func (c *FakeMariadbConfigurations) Create(ctx context.Context, mariadbConfiguration *v1alpha1.MariadbConfiguration, opts v1.CreateOptions) (result *v1alpha1.MariadbConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(mariadbconfigurationsResource, c.ns, mariadbConfiguration), &v1alpha1.MariadbConfiguration{})
 
@@ -91,7 +93,7 @@ func (c *FakeMariadbConfigurations) Create(mariadbConfiguration *v1alpha1.Mariad
 }
 
 // Update takes the representation of a mariadbConfiguration and updates it. Returns the server's representation of the mariadbConfiguration, and an error, if there is any.
-func (c *FakeMariadbConfigurations) Update(mariadbConfiguration *v1alpha1.MariadbConfiguration) (result *v1alpha1.MariadbConfiguration, err error) {
+func (c *FakeMariadbConfigurations) Update(ctx context.Context, mariadbConfiguration *v1alpha1.MariadbConfiguration, opts v1.UpdateOptions) (result *v1alpha1.MariadbConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(mariadbconfigurationsResource, c.ns, mariadbConfiguration), &v1alpha1.MariadbConfiguration{})
 
@@ -103,7 +105,7 @@ func (c *FakeMariadbConfigurations) Update(mariadbConfiguration *v1alpha1.Mariad
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeMariadbConfigurations) UpdateStatus(mariadbConfiguration *v1alpha1.MariadbConfiguration) (*v1alpha1.MariadbConfiguration, error) {
+func (c *FakeMariadbConfigurations) UpdateStatus(ctx context.Context, mariadbConfiguration *v1alpha1.MariadbConfiguration, opts v1.UpdateOptions) (*v1alpha1.MariadbConfiguration, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(mariadbconfigurationsResource, "status", c.ns, mariadbConfiguration), &v1alpha1.MariadbConfiguration{})
 
@@ -114,7 +116,7 @@ func (c *FakeMariadbConfigurations) UpdateStatus(mariadbConfiguration *v1alpha1.
 }
 
 // Delete takes name of the mariadbConfiguration and deletes it. Returns an error if one occurs.
-func (c *FakeMariadbConfigurations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeMariadbConfigurations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(mariadbconfigurationsResource, c.ns, name), &v1alpha1.MariadbConfiguration{})
 
@@ -122,15 +124,15 @@ func (c *FakeMariadbConfigurations) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeMariadbConfigurations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(mariadbconfigurationsResource, c.ns, listOptions)
+func (c *FakeMariadbConfigurations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(mariadbconfigurationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.MariadbConfigurationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched mariadbConfiguration.
-func (c *FakeMariadbConfigurations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MariadbConfiguration, err error) {
+func (c *FakeMariadbConfigurations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MariadbConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(mariadbconfigurationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.MariadbConfiguration{})
 

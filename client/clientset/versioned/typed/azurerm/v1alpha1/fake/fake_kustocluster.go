@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var kustoclustersResource = schema.GroupVersionResource{Group: "azurerm.kubeform
 var kustoclustersKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "KustoCluster"}
 
 // Get takes name of the kustoCluster, and returns the corresponding kustoCluster object, and an error if there is any.
-func (c *FakeKustoClusters) Get(name string, options v1.GetOptions) (result *v1alpha1.KustoCluster, err error) {
+func (c *FakeKustoClusters) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KustoCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(kustoclustersResource, c.ns, name), &v1alpha1.KustoCluster{})
 
@@ -51,7 +53,7 @@ func (c *FakeKustoClusters) Get(name string, options v1.GetOptions) (result *v1a
 }
 
 // List takes label and field selectors, and returns the list of KustoClusters that match those selectors.
-func (c *FakeKustoClusters) List(opts v1.ListOptions) (result *v1alpha1.KustoClusterList, err error) {
+func (c *FakeKustoClusters) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KustoClusterList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(kustoclustersResource, kustoclustersKind, c.ns, opts), &v1alpha1.KustoClusterList{})
 
@@ -73,14 +75,14 @@ func (c *FakeKustoClusters) List(opts v1.ListOptions) (result *v1alpha1.KustoClu
 }
 
 // Watch returns a watch.Interface that watches the requested kustoClusters.
-func (c *FakeKustoClusters) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeKustoClusters) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(kustoclustersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a kustoCluster and creates it.  Returns the server's representation of the kustoCluster, and an error, if there is any.
-func (c *FakeKustoClusters) Create(kustoCluster *v1alpha1.KustoCluster) (result *v1alpha1.KustoCluster, err error) {
+func (c *FakeKustoClusters) Create(ctx context.Context, kustoCluster *v1alpha1.KustoCluster, opts v1.CreateOptions) (result *v1alpha1.KustoCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(kustoclustersResource, c.ns, kustoCluster), &v1alpha1.KustoCluster{})
 
@@ -91,7 +93,7 @@ func (c *FakeKustoClusters) Create(kustoCluster *v1alpha1.KustoCluster) (result 
 }
 
 // Update takes the representation of a kustoCluster and updates it. Returns the server's representation of the kustoCluster, and an error, if there is any.
-func (c *FakeKustoClusters) Update(kustoCluster *v1alpha1.KustoCluster) (result *v1alpha1.KustoCluster, err error) {
+func (c *FakeKustoClusters) Update(ctx context.Context, kustoCluster *v1alpha1.KustoCluster, opts v1.UpdateOptions) (result *v1alpha1.KustoCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(kustoclustersResource, c.ns, kustoCluster), &v1alpha1.KustoCluster{})
 
@@ -103,7 +105,7 @@ func (c *FakeKustoClusters) Update(kustoCluster *v1alpha1.KustoCluster) (result 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeKustoClusters) UpdateStatus(kustoCluster *v1alpha1.KustoCluster) (*v1alpha1.KustoCluster, error) {
+func (c *FakeKustoClusters) UpdateStatus(ctx context.Context, kustoCluster *v1alpha1.KustoCluster, opts v1.UpdateOptions) (*v1alpha1.KustoCluster, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(kustoclustersResource, "status", c.ns, kustoCluster), &v1alpha1.KustoCluster{})
 
@@ -114,7 +116,7 @@ func (c *FakeKustoClusters) UpdateStatus(kustoCluster *v1alpha1.KustoCluster) (*
 }
 
 // Delete takes name of the kustoCluster and deletes it. Returns an error if one occurs.
-func (c *FakeKustoClusters) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeKustoClusters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(kustoclustersResource, c.ns, name), &v1alpha1.KustoCluster{})
 
@@ -122,15 +124,15 @@ func (c *FakeKustoClusters) Delete(name string, options *v1.DeleteOptions) error
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeKustoClusters) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(kustoclustersResource, c.ns, listOptions)
+func (c *FakeKustoClusters) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(kustoclustersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.KustoClusterList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched kustoCluster.
-func (c *FakeKustoClusters) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KustoCluster, err error) {
+func (c *FakeKustoClusters) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KustoCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(kustoclustersResource, c.ns, name, pt, data, subresources...), &v1alpha1.KustoCluster{})
 

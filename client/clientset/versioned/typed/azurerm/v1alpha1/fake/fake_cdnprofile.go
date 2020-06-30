@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cdnprofilesResource = schema.GroupVersionResource{Group: "azurerm.kubeform.c
 var cdnprofilesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "CdnProfile"}
 
 // Get takes name of the cdnProfile, and returns the corresponding cdnProfile object, and an error if there is any.
-func (c *FakeCdnProfiles) Get(name string, options v1.GetOptions) (result *v1alpha1.CdnProfile, err error) {
+func (c *FakeCdnProfiles) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CdnProfile, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cdnprofilesResource, c.ns, name), &v1alpha1.CdnProfile{})
 
@@ -51,7 +53,7 @@ func (c *FakeCdnProfiles) Get(name string, options v1.GetOptions) (result *v1alp
 }
 
 // List takes label and field selectors, and returns the list of CdnProfiles that match those selectors.
-func (c *FakeCdnProfiles) List(opts v1.ListOptions) (result *v1alpha1.CdnProfileList, err error) {
+func (c *FakeCdnProfiles) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CdnProfileList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cdnprofilesResource, cdnprofilesKind, c.ns, opts), &v1alpha1.CdnProfileList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCdnProfiles) List(opts v1.ListOptions) (result *v1alpha1.CdnProfile
 }
 
 // Watch returns a watch.Interface that watches the requested cdnProfiles.
-func (c *FakeCdnProfiles) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCdnProfiles) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cdnprofilesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cdnProfile and creates it.  Returns the server's representation of the cdnProfile, and an error, if there is any.
-func (c *FakeCdnProfiles) Create(cdnProfile *v1alpha1.CdnProfile) (result *v1alpha1.CdnProfile, err error) {
+func (c *FakeCdnProfiles) Create(ctx context.Context, cdnProfile *v1alpha1.CdnProfile, opts v1.CreateOptions) (result *v1alpha1.CdnProfile, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cdnprofilesResource, c.ns, cdnProfile), &v1alpha1.CdnProfile{})
 
@@ -91,7 +93,7 @@ func (c *FakeCdnProfiles) Create(cdnProfile *v1alpha1.CdnProfile) (result *v1alp
 }
 
 // Update takes the representation of a cdnProfile and updates it. Returns the server's representation of the cdnProfile, and an error, if there is any.
-func (c *FakeCdnProfiles) Update(cdnProfile *v1alpha1.CdnProfile) (result *v1alpha1.CdnProfile, err error) {
+func (c *FakeCdnProfiles) Update(ctx context.Context, cdnProfile *v1alpha1.CdnProfile, opts v1.UpdateOptions) (result *v1alpha1.CdnProfile, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cdnprofilesResource, c.ns, cdnProfile), &v1alpha1.CdnProfile{})
 
@@ -103,7 +105,7 @@ func (c *FakeCdnProfiles) Update(cdnProfile *v1alpha1.CdnProfile) (result *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCdnProfiles) UpdateStatus(cdnProfile *v1alpha1.CdnProfile) (*v1alpha1.CdnProfile, error) {
+func (c *FakeCdnProfiles) UpdateStatus(ctx context.Context, cdnProfile *v1alpha1.CdnProfile, opts v1.UpdateOptions) (*v1alpha1.CdnProfile, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cdnprofilesResource, "status", c.ns, cdnProfile), &v1alpha1.CdnProfile{})
 
@@ -114,7 +116,7 @@ func (c *FakeCdnProfiles) UpdateStatus(cdnProfile *v1alpha1.CdnProfile) (*v1alph
 }
 
 // Delete takes name of the cdnProfile and deletes it. Returns an error if one occurs.
-func (c *FakeCdnProfiles) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCdnProfiles) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cdnprofilesResource, c.ns, name), &v1alpha1.CdnProfile{})
 
@@ -122,15 +124,15 @@ func (c *FakeCdnProfiles) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCdnProfiles) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cdnprofilesResource, c.ns, listOptions)
+func (c *FakeCdnProfiles) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cdnprofilesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CdnProfileList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cdnProfile.
-func (c *FakeCdnProfiles) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CdnProfile, err error) {
+func (c *FakeCdnProfiles) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CdnProfile, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cdnprofilesResource, c.ns, name, pt, data, subresources...), &v1alpha1.CdnProfile{})
 

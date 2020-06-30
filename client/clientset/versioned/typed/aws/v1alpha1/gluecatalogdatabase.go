@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type GlueCatalogDatabasesGetter interface {
 
 // GlueCatalogDatabaseInterface has methods to work with GlueCatalogDatabase resources.
 type GlueCatalogDatabaseInterface interface {
-	Create(*v1alpha1.GlueCatalogDatabase) (*v1alpha1.GlueCatalogDatabase, error)
-	Update(*v1alpha1.GlueCatalogDatabase) (*v1alpha1.GlueCatalogDatabase, error)
-	UpdateStatus(*v1alpha1.GlueCatalogDatabase) (*v1alpha1.GlueCatalogDatabase, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.GlueCatalogDatabase, error)
-	List(opts v1.ListOptions) (*v1alpha1.GlueCatalogDatabaseList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.GlueCatalogDatabase, err error)
+	Create(ctx context.Context, glueCatalogDatabase *v1alpha1.GlueCatalogDatabase, opts v1.CreateOptions) (*v1alpha1.GlueCatalogDatabase, error)
+	Update(ctx context.Context, glueCatalogDatabase *v1alpha1.GlueCatalogDatabase, opts v1.UpdateOptions) (*v1alpha1.GlueCatalogDatabase, error)
+	UpdateStatus(ctx context.Context, glueCatalogDatabase *v1alpha1.GlueCatalogDatabase, opts v1.UpdateOptions) (*v1alpha1.GlueCatalogDatabase, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.GlueCatalogDatabase, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.GlueCatalogDatabaseList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.GlueCatalogDatabase, err error)
 	GlueCatalogDatabaseExpansion
 }
 
@@ -65,20 +66,20 @@ func newGlueCatalogDatabases(c *AwsV1alpha1Client, namespace string) *glueCatalo
 }
 
 // Get takes name of the glueCatalogDatabase, and returns the corresponding glueCatalogDatabase object, and an error if there is any.
-func (c *glueCatalogDatabases) Get(name string, options v1.GetOptions) (result *v1alpha1.GlueCatalogDatabase, err error) {
+func (c *glueCatalogDatabases) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.GlueCatalogDatabase, err error) {
 	result = &v1alpha1.GlueCatalogDatabase{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("gluecatalogdatabases").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of GlueCatalogDatabases that match those selectors.
-func (c *glueCatalogDatabases) List(opts v1.ListOptions) (result *v1alpha1.GlueCatalogDatabaseList, err error) {
+func (c *glueCatalogDatabases) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.GlueCatalogDatabaseList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *glueCatalogDatabases) List(opts v1.ListOptions) (result *v1alpha1.GlueC
 		Resource("gluecatalogdatabases").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested glueCatalogDatabases.
-func (c *glueCatalogDatabases) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *glueCatalogDatabases) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *glueCatalogDatabases) Watch(opts v1.ListOptions) (watch.Interface, erro
 		Resource("gluecatalogdatabases").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a glueCatalogDatabase and creates it.  Returns the server's representation of the glueCatalogDatabase, and an error, if there is any.
-func (c *glueCatalogDatabases) Create(glueCatalogDatabase *v1alpha1.GlueCatalogDatabase) (result *v1alpha1.GlueCatalogDatabase, err error) {
+func (c *glueCatalogDatabases) Create(ctx context.Context, glueCatalogDatabase *v1alpha1.GlueCatalogDatabase, opts v1.CreateOptions) (result *v1alpha1.GlueCatalogDatabase, err error) {
 	result = &v1alpha1.GlueCatalogDatabase{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("gluecatalogdatabases").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(glueCatalogDatabase).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a glueCatalogDatabase and updates it. Returns the server's representation of the glueCatalogDatabase, and an error, if there is any.
-func (c *glueCatalogDatabases) Update(glueCatalogDatabase *v1alpha1.GlueCatalogDatabase) (result *v1alpha1.GlueCatalogDatabase, err error) {
+func (c *glueCatalogDatabases) Update(ctx context.Context, glueCatalogDatabase *v1alpha1.GlueCatalogDatabase, opts v1.UpdateOptions) (result *v1alpha1.GlueCatalogDatabase, err error) {
 	result = &v1alpha1.GlueCatalogDatabase{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("gluecatalogdatabases").
 		Name(glueCatalogDatabase.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(glueCatalogDatabase).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *glueCatalogDatabases) UpdateStatus(glueCatalogDatabase *v1alpha1.GlueCatalogDatabase) (result *v1alpha1.GlueCatalogDatabase, err error) {
+func (c *glueCatalogDatabases) UpdateStatus(ctx context.Context, glueCatalogDatabase *v1alpha1.GlueCatalogDatabase, opts v1.UpdateOptions) (result *v1alpha1.GlueCatalogDatabase, err error) {
 	result = &v1alpha1.GlueCatalogDatabase{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("gluecatalogdatabases").
 		Name(glueCatalogDatabase.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(glueCatalogDatabase).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the glueCatalogDatabase and deletes it. Returns an error if one occurs.
-func (c *glueCatalogDatabases) Delete(name string, options *v1.DeleteOptions) error {
+func (c *glueCatalogDatabases) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("gluecatalogdatabases").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *glueCatalogDatabases) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *glueCatalogDatabases) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("gluecatalogdatabases").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched glueCatalogDatabase.
-func (c *glueCatalogDatabases) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.GlueCatalogDatabase, err error) {
+func (c *glueCatalogDatabases) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.GlueCatalogDatabase, err error) {
 	result = &v1alpha1.GlueCatalogDatabase{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("gluecatalogdatabases").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

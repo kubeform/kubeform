@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var eventgridtopicsResource = schema.GroupVersionResource{Group: "azurerm.kubefo
 var eventgridtopicsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "EventgridTopic"}
 
 // Get takes name of the eventgridTopic, and returns the corresponding eventgridTopic object, and an error if there is any.
-func (c *FakeEventgridTopics) Get(name string, options v1.GetOptions) (result *v1alpha1.EventgridTopic, err error) {
+func (c *FakeEventgridTopics) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.EventgridTopic, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(eventgridtopicsResource, c.ns, name), &v1alpha1.EventgridTopic{})
 
@@ -51,7 +53,7 @@ func (c *FakeEventgridTopics) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of EventgridTopics that match those selectors.
-func (c *FakeEventgridTopics) List(opts v1.ListOptions) (result *v1alpha1.EventgridTopicList, err error) {
+func (c *FakeEventgridTopics) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.EventgridTopicList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(eventgridtopicsResource, eventgridtopicsKind, c.ns, opts), &v1alpha1.EventgridTopicList{})
 
@@ -73,14 +75,14 @@ func (c *FakeEventgridTopics) List(opts v1.ListOptions) (result *v1alpha1.Eventg
 }
 
 // Watch returns a watch.Interface that watches the requested eventgridTopics.
-func (c *FakeEventgridTopics) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeEventgridTopics) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(eventgridtopicsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a eventgridTopic and creates it.  Returns the server's representation of the eventgridTopic, and an error, if there is any.
-func (c *FakeEventgridTopics) Create(eventgridTopic *v1alpha1.EventgridTopic) (result *v1alpha1.EventgridTopic, err error) {
+func (c *FakeEventgridTopics) Create(ctx context.Context, eventgridTopic *v1alpha1.EventgridTopic, opts v1.CreateOptions) (result *v1alpha1.EventgridTopic, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(eventgridtopicsResource, c.ns, eventgridTopic), &v1alpha1.EventgridTopic{})
 
@@ -91,7 +93,7 @@ func (c *FakeEventgridTopics) Create(eventgridTopic *v1alpha1.EventgridTopic) (r
 }
 
 // Update takes the representation of a eventgridTopic and updates it. Returns the server's representation of the eventgridTopic, and an error, if there is any.
-func (c *FakeEventgridTopics) Update(eventgridTopic *v1alpha1.EventgridTopic) (result *v1alpha1.EventgridTopic, err error) {
+func (c *FakeEventgridTopics) Update(ctx context.Context, eventgridTopic *v1alpha1.EventgridTopic, opts v1.UpdateOptions) (result *v1alpha1.EventgridTopic, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(eventgridtopicsResource, c.ns, eventgridTopic), &v1alpha1.EventgridTopic{})
 
@@ -103,7 +105,7 @@ func (c *FakeEventgridTopics) Update(eventgridTopic *v1alpha1.EventgridTopic) (r
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeEventgridTopics) UpdateStatus(eventgridTopic *v1alpha1.EventgridTopic) (*v1alpha1.EventgridTopic, error) {
+func (c *FakeEventgridTopics) UpdateStatus(ctx context.Context, eventgridTopic *v1alpha1.EventgridTopic, opts v1.UpdateOptions) (*v1alpha1.EventgridTopic, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(eventgridtopicsResource, "status", c.ns, eventgridTopic), &v1alpha1.EventgridTopic{})
 
@@ -114,7 +116,7 @@ func (c *FakeEventgridTopics) UpdateStatus(eventgridTopic *v1alpha1.EventgridTop
 }
 
 // Delete takes name of the eventgridTopic and deletes it. Returns an error if one occurs.
-func (c *FakeEventgridTopics) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeEventgridTopics) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(eventgridtopicsResource, c.ns, name), &v1alpha1.EventgridTopic{})
 
@@ -122,15 +124,15 @@ func (c *FakeEventgridTopics) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeEventgridTopics) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(eventgridtopicsResource, c.ns, listOptions)
+func (c *FakeEventgridTopics) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(eventgridtopicsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.EventgridTopicList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched eventgridTopic.
-func (c *FakeEventgridTopics) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EventgridTopic, err error) {
+func (c *FakeEventgridTopics) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EventgridTopic, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(eventgridtopicsResource, c.ns, name, pt, data, subresources...), &v1alpha1.EventgridTopic{})
 

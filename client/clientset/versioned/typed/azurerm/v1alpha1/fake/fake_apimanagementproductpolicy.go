@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var apimanagementproductpoliciesResource = schema.GroupVersionResource{Group: "a
 var apimanagementproductpoliciesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "ApiManagementProductPolicy"}
 
 // Get takes name of the apiManagementProductPolicy, and returns the corresponding apiManagementProductPolicy object, and an error if there is any.
-func (c *FakeApiManagementProductPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.ApiManagementProductPolicy, err error) {
+func (c *FakeApiManagementProductPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApiManagementProductPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(apimanagementproductpoliciesResource, c.ns, name), &v1alpha1.ApiManagementProductPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeApiManagementProductPolicies) Get(name string, options v1.GetOption
 }
 
 // List takes label and field selectors, and returns the list of ApiManagementProductPolicies that match those selectors.
-func (c *FakeApiManagementProductPolicies) List(opts v1.ListOptions) (result *v1alpha1.ApiManagementProductPolicyList, err error) {
+func (c *FakeApiManagementProductPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApiManagementProductPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(apimanagementproductpoliciesResource, apimanagementproductpoliciesKind, c.ns, opts), &v1alpha1.ApiManagementProductPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeApiManagementProductPolicies) List(opts v1.ListOptions) (result *v1
 }
 
 // Watch returns a watch.Interface that watches the requested apiManagementProductPolicies.
-func (c *FakeApiManagementProductPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeApiManagementProductPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(apimanagementproductpoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a apiManagementProductPolicy and creates it.  Returns the server's representation of the apiManagementProductPolicy, and an error, if there is any.
-func (c *FakeApiManagementProductPolicies) Create(apiManagementProductPolicy *v1alpha1.ApiManagementProductPolicy) (result *v1alpha1.ApiManagementProductPolicy, err error) {
+func (c *FakeApiManagementProductPolicies) Create(ctx context.Context, apiManagementProductPolicy *v1alpha1.ApiManagementProductPolicy, opts v1.CreateOptions) (result *v1alpha1.ApiManagementProductPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(apimanagementproductpoliciesResource, c.ns, apiManagementProductPolicy), &v1alpha1.ApiManagementProductPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeApiManagementProductPolicies) Create(apiManagementProductPolicy *v1
 }
 
 // Update takes the representation of a apiManagementProductPolicy and updates it. Returns the server's representation of the apiManagementProductPolicy, and an error, if there is any.
-func (c *FakeApiManagementProductPolicies) Update(apiManagementProductPolicy *v1alpha1.ApiManagementProductPolicy) (result *v1alpha1.ApiManagementProductPolicy, err error) {
+func (c *FakeApiManagementProductPolicies) Update(ctx context.Context, apiManagementProductPolicy *v1alpha1.ApiManagementProductPolicy, opts v1.UpdateOptions) (result *v1alpha1.ApiManagementProductPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(apimanagementproductpoliciesResource, c.ns, apiManagementProductPolicy), &v1alpha1.ApiManagementProductPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeApiManagementProductPolicies) Update(apiManagementProductPolicy *v1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeApiManagementProductPolicies) UpdateStatus(apiManagementProductPolicy *v1alpha1.ApiManagementProductPolicy) (*v1alpha1.ApiManagementProductPolicy, error) {
+func (c *FakeApiManagementProductPolicies) UpdateStatus(ctx context.Context, apiManagementProductPolicy *v1alpha1.ApiManagementProductPolicy, opts v1.UpdateOptions) (*v1alpha1.ApiManagementProductPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(apimanagementproductpoliciesResource, "status", c.ns, apiManagementProductPolicy), &v1alpha1.ApiManagementProductPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeApiManagementProductPolicies) UpdateStatus(apiManagementProductPoli
 }
 
 // Delete takes name of the apiManagementProductPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeApiManagementProductPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeApiManagementProductPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(apimanagementproductpoliciesResource, c.ns, name), &v1alpha1.ApiManagementProductPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeApiManagementProductPolicies) Delete(name string, options *v1.Delet
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeApiManagementProductPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(apimanagementproductpoliciesResource, c.ns, listOptions)
+func (c *FakeApiManagementProductPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(apimanagementproductpoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ApiManagementProductPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched apiManagementProductPolicy.
-func (c *FakeApiManagementProductPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiManagementProductPolicy, err error) {
+func (c *FakeApiManagementProductPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiManagementProductPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(apimanagementproductpoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ApiManagementProductPolicy{})
 

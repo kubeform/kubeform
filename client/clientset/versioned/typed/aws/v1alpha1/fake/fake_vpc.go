@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var vpcsResource = schema.GroupVersionResource{Group: "aws.kubeform.com", Versio
 var vpcsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "Vpc"}
 
 // Get takes name of the vpc, and returns the corresponding vpc object, and an error if there is any.
-func (c *FakeVpcs) Get(name string, options v1.GetOptions) (result *v1alpha1.Vpc, err error) {
+func (c *FakeVpcs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Vpc, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(vpcsResource, c.ns, name), &v1alpha1.Vpc{})
 
@@ -51,7 +53,7 @@ func (c *FakeVpcs) Get(name string, options v1.GetOptions) (result *v1alpha1.Vpc
 }
 
 // List takes label and field selectors, and returns the list of Vpcs that match those selectors.
-func (c *FakeVpcs) List(opts v1.ListOptions) (result *v1alpha1.VpcList, err error) {
+func (c *FakeVpcs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.VpcList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(vpcsResource, vpcsKind, c.ns, opts), &v1alpha1.VpcList{})
 
@@ -73,14 +75,14 @@ func (c *FakeVpcs) List(opts v1.ListOptions) (result *v1alpha1.VpcList, err erro
 }
 
 // Watch returns a watch.Interface that watches the requested vpcs.
-func (c *FakeVpcs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeVpcs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(vpcsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a vpc and creates it.  Returns the server's representation of the vpc, and an error, if there is any.
-func (c *FakeVpcs) Create(vpc *v1alpha1.Vpc) (result *v1alpha1.Vpc, err error) {
+func (c *FakeVpcs) Create(ctx context.Context, vpc *v1alpha1.Vpc, opts v1.CreateOptions) (result *v1alpha1.Vpc, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(vpcsResource, c.ns, vpc), &v1alpha1.Vpc{})
 
@@ -91,7 +93,7 @@ func (c *FakeVpcs) Create(vpc *v1alpha1.Vpc) (result *v1alpha1.Vpc, err error) {
 }
 
 // Update takes the representation of a vpc and updates it. Returns the server's representation of the vpc, and an error, if there is any.
-func (c *FakeVpcs) Update(vpc *v1alpha1.Vpc) (result *v1alpha1.Vpc, err error) {
+func (c *FakeVpcs) Update(ctx context.Context, vpc *v1alpha1.Vpc, opts v1.UpdateOptions) (result *v1alpha1.Vpc, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(vpcsResource, c.ns, vpc), &v1alpha1.Vpc{})
 
@@ -103,7 +105,7 @@ func (c *FakeVpcs) Update(vpc *v1alpha1.Vpc) (result *v1alpha1.Vpc, err error) {
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeVpcs) UpdateStatus(vpc *v1alpha1.Vpc) (*v1alpha1.Vpc, error) {
+func (c *FakeVpcs) UpdateStatus(ctx context.Context, vpc *v1alpha1.Vpc, opts v1.UpdateOptions) (*v1alpha1.Vpc, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(vpcsResource, "status", c.ns, vpc), &v1alpha1.Vpc{})
 
@@ -114,7 +116,7 @@ func (c *FakeVpcs) UpdateStatus(vpc *v1alpha1.Vpc) (*v1alpha1.Vpc, error) {
 }
 
 // Delete takes name of the vpc and deletes it. Returns an error if one occurs.
-func (c *FakeVpcs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeVpcs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(vpcsResource, c.ns, name), &v1alpha1.Vpc{})
 
@@ -122,15 +124,15 @@ func (c *FakeVpcs) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeVpcs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(vpcsResource, c.ns, listOptions)
+func (c *FakeVpcs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(vpcsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.VpcList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched vpc.
-func (c *FakeVpcs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Vpc, err error) {
+func (c *FakeVpcs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Vpc, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(vpcsResource, c.ns, name, pt, data, subresources...), &v1alpha1.Vpc{})
 

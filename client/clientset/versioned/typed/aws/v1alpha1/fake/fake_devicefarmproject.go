@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var devicefarmprojectsResource = schema.GroupVersionResource{Group: "aws.kubefor
 var devicefarmprojectsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DevicefarmProject"}
 
 // Get takes name of the devicefarmProject, and returns the corresponding devicefarmProject object, and an error if there is any.
-func (c *FakeDevicefarmProjects) Get(name string, options v1.GetOptions) (result *v1alpha1.DevicefarmProject, err error) {
+func (c *FakeDevicefarmProjects) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DevicefarmProject, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(devicefarmprojectsResource, c.ns, name), &v1alpha1.DevicefarmProject{})
 
@@ -51,7 +53,7 @@ func (c *FakeDevicefarmProjects) Get(name string, options v1.GetOptions) (result
 }
 
 // List takes label and field selectors, and returns the list of DevicefarmProjects that match those selectors.
-func (c *FakeDevicefarmProjects) List(opts v1.ListOptions) (result *v1alpha1.DevicefarmProjectList, err error) {
+func (c *FakeDevicefarmProjects) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DevicefarmProjectList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(devicefarmprojectsResource, devicefarmprojectsKind, c.ns, opts), &v1alpha1.DevicefarmProjectList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDevicefarmProjects) List(opts v1.ListOptions) (result *v1alpha1.Dev
 }
 
 // Watch returns a watch.Interface that watches the requested devicefarmProjects.
-func (c *FakeDevicefarmProjects) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDevicefarmProjects) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(devicefarmprojectsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a devicefarmProject and creates it.  Returns the server's representation of the devicefarmProject, and an error, if there is any.
-func (c *FakeDevicefarmProjects) Create(devicefarmProject *v1alpha1.DevicefarmProject) (result *v1alpha1.DevicefarmProject, err error) {
+func (c *FakeDevicefarmProjects) Create(ctx context.Context, devicefarmProject *v1alpha1.DevicefarmProject, opts v1.CreateOptions) (result *v1alpha1.DevicefarmProject, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(devicefarmprojectsResource, c.ns, devicefarmProject), &v1alpha1.DevicefarmProject{})
 
@@ -91,7 +93,7 @@ func (c *FakeDevicefarmProjects) Create(devicefarmProject *v1alpha1.DevicefarmPr
 }
 
 // Update takes the representation of a devicefarmProject and updates it. Returns the server's representation of the devicefarmProject, and an error, if there is any.
-func (c *FakeDevicefarmProjects) Update(devicefarmProject *v1alpha1.DevicefarmProject) (result *v1alpha1.DevicefarmProject, err error) {
+func (c *FakeDevicefarmProjects) Update(ctx context.Context, devicefarmProject *v1alpha1.DevicefarmProject, opts v1.UpdateOptions) (result *v1alpha1.DevicefarmProject, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(devicefarmprojectsResource, c.ns, devicefarmProject), &v1alpha1.DevicefarmProject{})
 
@@ -103,7 +105,7 @@ func (c *FakeDevicefarmProjects) Update(devicefarmProject *v1alpha1.DevicefarmPr
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDevicefarmProjects) UpdateStatus(devicefarmProject *v1alpha1.DevicefarmProject) (*v1alpha1.DevicefarmProject, error) {
+func (c *FakeDevicefarmProjects) UpdateStatus(ctx context.Context, devicefarmProject *v1alpha1.DevicefarmProject, opts v1.UpdateOptions) (*v1alpha1.DevicefarmProject, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(devicefarmprojectsResource, "status", c.ns, devicefarmProject), &v1alpha1.DevicefarmProject{})
 
@@ -114,7 +116,7 @@ func (c *FakeDevicefarmProjects) UpdateStatus(devicefarmProject *v1alpha1.Device
 }
 
 // Delete takes name of the devicefarmProject and deletes it. Returns an error if one occurs.
-func (c *FakeDevicefarmProjects) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDevicefarmProjects) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(devicefarmprojectsResource, c.ns, name), &v1alpha1.DevicefarmProject{})
 
@@ -122,15 +124,15 @@ func (c *FakeDevicefarmProjects) Delete(name string, options *v1.DeleteOptions) 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDevicefarmProjects) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(devicefarmprojectsResource, c.ns, listOptions)
+func (c *FakeDevicefarmProjects) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(devicefarmprojectsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DevicefarmProjectList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched devicefarmProject.
-func (c *FakeDevicefarmProjects) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DevicefarmProject, err error) {
+func (c *FakeDevicefarmProjects) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DevicefarmProject, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(devicefarmprojectsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DevicefarmProject{})
 

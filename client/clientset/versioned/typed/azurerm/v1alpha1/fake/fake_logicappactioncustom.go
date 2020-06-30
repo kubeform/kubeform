@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var logicappactioncustomsResource = schema.GroupVersionResource{Group: "azurerm.
 var logicappactioncustomsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "LogicAppActionCustom"}
 
 // Get takes name of the logicAppActionCustom, and returns the corresponding logicAppActionCustom object, and an error if there is any.
-func (c *FakeLogicAppActionCustoms) Get(name string, options v1.GetOptions) (result *v1alpha1.LogicAppActionCustom, err error) {
+func (c *FakeLogicAppActionCustoms) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LogicAppActionCustom, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(logicappactioncustomsResource, c.ns, name), &v1alpha1.LogicAppActionCustom{})
 
@@ -51,7 +53,7 @@ func (c *FakeLogicAppActionCustoms) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of LogicAppActionCustoms that match those selectors.
-func (c *FakeLogicAppActionCustoms) List(opts v1.ListOptions) (result *v1alpha1.LogicAppActionCustomList, err error) {
+func (c *FakeLogicAppActionCustoms) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LogicAppActionCustomList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(logicappactioncustomsResource, logicappactioncustomsKind, c.ns, opts), &v1alpha1.LogicAppActionCustomList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLogicAppActionCustoms) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested logicAppActionCustoms.
-func (c *FakeLogicAppActionCustoms) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLogicAppActionCustoms) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(logicappactioncustomsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a logicAppActionCustom and creates it.  Returns the server's representation of the logicAppActionCustom, and an error, if there is any.
-func (c *FakeLogicAppActionCustoms) Create(logicAppActionCustom *v1alpha1.LogicAppActionCustom) (result *v1alpha1.LogicAppActionCustom, err error) {
+func (c *FakeLogicAppActionCustoms) Create(ctx context.Context, logicAppActionCustom *v1alpha1.LogicAppActionCustom, opts v1.CreateOptions) (result *v1alpha1.LogicAppActionCustom, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(logicappactioncustomsResource, c.ns, logicAppActionCustom), &v1alpha1.LogicAppActionCustom{})
 
@@ -91,7 +93,7 @@ func (c *FakeLogicAppActionCustoms) Create(logicAppActionCustom *v1alpha1.LogicA
 }
 
 // Update takes the representation of a logicAppActionCustom and updates it. Returns the server's representation of the logicAppActionCustom, and an error, if there is any.
-func (c *FakeLogicAppActionCustoms) Update(logicAppActionCustom *v1alpha1.LogicAppActionCustom) (result *v1alpha1.LogicAppActionCustom, err error) {
+func (c *FakeLogicAppActionCustoms) Update(ctx context.Context, logicAppActionCustom *v1alpha1.LogicAppActionCustom, opts v1.UpdateOptions) (result *v1alpha1.LogicAppActionCustom, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(logicappactioncustomsResource, c.ns, logicAppActionCustom), &v1alpha1.LogicAppActionCustom{})
 
@@ -103,7 +105,7 @@ func (c *FakeLogicAppActionCustoms) Update(logicAppActionCustom *v1alpha1.LogicA
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLogicAppActionCustoms) UpdateStatus(logicAppActionCustom *v1alpha1.LogicAppActionCustom) (*v1alpha1.LogicAppActionCustom, error) {
+func (c *FakeLogicAppActionCustoms) UpdateStatus(ctx context.Context, logicAppActionCustom *v1alpha1.LogicAppActionCustom, opts v1.UpdateOptions) (*v1alpha1.LogicAppActionCustom, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(logicappactioncustomsResource, "status", c.ns, logicAppActionCustom), &v1alpha1.LogicAppActionCustom{})
 
@@ -114,7 +116,7 @@ func (c *FakeLogicAppActionCustoms) UpdateStatus(logicAppActionCustom *v1alpha1.
 }
 
 // Delete takes name of the logicAppActionCustom and deletes it. Returns an error if one occurs.
-func (c *FakeLogicAppActionCustoms) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLogicAppActionCustoms) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(logicappactioncustomsResource, c.ns, name), &v1alpha1.LogicAppActionCustom{})
 
@@ -122,15 +124,15 @@ func (c *FakeLogicAppActionCustoms) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLogicAppActionCustoms) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(logicappactioncustomsResource, c.ns, listOptions)
+func (c *FakeLogicAppActionCustoms) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(logicappactioncustomsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LogicAppActionCustomList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched logicAppActionCustom.
-func (c *FakeLogicAppActionCustoms) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LogicAppActionCustom, err error) {
+func (c *FakeLogicAppActionCustoms) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LogicAppActionCustom, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(logicappactioncustomsResource, c.ns, name, pt, data, subresources...), &v1alpha1.LogicAppActionCustom{})
 

@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	time "time"
 
 	googlev1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -62,13 +63,13 @@ func NewFilteredCloudfunctionsFunctionInformer(client versioned.Interface, names
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.GoogleV1alpha1().CloudfunctionsFunctions(namespace).List(options)
+				return client.GoogleV1alpha1().CloudfunctionsFunctions(namespace).List(context.TODO(), options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.GoogleV1alpha1().CloudfunctionsFunctions(namespace).Watch(options)
+				return client.GoogleV1alpha1().CloudfunctionsFunctions(namespace).Watch(context.TODO(), options)
 			},
 		},
 		&googlev1alpha1.CloudfunctionsFunction{},

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var route53healthchecksResource = schema.GroupVersionResource{Group: "aws.kubefo
 var route53healthchecksKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "Route53HealthCheck"}
 
 // Get takes name of the route53HealthCheck, and returns the corresponding route53HealthCheck object, and an error if there is any.
-func (c *FakeRoute53HealthChecks) Get(name string, options v1.GetOptions) (result *v1alpha1.Route53HealthCheck, err error) {
+func (c *FakeRoute53HealthChecks) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Route53HealthCheck, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(route53healthchecksResource, c.ns, name), &v1alpha1.Route53HealthCheck{})
 
@@ -51,7 +53,7 @@ func (c *FakeRoute53HealthChecks) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of Route53HealthChecks that match those selectors.
-func (c *FakeRoute53HealthChecks) List(opts v1.ListOptions) (result *v1alpha1.Route53HealthCheckList, err error) {
+func (c *FakeRoute53HealthChecks) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.Route53HealthCheckList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(route53healthchecksResource, route53healthchecksKind, c.ns, opts), &v1alpha1.Route53HealthCheckList{})
 
@@ -73,14 +75,14 @@ func (c *FakeRoute53HealthChecks) List(opts v1.ListOptions) (result *v1alpha1.Ro
 }
 
 // Watch returns a watch.Interface that watches the requested route53HealthChecks.
-func (c *FakeRoute53HealthChecks) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeRoute53HealthChecks) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(route53healthchecksResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a route53HealthCheck and creates it.  Returns the server's representation of the route53HealthCheck, and an error, if there is any.
-func (c *FakeRoute53HealthChecks) Create(route53HealthCheck *v1alpha1.Route53HealthCheck) (result *v1alpha1.Route53HealthCheck, err error) {
+func (c *FakeRoute53HealthChecks) Create(ctx context.Context, route53HealthCheck *v1alpha1.Route53HealthCheck, opts v1.CreateOptions) (result *v1alpha1.Route53HealthCheck, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(route53healthchecksResource, c.ns, route53HealthCheck), &v1alpha1.Route53HealthCheck{})
 
@@ -91,7 +93,7 @@ func (c *FakeRoute53HealthChecks) Create(route53HealthCheck *v1alpha1.Route53Hea
 }
 
 // Update takes the representation of a route53HealthCheck and updates it. Returns the server's representation of the route53HealthCheck, and an error, if there is any.
-func (c *FakeRoute53HealthChecks) Update(route53HealthCheck *v1alpha1.Route53HealthCheck) (result *v1alpha1.Route53HealthCheck, err error) {
+func (c *FakeRoute53HealthChecks) Update(ctx context.Context, route53HealthCheck *v1alpha1.Route53HealthCheck, opts v1.UpdateOptions) (result *v1alpha1.Route53HealthCheck, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(route53healthchecksResource, c.ns, route53HealthCheck), &v1alpha1.Route53HealthCheck{})
 
@@ -103,7 +105,7 @@ func (c *FakeRoute53HealthChecks) Update(route53HealthCheck *v1alpha1.Route53Hea
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeRoute53HealthChecks) UpdateStatus(route53HealthCheck *v1alpha1.Route53HealthCheck) (*v1alpha1.Route53HealthCheck, error) {
+func (c *FakeRoute53HealthChecks) UpdateStatus(ctx context.Context, route53HealthCheck *v1alpha1.Route53HealthCheck, opts v1.UpdateOptions) (*v1alpha1.Route53HealthCheck, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(route53healthchecksResource, "status", c.ns, route53HealthCheck), &v1alpha1.Route53HealthCheck{})
 
@@ -114,7 +116,7 @@ func (c *FakeRoute53HealthChecks) UpdateStatus(route53HealthCheck *v1alpha1.Rout
 }
 
 // Delete takes name of the route53HealthCheck and deletes it. Returns an error if one occurs.
-func (c *FakeRoute53HealthChecks) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeRoute53HealthChecks) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(route53healthchecksResource, c.ns, name), &v1alpha1.Route53HealthCheck{})
 
@@ -122,15 +124,15 @@ func (c *FakeRoute53HealthChecks) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeRoute53HealthChecks) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(route53healthchecksResource, c.ns, listOptions)
+func (c *FakeRoute53HealthChecks) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(route53healthchecksResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.Route53HealthCheckList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched route53HealthCheck.
-func (c *FakeRoute53HealthChecks) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Route53HealthCheck, err error) {
+func (c *FakeRoute53HealthChecks) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Route53HealthCheck, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(route53healthchecksResource, c.ns, name, pt, data, subresources...), &v1alpha1.Route53HealthCheck{})
 

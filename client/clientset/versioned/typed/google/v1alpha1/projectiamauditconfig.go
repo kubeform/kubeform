@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type ProjectIamAuditConfigsGetter interface {
 
 // ProjectIamAuditConfigInterface has methods to work with ProjectIamAuditConfig resources.
 type ProjectIamAuditConfigInterface interface {
-	Create(*v1alpha1.ProjectIamAuditConfig) (*v1alpha1.ProjectIamAuditConfig, error)
-	Update(*v1alpha1.ProjectIamAuditConfig) (*v1alpha1.ProjectIamAuditConfig, error)
-	UpdateStatus(*v1alpha1.ProjectIamAuditConfig) (*v1alpha1.ProjectIamAuditConfig, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ProjectIamAuditConfig, error)
-	List(opts v1.ListOptions) (*v1alpha1.ProjectIamAuditConfigList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ProjectIamAuditConfig, err error)
+	Create(ctx context.Context, projectIamAuditConfig *v1alpha1.ProjectIamAuditConfig, opts v1.CreateOptions) (*v1alpha1.ProjectIamAuditConfig, error)
+	Update(ctx context.Context, projectIamAuditConfig *v1alpha1.ProjectIamAuditConfig, opts v1.UpdateOptions) (*v1alpha1.ProjectIamAuditConfig, error)
+	UpdateStatus(ctx context.Context, projectIamAuditConfig *v1alpha1.ProjectIamAuditConfig, opts v1.UpdateOptions) (*v1alpha1.ProjectIamAuditConfig, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ProjectIamAuditConfig, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ProjectIamAuditConfigList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ProjectIamAuditConfig, err error)
 	ProjectIamAuditConfigExpansion
 }
 
@@ -65,20 +66,20 @@ func newProjectIamAuditConfigs(c *GoogleV1alpha1Client, namespace string) *proje
 }
 
 // Get takes name of the projectIamAuditConfig, and returns the corresponding projectIamAuditConfig object, and an error if there is any.
-func (c *projectIamAuditConfigs) Get(name string, options v1.GetOptions) (result *v1alpha1.ProjectIamAuditConfig, err error) {
+func (c *projectIamAuditConfigs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ProjectIamAuditConfig, err error) {
 	result = &v1alpha1.ProjectIamAuditConfig{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("projectiamauditconfigs").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ProjectIamAuditConfigs that match those selectors.
-func (c *projectIamAuditConfigs) List(opts v1.ListOptions) (result *v1alpha1.ProjectIamAuditConfigList, err error) {
+func (c *projectIamAuditConfigs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ProjectIamAuditConfigList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *projectIamAuditConfigs) List(opts v1.ListOptions) (result *v1alpha1.Pro
 		Resource("projectiamauditconfigs").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested projectIamAuditConfigs.
-func (c *projectIamAuditConfigs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *projectIamAuditConfigs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *projectIamAuditConfigs) Watch(opts v1.ListOptions) (watch.Interface, er
 		Resource("projectiamauditconfigs").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a projectIamAuditConfig and creates it.  Returns the server's representation of the projectIamAuditConfig, and an error, if there is any.
-func (c *projectIamAuditConfigs) Create(projectIamAuditConfig *v1alpha1.ProjectIamAuditConfig) (result *v1alpha1.ProjectIamAuditConfig, err error) {
+func (c *projectIamAuditConfigs) Create(ctx context.Context, projectIamAuditConfig *v1alpha1.ProjectIamAuditConfig, opts v1.CreateOptions) (result *v1alpha1.ProjectIamAuditConfig, err error) {
 	result = &v1alpha1.ProjectIamAuditConfig{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("projectiamauditconfigs").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(projectIamAuditConfig).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a projectIamAuditConfig and updates it. Returns the server's representation of the projectIamAuditConfig, and an error, if there is any.
-func (c *projectIamAuditConfigs) Update(projectIamAuditConfig *v1alpha1.ProjectIamAuditConfig) (result *v1alpha1.ProjectIamAuditConfig, err error) {
+func (c *projectIamAuditConfigs) Update(ctx context.Context, projectIamAuditConfig *v1alpha1.ProjectIamAuditConfig, opts v1.UpdateOptions) (result *v1alpha1.ProjectIamAuditConfig, err error) {
 	result = &v1alpha1.ProjectIamAuditConfig{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("projectiamauditconfigs").
 		Name(projectIamAuditConfig.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(projectIamAuditConfig).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *projectIamAuditConfigs) UpdateStatus(projectIamAuditConfig *v1alpha1.ProjectIamAuditConfig) (result *v1alpha1.ProjectIamAuditConfig, err error) {
+func (c *projectIamAuditConfigs) UpdateStatus(ctx context.Context, projectIamAuditConfig *v1alpha1.ProjectIamAuditConfig, opts v1.UpdateOptions) (result *v1alpha1.ProjectIamAuditConfig, err error) {
 	result = &v1alpha1.ProjectIamAuditConfig{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("projectiamauditconfigs").
 		Name(projectIamAuditConfig.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(projectIamAuditConfig).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the projectIamAuditConfig and deletes it. Returns an error if one occurs.
-func (c *projectIamAuditConfigs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *projectIamAuditConfigs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("projectiamauditconfigs").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *projectIamAuditConfigs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *projectIamAuditConfigs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("projectiamauditconfigs").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched projectIamAuditConfig.
-func (c *projectIamAuditConfigs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ProjectIamAuditConfig, err error) {
+func (c *projectIamAuditConfigs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ProjectIamAuditConfig, err error) {
 	result = &v1alpha1.ProjectIamAuditConfig{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("projectiamauditconfigs").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

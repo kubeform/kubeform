@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var pinpointapnsvoipchannelsResource = schema.GroupVersionResource{Group: "aws.k
 var pinpointapnsvoipchannelsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "PinpointApnsVoipChannel"}
 
 // Get takes name of the pinpointApnsVoipChannel, and returns the corresponding pinpointApnsVoipChannel object, and an error if there is any.
-func (c *FakePinpointApnsVoipChannels) Get(name string, options v1.GetOptions) (result *v1alpha1.PinpointApnsVoipChannel, err error) {
+func (c *FakePinpointApnsVoipChannels) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PinpointApnsVoipChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(pinpointapnsvoipchannelsResource, c.ns, name), &v1alpha1.PinpointApnsVoipChannel{})
 
@@ -51,7 +53,7 @@ func (c *FakePinpointApnsVoipChannels) Get(name string, options v1.GetOptions) (
 }
 
 // List takes label and field selectors, and returns the list of PinpointApnsVoipChannels that match those selectors.
-func (c *FakePinpointApnsVoipChannels) List(opts v1.ListOptions) (result *v1alpha1.PinpointApnsVoipChannelList, err error) {
+func (c *FakePinpointApnsVoipChannels) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PinpointApnsVoipChannelList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(pinpointapnsvoipchannelsResource, pinpointapnsvoipchannelsKind, c.ns, opts), &v1alpha1.PinpointApnsVoipChannelList{})
 
@@ -73,14 +75,14 @@ func (c *FakePinpointApnsVoipChannels) List(opts v1.ListOptions) (result *v1alph
 }
 
 // Watch returns a watch.Interface that watches the requested pinpointApnsVoipChannels.
-func (c *FakePinpointApnsVoipChannels) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakePinpointApnsVoipChannels) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(pinpointapnsvoipchannelsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a pinpointApnsVoipChannel and creates it.  Returns the server's representation of the pinpointApnsVoipChannel, and an error, if there is any.
-func (c *FakePinpointApnsVoipChannels) Create(pinpointApnsVoipChannel *v1alpha1.PinpointApnsVoipChannel) (result *v1alpha1.PinpointApnsVoipChannel, err error) {
+func (c *FakePinpointApnsVoipChannels) Create(ctx context.Context, pinpointApnsVoipChannel *v1alpha1.PinpointApnsVoipChannel, opts v1.CreateOptions) (result *v1alpha1.PinpointApnsVoipChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(pinpointapnsvoipchannelsResource, c.ns, pinpointApnsVoipChannel), &v1alpha1.PinpointApnsVoipChannel{})
 
@@ -91,7 +93,7 @@ func (c *FakePinpointApnsVoipChannels) Create(pinpointApnsVoipChannel *v1alpha1.
 }
 
 // Update takes the representation of a pinpointApnsVoipChannel and updates it. Returns the server's representation of the pinpointApnsVoipChannel, and an error, if there is any.
-func (c *FakePinpointApnsVoipChannels) Update(pinpointApnsVoipChannel *v1alpha1.PinpointApnsVoipChannel) (result *v1alpha1.PinpointApnsVoipChannel, err error) {
+func (c *FakePinpointApnsVoipChannels) Update(ctx context.Context, pinpointApnsVoipChannel *v1alpha1.PinpointApnsVoipChannel, opts v1.UpdateOptions) (result *v1alpha1.PinpointApnsVoipChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(pinpointapnsvoipchannelsResource, c.ns, pinpointApnsVoipChannel), &v1alpha1.PinpointApnsVoipChannel{})
 
@@ -103,7 +105,7 @@ func (c *FakePinpointApnsVoipChannels) Update(pinpointApnsVoipChannel *v1alpha1.
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakePinpointApnsVoipChannels) UpdateStatus(pinpointApnsVoipChannel *v1alpha1.PinpointApnsVoipChannel) (*v1alpha1.PinpointApnsVoipChannel, error) {
+func (c *FakePinpointApnsVoipChannels) UpdateStatus(ctx context.Context, pinpointApnsVoipChannel *v1alpha1.PinpointApnsVoipChannel, opts v1.UpdateOptions) (*v1alpha1.PinpointApnsVoipChannel, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(pinpointapnsvoipchannelsResource, "status", c.ns, pinpointApnsVoipChannel), &v1alpha1.PinpointApnsVoipChannel{})
 
@@ -114,7 +116,7 @@ func (c *FakePinpointApnsVoipChannels) UpdateStatus(pinpointApnsVoipChannel *v1a
 }
 
 // Delete takes name of the pinpointApnsVoipChannel and deletes it. Returns an error if one occurs.
-func (c *FakePinpointApnsVoipChannels) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakePinpointApnsVoipChannels) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(pinpointapnsvoipchannelsResource, c.ns, name), &v1alpha1.PinpointApnsVoipChannel{})
 
@@ -122,15 +124,15 @@ func (c *FakePinpointApnsVoipChannels) Delete(name string, options *v1.DeleteOpt
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakePinpointApnsVoipChannels) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(pinpointapnsvoipchannelsResource, c.ns, listOptions)
+func (c *FakePinpointApnsVoipChannels) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(pinpointapnsvoipchannelsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.PinpointApnsVoipChannelList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched pinpointApnsVoipChannel.
-func (c *FakePinpointApnsVoipChannels) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PinpointApnsVoipChannel, err error) {
+func (c *FakePinpointApnsVoipChannels) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PinpointApnsVoipChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(pinpointapnsvoipchannelsResource, c.ns, name, pt, data, subresources...), &v1alpha1.PinpointApnsVoipChannel{})
 

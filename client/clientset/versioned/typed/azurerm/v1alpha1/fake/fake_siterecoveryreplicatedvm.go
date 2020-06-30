@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var siterecoveryreplicatedvmsResource = schema.GroupVersionResource{Group: "azur
 var siterecoveryreplicatedvmsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "SiteRecoveryReplicatedVm"}
 
 // Get takes name of the siteRecoveryReplicatedVm, and returns the corresponding siteRecoveryReplicatedVm object, and an error if there is any.
-func (c *FakeSiteRecoveryReplicatedVms) Get(name string, options v1.GetOptions) (result *v1alpha1.SiteRecoveryReplicatedVm, err error) {
+func (c *FakeSiteRecoveryReplicatedVms) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SiteRecoveryReplicatedVm, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(siterecoveryreplicatedvmsResource, c.ns, name), &v1alpha1.SiteRecoveryReplicatedVm{})
 
@@ -51,7 +53,7 @@ func (c *FakeSiteRecoveryReplicatedVms) Get(name string, options v1.GetOptions) 
 }
 
 // List takes label and field selectors, and returns the list of SiteRecoveryReplicatedVms that match those selectors.
-func (c *FakeSiteRecoveryReplicatedVms) List(opts v1.ListOptions) (result *v1alpha1.SiteRecoveryReplicatedVmList, err error) {
+func (c *FakeSiteRecoveryReplicatedVms) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SiteRecoveryReplicatedVmList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(siterecoveryreplicatedvmsResource, siterecoveryreplicatedvmsKind, c.ns, opts), &v1alpha1.SiteRecoveryReplicatedVmList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSiteRecoveryReplicatedVms) List(opts v1.ListOptions) (result *v1alp
 }
 
 // Watch returns a watch.Interface that watches the requested siteRecoveryReplicatedVms.
-func (c *FakeSiteRecoveryReplicatedVms) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSiteRecoveryReplicatedVms) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(siterecoveryreplicatedvmsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a siteRecoveryReplicatedVm and creates it.  Returns the server's representation of the siteRecoveryReplicatedVm, and an error, if there is any.
-func (c *FakeSiteRecoveryReplicatedVms) Create(siteRecoveryReplicatedVm *v1alpha1.SiteRecoveryReplicatedVm) (result *v1alpha1.SiteRecoveryReplicatedVm, err error) {
+func (c *FakeSiteRecoveryReplicatedVms) Create(ctx context.Context, siteRecoveryReplicatedVm *v1alpha1.SiteRecoveryReplicatedVm, opts v1.CreateOptions) (result *v1alpha1.SiteRecoveryReplicatedVm, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(siterecoveryreplicatedvmsResource, c.ns, siteRecoveryReplicatedVm), &v1alpha1.SiteRecoveryReplicatedVm{})
 
@@ -91,7 +93,7 @@ func (c *FakeSiteRecoveryReplicatedVms) Create(siteRecoveryReplicatedVm *v1alpha
 }
 
 // Update takes the representation of a siteRecoveryReplicatedVm and updates it. Returns the server's representation of the siteRecoveryReplicatedVm, and an error, if there is any.
-func (c *FakeSiteRecoveryReplicatedVms) Update(siteRecoveryReplicatedVm *v1alpha1.SiteRecoveryReplicatedVm) (result *v1alpha1.SiteRecoveryReplicatedVm, err error) {
+func (c *FakeSiteRecoveryReplicatedVms) Update(ctx context.Context, siteRecoveryReplicatedVm *v1alpha1.SiteRecoveryReplicatedVm, opts v1.UpdateOptions) (result *v1alpha1.SiteRecoveryReplicatedVm, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(siterecoveryreplicatedvmsResource, c.ns, siteRecoveryReplicatedVm), &v1alpha1.SiteRecoveryReplicatedVm{})
 
@@ -103,7 +105,7 @@ func (c *FakeSiteRecoveryReplicatedVms) Update(siteRecoveryReplicatedVm *v1alpha
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSiteRecoveryReplicatedVms) UpdateStatus(siteRecoveryReplicatedVm *v1alpha1.SiteRecoveryReplicatedVm) (*v1alpha1.SiteRecoveryReplicatedVm, error) {
+func (c *FakeSiteRecoveryReplicatedVms) UpdateStatus(ctx context.Context, siteRecoveryReplicatedVm *v1alpha1.SiteRecoveryReplicatedVm, opts v1.UpdateOptions) (*v1alpha1.SiteRecoveryReplicatedVm, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(siterecoveryreplicatedvmsResource, "status", c.ns, siteRecoveryReplicatedVm), &v1alpha1.SiteRecoveryReplicatedVm{})
 
@@ -114,7 +116,7 @@ func (c *FakeSiteRecoveryReplicatedVms) UpdateStatus(siteRecoveryReplicatedVm *v
 }
 
 // Delete takes name of the siteRecoveryReplicatedVm and deletes it. Returns an error if one occurs.
-func (c *FakeSiteRecoveryReplicatedVms) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSiteRecoveryReplicatedVms) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(siterecoveryreplicatedvmsResource, c.ns, name), &v1alpha1.SiteRecoveryReplicatedVm{})
 
@@ -122,15 +124,15 @@ func (c *FakeSiteRecoveryReplicatedVms) Delete(name string, options *v1.DeleteOp
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSiteRecoveryReplicatedVms) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(siterecoveryreplicatedvmsResource, c.ns, listOptions)
+func (c *FakeSiteRecoveryReplicatedVms) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(siterecoveryreplicatedvmsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SiteRecoveryReplicatedVmList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched siteRecoveryReplicatedVm.
-func (c *FakeSiteRecoveryReplicatedVms) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SiteRecoveryReplicatedVm, err error) {
+func (c *FakeSiteRecoveryReplicatedVms) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SiteRecoveryReplicatedVm, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(siterecoveryreplicatedvmsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SiteRecoveryReplicatedVm{})
 

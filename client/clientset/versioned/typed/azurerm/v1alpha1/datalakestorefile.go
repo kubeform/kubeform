@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type DataLakeStoreFilesGetter interface {
 
 // DataLakeStoreFileInterface has methods to work with DataLakeStoreFile resources.
 type DataLakeStoreFileInterface interface {
-	Create(*v1alpha1.DataLakeStoreFile) (*v1alpha1.DataLakeStoreFile, error)
-	Update(*v1alpha1.DataLakeStoreFile) (*v1alpha1.DataLakeStoreFile, error)
-	UpdateStatus(*v1alpha1.DataLakeStoreFile) (*v1alpha1.DataLakeStoreFile, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.DataLakeStoreFile, error)
-	List(opts v1.ListOptions) (*v1alpha1.DataLakeStoreFileList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataLakeStoreFile, err error)
+	Create(ctx context.Context, dataLakeStoreFile *v1alpha1.DataLakeStoreFile, opts v1.CreateOptions) (*v1alpha1.DataLakeStoreFile, error)
+	Update(ctx context.Context, dataLakeStoreFile *v1alpha1.DataLakeStoreFile, opts v1.UpdateOptions) (*v1alpha1.DataLakeStoreFile, error)
+	UpdateStatus(ctx context.Context, dataLakeStoreFile *v1alpha1.DataLakeStoreFile, opts v1.UpdateOptions) (*v1alpha1.DataLakeStoreFile, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.DataLakeStoreFile, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.DataLakeStoreFileList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataLakeStoreFile, err error)
 	DataLakeStoreFileExpansion
 }
 
@@ -65,20 +66,20 @@ func newDataLakeStoreFiles(c *AzurermV1alpha1Client, namespace string) *dataLake
 }
 
 // Get takes name of the dataLakeStoreFile, and returns the corresponding dataLakeStoreFile object, and an error if there is any.
-func (c *dataLakeStoreFiles) Get(name string, options v1.GetOptions) (result *v1alpha1.DataLakeStoreFile, err error) {
+func (c *dataLakeStoreFiles) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DataLakeStoreFile, err error) {
 	result = &v1alpha1.DataLakeStoreFile{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("datalakestorefiles").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of DataLakeStoreFiles that match those selectors.
-func (c *dataLakeStoreFiles) List(opts v1.ListOptions) (result *v1alpha1.DataLakeStoreFileList, err error) {
+func (c *dataLakeStoreFiles) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DataLakeStoreFileList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *dataLakeStoreFiles) List(opts v1.ListOptions) (result *v1alpha1.DataLak
 		Resource("datalakestorefiles").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested dataLakeStoreFiles.
-func (c *dataLakeStoreFiles) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *dataLakeStoreFiles) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *dataLakeStoreFiles) Watch(opts v1.ListOptions) (watch.Interface, error)
 		Resource("datalakestorefiles").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a dataLakeStoreFile and creates it.  Returns the server's representation of the dataLakeStoreFile, and an error, if there is any.
-func (c *dataLakeStoreFiles) Create(dataLakeStoreFile *v1alpha1.DataLakeStoreFile) (result *v1alpha1.DataLakeStoreFile, err error) {
+func (c *dataLakeStoreFiles) Create(ctx context.Context, dataLakeStoreFile *v1alpha1.DataLakeStoreFile, opts v1.CreateOptions) (result *v1alpha1.DataLakeStoreFile, err error) {
 	result = &v1alpha1.DataLakeStoreFile{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("datalakestorefiles").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dataLakeStoreFile).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a dataLakeStoreFile and updates it. Returns the server's representation of the dataLakeStoreFile, and an error, if there is any.
-func (c *dataLakeStoreFiles) Update(dataLakeStoreFile *v1alpha1.DataLakeStoreFile) (result *v1alpha1.DataLakeStoreFile, err error) {
+func (c *dataLakeStoreFiles) Update(ctx context.Context, dataLakeStoreFile *v1alpha1.DataLakeStoreFile, opts v1.UpdateOptions) (result *v1alpha1.DataLakeStoreFile, err error) {
 	result = &v1alpha1.DataLakeStoreFile{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("datalakestorefiles").
 		Name(dataLakeStoreFile.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dataLakeStoreFile).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *dataLakeStoreFiles) UpdateStatus(dataLakeStoreFile *v1alpha1.DataLakeStoreFile) (result *v1alpha1.DataLakeStoreFile, err error) {
+func (c *dataLakeStoreFiles) UpdateStatus(ctx context.Context, dataLakeStoreFile *v1alpha1.DataLakeStoreFile, opts v1.UpdateOptions) (result *v1alpha1.DataLakeStoreFile, err error) {
 	result = &v1alpha1.DataLakeStoreFile{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("datalakestorefiles").
 		Name(dataLakeStoreFile.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dataLakeStoreFile).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the dataLakeStoreFile and deletes it. Returns an error if one occurs.
-func (c *dataLakeStoreFiles) Delete(name string, options *v1.DeleteOptions) error {
+func (c *dataLakeStoreFiles) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("datalakestorefiles").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *dataLakeStoreFiles) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *dataLakeStoreFiles) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("datalakestorefiles").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched dataLakeStoreFile.
-func (c *dataLakeStoreFiles) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataLakeStoreFile, err error) {
+func (c *dataLakeStoreFiles) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataLakeStoreFile, err error) {
 	result = &v1alpha1.DataLakeStoreFile{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("datalakestorefiles").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

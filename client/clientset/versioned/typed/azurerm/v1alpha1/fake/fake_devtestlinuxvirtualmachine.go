@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var devtestlinuxvirtualmachinesResource = schema.GroupVersionResource{Group: "az
 var devtestlinuxvirtualmachinesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "DevTestLinuxVirtualMachine"}
 
 // Get takes name of the devTestLinuxVirtualMachine, and returns the corresponding devTestLinuxVirtualMachine object, and an error if there is any.
-func (c *FakeDevTestLinuxVirtualMachines) Get(name string, options v1.GetOptions) (result *v1alpha1.DevTestLinuxVirtualMachine, err error) {
+func (c *FakeDevTestLinuxVirtualMachines) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DevTestLinuxVirtualMachine, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(devtestlinuxvirtualmachinesResource, c.ns, name), &v1alpha1.DevTestLinuxVirtualMachine{})
 
@@ -51,7 +53,7 @@ func (c *FakeDevTestLinuxVirtualMachines) Get(name string, options v1.GetOptions
 }
 
 // List takes label and field selectors, and returns the list of DevTestLinuxVirtualMachines that match those selectors.
-func (c *FakeDevTestLinuxVirtualMachines) List(opts v1.ListOptions) (result *v1alpha1.DevTestLinuxVirtualMachineList, err error) {
+func (c *FakeDevTestLinuxVirtualMachines) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DevTestLinuxVirtualMachineList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(devtestlinuxvirtualmachinesResource, devtestlinuxvirtualmachinesKind, c.ns, opts), &v1alpha1.DevTestLinuxVirtualMachineList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDevTestLinuxVirtualMachines) List(opts v1.ListOptions) (result *v1a
 }
 
 // Watch returns a watch.Interface that watches the requested devTestLinuxVirtualMachines.
-func (c *FakeDevTestLinuxVirtualMachines) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDevTestLinuxVirtualMachines) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(devtestlinuxvirtualmachinesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a devTestLinuxVirtualMachine and creates it.  Returns the server's representation of the devTestLinuxVirtualMachine, and an error, if there is any.
-func (c *FakeDevTestLinuxVirtualMachines) Create(devTestLinuxVirtualMachine *v1alpha1.DevTestLinuxVirtualMachine) (result *v1alpha1.DevTestLinuxVirtualMachine, err error) {
+func (c *FakeDevTestLinuxVirtualMachines) Create(ctx context.Context, devTestLinuxVirtualMachine *v1alpha1.DevTestLinuxVirtualMachine, opts v1.CreateOptions) (result *v1alpha1.DevTestLinuxVirtualMachine, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(devtestlinuxvirtualmachinesResource, c.ns, devTestLinuxVirtualMachine), &v1alpha1.DevTestLinuxVirtualMachine{})
 
@@ -91,7 +93,7 @@ func (c *FakeDevTestLinuxVirtualMachines) Create(devTestLinuxVirtualMachine *v1a
 }
 
 // Update takes the representation of a devTestLinuxVirtualMachine and updates it. Returns the server's representation of the devTestLinuxVirtualMachine, and an error, if there is any.
-func (c *FakeDevTestLinuxVirtualMachines) Update(devTestLinuxVirtualMachine *v1alpha1.DevTestLinuxVirtualMachine) (result *v1alpha1.DevTestLinuxVirtualMachine, err error) {
+func (c *FakeDevTestLinuxVirtualMachines) Update(ctx context.Context, devTestLinuxVirtualMachine *v1alpha1.DevTestLinuxVirtualMachine, opts v1.UpdateOptions) (result *v1alpha1.DevTestLinuxVirtualMachine, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(devtestlinuxvirtualmachinesResource, c.ns, devTestLinuxVirtualMachine), &v1alpha1.DevTestLinuxVirtualMachine{})
 
@@ -103,7 +105,7 @@ func (c *FakeDevTestLinuxVirtualMachines) Update(devTestLinuxVirtualMachine *v1a
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDevTestLinuxVirtualMachines) UpdateStatus(devTestLinuxVirtualMachine *v1alpha1.DevTestLinuxVirtualMachine) (*v1alpha1.DevTestLinuxVirtualMachine, error) {
+func (c *FakeDevTestLinuxVirtualMachines) UpdateStatus(ctx context.Context, devTestLinuxVirtualMachine *v1alpha1.DevTestLinuxVirtualMachine, opts v1.UpdateOptions) (*v1alpha1.DevTestLinuxVirtualMachine, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(devtestlinuxvirtualmachinesResource, "status", c.ns, devTestLinuxVirtualMachine), &v1alpha1.DevTestLinuxVirtualMachine{})
 
@@ -114,7 +116,7 @@ func (c *FakeDevTestLinuxVirtualMachines) UpdateStatus(devTestLinuxVirtualMachin
 }
 
 // Delete takes name of the devTestLinuxVirtualMachine and deletes it. Returns an error if one occurs.
-func (c *FakeDevTestLinuxVirtualMachines) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDevTestLinuxVirtualMachines) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(devtestlinuxvirtualmachinesResource, c.ns, name), &v1alpha1.DevTestLinuxVirtualMachine{})
 
@@ -122,15 +124,15 @@ func (c *FakeDevTestLinuxVirtualMachines) Delete(name string, options *v1.Delete
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDevTestLinuxVirtualMachines) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(devtestlinuxvirtualmachinesResource, c.ns, listOptions)
+func (c *FakeDevTestLinuxVirtualMachines) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(devtestlinuxvirtualmachinesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DevTestLinuxVirtualMachineList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched devTestLinuxVirtualMachine.
-func (c *FakeDevTestLinuxVirtualMachines) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DevTestLinuxVirtualMachine, err error) {
+func (c *FakeDevTestLinuxVirtualMachines) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DevTestLinuxVirtualMachine, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(devtestlinuxvirtualmachinesResource, c.ns, name, pt, data, subresources...), &v1alpha1.DevTestLinuxVirtualMachine{})
 

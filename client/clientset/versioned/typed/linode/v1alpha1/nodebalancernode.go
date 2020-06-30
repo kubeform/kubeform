@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/linode/v1alpha1"
@@ -38,15 +39,15 @@ type NodebalancerNodesGetter interface {
 
 // NodebalancerNodeInterface has methods to work with NodebalancerNode resources.
 type NodebalancerNodeInterface interface {
-	Create(*v1alpha1.NodebalancerNode) (*v1alpha1.NodebalancerNode, error)
-	Update(*v1alpha1.NodebalancerNode) (*v1alpha1.NodebalancerNode, error)
-	UpdateStatus(*v1alpha1.NodebalancerNode) (*v1alpha1.NodebalancerNode, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.NodebalancerNode, error)
-	List(opts v1.ListOptions) (*v1alpha1.NodebalancerNodeList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.NodebalancerNode, err error)
+	Create(ctx context.Context, nodebalancerNode *v1alpha1.NodebalancerNode, opts v1.CreateOptions) (*v1alpha1.NodebalancerNode, error)
+	Update(ctx context.Context, nodebalancerNode *v1alpha1.NodebalancerNode, opts v1.UpdateOptions) (*v1alpha1.NodebalancerNode, error)
+	UpdateStatus(ctx context.Context, nodebalancerNode *v1alpha1.NodebalancerNode, opts v1.UpdateOptions) (*v1alpha1.NodebalancerNode, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.NodebalancerNode, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.NodebalancerNodeList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.NodebalancerNode, err error)
 	NodebalancerNodeExpansion
 }
 
@@ -65,20 +66,20 @@ func newNodebalancerNodes(c *LinodeV1alpha1Client, namespace string) *nodebalanc
 }
 
 // Get takes name of the nodebalancerNode, and returns the corresponding nodebalancerNode object, and an error if there is any.
-func (c *nodebalancerNodes) Get(name string, options v1.GetOptions) (result *v1alpha1.NodebalancerNode, err error) {
+func (c *nodebalancerNodes) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.NodebalancerNode, err error) {
 	result = &v1alpha1.NodebalancerNode{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("nodebalancernodes").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of NodebalancerNodes that match those selectors.
-func (c *nodebalancerNodes) List(opts v1.ListOptions) (result *v1alpha1.NodebalancerNodeList, err error) {
+func (c *nodebalancerNodes) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.NodebalancerNodeList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *nodebalancerNodes) List(opts v1.ListOptions) (result *v1alpha1.Nodebala
 		Resource("nodebalancernodes").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested nodebalancerNodes.
-func (c *nodebalancerNodes) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *nodebalancerNodes) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *nodebalancerNodes) Watch(opts v1.ListOptions) (watch.Interface, error) 
 		Resource("nodebalancernodes").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a nodebalancerNode and creates it.  Returns the server's representation of the nodebalancerNode, and an error, if there is any.
-func (c *nodebalancerNodes) Create(nodebalancerNode *v1alpha1.NodebalancerNode) (result *v1alpha1.NodebalancerNode, err error) {
+func (c *nodebalancerNodes) Create(ctx context.Context, nodebalancerNode *v1alpha1.NodebalancerNode, opts v1.CreateOptions) (result *v1alpha1.NodebalancerNode, err error) {
 	result = &v1alpha1.NodebalancerNode{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("nodebalancernodes").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(nodebalancerNode).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a nodebalancerNode and updates it. Returns the server's representation of the nodebalancerNode, and an error, if there is any.
-func (c *nodebalancerNodes) Update(nodebalancerNode *v1alpha1.NodebalancerNode) (result *v1alpha1.NodebalancerNode, err error) {
+func (c *nodebalancerNodes) Update(ctx context.Context, nodebalancerNode *v1alpha1.NodebalancerNode, opts v1.UpdateOptions) (result *v1alpha1.NodebalancerNode, err error) {
 	result = &v1alpha1.NodebalancerNode{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("nodebalancernodes").
 		Name(nodebalancerNode.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(nodebalancerNode).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *nodebalancerNodes) UpdateStatus(nodebalancerNode *v1alpha1.NodebalancerNode) (result *v1alpha1.NodebalancerNode, err error) {
+func (c *nodebalancerNodes) UpdateStatus(ctx context.Context, nodebalancerNode *v1alpha1.NodebalancerNode, opts v1.UpdateOptions) (result *v1alpha1.NodebalancerNode, err error) {
 	result = &v1alpha1.NodebalancerNode{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("nodebalancernodes").
 		Name(nodebalancerNode.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(nodebalancerNode).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the nodebalancerNode and deletes it. Returns an error if one occurs.
-func (c *nodebalancerNodes) Delete(name string, options *v1.DeleteOptions) error {
+func (c *nodebalancerNodes) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("nodebalancernodes").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *nodebalancerNodes) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *nodebalancerNodes) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("nodebalancernodes").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched nodebalancerNode.
-func (c *nodebalancerNodes) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.NodebalancerNode, err error) {
+func (c *nodebalancerNodes) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.NodebalancerNode, err error) {
 	result = &v1alpha1.NodebalancerNode{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("nodebalancernodes").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

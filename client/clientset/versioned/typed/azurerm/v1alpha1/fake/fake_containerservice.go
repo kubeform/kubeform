@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var containerservicesResource = schema.GroupVersionResource{Group: "azurerm.kube
 var containerservicesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "ContainerService"}
 
 // Get takes name of the containerService, and returns the corresponding containerService object, and an error if there is any.
-func (c *FakeContainerServices) Get(name string, options v1.GetOptions) (result *v1alpha1.ContainerService, err error) {
+func (c *FakeContainerServices) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ContainerService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(containerservicesResource, c.ns, name), &v1alpha1.ContainerService{})
 
@@ -51,7 +53,7 @@ func (c *FakeContainerServices) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of ContainerServices that match those selectors.
-func (c *FakeContainerServices) List(opts v1.ListOptions) (result *v1alpha1.ContainerServiceList, err error) {
+func (c *FakeContainerServices) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ContainerServiceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(containerservicesResource, containerservicesKind, c.ns, opts), &v1alpha1.ContainerServiceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeContainerServices) List(opts v1.ListOptions) (result *v1alpha1.Cont
 }
 
 // Watch returns a watch.Interface that watches the requested containerServices.
-func (c *FakeContainerServices) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeContainerServices) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(containerservicesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a containerService and creates it.  Returns the server's representation of the containerService, and an error, if there is any.
-func (c *FakeContainerServices) Create(containerService *v1alpha1.ContainerService) (result *v1alpha1.ContainerService, err error) {
+func (c *FakeContainerServices) Create(ctx context.Context, containerService *v1alpha1.ContainerService, opts v1.CreateOptions) (result *v1alpha1.ContainerService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(containerservicesResource, c.ns, containerService), &v1alpha1.ContainerService{})
 
@@ -91,7 +93,7 @@ func (c *FakeContainerServices) Create(containerService *v1alpha1.ContainerServi
 }
 
 // Update takes the representation of a containerService and updates it. Returns the server's representation of the containerService, and an error, if there is any.
-func (c *FakeContainerServices) Update(containerService *v1alpha1.ContainerService) (result *v1alpha1.ContainerService, err error) {
+func (c *FakeContainerServices) Update(ctx context.Context, containerService *v1alpha1.ContainerService, opts v1.UpdateOptions) (result *v1alpha1.ContainerService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(containerservicesResource, c.ns, containerService), &v1alpha1.ContainerService{})
 
@@ -103,7 +105,7 @@ func (c *FakeContainerServices) Update(containerService *v1alpha1.ContainerServi
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeContainerServices) UpdateStatus(containerService *v1alpha1.ContainerService) (*v1alpha1.ContainerService, error) {
+func (c *FakeContainerServices) UpdateStatus(ctx context.Context, containerService *v1alpha1.ContainerService, opts v1.UpdateOptions) (*v1alpha1.ContainerService, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(containerservicesResource, "status", c.ns, containerService), &v1alpha1.ContainerService{})
 
@@ -114,7 +116,7 @@ func (c *FakeContainerServices) UpdateStatus(containerService *v1alpha1.Containe
 }
 
 // Delete takes name of the containerService and deletes it. Returns an error if one occurs.
-func (c *FakeContainerServices) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeContainerServices) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(containerservicesResource, c.ns, name), &v1alpha1.ContainerService{})
 
@@ -122,15 +124,15 @@ func (c *FakeContainerServices) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeContainerServices) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(containerservicesResource, c.ns, listOptions)
+func (c *FakeContainerServices) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(containerservicesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ContainerServiceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched containerService.
-func (c *FakeContainerServices) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ContainerService, err error) {
+func (c *FakeContainerServices) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ContainerService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(containerservicesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ContainerService{})
 

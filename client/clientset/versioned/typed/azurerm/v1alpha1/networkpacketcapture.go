@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type NetworkPacketCapturesGetter interface {
 
 // NetworkPacketCaptureInterface has methods to work with NetworkPacketCapture resources.
 type NetworkPacketCaptureInterface interface {
-	Create(*v1alpha1.NetworkPacketCapture) (*v1alpha1.NetworkPacketCapture, error)
-	Update(*v1alpha1.NetworkPacketCapture) (*v1alpha1.NetworkPacketCapture, error)
-	UpdateStatus(*v1alpha1.NetworkPacketCapture) (*v1alpha1.NetworkPacketCapture, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.NetworkPacketCapture, error)
-	List(opts v1.ListOptions) (*v1alpha1.NetworkPacketCaptureList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.NetworkPacketCapture, err error)
+	Create(ctx context.Context, networkPacketCapture *v1alpha1.NetworkPacketCapture, opts v1.CreateOptions) (*v1alpha1.NetworkPacketCapture, error)
+	Update(ctx context.Context, networkPacketCapture *v1alpha1.NetworkPacketCapture, opts v1.UpdateOptions) (*v1alpha1.NetworkPacketCapture, error)
+	UpdateStatus(ctx context.Context, networkPacketCapture *v1alpha1.NetworkPacketCapture, opts v1.UpdateOptions) (*v1alpha1.NetworkPacketCapture, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.NetworkPacketCapture, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.NetworkPacketCaptureList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.NetworkPacketCapture, err error)
 	NetworkPacketCaptureExpansion
 }
 
@@ -65,20 +66,20 @@ func newNetworkPacketCaptures(c *AzurermV1alpha1Client, namespace string) *netwo
 }
 
 // Get takes name of the networkPacketCapture, and returns the corresponding networkPacketCapture object, and an error if there is any.
-func (c *networkPacketCaptures) Get(name string, options v1.GetOptions) (result *v1alpha1.NetworkPacketCapture, err error) {
+func (c *networkPacketCaptures) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.NetworkPacketCapture, err error) {
 	result = &v1alpha1.NetworkPacketCapture{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("networkpacketcaptures").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of NetworkPacketCaptures that match those selectors.
-func (c *networkPacketCaptures) List(opts v1.ListOptions) (result *v1alpha1.NetworkPacketCaptureList, err error) {
+func (c *networkPacketCaptures) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.NetworkPacketCaptureList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *networkPacketCaptures) List(opts v1.ListOptions) (result *v1alpha1.Netw
 		Resource("networkpacketcaptures").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested networkPacketCaptures.
-func (c *networkPacketCaptures) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *networkPacketCaptures) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *networkPacketCaptures) Watch(opts v1.ListOptions) (watch.Interface, err
 		Resource("networkpacketcaptures").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a networkPacketCapture and creates it.  Returns the server's representation of the networkPacketCapture, and an error, if there is any.
-func (c *networkPacketCaptures) Create(networkPacketCapture *v1alpha1.NetworkPacketCapture) (result *v1alpha1.NetworkPacketCapture, err error) {
+func (c *networkPacketCaptures) Create(ctx context.Context, networkPacketCapture *v1alpha1.NetworkPacketCapture, opts v1.CreateOptions) (result *v1alpha1.NetworkPacketCapture, err error) {
 	result = &v1alpha1.NetworkPacketCapture{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("networkpacketcaptures").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(networkPacketCapture).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a networkPacketCapture and updates it. Returns the server's representation of the networkPacketCapture, and an error, if there is any.
-func (c *networkPacketCaptures) Update(networkPacketCapture *v1alpha1.NetworkPacketCapture) (result *v1alpha1.NetworkPacketCapture, err error) {
+func (c *networkPacketCaptures) Update(ctx context.Context, networkPacketCapture *v1alpha1.NetworkPacketCapture, opts v1.UpdateOptions) (result *v1alpha1.NetworkPacketCapture, err error) {
 	result = &v1alpha1.NetworkPacketCapture{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("networkpacketcaptures").
 		Name(networkPacketCapture.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(networkPacketCapture).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *networkPacketCaptures) UpdateStatus(networkPacketCapture *v1alpha1.NetworkPacketCapture) (result *v1alpha1.NetworkPacketCapture, err error) {
+func (c *networkPacketCaptures) UpdateStatus(ctx context.Context, networkPacketCapture *v1alpha1.NetworkPacketCapture, opts v1.UpdateOptions) (result *v1alpha1.NetworkPacketCapture, err error) {
 	result = &v1alpha1.NetworkPacketCapture{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("networkpacketcaptures").
 		Name(networkPacketCapture.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(networkPacketCapture).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the networkPacketCapture and deletes it. Returns an error if one occurs.
-func (c *networkPacketCaptures) Delete(name string, options *v1.DeleteOptions) error {
+func (c *networkPacketCaptures) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("networkpacketcaptures").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *networkPacketCaptures) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *networkPacketCaptures) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("networkpacketcaptures").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched networkPacketCapture.
-func (c *networkPacketCaptures) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.NetworkPacketCapture, err error) {
+func (c *networkPacketCaptures) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.NetworkPacketCapture, err error) {
 	result = &v1alpha1.NetworkPacketCapture{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("networkpacketcaptures").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

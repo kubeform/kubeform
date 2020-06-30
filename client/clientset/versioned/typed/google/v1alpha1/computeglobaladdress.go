@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type ComputeGlobalAddressesGetter interface {
 
 // ComputeGlobalAddressInterface has methods to work with ComputeGlobalAddress resources.
 type ComputeGlobalAddressInterface interface {
-	Create(*v1alpha1.ComputeGlobalAddress) (*v1alpha1.ComputeGlobalAddress, error)
-	Update(*v1alpha1.ComputeGlobalAddress) (*v1alpha1.ComputeGlobalAddress, error)
-	UpdateStatus(*v1alpha1.ComputeGlobalAddress) (*v1alpha1.ComputeGlobalAddress, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ComputeGlobalAddress, error)
-	List(opts v1.ListOptions) (*v1alpha1.ComputeGlobalAddressList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeGlobalAddress, err error)
+	Create(ctx context.Context, computeGlobalAddress *v1alpha1.ComputeGlobalAddress, opts v1.CreateOptions) (*v1alpha1.ComputeGlobalAddress, error)
+	Update(ctx context.Context, computeGlobalAddress *v1alpha1.ComputeGlobalAddress, opts v1.UpdateOptions) (*v1alpha1.ComputeGlobalAddress, error)
+	UpdateStatus(ctx context.Context, computeGlobalAddress *v1alpha1.ComputeGlobalAddress, opts v1.UpdateOptions) (*v1alpha1.ComputeGlobalAddress, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ComputeGlobalAddress, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ComputeGlobalAddressList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeGlobalAddress, err error)
 	ComputeGlobalAddressExpansion
 }
 
@@ -65,20 +66,20 @@ func newComputeGlobalAddresses(c *GoogleV1alpha1Client, namespace string) *compu
 }
 
 // Get takes name of the computeGlobalAddress, and returns the corresponding computeGlobalAddress object, and an error if there is any.
-func (c *computeGlobalAddresses) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeGlobalAddress, err error) {
+func (c *computeGlobalAddresses) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeGlobalAddress, err error) {
 	result = &v1alpha1.ComputeGlobalAddress{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("computeglobaladdresses").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ComputeGlobalAddresses that match those selectors.
-func (c *computeGlobalAddresses) List(opts v1.ListOptions) (result *v1alpha1.ComputeGlobalAddressList, err error) {
+func (c *computeGlobalAddresses) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeGlobalAddressList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *computeGlobalAddresses) List(opts v1.ListOptions) (result *v1alpha1.Com
 		Resource("computeglobaladdresses").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested computeGlobalAddresses.
-func (c *computeGlobalAddresses) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *computeGlobalAddresses) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *computeGlobalAddresses) Watch(opts v1.ListOptions) (watch.Interface, er
 		Resource("computeglobaladdresses").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a computeGlobalAddress and creates it.  Returns the server's representation of the computeGlobalAddress, and an error, if there is any.
-func (c *computeGlobalAddresses) Create(computeGlobalAddress *v1alpha1.ComputeGlobalAddress) (result *v1alpha1.ComputeGlobalAddress, err error) {
+func (c *computeGlobalAddresses) Create(ctx context.Context, computeGlobalAddress *v1alpha1.ComputeGlobalAddress, opts v1.CreateOptions) (result *v1alpha1.ComputeGlobalAddress, err error) {
 	result = &v1alpha1.ComputeGlobalAddress{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("computeglobaladdresses").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeGlobalAddress).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a computeGlobalAddress and updates it. Returns the server's representation of the computeGlobalAddress, and an error, if there is any.
-func (c *computeGlobalAddresses) Update(computeGlobalAddress *v1alpha1.ComputeGlobalAddress) (result *v1alpha1.ComputeGlobalAddress, err error) {
+func (c *computeGlobalAddresses) Update(ctx context.Context, computeGlobalAddress *v1alpha1.ComputeGlobalAddress, opts v1.UpdateOptions) (result *v1alpha1.ComputeGlobalAddress, err error) {
 	result = &v1alpha1.ComputeGlobalAddress{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computeglobaladdresses").
 		Name(computeGlobalAddress.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeGlobalAddress).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *computeGlobalAddresses) UpdateStatus(computeGlobalAddress *v1alpha1.ComputeGlobalAddress) (result *v1alpha1.ComputeGlobalAddress, err error) {
+func (c *computeGlobalAddresses) UpdateStatus(ctx context.Context, computeGlobalAddress *v1alpha1.ComputeGlobalAddress, opts v1.UpdateOptions) (result *v1alpha1.ComputeGlobalAddress, err error) {
 	result = &v1alpha1.ComputeGlobalAddress{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computeglobaladdresses").
 		Name(computeGlobalAddress.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeGlobalAddress).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the computeGlobalAddress and deletes it. Returns an error if one occurs.
-func (c *computeGlobalAddresses) Delete(name string, options *v1.DeleteOptions) error {
+func (c *computeGlobalAddresses) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computeglobaladdresses").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *computeGlobalAddresses) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *computeGlobalAddresses) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computeglobaladdresses").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched computeGlobalAddress.
-func (c *computeGlobalAddresses) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeGlobalAddress, err error) {
+func (c *computeGlobalAddresses) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeGlobalAddress, err error) {
 	result = &v1alpha1.ComputeGlobalAddress{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("computeglobaladdresses").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

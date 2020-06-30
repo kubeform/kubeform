@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iamaccesskeysResource = schema.GroupVersionResource{Group: "aws.kubeform.com
 var iamaccesskeysKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "IamAccessKey"}
 
 // Get takes name of the iamAccessKey, and returns the corresponding iamAccessKey object, and an error if there is any.
-func (c *FakeIamAccessKeys) Get(name string, options v1.GetOptions) (result *v1alpha1.IamAccessKey, err error) {
+func (c *FakeIamAccessKeys) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IamAccessKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iamaccesskeysResource, c.ns, name), &v1alpha1.IamAccessKey{})
 
@@ -51,7 +53,7 @@ func (c *FakeIamAccessKeys) Get(name string, options v1.GetOptions) (result *v1a
 }
 
 // List takes label and field selectors, and returns the list of IamAccessKeys that match those selectors.
-func (c *FakeIamAccessKeys) List(opts v1.ListOptions) (result *v1alpha1.IamAccessKeyList, err error) {
+func (c *FakeIamAccessKeys) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IamAccessKeyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iamaccesskeysResource, iamaccesskeysKind, c.ns, opts), &v1alpha1.IamAccessKeyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIamAccessKeys) List(opts v1.ListOptions) (result *v1alpha1.IamAcces
 }
 
 // Watch returns a watch.Interface that watches the requested iamAccessKeys.
-func (c *FakeIamAccessKeys) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIamAccessKeys) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iamaccesskeysResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iamAccessKey and creates it.  Returns the server's representation of the iamAccessKey, and an error, if there is any.
-func (c *FakeIamAccessKeys) Create(iamAccessKey *v1alpha1.IamAccessKey) (result *v1alpha1.IamAccessKey, err error) {
+func (c *FakeIamAccessKeys) Create(ctx context.Context, iamAccessKey *v1alpha1.IamAccessKey, opts v1.CreateOptions) (result *v1alpha1.IamAccessKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iamaccesskeysResource, c.ns, iamAccessKey), &v1alpha1.IamAccessKey{})
 
@@ -91,7 +93,7 @@ func (c *FakeIamAccessKeys) Create(iamAccessKey *v1alpha1.IamAccessKey) (result 
 }
 
 // Update takes the representation of a iamAccessKey and updates it. Returns the server's representation of the iamAccessKey, and an error, if there is any.
-func (c *FakeIamAccessKeys) Update(iamAccessKey *v1alpha1.IamAccessKey) (result *v1alpha1.IamAccessKey, err error) {
+func (c *FakeIamAccessKeys) Update(ctx context.Context, iamAccessKey *v1alpha1.IamAccessKey, opts v1.UpdateOptions) (result *v1alpha1.IamAccessKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iamaccesskeysResource, c.ns, iamAccessKey), &v1alpha1.IamAccessKey{})
 
@@ -103,7 +105,7 @@ func (c *FakeIamAccessKeys) Update(iamAccessKey *v1alpha1.IamAccessKey) (result 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIamAccessKeys) UpdateStatus(iamAccessKey *v1alpha1.IamAccessKey) (*v1alpha1.IamAccessKey, error) {
+func (c *FakeIamAccessKeys) UpdateStatus(ctx context.Context, iamAccessKey *v1alpha1.IamAccessKey, opts v1.UpdateOptions) (*v1alpha1.IamAccessKey, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iamaccesskeysResource, "status", c.ns, iamAccessKey), &v1alpha1.IamAccessKey{})
 
@@ -114,7 +116,7 @@ func (c *FakeIamAccessKeys) UpdateStatus(iamAccessKey *v1alpha1.IamAccessKey) (*
 }
 
 // Delete takes name of the iamAccessKey and deletes it. Returns an error if one occurs.
-func (c *FakeIamAccessKeys) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIamAccessKeys) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iamaccesskeysResource, c.ns, name), &v1alpha1.IamAccessKey{})
 
@@ -122,15 +124,15 @@ func (c *FakeIamAccessKeys) Delete(name string, options *v1.DeleteOptions) error
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIamAccessKeys) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iamaccesskeysResource, c.ns, listOptions)
+func (c *FakeIamAccessKeys) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iamaccesskeysResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IamAccessKeyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iamAccessKey.
-func (c *FakeIamAccessKeys) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IamAccessKey, err error) {
+func (c *FakeIamAccessKeys) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IamAccessKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iamaccesskeysResource, c.ns, name, pt, data, subresources...), &v1alpha1.IamAccessKey{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var networkinterfacesResource = schema.GroupVersionResource{Group: "azurerm.kube
 var networkinterfacesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "NetworkInterface"}
 
 // Get takes name of the networkInterface, and returns the corresponding networkInterface object, and an error if there is any.
-func (c *FakeNetworkInterfaces) Get(name string, options v1.GetOptions) (result *v1alpha1.NetworkInterface, err error) {
+func (c *FakeNetworkInterfaces) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.NetworkInterface, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(networkinterfacesResource, c.ns, name), &v1alpha1.NetworkInterface{})
 
@@ -51,7 +53,7 @@ func (c *FakeNetworkInterfaces) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of NetworkInterfaces that match those selectors.
-func (c *FakeNetworkInterfaces) List(opts v1.ListOptions) (result *v1alpha1.NetworkInterfaceList, err error) {
+func (c *FakeNetworkInterfaces) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.NetworkInterfaceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(networkinterfacesResource, networkinterfacesKind, c.ns, opts), &v1alpha1.NetworkInterfaceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeNetworkInterfaces) List(opts v1.ListOptions) (result *v1alpha1.Netw
 }
 
 // Watch returns a watch.Interface that watches the requested networkInterfaces.
-func (c *FakeNetworkInterfaces) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeNetworkInterfaces) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(networkinterfacesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a networkInterface and creates it.  Returns the server's representation of the networkInterface, and an error, if there is any.
-func (c *FakeNetworkInterfaces) Create(networkInterface *v1alpha1.NetworkInterface) (result *v1alpha1.NetworkInterface, err error) {
+func (c *FakeNetworkInterfaces) Create(ctx context.Context, networkInterface *v1alpha1.NetworkInterface, opts v1.CreateOptions) (result *v1alpha1.NetworkInterface, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(networkinterfacesResource, c.ns, networkInterface), &v1alpha1.NetworkInterface{})
 
@@ -91,7 +93,7 @@ func (c *FakeNetworkInterfaces) Create(networkInterface *v1alpha1.NetworkInterfa
 }
 
 // Update takes the representation of a networkInterface and updates it. Returns the server's representation of the networkInterface, and an error, if there is any.
-func (c *FakeNetworkInterfaces) Update(networkInterface *v1alpha1.NetworkInterface) (result *v1alpha1.NetworkInterface, err error) {
+func (c *FakeNetworkInterfaces) Update(ctx context.Context, networkInterface *v1alpha1.NetworkInterface, opts v1.UpdateOptions) (result *v1alpha1.NetworkInterface, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(networkinterfacesResource, c.ns, networkInterface), &v1alpha1.NetworkInterface{})
 
@@ -103,7 +105,7 @@ func (c *FakeNetworkInterfaces) Update(networkInterface *v1alpha1.NetworkInterfa
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeNetworkInterfaces) UpdateStatus(networkInterface *v1alpha1.NetworkInterface) (*v1alpha1.NetworkInterface, error) {
+func (c *FakeNetworkInterfaces) UpdateStatus(ctx context.Context, networkInterface *v1alpha1.NetworkInterface, opts v1.UpdateOptions) (*v1alpha1.NetworkInterface, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(networkinterfacesResource, "status", c.ns, networkInterface), &v1alpha1.NetworkInterface{})
 
@@ -114,7 +116,7 @@ func (c *FakeNetworkInterfaces) UpdateStatus(networkInterface *v1alpha1.NetworkI
 }
 
 // Delete takes name of the networkInterface and deletes it. Returns an error if one occurs.
-func (c *FakeNetworkInterfaces) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeNetworkInterfaces) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(networkinterfacesResource, c.ns, name), &v1alpha1.NetworkInterface{})
 
@@ -122,15 +124,15 @@ func (c *FakeNetworkInterfaces) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeNetworkInterfaces) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(networkinterfacesResource, c.ns, listOptions)
+func (c *FakeNetworkInterfaces) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(networkinterfacesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.NetworkInterfaceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched networkInterface.
-func (c *FakeNetworkInterfaces) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.NetworkInterface, err error) {
+func (c *FakeNetworkInterfaces) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.NetworkInterface, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(networkinterfacesResource, c.ns, name, pt, data, subresources...), &v1alpha1.NetworkInterface{})
 

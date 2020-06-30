@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var privatednsaaaarecordsResource = schema.GroupVersionResource{Group: "azurerm.
 var privatednsaaaarecordsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "PrivateDNSAaaaRecord"}
 
 // Get takes name of the privateDNSAaaaRecord, and returns the corresponding privateDNSAaaaRecord object, and an error if there is any.
-func (c *FakePrivateDNSAaaaRecords) Get(name string, options v1.GetOptions) (result *v1alpha1.PrivateDNSAaaaRecord, err error) {
+func (c *FakePrivateDNSAaaaRecords) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PrivateDNSAaaaRecord, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(privatednsaaaarecordsResource, c.ns, name), &v1alpha1.PrivateDNSAaaaRecord{})
 
@@ -51,7 +53,7 @@ func (c *FakePrivateDNSAaaaRecords) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of PrivateDNSAaaaRecords that match those selectors.
-func (c *FakePrivateDNSAaaaRecords) List(opts v1.ListOptions) (result *v1alpha1.PrivateDNSAaaaRecordList, err error) {
+func (c *FakePrivateDNSAaaaRecords) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PrivateDNSAaaaRecordList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(privatednsaaaarecordsResource, privatednsaaaarecordsKind, c.ns, opts), &v1alpha1.PrivateDNSAaaaRecordList{})
 
@@ -73,14 +75,14 @@ func (c *FakePrivateDNSAaaaRecords) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested privateDNSAaaaRecords.
-func (c *FakePrivateDNSAaaaRecords) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakePrivateDNSAaaaRecords) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(privatednsaaaarecordsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a privateDNSAaaaRecord and creates it.  Returns the server's representation of the privateDNSAaaaRecord, and an error, if there is any.
-func (c *FakePrivateDNSAaaaRecords) Create(privateDNSAaaaRecord *v1alpha1.PrivateDNSAaaaRecord) (result *v1alpha1.PrivateDNSAaaaRecord, err error) {
+func (c *FakePrivateDNSAaaaRecords) Create(ctx context.Context, privateDNSAaaaRecord *v1alpha1.PrivateDNSAaaaRecord, opts v1.CreateOptions) (result *v1alpha1.PrivateDNSAaaaRecord, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(privatednsaaaarecordsResource, c.ns, privateDNSAaaaRecord), &v1alpha1.PrivateDNSAaaaRecord{})
 
@@ -91,7 +93,7 @@ func (c *FakePrivateDNSAaaaRecords) Create(privateDNSAaaaRecord *v1alpha1.Privat
 }
 
 // Update takes the representation of a privateDNSAaaaRecord and updates it. Returns the server's representation of the privateDNSAaaaRecord, and an error, if there is any.
-func (c *FakePrivateDNSAaaaRecords) Update(privateDNSAaaaRecord *v1alpha1.PrivateDNSAaaaRecord) (result *v1alpha1.PrivateDNSAaaaRecord, err error) {
+func (c *FakePrivateDNSAaaaRecords) Update(ctx context.Context, privateDNSAaaaRecord *v1alpha1.PrivateDNSAaaaRecord, opts v1.UpdateOptions) (result *v1alpha1.PrivateDNSAaaaRecord, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(privatednsaaaarecordsResource, c.ns, privateDNSAaaaRecord), &v1alpha1.PrivateDNSAaaaRecord{})
 
@@ -103,7 +105,7 @@ func (c *FakePrivateDNSAaaaRecords) Update(privateDNSAaaaRecord *v1alpha1.Privat
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakePrivateDNSAaaaRecords) UpdateStatus(privateDNSAaaaRecord *v1alpha1.PrivateDNSAaaaRecord) (*v1alpha1.PrivateDNSAaaaRecord, error) {
+func (c *FakePrivateDNSAaaaRecords) UpdateStatus(ctx context.Context, privateDNSAaaaRecord *v1alpha1.PrivateDNSAaaaRecord, opts v1.UpdateOptions) (*v1alpha1.PrivateDNSAaaaRecord, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(privatednsaaaarecordsResource, "status", c.ns, privateDNSAaaaRecord), &v1alpha1.PrivateDNSAaaaRecord{})
 
@@ -114,7 +116,7 @@ func (c *FakePrivateDNSAaaaRecords) UpdateStatus(privateDNSAaaaRecord *v1alpha1.
 }
 
 // Delete takes name of the privateDNSAaaaRecord and deletes it. Returns an error if one occurs.
-func (c *FakePrivateDNSAaaaRecords) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakePrivateDNSAaaaRecords) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(privatednsaaaarecordsResource, c.ns, name), &v1alpha1.PrivateDNSAaaaRecord{})
 
@@ -122,15 +124,15 @@ func (c *FakePrivateDNSAaaaRecords) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakePrivateDNSAaaaRecords) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(privatednsaaaarecordsResource, c.ns, listOptions)
+func (c *FakePrivateDNSAaaaRecords) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(privatednsaaaarecordsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.PrivateDNSAaaaRecordList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched privateDNSAaaaRecord.
-func (c *FakePrivateDNSAaaaRecords) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PrivateDNSAaaaRecord, err error) {
+func (c *FakePrivateDNSAaaaRecords) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PrivateDNSAaaaRecord, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(privatednsaaaarecordsResource, c.ns, name, pt, data, subresources...), &v1alpha1.PrivateDNSAaaaRecord{})
 

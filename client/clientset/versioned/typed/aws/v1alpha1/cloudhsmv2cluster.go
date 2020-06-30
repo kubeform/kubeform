@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type CloudhsmV2ClustersGetter interface {
 
 // CloudhsmV2ClusterInterface has methods to work with CloudhsmV2Cluster resources.
 type CloudhsmV2ClusterInterface interface {
-	Create(*v1alpha1.CloudhsmV2Cluster) (*v1alpha1.CloudhsmV2Cluster, error)
-	Update(*v1alpha1.CloudhsmV2Cluster) (*v1alpha1.CloudhsmV2Cluster, error)
-	UpdateStatus(*v1alpha1.CloudhsmV2Cluster) (*v1alpha1.CloudhsmV2Cluster, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.CloudhsmV2Cluster, error)
-	List(opts v1.ListOptions) (*v1alpha1.CloudhsmV2ClusterList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CloudhsmV2Cluster, err error)
+	Create(ctx context.Context, cloudhsmV2Cluster *v1alpha1.CloudhsmV2Cluster, opts v1.CreateOptions) (*v1alpha1.CloudhsmV2Cluster, error)
+	Update(ctx context.Context, cloudhsmV2Cluster *v1alpha1.CloudhsmV2Cluster, opts v1.UpdateOptions) (*v1alpha1.CloudhsmV2Cluster, error)
+	UpdateStatus(ctx context.Context, cloudhsmV2Cluster *v1alpha1.CloudhsmV2Cluster, opts v1.UpdateOptions) (*v1alpha1.CloudhsmV2Cluster, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.CloudhsmV2Cluster, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.CloudhsmV2ClusterList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CloudhsmV2Cluster, err error)
 	CloudhsmV2ClusterExpansion
 }
 
@@ -65,20 +66,20 @@ func newCloudhsmV2Clusters(c *AwsV1alpha1Client, namespace string) *cloudhsmV2Cl
 }
 
 // Get takes name of the cloudhsmV2Cluster, and returns the corresponding cloudhsmV2Cluster object, and an error if there is any.
-func (c *cloudhsmV2Clusters) Get(name string, options v1.GetOptions) (result *v1alpha1.CloudhsmV2Cluster, err error) {
+func (c *cloudhsmV2Clusters) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CloudhsmV2Cluster, err error) {
 	result = &v1alpha1.CloudhsmV2Cluster{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("cloudhsmv2clusters").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of CloudhsmV2Clusters that match those selectors.
-func (c *cloudhsmV2Clusters) List(opts v1.ListOptions) (result *v1alpha1.CloudhsmV2ClusterList, err error) {
+func (c *cloudhsmV2Clusters) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CloudhsmV2ClusterList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *cloudhsmV2Clusters) List(opts v1.ListOptions) (result *v1alpha1.Cloudhs
 		Resource("cloudhsmv2clusters").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested cloudhsmV2Clusters.
-func (c *cloudhsmV2Clusters) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *cloudhsmV2Clusters) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *cloudhsmV2Clusters) Watch(opts v1.ListOptions) (watch.Interface, error)
 		Resource("cloudhsmv2clusters").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a cloudhsmV2Cluster and creates it.  Returns the server's representation of the cloudhsmV2Cluster, and an error, if there is any.
-func (c *cloudhsmV2Clusters) Create(cloudhsmV2Cluster *v1alpha1.CloudhsmV2Cluster) (result *v1alpha1.CloudhsmV2Cluster, err error) {
+func (c *cloudhsmV2Clusters) Create(ctx context.Context, cloudhsmV2Cluster *v1alpha1.CloudhsmV2Cluster, opts v1.CreateOptions) (result *v1alpha1.CloudhsmV2Cluster, err error) {
 	result = &v1alpha1.CloudhsmV2Cluster{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("cloudhsmv2clusters").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cloudhsmV2Cluster).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a cloudhsmV2Cluster and updates it. Returns the server's representation of the cloudhsmV2Cluster, and an error, if there is any.
-func (c *cloudhsmV2Clusters) Update(cloudhsmV2Cluster *v1alpha1.CloudhsmV2Cluster) (result *v1alpha1.CloudhsmV2Cluster, err error) {
+func (c *cloudhsmV2Clusters) Update(ctx context.Context, cloudhsmV2Cluster *v1alpha1.CloudhsmV2Cluster, opts v1.UpdateOptions) (result *v1alpha1.CloudhsmV2Cluster, err error) {
 	result = &v1alpha1.CloudhsmV2Cluster{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("cloudhsmv2clusters").
 		Name(cloudhsmV2Cluster.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cloudhsmV2Cluster).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *cloudhsmV2Clusters) UpdateStatus(cloudhsmV2Cluster *v1alpha1.CloudhsmV2Cluster) (result *v1alpha1.CloudhsmV2Cluster, err error) {
+func (c *cloudhsmV2Clusters) UpdateStatus(ctx context.Context, cloudhsmV2Cluster *v1alpha1.CloudhsmV2Cluster, opts v1.UpdateOptions) (result *v1alpha1.CloudhsmV2Cluster, err error) {
 	result = &v1alpha1.CloudhsmV2Cluster{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("cloudhsmv2clusters").
 		Name(cloudhsmV2Cluster.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cloudhsmV2Cluster).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the cloudhsmV2Cluster and deletes it. Returns an error if one occurs.
-func (c *cloudhsmV2Clusters) Delete(name string, options *v1.DeleteOptions) error {
+func (c *cloudhsmV2Clusters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("cloudhsmv2clusters").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *cloudhsmV2Clusters) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *cloudhsmV2Clusters) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("cloudhsmv2clusters").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched cloudhsmV2Cluster.
-func (c *cloudhsmV2Clusters) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CloudhsmV2Cluster, err error) {
+func (c *cloudhsmV2Clusters) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CloudhsmV2Cluster, err error) {
 	result = &v1alpha1.CloudhsmV2Cluster{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("cloudhsmv2clusters").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

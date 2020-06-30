@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var autoscalinggroupsResource = schema.GroupVersionResource{Group: "aws.kubeform
 var autoscalinggroupsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "AutoscalingGroup"}
 
 // Get takes name of the autoscalingGroup, and returns the corresponding autoscalingGroup object, and an error if there is any.
-func (c *FakeAutoscalingGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.AutoscalingGroup, err error) {
+func (c *FakeAutoscalingGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AutoscalingGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(autoscalinggroupsResource, c.ns, name), &v1alpha1.AutoscalingGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeAutoscalingGroups) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of AutoscalingGroups that match those selectors.
-func (c *FakeAutoscalingGroups) List(opts v1.ListOptions) (result *v1alpha1.AutoscalingGroupList, err error) {
+func (c *FakeAutoscalingGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AutoscalingGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(autoscalinggroupsResource, autoscalinggroupsKind, c.ns, opts), &v1alpha1.AutoscalingGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAutoscalingGroups) List(opts v1.ListOptions) (result *v1alpha1.Auto
 }
 
 // Watch returns a watch.Interface that watches the requested autoscalingGroups.
-func (c *FakeAutoscalingGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAutoscalingGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(autoscalinggroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a autoscalingGroup and creates it.  Returns the server's representation of the autoscalingGroup, and an error, if there is any.
-func (c *FakeAutoscalingGroups) Create(autoscalingGroup *v1alpha1.AutoscalingGroup) (result *v1alpha1.AutoscalingGroup, err error) {
+func (c *FakeAutoscalingGroups) Create(ctx context.Context, autoscalingGroup *v1alpha1.AutoscalingGroup, opts v1.CreateOptions) (result *v1alpha1.AutoscalingGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(autoscalinggroupsResource, c.ns, autoscalingGroup), &v1alpha1.AutoscalingGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeAutoscalingGroups) Create(autoscalingGroup *v1alpha1.AutoscalingGro
 }
 
 // Update takes the representation of a autoscalingGroup and updates it. Returns the server's representation of the autoscalingGroup, and an error, if there is any.
-func (c *FakeAutoscalingGroups) Update(autoscalingGroup *v1alpha1.AutoscalingGroup) (result *v1alpha1.AutoscalingGroup, err error) {
+func (c *FakeAutoscalingGroups) Update(ctx context.Context, autoscalingGroup *v1alpha1.AutoscalingGroup, opts v1.UpdateOptions) (result *v1alpha1.AutoscalingGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(autoscalinggroupsResource, c.ns, autoscalingGroup), &v1alpha1.AutoscalingGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeAutoscalingGroups) Update(autoscalingGroup *v1alpha1.AutoscalingGro
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAutoscalingGroups) UpdateStatus(autoscalingGroup *v1alpha1.AutoscalingGroup) (*v1alpha1.AutoscalingGroup, error) {
+func (c *FakeAutoscalingGroups) UpdateStatus(ctx context.Context, autoscalingGroup *v1alpha1.AutoscalingGroup, opts v1.UpdateOptions) (*v1alpha1.AutoscalingGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(autoscalinggroupsResource, "status", c.ns, autoscalingGroup), &v1alpha1.AutoscalingGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeAutoscalingGroups) UpdateStatus(autoscalingGroup *v1alpha1.Autoscal
 }
 
 // Delete takes name of the autoscalingGroup and deletes it. Returns an error if one occurs.
-func (c *FakeAutoscalingGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAutoscalingGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(autoscalinggroupsResource, c.ns, name), &v1alpha1.AutoscalingGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeAutoscalingGroups) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAutoscalingGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(autoscalinggroupsResource, c.ns, listOptions)
+func (c *FakeAutoscalingGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(autoscalinggroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AutoscalingGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched autoscalingGroup.
-func (c *FakeAutoscalingGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AutoscalingGroup, err error) {
+func (c *FakeAutoscalingGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AutoscalingGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(autoscalinggroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.AutoscalingGroup{})
 

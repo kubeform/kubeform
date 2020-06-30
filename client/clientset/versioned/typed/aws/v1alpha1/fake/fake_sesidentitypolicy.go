@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var sesidentitypoliciesResource = schema.GroupVersionResource{Group: "aws.kubefo
 var sesidentitypoliciesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "SesIdentityPolicy"}
 
 // Get takes name of the sesIdentityPolicy, and returns the corresponding sesIdentityPolicy object, and an error if there is any.
-func (c *FakeSesIdentityPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.SesIdentityPolicy, err error) {
+func (c *FakeSesIdentityPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SesIdentityPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(sesidentitypoliciesResource, c.ns, name), &v1alpha1.SesIdentityPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeSesIdentityPolicies) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of SesIdentityPolicies that match those selectors.
-func (c *FakeSesIdentityPolicies) List(opts v1.ListOptions) (result *v1alpha1.SesIdentityPolicyList, err error) {
+func (c *FakeSesIdentityPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SesIdentityPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(sesidentitypoliciesResource, sesidentitypoliciesKind, c.ns, opts), &v1alpha1.SesIdentityPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSesIdentityPolicies) List(opts v1.ListOptions) (result *v1alpha1.Se
 }
 
 // Watch returns a watch.Interface that watches the requested sesIdentityPolicies.
-func (c *FakeSesIdentityPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSesIdentityPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(sesidentitypoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a sesIdentityPolicy and creates it.  Returns the server's representation of the sesIdentityPolicy, and an error, if there is any.
-func (c *FakeSesIdentityPolicies) Create(sesIdentityPolicy *v1alpha1.SesIdentityPolicy) (result *v1alpha1.SesIdentityPolicy, err error) {
+func (c *FakeSesIdentityPolicies) Create(ctx context.Context, sesIdentityPolicy *v1alpha1.SesIdentityPolicy, opts v1.CreateOptions) (result *v1alpha1.SesIdentityPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(sesidentitypoliciesResource, c.ns, sesIdentityPolicy), &v1alpha1.SesIdentityPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeSesIdentityPolicies) Create(sesIdentityPolicy *v1alpha1.SesIdentity
 }
 
 // Update takes the representation of a sesIdentityPolicy and updates it. Returns the server's representation of the sesIdentityPolicy, and an error, if there is any.
-func (c *FakeSesIdentityPolicies) Update(sesIdentityPolicy *v1alpha1.SesIdentityPolicy) (result *v1alpha1.SesIdentityPolicy, err error) {
+func (c *FakeSesIdentityPolicies) Update(ctx context.Context, sesIdentityPolicy *v1alpha1.SesIdentityPolicy, opts v1.UpdateOptions) (result *v1alpha1.SesIdentityPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(sesidentitypoliciesResource, c.ns, sesIdentityPolicy), &v1alpha1.SesIdentityPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeSesIdentityPolicies) Update(sesIdentityPolicy *v1alpha1.SesIdentity
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSesIdentityPolicies) UpdateStatus(sesIdentityPolicy *v1alpha1.SesIdentityPolicy) (*v1alpha1.SesIdentityPolicy, error) {
+func (c *FakeSesIdentityPolicies) UpdateStatus(ctx context.Context, sesIdentityPolicy *v1alpha1.SesIdentityPolicy, opts v1.UpdateOptions) (*v1alpha1.SesIdentityPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(sesidentitypoliciesResource, "status", c.ns, sesIdentityPolicy), &v1alpha1.SesIdentityPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeSesIdentityPolicies) UpdateStatus(sesIdentityPolicy *v1alpha1.SesId
 }
 
 // Delete takes name of the sesIdentityPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeSesIdentityPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSesIdentityPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(sesidentitypoliciesResource, c.ns, name), &v1alpha1.SesIdentityPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeSesIdentityPolicies) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSesIdentityPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(sesidentitypoliciesResource, c.ns, listOptions)
+func (c *FakeSesIdentityPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(sesidentitypoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SesIdentityPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched sesIdentityPolicy.
-func (c *FakeSesIdentityPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SesIdentityPolicy, err error) {
+func (c *FakeSesIdentityPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SesIdentityPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(sesidentitypoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.SesIdentityPolicy{})
 

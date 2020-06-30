@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	time "time"
 
 	azurermv1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -62,13 +63,13 @@ func NewFilteredBotConnectionInformer(client versioned.Interface, namespace stri
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.AzurermV1alpha1().BotConnections(namespace).List(options)
+				return client.AzurermV1alpha1().BotConnections(namespace).List(context.TODO(), options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.AzurermV1alpha1().BotConnections(namespace).Watch(options)
+				return client.AzurermV1alpha1().BotConnections(namespace).Watch(context.TODO(), options)
 			},
 		},
 		&azurermv1alpha1.BotConnection{},

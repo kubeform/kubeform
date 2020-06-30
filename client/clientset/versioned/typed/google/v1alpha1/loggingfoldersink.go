@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type LoggingFolderSinksGetter interface {
 
 // LoggingFolderSinkInterface has methods to work with LoggingFolderSink resources.
 type LoggingFolderSinkInterface interface {
-	Create(*v1alpha1.LoggingFolderSink) (*v1alpha1.LoggingFolderSink, error)
-	Update(*v1alpha1.LoggingFolderSink) (*v1alpha1.LoggingFolderSink, error)
-	UpdateStatus(*v1alpha1.LoggingFolderSink) (*v1alpha1.LoggingFolderSink, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.LoggingFolderSink, error)
-	List(opts v1.ListOptions) (*v1alpha1.LoggingFolderSinkList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LoggingFolderSink, err error)
+	Create(ctx context.Context, loggingFolderSink *v1alpha1.LoggingFolderSink, opts v1.CreateOptions) (*v1alpha1.LoggingFolderSink, error)
+	Update(ctx context.Context, loggingFolderSink *v1alpha1.LoggingFolderSink, opts v1.UpdateOptions) (*v1alpha1.LoggingFolderSink, error)
+	UpdateStatus(ctx context.Context, loggingFolderSink *v1alpha1.LoggingFolderSink, opts v1.UpdateOptions) (*v1alpha1.LoggingFolderSink, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.LoggingFolderSink, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.LoggingFolderSinkList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LoggingFolderSink, err error)
 	LoggingFolderSinkExpansion
 }
 
@@ -65,20 +66,20 @@ func newLoggingFolderSinks(c *GoogleV1alpha1Client, namespace string) *loggingFo
 }
 
 // Get takes name of the loggingFolderSink, and returns the corresponding loggingFolderSink object, and an error if there is any.
-func (c *loggingFolderSinks) Get(name string, options v1.GetOptions) (result *v1alpha1.LoggingFolderSink, err error) {
+func (c *loggingFolderSinks) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LoggingFolderSink, err error) {
 	result = &v1alpha1.LoggingFolderSink{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("loggingfoldersinks").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of LoggingFolderSinks that match those selectors.
-func (c *loggingFolderSinks) List(opts v1.ListOptions) (result *v1alpha1.LoggingFolderSinkList, err error) {
+func (c *loggingFolderSinks) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LoggingFolderSinkList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *loggingFolderSinks) List(opts v1.ListOptions) (result *v1alpha1.Logging
 		Resource("loggingfoldersinks").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested loggingFolderSinks.
-func (c *loggingFolderSinks) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *loggingFolderSinks) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *loggingFolderSinks) Watch(opts v1.ListOptions) (watch.Interface, error)
 		Resource("loggingfoldersinks").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a loggingFolderSink and creates it.  Returns the server's representation of the loggingFolderSink, and an error, if there is any.
-func (c *loggingFolderSinks) Create(loggingFolderSink *v1alpha1.LoggingFolderSink) (result *v1alpha1.LoggingFolderSink, err error) {
+func (c *loggingFolderSinks) Create(ctx context.Context, loggingFolderSink *v1alpha1.LoggingFolderSink, opts v1.CreateOptions) (result *v1alpha1.LoggingFolderSink, err error) {
 	result = &v1alpha1.LoggingFolderSink{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("loggingfoldersinks").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(loggingFolderSink).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a loggingFolderSink and updates it. Returns the server's representation of the loggingFolderSink, and an error, if there is any.
-func (c *loggingFolderSinks) Update(loggingFolderSink *v1alpha1.LoggingFolderSink) (result *v1alpha1.LoggingFolderSink, err error) {
+func (c *loggingFolderSinks) Update(ctx context.Context, loggingFolderSink *v1alpha1.LoggingFolderSink, opts v1.UpdateOptions) (result *v1alpha1.LoggingFolderSink, err error) {
 	result = &v1alpha1.LoggingFolderSink{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("loggingfoldersinks").
 		Name(loggingFolderSink.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(loggingFolderSink).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *loggingFolderSinks) UpdateStatus(loggingFolderSink *v1alpha1.LoggingFolderSink) (result *v1alpha1.LoggingFolderSink, err error) {
+func (c *loggingFolderSinks) UpdateStatus(ctx context.Context, loggingFolderSink *v1alpha1.LoggingFolderSink, opts v1.UpdateOptions) (result *v1alpha1.LoggingFolderSink, err error) {
 	result = &v1alpha1.LoggingFolderSink{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("loggingfoldersinks").
 		Name(loggingFolderSink.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(loggingFolderSink).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the loggingFolderSink and deletes it. Returns an error if one occurs.
-func (c *loggingFolderSinks) Delete(name string, options *v1.DeleteOptions) error {
+func (c *loggingFolderSinks) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("loggingfoldersinks").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *loggingFolderSinks) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *loggingFolderSinks) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("loggingfoldersinks").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched loggingFolderSink.
-func (c *loggingFolderSinks) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LoggingFolderSink, err error) {
+func (c *loggingFolderSinks) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LoggingFolderSink, err error) {
 	result = &v1alpha1.LoggingFolderSink{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("loggingfoldersinks").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

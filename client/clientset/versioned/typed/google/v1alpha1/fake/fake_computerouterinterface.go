@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computerouterinterfacesResource = schema.GroupVersionResource{Group: "google
 var computerouterinterfacesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeRouterInterface"}
 
 // Get takes name of the computeRouterInterface, and returns the corresponding computeRouterInterface object, and an error if there is any.
-func (c *FakeComputeRouterInterfaces) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeRouterInterface, err error) {
+func (c *FakeComputeRouterInterfaces) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeRouterInterface, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computerouterinterfacesResource, c.ns, name), &v1alpha1.ComputeRouterInterface{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeRouterInterfaces) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of ComputeRouterInterfaces that match those selectors.
-func (c *FakeComputeRouterInterfaces) List(opts v1.ListOptions) (result *v1alpha1.ComputeRouterInterfaceList, err error) {
+func (c *FakeComputeRouterInterfaces) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeRouterInterfaceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computerouterinterfacesResource, computerouterinterfacesKind, c.ns, opts), &v1alpha1.ComputeRouterInterfaceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeRouterInterfaces) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested computeRouterInterfaces.
-func (c *FakeComputeRouterInterfaces) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeRouterInterfaces) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computerouterinterfacesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeRouterInterface and creates it.  Returns the server's representation of the computeRouterInterface, and an error, if there is any.
-func (c *FakeComputeRouterInterfaces) Create(computeRouterInterface *v1alpha1.ComputeRouterInterface) (result *v1alpha1.ComputeRouterInterface, err error) {
+func (c *FakeComputeRouterInterfaces) Create(ctx context.Context, computeRouterInterface *v1alpha1.ComputeRouterInterface, opts v1.CreateOptions) (result *v1alpha1.ComputeRouterInterface, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computerouterinterfacesResource, c.ns, computeRouterInterface), &v1alpha1.ComputeRouterInterface{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeRouterInterfaces) Create(computeRouterInterface *v1alpha1.Co
 }
 
 // Update takes the representation of a computeRouterInterface and updates it. Returns the server's representation of the computeRouterInterface, and an error, if there is any.
-func (c *FakeComputeRouterInterfaces) Update(computeRouterInterface *v1alpha1.ComputeRouterInterface) (result *v1alpha1.ComputeRouterInterface, err error) {
+func (c *FakeComputeRouterInterfaces) Update(ctx context.Context, computeRouterInterface *v1alpha1.ComputeRouterInterface, opts v1.UpdateOptions) (result *v1alpha1.ComputeRouterInterface, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computerouterinterfacesResource, c.ns, computeRouterInterface), &v1alpha1.ComputeRouterInterface{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeRouterInterfaces) Update(computeRouterInterface *v1alpha1.Co
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeRouterInterfaces) UpdateStatus(computeRouterInterface *v1alpha1.ComputeRouterInterface) (*v1alpha1.ComputeRouterInterface, error) {
+func (c *FakeComputeRouterInterfaces) UpdateStatus(ctx context.Context, computeRouterInterface *v1alpha1.ComputeRouterInterface, opts v1.UpdateOptions) (*v1alpha1.ComputeRouterInterface, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computerouterinterfacesResource, "status", c.ns, computeRouterInterface), &v1alpha1.ComputeRouterInterface{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeRouterInterfaces) UpdateStatus(computeRouterInterface *v1alp
 }
 
 // Delete takes name of the computeRouterInterface and deletes it. Returns an error if one occurs.
-func (c *FakeComputeRouterInterfaces) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeRouterInterfaces) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computerouterinterfacesResource, c.ns, name), &v1alpha1.ComputeRouterInterface{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeRouterInterfaces) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeRouterInterfaces) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computerouterinterfacesResource, c.ns, listOptions)
+func (c *FakeComputeRouterInterfaces) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computerouterinterfacesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeRouterInterfaceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeRouterInterface.
-func (c *FakeComputeRouterInterfaces) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeRouterInterface, err error) {
+func (c *FakeComputeRouterInterfaces) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeRouterInterface, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computerouterinterfacesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeRouterInterface{})
 

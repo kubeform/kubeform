@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computeinstancegroupmanagersResource = schema.GroupVersionResource{Group: "g
 var computeinstancegroupmanagersKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeInstanceGroupManager"}
 
 // Get takes name of the computeInstanceGroupManager, and returns the corresponding computeInstanceGroupManager object, and an error if there is any.
-func (c *FakeComputeInstanceGroupManagers) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeInstanceGroupManager, err error) {
+func (c *FakeComputeInstanceGroupManagers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeInstanceGroupManager, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computeinstancegroupmanagersResource, c.ns, name), &v1alpha1.ComputeInstanceGroupManager{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeInstanceGroupManagers) Get(name string, options v1.GetOption
 }
 
 // List takes label and field selectors, and returns the list of ComputeInstanceGroupManagers that match those selectors.
-func (c *FakeComputeInstanceGroupManagers) List(opts v1.ListOptions) (result *v1alpha1.ComputeInstanceGroupManagerList, err error) {
+func (c *FakeComputeInstanceGroupManagers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeInstanceGroupManagerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computeinstancegroupmanagersResource, computeinstancegroupmanagersKind, c.ns, opts), &v1alpha1.ComputeInstanceGroupManagerList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeInstanceGroupManagers) List(opts v1.ListOptions) (result *v1
 }
 
 // Watch returns a watch.Interface that watches the requested computeInstanceGroupManagers.
-func (c *FakeComputeInstanceGroupManagers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeInstanceGroupManagers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computeinstancegroupmanagersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeInstanceGroupManager and creates it.  Returns the server's representation of the computeInstanceGroupManager, and an error, if there is any.
-func (c *FakeComputeInstanceGroupManagers) Create(computeInstanceGroupManager *v1alpha1.ComputeInstanceGroupManager) (result *v1alpha1.ComputeInstanceGroupManager, err error) {
+func (c *FakeComputeInstanceGroupManagers) Create(ctx context.Context, computeInstanceGroupManager *v1alpha1.ComputeInstanceGroupManager, opts v1.CreateOptions) (result *v1alpha1.ComputeInstanceGroupManager, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computeinstancegroupmanagersResource, c.ns, computeInstanceGroupManager), &v1alpha1.ComputeInstanceGroupManager{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeInstanceGroupManagers) Create(computeInstanceGroupManager *v
 }
 
 // Update takes the representation of a computeInstanceGroupManager and updates it. Returns the server's representation of the computeInstanceGroupManager, and an error, if there is any.
-func (c *FakeComputeInstanceGroupManagers) Update(computeInstanceGroupManager *v1alpha1.ComputeInstanceGroupManager) (result *v1alpha1.ComputeInstanceGroupManager, err error) {
+func (c *FakeComputeInstanceGroupManagers) Update(ctx context.Context, computeInstanceGroupManager *v1alpha1.ComputeInstanceGroupManager, opts v1.UpdateOptions) (result *v1alpha1.ComputeInstanceGroupManager, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computeinstancegroupmanagersResource, c.ns, computeInstanceGroupManager), &v1alpha1.ComputeInstanceGroupManager{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeInstanceGroupManagers) Update(computeInstanceGroupManager *v
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeInstanceGroupManagers) UpdateStatus(computeInstanceGroupManager *v1alpha1.ComputeInstanceGroupManager) (*v1alpha1.ComputeInstanceGroupManager, error) {
+func (c *FakeComputeInstanceGroupManagers) UpdateStatus(ctx context.Context, computeInstanceGroupManager *v1alpha1.ComputeInstanceGroupManager, opts v1.UpdateOptions) (*v1alpha1.ComputeInstanceGroupManager, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computeinstancegroupmanagersResource, "status", c.ns, computeInstanceGroupManager), &v1alpha1.ComputeInstanceGroupManager{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeInstanceGroupManagers) UpdateStatus(computeInstanceGroupMana
 }
 
 // Delete takes name of the computeInstanceGroupManager and deletes it. Returns an error if one occurs.
-func (c *FakeComputeInstanceGroupManagers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeInstanceGroupManagers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computeinstancegroupmanagersResource, c.ns, name), &v1alpha1.ComputeInstanceGroupManager{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeInstanceGroupManagers) Delete(name string, options *v1.Delet
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeInstanceGroupManagers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computeinstancegroupmanagersResource, c.ns, listOptions)
+func (c *FakeComputeInstanceGroupManagers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computeinstancegroupmanagersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeInstanceGroupManagerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeInstanceGroupManager.
-func (c *FakeComputeInstanceGroupManagers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeInstanceGroupManager, err error) {
+func (c *FakeComputeInstanceGroupManagers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeInstanceGroupManager, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computeinstancegroupmanagersResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeInstanceGroupManager{})
 

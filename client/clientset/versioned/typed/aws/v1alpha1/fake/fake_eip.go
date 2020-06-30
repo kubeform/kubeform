@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var eipsResource = schema.GroupVersionResource{Group: "aws.kubeform.com", Versio
 var eipsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "Eip"}
 
 // Get takes name of the eip, and returns the corresponding eip object, and an error if there is any.
-func (c *FakeEips) Get(name string, options v1.GetOptions) (result *v1alpha1.Eip, err error) {
+func (c *FakeEips) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Eip, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(eipsResource, c.ns, name), &v1alpha1.Eip{})
 
@@ -51,7 +53,7 @@ func (c *FakeEips) Get(name string, options v1.GetOptions) (result *v1alpha1.Eip
 }
 
 // List takes label and field selectors, and returns the list of Eips that match those selectors.
-func (c *FakeEips) List(opts v1.ListOptions) (result *v1alpha1.EipList, err error) {
+func (c *FakeEips) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.EipList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(eipsResource, eipsKind, c.ns, opts), &v1alpha1.EipList{})
 
@@ -73,14 +75,14 @@ func (c *FakeEips) List(opts v1.ListOptions) (result *v1alpha1.EipList, err erro
 }
 
 // Watch returns a watch.Interface that watches the requested eips.
-func (c *FakeEips) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeEips) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(eipsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a eip and creates it.  Returns the server's representation of the eip, and an error, if there is any.
-func (c *FakeEips) Create(eip *v1alpha1.Eip) (result *v1alpha1.Eip, err error) {
+func (c *FakeEips) Create(ctx context.Context, eip *v1alpha1.Eip, opts v1.CreateOptions) (result *v1alpha1.Eip, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(eipsResource, c.ns, eip), &v1alpha1.Eip{})
 
@@ -91,7 +93,7 @@ func (c *FakeEips) Create(eip *v1alpha1.Eip) (result *v1alpha1.Eip, err error) {
 }
 
 // Update takes the representation of a eip and updates it. Returns the server's representation of the eip, and an error, if there is any.
-func (c *FakeEips) Update(eip *v1alpha1.Eip) (result *v1alpha1.Eip, err error) {
+func (c *FakeEips) Update(ctx context.Context, eip *v1alpha1.Eip, opts v1.UpdateOptions) (result *v1alpha1.Eip, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(eipsResource, c.ns, eip), &v1alpha1.Eip{})
 
@@ -103,7 +105,7 @@ func (c *FakeEips) Update(eip *v1alpha1.Eip) (result *v1alpha1.Eip, err error) {
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeEips) UpdateStatus(eip *v1alpha1.Eip) (*v1alpha1.Eip, error) {
+func (c *FakeEips) UpdateStatus(ctx context.Context, eip *v1alpha1.Eip, opts v1.UpdateOptions) (*v1alpha1.Eip, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(eipsResource, "status", c.ns, eip), &v1alpha1.Eip{})
 
@@ -114,7 +116,7 @@ func (c *FakeEips) UpdateStatus(eip *v1alpha1.Eip) (*v1alpha1.Eip, error) {
 }
 
 // Delete takes name of the eip and deletes it. Returns an error if one occurs.
-func (c *FakeEips) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeEips) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(eipsResource, c.ns, name), &v1alpha1.Eip{})
 
@@ -122,15 +124,15 @@ func (c *FakeEips) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeEips) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(eipsResource, c.ns, listOptions)
+func (c *FakeEips) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(eipsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.EipList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched eip.
-func (c *FakeEips) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Eip, err error) {
+func (c *FakeEips) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Eip, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(eipsResource, c.ns, name, pt, data, subresources...), &v1alpha1.Eip{})
 

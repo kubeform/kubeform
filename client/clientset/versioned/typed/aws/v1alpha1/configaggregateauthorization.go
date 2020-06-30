@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type ConfigAggregateAuthorizationsGetter interface {
 
 // ConfigAggregateAuthorizationInterface has methods to work with ConfigAggregateAuthorization resources.
 type ConfigAggregateAuthorizationInterface interface {
-	Create(*v1alpha1.ConfigAggregateAuthorization) (*v1alpha1.ConfigAggregateAuthorization, error)
-	Update(*v1alpha1.ConfigAggregateAuthorization) (*v1alpha1.ConfigAggregateAuthorization, error)
-	UpdateStatus(*v1alpha1.ConfigAggregateAuthorization) (*v1alpha1.ConfigAggregateAuthorization, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ConfigAggregateAuthorization, error)
-	List(opts v1.ListOptions) (*v1alpha1.ConfigAggregateAuthorizationList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ConfigAggregateAuthorization, err error)
+	Create(ctx context.Context, configAggregateAuthorization *v1alpha1.ConfigAggregateAuthorization, opts v1.CreateOptions) (*v1alpha1.ConfigAggregateAuthorization, error)
+	Update(ctx context.Context, configAggregateAuthorization *v1alpha1.ConfigAggregateAuthorization, opts v1.UpdateOptions) (*v1alpha1.ConfigAggregateAuthorization, error)
+	UpdateStatus(ctx context.Context, configAggregateAuthorization *v1alpha1.ConfigAggregateAuthorization, opts v1.UpdateOptions) (*v1alpha1.ConfigAggregateAuthorization, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ConfigAggregateAuthorization, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ConfigAggregateAuthorizationList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ConfigAggregateAuthorization, err error)
 	ConfigAggregateAuthorizationExpansion
 }
 
@@ -65,20 +66,20 @@ func newConfigAggregateAuthorizations(c *AwsV1alpha1Client, namespace string) *c
 }
 
 // Get takes name of the configAggregateAuthorization, and returns the corresponding configAggregateAuthorization object, and an error if there is any.
-func (c *configAggregateAuthorizations) Get(name string, options v1.GetOptions) (result *v1alpha1.ConfigAggregateAuthorization, err error) {
+func (c *configAggregateAuthorizations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ConfigAggregateAuthorization, err error) {
 	result = &v1alpha1.ConfigAggregateAuthorization{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("configaggregateauthorizations").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ConfigAggregateAuthorizations that match those selectors.
-func (c *configAggregateAuthorizations) List(opts v1.ListOptions) (result *v1alpha1.ConfigAggregateAuthorizationList, err error) {
+func (c *configAggregateAuthorizations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ConfigAggregateAuthorizationList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *configAggregateAuthorizations) List(opts v1.ListOptions) (result *v1alp
 		Resource("configaggregateauthorizations").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested configAggregateAuthorizations.
-func (c *configAggregateAuthorizations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *configAggregateAuthorizations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *configAggregateAuthorizations) Watch(opts v1.ListOptions) (watch.Interf
 		Resource("configaggregateauthorizations").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a configAggregateAuthorization and creates it.  Returns the server's representation of the configAggregateAuthorization, and an error, if there is any.
-func (c *configAggregateAuthorizations) Create(configAggregateAuthorization *v1alpha1.ConfigAggregateAuthorization) (result *v1alpha1.ConfigAggregateAuthorization, err error) {
+func (c *configAggregateAuthorizations) Create(ctx context.Context, configAggregateAuthorization *v1alpha1.ConfigAggregateAuthorization, opts v1.CreateOptions) (result *v1alpha1.ConfigAggregateAuthorization, err error) {
 	result = &v1alpha1.ConfigAggregateAuthorization{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("configaggregateauthorizations").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(configAggregateAuthorization).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a configAggregateAuthorization and updates it. Returns the server's representation of the configAggregateAuthorization, and an error, if there is any.
-func (c *configAggregateAuthorizations) Update(configAggregateAuthorization *v1alpha1.ConfigAggregateAuthorization) (result *v1alpha1.ConfigAggregateAuthorization, err error) {
+func (c *configAggregateAuthorizations) Update(ctx context.Context, configAggregateAuthorization *v1alpha1.ConfigAggregateAuthorization, opts v1.UpdateOptions) (result *v1alpha1.ConfigAggregateAuthorization, err error) {
 	result = &v1alpha1.ConfigAggregateAuthorization{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("configaggregateauthorizations").
 		Name(configAggregateAuthorization.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(configAggregateAuthorization).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *configAggregateAuthorizations) UpdateStatus(configAggregateAuthorization *v1alpha1.ConfigAggregateAuthorization) (result *v1alpha1.ConfigAggregateAuthorization, err error) {
+func (c *configAggregateAuthorizations) UpdateStatus(ctx context.Context, configAggregateAuthorization *v1alpha1.ConfigAggregateAuthorization, opts v1.UpdateOptions) (result *v1alpha1.ConfigAggregateAuthorization, err error) {
 	result = &v1alpha1.ConfigAggregateAuthorization{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("configaggregateauthorizations").
 		Name(configAggregateAuthorization.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(configAggregateAuthorization).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the configAggregateAuthorization and deletes it. Returns an error if one occurs.
-func (c *configAggregateAuthorizations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *configAggregateAuthorizations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("configaggregateauthorizations").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *configAggregateAuthorizations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *configAggregateAuthorizations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("configaggregateauthorizations").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched configAggregateAuthorization.
-func (c *configAggregateAuthorizations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ConfigAggregateAuthorization, err error) {
+func (c *configAggregateAuthorizations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ConfigAggregateAuthorization, err error) {
 	result = &v1alpha1.ConfigAggregateAuthorization{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("configaggregateauthorizations").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

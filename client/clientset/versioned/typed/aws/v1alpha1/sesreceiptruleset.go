@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type SesReceiptRuleSetsGetter interface {
 
 // SesReceiptRuleSetInterface has methods to work with SesReceiptRuleSet resources.
 type SesReceiptRuleSetInterface interface {
-	Create(*v1alpha1.SesReceiptRuleSet) (*v1alpha1.SesReceiptRuleSet, error)
-	Update(*v1alpha1.SesReceiptRuleSet) (*v1alpha1.SesReceiptRuleSet, error)
-	UpdateStatus(*v1alpha1.SesReceiptRuleSet) (*v1alpha1.SesReceiptRuleSet, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SesReceiptRuleSet, error)
-	List(opts v1.ListOptions) (*v1alpha1.SesReceiptRuleSetList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SesReceiptRuleSet, err error)
+	Create(ctx context.Context, sesReceiptRuleSet *v1alpha1.SesReceiptRuleSet, opts v1.CreateOptions) (*v1alpha1.SesReceiptRuleSet, error)
+	Update(ctx context.Context, sesReceiptRuleSet *v1alpha1.SesReceiptRuleSet, opts v1.UpdateOptions) (*v1alpha1.SesReceiptRuleSet, error)
+	UpdateStatus(ctx context.Context, sesReceiptRuleSet *v1alpha1.SesReceiptRuleSet, opts v1.UpdateOptions) (*v1alpha1.SesReceiptRuleSet, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SesReceiptRuleSet, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SesReceiptRuleSetList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SesReceiptRuleSet, err error)
 	SesReceiptRuleSetExpansion
 }
 
@@ -65,20 +66,20 @@ func newSesReceiptRuleSets(c *AwsV1alpha1Client, namespace string) *sesReceiptRu
 }
 
 // Get takes name of the sesReceiptRuleSet, and returns the corresponding sesReceiptRuleSet object, and an error if there is any.
-func (c *sesReceiptRuleSets) Get(name string, options v1.GetOptions) (result *v1alpha1.SesReceiptRuleSet, err error) {
+func (c *sesReceiptRuleSets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SesReceiptRuleSet, err error) {
 	result = &v1alpha1.SesReceiptRuleSet{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("sesreceiptrulesets").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SesReceiptRuleSets that match those selectors.
-func (c *sesReceiptRuleSets) List(opts v1.ListOptions) (result *v1alpha1.SesReceiptRuleSetList, err error) {
+func (c *sesReceiptRuleSets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SesReceiptRuleSetList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *sesReceiptRuleSets) List(opts v1.ListOptions) (result *v1alpha1.SesRece
 		Resource("sesreceiptrulesets").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested sesReceiptRuleSets.
-func (c *sesReceiptRuleSets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *sesReceiptRuleSets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *sesReceiptRuleSets) Watch(opts v1.ListOptions) (watch.Interface, error)
 		Resource("sesreceiptrulesets").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a sesReceiptRuleSet and creates it.  Returns the server's representation of the sesReceiptRuleSet, and an error, if there is any.
-func (c *sesReceiptRuleSets) Create(sesReceiptRuleSet *v1alpha1.SesReceiptRuleSet) (result *v1alpha1.SesReceiptRuleSet, err error) {
+func (c *sesReceiptRuleSets) Create(ctx context.Context, sesReceiptRuleSet *v1alpha1.SesReceiptRuleSet, opts v1.CreateOptions) (result *v1alpha1.SesReceiptRuleSet, err error) {
 	result = &v1alpha1.SesReceiptRuleSet{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("sesreceiptrulesets").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sesReceiptRuleSet).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a sesReceiptRuleSet and updates it. Returns the server's representation of the sesReceiptRuleSet, and an error, if there is any.
-func (c *sesReceiptRuleSets) Update(sesReceiptRuleSet *v1alpha1.SesReceiptRuleSet) (result *v1alpha1.SesReceiptRuleSet, err error) {
+func (c *sesReceiptRuleSets) Update(ctx context.Context, sesReceiptRuleSet *v1alpha1.SesReceiptRuleSet, opts v1.UpdateOptions) (result *v1alpha1.SesReceiptRuleSet, err error) {
 	result = &v1alpha1.SesReceiptRuleSet{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sesreceiptrulesets").
 		Name(sesReceiptRuleSet.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sesReceiptRuleSet).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *sesReceiptRuleSets) UpdateStatus(sesReceiptRuleSet *v1alpha1.SesReceiptRuleSet) (result *v1alpha1.SesReceiptRuleSet, err error) {
+func (c *sesReceiptRuleSets) UpdateStatus(ctx context.Context, sesReceiptRuleSet *v1alpha1.SesReceiptRuleSet, opts v1.UpdateOptions) (result *v1alpha1.SesReceiptRuleSet, err error) {
 	result = &v1alpha1.SesReceiptRuleSet{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sesreceiptrulesets").
 		Name(sesReceiptRuleSet.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sesReceiptRuleSet).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the sesReceiptRuleSet and deletes it. Returns an error if one occurs.
-func (c *sesReceiptRuleSets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *sesReceiptRuleSets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sesreceiptrulesets").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *sesReceiptRuleSets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *sesReceiptRuleSets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sesreceiptrulesets").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched sesReceiptRuleSet.
-func (c *sesReceiptRuleSets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SesReceiptRuleSet, err error) {
+func (c *sesReceiptRuleSets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SesReceiptRuleSet, err error) {
 	result = &v1alpha1.SesReceiptRuleSet{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("sesreceiptrulesets").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

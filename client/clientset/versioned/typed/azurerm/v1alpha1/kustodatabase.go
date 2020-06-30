@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type KustoDatabasesGetter interface {
 
 // KustoDatabaseInterface has methods to work with KustoDatabase resources.
 type KustoDatabaseInterface interface {
-	Create(*v1alpha1.KustoDatabase) (*v1alpha1.KustoDatabase, error)
-	Update(*v1alpha1.KustoDatabase) (*v1alpha1.KustoDatabase, error)
-	UpdateStatus(*v1alpha1.KustoDatabase) (*v1alpha1.KustoDatabase, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.KustoDatabase, error)
-	List(opts v1.ListOptions) (*v1alpha1.KustoDatabaseList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KustoDatabase, err error)
+	Create(ctx context.Context, kustoDatabase *v1alpha1.KustoDatabase, opts v1.CreateOptions) (*v1alpha1.KustoDatabase, error)
+	Update(ctx context.Context, kustoDatabase *v1alpha1.KustoDatabase, opts v1.UpdateOptions) (*v1alpha1.KustoDatabase, error)
+	UpdateStatus(ctx context.Context, kustoDatabase *v1alpha1.KustoDatabase, opts v1.UpdateOptions) (*v1alpha1.KustoDatabase, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.KustoDatabase, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.KustoDatabaseList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KustoDatabase, err error)
 	KustoDatabaseExpansion
 }
 
@@ -65,20 +66,20 @@ func newKustoDatabases(c *AzurermV1alpha1Client, namespace string) *kustoDatabas
 }
 
 // Get takes name of the kustoDatabase, and returns the corresponding kustoDatabase object, and an error if there is any.
-func (c *kustoDatabases) Get(name string, options v1.GetOptions) (result *v1alpha1.KustoDatabase, err error) {
+func (c *kustoDatabases) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KustoDatabase, err error) {
 	result = &v1alpha1.KustoDatabase{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("kustodatabases").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of KustoDatabases that match those selectors.
-func (c *kustoDatabases) List(opts v1.ListOptions) (result *v1alpha1.KustoDatabaseList, err error) {
+func (c *kustoDatabases) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KustoDatabaseList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *kustoDatabases) List(opts v1.ListOptions) (result *v1alpha1.KustoDataba
 		Resource("kustodatabases").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested kustoDatabases.
-func (c *kustoDatabases) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *kustoDatabases) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *kustoDatabases) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("kustodatabases").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a kustoDatabase and creates it.  Returns the server's representation of the kustoDatabase, and an error, if there is any.
-func (c *kustoDatabases) Create(kustoDatabase *v1alpha1.KustoDatabase) (result *v1alpha1.KustoDatabase, err error) {
+func (c *kustoDatabases) Create(ctx context.Context, kustoDatabase *v1alpha1.KustoDatabase, opts v1.CreateOptions) (result *v1alpha1.KustoDatabase, err error) {
 	result = &v1alpha1.KustoDatabase{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("kustodatabases").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(kustoDatabase).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a kustoDatabase and updates it. Returns the server's representation of the kustoDatabase, and an error, if there is any.
-func (c *kustoDatabases) Update(kustoDatabase *v1alpha1.KustoDatabase) (result *v1alpha1.KustoDatabase, err error) {
+func (c *kustoDatabases) Update(ctx context.Context, kustoDatabase *v1alpha1.KustoDatabase, opts v1.UpdateOptions) (result *v1alpha1.KustoDatabase, err error) {
 	result = &v1alpha1.KustoDatabase{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("kustodatabases").
 		Name(kustoDatabase.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(kustoDatabase).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *kustoDatabases) UpdateStatus(kustoDatabase *v1alpha1.KustoDatabase) (result *v1alpha1.KustoDatabase, err error) {
+func (c *kustoDatabases) UpdateStatus(ctx context.Context, kustoDatabase *v1alpha1.KustoDatabase, opts v1.UpdateOptions) (result *v1alpha1.KustoDatabase, err error) {
 	result = &v1alpha1.KustoDatabase{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("kustodatabases").
 		Name(kustoDatabase.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(kustoDatabase).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the kustoDatabase and deletes it. Returns an error if one occurs.
-func (c *kustoDatabases) Delete(name string, options *v1.DeleteOptions) error {
+func (c *kustoDatabases) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("kustodatabases").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *kustoDatabases) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *kustoDatabases) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("kustodatabases").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched kustoDatabase.
-func (c *kustoDatabases) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KustoDatabase, err error) {
+func (c *kustoDatabases) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KustoDatabase, err error) {
 	result = &v1alpha1.KustoDatabase{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("kustodatabases").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

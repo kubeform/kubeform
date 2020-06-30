@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var streamanalyticsjobsResource = schema.GroupVersionResource{Group: "azurerm.ku
 var streamanalyticsjobsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "StreamAnalyticsJob"}
 
 // Get takes name of the streamAnalyticsJob, and returns the corresponding streamAnalyticsJob object, and an error if there is any.
-func (c *FakeStreamAnalyticsJobs) Get(name string, options v1.GetOptions) (result *v1alpha1.StreamAnalyticsJob, err error) {
+func (c *FakeStreamAnalyticsJobs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.StreamAnalyticsJob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(streamanalyticsjobsResource, c.ns, name), &v1alpha1.StreamAnalyticsJob{})
 
@@ -51,7 +53,7 @@ func (c *FakeStreamAnalyticsJobs) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of StreamAnalyticsJobs that match those selectors.
-func (c *FakeStreamAnalyticsJobs) List(opts v1.ListOptions) (result *v1alpha1.StreamAnalyticsJobList, err error) {
+func (c *FakeStreamAnalyticsJobs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.StreamAnalyticsJobList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(streamanalyticsjobsResource, streamanalyticsjobsKind, c.ns, opts), &v1alpha1.StreamAnalyticsJobList{})
 
@@ -73,14 +75,14 @@ func (c *FakeStreamAnalyticsJobs) List(opts v1.ListOptions) (result *v1alpha1.St
 }
 
 // Watch returns a watch.Interface that watches the requested streamAnalyticsJobs.
-func (c *FakeStreamAnalyticsJobs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeStreamAnalyticsJobs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(streamanalyticsjobsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a streamAnalyticsJob and creates it.  Returns the server's representation of the streamAnalyticsJob, and an error, if there is any.
-func (c *FakeStreamAnalyticsJobs) Create(streamAnalyticsJob *v1alpha1.StreamAnalyticsJob) (result *v1alpha1.StreamAnalyticsJob, err error) {
+func (c *FakeStreamAnalyticsJobs) Create(ctx context.Context, streamAnalyticsJob *v1alpha1.StreamAnalyticsJob, opts v1.CreateOptions) (result *v1alpha1.StreamAnalyticsJob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(streamanalyticsjobsResource, c.ns, streamAnalyticsJob), &v1alpha1.StreamAnalyticsJob{})
 
@@ -91,7 +93,7 @@ func (c *FakeStreamAnalyticsJobs) Create(streamAnalyticsJob *v1alpha1.StreamAnal
 }
 
 // Update takes the representation of a streamAnalyticsJob and updates it. Returns the server's representation of the streamAnalyticsJob, and an error, if there is any.
-func (c *FakeStreamAnalyticsJobs) Update(streamAnalyticsJob *v1alpha1.StreamAnalyticsJob) (result *v1alpha1.StreamAnalyticsJob, err error) {
+func (c *FakeStreamAnalyticsJobs) Update(ctx context.Context, streamAnalyticsJob *v1alpha1.StreamAnalyticsJob, opts v1.UpdateOptions) (result *v1alpha1.StreamAnalyticsJob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(streamanalyticsjobsResource, c.ns, streamAnalyticsJob), &v1alpha1.StreamAnalyticsJob{})
 
@@ -103,7 +105,7 @@ func (c *FakeStreamAnalyticsJobs) Update(streamAnalyticsJob *v1alpha1.StreamAnal
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeStreamAnalyticsJobs) UpdateStatus(streamAnalyticsJob *v1alpha1.StreamAnalyticsJob) (*v1alpha1.StreamAnalyticsJob, error) {
+func (c *FakeStreamAnalyticsJobs) UpdateStatus(ctx context.Context, streamAnalyticsJob *v1alpha1.StreamAnalyticsJob, opts v1.UpdateOptions) (*v1alpha1.StreamAnalyticsJob, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(streamanalyticsjobsResource, "status", c.ns, streamAnalyticsJob), &v1alpha1.StreamAnalyticsJob{})
 
@@ -114,7 +116,7 @@ func (c *FakeStreamAnalyticsJobs) UpdateStatus(streamAnalyticsJob *v1alpha1.Stre
 }
 
 // Delete takes name of the streamAnalyticsJob and deletes it. Returns an error if one occurs.
-func (c *FakeStreamAnalyticsJobs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeStreamAnalyticsJobs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(streamanalyticsjobsResource, c.ns, name), &v1alpha1.StreamAnalyticsJob{})
 
@@ -122,15 +124,15 @@ func (c *FakeStreamAnalyticsJobs) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeStreamAnalyticsJobs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(streamanalyticsjobsResource, c.ns, listOptions)
+func (c *FakeStreamAnalyticsJobs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(streamanalyticsjobsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.StreamAnalyticsJobList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched streamAnalyticsJob.
-func (c *FakeStreamAnalyticsJobs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StreamAnalyticsJob, err error) {
+func (c *FakeStreamAnalyticsJobs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StreamAnalyticsJob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(streamanalyticsjobsResource, c.ns, name, pt, data, subresources...), &v1alpha1.StreamAnalyticsJob{})
 

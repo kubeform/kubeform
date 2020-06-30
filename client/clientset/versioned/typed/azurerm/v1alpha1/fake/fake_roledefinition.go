@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var roledefinitionsResource = schema.GroupVersionResource{Group: "azurerm.kubefo
 var roledefinitionsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "RoleDefinition"}
 
 // Get takes name of the roleDefinition, and returns the corresponding roleDefinition object, and an error if there is any.
-func (c *FakeRoleDefinitions) Get(name string, options v1.GetOptions) (result *v1alpha1.RoleDefinition, err error) {
+func (c *FakeRoleDefinitions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.RoleDefinition, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(roledefinitionsResource, c.ns, name), &v1alpha1.RoleDefinition{})
 
@@ -51,7 +53,7 @@ func (c *FakeRoleDefinitions) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of RoleDefinitions that match those selectors.
-func (c *FakeRoleDefinitions) List(opts v1.ListOptions) (result *v1alpha1.RoleDefinitionList, err error) {
+func (c *FakeRoleDefinitions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RoleDefinitionList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(roledefinitionsResource, roledefinitionsKind, c.ns, opts), &v1alpha1.RoleDefinitionList{})
 
@@ -73,14 +75,14 @@ func (c *FakeRoleDefinitions) List(opts v1.ListOptions) (result *v1alpha1.RoleDe
 }
 
 // Watch returns a watch.Interface that watches the requested roleDefinitions.
-func (c *FakeRoleDefinitions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeRoleDefinitions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(roledefinitionsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a roleDefinition and creates it.  Returns the server's representation of the roleDefinition, and an error, if there is any.
-func (c *FakeRoleDefinitions) Create(roleDefinition *v1alpha1.RoleDefinition) (result *v1alpha1.RoleDefinition, err error) {
+func (c *FakeRoleDefinitions) Create(ctx context.Context, roleDefinition *v1alpha1.RoleDefinition, opts v1.CreateOptions) (result *v1alpha1.RoleDefinition, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(roledefinitionsResource, c.ns, roleDefinition), &v1alpha1.RoleDefinition{})
 
@@ -91,7 +93,7 @@ func (c *FakeRoleDefinitions) Create(roleDefinition *v1alpha1.RoleDefinition) (r
 }
 
 // Update takes the representation of a roleDefinition and updates it. Returns the server's representation of the roleDefinition, and an error, if there is any.
-func (c *FakeRoleDefinitions) Update(roleDefinition *v1alpha1.RoleDefinition) (result *v1alpha1.RoleDefinition, err error) {
+func (c *FakeRoleDefinitions) Update(ctx context.Context, roleDefinition *v1alpha1.RoleDefinition, opts v1.UpdateOptions) (result *v1alpha1.RoleDefinition, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(roledefinitionsResource, c.ns, roleDefinition), &v1alpha1.RoleDefinition{})
 
@@ -103,7 +105,7 @@ func (c *FakeRoleDefinitions) Update(roleDefinition *v1alpha1.RoleDefinition) (r
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeRoleDefinitions) UpdateStatus(roleDefinition *v1alpha1.RoleDefinition) (*v1alpha1.RoleDefinition, error) {
+func (c *FakeRoleDefinitions) UpdateStatus(ctx context.Context, roleDefinition *v1alpha1.RoleDefinition, opts v1.UpdateOptions) (*v1alpha1.RoleDefinition, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(roledefinitionsResource, "status", c.ns, roleDefinition), &v1alpha1.RoleDefinition{})
 
@@ -114,7 +116,7 @@ func (c *FakeRoleDefinitions) UpdateStatus(roleDefinition *v1alpha1.RoleDefiniti
 }
 
 // Delete takes name of the roleDefinition and deletes it. Returns an error if one occurs.
-func (c *FakeRoleDefinitions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeRoleDefinitions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(roledefinitionsResource, c.ns, name), &v1alpha1.RoleDefinition{})
 
@@ -122,15 +124,15 @@ func (c *FakeRoleDefinitions) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeRoleDefinitions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(roledefinitionsResource, c.ns, listOptions)
+func (c *FakeRoleDefinitions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(roledefinitionsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.RoleDefinitionList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched roleDefinition.
-func (c *FakeRoleDefinitions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RoleDefinition, err error) {
+func (c *FakeRoleDefinitions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RoleDefinition, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(roledefinitionsResource, c.ns, name, pt, data, subresources...), &v1alpha1.RoleDefinition{})
 

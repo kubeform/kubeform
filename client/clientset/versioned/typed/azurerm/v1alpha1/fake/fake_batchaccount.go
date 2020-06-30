@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var batchaccountsResource = schema.GroupVersionResource{Group: "azurerm.kubeform
 var batchaccountsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "BatchAccount"}
 
 // Get takes name of the batchAccount, and returns the corresponding batchAccount object, and an error if there is any.
-func (c *FakeBatchAccounts) Get(name string, options v1.GetOptions) (result *v1alpha1.BatchAccount, err error) {
+func (c *FakeBatchAccounts) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BatchAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(batchaccountsResource, c.ns, name), &v1alpha1.BatchAccount{})
 
@@ -51,7 +53,7 @@ func (c *FakeBatchAccounts) Get(name string, options v1.GetOptions) (result *v1a
 }
 
 // List takes label and field selectors, and returns the list of BatchAccounts that match those selectors.
-func (c *FakeBatchAccounts) List(opts v1.ListOptions) (result *v1alpha1.BatchAccountList, err error) {
+func (c *FakeBatchAccounts) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BatchAccountList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(batchaccountsResource, batchaccountsKind, c.ns, opts), &v1alpha1.BatchAccountList{})
 
@@ -73,14 +75,14 @@ func (c *FakeBatchAccounts) List(opts v1.ListOptions) (result *v1alpha1.BatchAcc
 }
 
 // Watch returns a watch.Interface that watches the requested batchAccounts.
-func (c *FakeBatchAccounts) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeBatchAccounts) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(batchaccountsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a batchAccount and creates it.  Returns the server's representation of the batchAccount, and an error, if there is any.
-func (c *FakeBatchAccounts) Create(batchAccount *v1alpha1.BatchAccount) (result *v1alpha1.BatchAccount, err error) {
+func (c *FakeBatchAccounts) Create(ctx context.Context, batchAccount *v1alpha1.BatchAccount, opts v1.CreateOptions) (result *v1alpha1.BatchAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(batchaccountsResource, c.ns, batchAccount), &v1alpha1.BatchAccount{})
 
@@ -91,7 +93,7 @@ func (c *FakeBatchAccounts) Create(batchAccount *v1alpha1.BatchAccount) (result 
 }
 
 // Update takes the representation of a batchAccount and updates it. Returns the server's representation of the batchAccount, and an error, if there is any.
-func (c *FakeBatchAccounts) Update(batchAccount *v1alpha1.BatchAccount) (result *v1alpha1.BatchAccount, err error) {
+func (c *FakeBatchAccounts) Update(ctx context.Context, batchAccount *v1alpha1.BatchAccount, opts v1.UpdateOptions) (result *v1alpha1.BatchAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(batchaccountsResource, c.ns, batchAccount), &v1alpha1.BatchAccount{})
 
@@ -103,7 +105,7 @@ func (c *FakeBatchAccounts) Update(batchAccount *v1alpha1.BatchAccount) (result 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeBatchAccounts) UpdateStatus(batchAccount *v1alpha1.BatchAccount) (*v1alpha1.BatchAccount, error) {
+func (c *FakeBatchAccounts) UpdateStatus(ctx context.Context, batchAccount *v1alpha1.BatchAccount, opts v1.UpdateOptions) (*v1alpha1.BatchAccount, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(batchaccountsResource, "status", c.ns, batchAccount), &v1alpha1.BatchAccount{})
 
@@ -114,7 +116,7 @@ func (c *FakeBatchAccounts) UpdateStatus(batchAccount *v1alpha1.BatchAccount) (*
 }
 
 // Delete takes name of the batchAccount and deletes it. Returns an error if one occurs.
-func (c *FakeBatchAccounts) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeBatchAccounts) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(batchaccountsResource, c.ns, name), &v1alpha1.BatchAccount{})
 
@@ -122,15 +124,15 @@ func (c *FakeBatchAccounts) Delete(name string, options *v1.DeleteOptions) error
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeBatchAccounts) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(batchaccountsResource, c.ns, listOptions)
+func (c *FakeBatchAccounts) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(batchaccountsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.BatchAccountList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched batchAccount.
-func (c *FakeBatchAccounts) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BatchAccount, err error) {
+func (c *FakeBatchAccounts) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BatchAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(batchaccountsResource, c.ns, name, pt, data, subresources...), &v1alpha1.BatchAccount{})
 

@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type StorageTablesGetter interface {
 
 // StorageTableInterface has methods to work with StorageTable resources.
 type StorageTableInterface interface {
-	Create(*v1alpha1.StorageTable) (*v1alpha1.StorageTable, error)
-	Update(*v1alpha1.StorageTable) (*v1alpha1.StorageTable, error)
-	UpdateStatus(*v1alpha1.StorageTable) (*v1alpha1.StorageTable, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.StorageTable, error)
-	List(opts v1.ListOptions) (*v1alpha1.StorageTableList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StorageTable, err error)
+	Create(ctx context.Context, storageTable *v1alpha1.StorageTable, opts v1.CreateOptions) (*v1alpha1.StorageTable, error)
+	Update(ctx context.Context, storageTable *v1alpha1.StorageTable, opts v1.UpdateOptions) (*v1alpha1.StorageTable, error)
+	UpdateStatus(ctx context.Context, storageTable *v1alpha1.StorageTable, opts v1.UpdateOptions) (*v1alpha1.StorageTable, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.StorageTable, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.StorageTableList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StorageTable, err error)
 	StorageTableExpansion
 }
 
@@ -65,20 +66,20 @@ func newStorageTables(c *AzurermV1alpha1Client, namespace string) *storageTables
 }
 
 // Get takes name of the storageTable, and returns the corresponding storageTable object, and an error if there is any.
-func (c *storageTables) Get(name string, options v1.GetOptions) (result *v1alpha1.StorageTable, err error) {
+func (c *storageTables) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.StorageTable, err error) {
 	result = &v1alpha1.StorageTable{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("storagetables").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of StorageTables that match those selectors.
-func (c *storageTables) List(opts v1.ListOptions) (result *v1alpha1.StorageTableList, err error) {
+func (c *storageTables) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.StorageTableList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *storageTables) List(opts v1.ListOptions) (result *v1alpha1.StorageTable
 		Resource("storagetables").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested storageTables.
-func (c *storageTables) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *storageTables) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *storageTables) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("storagetables").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a storageTable and creates it.  Returns the server's representation of the storageTable, and an error, if there is any.
-func (c *storageTables) Create(storageTable *v1alpha1.StorageTable) (result *v1alpha1.StorageTable, err error) {
+func (c *storageTables) Create(ctx context.Context, storageTable *v1alpha1.StorageTable, opts v1.CreateOptions) (result *v1alpha1.StorageTable, err error) {
 	result = &v1alpha1.StorageTable{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("storagetables").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(storageTable).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a storageTable and updates it. Returns the server's representation of the storageTable, and an error, if there is any.
-func (c *storageTables) Update(storageTable *v1alpha1.StorageTable) (result *v1alpha1.StorageTable, err error) {
+func (c *storageTables) Update(ctx context.Context, storageTable *v1alpha1.StorageTable, opts v1.UpdateOptions) (result *v1alpha1.StorageTable, err error) {
 	result = &v1alpha1.StorageTable{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("storagetables").
 		Name(storageTable.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(storageTable).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *storageTables) UpdateStatus(storageTable *v1alpha1.StorageTable) (result *v1alpha1.StorageTable, err error) {
+func (c *storageTables) UpdateStatus(ctx context.Context, storageTable *v1alpha1.StorageTable, opts v1.UpdateOptions) (result *v1alpha1.StorageTable, err error) {
 	result = &v1alpha1.StorageTable{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("storagetables").
 		Name(storageTable.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(storageTable).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the storageTable and deletes it. Returns an error if one occurs.
-func (c *storageTables) Delete(name string, options *v1.DeleteOptions) error {
+func (c *storageTables) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("storagetables").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *storageTables) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *storageTables) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("storagetables").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched storageTable.
-func (c *storageTables) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StorageTable, err error) {
+func (c *storageTables) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StorageTable, err error) {
 	result = &v1alpha1.StorageTable{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("storagetables").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

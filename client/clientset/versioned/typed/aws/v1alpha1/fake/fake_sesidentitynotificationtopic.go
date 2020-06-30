@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var sesidentitynotificationtopicsResource = schema.GroupVersionResource{Group: "
 var sesidentitynotificationtopicsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "SesIdentityNotificationTopic"}
 
 // Get takes name of the sesIdentityNotificationTopic, and returns the corresponding sesIdentityNotificationTopic object, and an error if there is any.
-func (c *FakeSesIdentityNotificationTopics) Get(name string, options v1.GetOptions) (result *v1alpha1.SesIdentityNotificationTopic, err error) {
+func (c *FakeSesIdentityNotificationTopics) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SesIdentityNotificationTopic, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(sesidentitynotificationtopicsResource, c.ns, name), &v1alpha1.SesIdentityNotificationTopic{})
 
@@ -51,7 +53,7 @@ func (c *FakeSesIdentityNotificationTopics) Get(name string, options v1.GetOptio
 }
 
 // List takes label and field selectors, and returns the list of SesIdentityNotificationTopics that match those selectors.
-func (c *FakeSesIdentityNotificationTopics) List(opts v1.ListOptions) (result *v1alpha1.SesIdentityNotificationTopicList, err error) {
+func (c *FakeSesIdentityNotificationTopics) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SesIdentityNotificationTopicList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(sesidentitynotificationtopicsResource, sesidentitynotificationtopicsKind, c.ns, opts), &v1alpha1.SesIdentityNotificationTopicList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSesIdentityNotificationTopics) List(opts v1.ListOptions) (result *v
 }
 
 // Watch returns a watch.Interface that watches the requested sesIdentityNotificationTopics.
-func (c *FakeSesIdentityNotificationTopics) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSesIdentityNotificationTopics) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(sesidentitynotificationtopicsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a sesIdentityNotificationTopic and creates it.  Returns the server's representation of the sesIdentityNotificationTopic, and an error, if there is any.
-func (c *FakeSesIdentityNotificationTopics) Create(sesIdentityNotificationTopic *v1alpha1.SesIdentityNotificationTopic) (result *v1alpha1.SesIdentityNotificationTopic, err error) {
+func (c *FakeSesIdentityNotificationTopics) Create(ctx context.Context, sesIdentityNotificationTopic *v1alpha1.SesIdentityNotificationTopic, opts v1.CreateOptions) (result *v1alpha1.SesIdentityNotificationTopic, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(sesidentitynotificationtopicsResource, c.ns, sesIdentityNotificationTopic), &v1alpha1.SesIdentityNotificationTopic{})
 
@@ -91,7 +93,7 @@ func (c *FakeSesIdentityNotificationTopics) Create(sesIdentityNotificationTopic 
 }
 
 // Update takes the representation of a sesIdentityNotificationTopic and updates it. Returns the server's representation of the sesIdentityNotificationTopic, and an error, if there is any.
-func (c *FakeSesIdentityNotificationTopics) Update(sesIdentityNotificationTopic *v1alpha1.SesIdentityNotificationTopic) (result *v1alpha1.SesIdentityNotificationTopic, err error) {
+func (c *FakeSesIdentityNotificationTopics) Update(ctx context.Context, sesIdentityNotificationTopic *v1alpha1.SesIdentityNotificationTopic, opts v1.UpdateOptions) (result *v1alpha1.SesIdentityNotificationTopic, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(sesidentitynotificationtopicsResource, c.ns, sesIdentityNotificationTopic), &v1alpha1.SesIdentityNotificationTopic{})
 
@@ -103,7 +105,7 @@ func (c *FakeSesIdentityNotificationTopics) Update(sesIdentityNotificationTopic 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSesIdentityNotificationTopics) UpdateStatus(sesIdentityNotificationTopic *v1alpha1.SesIdentityNotificationTopic) (*v1alpha1.SesIdentityNotificationTopic, error) {
+func (c *FakeSesIdentityNotificationTopics) UpdateStatus(ctx context.Context, sesIdentityNotificationTopic *v1alpha1.SesIdentityNotificationTopic, opts v1.UpdateOptions) (*v1alpha1.SesIdentityNotificationTopic, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(sesidentitynotificationtopicsResource, "status", c.ns, sesIdentityNotificationTopic), &v1alpha1.SesIdentityNotificationTopic{})
 
@@ -114,7 +116,7 @@ func (c *FakeSesIdentityNotificationTopics) UpdateStatus(sesIdentityNotification
 }
 
 // Delete takes name of the sesIdentityNotificationTopic and deletes it. Returns an error if one occurs.
-func (c *FakeSesIdentityNotificationTopics) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSesIdentityNotificationTopics) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(sesidentitynotificationtopicsResource, c.ns, name), &v1alpha1.SesIdentityNotificationTopic{})
 
@@ -122,15 +124,15 @@ func (c *FakeSesIdentityNotificationTopics) Delete(name string, options *v1.Dele
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSesIdentityNotificationTopics) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(sesidentitynotificationtopicsResource, c.ns, listOptions)
+func (c *FakeSesIdentityNotificationTopics) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(sesidentitynotificationtopicsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SesIdentityNotificationTopicList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched sesIdentityNotificationTopic.
-func (c *FakeSesIdentityNotificationTopics) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SesIdentityNotificationTopic, err error) {
+func (c *FakeSesIdentityNotificationTopics) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SesIdentityNotificationTopic, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(sesidentitynotificationtopicsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SesIdentityNotificationTopic{})
 

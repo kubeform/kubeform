@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/linode/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var tokensResource = schema.GroupVersionResource{Group: "linode.kubeform.com", V
 var tokensKind = schema.GroupVersionKind{Group: "linode.kubeform.com", Version: "v1alpha1", Kind: "Token"}
 
 // Get takes name of the token, and returns the corresponding token object, and an error if there is any.
-func (c *FakeTokens) Get(name string, options v1.GetOptions) (result *v1alpha1.Token, err error) {
+func (c *FakeTokens) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Token, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(tokensResource, c.ns, name), &v1alpha1.Token{})
 
@@ -51,7 +53,7 @@ func (c *FakeTokens) Get(name string, options v1.GetOptions) (result *v1alpha1.T
 }
 
 // List takes label and field selectors, and returns the list of Tokens that match those selectors.
-func (c *FakeTokens) List(opts v1.ListOptions) (result *v1alpha1.TokenList, err error) {
+func (c *FakeTokens) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.TokenList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(tokensResource, tokensKind, c.ns, opts), &v1alpha1.TokenList{})
 
@@ -73,14 +75,14 @@ func (c *FakeTokens) List(opts v1.ListOptions) (result *v1alpha1.TokenList, err 
 }
 
 // Watch returns a watch.Interface that watches the requested tokens.
-func (c *FakeTokens) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeTokens) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(tokensResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a token and creates it.  Returns the server's representation of the token, and an error, if there is any.
-func (c *FakeTokens) Create(token *v1alpha1.Token) (result *v1alpha1.Token, err error) {
+func (c *FakeTokens) Create(ctx context.Context, token *v1alpha1.Token, opts v1.CreateOptions) (result *v1alpha1.Token, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(tokensResource, c.ns, token), &v1alpha1.Token{})
 
@@ -91,7 +93,7 @@ func (c *FakeTokens) Create(token *v1alpha1.Token) (result *v1alpha1.Token, err 
 }
 
 // Update takes the representation of a token and updates it. Returns the server's representation of the token, and an error, if there is any.
-func (c *FakeTokens) Update(token *v1alpha1.Token) (result *v1alpha1.Token, err error) {
+func (c *FakeTokens) Update(ctx context.Context, token *v1alpha1.Token, opts v1.UpdateOptions) (result *v1alpha1.Token, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(tokensResource, c.ns, token), &v1alpha1.Token{})
 
@@ -103,7 +105,7 @@ func (c *FakeTokens) Update(token *v1alpha1.Token) (result *v1alpha1.Token, err 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeTokens) UpdateStatus(token *v1alpha1.Token) (*v1alpha1.Token, error) {
+func (c *FakeTokens) UpdateStatus(ctx context.Context, token *v1alpha1.Token, opts v1.UpdateOptions) (*v1alpha1.Token, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(tokensResource, "status", c.ns, token), &v1alpha1.Token{})
 
@@ -114,7 +116,7 @@ func (c *FakeTokens) UpdateStatus(token *v1alpha1.Token) (*v1alpha1.Token, error
 }
 
 // Delete takes name of the token and deletes it. Returns an error if one occurs.
-func (c *FakeTokens) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeTokens) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(tokensResource, c.ns, name), &v1alpha1.Token{})
 
@@ -122,15 +124,15 @@ func (c *FakeTokens) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeTokens) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(tokensResource, c.ns, listOptions)
+func (c *FakeTokens) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(tokensResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.TokenList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched token.
-func (c *FakeTokens) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Token, err error) {
+func (c *FakeTokens) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Token, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(tokensResource, c.ns, name, pt, data, subresources...), &v1alpha1.Token{})
 

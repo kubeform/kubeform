@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type LbOutboundRulesGetter interface {
 
 // LbOutboundRuleInterface has methods to work with LbOutboundRule resources.
 type LbOutboundRuleInterface interface {
-	Create(*v1alpha1.LbOutboundRule) (*v1alpha1.LbOutboundRule, error)
-	Update(*v1alpha1.LbOutboundRule) (*v1alpha1.LbOutboundRule, error)
-	UpdateStatus(*v1alpha1.LbOutboundRule) (*v1alpha1.LbOutboundRule, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.LbOutboundRule, error)
-	List(opts v1.ListOptions) (*v1alpha1.LbOutboundRuleList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LbOutboundRule, err error)
+	Create(ctx context.Context, lbOutboundRule *v1alpha1.LbOutboundRule, opts v1.CreateOptions) (*v1alpha1.LbOutboundRule, error)
+	Update(ctx context.Context, lbOutboundRule *v1alpha1.LbOutboundRule, opts v1.UpdateOptions) (*v1alpha1.LbOutboundRule, error)
+	UpdateStatus(ctx context.Context, lbOutboundRule *v1alpha1.LbOutboundRule, opts v1.UpdateOptions) (*v1alpha1.LbOutboundRule, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.LbOutboundRule, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.LbOutboundRuleList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LbOutboundRule, err error)
 	LbOutboundRuleExpansion
 }
 
@@ -65,20 +66,20 @@ func newLbOutboundRules(c *AzurermV1alpha1Client, namespace string) *lbOutboundR
 }
 
 // Get takes name of the lbOutboundRule, and returns the corresponding lbOutboundRule object, and an error if there is any.
-func (c *lbOutboundRules) Get(name string, options v1.GetOptions) (result *v1alpha1.LbOutboundRule, err error) {
+func (c *lbOutboundRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LbOutboundRule, err error) {
 	result = &v1alpha1.LbOutboundRule{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("lboutboundrules").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of LbOutboundRules that match those selectors.
-func (c *lbOutboundRules) List(opts v1.ListOptions) (result *v1alpha1.LbOutboundRuleList, err error) {
+func (c *lbOutboundRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LbOutboundRuleList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *lbOutboundRules) List(opts v1.ListOptions) (result *v1alpha1.LbOutbound
 		Resource("lboutboundrules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested lbOutboundRules.
-func (c *lbOutboundRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *lbOutboundRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *lbOutboundRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("lboutboundrules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a lbOutboundRule and creates it.  Returns the server's representation of the lbOutboundRule, and an error, if there is any.
-func (c *lbOutboundRules) Create(lbOutboundRule *v1alpha1.LbOutboundRule) (result *v1alpha1.LbOutboundRule, err error) {
+func (c *lbOutboundRules) Create(ctx context.Context, lbOutboundRule *v1alpha1.LbOutboundRule, opts v1.CreateOptions) (result *v1alpha1.LbOutboundRule, err error) {
 	result = &v1alpha1.LbOutboundRule{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("lboutboundrules").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lbOutboundRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a lbOutboundRule and updates it. Returns the server's representation of the lbOutboundRule, and an error, if there is any.
-func (c *lbOutboundRules) Update(lbOutboundRule *v1alpha1.LbOutboundRule) (result *v1alpha1.LbOutboundRule, err error) {
+func (c *lbOutboundRules) Update(ctx context.Context, lbOutboundRule *v1alpha1.LbOutboundRule, opts v1.UpdateOptions) (result *v1alpha1.LbOutboundRule, err error) {
 	result = &v1alpha1.LbOutboundRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("lboutboundrules").
 		Name(lbOutboundRule.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lbOutboundRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *lbOutboundRules) UpdateStatus(lbOutboundRule *v1alpha1.LbOutboundRule) (result *v1alpha1.LbOutboundRule, err error) {
+func (c *lbOutboundRules) UpdateStatus(ctx context.Context, lbOutboundRule *v1alpha1.LbOutboundRule, opts v1.UpdateOptions) (result *v1alpha1.LbOutboundRule, err error) {
 	result = &v1alpha1.LbOutboundRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("lboutboundrules").
 		Name(lbOutboundRule.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lbOutboundRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the lbOutboundRule and deletes it. Returns an error if one occurs.
-func (c *lbOutboundRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *lbOutboundRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("lboutboundrules").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *lbOutboundRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *lbOutboundRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("lboutboundrules").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched lbOutboundRule.
-func (c *lbOutboundRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LbOutboundRule, err error) {
+func (c *lbOutboundRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LbOutboundRule, err error) {
 	result = &v1alpha1.LbOutboundRule{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("lboutboundrules").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

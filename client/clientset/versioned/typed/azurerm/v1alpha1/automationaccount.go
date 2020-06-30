@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type AutomationAccountsGetter interface {
 
 // AutomationAccountInterface has methods to work with AutomationAccount resources.
 type AutomationAccountInterface interface {
-	Create(*v1alpha1.AutomationAccount) (*v1alpha1.AutomationAccount, error)
-	Update(*v1alpha1.AutomationAccount) (*v1alpha1.AutomationAccount, error)
-	UpdateStatus(*v1alpha1.AutomationAccount) (*v1alpha1.AutomationAccount, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.AutomationAccount, error)
-	List(opts v1.ListOptions) (*v1alpha1.AutomationAccountList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AutomationAccount, err error)
+	Create(ctx context.Context, automationAccount *v1alpha1.AutomationAccount, opts v1.CreateOptions) (*v1alpha1.AutomationAccount, error)
+	Update(ctx context.Context, automationAccount *v1alpha1.AutomationAccount, opts v1.UpdateOptions) (*v1alpha1.AutomationAccount, error)
+	UpdateStatus(ctx context.Context, automationAccount *v1alpha1.AutomationAccount, opts v1.UpdateOptions) (*v1alpha1.AutomationAccount, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.AutomationAccount, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.AutomationAccountList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AutomationAccount, err error)
 	AutomationAccountExpansion
 }
 
@@ -65,20 +66,20 @@ func newAutomationAccounts(c *AzurermV1alpha1Client, namespace string) *automati
 }
 
 // Get takes name of the automationAccount, and returns the corresponding automationAccount object, and an error if there is any.
-func (c *automationAccounts) Get(name string, options v1.GetOptions) (result *v1alpha1.AutomationAccount, err error) {
+func (c *automationAccounts) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AutomationAccount, err error) {
 	result = &v1alpha1.AutomationAccount{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("automationaccounts").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of AutomationAccounts that match those selectors.
-func (c *automationAccounts) List(opts v1.ListOptions) (result *v1alpha1.AutomationAccountList, err error) {
+func (c *automationAccounts) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AutomationAccountList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *automationAccounts) List(opts v1.ListOptions) (result *v1alpha1.Automat
 		Resource("automationaccounts").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested automationAccounts.
-func (c *automationAccounts) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *automationAccounts) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *automationAccounts) Watch(opts v1.ListOptions) (watch.Interface, error)
 		Resource("automationaccounts").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a automationAccount and creates it.  Returns the server's representation of the automationAccount, and an error, if there is any.
-func (c *automationAccounts) Create(automationAccount *v1alpha1.AutomationAccount) (result *v1alpha1.AutomationAccount, err error) {
+func (c *automationAccounts) Create(ctx context.Context, automationAccount *v1alpha1.AutomationAccount, opts v1.CreateOptions) (result *v1alpha1.AutomationAccount, err error) {
 	result = &v1alpha1.AutomationAccount{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("automationaccounts").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(automationAccount).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a automationAccount and updates it. Returns the server's representation of the automationAccount, and an error, if there is any.
-func (c *automationAccounts) Update(automationAccount *v1alpha1.AutomationAccount) (result *v1alpha1.AutomationAccount, err error) {
+func (c *automationAccounts) Update(ctx context.Context, automationAccount *v1alpha1.AutomationAccount, opts v1.UpdateOptions) (result *v1alpha1.AutomationAccount, err error) {
 	result = &v1alpha1.AutomationAccount{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("automationaccounts").
 		Name(automationAccount.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(automationAccount).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *automationAccounts) UpdateStatus(automationAccount *v1alpha1.AutomationAccount) (result *v1alpha1.AutomationAccount, err error) {
+func (c *automationAccounts) UpdateStatus(ctx context.Context, automationAccount *v1alpha1.AutomationAccount, opts v1.UpdateOptions) (result *v1alpha1.AutomationAccount, err error) {
 	result = &v1alpha1.AutomationAccount{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("automationaccounts").
 		Name(automationAccount.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(automationAccount).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the automationAccount and deletes it. Returns an error if one occurs.
-func (c *automationAccounts) Delete(name string, options *v1.DeleteOptions) error {
+func (c *automationAccounts) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("automationaccounts").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *automationAccounts) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *automationAccounts) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("automationaccounts").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched automationAccount.
-func (c *automationAccounts) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AutomationAccount, err error) {
+func (c *automationAccounts) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AutomationAccount, err error) {
 	result = &v1alpha1.AutomationAccount{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("automationaccounts").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var subnetroutetableassociationsResource = schema.GroupVersionResource{Group: "a
 var subnetroutetableassociationsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "SubnetRouteTableAssociation"}
 
 // Get takes name of the subnetRouteTableAssociation, and returns the corresponding subnetRouteTableAssociation object, and an error if there is any.
-func (c *FakeSubnetRouteTableAssociations) Get(name string, options v1.GetOptions) (result *v1alpha1.SubnetRouteTableAssociation, err error) {
+func (c *FakeSubnetRouteTableAssociations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SubnetRouteTableAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(subnetroutetableassociationsResource, c.ns, name), &v1alpha1.SubnetRouteTableAssociation{})
 
@@ -51,7 +53,7 @@ func (c *FakeSubnetRouteTableAssociations) Get(name string, options v1.GetOption
 }
 
 // List takes label and field selectors, and returns the list of SubnetRouteTableAssociations that match those selectors.
-func (c *FakeSubnetRouteTableAssociations) List(opts v1.ListOptions) (result *v1alpha1.SubnetRouteTableAssociationList, err error) {
+func (c *FakeSubnetRouteTableAssociations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SubnetRouteTableAssociationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(subnetroutetableassociationsResource, subnetroutetableassociationsKind, c.ns, opts), &v1alpha1.SubnetRouteTableAssociationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSubnetRouteTableAssociations) List(opts v1.ListOptions) (result *v1
 }
 
 // Watch returns a watch.Interface that watches the requested subnetRouteTableAssociations.
-func (c *FakeSubnetRouteTableAssociations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSubnetRouteTableAssociations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(subnetroutetableassociationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a subnetRouteTableAssociation and creates it.  Returns the server's representation of the subnetRouteTableAssociation, and an error, if there is any.
-func (c *FakeSubnetRouteTableAssociations) Create(subnetRouteTableAssociation *v1alpha1.SubnetRouteTableAssociation) (result *v1alpha1.SubnetRouteTableAssociation, err error) {
+func (c *FakeSubnetRouteTableAssociations) Create(ctx context.Context, subnetRouteTableAssociation *v1alpha1.SubnetRouteTableAssociation, opts v1.CreateOptions) (result *v1alpha1.SubnetRouteTableAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(subnetroutetableassociationsResource, c.ns, subnetRouteTableAssociation), &v1alpha1.SubnetRouteTableAssociation{})
 
@@ -91,7 +93,7 @@ func (c *FakeSubnetRouteTableAssociations) Create(subnetRouteTableAssociation *v
 }
 
 // Update takes the representation of a subnetRouteTableAssociation and updates it. Returns the server's representation of the subnetRouteTableAssociation, and an error, if there is any.
-func (c *FakeSubnetRouteTableAssociations) Update(subnetRouteTableAssociation *v1alpha1.SubnetRouteTableAssociation) (result *v1alpha1.SubnetRouteTableAssociation, err error) {
+func (c *FakeSubnetRouteTableAssociations) Update(ctx context.Context, subnetRouteTableAssociation *v1alpha1.SubnetRouteTableAssociation, opts v1.UpdateOptions) (result *v1alpha1.SubnetRouteTableAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(subnetroutetableassociationsResource, c.ns, subnetRouteTableAssociation), &v1alpha1.SubnetRouteTableAssociation{})
 
@@ -103,7 +105,7 @@ func (c *FakeSubnetRouteTableAssociations) Update(subnetRouteTableAssociation *v
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSubnetRouteTableAssociations) UpdateStatus(subnetRouteTableAssociation *v1alpha1.SubnetRouteTableAssociation) (*v1alpha1.SubnetRouteTableAssociation, error) {
+func (c *FakeSubnetRouteTableAssociations) UpdateStatus(ctx context.Context, subnetRouteTableAssociation *v1alpha1.SubnetRouteTableAssociation, opts v1.UpdateOptions) (*v1alpha1.SubnetRouteTableAssociation, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(subnetroutetableassociationsResource, "status", c.ns, subnetRouteTableAssociation), &v1alpha1.SubnetRouteTableAssociation{})
 
@@ -114,7 +116,7 @@ func (c *FakeSubnetRouteTableAssociations) UpdateStatus(subnetRouteTableAssociat
 }
 
 // Delete takes name of the subnetRouteTableAssociation and deletes it. Returns an error if one occurs.
-func (c *FakeSubnetRouteTableAssociations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSubnetRouteTableAssociations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(subnetroutetableassociationsResource, c.ns, name), &v1alpha1.SubnetRouteTableAssociation{})
 
@@ -122,15 +124,15 @@ func (c *FakeSubnetRouteTableAssociations) Delete(name string, options *v1.Delet
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSubnetRouteTableAssociations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(subnetroutetableassociationsResource, c.ns, listOptions)
+func (c *FakeSubnetRouteTableAssociations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(subnetroutetableassociationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SubnetRouteTableAssociationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched subnetRouteTableAssociation.
-func (c *FakeSubnetRouteTableAssociations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SubnetRouteTableAssociation, err error) {
+func (c *FakeSubnetRouteTableAssociations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SubnetRouteTableAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(subnetroutetableassociationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SubnetRouteTableAssociation{})
 

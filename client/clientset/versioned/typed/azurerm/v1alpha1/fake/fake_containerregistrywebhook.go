@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var containerregistrywebhooksResource = schema.GroupVersionResource{Group: "azur
 var containerregistrywebhooksKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "ContainerRegistryWebhook"}
 
 // Get takes name of the containerRegistryWebhook, and returns the corresponding containerRegistryWebhook object, and an error if there is any.
-func (c *FakeContainerRegistryWebhooks) Get(name string, options v1.GetOptions) (result *v1alpha1.ContainerRegistryWebhook, err error) {
+func (c *FakeContainerRegistryWebhooks) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ContainerRegistryWebhook, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(containerregistrywebhooksResource, c.ns, name), &v1alpha1.ContainerRegistryWebhook{})
 
@@ -51,7 +53,7 @@ func (c *FakeContainerRegistryWebhooks) Get(name string, options v1.GetOptions) 
 }
 
 // List takes label and field selectors, and returns the list of ContainerRegistryWebhooks that match those selectors.
-func (c *FakeContainerRegistryWebhooks) List(opts v1.ListOptions) (result *v1alpha1.ContainerRegistryWebhookList, err error) {
+func (c *FakeContainerRegistryWebhooks) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ContainerRegistryWebhookList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(containerregistrywebhooksResource, containerregistrywebhooksKind, c.ns, opts), &v1alpha1.ContainerRegistryWebhookList{})
 
@@ -73,14 +75,14 @@ func (c *FakeContainerRegistryWebhooks) List(opts v1.ListOptions) (result *v1alp
 }
 
 // Watch returns a watch.Interface that watches the requested containerRegistryWebhooks.
-func (c *FakeContainerRegistryWebhooks) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeContainerRegistryWebhooks) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(containerregistrywebhooksResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a containerRegistryWebhook and creates it.  Returns the server's representation of the containerRegistryWebhook, and an error, if there is any.
-func (c *FakeContainerRegistryWebhooks) Create(containerRegistryWebhook *v1alpha1.ContainerRegistryWebhook) (result *v1alpha1.ContainerRegistryWebhook, err error) {
+func (c *FakeContainerRegistryWebhooks) Create(ctx context.Context, containerRegistryWebhook *v1alpha1.ContainerRegistryWebhook, opts v1.CreateOptions) (result *v1alpha1.ContainerRegistryWebhook, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(containerregistrywebhooksResource, c.ns, containerRegistryWebhook), &v1alpha1.ContainerRegistryWebhook{})
 
@@ -91,7 +93,7 @@ func (c *FakeContainerRegistryWebhooks) Create(containerRegistryWebhook *v1alpha
 }
 
 // Update takes the representation of a containerRegistryWebhook and updates it. Returns the server's representation of the containerRegistryWebhook, and an error, if there is any.
-func (c *FakeContainerRegistryWebhooks) Update(containerRegistryWebhook *v1alpha1.ContainerRegistryWebhook) (result *v1alpha1.ContainerRegistryWebhook, err error) {
+func (c *FakeContainerRegistryWebhooks) Update(ctx context.Context, containerRegistryWebhook *v1alpha1.ContainerRegistryWebhook, opts v1.UpdateOptions) (result *v1alpha1.ContainerRegistryWebhook, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(containerregistrywebhooksResource, c.ns, containerRegistryWebhook), &v1alpha1.ContainerRegistryWebhook{})
 
@@ -103,7 +105,7 @@ func (c *FakeContainerRegistryWebhooks) Update(containerRegistryWebhook *v1alpha
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeContainerRegistryWebhooks) UpdateStatus(containerRegistryWebhook *v1alpha1.ContainerRegistryWebhook) (*v1alpha1.ContainerRegistryWebhook, error) {
+func (c *FakeContainerRegistryWebhooks) UpdateStatus(ctx context.Context, containerRegistryWebhook *v1alpha1.ContainerRegistryWebhook, opts v1.UpdateOptions) (*v1alpha1.ContainerRegistryWebhook, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(containerregistrywebhooksResource, "status", c.ns, containerRegistryWebhook), &v1alpha1.ContainerRegistryWebhook{})
 
@@ -114,7 +116,7 @@ func (c *FakeContainerRegistryWebhooks) UpdateStatus(containerRegistryWebhook *v
 }
 
 // Delete takes name of the containerRegistryWebhook and deletes it. Returns an error if one occurs.
-func (c *FakeContainerRegistryWebhooks) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeContainerRegistryWebhooks) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(containerregistrywebhooksResource, c.ns, name), &v1alpha1.ContainerRegistryWebhook{})
 
@@ -122,15 +124,15 @@ func (c *FakeContainerRegistryWebhooks) Delete(name string, options *v1.DeleteOp
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeContainerRegistryWebhooks) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(containerregistrywebhooksResource, c.ns, listOptions)
+func (c *FakeContainerRegistryWebhooks) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(containerregistrywebhooksResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ContainerRegistryWebhookList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched containerRegistryWebhook.
-func (c *FakeContainerRegistryWebhooks) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ContainerRegistryWebhook, err error) {
+func (c *FakeContainerRegistryWebhooks) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ContainerRegistryWebhook, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(containerregistrywebhooksResource, c.ns, name, pt, data, subresources...), &v1alpha1.ContainerRegistryWebhook{})
 

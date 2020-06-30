@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var storagedefaultobjectaccesscontrolsResource = schema.GroupVersionResource{Gro
 var storagedefaultobjectaccesscontrolsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "StorageDefaultObjectAccessControl"}
 
 // Get takes name of the storageDefaultObjectAccessControl, and returns the corresponding storageDefaultObjectAccessControl object, and an error if there is any.
-func (c *FakeStorageDefaultObjectAccessControls) Get(name string, options v1.GetOptions) (result *v1alpha1.StorageDefaultObjectAccessControl, err error) {
+func (c *FakeStorageDefaultObjectAccessControls) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.StorageDefaultObjectAccessControl, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(storagedefaultobjectaccesscontrolsResource, c.ns, name), &v1alpha1.StorageDefaultObjectAccessControl{})
 
@@ -51,7 +53,7 @@ func (c *FakeStorageDefaultObjectAccessControls) Get(name string, options v1.Get
 }
 
 // List takes label and field selectors, and returns the list of StorageDefaultObjectAccessControls that match those selectors.
-func (c *FakeStorageDefaultObjectAccessControls) List(opts v1.ListOptions) (result *v1alpha1.StorageDefaultObjectAccessControlList, err error) {
+func (c *FakeStorageDefaultObjectAccessControls) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.StorageDefaultObjectAccessControlList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(storagedefaultobjectaccesscontrolsResource, storagedefaultobjectaccesscontrolsKind, c.ns, opts), &v1alpha1.StorageDefaultObjectAccessControlList{})
 
@@ -73,14 +75,14 @@ func (c *FakeStorageDefaultObjectAccessControls) List(opts v1.ListOptions) (resu
 }
 
 // Watch returns a watch.Interface that watches the requested storageDefaultObjectAccessControls.
-func (c *FakeStorageDefaultObjectAccessControls) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeStorageDefaultObjectAccessControls) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(storagedefaultobjectaccesscontrolsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a storageDefaultObjectAccessControl and creates it.  Returns the server's representation of the storageDefaultObjectAccessControl, and an error, if there is any.
-func (c *FakeStorageDefaultObjectAccessControls) Create(storageDefaultObjectAccessControl *v1alpha1.StorageDefaultObjectAccessControl) (result *v1alpha1.StorageDefaultObjectAccessControl, err error) {
+func (c *FakeStorageDefaultObjectAccessControls) Create(ctx context.Context, storageDefaultObjectAccessControl *v1alpha1.StorageDefaultObjectAccessControl, opts v1.CreateOptions) (result *v1alpha1.StorageDefaultObjectAccessControl, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(storagedefaultobjectaccesscontrolsResource, c.ns, storageDefaultObjectAccessControl), &v1alpha1.StorageDefaultObjectAccessControl{})
 
@@ -91,7 +93,7 @@ func (c *FakeStorageDefaultObjectAccessControls) Create(storageDefaultObjectAcce
 }
 
 // Update takes the representation of a storageDefaultObjectAccessControl and updates it. Returns the server's representation of the storageDefaultObjectAccessControl, and an error, if there is any.
-func (c *FakeStorageDefaultObjectAccessControls) Update(storageDefaultObjectAccessControl *v1alpha1.StorageDefaultObjectAccessControl) (result *v1alpha1.StorageDefaultObjectAccessControl, err error) {
+func (c *FakeStorageDefaultObjectAccessControls) Update(ctx context.Context, storageDefaultObjectAccessControl *v1alpha1.StorageDefaultObjectAccessControl, opts v1.UpdateOptions) (result *v1alpha1.StorageDefaultObjectAccessControl, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(storagedefaultobjectaccesscontrolsResource, c.ns, storageDefaultObjectAccessControl), &v1alpha1.StorageDefaultObjectAccessControl{})
 
@@ -103,7 +105,7 @@ func (c *FakeStorageDefaultObjectAccessControls) Update(storageDefaultObjectAcce
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeStorageDefaultObjectAccessControls) UpdateStatus(storageDefaultObjectAccessControl *v1alpha1.StorageDefaultObjectAccessControl) (*v1alpha1.StorageDefaultObjectAccessControl, error) {
+func (c *FakeStorageDefaultObjectAccessControls) UpdateStatus(ctx context.Context, storageDefaultObjectAccessControl *v1alpha1.StorageDefaultObjectAccessControl, opts v1.UpdateOptions) (*v1alpha1.StorageDefaultObjectAccessControl, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(storagedefaultobjectaccesscontrolsResource, "status", c.ns, storageDefaultObjectAccessControl), &v1alpha1.StorageDefaultObjectAccessControl{})
 
@@ -114,7 +116,7 @@ func (c *FakeStorageDefaultObjectAccessControls) UpdateStatus(storageDefaultObje
 }
 
 // Delete takes name of the storageDefaultObjectAccessControl and deletes it. Returns an error if one occurs.
-func (c *FakeStorageDefaultObjectAccessControls) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeStorageDefaultObjectAccessControls) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(storagedefaultobjectaccesscontrolsResource, c.ns, name), &v1alpha1.StorageDefaultObjectAccessControl{})
 
@@ -122,15 +124,15 @@ func (c *FakeStorageDefaultObjectAccessControls) Delete(name string, options *v1
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeStorageDefaultObjectAccessControls) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(storagedefaultobjectaccesscontrolsResource, c.ns, listOptions)
+func (c *FakeStorageDefaultObjectAccessControls) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(storagedefaultobjectaccesscontrolsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.StorageDefaultObjectAccessControlList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched storageDefaultObjectAccessControl.
-func (c *FakeStorageDefaultObjectAccessControls) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StorageDefaultObjectAccessControl, err error) {
+func (c *FakeStorageDefaultObjectAccessControls) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StorageDefaultObjectAccessControl, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(storagedefaultobjectaccesscontrolsResource, c.ns, name, pt, data, subresources...), &v1alpha1.StorageDefaultObjectAccessControl{})
 

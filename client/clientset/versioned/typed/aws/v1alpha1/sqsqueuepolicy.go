@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type SqsQueuePoliciesGetter interface {
 
 // SqsQueuePolicyInterface has methods to work with SqsQueuePolicy resources.
 type SqsQueuePolicyInterface interface {
-	Create(*v1alpha1.SqsQueuePolicy) (*v1alpha1.SqsQueuePolicy, error)
-	Update(*v1alpha1.SqsQueuePolicy) (*v1alpha1.SqsQueuePolicy, error)
-	UpdateStatus(*v1alpha1.SqsQueuePolicy) (*v1alpha1.SqsQueuePolicy, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SqsQueuePolicy, error)
-	List(opts v1.ListOptions) (*v1alpha1.SqsQueuePolicyList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SqsQueuePolicy, err error)
+	Create(ctx context.Context, sqsQueuePolicy *v1alpha1.SqsQueuePolicy, opts v1.CreateOptions) (*v1alpha1.SqsQueuePolicy, error)
+	Update(ctx context.Context, sqsQueuePolicy *v1alpha1.SqsQueuePolicy, opts v1.UpdateOptions) (*v1alpha1.SqsQueuePolicy, error)
+	UpdateStatus(ctx context.Context, sqsQueuePolicy *v1alpha1.SqsQueuePolicy, opts v1.UpdateOptions) (*v1alpha1.SqsQueuePolicy, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SqsQueuePolicy, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SqsQueuePolicyList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SqsQueuePolicy, err error)
 	SqsQueuePolicyExpansion
 }
 
@@ -65,20 +66,20 @@ func newSqsQueuePolicies(c *AwsV1alpha1Client, namespace string) *sqsQueuePolici
 }
 
 // Get takes name of the sqsQueuePolicy, and returns the corresponding sqsQueuePolicy object, and an error if there is any.
-func (c *sqsQueuePolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.SqsQueuePolicy, err error) {
+func (c *sqsQueuePolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SqsQueuePolicy, err error) {
 	result = &v1alpha1.SqsQueuePolicy{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("sqsqueuepolicies").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SqsQueuePolicies that match those selectors.
-func (c *sqsQueuePolicies) List(opts v1.ListOptions) (result *v1alpha1.SqsQueuePolicyList, err error) {
+func (c *sqsQueuePolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SqsQueuePolicyList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *sqsQueuePolicies) List(opts v1.ListOptions) (result *v1alpha1.SqsQueueP
 		Resource("sqsqueuepolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested sqsQueuePolicies.
-func (c *sqsQueuePolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *sqsQueuePolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *sqsQueuePolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("sqsqueuepolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a sqsQueuePolicy and creates it.  Returns the server's representation of the sqsQueuePolicy, and an error, if there is any.
-func (c *sqsQueuePolicies) Create(sqsQueuePolicy *v1alpha1.SqsQueuePolicy) (result *v1alpha1.SqsQueuePolicy, err error) {
+func (c *sqsQueuePolicies) Create(ctx context.Context, sqsQueuePolicy *v1alpha1.SqsQueuePolicy, opts v1.CreateOptions) (result *v1alpha1.SqsQueuePolicy, err error) {
 	result = &v1alpha1.SqsQueuePolicy{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("sqsqueuepolicies").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sqsQueuePolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a sqsQueuePolicy and updates it. Returns the server's representation of the sqsQueuePolicy, and an error, if there is any.
-func (c *sqsQueuePolicies) Update(sqsQueuePolicy *v1alpha1.SqsQueuePolicy) (result *v1alpha1.SqsQueuePolicy, err error) {
+func (c *sqsQueuePolicies) Update(ctx context.Context, sqsQueuePolicy *v1alpha1.SqsQueuePolicy, opts v1.UpdateOptions) (result *v1alpha1.SqsQueuePolicy, err error) {
 	result = &v1alpha1.SqsQueuePolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sqsqueuepolicies").
 		Name(sqsQueuePolicy.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sqsQueuePolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *sqsQueuePolicies) UpdateStatus(sqsQueuePolicy *v1alpha1.SqsQueuePolicy) (result *v1alpha1.SqsQueuePolicy, err error) {
+func (c *sqsQueuePolicies) UpdateStatus(ctx context.Context, sqsQueuePolicy *v1alpha1.SqsQueuePolicy, opts v1.UpdateOptions) (result *v1alpha1.SqsQueuePolicy, err error) {
 	result = &v1alpha1.SqsQueuePolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sqsqueuepolicies").
 		Name(sqsQueuePolicy.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sqsQueuePolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the sqsQueuePolicy and deletes it. Returns an error if one occurs.
-func (c *sqsQueuePolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *sqsQueuePolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sqsqueuepolicies").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *sqsQueuePolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *sqsQueuePolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sqsqueuepolicies").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched sqsQueuePolicy.
-func (c *sqsQueuePolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SqsQueuePolicy, err error) {
+func (c *sqsQueuePolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SqsQueuePolicy, err error) {
 	result = &v1alpha1.SqsQueuePolicy{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("sqsqueuepolicies").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

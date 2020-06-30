@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var monitoractiongroupsResource = schema.GroupVersionResource{Group: "azurerm.ku
 var monitoractiongroupsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "MonitorActionGroup"}
 
 // Get takes name of the monitorActionGroup, and returns the corresponding monitorActionGroup object, and an error if there is any.
-func (c *FakeMonitorActionGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.MonitorActionGroup, err error) {
+func (c *FakeMonitorActionGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.MonitorActionGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(monitoractiongroupsResource, c.ns, name), &v1alpha1.MonitorActionGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeMonitorActionGroups) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of MonitorActionGroups that match those selectors.
-func (c *FakeMonitorActionGroups) List(opts v1.ListOptions) (result *v1alpha1.MonitorActionGroupList, err error) {
+func (c *FakeMonitorActionGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.MonitorActionGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(monitoractiongroupsResource, monitoractiongroupsKind, c.ns, opts), &v1alpha1.MonitorActionGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeMonitorActionGroups) List(opts v1.ListOptions) (result *v1alpha1.Mo
 }
 
 // Watch returns a watch.Interface that watches the requested monitorActionGroups.
-func (c *FakeMonitorActionGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeMonitorActionGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(monitoractiongroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a monitorActionGroup and creates it.  Returns the server's representation of the monitorActionGroup, and an error, if there is any.
-func (c *FakeMonitorActionGroups) Create(monitorActionGroup *v1alpha1.MonitorActionGroup) (result *v1alpha1.MonitorActionGroup, err error) {
+func (c *FakeMonitorActionGroups) Create(ctx context.Context, monitorActionGroup *v1alpha1.MonitorActionGroup, opts v1.CreateOptions) (result *v1alpha1.MonitorActionGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(monitoractiongroupsResource, c.ns, monitorActionGroup), &v1alpha1.MonitorActionGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeMonitorActionGroups) Create(monitorActionGroup *v1alpha1.MonitorAct
 }
 
 // Update takes the representation of a monitorActionGroup and updates it. Returns the server's representation of the monitorActionGroup, and an error, if there is any.
-func (c *FakeMonitorActionGroups) Update(monitorActionGroup *v1alpha1.MonitorActionGroup) (result *v1alpha1.MonitorActionGroup, err error) {
+func (c *FakeMonitorActionGroups) Update(ctx context.Context, monitorActionGroup *v1alpha1.MonitorActionGroup, opts v1.UpdateOptions) (result *v1alpha1.MonitorActionGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(monitoractiongroupsResource, c.ns, monitorActionGroup), &v1alpha1.MonitorActionGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeMonitorActionGroups) Update(monitorActionGroup *v1alpha1.MonitorAct
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeMonitorActionGroups) UpdateStatus(monitorActionGroup *v1alpha1.MonitorActionGroup) (*v1alpha1.MonitorActionGroup, error) {
+func (c *FakeMonitorActionGroups) UpdateStatus(ctx context.Context, monitorActionGroup *v1alpha1.MonitorActionGroup, opts v1.UpdateOptions) (*v1alpha1.MonitorActionGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(monitoractiongroupsResource, "status", c.ns, monitorActionGroup), &v1alpha1.MonitorActionGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeMonitorActionGroups) UpdateStatus(monitorActionGroup *v1alpha1.Moni
 }
 
 // Delete takes name of the monitorActionGroup and deletes it. Returns an error if one occurs.
-func (c *FakeMonitorActionGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeMonitorActionGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(monitoractiongroupsResource, c.ns, name), &v1alpha1.MonitorActionGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeMonitorActionGroups) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeMonitorActionGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(monitoractiongroupsResource, c.ns, listOptions)
+func (c *FakeMonitorActionGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(monitoractiongroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.MonitorActionGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched monitorActionGroup.
-func (c *FakeMonitorActionGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MonitorActionGroup, err error) {
+func (c *FakeMonitorActionGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MonitorActionGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(monitoractiongroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.MonitorActionGroup{})
 

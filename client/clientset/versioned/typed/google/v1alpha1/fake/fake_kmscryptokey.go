@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var kmscryptokeysResource = schema.GroupVersionResource{Group: "google.kubeform.
 var kmscryptokeysKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "KmsCryptoKey"}
 
 // Get takes name of the kmsCryptoKey, and returns the corresponding kmsCryptoKey object, and an error if there is any.
-func (c *FakeKmsCryptoKeys) Get(name string, options v1.GetOptions) (result *v1alpha1.KmsCryptoKey, err error) {
+func (c *FakeKmsCryptoKeys) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KmsCryptoKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(kmscryptokeysResource, c.ns, name), &v1alpha1.KmsCryptoKey{})
 
@@ -51,7 +53,7 @@ func (c *FakeKmsCryptoKeys) Get(name string, options v1.GetOptions) (result *v1a
 }
 
 // List takes label and field selectors, and returns the list of KmsCryptoKeys that match those selectors.
-func (c *FakeKmsCryptoKeys) List(opts v1.ListOptions) (result *v1alpha1.KmsCryptoKeyList, err error) {
+func (c *FakeKmsCryptoKeys) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KmsCryptoKeyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(kmscryptokeysResource, kmscryptokeysKind, c.ns, opts), &v1alpha1.KmsCryptoKeyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeKmsCryptoKeys) List(opts v1.ListOptions) (result *v1alpha1.KmsCrypt
 }
 
 // Watch returns a watch.Interface that watches the requested kmsCryptoKeys.
-func (c *FakeKmsCryptoKeys) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeKmsCryptoKeys) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(kmscryptokeysResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a kmsCryptoKey and creates it.  Returns the server's representation of the kmsCryptoKey, and an error, if there is any.
-func (c *FakeKmsCryptoKeys) Create(kmsCryptoKey *v1alpha1.KmsCryptoKey) (result *v1alpha1.KmsCryptoKey, err error) {
+func (c *FakeKmsCryptoKeys) Create(ctx context.Context, kmsCryptoKey *v1alpha1.KmsCryptoKey, opts v1.CreateOptions) (result *v1alpha1.KmsCryptoKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(kmscryptokeysResource, c.ns, kmsCryptoKey), &v1alpha1.KmsCryptoKey{})
 
@@ -91,7 +93,7 @@ func (c *FakeKmsCryptoKeys) Create(kmsCryptoKey *v1alpha1.KmsCryptoKey) (result 
 }
 
 // Update takes the representation of a kmsCryptoKey and updates it. Returns the server's representation of the kmsCryptoKey, and an error, if there is any.
-func (c *FakeKmsCryptoKeys) Update(kmsCryptoKey *v1alpha1.KmsCryptoKey) (result *v1alpha1.KmsCryptoKey, err error) {
+func (c *FakeKmsCryptoKeys) Update(ctx context.Context, kmsCryptoKey *v1alpha1.KmsCryptoKey, opts v1.UpdateOptions) (result *v1alpha1.KmsCryptoKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(kmscryptokeysResource, c.ns, kmsCryptoKey), &v1alpha1.KmsCryptoKey{})
 
@@ -103,7 +105,7 @@ func (c *FakeKmsCryptoKeys) Update(kmsCryptoKey *v1alpha1.KmsCryptoKey) (result 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeKmsCryptoKeys) UpdateStatus(kmsCryptoKey *v1alpha1.KmsCryptoKey) (*v1alpha1.KmsCryptoKey, error) {
+func (c *FakeKmsCryptoKeys) UpdateStatus(ctx context.Context, kmsCryptoKey *v1alpha1.KmsCryptoKey, opts v1.UpdateOptions) (*v1alpha1.KmsCryptoKey, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(kmscryptokeysResource, "status", c.ns, kmsCryptoKey), &v1alpha1.KmsCryptoKey{})
 
@@ -114,7 +116,7 @@ func (c *FakeKmsCryptoKeys) UpdateStatus(kmsCryptoKey *v1alpha1.KmsCryptoKey) (*
 }
 
 // Delete takes name of the kmsCryptoKey and deletes it. Returns an error if one occurs.
-func (c *FakeKmsCryptoKeys) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeKmsCryptoKeys) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(kmscryptokeysResource, c.ns, name), &v1alpha1.KmsCryptoKey{})
 
@@ -122,15 +124,15 @@ func (c *FakeKmsCryptoKeys) Delete(name string, options *v1.DeleteOptions) error
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeKmsCryptoKeys) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(kmscryptokeysResource, c.ns, listOptions)
+func (c *FakeKmsCryptoKeys) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(kmscryptokeysResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.KmsCryptoKeyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched kmsCryptoKey.
-func (c *FakeKmsCryptoKeys) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KmsCryptoKey, err error) {
+func (c *FakeKmsCryptoKeys) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KmsCryptoKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(kmscryptokeysResource, c.ns, name, pt, data, subresources...), &v1alpha1.KmsCryptoKey{})
 

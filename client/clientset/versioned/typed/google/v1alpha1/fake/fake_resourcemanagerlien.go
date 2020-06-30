@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var resourcemanagerliensResource = schema.GroupVersionResource{Group: "google.ku
 var resourcemanagerliensKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ResourceManagerLien"}
 
 // Get takes name of the resourceManagerLien, and returns the corresponding resourceManagerLien object, and an error if there is any.
-func (c *FakeResourceManagerLiens) Get(name string, options v1.GetOptions) (result *v1alpha1.ResourceManagerLien, err error) {
+func (c *FakeResourceManagerLiens) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ResourceManagerLien, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(resourcemanagerliensResource, c.ns, name), &v1alpha1.ResourceManagerLien{})
 
@@ -51,7 +53,7 @@ func (c *FakeResourceManagerLiens) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of ResourceManagerLiens that match those selectors.
-func (c *FakeResourceManagerLiens) List(opts v1.ListOptions) (result *v1alpha1.ResourceManagerLienList, err error) {
+func (c *FakeResourceManagerLiens) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ResourceManagerLienList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(resourcemanagerliensResource, resourcemanagerliensKind, c.ns, opts), &v1alpha1.ResourceManagerLienList{})
 
@@ -73,14 +75,14 @@ func (c *FakeResourceManagerLiens) List(opts v1.ListOptions) (result *v1alpha1.R
 }
 
 // Watch returns a watch.Interface that watches the requested resourceManagerLiens.
-func (c *FakeResourceManagerLiens) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeResourceManagerLiens) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(resourcemanagerliensResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a resourceManagerLien and creates it.  Returns the server's representation of the resourceManagerLien, and an error, if there is any.
-func (c *FakeResourceManagerLiens) Create(resourceManagerLien *v1alpha1.ResourceManagerLien) (result *v1alpha1.ResourceManagerLien, err error) {
+func (c *FakeResourceManagerLiens) Create(ctx context.Context, resourceManagerLien *v1alpha1.ResourceManagerLien, opts v1.CreateOptions) (result *v1alpha1.ResourceManagerLien, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(resourcemanagerliensResource, c.ns, resourceManagerLien), &v1alpha1.ResourceManagerLien{})
 
@@ -91,7 +93,7 @@ func (c *FakeResourceManagerLiens) Create(resourceManagerLien *v1alpha1.Resource
 }
 
 // Update takes the representation of a resourceManagerLien and updates it. Returns the server's representation of the resourceManagerLien, and an error, if there is any.
-func (c *FakeResourceManagerLiens) Update(resourceManagerLien *v1alpha1.ResourceManagerLien) (result *v1alpha1.ResourceManagerLien, err error) {
+func (c *FakeResourceManagerLiens) Update(ctx context.Context, resourceManagerLien *v1alpha1.ResourceManagerLien, opts v1.UpdateOptions) (result *v1alpha1.ResourceManagerLien, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(resourcemanagerliensResource, c.ns, resourceManagerLien), &v1alpha1.ResourceManagerLien{})
 
@@ -103,7 +105,7 @@ func (c *FakeResourceManagerLiens) Update(resourceManagerLien *v1alpha1.Resource
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeResourceManagerLiens) UpdateStatus(resourceManagerLien *v1alpha1.ResourceManagerLien) (*v1alpha1.ResourceManagerLien, error) {
+func (c *FakeResourceManagerLiens) UpdateStatus(ctx context.Context, resourceManagerLien *v1alpha1.ResourceManagerLien, opts v1.UpdateOptions) (*v1alpha1.ResourceManagerLien, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(resourcemanagerliensResource, "status", c.ns, resourceManagerLien), &v1alpha1.ResourceManagerLien{})
 
@@ -114,7 +116,7 @@ func (c *FakeResourceManagerLiens) UpdateStatus(resourceManagerLien *v1alpha1.Re
 }
 
 // Delete takes name of the resourceManagerLien and deletes it. Returns an error if one occurs.
-func (c *FakeResourceManagerLiens) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeResourceManagerLiens) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(resourcemanagerliensResource, c.ns, name), &v1alpha1.ResourceManagerLien{})
 
@@ -122,15 +124,15 @@ func (c *FakeResourceManagerLiens) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeResourceManagerLiens) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(resourcemanagerliensResource, c.ns, listOptions)
+func (c *FakeResourceManagerLiens) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(resourcemanagerliensResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ResourceManagerLienList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched resourceManagerLien.
-func (c *FakeResourceManagerLiens) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ResourceManagerLien, err error) {
+func (c *FakeResourceManagerLiens) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ResourceManagerLien, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(resourcemanagerliensResource, c.ns, name, pt, data, subresources...), &v1alpha1.ResourceManagerLien{})
 

@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type RuntimeconfigConfigIamMembersGetter interface {
 
 // RuntimeconfigConfigIamMemberInterface has methods to work with RuntimeconfigConfigIamMember resources.
 type RuntimeconfigConfigIamMemberInterface interface {
-	Create(*v1alpha1.RuntimeconfigConfigIamMember) (*v1alpha1.RuntimeconfigConfigIamMember, error)
-	Update(*v1alpha1.RuntimeconfigConfigIamMember) (*v1alpha1.RuntimeconfigConfigIamMember, error)
-	UpdateStatus(*v1alpha1.RuntimeconfigConfigIamMember) (*v1alpha1.RuntimeconfigConfigIamMember, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.RuntimeconfigConfigIamMember, error)
-	List(opts v1.ListOptions) (*v1alpha1.RuntimeconfigConfigIamMemberList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RuntimeconfigConfigIamMember, err error)
+	Create(ctx context.Context, runtimeconfigConfigIamMember *v1alpha1.RuntimeconfigConfigIamMember, opts v1.CreateOptions) (*v1alpha1.RuntimeconfigConfigIamMember, error)
+	Update(ctx context.Context, runtimeconfigConfigIamMember *v1alpha1.RuntimeconfigConfigIamMember, opts v1.UpdateOptions) (*v1alpha1.RuntimeconfigConfigIamMember, error)
+	UpdateStatus(ctx context.Context, runtimeconfigConfigIamMember *v1alpha1.RuntimeconfigConfigIamMember, opts v1.UpdateOptions) (*v1alpha1.RuntimeconfigConfigIamMember, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.RuntimeconfigConfigIamMember, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.RuntimeconfigConfigIamMemberList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RuntimeconfigConfigIamMember, err error)
 	RuntimeconfigConfigIamMemberExpansion
 }
 
@@ -65,20 +66,20 @@ func newRuntimeconfigConfigIamMembers(c *GoogleV1alpha1Client, namespace string)
 }
 
 // Get takes name of the runtimeconfigConfigIamMember, and returns the corresponding runtimeconfigConfigIamMember object, and an error if there is any.
-func (c *runtimeconfigConfigIamMembers) Get(name string, options v1.GetOptions) (result *v1alpha1.RuntimeconfigConfigIamMember, err error) {
+func (c *runtimeconfigConfigIamMembers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.RuntimeconfigConfigIamMember, err error) {
 	result = &v1alpha1.RuntimeconfigConfigIamMember{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("runtimeconfigconfigiammembers").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of RuntimeconfigConfigIamMembers that match those selectors.
-func (c *runtimeconfigConfigIamMembers) List(opts v1.ListOptions) (result *v1alpha1.RuntimeconfigConfigIamMemberList, err error) {
+func (c *runtimeconfigConfigIamMembers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RuntimeconfigConfigIamMemberList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *runtimeconfigConfigIamMembers) List(opts v1.ListOptions) (result *v1alp
 		Resource("runtimeconfigconfigiammembers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested runtimeconfigConfigIamMembers.
-func (c *runtimeconfigConfigIamMembers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *runtimeconfigConfigIamMembers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *runtimeconfigConfigIamMembers) Watch(opts v1.ListOptions) (watch.Interf
 		Resource("runtimeconfigconfigiammembers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a runtimeconfigConfigIamMember and creates it.  Returns the server's representation of the runtimeconfigConfigIamMember, and an error, if there is any.
-func (c *runtimeconfigConfigIamMembers) Create(runtimeconfigConfigIamMember *v1alpha1.RuntimeconfigConfigIamMember) (result *v1alpha1.RuntimeconfigConfigIamMember, err error) {
+func (c *runtimeconfigConfigIamMembers) Create(ctx context.Context, runtimeconfigConfigIamMember *v1alpha1.RuntimeconfigConfigIamMember, opts v1.CreateOptions) (result *v1alpha1.RuntimeconfigConfigIamMember, err error) {
 	result = &v1alpha1.RuntimeconfigConfigIamMember{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("runtimeconfigconfigiammembers").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(runtimeconfigConfigIamMember).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a runtimeconfigConfigIamMember and updates it. Returns the server's representation of the runtimeconfigConfigIamMember, and an error, if there is any.
-func (c *runtimeconfigConfigIamMembers) Update(runtimeconfigConfigIamMember *v1alpha1.RuntimeconfigConfigIamMember) (result *v1alpha1.RuntimeconfigConfigIamMember, err error) {
+func (c *runtimeconfigConfigIamMembers) Update(ctx context.Context, runtimeconfigConfigIamMember *v1alpha1.RuntimeconfigConfigIamMember, opts v1.UpdateOptions) (result *v1alpha1.RuntimeconfigConfigIamMember, err error) {
 	result = &v1alpha1.RuntimeconfigConfigIamMember{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("runtimeconfigconfigiammembers").
 		Name(runtimeconfigConfigIamMember.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(runtimeconfigConfigIamMember).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *runtimeconfigConfigIamMembers) UpdateStatus(runtimeconfigConfigIamMember *v1alpha1.RuntimeconfigConfigIamMember) (result *v1alpha1.RuntimeconfigConfigIamMember, err error) {
+func (c *runtimeconfigConfigIamMembers) UpdateStatus(ctx context.Context, runtimeconfigConfigIamMember *v1alpha1.RuntimeconfigConfigIamMember, opts v1.UpdateOptions) (result *v1alpha1.RuntimeconfigConfigIamMember, err error) {
 	result = &v1alpha1.RuntimeconfigConfigIamMember{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("runtimeconfigconfigiammembers").
 		Name(runtimeconfigConfigIamMember.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(runtimeconfigConfigIamMember).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the runtimeconfigConfigIamMember and deletes it. Returns an error if one occurs.
-func (c *runtimeconfigConfigIamMembers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *runtimeconfigConfigIamMembers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("runtimeconfigconfigiammembers").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *runtimeconfigConfigIamMembers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *runtimeconfigConfigIamMembers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("runtimeconfigconfigiammembers").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched runtimeconfigConfigIamMember.
-func (c *runtimeconfigConfigIamMembers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RuntimeconfigConfigIamMember, err error) {
+func (c *runtimeconfigConfigIamMembers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RuntimeconfigConfigIamMember, err error) {
 	result = &v1alpha1.RuntimeconfigConfigIamMember{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("runtimeconfigconfigiammembers").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

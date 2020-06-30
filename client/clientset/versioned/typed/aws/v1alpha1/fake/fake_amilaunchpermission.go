@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var amilaunchpermissionsResource = schema.GroupVersionResource{Group: "aws.kubef
 var amilaunchpermissionsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "AmiLaunchPermission"}
 
 // Get takes name of the amiLaunchPermission, and returns the corresponding amiLaunchPermission object, and an error if there is any.
-func (c *FakeAmiLaunchPermissions) Get(name string, options v1.GetOptions) (result *v1alpha1.AmiLaunchPermission, err error) {
+func (c *FakeAmiLaunchPermissions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AmiLaunchPermission, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(amilaunchpermissionsResource, c.ns, name), &v1alpha1.AmiLaunchPermission{})
 
@@ -51,7 +53,7 @@ func (c *FakeAmiLaunchPermissions) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of AmiLaunchPermissions that match those selectors.
-func (c *FakeAmiLaunchPermissions) List(opts v1.ListOptions) (result *v1alpha1.AmiLaunchPermissionList, err error) {
+func (c *FakeAmiLaunchPermissions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AmiLaunchPermissionList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(amilaunchpermissionsResource, amilaunchpermissionsKind, c.ns, opts), &v1alpha1.AmiLaunchPermissionList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAmiLaunchPermissions) List(opts v1.ListOptions) (result *v1alpha1.A
 }
 
 // Watch returns a watch.Interface that watches the requested amiLaunchPermissions.
-func (c *FakeAmiLaunchPermissions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAmiLaunchPermissions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(amilaunchpermissionsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a amiLaunchPermission and creates it.  Returns the server's representation of the amiLaunchPermission, and an error, if there is any.
-func (c *FakeAmiLaunchPermissions) Create(amiLaunchPermission *v1alpha1.AmiLaunchPermission) (result *v1alpha1.AmiLaunchPermission, err error) {
+func (c *FakeAmiLaunchPermissions) Create(ctx context.Context, amiLaunchPermission *v1alpha1.AmiLaunchPermission, opts v1.CreateOptions) (result *v1alpha1.AmiLaunchPermission, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(amilaunchpermissionsResource, c.ns, amiLaunchPermission), &v1alpha1.AmiLaunchPermission{})
 
@@ -91,7 +93,7 @@ func (c *FakeAmiLaunchPermissions) Create(amiLaunchPermission *v1alpha1.AmiLaunc
 }
 
 // Update takes the representation of a amiLaunchPermission and updates it. Returns the server's representation of the amiLaunchPermission, and an error, if there is any.
-func (c *FakeAmiLaunchPermissions) Update(amiLaunchPermission *v1alpha1.AmiLaunchPermission) (result *v1alpha1.AmiLaunchPermission, err error) {
+func (c *FakeAmiLaunchPermissions) Update(ctx context.Context, amiLaunchPermission *v1alpha1.AmiLaunchPermission, opts v1.UpdateOptions) (result *v1alpha1.AmiLaunchPermission, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(amilaunchpermissionsResource, c.ns, amiLaunchPermission), &v1alpha1.AmiLaunchPermission{})
 
@@ -103,7 +105,7 @@ func (c *FakeAmiLaunchPermissions) Update(amiLaunchPermission *v1alpha1.AmiLaunc
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAmiLaunchPermissions) UpdateStatus(amiLaunchPermission *v1alpha1.AmiLaunchPermission) (*v1alpha1.AmiLaunchPermission, error) {
+func (c *FakeAmiLaunchPermissions) UpdateStatus(ctx context.Context, amiLaunchPermission *v1alpha1.AmiLaunchPermission, opts v1.UpdateOptions) (*v1alpha1.AmiLaunchPermission, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(amilaunchpermissionsResource, "status", c.ns, amiLaunchPermission), &v1alpha1.AmiLaunchPermission{})
 
@@ -114,7 +116,7 @@ func (c *FakeAmiLaunchPermissions) UpdateStatus(amiLaunchPermission *v1alpha1.Am
 }
 
 // Delete takes name of the amiLaunchPermission and deletes it. Returns an error if one occurs.
-func (c *FakeAmiLaunchPermissions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAmiLaunchPermissions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(amilaunchpermissionsResource, c.ns, name), &v1alpha1.AmiLaunchPermission{})
 
@@ -122,15 +124,15 @@ func (c *FakeAmiLaunchPermissions) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAmiLaunchPermissions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(amilaunchpermissionsResource, c.ns, listOptions)
+func (c *FakeAmiLaunchPermissions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(amilaunchpermissionsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AmiLaunchPermissionList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched amiLaunchPermission.
-func (c *FakeAmiLaunchPermissions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AmiLaunchPermission, err error) {
+func (c *FakeAmiLaunchPermissions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AmiLaunchPermission, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(amilaunchpermissionsResource, c.ns, name, pt, data, subresources...), &v1alpha1.AmiLaunchPermission{})
 

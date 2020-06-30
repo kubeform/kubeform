@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iapwebtypeappengineiammembersResource = schema.GroupVersionResource{Group: "
 var iapwebtypeappengineiammembersKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "IapWebTypeAppEngineIamMember"}
 
 // Get takes name of the iapWebTypeAppEngineIamMember, and returns the corresponding iapWebTypeAppEngineIamMember object, and an error if there is any.
-func (c *FakeIapWebTypeAppEngineIamMembers) Get(name string, options v1.GetOptions) (result *v1alpha1.IapWebTypeAppEngineIamMember, err error) {
+func (c *FakeIapWebTypeAppEngineIamMembers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IapWebTypeAppEngineIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iapwebtypeappengineiammembersResource, c.ns, name), &v1alpha1.IapWebTypeAppEngineIamMember{})
 
@@ -51,7 +53,7 @@ func (c *FakeIapWebTypeAppEngineIamMembers) Get(name string, options v1.GetOptio
 }
 
 // List takes label and field selectors, and returns the list of IapWebTypeAppEngineIamMembers that match those selectors.
-func (c *FakeIapWebTypeAppEngineIamMembers) List(opts v1.ListOptions) (result *v1alpha1.IapWebTypeAppEngineIamMemberList, err error) {
+func (c *FakeIapWebTypeAppEngineIamMembers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IapWebTypeAppEngineIamMemberList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iapwebtypeappengineiammembersResource, iapwebtypeappengineiammembersKind, c.ns, opts), &v1alpha1.IapWebTypeAppEngineIamMemberList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIapWebTypeAppEngineIamMembers) List(opts v1.ListOptions) (result *v
 }
 
 // Watch returns a watch.Interface that watches the requested iapWebTypeAppEngineIamMembers.
-func (c *FakeIapWebTypeAppEngineIamMembers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIapWebTypeAppEngineIamMembers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iapwebtypeappengineiammembersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iapWebTypeAppEngineIamMember and creates it.  Returns the server's representation of the iapWebTypeAppEngineIamMember, and an error, if there is any.
-func (c *FakeIapWebTypeAppEngineIamMembers) Create(iapWebTypeAppEngineIamMember *v1alpha1.IapWebTypeAppEngineIamMember) (result *v1alpha1.IapWebTypeAppEngineIamMember, err error) {
+func (c *FakeIapWebTypeAppEngineIamMembers) Create(ctx context.Context, iapWebTypeAppEngineIamMember *v1alpha1.IapWebTypeAppEngineIamMember, opts v1.CreateOptions) (result *v1alpha1.IapWebTypeAppEngineIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iapwebtypeappengineiammembersResource, c.ns, iapWebTypeAppEngineIamMember), &v1alpha1.IapWebTypeAppEngineIamMember{})
 
@@ -91,7 +93,7 @@ func (c *FakeIapWebTypeAppEngineIamMembers) Create(iapWebTypeAppEngineIamMember 
 }
 
 // Update takes the representation of a iapWebTypeAppEngineIamMember and updates it. Returns the server's representation of the iapWebTypeAppEngineIamMember, and an error, if there is any.
-func (c *FakeIapWebTypeAppEngineIamMembers) Update(iapWebTypeAppEngineIamMember *v1alpha1.IapWebTypeAppEngineIamMember) (result *v1alpha1.IapWebTypeAppEngineIamMember, err error) {
+func (c *FakeIapWebTypeAppEngineIamMembers) Update(ctx context.Context, iapWebTypeAppEngineIamMember *v1alpha1.IapWebTypeAppEngineIamMember, opts v1.UpdateOptions) (result *v1alpha1.IapWebTypeAppEngineIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iapwebtypeappengineiammembersResource, c.ns, iapWebTypeAppEngineIamMember), &v1alpha1.IapWebTypeAppEngineIamMember{})
 
@@ -103,7 +105,7 @@ func (c *FakeIapWebTypeAppEngineIamMembers) Update(iapWebTypeAppEngineIamMember 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIapWebTypeAppEngineIamMembers) UpdateStatus(iapWebTypeAppEngineIamMember *v1alpha1.IapWebTypeAppEngineIamMember) (*v1alpha1.IapWebTypeAppEngineIamMember, error) {
+func (c *FakeIapWebTypeAppEngineIamMembers) UpdateStatus(ctx context.Context, iapWebTypeAppEngineIamMember *v1alpha1.IapWebTypeAppEngineIamMember, opts v1.UpdateOptions) (*v1alpha1.IapWebTypeAppEngineIamMember, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iapwebtypeappengineiammembersResource, "status", c.ns, iapWebTypeAppEngineIamMember), &v1alpha1.IapWebTypeAppEngineIamMember{})
 
@@ -114,7 +116,7 @@ func (c *FakeIapWebTypeAppEngineIamMembers) UpdateStatus(iapWebTypeAppEngineIamM
 }
 
 // Delete takes name of the iapWebTypeAppEngineIamMember and deletes it. Returns an error if one occurs.
-func (c *FakeIapWebTypeAppEngineIamMembers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIapWebTypeAppEngineIamMembers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iapwebtypeappengineiammembersResource, c.ns, name), &v1alpha1.IapWebTypeAppEngineIamMember{})
 
@@ -122,15 +124,15 @@ func (c *FakeIapWebTypeAppEngineIamMembers) Delete(name string, options *v1.Dele
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIapWebTypeAppEngineIamMembers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iapwebtypeappengineiammembersResource, c.ns, listOptions)
+func (c *FakeIapWebTypeAppEngineIamMembers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iapwebtypeappengineiammembersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IapWebTypeAppEngineIamMemberList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iapWebTypeAppEngineIamMember.
-func (c *FakeIapWebTypeAppEngineIamMembers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IapWebTypeAppEngineIamMember, err error) {
+func (c *FakeIapWebTypeAppEngineIamMembers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IapWebTypeAppEngineIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iapwebtypeappengineiammembersResource, c.ns, name, pt, data, subresources...), &v1alpha1.IapWebTypeAppEngineIamMember{})
 

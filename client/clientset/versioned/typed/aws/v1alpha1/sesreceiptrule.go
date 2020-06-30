@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type SesReceiptRulesGetter interface {
 
 // SesReceiptRuleInterface has methods to work with SesReceiptRule resources.
 type SesReceiptRuleInterface interface {
-	Create(*v1alpha1.SesReceiptRule) (*v1alpha1.SesReceiptRule, error)
-	Update(*v1alpha1.SesReceiptRule) (*v1alpha1.SesReceiptRule, error)
-	UpdateStatus(*v1alpha1.SesReceiptRule) (*v1alpha1.SesReceiptRule, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SesReceiptRule, error)
-	List(opts v1.ListOptions) (*v1alpha1.SesReceiptRuleList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SesReceiptRule, err error)
+	Create(ctx context.Context, sesReceiptRule *v1alpha1.SesReceiptRule, opts v1.CreateOptions) (*v1alpha1.SesReceiptRule, error)
+	Update(ctx context.Context, sesReceiptRule *v1alpha1.SesReceiptRule, opts v1.UpdateOptions) (*v1alpha1.SesReceiptRule, error)
+	UpdateStatus(ctx context.Context, sesReceiptRule *v1alpha1.SesReceiptRule, opts v1.UpdateOptions) (*v1alpha1.SesReceiptRule, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SesReceiptRule, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SesReceiptRuleList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SesReceiptRule, err error)
 	SesReceiptRuleExpansion
 }
 
@@ -65,20 +66,20 @@ func newSesReceiptRules(c *AwsV1alpha1Client, namespace string) *sesReceiptRules
 }
 
 // Get takes name of the sesReceiptRule, and returns the corresponding sesReceiptRule object, and an error if there is any.
-func (c *sesReceiptRules) Get(name string, options v1.GetOptions) (result *v1alpha1.SesReceiptRule, err error) {
+func (c *sesReceiptRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SesReceiptRule, err error) {
 	result = &v1alpha1.SesReceiptRule{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("sesreceiptrules").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SesReceiptRules that match those selectors.
-func (c *sesReceiptRules) List(opts v1.ListOptions) (result *v1alpha1.SesReceiptRuleList, err error) {
+func (c *sesReceiptRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SesReceiptRuleList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *sesReceiptRules) List(opts v1.ListOptions) (result *v1alpha1.SesReceipt
 		Resource("sesreceiptrules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested sesReceiptRules.
-func (c *sesReceiptRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *sesReceiptRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *sesReceiptRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("sesreceiptrules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a sesReceiptRule and creates it.  Returns the server's representation of the sesReceiptRule, and an error, if there is any.
-func (c *sesReceiptRules) Create(sesReceiptRule *v1alpha1.SesReceiptRule) (result *v1alpha1.SesReceiptRule, err error) {
+func (c *sesReceiptRules) Create(ctx context.Context, sesReceiptRule *v1alpha1.SesReceiptRule, opts v1.CreateOptions) (result *v1alpha1.SesReceiptRule, err error) {
 	result = &v1alpha1.SesReceiptRule{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("sesreceiptrules").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sesReceiptRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a sesReceiptRule and updates it. Returns the server's representation of the sesReceiptRule, and an error, if there is any.
-func (c *sesReceiptRules) Update(sesReceiptRule *v1alpha1.SesReceiptRule) (result *v1alpha1.SesReceiptRule, err error) {
+func (c *sesReceiptRules) Update(ctx context.Context, sesReceiptRule *v1alpha1.SesReceiptRule, opts v1.UpdateOptions) (result *v1alpha1.SesReceiptRule, err error) {
 	result = &v1alpha1.SesReceiptRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sesreceiptrules").
 		Name(sesReceiptRule.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sesReceiptRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *sesReceiptRules) UpdateStatus(sesReceiptRule *v1alpha1.SesReceiptRule) (result *v1alpha1.SesReceiptRule, err error) {
+func (c *sesReceiptRules) UpdateStatus(ctx context.Context, sesReceiptRule *v1alpha1.SesReceiptRule, opts v1.UpdateOptions) (result *v1alpha1.SesReceiptRule, err error) {
 	result = &v1alpha1.SesReceiptRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sesreceiptrules").
 		Name(sesReceiptRule.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sesReceiptRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the sesReceiptRule and deletes it. Returns an error if one occurs.
-func (c *sesReceiptRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *sesReceiptRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sesreceiptrules").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *sesReceiptRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *sesReceiptRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sesreceiptrules").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched sesReceiptRule.
-func (c *sesReceiptRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SesReceiptRule, err error) {
+func (c *sesReceiptRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SesReceiptRule, err error) {
 	result = &v1alpha1.SesReceiptRule{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("sesreceiptrules").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

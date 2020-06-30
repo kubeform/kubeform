@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var sourcereporepositoriesResource = schema.GroupVersionResource{Group: "google.
 var sourcereporepositoriesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "SourcerepoRepository"}
 
 // Get takes name of the sourcerepoRepository, and returns the corresponding sourcerepoRepository object, and an error if there is any.
-func (c *FakeSourcerepoRepositories) Get(name string, options v1.GetOptions) (result *v1alpha1.SourcerepoRepository, err error) {
+func (c *FakeSourcerepoRepositories) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SourcerepoRepository, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(sourcereporepositoriesResource, c.ns, name), &v1alpha1.SourcerepoRepository{})
 
@@ -51,7 +53,7 @@ func (c *FakeSourcerepoRepositories) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of SourcerepoRepositories that match those selectors.
-func (c *FakeSourcerepoRepositories) List(opts v1.ListOptions) (result *v1alpha1.SourcerepoRepositoryList, err error) {
+func (c *FakeSourcerepoRepositories) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SourcerepoRepositoryList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(sourcereporepositoriesResource, sourcereporepositoriesKind, c.ns, opts), &v1alpha1.SourcerepoRepositoryList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSourcerepoRepositories) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested sourcerepoRepositories.
-func (c *FakeSourcerepoRepositories) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSourcerepoRepositories) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(sourcereporepositoriesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a sourcerepoRepository and creates it.  Returns the server's representation of the sourcerepoRepository, and an error, if there is any.
-func (c *FakeSourcerepoRepositories) Create(sourcerepoRepository *v1alpha1.SourcerepoRepository) (result *v1alpha1.SourcerepoRepository, err error) {
+func (c *FakeSourcerepoRepositories) Create(ctx context.Context, sourcerepoRepository *v1alpha1.SourcerepoRepository, opts v1.CreateOptions) (result *v1alpha1.SourcerepoRepository, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(sourcereporepositoriesResource, c.ns, sourcerepoRepository), &v1alpha1.SourcerepoRepository{})
 
@@ -91,7 +93,7 @@ func (c *FakeSourcerepoRepositories) Create(sourcerepoRepository *v1alpha1.Sourc
 }
 
 // Update takes the representation of a sourcerepoRepository and updates it. Returns the server's representation of the sourcerepoRepository, and an error, if there is any.
-func (c *FakeSourcerepoRepositories) Update(sourcerepoRepository *v1alpha1.SourcerepoRepository) (result *v1alpha1.SourcerepoRepository, err error) {
+func (c *FakeSourcerepoRepositories) Update(ctx context.Context, sourcerepoRepository *v1alpha1.SourcerepoRepository, opts v1.UpdateOptions) (result *v1alpha1.SourcerepoRepository, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(sourcereporepositoriesResource, c.ns, sourcerepoRepository), &v1alpha1.SourcerepoRepository{})
 
@@ -103,7 +105,7 @@ func (c *FakeSourcerepoRepositories) Update(sourcerepoRepository *v1alpha1.Sourc
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSourcerepoRepositories) UpdateStatus(sourcerepoRepository *v1alpha1.SourcerepoRepository) (*v1alpha1.SourcerepoRepository, error) {
+func (c *FakeSourcerepoRepositories) UpdateStatus(ctx context.Context, sourcerepoRepository *v1alpha1.SourcerepoRepository, opts v1.UpdateOptions) (*v1alpha1.SourcerepoRepository, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(sourcereporepositoriesResource, "status", c.ns, sourcerepoRepository), &v1alpha1.SourcerepoRepository{})
 
@@ -114,7 +116,7 @@ func (c *FakeSourcerepoRepositories) UpdateStatus(sourcerepoRepository *v1alpha1
 }
 
 // Delete takes name of the sourcerepoRepository and deletes it. Returns an error if one occurs.
-func (c *FakeSourcerepoRepositories) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSourcerepoRepositories) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(sourcereporepositoriesResource, c.ns, name), &v1alpha1.SourcerepoRepository{})
 
@@ -122,15 +124,15 @@ func (c *FakeSourcerepoRepositories) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSourcerepoRepositories) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(sourcereporepositoriesResource, c.ns, listOptions)
+func (c *FakeSourcerepoRepositories) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(sourcereporepositoriesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SourcerepoRepositoryList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched sourcerepoRepository.
-func (c *FakeSourcerepoRepositories) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SourcerepoRepository, err error) {
+func (c *FakeSourcerepoRepositories) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SourcerepoRepository, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(sourcereporepositoriesResource, c.ns, name, pt, data, subresources...), &v1alpha1.SourcerepoRepository{})
 

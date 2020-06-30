@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type DatapipelinePipelinesGetter interface {
 
 // DatapipelinePipelineInterface has methods to work with DatapipelinePipeline resources.
 type DatapipelinePipelineInterface interface {
-	Create(*v1alpha1.DatapipelinePipeline) (*v1alpha1.DatapipelinePipeline, error)
-	Update(*v1alpha1.DatapipelinePipeline) (*v1alpha1.DatapipelinePipeline, error)
-	UpdateStatus(*v1alpha1.DatapipelinePipeline) (*v1alpha1.DatapipelinePipeline, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.DatapipelinePipeline, error)
-	List(opts v1.ListOptions) (*v1alpha1.DatapipelinePipelineList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DatapipelinePipeline, err error)
+	Create(ctx context.Context, datapipelinePipeline *v1alpha1.DatapipelinePipeline, opts v1.CreateOptions) (*v1alpha1.DatapipelinePipeline, error)
+	Update(ctx context.Context, datapipelinePipeline *v1alpha1.DatapipelinePipeline, opts v1.UpdateOptions) (*v1alpha1.DatapipelinePipeline, error)
+	UpdateStatus(ctx context.Context, datapipelinePipeline *v1alpha1.DatapipelinePipeline, opts v1.UpdateOptions) (*v1alpha1.DatapipelinePipeline, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.DatapipelinePipeline, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.DatapipelinePipelineList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DatapipelinePipeline, err error)
 	DatapipelinePipelineExpansion
 }
 
@@ -65,20 +66,20 @@ func newDatapipelinePipelines(c *AwsV1alpha1Client, namespace string) *datapipel
 }
 
 // Get takes name of the datapipelinePipeline, and returns the corresponding datapipelinePipeline object, and an error if there is any.
-func (c *datapipelinePipelines) Get(name string, options v1.GetOptions) (result *v1alpha1.DatapipelinePipeline, err error) {
+func (c *datapipelinePipelines) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DatapipelinePipeline, err error) {
 	result = &v1alpha1.DatapipelinePipeline{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("datapipelinepipelines").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of DatapipelinePipelines that match those selectors.
-func (c *datapipelinePipelines) List(opts v1.ListOptions) (result *v1alpha1.DatapipelinePipelineList, err error) {
+func (c *datapipelinePipelines) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DatapipelinePipelineList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *datapipelinePipelines) List(opts v1.ListOptions) (result *v1alpha1.Data
 		Resource("datapipelinepipelines").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested datapipelinePipelines.
-func (c *datapipelinePipelines) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *datapipelinePipelines) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *datapipelinePipelines) Watch(opts v1.ListOptions) (watch.Interface, err
 		Resource("datapipelinepipelines").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a datapipelinePipeline and creates it.  Returns the server's representation of the datapipelinePipeline, and an error, if there is any.
-func (c *datapipelinePipelines) Create(datapipelinePipeline *v1alpha1.DatapipelinePipeline) (result *v1alpha1.DatapipelinePipeline, err error) {
+func (c *datapipelinePipelines) Create(ctx context.Context, datapipelinePipeline *v1alpha1.DatapipelinePipeline, opts v1.CreateOptions) (result *v1alpha1.DatapipelinePipeline, err error) {
 	result = &v1alpha1.DatapipelinePipeline{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("datapipelinepipelines").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(datapipelinePipeline).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a datapipelinePipeline and updates it. Returns the server's representation of the datapipelinePipeline, and an error, if there is any.
-func (c *datapipelinePipelines) Update(datapipelinePipeline *v1alpha1.DatapipelinePipeline) (result *v1alpha1.DatapipelinePipeline, err error) {
+func (c *datapipelinePipelines) Update(ctx context.Context, datapipelinePipeline *v1alpha1.DatapipelinePipeline, opts v1.UpdateOptions) (result *v1alpha1.DatapipelinePipeline, err error) {
 	result = &v1alpha1.DatapipelinePipeline{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("datapipelinepipelines").
 		Name(datapipelinePipeline.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(datapipelinePipeline).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *datapipelinePipelines) UpdateStatus(datapipelinePipeline *v1alpha1.DatapipelinePipeline) (result *v1alpha1.DatapipelinePipeline, err error) {
+func (c *datapipelinePipelines) UpdateStatus(ctx context.Context, datapipelinePipeline *v1alpha1.DatapipelinePipeline, opts v1.UpdateOptions) (result *v1alpha1.DatapipelinePipeline, err error) {
 	result = &v1alpha1.DatapipelinePipeline{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("datapipelinepipelines").
 		Name(datapipelinePipeline.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(datapipelinePipeline).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the datapipelinePipeline and deletes it. Returns an error if one occurs.
-func (c *datapipelinePipelines) Delete(name string, options *v1.DeleteOptions) error {
+func (c *datapipelinePipelines) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("datapipelinepipelines").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *datapipelinePipelines) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *datapipelinePipelines) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("datapipelinepipelines").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched datapipelinePipeline.
-func (c *datapipelinePipelines) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DatapipelinePipeline, err error) {
+func (c *datapipelinePipelines) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DatapipelinePipeline, err error) {
 	result = &v1alpha1.DatapipelinePipeline{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("datapipelinepipelines").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

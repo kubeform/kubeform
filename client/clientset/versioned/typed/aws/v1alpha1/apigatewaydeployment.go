@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type ApiGatewayDeploymentsGetter interface {
 
 // ApiGatewayDeploymentInterface has methods to work with ApiGatewayDeployment resources.
 type ApiGatewayDeploymentInterface interface {
-	Create(*v1alpha1.ApiGatewayDeployment) (*v1alpha1.ApiGatewayDeployment, error)
-	Update(*v1alpha1.ApiGatewayDeployment) (*v1alpha1.ApiGatewayDeployment, error)
-	UpdateStatus(*v1alpha1.ApiGatewayDeployment) (*v1alpha1.ApiGatewayDeployment, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ApiGatewayDeployment, error)
-	List(opts v1.ListOptions) (*v1alpha1.ApiGatewayDeploymentList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiGatewayDeployment, err error)
+	Create(ctx context.Context, apiGatewayDeployment *v1alpha1.ApiGatewayDeployment, opts v1.CreateOptions) (*v1alpha1.ApiGatewayDeployment, error)
+	Update(ctx context.Context, apiGatewayDeployment *v1alpha1.ApiGatewayDeployment, opts v1.UpdateOptions) (*v1alpha1.ApiGatewayDeployment, error)
+	UpdateStatus(ctx context.Context, apiGatewayDeployment *v1alpha1.ApiGatewayDeployment, opts v1.UpdateOptions) (*v1alpha1.ApiGatewayDeployment, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ApiGatewayDeployment, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ApiGatewayDeploymentList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiGatewayDeployment, err error)
 	ApiGatewayDeploymentExpansion
 }
 
@@ -65,20 +66,20 @@ func newApiGatewayDeployments(c *AwsV1alpha1Client, namespace string) *apiGatewa
 }
 
 // Get takes name of the apiGatewayDeployment, and returns the corresponding apiGatewayDeployment object, and an error if there is any.
-func (c *apiGatewayDeployments) Get(name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayDeployment, err error) {
+func (c *apiGatewayDeployments) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayDeployment, err error) {
 	result = &v1alpha1.ApiGatewayDeployment{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("apigatewaydeployments").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ApiGatewayDeployments that match those selectors.
-func (c *apiGatewayDeployments) List(opts v1.ListOptions) (result *v1alpha1.ApiGatewayDeploymentList, err error) {
+func (c *apiGatewayDeployments) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApiGatewayDeploymentList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *apiGatewayDeployments) List(opts v1.ListOptions) (result *v1alpha1.ApiG
 		Resource("apigatewaydeployments").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested apiGatewayDeployments.
-func (c *apiGatewayDeployments) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *apiGatewayDeployments) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *apiGatewayDeployments) Watch(opts v1.ListOptions) (watch.Interface, err
 		Resource("apigatewaydeployments").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a apiGatewayDeployment and creates it.  Returns the server's representation of the apiGatewayDeployment, and an error, if there is any.
-func (c *apiGatewayDeployments) Create(apiGatewayDeployment *v1alpha1.ApiGatewayDeployment) (result *v1alpha1.ApiGatewayDeployment, err error) {
+func (c *apiGatewayDeployments) Create(ctx context.Context, apiGatewayDeployment *v1alpha1.ApiGatewayDeployment, opts v1.CreateOptions) (result *v1alpha1.ApiGatewayDeployment, err error) {
 	result = &v1alpha1.ApiGatewayDeployment{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("apigatewaydeployments").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(apiGatewayDeployment).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a apiGatewayDeployment and updates it. Returns the server's representation of the apiGatewayDeployment, and an error, if there is any.
-func (c *apiGatewayDeployments) Update(apiGatewayDeployment *v1alpha1.ApiGatewayDeployment) (result *v1alpha1.ApiGatewayDeployment, err error) {
+func (c *apiGatewayDeployments) Update(ctx context.Context, apiGatewayDeployment *v1alpha1.ApiGatewayDeployment, opts v1.UpdateOptions) (result *v1alpha1.ApiGatewayDeployment, err error) {
 	result = &v1alpha1.ApiGatewayDeployment{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("apigatewaydeployments").
 		Name(apiGatewayDeployment.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(apiGatewayDeployment).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *apiGatewayDeployments) UpdateStatus(apiGatewayDeployment *v1alpha1.ApiGatewayDeployment) (result *v1alpha1.ApiGatewayDeployment, err error) {
+func (c *apiGatewayDeployments) UpdateStatus(ctx context.Context, apiGatewayDeployment *v1alpha1.ApiGatewayDeployment, opts v1.UpdateOptions) (result *v1alpha1.ApiGatewayDeployment, err error) {
 	result = &v1alpha1.ApiGatewayDeployment{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("apigatewaydeployments").
 		Name(apiGatewayDeployment.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(apiGatewayDeployment).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the apiGatewayDeployment and deletes it. Returns an error if one occurs.
-func (c *apiGatewayDeployments) Delete(name string, options *v1.DeleteOptions) error {
+func (c *apiGatewayDeployments) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("apigatewaydeployments").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *apiGatewayDeployments) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *apiGatewayDeployments) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("apigatewaydeployments").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched apiGatewayDeployment.
-func (c *apiGatewayDeployments) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiGatewayDeployment, err error) {
+func (c *apiGatewayDeployments) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiGatewayDeployment, err error) {
 	result = &v1alpha1.ApiGatewayDeployment{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("apigatewaydeployments").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

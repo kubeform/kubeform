@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var directoryserviceconditionalforwardersResource = schema.GroupVersionResource{
 var directoryserviceconditionalforwardersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DirectoryServiceConditionalForwarder"}
 
 // Get takes name of the directoryServiceConditionalForwarder, and returns the corresponding directoryServiceConditionalForwarder object, and an error if there is any.
-func (c *FakeDirectoryServiceConditionalForwarders) Get(name string, options v1.GetOptions) (result *v1alpha1.DirectoryServiceConditionalForwarder, err error) {
+func (c *FakeDirectoryServiceConditionalForwarders) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DirectoryServiceConditionalForwarder, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(directoryserviceconditionalforwardersResource, c.ns, name), &v1alpha1.DirectoryServiceConditionalForwarder{})
 
@@ -51,7 +53,7 @@ func (c *FakeDirectoryServiceConditionalForwarders) Get(name string, options v1.
 }
 
 // List takes label and field selectors, and returns the list of DirectoryServiceConditionalForwarders that match those selectors.
-func (c *FakeDirectoryServiceConditionalForwarders) List(opts v1.ListOptions) (result *v1alpha1.DirectoryServiceConditionalForwarderList, err error) {
+func (c *FakeDirectoryServiceConditionalForwarders) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DirectoryServiceConditionalForwarderList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(directoryserviceconditionalforwardersResource, directoryserviceconditionalforwardersKind, c.ns, opts), &v1alpha1.DirectoryServiceConditionalForwarderList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDirectoryServiceConditionalForwarders) List(opts v1.ListOptions) (r
 }
 
 // Watch returns a watch.Interface that watches the requested directoryServiceConditionalForwarders.
-func (c *FakeDirectoryServiceConditionalForwarders) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDirectoryServiceConditionalForwarders) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(directoryserviceconditionalforwardersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a directoryServiceConditionalForwarder and creates it.  Returns the server's representation of the directoryServiceConditionalForwarder, and an error, if there is any.
-func (c *FakeDirectoryServiceConditionalForwarders) Create(directoryServiceConditionalForwarder *v1alpha1.DirectoryServiceConditionalForwarder) (result *v1alpha1.DirectoryServiceConditionalForwarder, err error) {
+func (c *FakeDirectoryServiceConditionalForwarders) Create(ctx context.Context, directoryServiceConditionalForwarder *v1alpha1.DirectoryServiceConditionalForwarder, opts v1.CreateOptions) (result *v1alpha1.DirectoryServiceConditionalForwarder, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(directoryserviceconditionalforwardersResource, c.ns, directoryServiceConditionalForwarder), &v1alpha1.DirectoryServiceConditionalForwarder{})
 
@@ -91,7 +93,7 @@ func (c *FakeDirectoryServiceConditionalForwarders) Create(directoryServiceCondi
 }
 
 // Update takes the representation of a directoryServiceConditionalForwarder and updates it. Returns the server's representation of the directoryServiceConditionalForwarder, and an error, if there is any.
-func (c *FakeDirectoryServiceConditionalForwarders) Update(directoryServiceConditionalForwarder *v1alpha1.DirectoryServiceConditionalForwarder) (result *v1alpha1.DirectoryServiceConditionalForwarder, err error) {
+func (c *FakeDirectoryServiceConditionalForwarders) Update(ctx context.Context, directoryServiceConditionalForwarder *v1alpha1.DirectoryServiceConditionalForwarder, opts v1.UpdateOptions) (result *v1alpha1.DirectoryServiceConditionalForwarder, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(directoryserviceconditionalforwardersResource, c.ns, directoryServiceConditionalForwarder), &v1alpha1.DirectoryServiceConditionalForwarder{})
 
@@ -103,7 +105,7 @@ func (c *FakeDirectoryServiceConditionalForwarders) Update(directoryServiceCondi
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDirectoryServiceConditionalForwarders) UpdateStatus(directoryServiceConditionalForwarder *v1alpha1.DirectoryServiceConditionalForwarder) (*v1alpha1.DirectoryServiceConditionalForwarder, error) {
+func (c *FakeDirectoryServiceConditionalForwarders) UpdateStatus(ctx context.Context, directoryServiceConditionalForwarder *v1alpha1.DirectoryServiceConditionalForwarder, opts v1.UpdateOptions) (*v1alpha1.DirectoryServiceConditionalForwarder, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(directoryserviceconditionalforwardersResource, "status", c.ns, directoryServiceConditionalForwarder), &v1alpha1.DirectoryServiceConditionalForwarder{})
 
@@ -114,7 +116,7 @@ func (c *FakeDirectoryServiceConditionalForwarders) UpdateStatus(directoryServic
 }
 
 // Delete takes name of the directoryServiceConditionalForwarder and deletes it. Returns an error if one occurs.
-func (c *FakeDirectoryServiceConditionalForwarders) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDirectoryServiceConditionalForwarders) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(directoryserviceconditionalforwardersResource, c.ns, name), &v1alpha1.DirectoryServiceConditionalForwarder{})
 
@@ -122,15 +124,15 @@ func (c *FakeDirectoryServiceConditionalForwarders) Delete(name string, options 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDirectoryServiceConditionalForwarders) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(directoryserviceconditionalforwardersResource, c.ns, listOptions)
+func (c *FakeDirectoryServiceConditionalForwarders) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(directoryserviceconditionalforwardersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DirectoryServiceConditionalForwarderList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched directoryServiceConditionalForwarder.
-func (c *FakeDirectoryServiceConditionalForwarders) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DirectoryServiceConditionalForwarder, err error) {
+func (c *FakeDirectoryServiceConditionalForwarders) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DirectoryServiceConditionalForwarder, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(directoryserviceconditionalforwardersResource, c.ns, name, pt, data, subresources...), &v1alpha1.DirectoryServiceConditionalForwarder{})
 

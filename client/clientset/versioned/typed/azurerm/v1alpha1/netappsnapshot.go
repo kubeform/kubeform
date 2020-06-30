@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type NetappSnapshotsGetter interface {
 
 // NetappSnapshotInterface has methods to work with NetappSnapshot resources.
 type NetappSnapshotInterface interface {
-	Create(*v1alpha1.NetappSnapshot) (*v1alpha1.NetappSnapshot, error)
-	Update(*v1alpha1.NetappSnapshot) (*v1alpha1.NetappSnapshot, error)
-	UpdateStatus(*v1alpha1.NetappSnapshot) (*v1alpha1.NetappSnapshot, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.NetappSnapshot, error)
-	List(opts v1.ListOptions) (*v1alpha1.NetappSnapshotList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.NetappSnapshot, err error)
+	Create(ctx context.Context, netappSnapshot *v1alpha1.NetappSnapshot, opts v1.CreateOptions) (*v1alpha1.NetappSnapshot, error)
+	Update(ctx context.Context, netappSnapshot *v1alpha1.NetappSnapshot, opts v1.UpdateOptions) (*v1alpha1.NetappSnapshot, error)
+	UpdateStatus(ctx context.Context, netappSnapshot *v1alpha1.NetappSnapshot, opts v1.UpdateOptions) (*v1alpha1.NetappSnapshot, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.NetappSnapshot, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.NetappSnapshotList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.NetappSnapshot, err error)
 	NetappSnapshotExpansion
 }
 
@@ -65,20 +66,20 @@ func newNetappSnapshots(c *AzurermV1alpha1Client, namespace string) *netappSnaps
 }
 
 // Get takes name of the netappSnapshot, and returns the corresponding netappSnapshot object, and an error if there is any.
-func (c *netappSnapshots) Get(name string, options v1.GetOptions) (result *v1alpha1.NetappSnapshot, err error) {
+func (c *netappSnapshots) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.NetappSnapshot, err error) {
 	result = &v1alpha1.NetappSnapshot{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("netappsnapshots").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of NetappSnapshots that match those selectors.
-func (c *netappSnapshots) List(opts v1.ListOptions) (result *v1alpha1.NetappSnapshotList, err error) {
+func (c *netappSnapshots) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.NetappSnapshotList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *netappSnapshots) List(opts v1.ListOptions) (result *v1alpha1.NetappSnap
 		Resource("netappsnapshots").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested netappSnapshots.
-func (c *netappSnapshots) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *netappSnapshots) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *netappSnapshots) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("netappsnapshots").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a netappSnapshot and creates it.  Returns the server's representation of the netappSnapshot, and an error, if there is any.
-func (c *netappSnapshots) Create(netappSnapshot *v1alpha1.NetappSnapshot) (result *v1alpha1.NetappSnapshot, err error) {
+func (c *netappSnapshots) Create(ctx context.Context, netappSnapshot *v1alpha1.NetappSnapshot, opts v1.CreateOptions) (result *v1alpha1.NetappSnapshot, err error) {
 	result = &v1alpha1.NetappSnapshot{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("netappsnapshots").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(netappSnapshot).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a netappSnapshot and updates it. Returns the server's representation of the netappSnapshot, and an error, if there is any.
-func (c *netappSnapshots) Update(netappSnapshot *v1alpha1.NetappSnapshot) (result *v1alpha1.NetappSnapshot, err error) {
+func (c *netappSnapshots) Update(ctx context.Context, netappSnapshot *v1alpha1.NetappSnapshot, opts v1.UpdateOptions) (result *v1alpha1.NetappSnapshot, err error) {
 	result = &v1alpha1.NetappSnapshot{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("netappsnapshots").
 		Name(netappSnapshot.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(netappSnapshot).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *netappSnapshots) UpdateStatus(netappSnapshot *v1alpha1.NetappSnapshot) (result *v1alpha1.NetappSnapshot, err error) {
+func (c *netappSnapshots) UpdateStatus(ctx context.Context, netappSnapshot *v1alpha1.NetappSnapshot, opts v1.UpdateOptions) (result *v1alpha1.NetappSnapshot, err error) {
 	result = &v1alpha1.NetappSnapshot{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("netappsnapshots").
 		Name(netappSnapshot.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(netappSnapshot).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the netappSnapshot and deletes it. Returns an error if one occurs.
-func (c *netappSnapshots) Delete(name string, options *v1.DeleteOptions) error {
+func (c *netappSnapshots) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("netappsnapshots").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *netappSnapshots) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *netappSnapshots) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("netappsnapshots").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched netappSnapshot.
-func (c *netappSnapshots) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.NetappSnapshot, err error) {
+func (c *netappSnapshots) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.NetappSnapshot, err error) {
 	result = &v1alpha1.NetappSnapshot{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("netappsnapshots").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

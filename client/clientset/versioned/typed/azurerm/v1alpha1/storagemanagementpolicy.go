@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type StorageManagementPoliciesGetter interface {
 
 // StorageManagementPolicyInterface has methods to work with StorageManagementPolicy resources.
 type StorageManagementPolicyInterface interface {
-	Create(*v1alpha1.StorageManagementPolicy) (*v1alpha1.StorageManagementPolicy, error)
-	Update(*v1alpha1.StorageManagementPolicy) (*v1alpha1.StorageManagementPolicy, error)
-	UpdateStatus(*v1alpha1.StorageManagementPolicy) (*v1alpha1.StorageManagementPolicy, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.StorageManagementPolicy, error)
-	List(opts v1.ListOptions) (*v1alpha1.StorageManagementPolicyList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StorageManagementPolicy, err error)
+	Create(ctx context.Context, storageManagementPolicy *v1alpha1.StorageManagementPolicy, opts v1.CreateOptions) (*v1alpha1.StorageManagementPolicy, error)
+	Update(ctx context.Context, storageManagementPolicy *v1alpha1.StorageManagementPolicy, opts v1.UpdateOptions) (*v1alpha1.StorageManagementPolicy, error)
+	UpdateStatus(ctx context.Context, storageManagementPolicy *v1alpha1.StorageManagementPolicy, opts v1.UpdateOptions) (*v1alpha1.StorageManagementPolicy, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.StorageManagementPolicy, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.StorageManagementPolicyList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StorageManagementPolicy, err error)
 	StorageManagementPolicyExpansion
 }
 
@@ -65,20 +66,20 @@ func newStorageManagementPolicies(c *AzurermV1alpha1Client, namespace string) *s
 }
 
 // Get takes name of the storageManagementPolicy, and returns the corresponding storageManagementPolicy object, and an error if there is any.
-func (c *storageManagementPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.StorageManagementPolicy, err error) {
+func (c *storageManagementPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.StorageManagementPolicy, err error) {
 	result = &v1alpha1.StorageManagementPolicy{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("storagemanagementpolicies").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of StorageManagementPolicies that match those selectors.
-func (c *storageManagementPolicies) List(opts v1.ListOptions) (result *v1alpha1.StorageManagementPolicyList, err error) {
+func (c *storageManagementPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.StorageManagementPolicyList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *storageManagementPolicies) List(opts v1.ListOptions) (result *v1alpha1.
 		Resource("storagemanagementpolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested storageManagementPolicies.
-func (c *storageManagementPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *storageManagementPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *storageManagementPolicies) Watch(opts v1.ListOptions) (watch.Interface,
 		Resource("storagemanagementpolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a storageManagementPolicy and creates it.  Returns the server's representation of the storageManagementPolicy, and an error, if there is any.
-func (c *storageManagementPolicies) Create(storageManagementPolicy *v1alpha1.StorageManagementPolicy) (result *v1alpha1.StorageManagementPolicy, err error) {
+func (c *storageManagementPolicies) Create(ctx context.Context, storageManagementPolicy *v1alpha1.StorageManagementPolicy, opts v1.CreateOptions) (result *v1alpha1.StorageManagementPolicy, err error) {
 	result = &v1alpha1.StorageManagementPolicy{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("storagemanagementpolicies").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(storageManagementPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a storageManagementPolicy and updates it. Returns the server's representation of the storageManagementPolicy, and an error, if there is any.
-func (c *storageManagementPolicies) Update(storageManagementPolicy *v1alpha1.StorageManagementPolicy) (result *v1alpha1.StorageManagementPolicy, err error) {
+func (c *storageManagementPolicies) Update(ctx context.Context, storageManagementPolicy *v1alpha1.StorageManagementPolicy, opts v1.UpdateOptions) (result *v1alpha1.StorageManagementPolicy, err error) {
 	result = &v1alpha1.StorageManagementPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("storagemanagementpolicies").
 		Name(storageManagementPolicy.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(storageManagementPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *storageManagementPolicies) UpdateStatus(storageManagementPolicy *v1alpha1.StorageManagementPolicy) (result *v1alpha1.StorageManagementPolicy, err error) {
+func (c *storageManagementPolicies) UpdateStatus(ctx context.Context, storageManagementPolicy *v1alpha1.StorageManagementPolicy, opts v1.UpdateOptions) (result *v1alpha1.StorageManagementPolicy, err error) {
 	result = &v1alpha1.StorageManagementPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("storagemanagementpolicies").
 		Name(storageManagementPolicy.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(storageManagementPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the storageManagementPolicy and deletes it. Returns an error if one occurs.
-func (c *storageManagementPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *storageManagementPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("storagemanagementpolicies").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *storageManagementPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *storageManagementPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("storagemanagementpolicies").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched storageManagementPolicy.
-func (c *storageManagementPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StorageManagementPolicy, err error) {
+func (c *storageManagementPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StorageManagementPolicy, err error) {
 	result = &v1alpha1.StorageManagementPolicy{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("storagemanagementpolicies").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

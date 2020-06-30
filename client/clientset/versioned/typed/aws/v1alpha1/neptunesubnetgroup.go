@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type NeptuneSubnetGroupsGetter interface {
 
 // NeptuneSubnetGroupInterface has methods to work with NeptuneSubnetGroup resources.
 type NeptuneSubnetGroupInterface interface {
-	Create(*v1alpha1.NeptuneSubnetGroup) (*v1alpha1.NeptuneSubnetGroup, error)
-	Update(*v1alpha1.NeptuneSubnetGroup) (*v1alpha1.NeptuneSubnetGroup, error)
-	UpdateStatus(*v1alpha1.NeptuneSubnetGroup) (*v1alpha1.NeptuneSubnetGroup, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.NeptuneSubnetGroup, error)
-	List(opts v1.ListOptions) (*v1alpha1.NeptuneSubnetGroupList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.NeptuneSubnetGroup, err error)
+	Create(ctx context.Context, neptuneSubnetGroup *v1alpha1.NeptuneSubnetGroup, opts v1.CreateOptions) (*v1alpha1.NeptuneSubnetGroup, error)
+	Update(ctx context.Context, neptuneSubnetGroup *v1alpha1.NeptuneSubnetGroup, opts v1.UpdateOptions) (*v1alpha1.NeptuneSubnetGroup, error)
+	UpdateStatus(ctx context.Context, neptuneSubnetGroup *v1alpha1.NeptuneSubnetGroup, opts v1.UpdateOptions) (*v1alpha1.NeptuneSubnetGroup, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.NeptuneSubnetGroup, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.NeptuneSubnetGroupList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.NeptuneSubnetGroup, err error)
 	NeptuneSubnetGroupExpansion
 }
 
@@ -65,20 +66,20 @@ func newNeptuneSubnetGroups(c *AwsV1alpha1Client, namespace string) *neptuneSubn
 }
 
 // Get takes name of the neptuneSubnetGroup, and returns the corresponding neptuneSubnetGroup object, and an error if there is any.
-func (c *neptuneSubnetGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.NeptuneSubnetGroup, err error) {
+func (c *neptuneSubnetGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.NeptuneSubnetGroup, err error) {
 	result = &v1alpha1.NeptuneSubnetGroup{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("neptunesubnetgroups").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of NeptuneSubnetGroups that match those selectors.
-func (c *neptuneSubnetGroups) List(opts v1.ListOptions) (result *v1alpha1.NeptuneSubnetGroupList, err error) {
+func (c *neptuneSubnetGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.NeptuneSubnetGroupList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *neptuneSubnetGroups) List(opts v1.ListOptions) (result *v1alpha1.Neptun
 		Resource("neptunesubnetgroups").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested neptuneSubnetGroups.
-func (c *neptuneSubnetGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *neptuneSubnetGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *neptuneSubnetGroups) Watch(opts v1.ListOptions) (watch.Interface, error
 		Resource("neptunesubnetgroups").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a neptuneSubnetGroup and creates it.  Returns the server's representation of the neptuneSubnetGroup, and an error, if there is any.
-func (c *neptuneSubnetGroups) Create(neptuneSubnetGroup *v1alpha1.NeptuneSubnetGroup) (result *v1alpha1.NeptuneSubnetGroup, err error) {
+func (c *neptuneSubnetGroups) Create(ctx context.Context, neptuneSubnetGroup *v1alpha1.NeptuneSubnetGroup, opts v1.CreateOptions) (result *v1alpha1.NeptuneSubnetGroup, err error) {
 	result = &v1alpha1.NeptuneSubnetGroup{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("neptunesubnetgroups").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(neptuneSubnetGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a neptuneSubnetGroup and updates it. Returns the server's representation of the neptuneSubnetGroup, and an error, if there is any.
-func (c *neptuneSubnetGroups) Update(neptuneSubnetGroup *v1alpha1.NeptuneSubnetGroup) (result *v1alpha1.NeptuneSubnetGroup, err error) {
+func (c *neptuneSubnetGroups) Update(ctx context.Context, neptuneSubnetGroup *v1alpha1.NeptuneSubnetGroup, opts v1.UpdateOptions) (result *v1alpha1.NeptuneSubnetGroup, err error) {
 	result = &v1alpha1.NeptuneSubnetGroup{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("neptunesubnetgroups").
 		Name(neptuneSubnetGroup.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(neptuneSubnetGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *neptuneSubnetGroups) UpdateStatus(neptuneSubnetGroup *v1alpha1.NeptuneSubnetGroup) (result *v1alpha1.NeptuneSubnetGroup, err error) {
+func (c *neptuneSubnetGroups) UpdateStatus(ctx context.Context, neptuneSubnetGroup *v1alpha1.NeptuneSubnetGroup, opts v1.UpdateOptions) (result *v1alpha1.NeptuneSubnetGroup, err error) {
 	result = &v1alpha1.NeptuneSubnetGroup{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("neptunesubnetgroups").
 		Name(neptuneSubnetGroup.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(neptuneSubnetGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the neptuneSubnetGroup and deletes it. Returns an error if one occurs.
-func (c *neptuneSubnetGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *neptuneSubnetGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("neptunesubnetgroups").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *neptuneSubnetGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *neptuneSubnetGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("neptunesubnetgroups").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched neptuneSubnetGroup.
-func (c *neptuneSubnetGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.NeptuneSubnetGroup, err error) {
+func (c *neptuneSubnetGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.NeptuneSubnetGroup, err error) {
 	result = &v1alpha1.NeptuneSubnetGroup{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("neptunesubnetgroups").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

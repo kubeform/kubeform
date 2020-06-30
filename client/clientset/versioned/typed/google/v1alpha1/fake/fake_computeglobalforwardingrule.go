@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computeglobalforwardingrulesResource = schema.GroupVersionResource{Group: "g
 var computeglobalforwardingrulesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeGlobalForwardingRule"}
 
 // Get takes name of the computeGlobalForwardingRule, and returns the corresponding computeGlobalForwardingRule object, and an error if there is any.
-func (c *FakeComputeGlobalForwardingRules) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeGlobalForwardingRule, err error) {
+func (c *FakeComputeGlobalForwardingRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeGlobalForwardingRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computeglobalforwardingrulesResource, c.ns, name), &v1alpha1.ComputeGlobalForwardingRule{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeGlobalForwardingRules) Get(name string, options v1.GetOption
 }
 
 // List takes label and field selectors, and returns the list of ComputeGlobalForwardingRules that match those selectors.
-func (c *FakeComputeGlobalForwardingRules) List(opts v1.ListOptions) (result *v1alpha1.ComputeGlobalForwardingRuleList, err error) {
+func (c *FakeComputeGlobalForwardingRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeGlobalForwardingRuleList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computeglobalforwardingrulesResource, computeglobalforwardingrulesKind, c.ns, opts), &v1alpha1.ComputeGlobalForwardingRuleList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeGlobalForwardingRules) List(opts v1.ListOptions) (result *v1
 }
 
 // Watch returns a watch.Interface that watches the requested computeGlobalForwardingRules.
-func (c *FakeComputeGlobalForwardingRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeGlobalForwardingRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computeglobalforwardingrulesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeGlobalForwardingRule and creates it.  Returns the server's representation of the computeGlobalForwardingRule, and an error, if there is any.
-func (c *FakeComputeGlobalForwardingRules) Create(computeGlobalForwardingRule *v1alpha1.ComputeGlobalForwardingRule) (result *v1alpha1.ComputeGlobalForwardingRule, err error) {
+func (c *FakeComputeGlobalForwardingRules) Create(ctx context.Context, computeGlobalForwardingRule *v1alpha1.ComputeGlobalForwardingRule, opts v1.CreateOptions) (result *v1alpha1.ComputeGlobalForwardingRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computeglobalforwardingrulesResource, c.ns, computeGlobalForwardingRule), &v1alpha1.ComputeGlobalForwardingRule{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeGlobalForwardingRules) Create(computeGlobalForwardingRule *v
 }
 
 // Update takes the representation of a computeGlobalForwardingRule and updates it. Returns the server's representation of the computeGlobalForwardingRule, and an error, if there is any.
-func (c *FakeComputeGlobalForwardingRules) Update(computeGlobalForwardingRule *v1alpha1.ComputeGlobalForwardingRule) (result *v1alpha1.ComputeGlobalForwardingRule, err error) {
+func (c *FakeComputeGlobalForwardingRules) Update(ctx context.Context, computeGlobalForwardingRule *v1alpha1.ComputeGlobalForwardingRule, opts v1.UpdateOptions) (result *v1alpha1.ComputeGlobalForwardingRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computeglobalforwardingrulesResource, c.ns, computeGlobalForwardingRule), &v1alpha1.ComputeGlobalForwardingRule{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeGlobalForwardingRules) Update(computeGlobalForwardingRule *v
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeGlobalForwardingRules) UpdateStatus(computeGlobalForwardingRule *v1alpha1.ComputeGlobalForwardingRule) (*v1alpha1.ComputeGlobalForwardingRule, error) {
+func (c *FakeComputeGlobalForwardingRules) UpdateStatus(ctx context.Context, computeGlobalForwardingRule *v1alpha1.ComputeGlobalForwardingRule, opts v1.UpdateOptions) (*v1alpha1.ComputeGlobalForwardingRule, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computeglobalforwardingrulesResource, "status", c.ns, computeGlobalForwardingRule), &v1alpha1.ComputeGlobalForwardingRule{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeGlobalForwardingRules) UpdateStatus(computeGlobalForwardingR
 }
 
 // Delete takes name of the computeGlobalForwardingRule and deletes it. Returns an error if one occurs.
-func (c *FakeComputeGlobalForwardingRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeGlobalForwardingRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computeglobalforwardingrulesResource, c.ns, name), &v1alpha1.ComputeGlobalForwardingRule{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeGlobalForwardingRules) Delete(name string, options *v1.Delet
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeGlobalForwardingRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computeglobalforwardingrulesResource, c.ns, listOptions)
+func (c *FakeComputeGlobalForwardingRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computeglobalforwardingrulesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeGlobalForwardingRuleList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeGlobalForwardingRule.
-func (c *FakeComputeGlobalForwardingRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeGlobalForwardingRule, err error) {
+func (c *FakeComputeGlobalForwardingRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeGlobalForwardingRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computeglobalforwardingrulesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeGlobalForwardingRule{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var snstopicsResource = schema.GroupVersionResource{Group: "aws.kubeform.com", V
 var snstopicsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "SnsTopic"}
 
 // Get takes name of the snsTopic, and returns the corresponding snsTopic object, and an error if there is any.
-func (c *FakeSnsTopics) Get(name string, options v1.GetOptions) (result *v1alpha1.SnsTopic, err error) {
+func (c *FakeSnsTopics) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SnsTopic, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(snstopicsResource, c.ns, name), &v1alpha1.SnsTopic{})
 
@@ -51,7 +53,7 @@ func (c *FakeSnsTopics) Get(name string, options v1.GetOptions) (result *v1alpha
 }
 
 // List takes label and field selectors, and returns the list of SnsTopics that match those selectors.
-func (c *FakeSnsTopics) List(opts v1.ListOptions) (result *v1alpha1.SnsTopicList, err error) {
+func (c *FakeSnsTopics) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SnsTopicList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(snstopicsResource, snstopicsKind, c.ns, opts), &v1alpha1.SnsTopicList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSnsTopics) List(opts v1.ListOptions) (result *v1alpha1.SnsTopicList
 }
 
 // Watch returns a watch.Interface that watches the requested snsTopics.
-func (c *FakeSnsTopics) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSnsTopics) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(snstopicsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a snsTopic and creates it.  Returns the server's representation of the snsTopic, and an error, if there is any.
-func (c *FakeSnsTopics) Create(snsTopic *v1alpha1.SnsTopic) (result *v1alpha1.SnsTopic, err error) {
+func (c *FakeSnsTopics) Create(ctx context.Context, snsTopic *v1alpha1.SnsTopic, opts v1.CreateOptions) (result *v1alpha1.SnsTopic, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(snstopicsResource, c.ns, snsTopic), &v1alpha1.SnsTopic{})
 
@@ -91,7 +93,7 @@ func (c *FakeSnsTopics) Create(snsTopic *v1alpha1.SnsTopic) (result *v1alpha1.Sn
 }
 
 // Update takes the representation of a snsTopic and updates it. Returns the server's representation of the snsTopic, and an error, if there is any.
-func (c *FakeSnsTopics) Update(snsTopic *v1alpha1.SnsTopic) (result *v1alpha1.SnsTopic, err error) {
+func (c *FakeSnsTopics) Update(ctx context.Context, snsTopic *v1alpha1.SnsTopic, opts v1.UpdateOptions) (result *v1alpha1.SnsTopic, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(snstopicsResource, c.ns, snsTopic), &v1alpha1.SnsTopic{})
 
@@ -103,7 +105,7 @@ func (c *FakeSnsTopics) Update(snsTopic *v1alpha1.SnsTopic) (result *v1alpha1.Sn
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSnsTopics) UpdateStatus(snsTopic *v1alpha1.SnsTopic) (*v1alpha1.SnsTopic, error) {
+func (c *FakeSnsTopics) UpdateStatus(ctx context.Context, snsTopic *v1alpha1.SnsTopic, opts v1.UpdateOptions) (*v1alpha1.SnsTopic, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(snstopicsResource, "status", c.ns, snsTopic), &v1alpha1.SnsTopic{})
 
@@ -114,7 +116,7 @@ func (c *FakeSnsTopics) UpdateStatus(snsTopic *v1alpha1.SnsTopic) (*v1alpha1.Sns
 }
 
 // Delete takes name of the snsTopic and deletes it. Returns an error if one occurs.
-func (c *FakeSnsTopics) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSnsTopics) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(snstopicsResource, c.ns, name), &v1alpha1.SnsTopic{})
 
@@ -122,15 +124,15 @@ func (c *FakeSnsTopics) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSnsTopics) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(snstopicsResource, c.ns, listOptions)
+func (c *FakeSnsTopics) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(snstopicsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SnsTopicList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched snsTopic.
-func (c *FakeSnsTopics) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SnsTopic, err error) {
+func (c *FakeSnsTopics) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SnsTopic, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(snstopicsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SnsTopic{})
 

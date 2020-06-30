@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var gameliftaliasesResource = schema.GroupVersionResource{Group: "aws.kubeform.c
 var gameliftaliasesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "GameliftAlias"}
 
 // Get takes name of the gameliftAlias, and returns the corresponding gameliftAlias object, and an error if there is any.
-func (c *FakeGameliftAliases) Get(name string, options v1.GetOptions) (result *v1alpha1.GameliftAlias, err error) {
+func (c *FakeGameliftAliases) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.GameliftAlias, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(gameliftaliasesResource, c.ns, name), &v1alpha1.GameliftAlias{})
 
@@ -51,7 +53,7 @@ func (c *FakeGameliftAliases) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of GameliftAliases that match those selectors.
-func (c *FakeGameliftAliases) List(opts v1.ListOptions) (result *v1alpha1.GameliftAliasList, err error) {
+func (c *FakeGameliftAliases) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.GameliftAliasList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(gameliftaliasesResource, gameliftaliasesKind, c.ns, opts), &v1alpha1.GameliftAliasList{})
 
@@ -73,14 +75,14 @@ func (c *FakeGameliftAliases) List(opts v1.ListOptions) (result *v1alpha1.Gameli
 }
 
 // Watch returns a watch.Interface that watches the requested gameliftAliases.
-func (c *FakeGameliftAliases) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeGameliftAliases) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(gameliftaliasesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a gameliftAlias and creates it.  Returns the server's representation of the gameliftAlias, and an error, if there is any.
-func (c *FakeGameliftAliases) Create(gameliftAlias *v1alpha1.GameliftAlias) (result *v1alpha1.GameliftAlias, err error) {
+func (c *FakeGameliftAliases) Create(ctx context.Context, gameliftAlias *v1alpha1.GameliftAlias, opts v1.CreateOptions) (result *v1alpha1.GameliftAlias, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(gameliftaliasesResource, c.ns, gameliftAlias), &v1alpha1.GameliftAlias{})
 
@@ -91,7 +93,7 @@ func (c *FakeGameliftAliases) Create(gameliftAlias *v1alpha1.GameliftAlias) (res
 }
 
 // Update takes the representation of a gameliftAlias and updates it. Returns the server's representation of the gameliftAlias, and an error, if there is any.
-func (c *FakeGameliftAliases) Update(gameliftAlias *v1alpha1.GameliftAlias) (result *v1alpha1.GameliftAlias, err error) {
+func (c *FakeGameliftAliases) Update(ctx context.Context, gameliftAlias *v1alpha1.GameliftAlias, opts v1.UpdateOptions) (result *v1alpha1.GameliftAlias, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(gameliftaliasesResource, c.ns, gameliftAlias), &v1alpha1.GameliftAlias{})
 
@@ -103,7 +105,7 @@ func (c *FakeGameliftAliases) Update(gameliftAlias *v1alpha1.GameliftAlias) (res
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeGameliftAliases) UpdateStatus(gameliftAlias *v1alpha1.GameliftAlias) (*v1alpha1.GameliftAlias, error) {
+func (c *FakeGameliftAliases) UpdateStatus(ctx context.Context, gameliftAlias *v1alpha1.GameliftAlias, opts v1.UpdateOptions) (*v1alpha1.GameliftAlias, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(gameliftaliasesResource, "status", c.ns, gameliftAlias), &v1alpha1.GameliftAlias{})
 
@@ -114,7 +116,7 @@ func (c *FakeGameliftAliases) UpdateStatus(gameliftAlias *v1alpha1.GameliftAlias
 }
 
 // Delete takes name of the gameliftAlias and deletes it. Returns an error if one occurs.
-func (c *FakeGameliftAliases) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeGameliftAliases) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(gameliftaliasesResource, c.ns, name), &v1alpha1.GameliftAlias{})
 
@@ -122,15 +124,15 @@ func (c *FakeGameliftAliases) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeGameliftAliases) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(gameliftaliasesResource, c.ns, listOptions)
+func (c *FakeGameliftAliases) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(gameliftaliasesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.GameliftAliasList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched gameliftAlias.
-func (c *FakeGameliftAliases) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.GameliftAlias, err error) {
+func (c *FakeGameliftAliases) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.GameliftAlias, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(gameliftaliasesResource, c.ns, name, pt, data, subresources...), &v1alpha1.GameliftAlias{})
 

@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type LbTargetGroupAttachmentsGetter interface {
 
 // LbTargetGroupAttachmentInterface has methods to work with LbTargetGroupAttachment resources.
 type LbTargetGroupAttachmentInterface interface {
-	Create(*v1alpha1.LbTargetGroupAttachment) (*v1alpha1.LbTargetGroupAttachment, error)
-	Update(*v1alpha1.LbTargetGroupAttachment) (*v1alpha1.LbTargetGroupAttachment, error)
-	UpdateStatus(*v1alpha1.LbTargetGroupAttachment) (*v1alpha1.LbTargetGroupAttachment, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.LbTargetGroupAttachment, error)
-	List(opts v1.ListOptions) (*v1alpha1.LbTargetGroupAttachmentList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LbTargetGroupAttachment, err error)
+	Create(ctx context.Context, lbTargetGroupAttachment *v1alpha1.LbTargetGroupAttachment, opts v1.CreateOptions) (*v1alpha1.LbTargetGroupAttachment, error)
+	Update(ctx context.Context, lbTargetGroupAttachment *v1alpha1.LbTargetGroupAttachment, opts v1.UpdateOptions) (*v1alpha1.LbTargetGroupAttachment, error)
+	UpdateStatus(ctx context.Context, lbTargetGroupAttachment *v1alpha1.LbTargetGroupAttachment, opts v1.UpdateOptions) (*v1alpha1.LbTargetGroupAttachment, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.LbTargetGroupAttachment, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.LbTargetGroupAttachmentList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LbTargetGroupAttachment, err error)
 	LbTargetGroupAttachmentExpansion
 }
 
@@ -65,20 +66,20 @@ func newLbTargetGroupAttachments(c *AwsV1alpha1Client, namespace string) *lbTarg
 }
 
 // Get takes name of the lbTargetGroupAttachment, and returns the corresponding lbTargetGroupAttachment object, and an error if there is any.
-func (c *lbTargetGroupAttachments) Get(name string, options v1.GetOptions) (result *v1alpha1.LbTargetGroupAttachment, err error) {
+func (c *lbTargetGroupAttachments) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LbTargetGroupAttachment, err error) {
 	result = &v1alpha1.LbTargetGroupAttachment{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("lbtargetgroupattachments").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of LbTargetGroupAttachments that match those selectors.
-func (c *lbTargetGroupAttachments) List(opts v1.ListOptions) (result *v1alpha1.LbTargetGroupAttachmentList, err error) {
+func (c *lbTargetGroupAttachments) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LbTargetGroupAttachmentList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *lbTargetGroupAttachments) List(opts v1.ListOptions) (result *v1alpha1.L
 		Resource("lbtargetgroupattachments").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested lbTargetGroupAttachments.
-func (c *lbTargetGroupAttachments) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *lbTargetGroupAttachments) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *lbTargetGroupAttachments) Watch(opts v1.ListOptions) (watch.Interface, 
 		Resource("lbtargetgroupattachments").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a lbTargetGroupAttachment and creates it.  Returns the server's representation of the lbTargetGroupAttachment, and an error, if there is any.
-func (c *lbTargetGroupAttachments) Create(lbTargetGroupAttachment *v1alpha1.LbTargetGroupAttachment) (result *v1alpha1.LbTargetGroupAttachment, err error) {
+func (c *lbTargetGroupAttachments) Create(ctx context.Context, lbTargetGroupAttachment *v1alpha1.LbTargetGroupAttachment, opts v1.CreateOptions) (result *v1alpha1.LbTargetGroupAttachment, err error) {
 	result = &v1alpha1.LbTargetGroupAttachment{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("lbtargetgroupattachments").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lbTargetGroupAttachment).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a lbTargetGroupAttachment and updates it. Returns the server's representation of the lbTargetGroupAttachment, and an error, if there is any.
-func (c *lbTargetGroupAttachments) Update(lbTargetGroupAttachment *v1alpha1.LbTargetGroupAttachment) (result *v1alpha1.LbTargetGroupAttachment, err error) {
+func (c *lbTargetGroupAttachments) Update(ctx context.Context, lbTargetGroupAttachment *v1alpha1.LbTargetGroupAttachment, opts v1.UpdateOptions) (result *v1alpha1.LbTargetGroupAttachment, err error) {
 	result = &v1alpha1.LbTargetGroupAttachment{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("lbtargetgroupattachments").
 		Name(lbTargetGroupAttachment.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lbTargetGroupAttachment).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *lbTargetGroupAttachments) UpdateStatus(lbTargetGroupAttachment *v1alpha1.LbTargetGroupAttachment) (result *v1alpha1.LbTargetGroupAttachment, err error) {
+func (c *lbTargetGroupAttachments) UpdateStatus(ctx context.Context, lbTargetGroupAttachment *v1alpha1.LbTargetGroupAttachment, opts v1.UpdateOptions) (result *v1alpha1.LbTargetGroupAttachment, err error) {
 	result = &v1alpha1.LbTargetGroupAttachment{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("lbtargetgroupattachments").
 		Name(lbTargetGroupAttachment.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lbTargetGroupAttachment).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the lbTargetGroupAttachment and deletes it. Returns an error if one occurs.
-func (c *lbTargetGroupAttachments) Delete(name string, options *v1.DeleteOptions) error {
+func (c *lbTargetGroupAttachments) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("lbtargetgroupattachments").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *lbTargetGroupAttachments) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *lbTargetGroupAttachments) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("lbtargetgroupattachments").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched lbTargetGroupAttachment.
-func (c *lbTargetGroupAttachments) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LbTargetGroupAttachment, err error) {
+func (c *lbTargetGroupAttachments) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LbTargetGroupAttachment, err error) {
 	result = &v1alpha1.LbTargetGroupAttachment{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("lbtargetgroupattachments").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

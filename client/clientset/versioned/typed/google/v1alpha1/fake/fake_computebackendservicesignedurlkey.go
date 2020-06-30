@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computebackendservicesignedurlkeysResource = schema.GroupVersionResource{Gro
 var computebackendservicesignedurlkeysKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeBackendServiceSignedURLKey"}
 
 // Get takes name of the computeBackendServiceSignedURLKey, and returns the corresponding computeBackendServiceSignedURLKey object, and an error if there is any.
-func (c *FakeComputeBackendServiceSignedURLKeys) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeBackendServiceSignedURLKey, err error) {
+func (c *FakeComputeBackendServiceSignedURLKeys) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeBackendServiceSignedURLKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computebackendservicesignedurlkeysResource, c.ns, name), &v1alpha1.ComputeBackendServiceSignedURLKey{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeBackendServiceSignedURLKeys) Get(name string, options v1.Get
 }
 
 // List takes label and field selectors, and returns the list of ComputeBackendServiceSignedURLKeys that match those selectors.
-func (c *FakeComputeBackendServiceSignedURLKeys) List(opts v1.ListOptions) (result *v1alpha1.ComputeBackendServiceSignedURLKeyList, err error) {
+func (c *FakeComputeBackendServiceSignedURLKeys) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeBackendServiceSignedURLKeyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computebackendservicesignedurlkeysResource, computebackendservicesignedurlkeysKind, c.ns, opts), &v1alpha1.ComputeBackendServiceSignedURLKeyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeBackendServiceSignedURLKeys) List(opts v1.ListOptions) (resu
 }
 
 // Watch returns a watch.Interface that watches the requested computeBackendServiceSignedURLKeys.
-func (c *FakeComputeBackendServiceSignedURLKeys) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeBackendServiceSignedURLKeys) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computebackendservicesignedurlkeysResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeBackendServiceSignedURLKey and creates it.  Returns the server's representation of the computeBackendServiceSignedURLKey, and an error, if there is any.
-func (c *FakeComputeBackendServiceSignedURLKeys) Create(computeBackendServiceSignedURLKey *v1alpha1.ComputeBackendServiceSignedURLKey) (result *v1alpha1.ComputeBackendServiceSignedURLKey, err error) {
+func (c *FakeComputeBackendServiceSignedURLKeys) Create(ctx context.Context, computeBackendServiceSignedURLKey *v1alpha1.ComputeBackendServiceSignedURLKey, opts v1.CreateOptions) (result *v1alpha1.ComputeBackendServiceSignedURLKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computebackendservicesignedurlkeysResource, c.ns, computeBackendServiceSignedURLKey), &v1alpha1.ComputeBackendServiceSignedURLKey{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeBackendServiceSignedURLKeys) Create(computeBackendServiceSig
 }
 
 // Update takes the representation of a computeBackendServiceSignedURLKey and updates it. Returns the server's representation of the computeBackendServiceSignedURLKey, and an error, if there is any.
-func (c *FakeComputeBackendServiceSignedURLKeys) Update(computeBackendServiceSignedURLKey *v1alpha1.ComputeBackendServiceSignedURLKey) (result *v1alpha1.ComputeBackendServiceSignedURLKey, err error) {
+func (c *FakeComputeBackendServiceSignedURLKeys) Update(ctx context.Context, computeBackendServiceSignedURLKey *v1alpha1.ComputeBackendServiceSignedURLKey, opts v1.UpdateOptions) (result *v1alpha1.ComputeBackendServiceSignedURLKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computebackendservicesignedurlkeysResource, c.ns, computeBackendServiceSignedURLKey), &v1alpha1.ComputeBackendServiceSignedURLKey{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeBackendServiceSignedURLKeys) Update(computeBackendServiceSig
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeBackendServiceSignedURLKeys) UpdateStatus(computeBackendServiceSignedURLKey *v1alpha1.ComputeBackendServiceSignedURLKey) (*v1alpha1.ComputeBackendServiceSignedURLKey, error) {
+func (c *FakeComputeBackendServiceSignedURLKeys) UpdateStatus(ctx context.Context, computeBackendServiceSignedURLKey *v1alpha1.ComputeBackendServiceSignedURLKey, opts v1.UpdateOptions) (*v1alpha1.ComputeBackendServiceSignedURLKey, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computebackendservicesignedurlkeysResource, "status", c.ns, computeBackendServiceSignedURLKey), &v1alpha1.ComputeBackendServiceSignedURLKey{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeBackendServiceSignedURLKeys) UpdateStatus(computeBackendServ
 }
 
 // Delete takes name of the computeBackendServiceSignedURLKey and deletes it. Returns an error if one occurs.
-func (c *FakeComputeBackendServiceSignedURLKeys) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeBackendServiceSignedURLKeys) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computebackendservicesignedurlkeysResource, c.ns, name), &v1alpha1.ComputeBackendServiceSignedURLKey{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeBackendServiceSignedURLKeys) Delete(name string, options *v1
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeBackendServiceSignedURLKeys) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computebackendservicesignedurlkeysResource, c.ns, listOptions)
+func (c *FakeComputeBackendServiceSignedURLKeys) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computebackendservicesignedurlkeysResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeBackendServiceSignedURLKeyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeBackendServiceSignedURLKey.
-func (c *FakeComputeBackendServiceSignedURLKeys) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeBackendServiceSignedURLKey, err error) {
+func (c *FakeComputeBackendServiceSignedURLKeys) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeBackendServiceSignedURLKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computebackendservicesignedurlkeysResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeBackendServiceSignedURLKey{})
 

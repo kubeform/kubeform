@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var kmsgrantsResource = schema.GroupVersionResource{Group: "aws.kubeform.com", V
 var kmsgrantsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "KmsGrant"}
 
 // Get takes name of the kmsGrant, and returns the corresponding kmsGrant object, and an error if there is any.
-func (c *FakeKmsGrants) Get(name string, options v1.GetOptions) (result *v1alpha1.KmsGrant, err error) {
+func (c *FakeKmsGrants) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KmsGrant, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(kmsgrantsResource, c.ns, name), &v1alpha1.KmsGrant{})
 
@@ -51,7 +53,7 @@ func (c *FakeKmsGrants) Get(name string, options v1.GetOptions) (result *v1alpha
 }
 
 // List takes label and field selectors, and returns the list of KmsGrants that match those selectors.
-func (c *FakeKmsGrants) List(opts v1.ListOptions) (result *v1alpha1.KmsGrantList, err error) {
+func (c *FakeKmsGrants) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KmsGrantList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(kmsgrantsResource, kmsgrantsKind, c.ns, opts), &v1alpha1.KmsGrantList{})
 
@@ -73,14 +75,14 @@ func (c *FakeKmsGrants) List(opts v1.ListOptions) (result *v1alpha1.KmsGrantList
 }
 
 // Watch returns a watch.Interface that watches the requested kmsGrants.
-func (c *FakeKmsGrants) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeKmsGrants) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(kmsgrantsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a kmsGrant and creates it.  Returns the server's representation of the kmsGrant, and an error, if there is any.
-func (c *FakeKmsGrants) Create(kmsGrant *v1alpha1.KmsGrant) (result *v1alpha1.KmsGrant, err error) {
+func (c *FakeKmsGrants) Create(ctx context.Context, kmsGrant *v1alpha1.KmsGrant, opts v1.CreateOptions) (result *v1alpha1.KmsGrant, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(kmsgrantsResource, c.ns, kmsGrant), &v1alpha1.KmsGrant{})
 
@@ -91,7 +93,7 @@ func (c *FakeKmsGrants) Create(kmsGrant *v1alpha1.KmsGrant) (result *v1alpha1.Km
 }
 
 // Update takes the representation of a kmsGrant and updates it. Returns the server's representation of the kmsGrant, and an error, if there is any.
-func (c *FakeKmsGrants) Update(kmsGrant *v1alpha1.KmsGrant) (result *v1alpha1.KmsGrant, err error) {
+func (c *FakeKmsGrants) Update(ctx context.Context, kmsGrant *v1alpha1.KmsGrant, opts v1.UpdateOptions) (result *v1alpha1.KmsGrant, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(kmsgrantsResource, c.ns, kmsGrant), &v1alpha1.KmsGrant{})
 
@@ -103,7 +105,7 @@ func (c *FakeKmsGrants) Update(kmsGrant *v1alpha1.KmsGrant) (result *v1alpha1.Km
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeKmsGrants) UpdateStatus(kmsGrant *v1alpha1.KmsGrant) (*v1alpha1.KmsGrant, error) {
+func (c *FakeKmsGrants) UpdateStatus(ctx context.Context, kmsGrant *v1alpha1.KmsGrant, opts v1.UpdateOptions) (*v1alpha1.KmsGrant, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(kmsgrantsResource, "status", c.ns, kmsGrant), &v1alpha1.KmsGrant{})
 
@@ -114,7 +116,7 @@ func (c *FakeKmsGrants) UpdateStatus(kmsGrant *v1alpha1.KmsGrant) (*v1alpha1.Kms
 }
 
 // Delete takes name of the kmsGrant and deletes it. Returns an error if one occurs.
-func (c *FakeKmsGrants) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeKmsGrants) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(kmsgrantsResource, c.ns, name), &v1alpha1.KmsGrant{})
 
@@ -122,15 +124,15 @@ func (c *FakeKmsGrants) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeKmsGrants) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(kmsgrantsResource, c.ns, listOptions)
+func (c *FakeKmsGrants) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(kmsgrantsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.KmsGrantList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched kmsGrant.
-func (c *FakeKmsGrants) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KmsGrant, err error) {
+func (c *FakeKmsGrants) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KmsGrant, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(kmsgrantsResource, c.ns, name, pt, data, subresources...), &v1alpha1.KmsGrant{})
 

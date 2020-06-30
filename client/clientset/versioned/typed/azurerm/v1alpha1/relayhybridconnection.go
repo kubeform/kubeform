@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type RelayHybridConnectionsGetter interface {
 
 // RelayHybridConnectionInterface has methods to work with RelayHybridConnection resources.
 type RelayHybridConnectionInterface interface {
-	Create(*v1alpha1.RelayHybridConnection) (*v1alpha1.RelayHybridConnection, error)
-	Update(*v1alpha1.RelayHybridConnection) (*v1alpha1.RelayHybridConnection, error)
-	UpdateStatus(*v1alpha1.RelayHybridConnection) (*v1alpha1.RelayHybridConnection, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.RelayHybridConnection, error)
-	List(opts v1.ListOptions) (*v1alpha1.RelayHybridConnectionList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RelayHybridConnection, err error)
+	Create(ctx context.Context, relayHybridConnection *v1alpha1.RelayHybridConnection, opts v1.CreateOptions) (*v1alpha1.RelayHybridConnection, error)
+	Update(ctx context.Context, relayHybridConnection *v1alpha1.RelayHybridConnection, opts v1.UpdateOptions) (*v1alpha1.RelayHybridConnection, error)
+	UpdateStatus(ctx context.Context, relayHybridConnection *v1alpha1.RelayHybridConnection, opts v1.UpdateOptions) (*v1alpha1.RelayHybridConnection, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.RelayHybridConnection, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.RelayHybridConnectionList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RelayHybridConnection, err error)
 	RelayHybridConnectionExpansion
 }
 
@@ -65,20 +66,20 @@ func newRelayHybridConnections(c *AzurermV1alpha1Client, namespace string) *rela
 }
 
 // Get takes name of the relayHybridConnection, and returns the corresponding relayHybridConnection object, and an error if there is any.
-func (c *relayHybridConnections) Get(name string, options v1.GetOptions) (result *v1alpha1.RelayHybridConnection, err error) {
+func (c *relayHybridConnections) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.RelayHybridConnection, err error) {
 	result = &v1alpha1.RelayHybridConnection{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("relayhybridconnections").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of RelayHybridConnections that match those selectors.
-func (c *relayHybridConnections) List(opts v1.ListOptions) (result *v1alpha1.RelayHybridConnectionList, err error) {
+func (c *relayHybridConnections) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RelayHybridConnectionList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *relayHybridConnections) List(opts v1.ListOptions) (result *v1alpha1.Rel
 		Resource("relayhybridconnections").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested relayHybridConnections.
-func (c *relayHybridConnections) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *relayHybridConnections) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *relayHybridConnections) Watch(opts v1.ListOptions) (watch.Interface, er
 		Resource("relayhybridconnections").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a relayHybridConnection and creates it.  Returns the server's representation of the relayHybridConnection, and an error, if there is any.
-func (c *relayHybridConnections) Create(relayHybridConnection *v1alpha1.RelayHybridConnection) (result *v1alpha1.RelayHybridConnection, err error) {
+func (c *relayHybridConnections) Create(ctx context.Context, relayHybridConnection *v1alpha1.RelayHybridConnection, opts v1.CreateOptions) (result *v1alpha1.RelayHybridConnection, err error) {
 	result = &v1alpha1.RelayHybridConnection{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("relayhybridconnections").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(relayHybridConnection).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a relayHybridConnection and updates it. Returns the server's representation of the relayHybridConnection, and an error, if there is any.
-func (c *relayHybridConnections) Update(relayHybridConnection *v1alpha1.RelayHybridConnection) (result *v1alpha1.RelayHybridConnection, err error) {
+func (c *relayHybridConnections) Update(ctx context.Context, relayHybridConnection *v1alpha1.RelayHybridConnection, opts v1.UpdateOptions) (result *v1alpha1.RelayHybridConnection, err error) {
 	result = &v1alpha1.RelayHybridConnection{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("relayhybridconnections").
 		Name(relayHybridConnection.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(relayHybridConnection).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *relayHybridConnections) UpdateStatus(relayHybridConnection *v1alpha1.RelayHybridConnection) (result *v1alpha1.RelayHybridConnection, err error) {
+func (c *relayHybridConnections) UpdateStatus(ctx context.Context, relayHybridConnection *v1alpha1.RelayHybridConnection, opts v1.UpdateOptions) (result *v1alpha1.RelayHybridConnection, err error) {
 	result = &v1alpha1.RelayHybridConnection{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("relayhybridconnections").
 		Name(relayHybridConnection.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(relayHybridConnection).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the relayHybridConnection and deletes it. Returns an error if one occurs.
-func (c *relayHybridConnections) Delete(name string, options *v1.DeleteOptions) error {
+func (c *relayHybridConnections) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("relayhybridconnections").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *relayHybridConnections) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *relayHybridConnections) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("relayhybridconnections").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched relayHybridConnection.
-func (c *relayHybridConnections) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RelayHybridConnection, err error) {
+func (c *relayHybridConnections) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RelayHybridConnection, err error) {
 	result = &v1alpha1.RelayHybridConnection{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("relayhybridconnections").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

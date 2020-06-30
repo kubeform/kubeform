@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cognitoidentitypoolrolesattachmentsResource = schema.GroupVersionResource{Gr
 var cognitoidentitypoolrolesattachmentsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "CognitoIdentityPoolRolesAttachment"}
 
 // Get takes name of the cognitoIdentityPoolRolesAttachment, and returns the corresponding cognitoIdentityPoolRolesAttachment object, and an error if there is any.
-func (c *FakeCognitoIdentityPoolRolesAttachments) Get(name string, options v1.GetOptions) (result *v1alpha1.CognitoIdentityPoolRolesAttachment, err error) {
+func (c *FakeCognitoIdentityPoolRolesAttachments) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CognitoIdentityPoolRolesAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cognitoidentitypoolrolesattachmentsResource, c.ns, name), &v1alpha1.CognitoIdentityPoolRolesAttachment{})
 
@@ -51,7 +53,7 @@ func (c *FakeCognitoIdentityPoolRolesAttachments) Get(name string, options v1.Ge
 }
 
 // List takes label and field selectors, and returns the list of CognitoIdentityPoolRolesAttachments that match those selectors.
-func (c *FakeCognitoIdentityPoolRolesAttachments) List(opts v1.ListOptions) (result *v1alpha1.CognitoIdentityPoolRolesAttachmentList, err error) {
+func (c *FakeCognitoIdentityPoolRolesAttachments) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CognitoIdentityPoolRolesAttachmentList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cognitoidentitypoolrolesattachmentsResource, cognitoidentitypoolrolesattachmentsKind, c.ns, opts), &v1alpha1.CognitoIdentityPoolRolesAttachmentList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCognitoIdentityPoolRolesAttachments) List(opts v1.ListOptions) (res
 }
 
 // Watch returns a watch.Interface that watches the requested cognitoIdentityPoolRolesAttachments.
-func (c *FakeCognitoIdentityPoolRolesAttachments) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCognitoIdentityPoolRolesAttachments) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cognitoidentitypoolrolesattachmentsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cognitoIdentityPoolRolesAttachment and creates it.  Returns the server's representation of the cognitoIdentityPoolRolesAttachment, and an error, if there is any.
-func (c *FakeCognitoIdentityPoolRolesAttachments) Create(cognitoIdentityPoolRolesAttachment *v1alpha1.CognitoIdentityPoolRolesAttachment) (result *v1alpha1.CognitoIdentityPoolRolesAttachment, err error) {
+func (c *FakeCognitoIdentityPoolRolesAttachments) Create(ctx context.Context, cognitoIdentityPoolRolesAttachment *v1alpha1.CognitoIdentityPoolRolesAttachment, opts v1.CreateOptions) (result *v1alpha1.CognitoIdentityPoolRolesAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cognitoidentitypoolrolesattachmentsResource, c.ns, cognitoIdentityPoolRolesAttachment), &v1alpha1.CognitoIdentityPoolRolesAttachment{})
 
@@ -91,7 +93,7 @@ func (c *FakeCognitoIdentityPoolRolesAttachments) Create(cognitoIdentityPoolRole
 }
 
 // Update takes the representation of a cognitoIdentityPoolRolesAttachment and updates it. Returns the server's representation of the cognitoIdentityPoolRolesAttachment, and an error, if there is any.
-func (c *FakeCognitoIdentityPoolRolesAttachments) Update(cognitoIdentityPoolRolesAttachment *v1alpha1.CognitoIdentityPoolRolesAttachment) (result *v1alpha1.CognitoIdentityPoolRolesAttachment, err error) {
+func (c *FakeCognitoIdentityPoolRolesAttachments) Update(ctx context.Context, cognitoIdentityPoolRolesAttachment *v1alpha1.CognitoIdentityPoolRolesAttachment, opts v1.UpdateOptions) (result *v1alpha1.CognitoIdentityPoolRolesAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cognitoidentitypoolrolesattachmentsResource, c.ns, cognitoIdentityPoolRolesAttachment), &v1alpha1.CognitoIdentityPoolRolesAttachment{})
 
@@ -103,7 +105,7 @@ func (c *FakeCognitoIdentityPoolRolesAttachments) Update(cognitoIdentityPoolRole
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCognitoIdentityPoolRolesAttachments) UpdateStatus(cognitoIdentityPoolRolesAttachment *v1alpha1.CognitoIdentityPoolRolesAttachment) (*v1alpha1.CognitoIdentityPoolRolesAttachment, error) {
+func (c *FakeCognitoIdentityPoolRolesAttachments) UpdateStatus(ctx context.Context, cognitoIdentityPoolRolesAttachment *v1alpha1.CognitoIdentityPoolRolesAttachment, opts v1.UpdateOptions) (*v1alpha1.CognitoIdentityPoolRolesAttachment, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cognitoidentitypoolrolesattachmentsResource, "status", c.ns, cognitoIdentityPoolRolesAttachment), &v1alpha1.CognitoIdentityPoolRolesAttachment{})
 
@@ -114,7 +116,7 @@ func (c *FakeCognitoIdentityPoolRolesAttachments) UpdateStatus(cognitoIdentityPo
 }
 
 // Delete takes name of the cognitoIdentityPoolRolesAttachment and deletes it. Returns an error if one occurs.
-func (c *FakeCognitoIdentityPoolRolesAttachments) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCognitoIdentityPoolRolesAttachments) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cognitoidentitypoolrolesattachmentsResource, c.ns, name), &v1alpha1.CognitoIdentityPoolRolesAttachment{})
 
@@ -122,15 +124,15 @@ func (c *FakeCognitoIdentityPoolRolesAttachments) Delete(name string, options *v
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCognitoIdentityPoolRolesAttachments) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cognitoidentitypoolrolesattachmentsResource, c.ns, listOptions)
+func (c *FakeCognitoIdentityPoolRolesAttachments) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cognitoidentitypoolrolesattachmentsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CognitoIdentityPoolRolesAttachmentList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cognitoIdentityPoolRolesAttachment.
-func (c *FakeCognitoIdentityPoolRolesAttachments) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CognitoIdentityPoolRolesAttachment, err error) {
+func (c *FakeCognitoIdentityPoolRolesAttachments) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CognitoIdentityPoolRolesAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cognitoidentitypoolrolesattachmentsResource, c.ns, name, pt, data, subresources...), &v1alpha1.CognitoIdentityPoolRolesAttachment{})
 

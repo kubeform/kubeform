@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computevpngatewaysResource = schema.GroupVersionResource{Group: "google.kube
 var computevpngatewaysKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeVPNGateway"}
 
 // Get takes name of the computeVPNGateway, and returns the corresponding computeVPNGateway object, and an error if there is any.
-func (c *FakeComputeVPNGateways) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeVPNGateway, err error) {
+func (c *FakeComputeVPNGateways) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeVPNGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computevpngatewaysResource, c.ns, name), &v1alpha1.ComputeVPNGateway{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeVPNGateways) Get(name string, options v1.GetOptions) (result
 }
 
 // List takes label and field selectors, and returns the list of ComputeVPNGateways that match those selectors.
-func (c *FakeComputeVPNGateways) List(opts v1.ListOptions) (result *v1alpha1.ComputeVPNGatewayList, err error) {
+func (c *FakeComputeVPNGateways) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeVPNGatewayList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computevpngatewaysResource, computevpngatewaysKind, c.ns, opts), &v1alpha1.ComputeVPNGatewayList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeVPNGateways) List(opts v1.ListOptions) (result *v1alpha1.Com
 }
 
 // Watch returns a watch.Interface that watches the requested computeVPNGateways.
-func (c *FakeComputeVPNGateways) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeVPNGateways) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computevpngatewaysResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeVPNGateway and creates it.  Returns the server's representation of the computeVPNGateway, and an error, if there is any.
-func (c *FakeComputeVPNGateways) Create(computeVPNGateway *v1alpha1.ComputeVPNGateway) (result *v1alpha1.ComputeVPNGateway, err error) {
+func (c *FakeComputeVPNGateways) Create(ctx context.Context, computeVPNGateway *v1alpha1.ComputeVPNGateway, opts v1.CreateOptions) (result *v1alpha1.ComputeVPNGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computevpngatewaysResource, c.ns, computeVPNGateway), &v1alpha1.ComputeVPNGateway{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeVPNGateways) Create(computeVPNGateway *v1alpha1.ComputeVPNGa
 }
 
 // Update takes the representation of a computeVPNGateway and updates it. Returns the server's representation of the computeVPNGateway, and an error, if there is any.
-func (c *FakeComputeVPNGateways) Update(computeVPNGateway *v1alpha1.ComputeVPNGateway) (result *v1alpha1.ComputeVPNGateway, err error) {
+func (c *FakeComputeVPNGateways) Update(ctx context.Context, computeVPNGateway *v1alpha1.ComputeVPNGateway, opts v1.UpdateOptions) (result *v1alpha1.ComputeVPNGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computevpngatewaysResource, c.ns, computeVPNGateway), &v1alpha1.ComputeVPNGateway{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeVPNGateways) Update(computeVPNGateway *v1alpha1.ComputeVPNGa
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeVPNGateways) UpdateStatus(computeVPNGateway *v1alpha1.ComputeVPNGateway) (*v1alpha1.ComputeVPNGateway, error) {
+func (c *FakeComputeVPNGateways) UpdateStatus(ctx context.Context, computeVPNGateway *v1alpha1.ComputeVPNGateway, opts v1.UpdateOptions) (*v1alpha1.ComputeVPNGateway, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computevpngatewaysResource, "status", c.ns, computeVPNGateway), &v1alpha1.ComputeVPNGateway{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeVPNGateways) UpdateStatus(computeVPNGateway *v1alpha1.Comput
 }
 
 // Delete takes name of the computeVPNGateway and deletes it. Returns an error if one occurs.
-func (c *FakeComputeVPNGateways) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeVPNGateways) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computevpngatewaysResource, c.ns, name), &v1alpha1.ComputeVPNGateway{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeVPNGateways) Delete(name string, options *v1.DeleteOptions) 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeVPNGateways) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computevpngatewaysResource, c.ns, listOptions)
+func (c *FakeComputeVPNGateways) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computevpngatewaysResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeVPNGatewayList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeVPNGateway.
-func (c *FakeComputeVPNGateways) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeVPNGateway, err error) {
+func (c *FakeComputeVPNGateways) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeVPNGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computevpngatewaysResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeVPNGateway{})
 

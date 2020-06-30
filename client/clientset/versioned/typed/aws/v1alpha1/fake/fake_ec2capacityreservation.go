@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var ec2capacityreservationsResource = schema.GroupVersionResource{Group: "aws.ku
 var ec2capacityreservationsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "Ec2CapacityReservation"}
 
 // Get takes name of the ec2CapacityReservation, and returns the corresponding ec2CapacityReservation object, and an error if there is any.
-func (c *FakeEc2CapacityReservations) Get(name string, options v1.GetOptions) (result *v1alpha1.Ec2CapacityReservation, err error) {
+func (c *FakeEc2CapacityReservations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Ec2CapacityReservation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(ec2capacityreservationsResource, c.ns, name), &v1alpha1.Ec2CapacityReservation{})
 
@@ -51,7 +53,7 @@ func (c *FakeEc2CapacityReservations) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of Ec2CapacityReservations that match those selectors.
-func (c *FakeEc2CapacityReservations) List(opts v1.ListOptions) (result *v1alpha1.Ec2CapacityReservationList, err error) {
+func (c *FakeEc2CapacityReservations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.Ec2CapacityReservationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(ec2capacityreservationsResource, ec2capacityreservationsKind, c.ns, opts), &v1alpha1.Ec2CapacityReservationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeEc2CapacityReservations) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested ec2CapacityReservations.
-func (c *FakeEc2CapacityReservations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeEc2CapacityReservations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(ec2capacityreservationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a ec2CapacityReservation and creates it.  Returns the server's representation of the ec2CapacityReservation, and an error, if there is any.
-func (c *FakeEc2CapacityReservations) Create(ec2CapacityReservation *v1alpha1.Ec2CapacityReservation) (result *v1alpha1.Ec2CapacityReservation, err error) {
+func (c *FakeEc2CapacityReservations) Create(ctx context.Context, ec2CapacityReservation *v1alpha1.Ec2CapacityReservation, opts v1.CreateOptions) (result *v1alpha1.Ec2CapacityReservation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(ec2capacityreservationsResource, c.ns, ec2CapacityReservation), &v1alpha1.Ec2CapacityReservation{})
 
@@ -91,7 +93,7 @@ func (c *FakeEc2CapacityReservations) Create(ec2CapacityReservation *v1alpha1.Ec
 }
 
 // Update takes the representation of a ec2CapacityReservation and updates it. Returns the server's representation of the ec2CapacityReservation, and an error, if there is any.
-func (c *FakeEc2CapacityReservations) Update(ec2CapacityReservation *v1alpha1.Ec2CapacityReservation) (result *v1alpha1.Ec2CapacityReservation, err error) {
+func (c *FakeEc2CapacityReservations) Update(ctx context.Context, ec2CapacityReservation *v1alpha1.Ec2CapacityReservation, opts v1.UpdateOptions) (result *v1alpha1.Ec2CapacityReservation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(ec2capacityreservationsResource, c.ns, ec2CapacityReservation), &v1alpha1.Ec2CapacityReservation{})
 
@@ -103,7 +105,7 @@ func (c *FakeEc2CapacityReservations) Update(ec2CapacityReservation *v1alpha1.Ec
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeEc2CapacityReservations) UpdateStatus(ec2CapacityReservation *v1alpha1.Ec2CapacityReservation) (*v1alpha1.Ec2CapacityReservation, error) {
+func (c *FakeEc2CapacityReservations) UpdateStatus(ctx context.Context, ec2CapacityReservation *v1alpha1.Ec2CapacityReservation, opts v1.UpdateOptions) (*v1alpha1.Ec2CapacityReservation, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(ec2capacityreservationsResource, "status", c.ns, ec2CapacityReservation), &v1alpha1.Ec2CapacityReservation{})
 
@@ -114,7 +116,7 @@ func (c *FakeEc2CapacityReservations) UpdateStatus(ec2CapacityReservation *v1alp
 }
 
 // Delete takes name of the ec2CapacityReservation and deletes it. Returns an error if one occurs.
-func (c *FakeEc2CapacityReservations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeEc2CapacityReservations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(ec2capacityreservationsResource, c.ns, name), &v1alpha1.Ec2CapacityReservation{})
 
@@ -122,15 +124,15 @@ func (c *FakeEc2CapacityReservations) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeEc2CapacityReservations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(ec2capacityreservationsResource, c.ns, listOptions)
+func (c *FakeEc2CapacityReservations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(ec2capacityreservationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.Ec2CapacityReservationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched ec2CapacityReservation.
-func (c *FakeEc2CapacityReservations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Ec2CapacityReservation, err error) {
+func (c *FakeEc2CapacityReservations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Ec2CapacityReservation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(ec2capacityreservationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.Ec2CapacityReservation{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var storagebucketiambindingsResource = schema.GroupVersionResource{Group: "googl
 var storagebucketiambindingsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "StorageBucketIamBinding"}
 
 // Get takes name of the storageBucketIamBinding, and returns the corresponding storageBucketIamBinding object, and an error if there is any.
-func (c *FakeStorageBucketIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.StorageBucketIamBinding, err error) {
+func (c *FakeStorageBucketIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.StorageBucketIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(storagebucketiambindingsResource, c.ns, name), &v1alpha1.StorageBucketIamBinding{})
 
@@ -51,7 +53,7 @@ func (c *FakeStorageBucketIamBindings) Get(name string, options v1.GetOptions) (
 }
 
 // List takes label and field selectors, and returns the list of StorageBucketIamBindings that match those selectors.
-func (c *FakeStorageBucketIamBindings) List(opts v1.ListOptions) (result *v1alpha1.StorageBucketIamBindingList, err error) {
+func (c *FakeStorageBucketIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.StorageBucketIamBindingList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(storagebucketiambindingsResource, storagebucketiambindingsKind, c.ns, opts), &v1alpha1.StorageBucketIamBindingList{})
 
@@ -73,14 +75,14 @@ func (c *FakeStorageBucketIamBindings) List(opts v1.ListOptions) (result *v1alph
 }
 
 // Watch returns a watch.Interface that watches the requested storageBucketIamBindings.
-func (c *FakeStorageBucketIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeStorageBucketIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(storagebucketiambindingsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a storageBucketIamBinding and creates it.  Returns the server's representation of the storageBucketIamBinding, and an error, if there is any.
-func (c *FakeStorageBucketIamBindings) Create(storageBucketIamBinding *v1alpha1.StorageBucketIamBinding) (result *v1alpha1.StorageBucketIamBinding, err error) {
+func (c *FakeStorageBucketIamBindings) Create(ctx context.Context, storageBucketIamBinding *v1alpha1.StorageBucketIamBinding, opts v1.CreateOptions) (result *v1alpha1.StorageBucketIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(storagebucketiambindingsResource, c.ns, storageBucketIamBinding), &v1alpha1.StorageBucketIamBinding{})
 
@@ -91,7 +93,7 @@ func (c *FakeStorageBucketIamBindings) Create(storageBucketIamBinding *v1alpha1.
 }
 
 // Update takes the representation of a storageBucketIamBinding and updates it. Returns the server's representation of the storageBucketIamBinding, and an error, if there is any.
-func (c *FakeStorageBucketIamBindings) Update(storageBucketIamBinding *v1alpha1.StorageBucketIamBinding) (result *v1alpha1.StorageBucketIamBinding, err error) {
+func (c *FakeStorageBucketIamBindings) Update(ctx context.Context, storageBucketIamBinding *v1alpha1.StorageBucketIamBinding, opts v1.UpdateOptions) (result *v1alpha1.StorageBucketIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(storagebucketiambindingsResource, c.ns, storageBucketIamBinding), &v1alpha1.StorageBucketIamBinding{})
 
@@ -103,7 +105,7 @@ func (c *FakeStorageBucketIamBindings) Update(storageBucketIamBinding *v1alpha1.
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeStorageBucketIamBindings) UpdateStatus(storageBucketIamBinding *v1alpha1.StorageBucketIamBinding) (*v1alpha1.StorageBucketIamBinding, error) {
+func (c *FakeStorageBucketIamBindings) UpdateStatus(ctx context.Context, storageBucketIamBinding *v1alpha1.StorageBucketIamBinding, opts v1.UpdateOptions) (*v1alpha1.StorageBucketIamBinding, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(storagebucketiambindingsResource, "status", c.ns, storageBucketIamBinding), &v1alpha1.StorageBucketIamBinding{})
 
@@ -114,7 +116,7 @@ func (c *FakeStorageBucketIamBindings) UpdateStatus(storageBucketIamBinding *v1a
 }
 
 // Delete takes name of the storageBucketIamBinding and deletes it. Returns an error if one occurs.
-func (c *FakeStorageBucketIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeStorageBucketIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(storagebucketiambindingsResource, c.ns, name), &v1alpha1.StorageBucketIamBinding{})
 
@@ -122,15 +124,15 @@ func (c *FakeStorageBucketIamBindings) Delete(name string, options *v1.DeleteOpt
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeStorageBucketIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(storagebucketiambindingsResource, c.ns, listOptions)
+func (c *FakeStorageBucketIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(storagebucketiambindingsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.StorageBucketIamBindingList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched storageBucketIamBinding.
-func (c *FakeStorageBucketIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StorageBucketIamBinding, err error) {
+func (c *FakeStorageBucketIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StorageBucketIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(storagebucketiambindingsResource, c.ns, name, pt, data, subresources...), &v1alpha1.StorageBucketIamBinding{})
 

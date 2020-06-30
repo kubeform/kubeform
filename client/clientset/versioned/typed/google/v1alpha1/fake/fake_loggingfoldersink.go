@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var loggingfoldersinksResource = schema.GroupVersionResource{Group: "google.kube
 var loggingfoldersinksKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "LoggingFolderSink"}
 
 // Get takes name of the loggingFolderSink, and returns the corresponding loggingFolderSink object, and an error if there is any.
-func (c *FakeLoggingFolderSinks) Get(name string, options v1.GetOptions) (result *v1alpha1.LoggingFolderSink, err error) {
+func (c *FakeLoggingFolderSinks) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LoggingFolderSink, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(loggingfoldersinksResource, c.ns, name), &v1alpha1.LoggingFolderSink{})
 
@@ -51,7 +53,7 @@ func (c *FakeLoggingFolderSinks) Get(name string, options v1.GetOptions) (result
 }
 
 // List takes label and field selectors, and returns the list of LoggingFolderSinks that match those selectors.
-func (c *FakeLoggingFolderSinks) List(opts v1.ListOptions) (result *v1alpha1.LoggingFolderSinkList, err error) {
+func (c *FakeLoggingFolderSinks) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LoggingFolderSinkList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(loggingfoldersinksResource, loggingfoldersinksKind, c.ns, opts), &v1alpha1.LoggingFolderSinkList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLoggingFolderSinks) List(opts v1.ListOptions) (result *v1alpha1.Log
 }
 
 // Watch returns a watch.Interface that watches the requested loggingFolderSinks.
-func (c *FakeLoggingFolderSinks) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLoggingFolderSinks) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(loggingfoldersinksResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a loggingFolderSink and creates it.  Returns the server's representation of the loggingFolderSink, and an error, if there is any.
-func (c *FakeLoggingFolderSinks) Create(loggingFolderSink *v1alpha1.LoggingFolderSink) (result *v1alpha1.LoggingFolderSink, err error) {
+func (c *FakeLoggingFolderSinks) Create(ctx context.Context, loggingFolderSink *v1alpha1.LoggingFolderSink, opts v1.CreateOptions) (result *v1alpha1.LoggingFolderSink, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(loggingfoldersinksResource, c.ns, loggingFolderSink), &v1alpha1.LoggingFolderSink{})
 
@@ -91,7 +93,7 @@ func (c *FakeLoggingFolderSinks) Create(loggingFolderSink *v1alpha1.LoggingFolde
 }
 
 // Update takes the representation of a loggingFolderSink and updates it. Returns the server's representation of the loggingFolderSink, and an error, if there is any.
-func (c *FakeLoggingFolderSinks) Update(loggingFolderSink *v1alpha1.LoggingFolderSink) (result *v1alpha1.LoggingFolderSink, err error) {
+func (c *FakeLoggingFolderSinks) Update(ctx context.Context, loggingFolderSink *v1alpha1.LoggingFolderSink, opts v1.UpdateOptions) (result *v1alpha1.LoggingFolderSink, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(loggingfoldersinksResource, c.ns, loggingFolderSink), &v1alpha1.LoggingFolderSink{})
 
@@ -103,7 +105,7 @@ func (c *FakeLoggingFolderSinks) Update(loggingFolderSink *v1alpha1.LoggingFolde
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLoggingFolderSinks) UpdateStatus(loggingFolderSink *v1alpha1.LoggingFolderSink) (*v1alpha1.LoggingFolderSink, error) {
+func (c *FakeLoggingFolderSinks) UpdateStatus(ctx context.Context, loggingFolderSink *v1alpha1.LoggingFolderSink, opts v1.UpdateOptions) (*v1alpha1.LoggingFolderSink, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(loggingfoldersinksResource, "status", c.ns, loggingFolderSink), &v1alpha1.LoggingFolderSink{})
 
@@ -114,7 +116,7 @@ func (c *FakeLoggingFolderSinks) UpdateStatus(loggingFolderSink *v1alpha1.Loggin
 }
 
 // Delete takes name of the loggingFolderSink and deletes it. Returns an error if one occurs.
-func (c *FakeLoggingFolderSinks) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLoggingFolderSinks) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(loggingfoldersinksResource, c.ns, name), &v1alpha1.LoggingFolderSink{})
 
@@ -122,15 +124,15 @@ func (c *FakeLoggingFolderSinks) Delete(name string, options *v1.DeleteOptions) 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLoggingFolderSinks) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(loggingfoldersinksResource, c.ns, listOptions)
+func (c *FakeLoggingFolderSinks) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(loggingfoldersinksResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LoggingFolderSinkList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched loggingFolderSink.
-func (c *FakeLoggingFolderSinks) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LoggingFolderSink, err error) {
+func (c *FakeLoggingFolderSinks) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LoggingFolderSink, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(loggingfoldersinksResource, c.ns, name, pt, data, subresources...), &v1alpha1.LoggingFolderSink{})
 

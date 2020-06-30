@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var xraysamplingrulesResource = schema.GroupVersionResource{Group: "aws.kubeform
 var xraysamplingrulesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "XraySamplingRule"}
 
 // Get takes name of the xraySamplingRule, and returns the corresponding xraySamplingRule object, and an error if there is any.
-func (c *FakeXraySamplingRules) Get(name string, options v1.GetOptions) (result *v1alpha1.XraySamplingRule, err error) {
+func (c *FakeXraySamplingRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.XraySamplingRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(xraysamplingrulesResource, c.ns, name), &v1alpha1.XraySamplingRule{})
 
@@ -51,7 +53,7 @@ func (c *FakeXraySamplingRules) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of XraySamplingRules that match those selectors.
-func (c *FakeXraySamplingRules) List(opts v1.ListOptions) (result *v1alpha1.XraySamplingRuleList, err error) {
+func (c *FakeXraySamplingRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.XraySamplingRuleList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(xraysamplingrulesResource, xraysamplingrulesKind, c.ns, opts), &v1alpha1.XraySamplingRuleList{})
 
@@ -73,14 +75,14 @@ func (c *FakeXraySamplingRules) List(opts v1.ListOptions) (result *v1alpha1.Xray
 }
 
 // Watch returns a watch.Interface that watches the requested xraySamplingRules.
-func (c *FakeXraySamplingRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeXraySamplingRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(xraysamplingrulesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a xraySamplingRule and creates it.  Returns the server's representation of the xraySamplingRule, and an error, if there is any.
-func (c *FakeXraySamplingRules) Create(xraySamplingRule *v1alpha1.XraySamplingRule) (result *v1alpha1.XraySamplingRule, err error) {
+func (c *FakeXraySamplingRules) Create(ctx context.Context, xraySamplingRule *v1alpha1.XraySamplingRule, opts v1.CreateOptions) (result *v1alpha1.XraySamplingRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(xraysamplingrulesResource, c.ns, xraySamplingRule), &v1alpha1.XraySamplingRule{})
 
@@ -91,7 +93,7 @@ func (c *FakeXraySamplingRules) Create(xraySamplingRule *v1alpha1.XraySamplingRu
 }
 
 // Update takes the representation of a xraySamplingRule and updates it. Returns the server's representation of the xraySamplingRule, and an error, if there is any.
-func (c *FakeXraySamplingRules) Update(xraySamplingRule *v1alpha1.XraySamplingRule) (result *v1alpha1.XraySamplingRule, err error) {
+func (c *FakeXraySamplingRules) Update(ctx context.Context, xraySamplingRule *v1alpha1.XraySamplingRule, opts v1.UpdateOptions) (result *v1alpha1.XraySamplingRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(xraysamplingrulesResource, c.ns, xraySamplingRule), &v1alpha1.XraySamplingRule{})
 
@@ -103,7 +105,7 @@ func (c *FakeXraySamplingRules) Update(xraySamplingRule *v1alpha1.XraySamplingRu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeXraySamplingRules) UpdateStatus(xraySamplingRule *v1alpha1.XraySamplingRule) (*v1alpha1.XraySamplingRule, error) {
+func (c *FakeXraySamplingRules) UpdateStatus(ctx context.Context, xraySamplingRule *v1alpha1.XraySamplingRule, opts v1.UpdateOptions) (*v1alpha1.XraySamplingRule, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(xraysamplingrulesResource, "status", c.ns, xraySamplingRule), &v1alpha1.XraySamplingRule{})
 
@@ -114,7 +116,7 @@ func (c *FakeXraySamplingRules) UpdateStatus(xraySamplingRule *v1alpha1.XraySamp
 }
 
 // Delete takes name of the xraySamplingRule and deletes it. Returns an error if one occurs.
-func (c *FakeXraySamplingRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeXraySamplingRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(xraysamplingrulesResource, c.ns, name), &v1alpha1.XraySamplingRule{})
 
@@ -122,15 +124,15 @@ func (c *FakeXraySamplingRules) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeXraySamplingRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(xraysamplingrulesResource, c.ns, listOptions)
+func (c *FakeXraySamplingRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(xraysamplingrulesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.XraySamplingRuleList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched xraySamplingRule.
-func (c *FakeXraySamplingRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.XraySamplingRule, err error) {
+func (c *FakeXraySamplingRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.XraySamplingRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(xraysamplingrulesResource, c.ns, name, pt, data, subresources...), &v1alpha1.XraySamplingRule{})
 

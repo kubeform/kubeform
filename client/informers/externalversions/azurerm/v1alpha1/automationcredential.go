@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	time "time"
 
 	azurermv1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -62,13 +63,13 @@ func NewFilteredAutomationCredentialInformer(client versioned.Interface, namespa
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.AzurermV1alpha1().AutomationCredentials(namespace).List(options)
+				return client.AzurermV1alpha1().AutomationCredentials(namespace).List(context.TODO(), options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.AzurermV1alpha1().AutomationCredentials(namespace).Watch(options)
+				return client.AzurermV1alpha1().AutomationCredentials(namespace).Watch(context.TODO(), options)
 			},
 		},
 		&azurermv1alpha1.AutomationCredential{},

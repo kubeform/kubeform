@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var postgresqlfirewallrulesResource = schema.GroupVersionResource{Group: "azurer
 var postgresqlfirewallrulesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "PostgresqlFirewallRule"}
 
 // Get takes name of the postgresqlFirewallRule, and returns the corresponding postgresqlFirewallRule object, and an error if there is any.
-func (c *FakePostgresqlFirewallRules) Get(name string, options v1.GetOptions) (result *v1alpha1.PostgresqlFirewallRule, err error) {
+func (c *FakePostgresqlFirewallRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PostgresqlFirewallRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(postgresqlfirewallrulesResource, c.ns, name), &v1alpha1.PostgresqlFirewallRule{})
 
@@ -51,7 +53,7 @@ func (c *FakePostgresqlFirewallRules) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of PostgresqlFirewallRules that match those selectors.
-func (c *FakePostgresqlFirewallRules) List(opts v1.ListOptions) (result *v1alpha1.PostgresqlFirewallRuleList, err error) {
+func (c *FakePostgresqlFirewallRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PostgresqlFirewallRuleList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(postgresqlfirewallrulesResource, postgresqlfirewallrulesKind, c.ns, opts), &v1alpha1.PostgresqlFirewallRuleList{})
 
@@ -73,14 +75,14 @@ func (c *FakePostgresqlFirewallRules) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested postgresqlFirewallRules.
-func (c *FakePostgresqlFirewallRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakePostgresqlFirewallRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(postgresqlfirewallrulesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a postgresqlFirewallRule and creates it.  Returns the server's representation of the postgresqlFirewallRule, and an error, if there is any.
-func (c *FakePostgresqlFirewallRules) Create(postgresqlFirewallRule *v1alpha1.PostgresqlFirewallRule) (result *v1alpha1.PostgresqlFirewallRule, err error) {
+func (c *FakePostgresqlFirewallRules) Create(ctx context.Context, postgresqlFirewallRule *v1alpha1.PostgresqlFirewallRule, opts v1.CreateOptions) (result *v1alpha1.PostgresqlFirewallRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(postgresqlfirewallrulesResource, c.ns, postgresqlFirewallRule), &v1alpha1.PostgresqlFirewallRule{})
 
@@ -91,7 +93,7 @@ func (c *FakePostgresqlFirewallRules) Create(postgresqlFirewallRule *v1alpha1.Po
 }
 
 // Update takes the representation of a postgresqlFirewallRule and updates it. Returns the server's representation of the postgresqlFirewallRule, and an error, if there is any.
-func (c *FakePostgresqlFirewallRules) Update(postgresqlFirewallRule *v1alpha1.PostgresqlFirewallRule) (result *v1alpha1.PostgresqlFirewallRule, err error) {
+func (c *FakePostgresqlFirewallRules) Update(ctx context.Context, postgresqlFirewallRule *v1alpha1.PostgresqlFirewallRule, opts v1.UpdateOptions) (result *v1alpha1.PostgresqlFirewallRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(postgresqlfirewallrulesResource, c.ns, postgresqlFirewallRule), &v1alpha1.PostgresqlFirewallRule{})
 
@@ -103,7 +105,7 @@ func (c *FakePostgresqlFirewallRules) Update(postgresqlFirewallRule *v1alpha1.Po
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakePostgresqlFirewallRules) UpdateStatus(postgresqlFirewallRule *v1alpha1.PostgresqlFirewallRule) (*v1alpha1.PostgresqlFirewallRule, error) {
+func (c *FakePostgresqlFirewallRules) UpdateStatus(ctx context.Context, postgresqlFirewallRule *v1alpha1.PostgresqlFirewallRule, opts v1.UpdateOptions) (*v1alpha1.PostgresqlFirewallRule, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(postgresqlfirewallrulesResource, "status", c.ns, postgresqlFirewallRule), &v1alpha1.PostgresqlFirewallRule{})
 
@@ -114,7 +116,7 @@ func (c *FakePostgresqlFirewallRules) UpdateStatus(postgresqlFirewallRule *v1alp
 }
 
 // Delete takes name of the postgresqlFirewallRule and deletes it. Returns an error if one occurs.
-func (c *FakePostgresqlFirewallRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakePostgresqlFirewallRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(postgresqlfirewallrulesResource, c.ns, name), &v1alpha1.PostgresqlFirewallRule{})
 
@@ -122,15 +124,15 @@ func (c *FakePostgresqlFirewallRules) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakePostgresqlFirewallRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(postgresqlfirewallrulesResource, c.ns, listOptions)
+func (c *FakePostgresqlFirewallRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(postgresqlfirewallrulesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.PostgresqlFirewallRuleList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched postgresqlFirewallRule.
-func (c *FakePostgresqlFirewallRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PostgresqlFirewallRule, err error) {
+func (c *FakePostgresqlFirewallRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PostgresqlFirewallRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(postgresqlfirewallrulesResource, c.ns, name, pt, data, subresources...), &v1alpha1.PostgresqlFirewallRule{})
 

@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type NetworkWatchersGetter interface {
 
 // NetworkWatcherInterface has methods to work with NetworkWatcher resources.
 type NetworkWatcherInterface interface {
-	Create(*v1alpha1.NetworkWatcher) (*v1alpha1.NetworkWatcher, error)
-	Update(*v1alpha1.NetworkWatcher) (*v1alpha1.NetworkWatcher, error)
-	UpdateStatus(*v1alpha1.NetworkWatcher) (*v1alpha1.NetworkWatcher, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.NetworkWatcher, error)
-	List(opts v1.ListOptions) (*v1alpha1.NetworkWatcherList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.NetworkWatcher, err error)
+	Create(ctx context.Context, networkWatcher *v1alpha1.NetworkWatcher, opts v1.CreateOptions) (*v1alpha1.NetworkWatcher, error)
+	Update(ctx context.Context, networkWatcher *v1alpha1.NetworkWatcher, opts v1.UpdateOptions) (*v1alpha1.NetworkWatcher, error)
+	UpdateStatus(ctx context.Context, networkWatcher *v1alpha1.NetworkWatcher, opts v1.UpdateOptions) (*v1alpha1.NetworkWatcher, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.NetworkWatcher, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.NetworkWatcherList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.NetworkWatcher, err error)
 	NetworkWatcherExpansion
 }
 
@@ -65,20 +66,20 @@ func newNetworkWatchers(c *AzurermV1alpha1Client, namespace string) *networkWatc
 }
 
 // Get takes name of the networkWatcher, and returns the corresponding networkWatcher object, and an error if there is any.
-func (c *networkWatchers) Get(name string, options v1.GetOptions) (result *v1alpha1.NetworkWatcher, err error) {
+func (c *networkWatchers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.NetworkWatcher, err error) {
 	result = &v1alpha1.NetworkWatcher{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("networkwatchers").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of NetworkWatchers that match those selectors.
-func (c *networkWatchers) List(opts v1.ListOptions) (result *v1alpha1.NetworkWatcherList, err error) {
+func (c *networkWatchers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.NetworkWatcherList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *networkWatchers) List(opts v1.ListOptions) (result *v1alpha1.NetworkWat
 		Resource("networkwatchers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested networkWatchers.
-func (c *networkWatchers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *networkWatchers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *networkWatchers) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("networkwatchers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a networkWatcher and creates it.  Returns the server's representation of the networkWatcher, and an error, if there is any.
-func (c *networkWatchers) Create(networkWatcher *v1alpha1.NetworkWatcher) (result *v1alpha1.NetworkWatcher, err error) {
+func (c *networkWatchers) Create(ctx context.Context, networkWatcher *v1alpha1.NetworkWatcher, opts v1.CreateOptions) (result *v1alpha1.NetworkWatcher, err error) {
 	result = &v1alpha1.NetworkWatcher{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("networkwatchers").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(networkWatcher).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a networkWatcher and updates it. Returns the server's representation of the networkWatcher, and an error, if there is any.
-func (c *networkWatchers) Update(networkWatcher *v1alpha1.NetworkWatcher) (result *v1alpha1.NetworkWatcher, err error) {
+func (c *networkWatchers) Update(ctx context.Context, networkWatcher *v1alpha1.NetworkWatcher, opts v1.UpdateOptions) (result *v1alpha1.NetworkWatcher, err error) {
 	result = &v1alpha1.NetworkWatcher{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("networkwatchers").
 		Name(networkWatcher.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(networkWatcher).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *networkWatchers) UpdateStatus(networkWatcher *v1alpha1.NetworkWatcher) (result *v1alpha1.NetworkWatcher, err error) {
+func (c *networkWatchers) UpdateStatus(ctx context.Context, networkWatcher *v1alpha1.NetworkWatcher, opts v1.UpdateOptions) (result *v1alpha1.NetworkWatcher, err error) {
 	result = &v1alpha1.NetworkWatcher{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("networkwatchers").
 		Name(networkWatcher.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(networkWatcher).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the networkWatcher and deletes it. Returns an error if one occurs.
-func (c *networkWatchers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *networkWatchers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("networkwatchers").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *networkWatchers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *networkWatchers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("networkwatchers").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched networkWatcher.
-func (c *networkWatchers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.NetworkWatcher, err error) {
+func (c *networkWatchers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.NetworkWatcher, err error) {
 	result = &v1alpha1.NetworkWatcher{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("networkwatchers").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

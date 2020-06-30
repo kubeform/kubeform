@@ -1,0 +1,548 @@
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/name: kubeform
+  name: computeinstances.google.kubeform.com
+spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
+  group: google.kubeform.com
+  names:
+    kind: ComputeInstance
+    listKind: ComputeInstanceList
+    plural: computeinstances
+    singular: computeinstance
+  scope: Namespaced
+  subresources:
+    status: {}
+  validation:
+    openAPIV3Schema:
+      properties:
+        apiVersion:
+          description: 'APIVersion defines the versioned schema of this representation
+            of an object. Servers should convert recognized schemas to the latest
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+          type: string
+        kind:
+          description: 'Kind is a string value representing the REST resource this
+            object represents. Servers may infer this from the endpoint the client
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+          type: string
+        metadata:
+          type: object
+        spec:
+          properties:
+            allowStoppingForUpdate:
+              type: boolean
+            attachedDisk:
+              items:
+                properties:
+                  deviceName:
+                    type: string
+                  diskEncryptionKeySha256:
+                    type: string
+                  kmsKeySelfLink:
+                    type: string
+                  mode:
+                    type: string
+                  source:
+                    type: string
+                required:
+                - source
+                type: object
+              type: array
+            bootDisk:
+              items:
+                properties:
+                  autoDelete:
+                    type: boolean
+                  deviceName:
+                    type: string
+                  diskEncryptionKeySha256:
+                    type: string
+                  initializeParams:
+                    items:
+                      properties:
+                        image:
+                          type: string
+                        labels:
+                          additionalProperties:
+                            type: string
+                          type: object
+                        size:
+                          format: int64
+                          type: integer
+                        type:
+                          type: string
+                      type: object
+                    maxItems: 1
+                    type: array
+                  kmsKeySelfLink:
+                    type: string
+                  mode:
+                    type: string
+                  source:
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
+            canIPForward:
+              type: boolean
+            cpuPlatform:
+              type: string
+            deletionProtection:
+              type: boolean
+            description:
+              type: string
+            guestAccelerator:
+              items:
+                properties:
+                  count:
+                    format: int64
+                    type: integer
+                  type:
+                    type: string
+                required:
+                - count
+                - type
+                type: object
+              type: array
+            hostname:
+              type: string
+            id:
+              type: string
+            instanceID:
+              type: string
+            labelFingerprint:
+              type: string
+            labels:
+              additionalProperties:
+                type: string
+              type: object
+            machineType:
+              type: string
+            metadata:
+              additionalProperties:
+                type: string
+              type: object
+            metadataFingerprint:
+              type: string
+            metadataStartupScript:
+              type: string
+            minCPUPlatform:
+              type: string
+            name:
+              type: string
+            networkInterface:
+              items:
+                properties:
+                  accessConfig:
+                    items:
+                      properties:
+                        natIP:
+                          type: string
+                        networkTier:
+                          type: string
+                        publicPtrDomainName:
+                          type: string
+                      type: object
+                    type: array
+                  aliasIPRange:
+                    items:
+                      properties:
+                        ipCIDRRange:
+                          type: string
+                        subnetworkRangeName:
+                          type: string
+                      required:
+                      - ipCIDRRange
+                      type: object
+                    type: array
+                  name:
+                    type: string
+                  network:
+                    type: string
+                  networkIP:
+                    type: string
+                  subnetwork:
+                    type: string
+                  subnetworkProject:
+                    type: string
+                type: object
+              type: array
+            project:
+              type: string
+            providerRef:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
+            scheduling:
+              items:
+                properties:
+                  automaticRestart:
+                    type: boolean
+                  nodeAffinities:
+                    items:
+                      properties:
+                        key:
+                          type: string
+                        operator:
+                          type: string
+                        values:
+                          items:
+                            type: string
+                          type: array
+                      required:
+                      - key
+                      - operator
+                      - values
+                      type: object
+                    type: array
+                  onHostMaintenance:
+                    type: string
+                  preemptible:
+                    type: boolean
+                type: object
+              maxItems: 1
+              type: array
+            scratchDisk:
+              items:
+                properties:
+                  interface:
+                    type: string
+                type: object
+              type: array
+            secretRef:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
+            selfLink:
+              type: string
+            serviceAccount:
+              items:
+                properties:
+                  email:
+                    type: string
+                  scopes:
+                    items:
+                      type: string
+                    type: array
+                required:
+                - scopes
+                type: object
+              maxItems: 1
+              type: array
+            shieldedInstanceConfig:
+              items:
+                properties:
+                  enableIntegrityMonitoring:
+                    type: boolean
+                  enableSecureBoot:
+                    type: boolean
+                  enableVtpm:
+                    type: boolean
+                type: object
+              maxItems: 1
+              type: array
+            tags:
+              items:
+                type: string
+              type: array
+            tagsFingerprint:
+              type: string
+            zone:
+              type: string
+          required:
+          - bootDisk
+          - machineType
+          - name
+          - networkInterface
+          - providerRef
+          type: object
+        status:
+          properties:
+            observedGeneration:
+              description: Resource generation, which is updated on mutation by the
+                API Server.
+              format: int64
+              type: integer
+            output:
+              properties:
+                allowStoppingForUpdate:
+                  type: boolean
+                attachedDisk:
+                  items:
+                    properties:
+                      deviceName:
+                        type: string
+                      diskEncryptionKeySha256:
+                        type: string
+                      kmsKeySelfLink:
+                        type: string
+                      mode:
+                        type: string
+                      source:
+                        type: string
+                    required:
+                    - source
+                    type: object
+                  type: array
+                bootDisk:
+                  items:
+                    properties:
+                      autoDelete:
+                        type: boolean
+                      deviceName:
+                        type: string
+                      diskEncryptionKeySha256:
+                        type: string
+                      initializeParams:
+                        items:
+                          properties:
+                            image:
+                              type: string
+                            labels:
+                              additionalProperties:
+                                type: string
+                              type: object
+                            size:
+                              format: int64
+                              type: integer
+                            type:
+                              type: string
+                          type: object
+                        maxItems: 1
+                        type: array
+                      kmsKeySelfLink:
+                        type: string
+                      mode:
+                        type: string
+                      source:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                canIPForward:
+                  type: boolean
+                cpuPlatform:
+                  type: string
+                deletionProtection:
+                  type: boolean
+                description:
+                  type: string
+                guestAccelerator:
+                  items:
+                    properties:
+                      count:
+                        format: int64
+                        type: integer
+                      type:
+                        type: string
+                    required:
+                    - count
+                    - type
+                    type: object
+                  type: array
+                hostname:
+                  type: string
+                id:
+                  type: string
+                instanceID:
+                  type: string
+                labelFingerprint:
+                  type: string
+                labels:
+                  additionalProperties:
+                    type: string
+                  type: object
+                machineType:
+                  type: string
+                metadata:
+                  additionalProperties:
+                    type: string
+                  type: object
+                metadataFingerprint:
+                  type: string
+                metadataStartupScript:
+                  type: string
+                minCPUPlatform:
+                  type: string
+                name:
+                  type: string
+                networkInterface:
+                  items:
+                    properties:
+                      accessConfig:
+                        items:
+                          properties:
+                            natIP:
+                              type: string
+                            networkTier:
+                              type: string
+                            publicPtrDomainName:
+                              type: string
+                          type: object
+                        type: array
+                      aliasIPRange:
+                        items:
+                          properties:
+                            ipCIDRRange:
+                              type: string
+                            subnetworkRangeName:
+                              type: string
+                          required:
+                          - ipCIDRRange
+                          type: object
+                        type: array
+                      name:
+                        type: string
+                      network:
+                        type: string
+                      networkIP:
+                        type: string
+                      subnetwork:
+                        type: string
+                      subnetworkProject:
+                        type: string
+                    type: object
+                  type: array
+                project:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                scheduling:
+                  items:
+                    properties:
+                      automaticRestart:
+                        type: boolean
+                      nodeAffinities:
+                        items:
+                          properties:
+                            key:
+                              type: string
+                            operator:
+                              type: string
+                            values:
+                              items:
+                                type: string
+                              type: array
+                          required:
+                          - key
+                          - operator
+                          - values
+                          type: object
+                        type: array
+                      onHostMaintenance:
+                        type: string
+                      preemptible:
+                        type: boolean
+                    type: object
+                  maxItems: 1
+                  type: array
+                scratchDisk:
+                  items:
+                    properties:
+                      interface:
+                        type: string
+                    type: object
+                  type: array
+                secretRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                selfLink:
+                  type: string
+                serviceAccount:
+                  items:
+                    properties:
+                      email:
+                        type: string
+                      scopes:
+                        items:
+                          type: string
+                        type: array
+                    required:
+                    - scopes
+                    type: object
+                  maxItems: 1
+                  type: array
+                shieldedInstanceConfig:
+                  items:
+                    properties:
+                      enableIntegrityMonitoring:
+                        type: boolean
+                      enableSecureBoot:
+                        type: boolean
+                      enableVtpm:
+                        type: boolean
+                    type: object
+                  maxItems: 1
+                  type: array
+                tags:
+                  items:
+                    type: string
+                  type: array
+                tagsFingerprint:
+                  type: string
+                zone:
+                  type: string
+              required:
+              - bootDisk
+              - machineType
+              - name
+              - networkInterface
+              - providerRef
+              type: object
+            phase:
+              type: string
+            state:
+              properties:
+                lineage:
+                  type: string
+                serial:
+                  format: int64
+                  type: integer
+                terraform_version:
+                  type: string
+                version:
+                  format: int64
+                  type: integer
+              required:
+              - lineage
+              - serial
+              - terraform_version
+              - version
+              type: object
+          type: object
+      type: object
+  version: v1alpha1
+  versions:
+  - name: v1alpha1
+    served: true
+    storage: true

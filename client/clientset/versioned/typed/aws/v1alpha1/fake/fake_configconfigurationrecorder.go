@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var configconfigurationrecordersResource = schema.GroupVersionResource{Group: "a
 var configconfigurationrecordersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ConfigConfigurationRecorder"}
 
 // Get takes name of the configConfigurationRecorder, and returns the corresponding configConfigurationRecorder object, and an error if there is any.
-func (c *FakeConfigConfigurationRecorders) Get(name string, options v1.GetOptions) (result *v1alpha1.ConfigConfigurationRecorder, err error) {
+func (c *FakeConfigConfigurationRecorders) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ConfigConfigurationRecorder, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(configconfigurationrecordersResource, c.ns, name), &v1alpha1.ConfigConfigurationRecorder{})
 
@@ -51,7 +53,7 @@ func (c *FakeConfigConfigurationRecorders) Get(name string, options v1.GetOption
 }
 
 // List takes label and field selectors, and returns the list of ConfigConfigurationRecorders that match those selectors.
-func (c *FakeConfigConfigurationRecorders) List(opts v1.ListOptions) (result *v1alpha1.ConfigConfigurationRecorderList, err error) {
+func (c *FakeConfigConfigurationRecorders) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ConfigConfigurationRecorderList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(configconfigurationrecordersResource, configconfigurationrecordersKind, c.ns, opts), &v1alpha1.ConfigConfigurationRecorderList{})
 
@@ -73,14 +75,14 @@ func (c *FakeConfigConfigurationRecorders) List(opts v1.ListOptions) (result *v1
 }
 
 // Watch returns a watch.Interface that watches the requested configConfigurationRecorders.
-func (c *FakeConfigConfigurationRecorders) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeConfigConfigurationRecorders) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(configconfigurationrecordersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a configConfigurationRecorder and creates it.  Returns the server's representation of the configConfigurationRecorder, and an error, if there is any.
-func (c *FakeConfigConfigurationRecorders) Create(configConfigurationRecorder *v1alpha1.ConfigConfigurationRecorder) (result *v1alpha1.ConfigConfigurationRecorder, err error) {
+func (c *FakeConfigConfigurationRecorders) Create(ctx context.Context, configConfigurationRecorder *v1alpha1.ConfigConfigurationRecorder, opts v1.CreateOptions) (result *v1alpha1.ConfigConfigurationRecorder, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(configconfigurationrecordersResource, c.ns, configConfigurationRecorder), &v1alpha1.ConfigConfigurationRecorder{})
 
@@ -91,7 +93,7 @@ func (c *FakeConfigConfigurationRecorders) Create(configConfigurationRecorder *v
 }
 
 // Update takes the representation of a configConfigurationRecorder and updates it. Returns the server's representation of the configConfigurationRecorder, and an error, if there is any.
-func (c *FakeConfigConfigurationRecorders) Update(configConfigurationRecorder *v1alpha1.ConfigConfigurationRecorder) (result *v1alpha1.ConfigConfigurationRecorder, err error) {
+func (c *FakeConfigConfigurationRecorders) Update(ctx context.Context, configConfigurationRecorder *v1alpha1.ConfigConfigurationRecorder, opts v1.UpdateOptions) (result *v1alpha1.ConfigConfigurationRecorder, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(configconfigurationrecordersResource, c.ns, configConfigurationRecorder), &v1alpha1.ConfigConfigurationRecorder{})
 
@@ -103,7 +105,7 @@ func (c *FakeConfigConfigurationRecorders) Update(configConfigurationRecorder *v
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeConfigConfigurationRecorders) UpdateStatus(configConfigurationRecorder *v1alpha1.ConfigConfigurationRecorder) (*v1alpha1.ConfigConfigurationRecorder, error) {
+func (c *FakeConfigConfigurationRecorders) UpdateStatus(ctx context.Context, configConfigurationRecorder *v1alpha1.ConfigConfigurationRecorder, opts v1.UpdateOptions) (*v1alpha1.ConfigConfigurationRecorder, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(configconfigurationrecordersResource, "status", c.ns, configConfigurationRecorder), &v1alpha1.ConfigConfigurationRecorder{})
 
@@ -114,7 +116,7 @@ func (c *FakeConfigConfigurationRecorders) UpdateStatus(configConfigurationRecor
 }
 
 // Delete takes name of the configConfigurationRecorder and deletes it. Returns an error if one occurs.
-func (c *FakeConfigConfigurationRecorders) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeConfigConfigurationRecorders) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(configconfigurationrecordersResource, c.ns, name), &v1alpha1.ConfigConfigurationRecorder{})
 
@@ -122,15 +124,15 @@ func (c *FakeConfigConfigurationRecorders) Delete(name string, options *v1.Delet
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeConfigConfigurationRecorders) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(configconfigurationrecordersResource, c.ns, listOptions)
+func (c *FakeConfigConfigurationRecorders) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(configconfigurationrecordersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ConfigConfigurationRecorderList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched configConfigurationRecorder.
-func (c *FakeConfigConfigurationRecorders) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ConfigConfigurationRecorder, err error) {
+func (c *FakeConfigConfigurationRecorders) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ConfigConfigurationRecorder, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(configconfigurationrecordersResource, c.ns, name, pt, data, subresources...), &v1alpha1.ConfigConfigurationRecorder{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var elbattachmentsResource = schema.GroupVersionResource{Group: "aws.kubeform.co
 var elbattachmentsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ElbAttachment"}
 
 // Get takes name of the elbAttachment, and returns the corresponding elbAttachment object, and an error if there is any.
-func (c *FakeElbAttachments) Get(name string, options v1.GetOptions) (result *v1alpha1.ElbAttachment, err error) {
+func (c *FakeElbAttachments) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ElbAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(elbattachmentsResource, c.ns, name), &v1alpha1.ElbAttachment{})
 
@@ -51,7 +53,7 @@ func (c *FakeElbAttachments) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of ElbAttachments that match those selectors.
-func (c *FakeElbAttachments) List(opts v1.ListOptions) (result *v1alpha1.ElbAttachmentList, err error) {
+func (c *FakeElbAttachments) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ElbAttachmentList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(elbattachmentsResource, elbattachmentsKind, c.ns, opts), &v1alpha1.ElbAttachmentList{})
 
@@ -73,14 +75,14 @@ func (c *FakeElbAttachments) List(opts v1.ListOptions) (result *v1alpha1.ElbAtta
 }
 
 // Watch returns a watch.Interface that watches the requested elbAttachments.
-func (c *FakeElbAttachments) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeElbAttachments) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(elbattachmentsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a elbAttachment and creates it.  Returns the server's representation of the elbAttachment, and an error, if there is any.
-func (c *FakeElbAttachments) Create(elbAttachment *v1alpha1.ElbAttachment) (result *v1alpha1.ElbAttachment, err error) {
+func (c *FakeElbAttachments) Create(ctx context.Context, elbAttachment *v1alpha1.ElbAttachment, opts v1.CreateOptions) (result *v1alpha1.ElbAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(elbattachmentsResource, c.ns, elbAttachment), &v1alpha1.ElbAttachment{})
 
@@ -91,7 +93,7 @@ func (c *FakeElbAttachments) Create(elbAttachment *v1alpha1.ElbAttachment) (resu
 }
 
 // Update takes the representation of a elbAttachment and updates it. Returns the server's representation of the elbAttachment, and an error, if there is any.
-func (c *FakeElbAttachments) Update(elbAttachment *v1alpha1.ElbAttachment) (result *v1alpha1.ElbAttachment, err error) {
+func (c *FakeElbAttachments) Update(ctx context.Context, elbAttachment *v1alpha1.ElbAttachment, opts v1.UpdateOptions) (result *v1alpha1.ElbAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(elbattachmentsResource, c.ns, elbAttachment), &v1alpha1.ElbAttachment{})
 
@@ -103,7 +105,7 @@ func (c *FakeElbAttachments) Update(elbAttachment *v1alpha1.ElbAttachment) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeElbAttachments) UpdateStatus(elbAttachment *v1alpha1.ElbAttachment) (*v1alpha1.ElbAttachment, error) {
+func (c *FakeElbAttachments) UpdateStatus(ctx context.Context, elbAttachment *v1alpha1.ElbAttachment, opts v1.UpdateOptions) (*v1alpha1.ElbAttachment, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(elbattachmentsResource, "status", c.ns, elbAttachment), &v1alpha1.ElbAttachment{})
 
@@ -114,7 +116,7 @@ func (c *FakeElbAttachments) UpdateStatus(elbAttachment *v1alpha1.ElbAttachment)
 }
 
 // Delete takes name of the elbAttachment and deletes it. Returns an error if one occurs.
-func (c *FakeElbAttachments) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeElbAttachments) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(elbattachmentsResource, c.ns, name), &v1alpha1.ElbAttachment{})
 
@@ -122,15 +124,15 @@ func (c *FakeElbAttachments) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeElbAttachments) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(elbattachmentsResource, c.ns, listOptions)
+func (c *FakeElbAttachments) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(elbattachmentsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ElbAttachmentList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched elbAttachment.
-func (c *FakeElbAttachments) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ElbAttachment, err error) {
+func (c *FakeElbAttachments) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ElbAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(elbattachmentsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ElbAttachment{})
 

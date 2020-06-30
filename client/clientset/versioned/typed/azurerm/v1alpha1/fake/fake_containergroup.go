@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var containergroupsResource = schema.GroupVersionResource{Group: "azurerm.kubefo
 var containergroupsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "ContainerGroup"}
 
 // Get takes name of the containerGroup, and returns the corresponding containerGroup object, and an error if there is any.
-func (c *FakeContainerGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.ContainerGroup, err error) {
+func (c *FakeContainerGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ContainerGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(containergroupsResource, c.ns, name), &v1alpha1.ContainerGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeContainerGroups) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of ContainerGroups that match those selectors.
-func (c *FakeContainerGroups) List(opts v1.ListOptions) (result *v1alpha1.ContainerGroupList, err error) {
+func (c *FakeContainerGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ContainerGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(containergroupsResource, containergroupsKind, c.ns, opts), &v1alpha1.ContainerGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeContainerGroups) List(opts v1.ListOptions) (result *v1alpha1.Contai
 }
 
 // Watch returns a watch.Interface that watches the requested containerGroups.
-func (c *FakeContainerGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeContainerGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(containergroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a containerGroup and creates it.  Returns the server's representation of the containerGroup, and an error, if there is any.
-func (c *FakeContainerGroups) Create(containerGroup *v1alpha1.ContainerGroup) (result *v1alpha1.ContainerGroup, err error) {
+func (c *FakeContainerGroups) Create(ctx context.Context, containerGroup *v1alpha1.ContainerGroup, opts v1.CreateOptions) (result *v1alpha1.ContainerGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(containergroupsResource, c.ns, containerGroup), &v1alpha1.ContainerGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeContainerGroups) Create(containerGroup *v1alpha1.ContainerGroup) (r
 }
 
 // Update takes the representation of a containerGroup and updates it. Returns the server's representation of the containerGroup, and an error, if there is any.
-func (c *FakeContainerGroups) Update(containerGroup *v1alpha1.ContainerGroup) (result *v1alpha1.ContainerGroup, err error) {
+func (c *FakeContainerGroups) Update(ctx context.Context, containerGroup *v1alpha1.ContainerGroup, opts v1.UpdateOptions) (result *v1alpha1.ContainerGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(containergroupsResource, c.ns, containerGroup), &v1alpha1.ContainerGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeContainerGroups) Update(containerGroup *v1alpha1.ContainerGroup) (r
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeContainerGroups) UpdateStatus(containerGroup *v1alpha1.ContainerGroup) (*v1alpha1.ContainerGroup, error) {
+func (c *FakeContainerGroups) UpdateStatus(ctx context.Context, containerGroup *v1alpha1.ContainerGroup, opts v1.UpdateOptions) (*v1alpha1.ContainerGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(containergroupsResource, "status", c.ns, containerGroup), &v1alpha1.ContainerGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeContainerGroups) UpdateStatus(containerGroup *v1alpha1.ContainerGro
 }
 
 // Delete takes name of the containerGroup and deletes it. Returns an error if one occurs.
-func (c *FakeContainerGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeContainerGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(containergroupsResource, c.ns, name), &v1alpha1.ContainerGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeContainerGroups) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeContainerGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(containergroupsResource, c.ns, listOptions)
+func (c *FakeContainerGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(containergroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ContainerGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched containerGroup.
-func (c *FakeContainerGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ContainerGroup, err error) {
+func (c *FakeContainerGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ContainerGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(containergroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ContainerGroup{})
 

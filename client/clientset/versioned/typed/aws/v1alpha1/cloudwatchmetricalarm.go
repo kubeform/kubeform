@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type CloudwatchMetricAlarmsGetter interface {
 
 // CloudwatchMetricAlarmInterface has methods to work with CloudwatchMetricAlarm resources.
 type CloudwatchMetricAlarmInterface interface {
-	Create(*v1alpha1.CloudwatchMetricAlarm) (*v1alpha1.CloudwatchMetricAlarm, error)
-	Update(*v1alpha1.CloudwatchMetricAlarm) (*v1alpha1.CloudwatchMetricAlarm, error)
-	UpdateStatus(*v1alpha1.CloudwatchMetricAlarm) (*v1alpha1.CloudwatchMetricAlarm, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.CloudwatchMetricAlarm, error)
-	List(opts v1.ListOptions) (*v1alpha1.CloudwatchMetricAlarmList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CloudwatchMetricAlarm, err error)
+	Create(ctx context.Context, cloudwatchMetricAlarm *v1alpha1.CloudwatchMetricAlarm, opts v1.CreateOptions) (*v1alpha1.CloudwatchMetricAlarm, error)
+	Update(ctx context.Context, cloudwatchMetricAlarm *v1alpha1.CloudwatchMetricAlarm, opts v1.UpdateOptions) (*v1alpha1.CloudwatchMetricAlarm, error)
+	UpdateStatus(ctx context.Context, cloudwatchMetricAlarm *v1alpha1.CloudwatchMetricAlarm, opts v1.UpdateOptions) (*v1alpha1.CloudwatchMetricAlarm, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.CloudwatchMetricAlarm, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.CloudwatchMetricAlarmList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CloudwatchMetricAlarm, err error)
 	CloudwatchMetricAlarmExpansion
 }
 
@@ -65,20 +66,20 @@ func newCloudwatchMetricAlarms(c *AwsV1alpha1Client, namespace string) *cloudwat
 }
 
 // Get takes name of the cloudwatchMetricAlarm, and returns the corresponding cloudwatchMetricAlarm object, and an error if there is any.
-func (c *cloudwatchMetricAlarms) Get(name string, options v1.GetOptions) (result *v1alpha1.CloudwatchMetricAlarm, err error) {
+func (c *cloudwatchMetricAlarms) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CloudwatchMetricAlarm, err error) {
 	result = &v1alpha1.CloudwatchMetricAlarm{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("cloudwatchmetricalarms").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of CloudwatchMetricAlarms that match those selectors.
-func (c *cloudwatchMetricAlarms) List(opts v1.ListOptions) (result *v1alpha1.CloudwatchMetricAlarmList, err error) {
+func (c *cloudwatchMetricAlarms) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CloudwatchMetricAlarmList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *cloudwatchMetricAlarms) List(opts v1.ListOptions) (result *v1alpha1.Clo
 		Resource("cloudwatchmetricalarms").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested cloudwatchMetricAlarms.
-func (c *cloudwatchMetricAlarms) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *cloudwatchMetricAlarms) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *cloudwatchMetricAlarms) Watch(opts v1.ListOptions) (watch.Interface, er
 		Resource("cloudwatchmetricalarms").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a cloudwatchMetricAlarm and creates it.  Returns the server's representation of the cloudwatchMetricAlarm, and an error, if there is any.
-func (c *cloudwatchMetricAlarms) Create(cloudwatchMetricAlarm *v1alpha1.CloudwatchMetricAlarm) (result *v1alpha1.CloudwatchMetricAlarm, err error) {
+func (c *cloudwatchMetricAlarms) Create(ctx context.Context, cloudwatchMetricAlarm *v1alpha1.CloudwatchMetricAlarm, opts v1.CreateOptions) (result *v1alpha1.CloudwatchMetricAlarm, err error) {
 	result = &v1alpha1.CloudwatchMetricAlarm{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("cloudwatchmetricalarms").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cloudwatchMetricAlarm).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a cloudwatchMetricAlarm and updates it. Returns the server's representation of the cloudwatchMetricAlarm, and an error, if there is any.
-func (c *cloudwatchMetricAlarms) Update(cloudwatchMetricAlarm *v1alpha1.CloudwatchMetricAlarm) (result *v1alpha1.CloudwatchMetricAlarm, err error) {
+func (c *cloudwatchMetricAlarms) Update(ctx context.Context, cloudwatchMetricAlarm *v1alpha1.CloudwatchMetricAlarm, opts v1.UpdateOptions) (result *v1alpha1.CloudwatchMetricAlarm, err error) {
 	result = &v1alpha1.CloudwatchMetricAlarm{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("cloudwatchmetricalarms").
 		Name(cloudwatchMetricAlarm.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cloudwatchMetricAlarm).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *cloudwatchMetricAlarms) UpdateStatus(cloudwatchMetricAlarm *v1alpha1.CloudwatchMetricAlarm) (result *v1alpha1.CloudwatchMetricAlarm, err error) {
+func (c *cloudwatchMetricAlarms) UpdateStatus(ctx context.Context, cloudwatchMetricAlarm *v1alpha1.CloudwatchMetricAlarm, opts v1.UpdateOptions) (result *v1alpha1.CloudwatchMetricAlarm, err error) {
 	result = &v1alpha1.CloudwatchMetricAlarm{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("cloudwatchmetricalarms").
 		Name(cloudwatchMetricAlarm.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cloudwatchMetricAlarm).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the cloudwatchMetricAlarm and deletes it. Returns an error if one occurs.
-func (c *cloudwatchMetricAlarms) Delete(name string, options *v1.DeleteOptions) error {
+func (c *cloudwatchMetricAlarms) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("cloudwatchmetricalarms").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *cloudwatchMetricAlarms) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *cloudwatchMetricAlarms) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("cloudwatchmetricalarms").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched cloudwatchMetricAlarm.
-func (c *cloudwatchMetricAlarms) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CloudwatchMetricAlarm, err error) {
+func (c *cloudwatchMetricAlarms) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CloudwatchMetricAlarm, err error) {
 	result = &v1alpha1.CloudwatchMetricAlarm{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("cloudwatchmetricalarms").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

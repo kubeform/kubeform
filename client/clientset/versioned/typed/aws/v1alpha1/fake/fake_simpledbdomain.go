@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var simpledbdomainsResource = schema.GroupVersionResource{Group: "aws.kubeform.c
 var simpledbdomainsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "SimpledbDomain"}
 
 // Get takes name of the simpledbDomain, and returns the corresponding simpledbDomain object, and an error if there is any.
-func (c *FakeSimpledbDomains) Get(name string, options v1.GetOptions) (result *v1alpha1.SimpledbDomain, err error) {
+func (c *FakeSimpledbDomains) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SimpledbDomain, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(simpledbdomainsResource, c.ns, name), &v1alpha1.SimpledbDomain{})
 
@@ -51,7 +53,7 @@ func (c *FakeSimpledbDomains) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of SimpledbDomains that match those selectors.
-func (c *FakeSimpledbDomains) List(opts v1.ListOptions) (result *v1alpha1.SimpledbDomainList, err error) {
+func (c *FakeSimpledbDomains) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SimpledbDomainList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(simpledbdomainsResource, simpledbdomainsKind, c.ns, opts), &v1alpha1.SimpledbDomainList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSimpledbDomains) List(opts v1.ListOptions) (result *v1alpha1.Simple
 }
 
 // Watch returns a watch.Interface that watches the requested simpledbDomains.
-func (c *FakeSimpledbDomains) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSimpledbDomains) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(simpledbdomainsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a simpledbDomain and creates it.  Returns the server's representation of the simpledbDomain, and an error, if there is any.
-func (c *FakeSimpledbDomains) Create(simpledbDomain *v1alpha1.SimpledbDomain) (result *v1alpha1.SimpledbDomain, err error) {
+func (c *FakeSimpledbDomains) Create(ctx context.Context, simpledbDomain *v1alpha1.SimpledbDomain, opts v1.CreateOptions) (result *v1alpha1.SimpledbDomain, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(simpledbdomainsResource, c.ns, simpledbDomain), &v1alpha1.SimpledbDomain{})
 
@@ -91,7 +93,7 @@ func (c *FakeSimpledbDomains) Create(simpledbDomain *v1alpha1.SimpledbDomain) (r
 }
 
 // Update takes the representation of a simpledbDomain and updates it. Returns the server's representation of the simpledbDomain, and an error, if there is any.
-func (c *FakeSimpledbDomains) Update(simpledbDomain *v1alpha1.SimpledbDomain) (result *v1alpha1.SimpledbDomain, err error) {
+func (c *FakeSimpledbDomains) Update(ctx context.Context, simpledbDomain *v1alpha1.SimpledbDomain, opts v1.UpdateOptions) (result *v1alpha1.SimpledbDomain, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(simpledbdomainsResource, c.ns, simpledbDomain), &v1alpha1.SimpledbDomain{})
 
@@ -103,7 +105,7 @@ func (c *FakeSimpledbDomains) Update(simpledbDomain *v1alpha1.SimpledbDomain) (r
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSimpledbDomains) UpdateStatus(simpledbDomain *v1alpha1.SimpledbDomain) (*v1alpha1.SimpledbDomain, error) {
+func (c *FakeSimpledbDomains) UpdateStatus(ctx context.Context, simpledbDomain *v1alpha1.SimpledbDomain, opts v1.UpdateOptions) (*v1alpha1.SimpledbDomain, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(simpledbdomainsResource, "status", c.ns, simpledbDomain), &v1alpha1.SimpledbDomain{})
 
@@ -114,7 +116,7 @@ func (c *FakeSimpledbDomains) UpdateStatus(simpledbDomain *v1alpha1.SimpledbDoma
 }
 
 // Delete takes name of the simpledbDomain and deletes it. Returns an error if one occurs.
-func (c *FakeSimpledbDomains) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSimpledbDomains) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(simpledbdomainsResource, c.ns, name), &v1alpha1.SimpledbDomain{})
 
@@ -122,15 +124,15 @@ func (c *FakeSimpledbDomains) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSimpledbDomains) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(simpledbdomainsResource, c.ns, listOptions)
+func (c *FakeSimpledbDomains) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(simpledbdomainsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SimpledbDomainList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched simpledbDomain.
-func (c *FakeSimpledbDomains) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SimpledbDomain, err error) {
+func (c *FakeSimpledbDomains) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SimpledbDomain, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(simpledbdomainsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SimpledbDomain{})
 

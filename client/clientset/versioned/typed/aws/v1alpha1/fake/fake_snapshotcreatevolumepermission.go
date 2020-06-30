@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var snapshotcreatevolumepermissionsResource = schema.GroupVersionResource{Group:
 var snapshotcreatevolumepermissionsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "SnapshotCreateVolumePermission"}
 
 // Get takes name of the snapshotCreateVolumePermission, and returns the corresponding snapshotCreateVolumePermission object, and an error if there is any.
-func (c *FakeSnapshotCreateVolumePermissions) Get(name string, options v1.GetOptions) (result *v1alpha1.SnapshotCreateVolumePermission, err error) {
+func (c *FakeSnapshotCreateVolumePermissions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SnapshotCreateVolumePermission, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(snapshotcreatevolumepermissionsResource, c.ns, name), &v1alpha1.SnapshotCreateVolumePermission{})
 
@@ -51,7 +53,7 @@ func (c *FakeSnapshotCreateVolumePermissions) Get(name string, options v1.GetOpt
 }
 
 // List takes label and field selectors, and returns the list of SnapshotCreateVolumePermissions that match those selectors.
-func (c *FakeSnapshotCreateVolumePermissions) List(opts v1.ListOptions) (result *v1alpha1.SnapshotCreateVolumePermissionList, err error) {
+func (c *FakeSnapshotCreateVolumePermissions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SnapshotCreateVolumePermissionList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(snapshotcreatevolumepermissionsResource, snapshotcreatevolumepermissionsKind, c.ns, opts), &v1alpha1.SnapshotCreateVolumePermissionList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSnapshotCreateVolumePermissions) List(opts v1.ListOptions) (result 
 }
 
 // Watch returns a watch.Interface that watches the requested snapshotCreateVolumePermissions.
-func (c *FakeSnapshotCreateVolumePermissions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSnapshotCreateVolumePermissions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(snapshotcreatevolumepermissionsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a snapshotCreateVolumePermission and creates it.  Returns the server's representation of the snapshotCreateVolumePermission, and an error, if there is any.
-func (c *FakeSnapshotCreateVolumePermissions) Create(snapshotCreateVolumePermission *v1alpha1.SnapshotCreateVolumePermission) (result *v1alpha1.SnapshotCreateVolumePermission, err error) {
+func (c *FakeSnapshotCreateVolumePermissions) Create(ctx context.Context, snapshotCreateVolumePermission *v1alpha1.SnapshotCreateVolumePermission, opts v1.CreateOptions) (result *v1alpha1.SnapshotCreateVolumePermission, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(snapshotcreatevolumepermissionsResource, c.ns, snapshotCreateVolumePermission), &v1alpha1.SnapshotCreateVolumePermission{})
 
@@ -91,7 +93,7 @@ func (c *FakeSnapshotCreateVolumePermissions) Create(snapshotCreateVolumePermiss
 }
 
 // Update takes the representation of a snapshotCreateVolumePermission and updates it. Returns the server's representation of the snapshotCreateVolumePermission, and an error, if there is any.
-func (c *FakeSnapshotCreateVolumePermissions) Update(snapshotCreateVolumePermission *v1alpha1.SnapshotCreateVolumePermission) (result *v1alpha1.SnapshotCreateVolumePermission, err error) {
+func (c *FakeSnapshotCreateVolumePermissions) Update(ctx context.Context, snapshotCreateVolumePermission *v1alpha1.SnapshotCreateVolumePermission, opts v1.UpdateOptions) (result *v1alpha1.SnapshotCreateVolumePermission, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(snapshotcreatevolumepermissionsResource, c.ns, snapshotCreateVolumePermission), &v1alpha1.SnapshotCreateVolumePermission{})
 
@@ -103,7 +105,7 @@ func (c *FakeSnapshotCreateVolumePermissions) Update(snapshotCreateVolumePermiss
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSnapshotCreateVolumePermissions) UpdateStatus(snapshotCreateVolumePermission *v1alpha1.SnapshotCreateVolumePermission) (*v1alpha1.SnapshotCreateVolumePermission, error) {
+func (c *FakeSnapshotCreateVolumePermissions) UpdateStatus(ctx context.Context, snapshotCreateVolumePermission *v1alpha1.SnapshotCreateVolumePermission, opts v1.UpdateOptions) (*v1alpha1.SnapshotCreateVolumePermission, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(snapshotcreatevolumepermissionsResource, "status", c.ns, snapshotCreateVolumePermission), &v1alpha1.SnapshotCreateVolumePermission{})
 
@@ -114,7 +116,7 @@ func (c *FakeSnapshotCreateVolumePermissions) UpdateStatus(snapshotCreateVolumeP
 }
 
 // Delete takes name of the snapshotCreateVolumePermission and deletes it. Returns an error if one occurs.
-func (c *FakeSnapshotCreateVolumePermissions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSnapshotCreateVolumePermissions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(snapshotcreatevolumepermissionsResource, c.ns, name), &v1alpha1.SnapshotCreateVolumePermission{})
 
@@ -122,15 +124,15 @@ func (c *FakeSnapshotCreateVolumePermissions) Delete(name string, options *v1.De
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSnapshotCreateVolumePermissions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(snapshotcreatevolumepermissionsResource, c.ns, listOptions)
+func (c *FakeSnapshotCreateVolumePermissions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(snapshotcreatevolumepermissionsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SnapshotCreateVolumePermissionList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched snapshotCreateVolumePermission.
-func (c *FakeSnapshotCreateVolumePermissions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SnapshotCreateVolumePermission, err error) {
+func (c *FakeSnapshotCreateVolumePermissions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SnapshotCreateVolumePermission, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(snapshotcreatevolumepermissionsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SnapshotCreateVolumePermission{})
 

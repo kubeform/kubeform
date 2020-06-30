@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var rdsclusterparametergroupsResource = schema.GroupVersionResource{Group: "aws.
 var rdsclusterparametergroupsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "RdsClusterParameterGroup"}
 
 // Get takes name of the rdsClusterParameterGroup, and returns the corresponding rdsClusterParameterGroup object, and an error if there is any.
-func (c *FakeRdsClusterParameterGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.RdsClusterParameterGroup, err error) {
+func (c *FakeRdsClusterParameterGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.RdsClusterParameterGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(rdsclusterparametergroupsResource, c.ns, name), &v1alpha1.RdsClusterParameterGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeRdsClusterParameterGroups) Get(name string, options v1.GetOptions) 
 }
 
 // List takes label and field selectors, and returns the list of RdsClusterParameterGroups that match those selectors.
-func (c *FakeRdsClusterParameterGroups) List(opts v1.ListOptions) (result *v1alpha1.RdsClusterParameterGroupList, err error) {
+func (c *FakeRdsClusterParameterGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RdsClusterParameterGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(rdsclusterparametergroupsResource, rdsclusterparametergroupsKind, c.ns, opts), &v1alpha1.RdsClusterParameterGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeRdsClusterParameterGroups) List(opts v1.ListOptions) (result *v1alp
 }
 
 // Watch returns a watch.Interface that watches the requested rdsClusterParameterGroups.
-func (c *FakeRdsClusterParameterGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeRdsClusterParameterGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(rdsclusterparametergroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a rdsClusterParameterGroup and creates it.  Returns the server's representation of the rdsClusterParameterGroup, and an error, if there is any.
-func (c *FakeRdsClusterParameterGroups) Create(rdsClusterParameterGroup *v1alpha1.RdsClusterParameterGroup) (result *v1alpha1.RdsClusterParameterGroup, err error) {
+func (c *FakeRdsClusterParameterGroups) Create(ctx context.Context, rdsClusterParameterGroup *v1alpha1.RdsClusterParameterGroup, opts v1.CreateOptions) (result *v1alpha1.RdsClusterParameterGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(rdsclusterparametergroupsResource, c.ns, rdsClusterParameterGroup), &v1alpha1.RdsClusterParameterGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeRdsClusterParameterGroups) Create(rdsClusterParameterGroup *v1alpha
 }
 
 // Update takes the representation of a rdsClusterParameterGroup and updates it. Returns the server's representation of the rdsClusterParameterGroup, and an error, if there is any.
-func (c *FakeRdsClusterParameterGroups) Update(rdsClusterParameterGroup *v1alpha1.RdsClusterParameterGroup) (result *v1alpha1.RdsClusterParameterGroup, err error) {
+func (c *FakeRdsClusterParameterGroups) Update(ctx context.Context, rdsClusterParameterGroup *v1alpha1.RdsClusterParameterGroup, opts v1.UpdateOptions) (result *v1alpha1.RdsClusterParameterGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(rdsclusterparametergroupsResource, c.ns, rdsClusterParameterGroup), &v1alpha1.RdsClusterParameterGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeRdsClusterParameterGroups) Update(rdsClusterParameterGroup *v1alpha
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeRdsClusterParameterGroups) UpdateStatus(rdsClusterParameterGroup *v1alpha1.RdsClusterParameterGroup) (*v1alpha1.RdsClusterParameterGroup, error) {
+func (c *FakeRdsClusterParameterGroups) UpdateStatus(ctx context.Context, rdsClusterParameterGroup *v1alpha1.RdsClusterParameterGroup, opts v1.UpdateOptions) (*v1alpha1.RdsClusterParameterGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(rdsclusterparametergroupsResource, "status", c.ns, rdsClusterParameterGroup), &v1alpha1.RdsClusterParameterGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeRdsClusterParameterGroups) UpdateStatus(rdsClusterParameterGroup *v
 }
 
 // Delete takes name of the rdsClusterParameterGroup and deletes it. Returns an error if one occurs.
-func (c *FakeRdsClusterParameterGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeRdsClusterParameterGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(rdsclusterparametergroupsResource, c.ns, name), &v1alpha1.RdsClusterParameterGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeRdsClusterParameterGroups) Delete(name string, options *v1.DeleteOp
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeRdsClusterParameterGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(rdsclusterparametergroupsResource, c.ns, listOptions)
+func (c *FakeRdsClusterParameterGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(rdsclusterparametergroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.RdsClusterParameterGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched rdsClusterParameterGroup.
-func (c *FakeRdsClusterParameterGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RdsClusterParameterGroup, err error) {
+func (c *FakeRdsClusterParameterGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RdsClusterParameterGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(rdsclusterparametergroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.RdsClusterParameterGroup{})
 

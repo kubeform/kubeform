@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type BatchPoolsGetter interface {
 
 // BatchPoolInterface has methods to work with BatchPool resources.
 type BatchPoolInterface interface {
-	Create(*v1alpha1.BatchPool) (*v1alpha1.BatchPool, error)
-	Update(*v1alpha1.BatchPool) (*v1alpha1.BatchPool, error)
-	UpdateStatus(*v1alpha1.BatchPool) (*v1alpha1.BatchPool, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.BatchPool, error)
-	List(opts v1.ListOptions) (*v1alpha1.BatchPoolList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BatchPool, err error)
+	Create(ctx context.Context, batchPool *v1alpha1.BatchPool, opts v1.CreateOptions) (*v1alpha1.BatchPool, error)
+	Update(ctx context.Context, batchPool *v1alpha1.BatchPool, opts v1.UpdateOptions) (*v1alpha1.BatchPool, error)
+	UpdateStatus(ctx context.Context, batchPool *v1alpha1.BatchPool, opts v1.UpdateOptions) (*v1alpha1.BatchPool, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.BatchPool, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.BatchPoolList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BatchPool, err error)
 	BatchPoolExpansion
 }
 
@@ -65,20 +66,20 @@ func newBatchPools(c *AzurermV1alpha1Client, namespace string) *batchPools {
 }
 
 // Get takes name of the batchPool, and returns the corresponding batchPool object, and an error if there is any.
-func (c *batchPools) Get(name string, options v1.GetOptions) (result *v1alpha1.BatchPool, err error) {
+func (c *batchPools) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BatchPool, err error) {
 	result = &v1alpha1.BatchPool{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("batchpools").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of BatchPools that match those selectors.
-func (c *batchPools) List(opts v1.ListOptions) (result *v1alpha1.BatchPoolList, err error) {
+func (c *batchPools) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BatchPoolList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *batchPools) List(opts v1.ListOptions) (result *v1alpha1.BatchPoolList, 
 		Resource("batchpools").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested batchPools.
-func (c *batchPools) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *batchPools) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *batchPools) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("batchpools").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a batchPool and creates it.  Returns the server's representation of the batchPool, and an error, if there is any.
-func (c *batchPools) Create(batchPool *v1alpha1.BatchPool) (result *v1alpha1.BatchPool, err error) {
+func (c *batchPools) Create(ctx context.Context, batchPool *v1alpha1.BatchPool, opts v1.CreateOptions) (result *v1alpha1.BatchPool, err error) {
 	result = &v1alpha1.BatchPool{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("batchpools").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(batchPool).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a batchPool and updates it. Returns the server's representation of the batchPool, and an error, if there is any.
-func (c *batchPools) Update(batchPool *v1alpha1.BatchPool) (result *v1alpha1.BatchPool, err error) {
+func (c *batchPools) Update(ctx context.Context, batchPool *v1alpha1.BatchPool, opts v1.UpdateOptions) (result *v1alpha1.BatchPool, err error) {
 	result = &v1alpha1.BatchPool{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("batchpools").
 		Name(batchPool.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(batchPool).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *batchPools) UpdateStatus(batchPool *v1alpha1.BatchPool) (result *v1alpha1.BatchPool, err error) {
+func (c *batchPools) UpdateStatus(ctx context.Context, batchPool *v1alpha1.BatchPool, opts v1.UpdateOptions) (result *v1alpha1.BatchPool, err error) {
 	result = &v1alpha1.BatchPool{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("batchpools").
 		Name(batchPool.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(batchPool).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the batchPool and deletes it. Returns an error if one occurs.
-func (c *batchPools) Delete(name string, options *v1.DeleteOptions) error {
+func (c *batchPools) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("batchpools").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *batchPools) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *batchPools) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("batchpools").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched batchPool.
-func (c *batchPools) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BatchPool, err error) {
+func (c *batchPools) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BatchPool, err error) {
 	result = &v1alpha1.BatchPool{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("batchpools").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

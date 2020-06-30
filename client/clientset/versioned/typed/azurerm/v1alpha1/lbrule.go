@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type LbRulesGetter interface {
 
 // LbRuleInterface has methods to work with LbRule resources.
 type LbRuleInterface interface {
-	Create(*v1alpha1.LbRule) (*v1alpha1.LbRule, error)
-	Update(*v1alpha1.LbRule) (*v1alpha1.LbRule, error)
-	UpdateStatus(*v1alpha1.LbRule) (*v1alpha1.LbRule, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.LbRule, error)
-	List(opts v1.ListOptions) (*v1alpha1.LbRuleList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LbRule, err error)
+	Create(ctx context.Context, lbRule *v1alpha1.LbRule, opts v1.CreateOptions) (*v1alpha1.LbRule, error)
+	Update(ctx context.Context, lbRule *v1alpha1.LbRule, opts v1.UpdateOptions) (*v1alpha1.LbRule, error)
+	UpdateStatus(ctx context.Context, lbRule *v1alpha1.LbRule, opts v1.UpdateOptions) (*v1alpha1.LbRule, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.LbRule, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.LbRuleList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LbRule, err error)
 	LbRuleExpansion
 }
 
@@ -65,20 +66,20 @@ func newLbRules(c *AzurermV1alpha1Client, namespace string) *lbRules {
 }
 
 // Get takes name of the lbRule, and returns the corresponding lbRule object, and an error if there is any.
-func (c *lbRules) Get(name string, options v1.GetOptions) (result *v1alpha1.LbRule, err error) {
+func (c *lbRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LbRule, err error) {
 	result = &v1alpha1.LbRule{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("lbrules").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of LbRules that match those selectors.
-func (c *lbRules) List(opts v1.ListOptions) (result *v1alpha1.LbRuleList, err error) {
+func (c *lbRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LbRuleList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *lbRules) List(opts v1.ListOptions) (result *v1alpha1.LbRuleList, err er
 		Resource("lbrules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested lbRules.
-func (c *lbRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *lbRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *lbRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("lbrules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a lbRule and creates it.  Returns the server's representation of the lbRule, and an error, if there is any.
-func (c *lbRules) Create(lbRule *v1alpha1.LbRule) (result *v1alpha1.LbRule, err error) {
+func (c *lbRules) Create(ctx context.Context, lbRule *v1alpha1.LbRule, opts v1.CreateOptions) (result *v1alpha1.LbRule, err error) {
 	result = &v1alpha1.LbRule{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("lbrules").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lbRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a lbRule and updates it. Returns the server's representation of the lbRule, and an error, if there is any.
-func (c *lbRules) Update(lbRule *v1alpha1.LbRule) (result *v1alpha1.LbRule, err error) {
+func (c *lbRules) Update(ctx context.Context, lbRule *v1alpha1.LbRule, opts v1.UpdateOptions) (result *v1alpha1.LbRule, err error) {
 	result = &v1alpha1.LbRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("lbrules").
 		Name(lbRule.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lbRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *lbRules) UpdateStatus(lbRule *v1alpha1.LbRule) (result *v1alpha1.LbRule, err error) {
+func (c *lbRules) UpdateStatus(ctx context.Context, lbRule *v1alpha1.LbRule, opts v1.UpdateOptions) (result *v1alpha1.LbRule, err error) {
 	result = &v1alpha1.LbRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("lbrules").
 		Name(lbRule.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lbRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the lbRule and deletes it. Returns an error if one occurs.
-func (c *lbRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *lbRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("lbrules").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *lbRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *lbRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("lbrules").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched lbRule.
-func (c *lbRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LbRule, err error) {
+func (c *lbRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LbRule, err error) {
 	result = &v1alpha1.LbRule{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("lbrules").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

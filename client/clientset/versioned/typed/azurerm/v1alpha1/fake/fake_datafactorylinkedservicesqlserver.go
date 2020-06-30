@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var datafactorylinkedservicesqlserversResource = schema.GroupVersionResource{Gro
 var datafactorylinkedservicesqlserversKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "DataFactoryLinkedServiceSQLServer"}
 
 // Get takes name of the dataFactoryLinkedServiceSQLServer, and returns the corresponding dataFactoryLinkedServiceSQLServer object, and an error if there is any.
-func (c *FakeDataFactoryLinkedServiceSQLServers) Get(name string, options v1.GetOptions) (result *v1alpha1.DataFactoryLinkedServiceSQLServer, err error) {
+func (c *FakeDataFactoryLinkedServiceSQLServers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DataFactoryLinkedServiceSQLServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(datafactorylinkedservicesqlserversResource, c.ns, name), &v1alpha1.DataFactoryLinkedServiceSQLServer{})
 
@@ -51,7 +53,7 @@ func (c *FakeDataFactoryLinkedServiceSQLServers) Get(name string, options v1.Get
 }
 
 // List takes label and field selectors, and returns the list of DataFactoryLinkedServiceSQLServers that match those selectors.
-func (c *FakeDataFactoryLinkedServiceSQLServers) List(opts v1.ListOptions) (result *v1alpha1.DataFactoryLinkedServiceSQLServerList, err error) {
+func (c *FakeDataFactoryLinkedServiceSQLServers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DataFactoryLinkedServiceSQLServerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(datafactorylinkedservicesqlserversResource, datafactorylinkedservicesqlserversKind, c.ns, opts), &v1alpha1.DataFactoryLinkedServiceSQLServerList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDataFactoryLinkedServiceSQLServers) List(opts v1.ListOptions) (resu
 }
 
 // Watch returns a watch.Interface that watches the requested dataFactoryLinkedServiceSQLServers.
-func (c *FakeDataFactoryLinkedServiceSQLServers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDataFactoryLinkedServiceSQLServers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(datafactorylinkedservicesqlserversResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dataFactoryLinkedServiceSQLServer and creates it.  Returns the server's representation of the dataFactoryLinkedServiceSQLServer, and an error, if there is any.
-func (c *FakeDataFactoryLinkedServiceSQLServers) Create(dataFactoryLinkedServiceSQLServer *v1alpha1.DataFactoryLinkedServiceSQLServer) (result *v1alpha1.DataFactoryLinkedServiceSQLServer, err error) {
+func (c *FakeDataFactoryLinkedServiceSQLServers) Create(ctx context.Context, dataFactoryLinkedServiceSQLServer *v1alpha1.DataFactoryLinkedServiceSQLServer, opts v1.CreateOptions) (result *v1alpha1.DataFactoryLinkedServiceSQLServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(datafactorylinkedservicesqlserversResource, c.ns, dataFactoryLinkedServiceSQLServer), &v1alpha1.DataFactoryLinkedServiceSQLServer{})
 
@@ -91,7 +93,7 @@ func (c *FakeDataFactoryLinkedServiceSQLServers) Create(dataFactoryLinkedService
 }
 
 // Update takes the representation of a dataFactoryLinkedServiceSQLServer and updates it. Returns the server's representation of the dataFactoryLinkedServiceSQLServer, and an error, if there is any.
-func (c *FakeDataFactoryLinkedServiceSQLServers) Update(dataFactoryLinkedServiceSQLServer *v1alpha1.DataFactoryLinkedServiceSQLServer) (result *v1alpha1.DataFactoryLinkedServiceSQLServer, err error) {
+func (c *FakeDataFactoryLinkedServiceSQLServers) Update(ctx context.Context, dataFactoryLinkedServiceSQLServer *v1alpha1.DataFactoryLinkedServiceSQLServer, opts v1.UpdateOptions) (result *v1alpha1.DataFactoryLinkedServiceSQLServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(datafactorylinkedservicesqlserversResource, c.ns, dataFactoryLinkedServiceSQLServer), &v1alpha1.DataFactoryLinkedServiceSQLServer{})
 
@@ -103,7 +105,7 @@ func (c *FakeDataFactoryLinkedServiceSQLServers) Update(dataFactoryLinkedService
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDataFactoryLinkedServiceSQLServers) UpdateStatus(dataFactoryLinkedServiceSQLServer *v1alpha1.DataFactoryLinkedServiceSQLServer) (*v1alpha1.DataFactoryLinkedServiceSQLServer, error) {
+func (c *FakeDataFactoryLinkedServiceSQLServers) UpdateStatus(ctx context.Context, dataFactoryLinkedServiceSQLServer *v1alpha1.DataFactoryLinkedServiceSQLServer, opts v1.UpdateOptions) (*v1alpha1.DataFactoryLinkedServiceSQLServer, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(datafactorylinkedservicesqlserversResource, "status", c.ns, dataFactoryLinkedServiceSQLServer), &v1alpha1.DataFactoryLinkedServiceSQLServer{})
 
@@ -114,7 +116,7 @@ func (c *FakeDataFactoryLinkedServiceSQLServers) UpdateStatus(dataFactoryLinkedS
 }
 
 // Delete takes name of the dataFactoryLinkedServiceSQLServer and deletes it. Returns an error if one occurs.
-func (c *FakeDataFactoryLinkedServiceSQLServers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDataFactoryLinkedServiceSQLServers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(datafactorylinkedservicesqlserversResource, c.ns, name), &v1alpha1.DataFactoryLinkedServiceSQLServer{})
 
@@ -122,15 +124,15 @@ func (c *FakeDataFactoryLinkedServiceSQLServers) Delete(name string, options *v1
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDataFactoryLinkedServiceSQLServers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(datafactorylinkedservicesqlserversResource, c.ns, listOptions)
+func (c *FakeDataFactoryLinkedServiceSQLServers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(datafactorylinkedservicesqlserversResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DataFactoryLinkedServiceSQLServerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dataFactoryLinkedServiceSQLServer.
-func (c *FakeDataFactoryLinkedServiceSQLServers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataFactoryLinkedServiceSQLServer, err error) {
+func (c *FakeDataFactoryLinkedServiceSQLServers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataFactoryLinkedServiceSQLServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(datafactorylinkedservicesqlserversResource, c.ns, name, pt, data, subresources...), &v1alpha1.DataFactoryLinkedServiceSQLServer{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var vpnconnectionroutesResource = schema.GroupVersionResource{Group: "aws.kubefo
 var vpnconnectionroutesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "VpnConnectionRoute"}
 
 // Get takes name of the vpnConnectionRoute, and returns the corresponding vpnConnectionRoute object, and an error if there is any.
-func (c *FakeVpnConnectionRoutes) Get(name string, options v1.GetOptions) (result *v1alpha1.VpnConnectionRoute, err error) {
+func (c *FakeVpnConnectionRoutes) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.VpnConnectionRoute, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(vpnconnectionroutesResource, c.ns, name), &v1alpha1.VpnConnectionRoute{})
 
@@ -51,7 +53,7 @@ func (c *FakeVpnConnectionRoutes) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of VpnConnectionRoutes that match those selectors.
-func (c *FakeVpnConnectionRoutes) List(opts v1.ListOptions) (result *v1alpha1.VpnConnectionRouteList, err error) {
+func (c *FakeVpnConnectionRoutes) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.VpnConnectionRouteList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(vpnconnectionroutesResource, vpnconnectionroutesKind, c.ns, opts), &v1alpha1.VpnConnectionRouteList{})
 
@@ -73,14 +75,14 @@ func (c *FakeVpnConnectionRoutes) List(opts v1.ListOptions) (result *v1alpha1.Vp
 }
 
 // Watch returns a watch.Interface that watches the requested vpnConnectionRoutes.
-func (c *FakeVpnConnectionRoutes) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeVpnConnectionRoutes) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(vpnconnectionroutesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a vpnConnectionRoute and creates it.  Returns the server's representation of the vpnConnectionRoute, and an error, if there is any.
-func (c *FakeVpnConnectionRoutes) Create(vpnConnectionRoute *v1alpha1.VpnConnectionRoute) (result *v1alpha1.VpnConnectionRoute, err error) {
+func (c *FakeVpnConnectionRoutes) Create(ctx context.Context, vpnConnectionRoute *v1alpha1.VpnConnectionRoute, opts v1.CreateOptions) (result *v1alpha1.VpnConnectionRoute, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(vpnconnectionroutesResource, c.ns, vpnConnectionRoute), &v1alpha1.VpnConnectionRoute{})
 
@@ -91,7 +93,7 @@ func (c *FakeVpnConnectionRoutes) Create(vpnConnectionRoute *v1alpha1.VpnConnect
 }
 
 // Update takes the representation of a vpnConnectionRoute and updates it. Returns the server's representation of the vpnConnectionRoute, and an error, if there is any.
-func (c *FakeVpnConnectionRoutes) Update(vpnConnectionRoute *v1alpha1.VpnConnectionRoute) (result *v1alpha1.VpnConnectionRoute, err error) {
+func (c *FakeVpnConnectionRoutes) Update(ctx context.Context, vpnConnectionRoute *v1alpha1.VpnConnectionRoute, opts v1.UpdateOptions) (result *v1alpha1.VpnConnectionRoute, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(vpnconnectionroutesResource, c.ns, vpnConnectionRoute), &v1alpha1.VpnConnectionRoute{})
 
@@ -103,7 +105,7 @@ func (c *FakeVpnConnectionRoutes) Update(vpnConnectionRoute *v1alpha1.VpnConnect
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeVpnConnectionRoutes) UpdateStatus(vpnConnectionRoute *v1alpha1.VpnConnectionRoute) (*v1alpha1.VpnConnectionRoute, error) {
+func (c *FakeVpnConnectionRoutes) UpdateStatus(ctx context.Context, vpnConnectionRoute *v1alpha1.VpnConnectionRoute, opts v1.UpdateOptions) (*v1alpha1.VpnConnectionRoute, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(vpnconnectionroutesResource, "status", c.ns, vpnConnectionRoute), &v1alpha1.VpnConnectionRoute{})
 
@@ -114,7 +116,7 @@ func (c *FakeVpnConnectionRoutes) UpdateStatus(vpnConnectionRoute *v1alpha1.VpnC
 }
 
 // Delete takes name of the vpnConnectionRoute and deletes it. Returns an error if one occurs.
-func (c *FakeVpnConnectionRoutes) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeVpnConnectionRoutes) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(vpnconnectionroutesResource, c.ns, name), &v1alpha1.VpnConnectionRoute{})
 
@@ -122,15 +124,15 @@ func (c *FakeVpnConnectionRoutes) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeVpnConnectionRoutes) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(vpnconnectionroutesResource, c.ns, listOptions)
+func (c *FakeVpnConnectionRoutes) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(vpnconnectionroutesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.VpnConnectionRouteList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched vpnConnectionRoute.
-func (c *FakeVpnConnectionRoutes) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.VpnConnectionRoute, err error) {
+func (c *FakeVpnConnectionRoutes) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.VpnConnectionRoute, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(vpnconnectionroutesResource, c.ns, name, pt, data, subresources...), &v1alpha1.VpnConnectionRoute{})
 

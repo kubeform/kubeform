@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computeinstanceiambindingsResource = schema.GroupVersionResource{Group: "goo
 var computeinstanceiambindingsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeInstanceIamBinding"}
 
 // Get takes name of the computeInstanceIamBinding, and returns the corresponding computeInstanceIamBinding object, and an error if there is any.
-func (c *FakeComputeInstanceIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeInstanceIamBinding, err error) {
+func (c *FakeComputeInstanceIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeInstanceIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computeinstanceiambindingsResource, c.ns, name), &v1alpha1.ComputeInstanceIamBinding{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeInstanceIamBindings) Get(name string, options v1.GetOptions)
 }
 
 // List takes label and field selectors, and returns the list of ComputeInstanceIamBindings that match those selectors.
-func (c *FakeComputeInstanceIamBindings) List(opts v1.ListOptions) (result *v1alpha1.ComputeInstanceIamBindingList, err error) {
+func (c *FakeComputeInstanceIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeInstanceIamBindingList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computeinstanceiambindingsResource, computeinstanceiambindingsKind, c.ns, opts), &v1alpha1.ComputeInstanceIamBindingList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeInstanceIamBindings) List(opts v1.ListOptions) (result *v1al
 }
 
 // Watch returns a watch.Interface that watches the requested computeInstanceIamBindings.
-func (c *FakeComputeInstanceIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeInstanceIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computeinstanceiambindingsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeInstanceIamBinding and creates it.  Returns the server's representation of the computeInstanceIamBinding, and an error, if there is any.
-func (c *FakeComputeInstanceIamBindings) Create(computeInstanceIamBinding *v1alpha1.ComputeInstanceIamBinding) (result *v1alpha1.ComputeInstanceIamBinding, err error) {
+func (c *FakeComputeInstanceIamBindings) Create(ctx context.Context, computeInstanceIamBinding *v1alpha1.ComputeInstanceIamBinding, opts v1.CreateOptions) (result *v1alpha1.ComputeInstanceIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computeinstanceiambindingsResource, c.ns, computeInstanceIamBinding), &v1alpha1.ComputeInstanceIamBinding{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeInstanceIamBindings) Create(computeInstanceIamBinding *v1alp
 }
 
 // Update takes the representation of a computeInstanceIamBinding and updates it. Returns the server's representation of the computeInstanceIamBinding, and an error, if there is any.
-func (c *FakeComputeInstanceIamBindings) Update(computeInstanceIamBinding *v1alpha1.ComputeInstanceIamBinding) (result *v1alpha1.ComputeInstanceIamBinding, err error) {
+func (c *FakeComputeInstanceIamBindings) Update(ctx context.Context, computeInstanceIamBinding *v1alpha1.ComputeInstanceIamBinding, opts v1.UpdateOptions) (result *v1alpha1.ComputeInstanceIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computeinstanceiambindingsResource, c.ns, computeInstanceIamBinding), &v1alpha1.ComputeInstanceIamBinding{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeInstanceIamBindings) Update(computeInstanceIamBinding *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeInstanceIamBindings) UpdateStatus(computeInstanceIamBinding *v1alpha1.ComputeInstanceIamBinding) (*v1alpha1.ComputeInstanceIamBinding, error) {
+func (c *FakeComputeInstanceIamBindings) UpdateStatus(ctx context.Context, computeInstanceIamBinding *v1alpha1.ComputeInstanceIamBinding, opts v1.UpdateOptions) (*v1alpha1.ComputeInstanceIamBinding, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computeinstanceiambindingsResource, "status", c.ns, computeInstanceIamBinding), &v1alpha1.ComputeInstanceIamBinding{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeInstanceIamBindings) UpdateStatus(computeInstanceIamBinding 
 }
 
 // Delete takes name of the computeInstanceIamBinding and deletes it. Returns an error if one occurs.
-func (c *FakeComputeInstanceIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeInstanceIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computeinstanceiambindingsResource, c.ns, name), &v1alpha1.ComputeInstanceIamBinding{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeInstanceIamBindings) Delete(name string, options *v1.DeleteO
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeInstanceIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computeinstanceiambindingsResource, c.ns, listOptions)
+func (c *FakeComputeInstanceIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computeinstanceiambindingsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeInstanceIamBindingList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeInstanceIamBinding.
-func (c *FakeComputeInstanceIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeInstanceIamBinding, err error) {
+func (c *FakeComputeInstanceIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeInstanceIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computeinstanceiambindingsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeInstanceIamBinding{})
 

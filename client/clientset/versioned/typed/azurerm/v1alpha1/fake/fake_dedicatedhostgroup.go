@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dedicatedhostgroupsResource = schema.GroupVersionResource{Group: "azurerm.ku
 var dedicatedhostgroupsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "DedicatedHostGroup"}
 
 // Get takes name of the dedicatedHostGroup, and returns the corresponding dedicatedHostGroup object, and an error if there is any.
-func (c *FakeDedicatedHostGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.DedicatedHostGroup, err error) {
+func (c *FakeDedicatedHostGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DedicatedHostGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dedicatedhostgroupsResource, c.ns, name), &v1alpha1.DedicatedHostGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeDedicatedHostGroups) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of DedicatedHostGroups that match those selectors.
-func (c *FakeDedicatedHostGroups) List(opts v1.ListOptions) (result *v1alpha1.DedicatedHostGroupList, err error) {
+func (c *FakeDedicatedHostGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DedicatedHostGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dedicatedhostgroupsResource, dedicatedhostgroupsKind, c.ns, opts), &v1alpha1.DedicatedHostGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDedicatedHostGroups) List(opts v1.ListOptions) (result *v1alpha1.De
 }
 
 // Watch returns a watch.Interface that watches the requested dedicatedHostGroups.
-func (c *FakeDedicatedHostGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDedicatedHostGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dedicatedhostgroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dedicatedHostGroup and creates it.  Returns the server's representation of the dedicatedHostGroup, and an error, if there is any.
-func (c *FakeDedicatedHostGroups) Create(dedicatedHostGroup *v1alpha1.DedicatedHostGroup) (result *v1alpha1.DedicatedHostGroup, err error) {
+func (c *FakeDedicatedHostGroups) Create(ctx context.Context, dedicatedHostGroup *v1alpha1.DedicatedHostGroup, opts v1.CreateOptions) (result *v1alpha1.DedicatedHostGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dedicatedhostgroupsResource, c.ns, dedicatedHostGroup), &v1alpha1.DedicatedHostGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeDedicatedHostGroups) Create(dedicatedHostGroup *v1alpha1.DedicatedH
 }
 
 // Update takes the representation of a dedicatedHostGroup and updates it. Returns the server's representation of the dedicatedHostGroup, and an error, if there is any.
-func (c *FakeDedicatedHostGroups) Update(dedicatedHostGroup *v1alpha1.DedicatedHostGroup) (result *v1alpha1.DedicatedHostGroup, err error) {
+func (c *FakeDedicatedHostGroups) Update(ctx context.Context, dedicatedHostGroup *v1alpha1.DedicatedHostGroup, opts v1.UpdateOptions) (result *v1alpha1.DedicatedHostGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dedicatedhostgroupsResource, c.ns, dedicatedHostGroup), &v1alpha1.DedicatedHostGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeDedicatedHostGroups) Update(dedicatedHostGroup *v1alpha1.DedicatedH
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDedicatedHostGroups) UpdateStatus(dedicatedHostGroup *v1alpha1.DedicatedHostGroup) (*v1alpha1.DedicatedHostGroup, error) {
+func (c *FakeDedicatedHostGroups) UpdateStatus(ctx context.Context, dedicatedHostGroup *v1alpha1.DedicatedHostGroup, opts v1.UpdateOptions) (*v1alpha1.DedicatedHostGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dedicatedhostgroupsResource, "status", c.ns, dedicatedHostGroup), &v1alpha1.DedicatedHostGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeDedicatedHostGroups) UpdateStatus(dedicatedHostGroup *v1alpha1.Dedi
 }
 
 // Delete takes name of the dedicatedHostGroup and deletes it. Returns an error if one occurs.
-func (c *FakeDedicatedHostGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDedicatedHostGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dedicatedhostgroupsResource, c.ns, name), &v1alpha1.DedicatedHostGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeDedicatedHostGroups) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDedicatedHostGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dedicatedhostgroupsResource, c.ns, listOptions)
+func (c *FakeDedicatedHostGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dedicatedhostgroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DedicatedHostGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dedicatedHostGroup.
-func (c *FakeDedicatedHostGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DedicatedHostGroup, err error) {
+func (c *FakeDedicatedHostGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DedicatedHostGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dedicatedhostgroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DedicatedHostGroup{})
 

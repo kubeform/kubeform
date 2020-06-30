@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var sourcereporepositoryiambindingsResource = schema.GroupVersionResource{Group:
 var sourcereporepositoryiambindingsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "SourcerepoRepositoryIamBinding"}
 
 // Get takes name of the sourcerepoRepositoryIamBinding, and returns the corresponding sourcerepoRepositoryIamBinding object, and an error if there is any.
-func (c *FakeSourcerepoRepositoryIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.SourcerepoRepositoryIamBinding, err error) {
+func (c *FakeSourcerepoRepositoryIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SourcerepoRepositoryIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(sourcereporepositoryiambindingsResource, c.ns, name), &v1alpha1.SourcerepoRepositoryIamBinding{})
 
@@ -51,7 +53,7 @@ func (c *FakeSourcerepoRepositoryIamBindings) Get(name string, options v1.GetOpt
 }
 
 // List takes label and field selectors, and returns the list of SourcerepoRepositoryIamBindings that match those selectors.
-func (c *FakeSourcerepoRepositoryIamBindings) List(opts v1.ListOptions) (result *v1alpha1.SourcerepoRepositoryIamBindingList, err error) {
+func (c *FakeSourcerepoRepositoryIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SourcerepoRepositoryIamBindingList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(sourcereporepositoryiambindingsResource, sourcereporepositoryiambindingsKind, c.ns, opts), &v1alpha1.SourcerepoRepositoryIamBindingList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSourcerepoRepositoryIamBindings) List(opts v1.ListOptions) (result 
 }
 
 // Watch returns a watch.Interface that watches the requested sourcerepoRepositoryIamBindings.
-func (c *FakeSourcerepoRepositoryIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSourcerepoRepositoryIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(sourcereporepositoryiambindingsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a sourcerepoRepositoryIamBinding and creates it.  Returns the server's representation of the sourcerepoRepositoryIamBinding, and an error, if there is any.
-func (c *FakeSourcerepoRepositoryIamBindings) Create(sourcerepoRepositoryIamBinding *v1alpha1.SourcerepoRepositoryIamBinding) (result *v1alpha1.SourcerepoRepositoryIamBinding, err error) {
+func (c *FakeSourcerepoRepositoryIamBindings) Create(ctx context.Context, sourcerepoRepositoryIamBinding *v1alpha1.SourcerepoRepositoryIamBinding, opts v1.CreateOptions) (result *v1alpha1.SourcerepoRepositoryIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(sourcereporepositoryiambindingsResource, c.ns, sourcerepoRepositoryIamBinding), &v1alpha1.SourcerepoRepositoryIamBinding{})
 
@@ -91,7 +93,7 @@ func (c *FakeSourcerepoRepositoryIamBindings) Create(sourcerepoRepositoryIamBind
 }
 
 // Update takes the representation of a sourcerepoRepositoryIamBinding and updates it. Returns the server's representation of the sourcerepoRepositoryIamBinding, and an error, if there is any.
-func (c *FakeSourcerepoRepositoryIamBindings) Update(sourcerepoRepositoryIamBinding *v1alpha1.SourcerepoRepositoryIamBinding) (result *v1alpha1.SourcerepoRepositoryIamBinding, err error) {
+func (c *FakeSourcerepoRepositoryIamBindings) Update(ctx context.Context, sourcerepoRepositoryIamBinding *v1alpha1.SourcerepoRepositoryIamBinding, opts v1.UpdateOptions) (result *v1alpha1.SourcerepoRepositoryIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(sourcereporepositoryiambindingsResource, c.ns, sourcerepoRepositoryIamBinding), &v1alpha1.SourcerepoRepositoryIamBinding{})
 
@@ -103,7 +105,7 @@ func (c *FakeSourcerepoRepositoryIamBindings) Update(sourcerepoRepositoryIamBind
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSourcerepoRepositoryIamBindings) UpdateStatus(sourcerepoRepositoryIamBinding *v1alpha1.SourcerepoRepositoryIamBinding) (*v1alpha1.SourcerepoRepositoryIamBinding, error) {
+func (c *FakeSourcerepoRepositoryIamBindings) UpdateStatus(ctx context.Context, sourcerepoRepositoryIamBinding *v1alpha1.SourcerepoRepositoryIamBinding, opts v1.UpdateOptions) (*v1alpha1.SourcerepoRepositoryIamBinding, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(sourcereporepositoryiambindingsResource, "status", c.ns, sourcerepoRepositoryIamBinding), &v1alpha1.SourcerepoRepositoryIamBinding{})
 
@@ -114,7 +116,7 @@ func (c *FakeSourcerepoRepositoryIamBindings) UpdateStatus(sourcerepoRepositoryI
 }
 
 // Delete takes name of the sourcerepoRepositoryIamBinding and deletes it. Returns an error if one occurs.
-func (c *FakeSourcerepoRepositoryIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSourcerepoRepositoryIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(sourcereporepositoryiambindingsResource, c.ns, name), &v1alpha1.SourcerepoRepositoryIamBinding{})
 
@@ -122,15 +124,15 @@ func (c *FakeSourcerepoRepositoryIamBindings) Delete(name string, options *v1.De
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSourcerepoRepositoryIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(sourcereporepositoryiambindingsResource, c.ns, listOptions)
+func (c *FakeSourcerepoRepositoryIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(sourcereporepositoryiambindingsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SourcerepoRepositoryIamBindingList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched sourcerepoRepositoryIamBinding.
-func (c *FakeSourcerepoRepositoryIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SourcerepoRepositoryIamBinding, err error) {
+func (c *FakeSourcerepoRepositoryIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SourcerepoRepositoryIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(sourcereporepositoryiambindingsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SourcerepoRepositoryIamBinding{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iamrolepoliciesResource = schema.GroupVersionResource{Group: "aws.kubeform.c
 var iamrolepoliciesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "IamRolePolicy"}
 
 // Get takes name of the iamRolePolicy, and returns the corresponding iamRolePolicy object, and an error if there is any.
-func (c *FakeIamRolePolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.IamRolePolicy, err error) {
+func (c *FakeIamRolePolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IamRolePolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iamrolepoliciesResource, c.ns, name), &v1alpha1.IamRolePolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeIamRolePolicies) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of IamRolePolicies that match those selectors.
-func (c *FakeIamRolePolicies) List(opts v1.ListOptions) (result *v1alpha1.IamRolePolicyList, err error) {
+func (c *FakeIamRolePolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IamRolePolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iamrolepoliciesResource, iamrolepoliciesKind, c.ns, opts), &v1alpha1.IamRolePolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIamRolePolicies) List(opts v1.ListOptions) (result *v1alpha1.IamRol
 }
 
 // Watch returns a watch.Interface that watches the requested iamRolePolicies.
-func (c *FakeIamRolePolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIamRolePolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iamrolepoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iamRolePolicy and creates it.  Returns the server's representation of the iamRolePolicy, and an error, if there is any.
-func (c *FakeIamRolePolicies) Create(iamRolePolicy *v1alpha1.IamRolePolicy) (result *v1alpha1.IamRolePolicy, err error) {
+func (c *FakeIamRolePolicies) Create(ctx context.Context, iamRolePolicy *v1alpha1.IamRolePolicy, opts v1.CreateOptions) (result *v1alpha1.IamRolePolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iamrolepoliciesResource, c.ns, iamRolePolicy), &v1alpha1.IamRolePolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeIamRolePolicies) Create(iamRolePolicy *v1alpha1.IamRolePolicy) (res
 }
 
 // Update takes the representation of a iamRolePolicy and updates it. Returns the server's representation of the iamRolePolicy, and an error, if there is any.
-func (c *FakeIamRolePolicies) Update(iamRolePolicy *v1alpha1.IamRolePolicy) (result *v1alpha1.IamRolePolicy, err error) {
+func (c *FakeIamRolePolicies) Update(ctx context.Context, iamRolePolicy *v1alpha1.IamRolePolicy, opts v1.UpdateOptions) (result *v1alpha1.IamRolePolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iamrolepoliciesResource, c.ns, iamRolePolicy), &v1alpha1.IamRolePolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeIamRolePolicies) Update(iamRolePolicy *v1alpha1.IamRolePolicy) (res
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIamRolePolicies) UpdateStatus(iamRolePolicy *v1alpha1.IamRolePolicy) (*v1alpha1.IamRolePolicy, error) {
+func (c *FakeIamRolePolicies) UpdateStatus(ctx context.Context, iamRolePolicy *v1alpha1.IamRolePolicy, opts v1.UpdateOptions) (*v1alpha1.IamRolePolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iamrolepoliciesResource, "status", c.ns, iamRolePolicy), &v1alpha1.IamRolePolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeIamRolePolicies) UpdateStatus(iamRolePolicy *v1alpha1.IamRolePolicy
 }
 
 // Delete takes name of the iamRolePolicy and deletes it. Returns an error if one occurs.
-func (c *FakeIamRolePolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIamRolePolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iamrolepoliciesResource, c.ns, name), &v1alpha1.IamRolePolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeIamRolePolicies) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIamRolePolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iamrolepoliciesResource, c.ns, listOptions)
+func (c *FakeIamRolePolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iamrolepoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IamRolePolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iamRolePolicy.
-func (c *FakeIamRolePolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IamRolePolicy, err error) {
+func (c *FakeIamRolePolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IamRolePolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iamrolepoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.IamRolePolicy{})
 

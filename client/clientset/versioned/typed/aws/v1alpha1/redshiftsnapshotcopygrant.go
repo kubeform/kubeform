@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type RedshiftSnapshotCopyGrantsGetter interface {
 
 // RedshiftSnapshotCopyGrantInterface has methods to work with RedshiftSnapshotCopyGrant resources.
 type RedshiftSnapshotCopyGrantInterface interface {
-	Create(*v1alpha1.RedshiftSnapshotCopyGrant) (*v1alpha1.RedshiftSnapshotCopyGrant, error)
-	Update(*v1alpha1.RedshiftSnapshotCopyGrant) (*v1alpha1.RedshiftSnapshotCopyGrant, error)
-	UpdateStatus(*v1alpha1.RedshiftSnapshotCopyGrant) (*v1alpha1.RedshiftSnapshotCopyGrant, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.RedshiftSnapshotCopyGrant, error)
-	List(opts v1.ListOptions) (*v1alpha1.RedshiftSnapshotCopyGrantList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RedshiftSnapshotCopyGrant, err error)
+	Create(ctx context.Context, redshiftSnapshotCopyGrant *v1alpha1.RedshiftSnapshotCopyGrant, opts v1.CreateOptions) (*v1alpha1.RedshiftSnapshotCopyGrant, error)
+	Update(ctx context.Context, redshiftSnapshotCopyGrant *v1alpha1.RedshiftSnapshotCopyGrant, opts v1.UpdateOptions) (*v1alpha1.RedshiftSnapshotCopyGrant, error)
+	UpdateStatus(ctx context.Context, redshiftSnapshotCopyGrant *v1alpha1.RedshiftSnapshotCopyGrant, opts v1.UpdateOptions) (*v1alpha1.RedshiftSnapshotCopyGrant, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.RedshiftSnapshotCopyGrant, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.RedshiftSnapshotCopyGrantList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RedshiftSnapshotCopyGrant, err error)
 	RedshiftSnapshotCopyGrantExpansion
 }
 
@@ -65,20 +66,20 @@ func newRedshiftSnapshotCopyGrants(c *AwsV1alpha1Client, namespace string) *reds
 }
 
 // Get takes name of the redshiftSnapshotCopyGrant, and returns the corresponding redshiftSnapshotCopyGrant object, and an error if there is any.
-func (c *redshiftSnapshotCopyGrants) Get(name string, options v1.GetOptions) (result *v1alpha1.RedshiftSnapshotCopyGrant, err error) {
+func (c *redshiftSnapshotCopyGrants) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.RedshiftSnapshotCopyGrant, err error) {
 	result = &v1alpha1.RedshiftSnapshotCopyGrant{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("redshiftsnapshotcopygrants").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of RedshiftSnapshotCopyGrants that match those selectors.
-func (c *redshiftSnapshotCopyGrants) List(opts v1.ListOptions) (result *v1alpha1.RedshiftSnapshotCopyGrantList, err error) {
+func (c *redshiftSnapshotCopyGrants) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RedshiftSnapshotCopyGrantList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *redshiftSnapshotCopyGrants) List(opts v1.ListOptions) (result *v1alpha1
 		Resource("redshiftsnapshotcopygrants").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested redshiftSnapshotCopyGrants.
-func (c *redshiftSnapshotCopyGrants) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *redshiftSnapshotCopyGrants) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *redshiftSnapshotCopyGrants) Watch(opts v1.ListOptions) (watch.Interface
 		Resource("redshiftsnapshotcopygrants").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a redshiftSnapshotCopyGrant and creates it.  Returns the server's representation of the redshiftSnapshotCopyGrant, and an error, if there is any.
-func (c *redshiftSnapshotCopyGrants) Create(redshiftSnapshotCopyGrant *v1alpha1.RedshiftSnapshotCopyGrant) (result *v1alpha1.RedshiftSnapshotCopyGrant, err error) {
+func (c *redshiftSnapshotCopyGrants) Create(ctx context.Context, redshiftSnapshotCopyGrant *v1alpha1.RedshiftSnapshotCopyGrant, opts v1.CreateOptions) (result *v1alpha1.RedshiftSnapshotCopyGrant, err error) {
 	result = &v1alpha1.RedshiftSnapshotCopyGrant{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("redshiftsnapshotcopygrants").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(redshiftSnapshotCopyGrant).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a redshiftSnapshotCopyGrant and updates it. Returns the server's representation of the redshiftSnapshotCopyGrant, and an error, if there is any.
-func (c *redshiftSnapshotCopyGrants) Update(redshiftSnapshotCopyGrant *v1alpha1.RedshiftSnapshotCopyGrant) (result *v1alpha1.RedshiftSnapshotCopyGrant, err error) {
+func (c *redshiftSnapshotCopyGrants) Update(ctx context.Context, redshiftSnapshotCopyGrant *v1alpha1.RedshiftSnapshotCopyGrant, opts v1.UpdateOptions) (result *v1alpha1.RedshiftSnapshotCopyGrant, err error) {
 	result = &v1alpha1.RedshiftSnapshotCopyGrant{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("redshiftsnapshotcopygrants").
 		Name(redshiftSnapshotCopyGrant.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(redshiftSnapshotCopyGrant).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *redshiftSnapshotCopyGrants) UpdateStatus(redshiftSnapshotCopyGrant *v1alpha1.RedshiftSnapshotCopyGrant) (result *v1alpha1.RedshiftSnapshotCopyGrant, err error) {
+func (c *redshiftSnapshotCopyGrants) UpdateStatus(ctx context.Context, redshiftSnapshotCopyGrant *v1alpha1.RedshiftSnapshotCopyGrant, opts v1.UpdateOptions) (result *v1alpha1.RedshiftSnapshotCopyGrant, err error) {
 	result = &v1alpha1.RedshiftSnapshotCopyGrant{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("redshiftsnapshotcopygrants").
 		Name(redshiftSnapshotCopyGrant.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(redshiftSnapshotCopyGrant).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the redshiftSnapshotCopyGrant and deletes it. Returns an error if one occurs.
-func (c *redshiftSnapshotCopyGrants) Delete(name string, options *v1.DeleteOptions) error {
+func (c *redshiftSnapshotCopyGrants) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("redshiftsnapshotcopygrants").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *redshiftSnapshotCopyGrants) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *redshiftSnapshotCopyGrants) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("redshiftsnapshotcopygrants").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched redshiftSnapshotCopyGrant.
-func (c *redshiftSnapshotCopyGrants) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RedshiftSnapshotCopyGrant, err error) {
+func (c *redshiftSnapshotCopyGrants) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RedshiftSnapshotCopyGrant, err error) {
 	result = &v1alpha1.RedshiftSnapshotCopyGrant{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("redshiftsnapshotcopygrants").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

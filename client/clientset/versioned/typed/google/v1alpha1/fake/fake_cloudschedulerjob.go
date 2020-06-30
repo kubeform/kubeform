@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cloudschedulerjobsResource = schema.GroupVersionResource{Group: "google.kube
 var cloudschedulerjobsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "CloudSchedulerJob"}
 
 // Get takes name of the cloudSchedulerJob, and returns the corresponding cloudSchedulerJob object, and an error if there is any.
-func (c *FakeCloudSchedulerJobs) Get(name string, options v1.GetOptions) (result *v1alpha1.CloudSchedulerJob, err error) {
+func (c *FakeCloudSchedulerJobs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CloudSchedulerJob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cloudschedulerjobsResource, c.ns, name), &v1alpha1.CloudSchedulerJob{})
 
@@ -51,7 +53,7 @@ func (c *FakeCloudSchedulerJobs) Get(name string, options v1.GetOptions) (result
 }
 
 // List takes label and field selectors, and returns the list of CloudSchedulerJobs that match those selectors.
-func (c *FakeCloudSchedulerJobs) List(opts v1.ListOptions) (result *v1alpha1.CloudSchedulerJobList, err error) {
+func (c *FakeCloudSchedulerJobs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CloudSchedulerJobList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cloudschedulerjobsResource, cloudschedulerjobsKind, c.ns, opts), &v1alpha1.CloudSchedulerJobList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCloudSchedulerJobs) List(opts v1.ListOptions) (result *v1alpha1.Clo
 }
 
 // Watch returns a watch.Interface that watches the requested cloudSchedulerJobs.
-func (c *FakeCloudSchedulerJobs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCloudSchedulerJobs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cloudschedulerjobsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cloudSchedulerJob and creates it.  Returns the server's representation of the cloudSchedulerJob, and an error, if there is any.
-func (c *FakeCloudSchedulerJobs) Create(cloudSchedulerJob *v1alpha1.CloudSchedulerJob) (result *v1alpha1.CloudSchedulerJob, err error) {
+func (c *FakeCloudSchedulerJobs) Create(ctx context.Context, cloudSchedulerJob *v1alpha1.CloudSchedulerJob, opts v1.CreateOptions) (result *v1alpha1.CloudSchedulerJob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cloudschedulerjobsResource, c.ns, cloudSchedulerJob), &v1alpha1.CloudSchedulerJob{})
 
@@ -91,7 +93,7 @@ func (c *FakeCloudSchedulerJobs) Create(cloudSchedulerJob *v1alpha1.CloudSchedul
 }
 
 // Update takes the representation of a cloudSchedulerJob and updates it. Returns the server's representation of the cloudSchedulerJob, and an error, if there is any.
-func (c *FakeCloudSchedulerJobs) Update(cloudSchedulerJob *v1alpha1.CloudSchedulerJob) (result *v1alpha1.CloudSchedulerJob, err error) {
+func (c *FakeCloudSchedulerJobs) Update(ctx context.Context, cloudSchedulerJob *v1alpha1.CloudSchedulerJob, opts v1.UpdateOptions) (result *v1alpha1.CloudSchedulerJob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cloudschedulerjobsResource, c.ns, cloudSchedulerJob), &v1alpha1.CloudSchedulerJob{})
 
@@ -103,7 +105,7 @@ func (c *FakeCloudSchedulerJobs) Update(cloudSchedulerJob *v1alpha1.CloudSchedul
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCloudSchedulerJobs) UpdateStatus(cloudSchedulerJob *v1alpha1.CloudSchedulerJob) (*v1alpha1.CloudSchedulerJob, error) {
+func (c *FakeCloudSchedulerJobs) UpdateStatus(ctx context.Context, cloudSchedulerJob *v1alpha1.CloudSchedulerJob, opts v1.UpdateOptions) (*v1alpha1.CloudSchedulerJob, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cloudschedulerjobsResource, "status", c.ns, cloudSchedulerJob), &v1alpha1.CloudSchedulerJob{})
 
@@ -114,7 +116,7 @@ func (c *FakeCloudSchedulerJobs) UpdateStatus(cloudSchedulerJob *v1alpha1.CloudS
 }
 
 // Delete takes name of the cloudSchedulerJob and deletes it. Returns an error if one occurs.
-func (c *FakeCloudSchedulerJobs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCloudSchedulerJobs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cloudschedulerjobsResource, c.ns, name), &v1alpha1.CloudSchedulerJob{})
 
@@ -122,15 +124,15 @@ func (c *FakeCloudSchedulerJobs) Delete(name string, options *v1.DeleteOptions) 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCloudSchedulerJobs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cloudschedulerjobsResource, c.ns, listOptions)
+func (c *FakeCloudSchedulerJobs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cloudschedulerjobsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CloudSchedulerJobList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cloudSchedulerJob.
-func (c *FakeCloudSchedulerJobs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CloudSchedulerJob, err error) {
+func (c *FakeCloudSchedulerJobs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CloudSchedulerJob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cloudschedulerjobsResource, c.ns, name, pt, data, subresources...), &v1alpha1.CloudSchedulerJob{})
 

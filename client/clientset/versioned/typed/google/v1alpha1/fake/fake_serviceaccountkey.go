@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var serviceaccountkeysResource = schema.GroupVersionResource{Group: "google.kube
 var serviceaccountkeysKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ServiceAccountKey"}
 
 // Get takes name of the serviceAccountKey, and returns the corresponding serviceAccountKey object, and an error if there is any.
-func (c *FakeServiceAccountKeys) Get(name string, options v1.GetOptions) (result *v1alpha1.ServiceAccountKey, err error) {
+func (c *FakeServiceAccountKeys) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ServiceAccountKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(serviceaccountkeysResource, c.ns, name), &v1alpha1.ServiceAccountKey{})
 
@@ -51,7 +53,7 @@ func (c *FakeServiceAccountKeys) Get(name string, options v1.GetOptions) (result
 }
 
 // List takes label and field selectors, and returns the list of ServiceAccountKeys that match those selectors.
-func (c *FakeServiceAccountKeys) List(opts v1.ListOptions) (result *v1alpha1.ServiceAccountKeyList, err error) {
+func (c *FakeServiceAccountKeys) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ServiceAccountKeyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(serviceaccountkeysResource, serviceaccountkeysKind, c.ns, opts), &v1alpha1.ServiceAccountKeyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeServiceAccountKeys) List(opts v1.ListOptions) (result *v1alpha1.Ser
 }
 
 // Watch returns a watch.Interface that watches the requested serviceAccountKeys.
-func (c *FakeServiceAccountKeys) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeServiceAccountKeys) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(serviceaccountkeysResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a serviceAccountKey and creates it.  Returns the server's representation of the serviceAccountKey, and an error, if there is any.
-func (c *FakeServiceAccountKeys) Create(serviceAccountKey *v1alpha1.ServiceAccountKey) (result *v1alpha1.ServiceAccountKey, err error) {
+func (c *FakeServiceAccountKeys) Create(ctx context.Context, serviceAccountKey *v1alpha1.ServiceAccountKey, opts v1.CreateOptions) (result *v1alpha1.ServiceAccountKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(serviceaccountkeysResource, c.ns, serviceAccountKey), &v1alpha1.ServiceAccountKey{})
 
@@ -91,7 +93,7 @@ func (c *FakeServiceAccountKeys) Create(serviceAccountKey *v1alpha1.ServiceAccou
 }
 
 // Update takes the representation of a serviceAccountKey and updates it. Returns the server's representation of the serviceAccountKey, and an error, if there is any.
-func (c *FakeServiceAccountKeys) Update(serviceAccountKey *v1alpha1.ServiceAccountKey) (result *v1alpha1.ServiceAccountKey, err error) {
+func (c *FakeServiceAccountKeys) Update(ctx context.Context, serviceAccountKey *v1alpha1.ServiceAccountKey, opts v1.UpdateOptions) (result *v1alpha1.ServiceAccountKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(serviceaccountkeysResource, c.ns, serviceAccountKey), &v1alpha1.ServiceAccountKey{})
 
@@ -103,7 +105,7 @@ func (c *FakeServiceAccountKeys) Update(serviceAccountKey *v1alpha1.ServiceAccou
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeServiceAccountKeys) UpdateStatus(serviceAccountKey *v1alpha1.ServiceAccountKey) (*v1alpha1.ServiceAccountKey, error) {
+func (c *FakeServiceAccountKeys) UpdateStatus(ctx context.Context, serviceAccountKey *v1alpha1.ServiceAccountKey, opts v1.UpdateOptions) (*v1alpha1.ServiceAccountKey, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(serviceaccountkeysResource, "status", c.ns, serviceAccountKey), &v1alpha1.ServiceAccountKey{})
 
@@ -114,7 +116,7 @@ func (c *FakeServiceAccountKeys) UpdateStatus(serviceAccountKey *v1alpha1.Servic
 }
 
 // Delete takes name of the serviceAccountKey and deletes it. Returns an error if one occurs.
-func (c *FakeServiceAccountKeys) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeServiceAccountKeys) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(serviceaccountkeysResource, c.ns, name), &v1alpha1.ServiceAccountKey{})
 
@@ -122,15 +124,15 @@ func (c *FakeServiceAccountKeys) Delete(name string, options *v1.DeleteOptions) 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeServiceAccountKeys) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(serviceaccountkeysResource, c.ns, listOptions)
+func (c *FakeServiceAccountKeys) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(serviceaccountkeysResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ServiceAccountKeyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched serviceAccountKey.
-func (c *FakeServiceAccountKeys) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ServiceAccountKey, err error) {
+func (c *FakeServiceAccountKeys) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ServiceAccountKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(serviceaccountkeysResource, c.ns, name, pt, data, subresources...), &v1alpha1.ServiceAccountKey{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var lbprobesResource = schema.GroupVersionResource{Group: "azurerm.kubeform.com"
 var lbprobesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "LbProbe"}
 
 // Get takes name of the lbProbe, and returns the corresponding lbProbe object, and an error if there is any.
-func (c *FakeLbProbes) Get(name string, options v1.GetOptions) (result *v1alpha1.LbProbe, err error) {
+func (c *FakeLbProbes) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LbProbe, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(lbprobesResource, c.ns, name), &v1alpha1.LbProbe{})
 
@@ -51,7 +53,7 @@ func (c *FakeLbProbes) Get(name string, options v1.GetOptions) (result *v1alpha1
 }
 
 // List takes label and field selectors, and returns the list of LbProbes that match those selectors.
-func (c *FakeLbProbes) List(opts v1.ListOptions) (result *v1alpha1.LbProbeList, err error) {
+func (c *FakeLbProbes) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LbProbeList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(lbprobesResource, lbprobesKind, c.ns, opts), &v1alpha1.LbProbeList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLbProbes) List(opts v1.ListOptions) (result *v1alpha1.LbProbeList, 
 }
 
 // Watch returns a watch.Interface that watches the requested lbProbes.
-func (c *FakeLbProbes) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLbProbes) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(lbprobesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a lbProbe and creates it.  Returns the server's representation of the lbProbe, and an error, if there is any.
-func (c *FakeLbProbes) Create(lbProbe *v1alpha1.LbProbe) (result *v1alpha1.LbProbe, err error) {
+func (c *FakeLbProbes) Create(ctx context.Context, lbProbe *v1alpha1.LbProbe, opts v1.CreateOptions) (result *v1alpha1.LbProbe, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(lbprobesResource, c.ns, lbProbe), &v1alpha1.LbProbe{})
 
@@ -91,7 +93,7 @@ func (c *FakeLbProbes) Create(lbProbe *v1alpha1.LbProbe) (result *v1alpha1.LbPro
 }
 
 // Update takes the representation of a lbProbe and updates it. Returns the server's representation of the lbProbe, and an error, if there is any.
-func (c *FakeLbProbes) Update(lbProbe *v1alpha1.LbProbe) (result *v1alpha1.LbProbe, err error) {
+func (c *FakeLbProbes) Update(ctx context.Context, lbProbe *v1alpha1.LbProbe, opts v1.UpdateOptions) (result *v1alpha1.LbProbe, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(lbprobesResource, c.ns, lbProbe), &v1alpha1.LbProbe{})
 
@@ -103,7 +105,7 @@ func (c *FakeLbProbes) Update(lbProbe *v1alpha1.LbProbe) (result *v1alpha1.LbPro
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLbProbes) UpdateStatus(lbProbe *v1alpha1.LbProbe) (*v1alpha1.LbProbe, error) {
+func (c *FakeLbProbes) UpdateStatus(ctx context.Context, lbProbe *v1alpha1.LbProbe, opts v1.UpdateOptions) (*v1alpha1.LbProbe, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(lbprobesResource, "status", c.ns, lbProbe), &v1alpha1.LbProbe{})
 
@@ -114,7 +116,7 @@ func (c *FakeLbProbes) UpdateStatus(lbProbe *v1alpha1.LbProbe) (*v1alpha1.LbProb
 }
 
 // Delete takes name of the lbProbe and deletes it. Returns an error if one occurs.
-func (c *FakeLbProbes) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLbProbes) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(lbprobesResource, c.ns, name), &v1alpha1.LbProbe{})
 
@@ -122,15 +124,15 @@ func (c *FakeLbProbes) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLbProbes) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(lbprobesResource, c.ns, listOptions)
+func (c *FakeLbProbes) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(lbprobesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LbProbeList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched lbProbe.
-func (c *FakeLbProbes) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LbProbe, err error) {
+func (c *FakeLbProbes) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LbProbe, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(lbprobesResource, c.ns, name, pt, data, subresources...), &v1alpha1.LbProbe{})
 

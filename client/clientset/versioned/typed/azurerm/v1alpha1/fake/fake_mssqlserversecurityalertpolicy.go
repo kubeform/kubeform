@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var mssqlserversecurityalertpoliciesResource = schema.GroupVersionResource{Group
 var mssqlserversecurityalertpoliciesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "MssqlServerSecurityAlertPolicy"}
 
 // Get takes name of the mssqlServerSecurityAlertPolicy, and returns the corresponding mssqlServerSecurityAlertPolicy object, and an error if there is any.
-func (c *FakeMssqlServerSecurityAlertPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.MssqlServerSecurityAlertPolicy, err error) {
+func (c *FakeMssqlServerSecurityAlertPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.MssqlServerSecurityAlertPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(mssqlserversecurityalertpoliciesResource, c.ns, name), &v1alpha1.MssqlServerSecurityAlertPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeMssqlServerSecurityAlertPolicies) Get(name string, options v1.GetOp
 }
 
 // List takes label and field selectors, and returns the list of MssqlServerSecurityAlertPolicies that match those selectors.
-func (c *FakeMssqlServerSecurityAlertPolicies) List(opts v1.ListOptions) (result *v1alpha1.MssqlServerSecurityAlertPolicyList, err error) {
+func (c *FakeMssqlServerSecurityAlertPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.MssqlServerSecurityAlertPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(mssqlserversecurityalertpoliciesResource, mssqlserversecurityalertpoliciesKind, c.ns, opts), &v1alpha1.MssqlServerSecurityAlertPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeMssqlServerSecurityAlertPolicies) List(opts v1.ListOptions) (result
 }
 
 // Watch returns a watch.Interface that watches the requested mssqlServerSecurityAlertPolicies.
-func (c *FakeMssqlServerSecurityAlertPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeMssqlServerSecurityAlertPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(mssqlserversecurityalertpoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a mssqlServerSecurityAlertPolicy and creates it.  Returns the server's representation of the mssqlServerSecurityAlertPolicy, and an error, if there is any.
-func (c *FakeMssqlServerSecurityAlertPolicies) Create(mssqlServerSecurityAlertPolicy *v1alpha1.MssqlServerSecurityAlertPolicy) (result *v1alpha1.MssqlServerSecurityAlertPolicy, err error) {
+func (c *FakeMssqlServerSecurityAlertPolicies) Create(ctx context.Context, mssqlServerSecurityAlertPolicy *v1alpha1.MssqlServerSecurityAlertPolicy, opts v1.CreateOptions) (result *v1alpha1.MssqlServerSecurityAlertPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(mssqlserversecurityalertpoliciesResource, c.ns, mssqlServerSecurityAlertPolicy), &v1alpha1.MssqlServerSecurityAlertPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeMssqlServerSecurityAlertPolicies) Create(mssqlServerSecurityAlertPo
 }
 
 // Update takes the representation of a mssqlServerSecurityAlertPolicy and updates it. Returns the server's representation of the mssqlServerSecurityAlertPolicy, and an error, if there is any.
-func (c *FakeMssqlServerSecurityAlertPolicies) Update(mssqlServerSecurityAlertPolicy *v1alpha1.MssqlServerSecurityAlertPolicy) (result *v1alpha1.MssqlServerSecurityAlertPolicy, err error) {
+func (c *FakeMssqlServerSecurityAlertPolicies) Update(ctx context.Context, mssqlServerSecurityAlertPolicy *v1alpha1.MssqlServerSecurityAlertPolicy, opts v1.UpdateOptions) (result *v1alpha1.MssqlServerSecurityAlertPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(mssqlserversecurityalertpoliciesResource, c.ns, mssqlServerSecurityAlertPolicy), &v1alpha1.MssqlServerSecurityAlertPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeMssqlServerSecurityAlertPolicies) Update(mssqlServerSecurityAlertPo
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeMssqlServerSecurityAlertPolicies) UpdateStatus(mssqlServerSecurityAlertPolicy *v1alpha1.MssqlServerSecurityAlertPolicy) (*v1alpha1.MssqlServerSecurityAlertPolicy, error) {
+func (c *FakeMssqlServerSecurityAlertPolicies) UpdateStatus(ctx context.Context, mssqlServerSecurityAlertPolicy *v1alpha1.MssqlServerSecurityAlertPolicy, opts v1.UpdateOptions) (*v1alpha1.MssqlServerSecurityAlertPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(mssqlserversecurityalertpoliciesResource, "status", c.ns, mssqlServerSecurityAlertPolicy), &v1alpha1.MssqlServerSecurityAlertPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeMssqlServerSecurityAlertPolicies) UpdateStatus(mssqlServerSecurityA
 }
 
 // Delete takes name of the mssqlServerSecurityAlertPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeMssqlServerSecurityAlertPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeMssqlServerSecurityAlertPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(mssqlserversecurityalertpoliciesResource, c.ns, name), &v1alpha1.MssqlServerSecurityAlertPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeMssqlServerSecurityAlertPolicies) Delete(name string, options *v1.D
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeMssqlServerSecurityAlertPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(mssqlserversecurityalertpoliciesResource, c.ns, listOptions)
+func (c *FakeMssqlServerSecurityAlertPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(mssqlserversecurityalertpoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.MssqlServerSecurityAlertPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched mssqlServerSecurityAlertPolicy.
-func (c *FakeMssqlServerSecurityAlertPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MssqlServerSecurityAlertPolicy, err error) {
+func (c *FakeMssqlServerSecurityAlertPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MssqlServerSecurityAlertPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(mssqlserversecurityalertpoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.MssqlServerSecurityAlertPolicy{})
 

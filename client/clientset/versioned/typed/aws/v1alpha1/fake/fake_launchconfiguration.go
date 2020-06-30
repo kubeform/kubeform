@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var launchconfigurationsResource = schema.GroupVersionResource{Group: "aws.kubef
 var launchconfigurationsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "LaunchConfiguration"}
 
 // Get takes name of the launchConfiguration, and returns the corresponding launchConfiguration object, and an error if there is any.
-func (c *FakeLaunchConfigurations) Get(name string, options v1.GetOptions) (result *v1alpha1.LaunchConfiguration, err error) {
+func (c *FakeLaunchConfigurations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LaunchConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(launchconfigurationsResource, c.ns, name), &v1alpha1.LaunchConfiguration{})
 
@@ -51,7 +53,7 @@ func (c *FakeLaunchConfigurations) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of LaunchConfigurations that match those selectors.
-func (c *FakeLaunchConfigurations) List(opts v1.ListOptions) (result *v1alpha1.LaunchConfigurationList, err error) {
+func (c *FakeLaunchConfigurations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LaunchConfigurationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(launchconfigurationsResource, launchconfigurationsKind, c.ns, opts), &v1alpha1.LaunchConfigurationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLaunchConfigurations) List(opts v1.ListOptions) (result *v1alpha1.L
 }
 
 // Watch returns a watch.Interface that watches the requested launchConfigurations.
-func (c *FakeLaunchConfigurations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLaunchConfigurations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(launchconfigurationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a launchConfiguration and creates it.  Returns the server's representation of the launchConfiguration, and an error, if there is any.
-func (c *FakeLaunchConfigurations) Create(launchConfiguration *v1alpha1.LaunchConfiguration) (result *v1alpha1.LaunchConfiguration, err error) {
+func (c *FakeLaunchConfigurations) Create(ctx context.Context, launchConfiguration *v1alpha1.LaunchConfiguration, opts v1.CreateOptions) (result *v1alpha1.LaunchConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(launchconfigurationsResource, c.ns, launchConfiguration), &v1alpha1.LaunchConfiguration{})
 
@@ -91,7 +93,7 @@ func (c *FakeLaunchConfigurations) Create(launchConfiguration *v1alpha1.LaunchCo
 }
 
 // Update takes the representation of a launchConfiguration and updates it. Returns the server's representation of the launchConfiguration, and an error, if there is any.
-func (c *FakeLaunchConfigurations) Update(launchConfiguration *v1alpha1.LaunchConfiguration) (result *v1alpha1.LaunchConfiguration, err error) {
+func (c *FakeLaunchConfigurations) Update(ctx context.Context, launchConfiguration *v1alpha1.LaunchConfiguration, opts v1.UpdateOptions) (result *v1alpha1.LaunchConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(launchconfigurationsResource, c.ns, launchConfiguration), &v1alpha1.LaunchConfiguration{})
 
@@ -103,7 +105,7 @@ func (c *FakeLaunchConfigurations) Update(launchConfiguration *v1alpha1.LaunchCo
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLaunchConfigurations) UpdateStatus(launchConfiguration *v1alpha1.LaunchConfiguration) (*v1alpha1.LaunchConfiguration, error) {
+func (c *FakeLaunchConfigurations) UpdateStatus(ctx context.Context, launchConfiguration *v1alpha1.LaunchConfiguration, opts v1.UpdateOptions) (*v1alpha1.LaunchConfiguration, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(launchconfigurationsResource, "status", c.ns, launchConfiguration), &v1alpha1.LaunchConfiguration{})
 
@@ -114,7 +116,7 @@ func (c *FakeLaunchConfigurations) UpdateStatus(launchConfiguration *v1alpha1.La
 }
 
 // Delete takes name of the launchConfiguration and deletes it. Returns an error if one occurs.
-func (c *FakeLaunchConfigurations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLaunchConfigurations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(launchconfigurationsResource, c.ns, name), &v1alpha1.LaunchConfiguration{})
 
@@ -122,15 +124,15 @@ func (c *FakeLaunchConfigurations) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLaunchConfigurations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(launchconfigurationsResource, c.ns, listOptions)
+func (c *FakeLaunchConfigurations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(launchconfigurationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LaunchConfigurationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched launchConfiguration.
-func (c *FakeLaunchConfigurations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LaunchConfiguration, err error) {
+func (c *FakeLaunchConfigurations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LaunchConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(launchconfigurationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.LaunchConfiguration{})
 

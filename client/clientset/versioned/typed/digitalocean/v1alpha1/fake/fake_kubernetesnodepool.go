@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/digitalocean/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var kubernetesnodepoolsResource = schema.GroupVersionResource{Group: "digitaloce
 var kubernetesnodepoolsKind = schema.GroupVersionKind{Group: "digitalocean.kubeform.com", Version: "v1alpha1", Kind: "KubernetesNodePool"}
 
 // Get takes name of the kubernetesNodePool, and returns the corresponding kubernetesNodePool object, and an error if there is any.
-func (c *FakeKubernetesNodePools) Get(name string, options v1.GetOptions) (result *v1alpha1.KubernetesNodePool, err error) {
+func (c *FakeKubernetesNodePools) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KubernetesNodePool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(kubernetesnodepoolsResource, c.ns, name), &v1alpha1.KubernetesNodePool{})
 
@@ -51,7 +53,7 @@ func (c *FakeKubernetesNodePools) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of KubernetesNodePools that match those selectors.
-func (c *FakeKubernetesNodePools) List(opts v1.ListOptions) (result *v1alpha1.KubernetesNodePoolList, err error) {
+func (c *FakeKubernetesNodePools) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KubernetesNodePoolList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(kubernetesnodepoolsResource, kubernetesnodepoolsKind, c.ns, opts), &v1alpha1.KubernetesNodePoolList{})
 
@@ -73,14 +75,14 @@ func (c *FakeKubernetesNodePools) List(opts v1.ListOptions) (result *v1alpha1.Ku
 }
 
 // Watch returns a watch.Interface that watches the requested kubernetesNodePools.
-func (c *FakeKubernetesNodePools) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeKubernetesNodePools) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(kubernetesnodepoolsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a kubernetesNodePool and creates it.  Returns the server's representation of the kubernetesNodePool, and an error, if there is any.
-func (c *FakeKubernetesNodePools) Create(kubernetesNodePool *v1alpha1.KubernetesNodePool) (result *v1alpha1.KubernetesNodePool, err error) {
+func (c *FakeKubernetesNodePools) Create(ctx context.Context, kubernetesNodePool *v1alpha1.KubernetesNodePool, opts v1.CreateOptions) (result *v1alpha1.KubernetesNodePool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(kubernetesnodepoolsResource, c.ns, kubernetesNodePool), &v1alpha1.KubernetesNodePool{})
 
@@ -91,7 +93,7 @@ func (c *FakeKubernetesNodePools) Create(kubernetesNodePool *v1alpha1.Kubernetes
 }
 
 // Update takes the representation of a kubernetesNodePool and updates it. Returns the server's representation of the kubernetesNodePool, and an error, if there is any.
-func (c *FakeKubernetesNodePools) Update(kubernetesNodePool *v1alpha1.KubernetesNodePool) (result *v1alpha1.KubernetesNodePool, err error) {
+func (c *FakeKubernetesNodePools) Update(ctx context.Context, kubernetesNodePool *v1alpha1.KubernetesNodePool, opts v1.UpdateOptions) (result *v1alpha1.KubernetesNodePool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(kubernetesnodepoolsResource, c.ns, kubernetesNodePool), &v1alpha1.KubernetesNodePool{})
 
@@ -103,7 +105,7 @@ func (c *FakeKubernetesNodePools) Update(kubernetesNodePool *v1alpha1.Kubernetes
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeKubernetesNodePools) UpdateStatus(kubernetesNodePool *v1alpha1.KubernetesNodePool) (*v1alpha1.KubernetesNodePool, error) {
+func (c *FakeKubernetesNodePools) UpdateStatus(ctx context.Context, kubernetesNodePool *v1alpha1.KubernetesNodePool, opts v1.UpdateOptions) (*v1alpha1.KubernetesNodePool, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(kubernetesnodepoolsResource, "status", c.ns, kubernetesNodePool), &v1alpha1.KubernetesNodePool{})
 
@@ -114,7 +116,7 @@ func (c *FakeKubernetesNodePools) UpdateStatus(kubernetesNodePool *v1alpha1.Kube
 }
 
 // Delete takes name of the kubernetesNodePool and deletes it. Returns an error if one occurs.
-func (c *FakeKubernetesNodePools) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeKubernetesNodePools) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(kubernetesnodepoolsResource, c.ns, name), &v1alpha1.KubernetesNodePool{})
 
@@ -122,15 +124,15 @@ func (c *FakeKubernetesNodePools) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeKubernetesNodePools) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(kubernetesnodepoolsResource, c.ns, listOptions)
+func (c *FakeKubernetesNodePools) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(kubernetesnodepoolsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.KubernetesNodePoolList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched kubernetesNodePool.
-func (c *FakeKubernetesNodePools) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KubernetesNodePool, err error) {
+func (c *FakeKubernetesNodePools) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KubernetesNodePool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(kubernetesnodepoolsResource, c.ns, name, pt, data, subresources...), &v1alpha1.KubernetesNodePool{})
 

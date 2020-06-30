@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var opsworksinstancesResource = schema.GroupVersionResource{Group: "aws.kubeform
 var opsworksinstancesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "OpsworksInstance"}
 
 // Get takes name of the opsworksInstance, and returns the corresponding opsworksInstance object, and an error if there is any.
-func (c *FakeOpsworksInstances) Get(name string, options v1.GetOptions) (result *v1alpha1.OpsworksInstance, err error) {
+func (c *FakeOpsworksInstances) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.OpsworksInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(opsworksinstancesResource, c.ns, name), &v1alpha1.OpsworksInstance{})
 
@@ -51,7 +53,7 @@ func (c *FakeOpsworksInstances) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of OpsworksInstances that match those selectors.
-func (c *FakeOpsworksInstances) List(opts v1.ListOptions) (result *v1alpha1.OpsworksInstanceList, err error) {
+func (c *FakeOpsworksInstances) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.OpsworksInstanceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(opsworksinstancesResource, opsworksinstancesKind, c.ns, opts), &v1alpha1.OpsworksInstanceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeOpsworksInstances) List(opts v1.ListOptions) (result *v1alpha1.Opsw
 }
 
 // Watch returns a watch.Interface that watches the requested opsworksInstances.
-func (c *FakeOpsworksInstances) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeOpsworksInstances) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(opsworksinstancesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a opsworksInstance and creates it.  Returns the server's representation of the opsworksInstance, and an error, if there is any.
-func (c *FakeOpsworksInstances) Create(opsworksInstance *v1alpha1.OpsworksInstance) (result *v1alpha1.OpsworksInstance, err error) {
+func (c *FakeOpsworksInstances) Create(ctx context.Context, opsworksInstance *v1alpha1.OpsworksInstance, opts v1.CreateOptions) (result *v1alpha1.OpsworksInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(opsworksinstancesResource, c.ns, opsworksInstance), &v1alpha1.OpsworksInstance{})
 
@@ -91,7 +93,7 @@ func (c *FakeOpsworksInstances) Create(opsworksInstance *v1alpha1.OpsworksInstan
 }
 
 // Update takes the representation of a opsworksInstance and updates it. Returns the server's representation of the opsworksInstance, and an error, if there is any.
-func (c *FakeOpsworksInstances) Update(opsworksInstance *v1alpha1.OpsworksInstance) (result *v1alpha1.OpsworksInstance, err error) {
+func (c *FakeOpsworksInstances) Update(ctx context.Context, opsworksInstance *v1alpha1.OpsworksInstance, opts v1.UpdateOptions) (result *v1alpha1.OpsworksInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(opsworksinstancesResource, c.ns, opsworksInstance), &v1alpha1.OpsworksInstance{})
 
@@ -103,7 +105,7 @@ func (c *FakeOpsworksInstances) Update(opsworksInstance *v1alpha1.OpsworksInstan
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeOpsworksInstances) UpdateStatus(opsworksInstance *v1alpha1.OpsworksInstance) (*v1alpha1.OpsworksInstance, error) {
+func (c *FakeOpsworksInstances) UpdateStatus(ctx context.Context, opsworksInstance *v1alpha1.OpsworksInstance, opts v1.UpdateOptions) (*v1alpha1.OpsworksInstance, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(opsworksinstancesResource, "status", c.ns, opsworksInstance), &v1alpha1.OpsworksInstance{})
 
@@ -114,7 +116,7 @@ func (c *FakeOpsworksInstances) UpdateStatus(opsworksInstance *v1alpha1.Opsworks
 }
 
 // Delete takes name of the opsworksInstance and deletes it. Returns an error if one occurs.
-func (c *FakeOpsworksInstances) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeOpsworksInstances) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(opsworksinstancesResource, c.ns, name), &v1alpha1.OpsworksInstance{})
 
@@ -122,15 +124,15 @@ func (c *FakeOpsworksInstances) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeOpsworksInstances) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(opsworksinstancesResource, c.ns, listOptions)
+func (c *FakeOpsworksInstances) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(opsworksinstancesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.OpsworksInstanceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched opsworksInstance.
-func (c *FakeOpsworksInstances) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.OpsworksInstance, err error) {
+func (c *FakeOpsworksInstances) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.OpsworksInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(opsworksinstancesResource, c.ns, name, pt, data, subresources...), &v1alpha1.OpsworksInstance{})
 

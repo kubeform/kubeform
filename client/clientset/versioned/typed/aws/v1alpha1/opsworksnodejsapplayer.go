@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type OpsworksNodejsAppLayersGetter interface {
 
 // OpsworksNodejsAppLayerInterface has methods to work with OpsworksNodejsAppLayer resources.
 type OpsworksNodejsAppLayerInterface interface {
-	Create(*v1alpha1.OpsworksNodejsAppLayer) (*v1alpha1.OpsworksNodejsAppLayer, error)
-	Update(*v1alpha1.OpsworksNodejsAppLayer) (*v1alpha1.OpsworksNodejsAppLayer, error)
-	UpdateStatus(*v1alpha1.OpsworksNodejsAppLayer) (*v1alpha1.OpsworksNodejsAppLayer, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.OpsworksNodejsAppLayer, error)
-	List(opts v1.ListOptions) (*v1alpha1.OpsworksNodejsAppLayerList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.OpsworksNodejsAppLayer, err error)
+	Create(ctx context.Context, opsworksNodejsAppLayer *v1alpha1.OpsworksNodejsAppLayer, opts v1.CreateOptions) (*v1alpha1.OpsworksNodejsAppLayer, error)
+	Update(ctx context.Context, opsworksNodejsAppLayer *v1alpha1.OpsworksNodejsAppLayer, opts v1.UpdateOptions) (*v1alpha1.OpsworksNodejsAppLayer, error)
+	UpdateStatus(ctx context.Context, opsworksNodejsAppLayer *v1alpha1.OpsworksNodejsAppLayer, opts v1.UpdateOptions) (*v1alpha1.OpsworksNodejsAppLayer, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.OpsworksNodejsAppLayer, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.OpsworksNodejsAppLayerList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.OpsworksNodejsAppLayer, err error)
 	OpsworksNodejsAppLayerExpansion
 }
 
@@ -65,20 +66,20 @@ func newOpsworksNodejsAppLayers(c *AwsV1alpha1Client, namespace string) *opswork
 }
 
 // Get takes name of the opsworksNodejsAppLayer, and returns the corresponding opsworksNodejsAppLayer object, and an error if there is any.
-func (c *opsworksNodejsAppLayers) Get(name string, options v1.GetOptions) (result *v1alpha1.OpsworksNodejsAppLayer, err error) {
+func (c *opsworksNodejsAppLayers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.OpsworksNodejsAppLayer, err error) {
 	result = &v1alpha1.OpsworksNodejsAppLayer{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("opsworksnodejsapplayers").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of OpsworksNodejsAppLayers that match those selectors.
-func (c *opsworksNodejsAppLayers) List(opts v1.ListOptions) (result *v1alpha1.OpsworksNodejsAppLayerList, err error) {
+func (c *opsworksNodejsAppLayers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.OpsworksNodejsAppLayerList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *opsworksNodejsAppLayers) List(opts v1.ListOptions) (result *v1alpha1.Op
 		Resource("opsworksnodejsapplayers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested opsworksNodejsAppLayers.
-func (c *opsworksNodejsAppLayers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *opsworksNodejsAppLayers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *opsworksNodejsAppLayers) Watch(opts v1.ListOptions) (watch.Interface, e
 		Resource("opsworksnodejsapplayers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a opsworksNodejsAppLayer and creates it.  Returns the server's representation of the opsworksNodejsAppLayer, and an error, if there is any.
-func (c *opsworksNodejsAppLayers) Create(opsworksNodejsAppLayer *v1alpha1.OpsworksNodejsAppLayer) (result *v1alpha1.OpsworksNodejsAppLayer, err error) {
+func (c *opsworksNodejsAppLayers) Create(ctx context.Context, opsworksNodejsAppLayer *v1alpha1.OpsworksNodejsAppLayer, opts v1.CreateOptions) (result *v1alpha1.OpsworksNodejsAppLayer, err error) {
 	result = &v1alpha1.OpsworksNodejsAppLayer{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("opsworksnodejsapplayers").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(opsworksNodejsAppLayer).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a opsworksNodejsAppLayer and updates it. Returns the server's representation of the opsworksNodejsAppLayer, and an error, if there is any.
-func (c *opsworksNodejsAppLayers) Update(opsworksNodejsAppLayer *v1alpha1.OpsworksNodejsAppLayer) (result *v1alpha1.OpsworksNodejsAppLayer, err error) {
+func (c *opsworksNodejsAppLayers) Update(ctx context.Context, opsworksNodejsAppLayer *v1alpha1.OpsworksNodejsAppLayer, opts v1.UpdateOptions) (result *v1alpha1.OpsworksNodejsAppLayer, err error) {
 	result = &v1alpha1.OpsworksNodejsAppLayer{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("opsworksnodejsapplayers").
 		Name(opsworksNodejsAppLayer.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(opsworksNodejsAppLayer).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *opsworksNodejsAppLayers) UpdateStatus(opsworksNodejsAppLayer *v1alpha1.OpsworksNodejsAppLayer) (result *v1alpha1.OpsworksNodejsAppLayer, err error) {
+func (c *opsworksNodejsAppLayers) UpdateStatus(ctx context.Context, opsworksNodejsAppLayer *v1alpha1.OpsworksNodejsAppLayer, opts v1.UpdateOptions) (result *v1alpha1.OpsworksNodejsAppLayer, err error) {
 	result = &v1alpha1.OpsworksNodejsAppLayer{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("opsworksnodejsapplayers").
 		Name(opsworksNodejsAppLayer.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(opsworksNodejsAppLayer).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the opsworksNodejsAppLayer and deletes it. Returns an error if one occurs.
-func (c *opsworksNodejsAppLayers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *opsworksNodejsAppLayers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("opsworksnodejsapplayers").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *opsworksNodejsAppLayers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *opsworksNodejsAppLayers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("opsworksnodejsapplayers").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched opsworksNodejsAppLayer.
-func (c *opsworksNodejsAppLayers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.OpsworksNodejsAppLayer, err error) {
+func (c *opsworksNodejsAppLayers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.OpsworksNodejsAppLayer, err error) {
 	result = &v1alpha1.OpsworksNodejsAppLayer{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("opsworksnodejsapplayers").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

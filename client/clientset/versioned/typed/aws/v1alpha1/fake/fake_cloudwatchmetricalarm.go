@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cloudwatchmetricalarmsResource = schema.GroupVersionResource{Group: "aws.kub
 var cloudwatchmetricalarmsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "CloudwatchMetricAlarm"}
 
 // Get takes name of the cloudwatchMetricAlarm, and returns the corresponding cloudwatchMetricAlarm object, and an error if there is any.
-func (c *FakeCloudwatchMetricAlarms) Get(name string, options v1.GetOptions) (result *v1alpha1.CloudwatchMetricAlarm, err error) {
+func (c *FakeCloudwatchMetricAlarms) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CloudwatchMetricAlarm, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cloudwatchmetricalarmsResource, c.ns, name), &v1alpha1.CloudwatchMetricAlarm{})
 
@@ -51,7 +53,7 @@ func (c *FakeCloudwatchMetricAlarms) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of CloudwatchMetricAlarms that match those selectors.
-func (c *FakeCloudwatchMetricAlarms) List(opts v1.ListOptions) (result *v1alpha1.CloudwatchMetricAlarmList, err error) {
+func (c *FakeCloudwatchMetricAlarms) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CloudwatchMetricAlarmList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cloudwatchmetricalarmsResource, cloudwatchmetricalarmsKind, c.ns, opts), &v1alpha1.CloudwatchMetricAlarmList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCloudwatchMetricAlarms) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested cloudwatchMetricAlarms.
-func (c *FakeCloudwatchMetricAlarms) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCloudwatchMetricAlarms) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cloudwatchmetricalarmsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cloudwatchMetricAlarm and creates it.  Returns the server's representation of the cloudwatchMetricAlarm, and an error, if there is any.
-func (c *FakeCloudwatchMetricAlarms) Create(cloudwatchMetricAlarm *v1alpha1.CloudwatchMetricAlarm) (result *v1alpha1.CloudwatchMetricAlarm, err error) {
+func (c *FakeCloudwatchMetricAlarms) Create(ctx context.Context, cloudwatchMetricAlarm *v1alpha1.CloudwatchMetricAlarm, opts v1.CreateOptions) (result *v1alpha1.CloudwatchMetricAlarm, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cloudwatchmetricalarmsResource, c.ns, cloudwatchMetricAlarm), &v1alpha1.CloudwatchMetricAlarm{})
 
@@ -91,7 +93,7 @@ func (c *FakeCloudwatchMetricAlarms) Create(cloudwatchMetricAlarm *v1alpha1.Clou
 }
 
 // Update takes the representation of a cloudwatchMetricAlarm and updates it. Returns the server's representation of the cloudwatchMetricAlarm, and an error, if there is any.
-func (c *FakeCloudwatchMetricAlarms) Update(cloudwatchMetricAlarm *v1alpha1.CloudwatchMetricAlarm) (result *v1alpha1.CloudwatchMetricAlarm, err error) {
+func (c *FakeCloudwatchMetricAlarms) Update(ctx context.Context, cloudwatchMetricAlarm *v1alpha1.CloudwatchMetricAlarm, opts v1.UpdateOptions) (result *v1alpha1.CloudwatchMetricAlarm, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cloudwatchmetricalarmsResource, c.ns, cloudwatchMetricAlarm), &v1alpha1.CloudwatchMetricAlarm{})
 
@@ -103,7 +105,7 @@ func (c *FakeCloudwatchMetricAlarms) Update(cloudwatchMetricAlarm *v1alpha1.Clou
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCloudwatchMetricAlarms) UpdateStatus(cloudwatchMetricAlarm *v1alpha1.CloudwatchMetricAlarm) (*v1alpha1.CloudwatchMetricAlarm, error) {
+func (c *FakeCloudwatchMetricAlarms) UpdateStatus(ctx context.Context, cloudwatchMetricAlarm *v1alpha1.CloudwatchMetricAlarm, opts v1.UpdateOptions) (*v1alpha1.CloudwatchMetricAlarm, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cloudwatchmetricalarmsResource, "status", c.ns, cloudwatchMetricAlarm), &v1alpha1.CloudwatchMetricAlarm{})
 
@@ -114,7 +116,7 @@ func (c *FakeCloudwatchMetricAlarms) UpdateStatus(cloudwatchMetricAlarm *v1alpha
 }
 
 // Delete takes name of the cloudwatchMetricAlarm and deletes it. Returns an error if one occurs.
-func (c *FakeCloudwatchMetricAlarms) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCloudwatchMetricAlarms) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cloudwatchmetricalarmsResource, c.ns, name), &v1alpha1.CloudwatchMetricAlarm{})
 
@@ -122,15 +124,15 @@ func (c *FakeCloudwatchMetricAlarms) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCloudwatchMetricAlarms) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cloudwatchmetricalarmsResource, c.ns, listOptions)
+func (c *FakeCloudwatchMetricAlarms) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cloudwatchmetricalarmsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CloudwatchMetricAlarmList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cloudwatchMetricAlarm.
-func (c *FakeCloudwatchMetricAlarms) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CloudwatchMetricAlarm, err error) {
+func (c *FakeCloudwatchMetricAlarms) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CloudwatchMetricAlarm, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cloudwatchmetricalarmsResource, c.ns, name, pt, data, subresources...), &v1alpha1.CloudwatchMetricAlarm{})
 

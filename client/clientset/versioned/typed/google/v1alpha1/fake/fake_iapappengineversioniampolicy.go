@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iapappengineversioniampoliciesResource = schema.GroupVersionResource{Group: 
 var iapappengineversioniampoliciesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "IapAppEngineVersionIamPolicy"}
 
 // Get takes name of the iapAppEngineVersionIamPolicy, and returns the corresponding iapAppEngineVersionIamPolicy object, and an error if there is any.
-func (c *FakeIapAppEngineVersionIamPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.IapAppEngineVersionIamPolicy, err error) {
+func (c *FakeIapAppEngineVersionIamPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IapAppEngineVersionIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iapappengineversioniampoliciesResource, c.ns, name), &v1alpha1.IapAppEngineVersionIamPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeIapAppEngineVersionIamPolicies) Get(name string, options v1.GetOpti
 }
 
 // List takes label and field selectors, and returns the list of IapAppEngineVersionIamPolicies that match those selectors.
-func (c *FakeIapAppEngineVersionIamPolicies) List(opts v1.ListOptions) (result *v1alpha1.IapAppEngineVersionIamPolicyList, err error) {
+func (c *FakeIapAppEngineVersionIamPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IapAppEngineVersionIamPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iapappengineversioniampoliciesResource, iapappengineversioniampoliciesKind, c.ns, opts), &v1alpha1.IapAppEngineVersionIamPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIapAppEngineVersionIamPolicies) List(opts v1.ListOptions) (result *
 }
 
 // Watch returns a watch.Interface that watches the requested iapAppEngineVersionIamPolicies.
-func (c *FakeIapAppEngineVersionIamPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIapAppEngineVersionIamPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iapappengineversioniampoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iapAppEngineVersionIamPolicy and creates it.  Returns the server's representation of the iapAppEngineVersionIamPolicy, and an error, if there is any.
-func (c *FakeIapAppEngineVersionIamPolicies) Create(iapAppEngineVersionIamPolicy *v1alpha1.IapAppEngineVersionIamPolicy) (result *v1alpha1.IapAppEngineVersionIamPolicy, err error) {
+func (c *FakeIapAppEngineVersionIamPolicies) Create(ctx context.Context, iapAppEngineVersionIamPolicy *v1alpha1.IapAppEngineVersionIamPolicy, opts v1.CreateOptions) (result *v1alpha1.IapAppEngineVersionIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iapappengineversioniampoliciesResource, c.ns, iapAppEngineVersionIamPolicy), &v1alpha1.IapAppEngineVersionIamPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeIapAppEngineVersionIamPolicies) Create(iapAppEngineVersionIamPolicy
 }
 
 // Update takes the representation of a iapAppEngineVersionIamPolicy and updates it. Returns the server's representation of the iapAppEngineVersionIamPolicy, and an error, if there is any.
-func (c *FakeIapAppEngineVersionIamPolicies) Update(iapAppEngineVersionIamPolicy *v1alpha1.IapAppEngineVersionIamPolicy) (result *v1alpha1.IapAppEngineVersionIamPolicy, err error) {
+func (c *FakeIapAppEngineVersionIamPolicies) Update(ctx context.Context, iapAppEngineVersionIamPolicy *v1alpha1.IapAppEngineVersionIamPolicy, opts v1.UpdateOptions) (result *v1alpha1.IapAppEngineVersionIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iapappengineversioniampoliciesResource, c.ns, iapAppEngineVersionIamPolicy), &v1alpha1.IapAppEngineVersionIamPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeIapAppEngineVersionIamPolicies) Update(iapAppEngineVersionIamPolicy
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIapAppEngineVersionIamPolicies) UpdateStatus(iapAppEngineVersionIamPolicy *v1alpha1.IapAppEngineVersionIamPolicy) (*v1alpha1.IapAppEngineVersionIamPolicy, error) {
+func (c *FakeIapAppEngineVersionIamPolicies) UpdateStatus(ctx context.Context, iapAppEngineVersionIamPolicy *v1alpha1.IapAppEngineVersionIamPolicy, opts v1.UpdateOptions) (*v1alpha1.IapAppEngineVersionIamPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iapappengineversioniampoliciesResource, "status", c.ns, iapAppEngineVersionIamPolicy), &v1alpha1.IapAppEngineVersionIamPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeIapAppEngineVersionIamPolicies) UpdateStatus(iapAppEngineVersionIam
 }
 
 // Delete takes name of the iapAppEngineVersionIamPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeIapAppEngineVersionIamPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIapAppEngineVersionIamPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iapappengineversioniampoliciesResource, c.ns, name), &v1alpha1.IapAppEngineVersionIamPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeIapAppEngineVersionIamPolicies) Delete(name string, options *v1.Del
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIapAppEngineVersionIamPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iapappengineversioniampoliciesResource, c.ns, listOptions)
+func (c *FakeIapAppEngineVersionIamPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iapappengineversioniampoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IapAppEngineVersionIamPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iapAppEngineVersionIamPolicy.
-func (c *FakeIapAppEngineVersionIamPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IapAppEngineVersionIamPolicy, err error) {
+func (c *FakeIapAppEngineVersionIamPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IapAppEngineVersionIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iapappengineversioniampoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.IapAppEngineVersionIamPolicy{})
 

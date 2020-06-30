@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type DnsRecordSetsGetter interface {
 
 // DnsRecordSetInterface has methods to work with DnsRecordSet resources.
 type DnsRecordSetInterface interface {
-	Create(*v1alpha1.DnsRecordSet) (*v1alpha1.DnsRecordSet, error)
-	Update(*v1alpha1.DnsRecordSet) (*v1alpha1.DnsRecordSet, error)
-	UpdateStatus(*v1alpha1.DnsRecordSet) (*v1alpha1.DnsRecordSet, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.DnsRecordSet, error)
-	List(opts v1.ListOptions) (*v1alpha1.DnsRecordSetList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DnsRecordSet, err error)
+	Create(ctx context.Context, dnsRecordSet *v1alpha1.DnsRecordSet, opts v1.CreateOptions) (*v1alpha1.DnsRecordSet, error)
+	Update(ctx context.Context, dnsRecordSet *v1alpha1.DnsRecordSet, opts v1.UpdateOptions) (*v1alpha1.DnsRecordSet, error)
+	UpdateStatus(ctx context.Context, dnsRecordSet *v1alpha1.DnsRecordSet, opts v1.UpdateOptions) (*v1alpha1.DnsRecordSet, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.DnsRecordSet, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.DnsRecordSetList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DnsRecordSet, err error)
 	DnsRecordSetExpansion
 }
 
@@ -65,20 +66,20 @@ func newDnsRecordSets(c *GoogleV1alpha1Client, namespace string) *dnsRecordSets 
 }
 
 // Get takes name of the dnsRecordSet, and returns the corresponding dnsRecordSet object, and an error if there is any.
-func (c *dnsRecordSets) Get(name string, options v1.GetOptions) (result *v1alpha1.DnsRecordSet, err error) {
+func (c *dnsRecordSets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DnsRecordSet, err error) {
 	result = &v1alpha1.DnsRecordSet{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("dnsrecordsets").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of DnsRecordSets that match those selectors.
-func (c *dnsRecordSets) List(opts v1.ListOptions) (result *v1alpha1.DnsRecordSetList, err error) {
+func (c *dnsRecordSets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DnsRecordSetList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *dnsRecordSets) List(opts v1.ListOptions) (result *v1alpha1.DnsRecordSet
 		Resource("dnsrecordsets").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested dnsRecordSets.
-func (c *dnsRecordSets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *dnsRecordSets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *dnsRecordSets) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("dnsrecordsets").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a dnsRecordSet and creates it.  Returns the server's representation of the dnsRecordSet, and an error, if there is any.
-func (c *dnsRecordSets) Create(dnsRecordSet *v1alpha1.DnsRecordSet) (result *v1alpha1.DnsRecordSet, err error) {
+func (c *dnsRecordSets) Create(ctx context.Context, dnsRecordSet *v1alpha1.DnsRecordSet, opts v1.CreateOptions) (result *v1alpha1.DnsRecordSet, err error) {
 	result = &v1alpha1.DnsRecordSet{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("dnsrecordsets").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dnsRecordSet).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a dnsRecordSet and updates it. Returns the server's representation of the dnsRecordSet, and an error, if there is any.
-func (c *dnsRecordSets) Update(dnsRecordSet *v1alpha1.DnsRecordSet) (result *v1alpha1.DnsRecordSet, err error) {
+func (c *dnsRecordSets) Update(ctx context.Context, dnsRecordSet *v1alpha1.DnsRecordSet, opts v1.UpdateOptions) (result *v1alpha1.DnsRecordSet, err error) {
 	result = &v1alpha1.DnsRecordSet{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("dnsrecordsets").
 		Name(dnsRecordSet.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dnsRecordSet).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *dnsRecordSets) UpdateStatus(dnsRecordSet *v1alpha1.DnsRecordSet) (result *v1alpha1.DnsRecordSet, err error) {
+func (c *dnsRecordSets) UpdateStatus(ctx context.Context, dnsRecordSet *v1alpha1.DnsRecordSet, opts v1.UpdateOptions) (result *v1alpha1.DnsRecordSet, err error) {
 	result = &v1alpha1.DnsRecordSet{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("dnsrecordsets").
 		Name(dnsRecordSet.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dnsRecordSet).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the dnsRecordSet and deletes it. Returns an error if one occurs.
-func (c *dnsRecordSets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *dnsRecordSets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("dnsrecordsets").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *dnsRecordSets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *dnsRecordSets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("dnsrecordsets").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched dnsRecordSet.
-func (c *dnsRecordSets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DnsRecordSet, err error) {
+func (c *dnsRecordSets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DnsRecordSet, err error) {
 	result = &v1alpha1.DnsRecordSet{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("dnsrecordsets").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

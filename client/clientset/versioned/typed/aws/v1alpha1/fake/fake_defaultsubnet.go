@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var defaultsubnetsResource = schema.GroupVersionResource{Group: "aws.kubeform.co
 var defaultsubnetsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DefaultSubnet"}
 
 // Get takes name of the defaultSubnet, and returns the corresponding defaultSubnet object, and an error if there is any.
-func (c *FakeDefaultSubnets) Get(name string, options v1.GetOptions) (result *v1alpha1.DefaultSubnet, err error) {
+func (c *FakeDefaultSubnets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DefaultSubnet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(defaultsubnetsResource, c.ns, name), &v1alpha1.DefaultSubnet{})
 
@@ -51,7 +53,7 @@ func (c *FakeDefaultSubnets) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of DefaultSubnets that match those selectors.
-func (c *FakeDefaultSubnets) List(opts v1.ListOptions) (result *v1alpha1.DefaultSubnetList, err error) {
+func (c *FakeDefaultSubnets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DefaultSubnetList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(defaultsubnetsResource, defaultsubnetsKind, c.ns, opts), &v1alpha1.DefaultSubnetList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDefaultSubnets) List(opts v1.ListOptions) (result *v1alpha1.Default
 }
 
 // Watch returns a watch.Interface that watches the requested defaultSubnets.
-func (c *FakeDefaultSubnets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDefaultSubnets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(defaultsubnetsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a defaultSubnet and creates it.  Returns the server's representation of the defaultSubnet, and an error, if there is any.
-func (c *FakeDefaultSubnets) Create(defaultSubnet *v1alpha1.DefaultSubnet) (result *v1alpha1.DefaultSubnet, err error) {
+func (c *FakeDefaultSubnets) Create(ctx context.Context, defaultSubnet *v1alpha1.DefaultSubnet, opts v1.CreateOptions) (result *v1alpha1.DefaultSubnet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(defaultsubnetsResource, c.ns, defaultSubnet), &v1alpha1.DefaultSubnet{})
 
@@ -91,7 +93,7 @@ func (c *FakeDefaultSubnets) Create(defaultSubnet *v1alpha1.DefaultSubnet) (resu
 }
 
 // Update takes the representation of a defaultSubnet and updates it. Returns the server's representation of the defaultSubnet, and an error, if there is any.
-func (c *FakeDefaultSubnets) Update(defaultSubnet *v1alpha1.DefaultSubnet) (result *v1alpha1.DefaultSubnet, err error) {
+func (c *FakeDefaultSubnets) Update(ctx context.Context, defaultSubnet *v1alpha1.DefaultSubnet, opts v1.UpdateOptions) (result *v1alpha1.DefaultSubnet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(defaultsubnetsResource, c.ns, defaultSubnet), &v1alpha1.DefaultSubnet{})
 
@@ -103,7 +105,7 @@ func (c *FakeDefaultSubnets) Update(defaultSubnet *v1alpha1.DefaultSubnet) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDefaultSubnets) UpdateStatus(defaultSubnet *v1alpha1.DefaultSubnet) (*v1alpha1.DefaultSubnet, error) {
+func (c *FakeDefaultSubnets) UpdateStatus(ctx context.Context, defaultSubnet *v1alpha1.DefaultSubnet, opts v1.UpdateOptions) (*v1alpha1.DefaultSubnet, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(defaultsubnetsResource, "status", c.ns, defaultSubnet), &v1alpha1.DefaultSubnet{})
 
@@ -114,7 +116,7 @@ func (c *FakeDefaultSubnets) UpdateStatus(defaultSubnet *v1alpha1.DefaultSubnet)
 }
 
 // Delete takes name of the defaultSubnet and deletes it. Returns an error if one occurs.
-func (c *FakeDefaultSubnets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDefaultSubnets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(defaultsubnetsResource, c.ns, name), &v1alpha1.DefaultSubnet{})
 
@@ -122,15 +124,15 @@ func (c *FakeDefaultSubnets) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDefaultSubnets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(defaultsubnetsResource, c.ns, listOptions)
+func (c *FakeDefaultSubnets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(defaultsubnetsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DefaultSubnetList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched defaultSubnet.
-func (c *FakeDefaultSubnets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DefaultSubnet, err error) {
+func (c *FakeDefaultSubnets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DefaultSubnet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(defaultsubnetsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DefaultSubnet{})
 

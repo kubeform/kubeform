@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var hdinsighthadoopclustersResource = schema.GroupVersionResource{Group: "azurer
 var hdinsighthadoopclustersKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "HdinsightHadoopCluster"}
 
 // Get takes name of the hdinsightHadoopCluster, and returns the corresponding hdinsightHadoopCluster object, and an error if there is any.
-func (c *FakeHdinsightHadoopClusters) Get(name string, options v1.GetOptions) (result *v1alpha1.HdinsightHadoopCluster, err error) {
+func (c *FakeHdinsightHadoopClusters) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.HdinsightHadoopCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(hdinsighthadoopclustersResource, c.ns, name), &v1alpha1.HdinsightHadoopCluster{})
 
@@ -51,7 +53,7 @@ func (c *FakeHdinsightHadoopClusters) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of HdinsightHadoopClusters that match those selectors.
-func (c *FakeHdinsightHadoopClusters) List(opts v1.ListOptions) (result *v1alpha1.HdinsightHadoopClusterList, err error) {
+func (c *FakeHdinsightHadoopClusters) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.HdinsightHadoopClusterList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(hdinsighthadoopclustersResource, hdinsighthadoopclustersKind, c.ns, opts), &v1alpha1.HdinsightHadoopClusterList{})
 
@@ -73,14 +75,14 @@ func (c *FakeHdinsightHadoopClusters) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested hdinsightHadoopClusters.
-func (c *FakeHdinsightHadoopClusters) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeHdinsightHadoopClusters) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(hdinsighthadoopclustersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a hdinsightHadoopCluster and creates it.  Returns the server's representation of the hdinsightHadoopCluster, and an error, if there is any.
-func (c *FakeHdinsightHadoopClusters) Create(hdinsightHadoopCluster *v1alpha1.HdinsightHadoopCluster) (result *v1alpha1.HdinsightHadoopCluster, err error) {
+func (c *FakeHdinsightHadoopClusters) Create(ctx context.Context, hdinsightHadoopCluster *v1alpha1.HdinsightHadoopCluster, opts v1.CreateOptions) (result *v1alpha1.HdinsightHadoopCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(hdinsighthadoopclustersResource, c.ns, hdinsightHadoopCluster), &v1alpha1.HdinsightHadoopCluster{})
 
@@ -91,7 +93,7 @@ func (c *FakeHdinsightHadoopClusters) Create(hdinsightHadoopCluster *v1alpha1.Hd
 }
 
 // Update takes the representation of a hdinsightHadoopCluster and updates it. Returns the server's representation of the hdinsightHadoopCluster, and an error, if there is any.
-func (c *FakeHdinsightHadoopClusters) Update(hdinsightHadoopCluster *v1alpha1.HdinsightHadoopCluster) (result *v1alpha1.HdinsightHadoopCluster, err error) {
+func (c *FakeHdinsightHadoopClusters) Update(ctx context.Context, hdinsightHadoopCluster *v1alpha1.HdinsightHadoopCluster, opts v1.UpdateOptions) (result *v1alpha1.HdinsightHadoopCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(hdinsighthadoopclustersResource, c.ns, hdinsightHadoopCluster), &v1alpha1.HdinsightHadoopCluster{})
 
@@ -103,7 +105,7 @@ func (c *FakeHdinsightHadoopClusters) Update(hdinsightHadoopCluster *v1alpha1.Hd
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeHdinsightHadoopClusters) UpdateStatus(hdinsightHadoopCluster *v1alpha1.HdinsightHadoopCluster) (*v1alpha1.HdinsightHadoopCluster, error) {
+func (c *FakeHdinsightHadoopClusters) UpdateStatus(ctx context.Context, hdinsightHadoopCluster *v1alpha1.HdinsightHadoopCluster, opts v1.UpdateOptions) (*v1alpha1.HdinsightHadoopCluster, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(hdinsighthadoopclustersResource, "status", c.ns, hdinsightHadoopCluster), &v1alpha1.HdinsightHadoopCluster{})
 
@@ -114,7 +116,7 @@ func (c *FakeHdinsightHadoopClusters) UpdateStatus(hdinsightHadoopCluster *v1alp
 }
 
 // Delete takes name of the hdinsightHadoopCluster and deletes it. Returns an error if one occurs.
-func (c *FakeHdinsightHadoopClusters) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeHdinsightHadoopClusters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(hdinsighthadoopclustersResource, c.ns, name), &v1alpha1.HdinsightHadoopCluster{})
 
@@ -122,15 +124,15 @@ func (c *FakeHdinsightHadoopClusters) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeHdinsightHadoopClusters) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(hdinsighthadoopclustersResource, c.ns, listOptions)
+func (c *FakeHdinsightHadoopClusters) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(hdinsighthadoopclustersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.HdinsightHadoopClusterList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched hdinsightHadoopCluster.
-func (c *FakeHdinsightHadoopClusters) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.HdinsightHadoopCluster, err error) {
+func (c *FakeHdinsightHadoopClusters) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.HdinsightHadoopCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(hdinsighthadoopclustersResource, c.ns, name, pt, data, subresources...), &v1alpha1.HdinsightHadoopCluster{})
 

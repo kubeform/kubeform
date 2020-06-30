@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var neptuneparametergroupsResource = schema.GroupVersionResource{Group: "aws.kub
 var neptuneparametergroupsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "NeptuneParameterGroup"}
 
 // Get takes name of the neptuneParameterGroup, and returns the corresponding neptuneParameterGroup object, and an error if there is any.
-func (c *FakeNeptuneParameterGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.NeptuneParameterGroup, err error) {
+func (c *FakeNeptuneParameterGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.NeptuneParameterGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(neptuneparametergroupsResource, c.ns, name), &v1alpha1.NeptuneParameterGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeNeptuneParameterGroups) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of NeptuneParameterGroups that match those selectors.
-func (c *FakeNeptuneParameterGroups) List(opts v1.ListOptions) (result *v1alpha1.NeptuneParameterGroupList, err error) {
+func (c *FakeNeptuneParameterGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.NeptuneParameterGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(neptuneparametergroupsResource, neptuneparametergroupsKind, c.ns, opts), &v1alpha1.NeptuneParameterGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeNeptuneParameterGroups) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested neptuneParameterGroups.
-func (c *FakeNeptuneParameterGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeNeptuneParameterGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(neptuneparametergroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a neptuneParameterGroup and creates it.  Returns the server's representation of the neptuneParameterGroup, and an error, if there is any.
-func (c *FakeNeptuneParameterGroups) Create(neptuneParameterGroup *v1alpha1.NeptuneParameterGroup) (result *v1alpha1.NeptuneParameterGroup, err error) {
+func (c *FakeNeptuneParameterGroups) Create(ctx context.Context, neptuneParameterGroup *v1alpha1.NeptuneParameterGroup, opts v1.CreateOptions) (result *v1alpha1.NeptuneParameterGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(neptuneparametergroupsResource, c.ns, neptuneParameterGroup), &v1alpha1.NeptuneParameterGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeNeptuneParameterGroups) Create(neptuneParameterGroup *v1alpha1.Nept
 }
 
 // Update takes the representation of a neptuneParameterGroup and updates it. Returns the server's representation of the neptuneParameterGroup, and an error, if there is any.
-func (c *FakeNeptuneParameterGroups) Update(neptuneParameterGroup *v1alpha1.NeptuneParameterGroup) (result *v1alpha1.NeptuneParameterGroup, err error) {
+func (c *FakeNeptuneParameterGroups) Update(ctx context.Context, neptuneParameterGroup *v1alpha1.NeptuneParameterGroup, opts v1.UpdateOptions) (result *v1alpha1.NeptuneParameterGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(neptuneparametergroupsResource, c.ns, neptuneParameterGroup), &v1alpha1.NeptuneParameterGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeNeptuneParameterGroups) Update(neptuneParameterGroup *v1alpha1.Nept
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeNeptuneParameterGroups) UpdateStatus(neptuneParameterGroup *v1alpha1.NeptuneParameterGroup) (*v1alpha1.NeptuneParameterGroup, error) {
+func (c *FakeNeptuneParameterGroups) UpdateStatus(ctx context.Context, neptuneParameterGroup *v1alpha1.NeptuneParameterGroup, opts v1.UpdateOptions) (*v1alpha1.NeptuneParameterGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(neptuneparametergroupsResource, "status", c.ns, neptuneParameterGroup), &v1alpha1.NeptuneParameterGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeNeptuneParameterGroups) UpdateStatus(neptuneParameterGroup *v1alpha
 }
 
 // Delete takes name of the neptuneParameterGroup and deletes it. Returns an error if one occurs.
-func (c *FakeNeptuneParameterGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeNeptuneParameterGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(neptuneparametergroupsResource, c.ns, name), &v1alpha1.NeptuneParameterGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeNeptuneParameterGroups) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeNeptuneParameterGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(neptuneparametergroupsResource, c.ns, listOptions)
+func (c *FakeNeptuneParameterGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(neptuneparametergroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.NeptuneParameterGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched neptuneParameterGroup.
-func (c *FakeNeptuneParameterGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.NeptuneParameterGroup, err error) {
+func (c *FakeNeptuneParameterGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.NeptuneParameterGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(neptuneparametergroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.NeptuneParameterGroup{})
 

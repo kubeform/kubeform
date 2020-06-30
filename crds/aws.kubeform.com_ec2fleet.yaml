@@ -1,0 +1,306 @@
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/name: kubeform
+  name: ec2fleet.aws.kubeform.com
+spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
+  group: aws.kubeform.com
+  names:
+    kind: Ec2Fleet
+    listKind: Ec2FleetList
+    plural: ec2fleet
+    singular: ec2fleet
+  scope: Namespaced
+  subresources:
+    status: {}
+  validation:
+    openAPIV3Schema:
+      properties:
+        apiVersion:
+          description: 'APIVersion defines the versioned schema of this representation
+            of an object. Servers should convert recognized schemas to the latest
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+          type: string
+        kind:
+          description: 'Kind is a string value representing the REST resource this
+            object represents. Servers may infer this from the endpoint the client
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+          type: string
+        metadata:
+          type: object
+        spec:
+          properties:
+            excessCapacityTerminationPolicy:
+              type: string
+            id:
+              type: string
+            launchTemplateConfig:
+              items:
+                properties:
+                  launchTemplateSpecification:
+                    items:
+                      properties:
+                        launchTemplateID:
+                          type: string
+                        launchTemplateName:
+                          type: string
+                        version:
+                          type: string
+                      required:
+                      - version
+                      type: object
+                    maxItems: 1
+                    minItems: 1
+                    type: array
+                  override:
+                    items:
+                      properties:
+                        availabilityZone:
+                          type: string
+                        instanceType:
+                          type: string
+                        maxPrice:
+                          type: string
+                        priority:
+                          format: float
+                          type: number
+                        subnetID:
+                          type: string
+                        weightedCapacity:
+                          format: float
+                          type: number
+                      type: object
+                    maxItems: 50
+                    type: array
+                required:
+                - launchTemplateSpecification
+                type: object
+              maxItems: 1
+              minItems: 1
+              type: array
+            onDemandOptions:
+              items:
+                properties:
+                  allocationStrategy:
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
+            providerRef:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
+            replaceUnhealthyInstances:
+              type: boolean
+            spotOptions:
+              items:
+                properties:
+                  allocationStrategy:
+                    type: string
+                  instanceInterruptionBehavior:
+                    type: string
+                  instancePoolsToUseCount:
+                    format: int64
+                    type: integer
+                type: object
+              maxItems: 1
+              type: array
+            tags:
+              additionalProperties:
+                type: string
+              type: object
+            targetCapacitySpecification:
+              items:
+                properties:
+                  defaultTargetCapacityType:
+                    type: string
+                  onDemandTargetCapacity:
+                    format: int64
+                    type: integer
+                  spotTargetCapacity:
+                    format: int64
+                    type: integer
+                  totalTargetCapacity:
+                    format: int64
+                    type: integer
+                required:
+                - defaultTargetCapacityType
+                - totalTargetCapacity
+                type: object
+              maxItems: 1
+              minItems: 1
+              type: array
+            terminateInstances:
+              type: boolean
+            terminateInstancesWithExpiration:
+              type: boolean
+            type:
+              type: string
+          required:
+          - launchTemplateConfig
+          - providerRef
+          - targetCapacitySpecification
+          type: object
+        status:
+          properties:
+            observedGeneration:
+              description: Resource generation, which is updated on mutation by the
+                API Server.
+              format: int64
+              type: integer
+            output:
+              properties:
+                excessCapacityTerminationPolicy:
+                  type: string
+                id:
+                  type: string
+                launchTemplateConfig:
+                  items:
+                    properties:
+                      launchTemplateSpecification:
+                        items:
+                          properties:
+                            launchTemplateID:
+                              type: string
+                            launchTemplateName:
+                              type: string
+                            version:
+                              type: string
+                          required:
+                          - version
+                          type: object
+                        maxItems: 1
+                        minItems: 1
+                        type: array
+                      override:
+                        items:
+                          properties:
+                            availabilityZone:
+                              type: string
+                            instanceType:
+                              type: string
+                            maxPrice:
+                              type: string
+                            priority:
+                              format: float
+                              type: number
+                            subnetID:
+                              type: string
+                            weightedCapacity:
+                              format: float
+                              type: number
+                          type: object
+                        maxItems: 50
+                        type: array
+                    required:
+                    - launchTemplateSpecification
+                    type: object
+                  maxItems: 1
+                  minItems: 1
+                  type: array
+                onDemandOptions:
+                  items:
+                    properties:
+                      allocationStrategy:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                replaceUnhealthyInstances:
+                  type: boolean
+                spotOptions:
+                  items:
+                    properties:
+                      allocationStrategy:
+                        type: string
+                      instanceInterruptionBehavior:
+                        type: string
+                      instancePoolsToUseCount:
+                        format: int64
+                        type: integer
+                    type: object
+                  maxItems: 1
+                  type: array
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                targetCapacitySpecification:
+                  items:
+                    properties:
+                      defaultTargetCapacityType:
+                        type: string
+                      onDemandTargetCapacity:
+                        format: int64
+                        type: integer
+                      spotTargetCapacity:
+                        format: int64
+                        type: integer
+                      totalTargetCapacity:
+                        format: int64
+                        type: integer
+                    required:
+                    - defaultTargetCapacityType
+                    - totalTargetCapacity
+                    type: object
+                  maxItems: 1
+                  minItems: 1
+                  type: array
+                terminateInstances:
+                  type: boolean
+                terminateInstancesWithExpiration:
+                  type: boolean
+                type:
+                  type: string
+              required:
+              - launchTemplateConfig
+              - providerRef
+              - targetCapacitySpecification
+              type: object
+            phase:
+              type: string
+            state:
+              properties:
+                lineage:
+                  type: string
+                serial:
+                  format: int64
+                  type: integer
+                terraform_version:
+                  type: string
+                version:
+                  format: int64
+                  type: integer
+              required:
+              - lineage
+              - serial
+              - terraform_version
+              - version
+              type: object
+          type: object
+      type: object
+  version: v1alpha1
+  versions:
+  - name: v1alpha1
+    served: true
+    storage: true

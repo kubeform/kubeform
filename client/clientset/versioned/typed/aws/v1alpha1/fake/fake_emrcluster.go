@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var emrclustersResource = schema.GroupVersionResource{Group: "aws.kubeform.com",
 var emrclustersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "EmrCluster"}
 
 // Get takes name of the emrCluster, and returns the corresponding emrCluster object, and an error if there is any.
-func (c *FakeEmrClusters) Get(name string, options v1.GetOptions) (result *v1alpha1.EmrCluster, err error) {
+func (c *FakeEmrClusters) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.EmrCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(emrclustersResource, c.ns, name), &v1alpha1.EmrCluster{})
 
@@ -51,7 +53,7 @@ func (c *FakeEmrClusters) Get(name string, options v1.GetOptions) (result *v1alp
 }
 
 // List takes label and field selectors, and returns the list of EmrClusters that match those selectors.
-func (c *FakeEmrClusters) List(opts v1.ListOptions) (result *v1alpha1.EmrClusterList, err error) {
+func (c *FakeEmrClusters) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.EmrClusterList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(emrclustersResource, emrclustersKind, c.ns, opts), &v1alpha1.EmrClusterList{})
 
@@ -73,14 +75,14 @@ func (c *FakeEmrClusters) List(opts v1.ListOptions) (result *v1alpha1.EmrCluster
 }
 
 // Watch returns a watch.Interface that watches the requested emrClusters.
-func (c *FakeEmrClusters) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeEmrClusters) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(emrclustersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a emrCluster and creates it.  Returns the server's representation of the emrCluster, and an error, if there is any.
-func (c *FakeEmrClusters) Create(emrCluster *v1alpha1.EmrCluster) (result *v1alpha1.EmrCluster, err error) {
+func (c *FakeEmrClusters) Create(ctx context.Context, emrCluster *v1alpha1.EmrCluster, opts v1.CreateOptions) (result *v1alpha1.EmrCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(emrclustersResource, c.ns, emrCluster), &v1alpha1.EmrCluster{})
 
@@ -91,7 +93,7 @@ func (c *FakeEmrClusters) Create(emrCluster *v1alpha1.EmrCluster) (result *v1alp
 }
 
 // Update takes the representation of a emrCluster and updates it. Returns the server's representation of the emrCluster, and an error, if there is any.
-func (c *FakeEmrClusters) Update(emrCluster *v1alpha1.EmrCluster) (result *v1alpha1.EmrCluster, err error) {
+func (c *FakeEmrClusters) Update(ctx context.Context, emrCluster *v1alpha1.EmrCluster, opts v1.UpdateOptions) (result *v1alpha1.EmrCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(emrclustersResource, c.ns, emrCluster), &v1alpha1.EmrCluster{})
 
@@ -103,7 +105,7 @@ func (c *FakeEmrClusters) Update(emrCluster *v1alpha1.EmrCluster) (result *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeEmrClusters) UpdateStatus(emrCluster *v1alpha1.EmrCluster) (*v1alpha1.EmrCluster, error) {
+func (c *FakeEmrClusters) UpdateStatus(ctx context.Context, emrCluster *v1alpha1.EmrCluster, opts v1.UpdateOptions) (*v1alpha1.EmrCluster, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(emrclustersResource, "status", c.ns, emrCluster), &v1alpha1.EmrCluster{})
 
@@ -114,7 +116,7 @@ func (c *FakeEmrClusters) UpdateStatus(emrCluster *v1alpha1.EmrCluster) (*v1alph
 }
 
 // Delete takes name of the emrCluster and deletes it. Returns an error if one occurs.
-func (c *FakeEmrClusters) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeEmrClusters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(emrclustersResource, c.ns, name), &v1alpha1.EmrCluster{})
 
@@ -122,15 +124,15 @@ func (c *FakeEmrClusters) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeEmrClusters) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(emrclustersResource, c.ns, listOptions)
+func (c *FakeEmrClusters) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(emrclustersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.EmrClusterList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched emrCluster.
-func (c *FakeEmrClusters) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EmrCluster, err error) {
+func (c *FakeEmrClusters) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EmrCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(emrclustersResource, c.ns, name, pt, data, subresources...), &v1alpha1.EmrCluster{})
 

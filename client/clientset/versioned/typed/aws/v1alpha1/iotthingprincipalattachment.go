@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type IotThingPrincipalAttachmentsGetter interface {
 
 // IotThingPrincipalAttachmentInterface has methods to work with IotThingPrincipalAttachment resources.
 type IotThingPrincipalAttachmentInterface interface {
-	Create(*v1alpha1.IotThingPrincipalAttachment) (*v1alpha1.IotThingPrincipalAttachment, error)
-	Update(*v1alpha1.IotThingPrincipalAttachment) (*v1alpha1.IotThingPrincipalAttachment, error)
-	UpdateStatus(*v1alpha1.IotThingPrincipalAttachment) (*v1alpha1.IotThingPrincipalAttachment, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.IotThingPrincipalAttachment, error)
-	List(opts v1.ListOptions) (*v1alpha1.IotThingPrincipalAttachmentList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IotThingPrincipalAttachment, err error)
+	Create(ctx context.Context, iotThingPrincipalAttachment *v1alpha1.IotThingPrincipalAttachment, opts v1.CreateOptions) (*v1alpha1.IotThingPrincipalAttachment, error)
+	Update(ctx context.Context, iotThingPrincipalAttachment *v1alpha1.IotThingPrincipalAttachment, opts v1.UpdateOptions) (*v1alpha1.IotThingPrincipalAttachment, error)
+	UpdateStatus(ctx context.Context, iotThingPrincipalAttachment *v1alpha1.IotThingPrincipalAttachment, opts v1.UpdateOptions) (*v1alpha1.IotThingPrincipalAttachment, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.IotThingPrincipalAttachment, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.IotThingPrincipalAttachmentList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IotThingPrincipalAttachment, err error)
 	IotThingPrincipalAttachmentExpansion
 }
 
@@ -65,20 +66,20 @@ func newIotThingPrincipalAttachments(c *AwsV1alpha1Client, namespace string) *io
 }
 
 // Get takes name of the iotThingPrincipalAttachment, and returns the corresponding iotThingPrincipalAttachment object, and an error if there is any.
-func (c *iotThingPrincipalAttachments) Get(name string, options v1.GetOptions) (result *v1alpha1.IotThingPrincipalAttachment, err error) {
+func (c *iotThingPrincipalAttachments) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IotThingPrincipalAttachment, err error) {
 	result = &v1alpha1.IotThingPrincipalAttachment{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("iotthingprincipalattachments").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of IotThingPrincipalAttachments that match those selectors.
-func (c *iotThingPrincipalAttachments) List(opts v1.ListOptions) (result *v1alpha1.IotThingPrincipalAttachmentList, err error) {
+func (c *iotThingPrincipalAttachments) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IotThingPrincipalAttachmentList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *iotThingPrincipalAttachments) List(opts v1.ListOptions) (result *v1alph
 		Resource("iotthingprincipalattachments").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested iotThingPrincipalAttachments.
-func (c *iotThingPrincipalAttachments) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *iotThingPrincipalAttachments) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *iotThingPrincipalAttachments) Watch(opts v1.ListOptions) (watch.Interfa
 		Resource("iotthingprincipalattachments").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a iotThingPrincipalAttachment and creates it.  Returns the server's representation of the iotThingPrincipalAttachment, and an error, if there is any.
-func (c *iotThingPrincipalAttachments) Create(iotThingPrincipalAttachment *v1alpha1.IotThingPrincipalAttachment) (result *v1alpha1.IotThingPrincipalAttachment, err error) {
+func (c *iotThingPrincipalAttachments) Create(ctx context.Context, iotThingPrincipalAttachment *v1alpha1.IotThingPrincipalAttachment, opts v1.CreateOptions) (result *v1alpha1.IotThingPrincipalAttachment, err error) {
 	result = &v1alpha1.IotThingPrincipalAttachment{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("iotthingprincipalattachments").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iotThingPrincipalAttachment).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a iotThingPrincipalAttachment and updates it. Returns the server's representation of the iotThingPrincipalAttachment, and an error, if there is any.
-func (c *iotThingPrincipalAttachments) Update(iotThingPrincipalAttachment *v1alpha1.IotThingPrincipalAttachment) (result *v1alpha1.IotThingPrincipalAttachment, err error) {
+func (c *iotThingPrincipalAttachments) Update(ctx context.Context, iotThingPrincipalAttachment *v1alpha1.IotThingPrincipalAttachment, opts v1.UpdateOptions) (result *v1alpha1.IotThingPrincipalAttachment, err error) {
 	result = &v1alpha1.IotThingPrincipalAttachment{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iotthingprincipalattachments").
 		Name(iotThingPrincipalAttachment.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iotThingPrincipalAttachment).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *iotThingPrincipalAttachments) UpdateStatus(iotThingPrincipalAttachment *v1alpha1.IotThingPrincipalAttachment) (result *v1alpha1.IotThingPrincipalAttachment, err error) {
+func (c *iotThingPrincipalAttachments) UpdateStatus(ctx context.Context, iotThingPrincipalAttachment *v1alpha1.IotThingPrincipalAttachment, opts v1.UpdateOptions) (result *v1alpha1.IotThingPrincipalAttachment, err error) {
 	result = &v1alpha1.IotThingPrincipalAttachment{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iotthingprincipalattachments").
 		Name(iotThingPrincipalAttachment.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iotThingPrincipalAttachment).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the iotThingPrincipalAttachment and deletes it. Returns an error if one occurs.
-func (c *iotThingPrincipalAttachments) Delete(name string, options *v1.DeleteOptions) error {
+func (c *iotThingPrincipalAttachments) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iotthingprincipalattachments").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *iotThingPrincipalAttachments) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *iotThingPrincipalAttachments) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iotthingprincipalattachments").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched iotThingPrincipalAttachment.
-func (c *iotThingPrincipalAttachments) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IotThingPrincipalAttachment, err error) {
+func (c *iotThingPrincipalAttachments) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IotThingPrincipalAttachment, err error) {
 	result = &v1alpha1.IotThingPrincipalAttachment{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("iotthingprincipalattachments").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

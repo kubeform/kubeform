@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var pubsubtopiciampoliciesResource = schema.GroupVersionResource{Group: "google.
 var pubsubtopiciampoliciesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "PubsubTopicIamPolicy"}
 
 // Get takes name of the pubsubTopicIamPolicy, and returns the corresponding pubsubTopicIamPolicy object, and an error if there is any.
-func (c *FakePubsubTopicIamPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.PubsubTopicIamPolicy, err error) {
+func (c *FakePubsubTopicIamPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PubsubTopicIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(pubsubtopiciampoliciesResource, c.ns, name), &v1alpha1.PubsubTopicIamPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakePubsubTopicIamPolicies) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of PubsubTopicIamPolicies that match those selectors.
-func (c *FakePubsubTopicIamPolicies) List(opts v1.ListOptions) (result *v1alpha1.PubsubTopicIamPolicyList, err error) {
+func (c *FakePubsubTopicIamPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PubsubTopicIamPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(pubsubtopiciampoliciesResource, pubsubtopiciampoliciesKind, c.ns, opts), &v1alpha1.PubsubTopicIamPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakePubsubTopicIamPolicies) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested pubsubTopicIamPolicies.
-func (c *FakePubsubTopicIamPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakePubsubTopicIamPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(pubsubtopiciampoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a pubsubTopicIamPolicy and creates it.  Returns the server's representation of the pubsubTopicIamPolicy, and an error, if there is any.
-func (c *FakePubsubTopicIamPolicies) Create(pubsubTopicIamPolicy *v1alpha1.PubsubTopicIamPolicy) (result *v1alpha1.PubsubTopicIamPolicy, err error) {
+func (c *FakePubsubTopicIamPolicies) Create(ctx context.Context, pubsubTopicIamPolicy *v1alpha1.PubsubTopicIamPolicy, opts v1.CreateOptions) (result *v1alpha1.PubsubTopicIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(pubsubtopiciampoliciesResource, c.ns, pubsubTopicIamPolicy), &v1alpha1.PubsubTopicIamPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakePubsubTopicIamPolicies) Create(pubsubTopicIamPolicy *v1alpha1.Pubsu
 }
 
 // Update takes the representation of a pubsubTopicIamPolicy and updates it. Returns the server's representation of the pubsubTopicIamPolicy, and an error, if there is any.
-func (c *FakePubsubTopicIamPolicies) Update(pubsubTopicIamPolicy *v1alpha1.PubsubTopicIamPolicy) (result *v1alpha1.PubsubTopicIamPolicy, err error) {
+func (c *FakePubsubTopicIamPolicies) Update(ctx context.Context, pubsubTopicIamPolicy *v1alpha1.PubsubTopicIamPolicy, opts v1.UpdateOptions) (result *v1alpha1.PubsubTopicIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(pubsubtopiciampoliciesResource, c.ns, pubsubTopicIamPolicy), &v1alpha1.PubsubTopicIamPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakePubsubTopicIamPolicies) Update(pubsubTopicIamPolicy *v1alpha1.Pubsu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakePubsubTopicIamPolicies) UpdateStatus(pubsubTopicIamPolicy *v1alpha1.PubsubTopicIamPolicy) (*v1alpha1.PubsubTopicIamPolicy, error) {
+func (c *FakePubsubTopicIamPolicies) UpdateStatus(ctx context.Context, pubsubTopicIamPolicy *v1alpha1.PubsubTopicIamPolicy, opts v1.UpdateOptions) (*v1alpha1.PubsubTopicIamPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(pubsubtopiciampoliciesResource, "status", c.ns, pubsubTopicIamPolicy), &v1alpha1.PubsubTopicIamPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakePubsubTopicIamPolicies) UpdateStatus(pubsubTopicIamPolicy *v1alpha1
 }
 
 // Delete takes name of the pubsubTopicIamPolicy and deletes it. Returns an error if one occurs.
-func (c *FakePubsubTopicIamPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakePubsubTopicIamPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(pubsubtopiciampoliciesResource, c.ns, name), &v1alpha1.PubsubTopicIamPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakePubsubTopicIamPolicies) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakePubsubTopicIamPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(pubsubtopiciampoliciesResource, c.ns, listOptions)
+func (c *FakePubsubTopicIamPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(pubsubtopiciampoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.PubsubTopicIamPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched pubsubTopicIamPolicy.
-func (c *FakePubsubTopicIamPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PubsubTopicIamPolicy, err error) {
+func (c *FakePubsubTopicIamPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PubsubTopicIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(pubsubtopiciampoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.PubsubTopicIamPolicy{})
 

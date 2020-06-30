@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type BotChannelsRegistrationsGetter interface {
 
 // BotChannelsRegistrationInterface has methods to work with BotChannelsRegistration resources.
 type BotChannelsRegistrationInterface interface {
-	Create(*v1alpha1.BotChannelsRegistration) (*v1alpha1.BotChannelsRegistration, error)
-	Update(*v1alpha1.BotChannelsRegistration) (*v1alpha1.BotChannelsRegistration, error)
-	UpdateStatus(*v1alpha1.BotChannelsRegistration) (*v1alpha1.BotChannelsRegistration, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.BotChannelsRegistration, error)
-	List(opts v1.ListOptions) (*v1alpha1.BotChannelsRegistrationList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BotChannelsRegistration, err error)
+	Create(ctx context.Context, botChannelsRegistration *v1alpha1.BotChannelsRegistration, opts v1.CreateOptions) (*v1alpha1.BotChannelsRegistration, error)
+	Update(ctx context.Context, botChannelsRegistration *v1alpha1.BotChannelsRegistration, opts v1.UpdateOptions) (*v1alpha1.BotChannelsRegistration, error)
+	UpdateStatus(ctx context.Context, botChannelsRegistration *v1alpha1.BotChannelsRegistration, opts v1.UpdateOptions) (*v1alpha1.BotChannelsRegistration, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.BotChannelsRegistration, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.BotChannelsRegistrationList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BotChannelsRegistration, err error)
 	BotChannelsRegistrationExpansion
 }
 
@@ -65,20 +66,20 @@ func newBotChannelsRegistrations(c *AzurermV1alpha1Client, namespace string) *bo
 }
 
 // Get takes name of the botChannelsRegistration, and returns the corresponding botChannelsRegistration object, and an error if there is any.
-func (c *botChannelsRegistrations) Get(name string, options v1.GetOptions) (result *v1alpha1.BotChannelsRegistration, err error) {
+func (c *botChannelsRegistrations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BotChannelsRegistration, err error) {
 	result = &v1alpha1.BotChannelsRegistration{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("botchannelsregistrations").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of BotChannelsRegistrations that match those selectors.
-func (c *botChannelsRegistrations) List(opts v1.ListOptions) (result *v1alpha1.BotChannelsRegistrationList, err error) {
+func (c *botChannelsRegistrations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BotChannelsRegistrationList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *botChannelsRegistrations) List(opts v1.ListOptions) (result *v1alpha1.B
 		Resource("botchannelsregistrations").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested botChannelsRegistrations.
-func (c *botChannelsRegistrations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *botChannelsRegistrations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *botChannelsRegistrations) Watch(opts v1.ListOptions) (watch.Interface, 
 		Resource("botchannelsregistrations").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a botChannelsRegistration and creates it.  Returns the server's representation of the botChannelsRegistration, and an error, if there is any.
-func (c *botChannelsRegistrations) Create(botChannelsRegistration *v1alpha1.BotChannelsRegistration) (result *v1alpha1.BotChannelsRegistration, err error) {
+func (c *botChannelsRegistrations) Create(ctx context.Context, botChannelsRegistration *v1alpha1.BotChannelsRegistration, opts v1.CreateOptions) (result *v1alpha1.BotChannelsRegistration, err error) {
 	result = &v1alpha1.BotChannelsRegistration{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("botchannelsregistrations").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(botChannelsRegistration).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a botChannelsRegistration and updates it. Returns the server's representation of the botChannelsRegistration, and an error, if there is any.
-func (c *botChannelsRegistrations) Update(botChannelsRegistration *v1alpha1.BotChannelsRegistration) (result *v1alpha1.BotChannelsRegistration, err error) {
+func (c *botChannelsRegistrations) Update(ctx context.Context, botChannelsRegistration *v1alpha1.BotChannelsRegistration, opts v1.UpdateOptions) (result *v1alpha1.BotChannelsRegistration, err error) {
 	result = &v1alpha1.BotChannelsRegistration{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("botchannelsregistrations").
 		Name(botChannelsRegistration.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(botChannelsRegistration).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *botChannelsRegistrations) UpdateStatus(botChannelsRegistration *v1alpha1.BotChannelsRegistration) (result *v1alpha1.BotChannelsRegistration, err error) {
+func (c *botChannelsRegistrations) UpdateStatus(ctx context.Context, botChannelsRegistration *v1alpha1.BotChannelsRegistration, opts v1.UpdateOptions) (result *v1alpha1.BotChannelsRegistration, err error) {
 	result = &v1alpha1.BotChannelsRegistration{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("botchannelsregistrations").
 		Name(botChannelsRegistration.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(botChannelsRegistration).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the botChannelsRegistration and deletes it. Returns an error if one occurs.
-func (c *botChannelsRegistrations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *botChannelsRegistrations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("botchannelsregistrations").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *botChannelsRegistrations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *botChannelsRegistrations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("botchannelsregistrations").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched botChannelsRegistration.
-func (c *botChannelsRegistrations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BotChannelsRegistration, err error) {
+func (c *botChannelsRegistrations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BotChannelsRegistration, err error) {
 	result = &v1alpha1.BotChannelsRegistration{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("botchannelsregistrations").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

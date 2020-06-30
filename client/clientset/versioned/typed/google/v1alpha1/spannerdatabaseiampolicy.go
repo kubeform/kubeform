@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type SpannerDatabaseIamPoliciesGetter interface {
 
 // SpannerDatabaseIamPolicyInterface has methods to work with SpannerDatabaseIamPolicy resources.
 type SpannerDatabaseIamPolicyInterface interface {
-	Create(*v1alpha1.SpannerDatabaseIamPolicy) (*v1alpha1.SpannerDatabaseIamPolicy, error)
-	Update(*v1alpha1.SpannerDatabaseIamPolicy) (*v1alpha1.SpannerDatabaseIamPolicy, error)
-	UpdateStatus(*v1alpha1.SpannerDatabaseIamPolicy) (*v1alpha1.SpannerDatabaseIamPolicy, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SpannerDatabaseIamPolicy, error)
-	List(opts v1.ListOptions) (*v1alpha1.SpannerDatabaseIamPolicyList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SpannerDatabaseIamPolicy, err error)
+	Create(ctx context.Context, spannerDatabaseIamPolicy *v1alpha1.SpannerDatabaseIamPolicy, opts v1.CreateOptions) (*v1alpha1.SpannerDatabaseIamPolicy, error)
+	Update(ctx context.Context, spannerDatabaseIamPolicy *v1alpha1.SpannerDatabaseIamPolicy, opts v1.UpdateOptions) (*v1alpha1.SpannerDatabaseIamPolicy, error)
+	UpdateStatus(ctx context.Context, spannerDatabaseIamPolicy *v1alpha1.SpannerDatabaseIamPolicy, opts v1.UpdateOptions) (*v1alpha1.SpannerDatabaseIamPolicy, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SpannerDatabaseIamPolicy, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SpannerDatabaseIamPolicyList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SpannerDatabaseIamPolicy, err error)
 	SpannerDatabaseIamPolicyExpansion
 }
 
@@ -65,20 +66,20 @@ func newSpannerDatabaseIamPolicies(c *GoogleV1alpha1Client, namespace string) *s
 }
 
 // Get takes name of the spannerDatabaseIamPolicy, and returns the corresponding spannerDatabaseIamPolicy object, and an error if there is any.
-func (c *spannerDatabaseIamPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.SpannerDatabaseIamPolicy, err error) {
+func (c *spannerDatabaseIamPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SpannerDatabaseIamPolicy, err error) {
 	result = &v1alpha1.SpannerDatabaseIamPolicy{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("spannerdatabaseiampolicies").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SpannerDatabaseIamPolicies that match those selectors.
-func (c *spannerDatabaseIamPolicies) List(opts v1.ListOptions) (result *v1alpha1.SpannerDatabaseIamPolicyList, err error) {
+func (c *spannerDatabaseIamPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SpannerDatabaseIamPolicyList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *spannerDatabaseIamPolicies) List(opts v1.ListOptions) (result *v1alpha1
 		Resource("spannerdatabaseiampolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested spannerDatabaseIamPolicies.
-func (c *spannerDatabaseIamPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *spannerDatabaseIamPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *spannerDatabaseIamPolicies) Watch(opts v1.ListOptions) (watch.Interface
 		Resource("spannerdatabaseiampolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a spannerDatabaseIamPolicy and creates it.  Returns the server's representation of the spannerDatabaseIamPolicy, and an error, if there is any.
-func (c *spannerDatabaseIamPolicies) Create(spannerDatabaseIamPolicy *v1alpha1.SpannerDatabaseIamPolicy) (result *v1alpha1.SpannerDatabaseIamPolicy, err error) {
+func (c *spannerDatabaseIamPolicies) Create(ctx context.Context, spannerDatabaseIamPolicy *v1alpha1.SpannerDatabaseIamPolicy, opts v1.CreateOptions) (result *v1alpha1.SpannerDatabaseIamPolicy, err error) {
 	result = &v1alpha1.SpannerDatabaseIamPolicy{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("spannerdatabaseiampolicies").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(spannerDatabaseIamPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a spannerDatabaseIamPolicy and updates it. Returns the server's representation of the spannerDatabaseIamPolicy, and an error, if there is any.
-func (c *spannerDatabaseIamPolicies) Update(spannerDatabaseIamPolicy *v1alpha1.SpannerDatabaseIamPolicy) (result *v1alpha1.SpannerDatabaseIamPolicy, err error) {
+func (c *spannerDatabaseIamPolicies) Update(ctx context.Context, spannerDatabaseIamPolicy *v1alpha1.SpannerDatabaseIamPolicy, opts v1.UpdateOptions) (result *v1alpha1.SpannerDatabaseIamPolicy, err error) {
 	result = &v1alpha1.SpannerDatabaseIamPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("spannerdatabaseiampolicies").
 		Name(spannerDatabaseIamPolicy.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(spannerDatabaseIamPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *spannerDatabaseIamPolicies) UpdateStatus(spannerDatabaseIamPolicy *v1alpha1.SpannerDatabaseIamPolicy) (result *v1alpha1.SpannerDatabaseIamPolicy, err error) {
+func (c *spannerDatabaseIamPolicies) UpdateStatus(ctx context.Context, spannerDatabaseIamPolicy *v1alpha1.SpannerDatabaseIamPolicy, opts v1.UpdateOptions) (result *v1alpha1.SpannerDatabaseIamPolicy, err error) {
 	result = &v1alpha1.SpannerDatabaseIamPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("spannerdatabaseiampolicies").
 		Name(spannerDatabaseIamPolicy.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(spannerDatabaseIamPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the spannerDatabaseIamPolicy and deletes it. Returns an error if one occurs.
-func (c *spannerDatabaseIamPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *spannerDatabaseIamPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("spannerdatabaseiampolicies").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *spannerDatabaseIamPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *spannerDatabaseIamPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("spannerdatabaseiampolicies").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched spannerDatabaseIamPolicy.
-func (c *spannerDatabaseIamPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SpannerDatabaseIamPolicy, err error) {
+func (c *spannerDatabaseIamPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SpannerDatabaseIamPolicy, err error) {
 	result = &v1alpha1.SpannerDatabaseIamPolicy{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("spannerdatabaseiampolicies").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

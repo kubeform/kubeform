@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type WafregionalRulesGetter interface {
 
 // WafregionalRuleInterface has methods to work with WafregionalRule resources.
 type WafregionalRuleInterface interface {
-	Create(*v1alpha1.WafregionalRule) (*v1alpha1.WafregionalRule, error)
-	Update(*v1alpha1.WafregionalRule) (*v1alpha1.WafregionalRule, error)
-	UpdateStatus(*v1alpha1.WafregionalRule) (*v1alpha1.WafregionalRule, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.WafregionalRule, error)
-	List(opts v1.ListOptions) (*v1alpha1.WafregionalRuleList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.WafregionalRule, err error)
+	Create(ctx context.Context, wafregionalRule *v1alpha1.WafregionalRule, opts v1.CreateOptions) (*v1alpha1.WafregionalRule, error)
+	Update(ctx context.Context, wafregionalRule *v1alpha1.WafregionalRule, opts v1.UpdateOptions) (*v1alpha1.WafregionalRule, error)
+	UpdateStatus(ctx context.Context, wafregionalRule *v1alpha1.WafregionalRule, opts v1.UpdateOptions) (*v1alpha1.WafregionalRule, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.WafregionalRule, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.WafregionalRuleList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.WafregionalRule, err error)
 	WafregionalRuleExpansion
 }
 
@@ -65,20 +66,20 @@ func newWafregionalRules(c *AwsV1alpha1Client, namespace string) *wafregionalRul
 }
 
 // Get takes name of the wafregionalRule, and returns the corresponding wafregionalRule object, and an error if there is any.
-func (c *wafregionalRules) Get(name string, options v1.GetOptions) (result *v1alpha1.WafregionalRule, err error) {
+func (c *wafregionalRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.WafregionalRule, err error) {
 	result = &v1alpha1.WafregionalRule{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("wafregionalrules").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of WafregionalRules that match those selectors.
-func (c *wafregionalRules) List(opts v1.ListOptions) (result *v1alpha1.WafregionalRuleList, err error) {
+func (c *wafregionalRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.WafregionalRuleList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *wafregionalRules) List(opts v1.ListOptions) (result *v1alpha1.Wafregion
 		Resource("wafregionalrules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested wafregionalRules.
-func (c *wafregionalRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *wafregionalRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *wafregionalRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("wafregionalrules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a wafregionalRule and creates it.  Returns the server's representation of the wafregionalRule, and an error, if there is any.
-func (c *wafregionalRules) Create(wafregionalRule *v1alpha1.WafregionalRule) (result *v1alpha1.WafregionalRule, err error) {
+func (c *wafregionalRules) Create(ctx context.Context, wafregionalRule *v1alpha1.WafregionalRule, opts v1.CreateOptions) (result *v1alpha1.WafregionalRule, err error) {
 	result = &v1alpha1.WafregionalRule{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("wafregionalrules").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(wafregionalRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a wafregionalRule and updates it. Returns the server's representation of the wafregionalRule, and an error, if there is any.
-func (c *wafregionalRules) Update(wafregionalRule *v1alpha1.WafregionalRule) (result *v1alpha1.WafregionalRule, err error) {
+func (c *wafregionalRules) Update(ctx context.Context, wafregionalRule *v1alpha1.WafregionalRule, opts v1.UpdateOptions) (result *v1alpha1.WafregionalRule, err error) {
 	result = &v1alpha1.WafregionalRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("wafregionalrules").
 		Name(wafregionalRule.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(wafregionalRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *wafregionalRules) UpdateStatus(wafregionalRule *v1alpha1.WafregionalRule) (result *v1alpha1.WafregionalRule, err error) {
+func (c *wafregionalRules) UpdateStatus(ctx context.Context, wafregionalRule *v1alpha1.WafregionalRule, opts v1.UpdateOptions) (result *v1alpha1.WafregionalRule, err error) {
 	result = &v1alpha1.WafregionalRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("wafregionalrules").
 		Name(wafregionalRule.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(wafregionalRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the wafregionalRule and deletes it. Returns an error if one occurs.
-func (c *wafregionalRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *wafregionalRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("wafregionalrules").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *wafregionalRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *wafregionalRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("wafregionalrules").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched wafregionalRule.
-func (c *wafregionalRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.WafregionalRule, err error) {
+func (c *wafregionalRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.WafregionalRule, err error) {
 	result = &v1alpha1.WafregionalRule{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("wafregionalrules").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var appservicecertificateordersResource = schema.GroupVersionResource{Group: "az
 var appservicecertificateordersKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "AppServiceCertificateOrder"}
 
 // Get takes name of the appServiceCertificateOrder, and returns the corresponding appServiceCertificateOrder object, and an error if there is any.
-func (c *FakeAppServiceCertificateOrders) Get(name string, options v1.GetOptions) (result *v1alpha1.AppServiceCertificateOrder, err error) {
+func (c *FakeAppServiceCertificateOrders) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AppServiceCertificateOrder, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(appservicecertificateordersResource, c.ns, name), &v1alpha1.AppServiceCertificateOrder{})
 
@@ -51,7 +53,7 @@ func (c *FakeAppServiceCertificateOrders) Get(name string, options v1.GetOptions
 }
 
 // List takes label and field selectors, and returns the list of AppServiceCertificateOrders that match those selectors.
-func (c *FakeAppServiceCertificateOrders) List(opts v1.ListOptions) (result *v1alpha1.AppServiceCertificateOrderList, err error) {
+func (c *FakeAppServiceCertificateOrders) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AppServiceCertificateOrderList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(appservicecertificateordersResource, appservicecertificateordersKind, c.ns, opts), &v1alpha1.AppServiceCertificateOrderList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAppServiceCertificateOrders) List(opts v1.ListOptions) (result *v1a
 }
 
 // Watch returns a watch.Interface that watches the requested appServiceCertificateOrders.
-func (c *FakeAppServiceCertificateOrders) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAppServiceCertificateOrders) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(appservicecertificateordersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a appServiceCertificateOrder and creates it.  Returns the server's representation of the appServiceCertificateOrder, and an error, if there is any.
-func (c *FakeAppServiceCertificateOrders) Create(appServiceCertificateOrder *v1alpha1.AppServiceCertificateOrder) (result *v1alpha1.AppServiceCertificateOrder, err error) {
+func (c *FakeAppServiceCertificateOrders) Create(ctx context.Context, appServiceCertificateOrder *v1alpha1.AppServiceCertificateOrder, opts v1.CreateOptions) (result *v1alpha1.AppServiceCertificateOrder, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(appservicecertificateordersResource, c.ns, appServiceCertificateOrder), &v1alpha1.AppServiceCertificateOrder{})
 
@@ -91,7 +93,7 @@ func (c *FakeAppServiceCertificateOrders) Create(appServiceCertificateOrder *v1a
 }
 
 // Update takes the representation of a appServiceCertificateOrder and updates it. Returns the server's representation of the appServiceCertificateOrder, and an error, if there is any.
-func (c *FakeAppServiceCertificateOrders) Update(appServiceCertificateOrder *v1alpha1.AppServiceCertificateOrder) (result *v1alpha1.AppServiceCertificateOrder, err error) {
+func (c *FakeAppServiceCertificateOrders) Update(ctx context.Context, appServiceCertificateOrder *v1alpha1.AppServiceCertificateOrder, opts v1.UpdateOptions) (result *v1alpha1.AppServiceCertificateOrder, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(appservicecertificateordersResource, c.ns, appServiceCertificateOrder), &v1alpha1.AppServiceCertificateOrder{})
 
@@ -103,7 +105,7 @@ func (c *FakeAppServiceCertificateOrders) Update(appServiceCertificateOrder *v1a
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAppServiceCertificateOrders) UpdateStatus(appServiceCertificateOrder *v1alpha1.AppServiceCertificateOrder) (*v1alpha1.AppServiceCertificateOrder, error) {
+func (c *FakeAppServiceCertificateOrders) UpdateStatus(ctx context.Context, appServiceCertificateOrder *v1alpha1.AppServiceCertificateOrder, opts v1.UpdateOptions) (*v1alpha1.AppServiceCertificateOrder, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(appservicecertificateordersResource, "status", c.ns, appServiceCertificateOrder), &v1alpha1.AppServiceCertificateOrder{})
 
@@ -114,7 +116,7 @@ func (c *FakeAppServiceCertificateOrders) UpdateStatus(appServiceCertificateOrde
 }
 
 // Delete takes name of the appServiceCertificateOrder and deletes it. Returns an error if one occurs.
-func (c *FakeAppServiceCertificateOrders) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAppServiceCertificateOrders) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(appservicecertificateordersResource, c.ns, name), &v1alpha1.AppServiceCertificateOrder{})
 
@@ -122,15 +124,15 @@ func (c *FakeAppServiceCertificateOrders) Delete(name string, options *v1.Delete
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAppServiceCertificateOrders) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(appservicecertificateordersResource, c.ns, listOptions)
+func (c *FakeAppServiceCertificateOrders) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(appservicecertificateordersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AppServiceCertificateOrderList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched appServiceCertificateOrder.
-func (c *FakeAppServiceCertificateOrders) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppServiceCertificateOrder, err error) {
+func (c *FakeAppServiceCertificateOrders) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppServiceCertificateOrder, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(appservicecertificateordersResource, c.ns, name, pt, data, subresources...), &v1alpha1.AppServiceCertificateOrder{})
 

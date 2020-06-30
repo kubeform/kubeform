@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var snsplatformapplicationsResource = schema.GroupVersionResource{Group: "aws.ku
 var snsplatformapplicationsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "SnsPlatformApplication"}
 
 // Get takes name of the snsPlatformApplication, and returns the corresponding snsPlatformApplication object, and an error if there is any.
-func (c *FakeSnsPlatformApplications) Get(name string, options v1.GetOptions) (result *v1alpha1.SnsPlatformApplication, err error) {
+func (c *FakeSnsPlatformApplications) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SnsPlatformApplication, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(snsplatformapplicationsResource, c.ns, name), &v1alpha1.SnsPlatformApplication{})
 
@@ -51,7 +53,7 @@ func (c *FakeSnsPlatformApplications) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of SnsPlatformApplications that match those selectors.
-func (c *FakeSnsPlatformApplications) List(opts v1.ListOptions) (result *v1alpha1.SnsPlatformApplicationList, err error) {
+func (c *FakeSnsPlatformApplications) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SnsPlatformApplicationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(snsplatformapplicationsResource, snsplatformapplicationsKind, c.ns, opts), &v1alpha1.SnsPlatformApplicationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSnsPlatformApplications) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested snsPlatformApplications.
-func (c *FakeSnsPlatformApplications) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSnsPlatformApplications) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(snsplatformapplicationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a snsPlatformApplication and creates it.  Returns the server's representation of the snsPlatformApplication, and an error, if there is any.
-func (c *FakeSnsPlatformApplications) Create(snsPlatformApplication *v1alpha1.SnsPlatformApplication) (result *v1alpha1.SnsPlatformApplication, err error) {
+func (c *FakeSnsPlatformApplications) Create(ctx context.Context, snsPlatformApplication *v1alpha1.SnsPlatformApplication, opts v1.CreateOptions) (result *v1alpha1.SnsPlatformApplication, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(snsplatformapplicationsResource, c.ns, snsPlatformApplication), &v1alpha1.SnsPlatformApplication{})
 
@@ -91,7 +93,7 @@ func (c *FakeSnsPlatformApplications) Create(snsPlatformApplication *v1alpha1.Sn
 }
 
 // Update takes the representation of a snsPlatformApplication and updates it. Returns the server's representation of the snsPlatformApplication, and an error, if there is any.
-func (c *FakeSnsPlatformApplications) Update(snsPlatformApplication *v1alpha1.SnsPlatformApplication) (result *v1alpha1.SnsPlatformApplication, err error) {
+func (c *FakeSnsPlatformApplications) Update(ctx context.Context, snsPlatformApplication *v1alpha1.SnsPlatformApplication, opts v1.UpdateOptions) (result *v1alpha1.SnsPlatformApplication, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(snsplatformapplicationsResource, c.ns, snsPlatformApplication), &v1alpha1.SnsPlatformApplication{})
 
@@ -103,7 +105,7 @@ func (c *FakeSnsPlatformApplications) Update(snsPlatformApplication *v1alpha1.Sn
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSnsPlatformApplications) UpdateStatus(snsPlatformApplication *v1alpha1.SnsPlatformApplication) (*v1alpha1.SnsPlatformApplication, error) {
+func (c *FakeSnsPlatformApplications) UpdateStatus(ctx context.Context, snsPlatformApplication *v1alpha1.SnsPlatformApplication, opts v1.UpdateOptions) (*v1alpha1.SnsPlatformApplication, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(snsplatformapplicationsResource, "status", c.ns, snsPlatformApplication), &v1alpha1.SnsPlatformApplication{})
 
@@ -114,7 +116,7 @@ func (c *FakeSnsPlatformApplications) UpdateStatus(snsPlatformApplication *v1alp
 }
 
 // Delete takes name of the snsPlatformApplication and deletes it. Returns an error if one occurs.
-func (c *FakeSnsPlatformApplications) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSnsPlatformApplications) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(snsplatformapplicationsResource, c.ns, name), &v1alpha1.SnsPlatformApplication{})
 
@@ -122,15 +124,15 @@ func (c *FakeSnsPlatformApplications) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSnsPlatformApplications) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(snsplatformapplicationsResource, c.ns, listOptions)
+func (c *FakeSnsPlatformApplications) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(snsplatformapplicationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SnsPlatformApplicationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched snsPlatformApplication.
-func (c *FakeSnsPlatformApplications) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SnsPlatformApplication, err error) {
+func (c *FakeSnsPlatformApplications) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SnsPlatformApplication, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(snsplatformapplicationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SnsPlatformApplication{})
 

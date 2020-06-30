@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var mysqlvirtualnetworkrulesResource = schema.GroupVersionResource{Group: "azure
 var mysqlvirtualnetworkrulesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "MysqlVirtualNetworkRule"}
 
 // Get takes name of the mysqlVirtualNetworkRule, and returns the corresponding mysqlVirtualNetworkRule object, and an error if there is any.
-func (c *FakeMysqlVirtualNetworkRules) Get(name string, options v1.GetOptions) (result *v1alpha1.MysqlVirtualNetworkRule, err error) {
+func (c *FakeMysqlVirtualNetworkRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.MysqlVirtualNetworkRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(mysqlvirtualnetworkrulesResource, c.ns, name), &v1alpha1.MysqlVirtualNetworkRule{})
 
@@ -51,7 +53,7 @@ func (c *FakeMysqlVirtualNetworkRules) Get(name string, options v1.GetOptions) (
 }
 
 // List takes label and field selectors, and returns the list of MysqlVirtualNetworkRules that match those selectors.
-func (c *FakeMysqlVirtualNetworkRules) List(opts v1.ListOptions) (result *v1alpha1.MysqlVirtualNetworkRuleList, err error) {
+func (c *FakeMysqlVirtualNetworkRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.MysqlVirtualNetworkRuleList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(mysqlvirtualnetworkrulesResource, mysqlvirtualnetworkrulesKind, c.ns, opts), &v1alpha1.MysqlVirtualNetworkRuleList{})
 
@@ -73,14 +75,14 @@ func (c *FakeMysqlVirtualNetworkRules) List(opts v1.ListOptions) (result *v1alph
 }
 
 // Watch returns a watch.Interface that watches the requested mysqlVirtualNetworkRules.
-func (c *FakeMysqlVirtualNetworkRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeMysqlVirtualNetworkRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(mysqlvirtualnetworkrulesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a mysqlVirtualNetworkRule and creates it.  Returns the server's representation of the mysqlVirtualNetworkRule, and an error, if there is any.
-func (c *FakeMysqlVirtualNetworkRules) Create(mysqlVirtualNetworkRule *v1alpha1.MysqlVirtualNetworkRule) (result *v1alpha1.MysqlVirtualNetworkRule, err error) {
+func (c *FakeMysqlVirtualNetworkRules) Create(ctx context.Context, mysqlVirtualNetworkRule *v1alpha1.MysqlVirtualNetworkRule, opts v1.CreateOptions) (result *v1alpha1.MysqlVirtualNetworkRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(mysqlvirtualnetworkrulesResource, c.ns, mysqlVirtualNetworkRule), &v1alpha1.MysqlVirtualNetworkRule{})
 
@@ -91,7 +93,7 @@ func (c *FakeMysqlVirtualNetworkRules) Create(mysqlVirtualNetworkRule *v1alpha1.
 }
 
 // Update takes the representation of a mysqlVirtualNetworkRule and updates it. Returns the server's representation of the mysqlVirtualNetworkRule, and an error, if there is any.
-func (c *FakeMysqlVirtualNetworkRules) Update(mysqlVirtualNetworkRule *v1alpha1.MysqlVirtualNetworkRule) (result *v1alpha1.MysqlVirtualNetworkRule, err error) {
+func (c *FakeMysqlVirtualNetworkRules) Update(ctx context.Context, mysqlVirtualNetworkRule *v1alpha1.MysqlVirtualNetworkRule, opts v1.UpdateOptions) (result *v1alpha1.MysqlVirtualNetworkRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(mysqlvirtualnetworkrulesResource, c.ns, mysqlVirtualNetworkRule), &v1alpha1.MysqlVirtualNetworkRule{})
 
@@ -103,7 +105,7 @@ func (c *FakeMysqlVirtualNetworkRules) Update(mysqlVirtualNetworkRule *v1alpha1.
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeMysqlVirtualNetworkRules) UpdateStatus(mysqlVirtualNetworkRule *v1alpha1.MysqlVirtualNetworkRule) (*v1alpha1.MysqlVirtualNetworkRule, error) {
+func (c *FakeMysqlVirtualNetworkRules) UpdateStatus(ctx context.Context, mysqlVirtualNetworkRule *v1alpha1.MysqlVirtualNetworkRule, opts v1.UpdateOptions) (*v1alpha1.MysqlVirtualNetworkRule, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(mysqlvirtualnetworkrulesResource, "status", c.ns, mysqlVirtualNetworkRule), &v1alpha1.MysqlVirtualNetworkRule{})
 
@@ -114,7 +116,7 @@ func (c *FakeMysqlVirtualNetworkRules) UpdateStatus(mysqlVirtualNetworkRule *v1a
 }
 
 // Delete takes name of the mysqlVirtualNetworkRule and deletes it. Returns an error if one occurs.
-func (c *FakeMysqlVirtualNetworkRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeMysqlVirtualNetworkRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(mysqlvirtualnetworkrulesResource, c.ns, name), &v1alpha1.MysqlVirtualNetworkRule{})
 
@@ -122,15 +124,15 @@ func (c *FakeMysqlVirtualNetworkRules) Delete(name string, options *v1.DeleteOpt
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeMysqlVirtualNetworkRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(mysqlvirtualnetworkrulesResource, c.ns, listOptions)
+func (c *FakeMysqlVirtualNetworkRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(mysqlvirtualnetworkrulesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.MysqlVirtualNetworkRuleList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched mysqlVirtualNetworkRule.
-func (c *FakeMysqlVirtualNetworkRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MysqlVirtualNetworkRule, err error) {
+func (c *FakeMysqlVirtualNetworkRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MysqlVirtualNetworkRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(mysqlvirtualnetworkrulesResource, c.ns, name, pt, data, subresources...), &v1alpha1.MysqlVirtualNetworkRule{})
 

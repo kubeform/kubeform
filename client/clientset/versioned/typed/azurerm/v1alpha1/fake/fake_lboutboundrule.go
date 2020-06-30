@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var lboutboundrulesResource = schema.GroupVersionResource{Group: "azurerm.kubefo
 var lboutboundrulesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "LbOutboundRule"}
 
 // Get takes name of the lbOutboundRule, and returns the corresponding lbOutboundRule object, and an error if there is any.
-func (c *FakeLbOutboundRules) Get(name string, options v1.GetOptions) (result *v1alpha1.LbOutboundRule, err error) {
+func (c *FakeLbOutboundRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LbOutboundRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(lboutboundrulesResource, c.ns, name), &v1alpha1.LbOutboundRule{})
 
@@ -51,7 +53,7 @@ func (c *FakeLbOutboundRules) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of LbOutboundRules that match those selectors.
-func (c *FakeLbOutboundRules) List(opts v1.ListOptions) (result *v1alpha1.LbOutboundRuleList, err error) {
+func (c *FakeLbOutboundRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LbOutboundRuleList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(lboutboundrulesResource, lboutboundrulesKind, c.ns, opts), &v1alpha1.LbOutboundRuleList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLbOutboundRules) List(opts v1.ListOptions) (result *v1alpha1.LbOutb
 }
 
 // Watch returns a watch.Interface that watches the requested lbOutboundRules.
-func (c *FakeLbOutboundRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLbOutboundRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(lboutboundrulesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a lbOutboundRule and creates it.  Returns the server's representation of the lbOutboundRule, and an error, if there is any.
-func (c *FakeLbOutboundRules) Create(lbOutboundRule *v1alpha1.LbOutboundRule) (result *v1alpha1.LbOutboundRule, err error) {
+func (c *FakeLbOutboundRules) Create(ctx context.Context, lbOutboundRule *v1alpha1.LbOutboundRule, opts v1.CreateOptions) (result *v1alpha1.LbOutboundRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(lboutboundrulesResource, c.ns, lbOutboundRule), &v1alpha1.LbOutboundRule{})
 
@@ -91,7 +93,7 @@ func (c *FakeLbOutboundRules) Create(lbOutboundRule *v1alpha1.LbOutboundRule) (r
 }
 
 // Update takes the representation of a lbOutboundRule and updates it. Returns the server's representation of the lbOutboundRule, and an error, if there is any.
-func (c *FakeLbOutboundRules) Update(lbOutboundRule *v1alpha1.LbOutboundRule) (result *v1alpha1.LbOutboundRule, err error) {
+func (c *FakeLbOutboundRules) Update(ctx context.Context, lbOutboundRule *v1alpha1.LbOutboundRule, opts v1.UpdateOptions) (result *v1alpha1.LbOutboundRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(lboutboundrulesResource, c.ns, lbOutboundRule), &v1alpha1.LbOutboundRule{})
 
@@ -103,7 +105,7 @@ func (c *FakeLbOutboundRules) Update(lbOutboundRule *v1alpha1.LbOutboundRule) (r
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLbOutboundRules) UpdateStatus(lbOutboundRule *v1alpha1.LbOutboundRule) (*v1alpha1.LbOutboundRule, error) {
+func (c *FakeLbOutboundRules) UpdateStatus(ctx context.Context, lbOutboundRule *v1alpha1.LbOutboundRule, opts v1.UpdateOptions) (*v1alpha1.LbOutboundRule, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(lboutboundrulesResource, "status", c.ns, lbOutboundRule), &v1alpha1.LbOutboundRule{})
 
@@ -114,7 +116,7 @@ func (c *FakeLbOutboundRules) UpdateStatus(lbOutboundRule *v1alpha1.LbOutboundRu
 }
 
 // Delete takes name of the lbOutboundRule and deletes it. Returns an error if one occurs.
-func (c *FakeLbOutboundRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLbOutboundRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(lboutboundrulesResource, c.ns, name), &v1alpha1.LbOutboundRule{})
 
@@ -122,15 +124,15 @@ func (c *FakeLbOutboundRules) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLbOutboundRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(lboutboundrulesResource, c.ns, listOptions)
+func (c *FakeLbOutboundRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(lboutboundrulesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LbOutboundRuleList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched lbOutboundRule.
-func (c *FakeLbOutboundRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LbOutboundRule, err error) {
+func (c *FakeLbOutboundRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LbOutboundRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(lboutboundrulesResource, c.ns, name, pt, data, subresources...), &v1alpha1.LbOutboundRule{})
 

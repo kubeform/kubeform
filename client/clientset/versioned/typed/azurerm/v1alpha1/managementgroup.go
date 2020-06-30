@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type ManagementGroupsGetter interface {
 
 // ManagementGroupInterface has methods to work with ManagementGroup resources.
 type ManagementGroupInterface interface {
-	Create(*v1alpha1.ManagementGroup) (*v1alpha1.ManagementGroup, error)
-	Update(*v1alpha1.ManagementGroup) (*v1alpha1.ManagementGroup, error)
-	UpdateStatus(*v1alpha1.ManagementGroup) (*v1alpha1.ManagementGroup, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ManagementGroup, error)
-	List(opts v1.ListOptions) (*v1alpha1.ManagementGroupList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ManagementGroup, err error)
+	Create(ctx context.Context, managementGroup *v1alpha1.ManagementGroup, opts v1.CreateOptions) (*v1alpha1.ManagementGroup, error)
+	Update(ctx context.Context, managementGroup *v1alpha1.ManagementGroup, opts v1.UpdateOptions) (*v1alpha1.ManagementGroup, error)
+	UpdateStatus(ctx context.Context, managementGroup *v1alpha1.ManagementGroup, opts v1.UpdateOptions) (*v1alpha1.ManagementGroup, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ManagementGroup, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ManagementGroupList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ManagementGroup, err error)
 	ManagementGroupExpansion
 }
 
@@ -65,20 +66,20 @@ func newManagementGroups(c *AzurermV1alpha1Client, namespace string) *management
 }
 
 // Get takes name of the managementGroup, and returns the corresponding managementGroup object, and an error if there is any.
-func (c *managementGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.ManagementGroup, err error) {
+func (c *managementGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ManagementGroup, err error) {
 	result = &v1alpha1.ManagementGroup{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("managementgroups").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ManagementGroups that match those selectors.
-func (c *managementGroups) List(opts v1.ListOptions) (result *v1alpha1.ManagementGroupList, err error) {
+func (c *managementGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ManagementGroupList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *managementGroups) List(opts v1.ListOptions) (result *v1alpha1.Managemen
 		Resource("managementgroups").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested managementGroups.
-func (c *managementGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *managementGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *managementGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("managementgroups").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a managementGroup and creates it.  Returns the server's representation of the managementGroup, and an error, if there is any.
-func (c *managementGroups) Create(managementGroup *v1alpha1.ManagementGroup) (result *v1alpha1.ManagementGroup, err error) {
+func (c *managementGroups) Create(ctx context.Context, managementGroup *v1alpha1.ManagementGroup, opts v1.CreateOptions) (result *v1alpha1.ManagementGroup, err error) {
 	result = &v1alpha1.ManagementGroup{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("managementgroups").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(managementGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a managementGroup and updates it. Returns the server's representation of the managementGroup, and an error, if there is any.
-func (c *managementGroups) Update(managementGroup *v1alpha1.ManagementGroup) (result *v1alpha1.ManagementGroup, err error) {
+func (c *managementGroups) Update(ctx context.Context, managementGroup *v1alpha1.ManagementGroup, opts v1.UpdateOptions) (result *v1alpha1.ManagementGroup, err error) {
 	result = &v1alpha1.ManagementGroup{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("managementgroups").
 		Name(managementGroup.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(managementGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *managementGroups) UpdateStatus(managementGroup *v1alpha1.ManagementGroup) (result *v1alpha1.ManagementGroup, err error) {
+func (c *managementGroups) UpdateStatus(ctx context.Context, managementGroup *v1alpha1.ManagementGroup, opts v1.UpdateOptions) (result *v1alpha1.ManagementGroup, err error) {
 	result = &v1alpha1.ManagementGroup{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("managementgroups").
 		Name(managementGroup.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(managementGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the managementGroup and deletes it. Returns an error if one occurs.
-func (c *managementGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *managementGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("managementgroups").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *managementGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *managementGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("managementgroups").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched managementGroup.
-func (c *managementGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ManagementGroup, err error) {
+func (c *managementGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ManagementGroup, err error) {
 	result = &v1alpha1.ManagementGroup{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("managementgroups").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

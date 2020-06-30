@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var datasyncagentsResource = schema.GroupVersionResource{Group: "aws.kubeform.co
 var datasyncagentsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DatasyncAgent"}
 
 // Get takes name of the datasyncAgent, and returns the corresponding datasyncAgent object, and an error if there is any.
-func (c *FakeDatasyncAgents) Get(name string, options v1.GetOptions) (result *v1alpha1.DatasyncAgent, err error) {
+func (c *FakeDatasyncAgents) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DatasyncAgent, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(datasyncagentsResource, c.ns, name), &v1alpha1.DatasyncAgent{})
 
@@ -51,7 +53,7 @@ func (c *FakeDatasyncAgents) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of DatasyncAgents that match those selectors.
-func (c *FakeDatasyncAgents) List(opts v1.ListOptions) (result *v1alpha1.DatasyncAgentList, err error) {
+func (c *FakeDatasyncAgents) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DatasyncAgentList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(datasyncagentsResource, datasyncagentsKind, c.ns, opts), &v1alpha1.DatasyncAgentList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDatasyncAgents) List(opts v1.ListOptions) (result *v1alpha1.Datasyn
 }
 
 // Watch returns a watch.Interface that watches the requested datasyncAgents.
-func (c *FakeDatasyncAgents) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDatasyncAgents) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(datasyncagentsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a datasyncAgent and creates it.  Returns the server's representation of the datasyncAgent, and an error, if there is any.
-func (c *FakeDatasyncAgents) Create(datasyncAgent *v1alpha1.DatasyncAgent) (result *v1alpha1.DatasyncAgent, err error) {
+func (c *FakeDatasyncAgents) Create(ctx context.Context, datasyncAgent *v1alpha1.DatasyncAgent, opts v1.CreateOptions) (result *v1alpha1.DatasyncAgent, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(datasyncagentsResource, c.ns, datasyncAgent), &v1alpha1.DatasyncAgent{})
 
@@ -91,7 +93,7 @@ func (c *FakeDatasyncAgents) Create(datasyncAgent *v1alpha1.DatasyncAgent) (resu
 }
 
 // Update takes the representation of a datasyncAgent and updates it. Returns the server's representation of the datasyncAgent, and an error, if there is any.
-func (c *FakeDatasyncAgents) Update(datasyncAgent *v1alpha1.DatasyncAgent) (result *v1alpha1.DatasyncAgent, err error) {
+func (c *FakeDatasyncAgents) Update(ctx context.Context, datasyncAgent *v1alpha1.DatasyncAgent, opts v1.UpdateOptions) (result *v1alpha1.DatasyncAgent, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(datasyncagentsResource, c.ns, datasyncAgent), &v1alpha1.DatasyncAgent{})
 
@@ -103,7 +105,7 @@ func (c *FakeDatasyncAgents) Update(datasyncAgent *v1alpha1.DatasyncAgent) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDatasyncAgents) UpdateStatus(datasyncAgent *v1alpha1.DatasyncAgent) (*v1alpha1.DatasyncAgent, error) {
+func (c *FakeDatasyncAgents) UpdateStatus(ctx context.Context, datasyncAgent *v1alpha1.DatasyncAgent, opts v1.UpdateOptions) (*v1alpha1.DatasyncAgent, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(datasyncagentsResource, "status", c.ns, datasyncAgent), &v1alpha1.DatasyncAgent{})
 
@@ -114,7 +116,7 @@ func (c *FakeDatasyncAgents) UpdateStatus(datasyncAgent *v1alpha1.DatasyncAgent)
 }
 
 // Delete takes name of the datasyncAgent and deletes it. Returns an error if one occurs.
-func (c *FakeDatasyncAgents) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDatasyncAgents) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(datasyncagentsResource, c.ns, name), &v1alpha1.DatasyncAgent{})
 
@@ -122,15 +124,15 @@ func (c *FakeDatasyncAgents) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDatasyncAgents) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(datasyncagentsResource, c.ns, listOptions)
+func (c *FakeDatasyncAgents) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(datasyncagentsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DatasyncAgentList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched datasyncAgent.
-func (c *FakeDatasyncAgents) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DatasyncAgent, err error) {
+func (c *FakeDatasyncAgents) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DatasyncAgent, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(datasyncagentsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DatasyncAgent{})
 

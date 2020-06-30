@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type LbCookieStickinessPoliciesGetter interface {
 
 // LbCookieStickinessPolicyInterface has methods to work with LbCookieStickinessPolicy resources.
 type LbCookieStickinessPolicyInterface interface {
-	Create(*v1alpha1.LbCookieStickinessPolicy) (*v1alpha1.LbCookieStickinessPolicy, error)
-	Update(*v1alpha1.LbCookieStickinessPolicy) (*v1alpha1.LbCookieStickinessPolicy, error)
-	UpdateStatus(*v1alpha1.LbCookieStickinessPolicy) (*v1alpha1.LbCookieStickinessPolicy, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.LbCookieStickinessPolicy, error)
-	List(opts v1.ListOptions) (*v1alpha1.LbCookieStickinessPolicyList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LbCookieStickinessPolicy, err error)
+	Create(ctx context.Context, lbCookieStickinessPolicy *v1alpha1.LbCookieStickinessPolicy, opts v1.CreateOptions) (*v1alpha1.LbCookieStickinessPolicy, error)
+	Update(ctx context.Context, lbCookieStickinessPolicy *v1alpha1.LbCookieStickinessPolicy, opts v1.UpdateOptions) (*v1alpha1.LbCookieStickinessPolicy, error)
+	UpdateStatus(ctx context.Context, lbCookieStickinessPolicy *v1alpha1.LbCookieStickinessPolicy, opts v1.UpdateOptions) (*v1alpha1.LbCookieStickinessPolicy, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.LbCookieStickinessPolicy, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.LbCookieStickinessPolicyList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LbCookieStickinessPolicy, err error)
 	LbCookieStickinessPolicyExpansion
 }
 
@@ -65,20 +66,20 @@ func newLbCookieStickinessPolicies(c *AwsV1alpha1Client, namespace string) *lbCo
 }
 
 // Get takes name of the lbCookieStickinessPolicy, and returns the corresponding lbCookieStickinessPolicy object, and an error if there is any.
-func (c *lbCookieStickinessPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.LbCookieStickinessPolicy, err error) {
+func (c *lbCookieStickinessPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LbCookieStickinessPolicy, err error) {
 	result = &v1alpha1.LbCookieStickinessPolicy{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("lbcookiestickinesspolicies").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of LbCookieStickinessPolicies that match those selectors.
-func (c *lbCookieStickinessPolicies) List(opts v1.ListOptions) (result *v1alpha1.LbCookieStickinessPolicyList, err error) {
+func (c *lbCookieStickinessPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LbCookieStickinessPolicyList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *lbCookieStickinessPolicies) List(opts v1.ListOptions) (result *v1alpha1
 		Resource("lbcookiestickinesspolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested lbCookieStickinessPolicies.
-func (c *lbCookieStickinessPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *lbCookieStickinessPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *lbCookieStickinessPolicies) Watch(opts v1.ListOptions) (watch.Interface
 		Resource("lbcookiestickinesspolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a lbCookieStickinessPolicy and creates it.  Returns the server's representation of the lbCookieStickinessPolicy, and an error, if there is any.
-func (c *lbCookieStickinessPolicies) Create(lbCookieStickinessPolicy *v1alpha1.LbCookieStickinessPolicy) (result *v1alpha1.LbCookieStickinessPolicy, err error) {
+func (c *lbCookieStickinessPolicies) Create(ctx context.Context, lbCookieStickinessPolicy *v1alpha1.LbCookieStickinessPolicy, opts v1.CreateOptions) (result *v1alpha1.LbCookieStickinessPolicy, err error) {
 	result = &v1alpha1.LbCookieStickinessPolicy{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("lbcookiestickinesspolicies").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lbCookieStickinessPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a lbCookieStickinessPolicy and updates it. Returns the server's representation of the lbCookieStickinessPolicy, and an error, if there is any.
-func (c *lbCookieStickinessPolicies) Update(lbCookieStickinessPolicy *v1alpha1.LbCookieStickinessPolicy) (result *v1alpha1.LbCookieStickinessPolicy, err error) {
+func (c *lbCookieStickinessPolicies) Update(ctx context.Context, lbCookieStickinessPolicy *v1alpha1.LbCookieStickinessPolicy, opts v1.UpdateOptions) (result *v1alpha1.LbCookieStickinessPolicy, err error) {
 	result = &v1alpha1.LbCookieStickinessPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("lbcookiestickinesspolicies").
 		Name(lbCookieStickinessPolicy.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lbCookieStickinessPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *lbCookieStickinessPolicies) UpdateStatus(lbCookieStickinessPolicy *v1alpha1.LbCookieStickinessPolicy) (result *v1alpha1.LbCookieStickinessPolicy, err error) {
+func (c *lbCookieStickinessPolicies) UpdateStatus(ctx context.Context, lbCookieStickinessPolicy *v1alpha1.LbCookieStickinessPolicy, opts v1.UpdateOptions) (result *v1alpha1.LbCookieStickinessPolicy, err error) {
 	result = &v1alpha1.LbCookieStickinessPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("lbcookiestickinesspolicies").
 		Name(lbCookieStickinessPolicy.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lbCookieStickinessPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the lbCookieStickinessPolicy and deletes it. Returns an error if one occurs.
-func (c *lbCookieStickinessPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *lbCookieStickinessPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("lbcookiestickinesspolicies").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *lbCookieStickinessPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *lbCookieStickinessPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("lbcookiestickinesspolicies").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched lbCookieStickinessPolicy.
-func (c *lbCookieStickinessPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LbCookieStickinessPolicy, err error) {
+func (c *lbCookieStickinessPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LbCookieStickinessPolicy, err error) {
 	result = &v1alpha1.LbCookieStickinessPolicy{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("lbcookiestickinesspolicies").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

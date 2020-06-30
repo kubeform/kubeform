@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computetargetpoolsResource = schema.GroupVersionResource{Group: "google.kube
 var computetargetpoolsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeTargetPool"}
 
 // Get takes name of the computeTargetPool, and returns the corresponding computeTargetPool object, and an error if there is any.
-func (c *FakeComputeTargetPools) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeTargetPool, err error) {
+func (c *FakeComputeTargetPools) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeTargetPool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computetargetpoolsResource, c.ns, name), &v1alpha1.ComputeTargetPool{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeTargetPools) Get(name string, options v1.GetOptions) (result
 }
 
 // List takes label and field selectors, and returns the list of ComputeTargetPools that match those selectors.
-func (c *FakeComputeTargetPools) List(opts v1.ListOptions) (result *v1alpha1.ComputeTargetPoolList, err error) {
+func (c *FakeComputeTargetPools) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeTargetPoolList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computetargetpoolsResource, computetargetpoolsKind, c.ns, opts), &v1alpha1.ComputeTargetPoolList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeTargetPools) List(opts v1.ListOptions) (result *v1alpha1.Com
 }
 
 // Watch returns a watch.Interface that watches the requested computeTargetPools.
-func (c *FakeComputeTargetPools) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeTargetPools) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computetargetpoolsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeTargetPool and creates it.  Returns the server's representation of the computeTargetPool, and an error, if there is any.
-func (c *FakeComputeTargetPools) Create(computeTargetPool *v1alpha1.ComputeTargetPool) (result *v1alpha1.ComputeTargetPool, err error) {
+func (c *FakeComputeTargetPools) Create(ctx context.Context, computeTargetPool *v1alpha1.ComputeTargetPool, opts v1.CreateOptions) (result *v1alpha1.ComputeTargetPool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computetargetpoolsResource, c.ns, computeTargetPool), &v1alpha1.ComputeTargetPool{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeTargetPools) Create(computeTargetPool *v1alpha1.ComputeTarge
 }
 
 // Update takes the representation of a computeTargetPool and updates it. Returns the server's representation of the computeTargetPool, and an error, if there is any.
-func (c *FakeComputeTargetPools) Update(computeTargetPool *v1alpha1.ComputeTargetPool) (result *v1alpha1.ComputeTargetPool, err error) {
+func (c *FakeComputeTargetPools) Update(ctx context.Context, computeTargetPool *v1alpha1.ComputeTargetPool, opts v1.UpdateOptions) (result *v1alpha1.ComputeTargetPool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computetargetpoolsResource, c.ns, computeTargetPool), &v1alpha1.ComputeTargetPool{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeTargetPools) Update(computeTargetPool *v1alpha1.ComputeTarge
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeTargetPools) UpdateStatus(computeTargetPool *v1alpha1.ComputeTargetPool) (*v1alpha1.ComputeTargetPool, error) {
+func (c *FakeComputeTargetPools) UpdateStatus(ctx context.Context, computeTargetPool *v1alpha1.ComputeTargetPool, opts v1.UpdateOptions) (*v1alpha1.ComputeTargetPool, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computetargetpoolsResource, "status", c.ns, computeTargetPool), &v1alpha1.ComputeTargetPool{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeTargetPools) UpdateStatus(computeTargetPool *v1alpha1.Comput
 }
 
 // Delete takes name of the computeTargetPool and deletes it. Returns an error if one occurs.
-func (c *FakeComputeTargetPools) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeTargetPools) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computetargetpoolsResource, c.ns, name), &v1alpha1.ComputeTargetPool{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeTargetPools) Delete(name string, options *v1.DeleteOptions) 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeTargetPools) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computetargetpoolsResource, c.ns, listOptions)
+func (c *FakeComputeTargetPools) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computetargetpoolsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeTargetPoolList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeTargetPool.
-func (c *FakeComputeTargetPools) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeTargetPool, err error) {
+func (c *FakeComputeTargetPools) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeTargetPool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computetargetpoolsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeTargetPool{})
 

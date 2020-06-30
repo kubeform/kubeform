@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var mqconfigurationsResource = schema.GroupVersionResource{Group: "aws.kubeform.
 var mqconfigurationsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "MqConfiguration"}
 
 // Get takes name of the mqConfiguration, and returns the corresponding mqConfiguration object, and an error if there is any.
-func (c *FakeMqConfigurations) Get(name string, options v1.GetOptions) (result *v1alpha1.MqConfiguration, err error) {
+func (c *FakeMqConfigurations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.MqConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(mqconfigurationsResource, c.ns, name), &v1alpha1.MqConfiguration{})
 
@@ -51,7 +53,7 @@ func (c *FakeMqConfigurations) Get(name string, options v1.GetOptions) (result *
 }
 
 // List takes label and field selectors, and returns the list of MqConfigurations that match those selectors.
-func (c *FakeMqConfigurations) List(opts v1.ListOptions) (result *v1alpha1.MqConfigurationList, err error) {
+func (c *FakeMqConfigurations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.MqConfigurationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(mqconfigurationsResource, mqconfigurationsKind, c.ns, opts), &v1alpha1.MqConfigurationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeMqConfigurations) List(opts v1.ListOptions) (result *v1alpha1.MqCon
 }
 
 // Watch returns a watch.Interface that watches the requested mqConfigurations.
-func (c *FakeMqConfigurations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeMqConfigurations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(mqconfigurationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a mqConfiguration and creates it.  Returns the server's representation of the mqConfiguration, and an error, if there is any.
-func (c *FakeMqConfigurations) Create(mqConfiguration *v1alpha1.MqConfiguration) (result *v1alpha1.MqConfiguration, err error) {
+func (c *FakeMqConfigurations) Create(ctx context.Context, mqConfiguration *v1alpha1.MqConfiguration, opts v1.CreateOptions) (result *v1alpha1.MqConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(mqconfigurationsResource, c.ns, mqConfiguration), &v1alpha1.MqConfiguration{})
 
@@ -91,7 +93,7 @@ func (c *FakeMqConfigurations) Create(mqConfiguration *v1alpha1.MqConfiguration)
 }
 
 // Update takes the representation of a mqConfiguration and updates it. Returns the server's representation of the mqConfiguration, and an error, if there is any.
-func (c *FakeMqConfigurations) Update(mqConfiguration *v1alpha1.MqConfiguration) (result *v1alpha1.MqConfiguration, err error) {
+func (c *FakeMqConfigurations) Update(ctx context.Context, mqConfiguration *v1alpha1.MqConfiguration, opts v1.UpdateOptions) (result *v1alpha1.MqConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(mqconfigurationsResource, c.ns, mqConfiguration), &v1alpha1.MqConfiguration{})
 
@@ -103,7 +105,7 @@ func (c *FakeMqConfigurations) Update(mqConfiguration *v1alpha1.MqConfiguration)
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeMqConfigurations) UpdateStatus(mqConfiguration *v1alpha1.MqConfiguration) (*v1alpha1.MqConfiguration, error) {
+func (c *FakeMqConfigurations) UpdateStatus(ctx context.Context, mqConfiguration *v1alpha1.MqConfiguration, opts v1.UpdateOptions) (*v1alpha1.MqConfiguration, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(mqconfigurationsResource, "status", c.ns, mqConfiguration), &v1alpha1.MqConfiguration{})
 
@@ -114,7 +116,7 @@ func (c *FakeMqConfigurations) UpdateStatus(mqConfiguration *v1alpha1.MqConfigur
 }
 
 // Delete takes name of the mqConfiguration and deletes it. Returns an error if one occurs.
-func (c *FakeMqConfigurations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeMqConfigurations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(mqconfigurationsResource, c.ns, name), &v1alpha1.MqConfiguration{})
 
@@ -122,15 +124,15 @@ func (c *FakeMqConfigurations) Delete(name string, options *v1.DeleteOptions) er
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeMqConfigurations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(mqconfigurationsResource, c.ns, listOptions)
+func (c *FakeMqConfigurations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(mqconfigurationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.MqConfigurationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched mqConfiguration.
-func (c *FakeMqConfigurations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MqConfiguration, err error) {
+func (c *FakeMqConfigurations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MqConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(mqconfigurationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.MqConfiguration{})
 

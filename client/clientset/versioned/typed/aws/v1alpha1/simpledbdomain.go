@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type SimpledbDomainsGetter interface {
 
 // SimpledbDomainInterface has methods to work with SimpledbDomain resources.
 type SimpledbDomainInterface interface {
-	Create(*v1alpha1.SimpledbDomain) (*v1alpha1.SimpledbDomain, error)
-	Update(*v1alpha1.SimpledbDomain) (*v1alpha1.SimpledbDomain, error)
-	UpdateStatus(*v1alpha1.SimpledbDomain) (*v1alpha1.SimpledbDomain, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SimpledbDomain, error)
-	List(opts v1.ListOptions) (*v1alpha1.SimpledbDomainList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SimpledbDomain, err error)
+	Create(ctx context.Context, simpledbDomain *v1alpha1.SimpledbDomain, opts v1.CreateOptions) (*v1alpha1.SimpledbDomain, error)
+	Update(ctx context.Context, simpledbDomain *v1alpha1.SimpledbDomain, opts v1.UpdateOptions) (*v1alpha1.SimpledbDomain, error)
+	UpdateStatus(ctx context.Context, simpledbDomain *v1alpha1.SimpledbDomain, opts v1.UpdateOptions) (*v1alpha1.SimpledbDomain, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SimpledbDomain, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SimpledbDomainList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SimpledbDomain, err error)
 	SimpledbDomainExpansion
 }
 
@@ -65,20 +66,20 @@ func newSimpledbDomains(c *AwsV1alpha1Client, namespace string) *simpledbDomains
 }
 
 // Get takes name of the simpledbDomain, and returns the corresponding simpledbDomain object, and an error if there is any.
-func (c *simpledbDomains) Get(name string, options v1.GetOptions) (result *v1alpha1.SimpledbDomain, err error) {
+func (c *simpledbDomains) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SimpledbDomain, err error) {
 	result = &v1alpha1.SimpledbDomain{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("simpledbdomains").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SimpledbDomains that match those selectors.
-func (c *simpledbDomains) List(opts v1.ListOptions) (result *v1alpha1.SimpledbDomainList, err error) {
+func (c *simpledbDomains) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SimpledbDomainList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *simpledbDomains) List(opts v1.ListOptions) (result *v1alpha1.SimpledbDo
 		Resource("simpledbdomains").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested simpledbDomains.
-func (c *simpledbDomains) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *simpledbDomains) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *simpledbDomains) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("simpledbdomains").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a simpledbDomain and creates it.  Returns the server's representation of the simpledbDomain, and an error, if there is any.
-func (c *simpledbDomains) Create(simpledbDomain *v1alpha1.SimpledbDomain) (result *v1alpha1.SimpledbDomain, err error) {
+func (c *simpledbDomains) Create(ctx context.Context, simpledbDomain *v1alpha1.SimpledbDomain, opts v1.CreateOptions) (result *v1alpha1.SimpledbDomain, err error) {
 	result = &v1alpha1.SimpledbDomain{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("simpledbdomains").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(simpledbDomain).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a simpledbDomain and updates it. Returns the server's representation of the simpledbDomain, and an error, if there is any.
-func (c *simpledbDomains) Update(simpledbDomain *v1alpha1.SimpledbDomain) (result *v1alpha1.SimpledbDomain, err error) {
+func (c *simpledbDomains) Update(ctx context.Context, simpledbDomain *v1alpha1.SimpledbDomain, opts v1.UpdateOptions) (result *v1alpha1.SimpledbDomain, err error) {
 	result = &v1alpha1.SimpledbDomain{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("simpledbdomains").
 		Name(simpledbDomain.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(simpledbDomain).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *simpledbDomains) UpdateStatus(simpledbDomain *v1alpha1.SimpledbDomain) (result *v1alpha1.SimpledbDomain, err error) {
+func (c *simpledbDomains) UpdateStatus(ctx context.Context, simpledbDomain *v1alpha1.SimpledbDomain, opts v1.UpdateOptions) (result *v1alpha1.SimpledbDomain, err error) {
 	result = &v1alpha1.SimpledbDomain{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("simpledbdomains").
 		Name(simpledbDomain.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(simpledbDomain).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the simpledbDomain and deletes it. Returns an error if one occurs.
-func (c *simpledbDomains) Delete(name string, options *v1.DeleteOptions) error {
+func (c *simpledbDomains) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("simpledbdomains").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *simpledbDomains) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *simpledbDomains) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("simpledbdomains").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched simpledbDomain.
-func (c *simpledbDomains) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SimpledbDomain, err error) {
+func (c *simpledbDomains) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SimpledbDomain, err error) {
 	result = &v1alpha1.SimpledbDomain{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("simpledbdomains").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

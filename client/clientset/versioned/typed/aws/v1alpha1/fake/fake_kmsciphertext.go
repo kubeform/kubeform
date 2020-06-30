@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var kmsciphertextsResource = schema.GroupVersionResource{Group: "aws.kubeform.co
 var kmsciphertextsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "KmsCiphertext"}
 
 // Get takes name of the kmsCiphertext, and returns the corresponding kmsCiphertext object, and an error if there is any.
-func (c *FakeKmsCiphertexts) Get(name string, options v1.GetOptions) (result *v1alpha1.KmsCiphertext, err error) {
+func (c *FakeKmsCiphertexts) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KmsCiphertext, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(kmsciphertextsResource, c.ns, name), &v1alpha1.KmsCiphertext{})
 
@@ -51,7 +53,7 @@ func (c *FakeKmsCiphertexts) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of KmsCiphertexts that match those selectors.
-func (c *FakeKmsCiphertexts) List(opts v1.ListOptions) (result *v1alpha1.KmsCiphertextList, err error) {
+func (c *FakeKmsCiphertexts) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KmsCiphertextList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(kmsciphertextsResource, kmsciphertextsKind, c.ns, opts), &v1alpha1.KmsCiphertextList{})
 
@@ -73,14 +75,14 @@ func (c *FakeKmsCiphertexts) List(opts v1.ListOptions) (result *v1alpha1.KmsCiph
 }
 
 // Watch returns a watch.Interface that watches the requested kmsCiphertexts.
-func (c *FakeKmsCiphertexts) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeKmsCiphertexts) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(kmsciphertextsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a kmsCiphertext and creates it.  Returns the server's representation of the kmsCiphertext, and an error, if there is any.
-func (c *FakeKmsCiphertexts) Create(kmsCiphertext *v1alpha1.KmsCiphertext) (result *v1alpha1.KmsCiphertext, err error) {
+func (c *FakeKmsCiphertexts) Create(ctx context.Context, kmsCiphertext *v1alpha1.KmsCiphertext, opts v1.CreateOptions) (result *v1alpha1.KmsCiphertext, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(kmsciphertextsResource, c.ns, kmsCiphertext), &v1alpha1.KmsCiphertext{})
 
@@ -91,7 +93,7 @@ func (c *FakeKmsCiphertexts) Create(kmsCiphertext *v1alpha1.KmsCiphertext) (resu
 }
 
 // Update takes the representation of a kmsCiphertext and updates it. Returns the server's representation of the kmsCiphertext, and an error, if there is any.
-func (c *FakeKmsCiphertexts) Update(kmsCiphertext *v1alpha1.KmsCiphertext) (result *v1alpha1.KmsCiphertext, err error) {
+func (c *FakeKmsCiphertexts) Update(ctx context.Context, kmsCiphertext *v1alpha1.KmsCiphertext, opts v1.UpdateOptions) (result *v1alpha1.KmsCiphertext, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(kmsciphertextsResource, c.ns, kmsCiphertext), &v1alpha1.KmsCiphertext{})
 
@@ -103,7 +105,7 @@ func (c *FakeKmsCiphertexts) Update(kmsCiphertext *v1alpha1.KmsCiphertext) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeKmsCiphertexts) UpdateStatus(kmsCiphertext *v1alpha1.KmsCiphertext) (*v1alpha1.KmsCiphertext, error) {
+func (c *FakeKmsCiphertexts) UpdateStatus(ctx context.Context, kmsCiphertext *v1alpha1.KmsCiphertext, opts v1.UpdateOptions) (*v1alpha1.KmsCiphertext, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(kmsciphertextsResource, "status", c.ns, kmsCiphertext), &v1alpha1.KmsCiphertext{})
 
@@ -114,7 +116,7 @@ func (c *FakeKmsCiphertexts) UpdateStatus(kmsCiphertext *v1alpha1.KmsCiphertext)
 }
 
 // Delete takes name of the kmsCiphertext and deletes it. Returns an error if one occurs.
-func (c *FakeKmsCiphertexts) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeKmsCiphertexts) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(kmsciphertextsResource, c.ns, name), &v1alpha1.KmsCiphertext{})
 
@@ -122,15 +124,15 @@ func (c *FakeKmsCiphertexts) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeKmsCiphertexts) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(kmsciphertextsResource, c.ns, listOptions)
+func (c *FakeKmsCiphertexts) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(kmsciphertextsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.KmsCiphertextList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched kmsCiphertext.
-func (c *FakeKmsCiphertexts) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KmsCiphertext, err error) {
+func (c *FakeKmsCiphertexts) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KmsCiphertext, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(kmsciphertextsResource, c.ns, name, pt, data, subresources...), &v1alpha1.KmsCiphertext{})
 

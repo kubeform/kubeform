@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/linode/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var domainrecordsResource = schema.GroupVersionResource{Group: "linode.kubeform.
 var domainrecordsKind = schema.GroupVersionKind{Group: "linode.kubeform.com", Version: "v1alpha1", Kind: "DomainRecord"}
 
 // Get takes name of the domainRecord, and returns the corresponding domainRecord object, and an error if there is any.
-func (c *FakeDomainRecords) Get(name string, options v1.GetOptions) (result *v1alpha1.DomainRecord, err error) {
+func (c *FakeDomainRecords) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DomainRecord, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(domainrecordsResource, c.ns, name), &v1alpha1.DomainRecord{})
 
@@ -51,7 +53,7 @@ func (c *FakeDomainRecords) Get(name string, options v1.GetOptions) (result *v1a
 }
 
 // List takes label and field selectors, and returns the list of DomainRecords that match those selectors.
-func (c *FakeDomainRecords) List(opts v1.ListOptions) (result *v1alpha1.DomainRecordList, err error) {
+func (c *FakeDomainRecords) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DomainRecordList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(domainrecordsResource, domainrecordsKind, c.ns, opts), &v1alpha1.DomainRecordList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDomainRecords) List(opts v1.ListOptions) (result *v1alpha1.DomainRe
 }
 
 // Watch returns a watch.Interface that watches the requested domainRecords.
-func (c *FakeDomainRecords) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDomainRecords) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(domainrecordsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a domainRecord and creates it.  Returns the server's representation of the domainRecord, and an error, if there is any.
-func (c *FakeDomainRecords) Create(domainRecord *v1alpha1.DomainRecord) (result *v1alpha1.DomainRecord, err error) {
+func (c *FakeDomainRecords) Create(ctx context.Context, domainRecord *v1alpha1.DomainRecord, opts v1.CreateOptions) (result *v1alpha1.DomainRecord, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(domainrecordsResource, c.ns, domainRecord), &v1alpha1.DomainRecord{})
 
@@ -91,7 +93,7 @@ func (c *FakeDomainRecords) Create(domainRecord *v1alpha1.DomainRecord) (result 
 }
 
 // Update takes the representation of a domainRecord and updates it. Returns the server's representation of the domainRecord, and an error, if there is any.
-func (c *FakeDomainRecords) Update(domainRecord *v1alpha1.DomainRecord) (result *v1alpha1.DomainRecord, err error) {
+func (c *FakeDomainRecords) Update(ctx context.Context, domainRecord *v1alpha1.DomainRecord, opts v1.UpdateOptions) (result *v1alpha1.DomainRecord, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(domainrecordsResource, c.ns, domainRecord), &v1alpha1.DomainRecord{})
 
@@ -103,7 +105,7 @@ func (c *FakeDomainRecords) Update(domainRecord *v1alpha1.DomainRecord) (result 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDomainRecords) UpdateStatus(domainRecord *v1alpha1.DomainRecord) (*v1alpha1.DomainRecord, error) {
+func (c *FakeDomainRecords) UpdateStatus(ctx context.Context, domainRecord *v1alpha1.DomainRecord, opts v1.UpdateOptions) (*v1alpha1.DomainRecord, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(domainrecordsResource, "status", c.ns, domainRecord), &v1alpha1.DomainRecord{})
 
@@ -114,7 +116,7 @@ func (c *FakeDomainRecords) UpdateStatus(domainRecord *v1alpha1.DomainRecord) (*
 }
 
 // Delete takes name of the domainRecord and deletes it. Returns an error if one occurs.
-func (c *FakeDomainRecords) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDomainRecords) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(domainrecordsResource, c.ns, name), &v1alpha1.DomainRecord{})
 
@@ -122,15 +124,15 @@ func (c *FakeDomainRecords) Delete(name string, options *v1.DeleteOptions) error
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDomainRecords) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(domainrecordsResource, c.ns, listOptions)
+func (c *FakeDomainRecords) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(domainrecordsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DomainRecordList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched domainRecord.
-func (c *FakeDomainRecords) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DomainRecord, err error) {
+func (c *FakeDomainRecords) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DomainRecord, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(domainrecordsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DomainRecord{})
 

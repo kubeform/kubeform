@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var shieldprotectionsResource = schema.GroupVersionResource{Group: "aws.kubeform
 var shieldprotectionsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ShieldProtection"}
 
 // Get takes name of the shieldProtection, and returns the corresponding shieldProtection object, and an error if there is any.
-func (c *FakeShieldProtections) Get(name string, options v1.GetOptions) (result *v1alpha1.ShieldProtection, err error) {
+func (c *FakeShieldProtections) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ShieldProtection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(shieldprotectionsResource, c.ns, name), &v1alpha1.ShieldProtection{})
 
@@ -51,7 +53,7 @@ func (c *FakeShieldProtections) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of ShieldProtections that match those selectors.
-func (c *FakeShieldProtections) List(opts v1.ListOptions) (result *v1alpha1.ShieldProtectionList, err error) {
+func (c *FakeShieldProtections) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ShieldProtectionList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(shieldprotectionsResource, shieldprotectionsKind, c.ns, opts), &v1alpha1.ShieldProtectionList{})
 
@@ -73,14 +75,14 @@ func (c *FakeShieldProtections) List(opts v1.ListOptions) (result *v1alpha1.Shie
 }
 
 // Watch returns a watch.Interface that watches the requested shieldProtections.
-func (c *FakeShieldProtections) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeShieldProtections) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(shieldprotectionsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a shieldProtection and creates it.  Returns the server's representation of the shieldProtection, and an error, if there is any.
-func (c *FakeShieldProtections) Create(shieldProtection *v1alpha1.ShieldProtection) (result *v1alpha1.ShieldProtection, err error) {
+func (c *FakeShieldProtections) Create(ctx context.Context, shieldProtection *v1alpha1.ShieldProtection, opts v1.CreateOptions) (result *v1alpha1.ShieldProtection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(shieldprotectionsResource, c.ns, shieldProtection), &v1alpha1.ShieldProtection{})
 
@@ -91,7 +93,7 @@ func (c *FakeShieldProtections) Create(shieldProtection *v1alpha1.ShieldProtecti
 }
 
 // Update takes the representation of a shieldProtection and updates it. Returns the server's representation of the shieldProtection, and an error, if there is any.
-func (c *FakeShieldProtections) Update(shieldProtection *v1alpha1.ShieldProtection) (result *v1alpha1.ShieldProtection, err error) {
+func (c *FakeShieldProtections) Update(ctx context.Context, shieldProtection *v1alpha1.ShieldProtection, opts v1.UpdateOptions) (result *v1alpha1.ShieldProtection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(shieldprotectionsResource, c.ns, shieldProtection), &v1alpha1.ShieldProtection{})
 
@@ -103,7 +105,7 @@ func (c *FakeShieldProtections) Update(shieldProtection *v1alpha1.ShieldProtecti
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeShieldProtections) UpdateStatus(shieldProtection *v1alpha1.ShieldProtection) (*v1alpha1.ShieldProtection, error) {
+func (c *FakeShieldProtections) UpdateStatus(ctx context.Context, shieldProtection *v1alpha1.ShieldProtection, opts v1.UpdateOptions) (*v1alpha1.ShieldProtection, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(shieldprotectionsResource, "status", c.ns, shieldProtection), &v1alpha1.ShieldProtection{})
 
@@ -114,7 +116,7 @@ func (c *FakeShieldProtections) UpdateStatus(shieldProtection *v1alpha1.ShieldPr
 }
 
 // Delete takes name of the shieldProtection and deletes it. Returns an error if one occurs.
-func (c *FakeShieldProtections) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeShieldProtections) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(shieldprotectionsResource, c.ns, name), &v1alpha1.ShieldProtection{})
 
@@ -122,15 +124,15 @@ func (c *FakeShieldProtections) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeShieldProtections) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(shieldprotectionsResource, c.ns, listOptions)
+func (c *FakeShieldProtections) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(shieldprotectionsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ShieldProtectionList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched shieldProtection.
-func (c *FakeShieldProtections) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ShieldProtection, err error) {
+func (c *FakeShieldProtections) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ShieldProtection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(shieldprotectionsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ShieldProtection{})
 

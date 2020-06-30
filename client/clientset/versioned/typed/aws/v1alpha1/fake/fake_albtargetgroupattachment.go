@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var albtargetgroupattachmentsResource = schema.GroupVersionResource{Group: "aws.
 var albtargetgroupattachmentsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "AlbTargetGroupAttachment"}
 
 // Get takes name of the albTargetGroupAttachment, and returns the corresponding albTargetGroupAttachment object, and an error if there is any.
-func (c *FakeAlbTargetGroupAttachments) Get(name string, options v1.GetOptions) (result *v1alpha1.AlbTargetGroupAttachment, err error) {
+func (c *FakeAlbTargetGroupAttachments) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AlbTargetGroupAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(albtargetgroupattachmentsResource, c.ns, name), &v1alpha1.AlbTargetGroupAttachment{})
 
@@ -51,7 +53,7 @@ func (c *FakeAlbTargetGroupAttachments) Get(name string, options v1.GetOptions) 
 }
 
 // List takes label and field selectors, and returns the list of AlbTargetGroupAttachments that match those selectors.
-func (c *FakeAlbTargetGroupAttachments) List(opts v1.ListOptions) (result *v1alpha1.AlbTargetGroupAttachmentList, err error) {
+func (c *FakeAlbTargetGroupAttachments) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AlbTargetGroupAttachmentList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(albtargetgroupattachmentsResource, albtargetgroupattachmentsKind, c.ns, opts), &v1alpha1.AlbTargetGroupAttachmentList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAlbTargetGroupAttachments) List(opts v1.ListOptions) (result *v1alp
 }
 
 // Watch returns a watch.Interface that watches the requested albTargetGroupAttachments.
-func (c *FakeAlbTargetGroupAttachments) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAlbTargetGroupAttachments) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(albtargetgroupattachmentsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a albTargetGroupAttachment and creates it.  Returns the server's representation of the albTargetGroupAttachment, and an error, if there is any.
-func (c *FakeAlbTargetGroupAttachments) Create(albTargetGroupAttachment *v1alpha1.AlbTargetGroupAttachment) (result *v1alpha1.AlbTargetGroupAttachment, err error) {
+func (c *FakeAlbTargetGroupAttachments) Create(ctx context.Context, albTargetGroupAttachment *v1alpha1.AlbTargetGroupAttachment, opts v1.CreateOptions) (result *v1alpha1.AlbTargetGroupAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(albtargetgroupattachmentsResource, c.ns, albTargetGroupAttachment), &v1alpha1.AlbTargetGroupAttachment{})
 
@@ -91,7 +93,7 @@ func (c *FakeAlbTargetGroupAttachments) Create(albTargetGroupAttachment *v1alpha
 }
 
 // Update takes the representation of a albTargetGroupAttachment and updates it. Returns the server's representation of the albTargetGroupAttachment, and an error, if there is any.
-func (c *FakeAlbTargetGroupAttachments) Update(albTargetGroupAttachment *v1alpha1.AlbTargetGroupAttachment) (result *v1alpha1.AlbTargetGroupAttachment, err error) {
+func (c *FakeAlbTargetGroupAttachments) Update(ctx context.Context, albTargetGroupAttachment *v1alpha1.AlbTargetGroupAttachment, opts v1.UpdateOptions) (result *v1alpha1.AlbTargetGroupAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(albtargetgroupattachmentsResource, c.ns, albTargetGroupAttachment), &v1alpha1.AlbTargetGroupAttachment{})
 
@@ -103,7 +105,7 @@ func (c *FakeAlbTargetGroupAttachments) Update(albTargetGroupAttachment *v1alpha
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAlbTargetGroupAttachments) UpdateStatus(albTargetGroupAttachment *v1alpha1.AlbTargetGroupAttachment) (*v1alpha1.AlbTargetGroupAttachment, error) {
+func (c *FakeAlbTargetGroupAttachments) UpdateStatus(ctx context.Context, albTargetGroupAttachment *v1alpha1.AlbTargetGroupAttachment, opts v1.UpdateOptions) (*v1alpha1.AlbTargetGroupAttachment, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(albtargetgroupattachmentsResource, "status", c.ns, albTargetGroupAttachment), &v1alpha1.AlbTargetGroupAttachment{})
 
@@ -114,7 +116,7 @@ func (c *FakeAlbTargetGroupAttachments) UpdateStatus(albTargetGroupAttachment *v
 }
 
 // Delete takes name of the albTargetGroupAttachment and deletes it. Returns an error if one occurs.
-func (c *FakeAlbTargetGroupAttachments) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAlbTargetGroupAttachments) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(albtargetgroupattachmentsResource, c.ns, name), &v1alpha1.AlbTargetGroupAttachment{})
 
@@ -122,15 +124,15 @@ func (c *FakeAlbTargetGroupAttachments) Delete(name string, options *v1.DeleteOp
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAlbTargetGroupAttachments) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(albtargetgroupattachmentsResource, c.ns, listOptions)
+func (c *FakeAlbTargetGroupAttachments) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(albtargetgroupattachmentsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AlbTargetGroupAttachmentList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched albTargetGroupAttachment.
-func (c *FakeAlbTargetGroupAttachments) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AlbTargetGroupAttachment, err error) {
+func (c *FakeAlbTargetGroupAttachments) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AlbTargetGroupAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(albtargetgroupattachmentsResource, c.ns, name, pt, data, subresources...), &v1alpha1.AlbTargetGroupAttachment{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var logicapptriggercustomsResource = schema.GroupVersionResource{Group: "azurerm
 var logicapptriggercustomsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "LogicAppTriggerCustom"}
 
 // Get takes name of the logicAppTriggerCustom, and returns the corresponding logicAppTriggerCustom object, and an error if there is any.
-func (c *FakeLogicAppTriggerCustoms) Get(name string, options v1.GetOptions) (result *v1alpha1.LogicAppTriggerCustom, err error) {
+func (c *FakeLogicAppTriggerCustoms) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LogicAppTriggerCustom, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(logicapptriggercustomsResource, c.ns, name), &v1alpha1.LogicAppTriggerCustom{})
 
@@ -51,7 +53,7 @@ func (c *FakeLogicAppTriggerCustoms) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of LogicAppTriggerCustoms that match those selectors.
-func (c *FakeLogicAppTriggerCustoms) List(opts v1.ListOptions) (result *v1alpha1.LogicAppTriggerCustomList, err error) {
+func (c *FakeLogicAppTriggerCustoms) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LogicAppTriggerCustomList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(logicapptriggercustomsResource, logicapptriggercustomsKind, c.ns, opts), &v1alpha1.LogicAppTriggerCustomList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLogicAppTriggerCustoms) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested logicAppTriggerCustoms.
-func (c *FakeLogicAppTriggerCustoms) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLogicAppTriggerCustoms) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(logicapptriggercustomsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a logicAppTriggerCustom and creates it.  Returns the server's representation of the logicAppTriggerCustom, and an error, if there is any.
-func (c *FakeLogicAppTriggerCustoms) Create(logicAppTriggerCustom *v1alpha1.LogicAppTriggerCustom) (result *v1alpha1.LogicAppTriggerCustom, err error) {
+func (c *FakeLogicAppTriggerCustoms) Create(ctx context.Context, logicAppTriggerCustom *v1alpha1.LogicAppTriggerCustom, opts v1.CreateOptions) (result *v1alpha1.LogicAppTriggerCustom, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(logicapptriggercustomsResource, c.ns, logicAppTriggerCustom), &v1alpha1.LogicAppTriggerCustom{})
 
@@ -91,7 +93,7 @@ func (c *FakeLogicAppTriggerCustoms) Create(logicAppTriggerCustom *v1alpha1.Logi
 }
 
 // Update takes the representation of a logicAppTriggerCustom and updates it. Returns the server's representation of the logicAppTriggerCustom, and an error, if there is any.
-func (c *FakeLogicAppTriggerCustoms) Update(logicAppTriggerCustom *v1alpha1.LogicAppTriggerCustom) (result *v1alpha1.LogicAppTriggerCustom, err error) {
+func (c *FakeLogicAppTriggerCustoms) Update(ctx context.Context, logicAppTriggerCustom *v1alpha1.LogicAppTriggerCustom, opts v1.UpdateOptions) (result *v1alpha1.LogicAppTriggerCustom, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(logicapptriggercustomsResource, c.ns, logicAppTriggerCustom), &v1alpha1.LogicAppTriggerCustom{})
 
@@ -103,7 +105,7 @@ func (c *FakeLogicAppTriggerCustoms) Update(logicAppTriggerCustom *v1alpha1.Logi
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLogicAppTriggerCustoms) UpdateStatus(logicAppTriggerCustom *v1alpha1.LogicAppTriggerCustom) (*v1alpha1.LogicAppTriggerCustom, error) {
+func (c *FakeLogicAppTriggerCustoms) UpdateStatus(ctx context.Context, logicAppTriggerCustom *v1alpha1.LogicAppTriggerCustom, opts v1.UpdateOptions) (*v1alpha1.LogicAppTriggerCustom, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(logicapptriggercustomsResource, "status", c.ns, logicAppTriggerCustom), &v1alpha1.LogicAppTriggerCustom{})
 
@@ -114,7 +116,7 @@ func (c *FakeLogicAppTriggerCustoms) UpdateStatus(logicAppTriggerCustom *v1alpha
 }
 
 // Delete takes name of the logicAppTriggerCustom and deletes it. Returns an error if one occurs.
-func (c *FakeLogicAppTriggerCustoms) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLogicAppTriggerCustoms) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(logicapptriggercustomsResource, c.ns, name), &v1alpha1.LogicAppTriggerCustom{})
 
@@ -122,15 +124,15 @@ func (c *FakeLogicAppTriggerCustoms) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLogicAppTriggerCustoms) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(logicapptriggercustomsResource, c.ns, listOptions)
+func (c *FakeLogicAppTriggerCustoms) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(logicapptriggercustomsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LogicAppTriggerCustomList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched logicAppTriggerCustom.
-func (c *FakeLogicAppTriggerCustoms) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LogicAppTriggerCustom, err error) {
+func (c *FakeLogicAppTriggerCustoms) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LogicAppTriggerCustom, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(logicapptriggercustomsResource, c.ns, name, pt, data, subresources...), &v1alpha1.LogicAppTriggerCustom{})
 

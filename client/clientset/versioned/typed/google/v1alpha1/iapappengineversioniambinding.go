@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type IapAppEngineVersionIamBindingsGetter interface {
 
 // IapAppEngineVersionIamBindingInterface has methods to work with IapAppEngineVersionIamBinding resources.
 type IapAppEngineVersionIamBindingInterface interface {
-	Create(*v1alpha1.IapAppEngineVersionIamBinding) (*v1alpha1.IapAppEngineVersionIamBinding, error)
-	Update(*v1alpha1.IapAppEngineVersionIamBinding) (*v1alpha1.IapAppEngineVersionIamBinding, error)
-	UpdateStatus(*v1alpha1.IapAppEngineVersionIamBinding) (*v1alpha1.IapAppEngineVersionIamBinding, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.IapAppEngineVersionIamBinding, error)
-	List(opts v1.ListOptions) (*v1alpha1.IapAppEngineVersionIamBindingList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IapAppEngineVersionIamBinding, err error)
+	Create(ctx context.Context, iapAppEngineVersionIamBinding *v1alpha1.IapAppEngineVersionIamBinding, opts v1.CreateOptions) (*v1alpha1.IapAppEngineVersionIamBinding, error)
+	Update(ctx context.Context, iapAppEngineVersionIamBinding *v1alpha1.IapAppEngineVersionIamBinding, opts v1.UpdateOptions) (*v1alpha1.IapAppEngineVersionIamBinding, error)
+	UpdateStatus(ctx context.Context, iapAppEngineVersionIamBinding *v1alpha1.IapAppEngineVersionIamBinding, opts v1.UpdateOptions) (*v1alpha1.IapAppEngineVersionIamBinding, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.IapAppEngineVersionIamBinding, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.IapAppEngineVersionIamBindingList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IapAppEngineVersionIamBinding, err error)
 	IapAppEngineVersionIamBindingExpansion
 }
 
@@ -65,20 +66,20 @@ func newIapAppEngineVersionIamBindings(c *GoogleV1alpha1Client, namespace string
 }
 
 // Get takes name of the iapAppEngineVersionIamBinding, and returns the corresponding iapAppEngineVersionIamBinding object, and an error if there is any.
-func (c *iapAppEngineVersionIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.IapAppEngineVersionIamBinding, err error) {
+func (c *iapAppEngineVersionIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IapAppEngineVersionIamBinding, err error) {
 	result = &v1alpha1.IapAppEngineVersionIamBinding{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("iapappengineversioniambindings").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of IapAppEngineVersionIamBindings that match those selectors.
-func (c *iapAppEngineVersionIamBindings) List(opts v1.ListOptions) (result *v1alpha1.IapAppEngineVersionIamBindingList, err error) {
+func (c *iapAppEngineVersionIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IapAppEngineVersionIamBindingList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *iapAppEngineVersionIamBindings) List(opts v1.ListOptions) (result *v1al
 		Resource("iapappengineversioniambindings").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested iapAppEngineVersionIamBindings.
-func (c *iapAppEngineVersionIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *iapAppEngineVersionIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *iapAppEngineVersionIamBindings) Watch(opts v1.ListOptions) (watch.Inter
 		Resource("iapappengineversioniambindings").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a iapAppEngineVersionIamBinding and creates it.  Returns the server's representation of the iapAppEngineVersionIamBinding, and an error, if there is any.
-func (c *iapAppEngineVersionIamBindings) Create(iapAppEngineVersionIamBinding *v1alpha1.IapAppEngineVersionIamBinding) (result *v1alpha1.IapAppEngineVersionIamBinding, err error) {
+func (c *iapAppEngineVersionIamBindings) Create(ctx context.Context, iapAppEngineVersionIamBinding *v1alpha1.IapAppEngineVersionIamBinding, opts v1.CreateOptions) (result *v1alpha1.IapAppEngineVersionIamBinding, err error) {
 	result = &v1alpha1.IapAppEngineVersionIamBinding{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("iapappengineversioniambindings").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iapAppEngineVersionIamBinding).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a iapAppEngineVersionIamBinding and updates it. Returns the server's representation of the iapAppEngineVersionIamBinding, and an error, if there is any.
-func (c *iapAppEngineVersionIamBindings) Update(iapAppEngineVersionIamBinding *v1alpha1.IapAppEngineVersionIamBinding) (result *v1alpha1.IapAppEngineVersionIamBinding, err error) {
+func (c *iapAppEngineVersionIamBindings) Update(ctx context.Context, iapAppEngineVersionIamBinding *v1alpha1.IapAppEngineVersionIamBinding, opts v1.UpdateOptions) (result *v1alpha1.IapAppEngineVersionIamBinding, err error) {
 	result = &v1alpha1.IapAppEngineVersionIamBinding{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iapappengineversioniambindings").
 		Name(iapAppEngineVersionIamBinding.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iapAppEngineVersionIamBinding).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *iapAppEngineVersionIamBindings) UpdateStatus(iapAppEngineVersionIamBinding *v1alpha1.IapAppEngineVersionIamBinding) (result *v1alpha1.IapAppEngineVersionIamBinding, err error) {
+func (c *iapAppEngineVersionIamBindings) UpdateStatus(ctx context.Context, iapAppEngineVersionIamBinding *v1alpha1.IapAppEngineVersionIamBinding, opts v1.UpdateOptions) (result *v1alpha1.IapAppEngineVersionIamBinding, err error) {
 	result = &v1alpha1.IapAppEngineVersionIamBinding{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iapappengineversioniambindings").
 		Name(iapAppEngineVersionIamBinding.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iapAppEngineVersionIamBinding).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the iapAppEngineVersionIamBinding and deletes it. Returns an error if one occurs.
-func (c *iapAppEngineVersionIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *iapAppEngineVersionIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iapappengineversioniambindings").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *iapAppEngineVersionIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *iapAppEngineVersionIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iapappengineversioniambindings").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched iapAppEngineVersionIamBinding.
-func (c *iapAppEngineVersionIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IapAppEngineVersionIamBinding, err error) {
+func (c *iapAppEngineVersionIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IapAppEngineVersionIamBinding, err error) {
 	result = &v1alpha1.IapAppEngineVersionIamBinding{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("iapappengineversioniambindings").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

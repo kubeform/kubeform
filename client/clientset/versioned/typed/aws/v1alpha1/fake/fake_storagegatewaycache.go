@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var storagegatewaycachesResource = schema.GroupVersionResource{Group: "aws.kubef
 var storagegatewaycachesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "StoragegatewayCache"}
 
 // Get takes name of the storagegatewayCache, and returns the corresponding storagegatewayCache object, and an error if there is any.
-func (c *FakeStoragegatewayCaches) Get(name string, options v1.GetOptions) (result *v1alpha1.StoragegatewayCache, err error) {
+func (c *FakeStoragegatewayCaches) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.StoragegatewayCache, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(storagegatewaycachesResource, c.ns, name), &v1alpha1.StoragegatewayCache{})
 
@@ -51,7 +53,7 @@ func (c *FakeStoragegatewayCaches) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of StoragegatewayCaches that match those selectors.
-func (c *FakeStoragegatewayCaches) List(opts v1.ListOptions) (result *v1alpha1.StoragegatewayCacheList, err error) {
+func (c *FakeStoragegatewayCaches) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.StoragegatewayCacheList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(storagegatewaycachesResource, storagegatewaycachesKind, c.ns, opts), &v1alpha1.StoragegatewayCacheList{})
 
@@ -73,14 +75,14 @@ func (c *FakeStoragegatewayCaches) List(opts v1.ListOptions) (result *v1alpha1.S
 }
 
 // Watch returns a watch.Interface that watches the requested storagegatewayCaches.
-func (c *FakeStoragegatewayCaches) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeStoragegatewayCaches) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(storagegatewaycachesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a storagegatewayCache and creates it.  Returns the server's representation of the storagegatewayCache, and an error, if there is any.
-func (c *FakeStoragegatewayCaches) Create(storagegatewayCache *v1alpha1.StoragegatewayCache) (result *v1alpha1.StoragegatewayCache, err error) {
+func (c *FakeStoragegatewayCaches) Create(ctx context.Context, storagegatewayCache *v1alpha1.StoragegatewayCache, opts v1.CreateOptions) (result *v1alpha1.StoragegatewayCache, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(storagegatewaycachesResource, c.ns, storagegatewayCache), &v1alpha1.StoragegatewayCache{})
 
@@ -91,7 +93,7 @@ func (c *FakeStoragegatewayCaches) Create(storagegatewayCache *v1alpha1.Storageg
 }
 
 // Update takes the representation of a storagegatewayCache and updates it. Returns the server's representation of the storagegatewayCache, and an error, if there is any.
-func (c *FakeStoragegatewayCaches) Update(storagegatewayCache *v1alpha1.StoragegatewayCache) (result *v1alpha1.StoragegatewayCache, err error) {
+func (c *FakeStoragegatewayCaches) Update(ctx context.Context, storagegatewayCache *v1alpha1.StoragegatewayCache, opts v1.UpdateOptions) (result *v1alpha1.StoragegatewayCache, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(storagegatewaycachesResource, c.ns, storagegatewayCache), &v1alpha1.StoragegatewayCache{})
 
@@ -103,7 +105,7 @@ func (c *FakeStoragegatewayCaches) Update(storagegatewayCache *v1alpha1.Storageg
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeStoragegatewayCaches) UpdateStatus(storagegatewayCache *v1alpha1.StoragegatewayCache) (*v1alpha1.StoragegatewayCache, error) {
+func (c *FakeStoragegatewayCaches) UpdateStatus(ctx context.Context, storagegatewayCache *v1alpha1.StoragegatewayCache, opts v1.UpdateOptions) (*v1alpha1.StoragegatewayCache, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(storagegatewaycachesResource, "status", c.ns, storagegatewayCache), &v1alpha1.StoragegatewayCache{})
 
@@ -114,7 +116,7 @@ func (c *FakeStoragegatewayCaches) UpdateStatus(storagegatewayCache *v1alpha1.St
 }
 
 // Delete takes name of the storagegatewayCache and deletes it. Returns an error if one occurs.
-func (c *FakeStoragegatewayCaches) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeStoragegatewayCaches) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(storagegatewaycachesResource, c.ns, name), &v1alpha1.StoragegatewayCache{})
 
@@ -122,15 +124,15 @@ func (c *FakeStoragegatewayCaches) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeStoragegatewayCaches) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(storagegatewaycachesResource, c.ns, listOptions)
+func (c *FakeStoragegatewayCaches) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(storagegatewaycachesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.StoragegatewayCacheList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched storagegatewayCache.
-func (c *FakeStoragegatewayCaches) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StoragegatewayCache, err error) {
+func (c *FakeStoragegatewayCaches) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StoragegatewayCache, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(storagegatewaycachesResource, c.ns, name, pt, data, subresources...), &v1alpha1.StoragegatewayCache{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var globalacceleratorendpointgroupsResource = schema.GroupVersionResource{Group:
 var globalacceleratorendpointgroupsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "GlobalacceleratorEndpointGroup"}
 
 // Get takes name of the globalacceleratorEndpointGroup, and returns the corresponding globalacceleratorEndpointGroup object, and an error if there is any.
-func (c *FakeGlobalacceleratorEndpointGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.GlobalacceleratorEndpointGroup, err error) {
+func (c *FakeGlobalacceleratorEndpointGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.GlobalacceleratorEndpointGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(globalacceleratorendpointgroupsResource, c.ns, name), &v1alpha1.GlobalacceleratorEndpointGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeGlobalacceleratorEndpointGroups) Get(name string, options v1.GetOpt
 }
 
 // List takes label and field selectors, and returns the list of GlobalacceleratorEndpointGroups that match those selectors.
-func (c *FakeGlobalacceleratorEndpointGroups) List(opts v1.ListOptions) (result *v1alpha1.GlobalacceleratorEndpointGroupList, err error) {
+func (c *FakeGlobalacceleratorEndpointGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.GlobalacceleratorEndpointGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(globalacceleratorendpointgroupsResource, globalacceleratorendpointgroupsKind, c.ns, opts), &v1alpha1.GlobalacceleratorEndpointGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeGlobalacceleratorEndpointGroups) List(opts v1.ListOptions) (result 
 }
 
 // Watch returns a watch.Interface that watches the requested globalacceleratorEndpointGroups.
-func (c *FakeGlobalacceleratorEndpointGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeGlobalacceleratorEndpointGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(globalacceleratorendpointgroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a globalacceleratorEndpointGroup and creates it.  Returns the server's representation of the globalacceleratorEndpointGroup, and an error, if there is any.
-func (c *FakeGlobalacceleratorEndpointGroups) Create(globalacceleratorEndpointGroup *v1alpha1.GlobalacceleratorEndpointGroup) (result *v1alpha1.GlobalacceleratorEndpointGroup, err error) {
+func (c *FakeGlobalacceleratorEndpointGroups) Create(ctx context.Context, globalacceleratorEndpointGroup *v1alpha1.GlobalacceleratorEndpointGroup, opts v1.CreateOptions) (result *v1alpha1.GlobalacceleratorEndpointGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(globalacceleratorendpointgroupsResource, c.ns, globalacceleratorEndpointGroup), &v1alpha1.GlobalacceleratorEndpointGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeGlobalacceleratorEndpointGroups) Create(globalacceleratorEndpointGr
 }
 
 // Update takes the representation of a globalacceleratorEndpointGroup and updates it. Returns the server's representation of the globalacceleratorEndpointGroup, and an error, if there is any.
-func (c *FakeGlobalacceleratorEndpointGroups) Update(globalacceleratorEndpointGroup *v1alpha1.GlobalacceleratorEndpointGroup) (result *v1alpha1.GlobalacceleratorEndpointGroup, err error) {
+func (c *FakeGlobalacceleratorEndpointGroups) Update(ctx context.Context, globalacceleratorEndpointGroup *v1alpha1.GlobalacceleratorEndpointGroup, opts v1.UpdateOptions) (result *v1alpha1.GlobalacceleratorEndpointGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(globalacceleratorendpointgroupsResource, c.ns, globalacceleratorEndpointGroup), &v1alpha1.GlobalacceleratorEndpointGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeGlobalacceleratorEndpointGroups) Update(globalacceleratorEndpointGr
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeGlobalacceleratorEndpointGroups) UpdateStatus(globalacceleratorEndpointGroup *v1alpha1.GlobalacceleratorEndpointGroup) (*v1alpha1.GlobalacceleratorEndpointGroup, error) {
+func (c *FakeGlobalacceleratorEndpointGroups) UpdateStatus(ctx context.Context, globalacceleratorEndpointGroup *v1alpha1.GlobalacceleratorEndpointGroup, opts v1.UpdateOptions) (*v1alpha1.GlobalacceleratorEndpointGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(globalacceleratorendpointgroupsResource, "status", c.ns, globalacceleratorEndpointGroup), &v1alpha1.GlobalacceleratorEndpointGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeGlobalacceleratorEndpointGroups) UpdateStatus(globalacceleratorEndp
 }
 
 // Delete takes name of the globalacceleratorEndpointGroup and deletes it. Returns an error if one occurs.
-func (c *FakeGlobalacceleratorEndpointGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeGlobalacceleratorEndpointGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(globalacceleratorendpointgroupsResource, c.ns, name), &v1alpha1.GlobalacceleratorEndpointGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeGlobalacceleratorEndpointGroups) Delete(name string, options *v1.De
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeGlobalacceleratorEndpointGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(globalacceleratorendpointgroupsResource, c.ns, listOptions)
+func (c *FakeGlobalacceleratorEndpointGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(globalacceleratorendpointgroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.GlobalacceleratorEndpointGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched globalacceleratorEndpointGroup.
-func (c *FakeGlobalacceleratorEndpointGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.GlobalacceleratorEndpointGroup, err error) {
+func (c *FakeGlobalacceleratorEndpointGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.GlobalacceleratorEndpointGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(globalacceleratorendpointgroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.GlobalacceleratorEndpointGroup{})
 

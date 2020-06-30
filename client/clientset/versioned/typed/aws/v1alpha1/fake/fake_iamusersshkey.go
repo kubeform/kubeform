@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iamusersshkeysResource = schema.GroupVersionResource{Group: "aws.kubeform.co
 var iamusersshkeysKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "IamUserSSHKey"}
 
 // Get takes name of the iamUserSSHKey, and returns the corresponding iamUserSSHKey object, and an error if there is any.
-func (c *FakeIamUserSSHKeys) Get(name string, options v1.GetOptions) (result *v1alpha1.IamUserSSHKey, err error) {
+func (c *FakeIamUserSSHKeys) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IamUserSSHKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iamusersshkeysResource, c.ns, name), &v1alpha1.IamUserSSHKey{})
 
@@ -51,7 +53,7 @@ func (c *FakeIamUserSSHKeys) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of IamUserSSHKeys that match those selectors.
-func (c *FakeIamUserSSHKeys) List(opts v1.ListOptions) (result *v1alpha1.IamUserSSHKeyList, err error) {
+func (c *FakeIamUserSSHKeys) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IamUserSSHKeyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iamusersshkeysResource, iamusersshkeysKind, c.ns, opts), &v1alpha1.IamUserSSHKeyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIamUserSSHKeys) List(opts v1.ListOptions) (result *v1alpha1.IamUser
 }
 
 // Watch returns a watch.Interface that watches the requested iamUserSSHKeys.
-func (c *FakeIamUserSSHKeys) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIamUserSSHKeys) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iamusersshkeysResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iamUserSSHKey and creates it.  Returns the server's representation of the iamUserSSHKey, and an error, if there is any.
-func (c *FakeIamUserSSHKeys) Create(iamUserSSHKey *v1alpha1.IamUserSSHKey) (result *v1alpha1.IamUserSSHKey, err error) {
+func (c *FakeIamUserSSHKeys) Create(ctx context.Context, iamUserSSHKey *v1alpha1.IamUserSSHKey, opts v1.CreateOptions) (result *v1alpha1.IamUserSSHKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iamusersshkeysResource, c.ns, iamUserSSHKey), &v1alpha1.IamUserSSHKey{})
 
@@ -91,7 +93,7 @@ func (c *FakeIamUserSSHKeys) Create(iamUserSSHKey *v1alpha1.IamUserSSHKey) (resu
 }
 
 // Update takes the representation of a iamUserSSHKey and updates it. Returns the server's representation of the iamUserSSHKey, and an error, if there is any.
-func (c *FakeIamUserSSHKeys) Update(iamUserSSHKey *v1alpha1.IamUserSSHKey) (result *v1alpha1.IamUserSSHKey, err error) {
+func (c *FakeIamUserSSHKeys) Update(ctx context.Context, iamUserSSHKey *v1alpha1.IamUserSSHKey, opts v1.UpdateOptions) (result *v1alpha1.IamUserSSHKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iamusersshkeysResource, c.ns, iamUserSSHKey), &v1alpha1.IamUserSSHKey{})
 
@@ -103,7 +105,7 @@ func (c *FakeIamUserSSHKeys) Update(iamUserSSHKey *v1alpha1.IamUserSSHKey) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIamUserSSHKeys) UpdateStatus(iamUserSSHKey *v1alpha1.IamUserSSHKey) (*v1alpha1.IamUserSSHKey, error) {
+func (c *FakeIamUserSSHKeys) UpdateStatus(ctx context.Context, iamUserSSHKey *v1alpha1.IamUserSSHKey, opts v1.UpdateOptions) (*v1alpha1.IamUserSSHKey, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iamusersshkeysResource, "status", c.ns, iamUserSSHKey), &v1alpha1.IamUserSSHKey{})
 
@@ -114,7 +116,7 @@ func (c *FakeIamUserSSHKeys) UpdateStatus(iamUserSSHKey *v1alpha1.IamUserSSHKey)
 }
 
 // Delete takes name of the iamUserSSHKey and deletes it. Returns an error if one occurs.
-func (c *FakeIamUserSSHKeys) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIamUserSSHKeys) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iamusersshkeysResource, c.ns, name), &v1alpha1.IamUserSSHKey{})
 
@@ -122,15 +124,15 @@ func (c *FakeIamUserSSHKeys) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIamUserSSHKeys) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iamusersshkeysResource, c.ns, listOptions)
+func (c *FakeIamUserSSHKeys) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iamusersshkeysResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IamUserSSHKeyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iamUserSSHKey.
-func (c *FakeIamUserSSHKeys) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IamUserSSHKey, err error) {
+func (c *FakeIamUserSSHKeys) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IamUserSSHKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iamusersshkeysResource, c.ns, name, pt, data, subresources...), &v1alpha1.IamUserSSHKey{})
 

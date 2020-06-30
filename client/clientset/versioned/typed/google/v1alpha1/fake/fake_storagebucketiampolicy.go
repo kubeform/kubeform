@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var storagebucketiampoliciesResource = schema.GroupVersionResource{Group: "googl
 var storagebucketiampoliciesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "StorageBucketIamPolicy"}
 
 // Get takes name of the storageBucketIamPolicy, and returns the corresponding storageBucketIamPolicy object, and an error if there is any.
-func (c *FakeStorageBucketIamPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.StorageBucketIamPolicy, err error) {
+func (c *FakeStorageBucketIamPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.StorageBucketIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(storagebucketiampoliciesResource, c.ns, name), &v1alpha1.StorageBucketIamPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeStorageBucketIamPolicies) Get(name string, options v1.GetOptions) (
 }
 
 // List takes label and field selectors, and returns the list of StorageBucketIamPolicies that match those selectors.
-func (c *FakeStorageBucketIamPolicies) List(opts v1.ListOptions) (result *v1alpha1.StorageBucketIamPolicyList, err error) {
+func (c *FakeStorageBucketIamPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.StorageBucketIamPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(storagebucketiampoliciesResource, storagebucketiampoliciesKind, c.ns, opts), &v1alpha1.StorageBucketIamPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeStorageBucketIamPolicies) List(opts v1.ListOptions) (result *v1alph
 }
 
 // Watch returns a watch.Interface that watches the requested storageBucketIamPolicies.
-func (c *FakeStorageBucketIamPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeStorageBucketIamPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(storagebucketiampoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a storageBucketIamPolicy and creates it.  Returns the server's representation of the storageBucketIamPolicy, and an error, if there is any.
-func (c *FakeStorageBucketIamPolicies) Create(storageBucketIamPolicy *v1alpha1.StorageBucketIamPolicy) (result *v1alpha1.StorageBucketIamPolicy, err error) {
+func (c *FakeStorageBucketIamPolicies) Create(ctx context.Context, storageBucketIamPolicy *v1alpha1.StorageBucketIamPolicy, opts v1.CreateOptions) (result *v1alpha1.StorageBucketIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(storagebucketiampoliciesResource, c.ns, storageBucketIamPolicy), &v1alpha1.StorageBucketIamPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeStorageBucketIamPolicies) Create(storageBucketIamPolicy *v1alpha1.S
 }
 
 // Update takes the representation of a storageBucketIamPolicy and updates it. Returns the server's representation of the storageBucketIamPolicy, and an error, if there is any.
-func (c *FakeStorageBucketIamPolicies) Update(storageBucketIamPolicy *v1alpha1.StorageBucketIamPolicy) (result *v1alpha1.StorageBucketIamPolicy, err error) {
+func (c *FakeStorageBucketIamPolicies) Update(ctx context.Context, storageBucketIamPolicy *v1alpha1.StorageBucketIamPolicy, opts v1.UpdateOptions) (result *v1alpha1.StorageBucketIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(storagebucketiampoliciesResource, c.ns, storageBucketIamPolicy), &v1alpha1.StorageBucketIamPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeStorageBucketIamPolicies) Update(storageBucketIamPolicy *v1alpha1.S
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeStorageBucketIamPolicies) UpdateStatus(storageBucketIamPolicy *v1alpha1.StorageBucketIamPolicy) (*v1alpha1.StorageBucketIamPolicy, error) {
+func (c *FakeStorageBucketIamPolicies) UpdateStatus(ctx context.Context, storageBucketIamPolicy *v1alpha1.StorageBucketIamPolicy, opts v1.UpdateOptions) (*v1alpha1.StorageBucketIamPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(storagebucketiampoliciesResource, "status", c.ns, storageBucketIamPolicy), &v1alpha1.StorageBucketIamPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeStorageBucketIamPolicies) UpdateStatus(storageBucketIamPolicy *v1al
 }
 
 // Delete takes name of the storageBucketIamPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeStorageBucketIamPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeStorageBucketIamPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(storagebucketiampoliciesResource, c.ns, name), &v1alpha1.StorageBucketIamPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeStorageBucketIamPolicies) Delete(name string, options *v1.DeleteOpt
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeStorageBucketIamPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(storagebucketiampoliciesResource, c.ns, listOptions)
+func (c *FakeStorageBucketIamPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(storagebucketiampoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.StorageBucketIamPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched storageBucketIamPolicy.
-func (c *FakeStorageBucketIamPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StorageBucketIamPolicy, err error) {
+func (c *FakeStorageBucketIamPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StorageBucketIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(storagebucketiampoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.StorageBucketIamPolicy{})
 

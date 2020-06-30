@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var marketplaceagreementsResource = schema.GroupVersionResource{Group: "azurerm.
 var marketplaceagreementsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "MarketplaceAgreement"}
 
 // Get takes name of the marketplaceAgreement, and returns the corresponding marketplaceAgreement object, and an error if there is any.
-func (c *FakeMarketplaceAgreements) Get(name string, options v1.GetOptions) (result *v1alpha1.MarketplaceAgreement, err error) {
+func (c *FakeMarketplaceAgreements) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.MarketplaceAgreement, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(marketplaceagreementsResource, c.ns, name), &v1alpha1.MarketplaceAgreement{})
 
@@ -51,7 +53,7 @@ func (c *FakeMarketplaceAgreements) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of MarketplaceAgreements that match those selectors.
-func (c *FakeMarketplaceAgreements) List(opts v1.ListOptions) (result *v1alpha1.MarketplaceAgreementList, err error) {
+func (c *FakeMarketplaceAgreements) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.MarketplaceAgreementList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(marketplaceagreementsResource, marketplaceagreementsKind, c.ns, opts), &v1alpha1.MarketplaceAgreementList{})
 
@@ -73,14 +75,14 @@ func (c *FakeMarketplaceAgreements) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested marketplaceAgreements.
-func (c *FakeMarketplaceAgreements) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeMarketplaceAgreements) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(marketplaceagreementsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a marketplaceAgreement and creates it.  Returns the server's representation of the marketplaceAgreement, and an error, if there is any.
-func (c *FakeMarketplaceAgreements) Create(marketplaceAgreement *v1alpha1.MarketplaceAgreement) (result *v1alpha1.MarketplaceAgreement, err error) {
+func (c *FakeMarketplaceAgreements) Create(ctx context.Context, marketplaceAgreement *v1alpha1.MarketplaceAgreement, opts v1.CreateOptions) (result *v1alpha1.MarketplaceAgreement, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(marketplaceagreementsResource, c.ns, marketplaceAgreement), &v1alpha1.MarketplaceAgreement{})
 
@@ -91,7 +93,7 @@ func (c *FakeMarketplaceAgreements) Create(marketplaceAgreement *v1alpha1.Market
 }
 
 // Update takes the representation of a marketplaceAgreement and updates it. Returns the server's representation of the marketplaceAgreement, and an error, if there is any.
-func (c *FakeMarketplaceAgreements) Update(marketplaceAgreement *v1alpha1.MarketplaceAgreement) (result *v1alpha1.MarketplaceAgreement, err error) {
+func (c *FakeMarketplaceAgreements) Update(ctx context.Context, marketplaceAgreement *v1alpha1.MarketplaceAgreement, opts v1.UpdateOptions) (result *v1alpha1.MarketplaceAgreement, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(marketplaceagreementsResource, c.ns, marketplaceAgreement), &v1alpha1.MarketplaceAgreement{})
 
@@ -103,7 +105,7 @@ func (c *FakeMarketplaceAgreements) Update(marketplaceAgreement *v1alpha1.Market
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeMarketplaceAgreements) UpdateStatus(marketplaceAgreement *v1alpha1.MarketplaceAgreement) (*v1alpha1.MarketplaceAgreement, error) {
+func (c *FakeMarketplaceAgreements) UpdateStatus(ctx context.Context, marketplaceAgreement *v1alpha1.MarketplaceAgreement, opts v1.UpdateOptions) (*v1alpha1.MarketplaceAgreement, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(marketplaceagreementsResource, "status", c.ns, marketplaceAgreement), &v1alpha1.MarketplaceAgreement{})
 
@@ -114,7 +116,7 @@ func (c *FakeMarketplaceAgreements) UpdateStatus(marketplaceAgreement *v1alpha1.
 }
 
 // Delete takes name of the marketplaceAgreement and deletes it. Returns an error if one occurs.
-func (c *FakeMarketplaceAgreements) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeMarketplaceAgreements) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(marketplaceagreementsResource, c.ns, name), &v1alpha1.MarketplaceAgreement{})
 
@@ -122,15 +124,15 @@ func (c *FakeMarketplaceAgreements) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeMarketplaceAgreements) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(marketplaceagreementsResource, c.ns, listOptions)
+func (c *FakeMarketplaceAgreements) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(marketplaceagreementsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.MarketplaceAgreementList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched marketplaceAgreement.
-func (c *FakeMarketplaceAgreements) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MarketplaceAgreement, err error) {
+func (c *FakeMarketplaceAgreements) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MarketplaceAgreement, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(marketplaceagreementsResource, c.ns, name, pt, data, subresources...), &v1alpha1.MarketplaceAgreement{})
 

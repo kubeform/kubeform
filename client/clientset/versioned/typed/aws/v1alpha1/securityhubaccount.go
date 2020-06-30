@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type SecurityhubAccountsGetter interface {
 
 // SecurityhubAccountInterface has methods to work with SecurityhubAccount resources.
 type SecurityhubAccountInterface interface {
-	Create(*v1alpha1.SecurityhubAccount) (*v1alpha1.SecurityhubAccount, error)
-	Update(*v1alpha1.SecurityhubAccount) (*v1alpha1.SecurityhubAccount, error)
-	UpdateStatus(*v1alpha1.SecurityhubAccount) (*v1alpha1.SecurityhubAccount, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SecurityhubAccount, error)
-	List(opts v1.ListOptions) (*v1alpha1.SecurityhubAccountList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SecurityhubAccount, err error)
+	Create(ctx context.Context, securityhubAccount *v1alpha1.SecurityhubAccount, opts v1.CreateOptions) (*v1alpha1.SecurityhubAccount, error)
+	Update(ctx context.Context, securityhubAccount *v1alpha1.SecurityhubAccount, opts v1.UpdateOptions) (*v1alpha1.SecurityhubAccount, error)
+	UpdateStatus(ctx context.Context, securityhubAccount *v1alpha1.SecurityhubAccount, opts v1.UpdateOptions) (*v1alpha1.SecurityhubAccount, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SecurityhubAccount, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SecurityhubAccountList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SecurityhubAccount, err error)
 	SecurityhubAccountExpansion
 }
 
@@ -65,20 +66,20 @@ func newSecurityhubAccounts(c *AwsV1alpha1Client, namespace string) *securityhub
 }
 
 // Get takes name of the securityhubAccount, and returns the corresponding securityhubAccount object, and an error if there is any.
-func (c *securityhubAccounts) Get(name string, options v1.GetOptions) (result *v1alpha1.SecurityhubAccount, err error) {
+func (c *securityhubAccounts) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SecurityhubAccount, err error) {
 	result = &v1alpha1.SecurityhubAccount{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("securityhubaccounts").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SecurityhubAccounts that match those selectors.
-func (c *securityhubAccounts) List(opts v1.ListOptions) (result *v1alpha1.SecurityhubAccountList, err error) {
+func (c *securityhubAccounts) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SecurityhubAccountList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *securityhubAccounts) List(opts v1.ListOptions) (result *v1alpha1.Securi
 		Resource("securityhubaccounts").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested securityhubAccounts.
-func (c *securityhubAccounts) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *securityhubAccounts) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *securityhubAccounts) Watch(opts v1.ListOptions) (watch.Interface, error
 		Resource("securityhubaccounts").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a securityhubAccount and creates it.  Returns the server's representation of the securityhubAccount, and an error, if there is any.
-func (c *securityhubAccounts) Create(securityhubAccount *v1alpha1.SecurityhubAccount) (result *v1alpha1.SecurityhubAccount, err error) {
+func (c *securityhubAccounts) Create(ctx context.Context, securityhubAccount *v1alpha1.SecurityhubAccount, opts v1.CreateOptions) (result *v1alpha1.SecurityhubAccount, err error) {
 	result = &v1alpha1.SecurityhubAccount{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("securityhubaccounts").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(securityhubAccount).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a securityhubAccount and updates it. Returns the server's representation of the securityhubAccount, and an error, if there is any.
-func (c *securityhubAccounts) Update(securityhubAccount *v1alpha1.SecurityhubAccount) (result *v1alpha1.SecurityhubAccount, err error) {
+func (c *securityhubAccounts) Update(ctx context.Context, securityhubAccount *v1alpha1.SecurityhubAccount, opts v1.UpdateOptions) (result *v1alpha1.SecurityhubAccount, err error) {
 	result = &v1alpha1.SecurityhubAccount{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("securityhubaccounts").
 		Name(securityhubAccount.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(securityhubAccount).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *securityhubAccounts) UpdateStatus(securityhubAccount *v1alpha1.SecurityhubAccount) (result *v1alpha1.SecurityhubAccount, err error) {
+func (c *securityhubAccounts) UpdateStatus(ctx context.Context, securityhubAccount *v1alpha1.SecurityhubAccount, opts v1.UpdateOptions) (result *v1alpha1.SecurityhubAccount, err error) {
 	result = &v1alpha1.SecurityhubAccount{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("securityhubaccounts").
 		Name(securityhubAccount.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(securityhubAccount).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the securityhubAccount and deletes it. Returns an error if one occurs.
-func (c *securityhubAccounts) Delete(name string, options *v1.DeleteOptions) error {
+func (c *securityhubAccounts) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("securityhubaccounts").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *securityhubAccounts) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *securityhubAccounts) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("securityhubaccounts").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched securityhubAccount.
-func (c *securityhubAccounts) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SecurityhubAccount, err error) {
+func (c *securityhubAccounts) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SecurityhubAccount, err error) {
 	result = &v1alpha1.SecurityhubAccount{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("securityhubaccounts").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

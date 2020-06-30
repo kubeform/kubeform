@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var sagemakerendpointconfigurationsResource = schema.GroupVersionResource{Group:
 var sagemakerendpointconfigurationsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "SagemakerEndpointConfiguration"}
 
 // Get takes name of the sagemakerEndpointConfiguration, and returns the corresponding sagemakerEndpointConfiguration object, and an error if there is any.
-func (c *FakeSagemakerEndpointConfigurations) Get(name string, options v1.GetOptions) (result *v1alpha1.SagemakerEndpointConfiguration, err error) {
+func (c *FakeSagemakerEndpointConfigurations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SagemakerEndpointConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(sagemakerendpointconfigurationsResource, c.ns, name), &v1alpha1.SagemakerEndpointConfiguration{})
 
@@ -51,7 +53,7 @@ func (c *FakeSagemakerEndpointConfigurations) Get(name string, options v1.GetOpt
 }
 
 // List takes label and field selectors, and returns the list of SagemakerEndpointConfigurations that match those selectors.
-func (c *FakeSagemakerEndpointConfigurations) List(opts v1.ListOptions) (result *v1alpha1.SagemakerEndpointConfigurationList, err error) {
+func (c *FakeSagemakerEndpointConfigurations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SagemakerEndpointConfigurationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(sagemakerendpointconfigurationsResource, sagemakerendpointconfigurationsKind, c.ns, opts), &v1alpha1.SagemakerEndpointConfigurationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSagemakerEndpointConfigurations) List(opts v1.ListOptions) (result 
 }
 
 // Watch returns a watch.Interface that watches the requested sagemakerEndpointConfigurations.
-func (c *FakeSagemakerEndpointConfigurations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSagemakerEndpointConfigurations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(sagemakerendpointconfigurationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a sagemakerEndpointConfiguration and creates it.  Returns the server's representation of the sagemakerEndpointConfiguration, and an error, if there is any.
-func (c *FakeSagemakerEndpointConfigurations) Create(sagemakerEndpointConfiguration *v1alpha1.SagemakerEndpointConfiguration) (result *v1alpha1.SagemakerEndpointConfiguration, err error) {
+func (c *FakeSagemakerEndpointConfigurations) Create(ctx context.Context, sagemakerEndpointConfiguration *v1alpha1.SagemakerEndpointConfiguration, opts v1.CreateOptions) (result *v1alpha1.SagemakerEndpointConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(sagemakerendpointconfigurationsResource, c.ns, sagemakerEndpointConfiguration), &v1alpha1.SagemakerEndpointConfiguration{})
 
@@ -91,7 +93,7 @@ func (c *FakeSagemakerEndpointConfigurations) Create(sagemakerEndpointConfigurat
 }
 
 // Update takes the representation of a sagemakerEndpointConfiguration and updates it. Returns the server's representation of the sagemakerEndpointConfiguration, and an error, if there is any.
-func (c *FakeSagemakerEndpointConfigurations) Update(sagemakerEndpointConfiguration *v1alpha1.SagemakerEndpointConfiguration) (result *v1alpha1.SagemakerEndpointConfiguration, err error) {
+func (c *FakeSagemakerEndpointConfigurations) Update(ctx context.Context, sagemakerEndpointConfiguration *v1alpha1.SagemakerEndpointConfiguration, opts v1.UpdateOptions) (result *v1alpha1.SagemakerEndpointConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(sagemakerendpointconfigurationsResource, c.ns, sagemakerEndpointConfiguration), &v1alpha1.SagemakerEndpointConfiguration{})
 
@@ -103,7 +105,7 @@ func (c *FakeSagemakerEndpointConfigurations) Update(sagemakerEndpointConfigurat
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSagemakerEndpointConfigurations) UpdateStatus(sagemakerEndpointConfiguration *v1alpha1.SagemakerEndpointConfiguration) (*v1alpha1.SagemakerEndpointConfiguration, error) {
+func (c *FakeSagemakerEndpointConfigurations) UpdateStatus(ctx context.Context, sagemakerEndpointConfiguration *v1alpha1.SagemakerEndpointConfiguration, opts v1.UpdateOptions) (*v1alpha1.SagemakerEndpointConfiguration, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(sagemakerendpointconfigurationsResource, "status", c.ns, sagemakerEndpointConfiguration), &v1alpha1.SagemakerEndpointConfiguration{})
 
@@ -114,7 +116,7 @@ func (c *FakeSagemakerEndpointConfigurations) UpdateStatus(sagemakerEndpointConf
 }
 
 // Delete takes name of the sagemakerEndpointConfiguration and deletes it. Returns an error if one occurs.
-func (c *FakeSagemakerEndpointConfigurations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSagemakerEndpointConfigurations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(sagemakerendpointconfigurationsResource, c.ns, name), &v1alpha1.SagemakerEndpointConfiguration{})
 
@@ -122,15 +124,15 @@ func (c *FakeSagemakerEndpointConfigurations) Delete(name string, options *v1.De
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSagemakerEndpointConfigurations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(sagemakerendpointconfigurationsResource, c.ns, listOptions)
+func (c *FakeSagemakerEndpointConfigurations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(sagemakerendpointconfigurationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SagemakerEndpointConfigurationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched sagemakerEndpointConfiguration.
-func (c *FakeSagemakerEndpointConfigurations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SagemakerEndpointConfiguration, err error) {
+func (c *FakeSagemakerEndpointConfigurations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SagemakerEndpointConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(sagemakerendpointconfigurationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SagemakerEndpointConfiguration{})
 

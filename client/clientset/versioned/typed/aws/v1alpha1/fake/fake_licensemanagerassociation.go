@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var licensemanagerassociationsResource = schema.GroupVersionResource{Group: "aws
 var licensemanagerassociationsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "LicensemanagerAssociation"}
 
 // Get takes name of the licensemanagerAssociation, and returns the corresponding licensemanagerAssociation object, and an error if there is any.
-func (c *FakeLicensemanagerAssociations) Get(name string, options v1.GetOptions) (result *v1alpha1.LicensemanagerAssociation, err error) {
+func (c *FakeLicensemanagerAssociations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LicensemanagerAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(licensemanagerassociationsResource, c.ns, name), &v1alpha1.LicensemanagerAssociation{})
 
@@ -51,7 +53,7 @@ func (c *FakeLicensemanagerAssociations) Get(name string, options v1.GetOptions)
 }
 
 // List takes label and field selectors, and returns the list of LicensemanagerAssociations that match those selectors.
-func (c *FakeLicensemanagerAssociations) List(opts v1.ListOptions) (result *v1alpha1.LicensemanagerAssociationList, err error) {
+func (c *FakeLicensemanagerAssociations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LicensemanagerAssociationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(licensemanagerassociationsResource, licensemanagerassociationsKind, c.ns, opts), &v1alpha1.LicensemanagerAssociationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLicensemanagerAssociations) List(opts v1.ListOptions) (result *v1al
 }
 
 // Watch returns a watch.Interface that watches the requested licensemanagerAssociations.
-func (c *FakeLicensemanagerAssociations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLicensemanagerAssociations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(licensemanagerassociationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a licensemanagerAssociation and creates it.  Returns the server's representation of the licensemanagerAssociation, and an error, if there is any.
-func (c *FakeLicensemanagerAssociations) Create(licensemanagerAssociation *v1alpha1.LicensemanagerAssociation) (result *v1alpha1.LicensemanagerAssociation, err error) {
+func (c *FakeLicensemanagerAssociations) Create(ctx context.Context, licensemanagerAssociation *v1alpha1.LicensemanagerAssociation, opts v1.CreateOptions) (result *v1alpha1.LicensemanagerAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(licensemanagerassociationsResource, c.ns, licensemanagerAssociation), &v1alpha1.LicensemanagerAssociation{})
 
@@ -91,7 +93,7 @@ func (c *FakeLicensemanagerAssociations) Create(licensemanagerAssociation *v1alp
 }
 
 // Update takes the representation of a licensemanagerAssociation and updates it. Returns the server's representation of the licensemanagerAssociation, and an error, if there is any.
-func (c *FakeLicensemanagerAssociations) Update(licensemanagerAssociation *v1alpha1.LicensemanagerAssociation) (result *v1alpha1.LicensemanagerAssociation, err error) {
+func (c *FakeLicensemanagerAssociations) Update(ctx context.Context, licensemanagerAssociation *v1alpha1.LicensemanagerAssociation, opts v1.UpdateOptions) (result *v1alpha1.LicensemanagerAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(licensemanagerassociationsResource, c.ns, licensemanagerAssociation), &v1alpha1.LicensemanagerAssociation{})
 
@@ -103,7 +105,7 @@ func (c *FakeLicensemanagerAssociations) Update(licensemanagerAssociation *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLicensemanagerAssociations) UpdateStatus(licensemanagerAssociation *v1alpha1.LicensemanagerAssociation) (*v1alpha1.LicensemanagerAssociation, error) {
+func (c *FakeLicensemanagerAssociations) UpdateStatus(ctx context.Context, licensemanagerAssociation *v1alpha1.LicensemanagerAssociation, opts v1.UpdateOptions) (*v1alpha1.LicensemanagerAssociation, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(licensemanagerassociationsResource, "status", c.ns, licensemanagerAssociation), &v1alpha1.LicensemanagerAssociation{})
 
@@ -114,7 +116,7 @@ func (c *FakeLicensemanagerAssociations) UpdateStatus(licensemanagerAssociation 
 }
 
 // Delete takes name of the licensemanagerAssociation and deletes it. Returns an error if one occurs.
-func (c *FakeLicensemanagerAssociations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLicensemanagerAssociations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(licensemanagerassociationsResource, c.ns, name), &v1alpha1.LicensemanagerAssociation{})
 
@@ -122,15 +124,15 @@ func (c *FakeLicensemanagerAssociations) Delete(name string, options *v1.DeleteO
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLicensemanagerAssociations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(licensemanagerassociationsResource, c.ns, listOptions)
+func (c *FakeLicensemanagerAssociations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(licensemanagerassociationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LicensemanagerAssociationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched licensemanagerAssociation.
-func (c *FakeLicensemanagerAssociations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LicensemanagerAssociation, err error) {
+func (c *FakeLicensemanagerAssociations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LicensemanagerAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(licensemanagerassociationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.LicensemanagerAssociation{})
 

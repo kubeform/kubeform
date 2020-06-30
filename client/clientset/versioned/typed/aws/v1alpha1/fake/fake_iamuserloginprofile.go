@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iamuserloginprofilesResource = schema.GroupVersionResource{Group: "aws.kubef
 var iamuserloginprofilesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "IamUserLoginProfile"}
 
 // Get takes name of the iamUserLoginProfile, and returns the corresponding iamUserLoginProfile object, and an error if there is any.
-func (c *FakeIamUserLoginProfiles) Get(name string, options v1.GetOptions) (result *v1alpha1.IamUserLoginProfile, err error) {
+func (c *FakeIamUserLoginProfiles) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IamUserLoginProfile, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iamuserloginprofilesResource, c.ns, name), &v1alpha1.IamUserLoginProfile{})
 
@@ -51,7 +53,7 @@ func (c *FakeIamUserLoginProfiles) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of IamUserLoginProfiles that match those selectors.
-func (c *FakeIamUserLoginProfiles) List(opts v1.ListOptions) (result *v1alpha1.IamUserLoginProfileList, err error) {
+func (c *FakeIamUserLoginProfiles) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IamUserLoginProfileList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iamuserloginprofilesResource, iamuserloginprofilesKind, c.ns, opts), &v1alpha1.IamUserLoginProfileList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIamUserLoginProfiles) List(opts v1.ListOptions) (result *v1alpha1.I
 }
 
 // Watch returns a watch.Interface that watches the requested iamUserLoginProfiles.
-func (c *FakeIamUserLoginProfiles) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIamUserLoginProfiles) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iamuserloginprofilesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iamUserLoginProfile and creates it.  Returns the server's representation of the iamUserLoginProfile, and an error, if there is any.
-func (c *FakeIamUserLoginProfiles) Create(iamUserLoginProfile *v1alpha1.IamUserLoginProfile) (result *v1alpha1.IamUserLoginProfile, err error) {
+func (c *FakeIamUserLoginProfiles) Create(ctx context.Context, iamUserLoginProfile *v1alpha1.IamUserLoginProfile, opts v1.CreateOptions) (result *v1alpha1.IamUserLoginProfile, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iamuserloginprofilesResource, c.ns, iamUserLoginProfile), &v1alpha1.IamUserLoginProfile{})
 
@@ -91,7 +93,7 @@ func (c *FakeIamUserLoginProfiles) Create(iamUserLoginProfile *v1alpha1.IamUserL
 }
 
 // Update takes the representation of a iamUserLoginProfile and updates it. Returns the server's representation of the iamUserLoginProfile, and an error, if there is any.
-func (c *FakeIamUserLoginProfiles) Update(iamUserLoginProfile *v1alpha1.IamUserLoginProfile) (result *v1alpha1.IamUserLoginProfile, err error) {
+func (c *FakeIamUserLoginProfiles) Update(ctx context.Context, iamUserLoginProfile *v1alpha1.IamUserLoginProfile, opts v1.UpdateOptions) (result *v1alpha1.IamUserLoginProfile, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iamuserloginprofilesResource, c.ns, iamUserLoginProfile), &v1alpha1.IamUserLoginProfile{})
 
@@ -103,7 +105,7 @@ func (c *FakeIamUserLoginProfiles) Update(iamUserLoginProfile *v1alpha1.IamUserL
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIamUserLoginProfiles) UpdateStatus(iamUserLoginProfile *v1alpha1.IamUserLoginProfile) (*v1alpha1.IamUserLoginProfile, error) {
+func (c *FakeIamUserLoginProfiles) UpdateStatus(ctx context.Context, iamUserLoginProfile *v1alpha1.IamUserLoginProfile, opts v1.UpdateOptions) (*v1alpha1.IamUserLoginProfile, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iamuserloginprofilesResource, "status", c.ns, iamUserLoginProfile), &v1alpha1.IamUserLoginProfile{})
 
@@ -114,7 +116,7 @@ func (c *FakeIamUserLoginProfiles) UpdateStatus(iamUserLoginProfile *v1alpha1.Ia
 }
 
 // Delete takes name of the iamUserLoginProfile and deletes it. Returns an error if one occurs.
-func (c *FakeIamUserLoginProfiles) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIamUserLoginProfiles) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iamuserloginprofilesResource, c.ns, name), &v1alpha1.IamUserLoginProfile{})
 
@@ -122,15 +124,15 @@ func (c *FakeIamUserLoginProfiles) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIamUserLoginProfiles) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iamuserloginprofilesResource, c.ns, listOptions)
+func (c *FakeIamUserLoginProfiles) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iamuserloginprofilesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IamUserLoginProfileList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iamUserLoginProfile.
-func (c *FakeIamUserLoginProfiles) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IamUserLoginProfile, err error) {
+func (c *FakeIamUserLoginProfiles) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IamUserLoginProfile, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iamuserloginprofilesResource, c.ns, name, pt, data, subresources...), &v1alpha1.IamUserLoginProfile{})
 

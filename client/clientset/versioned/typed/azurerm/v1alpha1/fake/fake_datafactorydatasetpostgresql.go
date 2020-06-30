@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var datafactorydatasetpostgresqlsResource = schema.GroupVersionResource{Group: "
 var datafactorydatasetpostgresqlsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "DataFactoryDatasetPostgresql"}
 
 // Get takes name of the dataFactoryDatasetPostgresql, and returns the corresponding dataFactoryDatasetPostgresql object, and an error if there is any.
-func (c *FakeDataFactoryDatasetPostgresqls) Get(name string, options v1.GetOptions) (result *v1alpha1.DataFactoryDatasetPostgresql, err error) {
+func (c *FakeDataFactoryDatasetPostgresqls) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DataFactoryDatasetPostgresql, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(datafactorydatasetpostgresqlsResource, c.ns, name), &v1alpha1.DataFactoryDatasetPostgresql{})
 
@@ -51,7 +53,7 @@ func (c *FakeDataFactoryDatasetPostgresqls) Get(name string, options v1.GetOptio
 }
 
 // List takes label and field selectors, and returns the list of DataFactoryDatasetPostgresqls that match those selectors.
-func (c *FakeDataFactoryDatasetPostgresqls) List(opts v1.ListOptions) (result *v1alpha1.DataFactoryDatasetPostgresqlList, err error) {
+func (c *FakeDataFactoryDatasetPostgresqls) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DataFactoryDatasetPostgresqlList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(datafactorydatasetpostgresqlsResource, datafactorydatasetpostgresqlsKind, c.ns, opts), &v1alpha1.DataFactoryDatasetPostgresqlList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDataFactoryDatasetPostgresqls) List(opts v1.ListOptions) (result *v
 }
 
 // Watch returns a watch.Interface that watches the requested dataFactoryDatasetPostgresqls.
-func (c *FakeDataFactoryDatasetPostgresqls) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDataFactoryDatasetPostgresqls) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(datafactorydatasetpostgresqlsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dataFactoryDatasetPostgresql and creates it.  Returns the server's representation of the dataFactoryDatasetPostgresql, and an error, if there is any.
-func (c *FakeDataFactoryDatasetPostgresqls) Create(dataFactoryDatasetPostgresql *v1alpha1.DataFactoryDatasetPostgresql) (result *v1alpha1.DataFactoryDatasetPostgresql, err error) {
+func (c *FakeDataFactoryDatasetPostgresqls) Create(ctx context.Context, dataFactoryDatasetPostgresql *v1alpha1.DataFactoryDatasetPostgresql, opts v1.CreateOptions) (result *v1alpha1.DataFactoryDatasetPostgresql, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(datafactorydatasetpostgresqlsResource, c.ns, dataFactoryDatasetPostgresql), &v1alpha1.DataFactoryDatasetPostgresql{})
 
@@ -91,7 +93,7 @@ func (c *FakeDataFactoryDatasetPostgresqls) Create(dataFactoryDatasetPostgresql 
 }
 
 // Update takes the representation of a dataFactoryDatasetPostgresql and updates it. Returns the server's representation of the dataFactoryDatasetPostgresql, and an error, if there is any.
-func (c *FakeDataFactoryDatasetPostgresqls) Update(dataFactoryDatasetPostgresql *v1alpha1.DataFactoryDatasetPostgresql) (result *v1alpha1.DataFactoryDatasetPostgresql, err error) {
+func (c *FakeDataFactoryDatasetPostgresqls) Update(ctx context.Context, dataFactoryDatasetPostgresql *v1alpha1.DataFactoryDatasetPostgresql, opts v1.UpdateOptions) (result *v1alpha1.DataFactoryDatasetPostgresql, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(datafactorydatasetpostgresqlsResource, c.ns, dataFactoryDatasetPostgresql), &v1alpha1.DataFactoryDatasetPostgresql{})
 
@@ -103,7 +105,7 @@ func (c *FakeDataFactoryDatasetPostgresqls) Update(dataFactoryDatasetPostgresql 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDataFactoryDatasetPostgresqls) UpdateStatus(dataFactoryDatasetPostgresql *v1alpha1.DataFactoryDatasetPostgresql) (*v1alpha1.DataFactoryDatasetPostgresql, error) {
+func (c *FakeDataFactoryDatasetPostgresqls) UpdateStatus(ctx context.Context, dataFactoryDatasetPostgresql *v1alpha1.DataFactoryDatasetPostgresql, opts v1.UpdateOptions) (*v1alpha1.DataFactoryDatasetPostgresql, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(datafactorydatasetpostgresqlsResource, "status", c.ns, dataFactoryDatasetPostgresql), &v1alpha1.DataFactoryDatasetPostgresql{})
 
@@ -114,7 +116,7 @@ func (c *FakeDataFactoryDatasetPostgresqls) UpdateStatus(dataFactoryDatasetPostg
 }
 
 // Delete takes name of the dataFactoryDatasetPostgresql and deletes it. Returns an error if one occurs.
-func (c *FakeDataFactoryDatasetPostgresqls) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDataFactoryDatasetPostgresqls) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(datafactorydatasetpostgresqlsResource, c.ns, name), &v1alpha1.DataFactoryDatasetPostgresql{})
 
@@ -122,15 +124,15 @@ func (c *FakeDataFactoryDatasetPostgresqls) Delete(name string, options *v1.Dele
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDataFactoryDatasetPostgresqls) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(datafactorydatasetpostgresqlsResource, c.ns, listOptions)
+func (c *FakeDataFactoryDatasetPostgresqls) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(datafactorydatasetpostgresqlsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DataFactoryDatasetPostgresqlList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dataFactoryDatasetPostgresql.
-func (c *FakeDataFactoryDatasetPostgresqls) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataFactoryDatasetPostgresql, err error) {
+func (c *FakeDataFactoryDatasetPostgresqls) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataFactoryDatasetPostgresql, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(datafactorydatasetpostgresqlsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DataFactoryDatasetPostgresql{})
 

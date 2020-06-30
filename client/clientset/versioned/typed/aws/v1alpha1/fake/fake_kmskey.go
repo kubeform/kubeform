@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var kmskeysResource = schema.GroupVersionResource{Group: "aws.kubeform.com", Ver
 var kmskeysKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "KmsKey"}
 
 // Get takes name of the kmsKey, and returns the corresponding kmsKey object, and an error if there is any.
-func (c *FakeKmsKeys) Get(name string, options v1.GetOptions) (result *v1alpha1.KmsKey, err error) {
+func (c *FakeKmsKeys) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KmsKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(kmskeysResource, c.ns, name), &v1alpha1.KmsKey{})
 
@@ -51,7 +53,7 @@ func (c *FakeKmsKeys) Get(name string, options v1.GetOptions) (result *v1alpha1.
 }
 
 // List takes label and field selectors, and returns the list of KmsKeys that match those selectors.
-func (c *FakeKmsKeys) List(opts v1.ListOptions) (result *v1alpha1.KmsKeyList, err error) {
+func (c *FakeKmsKeys) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KmsKeyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(kmskeysResource, kmskeysKind, c.ns, opts), &v1alpha1.KmsKeyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeKmsKeys) List(opts v1.ListOptions) (result *v1alpha1.KmsKeyList, er
 }
 
 // Watch returns a watch.Interface that watches the requested kmsKeys.
-func (c *FakeKmsKeys) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeKmsKeys) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(kmskeysResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a kmsKey and creates it.  Returns the server's representation of the kmsKey, and an error, if there is any.
-func (c *FakeKmsKeys) Create(kmsKey *v1alpha1.KmsKey) (result *v1alpha1.KmsKey, err error) {
+func (c *FakeKmsKeys) Create(ctx context.Context, kmsKey *v1alpha1.KmsKey, opts v1.CreateOptions) (result *v1alpha1.KmsKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(kmskeysResource, c.ns, kmsKey), &v1alpha1.KmsKey{})
 
@@ -91,7 +93,7 @@ func (c *FakeKmsKeys) Create(kmsKey *v1alpha1.KmsKey) (result *v1alpha1.KmsKey, 
 }
 
 // Update takes the representation of a kmsKey and updates it. Returns the server's representation of the kmsKey, and an error, if there is any.
-func (c *FakeKmsKeys) Update(kmsKey *v1alpha1.KmsKey) (result *v1alpha1.KmsKey, err error) {
+func (c *FakeKmsKeys) Update(ctx context.Context, kmsKey *v1alpha1.KmsKey, opts v1.UpdateOptions) (result *v1alpha1.KmsKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(kmskeysResource, c.ns, kmsKey), &v1alpha1.KmsKey{})
 
@@ -103,7 +105,7 @@ func (c *FakeKmsKeys) Update(kmsKey *v1alpha1.KmsKey) (result *v1alpha1.KmsKey, 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeKmsKeys) UpdateStatus(kmsKey *v1alpha1.KmsKey) (*v1alpha1.KmsKey, error) {
+func (c *FakeKmsKeys) UpdateStatus(ctx context.Context, kmsKey *v1alpha1.KmsKey, opts v1.UpdateOptions) (*v1alpha1.KmsKey, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(kmskeysResource, "status", c.ns, kmsKey), &v1alpha1.KmsKey{})
 
@@ -114,7 +116,7 @@ func (c *FakeKmsKeys) UpdateStatus(kmsKey *v1alpha1.KmsKey) (*v1alpha1.KmsKey, e
 }
 
 // Delete takes name of the kmsKey and deletes it. Returns an error if one occurs.
-func (c *FakeKmsKeys) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeKmsKeys) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(kmskeysResource, c.ns, name), &v1alpha1.KmsKey{})
 
@@ -122,15 +124,15 @@ func (c *FakeKmsKeys) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeKmsKeys) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(kmskeysResource, c.ns, listOptions)
+func (c *FakeKmsKeys) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(kmskeysResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.KmsKeyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched kmsKey.
-func (c *FakeKmsKeys) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KmsKey, err error) {
+func (c *FakeKmsKeys) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KmsKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(kmskeysResource, c.ns, name, pt, data, subresources...), &v1alpha1.KmsKey{})
 

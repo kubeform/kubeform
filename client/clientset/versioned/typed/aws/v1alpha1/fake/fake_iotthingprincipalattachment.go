@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iotthingprincipalattachmentsResource = schema.GroupVersionResource{Group: "a
 var iotthingprincipalattachmentsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "IotThingPrincipalAttachment"}
 
 // Get takes name of the iotThingPrincipalAttachment, and returns the corresponding iotThingPrincipalAttachment object, and an error if there is any.
-func (c *FakeIotThingPrincipalAttachments) Get(name string, options v1.GetOptions) (result *v1alpha1.IotThingPrincipalAttachment, err error) {
+func (c *FakeIotThingPrincipalAttachments) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IotThingPrincipalAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iotthingprincipalattachmentsResource, c.ns, name), &v1alpha1.IotThingPrincipalAttachment{})
 
@@ -51,7 +53,7 @@ func (c *FakeIotThingPrincipalAttachments) Get(name string, options v1.GetOption
 }
 
 // List takes label and field selectors, and returns the list of IotThingPrincipalAttachments that match those selectors.
-func (c *FakeIotThingPrincipalAttachments) List(opts v1.ListOptions) (result *v1alpha1.IotThingPrincipalAttachmentList, err error) {
+func (c *FakeIotThingPrincipalAttachments) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IotThingPrincipalAttachmentList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iotthingprincipalattachmentsResource, iotthingprincipalattachmentsKind, c.ns, opts), &v1alpha1.IotThingPrincipalAttachmentList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIotThingPrincipalAttachments) List(opts v1.ListOptions) (result *v1
 }
 
 // Watch returns a watch.Interface that watches the requested iotThingPrincipalAttachments.
-func (c *FakeIotThingPrincipalAttachments) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIotThingPrincipalAttachments) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iotthingprincipalattachmentsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iotThingPrincipalAttachment and creates it.  Returns the server's representation of the iotThingPrincipalAttachment, and an error, if there is any.
-func (c *FakeIotThingPrincipalAttachments) Create(iotThingPrincipalAttachment *v1alpha1.IotThingPrincipalAttachment) (result *v1alpha1.IotThingPrincipalAttachment, err error) {
+func (c *FakeIotThingPrincipalAttachments) Create(ctx context.Context, iotThingPrincipalAttachment *v1alpha1.IotThingPrincipalAttachment, opts v1.CreateOptions) (result *v1alpha1.IotThingPrincipalAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iotthingprincipalattachmentsResource, c.ns, iotThingPrincipalAttachment), &v1alpha1.IotThingPrincipalAttachment{})
 
@@ -91,7 +93,7 @@ func (c *FakeIotThingPrincipalAttachments) Create(iotThingPrincipalAttachment *v
 }
 
 // Update takes the representation of a iotThingPrincipalAttachment and updates it. Returns the server's representation of the iotThingPrincipalAttachment, and an error, if there is any.
-func (c *FakeIotThingPrincipalAttachments) Update(iotThingPrincipalAttachment *v1alpha1.IotThingPrincipalAttachment) (result *v1alpha1.IotThingPrincipalAttachment, err error) {
+func (c *FakeIotThingPrincipalAttachments) Update(ctx context.Context, iotThingPrincipalAttachment *v1alpha1.IotThingPrincipalAttachment, opts v1.UpdateOptions) (result *v1alpha1.IotThingPrincipalAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iotthingprincipalattachmentsResource, c.ns, iotThingPrincipalAttachment), &v1alpha1.IotThingPrincipalAttachment{})
 
@@ -103,7 +105,7 @@ func (c *FakeIotThingPrincipalAttachments) Update(iotThingPrincipalAttachment *v
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIotThingPrincipalAttachments) UpdateStatus(iotThingPrincipalAttachment *v1alpha1.IotThingPrincipalAttachment) (*v1alpha1.IotThingPrincipalAttachment, error) {
+func (c *FakeIotThingPrincipalAttachments) UpdateStatus(ctx context.Context, iotThingPrincipalAttachment *v1alpha1.IotThingPrincipalAttachment, opts v1.UpdateOptions) (*v1alpha1.IotThingPrincipalAttachment, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iotthingprincipalattachmentsResource, "status", c.ns, iotThingPrincipalAttachment), &v1alpha1.IotThingPrincipalAttachment{})
 
@@ -114,7 +116,7 @@ func (c *FakeIotThingPrincipalAttachments) UpdateStatus(iotThingPrincipalAttachm
 }
 
 // Delete takes name of the iotThingPrincipalAttachment and deletes it. Returns an error if one occurs.
-func (c *FakeIotThingPrincipalAttachments) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIotThingPrincipalAttachments) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iotthingprincipalattachmentsResource, c.ns, name), &v1alpha1.IotThingPrincipalAttachment{})
 
@@ -122,15 +124,15 @@ func (c *FakeIotThingPrincipalAttachments) Delete(name string, options *v1.Delet
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIotThingPrincipalAttachments) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iotthingprincipalattachmentsResource, c.ns, listOptions)
+func (c *FakeIotThingPrincipalAttachments) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iotthingprincipalattachmentsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IotThingPrincipalAttachmentList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iotThingPrincipalAttachment.
-func (c *FakeIotThingPrincipalAttachments) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IotThingPrincipalAttachment, err error) {
+func (c *FakeIotThingPrincipalAttachments) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IotThingPrincipalAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iotthingprincipalattachmentsResource, c.ns, name, pt, data, subresources...), &v1alpha1.IotThingPrincipalAttachment{})
 

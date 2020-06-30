@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cosmosdbgremlindatabasesResource = schema.GroupVersionResource{Group: "azure
 var cosmosdbgremlindatabasesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "CosmosdbGremlinDatabase"}
 
 // Get takes name of the cosmosdbGremlinDatabase, and returns the corresponding cosmosdbGremlinDatabase object, and an error if there is any.
-func (c *FakeCosmosdbGremlinDatabases) Get(name string, options v1.GetOptions) (result *v1alpha1.CosmosdbGremlinDatabase, err error) {
+func (c *FakeCosmosdbGremlinDatabases) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CosmosdbGremlinDatabase, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cosmosdbgremlindatabasesResource, c.ns, name), &v1alpha1.CosmosdbGremlinDatabase{})
 
@@ -51,7 +53,7 @@ func (c *FakeCosmosdbGremlinDatabases) Get(name string, options v1.GetOptions) (
 }
 
 // List takes label and field selectors, and returns the list of CosmosdbGremlinDatabases that match those selectors.
-func (c *FakeCosmosdbGremlinDatabases) List(opts v1.ListOptions) (result *v1alpha1.CosmosdbGremlinDatabaseList, err error) {
+func (c *FakeCosmosdbGremlinDatabases) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CosmosdbGremlinDatabaseList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cosmosdbgremlindatabasesResource, cosmosdbgremlindatabasesKind, c.ns, opts), &v1alpha1.CosmosdbGremlinDatabaseList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCosmosdbGremlinDatabases) List(opts v1.ListOptions) (result *v1alph
 }
 
 // Watch returns a watch.Interface that watches the requested cosmosdbGremlinDatabases.
-func (c *FakeCosmosdbGremlinDatabases) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCosmosdbGremlinDatabases) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cosmosdbgremlindatabasesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cosmosdbGremlinDatabase and creates it.  Returns the server's representation of the cosmosdbGremlinDatabase, and an error, if there is any.
-func (c *FakeCosmosdbGremlinDatabases) Create(cosmosdbGremlinDatabase *v1alpha1.CosmosdbGremlinDatabase) (result *v1alpha1.CosmosdbGremlinDatabase, err error) {
+func (c *FakeCosmosdbGremlinDatabases) Create(ctx context.Context, cosmosdbGremlinDatabase *v1alpha1.CosmosdbGremlinDatabase, opts v1.CreateOptions) (result *v1alpha1.CosmosdbGremlinDatabase, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cosmosdbgremlindatabasesResource, c.ns, cosmosdbGremlinDatabase), &v1alpha1.CosmosdbGremlinDatabase{})
 
@@ -91,7 +93,7 @@ func (c *FakeCosmosdbGremlinDatabases) Create(cosmosdbGremlinDatabase *v1alpha1.
 }
 
 // Update takes the representation of a cosmosdbGremlinDatabase and updates it. Returns the server's representation of the cosmosdbGremlinDatabase, and an error, if there is any.
-func (c *FakeCosmosdbGremlinDatabases) Update(cosmosdbGremlinDatabase *v1alpha1.CosmosdbGremlinDatabase) (result *v1alpha1.CosmosdbGremlinDatabase, err error) {
+func (c *FakeCosmosdbGremlinDatabases) Update(ctx context.Context, cosmosdbGremlinDatabase *v1alpha1.CosmosdbGremlinDatabase, opts v1.UpdateOptions) (result *v1alpha1.CosmosdbGremlinDatabase, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cosmosdbgremlindatabasesResource, c.ns, cosmosdbGremlinDatabase), &v1alpha1.CosmosdbGremlinDatabase{})
 
@@ -103,7 +105,7 @@ func (c *FakeCosmosdbGremlinDatabases) Update(cosmosdbGremlinDatabase *v1alpha1.
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCosmosdbGremlinDatabases) UpdateStatus(cosmosdbGremlinDatabase *v1alpha1.CosmosdbGremlinDatabase) (*v1alpha1.CosmosdbGremlinDatabase, error) {
+func (c *FakeCosmosdbGremlinDatabases) UpdateStatus(ctx context.Context, cosmosdbGremlinDatabase *v1alpha1.CosmosdbGremlinDatabase, opts v1.UpdateOptions) (*v1alpha1.CosmosdbGremlinDatabase, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cosmosdbgremlindatabasesResource, "status", c.ns, cosmosdbGremlinDatabase), &v1alpha1.CosmosdbGremlinDatabase{})
 
@@ -114,7 +116,7 @@ func (c *FakeCosmosdbGremlinDatabases) UpdateStatus(cosmosdbGremlinDatabase *v1a
 }
 
 // Delete takes name of the cosmosdbGremlinDatabase and deletes it. Returns an error if one occurs.
-func (c *FakeCosmosdbGremlinDatabases) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCosmosdbGremlinDatabases) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cosmosdbgremlindatabasesResource, c.ns, name), &v1alpha1.CosmosdbGremlinDatabase{})
 
@@ -122,15 +124,15 @@ func (c *FakeCosmosdbGremlinDatabases) Delete(name string, options *v1.DeleteOpt
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCosmosdbGremlinDatabases) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cosmosdbgremlindatabasesResource, c.ns, listOptions)
+func (c *FakeCosmosdbGremlinDatabases) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cosmosdbgremlindatabasesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CosmosdbGremlinDatabaseList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cosmosdbGremlinDatabase.
-func (c *FakeCosmosdbGremlinDatabases) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CosmosdbGremlinDatabase, err error) {
+func (c *FakeCosmosdbGremlinDatabases) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CosmosdbGremlinDatabase, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cosmosdbgremlindatabasesResource, c.ns, name, pt, data, subresources...), &v1alpha1.CosmosdbGremlinDatabase{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var networksecuritygroupsResource = schema.GroupVersionResource{Group: "azurerm.
 var networksecuritygroupsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "NetworkSecurityGroup"}
 
 // Get takes name of the networkSecurityGroup, and returns the corresponding networkSecurityGroup object, and an error if there is any.
-func (c *FakeNetworkSecurityGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.NetworkSecurityGroup, err error) {
+func (c *FakeNetworkSecurityGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.NetworkSecurityGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(networksecuritygroupsResource, c.ns, name), &v1alpha1.NetworkSecurityGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeNetworkSecurityGroups) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of NetworkSecurityGroups that match those selectors.
-func (c *FakeNetworkSecurityGroups) List(opts v1.ListOptions) (result *v1alpha1.NetworkSecurityGroupList, err error) {
+func (c *FakeNetworkSecurityGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.NetworkSecurityGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(networksecuritygroupsResource, networksecuritygroupsKind, c.ns, opts), &v1alpha1.NetworkSecurityGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeNetworkSecurityGroups) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested networkSecurityGroups.
-func (c *FakeNetworkSecurityGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeNetworkSecurityGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(networksecuritygroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a networkSecurityGroup and creates it.  Returns the server's representation of the networkSecurityGroup, and an error, if there is any.
-func (c *FakeNetworkSecurityGroups) Create(networkSecurityGroup *v1alpha1.NetworkSecurityGroup) (result *v1alpha1.NetworkSecurityGroup, err error) {
+func (c *FakeNetworkSecurityGroups) Create(ctx context.Context, networkSecurityGroup *v1alpha1.NetworkSecurityGroup, opts v1.CreateOptions) (result *v1alpha1.NetworkSecurityGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(networksecuritygroupsResource, c.ns, networkSecurityGroup), &v1alpha1.NetworkSecurityGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeNetworkSecurityGroups) Create(networkSecurityGroup *v1alpha1.Networ
 }
 
 // Update takes the representation of a networkSecurityGroup and updates it. Returns the server's representation of the networkSecurityGroup, and an error, if there is any.
-func (c *FakeNetworkSecurityGroups) Update(networkSecurityGroup *v1alpha1.NetworkSecurityGroup) (result *v1alpha1.NetworkSecurityGroup, err error) {
+func (c *FakeNetworkSecurityGroups) Update(ctx context.Context, networkSecurityGroup *v1alpha1.NetworkSecurityGroup, opts v1.UpdateOptions) (result *v1alpha1.NetworkSecurityGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(networksecuritygroupsResource, c.ns, networkSecurityGroup), &v1alpha1.NetworkSecurityGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeNetworkSecurityGroups) Update(networkSecurityGroup *v1alpha1.Networ
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeNetworkSecurityGroups) UpdateStatus(networkSecurityGroup *v1alpha1.NetworkSecurityGroup) (*v1alpha1.NetworkSecurityGroup, error) {
+func (c *FakeNetworkSecurityGroups) UpdateStatus(ctx context.Context, networkSecurityGroup *v1alpha1.NetworkSecurityGroup, opts v1.UpdateOptions) (*v1alpha1.NetworkSecurityGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(networksecuritygroupsResource, "status", c.ns, networkSecurityGroup), &v1alpha1.NetworkSecurityGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeNetworkSecurityGroups) UpdateStatus(networkSecurityGroup *v1alpha1.
 }
 
 // Delete takes name of the networkSecurityGroup and deletes it. Returns an error if one occurs.
-func (c *FakeNetworkSecurityGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeNetworkSecurityGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(networksecuritygroupsResource, c.ns, name), &v1alpha1.NetworkSecurityGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeNetworkSecurityGroups) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeNetworkSecurityGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(networksecuritygroupsResource, c.ns, listOptions)
+func (c *FakeNetworkSecurityGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(networksecuritygroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.NetworkSecurityGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched networkSecurityGroup.
-func (c *FakeNetworkSecurityGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.NetworkSecurityGroup, err error) {
+func (c *FakeNetworkSecurityGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.NetworkSecurityGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(networksecuritygroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.NetworkSecurityGroup{})
 

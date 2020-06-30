@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type DatasyncAgentsGetter interface {
 
 // DatasyncAgentInterface has methods to work with DatasyncAgent resources.
 type DatasyncAgentInterface interface {
-	Create(*v1alpha1.DatasyncAgent) (*v1alpha1.DatasyncAgent, error)
-	Update(*v1alpha1.DatasyncAgent) (*v1alpha1.DatasyncAgent, error)
-	UpdateStatus(*v1alpha1.DatasyncAgent) (*v1alpha1.DatasyncAgent, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.DatasyncAgent, error)
-	List(opts v1.ListOptions) (*v1alpha1.DatasyncAgentList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DatasyncAgent, err error)
+	Create(ctx context.Context, datasyncAgent *v1alpha1.DatasyncAgent, opts v1.CreateOptions) (*v1alpha1.DatasyncAgent, error)
+	Update(ctx context.Context, datasyncAgent *v1alpha1.DatasyncAgent, opts v1.UpdateOptions) (*v1alpha1.DatasyncAgent, error)
+	UpdateStatus(ctx context.Context, datasyncAgent *v1alpha1.DatasyncAgent, opts v1.UpdateOptions) (*v1alpha1.DatasyncAgent, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.DatasyncAgent, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.DatasyncAgentList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DatasyncAgent, err error)
 	DatasyncAgentExpansion
 }
 
@@ -65,20 +66,20 @@ func newDatasyncAgents(c *AwsV1alpha1Client, namespace string) *datasyncAgents {
 }
 
 // Get takes name of the datasyncAgent, and returns the corresponding datasyncAgent object, and an error if there is any.
-func (c *datasyncAgents) Get(name string, options v1.GetOptions) (result *v1alpha1.DatasyncAgent, err error) {
+func (c *datasyncAgents) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DatasyncAgent, err error) {
 	result = &v1alpha1.DatasyncAgent{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("datasyncagents").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of DatasyncAgents that match those selectors.
-func (c *datasyncAgents) List(opts v1.ListOptions) (result *v1alpha1.DatasyncAgentList, err error) {
+func (c *datasyncAgents) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DatasyncAgentList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *datasyncAgents) List(opts v1.ListOptions) (result *v1alpha1.DatasyncAge
 		Resource("datasyncagents").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested datasyncAgents.
-func (c *datasyncAgents) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *datasyncAgents) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *datasyncAgents) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("datasyncagents").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a datasyncAgent and creates it.  Returns the server's representation of the datasyncAgent, and an error, if there is any.
-func (c *datasyncAgents) Create(datasyncAgent *v1alpha1.DatasyncAgent) (result *v1alpha1.DatasyncAgent, err error) {
+func (c *datasyncAgents) Create(ctx context.Context, datasyncAgent *v1alpha1.DatasyncAgent, opts v1.CreateOptions) (result *v1alpha1.DatasyncAgent, err error) {
 	result = &v1alpha1.DatasyncAgent{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("datasyncagents").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(datasyncAgent).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a datasyncAgent and updates it. Returns the server's representation of the datasyncAgent, and an error, if there is any.
-func (c *datasyncAgents) Update(datasyncAgent *v1alpha1.DatasyncAgent) (result *v1alpha1.DatasyncAgent, err error) {
+func (c *datasyncAgents) Update(ctx context.Context, datasyncAgent *v1alpha1.DatasyncAgent, opts v1.UpdateOptions) (result *v1alpha1.DatasyncAgent, err error) {
 	result = &v1alpha1.DatasyncAgent{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("datasyncagents").
 		Name(datasyncAgent.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(datasyncAgent).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *datasyncAgents) UpdateStatus(datasyncAgent *v1alpha1.DatasyncAgent) (result *v1alpha1.DatasyncAgent, err error) {
+func (c *datasyncAgents) UpdateStatus(ctx context.Context, datasyncAgent *v1alpha1.DatasyncAgent, opts v1.UpdateOptions) (result *v1alpha1.DatasyncAgent, err error) {
 	result = &v1alpha1.DatasyncAgent{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("datasyncagents").
 		Name(datasyncAgent.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(datasyncAgent).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the datasyncAgent and deletes it. Returns an error if one occurs.
-func (c *datasyncAgents) Delete(name string, options *v1.DeleteOptions) error {
+func (c *datasyncAgents) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("datasyncagents").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *datasyncAgents) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *datasyncAgents) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("datasyncagents").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched datasyncAgent.
-func (c *datasyncAgents) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DatasyncAgent, err error) {
+func (c *datasyncAgents) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DatasyncAgent, err error) {
 	result = &v1alpha1.DatasyncAgent{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("datasyncagents").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

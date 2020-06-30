@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cloudfrontoriginaccessidentitiesResource = schema.GroupVersionResource{Group
 var cloudfrontoriginaccessidentitiesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "CloudfrontOriginAccessIdentity"}
 
 // Get takes name of the cloudfrontOriginAccessIdentity, and returns the corresponding cloudfrontOriginAccessIdentity object, and an error if there is any.
-func (c *FakeCloudfrontOriginAccessIdentities) Get(name string, options v1.GetOptions) (result *v1alpha1.CloudfrontOriginAccessIdentity, err error) {
+func (c *FakeCloudfrontOriginAccessIdentities) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CloudfrontOriginAccessIdentity, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cloudfrontoriginaccessidentitiesResource, c.ns, name), &v1alpha1.CloudfrontOriginAccessIdentity{})
 
@@ -51,7 +53,7 @@ func (c *FakeCloudfrontOriginAccessIdentities) Get(name string, options v1.GetOp
 }
 
 // List takes label and field selectors, and returns the list of CloudfrontOriginAccessIdentities that match those selectors.
-func (c *FakeCloudfrontOriginAccessIdentities) List(opts v1.ListOptions) (result *v1alpha1.CloudfrontOriginAccessIdentityList, err error) {
+func (c *FakeCloudfrontOriginAccessIdentities) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CloudfrontOriginAccessIdentityList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cloudfrontoriginaccessidentitiesResource, cloudfrontoriginaccessidentitiesKind, c.ns, opts), &v1alpha1.CloudfrontOriginAccessIdentityList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCloudfrontOriginAccessIdentities) List(opts v1.ListOptions) (result
 }
 
 // Watch returns a watch.Interface that watches the requested cloudfrontOriginAccessIdentities.
-func (c *FakeCloudfrontOriginAccessIdentities) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCloudfrontOriginAccessIdentities) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cloudfrontoriginaccessidentitiesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cloudfrontOriginAccessIdentity and creates it.  Returns the server's representation of the cloudfrontOriginAccessIdentity, and an error, if there is any.
-func (c *FakeCloudfrontOriginAccessIdentities) Create(cloudfrontOriginAccessIdentity *v1alpha1.CloudfrontOriginAccessIdentity) (result *v1alpha1.CloudfrontOriginAccessIdentity, err error) {
+func (c *FakeCloudfrontOriginAccessIdentities) Create(ctx context.Context, cloudfrontOriginAccessIdentity *v1alpha1.CloudfrontOriginAccessIdentity, opts v1.CreateOptions) (result *v1alpha1.CloudfrontOriginAccessIdentity, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cloudfrontoriginaccessidentitiesResource, c.ns, cloudfrontOriginAccessIdentity), &v1alpha1.CloudfrontOriginAccessIdentity{})
 
@@ -91,7 +93,7 @@ func (c *FakeCloudfrontOriginAccessIdentities) Create(cloudfrontOriginAccessIden
 }
 
 // Update takes the representation of a cloudfrontOriginAccessIdentity and updates it. Returns the server's representation of the cloudfrontOriginAccessIdentity, and an error, if there is any.
-func (c *FakeCloudfrontOriginAccessIdentities) Update(cloudfrontOriginAccessIdentity *v1alpha1.CloudfrontOriginAccessIdentity) (result *v1alpha1.CloudfrontOriginAccessIdentity, err error) {
+func (c *FakeCloudfrontOriginAccessIdentities) Update(ctx context.Context, cloudfrontOriginAccessIdentity *v1alpha1.CloudfrontOriginAccessIdentity, opts v1.UpdateOptions) (result *v1alpha1.CloudfrontOriginAccessIdentity, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cloudfrontoriginaccessidentitiesResource, c.ns, cloudfrontOriginAccessIdentity), &v1alpha1.CloudfrontOriginAccessIdentity{})
 
@@ -103,7 +105,7 @@ func (c *FakeCloudfrontOriginAccessIdentities) Update(cloudfrontOriginAccessIden
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCloudfrontOriginAccessIdentities) UpdateStatus(cloudfrontOriginAccessIdentity *v1alpha1.CloudfrontOriginAccessIdentity) (*v1alpha1.CloudfrontOriginAccessIdentity, error) {
+func (c *FakeCloudfrontOriginAccessIdentities) UpdateStatus(ctx context.Context, cloudfrontOriginAccessIdentity *v1alpha1.CloudfrontOriginAccessIdentity, opts v1.UpdateOptions) (*v1alpha1.CloudfrontOriginAccessIdentity, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cloudfrontoriginaccessidentitiesResource, "status", c.ns, cloudfrontOriginAccessIdentity), &v1alpha1.CloudfrontOriginAccessIdentity{})
 
@@ -114,7 +116,7 @@ func (c *FakeCloudfrontOriginAccessIdentities) UpdateStatus(cloudfrontOriginAcce
 }
 
 // Delete takes name of the cloudfrontOriginAccessIdentity and deletes it. Returns an error if one occurs.
-func (c *FakeCloudfrontOriginAccessIdentities) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCloudfrontOriginAccessIdentities) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cloudfrontoriginaccessidentitiesResource, c.ns, name), &v1alpha1.CloudfrontOriginAccessIdentity{})
 
@@ -122,15 +124,15 @@ func (c *FakeCloudfrontOriginAccessIdentities) Delete(name string, options *v1.D
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCloudfrontOriginAccessIdentities) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cloudfrontoriginaccessidentitiesResource, c.ns, listOptions)
+func (c *FakeCloudfrontOriginAccessIdentities) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cloudfrontoriginaccessidentitiesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CloudfrontOriginAccessIdentityList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cloudfrontOriginAccessIdentity.
-func (c *FakeCloudfrontOriginAccessIdentities) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CloudfrontOriginAccessIdentity, err error) {
+func (c *FakeCloudfrontOriginAccessIdentities) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CloudfrontOriginAccessIdentity, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cloudfrontoriginaccessidentitiesResource, c.ns, name, pt, data, subresources...), &v1alpha1.CloudfrontOriginAccessIdentity{})
 

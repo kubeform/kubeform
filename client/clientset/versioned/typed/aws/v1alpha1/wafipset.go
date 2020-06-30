@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type WafIpsetsGetter interface {
 
 // WafIpsetInterface has methods to work with WafIpset resources.
 type WafIpsetInterface interface {
-	Create(*v1alpha1.WafIpset) (*v1alpha1.WafIpset, error)
-	Update(*v1alpha1.WafIpset) (*v1alpha1.WafIpset, error)
-	UpdateStatus(*v1alpha1.WafIpset) (*v1alpha1.WafIpset, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.WafIpset, error)
-	List(opts v1.ListOptions) (*v1alpha1.WafIpsetList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.WafIpset, err error)
+	Create(ctx context.Context, wafIpset *v1alpha1.WafIpset, opts v1.CreateOptions) (*v1alpha1.WafIpset, error)
+	Update(ctx context.Context, wafIpset *v1alpha1.WafIpset, opts v1.UpdateOptions) (*v1alpha1.WafIpset, error)
+	UpdateStatus(ctx context.Context, wafIpset *v1alpha1.WafIpset, opts v1.UpdateOptions) (*v1alpha1.WafIpset, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.WafIpset, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.WafIpsetList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.WafIpset, err error)
 	WafIpsetExpansion
 }
 
@@ -65,20 +66,20 @@ func newWafIpsets(c *AwsV1alpha1Client, namespace string) *wafIpsets {
 }
 
 // Get takes name of the wafIpset, and returns the corresponding wafIpset object, and an error if there is any.
-func (c *wafIpsets) Get(name string, options v1.GetOptions) (result *v1alpha1.WafIpset, err error) {
+func (c *wafIpsets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.WafIpset, err error) {
 	result = &v1alpha1.WafIpset{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("wafipsets").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of WafIpsets that match those selectors.
-func (c *wafIpsets) List(opts v1.ListOptions) (result *v1alpha1.WafIpsetList, err error) {
+func (c *wafIpsets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.WafIpsetList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *wafIpsets) List(opts v1.ListOptions) (result *v1alpha1.WafIpsetList, er
 		Resource("wafipsets").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested wafIpsets.
-func (c *wafIpsets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *wafIpsets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *wafIpsets) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("wafipsets").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a wafIpset and creates it.  Returns the server's representation of the wafIpset, and an error, if there is any.
-func (c *wafIpsets) Create(wafIpset *v1alpha1.WafIpset) (result *v1alpha1.WafIpset, err error) {
+func (c *wafIpsets) Create(ctx context.Context, wafIpset *v1alpha1.WafIpset, opts v1.CreateOptions) (result *v1alpha1.WafIpset, err error) {
 	result = &v1alpha1.WafIpset{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("wafipsets").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(wafIpset).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a wafIpset and updates it. Returns the server's representation of the wafIpset, and an error, if there is any.
-func (c *wafIpsets) Update(wafIpset *v1alpha1.WafIpset) (result *v1alpha1.WafIpset, err error) {
+func (c *wafIpsets) Update(ctx context.Context, wafIpset *v1alpha1.WafIpset, opts v1.UpdateOptions) (result *v1alpha1.WafIpset, err error) {
 	result = &v1alpha1.WafIpset{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("wafipsets").
 		Name(wafIpset.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(wafIpset).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *wafIpsets) UpdateStatus(wafIpset *v1alpha1.WafIpset) (result *v1alpha1.WafIpset, err error) {
+func (c *wafIpsets) UpdateStatus(ctx context.Context, wafIpset *v1alpha1.WafIpset, opts v1.UpdateOptions) (result *v1alpha1.WafIpset, err error) {
 	result = &v1alpha1.WafIpset{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("wafipsets").
 		Name(wafIpset.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(wafIpset).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the wafIpset and deletes it. Returns an error if one occurs.
-func (c *wafIpsets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *wafIpsets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("wafipsets").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *wafIpsets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *wafIpsets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("wafipsets").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched wafIpset.
-func (c *wafIpsets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.WafIpset, err error) {
+func (c *wafIpsets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.WafIpset, err error) {
 	result = &v1alpha1.WafIpset{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("wafipsets").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

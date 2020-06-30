@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var trafficmanagerendpointsResource = schema.GroupVersionResource{Group: "azurer
 var trafficmanagerendpointsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "TrafficManagerEndpoint"}
 
 // Get takes name of the trafficManagerEndpoint, and returns the corresponding trafficManagerEndpoint object, and an error if there is any.
-func (c *FakeTrafficManagerEndpoints) Get(name string, options v1.GetOptions) (result *v1alpha1.TrafficManagerEndpoint, err error) {
+func (c *FakeTrafficManagerEndpoints) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.TrafficManagerEndpoint, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(trafficmanagerendpointsResource, c.ns, name), &v1alpha1.TrafficManagerEndpoint{})
 
@@ -51,7 +53,7 @@ func (c *FakeTrafficManagerEndpoints) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of TrafficManagerEndpoints that match those selectors.
-func (c *FakeTrafficManagerEndpoints) List(opts v1.ListOptions) (result *v1alpha1.TrafficManagerEndpointList, err error) {
+func (c *FakeTrafficManagerEndpoints) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.TrafficManagerEndpointList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(trafficmanagerendpointsResource, trafficmanagerendpointsKind, c.ns, opts), &v1alpha1.TrafficManagerEndpointList{})
 
@@ -73,14 +75,14 @@ func (c *FakeTrafficManagerEndpoints) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested trafficManagerEndpoints.
-func (c *FakeTrafficManagerEndpoints) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeTrafficManagerEndpoints) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(trafficmanagerendpointsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a trafficManagerEndpoint and creates it.  Returns the server's representation of the trafficManagerEndpoint, and an error, if there is any.
-func (c *FakeTrafficManagerEndpoints) Create(trafficManagerEndpoint *v1alpha1.TrafficManagerEndpoint) (result *v1alpha1.TrafficManagerEndpoint, err error) {
+func (c *FakeTrafficManagerEndpoints) Create(ctx context.Context, trafficManagerEndpoint *v1alpha1.TrafficManagerEndpoint, opts v1.CreateOptions) (result *v1alpha1.TrafficManagerEndpoint, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(trafficmanagerendpointsResource, c.ns, trafficManagerEndpoint), &v1alpha1.TrafficManagerEndpoint{})
 
@@ -91,7 +93,7 @@ func (c *FakeTrafficManagerEndpoints) Create(trafficManagerEndpoint *v1alpha1.Tr
 }
 
 // Update takes the representation of a trafficManagerEndpoint and updates it. Returns the server's representation of the trafficManagerEndpoint, and an error, if there is any.
-func (c *FakeTrafficManagerEndpoints) Update(trafficManagerEndpoint *v1alpha1.TrafficManagerEndpoint) (result *v1alpha1.TrafficManagerEndpoint, err error) {
+func (c *FakeTrafficManagerEndpoints) Update(ctx context.Context, trafficManagerEndpoint *v1alpha1.TrafficManagerEndpoint, opts v1.UpdateOptions) (result *v1alpha1.TrafficManagerEndpoint, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(trafficmanagerendpointsResource, c.ns, trafficManagerEndpoint), &v1alpha1.TrafficManagerEndpoint{})
 
@@ -103,7 +105,7 @@ func (c *FakeTrafficManagerEndpoints) Update(trafficManagerEndpoint *v1alpha1.Tr
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeTrafficManagerEndpoints) UpdateStatus(trafficManagerEndpoint *v1alpha1.TrafficManagerEndpoint) (*v1alpha1.TrafficManagerEndpoint, error) {
+func (c *FakeTrafficManagerEndpoints) UpdateStatus(ctx context.Context, trafficManagerEndpoint *v1alpha1.TrafficManagerEndpoint, opts v1.UpdateOptions) (*v1alpha1.TrafficManagerEndpoint, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(trafficmanagerendpointsResource, "status", c.ns, trafficManagerEndpoint), &v1alpha1.TrafficManagerEndpoint{})
 
@@ -114,7 +116,7 @@ func (c *FakeTrafficManagerEndpoints) UpdateStatus(trafficManagerEndpoint *v1alp
 }
 
 // Delete takes name of the trafficManagerEndpoint and deletes it. Returns an error if one occurs.
-func (c *FakeTrafficManagerEndpoints) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeTrafficManagerEndpoints) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(trafficmanagerendpointsResource, c.ns, name), &v1alpha1.TrafficManagerEndpoint{})
 
@@ -122,15 +124,15 @@ func (c *FakeTrafficManagerEndpoints) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeTrafficManagerEndpoints) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(trafficmanagerendpointsResource, c.ns, listOptions)
+func (c *FakeTrafficManagerEndpoints) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(trafficmanagerendpointsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.TrafficManagerEndpointList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched trafficManagerEndpoint.
-func (c *FakeTrafficManagerEndpoints) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.TrafficManagerEndpoint, err error) {
+func (c *FakeTrafficManagerEndpoints) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.TrafficManagerEndpoint, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(trafficmanagerendpointsResource, c.ns, name, pt, data, subresources...), &v1alpha1.TrafficManagerEndpoint{})
 

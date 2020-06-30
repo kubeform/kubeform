@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type KubernetesClustersGetter interface {
 
 // KubernetesClusterInterface has methods to work with KubernetesCluster resources.
 type KubernetesClusterInterface interface {
-	Create(*v1alpha1.KubernetesCluster) (*v1alpha1.KubernetesCluster, error)
-	Update(*v1alpha1.KubernetesCluster) (*v1alpha1.KubernetesCluster, error)
-	UpdateStatus(*v1alpha1.KubernetesCluster) (*v1alpha1.KubernetesCluster, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.KubernetesCluster, error)
-	List(opts v1.ListOptions) (*v1alpha1.KubernetesClusterList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KubernetesCluster, err error)
+	Create(ctx context.Context, kubernetesCluster *v1alpha1.KubernetesCluster, opts v1.CreateOptions) (*v1alpha1.KubernetesCluster, error)
+	Update(ctx context.Context, kubernetesCluster *v1alpha1.KubernetesCluster, opts v1.UpdateOptions) (*v1alpha1.KubernetesCluster, error)
+	UpdateStatus(ctx context.Context, kubernetesCluster *v1alpha1.KubernetesCluster, opts v1.UpdateOptions) (*v1alpha1.KubernetesCluster, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.KubernetesCluster, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.KubernetesClusterList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KubernetesCluster, err error)
 	KubernetesClusterExpansion
 }
 
@@ -65,20 +66,20 @@ func newKubernetesClusters(c *AzurermV1alpha1Client, namespace string) *kubernet
 }
 
 // Get takes name of the kubernetesCluster, and returns the corresponding kubernetesCluster object, and an error if there is any.
-func (c *kubernetesClusters) Get(name string, options v1.GetOptions) (result *v1alpha1.KubernetesCluster, err error) {
+func (c *kubernetesClusters) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KubernetesCluster, err error) {
 	result = &v1alpha1.KubernetesCluster{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("kubernetesclusters").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of KubernetesClusters that match those selectors.
-func (c *kubernetesClusters) List(opts v1.ListOptions) (result *v1alpha1.KubernetesClusterList, err error) {
+func (c *kubernetesClusters) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KubernetesClusterList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *kubernetesClusters) List(opts v1.ListOptions) (result *v1alpha1.Kuberne
 		Resource("kubernetesclusters").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested kubernetesClusters.
-func (c *kubernetesClusters) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *kubernetesClusters) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *kubernetesClusters) Watch(opts v1.ListOptions) (watch.Interface, error)
 		Resource("kubernetesclusters").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a kubernetesCluster and creates it.  Returns the server's representation of the kubernetesCluster, and an error, if there is any.
-func (c *kubernetesClusters) Create(kubernetesCluster *v1alpha1.KubernetesCluster) (result *v1alpha1.KubernetesCluster, err error) {
+func (c *kubernetesClusters) Create(ctx context.Context, kubernetesCluster *v1alpha1.KubernetesCluster, opts v1.CreateOptions) (result *v1alpha1.KubernetesCluster, err error) {
 	result = &v1alpha1.KubernetesCluster{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("kubernetesclusters").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(kubernetesCluster).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a kubernetesCluster and updates it. Returns the server's representation of the kubernetesCluster, and an error, if there is any.
-func (c *kubernetesClusters) Update(kubernetesCluster *v1alpha1.KubernetesCluster) (result *v1alpha1.KubernetesCluster, err error) {
+func (c *kubernetesClusters) Update(ctx context.Context, kubernetesCluster *v1alpha1.KubernetesCluster, opts v1.UpdateOptions) (result *v1alpha1.KubernetesCluster, err error) {
 	result = &v1alpha1.KubernetesCluster{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("kubernetesclusters").
 		Name(kubernetesCluster.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(kubernetesCluster).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *kubernetesClusters) UpdateStatus(kubernetesCluster *v1alpha1.KubernetesCluster) (result *v1alpha1.KubernetesCluster, err error) {
+func (c *kubernetesClusters) UpdateStatus(ctx context.Context, kubernetesCluster *v1alpha1.KubernetesCluster, opts v1.UpdateOptions) (result *v1alpha1.KubernetesCluster, err error) {
 	result = &v1alpha1.KubernetesCluster{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("kubernetesclusters").
 		Name(kubernetesCluster.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(kubernetesCluster).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the kubernetesCluster and deletes it. Returns an error if one occurs.
-func (c *kubernetesClusters) Delete(name string, options *v1.DeleteOptions) error {
+func (c *kubernetesClusters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("kubernetesclusters").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *kubernetesClusters) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *kubernetesClusters) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("kubernetesclusters").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched kubernetesCluster.
-func (c *kubernetesClusters) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KubernetesCluster, err error) {
+func (c *kubernetesClusters) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KubernetesCluster, err error) {
 	result = &v1alpha1.KubernetesCluster{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("kubernetesclusters").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

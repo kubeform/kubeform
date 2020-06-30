@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var securitycentersubscriptionpricingsResource = schema.GroupVersionResource{Gro
 var securitycentersubscriptionpricingsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "SecurityCenterSubscriptionPricing"}
 
 // Get takes name of the securityCenterSubscriptionPricing, and returns the corresponding securityCenterSubscriptionPricing object, and an error if there is any.
-func (c *FakeSecurityCenterSubscriptionPricings) Get(name string, options v1.GetOptions) (result *v1alpha1.SecurityCenterSubscriptionPricing, err error) {
+func (c *FakeSecurityCenterSubscriptionPricings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SecurityCenterSubscriptionPricing, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(securitycentersubscriptionpricingsResource, c.ns, name), &v1alpha1.SecurityCenterSubscriptionPricing{})
 
@@ -51,7 +53,7 @@ func (c *FakeSecurityCenterSubscriptionPricings) Get(name string, options v1.Get
 }
 
 // List takes label and field selectors, and returns the list of SecurityCenterSubscriptionPricings that match those selectors.
-func (c *FakeSecurityCenterSubscriptionPricings) List(opts v1.ListOptions) (result *v1alpha1.SecurityCenterSubscriptionPricingList, err error) {
+func (c *FakeSecurityCenterSubscriptionPricings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SecurityCenterSubscriptionPricingList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(securitycentersubscriptionpricingsResource, securitycentersubscriptionpricingsKind, c.ns, opts), &v1alpha1.SecurityCenterSubscriptionPricingList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSecurityCenterSubscriptionPricings) List(opts v1.ListOptions) (resu
 }
 
 // Watch returns a watch.Interface that watches the requested securityCenterSubscriptionPricings.
-func (c *FakeSecurityCenterSubscriptionPricings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSecurityCenterSubscriptionPricings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(securitycentersubscriptionpricingsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a securityCenterSubscriptionPricing and creates it.  Returns the server's representation of the securityCenterSubscriptionPricing, and an error, if there is any.
-func (c *FakeSecurityCenterSubscriptionPricings) Create(securityCenterSubscriptionPricing *v1alpha1.SecurityCenterSubscriptionPricing) (result *v1alpha1.SecurityCenterSubscriptionPricing, err error) {
+func (c *FakeSecurityCenterSubscriptionPricings) Create(ctx context.Context, securityCenterSubscriptionPricing *v1alpha1.SecurityCenterSubscriptionPricing, opts v1.CreateOptions) (result *v1alpha1.SecurityCenterSubscriptionPricing, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(securitycentersubscriptionpricingsResource, c.ns, securityCenterSubscriptionPricing), &v1alpha1.SecurityCenterSubscriptionPricing{})
 
@@ -91,7 +93,7 @@ func (c *FakeSecurityCenterSubscriptionPricings) Create(securityCenterSubscripti
 }
 
 // Update takes the representation of a securityCenterSubscriptionPricing and updates it. Returns the server's representation of the securityCenterSubscriptionPricing, and an error, if there is any.
-func (c *FakeSecurityCenterSubscriptionPricings) Update(securityCenterSubscriptionPricing *v1alpha1.SecurityCenterSubscriptionPricing) (result *v1alpha1.SecurityCenterSubscriptionPricing, err error) {
+func (c *FakeSecurityCenterSubscriptionPricings) Update(ctx context.Context, securityCenterSubscriptionPricing *v1alpha1.SecurityCenterSubscriptionPricing, opts v1.UpdateOptions) (result *v1alpha1.SecurityCenterSubscriptionPricing, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(securitycentersubscriptionpricingsResource, c.ns, securityCenterSubscriptionPricing), &v1alpha1.SecurityCenterSubscriptionPricing{})
 
@@ -103,7 +105,7 @@ func (c *FakeSecurityCenterSubscriptionPricings) Update(securityCenterSubscripti
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSecurityCenterSubscriptionPricings) UpdateStatus(securityCenterSubscriptionPricing *v1alpha1.SecurityCenterSubscriptionPricing) (*v1alpha1.SecurityCenterSubscriptionPricing, error) {
+func (c *FakeSecurityCenterSubscriptionPricings) UpdateStatus(ctx context.Context, securityCenterSubscriptionPricing *v1alpha1.SecurityCenterSubscriptionPricing, opts v1.UpdateOptions) (*v1alpha1.SecurityCenterSubscriptionPricing, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(securitycentersubscriptionpricingsResource, "status", c.ns, securityCenterSubscriptionPricing), &v1alpha1.SecurityCenterSubscriptionPricing{})
 
@@ -114,7 +116,7 @@ func (c *FakeSecurityCenterSubscriptionPricings) UpdateStatus(securityCenterSubs
 }
 
 // Delete takes name of the securityCenterSubscriptionPricing and deletes it. Returns an error if one occurs.
-func (c *FakeSecurityCenterSubscriptionPricings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSecurityCenterSubscriptionPricings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(securitycentersubscriptionpricingsResource, c.ns, name), &v1alpha1.SecurityCenterSubscriptionPricing{})
 
@@ -122,15 +124,15 @@ func (c *FakeSecurityCenterSubscriptionPricings) Delete(name string, options *v1
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSecurityCenterSubscriptionPricings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(securitycentersubscriptionpricingsResource, c.ns, listOptions)
+func (c *FakeSecurityCenterSubscriptionPricings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(securitycentersubscriptionpricingsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SecurityCenterSubscriptionPricingList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched securityCenterSubscriptionPricing.
-func (c *FakeSecurityCenterSubscriptionPricings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SecurityCenterSubscriptionPricing, err error) {
+func (c *FakeSecurityCenterSubscriptionPricings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SecurityCenterSubscriptionPricing, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(securitycentersubscriptionpricingsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SecurityCenterSubscriptionPricing{})
 

@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type StorageBucketAccessControlsGetter interface {
 
 // StorageBucketAccessControlInterface has methods to work with StorageBucketAccessControl resources.
 type StorageBucketAccessControlInterface interface {
-	Create(*v1alpha1.StorageBucketAccessControl) (*v1alpha1.StorageBucketAccessControl, error)
-	Update(*v1alpha1.StorageBucketAccessControl) (*v1alpha1.StorageBucketAccessControl, error)
-	UpdateStatus(*v1alpha1.StorageBucketAccessControl) (*v1alpha1.StorageBucketAccessControl, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.StorageBucketAccessControl, error)
-	List(opts v1.ListOptions) (*v1alpha1.StorageBucketAccessControlList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StorageBucketAccessControl, err error)
+	Create(ctx context.Context, storageBucketAccessControl *v1alpha1.StorageBucketAccessControl, opts v1.CreateOptions) (*v1alpha1.StorageBucketAccessControl, error)
+	Update(ctx context.Context, storageBucketAccessControl *v1alpha1.StorageBucketAccessControl, opts v1.UpdateOptions) (*v1alpha1.StorageBucketAccessControl, error)
+	UpdateStatus(ctx context.Context, storageBucketAccessControl *v1alpha1.StorageBucketAccessControl, opts v1.UpdateOptions) (*v1alpha1.StorageBucketAccessControl, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.StorageBucketAccessControl, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.StorageBucketAccessControlList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StorageBucketAccessControl, err error)
 	StorageBucketAccessControlExpansion
 }
 
@@ -65,20 +66,20 @@ func newStorageBucketAccessControls(c *GoogleV1alpha1Client, namespace string) *
 }
 
 // Get takes name of the storageBucketAccessControl, and returns the corresponding storageBucketAccessControl object, and an error if there is any.
-func (c *storageBucketAccessControls) Get(name string, options v1.GetOptions) (result *v1alpha1.StorageBucketAccessControl, err error) {
+func (c *storageBucketAccessControls) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.StorageBucketAccessControl, err error) {
 	result = &v1alpha1.StorageBucketAccessControl{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("storagebucketaccesscontrols").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of StorageBucketAccessControls that match those selectors.
-func (c *storageBucketAccessControls) List(opts v1.ListOptions) (result *v1alpha1.StorageBucketAccessControlList, err error) {
+func (c *storageBucketAccessControls) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.StorageBucketAccessControlList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *storageBucketAccessControls) List(opts v1.ListOptions) (result *v1alpha
 		Resource("storagebucketaccesscontrols").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested storageBucketAccessControls.
-func (c *storageBucketAccessControls) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *storageBucketAccessControls) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *storageBucketAccessControls) Watch(opts v1.ListOptions) (watch.Interfac
 		Resource("storagebucketaccesscontrols").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a storageBucketAccessControl and creates it.  Returns the server's representation of the storageBucketAccessControl, and an error, if there is any.
-func (c *storageBucketAccessControls) Create(storageBucketAccessControl *v1alpha1.StorageBucketAccessControl) (result *v1alpha1.StorageBucketAccessControl, err error) {
+func (c *storageBucketAccessControls) Create(ctx context.Context, storageBucketAccessControl *v1alpha1.StorageBucketAccessControl, opts v1.CreateOptions) (result *v1alpha1.StorageBucketAccessControl, err error) {
 	result = &v1alpha1.StorageBucketAccessControl{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("storagebucketaccesscontrols").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(storageBucketAccessControl).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a storageBucketAccessControl and updates it. Returns the server's representation of the storageBucketAccessControl, and an error, if there is any.
-func (c *storageBucketAccessControls) Update(storageBucketAccessControl *v1alpha1.StorageBucketAccessControl) (result *v1alpha1.StorageBucketAccessControl, err error) {
+func (c *storageBucketAccessControls) Update(ctx context.Context, storageBucketAccessControl *v1alpha1.StorageBucketAccessControl, opts v1.UpdateOptions) (result *v1alpha1.StorageBucketAccessControl, err error) {
 	result = &v1alpha1.StorageBucketAccessControl{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("storagebucketaccesscontrols").
 		Name(storageBucketAccessControl.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(storageBucketAccessControl).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *storageBucketAccessControls) UpdateStatus(storageBucketAccessControl *v1alpha1.StorageBucketAccessControl) (result *v1alpha1.StorageBucketAccessControl, err error) {
+func (c *storageBucketAccessControls) UpdateStatus(ctx context.Context, storageBucketAccessControl *v1alpha1.StorageBucketAccessControl, opts v1.UpdateOptions) (result *v1alpha1.StorageBucketAccessControl, err error) {
 	result = &v1alpha1.StorageBucketAccessControl{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("storagebucketaccesscontrols").
 		Name(storageBucketAccessControl.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(storageBucketAccessControl).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the storageBucketAccessControl and deletes it. Returns an error if one occurs.
-func (c *storageBucketAccessControls) Delete(name string, options *v1.DeleteOptions) error {
+func (c *storageBucketAccessControls) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("storagebucketaccesscontrols").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *storageBucketAccessControls) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *storageBucketAccessControls) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("storagebucketaccesscontrols").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched storageBucketAccessControl.
-func (c *storageBucketAccessControls) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StorageBucketAccessControl, err error) {
+func (c *storageBucketAccessControls) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StorageBucketAccessControl, err error) {
 	result = &v1alpha1.StorageBucketAccessControl{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("storagebucketaccesscontrols").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

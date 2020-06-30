@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var automationvariabledatetimesResource = schema.GroupVersionResource{Group: "az
 var automationvariabledatetimesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "AutomationVariableDatetime"}
 
 // Get takes name of the automationVariableDatetime, and returns the corresponding automationVariableDatetime object, and an error if there is any.
-func (c *FakeAutomationVariableDatetimes) Get(name string, options v1.GetOptions) (result *v1alpha1.AutomationVariableDatetime, err error) {
+func (c *FakeAutomationVariableDatetimes) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AutomationVariableDatetime, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(automationvariabledatetimesResource, c.ns, name), &v1alpha1.AutomationVariableDatetime{})
 
@@ -51,7 +53,7 @@ func (c *FakeAutomationVariableDatetimes) Get(name string, options v1.GetOptions
 }
 
 // List takes label and field selectors, and returns the list of AutomationVariableDatetimes that match those selectors.
-func (c *FakeAutomationVariableDatetimes) List(opts v1.ListOptions) (result *v1alpha1.AutomationVariableDatetimeList, err error) {
+func (c *FakeAutomationVariableDatetimes) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AutomationVariableDatetimeList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(automationvariabledatetimesResource, automationvariabledatetimesKind, c.ns, opts), &v1alpha1.AutomationVariableDatetimeList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAutomationVariableDatetimes) List(opts v1.ListOptions) (result *v1a
 }
 
 // Watch returns a watch.Interface that watches the requested automationVariableDatetimes.
-func (c *FakeAutomationVariableDatetimes) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAutomationVariableDatetimes) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(automationvariabledatetimesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a automationVariableDatetime and creates it.  Returns the server's representation of the automationVariableDatetime, and an error, if there is any.
-func (c *FakeAutomationVariableDatetimes) Create(automationVariableDatetime *v1alpha1.AutomationVariableDatetime) (result *v1alpha1.AutomationVariableDatetime, err error) {
+func (c *FakeAutomationVariableDatetimes) Create(ctx context.Context, automationVariableDatetime *v1alpha1.AutomationVariableDatetime, opts v1.CreateOptions) (result *v1alpha1.AutomationVariableDatetime, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(automationvariabledatetimesResource, c.ns, automationVariableDatetime), &v1alpha1.AutomationVariableDatetime{})
 
@@ -91,7 +93,7 @@ func (c *FakeAutomationVariableDatetimes) Create(automationVariableDatetime *v1a
 }
 
 // Update takes the representation of a automationVariableDatetime and updates it. Returns the server's representation of the automationVariableDatetime, and an error, if there is any.
-func (c *FakeAutomationVariableDatetimes) Update(automationVariableDatetime *v1alpha1.AutomationVariableDatetime) (result *v1alpha1.AutomationVariableDatetime, err error) {
+func (c *FakeAutomationVariableDatetimes) Update(ctx context.Context, automationVariableDatetime *v1alpha1.AutomationVariableDatetime, opts v1.UpdateOptions) (result *v1alpha1.AutomationVariableDatetime, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(automationvariabledatetimesResource, c.ns, automationVariableDatetime), &v1alpha1.AutomationVariableDatetime{})
 
@@ -103,7 +105,7 @@ func (c *FakeAutomationVariableDatetimes) Update(automationVariableDatetime *v1a
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAutomationVariableDatetimes) UpdateStatus(automationVariableDatetime *v1alpha1.AutomationVariableDatetime) (*v1alpha1.AutomationVariableDatetime, error) {
+func (c *FakeAutomationVariableDatetimes) UpdateStatus(ctx context.Context, automationVariableDatetime *v1alpha1.AutomationVariableDatetime, opts v1.UpdateOptions) (*v1alpha1.AutomationVariableDatetime, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(automationvariabledatetimesResource, "status", c.ns, automationVariableDatetime), &v1alpha1.AutomationVariableDatetime{})
 
@@ -114,7 +116,7 @@ func (c *FakeAutomationVariableDatetimes) UpdateStatus(automationVariableDatetim
 }
 
 // Delete takes name of the automationVariableDatetime and deletes it. Returns an error if one occurs.
-func (c *FakeAutomationVariableDatetimes) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAutomationVariableDatetimes) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(automationvariabledatetimesResource, c.ns, name), &v1alpha1.AutomationVariableDatetime{})
 
@@ -122,15 +124,15 @@ func (c *FakeAutomationVariableDatetimes) Delete(name string, options *v1.Delete
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAutomationVariableDatetimes) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(automationvariabledatetimesResource, c.ns, listOptions)
+func (c *FakeAutomationVariableDatetimes) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(automationvariabledatetimesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AutomationVariableDatetimeList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched automationVariableDatetime.
-func (c *FakeAutomationVariableDatetimes) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AutomationVariableDatetime, err error) {
+func (c *FakeAutomationVariableDatetimes) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AutomationVariableDatetime, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(automationvariabledatetimesResource, c.ns, name, pt, data, subresources...), &v1alpha1.AutomationVariableDatetime{})
 

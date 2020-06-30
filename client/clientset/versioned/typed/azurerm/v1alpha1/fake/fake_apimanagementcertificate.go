@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var apimanagementcertificatesResource = schema.GroupVersionResource{Group: "azur
 var apimanagementcertificatesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "ApiManagementCertificate"}
 
 // Get takes name of the apiManagementCertificate, and returns the corresponding apiManagementCertificate object, and an error if there is any.
-func (c *FakeApiManagementCertificates) Get(name string, options v1.GetOptions) (result *v1alpha1.ApiManagementCertificate, err error) {
+func (c *FakeApiManagementCertificates) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApiManagementCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(apimanagementcertificatesResource, c.ns, name), &v1alpha1.ApiManagementCertificate{})
 
@@ -51,7 +53,7 @@ func (c *FakeApiManagementCertificates) Get(name string, options v1.GetOptions) 
 }
 
 // List takes label and field selectors, and returns the list of ApiManagementCertificates that match those selectors.
-func (c *FakeApiManagementCertificates) List(opts v1.ListOptions) (result *v1alpha1.ApiManagementCertificateList, err error) {
+func (c *FakeApiManagementCertificates) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApiManagementCertificateList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(apimanagementcertificatesResource, apimanagementcertificatesKind, c.ns, opts), &v1alpha1.ApiManagementCertificateList{})
 
@@ -73,14 +75,14 @@ func (c *FakeApiManagementCertificates) List(opts v1.ListOptions) (result *v1alp
 }
 
 // Watch returns a watch.Interface that watches the requested apiManagementCertificates.
-func (c *FakeApiManagementCertificates) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeApiManagementCertificates) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(apimanagementcertificatesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a apiManagementCertificate and creates it.  Returns the server's representation of the apiManagementCertificate, and an error, if there is any.
-func (c *FakeApiManagementCertificates) Create(apiManagementCertificate *v1alpha1.ApiManagementCertificate) (result *v1alpha1.ApiManagementCertificate, err error) {
+func (c *FakeApiManagementCertificates) Create(ctx context.Context, apiManagementCertificate *v1alpha1.ApiManagementCertificate, opts v1.CreateOptions) (result *v1alpha1.ApiManagementCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(apimanagementcertificatesResource, c.ns, apiManagementCertificate), &v1alpha1.ApiManagementCertificate{})
 
@@ -91,7 +93,7 @@ func (c *FakeApiManagementCertificates) Create(apiManagementCertificate *v1alpha
 }
 
 // Update takes the representation of a apiManagementCertificate and updates it. Returns the server's representation of the apiManagementCertificate, and an error, if there is any.
-func (c *FakeApiManagementCertificates) Update(apiManagementCertificate *v1alpha1.ApiManagementCertificate) (result *v1alpha1.ApiManagementCertificate, err error) {
+func (c *FakeApiManagementCertificates) Update(ctx context.Context, apiManagementCertificate *v1alpha1.ApiManagementCertificate, opts v1.UpdateOptions) (result *v1alpha1.ApiManagementCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(apimanagementcertificatesResource, c.ns, apiManagementCertificate), &v1alpha1.ApiManagementCertificate{})
 
@@ -103,7 +105,7 @@ func (c *FakeApiManagementCertificates) Update(apiManagementCertificate *v1alpha
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeApiManagementCertificates) UpdateStatus(apiManagementCertificate *v1alpha1.ApiManagementCertificate) (*v1alpha1.ApiManagementCertificate, error) {
+func (c *FakeApiManagementCertificates) UpdateStatus(ctx context.Context, apiManagementCertificate *v1alpha1.ApiManagementCertificate, opts v1.UpdateOptions) (*v1alpha1.ApiManagementCertificate, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(apimanagementcertificatesResource, "status", c.ns, apiManagementCertificate), &v1alpha1.ApiManagementCertificate{})
 
@@ -114,7 +116,7 @@ func (c *FakeApiManagementCertificates) UpdateStatus(apiManagementCertificate *v
 }
 
 // Delete takes name of the apiManagementCertificate and deletes it. Returns an error if one occurs.
-func (c *FakeApiManagementCertificates) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeApiManagementCertificates) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(apimanagementcertificatesResource, c.ns, name), &v1alpha1.ApiManagementCertificate{})
 
@@ -122,15 +124,15 @@ func (c *FakeApiManagementCertificates) Delete(name string, options *v1.DeleteOp
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeApiManagementCertificates) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(apimanagementcertificatesResource, c.ns, listOptions)
+func (c *FakeApiManagementCertificates) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(apimanagementcertificatesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ApiManagementCertificateList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched apiManagementCertificate.
-func (c *FakeApiManagementCertificates) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiManagementCertificate, err error) {
+func (c *FakeApiManagementCertificates) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiManagementCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(apimanagementcertificatesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ApiManagementCertificate{})
 

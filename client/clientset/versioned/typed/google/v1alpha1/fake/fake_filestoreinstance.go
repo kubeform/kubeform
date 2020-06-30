@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var filestoreinstancesResource = schema.GroupVersionResource{Group: "google.kube
 var filestoreinstancesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "FilestoreInstance"}
 
 // Get takes name of the filestoreInstance, and returns the corresponding filestoreInstance object, and an error if there is any.
-func (c *FakeFilestoreInstances) Get(name string, options v1.GetOptions) (result *v1alpha1.FilestoreInstance, err error) {
+func (c *FakeFilestoreInstances) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.FilestoreInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(filestoreinstancesResource, c.ns, name), &v1alpha1.FilestoreInstance{})
 
@@ -51,7 +53,7 @@ func (c *FakeFilestoreInstances) Get(name string, options v1.GetOptions) (result
 }
 
 // List takes label and field selectors, and returns the list of FilestoreInstances that match those selectors.
-func (c *FakeFilestoreInstances) List(opts v1.ListOptions) (result *v1alpha1.FilestoreInstanceList, err error) {
+func (c *FakeFilestoreInstances) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.FilestoreInstanceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(filestoreinstancesResource, filestoreinstancesKind, c.ns, opts), &v1alpha1.FilestoreInstanceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeFilestoreInstances) List(opts v1.ListOptions) (result *v1alpha1.Fil
 }
 
 // Watch returns a watch.Interface that watches the requested filestoreInstances.
-func (c *FakeFilestoreInstances) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeFilestoreInstances) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(filestoreinstancesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a filestoreInstance and creates it.  Returns the server's representation of the filestoreInstance, and an error, if there is any.
-func (c *FakeFilestoreInstances) Create(filestoreInstance *v1alpha1.FilestoreInstance) (result *v1alpha1.FilestoreInstance, err error) {
+func (c *FakeFilestoreInstances) Create(ctx context.Context, filestoreInstance *v1alpha1.FilestoreInstance, opts v1.CreateOptions) (result *v1alpha1.FilestoreInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(filestoreinstancesResource, c.ns, filestoreInstance), &v1alpha1.FilestoreInstance{})
 
@@ -91,7 +93,7 @@ func (c *FakeFilestoreInstances) Create(filestoreInstance *v1alpha1.FilestoreIns
 }
 
 // Update takes the representation of a filestoreInstance and updates it. Returns the server's representation of the filestoreInstance, and an error, if there is any.
-func (c *FakeFilestoreInstances) Update(filestoreInstance *v1alpha1.FilestoreInstance) (result *v1alpha1.FilestoreInstance, err error) {
+func (c *FakeFilestoreInstances) Update(ctx context.Context, filestoreInstance *v1alpha1.FilestoreInstance, opts v1.UpdateOptions) (result *v1alpha1.FilestoreInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(filestoreinstancesResource, c.ns, filestoreInstance), &v1alpha1.FilestoreInstance{})
 
@@ -103,7 +105,7 @@ func (c *FakeFilestoreInstances) Update(filestoreInstance *v1alpha1.FilestoreIns
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeFilestoreInstances) UpdateStatus(filestoreInstance *v1alpha1.FilestoreInstance) (*v1alpha1.FilestoreInstance, error) {
+func (c *FakeFilestoreInstances) UpdateStatus(ctx context.Context, filestoreInstance *v1alpha1.FilestoreInstance, opts v1.UpdateOptions) (*v1alpha1.FilestoreInstance, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(filestoreinstancesResource, "status", c.ns, filestoreInstance), &v1alpha1.FilestoreInstance{})
 
@@ -114,7 +116,7 @@ func (c *FakeFilestoreInstances) UpdateStatus(filestoreInstance *v1alpha1.Filest
 }
 
 // Delete takes name of the filestoreInstance and deletes it. Returns an error if one occurs.
-func (c *FakeFilestoreInstances) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeFilestoreInstances) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(filestoreinstancesResource, c.ns, name), &v1alpha1.FilestoreInstance{})
 
@@ -122,15 +124,15 @@ func (c *FakeFilestoreInstances) Delete(name string, options *v1.DeleteOptions) 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeFilestoreInstances) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(filestoreinstancesResource, c.ns, listOptions)
+func (c *FakeFilestoreInstances) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(filestoreinstancesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.FilestoreInstanceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched filestoreInstance.
-func (c *FakeFilestoreInstances) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.FilestoreInstance, err error) {
+func (c *FakeFilestoreInstances) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.FilestoreInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(filestoreinstancesResource, c.ns, name, pt, data, subresources...), &v1alpha1.FilestoreInstance{})
 

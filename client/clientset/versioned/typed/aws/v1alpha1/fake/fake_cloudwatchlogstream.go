@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cloudwatchlogstreamsResource = schema.GroupVersionResource{Group: "aws.kubef
 var cloudwatchlogstreamsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "CloudwatchLogStream"}
 
 // Get takes name of the cloudwatchLogStream, and returns the corresponding cloudwatchLogStream object, and an error if there is any.
-func (c *FakeCloudwatchLogStreams) Get(name string, options v1.GetOptions) (result *v1alpha1.CloudwatchLogStream, err error) {
+func (c *FakeCloudwatchLogStreams) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CloudwatchLogStream, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cloudwatchlogstreamsResource, c.ns, name), &v1alpha1.CloudwatchLogStream{})
 
@@ -51,7 +53,7 @@ func (c *FakeCloudwatchLogStreams) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of CloudwatchLogStreams that match those selectors.
-func (c *FakeCloudwatchLogStreams) List(opts v1.ListOptions) (result *v1alpha1.CloudwatchLogStreamList, err error) {
+func (c *FakeCloudwatchLogStreams) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CloudwatchLogStreamList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cloudwatchlogstreamsResource, cloudwatchlogstreamsKind, c.ns, opts), &v1alpha1.CloudwatchLogStreamList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCloudwatchLogStreams) List(opts v1.ListOptions) (result *v1alpha1.C
 }
 
 // Watch returns a watch.Interface that watches the requested cloudwatchLogStreams.
-func (c *FakeCloudwatchLogStreams) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCloudwatchLogStreams) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cloudwatchlogstreamsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cloudwatchLogStream and creates it.  Returns the server's representation of the cloudwatchLogStream, and an error, if there is any.
-func (c *FakeCloudwatchLogStreams) Create(cloudwatchLogStream *v1alpha1.CloudwatchLogStream) (result *v1alpha1.CloudwatchLogStream, err error) {
+func (c *FakeCloudwatchLogStreams) Create(ctx context.Context, cloudwatchLogStream *v1alpha1.CloudwatchLogStream, opts v1.CreateOptions) (result *v1alpha1.CloudwatchLogStream, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cloudwatchlogstreamsResource, c.ns, cloudwatchLogStream), &v1alpha1.CloudwatchLogStream{})
 
@@ -91,7 +93,7 @@ func (c *FakeCloudwatchLogStreams) Create(cloudwatchLogStream *v1alpha1.Cloudwat
 }
 
 // Update takes the representation of a cloudwatchLogStream and updates it. Returns the server's representation of the cloudwatchLogStream, and an error, if there is any.
-func (c *FakeCloudwatchLogStreams) Update(cloudwatchLogStream *v1alpha1.CloudwatchLogStream) (result *v1alpha1.CloudwatchLogStream, err error) {
+func (c *FakeCloudwatchLogStreams) Update(ctx context.Context, cloudwatchLogStream *v1alpha1.CloudwatchLogStream, opts v1.UpdateOptions) (result *v1alpha1.CloudwatchLogStream, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cloudwatchlogstreamsResource, c.ns, cloudwatchLogStream), &v1alpha1.CloudwatchLogStream{})
 
@@ -103,7 +105,7 @@ func (c *FakeCloudwatchLogStreams) Update(cloudwatchLogStream *v1alpha1.Cloudwat
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCloudwatchLogStreams) UpdateStatus(cloudwatchLogStream *v1alpha1.CloudwatchLogStream) (*v1alpha1.CloudwatchLogStream, error) {
+func (c *FakeCloudwatchLogStreams) UpdateStatus(ctx context.Context, cloudwatchLogStream *v1alpha1.CloudwatchLogStream, opts v1.UpdateOptions) (*v1alpha1.CloudwatchLogStream, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cloudwatchlogstreamsResource, "status", c.ns, cloudwatchLogStream), &v1alpha1.CloudwatchLogStream{})
 
@@ -114,7 +116,7 @@ func (c *FakeCloudwatchLogStreams) UpdateStatus(cloudwatchLogStream *v1alpha1.Cl
 }
 
 // Delete takes name of the cloudwatchLogStream and deletes it. Returns an error if one occurs.
-func (c *FakeCloudwatchLogStreams) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCloudwatchLogStreams) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cloudwatchlogstreamsResource, c.ns, name), &v1alpha1.CloudwatchLogStream{})
 
@@ -122,15 +124,15 @@ func (c *FakeCloudwatchLogStreams) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCloudwatchLogStreams) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cloudwatchlogstreamsResource, c.ns, listOptions)
+func (c *FakeCloudwatchLogStreams) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cloudwatchlogstreamsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CloudwatchLogStreamList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cloudwatchLogStream.
-func (c *FakeCloudwatchLogStreams) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CloudwatchLogStream, err error) {
+func (c *FakeCloudwatchLogStreams) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CloudwatchLogStream, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cloudwatchlogstreamsResource, c.ns, name, pt, data, subresources...), &v1alpha1.CloudwatchLogStream{})
 

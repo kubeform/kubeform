@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var datafactorylinkedservicemysqlsResource = schema.GroupVersionResource{Group: 
 var datafactorylinkedservicemysqlsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "DataFactoryLinkedServiceMysql"}
 
 // Get takes name of the dataFactoryLinkedServiceMysql, and returns the corresponding dataFactoryLinkedServiceMysql object, and an error if there is any.
-func (c *FakeDataFactoryLinkedServiceMysqls) Get(name string, options v1.GetOptions) (result *v1alpha1.DataFactoryLinkedServiceMysql, err error) {
+func (c *FakeDataFactoryLinkedServiceMysqls) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DataFactoryLinkedServiceMysql, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(datafactorylinkedservicemysqlsResource, c.ns, name), &v1alpha1.DataFactoryLinkedServiceMysql{})
 
@@ -51,7 +53,7 @@ func (c *FakeDataFactoryLinkedServiceMysqls) Get(name string, options v1.GetOpti
 }
 
 // List takes label and field selectors, and returns the list of DataFactoryLinkedServiceMysqls that match those selectors.
-func (c *FakeDataFactoryLinkedServiceMysqls) List(opts v1.ListOptions) (result *v1alpha1.DataFactoryLinkedServiceMysqlList, err error) {
+func (c *FakeDataFactoryLinkedServiceMysqls) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DataFactoryLinkedServiceMysqlList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(datafactorylinkedservicemysqlsResource, datafactorylinkedservicemysqlsKind, c.ns, opts), &v1alpha1.DataFactoryLinkedServiceMysqlList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDataFactoryLinkedServiceMysqls) List(opts v1.ListOptions) (result *
 }
 
 // Watch returns a watch.Interface that watches the requested dataFactoryLinkedServiceMysqls.
-func (c *FakeDataFactoryLinkedServiceMysqls) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDataFactoryLinkedServiceMysqls) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(datafactorylinkedservicemysqlsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dataFactoryLinkedServiceMysql and creates it.  Returns the server's representation of the dataFactoryLinkedServiceMysql, and an error, if there is any.
-func (c *FakeDataFactoryLinkedServiceMysqls) Create(dataFactoryLinkedServiceMysql *v1alpha1.DataFactoryLinkedServiceMysql) (result *v1alpha1.DataFactoryLinkedServiceMysql, err error) {
+func (c *FakeDataFactoryLinkedServiceMysqls) Create(ctx context.Context, dataFactoryLinkedServiceMysql *v1alpha1.DataFactoryLinkedServiceMysql, opts v1.CreateOptions) (result *v1alpha1.DataFactoryLinkedServiceMysql, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(datafactorylinkedservicemysqlsResource, c.ns, dataFactoryLinkedServiceMysql), &v1alpha1.DataFactoryLinkedServiceMysql{})
 
@@ -91,7 +93,7 @@ func (c *FakeDataFactoryLinkedServiceMysqls) Create(dataFactoryLinkedServiceMysq
 }
 
 // Update takes the representation of a dataFactoryLinkedServiceMysql and updates it. Returns the server's representation of the dataFactoryLinkedServiceMysql, and an error, if there is any.
-func (c *FakeDataFactoryLinkedServiceMysqls) Update(dataFactoryLinkedServiceMysql *v1alpha1.DataFactoryLinkedServiceMysql) (result *v1alpha1.DataFactoryLinkedServiceMysql, err error) {
+func (c *FakeDataFactoryLinkedServiceMysqls) Update(ctx context.Context, dataFactoryLinkedServiceMysql *v1alpha1.DataFactoryLinkedServiceMysql, opts v1.UpdateOptions) (result *v1alpha1.DataFactoryLinkedServiceMysql, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(datafactorylinkedservicemysqlsResource, c.ns, dataFactoryLinkedServiceMysql), &v1alpha1.DataFactoryLinkedServiceMysql{})
 
@@ -103,7 +105,7 @@ func (c *FakeDataFactoryLinkedServiceMysqls) Update(dataFactoryLinkedServiceMysq
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDataFactoryLinkedServiceMysqls) UpdateStatus(dataFactoryLinkedServiceMysql *v1alpha1.DataFactoryLinkedServiceMysql) (*v1alpha1.DataFactoryLinkedServiceMysql, error) {
+func (c *FakeDataFactoryLinkedServiceMysqls) UpdateStatus(ctx context.Context, dataFactoryLinkedServiceMysql *v1alpha1.DataFactoryLinkedServiceMysql, opts v1.UpdateOptions) (*v1alpha1.DataFactoryLinkedServiceMysql, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(datafactorylinkedservicemysqlsResource, "status", c.ns, dataFactoryLinkedServiceMysql), &v1alpha1.DataFactoryLinkedServiceMysql{})
 
@@ -114,7 +116,7 @@ func (c *FakeDataFactoryLinkedServiceMysqls) UpdateStatus(dataFactoryLinkedServi
 }
 
 // Delete takes name of the dataFactoryLinkedServiceMysql and deletes it. Returns an error if one occurs.
-func (c *FakeDataFactoryLinkedServiceMysqls) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDataFactoryLinkedServiceMysqls) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(datafactorylinkedservicemysqlsResource, c.ns, name), &v1alpha1.DataFactoryLinkedServiceMysql{})
 
@@ -122,15 +124,15 @@ func (c *FakeDataFactoryLinkedServiceMysqls) Delete(name string, options *v1.Del
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDataFactoryLinkedServiceMysqls) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(datafactorylinkedservicemysqlsResource, c.ns, listOptions)
+func (c *FakeDataFactoryLinkedServiceMysqls) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(datafactorylinkedservicemysqlsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DataFactoryLinkedServiceMysqlList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dataFactoryLinkedServiceMysql.
-func (c *FakeDataFactoryLinkedServiceMysqls) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataFactoryLinkedServiceMysql, err error) {
+func (c *FakeDataFactoryLinkedServiceMysqls) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataFactoryLinkedServiceMysql, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(datafactorylinkedservicemysqlsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DataFactoryLinkedServiceMysql{})
 

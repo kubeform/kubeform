@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var datasynclocations3sResource = schema.GroupVersionResource{Group: "aws.kubefo
 var datasynclocations3sKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DatasyncLocationS3"}
 
 // Get takes name of the datasyncLocationS3, and returns the corresponding datasyncLocationS3 object, and an error if there is any.
-func (c *FakeDatasyncLocationS3s) Get(name string, options v1.GetOptions) (result *v1alpha1.DatasyncLocationS3, err error) {
+func (c *FakeDatasyncLocationS3s) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DatasyncLocationS3, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(datasynclocations3sResource, c.ns, name), &v1alpha1.DatasyncLocationS3{})
 
@@ -51,7 +53,7 @@ func (c *FakeDatasyncLocationS3s) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of DatasyncLocationS3s that match those selectors.
-func (c *FakeDatasyncLocationS3s) List(opts v1.ListOptions) (result *v1alpha1.DatasyncLocationS3List, err error) {
+func (c *FakeDatasyncLocationS3s) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DatasyncLocationS3List, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(datasynclocations3sResource, datasynclocations3sKind, c.ns, opts), &v1alpha1.DatasyncLocationS3List{})
 
@@ -73,14 +75,14 @@ func (c *FakeDatasyncLocationS3s) List(opts v1.ListOptions) (result *v1alpha1.Da
 }
 
 // Watch returns a watch.Interface that watches the requested datasyncLocationS3s.
-func (c *FakeDatasyncLocationS3s) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDatasyncLocationS3s) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(datasynclocations3sResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a datasyncLocationS3 and creates it.  Returns the server's representation of the datasyncLocationS3, and an error, if there is any.
-func (c *FakeDatasyncLocationS3s) Create(datasyncLocationS3 *v1alpha1.DatasyncLocationS3) (result *v1alpha1.DatasyncLocationS3, err error) {
+func (c *FakeDatasyncLocationS3s) Create(ctx context.Context, datasyncLocationS3 *v1alpha1.DatasyncLocationS3, opts v1.CreateOptions) (result *v1alpha1.DatasyncLocationS3, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(datasynclocations3sResource, c.ns, datasyncLocationS3), &v1alpha1.DatasyncLocationS3{})
 
@@ -91,7 +93,7 @@ func (c *FakeDatasyncLocationS3s) Create(datasyncLocationS3 *v1alpha1.DatasyncLo
 }
 
 // Update takes the representation of a datasyncLocationS3 and updates it. Returns the server's representation of the datasyncLocationS3, and an error, if there is any.
-func (c *FakeDatasyncLocationS3s) Update(datasyncLocationS3 *v1alpha1.DatasyncLocationS3) (result *v1alpha1.DatasyncLocationS3, err error) {
+func (c *FakeDatasyncLocationS3s) Update(ctx context.Context, datasyncLocationS3 *v1alpha1.DatasyncLocationS3, opts v1.UpdateOptions) (result *v1alpha1.DatasyncLocationS3, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(datasynclocations3sResource, c.ns, datasyncLocationS3), &v1alpha1.DatasyncLocationS3{})
 
@@ -103,7 +105,7 @@ func (c *FakeDatasyncLocationS3s) Update(datasyncLocationS3 *v1alpha1.DatasyncLo
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDatasyncLocationS3s) UpdateStatus(datasyncLocationS3 *v1alpha1.DatasyncLocationS3) (*v1alpha1.DatasyncLocationS3, error) {
+func (c *FakeDatasyncLocationS3s) UpdateStatus(ctx context.Context, datasyncLocationS3 *v1alpha1.DatasyncLocationS3, opts v1.UpdateOptions) (*v1alpha1.DatasyncLocationS3, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(datasynclocations3sResource, "status", c.ns, datasyncLocationS3), &v1alpha1.DatasyncLocationS3{})
 
@@ -114,7 +116,7 @@ func (c *FakeDatasyncLocationS3s) UpdateStatus(datasyncLocationS3 *v1alpha1.Data
 }
 
 // Delete takes name of the datasyncLocationS3 and deletes it. Returns an error if one occurs.
-func (c *FakeDatasyncLocationS3s) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDatasyncLocationS3s) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(datasynclocations3sResource, c.ns, name), &v1alpha1.DatasyncLocationS3{})
 
@@ -122,15 +124,15 @@ func (c *FakeDatasyncLocationS3s) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDatasyncLocationS3s) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(datasynclocations3sResource, c.ns, listOptions)
+func (c *FakeDatasyncLocationS3s) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(datasynclocations3sResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DatasyncLocationS3List{})
 	return err
 }
 
 // Patch applies the patch and returns the patched datasyncLocationS3.
-func (c *FakeDatasyncLocationS3s) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DatasyncLocationS3, err error) {
+func (c *FakeDatasyncLocationS3s) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DatasyncLocationS3, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(datasynclocations3sResource, c.ns, name, pt, data, subresources...), &v1alpha1.DatasyncLocationS3{})
 

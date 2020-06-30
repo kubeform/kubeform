@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type SecurityhubStandardsSubscriptionsGetter interface {
 
 // SecurityhubStandardsSubscriptionInterface has methods to work with SecurityhubStandardsSubscription resources.
 type SecurityhubStandardsSubscriptionInterface interface {
-	Create(*v1alpha1.SecurityhubStandardsSubscription) (*v1alpha1.SecurityhubStandardsSubscription, error)
-	Update(*v1alpha1.SecurityhubStandardsSubscription) (*v1alpha1.SecurityhubStandardsSubscription, error)
-	UpdateStatus(*v1alpha1.SecurityhubStandardsSubscription) (*v1alpha1.SecurityhubStandardsSubscription, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SecurityhubStandardsSubscription, error)
-	List(opts v1.ListOptions) (*v1alpha1.SecurityhubStandardsSubscriptionList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SecurityhubStandardsSubscription, err error)
+	Create(ctx context.Context, securityhubStandardsSubscription *v1alpha1.SecurityhubStandardsSubscription, opts v1.CreateOptions) (*v1alpha1.SecurityhubStandardsSubscription, error)
+	Update(ctx context.Context, securityhubStandardsSubscription *v1alpha1.SecurityhubStandardsSubscription, opts v1.UpdateOptions) (*v1alpha1.SecurityhubStandardsSubscription, error)
+	UpdateStatus(ctx context.Context, securityhubStandardsSubscription *v1alpha1.SecurityhubStandardsSubscription, opts v1.UpdateOptions) (*v1alpha1.SecurityhubStandardsSubscription, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SecurityhubStandardsSubscription, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SecurityhubStandardsSubscriptionList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SecurityhubStandardsSubscription, err error)
 	SecurityhubStandardsSubscriptionExpansion
 }
 
@@ -65,20 +66,20 @@ func newSecurityhubStandardsSubscriptions(c *AwsV1alpha1Client, namespace string
 }
 
 // Get takes name of the securityhubStandardsSubscription, and returns the corresponding securityhubStandardsSubscription object, and an error if there is any.
-func (c *securityhubStandardsSubscriptions) Get(name string, options v1.GetOptions) (result *v1alpha1.SecurityhubStandardsSubscription, err error) {
+func (c *securityhubStandardsSubscriptions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SecurityhubStandardsSubscription, err error) {
 	result = &v1alpha1.SecurityhubStandardsSubscription{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("securityhubstandardssubscriptions").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SecurityhubStandardsSubscriptions that match those selectors.
-func (c *securityhubStandardsSubscriptions) List(opts v1.ListOptions) (result *v1alpha1.SecurityhubStandardsSubscriptionList, err error) {
+func (c *securityhubStandardsSubscriptions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SecurityhubStandardsSubscriptionList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *securityhubStandardsSubscriptions) List(opts v1.ListOptions) (result *v
 		Resource("securityhubstandardssubscriptions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested securityhubStandardsSubscriptions.
-func (c *securityhubStandardsSubscriptions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *securityhubStandardsSubscriptions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *securityhubStandardsSubscriptions) Watch(opts v1.ListOptions) (watch.In
 		Resource("securityhubstandardssubscriptions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a securityhubStandardsSubscription and creates it.  Returns the server's representation of the securityhubStandardsSubscription, and an error, if there is any.
-func (c *securityhubStandardsSubscriptions) Create(securityhubStandardsSubscription *v1alpha1.SecurityhubStandardsSubscription) (result *v1alpha1.SecurityhubStandardsSubscription, err error) {
+func (c *securityhubStandardsSubscriptions) Create(ctx context.Context, securityhubStandardsSubscription *v1alpha1.SecurityhubStandardsSubscription, opts v1.CreateOptions) (result *v1alpha1.SecurityhubStandardsSubscription, err error) {
 	result = &v1alpha1.SecurityhubStandardsSubscription{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("securityhubstandardssubscriptions").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(securityhubStandardsSubscription).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a securityhubStandardsSubscription and updates it. Returns the server's representation of the securityhubStandardsSubscription, and an error, if there is any.
-func (c *securityhubStandardsSubscriptions) Update(securityhubStandardsSubscription *v1alpha1.SecurityhubStandardsSubscription) (result *v1alpha1.SecurityhubStandardsSubscription, err error) {
+func (c *securityhubStandardsSubscriptions) Update(ctx context.Context, securityhubStandardsSubscription *v1alpha1.SecurityhubStandardsSubscription, opts v1.UpdateOptions) (result *v1alpha1.SecurityhubStandardsSubscription, err error) {
 	result = &v1alpha1.SecurityhubStandardsSubscription{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("securityhubstandardssubscriptions").
 		Name(securityhubStandardsSubscription.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(securityhubStandardsSubscription).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *securityhubStandardsSubscriptions) UpdateStatus(securityhubStandardsSubscription *v1alpha1.SecurityhubStandardsSubscription) (result *v1alpha1.SecurityhubStandardsSubscription, err error) {
+func (c *securityhubStandardsSubscriptions) UpdateStatus(ctx context.Context, securityhubStandardsSubscription *v1alpha1.SecurityhubStandardsSubscription, opts v1.UpdateOptions) (result *v1alpha1.SecurityhubStandardsSubscription, err error) {
 	result = &v1alpha1.SecurityhubStandardsSubscription{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("securityhubstandardssubscriptions").
 		Name(securityhubStandardsSubscription.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(securityhubStandardsSubscription).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the securityhubStandardsSubscription and deletes it. Returns an error if one occurs.
-func (c *securityhubStandardsSubscriptions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *securityhubStandardsSubscriptions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("securityhubstandardssubscriptions").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *securityhubStandardsSubscriptions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *securityhubStandardsSubscriptions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("securityhubstandardssubscriptions").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched securityhubStandardsSubscription.
-func (c *securityhubStandardsSubscriptions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SecurityhubStandardsSubscription, err error) {
+func (c *securityhubStandardsSubscriptions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SecurityhubStandardsSubscription, err error) {
 	result = &v1alpha1.SecurityhubStandardsSubscription{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("securityhubstandardssubscriptions").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

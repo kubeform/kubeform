@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type MonitorAutoscaleSettingsGetter interface {
 
 // MonitorAutoscaleSettingInterface has methods to work with MonitorAutoscaleSetting resources.
 type MonitorAutoscaleSettingInterface interface {
-	Create(*v1alpha1.MonitorAutoscaleSetting) (*v1alpha1.MonitorAutoscaleSetting, error)
-	Update(*v1alpha1.MonitorAutoscaleSetting) (*v1alpha1.MonitorAutoscaleSetting, error)
-	UpdateStatus(*v1alpha1.MonitorAutoscaleSetting) (*v1alpha1.MonitorAutoscaleSetting, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.MonitorAutoscaleSetting, error)
-	List(opts v1.ListOptions) (*v1alpha1.MonitorAutoscaleSettingList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MonitorAutoscaleSetting, err error)
+	Create(ctx context.Context, monitorAutoscaleSetting *v1alpha1.MonitorAutoscaleSetting, opts v1.CreateOptions) (*v1alpha1.MonitorAutoscaleSetting, error)
+	Update(ctx context.Context, monitorAutoscaleSetting *v1alpha1.MonitorAutoscaleSetting, opts v1.UpdateOptions) (*v1alpha1.MonitorAutoscaleSetting, error)
+	UpdateStatus(ctx context.Context, monitorAutoscaleSetting *v1alpha1.MonitorAutoscaleSetting, opts v1.UpdateOptions) (*v1alpha1.MonitorAutoscaleSetting, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.MonitorAutoscaleSetting, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.MonitorAutoscaleSettingList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MonitorAutoscaleSetting, err error)
 	MonitorAutoscaleSettingExpansion
 }
 
@@ -65,20 +66,20 @@ func newMonitorAutoscaleSettings(c *AzurermV1alpha1Client, namespace string) *mo
 }
 
 // Get takes name of the monitorAutoscaleSetting, and returns the corresponding monitorAutoscaleSetting object, and an error if there is any.
-func (c *monitorAutoscaleSettings) Get(name string, options v1.GetOptions) (result *v1alpha1.MonitorAutoscaleSetting, err error) {
+func (c *monitorAutoscaleSettings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.MonitorAutoscaleSetting, err error) {
 	result = &v1alpha1.MonitorAutoscaleSetting{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("monitorautoscalesettings").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of MonitorAutoscaleSettings that match those selectors.
-func (c *monitorAutoscaleSettings) List(opts v1.ListOptions) (result *v1alpha1.MonitorAutoscaleSettingList, err error) {
+func (c *monitorAutoscaleSettings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.MonitorAutoscaleSettingList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *monitorAutoscaleSettings) List(opts v1.ListOptions) (result *v1alpha1.M
 		Resource("monitorautoscalesettings").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested monitorAutoscaleSettings.
-func (c *monitorAutoscaleSettings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *monitorAutoscaleSettings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *monitorAutoscaleSettings) Watch(opts v1.ListOptions) (watch.Interface, 
 		Resource("monitorautoscalesettings").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a monitorAutoscaleSetting and creates it.  Returns the server's representation of the monitorAutoscaleSetting, and an error, if there is any.
-func (c *monitorAutoscaleSettings) Create(monitorAutoscaleSetting *v1alpha1.MonitorAutoscaleSetting) (result *v1alpha1.MonitorAutoscaleSetting, err error) {
+func (c *monitorAutoscaleSettings) Create(ctx context.Context, monitorAutoscaleSetting *v1alpha1.MonitorAutoscaleSetting, opts v1.CreateOptions) (result *v1alpha1.MonitorAutoscaleSetting, err error) {
 	result = &v1alpha1.MonitorAutoscaleSetting{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("monitorautoscalesettings").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(monitorAutoscaleSetting).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a monitorAutoscaleSetting and updates it. Returns the server's representation of the monitorAutoscaleSetting, and an error, if there is any.
-func (c *monitorAutoscaleSettings) Update(monitorAutoscaleSetting *v1alpha1.MonitorAutoscaleSetting) (result *v1alpha1.MonitorAutoscaleSetting, err error) {
+func (c *monitorAutoscaleSettings) Update(ctx context.Context, monitorAutoscaleSetting *v1alpha1.MonitorAutoscaleSetting, opts v1.UpdateOptions) (result *v1alpha1.MonitorAutoscaleSetting, err error) {
 	result = &v1alpha1.MonitorAutoscaleSetting{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("monitorautoscalesettings").
 		Name(monitorAutoscaleSetting.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(monitorAutoscaleSetting).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *monitorAutoscaleSettings) UpdateStatus(monitorAutoscaleSetting *v1alpha1.MonitorAutoscaleSetting) (result *v1alpha1.MonitorAutoscaleSetting, err error) {
+func (c *monitorAutoscaleSettings) UpdateStatus(ctx context.Context, monitorAutoscaleSetting *v1alpha1.MonitorAutoscaleSetting, opts v1.UpdateOptions) (result *v1alpha1.MonitorAutoscaleSetting, err error) {
 	result = &v1alpha1.MonitorAutoscaleSetting{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("monitorautoscalesettings").
 		Name(monitorAutoscaleSetting.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(monitorAutoscaleSetting).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the monitorAutoscaleSetting and deletes it. Returns an error if one occurs.
-func (c *monitorAutoscaleSettings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *monitorAutoscaleSettings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("monitorautoscalesettings").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *monitorAutoscaleSettings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *monitorAutoscaleSettings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("monitorautoscalesettings").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched monitorAutoscaleSetting.
-func (c *monitorAutoscaleSettings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MonitorAutoscaleSetting, err error) {
+func (c *monitorAutoscaleSettings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MonitorAutoscaleSetting, err error) {
 	result = &v1alpha1.MonitorAutoscaleSetting{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("monitorautoscalesettings").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

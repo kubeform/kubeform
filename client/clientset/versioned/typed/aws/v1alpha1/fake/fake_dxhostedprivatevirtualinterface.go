@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dxhostedprivatevirtualinterfacesResource = schema.GroupVersionResource{Group
 var dxhostedprivatevirtualinterfacesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DxHostedPrivateVirtualInterface"}
 
 // Get takes name of the dxHostedPrivateVirtualInterface, and returns the corresponding dxHostedPrivateVirtualInterface object, and an error if there is any.
-func (c *FakeDxHostedPrivateVirtualInterfaces) Get(name string, options v1.GetOptions) (result *v1alpha1.DxHostedPrivateVirtualInterface, err error) {
+func (c *FakeDxHostedPrivateVirtualInterfaces) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DxHostedPrivateVirtualInterface, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dxhostedprivatevirtualinterfacesResource, c.ns, name), &v1alpha1.DxHostedPrivateVirtualInterface{})
 
@@ -51,7 +53,7 @@ func (c *FakeDxHostedPrivateVirtualInterfaces) Get(name string, options v1.GetOp
 }
 
 // List takes label and field selectors, and returns the list of DxHostedPrivateVirtualInterfaces that match those selectors.
-func (c *FakeDxHostedPrivateVirtualInterfaces) List(opts v1.ListOptions) (result *v1alpha1.DxHostedPrivateVirtualInterfaceList, err error) {
+func (c *FakeDxHostedPrivateVirtualInterfaces) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DxHostedPrivateVirtualInterfaceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dxhostedprivatevirtualinterfacesResource, dxhostedprivatevirtualinterfacesKind, c.ns, opts), &v1alpha1.DxHostedPrivateVirtualInterfaceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDxHostedPrivateVirtualInterfaces) List(opts v1.ListOptions) (result
 }
 
 // Watch returns a watch.Interface that watches the requested dxHostedPrivateVirtualInterfaces.
-func (c *FakeDxHostedPrivateVirtualInterfaces) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDxHostedPrivateVirtualInterfaces) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dxhostedprivatevirtualinterfacesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dxHostedPrivateVirtualInterface and creates it.  Returns the server's representation of the dxHostedPrivateVirtualInterface, and an error, if there is any.
-func (c *FakeDxHostedPrivateVirtualInterfaces) Create(dxHostedPrivateVirtualInterface *v1alpha1.DxHostedPrivateVirtualInterface) (result *v1alpha1.DxHostedPrivateVirtualInterface, err error) {
+func (c *FakeDxHostedPrivateVirtualInterfaces) Create(ctx context.Context, dxHostedPrivateVirtualInterface *v1alpha1.DxHostedPrivateVirtualInterface, opts v1.CreateOptions) (result *v1alpha1.DxHostedPrivateVirtualInterface, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dxhostedprivatevirtualinterfacesResource, c.ns, dxHostedPrivateVirtualInterface), &v1alpha1.DxHostedPrivateVirtualInterface{})
 
@@ -91,7 +93,7 @@ func (c *FakeDxHostedPrivateVirtualInterfaces) Create(dxHostedPrivateVirtualInte
 }
 
 // Update takes the representation of a dxHostedPrivateVirtualInterface and updates it. Returns the server's representation of the dxHostedPrivateVirtualInterface, and an error, if there is any.
-func (c *FakeDxHostedPrivateVirtualInterfaces) Update(dxHostedPrivateVirtualInterface *v1alpha1.DxHostedPrivateVirtualInterface) (result *v1alpha1.DxHostedPrivateVirtualInterface, err error) {
+func (c *FakeDxHostedPrivateVirtualInterfaces) Update(ctx context.Context, dxHostedPrivateVirtualInterface *v1alpha1.DxHostedPrivateVirtualInterface, opts v1.UpdateOptions) (result *v1alpha1.DxHostedPrivateVirtualInterface, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dxhostedprivatevirtualinterfacesResource, c.ns, dxHostedPrivateVirtualInterface), &v1alpha1.DxHostedPrivateVirtualInterface{})
 
@@ -103,7 +105,7 @@ func (c *FakeDxHostedPrivateVirtualInterfaces) Update(dxHostedPrivateVirtualInte
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDxHostedPrivateVirtualInterfaces) UpdateStatus(dxHostedPrivateVirtualInterface *v1alpha1.DxHostedPrivateVirtualInterface) (*v1alpha1.DxHostedPrivateVirtualInterface, error) {
+func (c *FakeDxHostedPrivateVirtualInterfaces) UpdateStatus(ctx context.Context, dxHostedPrivateVirtualInterface *v1alpha1.DxHostedPrivateVirtualInterface, opts v1.UpdateOptions) (*v1alpha1.DxHostedPrivateVirtualInterface, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dxhostedprivatevirtualinterfacesResource, "status", c.ns, dxHostedPrivateVirtualInterface), &v1alpha1.DxHostedPrivateVirtualInterface{})
 
@@ -114,7 +116,7 @@ func (c *FakeDxHostedPrivateVirtualInterfaces) UpdateStatus(dxHostedPrivateVirtu
 }
 
 // Delete takes name of the dxHostedPrivateVirtualInterface and deletes it. Returns an error if one occurs.
-func (c *FakeDxHostedPrivateVirtualInterfaces) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDxHostedPrivateVirtualInterfaces) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dxhostedprivatevirtualinterfacesResource, c.ns, name), &v1alpha1.DxHostedPrivateVirtualInterface{})
 
@@ -122,15 +124,15 @@ func (c *FakeDxHostedPrivateVirtualInterfaces) Delete(name string, options *v1.D
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDxHostedPrivateVirtualInterfaces) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dxhostedprivatevirtualinterfacesResource, c.ns, listOptions)
+func (c *FakeDxHostedPrivateVirtualInterfaces) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dxhostedprivatevirtualinterfacesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DxHostedPrivateVirtualInterfaceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dxHostedPrivateVirtualInterface.
-func (c *FakeDxHostedPrivateVirtualInterfaces) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DxHostedPrivateVirtualInterface, err error) {
+func (c *FakeDxHostedPrivateVirtualInterfaces) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DxHostedPrivateVirtualInterface, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dxhostedprivatevirtualinterfacesResource, c.ns, name, pt, data, subresources...), &v1alpha1.DxHostedPrivateVirtualInterface{})
 

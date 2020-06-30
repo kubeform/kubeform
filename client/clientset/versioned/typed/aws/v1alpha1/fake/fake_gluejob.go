@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var gluejobsResource = schema.GroupVersionResource{Group: "aws.kubeform.com", Ve
 var gluejobsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "GlueJob"}
 
 // Get takes name of the glueJob, and returns the corresponding glueJob object, and an error if there is any.
-func (c *FakeGlueJobs) Get(name string, options v1.GetOptions) (result *v1alpha1.GlueJob, err error) {
+func (c *FakeGlueJobs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.GlueJob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(gluejobsResource, c.ns, name), &v1alpha1.GlueJob{})
 
@@ -51,7 +53,7 @@ func (c *FakeGlueJobs) Get(name string, options v1.GetOptions) (result *v1alpha1
 }
 
 // List takes label and field selectors, and returns the list of GlueJobs that match those selectors.
-func (c *FakeGlueJobs) List(opts v1.ListOptions) (result *v1alpha1.GlueJobList, err error) {
+func (c *FakeGlueJobs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.GlueJobList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(gluejobsResource, gluejobsKind, c.ns, opts), &v1alpha1.GlueJobList{})
 
@@ -73,14 +75,14 @@ func (c *FakeGlueJobs) List(opts v1.ListOptions) (result *v1alpha1.GlueJobList, 
 }
 
 // Watch returns a watch.Interface that watches the requested glueJobs.
-func (c *FakeGlueJobs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeGlueJobs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(gluejobsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a glueJob and creates it.  Returns the server's representation of the glueJob, and an error, if there is any.
-func (c *FakeGlueJobs) Create(glueJob *v1alpha1.GlueJob) (result *v1alpha1.GlueJob, err error) {
+func (c *FakeGlueJobs) Create(ctx context.Context, glueJob *v1alpha1.GlueJob, opts v1.CreateOptions) (result *v1alpha1.GlueJob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(gluejobsResource, c.ns, glueJob), &v1alpha1.GlueJob{})
 
@@ -91,7 +93,7 @@ func (c *FakeGlueJobs) Create(glueJob *v1alpha1.GlueJob) (result *v1alpha1.GlueJ
 }
 
 // Update takes the representation of a glueJob and updates it. Returns the server's representation of the glueJob, and an error, if there is any.
-func (c *FakeGlueJobs) Update(glueJob *v1alpha1.GlueJob) (result *v1alpha1.GlueJob, err error) {
+func (c *FakeGlueJobs) Update(ctx context.Context, glueJob *v1alpha1.GlueJob, opts v1.UpdateOptions) (result *v1alpha1.GlueJob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(gluejobsResource, c.ns, glueJob), &v1alpha1.GlueJob{})
 
@@ -103,7 +105,7 @@ func (c *FakeGlueJobs) Update(glueJob *v1alpha1.GlueJob) (result *v1alpha1.GlueJ
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeGlueJobs) UpdateStatus(glueJob *v1alpha1.GlueJob) (*v1alpha1.GlueJob, error) {
+func (c *FakeGlueJobs) UpdateStatus(ctx context.Context, glueJob *v1alpha1.GlueJob, opts v1.UpdateOptions) (*v1alpha1.GlueJob, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(gluejobsResource, "status", c.ns, glueJob), &v1alpha1.GlueJob{})
 
@@ -114,7 +116,7 @@ func (c *FakeGlueJobs) UpdateStatus(glueJob *v1alpha1.GlueJob) (*v1alpha1.GlueJo
 }
 
 // Delete takes name of the glueJob and deletes it. Returns an error if one occurs.
-func (c *FakeGlueJobs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeGlueJobs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(gluejobsResource, c.ns, name), &v1alpha1.GlueJob{})
 
@@ -122,15 +124,15 @@ func (c *FakeGlueJobs) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeGlueJobs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(gluejobsResource, c.ns, listOptions)
+func (c *FakeGlueJobs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(gluejobsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.GlueJobList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched glueJob.
-func (c *FakeGlueJobs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.GlueJob, err error) {
+func (c *FakeGlueJobs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.GlueJob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(gluejobsResource, c.ns, name, pt, data, subresources...), &v1alpha1.GlueJob{})
 

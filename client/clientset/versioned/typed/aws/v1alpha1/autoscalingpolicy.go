@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type AutoscalingPoliciesGetter interface {
 
 // AutoscalingPolicyInterface has methods to work with AutoscalingPolicy resources.
 type AutoscalingPolicyInterface interface {
-	Create(*v1alpha1.AutoscalingPolicy) (*v1alpha1.AutoscalingPolicy, error)
-	Update(*v1alpha1.AutoscalingPolicy) (*v1alpha1.AutoscalingPolicy, error)
-	UpdateStatus(*v1alpha1.AutoscalingPolicy) (*v1alpha1.AutoscalingPolicy, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.AutoscalingPolicy, error)
-	List(opts v1.ListOptions) (*v1alpha1.AutoscalingPolicyList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AutoscalingPolicy, err error)
+	Create(ctx context.Context, autoscalingPolicy *v1alpha1.AutoscalingPolicy, opts v1.CreateOptions) (*v1alpha1.AutoscalingPolicy, error)
+	Update(ctx context.Context, autoscalingPolicy *v1alpha1.AutoscalingPolicy, opts v1.UpdateOptions) (*v1alpha1.AutoscalingPolicy, error)
+	UpdateStatus(ctx context.Context, autoscalingPolicy *v1alpha1.AutoscalingPolicy, opts v1.UpdateOptions) (*v1alpha1.AutoscalingPolicy, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.AutoscalingPolicy, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.AutoscalingPolicyList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AutoscalingPolicy, err error)
 	AutoscalingPolicyExpansion
 }
 
@@ -65,20 +66,20 @@ func newAutoscalingPolicies(c *AwsV1alpha1Client, namespace string) *autoscaling
 }
 
 // Get takes name of the autoscalingPolicy, and returns the corresponding autoscalingPolicy object, and an error if there is any.
-func (c *autoscalingPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.AutoscalingPolicy, err error) {
+func (c *autoscalingPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AutoscalingPolicy, err error) {
 	result = &v1alpha1.AutoscalingPolicy{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("autoscalingpolicies").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of AutoscalingPolicies that match those selectors.
-func (c *autoscalingPolicies) List(opts v1.ListOptions) (result *v1alpha1.AutoscalingPolicyList, err error) {
+func (c *autoscalingPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AutoscalingPolicyList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *autoscalingPolicies) List(opts v1.ListOptions) (result *v1alpha1.Autosc
 		Resource("autoscalingpolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested autoscalingPolicies.
-func (c *autoscalingPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *autoscalingPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *autoscalingPolicies) Watch(opts v1.ListOptions) (watch.Interface, error
 		Resource("autoscalingpolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a autoscalingPolicy and creates it.  Returns the server's representation of the autoscalingPolicy, and an error, if there is any.
-func (c *autoscalingPolicies) Create(autoscalingPolicy *v1alpha1.AutoscalingPolicy) (result *v1alpha1.AutoscalingPolicy, err error) {
+func (c *autoscalingPolicies) Create(ctx context.Context, autoscalingPolicy *v1alpha1.AutoscalingPolicy, opts v1.CreateOptions) (result *v1alpha1.AutoscalingPolicy, err error) {
 	result = &v1alpha1.AutoscalingPolicy{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("autoscalingpolicies").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(autoscalingPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a autoscalingPolicy and updates it. Returns the server's representation of the autoscalingPolicy, and an error, if there is any.
-func (c *autoscalingPolicies) Update(autoscalingPolicy *v1alpha1.AutoscalingPolicy) (result *v1alpha1.AutoscalingPolicy, err error) {
+func (c *autoscalingPolicies) Update(ctx context.Context, autoscalingPolicy *v1alpha1.AutoscalingPolicy, opts v1.UpdateOptions) (result *v1alpha1.AutoscalingPolicy, err error) {
 	result = &v1alpha1.AutoscalingPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("autoscalingpolicies").
 		Name(autoscalingPolicy.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(autoscalingPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *autoscalingPolicies) UpdateStatus(autoscalingPolicy *v1alpha1.AutoscalingPolicy) (result *v1alpha1.AutoscalingPolicy, err error) {
+func (c *autoscalingPolicies) UpdateStatus(ctx context.Context, autoscalingPolicy *v1alpha1.AutoscalingPolicy, opts v1.UpdateOptions) (result *v1alpha1.AutoscalingPolicy, err error) {
 	result = &v1alpha1.AutoscalingPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("autoscalingpolicies").
 		Name(autoscalingPolicy.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(autoscalingPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the autoscalingPolicy and deletes it. Returns an error if one occurs.
-func (c *autoscalingPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *autoscalingPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("autoscalingpolicies").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *autoscalingPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *autoscalingPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("autoscalingpolicies").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched autoscalingPolicy.
-func (c *autoscalingPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AutoscalingPolicy, err error) {
+func (c *autoscalingPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AutoscalingPolicy, err error) {
 	result = &v1alpha1.AutoscalingPolicy{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("autoscalingpolicies").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

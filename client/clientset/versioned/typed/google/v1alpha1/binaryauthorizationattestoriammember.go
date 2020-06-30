@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type BinaryAuthorizationAttestorIamMembersGetter interface {
 
 // BinaryAuthorizationAttestorIamMemberInterface has methods to work with BinaryAuthorizationAttestorIamMember resources.
 type BinaryAuthorizationAttestorIamMemberInterface interface {
-	Create(*v1alpha1.BinaryAuthorizationAttestorIamMember) (*v1alpha1.BinaryAuthorizationAttestorIamMember, error)
-	Update(*v1alpha1.BinaryAuthorizationAttestorIamMember) (*v1alpha1.BinaryAuthorizationAttestorIamMember, error)
-	UpdateStatus(*v1alpha1.BinaryAuthorizationAttestorIamMember) (*v1alpha1.BinaryAuthorizationAttestorIamMember, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.BinaryAuthorizationAttestorIamMember, error)
-	List(opts v1.ListOptions) (*v1alpha1.BinaryAuthorizationAttestorIamMemberList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BinaryAuthorizationAttestorIamMember, err error)
+	Create(ctx context.Context, binaryAuthorizationAttestorIamMember *v1alpha1.BinaryAuthorizationAttestorIamMember, opts v1.CreateOptions) (*v1alpha1.BinaryAuthorizationAttestorIamMember, error)
+	Update(ctx context.Context, binaryAuthorizationAttestorIamMember *v1alpha1.BinaryAuthorizationAttestorIamMember, opts v1.UpdateOptions) (*v1alpha1.BinaryAuthorizationAttestorIamMember, error)
+	UpdateStatus(ctx context.Context, binaryAuthorizationAttestorIamMember *v1alpha1.BinaryAuthorizationAttestorIamMember, opts v1.UpdateOptions) (*v1alpha1.BinaryAuthorizationAttestorIamMember, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.BinaryAuthorizationAttestorIamMember, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.BinaryAuthorizationAttestorIamMemberList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BinaryAuthorizationAttestorIamMember, err error)
 	BinaryAuthorizationAttestorIamMemberExpansion
 }
 
@@ -65,20 +66,20 @@ func newBinaryAuthorizationAttestorIamMembers(c *GoogleV1alpha1Client, namespace
 }
 
 // Get takes name of the binaryAuthorizationAttestorIamMember, and returns the corresponding binaryAuthorizationAttestorIamMember object, and an error if there is any.
-func (c *binaryAuthorizationAttestorIamMembers) Get(name string, options v1.GetOptions) (result *v1alpha1.BinaryAuthorizationAttestorIamMember, err error) {
+func (c *binaryAuthorizationAttestorIamMembers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BinaryAuthorizationAttestorIamMember, err error) {
 	result = &v1alpha1.BinaryAuthorizationAttestorIamMember{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("binaryauthorizationattestoriammembers").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of BinaryAuthorizationAttestorIamMembers that match those selectors.
-func (c *binaryAuthorizationAttestorIamMembers) List(opts v1.ListOptions) (result *v1alpha1.BinaryAuthorizationAttestorIamMemberList, err error) {
+func (c *binaryAuthorizationAttestorIamMembers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BinaryAuthorizationAttestorIamMemberList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *binaryAuthorizationAttestorIamMembers) List(opts v1.ListOptions) (resul
 		Resource("binaryauthorizationattestoriammembers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested binaryAuthorizationAttestorIamMembers.
-func (c *binaryAuthorizationAttestorIamMembers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *binaryAuthorizationAttestorIamMembers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *binaryAuthorizationAttestorIamMembers) Watch(opts v1.ListOptions) (watc
 		Resource("binaryauthorizationattestoriammembers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a binaryAuthorizationAttestorIamMember and creates it.  Returns the server's representation of the binaryAuthorizationAttestorIamMember, and an error, if there is any.
-func (c *binaryAuthorizationAttestorIamMembers) Create(binaryAuthorizationAttestorIamMember *v1alpha1.BinaryAuthorizationAttestorIamMember) (result *v1alpha1.BinaryAuthorizationAttestorIamMember, err error) {
+func (c *binaryAuthorizationAttestorIamMembers) Create(ctx context.Context, binaryAuthorizationAttestorIamMember *v1alpha1.BinaryAuthorizationAttestorIamMember, opts v1.CreateOptions) (result *v1alpha1.BinaryAuthorizationAttestorIamMember, err error) {
 	result = &v1alpha1.BinaryAuthorizationAttestorIamMember{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("binaryauthorizationattestoriammembers").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(binaryAuthorizationAttestorIamMember).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a binaryAuthorizationAttestorIamMember and updates it. Returns the server's representation of the binaryAuthorizationAttestorIamMember, and an error, if there is any.
-func (c *binaryAuthorizationAttestorIamMembers) Update(binaryAuthorizationAttestorIamMember *v1alpha1.BinaryAuthorizationAttestorIamMember) (result *v1alpha1.BinaryAuthorizationAttestorIamMember, err error) {
+func (c *binaryAuthorizationAttestorIamMembers) Update(ctx context.Context, binaryAuthorizationAttestorIamMember *v1alpha1.BinaryAuthorizationAttestorIamMember, opts v1.UpdateOptions) (result *v1alpha1.BinaryAuthorizationAttestorIamMember, err error) {
 	result = &v1alpha1.BinaryAuthorizationAttestorIamMember{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("binaryauthorizationattestoriammembers").
 		Name(binaryAuthorizationAttestorIamMember.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(binaryAuthorizationAttestorIamMember).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *binaryAuthorizationAttestorIamMembers) UpdateStatus(binaryAuthorizationAttestorIamMember *v1alpha1.BinaryAuthorizationAttestorIamMember) (result *v1alpha1.BinaryAuthorizationAttestorIamMember, err error) {
+func (c *binaryAuthorizationAttestorIamMembers) UpdateStatus(ctx context.Context, binaryAuthorizationAttestorIamMember *v1alpha1.BinaryAuthorizationAttestorIamMember, opts v1.UpdateOptions) (result *v1alpha1.BinaryAuthorizationAttestorIamMember, err error) {
 	result = &v1alpha1.BinaryAuthorizationAttestorIamMember{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("binaryauthorizationattestoriammembers").
 		Name(binaryAuthorizationAttestorIamMember.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(binaryAuthorizationAttestorIamMember).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the binaryAuthorizationAttestorIamMember and deletes it. Returns an error if one occurs.
-func (c *binaryAuthorizationAttestorIamMembers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *binaryAuthorizationAttestorIamMembers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("binaryauthorizationattestoriammembers").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *binaryAuthorizationAttestorIamMembers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *binaryAuthorizationAttestorIamMembers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("binaryauthorizationattestoriammembers").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched binaryAuthorizationAttestorIamMember.
-func (c *binaryAuthorizationAttestorIamMembers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BinaryAuthorizationAttestorIamMember, err error) {
+func (c *binaryAuthorizationAttestorIamMembers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BinaryAuthorizationAttestorIamMember, err error) {
 	result = &v1alpha1.BinaryAuthorizationAttestorIamMember{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("binaryauthorizationattestoriammembers").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

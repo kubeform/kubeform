@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var route53recordsResource = schema.GroupVersionResource{Group: "aws.kubeform.co
 var route53recordsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "Route53Record"}
 
 // Get takes name of the route53Record, and returns the corresponding route53Record object, and an error if there is any.
-func (c *FakeRoute53Records) Get(name string, options v1.GetOptions) (result *v1alpha1.Route53Record, err error) {
+func (c *FakeRoute53Records) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Route53Record, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(route53recordsResource, c.ns, name), &v1alpha1.Route53Record{})
 
@@ -51,7 +53,7 @@ func (c *FakeRoute53Records) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of Route53Records that match those selectors.
-func (c *FakeRoute53Records) List(opts v1.ListOptions) (result *v1alpha1.Route53RecordList, err error) {
+func (c *FakeRoute53Records) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.Route53RecordList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(route53recordsResource, route53recordsKind, c.ns, opts), &v1alpha1.Route53RecordList{})
 
@@ -73,14 +75,14 @@ func (c *FakeRoute53Records) List(opts v1.ListOptions) (result *v1alpha1.Route53
 }
 
 // Watch returns a watch.Interface that watches the requested route53Records.
-func (c *FakeRoute53Records) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeRoute53Records) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(route53recordsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a route53Record and creates it.  Returns the server's representation of the route53Record, and an error, if there is any.
-func (c *FakeRoute53Records) Create(route53Record *v1alpha1.Route53Record) (result *v1alpha1.Route53Record, err error) {
+func (c *FakeRoute53Records) Create(ctx context.Context, route53Record *v1alpha1.Route53Record, opts v1.CreateOptions) (result *v1alpha1.Route53Record, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(route53recordsResource, c.ns, route53Record), &v1alpha1.Route53Record{})
 
@@ -91,7 +93,7 @@ func (c *FakeRoute53Records) Create(route53Record *v1alpha1.Route53Record) (resu
 }
 
 // Update takes the representation of a route53Record and updates it. Returns the server's representation of the route53Record, and an error, if there is any.
-func (c *FakeRoute53Records) Update(route53Record *v1alpha1.Route53Record) (result *v1alpha1.Route53Record, err error) {
+func (c *FakeRoute53Records) Update(ctx context.Context, route53Record *v1alpha1.Route53Record, opts v1.UpdateOptions) (result *v1alpha1.Route53Record, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(route53recordsResource, c.ns, route53Record), &v1alpha1.Route53Record{})
 
@@ -103,7 +105,7 @@ func (c *FakeRoute53Records) Update(route53Record *v1alpha1.Route53Record) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeRoute53Records) UpdateStatus(route53Record *v1alpha1.Route53Record) (*v1alpha1.Route53Record, error) {
+func (c *FakeRoute53Records) UpdateStatus(ctx context.Context, route53Record *v1alpha1.Route53Record, opts v1.UpdateOptions) (*v1alpha1.Route53Record, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(route53recordsResource, "status", c.ns, route53Record), &v1alpha1.Route53Record{})
 
@@ -114,7 +116,7 @@ func (c *FakeRoute53Records) UpdateStatus(route53Record *v1alpha1.Route53Record)
 }
 
 // Delete takes name of the route53Record and deletes it. Returns an error if one occurs.
-func (c *FakeRoute53Records) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeRoute53Records) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(route53recordsResource, c.ns, name), &v1alpha1.Route53Record{})
 
@@ -122,15 +124,15 @@ func (c *FakeRoute53Records) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeRoute53Records) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(route53recordsResource, c.ns, listOptions)
+func (c *FakeRoute53Records) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(route53recordsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.Route53RecordList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched route53Record.
-func (c *FakeRoute53Records) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Route53Record, err error) {
+func (c *FakeRoute53Records) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Route53Record, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(route53recordsResource, c.ns, name, pt, data, subresources...), &v1alpha1.Route53Record{})
 

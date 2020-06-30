@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var batchcomputeenvironmentsResource = schema.GroupVersionResource{Group: "aws.k
 var batchcomputeenvironmentsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "BatchComputeEnvironment"}
 
 // Get takes name of the batchComputeEnvironment, and returns the corresponding batchComputeEnvironment object, and an error if there is any.
-func (c *FakeBatchComputeEnvironments) Get(name string, options v1.GetOptions) (result *v1alpha1.BatchComputeEnvironment, err error) {
+func (c *FakeBatchComputeEnvironments) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BatchComputeEnvironment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(batchcomputeenvironmentsResource, c.ns, name), &v1alpha1.BatchComputeEnvironment{})
 
@@ -51,7 +53,7 @@ func (c *FakeBatchComputeEnvironments) Get(name string, options v1.GetOptions) (
 }
 
 // List takes label and field selectors, and returns the list of BatchComputeEnvironments that match those selectors.
-func (c *FakeBatchComputeEnvironments) List(opts v1.ListOptions) (result *v1alpha1.BatchComputeEnvironmentList, err error) {
+func (c *FakeBatchComputeEnvironments) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BatchComputeEnvironmentList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(batchcomputeenvironmentsResource, batchcomputeenvironmentsKind, c.ns, opts), &v1alpha1.BatchComputeEnvironmentList{})
 
@@ -73,14 +75,14 @@ func (c *FakeBatchComputeEnvironments) List(opts v1.ListOptions) (result *v1alph
 }
 
 // Watch returns a watch.Interface that watches the requested batchComputeEnvironments.
-func (c *FakeBatchComputeEnvironments) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeBatchComputeEnvironments) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(batchcomputeenvironmentsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a batchComputeEnvironment and creates it.  Returns the server's representation of the batchComputeEnvironment, and an error, if there is any.
-func (c *FakeBatchComputeEnvironments) Create(batchComputeEnvironment *v1alpha1.BatchComputeEnvironment) (result *v1alpha1.BatchComputeEnvironment, err error) {
+func (c *FakeBatchComputeEnvironments) Create(ctx context.Context, batchComputeEnvironment *v1alpha1.BatchComputeEnvironment, opts v1.CreateOptions) (result *v1alpha1.BatchComputeEnvironment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(batchcomputeenvironmentsResource, c.ns, batchComputeEnvironment), &v1alpha1.BatchComputeEnvironment{})
 
@@ -91,7 +93,7 @@ func (c *FakeBatchComputeEnvironments) Create(batchComputeEnvironment *v1alpha1.
 }
 
 // Update takes the representation of a batchComputeEnvironment and updates it. Returns the server's representation of the batchComputeEnvironment, and an error, if there is any.
-func (c *FakeBatchComputeEnvironments) Update(batchComputeEnvironment *v1alpha1.BatchComputeEnvironment) (result *v1alpha1.BatchComputeEnvironment, err error) {
+func (c *FakeBatchComputeEnvironments) Update(ctx context.Context, batchComputeEnvironment *v1alpha1.BatchComputeEnvironment, opts v1.UpdateOptions) (result *v1alpha1.BatchComputeEnvironment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(batchcomputeenvironmentsResource, c.ns, batchComputeEnvironment), &v1alpha1.BatchComputeEnvironment{})
 
@@ -103,7 +105,7 @@ func (c *FakeBatchComputeEnvironments) Update(batchComputeEnvironment *v1alpha1.
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeBatchComputeEnvironments) UpdateStatus(batchComputeEnvironment *v1alpha1.BatchComputeEnvironment) (*v1alpha1.BatchComputeEnvironment, error) {
+func (c *FakeBatchComputeEnvironments) UpdateStatus(ctx context.Context, batchComputeEnvironment *v1alpha1.BatchComputeEnvironment, opts v1.UpdateOptions) (*v1alpha1.BatchComputeEnvironment, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(batchcomputeenvironmentsResource, "status", c.ns, batchComputeEnvironment), &v1alpha1.BatchComputeEnvironment{})
 
@@ -114,7 +116,7 @@ func (c *FakeBatchComputeEnvironments) UpdateStatus(batchComputeEnvironment *v1a
 }
 
 // Delete takes name of the batchComputeEnvironment and deletes it. Returns an error if one occurs.
-func (c *FakeBatchComputeEnvironments) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeBatchComputeEnvironments) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(batchcomputeenvironmentsResource, c.ns, name), &v1alpha1.BatchComputeEnvironment{})
 
@@ -122,15 +124,15 @@ func (c *FakeBatchComputeEnvironments) Delete(name string, options *v1.DeleteOpt
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeBatchComputeEnvironments) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(batchcomputeenvironmentsResource, c.ns, listOptions)
+func (c *FakeBatchComputeEnvironments) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(batchcomputeenvironmentsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.BatchComputeEnvironmentList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched batchComputeEnvironment.
-func (c *FakeBatchComputeEnvironments) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BatchComputeEnvironment, err error) {
+func (c *FakeBatchComputeEnvironments) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BatchComputeEnvironment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(batchcomputeenvironmentsResource, c.ns, name, pt, data, subresources...), &v1alpha1.BatchComputeEnvironment{})
 

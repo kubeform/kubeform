@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type KinesisFirehoseDeliveryStreamsGetter interface {
 
 // KinesisFirehoseDeliveryStreamInterface has methods to work with KinesisFirehoseDeliveryStream resources.
 type KinesisFirehoseDeliveryStreamInterface interface {
-	Create(*v1alpha1.KinesisFirehoseDeliveryStream) (*v1alpha1.KinesisFirehoseDeliveryStream, error)
-	Update(*v1alpha1.KinesisFirehoseDeliveryStream) (*v1alpha1.KinesisFirehoseDeliveryStream, error)
-	UpdateStatus(*v1alpha1.KinesisFirehoseDeliveryStream) (*v1alpha1.KinesisFirehoseDeliveryStream, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.KinesisFirehoseDeliveryStream, error)
-	List(opts v1.ListOptions) (*v1alpha1.KinesisFirehoseDeliveryStreamList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KinesisFirehoseDeliveryStream, err error)
+	Create(ctx context.Context, kinesisFirehoseDeliveryStream *v1alpha1.KinesisFirehoseDeliveryStream, opts v1.CreateOptions) (*v1alpha1.KinesisFirehoseDeliveryStream, error)
+	Update(ctx context.Context, kinesisFirehoseDeliveryStream *v1alpha1.KinesisFirehoseDeliveryStream, opts v1.UpdateOptions) (*v1alpha1.KinesisFirehoseDeliveryStream, error)
+	UpdateStatus(ctx context.Context, kinesisFirehoseDeliveryStream *v1alpha1.KinesisFirehoseDeliveryStream, opts v1.UpdateOptions) (*v1alpha1.KinesisFirehoseDeliveryStream, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.KinesisFirehoseDeliveryStream, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.KinesisFirehoseDeliveryStreamList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KinesisFirehoseDeliveryStream, err error)
 	KinesisFirehoseDeliveryStreamExpansion
 }
 
@@ -65,20 +66,20 @@ func newKinesisFirehoseDeliveryStreams(c *AwsV1alpha1Client, namespace string) *
 }
 
 // Get takes name of the kinesisFirehoseDeliveryStream, and returns the corresponding kinesisFirehoseDeliveryStream object, and an error if there is any.
-func (c *kinesisFirehoseDeliveryStreams) Get(name string, options v1.GetOptions) (result *v1alpha1.KinesisFirehoseDeliveryStream, err error) {
+func (c *kinesisFirehoseDeliveryStreams) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KinesisFirehoseDeliveryStream, err error) {
 	result = &v1alpha1.KinesisFirehoseDeliveryStream{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("kinesisfirehosedeliverystreams").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of KinesisFirehoseDeliveryStreams that match those selectors.
-func (c *kinesisFirehoseDeliveryStreams) List(opts v1.ListOptions) (result *v1alpha1.KinesisFirehoseDeliveryStreamList, err error) {
+func (c *kinesisFirehoseDeliveryStreams) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KinesisFirehoseDeliveryStreamList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *kinesisFirehoseDeliveryStreams) List(opts v1.ListOptions) (result *v1al
 		Resource("kinesisfirehosedeliverystreams").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested kinesisFirehoseDeliveryStreams.
-func (c *kinesisFirehoseDeliveryStreams) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *kinesisFirehoseDeliveryStreams) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *kinesisFirehoseDeliveryStreams) Watch(opts v1.ListOptions) (watch.Inter
 		Resource("kinesisfirehosedeliverystreams").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a kinesisFirehoseDeliveryStream and creates it.  Returns the server's representation of the kinesisFirehoseDeliveryStream, and an error, if there is any.
-func (c *kinesisFirehoseDeliveryStreams) Create(kinesisFirehoseDeliveryStream *v1alpha1.KinesisFirehoseDeliveryStream) (result *v1alpha1.KinesisFirehoseDeliveryStream, err error) {
+func (c *kinesisFirehoseDeliveryStreams) Create(ctx context.Context, kinesisFirehoseDeliveryStream *v1alpha1.KinesisFirehoseDeliveryStream, opts v1.CreateOptions) (result *v1alpha1.KinesisFirehoseDeliveryStream, err error) {
 	result = &v1alpha1.KinesisFirehoseDeliveryStream{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("kinesisfirehosedeliverystreams").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(kinesisFirehoseDeliveryStream).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a kinesisFirehoseDeliveryStream and updates it. Returns the server's representation of the kinesisFirehoseDeliveryStream, and an error, if there is any.
-func (c *kinesisFirehoseDeliveryStreams) Update(kinesisFirehoseDeliveryStream *v1alpha1.KinesisFirehoseDeliveryStream) (result *v1alpha1.KinesisFirehoseDeliveryStream, err error) {
+func (c *kinesisFirehoseDeliveryStreams) Update(ctx context.Context, kinesisFirehoseDeliveryStream *v1alpha1.KinesisFirehoseDeliveryStream, opts v1.UpdateOptions) (result *v1alpha1.KinesisFirehoseDeliveryStream, err error) {
 	result = &v1alpha1.KinesisFirehoseDeliveryStream{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("kinesisfirehosedeliverystreams").
 		Name(kinesisFirehoseDeliveryStream.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(kinesisFirehoseDeliveryStream).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *kinesisFirehoseDeliveryStreams) UpdateStatus(kinesisFirehoseDeliveryStream *v1alpha1.KinesisFirehoseDeliveryStream) (result *v1alpha1.KinesisFirehoseDeliveryStream, err error) {
+func (c *kinesisFirehoseDeliveryStreams) UpdateStatus(ctx context.Context, kinesisFirehoseDeliveryStream *v1alpha1.KinesisFirehoseDeliveryStream, opts v1.UpdateOptions) (result *v1alpha1.KinesisFirehoseDeliveryStream, err error) {
 	result = &v1alpha1.KinesisFirehoseDeliveryStream{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("kinesisfirehosedeliverystreams").
 		Name(kinesisFirehoseDeliveryStream.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(kinesisFirehoseDeliveryStream).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the kinesisFirehoseDeliveryStream and deletes it. Returns an error if one occurs.
-func (c *kinesisFirehoseDeliveryStreams) Delete(name string, options *v1.DeleteOptions) error {
+func (c *kinesisFirehoseDeliveryStreams) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("kinesisfirehosedeliverystreams").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *kinesisFirehoseDeliveryStreams) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *kinesisFirehoseDeliveryStreams) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("kinesisfirehosedeliverystreams").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched kinesisFirehoseDeliveryStream.
-func (c *kinesisFirehoseDeliveryStreams) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KinesisFirehoseDeliveryStream, err error) {
+func (c *kinesisFirehoseDeliveryStreams) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KinesisFirehoseDeliveryStream, err error) {
 	result = &v1alpha1.KinesisFirehoseDeliveryStream{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("kinesisfirehosedeliverystreams").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var opsworksapplicationsResource = schema.GroupVersionResource{Group: "aws.kubef
 var opsworksapplicationsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "OpsworksApplication"}
 
 // Get takes name of the opsworksApplication, and returns the corresponding opsworksApplication object, and an error if there is any.
-func (c *FakeOpsworksApplications) Get(name string, options v1.GetOptions) (result *v1alpha1.OpsworksApplication, err error) {
+func (c *FakeOpsworksApplications) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.OpsworksApplication, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(opsworksapplicationsResource, c.ns, name), &v1alpha1.OpsworksApplication{})
 
@@ -51,7 +53,7 @@ func (c *FakeOpsworksApplications) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of OpsworksApplications that match those selectors.
-func (c *FakeOpsworksApplications) List(opts v1.ListOptions) (result *v1alpha1.OpsworksApplicationList, err error) {
+func (c *FakeOpsworksApplications) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.OpsworksApplicationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(opsworksapplicationsResource, opsworksapplicationsKind, c.ns, opts), &v1alpha1.OpsworksApplicationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeOpsworksApplications) List(opts v1.ListOptions) (result *v1alpha1.O
 }
 
 // Watch returns a watch.Interface that watches the requested opsworksApplications.
-func (c *FakeOpsworksApplications) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeOpsworksApplications) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(opsworksapplicationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a opsworksApplication and creates it.  Returns the server's representation of the opsworksApplication, and an error, if there is any.
-func (c *FakeOpsworksApplications) Create(opsworksApplication *v1alpha1.OpsworksApplication) (result *v1alpha1.OpsworksApplication, err error) {
+func (c *FakeOpsworksApplications) Create(ctx context.Context, opsworksApplication *v1alpha1.OpsworksApplication, opts v1.CreateOptions) (result *v1alpha1.OpsworksApplication, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(opsworksapplicationsResource, c.ns, opsworksApplication), &v1alpha1.OpsworksApplication{})
 
@@ -91,7 +93,7 @@ func (c *FakeOpsworksApplications) Create(opsworksApplication *v1alpha1.Opsworks
 }
 
 // Update takes the representation of a opsworksApplication and updates it. Returns the server's representation of the opsworksApplication, and an error, if there is any.
-func (c *FakeOpsworksApplications) Update(opsworksApplication *v1alpha1.OpsworksApplication) (result *v1alpha1.OpsworksApplication, err error) {
+func (c *FakeOpsworksApplications) Update(ctx context.Context, opsworksApplication *v1alpha1.OpsworksApplication, opts v1.UpdateOptions) (result *v1alpha1.OpsworksApplication, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(opsworksapplicationsResource, c.ns, opsworksApplication), &v1alpha1.OpsworksApplication{})
 
@@ -103,7 +105,7 @@ func (c *FakeOpsworksApplications) Update(opsworksApplication *v1alpha1.Opsworks
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeOpsworksApplications) UpdateStatus(opsworksApplication *v1alpha1.OpsworksApplication) (*v1alpha1.OpsworksApplication, error) {
+func (c *FakeOpsworksApplications) UpdateStatus(ctx context.Context, opsworksApplication *v1alpha1.OpsworksApplication, opts v1.UpdateOptions) (*v1alpha1.OpsworksApplication, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(opsworksapplicationsResource, "status", c.ns, opsworksApplication), &v1alpha1.OpsworksApplication{})
 
@@ -114,7 +116,7 @@ func (c *FakeOpsworksApplications) UpdateStatus(opsworksApplication *v1alpha1.Op
 }
 
 // Delete takes name of the opsworksApplication and deletes it. Returns an error if one occurs.
-func (c *FakeOpsworksApplications) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeOpsworksApplications) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(opsworksapplicationsResource, c.ns, name), &v1alpha1.OpsworksApplication{})
 
@@ -122,15 +124,15 @@ func (c *FakeOpsworksApplications) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeOpsworksApplications) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(opsworksapplicationsResource, c.ns, listOptions)
+func (c *FakeOpsworksApplications) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(opsworksapplicationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.OpsworksApplicationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched opsworksApplication.
-func (c *FakeOpsworksApplications) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.OpsworksApplication, err error) {
+func (c *FakeOpsworksApplications) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.OpsworksApplication, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(opsworksapplicationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.OpsworksApplication{})
 

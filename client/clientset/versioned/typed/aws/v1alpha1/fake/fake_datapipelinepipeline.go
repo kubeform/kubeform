@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var datapipelinepipelinesResource = schema.GroupVersionResource{Group: "aws.kube
 var datapipelinepipelinesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DatapipelinePipeline"}
 
 // Get takes name of the datapipelinePipeline, and returns the corresponding datapipelinePipeline object, and an error if there is any.
-func (c *FakeDatapipelinePipelines) Get(name string, options v1.GetOptions) (result *v1alpha1.DatapipelinePipeline, err error) {
+func (c *FakeDatapipelinePipelines) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DatapipelinePipeline, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(datapipelinepipelinesResource, c.ns, name), &v1alpha1.DatapipelinePipeline{})
 
@@ -51,7 +53,7 @@ func (c *FakeDatapipelinePipelines) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of DatapipelinePipelines that match those selectors.
-func (c *FakeDatapipelinePipelines) List(opts v1.ListOptions) (result *v1alpha1.DatapipelinePipelineList, err error) {
+func (c *FakeDatapipelinePipelines) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DatapipelinePipelineList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(datapipelinepipelinesResource, datapipelinepipelinesKind, c.ns, opts), &v1alpha1.DatapipelinePipelineList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDatapipelinePipelines) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested datapipelinePipelines.
-func (c *FakeDatapipelinePipelines) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDatapipelinePipelines) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(datapipelinepipelinesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a datapipelinePipeline and creates it.  Returns the server's representation of the datapipelinePipeline, and an error, if there is any.
-func (c *FakeDatapipelinePipelines) Create(datapipelinePipeline *v1alpha1.DatapipelinePipeline) (result *v1alpha1.DatapipelinePipeline, err error) {
+func (c *FakeDatapipelinePipelines) Create(ctx context.Context, datapipelinePipeline *v1alpha1.DatapipelinePipeline, opts v1.CreateOptions) (result *v1alpha1.DatapipelinePipeline, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(datapipelinepipelinesResource, c.ns, datapipelinePipeline), &v1alpha1.DatapipelinePipeline{})
 
@@ -91,7 +93,7 @@ func (c *FakeDatapipelinePipelines) Create(datapipelinePipeline *v1alpha1.Datapi
 }
 
 // Update takes the representation of a datapipelinePipeline and updates it. Returns the server's representation of the datapipelinePipeline, and an error, if there is any.
-func (c *FakeDatapipelinePipelines) Update(datapipelinePipeline *v1alpha1.DatapipelinePipeline) (result *v1alpha1.DatapipelinePipeline, err error) {
+func (c *FakeDatapipelinePipelines) Update(ctx context.Context, datapipelinePipeline *v1alpha1.DatapipelinePipeline, opts v1.UpdateOptions) (result *v1alpha1.DatapipelinePipeline, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(datapipelinepipelinesResource, c.ns, datapipelinePipeline), &v1alpha1.DatapipelinePipeline{})
 
@@ -103,7 +105,7 @@ func (c *FakeDatapipelinePipelines) Update(datapipelinePipeline *v1alpha1.Datapi
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDatapipelinePipelines) UpdateStatus(datapipelinePipeline *v1alpha1.DatapipelinePipeline) (*v1alpha1.DatapipelinePipeline, error) {
+func (c *FakeDatapipelinePipelines) UpdateStatus(ctx context.Context, datapipelinePipeline *v1alpha1.DatapipelinePipeline, opts v1.UpdateOptions) (*v1alpha1.DatapipelinePipeline, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(datapipelinepipelinesResource, "status", c.ns, datapipelinePipeline), &v1alpha1.DatapipelinePipeline{})
 
@@ -114,7 +116,7 @@ func (c *FakeDatapipelinePipelines) UpdateStatus(datapipelinePipeline *v1alpha1.
 }
 
 // Delete takes name of the datapipelinePipeline and deletes it. Returns an error if one occurs.
-func (c *FakeDatapipelinePipelines) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDatapipelinePipelines) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(datapipelinepipelinesResource, c.ns, name), &v1alpha1.DatapipelinePipeline{})
 
@@ -122,15 +124,15 @@ func (c *FakeDatapipelinePipelines) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDatapipelinePipelines) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(datapipelinepipelinesResource, c.ns, listOptions)
+func (c *FakeDatapipelinePipelines) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(datapipelinepipelinesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DatapipelinePipelineList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched datapipelinePipeline.
-func (c *FakeDatapipelinePipelines) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DatapipelinePipeline, err error) {
+func (c *FakeDatapipelinePipelines) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DatapipelinePipeline, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(datapipelinepipelinesResource, c.ns, name, pt, data, subresources...), &v1alpha1.DatapipelinePipeline{})
 

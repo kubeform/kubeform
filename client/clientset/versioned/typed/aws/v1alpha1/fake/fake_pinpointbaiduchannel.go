@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var pinpointbaiduchannelsResource = schema.GroupVersionResource{Group: "aws.kube
 var pinpointbaiduchannelsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "PinpointBaiduChannel"}
 
 // Get takes name of the pinpointBaiduChannel, and returns the corresponding pinpointBaiduChannel object, and an error if there is any.
-func (c *FakePinpointBaiduChannels) Get(name string, options v1.GetOptions) (result *v1alpha1.PinpointBaiduChannel, err error) {
+func (c *FakePinpointBaiduChannels) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PinpointBaiduChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(pinpointbaiduchannelsResource, c.ns, name), &v1alpha1.PinpointBaiduChannel{})
 
@@ -51,7 +53,7 @@ func (c *FakePinpointBaiduChannels) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of PinpointBaiduChannels that match those selectors.
-func (c *FakePinpointBaiduChannels) List(opts v1.ListOptions) (result *v1alpha1.PinpointBaiduChannelList, err error) {
+func (c *FakePinpointBaiduChannels) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PinpointBaiduChannelList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(pinpointbaiduchannelsResource, pinpointbaiduchannelsKind, c.ns, opts), &v1alpha1.PinpointBaiduChannelList{})
 
@@ -73,14 +75,14 @@ func (c *FakePinpointBaiduChannels) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested pinpointBaiduChannels.
-func (c *FakePinpointBaiduChannels) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakePinpointBaiduChannels) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(pinpointbaiduchannelsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a pinpointBaiduChannel and creates it.  Returns the server's representation of the pinpointBaiduChannel, and an error, if there is any.
-func (c *FakePinpointBaiduChannels) Create(pinpointBaiduChannel *v1alpha1.PinpointBaiduChannel) (result *v1alpha1.PinpointBaiduChannel, err error) {
+func (c *FakePinpointBaiduChannels) Create(ctx context.Context, pinpointBaiduChannel *v1alpha1.PinpointBaiduChannel, opts v1.CreateOptions) (result *v1alpha1.PinpointBaiduChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(pinpointbaiduchannelsResource, c.ns, pinpointBaiduChannel), &v1alpha1.PinpointBaiduChannel{})
 
@@ -91,7 +93,7 @@ func (c *FakePinpointBaiduChannels) Create(pinpointBaiduChannel *v1alpha1.Pinpoi
 }
 
 // Update takes the representation of a pinpointBaiduChannel and updates it. Returns the server's representation of the pinpointBaiduChannel, and an error, if there is any.
-func (c *FakePinpointBaiduChannels) Update(pinpointBaiduChannel *v1alpha1.PinpointBaiduChannel) (result *v1alpha1.PinpointBaiduChannel, err error) {
+func (c *FakePinpointBaiduChannels) Update(ctx context.Context, pinpointBaiduChannel *v1alpha1.PinpointBaiduChannel, opts v1.UpdateOptions) (result *v1alpha1.PinpointBaiduChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(pinpointbaiduchannelsResource, c.ns, pinpointBaiduChannel), &v1alpha1.PinpointBaiduChannel{})
 
@@ -103,7 +105,7 @@ func (c *FakePinpointBaiduChannels) Update(pinpointBaiduChannel *v1alpha1.Pinpoi
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakePinpointBaiduChannels) UpdateStatus(pinpointBaiduChannel *v1alpha1.PinpointBaiduChannel) (*v1alpha1.PinpointBaiduChannel, error) {
+func (c *FakePinpointBaiduChannels) UpdateStatus(ctx context.Context, pinpointBaiduChannel *v1alpha1.PinpointBaiduChannel, opts v1.UpdateOptions) (*v1alpha1.PinpointBaiduChannel, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(pinpointbaiduchannelsResource, "status", c.ns, pinpointBaiduChannel), &v1alpha1.PinpointBaiduChannel{})
 
@@ -114,7 +116,7 @@ func (c *FakePinpointBaiduChannels) UpdateStatus(pinpointBaiduChannel *v1alpha1.
 }
 
 // Delete takes name of the pinpointBaiduChannel and deletes it. Returns an error if one occurs.
-func (c *FakePinpointBaiduChannels) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakePinpointBaiduChannels) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(pinpointbaiduchannelsResource, c.ns, name), &v1alpha1.PinpointBaiduChannel{})
 
@@ -122,15 +124,15 @@ func (c *FakePinpointBaiduChannels) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakePinpointBaiduChannels) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(pinpointbaiduchannelsResource, c.ns, listOptions)
+func (c *FakePinpointBaiduChannels) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(pinpointbaiduchannelsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.PinpointBaiduChannelList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched pinpointBaiduChannel.
-func (c *FakePinpointBaiduChannels) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PinpointBaiduChannel, err error) {
+func (c *FakePinpointBaiduChannels) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PinpointBaiduChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(pinpointbaiduchannelsResource, c.ns, name, pt, data, subresources...), &v1alpha1.PinpointBaiduChannel{})
 

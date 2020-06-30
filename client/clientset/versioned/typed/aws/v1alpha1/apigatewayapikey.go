@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type ApiGatewayAPIKeysGetter interface {
 
 // ApiGatewayAPIKeyInterface has methods to work with ApiGatewayAPIKey resources.
 type ApiGatewayAPIKeyInterface interface {
-	Create(*v1alpha1.ApiGatewayAPIKey) (*v1alpha1.ApiGatewayAPIKey, error)
-	Update(*v1alpha1.ApiGatewayAPIKey) (*v1alpha1.ApiGatewayAPIKey, error)
-	UpdateStatus(*v1alpha1.ApiGatewayAPIKey) (*v1alpha1.ApiGatewayAPIKey, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ApiGatewayAPIKey, error)
-	List(opts v1.ListOptions) (*v1alpha1.ApiGatewayAPIKeyList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiGatewayAPIKey, err error)
+	Create(ctx context.Context, apiGatewayAPIKey *v1alpha1.ApiGatewayAPIKey, opts v1.CreateOptions) (*v1alpha1.ApiGatewayAPIKey, error)
+	Update(ctx context.Context, apiGatewayAPIKey *v1alpha1.ApiGatewayAPIKey, opts v1.UpdateOptions) (*v1alpha1.ApiGatewayAPIKey, error)
+	UpdateStatus(ctx context.Context, apiGatewayAPIKey *v1alpha1.ApiGatewayAPIKey, opts v1.UpdateOptions) (*v1alpha1.ApiGatewayAPIKey, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ApiGatewayAPIKey, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ApiGatewayAPIKeyList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiGatewayAPIKey, err error)
 	ApiGatewayAPIKeyExpansion
 }
 
@@ -65,20 +66,20 @@ func newApiGatewayAPIKeys(c *AwsV1alpha1Client, namespace string) *apiGatewayAPI
 }
 
 // Get takes name of the apiGatewayAPIKey, and returns the corresponding apiGatewayAPIKey object, and an error if there is any.
-func (c *apiGatewayAPIKeys) Get(name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayAPIKey, err error) {
+func (c *apiGatewayAPIKeys) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayAPIKey, err error) {
 	result = &v1alpha1.ApiGatewayAPIKey{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("apigatewayapikeys").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ApiGatewayAPIKeys that match those selectors.
-func (c *apiGatewayAPIKeys) List(opts v1.ListOptions) (result *v1alpha1.ApiGatewayAPIKeyList, err error) {
+func (c *apiGatewayAPIKeys) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApiGatewayAPIKeyList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *apiGatewayAPIKeys) List(opts v1.ListOptions) (result *v1alpha1.ApiGatew
 		Resource("apigatewayapikeys").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested apiGatewayAPIKeys.
-func (c *apiGatewayAPIKeys) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *apiGatewayAPIKeys) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *apiGatewayAPIKeys) Watch(opts v1.ListOptions) (watch.Interface, error) 
 		Resource("apigatewayapikeys").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a apiGatewayAPIKey and creates it.  Returns the server's representation of the apiGatewayAPIKey, and an error, if there is any.
-func (c *apiGatewayAPIKeys) Create(apiGatewayAPIKey *v1alpha1.ApiGatewayAPIKey) (result *v1alpha1.ApiGatewayAPIKey, err error) {
+func (c *apiGatewayAPIKeys) Create(ctx context.Context, apiGatewayAPIKey *v1alpha1.ApiGatewayAPIKey, opts v1.CreateOptions) (result *v1alpha1.ApiGatewayAPIKey, err error) {
 	result = &v1alpha1.ApiGatewayAPIKey{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("apigatewayapikeys").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(apiGatewayAPIKey).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a apiGatewayAPIKey and updates it. Returns the server's representation of the apiGatewayAPIKey, and an error, if there is any.
-func (c *apiGatewayAPIKeys) Update(apiGatewayAPIKey *v1alpha1.ApiGatewayAPIKey) (result *v1alpha1.ApiGatewayAPIKey, err error) {
+func (c *apiGatewayAPIKeys) Update(ctx context.Context, apiGatewayAPIKey *v1alpha1.ApiGatewayAPIKey, opts v1.UpdateOptions) (result *v1alpha1.ApiGatewayAPIKey, err error) {
 	result = &v1alpha1.ApiGatewayAPIKey{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("apigatewayapikeys").
 		Name(apiGatewayAPIKey.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(apiGatewayAPIKey).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *apiGatewayAPIKeys) UpdateStatus(apiGatewayAPIKey *v1alpha1.ApiGatewayAPIKey) (result *v1alpha1.ApiGatewayAPIKey, err error) {
+func (c *apiGatewayAPIKeys) UpdateStatus(ctx context.Context, apiGatewayAPIKey *v1alpha1.ApiGatewayAPIKey, opts v1.UpdateOptions) (result *v1alpha1.ApiGatewayAPIKey, err error) {
 	result = &v1alpha1.ApiGatewayAPIKey{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("apigatewayapikeys").
 		Name(apiGatewayAPIKey.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(apiGatewayAPIKey).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the apiGatewayAPIKey and deletes it. Returns an error if one occurs.
-func (c *apiGatewayAPIKeys) Delete(name string, options *v1.DeleteOptions) error {
+func (c *apiGatewayAPIKeys) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("apigatewayapikeys").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *apiGatewayAPIKeys) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *apiGatewayAPIKeys) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("apigatewayapikeys").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched apiGatewayAPIKey.
-func (c *apiGatewayAPIKeys) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiGatewayAPIKey, err error) {
+func (c *apiGatewayAPIKeys) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiGatewayAPIKey, err error) {
 	result = &v1alpha1.ApiGatewayAPIKey{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("apigatewayapikeys").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

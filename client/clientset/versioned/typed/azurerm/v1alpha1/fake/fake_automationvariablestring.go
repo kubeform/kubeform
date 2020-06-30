@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var automationvariablestringsResource = schema.GroupVersionResource{Group: "azur
 var automationvariablestringsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "AutomationVariableString"}
 
 // Get takes name of the automationVariableString, and returns the corresponding automationVariableString object, and an error if there is any.
-func (c *FakeAutomationVariableStrings) Get(name string, options v1.GetOptions) (result *v1alpha1.AutomationVariableString, err error) {
+func (c *FakeAutomationVariableStrings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AutomationVariableString, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(automationvariablestringsResource, c.ns, name), &v1alpha1.AutomationVariableString{})
 
@@ -51,7 +53,7 @@ func (c *FakeAutomationVariableStrings) Get(name string, options v1.GetOptions) 
 }
 
 // List takes label and field selectors, and returns the list of AutomationVariableStrings that match those selectors.
-func (c *FakeAutomationVariableStrings) List(opts v1.ListOptions) (result *v1alpha1.AutomationVariableStringList, err error) {
+func (c *FakeAutomationVariableStrings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AutomationVariableStringList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(automationvariablestringsResource, automationvariablestringsKind, c.ns, opts), &v1alpha1.AutomationVariableStringList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAutomationVariableStrings) List(opts v1.ListOptions) (result *v1alp
 }
 
 // Watch returns a watch.Interface that watches the requested automationVariableStrings.
-func (c *FakeAutomationVariableStrings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAutomationVariableStrings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(automationvariablestringsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a automationVariableString and creates it.  Returns the server's representation of the automationVariableString, and an error, if there is any.
-func (c *FakeAutomationVariableStrings) Create(automationVariableString *v1alpha1.AutomationVariableString) (result *v1alpha1.AutomationVariableString, err error) {
+func (c *FakeAutomationVariableStrings) Create(ctx context.Context, automationVariableString *v1alpha1.AutomationVariableString, opts v1.CreateOptions) (result *v1alpha1.AutomationVariableString, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(automationvariablestringsResource, c.ns, automationVariableString), &v1alpha1.AutomationVariableString{})
 
@@ -91,7 +93,7 @@ func (c *FakeAutomationVariableStrings) Create(automationVariableString *v1alpha
 }
 
 // Update takes the representation of a automationVariableString and updates it. Returns the server's representation of the automationVariableString, and an error, if there is any.
-func (c *FakeAutomationVariableStrings) Update(automationVariableString *v1alpha1.AutomationVariableString) (result *v1alpha1.AutomationVariableString, err error) {
+func (c *FakeAutomationVariableStrings) Update(ctx context.Context, automationVariableString *v1alpha1.AutomationVariableString, opts v1.UpdateOptions) (result *v1alpha1.AutomationVariableString, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(automationvariablestringsResource, c.ns, automationVariableString), &v1alpha1.AutomationVariableString{})
 
@@ -103,7 +105,7 @@ func (c *FakeAutomationVariableStrings) Update(automationVariableString *v1alpha
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAutomationVariableStrings) UpdateStatus(automationVariableString *v1alpha1.AutomationVariableString) (*v1alpha1.AutomationVariableString, error) {
+func (c *FakeAutomationVariableStrings) UpdateStatus(ctx context.Context, automationVariableString *v1alpha1.AutomationVariableString, opts v1.UpdateOptions) (*v1alpha1.AutomationVariableString, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(automationvariablestringsResource, "status", c.ns, automationVariableString), &v1alpha1.AutomationVariableString{})
 
@@ -114,7 +116,7 @@ func (c *FakeAutomationVariableStrings) UpdateStatus(automationVariableString *v
 }
 
 // Delete takes name of the automationVariableString and deletes it. Returns an error if one occurs.
-func (c *FakeAutomationVariableStrings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAutomationVariableStrings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(automationvariablestringsResource, c.ns, name), &v1alpha1.AutomationVariableString{})
 
@@ -122,15 +124,15 @@ func (c *FakeAutomationVariableStrings) Delete(name string, options *v1.DeleteOp
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAutomationVariableStrings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(automationvariablestringsResource, c.ns, listOptions)
+func (c *FakeAutomationVariableStrings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(automationvariablestringsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AutomationVariableStringList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched automationVariableString.
-func (c *FakeAutomationVariableStrings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AutomationVariableString, err error) {
+func (c *FakeAutomationVariableStrings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AutomationVariableString, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(automationvariablestringsResource, c.ns, name, pt, data, subresources...), &v1alpha1.AutomationVariableString{})
 

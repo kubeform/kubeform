@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var apigatewaymethodresponsesResource = schema.GroupVersionResource{Group: "aws.
 var apigatewaymethodresponsesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ApiGatewayMethodResponse"}
 
 // Get takes name of the apiGatewayMethodResponse, and returns the corresponding apiGatewayMethodResponse object, and an error if there is any.
-func (c *FakeApiGatewayMethodResponses) Get(name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayMethodResponse, err error) {
+func (c *FakeApiGatewayMethodResponses) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayMethodResponse, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(apigatewaymethodresponsesResource, c.ns, name), &v1alpha1.ApiGatewayMethodResponse{})
 
@@ -51,7 +53,7 @@ func (c *FakeApiGatewayMethodResponses) Get(name string, options v1.GetOptions) 
 }
 
 // List takes label and field selectors, and returns the list of ApiGatewayMethodResponses that match those selectors.
-func (c *FakeApiGatewayMethodResponses) List(opts v1.ListOptions) (result *v1alpha1.ApiGatewayMethodResponseList, err error) {
+func (c *FakeApiGatewayMethodResponses) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApiGatewayMethodResponseList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(apigatewaymethodresponsesResource, apigatewaymethodresponsesKind, c.ns, opts), &v1alpha1.ApiGatewayMethodResponseList{})
 
@@ -73,14 +75,14 @@ func (c *FakeApiGatewayMethodResponses) List(opts v1.ListOptions) (result *v1alp
 }
 
 // Watch returns a watch.Interface that watches the requested apiGatewayMethodResponses.
-func (c *FakeApiGatewayMethodResponses) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeApiGatewayMethodResponses) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(apigatewaymethodresponsesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a apiGatewayMethodResponse and creates it.  Returns the server's representation of the apiGatewayMethodResponse, and an error, if there is any.
-func (c *FakeApiGatewayMethodResponses) Create(apiGatewayMethodResponse *v1alpha1.ApiGatewayMethodResponse) (result *v1alpha1.ApiGatewayMethodResponse, err error) {
+func (c *FakeApiGatewayMethodResponses) Create(ctx context.Context, apiGatewayMethodResponse *v1alpha1.ApiGatewayMethodResponse, opts v1.CreateOptions) (result *v1alpha1.ApiGatewayMethodResponse, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(apigatewaymethodresponsesResource, c.ns, apiGatewayMethodResponse), &v1alpha1.ApiGatewayMethodResponse{})
 
@@ -91,7 +93,7 @@ func (c *FakeApiGatewayMethodResponses) Create(apiGatewayMethodResponse *v1alpha
 }
 
 // Update takes the representation of a apiGatewayMethodResponse and updates it. Returns the server's representation of the apiGatewayMethodResponse, and an error, if there is any.
-func (c *FakeApiGatewayMethodResponses) Update(apiGatewayMethodResponse *v1alpha1.ApiGatewayMethodResponse) (result *v1alpha1.ApiGatewayMethodResponse, err error) {
+func (c *FakeApiGatewayMethodResponses) Update(ctx context.Context, apiGatewayMethodResponse *v1alpha1.ApiGatewayMethodResponse, opts v1.UpdateOptions) (result *v1alpha1.ApiGatewayMethodResponse, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(apigatewaymethodresponsesResource, c.ns, apiGatewayMethodResponse), &v1alpha1.ApiGatewayMethodResponse{})
 
@@ -103,7 +105,7 @@ func (c *FakeApiGatewayMethodResponses) Update(apiGatewayMethodResponse *v1alpha
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeApiGatewayMethodResponses) UpdateStatus(apiGatewayMethodResponse *v1alpha1.ApiGatewayMethodResponse) (*v1alpha1.ApiGatewayMethodResponse, error) {
+func (c *FakeApiGatewayMethodResponses) UpdateStatus(ctx context.Context, apiGatewayMethodResponse *v1alpha1.ApiGatewayMethodResponse, opts v1.UpdateOptions) (*v1alpha1.ApiGatewayMethodResponse, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(apigatewaymethodresponsesResource, "status", c.ns, apiGatewayMethodResponse), &v1alpha1.ApiGatewayMethodResponse{})
 
@@ -114,7 +116,7 @@ func (c *FakeApiGatewayMethodResponses) UpdateStatus(apiGatewayMethodResponse *v
 }
 
 // Delete takes name of the apiGatewayMethodResponse and deletes it. Returns an error if one occurs.
-func (c *FakeApiGatewayMethodResponses) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeApiGatewayMethodResponses) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(apigatewaymethodresponsesResource, c.ns, name), &v1alpha1.ApiGatewayMethodResponse{})
 
@@ -122,15 +124,15 @@ func (c *FakeApiGatewayMethodResponses) Delete(name string, options *v1.DeleteOp
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeApiGatewayMethodResponses) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(apigatewaymethodresponsesResource, c.ns, listOptions)
+func (c *FakeApiGatewayMethodResponses) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(apigatewaymethodresponsesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ApiGatewayMethodResponseList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched apiGatewayMethodResponse.
-func (c *FakeApiGatewayMethodResponses) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiGatewayMethodResponse, err error) {
+func (c *FakeApiGatewayMethodResponses) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiGatewayMethodResponse, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(apigatewaymethodresponsesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ApiGatewayMethodResponse{})
 

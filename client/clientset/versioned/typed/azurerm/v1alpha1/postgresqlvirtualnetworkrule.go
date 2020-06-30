@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type PostgresqlVirtualNetworkRulesGetter interface {
 
 // PostgresqlVirtualNetworkRuleInterface has methods to work with PostgresqlVirtualNetworkRule resources.
 type PostgresqlVirtualNetworkRuleInterface interface {
-	Create(*v1alpha1.PostgresqlVirtualNetworkRule) (*v1alpha1.PostgresqlVirtualNetworkRule, error)
-	Update(*v1alpha1.PostgresqlVirtualNetworkRule) (*v1alpha1.PostgresqlVirtualNetworkRule, error)
-	UpdateStatus(*v1alpha1.PostgresqlVirtualNetworkRule) (*v1alpha1.PostgresqlVirtualNetworkRule, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.PostgresqlVirtualNetworkRule, error)
-	List(opts v1.ListOptions) (*v1alpha1.PostgresqlVirtualNetworkRuleList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PostgresqlVirtualNetworkRule, err error)
+	Create(ctx context.Context, postgresqlVirtualNetworkRule *v1alpha1.PostgresqlVirtualNetworkRule, opts v1.CreateOptions) (*v1alpha1.PostgresqlVirtualNetworkRule, error)
+	Update(ctx context.Context, postgresqlVirtualNetworkRule *v1alpha1.PostgresqlVirtualNetworkRule, opts v1.UpdateOptions) (*v1alpha1.PostgresqlVirtualNetworkRule, error)
+	UpdateStatus(ctx context.Context, postgresqlVirtualNetworkRule *v1alpha1.PostgresqlVirtualNetworkRule, opts v1.UpdateOptions) (*v1alpha1.PostgresqlVirtualNetworkRule, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.PostgresqlVirtualNetworkRule, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.PostgresqlVirtualNetworkRuleList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PostgresqlVirtualNetworkRule, err error)
 	PostgresqlVirtualNetworkRuleExpansion
 }
 
@@ -65,20 +66,20 @@ func newPostgresqlVirtualNetworkRules(c *AzurermV1alpha1Client, namespace string
 }
 
 // Get takes name of the postgresqlVirtualNetworkRule, and returns the corresponding postgresqlVirtualNetworkRule object, and an error if there is any.
-func (c *postgresqlVirtualNetworkRules) Get(name string, options v1.GetOptions) (result *v1alpha1.PostgresqlVirtualNetworkRule, err error) {
+func (c *postgresqlVirtualNetworkRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PostgresqlVirtualNetworkRule, err error) {
 	result = &v1alpha1.PostgresqlVirtualNetworkRule{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("postgresqlvirtualnetworkrules").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of PostgresqlVirtualNetworkRules that match those selectors.
-func (c *postgresqlVirtualNetworkRules) List(opts v1.ListOptions) (result *v1alpha1.PostgresqlVirtualNetworkRuleList, err error) {
+func (c *postgresqlVirtualNetworkRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PostgresqlVirtualNetworkRuleList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *postgresqlVirtualNetworkRules) List(opts v1.ListOptions) (result *v1alp
 		Resource("postgresqlvirtualnetworkrules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested postgresqlVirtualNetworkRules.
-func (c *postgresqlVirtualNetworkRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *postgresqlVirtualNetworkRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *postgresqlVirtualNetworkRules) Watch(opts v1.ListOptions) (watch.Interf
 		Resource("postgresqlvirtualnetworkrules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a postgresqlVirtualNetworkRule and creates it.  Returns the server's representation of the postgresqlVirtualNetworkRule, and an error, if there is any.
-func (c *postgresqlVirtualNetworkRules) Create(postgresqlVirtualNetworkRule *v1alpha1.PostgresqlVirtualNetworkRule) (result *v1alpha1.PostgresqlVirtualNetworkRule, err error) {
+func (c *postgresqlVirtualNetworkRules) Create(ctx context.Context, postgresqlVirtualNetworkRule *v1alpha1.PostgresqlVirtualNetworkRule, opts v1.CreateOptions) (result *v1alpha1.PostgresqlVirtualNetworkRule, err error) {
 	result = &v1alpha1.PostgresqlVirtualNetworkRule{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("postgresqlvirtualnetworkrules").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(postgresqlVirtualNetworkRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a postgresqlVirtualNetworkRule and updates it. Returns the server's representation of the postgresqlVirtualNetworkRule, and an error, if there is any.
-func (c *postgresqlVirtualNetworkRules) Update(postgresqlVirtualNetworkRule *v1alpha1.PostgresqlVirtualNetworkRule) (result *v1alpha1.PostgresqlVirtualNetworkRule, err error) {
+func (c *postgresqlVirtualNetworkRules) Update(ctx context.Context, postgresqlVirtualNetworkRule *v1alpha1.PostgresqlVirtualNetworkRule, opts v1.UpdateOptions) (result *v1alpha1.PostgresqlVirtualNetworkRule, err error) {
 	result = &v1alpha1.PostgresqlVirtualNetworkRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("postgresqlvirtualnetworkrules").
 		Name(postgresqlVirtualNetworkRule.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(postgresqlVirtualNetworkRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *postgresqlVirtualNetworkRules) UpdateStatus(postgresqlVirtualNetworkRule *v1alpha1.PostgresqlVirtualNetworkRule) (result *v1alpha1.PostgresqlVirtualNetworkRule, err error) {
+func (c *postgresqlVirtualNetworkRules) UpdateStatus(ctx context.Context, postgresqlVirtualNetworkRule *v1alpha1.PostgresqlVirtualNetworkRule, opts v1.UpdateOptions) (result *v1alpha1.PostgresqlVirtualNetworkRule, err error) {
 	result = &v1alpha1.PostgresqlVirtualNetworkRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("postgresqlvirtualnetworkrules").
 		Name(postgresqlVirtualNetworkRule.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(postgresqlVirtualNetworkRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the postgresqlVirtualNetworkRule and deletes it. Returns an error if one occurs.
-func (c *postgresqlVirtualNetworkRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *postgresqlVirtualNetworkRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("postgresqlvirtualnetworkrules").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *postgresqlVirtualNetworkRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *postgresqlVirtualNetworkRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("postgresqlvirtualnetworkrules").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched postgresqlVirtualNetworkRule.
-func (c *postgresqlVirtualNetworkRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PostgresqlVirtualNetworkRule, err error) {
+func (c *postgresqlVirtualNetworkRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PostgresqlVirtualNetworkRule, err error) {
 	result = &v1alpha1.PostgresqlVirtualNetworkRule{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("postgresqlvirtualnetworkrules").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

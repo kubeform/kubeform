@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var athenadatabasesResource = schema.GroupVersionResource{Group: "aws.kubeform.c
 var athenadatabasesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "AthenaDatabase"}
 
 // Get takes name of the athenaDatabase, and returns the corresponding athenaDatabase object, and an error if there is any.
-func (c *FakeAthenaDatabases) Get(name string, options v1.GetOptions) (result *v1alpha1.AthenaDatabase, err error) {
+func (c *FakeAthenaDatabases) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AthenaDatabase, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(athenadatabasesResource, c.ns, name), &v1alpha1.AthenaDatabase{})
 
@@ -51,7 +53,7 @@ func (c *FakeAthenaDatabases) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of AthenaDatabases that match those selectors.
-func (c *FakeAthenaDatabases) List(opts v1.ListOptions) (result *v1alpha1.AthenaDatabaseList, err error) {
+func (c *FakeAthenaDatabases) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AthenaDatabaseList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(athenadatabasesResource, athenadatabasesKind, c.ns, opts), &v1alpha1.AthenaDatabaseList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAthenaDatabases) List(opts v1.ListOptions) (result *v1alpha1.Athena
 }
 
 // Watch returns a watch.Interface that watches the requested athenaDatabases.
-func (c *FakeAthenaDatabases) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAthenaDatabases) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(athenadatabasesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a athenaDatabase and creates it.  Returns the server's representation of the athenaDatabase, and an error, if there is any.
-func (c *FakeAthenaDatabases) Create(athenaDatabase *v1alpha1.AthenaDatabase) (result *v1alpha1.AthenaDatabase, err error) {
+func (c *FakeAthenaDatabases) Create(ctx context.Context, athenaDatabase *v1alpha1.AthenaDatabase, opts v1.CreateOptions) (result *v1alpha1.AthenaDatabase, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(athenadatabasesResource, c.ns, athenaDatabase), &v1alpha1.AthenaDatabase{})
 
@@ -91,7 +93,7 @@ func (c *FakeAthenaDatabases) Create(athenaDatabase *v1alpha1.AthenaDatabase) (r
 }
 
 // Update takes the representation of a athenaDatabase and updates it. Returns the server's representation of the athenaDatabase, and an error, if there is any.
-func (c *FakeAthenaDatabases) Update(athenaDatabase *v1alpha1.AthenaDatabase) (result *v1alpha1.AthenaDatabase, err error) {
+func (c *FakeAthenaDatabases) Update(ctx context.Context, athenaDatabase *v1alpha1.AthenaDatabase, opts v1.UpdateOptions) (result *v1alpha1.AthenaDatabase, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(athenadatabasesResource, c.ns, athenaDatabase), &v1alpha1.AthenaDatabase{})
 
@@ -103,7 +105,7 @@ func (c *FakeAthenaDatabases) Update(athenaDatabase *v1alpha1.AthenaDatabase) (r
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAthenaDatabases) UpdateStatus(athenaDatabase *v1alpha1.AthenaDatabase) (*v1alpha1.AthenaDatabase, error) {
+func (c *FakeAthenaDatabases) UpdateStatus(ctx context.Context, athenaDatabase *v1alpha1.AthenaDatabase, opts v1.UpdateOptions) (*v1alpha1.AthenaDatabase, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(athenadatabasesResource, "status", c.ns, athenaDatabase), &v1alpha1.AthenaDatabase{})
 
@@ -114,7 +116,7 @@ func (c *FakeAthenaDatabases) UpdateStatus(athenaDatabase *v1alpha1.AthenaDataba
 }
 
 // Delete takes name of the athenaDatabase and deletes it. Returns an error if one occurs.
-func (c *FakeAthenaDatabases) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAthenaDatabases) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(athenadatabasesResource, c.ns, name), &v1alpha1.AthenaDatabase{})
 
@@ -122,15 +124,15 @@ func (c *FakeAthenaDatabases) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAthenaDatabases) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(athenadatabasesResource, c.ns, listOptions)
+func (c *FakeAthenaDatabases) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(athenadatabasesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AthenaDatabaseList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched athenaDatabase.
-func (c *FakeAthenaDatabases) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AthenaDatabase, err error) {
+func (c *FakeAthenaDatabases) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AthenaDatabase, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(athenadatabasesResource, c.ns, name, pt, data, subresources...), &v1alpha1.AthenaDatabase{})
 

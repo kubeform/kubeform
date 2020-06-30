@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var datafactorypipelinesResource = schema.GroupVersionResource{Group: "azurerm.k
 var datafactorypipelinesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "DataFactoryPipeline"}
 
 // Get takes name of the dataFactoryPipeline, and returns the corresponding dataFactoryPipeline object, and an error if there is any.
-func (c *FakeDataFactoryPipelines) Get(name string, options v1.GetOptions) (result *v1alpha1.DataFactoryPipeline, err error) {
+func (c *FakeDataFactoryPipelines) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DataFactoryPipeline, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(datafactorypipelinesResource, c.ns, name), &v1alpha1.DataFactoryPipeline{})
 
@@ -51,7 +53,7 @@ func (c *FakeDataFactoryPipelines) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of DataFactoryPipelines that match those selectors.
-func (c *FakeDataFactoryPipelines) List(opts v1.ListOptions) (result *v1alpha1.DataFactoryPipelineList, err error) {
+func (c *FakeDataFactoryPipelines) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DataFactoryPipelineList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(datafactorypipelinesResource, datafactorypipelinesKind, c.ns, opts), &v1alpha1.DataFactoryPipelineList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDataFactoryPipelines) List(opts v1.ListOptions) (result *v1alpha1.D
 }
 
 // Watch returns a watch.Interface that watches the requested dataFactoryPipelines.
-func (c *FakeDataFactoryPipelines) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDataFactoryPipelines) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(datafactorypipelinesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dataFactoryPipeline and creates it.  Returns the server's representation of the dataFactoryPipeline, and an error, if there is any.
-func (c *FakeDataFactoryPipelines) Create(dataFactoryPipeline *v1alpha1.DataFactoryPipeline) (result *v1alpha1.DataFactoryPipeline, err error) {
+func (c *FakeDataFactoryPipelines) Create(ctx context.Context, dataFactoryPipeline *v1alpha1.DataFactoryPipeline, opts v1.CreateOptions) (result *v1alpha1.DataFactoryPipeline, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(datafactorypipelinesResource, c.ns, dataFactoryPipeline), &v1alpha1.DataFactoryPipeline{})
 
@@ -91,7 +93,7 @@ func (c *FakeDataFactoryPipelines) Create(dataFactoryPipeline *v1alpha1.DataFact
 }
 
 // Update takes the representation of a dataFactoryPipeline and updates it. Returns the server's representation of the dataFactoryPipeline, and an error, if there is any.
-func (c *FakeDataFactoryPipelines) Update(dataFactoryPipeline *v1alpha1.DataFactoryPipeline) (result *v1alpha1.DataFactoryPipeline, err error) {
+func (c *FakeDataFactoryPipelines) Update(ctx context.Context, dataFactoryPipeline *v1alpha1.DataFactoryPipeline, opts v1.UpdateOptions) (result *v1alpha1.DataFactoryPipeline, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(datafactorypipelinesResource, c.ns, dataFactoryPipeline), &v1alpha1.DataFactoryPipeline{})
 
@@ -103,7 +105,7 @@ func (c *FakeDataFactoryPipelines) Update(dataFactoryPipeline *v1alpha1.DataFact
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDataFactoryPipelines) UpdateStatus(dataFactoryPipeline *v1alpha1.DataFactoryPipeline) (*v1alpha1.DataFactoryPipeline, error) {
+func (c *FakeDataFactoryPipelines) UpdateStatus(ctx context.Context, dataFactoryPipeline *v1alpha1.DataFactoryPipeline, opts v1.UpdateOptions) (*v1alpha1.DataFactoryPipeline, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(datafactorypipelinesResource, "status", c.ns, dataFactoryPipeline), &v1alpha1.DataFactoryPipeline{})
 
@@ -114,7 +116,7 @@ func (c *FakeDataFactoryPipelines) UpdateStatus(dataFactoryPipeline *v1alpha1.Da
 }
 
 // Delete takes name of the dataFactoryPipeline and deletes it. Returns an error if one occurs.
-func (c *FakeDataFactoryPipelines) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDataFactoryPipelines) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(datafactorypipelinesResource, c.ns, name), &v1alpha1.DataFactoryPipeline{})
 
@@ -122,15 +124,15 @@ func (c *FakeDataFactoryPipelines) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDataFactoryPipelines) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(datafactorypipelinesResource, c.ns, listOptions)
+func (c *FakeDataFactoryPipelines) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(datafactorypipelinesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DataFactoryPipelineList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dataFactoryPipeline.
-func (c *FakeDataFactoryPipelines) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataFactoryPipeline, err error) {
+func (c *FakeDataFactoryPipelines) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataFactoryPipeline, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(datafactorypipelinesResource, c.ns, name, pt, data, subresources...), &v1alpha1.DataFactoryPipeline{})
 

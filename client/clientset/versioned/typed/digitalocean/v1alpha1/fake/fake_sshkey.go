@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/digitalocean/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var sshkeysResource = schema.GroupVersionResource{Group: "digitalocean.kubeform.
 var sshkeysKind = schema.GroupVersionKind{Group: "digitalocean.kubeform.com", Version: "v1alpha1", Kind: "SshKey"}
 
 // Get takes name of the sshKey, and returns the corresponding sshKey object, and an error if there is any.
-func (c *FakeSshKeys) Get(name string, options v1.GetOptions) (result *v1alpha1.SshKey, err error) {
+func (c *FakeSshKeys) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SshKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(sshkeysResource, c.ns, name), &v1alpha1.SshKey{})
 
@@ -51,7 +53,7 @@ func (c *FakeSshKeys) Get(name string, options v1.GetOptions) (result *v1alpha1.
 }
 
 // List takes label and field selectors, and returns the list of SshKeys that match those selectors.
-func (c *FakeSshKeys) List(opts v1.ListOptions) (result *v1alpha1.SshKeyList, err error) {
+func (c *FakeSshKeys) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SshKeyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(sshkeysResource, sshkeysKind, c.ns, opts), &v1alpha1.SshKeyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSshKeys) List(opts v1.ListOptions) (result *v1alpha1.SshKeyList, er
 }
 
 // Watch returns a watch.Interface that watches the requested sshKeys.
-func (c *FakeSshKeys) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSshKeys) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(sshkeysResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a sshKey and creates it.  Returns the server's representation of the sshKey, and an error, if there is any.
-func (c *FakeSshKeys) Create(sshKey *v1alpha1.SshKey) (result *v1alpha1.SshKey, err error) {
+func (c *FakeSshKeys) Create(ctx context.Context, sshKey *v1alpha1.SshKey, opts v1.CreateOptions) (result *v1alpha1.SshKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(sshkeysResource, c.ns, sshKey), &v1alpha1.SshKey{})
 
@@ -91,7 +93,7 @@ func (c *FakeSshKeys) Create(sshKey *v1alpha1.SshKey) (result *v1alpha1.SshKey, 
 }
 
 // Update takes the representation of a sshKey and updates it. Returns the server's representation of the sshKey, and an error, if there is any.
-func (c *FakeSshKeys) Update(sshKey *v1alpha1.SshKey) (result *v1alpha1.SshKey, err error) {
+func (c *FakeSshKeys) Update(ctx context.Context, sshKey *v1alpha1.SshKey, opts v1.UpdateOptions) (result *v1alpha1.SshKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(sshkeysResource, c.ns, sshKey), &v1alpha1.SshKey{})
 
@@ -103,7 +105,7 @@ func (c *FakeSshKeys) Update(sshKey *v1alpha1.SshKey) (result *v1alpha1.SshKey, 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSshKeys) UpdateStatus(sshKey *v1alpha1.SshKey) (*v1alpha1.SshKey, error) {
+func (c *FakeSshKeys) UpdateStatus(ctx context.Context, sshKey *v1alpha1.SshKey, opts v1.UpdateOptions) (*v1alpha1.SshKey, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(sshkeysResource, "status", c.ns, sshKey), &v1alpha1.SshKey{})
 
@@ -114,7 +116,7 @@ func (c *FakeSshKeys) UpdateStatus(sshKey *v1alpha1.SshKey) (*v1alpha1.SshKey, e
 }
 
 // Delete takes name of the sshKey and deletes it. Returns an error if one occurs.
-func (c *FakeSshKeys) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSshKeys) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(sshkeysResource, c.ns, name), &v1alpha1.SshKey{})
 
@@ -122,15 +124,15 @@ func (c *FakeSshKeys) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSshKeys) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(sshkeysResource, c.ns, listOptions)
+func (c *FakeSshKeys) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(sshkeysResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SshKeyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched sshKey.
-func (c *FakeSshKeys) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SshKey, err error) {
+func (c *FakeSshKeys) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SshKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(sshkeysResource, c.ns, name, pt, data, subresources...), &v1alpha1.SshKey{})
 

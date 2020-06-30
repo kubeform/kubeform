@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var mqbrokersResource = schema.GroupVersionResource{Group: "aws.kubeform.com", V
 var mqbrokersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "MqBroker"}
 
 // Get takes name of the mqBroker, and returns the corresponding mqBroker object, and an error if there is any.
-func (c *FakeMqBrokers) Get(name string, options v1.GetOptions) (result *v1alpha1.MqBroker, err error) {
+func (c *FakeMqBrokers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.MqBroker, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(mqbrokersResource, c.ns, name), &v1alpha1.MqBroker{})
 
@@ -51,7 +53,7 @@ func (c *FakeMqBrokers) Get(name string, options v1.GetOptions) (result *v1alpha
 }
 
 // List takes label and field selectors, and returns the list of MqBrokers that match those selectors.
-func (c *FakeMqBrokers) List(opts v1.ListOptions) (result *v1alpha1.MqBrokerList, err error) {
+func (c *FakeMqBrokers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.MqBrokerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(mqbrokersResource, mqbrokersKind, c.ns, opts), &v1alpha1.MqBrokerList{})
 
@@ -73,14 +75,14 @@ func (c *FakeMqBrokers) List(opts v1.ListOptions) (result *v1alpha1.MqBrokerList
 }
 
 // Watch returns a watch.Interface that watches the requested mqBrokers.
-func (c *FakeMqBrokers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeMqBrokers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(mqbrokersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a mqBroker and creates it.  Returns the server's representation of the mqBroker, and an error, if there is any.
-func (c *FakeMqBrokers) Create(mqBroker *v1alpha1.MqBroker) (result *v1alpha1.MqBroker, err error) {
+func (c *FakeMqBrokers) Create(ctx context.Context, mqBroker *v1alpha1.MqBroker, opts v1.CreateOptions) (result *v1alpha1.MqBroker, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(mqbrokersResource, c.ns, mqBroker), &v1alpha1.MqBroker{})
 
@@ -91,7 +93,7 @@ func (c *FakeMqBrokers) Create(mqBroker *v1alpha1.MqBroker) (result *v1alpha1.Mq
 }
 
 // Update takes the representation of a mqBroker and updates it. Returns the server's representation of the mqBroker, and an error, if there is any.
-func (c *FakeMqBrokers) Update(mqBroker *v1alpha1.MqBroker) (result *v1alpha1.MqBroker, err error) {
+func (c *FakeMqBrokers) Update(ctx context.Context, mqBroker *v1alpha1.MqBroker, opts v1.UpdateOptions) (result *v1alpha1.MqBroker, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(mqbrokersResource, c.ns, mqBroker), &v1alpha1.MqBroker{})
 
@@ -103,7 +105,7 @@ func (c *FakeMqBrokers) Update(mqBroker *v1alpha1.MqBroker) (result *v1alpha1.Mq
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeMqBrokers) UpdateStatus(mqBroker *v1alpha1.MqBroker) (*v1alpha1.MqBroker, error) {
+func (c *FakeMqBrokers) UpdateStatus(ctx context.Context, mqBroker *v1alpha1.MqBroker, opts v1.UpdateOptions) (*v1alpha1.MqBroker, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(mqbrokersResource, "status", c.ns, mqBroker), &v1alpha1.MqBroker{})
 
@@ -114,7 +116,7 @@ func (c *FakeMqBrokers) UpdateStatus(mqBroker *v1alpha1.MqBroker) (*v1alpha1.MqB
 }
 
 // Delete takes name of the mqBroker and deletes it. Returns an error if one occurs.
-func (c *FakeMqBrokers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeMqBrokers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(mqbrokersResource, c.ns, name), &v1alpha1.MqBroker{})
 
@@ -122,15 +124,15 @@ func (c *FakeMqBrokers) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeMqBrokers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(mqbrokersResource, c.ns, listOptions)
+func (c *FakeMqBrokers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(mqbrokersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.MqBrokerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched mqBroker.
-func (c *FakeMqBrokers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MqBroker, err error) {
+func (c *FakeMqBrokers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MqBroker, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(mqbrokersResource, c.ns, name, pt, data, subresources...), &v1alpha1.MqBroker{})
 

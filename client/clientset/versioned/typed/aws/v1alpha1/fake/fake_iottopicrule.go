@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iottopicrulesResource = schema.GroupVersionResource{Group: "aws.kubeform.com
 var iottopicrulesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "IotTopicRule"}
 
 // Get takes name of the iotTopicRule, and returns the corresponding iotTopicRule object, and an error if there is any.
-func (c *FakeIotTopicRules) Get(name string, options v1.GetOptions) (result *v1alpha1.IotTopicRule, err error) {
+func (c *FakeIotTopicRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IotTopicRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iottopicrulesResource, c.ns, name), &v1alpha1.IotTopicRule{})
 
@@ -51,7 +53,7 @@ func (c *FakeIotTopicRules) Get(name string, options v1.GetOptions) (result *v1a
 }
 
 // List takes label and field selectors, and returns the list of IotTopicRules that match those selectors.
-func (c *FakeIotTopicRules) List(opts v1.ListOptions) (result *v1alpha1.IotTopicRuleList, err error) {
+func (c *FakeIotTopicRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IotTopicRuleList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iottopicrulesResource, iottopicrulesKind, c.ns, opts), &v1alpha1.IotTopicRuleList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIotTopicRules) List(opts v1.ListOptions) (result *v1alpha1.IotTopic
 }
 
 // Watch returns a watch.Interface that watches the requested iotTopicRules.
-func (c *FakeIotTopicRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIotTopicRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iottopicrulesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iotTopicRule and creates it.  Returns the server's representation of the iotTopicRule, and an error, if there is any.
-func (c *FakeIotTopicRules) Create(iotTopicRule *v1alpha1.IotTopicRule) (result *v1alpha1.IotTopicRule, err error) {
+func (c *FakeIotTopicRules) Create(ctx context.Context, iotTopicRule *v1alpha1.IotTopicRule, opts v1.CreateOptions) (result *v1alpha1.IotTopicRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iottopicrulesResource, c.ns, iotTopicRule), &v1alpha1.IotTopicRule{})
 
@@ -91,7 +93,7 @@ func (c *FakeIotTopicRules) Create(iotTopicRule *v1alpha1.IotTopicRule) (result 
 }
 
 // Update takes the representation of a iotTopicRule and updates it. Returns the server's representation of the iotTopicRule, and an error, if there is any.
-func (c *FakeIotTopicRules) Update(iotTopicRule *v1alpha1.IotTopicRule) (result *v1alpha1.IotTopicRule, err error) {
+func (c *FakeIotTopicRules) Update(ctx context.Context, iotTopicRule *v1alpha1.IotTopicRule, opts v1.UpdateOptions) (result *v1alpha1.IotTopicRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iottopicrulesResource, c.ns, iotTopicRule), &v1alpha1.IotTopicRule{})
 
@@ -103,7 +105,7 @@ func (c *FakeIotTopicRules) Update(iotTopicRule *v1alpha1.IotTopicRule) (result 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIotTopicRules) UpdateStatus(iotTopicRule *v1alpha1.IotTopicRule) (*v1alpha1.IotTopicRule, error) {
+func (c *FakeIotTopicRules) UpdateStatus(ctx context.Context, iotTopicRule *v1alpha1.IotTopicRule, opts v1.UpdateOptions) (*v1alpha1.IotTopicRule, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iottopicrulesResource, "status", c.ns, iotTopicRule), &v1alpha1.IotTopicRule{})
 
@@ -114,7 +116,7 @@ func (c *FakeIotTopicRules) UpdateStatus(iotTopicRule *v1alpha1.IotTopicRule) (*
 }
 
 // Delete takes name of the iotTopicRule and deletes it. Returns an error if one occurs.
-func (c *FakeIotTopicRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIotTopicRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iottopicrulesResource, c.ns, name), &v1alpha1.IotTopicRule{})
 
@@ -122,15 +124,15 @@ func (c *FakeIotTopicRules) Delete(name string, options *v1.DeleteOptions) error
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIotTopicRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iottopicrulesResource, c.ns, listOptions)
+func (c *FakeIotTopicRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iottopicrulesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IotTopicRuleList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iotTopicRule.
-func (c *FakeIotTopicRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IotTopicRule, err error) {
+func (c *FakeIotTopicRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IotTopicRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iottopicrulesResource, c.ns, name, pt, data, subresources...), &v1alpha1.IotTopicRule{})
 

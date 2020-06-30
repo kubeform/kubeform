@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var roleassignmentsResource = schema.GroupVersionResource{Group: "azurerm.kubefo
 var roleassignmentsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "RoleAssignment"}
 
 // Get takes name of the roleAssignment, and returns the corresponding roleAssignment object, and an error if there is any.
-func (c *FakeRoleAssignments) Get(name string, options v1.GetOptions) (result *v1alpha1.RoleAssignment, err error) {
+func (c *FakeRoleAssignments) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.RoleAssignment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(roleassignmentsResource, c.ns, name), &v1alpha1.RoleAssignment{})
 
@@ -51,7 +53,7 @@ func (c *FakeRoleAssignments) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of RoleAssignments that match those selectors.
-func (c *FakeRoleAssignments) List(opts v1.ListOptions) (result *v1alpha1.RoleAssignmentList, err error) {
+func (c *FakeRoleAssignments) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RoleAssignmentList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(roleassignmentsResource, roleassignmentsKind, c.ns, opts), &v1alpha1.RoleAssignmentList{})
 
@@ -73,14 +75,14 @@ func (c *FakeRoleAssignments) List(opts v1.ListOptions) (result *v1alpha1.RoleAs
 }
 
 // Watch returns a watch.Interface that watches the requested roleAssignments.
-func (c *FakeRoleAssignments) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeRoleAssignments) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(roleassignmentsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a roleAssignment and creates it.  Returns the server's representation of the roleAssignment, and an error, if there is any.
-func (c *FakeRoleAssignments) Create(roleAssignment *v1alpha1.RoleAssignment) (result *v1alpha1.RoleAssignment, err error) {
+func (c *FakeRoleAssignments) Create(ctx context.Context, roleAssignment *v1alpha1.RoleAssignment, opts v1.CreateOptions) (result *v1alpha1.RoleAssignment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(roleassignmentsResource, c.ns, roleAssignment), &v1alpha1.RoleAssignment{})
 
@@ -91,7 +93,7 @@ func (c *FakeRoleAssignments) Create(roleAssignment *v1alpha1.RoleAssignment) (r
 }
 
 // Update takes the representation of a roleAssignment and updates it. Returns the server's representation of the roleAssignment, and an error, if there is any.
-func (c *FakeRoleAssignments) Update(roleAssignment *v1alpha1.RoleAssignment) (result *v1alpha1.RoleAssignment, err error) {
+func (c *FakeRoleAssignments) Update(ctx context.Context, roleAssignment *v1alpha1.RoleAssignment, opts v1.UpdateOptions) (result *v1alpha1.RoleAssignment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(roleassignmentsResource, c.ns, roleAssignment), &v1alpha1.RoleAssignment{})
 
@@ -103,7 +105,7 @@ func (c *FakeRoleAssignments) Update(roleAssignment *v1alpha1.RoleAssignment) (r
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeRoleAssignments) UpdateStatus(roleAssignment *v1alpha1.RoleAssignment) (*v1alpha1.RoleAssignment, error) {
+func (c *FakeRoleAssignments) UpdateStatus(ctx context.Context, roleAssignment *v1alpha1.RoleAssignment, opts v1.UpdateOptions) (*v1alpha1.RoleAssignment, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(roleassignmentsResource, "status", c.ns, roleAssignment), &v1alpha1.RoleAssignment{})
 
@@ -114,7 +116,7 @@ func (c *FakeRoleAssignments) UpdateStatus(roleAssignment *v1alpha1.RoleAssignme
 }
 
 // Delete takes name of the roleAssignment and deletes it. Returns an error if one occurs.
-func (c *FakeRoleAssignments) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeRoleAssignments) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(roleassignmentsResource, c.ns, name), &v1alpha1.RoleAssignment{})
 
@@ -122,15 +124,15 @@ func (c *FakeRoleAssignments) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeRoleAssignments) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(roleassignmentsResource, c.ns, listOptions)
+func (c *FakeRoleAssignments) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(roleassignmentsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.RoleAssignmentList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched roleAssignment.
-func (c *FakeRoleAssignments) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RoleAssignment, err error) {
+func (c *FakeRoleAssignments) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RoleAssignment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(roleassignmentsResource, c.ns, name, pt, data, subresources...), &v1alpha1.RoleAssignment{})
 

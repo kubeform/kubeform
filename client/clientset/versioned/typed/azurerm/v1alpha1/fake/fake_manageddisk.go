@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var manageddisksResource = schema.GroupVersionResource{Group: "azurerm.kubeform.
 var manageddisksKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "ManagedDisk"}
 
 // Get takes name of the managedDisk, and returns the corresponding managedDisk object, and an error if there is any.
-func (c *FakeManagedDisks) Get(name string, options v1.GetOptions) (result *v1alpha1.ManagedDisk, err error) {
+func (c *FakeManagedDisks) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ManagedDisk, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(manageddisksResource, c.ns, name), &v1alpha1.ManagedDisk{})
 
@@ -51,7 +53,7 @@ func (c *FakeManagedDisks) Get(name string, options v1.GetOptions) (result *v1al
 }
 
 // List takes label and field selectors, and returns the list of ManagedDisks that match those selectors.
-func (c *FakeManagedDisks) List(opts v1.ListOptions) (result *v1alpha1.ManagedDiskList, err error) {
+func (c *FakeManagedDisks) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ManagedDiskList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(manageddisksResource, manageddisksKind, c.ns, opts), &v1alpha1.ManagedDiskList{})
 
@@ -73,14 +75,14 @@ func (c *FakeManagedDisks) List(opts v1.ListOptions) (result *v1alpha1.ManagedDi
 }
 
 // Watch returns a watch.Interface that watches the requested managedDisks.
-func (c *FakeManagedDisks) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeManagedDisks) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(manageddisksResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a managedDisk and creates it.  Returns the server's representation of the managedDisk, and an error, if there is any.
-func (c *FakeManagedDisks) Create(managedDisk *v1alpha1.ManagedDisk) (result *v1alpha1.ManagedDisk, err error) {
+func (c *FakeManagedDisks) Create(ctx context.Context, managedDisk *v1alpha1.ManagedDisk, opts v1.CreateOptions) (result *v1alpha1.ManagedDisk, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(manageddisksResource, c.ns, managedDisk), &v1alpha1.ManagedDisk{})
 
@@ -91,7 +93,7 @@ func (c *FakeManagedDisks) Create(managedDisk *v1alpha1.ManagedDisk) (result *v1
 }
 
 // Update takes the representation of a managedDisk and updates it. Returns the server's representation of the managedDisk, and an error, if there is any.
-func (c *FakeManagedDisks) Update(managedDisk *v1alpha1.ManagedDisk) (result *v1alpha1.ManagedDisk, err error) {
+func (c *FakeManagedDisks) Update(ctx context.Context, managedDisk *v1alpha1.ManagedDisk, opts v1.UpdateOptions) (result *v1alpha1.ManagedDisk, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(manageddisksResource, c.ns, managedDisk), &v1alpha1.ManagedDisk{})
 
@@ -103,7 +105,7 @@ func (c *FakeManagedDisks) Update(managedDisk *v1alpha1.ManagedDisk) (result *v1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeManagedDisks) UpdateStatus(managedDisk *v1alpha1.ManagedDisk) (*v1alpha1.ManagedDisk, error) {
+func (c *FakeManagedDisks) UpdateStatus(ctx context.Context, managedDisk *v1alpha1.ManagedDisk, opts v1.UpdateOptions) (*v1alpha1.ManagedDisk, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(manageddisksResource, "status", c.ns, managedDisk), &v1alpha1.ManagedDisk{})
 
@@ -114,7 +116,7 @@ func (c *FakeManagedDisks) UpdateStatus(managedDisk *v1alpha1.ManagedDisk) (*v1a
 }
 
 // Delete takes name of the managedDisk and deletes it. Returns an error if one occurs.
-func (c *FakeManagedDisks) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeManagedDisks) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(manageddisksResource, c.ns, name), &v1alpha1.ManagedDisk{})
 
@@ -122,15 +124,15 @@ func (c *FakeManagedDisks) Delete(name string, options *v1.DeleteOptions) error 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeManagedDisks) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(manageddisksResource, c.ns, listOptions)
+func (c *FakeManagedDisks) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(manageddisksResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ManagedDiskList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched managedDisk.
-func (c *FakeManagedDisks) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ManagedDisk, err error) {
+func (c *FakeManagedDisks) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ManagedDisk, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(manageddisksResource, c.ns, name, pt, data, subresources...), &v1alpha1.ManagedDisk{})
 

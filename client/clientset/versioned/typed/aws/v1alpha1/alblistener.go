@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type AlbListenersGetter interface {
 
 // AlbListenerInterface has methods to work with AlbListener resources.
 type AlbListenerInterface interface {
-	Create(*v1alpha1.AlbListener) (*v1alpha1.AlbListener, error)
-	Update(*v1alpha1.AlbListener) (*v1alpha1.AlbListener, error)
-	UpdateStatus(*v1alpha1.AlbListener) (*v1alpha1.AlbListener, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.AlbListener, error)
-	List(opts v1.ListOptions) (*v1alpha1.AlbListenerList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AlbListener, err error)
+	Create(ctx context.Context, albListener *v1alpha1.AlbListener, opts v1.CreateOptions) (*v1alpha1.AlbListener, error)
+	Update(ctx context.Context, albListener *v1alpha1.AlbListener, opts v1.UpdateOptions) (*v1alpha1.AlbListener, error)
+	UpdateStatus(ctx context.Context, albListener *v1alpha1.AlbListener, opts v1.UpdateOptions) (*v1alpha1.AlbListener, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.AlbListener, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.AlbListenerList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AlbListener, err error)
 	AlbListenerExpansion
 }
 
@@ -65,20 +66,20 @@ func newAlbListeners(c *AwsV1alpha1Client, namespace string) *albListeners {
 }
 
 // Get takes name of the albListener, and returns the corresponding albListener object, and an error if there is any.
-func (c *albListeners) Get(name string, options v1.GetOptions) (result *v1alpha1.AlbListener, err error) {
+func (c *albListeners) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AlbListener, err error) {
 	result = &v1alpha1.AlbListener{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("alblisteners").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of AlbListeners that match those selectors.
-func (c *albListeners) List(opts v1.ListOptions) (result *v1alpha1.AlbListenerList, err error) {
+func (c *albListeners) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AlbListenerList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *albListeners) List(opts v1.ListOptions) (result *v1alpha1.AlbListenerLi
 		Resource("alblisteners").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested albListeners.
-func (c *albListeners) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *albListeners) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *albListeners) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("alblisteners").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a albListener and creates it.  Returns the server's representation of the albListener, and an error, if there is any.
-func (c *albListeners) Create(albListener *v1alpha1.AlbListener) (result *v1alpha1.AlbListener, err error) {
+func (c *albListeners) Create(ctx context.Context, albListener *v1alpha1.AlbListener, opts v1.CreateOptions) (result *v1alpha1.AlbListener, err error) {
 	result = &v1alpha1.AlbListener{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("alblisteners").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(albListener).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a albListener and updates it. Returns the server's representation of the albListener, and an error, if there is any.
-func (c *albListeners) Update(albListener *v1alpha1.AlbListener) (result *v1alpha1.AlbListener, err error) {
+func (c *albListeners) Update(ctx context.Context, albListener *v1alpha1.AlbListener, opts v1.UpdateOptions) (result *v1alpha1.AlbListener, err error) {
 	result = &v1alpha1.AlbListener{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("alblisteners").
 		Name(albListener.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(albListener).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *albListeners) UpdateStatus(albListener *v1alpha1.AlbListener) (result *v1alpha1.AlbListener, err error) {
+func (c *albListeners) UpdateStatus(ctx context.Context, albListener *v1alpha1.AlbListener, opts v1.UpdateOptions) (result *v1alpha1.AlbListener, err error) {
 	result = &v1alpha1.AlbListener{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("alblisteners").
 		Name(albListener.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(albListener).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the albListener and deletes it. Returns an error if one occurs.
-func (c *albListeners) Delete(name string, options *v1.DeleteOptions) error {
+func (c *albListeners) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("alblisteners").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *albListeners) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *albListeners) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("alblisteners").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched albListener.
-func (c *albListeners) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AlbListener, err error) {
+func (c *albListeners) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AlbListener, err error) {
 	result = &v1alpha1.AlbListener{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("alblisteners").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

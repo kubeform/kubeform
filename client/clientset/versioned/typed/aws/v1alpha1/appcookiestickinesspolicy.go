@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type AppCookieStickinessPoliciesGetter interface {
 
 // AppCookieStickinessPolicyInterface has methods to work with AppCookieStickinessPolicy resources.
 type AppCookieStickinessPolicyInterface interface {
-	Create(*v1alpha1.AppCookieStickinessPolicy) (*v1alpha1.AppCookieStickinessPolicy, error)
-	Update(*v1alpha1.AppCookieStickinessPolicy) (*v1alpha1.AppCookieStickinessPolicy, error)
-	UpdateStatus(*v1alpha1.AppCookieStickinessPolicy) (*v1alpha1.AppCookieStickinessPolicy, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.AppCookieStickinessPolicy, error)
-	List(opts v1.ListOptions) (*v1alpha1.AppCookieStickinessPolicyList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppCookieStickinessPolicy, err error)
+	Create(ctx context.Context, appCookieStickinessPolicy *v1alpha1.AppCookieStickinessPolicy, opts v1.CreateOptions) (*v1alpha1.AppCookieStickinessPolicy, error)
+	Update(ctx context.Context, appCookieStickinessPolicy *v1alpha1.AppCookieStickinessPolicy, opts v1.UpdateOptions) (*v1alpha1.AppCookieStickinessPolicy, error)
+	UpdateStatus(ctx context.Context, appCookieStickinessPolicy *v1alpha1.AppCookieStickinessPolicy, opts v1.UpdateOptions) (*v1alpha1.AppCookieStickinessPolicy, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.AppCookieStickinessPolicy, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.AppCookieStickinessPolicyList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppCookieStickinessPolicy, err error)
 	AppCookieStickinessPolicyExpansion
 }
 
@@ -65,20 +66,20 @@ func newAppCookieStickinessPolicies(c *AwsV1alpha1Client, namespace string) *app
 }
 
 // Get takes name of the appCookieStickinessPolicy, and returns the corresponding appCookieStickinessPolicy object, and an error if there is any.
-func (c *appCookieStickinessPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.AppCookieStickinessPolicy, err error) {
+func (c *appCookieStickinessPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AppCookieStickinessPolicy, err error) {
 	result = &v1alpha1.AppCookieStickinessPolicy{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("appcookiestickinesspolicies").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of AppCookieStickinessPolicies that match those selectors.
-func (c *appCookieStickinessPolicies) List(opts v1.ListOptions) (result *v1alpha1.AppCookieStickinessPolicyList, err error) {
+func (c *appCookieStickinessPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AppCookieStickinessPolicyList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *appCookieStickinessPolicies) List(opts v1.ListOptions) (result *v1alpha
 		Resource("appcookiestickinesspolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested appCookieStickinessPolicies.
-func (c *appCookieStickinessPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *appCookieStickinessPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *appCookieStickinessPolicies) Watch(opts v1.ListOptions) (watch.Interfac
 		Resource("appcookiestickinesspolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a appCookieStickinessPolicy and creates it.  Returns the server's representation of the appCookieStickinessPolicy, and an error, if there is any.
-func (c *appCookieStickinessPolicies) Create(appCookieStickinessPolicy *v1alpha1.AppCookieStickinessPolicy) (result *v1alpha1.AppCookieStickinessPolicy, err error) {
+func (c *appCookieStickinessPolicies) Create(ctx context.Context, appCookieStickinessPolicy *v1alpha1.AppCookieStickinessPolicy, opts v1.CreateOptions) (result *v1alpha1.AppCookieStickinessPolicy, err error) {
 	result = &v1alpha1.AppCookieStickinessPolicy{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("appcookiestickinesspolicies").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appCookieStickinessPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a appCookieStickinessPolicy and updates it. Returns the server's representation of the appCookieStickinessPolicy, and an error, if there is any.
-func (c *appCookieStickinessPolicies) Update(appCookieStickinessPolicy *v1alpha1.AppCookieStickinessPolicy) (result *v1alpha1.AppCookieStickinessPolicy, err error) {
+func (c *appCookieStickinessPolicies) Update(ctx context.Context, appCookieStickinessPolicy *v1alpha1.AppCookieStickinessPolicy, opts v1.UpdateOptions) (result *v1alpha1.AppCookieStickinessPolicy, err error) {
 	result = &v1alpha1.AppCookieStickinessPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("appcookiestickinesspolicies").
 		Name(appCookieStickinessPolicy.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appCookieStickinessPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *appCookieStickinessPolicies) UpdateStatus(appCookieStickinessPolicy *v1alpha1.AppCookieStickinessPolicy) (result *v1alpha1.AppCookieStickinessPolicy, err error) {
+func (c *appCookieStickinessPolicies) UpdateStatus(ctx context.Context, appCookieStickinessPolicy *v1alpha1.AppCookieStickinessPolicy, opts v1.UpdateOptions) (result *v1alpha1.AppCookieStickinessPolicy, err error) {
 	result = &v1alpha1.AppCookieStickinessPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("appcookiestickinesspolicies").
 		Name(appCookieStickinessPolicy.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appCookieStickinessPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the appCookieStickinessPolicy and deletes it. Returns an error if one occurs.
-func (c *appCookieStickinessPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *appCookieStickinessPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("appcookiestickinesspolicies").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *appCookieStickinessPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *appCookieStickinessPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("appcookiestickinesspolicies").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched appCookieStickinessPolicy.
-func (c *appCookieStickinessPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppCookieStickinessPolicy, err error) {
+func (c *appCookieStickinessPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppCookieStickinessPolicy, err error) {
 	result = &v1alpha1.AppCookieStickinessPolicy{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("appcookiestickinesspolicies").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

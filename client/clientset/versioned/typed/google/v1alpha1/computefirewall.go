@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type ComputeFirewallsGetter interface {
 
 // ComputeFirewallInterface has methods to work with ComputeFirewall resources.
 type ComputeFirewallInterface interface {
-	Create(*v1alpha1.ComputeFirewall) (*v1alpha1.ComputeFirewall, error)
-	Update(*v1alpha1.ComputeFirewall) (*v1alpha1.ComputeFirewall, error)
-	UpdateStatus(*v1alpha1.ComputeFirewall) (*v1alpha1.ComputeFirewall, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ComputeFirewall, error)
-	List(opts v1.ListOptions) (*v1alpha1.ComputeFirewallList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeFirewall, err error)
+	Create(ctx context.Context, computeFirewall *v1alpha1.ComputeFirewall, opts v1.CreateOptions) (*v1alpha1.ComputeFirewall, error)
+	Update(ctx context.Context, computeFirewall *v1alpha1.ComputeFirewall, opts v1.UpdateOptions) (*v1alpha1.ComputeFirewall, error)
+	UpdateStatus(ctx context.Context, computeFirewall *v1alpha1.ComputeFirewall, opts v1.UpdateOptions) (*v1alpha1.ComputeFirewall, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ComputeFirewall, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ComputeFirewallList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeFirewall, err error)
 	ComputeFirewallExpansion
 }
 
@@ -65,20 +66,20 @@ func newComputeFirewalls(c *GoogleV1alpha1Client, namespace string) *computeFire
 }
 
 // Get takes name of the computeFirewall, and returns the corresponding computeFirewall object, and an error if there is any.
-func (c *computeFirewalls) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeFirewall, err error) {
+func (c *computeFirewalls) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeFirewall, err error) {
 	result = &v1alpha1.ComputeFirewall{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("computefirewalls").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ComputeFirewalls that match those selectors.
-func (c *computeFirewalls) List(opts v1.ListOptions) (result *v1alpha1.ComputeFirewallList, err error) {
+func (c *computeFirewalls) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeFirewallList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *computeFirewalls) List(opts v1.ListOptions) (result *v1alpha1.ComputeFi
 		Resource("computefirewalls").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested computeFirewalls.
-func (c *computeFirewalls) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *computeFirewalls) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *computeFirewalls) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("computefirewalls").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a computeFirewall and creates it.  Returns the server's representation of the computeFirewall, and an error, if there is any.
-func (c *computeFirewalls) Create(computeFirewall *v1alpha1.ComputeFirewall) (result *v1alpha1.ComputeFirewall, err error) {
+func (c *computeFirewalls) Create(ctx context.Context, computeFirewall *v1alpha1.ComputeFirewall, opts v1.CreateOptions) (result *v1alpha1.ComputeFirewall, err error) {
 	result = &v1alpha1.ComputeFirewall{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("computefirewalls").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeFirewall).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a computeFirewall and updates it. Returns the server's representation of the computeFirewall, and an error, if there is any.
-func (c *computeFirewalls) Update(computeFirewall *v1alpha1.ComputeFirewall) (result *v1alpha1.ComputeFirewall, err error) {
+func (c *computeFirewalls) Update(ctx context.Context, computeFirewall *v1alpha1.ComputeFirewall, opts v1.UpdateOptions) (result *v1alpha1.ComputeFirewall, err error) {
 	result = &v1alpha1.ComputeFirewall{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computefirewalls").
 		Name(computeFirewall.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeFirewall).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *computeFirewalls) UpdateStatus(computeFirewall *v1alpha1.ComputeFirewall) (result *v1alpha1.ComputeFirewall, err error) {
+func (c *computeFirewalls) UpdateStatus(ctx context.Context, computeFirewall *v1alpha1.ComputeFirewall, opts v1.UpdateOptions) (result *v1alpha1.ComputeFirewall, err error) {
 	result = &v1alpha1.ComputeFirewall{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computefirewalls").
 		Name(computeFirewall.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeFirewall).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the computeFirewall and deletes it. Returns an error if one occurs.
-func (c *computeFirewalls) Delete(name string, options *v1.DeleteOptions) error {
+func (c *computeFirewalls) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computefirewalls").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *computeFirewalls) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *computeFirewalls) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computefirewalls").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched computeFirewall.
-func (c *computeFirewalls) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeFirewall, err error) {
+func (c *computeFirewalls) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeFirewall, err error) {
 	result = &v1alpha1.ComputeFirewall{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("computefirewalls").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var wafregexpatternsetsResource = schema.GroupVersionResource{Group: "aws.kubefo
 var wafregexpatternsetsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "WafRegexPatternSet"}
 
 // Get takes name of the wafRegexPatternSet, and returns the corresponding wafRegexPatternSet object, and an error if there is any.
-func (c *FakeWafRegexPatternSets) Get(name string, options v1.GetOptions) (result *v1alpha1.WafRegexPatternSet, err error) {
+func (c *FakeWafRegexPatternSets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.WafRegexPatternSet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(wafregexpatternsetsResource, c.ns, name), &v1alpha1.WafRegexPatternSet{})
 
@@ -51,7 +53,7 @@ func (c *FakeWafRegexPatternSets) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of WafRegexPatternSets that match those selectors.
-func (c *FakeWafRegexPatternSets) List(opts v1.ListOptions) (result *v1alpha1.WafRegexPatternSetList, err error) {
+func (c *FakeWafRegexPatternSets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.WafRegexPatternSetList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(wafregexpatternsetsResource, wafregexpatternsetsKind, c.ns, opts), &v1alpha1.WafRegexPatternSetList{})
 
@@ -73,14 +75,14 @@ func (c *FakeWafRegexPatternSets) List(opts v1.ListOptions) (result *v1alpha1.Wa
 }
 
 // Watch returns a watch.Interface that watches the requested wafRegexPatternSets.
-func (c *FakeWafRegexPatternSets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeWafRegexPatternSets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(wafregexpatternsetsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a wafRegexPatternSet and creates it.  Returns the server's representation of the wafRegexPatternSet, and an error, if there is any.
-func (c *FakeWafRegexPatternSets) Create(wafRegexPatternSet *v1alpha1.WafRegexPatternSet) (result *v1alpha1.WafRegexPatternSet, err error) {
+func (c *FakeWafRegexPatternSets) Create(ctx context.Context, wafRegexPatternSet *v1alpha1.WafRegexPatternSet, opts v1.CreateOptions) (result *v1alpha1.WafRegexPatternSet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(wafregexpatternsetsResource, c.ns, wafRegexPatternSet), &v1alpha1.WafRegexPatternSet{})
 
@@ -91,7 +93,7 @@ func (c *FakeWafRegexPatternSets) Create(wafRegexPatternSet *v1alpha1.WafRegexPa
 }
 
 // Update takes the representation of a wafRegexPatternSet and updates it. Returns the server's representation of the wafRegexPatternSet, and an error, if there is any.
-func (c *FakeWafRegexPatternSets) Update(wafRegexPatternSet *v1alpha1.WafRegexPatternSet) (result *v1alpha1.WafRegexPatternSet, err error) {
+func (c *FakeWafRegexPatternSets) Update(ctx context.Context, wafRegexPatternSet *v1alpha1.WafRegexPatternSet, opts v1.UpdateOptions) (result *v1alpha1.WafRegexPatternSet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(wafregexpatternsetsResource, c.ns, wafRegexPatternSet), &v1alpha1.WafRegexPatternSet{})
 
@@ -103,7 +105,7 @@ func (c *FakeWafRegexPatternSets) Update(wafRegexPatternSet *v1alpha1.WafRegexPa
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeWafRegexPatternSets) UpdateStatus(wafRegexPatternSet *v1alpha1.WafRegexPatternSet) (*v1alpha1.WafRegexPatternSet, error) {
+func (c *FakeWafRegexPatternSets) UpdateStatus(ctx context.Context, wafRegexPatternSet *v1alpha1.WafRegexPatternSet, opts v1.UpdateOptions) (*v1alpha1.WafRegexPatternSet, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(wafregexpatternsetsResource, "status", c.ns, wafRegexPatternSet), &v1alpha1.WafRegexPatternSet{})
 
@@ -114,7 +116,7 @@ func (c *FakeWafRegexPatternSets) UpdateStatus(wafRegexPatternSet *v1alpha1.WafR
 }
 
 // Delete takes name of the wafRegexPatternSet and deletes it. Returns an error if one occurs.
-func (c *FakeWafRegexPatternSets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeWafRegexPatternSets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(wafregexpatternsetsResource, c.ns, name), &v1alpha1.WafRegexPatternSet{})
 
@@ -122,15 +124,15 @@ func (c *FakeWafRegexPatternSets) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeWafRegexPatternSets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(wafregexpatternsetsResource, c.ns, listOptions)
+func (c *FakeWafRegexPatternSets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(wafregexpatternsetsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.WafRegexPatternSetList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched wafRegexPatternSet.
-func (c *FakeWafRegexPatternSets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.WafRegexPatternSet, err error) {
+func (c *FakeWafRegexPatternSets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.WafRegexPatternSet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(wafregexpatternsetsResource, c.ns, name, pt, data, subresources...), &v1alpha1.WafRegexPatternSet{})
 

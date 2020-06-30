@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var elasticsearchdomainsResource = schema.GroupVersionResource{Group: "aws.kubef
 var elasticsearchdomainsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ElasticsearchDomain"}
 
 // Get takes name of the elasticsearchDomain, and returns the corresponding elasticsearchDomain object, and an error if there is any.
-func (c *FakeElasticsearchDomains) Get(name string, options v1.GetOptions) (result *v1alpha1.ElasticsearchDomain, err error) {
+func (c *FakeElasticsearchDomains) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ElasticsearchDomain, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(elasticsearchdomainsResource, c.ns, name), &v1alpha1.ElasticsearchDomain{})
 
@@ -51,7 +53,7 @@ func (c *FakeElasticsearchDomains) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of ElasticsearchDomains that match those selectors.
-func (c *FakeElasticsearchDomains) List(opts v1.ListOptions) (result *v1alpha1.ElasticsearchDomainList, err error) {
+func (c *FakeElasticsearchDomains) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ElasticsearchDomainList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(elasticsearchdomainsResource, elasticsearchdomainsKind, c.ns, opts), &v1alpha1.ElasticsearchDomainList{})
 
@@ -73,14 +75,14 @@ func (c *FakeElasticsearchDomains) List(opts v1.ListOptions) (result *v1alpha1.E
 }
 
 // Watch returns a watch.Interface that watches the requested elasticsearchDomains.
-func (c *FakeElasticsearchDomains) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeElasticsearchDomains) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(elasticsearchdomainsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a elasticsearchDomain and creates it.  Returns the server's representation of the elasticsearchDomain, and an error, if there is any.
-func (c *FakeElasticsearchDomains) Create(elasticsearchDomain *v1alpha1.ElasticsearchDomain) (result *v1alpha1.ElasticsearchDomain, err error) {
+func (c *FakeElasticsearchDomains) Create(ctx context.Context, elasticsearchDomain *v1alpha1.ElasticsearchDomain, opts v1.CreateOptions) (result *v1alpha1.ElasticsearchDomain, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(elasticsearchdomainsResource, c.ns, elasticsearchDomain), &v1alpha1.ElasticsearchDomain{})
 
@@ -91,7 +93,7 @@ func (c *FakeElasticsearchDomains) Create(elasticsearchDomain *v1alpha1.Elastics
 }
 
 // Update takes the representation of a elasticsearchDomain and updates it. Returns the server's representation of the elasticsearchDomain, and an error, if there is any.
-func (c *FakeElasticsearchDomains) Update(elasticsearchDomain *v1alpha1.ElasticsearchDomain) (result *v1alpha1.ElasticsearchDomain, err error) {
+func (c *FakeElasticsearchDomains) Update(ctx context.Context, elasticsearchDomain *v1alpha1.ElasticsearchDomain, opts v1.UpdateOptions) (result *v1alpha1.ElasticsearchDomain, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(elasticsearchdomainsResource, c.ns, elasticsearchDomain), &v1alpha1.ElasticsearchDomain{})
 
@@ -103,7 +105,7 @@ func (c *FakeElasticsearchDomains) Update(elasticsearchDomain *v1alpha1.Elastics
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeElasticsearchDomains) UpdateStatus(elasticsearchDomain *v1alpha1.ElasticsearchDomain) (*v1alpha1.ElasticsearchDomain, error) {
+func (c *FakeElasticsearchDomains) UpdateStatus(ctx context.Context, elasticsearchDomain *v1alpha1.ElasticsearchDomain, opts v1.UpdateOptions) (*v1alpha1.ElasticsearchDomain, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(elasticsearchdomainsResource, "status", c.ns, elasticsearchDomain), &v1alpha1.ElasticsearchDomain{})
 
@@ -114,7 +116,7 @@ func (c *FakeElasticsearchDomains) UpdateStatus(elasticsearchDomain *v1alpha1.El
 }
 
 // Delete takes name of the elasticsearchDomain and deletes it. Returns an error if one occurs.
-func (c *FakeElasticsearchDomains) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeElasticsearchDomains) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(elasticsearchdomainsResource, c.ns, name), &v1alpha1.ElasticsearchDomain{})
 
@@ -122,15 +124,15 @@ func (c *FakeElasticsearchDomains) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeElasticsearchDomains) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(elasticsearchdomainsResource, c.ns, listOptions)
+func (c *FakeElasticsearchDomains) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(elasticsearchdomainsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ElasticsearchDomainList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched elasticsearchDomain.
-func (c *FakeElasticsearchDomains) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ElasticsearchDomain, err error) {
+func (c *FakeElasticsearchDomains) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ElasticsearchDomain, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(elasticsearchdomainsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ElasticsearchDomain{})
 

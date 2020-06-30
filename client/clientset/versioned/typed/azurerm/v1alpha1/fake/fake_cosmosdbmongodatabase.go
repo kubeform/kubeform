@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cosmosdbmongodatabasesResource = schema.GroupVersionResource{Group: "azurerm
 var cosmosdbmongodatabasesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "CosmosdbMongoDatabase"}
 
 // Get takes name of the cosmosdbMongoDatabase, and returns the corresponding cosmosdbMongoDatabase object, and an error if there is any.
-func (c *FakeCosmosdbMongoDatabases) Get(name string, options v1.GetOptions) (result *v1alpha1.CosmosdbMongoDatabase, err error) {
+func (c *FakeCosmosdbMongoDatabases) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CosmosdbMongoDatabase, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cosmosdbmongodatabasesResource, c.ns, name), &v1alpha1.CosmosdbMongoDatabase{})
 
@@ -51,7 +53,7 @@ func (c *FakeCosmosdbMongoDatabases) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of CosmosdbMongoDatabases that match those selectors.
-func (c *FakeCosmosdbMongoDatabases) List(opts v1.ListOptions) (result *v1alpha1.CosmosdbMongoDatabaseList, err error) {
+func (c *FakeCosmosdbMongoDatabases) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CosmosdbMongoDatabaseList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cosmosdbmongodatabasesResource, cosmosdbmongodatabasesKind, c.ns, opts), &v1alpha1.CosmosdbMongoDatabaseList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCosmosdbMongoDatabases) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested cosmosdbMongoDatabases.
-func (c *FakeCosmosdbMongoDatabases) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCosmosdbMongoDatabases) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cosmosdbmongodatabasesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cosmosdbMongoDatabase and creates it.  Returns the server's representation of the cosmosdbMongoDatabase, and an error, if there is any.
-func (c *FakeCosmosdbMongoDatabases) Create(cosmosdbMongoDatabase *v1alpha1.CosmosdbMongoDatabase) (result *v1alpha1.CosmosdbMongoDatabase, err error) {
+func (c *FakeCosmosdbMongoDatabases) Create(ctx context.Context, cosmosdbMongoDatabase *v1alpha1.CosmosdbMongoDatabase, opts v1.CreateOptions) (result *v1alpha1.CosmosdbMongoDatabase, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cosmosdbmongodatabasesResource, c.ns, cosmosdbMongoDatabase), &v1alpha1.CosmosdbMongoDatabase{})
 
@@ -91,7 +93,7 @@ func (c *FakeCosmosdbMongoDatabases) Create(cosmosdbMongoDatabase *v1alpha1.Cosm
 }
 
 // Update takes the representation of a cosmosdbMongoDatabase and updates it. Returns the server's representation of the cosmosdbMongoDatabase, and an error, if there is any.
-func (c *FakeCosmosdbMongoDatabases) Update(cosmosdbMongoDatabase *v1alpha1.CosmosdbMongoDatabase) (result *v1alpha1.CosmosdbMongoDatabase, err error) {
+func (c *FakeCosmosdbMongoDatabases) Update(ctx context.Context, cosmosdbMongoDatabase *v1alpha1.CosmosdbMongoDatabase, opts v1.UpdateOptions) (result *v1alpha1.CosmosdbMongoDatabase, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cosmosdbmongodatabasesResource, c.ns, cosmosdbMongoDatabase), &v1alpha1.CosmosdbMongoDatabase{})
 
@@ -103,7 +105,7 @@ func (c *FakeCosmosdbMongoDatabases) Update(cosmosdbMongoDatabase *v1alpha1.Cosm
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCosmosdbMongoDatabases) UpdateStatus(cosmosdbMongoDatabase *v1alpha1.CosmosdbMongoDatabase) (*v1alpha1.CosmosdbMongoDatabase, error) {
+func (c *FakeCosmosdbMongoDatabases) UpdateStatus(ctx context.Context, cosmosdbMongoDatabase *v1alpha1.CosmosdbMongoDatabase, opts v1.UpdateOptions) (*v1alpha1.CosmosdbMongoDatabase, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cosmosdbmongodatabasesResource, "status", c.ns, cosmosdbMongoDatabase), &v1alpha1.CosmosdbMongoDatabase{})
 
@@ -114,7 +116,7 @@ func (c *FakeCosmosdbMongoDatabases) UpdateStatus(cosmosdbMongoDatabase *v1alpha
 }
 
 // Delete takes name of the cosmosdbMongoDatabase and deletes it. Returns an error if one occurs.
-func (c *FakeCosmosdbMongoDatabases) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCosmosdbMongoDatabases) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cosmosdbmongodatabasesResource, c.ns, name), &v1alpha1.CosmosdbMongoDatabase{})
 
@@ -122,15 +124,15 @@ func (c *FakeCosmosdbMongoDatabases) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCosmosdbMongoDatabases) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cosmosdbmongodatabasesResource, c.ns, listOptions)
+func (c *FakeCosmosdbMongoDatabases) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cosmosdbmongodatabasesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CosmosdbMongoDatabaseList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cosmosdbMongoDatabase.
-func (c *FakeCosmosdbMongoDatabases) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CosmosdbMongoDatabase, err error) {
+func (c *FakeCosmosdbMongoDatabases) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CosmosdbMongoDatabase, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cosmosdbmongodatabasesResource, c.ns, name, pt, data, subresources...), &v1alpha1.CosmosdbMongoDatabase{})
 

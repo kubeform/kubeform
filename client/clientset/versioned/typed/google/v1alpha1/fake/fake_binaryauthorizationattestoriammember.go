@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var binaryauthorizationattestoriammembersResource = schema.GroupVersionResource{
 var binaryauthorizationattestoriammembersKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "BinaryAuthorizationAttestorIamMember"}
 
 // Get takes name of the binaryAuthorizationAttestorIamMember, and returns the corresponding binaryAuthorizationAttestorIamMember object, and an error if there is any.
-func (c *FakeBinaryAuthorizationAttestorIamMembers) Get(name string, options v1.GetOptions) (result *v1alpha1.BinaryAuthorizationAttestorIamMember, err error) {
+func (c *FakeBinaryAuthorizationAttestorIamMembers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BinaryAuthorizationAttestorIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(binaryauthorizationattestoriammembersResource, c.ns, name), &v1alpha1.BinaryAuthorizationAttestorIamMember{})
 
@@ -51,7 +53,7 @@ func (c *FakeBinaryAuthorizationAttestorIamMembers) Get(name string, options v1.
 }
 
 // List takes label and field selectors, and returns the list of BinaryAuthorizationAttestorIamMembers that match those selectors.
-func (c *FakeBinaryAuthorizationAttestorIamMembers) List(opts v1.ListOptions) (result *v1alpha1.BinaryAuthorizationAttestorIamMemberList, err error) {
+func (c *FakeBinaryAuthorizationAttestorIamMembers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BinaryAuthorizationAttestorIamMemberList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(binaryauthorizationattestoriammembersResource, binaryauthorizationattestoriammembersKind, c.ns, opts), &v1alpha1.BinaryAuthorizationAttestorIamMemberList{})
 
@@ -73,14 +75,14 @@ func (c *FakeBinaryAuthorizationAttestorIamMembers) List(opts v1.ListOptions) (r
 }
 
 // Watch returns a watch.Interface that watches the requested binaryAuthorizationAttestorIamMembers.
-func (c *FakeBinaryAuthorizationAttestorIamMembers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeBinaryAuthorizationAttestorIamMembers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(binaryauthorizationattestoriammembersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a binaryAuthorizationAttestorIamMember and creates it.  Returns the server's representation of the binaryAuthorizationAttestorIamMember, and an error, if there is any.
-func (c *FakeBinaryAuthorizationAttestorIamMembers) Create(binaryAuthorizationAttestorIamMember *v1alpha1.BinaryAuthorizationAttestorIamMember) (result *v1alpha1.BinaryAuthorizationAttestorIamMember, err error) {
+func (c *FakeBinaryAuthorizationAttestorIamMembers) Create(ctx context.Context, binaryAuthorizationAttestorIamMember *v1alpha1.BinaryAuthorizationAttestorIamMember, opts v1.CreateOptions) (result *v1alpha1.BinaryAuthorizationAttestorIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(binaryauthorizationattestoriammembersResource, c.ns, binaryAuthorizationAttestorIamMember), &v1alpha1.BinaryAuthorizationAttestorIamMember{})
 
@@ -91,7 +93,7 @@ func (c *FakeBinaryAuthorizationAttestorIamMembers) Create(binaryAuthorizationAt
 }
 
 // Update takes the representation of a binaryAuthorizationAttestorIamMember and updates it. Returns the server's representation of the binaryAuthorizationAttestorIamMember, and an error, if there is any.
-func (c *FakeBinaryAuthorizationAttestorIamMembers) Update(binaryAuthorizationAttestorIamMember *v1alpha1.BinaryAuthorizationAttestorIamMember) (result *v1alpha1.BinaryAuthorizationAttestorIamMember, err error) {
+func (c *FakeBinaryAuthorizationAttestorIamMembers) Update(ctx context.Context, binaryAuthorizationAttestorIamMember *v1alpha1.BinaryAuthorizationAttestorIamMember, opts v1.UpdateOptions) (result *v1alpha1.BinaryAuthorizationAttestorIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(binaryauthorizationattestoriammembersResource, c.ns, binaryAuthorizationAttestorIamMember), &v1alpha1.BinaryAuthorizationAttestorIamMember{})
 
@@ -103,7 +105,7 @@ func (c *FakeBinaryAuthorizationAttestorIamMembers) Update(binaryAuthorizationAt
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeBinaryAuthorizationAttestorIamMembers) UpdateStatus(binaryAuthorizationAttestorIamMember *v1alpha1.BinaryAuthorizationAttestorIamMember) (*v1alpha1.BinaryAuthorizationAttestorIamMember, error) {
+func (c *FakeBinaryAuthorizationAttestorIamMembers) UpdateStatus(ctx context.Context, binaryAuthorizationAttestorIamMember *v1alpha1.BinaryAuthorizationAttestorIamMember, opts v1.UpdateOptions) (*v1alpha1.BinaryAuthorizationAttestorIamMember, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(binaryauthorizationattestoriammembersResource, "status", c.ns, binaryAuthorizationAttestorIamMember), &v1alpha1.BinaryAuthorizationAttestorIamMember{})
 
@@ -114,7 +116,7 @@ func (c *FakeBinaryAuthorizationAttestorIamMembers) UpdateStatus(binaryAuthoriza
 }
 
 // Delete takes name of the binaryAuthorizationAttestorIamMember and deletes it. Returns an error if one occurs.
-func (c *FakeBinaryAuthorizationAttestorIamMembers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeBinaryAuthorizationAttestorIamMembers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(binaryauthorizationattestoriammembersResource, c.ns, name), &v1alpha1.BinaryAuthorizationAttestorIamMember{})
 
@@ -122,15 +124,15 @@ func (c *FakeBinaryAuthorizationAttestorIamMembers) Delete(name string, options 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeBinaryAuthorizationAttestorIamMembers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(binaryauthorizationattestoriammembersResource, c.ns, listOptions)
+func (c *FakeBinaryAuthorizationAttestorIamMembers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(binaryauthorizationattestoriammembersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.BinaryAuthorizationAttestorIamMemberList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched binaryAuthorizationAttestorIamMember.
-func (c *FakeBinaryAuthorizationAttestorIamMembers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BinaryAuthorizationAttestorIamMember, err error) {
+func (c *FakeBinaryAuthorizationAttestorIamMembers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BinaryAuthorizationAttestorIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(binaryauthorizationattestoriammembersResource, c.ns, name, pt, data, subresources...), &v1alpha1.BinaryAuthorizationAttestorIamMember{})
 

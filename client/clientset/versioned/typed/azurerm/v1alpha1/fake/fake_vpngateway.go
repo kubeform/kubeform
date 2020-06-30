@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var vpngatewaysResource = schema.GroupVersionResource{Group: "azurerm.kubeform.c
 var vpngatewaysKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "VpnGateway"}
 
 // Get takes name of the vpnGateway, and returns the corresponding vpnGateway object, and an error if there is any.
-func (c *FakeVpnGateways) Get(name string, options v1.GetOptions) (result *v1alpha1.VpnGateway, err error) {
+func (c *FakeVpnGateways) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.VpnGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(vpngatewaysResource, c.ns, name), &v1alpha1.VpnGateway{})
 
@@ -51,7 +53,7 @@ func (c *FakeVpnGateways) Get(name string, options v1.GetOptions) (result *v1alp
 }
 
 // List takes label and field selectors, and returns the list of VpnGateways that match those selectors.
-func (c *FakeVpnGateways) List(opts v1.ListOptions) (result *v1alpha1.VpnGatewayList, err error) {
+func (c *FakeVpnGateways) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.VpnGatewayList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(vpngatewaysResource, vpngatewaysKind, c.ns, opts), &v1alpha1.VpnGatewayList{})
 
@@ -73,14 +75,14 @@ func (c *FakeVpnGateways) List(opts v1.ListOptions) (result *v1alpha1.VpnGateway
 }
 
 // Watch returns a watch.Interface that watches the requested vpnGateways.
-func (c *FakeVpnGateways) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeVpnGateways) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(vpngatewaysResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a vpnGateway and creates it.  Returns the server's representation of the vpnGateway, and an error, if there is any.
-func (c *FakeVpnGateways) Create(vpnGateway *v1alpha1.VpnGateway) (result *v1alpha1.VpnGateway, err error) {
+func (c *FakeVpnGateways) Create(ctx context.Context, vpnGateway *v1alpha1.VpnGateway, opts v1.CreateOptions) (result *v1alpha1.VpnGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(vpngatewaysResource, c.ns, vpnGateway), &v1alpha1.VpnGateway{})
 
@@ -91,7 +93,7 @@ func (c *FakeVpnGateways) Create(vpnGateway *v1alpha1.VpnGateway) (result *v1alp
 }
 
 // Update takes the representation of a vpnGateway and updates it. Returns the server's representation of the vpnGateway, and an error, if there is any.
-func (c *FakeVpnGateways) Update(vpnGateway *v1alpha1.VpnGateway) (result *v1alpha1.VpnGateway, err error) {
+func (c *FakeVpnGateways) Update(ctx context.Context, vpnGateway *v1alpha1.VpnGateway, opts v1.UpdateOptions) (result *v1alpha1.VpnGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(vpngatewaysResource, c.ns, vpnGateway), &v1alpha1.VpnGateway{})
 
@@ -103,7 +105,7 @@ func (c *FakeVpnGateways) Update(vpnGateway *v1alpha1.VpnGateway) (result *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeVpnGateways) UpdateStatus(vpnGateway *v1alpha1.VpnGateway) (*v1alpha1.VpnGateway, error) {
+func (c *FakeVpnGateways) UpdateStatus(ctx context.Context, vpnGateway *v1alpha1.VpnGateway, opts v1.UpdateOptions) (*v1alpha1.VpnGateway, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(vpngatewaysResource, "status", c.ns, vpnGateway), &v1alpha1.VpnGateway{})
 
@@ -114,7 +116,7 @@ func (c *FakeVpnGateways) UpdateStatus(vpnGateway *v1alpha1.VpnGateway) (*v1alph
 }
 
 // Delete takes name of the vpnGateway and deletes it. Returns an error if one occurs.
-func (c *FakeVpnGateways) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeVpnGateways) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(vpngatewaysResource, c.ns, name), &v1alpha1.VpnGateway{})
 
@@ -122,15 +124,15 @@ func (c *FakeVpnGateways) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeVpnGateways) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(vpngatewaysResource, c.ns, listOptions)
+func (c *FakeVpnGateways) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(vpngatewaysResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.VpnGatewayList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched vpnGateway.
-func (c *FakeVpnGateways) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.VpnGateway, err error) {
+func (c *FakeVpnGateways) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.VpnGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(vpngatewaysResource, c.ns, name, pt, data, subresources...), &v1alpha1.VpnGateway{})
 

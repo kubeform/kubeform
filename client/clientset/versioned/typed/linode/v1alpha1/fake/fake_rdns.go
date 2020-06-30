@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/linode/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var rdnsesResource = schema.GroupVersionResource{Group: "linode.kubeform.com", V
 var rdnsesKind = schema.GroupVersionKind{Group: "linode.kubeform.com", Version: "v1alpha1", Kind: "Rdns"}
 
 // Get takes name of the rdns, and returns the corresponding rdns object, and an error if there is any.
-func (c *FakeRdnses) Get(name string, options v1.GetOptions) (result *v1alpha1.Rdns, err error) {
+func (c *FakeRdnses) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Rdns, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(rdnsesResource, c.ns, name), &v1alpha1.Rdns{})
 
@@ -51,7 +53,7 @@ func (c *FakeRdnses) Get(name string, options v1.GetOptions) (result *v1alpha1.R
 }
 
 // List takes label and field selectors, and returns the list of Rdnses that match those selectors.
-func (c *FakeRdnses) List(opts v1.ListOptions) (result *v1alpha1.RdnsList, err error) {
+func (c *FakeRdnses) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RdnsList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(rdnsesResource, rdnsesKind, c.ns, opts), &v1alpha1.RdnsList{})
 
@@ -73,14 +75,14 @@ func (c *FakeRdnses) List(opts v1.ListOptions) (result *v1alpha1.RdnsList, err e
 }
 
 // Watch returns a watch.Interface that watches the requested rdnses.
-func (c *FakeRdnses) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeRdnses) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(rdnsesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a rdns and creates it.  Returns the server's representation of the rdns, and an error, if there is any.
-func (c *FakeRdnses) Create(rdns *v1alpha1.Rdns) (result *v1alpha1.Rdns, err error) {
+func (c *FakeRdnses) Create(ctx context.Context, rdns *v1alpha1.Rdns, opts v1.CreateOptions) (result *v1alpha1.Rdns, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(rdnsesResource, c.ns, rdns), &v1alpha1.Rdns{})
 
@@ -91,7 +93,7 @@ func (c *FakeRdnses) Create(rdns *v1alpha1.Rdns) (result *v1alpha1.Rdns, err err
 }
 
 // Update takes the representation of a rdns and updates it. Returns the server's representation of the rdns, and an error, if there is any.
-func (c *FakeRdnses) Update(rdns *v1alpha1.Rdns) (result *v1alpha1.Rdns, err error) {
+func (c *FakeRdnses) Update(ctx context.Context, rdns *v1alpha1.Rdns, opts v1.UpdateOptions) (result *v1alpha1.Rdns, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(rdnsesResource, c.ns, rdns), &v1alpha1.Rdns{})
 
@@ -103,7 +105,7 @@ func (c *FakeRdnses) Update(rdns *v1alpha1.Rdns) (result *v1alpha1.Rdns, err err
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeRdnses) UpdateStatus(rdns *v1alpha1.Rdns) (*v1alpha1.Rdns, error) {
+func (c *FakeRdnses) UpdateStatus(ctx context.Context, rdns *v1alpha1.Rdns, opts v1.UpdateOptions) (*v1alpha1.Rdns, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(rdnsesResource, "status", c.ns, rdns), &v1alpha1.Rdns{})
 
@@ -114,7 +116,7 @@ func (c *FakeRdnses) UpdateStatus(rdns *v1alpha1.Rdns) (*v1alpha1.Rdns, error) {
 }
 
 // Delete takes name of the rdns and deletes it. Returns an error if one occurs.
-func (c *FakeRdnses) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeRdnses) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(rdnsesResource, c.ns, name), &v1alpha1.Rdns{})
 
@@ -122,15 +124,15 @@ func (c *FakeRdnses) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeRdnses) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(rdnsesResource, c.ns, listOptions)
+func (c *FakeRdnses) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(rdnsesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.RdnsList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched rdns.
-func (c *FakeRdnses) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Rdns, err error) {
+func (c *FakeRdnses) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Rdns, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(rdnsesResource, c.ns, name, pt, data, subresources...), &v1alpha1.Rdns{})
 

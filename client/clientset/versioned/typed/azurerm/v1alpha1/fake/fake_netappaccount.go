@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var netappaccountsResource = schema.GroupVersionResource{Group: "azurerm.kubefor
 var netappaccountsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "NetappAccount"}
 
 // Get takes name of the netappAccount, and returns the corresponding netappAccount object, and an error if there is any.
-func (c *FakeNetappAccounts) Get(name string, options v1.GetOptions) (result *v1alpha1.NetappAccount, err error) {
+func (c *FakeNetappAccounts) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.NetappAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(netappaccountsResource, c.ns, name), &v1alpha1.NetappAccount{})
 
@@ -51,7 +53,7 @@ func (c *FakeNetappAccounts) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of NetappAccounts that match those selectors.
-func (c *FakeNetappAccounts) List(opts v1.ListOptions) (result *v1alpha1.NetappAccountList, err error) {
+func (c *FakeNetappAccounts) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.NetappAccountList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(netappaccountsResource, netappaccountsKind, c.ns, opts), &v1alpha1.NetappAccountList{})
 
@@ -73,14 +75,14 @@ func (c *FakeNetappAccounts) List(opts v1.ListOptions) (result *v1alpha1.NetappA
 }
 
 // Watch returns a watch.Interface that watches the requested netappAccounts.
-func (c *FakeNetappAccounts) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeNetappAccounts) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(netappaccountsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a netappAccount and creates it.  Returns the server's representation of the netappAccount, and an error, if there is any.
-func (c *FakeNetappAccounts) Create(netappAccount *v1alpha1.NetappAccount) (result *v1alpha1.NetappAccount, err error) {
+func (c *FakeNetappAccounts) Create(ctx context.Context, netappAccount *v1alpha1.NetappAccount, opts v1.CreateOptions) (result *v1alpha1.NetappAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(netappaccountsResource, c.ns, netappAccount), &v1alpha1.NetappAccount{})
 
@@ -91,7 +93,7 @@ func (c *FakeNetappAccounts) Create(netappAccount *v1alpha1.NetappAccount) (resu
 }
 
 // Update takes the representation of a netappAccount and updates it. Returns the server's representation of the netappAccount, and an error, if there is any.
-func (c *FakeNetappAccounts) Update(netappAccount *v1alpha1.NetappAccount) (result *v1alpha1.NetappAccount, err error) {
+func (c *FakeNetappAccounts) Update(ctx context.Context, netappAccount *v1alpha1.NetappAccount, opts v1.UpdateOptions) (result *v1alpha1.NetappAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(netappaccountsResource, c.ns, netappAccount), &v1alpha1.NetappAccount{})
 
@@ -103,7 +105,7 @@ func (c *FakeNetappAccounts) Update(netappAccount *v1alpha1.NetappAccount) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeNetappAccounts) UpdateStatus(netappAccount *v1alpha1.NetappAccount) (*v1alpha1.NetappAccount, error) {
+func (c *FakeNetappAccounts) UpdateStatus(ctx context.Context, netappAccount *v1alpha1.NetappAccount, opts v1.UpdateOptions) (*v1alpha1.NetappAccount, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(netappaccountsResource, "status", c.ns, netappAccount), &v1alpha1.NetappAccount{})
 
@@ -114,7 +116,7 @@ func (c *FakeNetappAccounts) UpdateStatus(netappAccount *v1alpha1.NetappAccount)
 }
 
 // Delete takes name of the netappAccount and deletes it. Returns an error if one occurs.
-func (c *FakeNetappAccounts) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeNetappAccounts) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(netappaccountsResource, c.ns, name), &v1alpha1.NetappAccount{})
 
@@ -122,15 +124,15 @@ func (c *FakeNetappAccounts) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeNetappAccounts) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(netappaccountsResource, c.ns, listOptions)
+func (c *FakeNetappAccounts) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(netappaccountsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.NetappAccountList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched netappAccount.
-func (c *FakeNetappAccounts) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.NetappAccount, err error) {
+func (c *FakeNetappAccounts) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.NetappAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(netappaccountsResource, c.ns, name, pt, data, subresources...), &v1alpha1.NetappAccount{})
 

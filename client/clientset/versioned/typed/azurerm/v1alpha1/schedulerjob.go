@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type SchedulerJobsGetter interface {
 
 // SchedulerJobInterface has methods to work with SchedulerJob resources.
 type SchedulerJobInterface interface {
-	Create(*v1alpha1.SchedulerJob) (*v1alpha1.SchedulerJob, error)
-	Update(*v1alpha1.SchedulerJob) (*v1alpha1.SchedulerJob, error)
-	UpdateStatus(*v1alpha1.SchedulerJob) (*v1alpha1.SchedulerJob, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SchedulerJob, error)
-	List(opts v1.ListOptions) (*v1alpha1.SchedulerJobList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SchedulerJob, err error)
+	Create(ctx context.Context, schedulerJob *v1alpha1.SchedulerJob, opts v1.CreateOptions) (*v1alpha1.SchedulerJob, error)
+	Update(ctx context.Context, schedulerJob *v1alpha1.SchedulerJob, opts v1.UpdateOptions) (*v1alpha1.SchedulerJob, error)
+	UpdateStatus(ctx context.Context, schedulerJob *v1alpha1.SchedulerJob, opts v1.UpdateOptions) (*v1alpha1.SchedulerJob, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SchedulerJob, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SchedulerJobList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SchedulerJob, err error)
 	SchedulerJobExpansion
 }
 
@@ -65,20 +66,20 @@ func newSchedulerJobs(c *AzurermV1alpha1Client, namespace string) *schedulerJobs
 }
 
 // Get takes name of the schedulerJob, and returns the corresponding schedulerJob object, and an error if there is any.
-func (c *schedulerJobs) Get(name string, options v1.GetOptions) (result *v1alpha1.SchedulerJob, err error) {
+func (c *schedulerJobs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SchedulerJob, err error) {
 	result = &v1alpha1.SchedulerJob{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("schedulerjobs").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SchedulerJobs that match those selectors.
-func (c *schedulerJobs) List(opts v1.ListOptions) (result *v1alpha1.SchedulerJobList, err error) {
+func (c *schedulerJobs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SchedulerJobList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *schedulerJobs) List(opts v1.ListOptions) (result *v1alpha1.SchedulerJob
 		Resource("schedulerjobs").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested schedulerJobs.
-func (c *schedulerJobs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *schedulerJobs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *schedulerJobs) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("schedulerjobs").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a schedulerJob and creates it.  Returns the server's representation of the schedulerJob, and an error, if there is any.
-func (c *schedulerJobs) Create(schedulerJob *v1alpha1.SchedulerJob) (result *v1alpha1.SchedulerJob, err error) {
+func (c *schedulerJobs) Create(ctx context.Context, schedulerJob *v1alpha1.SchedulerJob, opts v1.CreateOptions) (result *v1alpha1.SchedulerJob, err error) {
 	result = &v1alpha1.SchedulerJob{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("schedulerjobs").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(schedulerJob).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a schedulerJob and updates it. Returns the server's representation of the schedulerJob, and an error, if there is any.
-func (c *schedulerJobs) Update(schedulerJob *v1alpha1.SchedulerJob) (result *v1alpha1.SchedulerJob, err error) {
+func (c *schedulerJobs) Update(ctx context.Context, schedulerJob *v1alpha1.SchedulerJob, opts v1.UpdateOptions) (result *v1alpha1.SchedulerJob, err error) {
 	result = &v1alpha1.SchedulerJob{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("schedulerjobs").
 		Name(schedulerJob.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(schedulerJob).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *schedulerJobs) UpdateStatus(schedulerJob *v1alpha1.SchedulerJob) (result *v1alpha1.SchedulerJob, err error) {
+func (c *schedulerJobs) UpdateStatus(ctx context.Context, schedulerJob *v1alpha1.SchedulerJob, opts v1.UpdateOptions) (result *v1alpha1.SchedulerJob, err error) {
 	result = &v1alpha1.SchedulerJob{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("schedulerjobs").
 		Name(schedulerJob.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(schedulerJob).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the schedulerJob and deletes it. Returns an error if one occurs.
-func (c *schedulerJobs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *schedulerJobs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("schedulerjobs").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *schedulerJobs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *schedulerJobs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("schedulerjobs").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched schedulerJob.
-func (c *schedulerJobs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SchedulerJob, err error) {
+func (c *schedulerJobs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SchedulerJob, err error) {
 	result = &v1alpha1.SchedulerJob{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("schedulerjobs").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

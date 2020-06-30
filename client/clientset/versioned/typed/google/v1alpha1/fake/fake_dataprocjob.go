@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dataprocjobsResource = schema.GroupVersionResource{Group: "google.kubeform.c
 var dataprocjobsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "DataprocJob"}
 
 // Get takes name of the dataprocJob, and returns the corresponding dataprocJob object, and an error if there is any.
-func (c *FakeDataprocJobs) Get(name string, options v1.GetOptions) (result *v1alpha1.DataprocJob, err error) {
+func (c *FakeDataprocJobs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DataprocJob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dataprocjobsResource, c.ns, name), &v1alpha1.DataprocJob{})
 
@@ -51,7 +53,7 @@ func (c *FakeDataprocJobs) Get(name string, options v1.GetOptions) (result *v1al
 }
 
 // List takes label and field selectors, and returns the list of DataprocJobs that match those selectors.
-func (c *FakeDataprocJobs) List(opts v1.ListOptions) (result *v1alpha1.DataprocJobList, err error) {
+func (c *FakeDataprocJobs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DataprocJobList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dataprocjobsResource, dataprocjobsKind, c.ns, opts), &v1alpha1.DataprocJobList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDataprocJobs) List(opts v1.ListOptions) (result *v1alpha1.DataprocJ
 }
 
 // Watch returns a watch.Interface that watches the requested dataprocJobs.
-func (c *FakeDataprocJobs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDataprocJobs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dataprocjobsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dataprocJob and creates it.  Returns the server's representation of the dataprocJob, and an error, if there is any.
-func (c *FakeDataprocJobs) Create(dataprocJob *v1alpha1.DataprocJob) (result *v1alpha1.DataprocJob, err error) {
+func (c *FakeDataprocJobs) Create(ctx context.Context, dataprocJob *v1alpha1.DataprocJob, opts v1.CreateOptions) (result *v1alpha1.DataprocJob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dataprocjobsResource, c.ns, dataprocJob), &v1alpha1.DataprocJob{})
 
@@ -91,7 +93,7 @@ func (c *FakeDataprocJobs) Create(dataprocJob *v1alpha1.DataprocJob) (result *v1
 }
 
 // Update takes the representation of a dataprocJob and updates it. Returns the server's representation of the dataprocJob, and an error, if there is any.
-func (c *FakeDataprocJobs) Update(dataprocJob *v1alpha1.DataprocJob) (result *v1alpha1.DataprocJob, err error) {
+func (c *FakeDataprocJobs) Update(ctx context.Context, dataprocJob *v1alpha1.DataprocJob, opts v1.UpdateOptions) (result *v1alpha1.DataprocJob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dataprocjobsResource, c.ns, dataprocJob), &v1alpha1.DataprocJob{})
 
@@ -103,7 +105,7 @@ func (c *FakeDataprocJobs) Update(dataprocJob *v1alpha1.DataprocJob) (result *v1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDataprocJobs) UpdateStatus(dataprocJob *v1alpha1.DataprocJob) (*v1alpha1.DataprocJob, error) {
+func (c *FakeDataprocJobs) UpdateStatus(ctx context.Context, dataprocJob *v1alpha1.DataprocJob, opts v1.UpdateOptions) (*v1alpha1.DataprocJob, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dataprocjobsResource, "status", c.ns, dataprocJob), &v1alpha1.DataprocJob{})
 
@@ -114,7 +116,7 @@ func (c *FakeDataprocJobs) UpdateStatus(dataprocJob *v1alpha1.DataprocJob) (*v1a
 }
 
 // Delete takes name of the dataprocJob and deletes it. Returns an error if one occurs.
-func (c *FakeDataprocJobs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDataprocJobs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dataprocjobsResource, c.ns, name), &v1alpha1.DataprocJob{})
 
@@ -122,15 +124,15 @@ func (c *FakeDataprocJobs) Delete(name string, options *v1.DeleteOptions) error 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDataprocJobs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dataprocjobsResource, c.ns, listOptions)
+func (c *FakeDataprocJobs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dataprocjobsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DataprocJobList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dataprocJob.
-func (c *FakeDataprocJobs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataprocJob, err error) {
+func (c *FakeDataprocJobs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataprocJob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dataprocjobsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DataprocJob{})
 

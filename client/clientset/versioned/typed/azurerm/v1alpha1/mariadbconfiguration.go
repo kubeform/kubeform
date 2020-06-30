@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type MariadbConfigurationsGetter interface {
 
 // MariadbConfigurationInterface has methods to work with MariadbConfiguration resources.
 type MariadbConfigurationInterface interface {
-	Create(*v1alpha1.MariadbConfiguration) (*v1alpha1.MariadbConfiguration, error)
-	Update(*v1alpha1.MariadbConfiguration) (*v1alpha1.MariadbConfiguration, error)
-	UpdateStatus(*v1alpha1.MariadbConfiguration) (*v1alpha1.MariadbConfiguration, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.MariadbConfiguration, error)
-	List(opts v1.ListOptions) (*v1alpha1.MariadbConfigurationList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MariadbConfiguration, err error)
+	Create(ctx context.Context, mariadbConfiguration *v1alpha1.MariadbConfiguration, opts v1.CreateOptions) (*v1alpha1.MariadbConfiguration, error)
+	Update(ctx context.Context, mariadbConfiguration *v1alpha1.MariadbConfiguration, opts v1.UpdateOptions) (*v1alpha1.MariadbConfiguration, error)
+	UpdateStatus(ctx context.Context, mariadbConfiguration *v1alpha1.MariadbConfiguration, opts v1.UpdateOptions) (*v1alpha1.MariadbConfiguration, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.MariadbConfiguration, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.MariadbConfigurationList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MariadbConfiguration, err error)
 	MariadbConfigurationExpansion
 }
 
@@ -65,20 +66,20 @@ func newMariadbConfigurations(c *AzurermV1alpha1Client, namespace string) *maria
 }
 
 // Get takes name of the mariadbConfiguration, and returns the corresponding mariadbConfiguration object, and an error if there is any.
-func (c *mariadbConfigurations) Get(name string, options v1.GetOptions) (result *v1alpha1.MariadbConfiguration, err error) {
+func (c *mariadbConfigurations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.MariadbConfiguration, err error) {
 	result = &v1alpha1.MariadbConfiguration{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("mariadbconfigurations").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of MariadbConfigurations that match those selectors.
-func (c *mariadbConfigurations) List(opts v1.ListOptions) (result *v1alpha1.MariadbConfigurationList, err error) {
+func (c *mariadbConfigurations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.MariadbConfigurationList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *mariadbConfigurations) List(opts v1.ListOptions) (result *v1alpha1.Mari
 		Resource("mariadbconfigurations").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested mariadbConfigurations.
-func (c *mariadbConfigurations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *mariadbConfigurations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *mariadbConfigurations) Watch(opts v1.ListOptions) (watch.Interface, err
 		Resource("mariadbconfigurations").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a mariadbConfiguration and creates it.  Returns the server's representation of the mariadbConfiguration, and an error, if there is any.
-func (c *mariadbConfigurations) Create(mariadbConfiguration *v1alpha1.MariadbConfiguration) (result *v1alpha1.MariadbConfiguration, err error) {
+func (c *mariadbConfigurations) Create(ctx context.Context, mariadbConfiguration *v1alpha1.MariadbConfiguration, opts v1.CreateOptions) (result *v1alpha1.MariadbConfiguration, err error) {
 	result = &v1alpha1.MariadbConfiguration{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("mariadbconfigurations").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(mariadbConfiguration).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a mariadbConfiguration and updates it. Returns the server's representation of the mariadbConfiguration, and an error, if there is any.
-func (c *mariadbConfigurations) Update(mariadbConfiguration *v1alpha1.MariadbConfiguration) (result *v1alpha1.MariadbConfiguration, err error) {
+func (c *mariadbConfigurations) Update(ctx context.Context, mariadbConfiguration *v1alpha1.MariadbConfiguration, opts v1.UpdateOptions) (result *v1alpha1.MariadbConfiguration, err error) {
 	result = &v1alpha1.MariadbConfiguration{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("mariadbconfigurations").
 		Name(mariadbConfiguration.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(mariadbConfiguration).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *mariadbConfigurations) UpdateStatus(mariadbConfiguration *v1alpha1.MariadbConfiguration) (result *v1alpha1.MariadbConfiguration, err error) {
+func (c *mariadbConfigurations) UpdateStatus(ctx context.Context, mariadbConfiguration *v1alpha1.MariadbConfiguration, opts v1.UpdateOptions) (result *v1alpha1.MariadbConfiguration, err error) {
 	result = &v1alpha1.MariadbConfiguration{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("mariadbconfigurations").
 		Name(mariadbConfiguration.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(mariadbConfiguration).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the mariadbConfiguration and deletes it. Returns an error if one occurs.
-func (c *mariadbConfigurations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *mariadbConfigurations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("mariadbconfigurations").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *mariadbConfigurations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *mariadbConfigurations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("mariadbconfigurations").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched mariadbConfiguration.
-func (c *mariadbConfigurations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MariadbConfiguration, err error) {
+func (c *mariadbConfigurations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MariadbConfiguration, err error) {
 	result = &v1alpha1.MariadbConfiguration{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("mariadbconfigurations").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

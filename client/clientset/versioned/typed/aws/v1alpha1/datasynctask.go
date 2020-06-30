@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type DatasyncTasksGetter interface {
 
 // DatasyncTaskInterface has methods to work with DatasyncTask resources.
 type DatasyncTaskInterface interface {
-	Create(*v1alpha1.DatasyncTask) (*v1alpha1.DatasyncTask, error)
-	Update(*v1alpha1.DatasyncTask) (*v1alpha1.DatasyncTask, error)
-	UpdateStatus(*v1alpha1.DatasyncTask) (*v1alpha1.DatasyncTask, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.DatasyncTask, error)
-	List(opts v1.ListOptions) (*v1alpha1.DatasyncTaskList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DatasyncTask, err error)
+	Create(ctx context.Context, datasyncTask *v1alpha1.DatasyncTask, opts v1.CreateOptions) (*v1alpha1.DatasyncTask, error)
+	Update(ctx context.Context, datasyncTask *v1alpha1.DatasyncTask, opts v1.UpdateOptions) (*v1alpha1.DatasyncTask, error)
+	UpdateStatus(ctx context.Context, datasyncTask *v1alpha1.DatasyncTask, opts v1.UpdateOptions) (*v1alpha1.DatasyncTask, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.DatasyncTask, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.DatasyncTaskList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DatasyncTask, err error)
 	DatasyncTaskExpansion
 }
 
@@ -65,20 +66,20 @@ func newDatasyncTasks(c *AwsV1alpha1Client, namespace string) *datasyncTasks {
 }
 
 // Get takes name of the datasyncTask, and returns the corresponding datasyncTask object, and an error if there is any.
-func (c *datasyncTasks) Get(name string, options v1.GetOptions) (result *v1alpha1.DatasyncTask, err error) {
+func (c *datasyncTasks) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DatasyncTask, err error) {
 	result = &v1alpha1.DatasyncTask{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("datasynctasks").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of DatasyncTasks that match those selectors.
-func (c *datasyncTasks) List(opts v1.ListOptions) (result *v1alpha1.DatasyncTaskList, err error) {
+func (c *datasyncTasks) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DatasyncTaskList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *datasyncTasks) List(opts v1.ListOptions) (result *v1alpha1.DatasyncTask
 		Resource("datasynctasks").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested datasyncTasks.
-func (c *datasyncTasks) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *datasyncTasks) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *datasyncTasks) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("datasynctasks").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a datasyncTask and creates it.  Returns the server's representation of the datasyncTask, and an error, if there is any.
-func (c *datasyncTasks) Create(datasyncTask *v1alpha1.DatasyncTask) (result *v1alpha1.DatasyncTask, err error) {
+func (c *datasyncTasks) Create(ctx context.Context, datasyncTask *v1alpha1.DatasyncTask, opts v1.CreateOptions) (result *v1alpha1.DatasyncTask, err error) {
 	result = &v1alpha1.DatasyncTask{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("datasynctasks").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(datasyncTask).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a datasyncTask and updates it. Returns the server's representation of the datasyncTask, and an error, if there is any.
-func (c *datasyncTasks) Update(datasyncTask *v1alpha1.DatasyncTask) (result *v1alpha1.DatasyncTask, err error) {
+func (c *datasyncTasks) Update(ctx context.Context, datasyncTask *v1alpha1.DatasyncTask, opts v1.UpdateOptions) (result *v1alpha1.DatasyncTask, err error) {
 	result = &v1alpha1.DatasyncTask{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("datasynctasks").
 		Name(datasyncTask.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(datasyncTask).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *datasyncTasks) UpdateStatus(datasyncTask *v1alpha1.DatasyncTask) (result *v1alpha1.DatasyncTask, err error) {
+func (c *datasyncTasks) UpdateStatus(ctx context.Context, datasyncTask *v1alpha1.DatasyncTask, opts v1.UpdateOptions) (result *v1alpha1.DatasyncTask, err error) {
 	result = &v1alpha1.DatasyncTask{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("datasynctasks").
 		Name(datasyncTask.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(datasyncTask).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the datasyncTask and deletes it. Returns an error if one occurs.
-func (c *datasyncTasks) Delete(name string, options *v1.DeleteOptions) error {
+func (c *datasyncTasks) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("datasynctasks").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *datasyncTasks) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *datasyncTasks) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("datasynctasks").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched datasyncTask.
-func (c *datasyncTasks) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DatasyncTask, err error) {
+func (c *datasyncTasks) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DatasyncTask, err error) {
 	result = &v1alpha1.DatasyncTask{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("datasynctasks").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

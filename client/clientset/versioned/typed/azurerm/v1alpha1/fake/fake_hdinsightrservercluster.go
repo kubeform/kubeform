@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var hdinsightrserverclustersResource = schema.GroupVersionResource{Group: "azure
 var hdinsightrserverclustersKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "HdinsightRserverCluster"}
 
 // Get takes name of the hdinsightRserverCluster, and returns the corresponding hdinsightRserverCluster object, and an error if there is any.
-func (c *FakeHdinsightRserverClusters) Get(name string, options v1.GetOptions) (result *v1alpha1.HdinsightRserverCluster, err error) {
+func (c *FakeHdinsightRserverClusters) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.HdinsightRserverCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(hdinsightrserverclustersResource, c.ns, name), &v1alpha1.HdinsightRserverCluster{})
 
@@ -51,7 +53,7 @@ func (c *FakeHdinsightRserverClusters) Get(name string, options v1.GetOptions) (
 }
 
 // List takes label and field selectors, and returns the list of HdinsightRserverClusters that match those selectors.
-func (c *FakeHdinsightRserverClusters) List(opts v1.ListOptions) (result *v1alpha1.HdinsightRserverClusterList, err error) {
+func (c *FakeHdinsightRserverClusters) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.HdinsightRserverClusterList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(hdinsightrserverclustersResource, hdinsightrserverclustersKind, c.ns, opts), &v1alpha1.HdinsightRserverClusterList{})
 
@@ -73,14 +75,14 @@ func (c *FakeHdinsightRserverClusters) List(opts v1.ListOptions) (result *v1alph
 }
 
 // Watch returns a watch.Interface that watches the requested hdinsightRserverClusters.
-func (c *FakeHdinsightRserverClusters) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeHdinsightRserverClusters) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(hdinsightrserverclustersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a hdinsightRserverCluster and creates it.  Returns the server's representation of the hdinsightRserverCluster, and an error, if there is any.
-func (c *FakeHdinsightRserverClusters) Create(hdinsightRserverCluster *v1alpha1.HdinsightRserverCluster) (result *v1alpha1.HdinsightRserverCluster, err error) {
+func (c *FakeHdinsightRserverClusters) Create(ctx context.Context, hdinsightRserverCluster *v1alpha1.HdinsightRserverCluster, opts v1.CreateOptions) (result *v1alpha1.HdinsightRserverCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(hdinsightrserverclustersResource, c.ns, hdinsightRserverCluster), &v1alpha1.HdinsightRserverCluster{})
 
@@ -91,7 +93,7 @@ func (c *FakeHdinsightRserverClusters) Create(hdinsightRserverCluster *v1alpha1.
 }
 
 // Update takes the representation of a hdinsightRserverCluster and updates it. Returns the server's representation of the hdinsightRserverCluster, and an error, if there is any.
-func (c *FakeHdinsightRserverClusters) Update(hdinsightRserverCluster *v1alpha1.HdinsightRserverCluster) (result *v1alpha1.HdinsightRserverCluster, err error) {
+func (c *FakeHdinsightRserverClusters) Update(ctx context.Context, hdinsightRserverCluster *v1alpha1.HdinsightRserverCluster, opts v1.UpdateOptions) (result *v1alpha1.HdinsightRserverCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(hdinsightrserverclustersResource, c.ns, hdinsightRserverCluster), &v1alpha1.HdinsightRserverCluster{})
 
@@ -103,7 +105,7 @@ func (c *FakeHdinsightRserverClusters) Update(hdinsightRserverCluster *v1alpha1.
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeHdinsightRserverClusters) UpdateStatus(hdinsightRserverCluster *v1alpha1.HdinsightRserverCluster) (*v1alpha1.HdinsightRserverCluster, error) {
+func (c *FakeHdinsightRserverClusters) UpdateStatus(ctx context.Context, hdinsightRserverCluster *v1alpha1.HdinsightRserverCluster, opts v1.UpdateOptions) (*v1alpha1.HdinsightRserverCluster, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(hdinsightrserverclustersResource, "status", c.ns, hdinsightRserverCluster), &v1alpha1.HdinsightRserverCluster{})
 
@@ -114,7 +116,7 @@ func (c *FakeHdinsightRserverClusters) UpdateStatus(hdinsightRserverCluster *v1a
 }
 
 // Delete takes name of the hdinsightRserverCluster and deletes it. Returns an error if one occurs.
-func (c *FakeHdinsightRserverClusters) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeHdinsightRserverClusters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(hdinsightrserverclustersResource, c.ns, name), &v1alpha1.HdinsightRserverCluster{})
 
@@ -122,15 +124,15 @@ func (c *FakeHdinsightRserverClusters) Delete(name string, options *v1.DeleteOpt
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeHdinsightRserverClusters) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(hdinsightrserverclustersResource, c.ns, listOptions)
+func (c *FakeHdinsightRserverClusters) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(hdinsightrserverclustersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.HdinsightRserverClusterList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched hdinsightRserverCluster.
-func (c *FakeHdinsightRserverClusters) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.HdinsightRserverCluster, err error) {
+func (c *FakeHdinsightRserverClusters) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.HdinsightRserverCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(hdinsightrserverclustersResource, c.ns, name, pt, data, subresources...), &v1alpha1.HdinsightRserverCluster{})
 

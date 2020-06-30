@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type IothubRoutesGetter interface {
 
 // IothubRouteInterface has methods to work with IothubRoute resources.
 type IothubRouteInterface interface {
-	Create(*v1alpha1.IothubRoute) (*v1alpha1.IothubRoute, error)
-	Update(*v1alpha1.IothubRoute) (*v1alpha1.IothubRoute, error)
-	UpdateStatus(*v1alpha1.IothubRoute) (*v1alpha1.IothubRoute, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.IothubRoute, error)
-	List(opts v1.ListOptions) (*v1alpha1.IothubRouteList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IothubRoute, err error)
+	Create(ctx context.Context, iothubRoute *v1alpha1.IothubRoute, opts v1.CreateOptions) (*v1alpha1.IothubRoute, error)
+	Update(ctx context.Context, iothubRoute *v1alpha1.IothubRoute, opts v1.UpdateOptions) (*v1alpha1.IothubRoute, error)
+	UpdateStatus(ctx context.Context, iothubRoute *v1alpha1.IothubRoute, opts v1.UpdateOptions) (*v1alpha1.IothubRoute, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.IothubRoute, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.IothubRouteList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IothubRoute, err error)
 	IothubRouteExpansion
 }
 
@@ -65,20 +66,20 @@ func newIothubRoutes(c *AzurermV1alpha1Client, namespace string) *iothubRoutes {
 }
 
 // Get takes name of the iothubRoute, and returns the corresponding iothubRoute object, and an error if there is any.
-func (c *iothubRoutes) Get(name string, options v1.GetOptions) (result *v1alpha1.IothubRoute, err error) {
+func (c *iothubRoutes) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IothubRoute, err error) {
 	result = &v1alpha1.IothubRoute{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("iothubroutes").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of IothubRoutes that match those selectors.
-func (c *iothubRoutes) List(opts v1.ListOptions) (result *v1alpha1.IothubRouteList, err error) {
+func (c *iothubRoutes) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IothubRouteList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *iothubRoutes) List(opts v1.ListOptions) (result *v1alpha1.IothubRouteLi
 		Resource("iothubroutes").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested iothubRoutes.
-func (c *iothubRoutes) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *iothubRoutes) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *iothubRoutes) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("iothubroutes").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a iothubRoute and creates it.  Returns the server's representation of the iothubRoute, and an error, if there is any.
-func (c *iothubRoutes) Create(iothubRoute *v1alpha1.IothubRoute) (result *v1alpha1.IothubRoute, err error) {
+func (c *iothubRoutes) Create(ctx context.Context, iothubRoute *v1alpha1.IothubRoute, opts v1.CreateOptions) (result *v1alpha1.IothubRoute, err error) {
 	result = &v1alpha1.IothubRoute{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("iothubroutes").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iothubRoute).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a iothubRoute and updates it. Returns the server's representation of the iothubRoute, and an error, if there is any.
-func (c *iothubRoutes) Update(iothubRoute *v1alpha1.IothubRoute) (result *v1alpha1.IothubRoute, err error) {
+func (c *iothubRoutes) Update(ctx context.Context, iothubRoute *v1alpha1.IothubRoute, opts v1.UpdateOptions) (result *v1alpha1.IothubRoute, err error) {
 	result = &v1alpha1.IothubRoute{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iothubroutes").
 		Name(iothubRoute.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iothubRoute).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *iothubRoutes) UpdateStatus(iothubRoute *v1alpha1.IothubRoute) (result *v1alpha1.IothubRoute, err error) {
+func (c *iothubRoutes) UpdateStatus(ctx context.Context, iothubRoute *v1alpha1.IothubRoute, opts v1.UpdateOptions) (result *v1alpha1.IothubRoute, err error) {
 	result = &v1alpha1.IothubRoute{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iothubroutes").
 		Name(iothubRoute.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iothubRoute).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the iothubRoute and deletes it. Returns an error if one occurs.
-func (c *iothubRoutes) Delete(name string, options *v1.DeleteOptions) error {
+func (c *iothubRoutes) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iothubroutes").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *iothubRoutes) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *iothubRoutes) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iothubroutes").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched iothubRoute.
-func (c *iothubRoutes) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IothubRoute, err error) {
+func (c *iothubRoutes) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IothubRoute, err error) {
 	result = &v1alpha1.IothubRoute{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("iothubroutes").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

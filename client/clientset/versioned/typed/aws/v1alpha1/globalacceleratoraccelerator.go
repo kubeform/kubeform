@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type GlobalacceleratorAcceleratorsGetter interface {
 
 // GlobalacceleratorAcceleratorInterface has methods to work with GlobalacceleratorAccelerator resources.
 type GlobalacceleratorAcceleratorInterface interface {
-	Create(*v1alpha1.GlobalacceleratorAccelerator) (*v1alpha1.GlobalacceleratorAccelerator, error)
-	Update(*v1alpha1.GlobalacceleratorAccelerator) (*v1alpha1.GlobalacceleratorAccelerator, error)
-	UpdateStatus(*v1alpha1.GlobalacceleratorAccelerator) (*v1alpha1.GlobalacceleratorAccelerator, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.GlobalacceleratorAccelerator, error)
-	List(opts v1.ListOptions) (*v1alpha1.GlobalacceleratorAcceleratorList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.GlobalacceleratorAccelerator, err error)
+	Create(ctx context.Context, globalacceleratorAccelerator *v1alpha1.GlobalacceleratorAccelerator, opts v1.CreateOptions) (*v1alpha1.GlobalacceleratorAccelerator, error)
+	Update(ctx context.Context, globalacceleratorAccelerator *v1alpha1.GlobalacceleratorAccelerator, opts v1.UpdateOptions) (*v1alpha1.GlobalacceleratorAccelerator, error)
+	UpdateStatus(ctx context.Context, globalacceleratorAccelerator *v1alpha1.GlobalacceleratorAccelerator, opts v1.UpdateOptions) (*v1alpha1.GlobalacceleratorAccelerator, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.GlobalacceleratorAccelerator, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.GlobalacceleratorAcceleratorList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.GlobalacceleratorAccelerator, err error)
 	GlobalacceleratorAcceleratorExpansion
 }
 
@@ -65,20 +66,20 @@ func newGlobalacceleratorAccelerators(c *AwsV1alpha1Client, namespace string) *g
 }
 
 // Get takes name of the globalacceleratorAccelerator, and returns the corresponding globalacceleratorAccelerator object, and an error if there is any.
-func (c *globalacceleratorAccelerators) Get(name string, options v1.GetOptions) (result *v1alpha1.GlobalacceleratorAccelerator, err error) {
+func (c *globalacceleratorAccelerators) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.GlobalacceleratorAccelerator, err error) {
 	result = &v1alpha1.GlobalacceleratorAccelerator{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("globalacceleratoraccelerators").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of GlobalacceleratorAccelerators that match those selectors.
-func (c *globalacceleratorAccelerators) List(opts v1.ListOptions) (result *v1alpha1.GlobalacceleratorAcceleratorList, err error) {
+func (c *globalacceleratorAccelerators) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.GlobalacceleratorAcceleratorList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *globalacceleratorAccelerators) List(opts v1.ListOptions) (result *v1alp
 		Resource("globalacceleratoraccelerators").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested globalacceleratorAccelerators.
-func (c *globalacceleratorAccelerators) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *globalacceleratorAccelerators) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *globalacceleratorAccelerators) Watch(opts v1.ListOptions) (watch.Interf
 		Resource("globalacceleratoraccelerators").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a globalacceleratorAccelerator and creates it.  Returns the server's representation of the globalacceleratorAccelerator, and an error, if there is any.
-func (c *globalacceleratorAccelerators) Create(globalacceleratorAccelerator *v1alpha1.GlobalacceleratorAccelerator) (result *v1alpha1.GlobalacceleratorAccelerator, err error) {
+func (c *globalacceleratorAccelerators) Create(ctx context.Context, globalacceleratorAccelerator *v1alpha1.GlobalacceleratorAccelerator, opts v1.CreateOptions) (result *v1alpha1.GlobalacceleratorAccelerator, err error) {
 	result = &v1alpha1.GlobalacceleratorAccelerator{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("globalacceleratoraccelerators").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(globalacceleratorAccelerator).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a globalacceleratorAccelerator and updates it. Returns the server's representation of the globalacceleratorAccelerator, and an error, if there is any.
-func (c *globalacceleratorAccelerators) Update(globalacceleratorAccelerator *v1alpha1.GlobalacceleratorAccelerator) (result *v1alpha1.GlobalacceleratorAccelerator, err error) {
+func (c *globalacceleratorAccelerators) Update(ctx context.Context, globalacceleratorAccelerator *v1alpha1.GlobalacceleratorAccelerator, opts v1.UpdateOptions) (result *v1alpha1.GlobalacceleratorAccelerator, err error) {
 	result = &v1alpha1.GlobalacceleratorAccelerator{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("globalacceleratoraccelerators").
 		Name(globalacceleratorAccelerator.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(globalacceleratorAccelerator).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *globalacceleratorAccelerators) UpdateStatus(globalacceleratorAccelerator *v1alpha1.GlobalacceleratorAccelerator) (result *v1alpha1.GlobalacceleratorAccelerator, err error) {
+func (c *globalacceleratorAccelerators) UpdateStatus(ctx context.Context, globalacceleratorAccelerator *v1alpha1.GlobalacceleratorAccelerator, opts v1.UpdateOptions) (result *v1alpha1.GlobalacceleratorAccelerator, err error) {
 	result = &v1alpha1.GlobalacceleratorAccelerator{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("globalacceleratoraccelerators").
 		Name(globalacceleratorAccelerator.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(globalacceleratorAccelerator).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the globalacceleratorAccelerator and deletes it. Returns an error if one occurs.
-func (c *globalacceleratorAccelerators) Delete(name string, options *v1.DeleteOptions) error {
+func (c *globalacceleratorAccelerators) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("globalacceleratoraccelerators").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *globalacceleratorAccelerators) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *globalacceleratorAccelerators) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("globalacceleratoraccelerators").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched globalacceleratorAccelerator.
-func (c *globalacceleratorAccelerators) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.GlobalacceleratorAccelerator, err error) {
+func (c *globalacceleratorAccelerators) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.GlobalacceleratorAccelerator, err error) {
 	result = &v1alpha1.GlobalacceleratorAccelerator{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("globalacceleratoraccelerators").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

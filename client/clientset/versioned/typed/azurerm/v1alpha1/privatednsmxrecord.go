@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type PrivateDNSMxRecordsGetter interface {
 
 // PrivateDNSMxRecordInterface has methods to work with PrivateDNSMxRecord resources.
 type PrivateDNSMxRecordInterface interface {
-	Create(*v1alpha1.PrivateDNSMxRecord) (*v1alpha1.PrivateDNSMxRecord, error)
-	Update(*v1alpha1.PrivateDNSMxRecord) (*v1alpha1.PrivateDNSMxRecord, error)
-	UpdateStatus(*v1alpha1.PrivateDNSMxRecord) (*v1alpha1.PrivateDNSMxRecord, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.PrivateDNSMxRecord, error)
-	List(opts v1.ListOptions) (*v1alpha1.PrivateDNSMxRecordList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PrivateDNSMxRecord, err error)
+	Create(ctx context.Context, privateDNSMxRecord *v1alpha1.PrivateDNSMxRecord, opts v1.CreateOptions) (*v1alpha1.PrivateDNSMxRecord, error)
+	Update(ctx context.Context, privateDNSMxRecord *v1alpha1.PrivateDNSMxRecord, opts v1.UpdateOptions) (*v1alpha1.PrivateDNSMxRecord, error)
+	UpdateStatus(ctx context.Context, privateDNSMxRecord *v1alpha1.PrivateDNSMxRecord, opts v1.UpdateOptions) (*v1alpha1.PrivateDNSMxRecord, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.PrivateDNSMxRecord, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.PrivateDNSMxRecordList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PrivateDNSMxRecord, err error)
 	PrivateDNSMxRecordExpansion
 }
 
@@ -65,20 +66,20 @@ func newPrivateDNSMxRecords(c *AzurermV1alpha1Client, namespace string) *private
 }
 
 // Get takes name of the privateDNSMxRecord, and returns the corresponding privateDNSMxRecord object, and an error if there is any.
-func (c *privateDNSMxRecords) Get(name string, options v1.GetOptions) (result *v1alpha1.PrivateDNSMxRecord, err error) {
+func (c *privateDNSMxRecords) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PrivateDNSMxRecord, err error) {
 	result = &v1alpha1.PrivateDNSMxRecord{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("privatednsmxrecords").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of PrivateDNSMxRecords that match those selectors.
-func (c *privateDNSMxRecords) List(opts v1.ListOptions) (result *v1alpha1.PrivateDNSMxRecordList, err error) {
+func (c *privateDNSMxRecords) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PrivateDNSMxRecordList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *privateDNSMxRecords) List(opts v1.ListOptions) (result *v1alpha1.Privat
 		Resource("privatednsmxrecords").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested privateDNSMxRecords.
-func (c *privateDNSMxRecords) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *privateDNSMxRecords) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *privateDNSMxRecords) Watch(opts v1.ListOptions) (watch.Interface, error
 		Resource("privatednsmxrecords").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a privateDNSMxRecord and creates it.  Returns the server's representation of the privateDNSMxRecord, and an error, if there is any.
-func (c *privateDNSMxRecords) Create(privateDNSMxRecord *v1alpha1.PrivateDNSMxRecord) (result *v1alpha1.PrivateDNSMxRecord, err error) {
+func (c *privateDNSMxRecords) Create(ctx context.Context, privateDNSMxRecord *v1alpha1.PrivateDNSMxRecord, opts v1.CreateOptions) (result *v1alpha1.PrivateDNSMxRecord, err error) {
 	result = &v1alpha1.PrivateDNSMxRecord{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("privatednsmxrecords").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(privateDNSMxRecord).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a privateDNSMxRecord and updates it. Returns the server's representation of the privateDNSMxRecord, and an error, if there is any.
-func (c *privateDNSMxRecords) Update(privateDNSMxRecord *v1alpha1.PrivateDNSMxRecord) (result *v1alpha1.PrivateDNSMxRecord, err error) {
+func (c *privateDNSMxRecords) Update(ctx context.Context, privateDNSMxRecord *v1alpha1.PrivateDNSMxRecord, opts v1.UpdateOptions) (result *v1alpha1.PrivateDNSMxRecord, err error) {
 	result = &v1alpha1.PrivateDNSMxRecord{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("privatednsmxrecords").
 		Name(privateDNSMxRecord.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(privateDNSMxRecord).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *privateDNSMxRecords) UpdateStatus(privateDNSMxRecord *v1alpha1.PrivateDNSMxRecord) (result *v1alpha1.PrivateDNSMxRecord, err error) {
+func (c *privateDNSMxRecords) UpdateStatus(ctx context.Context, privateDNSMxRecord *v1alpha1.PrivateDNSMxRecord, opts v1.UpdateOptions) (result *v1alpha1.PrivateDNSMxRecord, err error) {
 	result = &v1alpha1.PrivateDNSMxRecord{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("privatednsmxrecords").
 		Name(privateDNSMxRecord.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(privateDNSMxRecord).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the privateDNSMxRecord and deletes it. Returns an error if one occurs.
-func (c *privateDNSMxRecords) Delete(name string, options *v1.DeleteOptions) error {
+func (c *privateDNSMxRecords) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("privatednsmxrecords").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *privateDNSMxRecords) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *privateDNSMxRecords) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("privatednsmxrecords").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched privateDNSMxRecord.
-func (c *privateDNSMxRecords) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PrivateDNSMxRecord, err error) {
+func (c *privateDNSMxRecords) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PrivateDNSMxRecord, err error) {
 	result = &v1alpha1.PrivateDNSMxRecord{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("privatednsmxrecords").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

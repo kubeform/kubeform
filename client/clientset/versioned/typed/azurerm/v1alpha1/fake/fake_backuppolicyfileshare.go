@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var backuppolicyfilesharesResource = schema.GroupVersionResource{Group: "azurerm
 var backuppolicyfilesharesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "BackupPolicyFileShare"}
 
 // Get takes name of the backupPolicyFileShare, and returns the corresponding backupPolicyFileShare object, and an error if there is any.
-func (c *FakeBackupPolicyFileShares) Get(name string, options v1.GetOptions) (result *v1alpha1.BackupPolicyFileShare, err error) {
+func (c *FakeBackupPolicyFileShares) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BackupPolicyFileShare, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(backuppolicyfilesharesResource, c.ns, name), &v1alpha1.BackupPolicyFileShare{})
 
@@ -51,7 +53,7 @@ func (c *FakeBackupPolicyFileShares) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of BackupPolicyFileShares that match those selectors.
-func (c *FakeBackupPolicyFileShares) List(opts v1.ListOptions) (result *v1alpha1.BackupPolicyFileShareList, err error) {
+func (c *FakeBackupPolicyFileShares) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BackupPolicyFileShareList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(backuppolicyfilesharesResource, backuppolicyfilesharesKind, c.ns, opts), &v1alpha1.BackupPolicyFileShareList{})
 
@@ -73,14 +75,14 @@ func (c *FakeBackupPolicyFileShares) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested backupPolicyFileShares.
-func (c *FakeBackupPolicyFileShares) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeBackupPolicyFileShares) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(backuppolicyfilesharesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a backupPolicyFileShare and creates it.  Returns the server's representation of the backupPolicyFileShare, and an error, if there is any.
-func (c *FakeBackupPolicyFileShares) Create(backupPolicyFileShare *v1alpha1.BackupPolicyFileShare) (result *v1alpha1.BackupPolicyFileShare, err error) {
+func (c *FakeBackupPolicyFileShares) Create(ctx context.Context, backupPolicyFileShare *v1alpha1.BackupPolicyFileShare, opts v1.CreateOptions) (result *v1alpha1.BackupPolicyFileShare, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(backuppolicyfilesharesResource, c.ns, backupPolicyFileShare), &v1alpha1.BackupPolicyFileShare{})
 
@@ -91,7 +93,7 @@ func (c *FakeBackupPolicyFileShares) Create(backupPolicyFileShare *v1alpha1.Back
 }
 
 // Update takes the representation of a backupPolicyFileShare and updates it. Returns the server's representation of the backupPolicyFileShare, and an error, if there is any.
-func (c *FakeBackupPolicyFileShares) Update(backupPolicyFileShare *v1alpha1.BackupPolicyFileShare) (result *v1alpha1.BackupPolicyFileShare, err error) {
+func (c *FakeBackupPolicyFileShares) Update(ctx context.Context, backupPolicyFileShare *v1alpha1.BackupPolicyFileShare, opts v1.UpdateOptions) (result *v1alpha1.BackupPolicyFileShare, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(backuppolicyfilesharesResource, c.ns, backupPolicyFileShare), &v1alpha1.BackupPolicyFileShare{})
 
@@ -103,7 +105,7 @@ func (c *FakeBackupPolicyFileShares) Update(backupPolicyFileShare *v1alpha1.Back
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeBackupPolicyFileShares) UpdateStatus(backupPolicyFileShare *v1alpha1.BackupPolicyFileShare) (*v1alpha1.BackupPolicyFileShare, error) {
+func (c *FakeBackupPolicyFileShares) UpdateStatus(ctx context.Context, backupPolicyFileShare *v1alpha1.BackupPolicyFileShare, opts v1.UpdateOptions) (*v1alpha1.BackupPolicyFileShare, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(backuppolicyfilesharesResource, "status", c.ns, backupPolicyFileShare), &v1alpha1.BackupPolicyFileShare{})
 
@@ -114,7 +116,7 @@ func (c *FakeBackupPolicyFileShares) UpdateStatus(backupPolicyFileShare *v1alpha
 }
 
 // Delete takes name of the backupPolicyFileShare and deletes it. Returns an error if one occurs.
-func (c *FakeBackupPolicyFileShares) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeBackupPolicyFileShares) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(backuppolicyfilesharesResource, c.ns, name), &v1alpha1.BackupPolicyFileShare{})
 
@@ -122,15 +124,15 @@ func (c *FakeBackupPolicyFileShares) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeBackupPolicyFileShares) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(backuppolicyfilesharesResource, c.ns, listOptions)
+func (c *FakeBackupPolicyFileShares) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(backuppolicyfilesharesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.BackupPolicyFileShareList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched backupPolicyFileShare.
-func (c *FakeBackupPolicyFileShares) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BackupPolicyFileShare, err error) {
+func (c *FakeBackupPolicyFileShares) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BackupPolicyFileShare, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(backuppolicyfilesharesResource, c.ns, name, pt, data, subresources...), &v1alpha1.BackupPolicyFileShare{})
 

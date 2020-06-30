@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var localnetworkgatewaysResource = schema.GroupVersionResource{Group: "azurerm.k
 var localnetworkgatewaysKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "LocalNetworkGateway"}
 
 // Get takes name of the localNetworkGateway, and returns the corresponding localNetworkGateway object, and an error if there is any.
-func (c *FakeLocalNetworkGateways) Get(name string, options v1.GetOptions) (result *v1alpha1.LocalNetworkGateway, err error) {
+func (c *FakeLocalNetworkGateways) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LocalNetworkGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(localnetworkgatewaysResource, c.ns, name), &v1alpha1.LocalNetworkGateway{})
 
@@ -51,7 +53,7 @@ func (c *FakeLocalNetworkGateways) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of LocalNetworkGateways that match those selectors.
-func (c *FakeLocalNetworkGateways) List(opts v1.ListOptions) (result *v1alpha1.LocalNetworkGatewayList, err error) {
+func (c *FakeLocalNetworkGateways) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LocalNetworkGatewayList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(localnetworkgatewaysResource, localnetworkgatewaysKind, c.ns, opts), &v1alpha1.LocalNetworkGatewayList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLocalNetworkGateways) List(opts v1.ListOptions) (result *v1alpha1.L
 }
 
 // Watch returns a watch.Interface that watches the requested localNetworkGateways.
-func (c *FakeLocalNetworkGateways) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLocalNetworkGateways) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(localnetworkgatewaysResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a localNetworkGateway and creates it.  Returns the server's representation of the localNetworkGateway, and an error, if there is any.
-func (c *FakeLocalNetworkGateways) Create(localNetworkGateway *v1alpha1.LocalNetworkGateway) (result *v1alpha1.LocalNetworkGateway, err error) {
+func (c *FakeLocalNetworkGateways) Create(ctx context.Context, localNetworkGateway *v1alpha1.LocalNetworkGateway, opts v1.CreateOptions) (result *v1alpha1.LocalNetworkGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(localnetworkgatewaysResource, c.ns, localNetworkGateway), &v1alpha1.LocalNetworkGateway{})
 
@@ -91,7 +93,7 @@ func (c *FakeLocalNetworkGateways) Create(localNetworkGateway *v1alpha1.LocalNet
 }
 
 // Update takes the representation of a localNetworkGateway and updates it. Returns the server's representation of the localNetworkGateway, and an error, if there is any.
-func (c *FakeLocalNetworkGateways) Update(localNetworkGateway *v1alpha1.LocalNetworkGateway) (result *v1alpha1.LocalNetworkGateway, err error) {
+func (c *FakeLocalNetworkGateways) Update(ctx context.Context, localNetworkGateway *v1alpha1.LocalNetworkGateway, opts v1.UpdateOptions) (result *v1alpha1.LocalNetworkGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(localnetworkgatewaysResource, c.ns, localNetworkGateway), &v1alpha1.LocalNetworkGateway{})
 
@@ -103,7 +105,7 @@ func (c *FakeLocalNetworkGateways) Update(localNetworkGateway *v1alpha1.LocalNet
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLocalNetworkGateways) UpdateStatus(localNetworkGateway *v1alpha1.LocalNetworkGateway) (*v1alpha1.LocalNetworkGateway, error) {
+func (c *FakeLocalNetworkGateways) UpdateStatus(ctx context.Context, localNetworkGateway *v1alpha1.LocalNetworkGateway, opts v1.UpdateOptions) (*v1alpha1.LocalNetworkGateway, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(localnetworkgatewaysResource, "status", c.ns, localNetworkGateway), &v1alpha1.LocalNetworkGateway{})
 
@@ -114,7 +116,7 @@ func (c *FakeLocalNetworkGateways) UpdateStatus(localNetworkGateway *v1alpha1.Lo
 }
 
 // Delete takes name of the localNetworkGateway and deletes it. Returns an error if one occurs.
-func (c *FakeLocalNetworkGateways) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLocalNetworkGateways) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(localnetworkgatewaysResource, c.ns, name), &v1alpha1.LocalNetworkGateway{})
 
@@ -122,15 +124,15 @@ func (c *FakeLocalNetworkGateways) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLocalNetworkGateways) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(localnetworkgatewaysResource, c.ns, listOptions)
+func (c *FakeLocalNetworkGateways) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(localnetworkgatewaysResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LocalNetworkGatewayList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched localNetworkGateway.
-func (c *FakeLocalNetworkGateways) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LocalNetworkGateway, err error) {
+func (c *FakeLocalNetworkGateways) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LocalNetworkGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(localnetworkgatewaysResource, c.ns, name, pt, data, subresources...), &v1alpha1.LocalNetworkGateway{})
 

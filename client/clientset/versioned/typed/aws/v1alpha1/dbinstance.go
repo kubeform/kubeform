@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type DbInstancesGetter interface {
 
 // DbInstanceInterface has methods to work with DbInstance resources.
 type DbInstanceInterface interface {
-	Create(*v1alpha1.DbInstance) (*v1alpha1.DbInstance, error)
-	Update(*v1alpha1.DbInstance) (*v1alpha1.DbInstance, error)
-	UpdateStatus(*v1alpha1.DbInstance) (*v1alpha1.DbInstance, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.DbInstance, error)
-	List(opts v1.ListOptions) (*v1alpha1.DbInstanceList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DbInstance, err error)
+	Create(ctx context.Context, dbInstance *v1alpha1.DbInstance, opts v1.CreateOptions) (*v1alpha1.DbInstance, error)
+	Update(ctx context.Context, dbInstance *v1alpha1.DbInstance, opts v1.UpdateOptions) (*v1alpha1.DbInstance, error)
+	UpdateStatus(ctx context.Context, dbInstance *v1alpha1.DbInstance, opts v1.UpdateOptions) (*v1alpha1.DbInstance, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.DbInstance, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.DbInstanceList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DbInstance, err error)
 	DbInstanceExpansion
 }
 
@@ -65,20 +66,20 @@ func newDbInstances(c *AwsV1alpha1Client, namespace string) *dbInstances {
 }
 
 // Get takes name of the dbInstance, and returns the corresponding dbInstance object, and an error if there is any.
-func (c *dbInstances) Get(name string, options v1.GetOptions) (result *v1alpha1.DbInstance, err error) {
+func (c *dbInstances) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DbInstance, err error) {
 	result = &v1alpha1.DbInstance{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("dbinstances").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of DbInstances that match those selectors.
-func (c *dbInstances) List(opts v1.ListOptions) (result *v1alpha1.DbInstanceList, err error) {
+func (c *dbInstances) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DbInstanceList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *dbInstances) List(opts v1.ListOptions) (result *v1alpha1.DbInstanceList
 		Resource("dbinstances").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested dbInstances.
-func (c *dbInstances) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *dbInstances) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *dbInstances) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("dbinstances").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a dbInstance and creates it.  Returns the server's representation of the dbInstance, and an error, if there is any.
-func (c *dbInstances) Create(dbInstance *v1alpha1.DbInstance) (result *v1alpha1.DbInstance, err error) {
+func (c *dbInstances) Create(ctx context.Context, dbInstance *v1alpha1.DbInstance, opts v1.CreateOptions) (result *v1alpha1.DbInstance, err error) {
 	result = &v1alpha1.DbInstance{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("dbinstances").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dbInstance).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a dbInstance and updates it. Returns the server's representation of the dbInstance, and an error, if there is any.
-func (c *dbInstances) Update(dbInstance *v1alpha1.DbInstance) (result *v1alpha1.DbInstance, err error) {
+func (c *dbInstances) Update(ctx context.Context, dbInstance *v1alpha1.DbInstance, opts v1.UpdateOptions) (result *v1alpha1.DbInstance, err error) {
 	result = &v1alpha1.DbInstance{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("dbinstances").
 		Name(dbInstance.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dbInstance).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *dbInstances) UpdateStatus(dbInstance *v1alpha1.DbInstance) (result *v1alpha1.DbInstance, err error) {
+func (c *dbInstances) UpdateStatus(ctx context.Context, dbInstance *v1alpha1.DbInstance, opts v1.UpdateOptions) (result *v1alpha1.DbInstance, err error) {
 	result = &v1alpha1.DbInstance{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("dbinstances").
 		Name(dbInstance.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dbInstance).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the dbInstance and deletes it. Returns an error if one occurs.
-func (c *dbInstances) Delete(name string, options *v1.DeleteOptions) error {
+func (c *dbInstances) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("dbinstances").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *dbInstances) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *dbInstances) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("dbinstances").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched dbInstance.
-func (c *dbInstances) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DbInstance, err error) {
+func (c *dbInstances) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DbInstance, err error) {
 	result = &v1alpha1.DbInstance{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("dbinstances").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var applicationgatewaysResource = schema.GroupVersionResource{Group: "azurerm.ku
 var applicationgatewaysKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "ApplicationGateway"}
 
 // Get takes name of the applicationGateway, and returns the corresponding applicationGateway object, and an error if there is any.
-func (c *FakeApplicationGateways) Get(name string, options v1.GetOptions) (result *v1alpha1.ApplicationGateway, err error) {
+func (c *FakeApplicationGateways) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApplicationGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(applicationgatewaysResource, c.ns, name), &v1alpha1.ApplicationGateway{})
 
@@ -51,7 +53,7 @@ func (c *FakeApplicationGateways) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of ApplicationGateways that match those selectors.
-func (c *FakeApplicationGateways) List(opts v1.ListOptions) (result *v1alpha1.ApplicationGatewayList, err error) {
+func (c *FakeApplicationGateways) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApplicationGatewayList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(applicationgatewaysResource, applicationgatewaysKind, c.ns, opts), &v1alpha1.ApplicationGatewayList{})
 
@@ -73,14 +75,14 @@ func (c *FakeApplicationGateways) List(opts v1.ListOptions) (result *v1alpha1.Ap
 }
 
 // Watch returns a watch.Interface that watches the requested applicationGateways.
-func (c *FakeApplicationGateways) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeApplicationGateways) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(applicationgatewaysResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a applicationGateway and creates it.  Returns the server's representation of the applicationGateway, and an error, if there is any.
-func (c *FakeApplicationGateways) Create(applicationGateway *v1alpha1.ApplicationGateway) (result *v1alpha1.ApplicationGateway, err error) {
+func (c *FakeApplicationGateways) Create(ctx context.Context, applicationGateway *v1alpha1.ApplicationGateway, opts v1.CreateOptions) (result *v1alpha1.ApplicationGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(applicationgatewaysResource, c.ns, applicationGateway), &v1alpha1.ApplicationGateway{})
 
@@ -91,7 +93,7 @@ func (c *FakeApplicationGateways) Create(applicationGateway *v1alpha1.Applicatio
 }
 
 // Update takes the representation of a applicationGateway and updates it. Returns the server's representation of the applicationGateway, and an error, if there is any.
-func (c *FakeApplicationGateways) Update(applicationGateway *v1alpha1.ApplicationGateway) (result *v1alpha1.ApplicationGateway, err error) {
+func (c *FakeApplicationGateways) Update(ctx context.Context, applicationGateway *v1alpha1.ApplicationGateway, opts v1.UpdateOptions) (result *v1alpha1.ApplicationGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(applicationgatewaysResource, c.ns, applicationGateway), &v1alpha1.ApplicationGateway{})
 
@@ -103,7 +105,7 @@ func (c *FakeApplicationGateways) Update(applicationGateway *v1alpha1.Applicatio
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeApplicationGateways) UpdateStatus(applicationGateway *v1alpha1.ApplicationGateway) (*v1alpha1.ApplicationGateway, error) {
+func (c *FakeApplicationGateways) UpdateStatus(ctx context.Context, applicationGateway *v1alpha1.ApplicationGateway, opts v1.UpdateOptions) (*v1alpha1.ApplicationGateway, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(applicationgatewaysResource, "status", c.ns, applicationGateway), &v1alpha1.ApplicationGateway{})
 
@@ -114,7 +116,7 @@ func (c *FakeApplicationGateways) UpdateStatus(applicationGateway *v1alpha1.Appl
 }
 
 // Delete takes name of the applicationGateway and deletes it. Returns an error if one occurs.
-func (c *FakeApplicationGateways) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeApplicationGateways) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(applicationgatewaysResource, c.ns, name), &v1alpha1.ApplicationGateway{})
 
@@ -122,15 +124,15 @@ func (c *FakeApplicationGateways) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeApplicationGateways) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(applicationgatewaysResource, c.ns, listOptions)
+func (c *FakeApplicationGateways) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(applicationgatewaysResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ApplicationGatewayList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched applicationGateway.
-func (c *FakeApplicationGateways) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApplicationGateway, err error) {
+func (c *FakeApplicationGateways) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApplicationGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(applicationgatewaysResource, c.ns, name, pt, data, subresources...), &v1alpha1.ApplicationGateway{})
 

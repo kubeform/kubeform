@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type ElasticsearchDomainPoliciesGetter interface {
 
 // ElasticsearchDomainPolicyInterface has methods to work with ElasticsearchDomainPolicy resources.
 type ElasticsearchDomainPolicyInterface interface {
-	Create(*v1alpha1.ElasticsearchDomainPolicy) (*v1alpha1.ElasticsearchDomainPolicy, error)
-	Update(*v1alpha1.ElasticsearchDomainPolicy) (*v1alpha1.ElasticsearchDomainPolicy, error)
-	UpdateStatus(*v1alpha1.ElasticsearchDomainPolicy) (*v1alpha1.ElasticsearchDomainPolicy, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ElasticsearchDomainPolicy, error)
-	List(opts v1.ListOptions) (*v1alpha1.ElasticsearchDomainPolicyList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ElasticsearchDomainPolicy, err error)
+	Create(ctx context.Context, elasticsearchDomainPolicy *v1alpha1.ElasticsearchDomainPolicy, opts v1.CreateOptions) (*v1alpha1.ElasticsearchDomainPolicy, error)
+	Update(ctx context.Context, elasticsearchDomainPolicy *v1alpha1.ElasticsearchDomainPolicy, opts v1.UpdateOptions) (*v1alpha1.ElasticsearchDomainPolicy, error)
+	UpdateStatus(ctx context.Context, elasticsearchDomainPolicy *v1alpha1.ElasticsearchDomainPolicy, opts v1.UpdateOptions) (*v1alpha1.ElasticsearchDomainPolicy, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ElasticsearchDomainPolicy, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ElasticsearchDomainPolicyList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ElasticsearchDomainPolicy, err error)
 	ElasticsearchDomainPolicyExpansion
 }
 
@@ -65,20 +66,20 @@ func newElasticsearchDomainPolicies(c *AwsV1alpha1Client, namespace string) *ela
 }
 
 // Get takes name of the elasticsearchDomainPolicy, and returns the corresponding elasticsearchDomainPolicy object, and an error if there is any.
-func (c *elasticsearchDomainPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.ElasticsearchDomainPolicy, err error) {
+func (c *elasticsearchDomainPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ElasticsearchDomainPolicy, err error) {
 	result = &v1alpha1.ElasticsearchDomainPolicy{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("elasticsearchdomainpolicies").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ElasticsearchDomainPolicies that match those selectors.
-func (c *elasticsearchDomainPolicies) List(opts v1.ListOptions) (result *v1alpha1.ElasticsearchDomainPolicyList, err error) {
+func (c *elasticsearchDomainPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ElasticsearchDomainPolicyList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *elasticsearchDomainPolicies) List(opts v1.ListOptions) (result *v1alpha
 		Resource("elasticsearchdomainpolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested elasticsearchDomainPolicies.
-func (c *elasticsearchDomainPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *elasticsearchDomainPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *elasticsearchDomainPolicies) Watch(opts v1.ListOptions) (watch.Interfac
 		Resource("elasticsearchdomainpolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a elasticsearchDomainPolicy and creates it.  Returns the server's representation of the elasticsearchDomainPolicy, and an error, if there is any.
-func (c *elasticsearchDomainPolicies) Create(elasticsearchDomainPolicy *v1alpha1.ElasticsearchDomainPolicy) (result *v1alpha1.ElasticsearchDomainPolicy, err error) {
+func (c *elasticsearchDomainPolicies) Create(ctx context.Context, elasticsearchDomainPolicy *v1alpha1.ElasticsearchDomainPolicy, opts v1.CreateOptions) (result *v1alpha1.ElasticsearchDomainPolicy, err error) {
 	result = &v1alpha1.ElasticsearchDomainPolicy{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("elasticsearchdomainpolicies").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(elasticsearchDomainPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a elasticsearchDomainPolicy and updates it. Returns the server's representation of the elasticsearchDomainPolicy, and an error, if there is any.
-func (c *elasticsearchDomainPolicies) Update(elasticsearchDomainPolicy *v1alpha1.ElasticsearchDomainPolicy) (result *v1alpha1.ElasticsearchDomainPolicy, err error) {
+func (c *elasticsearchDomainPolicies) Update(ctx context.Context, elasticsearchDomainPolicy *v1alpha1.ElasticsearchDomainPolicy, opts v1.UpdateOptions) (result *v1alpha1.ElasticsearchDomainPolicy, err error) {
 	result = &v1alpha1.ElasticsearchDomainPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("elasticsearchdomainpolicies").
 		Name(elasticsearchDomainPolicy.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(elasticsearchDomainPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *elasticsearchDomainPolicies) UpdateStatus(elasticsearchDomainPolicy *v1alpha1.ElasticsearchDomainPolicy) (result *v1alpha1.ElasticsearchDomainPolicy, err error) {
+func (c *elasticsearchDomainPolicies) UpdateStatus(ctx context.Context, elasticsearchDomainPolicy *v1alpha1.ElasticsearchDomainPolicy, opts v1.UpdateOptions) (result *v1alpha1.ElasticsearchDomainPolicy, err error) {
 	result = &v1alpha1.ElasticsearchDomainPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("elasticsearchdomainpolicies").
 		Name(elasticsearchDomainPolicy.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(elasticsearchDomainPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the elasticsearchDomainPolicy and deletes it. Returns an error if one occurs.
-func (c *elasticsearchDomainPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *elasticsearchDomainPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("elasticsearchdomainpolicies").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *elasticsearchDomainPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *elasticsearchDomainPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("elasticsearchdomainpolicies").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched elasticsearchDomainPolicy.
-func (c *elasticsearchDomainPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ElasticsearchDomainPolicy, err error) {
+func (c *elasticsearchDomainPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ElasticsearchDomainPolicy, err error) {
 	result = &v1alpha1.ElasticsearchDomainPolicy{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("elasticsearchdomainpolicies").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

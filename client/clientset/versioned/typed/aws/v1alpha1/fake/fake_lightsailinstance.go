@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var lightsailinstancesResource = schema.GroupVersionResource{Group: "aws.kubefor
 var lightsailinstancesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "LightsailInstance"}
 
 // Get takes name of the lightsailInstance, and returns the corresponding lightsailInstance object, and an error if there is any.
-func (c *FakeLightsailInstances) Get(name string, options v1.GetOptions) (result *v1alpha1.LightsailInstance, err error) {
+func (c *FakeLightsailInstances) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LightsailInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(lightsailinstancesResource, c.ns, name), &v1alpha1.LightsailInstance{})
 
@@ -51,7 +53,7 @@ func (c *FakeLightsailInstances) Get(name string, options v1.GetOptions) (result
 }
 
 // List takes label and field selectors, and returns the list of LightsailInstances that match those selectors.
-func (c *FakeLightsailInstances) List(opts v1.ListOptions) (result *v1alpha1.LightsailInstanceList, err error) {
+func (c *FakeLightsailInstances) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LightsailInstanceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(lightsailinstancesResource, lightsailinstancesKind, c.ns, opts), &v1alpha1.LightsailInstanceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLightsailInstances) List(opts v1.ListOptions) (result *v1alpha1.Lig
 }
 
 // Watch returns a watch.Interface that watches the requested lightsailInstances.
-func (c *FakeLightsailInstances) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLightsailInstances) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(lightsailinstancesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a lightsailInstance and creates it.  Returns the server's representation of the lightsailInstance, and an error, if there is any.
-func (c *FakeLightsailInstances) Create(lightsailInstance *v1alpha1.LightsailInstance) (result *v1alpha1.LightsailInstance, err error) {
+func (c *FakeLightsailInstances) Create(ctx context.Context, lightsailInstance *v1alpha1.LightsailInstance, opts v1.CreateOptions) (result *v1alpha1.LightsailInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(lightsailinstancesResource, c.ns, lightsailInstance), &v1alpha1.LightsailInstance{})
 
@@ -91,7 +93,7 @@ func (c *FakeLightsailInstances) Create(lightsailInstance *v1alpha1.LightsailIns
 }
 
 // Update takes the representation of a lightsailInstance and updates it. Returns the server's representation of the lightsailInstance, and an error, if there is any.
-func (c *FakeLightsailInstances) Update(lightsailInstance *v1alpha1.LightsailInstance) (result *v1alpha1.LightsailInstance, err error) {
+func (c *FakeLightsailInstances) Update(ctx context.Context, lightsailInstance *v1alpha1.LightsailInstance, opts v1.UpdateOptions) (result *v1alpha1.LightsailInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(lightsailinstancesResource, c.ns, lightsailInstance), &v1alpha1.LightsailInstance{})
 
@@ -103,7 +105,7 @@ func (c *FakeLightsailInstances) Update(lightsailInstance *v1alpha1.LightsailIns
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLightsailInstances) UpdateStatus(lightsailInstance *v1alpha1.LightsailInstance) (*v1alpha1.LightsailInstance, error) {
+func (c *FakeLightsailInstances) UpdateStatus(ctx context.Context, lightsailInstance *v1alpha1.LightsailInstance, opts v1.UpdateOptions) (*v1alpha1.LightsailInstance, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(lightsailinstancesResource, "status", c.ns, lightsailInstance), &v1alpha1.LightsailInstance{})
 
@@ -114,7 +116,7 @@ func (c *FakeLightsailInstances) UpdateStatus(lightsailInstance *v1alpha1.Lights
 }
 
 // Delete takes name of the lightsailInstance and deletes it. Returns an error if one occurs.
-func (c *FakeLightsailInstances) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLightsailInstances) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(lightsailinstancesResource, c.ns, name), &v1alpha1.LightsailInstance{})
 
@@ -122,15 +124,15 @@ func (c *FakeLightsailInstances) Delete(name string, options *v1.DeleteOptions) 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLightsailInstances) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(lightsailinstancesResource, c.ns, listOptions)
+func (c *FakeLightsailInstances) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(lightsailinstancesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LightsailInstanceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched lightsailInstance.
-func (c *FakeLightsailInstances) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LightsailInstance, err error) {
+func (c *FakeLightsailInstances) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LightsailInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(lightsailinstancesResource, c.ns, name, pt, data, subresources...), &v1alpha1.LightsailInstance{})
 

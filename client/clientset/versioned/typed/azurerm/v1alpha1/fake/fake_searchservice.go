@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var searchservicesResource = schema.GroupVersionResource{Group: "azurerm.kubefor
 var searchservicesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "SearchService"}
 
 // Get takes name of the searchService, and returns the corresponding searchService object, and an error if there is any.
-func (c *FakeSearchServices) Get(name string, options v1.GetOptions) (result *v1alpha1.SearchService, err error) {
+func (c *FakeSearchServices) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SearchService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(searchservicesResource, c.ns, name), &v1alpha1.SearchService{})
 
@@ -51,7 +53,7 @@ func (c *FakeSearchServices) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of SearchServices that match those selectors.
-func (c *FakeSearchServices) List(opts v1.ListOptions) (result *v1alpha1.SearchServiceList, err error) {
+func (c *FakeSearchServices) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SearchServiceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(searchservicesResource, searchservicesKind, c.ns, opts), &v1alpha1.SearchServiceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSearchServices) List(opts v1.ListOptions) (result *v1alpha1.SearchS
 }
 
 // Watch returns a watch.Interface that watches the requested searchServices.
-func (c *FakeSearchServices) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSearchServices) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(searchservicesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a searchService and creates it.  Returns the server's representation of the searchService, and an error, if there is any.
-func (c *FakeSearchServices) Create(searchService *v1alpha1.SearchService) (result *v1alpha1.SearchService, err error) {
+func (c *FakeSearchServices) Create(ctx context.Context, searchService *v1alpha1.SearchService, opts v1.CreateOptions) (result *v1alpha1.SearchService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(searchservicesResource, c.ns, searchService), &v1alpha1.SearchService{})
 
@@ -91,7 +93,7 @@ func (c *FakeSearchServices) Create(searchService *v1alpha1.SearchService) (resu
 }
 
 // Update takes the representation of a searchService and updates it. Returns the server's representation of the searchService, and an error, if there is any.
-func (c *FakeSearchServices) Update(searchService *v1alpha1.SearchService) (result *v1alpha1.SearchService, err error) {
+func (c *FakeSearchServices) Update(ctx context.Context, searchService *v1alpha1.SearchService, opts v1.UpdateOptions) (result *v1alpha1.SearchService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(searchservicesResource, c.ns, searchService), &v1alpha1.SearchService{})
 
@@ -103,7 +105,7 @@ func (c *FakeSearchServices) Update(searchService *v1alpha1.SearchService) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSearchServices) UpdateStatus(searchService *v1alpha1.SearchService) (*v1alpha1.SearchService, error) {
+func (c *FakeSearchServices) UpdateStatus(ctx context.Context, searchService *v1alpha1.SearchService, opts v1.UpdateOptions) (*v1alpha1.SearchService, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(searchservicesResource, "status", c.ns, searchService), &v1alpha1.SearchService{})
 
@@ -114,7 +116,7 @@ func (c *FakeSearchServices) UpdateStatus(searchService *v1alpha1.SearchService)
 }
 
 // Delete takes name of the searchService and deletes it. Returns an error if one occurs.
-func (c *FakeSearchServices) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSearchServices) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(searchservicesResource, c.ns, name), &v1alpha1.SearchService{})
 
@@ -122,15 +124,15 @@ func (c *FakeSearchServices) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSearchServices) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(searchservicesResource, c.ns, listOptions)
+func (c *FakeSearchServices) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(searchservicesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SearchServiceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched searchService.
-func (c *FakeSearchServices) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SearchService, err error) {
+func (c *FakeSearchServices) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SearchService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(searchservicesResource, c.ns, name, pt, data, subresources...), &v1alpha1.SearchService{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var organizationiambindingsResource = schema.GroupVersionResource{Group: "google
 var organizationiambindingsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "OrganizationIamBinding"}
 
 // Get takes name of the organizationIamBinding, and returns the corresponding organizationIamBinding object, and an error if there is any.
-func (c *FakeOrganizationIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.OrganizationIamBinding, err error) {
+func (c *FakeOrganizationIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.OrganizationIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(organizationiambindingsResource, c.ns, name), &v1alpha1.OrganizationIamBinding{})
 
@@ -51,7 +53,7 @@ func (c *FakeOrganizationIamBindings) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of OrganizationIamBindings that match those selectors.
-func (c *FakeOrganizationIamBindings) List(opts v1.ListOptions) (result *v1alpha1.OrganizationIamBindingList, err error) {
+func (c *FakeOrganizationIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.OrganizationIamBindingList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(organizationiambindingsResource, organizationiambindingsKind, c.ns, opts), &v1alpha1.OrganizationIamBindingList{})
 
@@ -73,14 +75,14 @@ func (c *FakeOrganizationIamBindings) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested organizationIamBindings.
-func (c *FakeOrganizationIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeOrganizationIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(organizationiambindingsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a organizationIamBinding and creates it.  Returns the server's representation of the organizationIamBinding, and an error, if there is any.
-func (c *FakeOrganizationIamBindings) Create(organizationIamBinding *v1alpha1.OrganizationIamBinding) (result *v1alpha1.OrganizationIamBinding, err error) {
+func (c *FakeOrganizationIamBindings) Create(ctx context.Context, organizationIamBinding *v1alpha1.OrganizationIamBinding, opts v1.CreateOptions) (result *v1alpha1.OrganizationIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(organizationiambindingsResource, c.ns, organizationIamBinding), &v1alpha1.OrganizationIamBinding{})
 
@@ -91,7 +93,7 @@ func (c *FakeOrganizationIamBindings) Create(organizationIamBinding *v1alpha1.Or
 }
 
 // Update takes the representation of a organizationIamBinding and updates it. Returns the server's representation of the organizationIamBinding, and an error, if there is any.
-func (c *FakeOrganizationIamBindings) Update(organizationIamBinding *v1alpha1.OrganizationIamBinding) (result *v1alpha1.OrganizationIamBinding, err error) {
+func (c *FakeOrganizationIamBindings) Update(ctx context.Context, organizationIamBinding *v1alpha1.OrganizationIamBinding, opts v1.UpdateOptions) (result *v1alpha1.OrganizationIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(organizationiambindingsResource, c.ns, organizationIamBinding), &v1alpha1.OrganizationIamBinding{})
 
@@ -103,7 +105,7 @@ func (c *FakeOrganizationIamBindings) Update(organizationIamBinding *v1alpha1.Or
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeOrganizationIamBindings) UpdateStatus(organizationIamBinding *v1alpha1.OrganizationIamBinding) (*v1alpha1.OrganizationIamBinding, error) {
+func (c *FakeOrganizationIamBindings) UpdateStatus(ctx context.Context, organizationIamBinding *v1alpha1.OrganizationIamBinding, opts v1.UpdateOptions) (*v1alpha1.OrganizationIamBinding, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(organizationiambindingsResource, "status", c.ns, organizationIamBinding), &v1alpha1.OrganizationIamBinding{})
 
@@ -114,7 +116,7 @@ func (c *FakeOrganizationIamBindings) UpdateStatus(organizationIamBinding *v1alp
 }
 
 // Delete takes name of the organizationIamBinding and deletes it. Returns an error if one occurs.
-func (c *FakeOrganizationIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeOrganizationIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(organizationiambindingsResource, c.ns, name), &v1alpha1.OrganizationIamBinding{})
 
@@ -122,15 +124,15 @@ func (c *FakeOrganizationIamBindings) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeOrganizationIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(organizationiambindingsResource, c.ns, listOptions)
+func (c *FakeOrganizationIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(organizationiambindingsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.OrganizationIamBindingList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched organizationIamBinding.
-func (c *FakeOrganizationIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.OrganizationIamBinding, err error) {
+func (c *FakeOrganizationIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.OrganizationIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(organizationiambindingsResource, c.ns, name, pt, data, subresources...), &v1alpha1.OrganizationIamBinding{})
 

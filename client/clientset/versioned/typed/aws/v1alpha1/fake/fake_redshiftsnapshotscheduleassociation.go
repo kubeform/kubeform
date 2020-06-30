@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var redshiftsnapshotscheduleassociationsResource = schema.GroupVersionResource{G
 var redshiftsnapshotscheduleassociationsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "RedshiftSnapshotScheduleAssociation"}
 
 // Get takes name of the redshiftSnapshotScheduleAssociation, and returns the corresponding redshiftSnapshotScheduleAssociation object, and an error if there is any.
-func (c *FakeRedshiftSnapshotScheduleAssociations) Get(name string, options v1.GetOptions) (result *v1alpha1.RedshiftSnapshotScheduleAssociation, err error) {
+func (c *FakeRedshiftSnapshotScheduleAssociations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.RedshiftSnapshotScheduleAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(redshiftsnapshotscheduleassociationsResource, c.ns, name), &v1alpha1.RedshiftSnapshotScheduleAssociation{})
 
@@ -51,7 +53,7 @@ func (c *FakeRedshiftSnapshotScheduleAssociations) Get(name string, options v1.G
 }
 
 // List takes label and field selectors, and returns the list of RedshiftSnapshotScheduleAssociations that match those selectors.
-func (c *FakeRedshiftSnapshotScheduleAssociations) List(opts v1.ListOptions) (result *v1alpha1.RedshiftSnapshotScheduleAssociationList, err error) {
+func (c *FakeRedshiftSnapshotScheduleAssociations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RedshiftSnapshotScheduleAssociationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(redshiftsnapshotscheduleassociationsResource, redshiftsnapshotscheduleassociationsKind, c.ns, opts), &v1alpha1.RedshiftSnapshotScheduleAssociationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeRedshiftSnapshotScheduleAssociations) List(opts v1.ListOptions) (re
 }
 
 // Watch returns a watch.Interface that watches the requested redshiftSnapshotScheduleAssociations.
-func (c *FakeRedshiftSnapshotScheduleAssociations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeRedshiftSnapshotScheduleAssociations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(redshiftsnapshotscheduleassociationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a redshiftSnapshotScheduleAssociation and creates it.  Returns the server's representation of the redshiftSnapshotScheduleAssociation, and an error, if there is any.
-func (c *FakeRedshiftSnapshotScheduleAssociations) Create(redshiftSnapshotScheduleAssociation *v1alpha1.RedshiftSnapshotScheduleAssociation) (result *v1alpha1.RedshiftSnapshotScheduleAssociation, err error) {
+func (c *FakeRedshiftSnapshotScheduleAssociations) Create(ctx context.Context, redshiftSnapshotScheduleAssociation *v1alpha1.RedshiftSnapshotScheduleAssociation, opts v1.CreateOptions) (result *v1alpha1.RedshiftSnapshotScheduleAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(redshiftsnapshotscheduleassociationsResource, c.ns, redshiftSnapshotScheduleAssociation), &v1alpha1.RedshiftSnapshotScheduleAssociation{})
 
@@ -91,7 +93,7 @@ func (c *FakeRedshiftSnapshotScheduleAssociations) Create(redshiftSnapshotSchedu
 }
 
 // Update takes the representation of a redshiftSnapshotScheduleAssociation and updates it. Returns the server's representation of the redshiftSnapshotScheduleAssociation, and an error, if there is any.
-func (c *FakeRedshiftSnapshotScheduleAssociations) Update(redshiftSnapshotScheduleAssociation *v1alpha1.RedshiftSnapshotScheduleAssociation) (result *v1alpha1.RedshiftSnapshotScheduleAssociation, err error) {
+func (c *FakeRedshiftSnapshotScheduleAssociations) Update(ctx context.Context, redshiftSnapshotScheduleAssociation *v1alpha1.RedshiftSnapshotScheduleAssociation, opts v1.UpdateOptions) (result *v1alpha1.RedshiftSnapshotScheduleAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(redshiftsnapshotscheduleassociationsResource, c.ns, redshiftSnapshotScheduleAssociation), &v1alpha1.RedshiftSnapshotScheduleAssociation{})
 
@@ -103,7 +105,7 @@ func (c *FakeRedshiftSnapshotScheduleAssociations) Update(redshiftSnapshotSchedu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeRedshiftSnapshotScheduleAssociations) UpdateStatus(redshiftSnapshotScheduleAssociation *v1alpha1.RedshiftSnapshotScheduleAssociation) (*v1alpha1.RedshiftSnapshotScheduleAssociation, error) {
+func (c *FakeRedshiftSnapshotScheduleAssociations) UpdateStatus(ctx context.Context, redshiftSnapshotScheduleAssociation *v1alpha1.RedshiftSnapshotScheduleAssociation, opts v1.UpdateOptions) (*v1alpha1.RedshiftSnapshotScheduleAssociation, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(redshiftsnapshotscheduleassociationsResource, "status", c.ns, redshiftSnapshotScheduleAssociation), &v1alpha1.RedshiftSnapshotScheduleAssociation{})
 
@@ -114,7 +116,7 @@ func (c *FakeRedshiftSnapshotScheduleAssociations) UpdateStatus(redshiftSnapshot
 }
 
 // Delete takes name of the redshiftSnapshotScheduleAssociation and deletes it. Returns an error if one occurs.
-func (c *FakeRedshiftSnapshotScheduleAssociations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeRedshiftSnapshotScheduleAssociations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(redshiftsnapshotscheduleassociationsResource, c.ns, name), &v1alpha1.RedshiftSnapshotScheduleAssociation{})
 
@@ -122,15 +124,15 @@ func (c *FakeRedshiftSnapshotScheduleAssociations) Delete(name string, options *
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeRedshiftSnapshotScheduleAssociations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(redshiftsnapshotscheduleassociationsResource, c.ns, listOptions)
+func (c *FakeRedshiftSnapshotScheduleAssociations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(redshiftsnapshotscheduleassociationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.RedshiftSnapshotScheduleAssociationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched redshiftSnapshotScheduleAssociation.
-func (c *FakeRedshiftSnapshotScheduleAssociations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RedshiftSnapshotScheduleAssociation, err error) {
+func (c *FakeRedshiftSnapshotScheduleAssociations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RedshiftSnapshotScheduleAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(redshiftsnapshotscheduleassociationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.RedshiftSnapshotScheduleAssociation{})
 

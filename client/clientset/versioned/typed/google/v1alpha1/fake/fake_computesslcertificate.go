@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computesslcertificatesResource = schema.GroupVersionResource{Group: "google.
 var computesslcertificatesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeSSLCertificate"}
 
 // Get takes name of the computeSSLCertificate, and returns the corresponding computeSSLCertificate object, and an error if there is any.
-func (c *FakeComputeSSLCertificates) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeSSLCertificate, err error) {
+func (c *FakeComputeSSLCertificates) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeSSLCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computesslcertificatesResource, c.ns, name), &v1alpha1.ComputeSSLCertificate{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeSSLCertificates) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of ComputeSSLCertificates that match those selectors.
-func (c *FakeComputeSSLCertificates) List(opts v1.ListOptions) (result *v1alpha1.ComputeSSLCertificateList, err error) {
+func (c *FakeComputeSSLCertificates) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeSSLCertificateList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computesslcertificatesResource, computesslcertificatesKind, c.ns, opts), &v1alpha1.ComputeSSLCertificateList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeSSLCertificates) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested computeSSLCertificates.
-func (c *FakeComputeSSLCertificates) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeSSLCertificates) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computesslcertificatesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeSSLCertificate and creates it.  Returns the server's representation of the computeSSLCertificate, and an error, if there is any.
-func (c *FakeComputeSSLCertificates) Create(computeSSLCertificate *v1alpha1.ComputeSSLCertificate) (result *v1alpha1.ComputeSSLCertificate, err error) {
+func (c *FakeComputeSSLCertificates) Create(ctx context.Context, computeSSLCertificate *v1alpha1.ComputeSSLCertificate, opts v1.CreateOptions) (result *v1alpha1.ComputeSSLCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computesslcertificatesResource, c.ns, computeSSLCertificate), &v1alpha1.ComputeSSLCertificate{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeSSLCertificates) Create(computeSSLCertificate *v1alpha1.Comp
 }
 
 // Update takes the representation of a computeSSLCertificate and updates it. Returns the server's representation of the computeSSLCertificate, and an error, if there is any.
-func (c *FakeComputeSSLCertificates) Update(computeSSLCertificate *v1alpha1.ComputeSSLCertificate) (result *v1alpha1.ComputeSSLCertificate, err error) {
+func (c *FakeComputeSSLCertificates) Update(ctx context.Context, computeSSLCertificate *v1alpha1.ComputeSSLCertificate, opts v1.UpdateOptions) (result *v1alpha1.ComputeSSLCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computesslcertificatesResource, c.ns, computeSSLCertificate), &v1alpha1.ComputeSSLCertificate{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeSSLCertificates) Update(computeSSLCertificate *v1alpha1.Comp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeSSLCertificates) UpdateStatus(computeSSLCertificate *v1alpha1.ComputeSSLCertificate) (*v1alpha1.ComputeSSLCertificate, error) {
+func (c *FakeComputeSSLCertificates) UpdateStatus(ctx context.Context, computeSSLCertificate *v1alpha1.ComputeSSLCertificate, opts v1.UpdateOptions) (*v1alpha1.ComputeSSLCertificate, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computesslcertificatesResource, "status", c.ns, computeSSLCertificate), &v1alpha1.ComputeSSLCertificate{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeSSLCertificates) UpdateStatus(computeSSLCertificate *v1alpha
 }
 
 // Delete takes name of the computeSSLCertificate and deletes it. Returns an error if one occurs.
-func (c *FakeComputeSSLCertificates) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeSSLCertificates) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computesslcertificatesResource, c.ns, name), &v1alpha1.ComputeSSLCertificate{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeSSLCertificates) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeSSLCertificates) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computesslcertificatesResource, c.ns, listOptions)
+func (c *FakeComputeSSLCertificates) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computesslcertificatesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeSSLCertificateList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeSSLCertificate.
-func (c *FakeComputeSSLCertificates) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeSSLCertificate, err error) {
+func (c *FakeComputeSSLCertificates) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeSSLCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computesslcertificatesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeSSLCertificate{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var lbcookiestickinesspoliciesResource = schema.GroupVersionResource{Group: "aws
 var lbcookiestickinesspoliciesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "LbCookieStickinessPolicy"}
 
 // Get takes name of the lbCookieStickinessPolicy, and returns the corresponding lbCookieStickinessPolicy object, and an error if there is any.
-func (c *FakeLbCookieStickinessPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.LbCookieStickinessPolicy, err error) {
+func (c *FakeLbCookieStickinessPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LbCookieStickinessPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(lbcookiestickinesspoliciesResource, c.ns, name), &v1alpha1.LbCookieStickinessPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeLbCookieStickinessPolicies) Get(name string, options v1.GetOptions)
 }
 
 // List takes label and field selectors, and returns the list of LbCookieStickinessPolicies that match those selectors.
-func (c *FakeLbCookieStickinessPolicies) List(opts v1.ListOptions) (result *v1alpha1.LbCookieStickinessPolicyList, err error) {
+func (c *FakeLbCookieStickinessPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LbCookieStickinessPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(lbcookiestickinesspoliciesResource, lbcookiestickinesspoliciesKind, c.ns, opts), &v1alpha1.LbCookieStickinessPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLbCookieStickinessPolicies) List(opts v1.ListOptions) (result *v1al
 }
 
 // Watch returns a watch.Interface that watches the requested lbCookieStickinessPolicies.
-func (c *FakeLbCookieStickinessPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLbCookieStickinessPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(lbcookiestickinesspoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a lbCookieStickinessPolicy and creates it.  Returns the server's representation of the lbCookieStickinessPolicy, and an error, if there is any.
-func (c *FakeLbCookieStickinessPolicies) Create(lbCookieStickinessPolicy *v1alpha1.LbCookieStickinessPolicy) (result *v1alpha1.LbCookieStickinessPolicy, err error) {
+func (c *FakeLbCookieStickinessPolicies) Create(ctx context.Context, lbCookieStickinessPolicy *v1alpha1.LbCookieStickinessPolicy, opts v1.CreateOptions) (result *v1alpha1.LbCookieStickinessPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(lbcookiestickinesspoliciesResource, c.ns, lbCookieStickinessPolicy), &v1alpha1.LbCookieStickinessPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeLbCookieStickinessPolicies) Create(lbCookieStickinessPolicy *v1alph
 }
 
 // Update takes the representation of a lbCookieStickinessPolicy and updates it. Returns the server's representation of the lbCookieStickinessPolicy, and an error, if there is any.
-func (c *FakeLbCookieStickinessPolicies) Update(lbCookieStickinessPolicy *v1alpha1.LbCookieStickinessPolicy) (result *v1alpha1.LbCookieStickinessPolicy, err error) {
+func (c *FakeLbCookieStickinessPolicies) Update(ctx context.Context, lbCookieStickinessPolicy *v1alpha1.LbCookieStickinessPolicy, opts v1.UpdateOptions) (result *v1alpha1.LbCookieStickinessPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(lbcookiestickinesspoliciesResource, c.ns, lbCookieStickinessPolicy), &v1alpha1.LbCookieStickinessPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeLbCookieStickinessPolicies) Update(lbCookieStickinessPolicy *v1alph
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLbCookieStickinessPolicies) UpdateStatus(lbCookieStickinessPolicy *v1alpha1.LbCookieStickinessPolicy) (*v1alpha1.LbCookieStickinessPolicy, error) {
+func (c *FakeLbCookieStickinessPolicies) UpdateStatus(ctx context.Context, lbCookieStickinessPolicy *v1alpha1.LbCookieStickinessPolicy, opts v1.UpdateOptions) (*v1alpha1.LbCookieStickinessPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(lbcookiestickinesspoliciesResource, "status", c.ns, lbCookieStickinessPolicy), &v1alpha1.LbCookieStickinessPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeLbCookieStickinessPolicies) UpdateStatus(lbCookieStickinessPolicy *
 }
 
 // Delete takes name of the lbCookieStickinessPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeLbCookieStickinessPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLbCookieStickinessPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(lbcookiestickinesspoliciesResource, c.ns, name), &v1alpha1.LbCookieStickinessPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeLbCookieStickinessPolicies) Delete(name string, options *v1.DeleteO
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLbCookieStickinessPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(lbcookiestickinesspoliciesResource, c.ns, listOptions)
+func (c *FakeLbCookieStickinessPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(lbcookiestickinesspoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LbCookieStickinessPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched lbCookieStickinessPolicy.
-func (c *FakeLbCookieStickinessPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LbCookieStickinessPolicy, err error) {
+func (c *FakeLbCookieStickinessPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LbCookieStickinessPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(lbcookiestickinesspoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.LbCookieStickinessPolicy{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var runtimeconfigvariablesResource = schema.GroupVersionResource{Group: "google.
 var runtimeconfigvariablesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "RuntimeconfigVariable"}
 
 // Get takes name of the runtimeconfigVariable, and returns the corresponding runtimeconfigVariable object, and an error if there is any.
-func (c *FakeRuntimeconfigVariables) Get(name string, options v1.GetOptions) (result *v1alpha1.RuntimeconfigVariable, err error) {
+func (c *FakeRuntimeconfigVariables) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.RuntimeconfigVariable, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(runtimeconfigvariablesResource, c.ns, name), &v1alpha1.RuntimeconfigVariable{})
 
@@ -51,7 +53,7 @@ func (c *FakeRuntimeconfigVariables) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of RuntimeconfigVariables that match those selectors.
-func (c *FakeRuntimeconfigVariables) List(opts v1.ListOptions) (result *v1alpha1.RuntimeconfigVariableList, err error) {
+func (c *FakeRuntimeconfigVariables) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RuntimeconfigVariableList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(runtimeconfigvariablesResource, runtimeconfigvariablesKind, c.ns, opts), &v1alpha1.RuntimeconfigVariableList{})
 
@@ -73,14 +75,14 @@ func (c *FakeRuntimeconfigVariables) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested runtimeconfigVariables.
-func (c *FakeRuntimeconfigVariables) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeRuntimeconfigVariables) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(runtimeconfigvariablesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a runtimeconfigVariable and creates it.  Returns the server's representation of the runtimeconfigVariable, and an error, if there is any.
-func (c *FakeRuntimeconfigVariables) Create(runtimeconfigVariable *v1alpha1.RuntimeconfigVariable) (result *v1alpha1.RuntimeconfigVariable, err error) {
+func (c *FakeRuntimeconfigVariables) Create(ctx context.Context, runtimeconfigVariable *v1alpha1.RuntimeconfigVariable, opts v1.CreateOptions) (result *v1alpha1.RuntimeconfigVariable, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(runtimeconfigvariablesResource, c.ns, runtimeconfigVariable), &v1alpha1.RuntimeconfigVariable{})
 
@@ -91,7 +93,7 @@ func (c *FakeRuntimeconfigVariables) Create(runtimeconfigVariable *v1alpha1.Runt
 }
 
 // Update takes the representation of a runtimeconfigVariable and updates it. Returns the server's representation of the runtimeconfigVariable, and an error, if there is any.
-func (c *FakeRuntimeconfigVariables) Update(runtimeconfigVariable *v1alpha1.RuntimeconfigVariable) (result *v1alpha1.RuntimeconfigVariable, err error) {
+func (c *FakeRuntimeconfigVariables) Update(ctx context.Context, runtimeconfigVariable *v1alpha1.RuntimeconfigVariable, opts v1.UpdateOptions) (result *v1alpha1.RuntimeconfigVariable, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(runtimeconfigvariablesResource, c.ns, runtimeconfigVariable), &v1alpha1.RuntimeconfigVariable{})
 
@@ -103,7 +105,7 @@ func (c *FakeRuntimeconfigVariables) Update(runtimeconfigVariable *v1alpha1.Runt
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeRuntimeconfigVariables) UpdateStatus(runtimeconfigVariable *v1alpha1.RuntimeconfigVariable) (*v1alpha1.RuntimeconfigVariable, error) {
+func (c *FakeRuntimeconfigVariables) UpdateStatus(ctx context.Context, runtimeconfigVariable *v1alpha1.RuntimeconfigVariable, opts v1.UpdateOptions) (*v1alpha1.RuntimeconfigVariable, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(runtimeconfigvariablesResource, "status", c.ns, runtimeconfigVariable), &v1alpha1.RuntimeconfigVariable{})
 
@@ -114,7 +116,7 @@ func (c *FakeRuntimeconfigVariables) UpdateStatus(runtimeconfigVariable *v1alpha
 }
 
 // Delete takes name of the runtimeconfigVariable and deletes it. Returns an error if one occurs.
-func (c *FakeRuntimeconfigVariables) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeRuntimeconfigVariables) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(runtimeconfigvariablesResource, c.ns, name), &v1alpha1.RuntimeconfigVariable{})
 
@@ -122,15 +124,15 @@ func (c *FakeRuntimeconfigVariables) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeRuntimeconfigVariables) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(runtimeconfigvariablesResource, c.ns, listOptions)
+func (c *FakeRuntimeconfigVariables) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(runtimeconfigvariablesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.RuntimeconfigVariableList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched runtimeconfigVariable.
-func (c *FakeRuntimeconfigVariables) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RuntimeconfigVariable, err error) {
+func (c *FakeRuntimeconfigVariables) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RuntimeconfigVariable, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(runtimeconfigvariablesResource, c.ns, name, pt, data, subresources...), &v1alpha1.RuntimeconfigVariable{})
 

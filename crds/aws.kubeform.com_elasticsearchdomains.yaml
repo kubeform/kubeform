@@ -1,0 +1,412 @@
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/name: kubeform
+  name: elasticsearchdomains.aws.kubeform.com
+spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
+  group: aws.kubeform.com
+  names:
+    kind: ElasticsearchDomain
+    listKind: ElasticsearchDomainList
+    plural: elasticsearchdomains
+    singular: elasticsearchdomain
+  scope: Namespaced
+  subresources:
+    status: {}
+  validation:
+    openAPIV3Schema:
+      properties:
+        apiVersion:
+          description: 'APIVersion defines the versioned schema of this representation
+            of an object. Servers should convert recognized schemas to the latest
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+          type: string
+        kind:
+          description: 'Kind is a string value representing the REST resource this
+            object represents. Servers may infer this from the endpoint the client
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+          type: string
+        metadata:
+          type: object
+        spec:
+          properties:
+            accessPolicies:
+              type: string
+            advancedOptions:
+              additionalProperties:
+                type: string
+              type: object
+            arn:
+              type: string
+            clusterConfig:
+              items:
+                properties:
+                  dedicatedMasterCount:
+                    format: int64
+                    type: integer
+                  dedicatedMasterEnabled:
+                    type: boolean
+                  dedicatedMasterType:
+                    type: string
+                  instanceCount:
+                    format: int64
+                    type: integer
+                  instanceType:
+                    type: string
+                  zoneAwarenessConfig:
+                    items:
+                      properties:
+                        availabilityZoneCount:
+                          format: int64
+                          type: integer
+                      type: object
+                    maxItems: 1
+                    type: array
+                  zoneAwarenessEnabled:
+                    type: boolean
+                type: object
+              maxItems: 1
+              type: array
+            cognitoOptions:
+              items:
+                properties:
+                  enabled:
+                    type: boolean
+                  identityPoolID:
+                    type: string
+                  roleArn:
+                    type: string
+                  userPoolID:
+                    type: string
+                required:
+                - identityPoolID
+                - roleArn
+                - userPoolID
+                type: object
+              maxItems: 1
+              type: array
+            domainID:
+              type: string
+            domainName:
+              type: string
+            ebsOptions:
+              items:
+                properties:
+                  ebsEnabled:
+                    type: boolean
+                  iops:
+                    format: int64
+                    type: integer
+                  volumeSize:
+                    format: int64
+                    type: integer
+                  volumeType:
+                    type: string
+                required:
+                - ebsEnabled
+                type: object
+              maxItems: 1
+              type: array
+            elasticsearchVersion:
+              type: string
+            encryptAtRest:
+              items:
+                properties:
+                  enabled:
+                    type: boolean
+                  kmsKeyID:
+                    type: string
+                required:
+                - enabled
+                type: object
+              maxItems: 1
+              type: array
+            endpoint:
+              type: string
+            id:
+              type: string
+            kibanaEndpoint:
+              type: string
+            logPublishingOptions:
+              items:
+                properties:
+                  cloudwatchLogGroupArn:
+                    type: string
+                  enabled:
+                    type: boolean
+                  logType:
+                    type: string
+                required:
+                - cloudwatchLogGroupArn
+                - logType
+                type: object
+              type: array
+            nodeToNodeEncryption:
+              items:
+                properties:
+                  enabled:
+                    type: boolean
+                required:
+                - enabled
+                type: object
+              maxItems: 1
+              type: array
+            providerRef:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
+            snapshotOptions:
+              items:
+                properties:
+                  automatedSnapshotStartHour:
+                    format: int64
+                    type: integer
+                required:
+                - automatedSnapshotStartHour
+                type: object
+              maxItems: 1
+              type: array
+            tags:
+              additionalProperties:
+                type: string
+              type: object
+            vpcOptions:
+              items:
+                properties:
+                  availabilityZones:
+                    items:
+                      type: string
+                    type: array
+                  securityGroupIDS:
+                    items:
+                      type: string
+                    type: array
+                  subnetIDS:
+                    items:
+                      type: string
+                    type: array
+                  vpcID:
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
+          required:
+          - domainName
+          - providerRef
+          type: object
+        status:
+          properties:
+            observedGeneration:
+              description: Resource generation, which is updated on mutation by the
+                API Server.
+              format: int64
+              type: integer
+            output:
+              properties:
+                accessPolicies:
+                  type: string
+                advancedOptions:
+                  additionalProperties:
+                    type: string
+                  type: object
+                arn:
+                  type: string
+                clusterConfig:
+                  items:
+                    properties:
+                      dedicatedMasterCount:
+                        format: int64
+                        type: integer
+                      dedicatedMasterEnabled:
+                        type: boolean
+                      dedicatedMasterType:
+                        type: string
+                      instanceCount:
+                        format: int64
+                        type: integer
+                      instanceType:
+                        type: string
+                      zoneAwarenessConfig:
+                        items:
+                          properties:
+                            availabilityZoneCount:
+                              format: int64
+                              type: integer
+                          type: object
+                        maxItems: 1
+                        type: array
+                      zoneAwarenessEnabled:
+                        type: boolean
+                    type: object
+                  maxItems: 1
+                  type: array
+                cognitoOptions:
+                  items:
+                    properties:
+                      enabled:
+                        type: boolean
+                      identityPoolID:
+                        type: string
+                      roleArn:
+                        type: string
+                      userPoolID:
+                        type: string
+                    required:
+                    - identityPoolID
+                    - roleArn
+                    - userPoolID
+                    type: object
+                  maxItems: 1
+                  type: array
+                domainID:
+                  type: string
+                domainName:
+                  type: string
+                ebsOptions:
+                  items:
+                    properties:
+                      ebsEnabled:
+                        type: boolean
+                      iops:
+                        format: int64
+                        type: integer
+                      volumeSize:
+                        format: int64
+                        type: integer
+                      volumeType:
+                        type: string
+                    required:
+                    - ebsEnabled
+                    type: object
+                  maxItems: 1
+                  type: array
+                elasticsearchVersion:
+                  type: string
+                encryptAtRest:
+                  items:
+                    properties:
+                      enabled:
+                        type: boolean
+                      kmsKeyID:
+                        type: string
+                    required:
+                    - enabled
+                    type: object
+                  maxItems: 1
+                  type: array
+                endpoint:
+                  type: string
+                id:
+                  type: string
+                kibanaEndpoint:
+                  type: string
+                logPublishingOptions:
+                  items:
+                    properties:
+                      cloudwatchLogGroupArn:
+                        type: string
+                      enabled:
+                        type: boolean
+                      logType:
+                        type: string
+                    required:
+                    - cloudwatchLogGroupArn
+                    - logType
+                    type: object
+                  type: array
+                nodeToNodeEncryption:
+                  items:
+                    properties:
+                      enabled:
+                        type: boolean
+                    required:
+                    - enabled
+                    type: object
+                  maxItems: 1
+                  type: array
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                snapshotOptions:
+                  items:
+                    properties:
+                      automatedSnapshotStartHour:
+                        format: int64
+                        type: integer
+                    required:
+                    - automatedSnapshotStartHour
+                    type: object
+                  maxItems: 1
+                  type: array
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                vpcOptions:
+                  items:
+                    properties:
+                      availabilityZones:
+                        items:
+                          type: string
+                        type: array
+                      securityGroupIDS:
+                        items:
+                          type: string
+                        type: array
+                      subnetIDS:
+                        items:
+                          type: string
+                        type: array
+                      vpcID:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+              required:
+              - domainName
+              - providerRef
+              type: object
+            phase:
+              type: string
+            state:
+              properties:
+                lineage:
+                  type: string
+                serial:
+                  format: int64
+                  type: integer
+                terraform_version:
+                  type: string
+                version:
+                  format: int64
+                  type: integer
+              required:
+              - lineage
+              - serial
+              - terraform_version
+              - version
+              type: object
+          type: object
+      type: object
+  version: v1alpha1
+  versions:
+  - name: v1alpha1
+    served: true
+    storage: true

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var kmskeyringiammembersResource = schema.GroupVersionResource{Group: "google.ku
 var kmskeyringiammembersKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "KmsKeyRingIamMember"}
 
 // Get takes name of the kmsKeyRingIamMember, and returns the corresponding kmsKeyRingIamMember object, and an error if there is any.
-func (c *FakeKmsKeyRingIamMembers) Get(name string, options v1.GetOptions) (result *v1alpha1.KmsKeyRingIamMember, err error) {
+func (c *FakeKmsKeyRingIamMembers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KmsKeyRingIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(kmskeyringiammembersResource, c.ns, name), &v1alpha1.KmsKeyRingIamMember{})
 
@@ -51,7 +53,7 @@ func (c *FakeKmsKeyRingIamMembers) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of KmsKeyRingIamMembers that match those selectors.
-func (c *FakeKmsKeyRingIamMembers) List(opts v1.ListOptions) (result *v1alpha1.KmsKeyRingIamMemberList, err error) {
+func (c *FakeKmsKeyRingIamMembers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KmsKeyRingIamMemberList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(kmskeyringiammembersResource, kmskeyringiammembersKind, c.ns, opts), &v1alpha1.KmsKeyRingIamMemberList{})
 
@@ -73,14 +75,14 @@ func (c *FakeKmsKeyRingIamMembers) List(opts v1.ListOptions) (result *v1alpha1.K
 }
 
 // Watch returns a watch.Interface that watches the requested kmsKeyRingIamMembers.
-func (c *FakeKmsKeyRingIamMembers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeKmsKeyRingIamMembers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(kmskeyringiammembersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a kmsKeyRingIamMember and creates it.  Returns the server's representation of the kmsKeyRingIamMember, and an error, if there is any.
-func (c *FakeKmsKeyRingIamMembers) Create(kmsKeyRingIamMember *v1alpha1.KmsKeyRingIamMember) (result *v1alpha1.KmsKeyRingIamMember, err error) {
+func (c *FakeKmsKeyRingIamMembers) Create(ctx context.Context, kmsKeyRingIamMember *v1alpha1.KmsKeyRingIamMember, opts v1.CreateOptions) (result *v1alpha1.KmsKeyRingIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(kmskeyringiammembersResource, c.ns, kmsKeyRingIamMember), &v1alpha1.KmsKeyRingIamMember{})
 
@@ -91,7 +93,7 @@ func (c *FakeKmsKeyRingIamMembers) Create(kmsKeyRingIamMember *v1alpha1.KmsKeyRi
 }
 
 // Update takes the representation of a kmsKeyRingIamMember and updates it. Returns the server's representation of the kmsKeyRingIamMember, and an error, if there is any.
-func (c *FakeKmsKeyRingIamMembers) Update(kmsKeyRingIamMember *v1alpha1.KmsKeyRingIamMember) (result *v1alpha1.KmsKeyRingIamMember, err error) {
+func (c *FakeKmsKeyRingIamMembers) Update(ctx context.Context, kmsKeyRingIamMember *v1alpha1.KmsKeyRingIamMember, opts v1.UpdateOptions) (result *v1alpha1.KmsKeyRingIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(kmskeyringiammembersResource, c.ns, kmsKeyRingIamMember), &v1alpha1.KmsKeyRingIamMember{})
 
@@ -103,7 +105,7 @@ func (c *FakeKmsKeyRingIamMembers) Update(kmsKeyRingIamMember *v1alpha1.KmsKeyRi
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeKmsKeyRingIamMembers) UpdateStatus(kmsKeyRingIamMember *v1alpha1.KmsKeyRingIamMember) (*v1alpha1.KmsKeyRingIamMember, error) {
+func (c *FakeKmsKeyRingIamMembers) UpdateStatus(ctx context.Context, kmsKeyRingIamMember *v1alpha1.KmsKeyRingIamMember, opts v1.UpdateOptions) (*v1alpha1.KmsKeyRingIamMember, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(kmskeyringiammembersResource, "status", c.ns, kmsKeyRingIamMember), &v1alpha1.KmsKeyRingIamMember{})
 
@@ -114,7 +116,7 @@ func (c *FakeKmsKeyRingIamMembers) UpdateStatus(kmsKeyRingIamMember *v1alpha1.Km
 }
 
 // Delete takes name of the kmsKeyRingIamMember and deletes it. Returns an error if one occurs.
-func (c *FakeKmsKeyRingIamMembers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeKmsKeyRingIamMembers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(kmskeyringiammembersResource, c.ns, name), &v1alpha1.KmsKeyRingIamMember{})
 
@@ -122,15 +124,15 @@ func (c *FakeKmsKeyRingIamMembers) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeKmsKeyRingIamMembers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(kmskeyringiammembersResource, c.ns, listOptions)
+func (c *FakeKmsKeyRingIamMembers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(kmskeyringiammembersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.KmsKeyRingIamMemberList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched kmsKeyRingIamMember.
-func (c *FakeKmsKeyRingIamMembers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KmsKeyRingIamMember, err error) {
+func (c *FakeKmsKeyRingIamMembers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KmsKeyRingIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(kmskeyringiammembersResource, c.ns, name, pt, data, subresources...), &v1alpha1.KmsKeyRingIamMember{})
 

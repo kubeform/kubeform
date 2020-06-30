@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/modules/v1alpha1"
@@ -38,15 +39,15 @@ type GoogleServiceAccountsGetter interface {
 
 // GoogleServiceAccountInterface has methods to work with GoogleServiceAccount resources.
 type GoogleServiceAccountInterface interface {
-	Create(*v1alpha1.GoogleServiceAccount) (*v1alpha1.GoogleServiceAccount, error)
-	Update(*v1alpha1.GoogleServiceAccount) (*v1alpha1.GoogleServiceAccount, error)
-	UpdateStatus(*v1alpha1.GoogleServiceAccount) (*v1alpha1.GoogleServiceAccount, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.GoogleServiceAccount, error)
-	List(opts v1.ListOptions) (*v1alpha1.GoogleServiceAccountList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.GoogleServiceAccount, err error)
+	Create(ctx context.Context, googleServiceAccount *v1alpha1.GoogleServiceAccount, opts v1.CreateOptions) (*v1alpha1.GoogleServiceAccount, error)
+	Update(ctx context.Context, googleServiceAccount *v1alpha1.GoogleServiceAccount, opts v1.UpdateOptions) (*v1alpha1.GoogleServiceAccount, error)
+	UpdateStatus(ctx context.Context, googleServiceAccount *v1alpha1.GoogleServiceAccount, opts v1.UpdateOptions) (*v1alpha1.GoogleServiceAccount, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.GoogleServiceAccount, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.GoogleServiceAccountList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.GoogleServiceAccount, err error)
 	GoogleServiceAccountExpansion
 }
 
@@ -65,20 +66,20 @@ func newGoogleServiceAccounts(c *ModulesV1alpha1Client, namespace string) *googl
 }
 
 // Get takes name of the googleServiceAccount, and returns the corresponding googleServiceAccount object, and an error if there is any.
-func (c *googleServiceAccounts) Get(name string, options v1.GetOptions) (result *v1alpha1.GoogleServiceAccount, err error) {
+func (c *googleServiceAccounts) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.GoogleServiceAccount, err error) {
 	result = &v1alpha1.GoogleServiceAccount{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("googleserviceaccounts").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of GoogleServiceAccounts that match those selectors.
-func (c *googleServiceAccounts) List(opts v1.ListOptions) (result *v1alpha1.GoogleServiceAccountList, err error) {
+func (c *googleServiceAccounts) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.GoogleServiceAccountList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *googleServiceAccounts) List(opts v1.ListOptions) (result *v1alpha1.Goog
 		Resource("googleserviceaccounts").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested googleServiceAccounts.
-func (c *googleServiceAccounts) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *googleServiceAccounts) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *googleServiceAccounts) Watch(opts v1.ListOptions) (watch.Interface, err
 		Resource("googleserviceaccounts").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a googleServiceAccount and creates it.  Returns the server's representation of the googleServiceAccount, and an error, if there is any.
-func (c *googleServiceAccounts) Create(googleServiceAccount *v1alpha1.GoogleServiceAccount) (result *v1alpha1.GoogleServiceAccount, err error) {
+func (c *googleServiceAccounts) Create(ctx context.Context, googleServiceAccount *v1alpha1.GoogleServiceAccount, opts v1.CreateOptions) (result *v1alpha1.GoogleServiceAccount, err error) {
 	result = &v1alpha1.GoogleServiceAccount{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("googleserviceaccounts").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(googleServiceAccount).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a googleServiceAccount and updates it. Returns the server's representation of the googleServiceAccount, and an error, if there is any.
-func (c *googleServiceAccounts) Update(googleServiceAccount *v1alpha1.GoogleServiceAccount) (result *v1alpha1.GoogleServiceAccount, err error) {
+func (c *googleServiceAccounts) Update(ctx context.Context, googleServiceAccount *v1alpha1.GoogleServiceAccount, opts v1.UpdateOptions) (result *v1alpha1.GoogleServiceAccount, err error) {
 	result = &v1alpha1.GoogleServiceAccount{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("googleserviceaccounts").
 		Name(googleServiceAccount.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(googleServiceAccount).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *googleServiceAccounts) UpdateStatus(googleServiceAccount *v1alpha1.GoogleServiceAccount) (result *v1alpha1.GoogleServiceAccount, err error) {
+func (c *googleServiceAccounts) UpdateStatus(ctx context.Context, googleServiceAccount *v1alpha1.GoogleServiceAccount, opts v1.UpdateOptions) (result *v1alpha1.GoogleServiceAccount, err error) {
 	result = &v1alpha1.GoogleServiceAccount{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("googleserviceaccounts").
 		Name(googleServiceAccount.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(googleServiceAccount).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the googleServiceAccount and deletes it. Returns an error if one occurs.
-func (c *googleServiceAccounts) Delete(name string, options *v1.DeleteOptions) error {
+func (c *googleServiceAccounts) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("googleserviceaccounts").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *googleServiceAccounts) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *googleServiceAccounts) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("googleserviceaccounts").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched googleServiceAccount.
-func (c *googleServiceAccounts) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.GoogleServiceAccount, err error) {
+func (c *googleServiceAccounts) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.GoogleServiceAccount, err error) {
 	result = &v1alpha1.GoogleServiceAccount{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("googleserviceaccounts").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

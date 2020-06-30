@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var eventhubnamespacedisasterrecoveryconfigsResource = schema.GroupVersionResour
 var eventhubnamespacedisasterrecoveryconfigsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "EventhubNamespaceDisasterRecoveryConfig"}
 
 // Get takes name of the eventhubNamespaceDisasterRecoveryConfig, and returns the corresponding eventhubNamespaceDisasterRecoveryConfig object, and an error if there is any.
-func (c *FakeEventhubNamespaceDisasterRecoveryConfigs) Get(name string, options v1.GetOptions) (result *v1alpha1.EventhubNamespaceDisasterRecoveryConfig, err error) {
+func (c *FakeEventhubNamespaceDisasterRecoveryConfigs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.EventhubNamespaceDisasterRecoveryConfig, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(eventhubnamespacedisasterrecoveryconfigsResource, c.ns, name), &v1alpha1.EventhubNamespaceDisasterRecoveryConfig{})
 
@@ -51,7 +53,7 @@ func (c *FakeEventhubNamespaceDisasterRecoveryConfigs) Get(name string, options 
 }
 
 // List takes label and field selectors, and returns the list of EventhubNamespaceDisasterRecoveryConfigs that match those selectors.
-func (c *FakeEventhubNamespaceDisasterRecoveryConfigs) List(opts v1.ListOptions) (result *v1alpha1.EventhubNamespaceDisasterRecoveryConfigList, err error) {
+func (c *FakeEventhubNamespaceDisasterRecoveryConfigs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.EventhubNamespaceDisasterRecoveryConfigList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(eventhubnamespacedisasterrecoveryconfigsResource, eventhubnamespacedisasterrecoveryconfigsKind, c.ns, opts), &v1alpha1.EventhubNamespaceDisasterRecoveryConfigList{})
 
@@ -73,14 +75,14 @@ func (c *FakeEventhubNamespaceDisasterRecoveryConfigs) List(opts v1.ListOptions)
 }
 
 // Watch returns a watch.Interface that watches the requested eventhubNamespaceDisasterRecoveryConfigs.
-func (c *FakeEventhubNamespaceDisasterRecoveryConfigs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeEventhubNamespaceDisasterRecoveryConfigs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(eventhubnamespacedisasterrecoveryconfigsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a eventhubNamespaceDisasterRecoveryConfig and creates it.  Returns the server's representation of the eventhubNamespaceDisasterRecoveryConfig, and an error, if there is any.
-func (c *FakeEventhubNamespaceDisasterRecoveryConfigs) Create(eventhubNamespaceDisasterRecoveryConfig *v1alpha1.EventhubNamespaceDisasterRecoveryConfig) (result *v1alpha1.EventhubNamespaceDisasterRecoveryConfig, err error) {
+func (c *FakeEventhubNamespaceDisasterRecoveryConfigs) Create(ctx context.Context, eventhubNamespaceDisasterRecoveryConfig *v1alpha1.EventhubNamespaceDisasterRecoveryConfig, opts v1.CreateOptions) (result *v1alpha1.EventhubNamespaceDisasterRecoveryConfig, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(eventhubnamespacedisasterrecoveryconfigsResource, c.ns, eventhubNamespaceDisasterRecoveryConfig), &v1alpha1.EventhubNamespaceDisasterRecoveryConfig{})
 
@@ -91,7 +93,7 @@ func (c *FakeEventhubNamespaceDisasterRecoveryConfigs) Create(eventhubNamespaceD
 }
 
 // Update takes the representation of a eventhubNamespaceDisasterRecoveryConfig and updates it. Returns the server's representation of the eventhubNamespaceDisasterRecoveryConfig, and an error, if there is any.
-func (c *FakeEventhubNamespaceDisasterRecoveryConfigs) Update(eventhubNamespaceDisasterRecoveryConfig *v1alpha1.EventhubNamespaceDisasterRecoveryConfig) (result *v1alpha1.EventhubNamespaceDisasterRecoveryConfig, err error) {
+func (c *FakeEventhubNamespaceDisasterRecoveryConfigs) Update(ctx context.Context, eventhubNamespaceDisasterRecoveryConfig *v1alpha1.EventhubNamespaceDisasterRecoveryConfig, opts v1.UpdateOptions) (result *v1alpha1.EventhubNamespaceDisasterRecoveryConfig, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(eventhubnamespacedisasterrecoveryconfigsResource, c.ns, eventhubNamespaceDisasterRecoveryConfig), &v1alpha1.EventhubNamespaceDisasterRecoveryConfig{})
 
@@ -103,7 +105,7 @@ func (c *FakeEventhubNamespaceDisasterRecoveryConfigs) Update(eventhubNamespaceD
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeEventhubNamespaceDisasterRecoveryConfigs) UpdateStatus(eventhubNamespaceDisasterRecoveryConfig *v1alpha1.EventhubNamespaceDisasterRecoveryConfig) (*v1alpha1.EventhubNamespaceDisasterRecoveryConfig, error) {
+func (c *FakeEventhubNamespaceDisasterRecoveryConfigs) UpdateStatus(ctx context.Context, eventhubNamespaceDisasterRecoveryConfig *v1alpha1.EventhubNamespaceDisasterRecoveryConfig, opts v1.UpdateOptions) (*v1alpha1.EventhubNamespaceDisasterRecoveryConfig, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(eventhubnamespacedisasterrecoveryconfigsResource, "status", c.ns, eventhubNamespaceDisasterRecoveryConfig), &v1alpha1.EventhubNamespaceDisasterRecoveryConfig{})
 
@@ -114,7 +116,7 @@ func (c *FakeEventhubNamespaceDisasterRecoveryConfigs) UpdateStatus(eventhubName
 }
 
 // Delete takes name of the eventhubNamespaceDisasterRecoveryConfig and deletes it. Returns an error if one occurs.
-func (c *FakeEventhubNamespaceDisasterRecoveryConfigs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeEventhubNamespaceDisasterRecoveryConfigs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(eventhubnamespacedisasterrecoveryconfigsResource, c.ns, name), &v1alpha1.EventhubNamespaceDisasterRecoveryConfig{})
 
@@ -122,15 +124,15 @@ func (c *FakeEventhubNamespaceDisasterRecoveryConfigs) Delete(name string, optio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeEventhubNamespaceDisasterRecoveryConfigs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(eventhubnamespacedisasterrecoveryconfigsResource, c.ns, listOptions)
+func (c *FakeEventhubNamespaceDisasterRecoveryConfigs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(eventhubnamespacedisasterrecoveryconfigsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.EventhubNamespaceDisasterRecoveryConfigList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched eventhubNamespaceDisasterRecoveryConfig.
-func (c *FakeEventhubNamespaceDisasterRecoveryConfigs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EventhubNamespaceDisasterRecoveryConfig, err error) {
+func (c *FakeEventhubNamespaceDisasterRecoveryConfigs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EventhubNamespaceDisasterRecoveryConfig, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(eventhubnamespacedisasterrecoveryconfigsResource, c.ns, name, pt, data, subresources...), &v1alpha1.EventhubNamespaceDisasterRecoveryConfig{})
 

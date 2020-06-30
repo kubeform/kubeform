@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/linode/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var lkeclustersResource = schema.GroupVersionResource{Group: "linode.kubeform.co
 var lkeclustersKind = schema.GroupVersionKind{Group: "linode.kubeform.com", Version: "v1alpha1", Kind: "LkeCluster"}
 
 // Get takes name of the lkeCluster, and returns the corresponding lkeCluster object, and an error if there is any.
-func (c *FakeLkeClusters) Get(name string, options v1.GetOptions) (result *v1alpha1.LkeCluster, err error) {
+func (c *FakeLkeClusters) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LkeCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(lkeclustersResource, c.ns, name), &v1alpha1.LkeCluster{})
 
@@ -51,7 +53,7 @@ func (c *FakeLkeClusters) Get(name string, options v1.GetOptions) (result *v1alp
 }
 
 // List takes label and field selectors, and returns the list of LkeClusters that match those selectors.
-func (c *FakeLkeClusters) List(opts v1.ListOptions) (result *v1alpha1.LkeClusterList, err error) {
+func (c *FakeLkeClusters) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LkeClusterList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(lkeclustersResource, lkeclustersKind, c.ns, opts), &v1alpha1.LkeClusterList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLkeClusters) List(opts v1.ListOptions) (result *v1alpha1.LkeCluster
 }
 
 // Watch returns a watch.Interface that watches the requested lkeClusters.
-func (c *FakeLkeClusters) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLkeClusters) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(lkeclustersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a lkeCluster and creates it.  Returns the server's representation of the lkeCluster, and an error, if there is any.
-func (c *FakeLkeClusters) Create(lkeCluster *v1alpha1.LkeCluster) (result *v1alpha1.LkeCluster, err error) {
+func (c *FakeLkeClusters) Create(ctx context.Context, lkeCluster *v1alpha1.LkeCluster, opts v1.CreateOptions) (result *v1alpha1.LkeCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(lkeclustersResource, c.ns, lkeCluster), &v1alpha1.LkeCluster{})
 
@@ -91,7 +93,7 @@ func (c *FakeLkeClusters) Create(lkeCluster *v1alpha1.LkeCluster) (result *v1alp
 }
 
 // Update takes the representation of a lkeCluster and updates it. Returns the server's representation of the lkeCluster, and an error, if there is any.
-func (c *FakeLkeClusters) Update(lkeCluster *v1alpha1.LkeCluster) (result *v1alpha1.LkeCluster, err error) {
+func (c *FakeLkeClusters) Update(ctx context.Context, lkeCluster *v1alpha1.LkeCluster, opts v1.UpdateOptions) (result *v1alpha1.LkeCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(lkeclustersResource, c.ns, lkeCluster), &v1alpha1.LkeCluster{})
 
@@ -103,7 +105,7 @@ func (c *FakeLkeClusters) Update(lkeCluster *v1alpha1.LkeCluster) (result *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLkeClusters) UpdateStatus(lkeCluster *v1alpha1.LkeCluster) (*v1alpha1.LkeCluster, error) {
+func (c *FakeLkeClusters) UpdateStatus(ctx context.Context, lkeCluster *v1alpha1.LkeCluster, opts v1.UpdateOptions) (*v1alpha1.LkeCluster, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(lkeclustersResource, "status", c.ns, lkeCluster), &v1alpha1.LkeCluster{})
 
@@ -114,7 +116,7 @@ func (c *FakeLkeClusters) UpdateStatus(lkeCluster *v1alpha1.LkeCluster) (*v1alph
 }
 
 // Delete takes name of the lkeCluster and deletes it. Returns an error if one occurs.
-func (c *FakeLkeClusters) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLkeClusters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(lkeclustersResource, c.ns, name), &v1alpha1.LkeCluster{})
 
@@ -122,15 +124,15 @@ func (c *FakeLkeClusters) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLkeClusters) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(lkeclustersResource, c.ns, listOptions)
+func (c *FakeLkeClusters) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(lkeclustersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LkeClusterList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched lkeCluster.
-func (c *FakeLkeClusters) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LkeCluster, err error) {
+func (c *FakeLkeClusters) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LkeCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(lkeclustersResource, c.ns, name, pt, data, subresources...), &v1alpha1.LkeCluster{})
 

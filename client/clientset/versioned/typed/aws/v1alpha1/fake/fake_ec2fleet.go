@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var ec2fleetsResource = schema.GroupVersionResource{Group: "aws.kubeform.com", V
 var ec2fleetsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "Ec2Fleet"}
 
 // Get takes name of the ec2Fleet, and returns the corresponding ec2Fleet object, and an error if there is any.
-func (c *FakeEc2Fleets) Get(name string, options v1.GetOptions) (result *v1alpha1.Ec2Fleet, err error) {
+func (c *FakeEc2Fleets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Ec2Fleet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(ec2fleetsResource, c.ns, name), &v1alpha1.Ec2Fleet{})
 
@@ -51,7 +53,7 @@ func (c *FakeEc2Fleets) Get(name string, options v1.GetOptions) (result *v1alpha
 }
 
 // List takes label and field selectors, and returns the list of Ec2Fleets that match those selectors.
-func (c *FakeEc2Fleets) List(opts v1.ListOptions) (result *v1alpha1.Ec2FleetList, err error) {
+func (c *FakeEc2Fleets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.Ec2FleetList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(ec2fleetsResource, ec2fleetsKind, c.ns, opts), &v1alpha1.Ec2FleetList{})
 
@@ -73,14 +75,14 @@ func (c *FakeEc2Fleets) List(opts v1.ListOptions) (result *v1alpha1.Ec2FleetList
 }
 
 // Watch returns a watch.Interface that watches the requested ec2Fleets.
-func (c *FakeEc2Fleets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeEc2Fleets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(ec2fleetsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a ec2Fleet and creates it.  Returns the server's representation of the ec2Fleet, and an error, if there is any.
-func (c *FakeEc2Fleets) Create(ec2Fleet *v1alpha1.Ec2Fleet) (result *v1alpha1.Ec2Fleet, err error) {
+func (c *FakeEc2Fleets) Create(ctx context.Context, ec2Fleet *v1alpha1.Ec2Fleet, opts v1.CreateOptions) (result *v1alpha1.Ec2Fleet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(ec2fleetsResource, c.ns, ec2Fleet), &v1alpha1.Ec2Fleet{})
 
@@ -91,7 +93,7 @@ func (c *FakeEc2Fleets) Create(ec2Fleet *v1alpha1.Ec2Fleet) (result *v1alpha1.Ec
 }
 
 // Update takes the representation of a ec2Fleet and updates it. Returns the server's representation of the ec2Fleet, and an error, if there is any.
-func (c *FakeEc2Fleets) Update(ec2Fleet *v1alpha1.Ec2Fleet) (result *v1alpha1.Ec2Fleet, err error) {
+func (c *FakeEc2Fleets) Update(ctx context.Context, ec2Fleet *v1alpha1.Ec2Fleet, opts v1.UpdateOptions) (result *v1alpha1.Ec2Fleet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(ec2fleetsResource, c.ns, ec2Fleet), &v1alpha1.Ec2Fleet{})
 
@@ -103,7 +105,7 @@ func (c *FakeEc2Fleets) Update(ec2Fleet *v1alpha1.Ec2Fleet) (result *v1alpha1.Ec
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeEc2Fleets) UpdateStatus(ec2Fleet *v1alpha1.Ec2Fleet) (*v1alpha1.Ec2Fleet, error) {
+func (c *FakeEc2Fleets) UpdateStatus(ctx context.Context, ec2Fleet *v1alpha1.Ec2Fleet, opts v1.UpdateOptions) (*v1alpha1.Ec2Fleet, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(ec2fleetsResource, "status", c.ns, ec2Fleet), &v1alpha1.Ec2Fleet{})
 
@@ -114,7 +116,7 @@ func (c *FakeEc2Fleets) UpdateStatus(ec2Fleet *v1alpha1.Ec2Fleet) (*v1alpha1.Ec2
 }
 
 // Delete takes name of the ec2Fleet and deletes it. Returns an error if one occurs.
-func (c *FakeEc2Fleets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeEc2Fleets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(ec2fleetsResource, c.ns, name), &v1alpha1.Ec2Fleet{})
 
@@ -122,15 +124,15 @@ func (c *FakeEc2Fleets) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeEc2Fleets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(ec2fleetsResource, c.ns, listOptions)
+func (c *FakeEc2Fleets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(ec2fleetsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.Ec2FleetList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched ec2Fleet.
-func (c *FakeEc2Fleets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Ec2Fleet, err error) {
+func (c *FakeEc2Fleets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Ec2Fleet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(ec2fleetsResource, c.ns, name, pt, data, subresources...), &v1alpha1.Ec2Fleet{})
 

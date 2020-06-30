@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var runtimeconfigconfigiambindingsResource = schema.GroupVersionResource{Group: 
 var runtimeconfigconfigiambindingsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "RuntimeconfigConfigIamBinding"}
 
 // Get takes name of the runtimeconfigConfigIamBinding, and returns the corresponding runtimeconfigConfigIamBinding object, and an error if there is any.
-func (c *FakeRuntimeconfigConfigIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.RuntimeconfigConfigIamBinding, err error) {
+func (c *FakeRuntimeconfigConfigIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.RuntimeconfigConfigIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(runtimeconfigconfigiambindingsResource, c.ns, name), &v1alpha1.RuntimeconfigConfigIamBinding{})
 
@@ -51,7 +53,7 @@ func (c *FakeRuntimeconfigConfigIamBindings) Get(name string, options v1.GetOpti
 }
 
 // List takes label and field selectors, and returns the list of RuntimeconfigConfigIamBindings that match those selectors.
-func (c *FakeRuntimeconfigConfigIamBindings) List(opts v1.ListOptions) (result *v1alpha1.RuntimeconfigConfigIamBindingList, err error) {
+func (c *FakeRuntimeconfigConfigIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RuntimeconfigConfigIamBindingList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(runtimeconfigconfigiambindingsResource, runtimeconfigconfigiambindingsKind, c.ns, opts), &v1alpha1.RuntimeconfigConfigIamBindingList{})
 
@@ -73,14 +75,14 @@ func (c *FakeRuntimeconfigConfigIamBindings) List(opts v1.ListOptions) (result *
 }
 
 // Watch returns a watch.Interface that watches the requested runtimeconfigConfigIamBindings.
-func (c *FakeRuntimeconfigConfigIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeRuntimeconfigConfigIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(runtimeconfigconfigiambindingsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a runtimeconfigConfigIamBinding and creates it.  Returns the server's representation of the runtimeconfigConfigIamBinding, and an error, if there is any.
-func (c *FakeRuntimeconfigConfigIamBindings) Create(runtimeconfigConfigIamBinding *v1alpha1.RuntimeconfigConfigIamBinding) (result *v1alpha1.RuntimeconfigConfigIamBinding, err error) {
+func (c *FakeRuntimeconfigConfigIamBindings) Create(ctx context.Context, runtimeconfigConfigIamBinding *v1alpha1.RuntimeconfigConfigIamBinding, opts v1.CreateOptions) (result *v1alpha1.RuntimeconfigConfigIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(runtimeconfigconfigiambindingsResource, c.ns, runtimeconfigConfigIamBinding), &v1alpha1.RuntimeconfigConfigIamBinding{})
 
@@ -91,7 +93,7 @@ func (c *FakeRuntimeconfigConfigIamBindings) Create(runtimeconfigConfigIamBindin
 }
 
 // Update takes the representation of a runtimeconfigConfigIamBinding and updates it. Returns the server's representation of the runtimeconfigConfigIamBinding, and an error, if there is any.
-func (c *FakeRuntimeconfigConfigIamBindings) Update(runtimeconfigConfigIamBinding *v1alpha1.RuntimeconfigConfigIamBinding) (result *v1alpha1.RuntimeconfigConfigIamBinding, err error) {
+func (c *FakeRuntimeconfigConfigIamBindings) Update(ctx context.Context, runtimeconfigConfigIamBinding *v1alpha1.RuntimeconfigConfigIamBinding, opts v1.UpdateOptions) (result *v1alpha1.RuntimeconfigConfigIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(runtimeconfigconfigiambindingsResource, c.ns, runtimeconfigConfigIamBinding), &v1alpha1.RuntimeconfigConfigIamBinding{})
 
@@ -103,7 +105,7 @@ func (c *FakeRuntimeconfigConfigIamBindings) Update(runtimeconfigConfigIamBindin
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeRuntimeconfigConfigIamBindings) UpdateStatus(runtimeconfigConfigIamBinding *v1alpha1.RuntimeconfigConfigIamBinding) (*v1alpha1.RuntimeconfigConfigIamBinding, error) {
+func (c *FakeRuntimeconfigConfigIamBindings) UpdateStatus(ctx context.Context, runtimeconfigConfigIamBinding *v1alpha1.RuntimeconfigConfigIamBinding, opts v1.UpdateOptions) (*v1alpha1.RuntimeconfigConfigIamBinding, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(runtimeconfigconfigiambindingsResource, "status", c.ns, runtimeconfigConfigIamBinding), &v1alpha1.RuntimeconfigConfigIamBinding{})
 
@@ -114,7 +116,7 @@ func (c *FakeRuntimeconfigConfigIamBindings) UpdateStatus(runtimeconfigConfigIam
 }
 
 // Delete takes name of the runtimeconfigConfigIamBinding and deletes it. Returns an error if one occurs.
-func (c *FakeRuntimeconfigConfigIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeRuntimeconfigConfigIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(runtimeconfigconfigiambindingsResource, c.ns, name), &v1alpha1.RuntimeconfigConfigIamBinding{})
 
@@ -122,15 +124,15 @@ func (c *FakeRuntimeconfigConfigIamBindings) Delete(name string, options *v1.Del
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeRuntimeconfigConfigIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(runtimeconfigconfigiambindingsResource, c.ns, listOptions)
+func (c *FakeRuntimeconfigConfigIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(runtimeconfigconfigiambindingsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.RuntimeconfigConfigIamBindingList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched runtimeconfigConfigIamBinding.
-func (c *FakeRuntimeconfigConfigIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RuntimeconfigConfigIamBinding, err error) {
+func (c *FakeRuntimeconfigConfigIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RuntimeconfigConfigIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(runtimeconfigconfigiambindingsResource, c.ns, name, pt, data, subresources...), &v1alpha1.RuntimeconfigConfigIamBinding{})
 

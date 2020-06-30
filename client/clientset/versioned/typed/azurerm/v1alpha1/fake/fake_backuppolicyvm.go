@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var backuppolicyvmsResource = schema.GroupVersionResource{Group: "azurerm.kubefo
 var backuppolicyvmsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "BackupPolicyVm"}
 
 // Get takes name of the backupPolicyVm, and returns the corresponding backupPolicyVm object, and an error if there is any.
-func (c *FakeBackupPolicyVms) Get(name string, options v1.GetOptions) (result *v1alpha1.BackupPolicyVm, err error) {
+func (c *FakeBackupPolicyVms) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BackupPolicyVm, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(backuppolicyvmsResource, c.ns, name), &v1alpha1.BackupPolicyVm{})
 
@@ -51,7 +53,7 @@ func (c *FakeBackupPolicyVms) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of BackupPolicyVms that match those selectors.
-func (c *FakeBackupPolicyVms) List(opts v1.ListOptions) (result *v1alpha1.BackupPolicyVmList, err error) {
+func (c *FakeBackupPolicyVms) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BackupPolicyVmList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(backuppolicyvmsResource, backuppolicyvmsKind, c.ns, opts), &v1alpha1.BackupPolicyVmList{})
 
@@ -73,14 +75,14 @@ func (c *FakeBackupPolicyVms) List(opts v1.ListOptions) (result *v1alpha1.Backup
 }
 
 // Watch returns a watch.Interface that watches the requested backupPolicyVms.
-func (c *FakeBackupPolicyVms) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeBackupPolicyVms) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(backuppolicyvmsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a backupPolicyVm and creates it.  Returns the server's representation of the backupPolicyVm, and an error, if there is any.
-func (c *FakeBackupPolicyVms) Create(backupPolicyVm *v1alpha1.BackupPolicyVm) (result *v1alpha1.BackupPolicyVm, err error) {
+func (c *FakeBackupPolicyVms) Create(ctx context.Context, backupPolicyVm *v1alpha1.BackupPolicyVm, opts v1.CreateOptions) (result *v1alpha1.BackupPolicyVm, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(backuppolicyvmsResource, c.ns, backupPolicyVm), &v1alpha1.BackupPolicyVm{})
 
@@ -91,7 +93,7 @@ func (c *FakeBackupPolicyVms) Create(backupPolicyVm *v1alpha1.BackupPolicyVm) (r
 }
 
 // Update takes the representation of a backupPolicyVm and updates it. Returns the server's representation of the backupPolicyVm, and an error, if there is any.
-func (c *FakeBackupPolicyVms) Update(backupPolicyVm *v1alpha1.BackupPolicyVm) (result *v1alpha1.BackupPolicyVm, err error) {
+func (c *FakeBackupPolicyVms) Update(ctx context.Context, backupPolicyVm *v1alpha1.BackupPolicyVm, opts v1.UpdateOptions) (result *v1alpha1.BackupPolicyVm, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(backuppolicyvmsResource, c.ns, backupPolicyVm), &v1alpha1.BackupPolicyVm{})
 
@@ -103,7 +105,7 @@ func (c *FakeBackupPolicyVms) Update(backupPolicyVm *v1alpha1.BackupPolicyVm) (r
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeBackupPolicyVms) UpdateStatus(backupPolicyVm *v1alpha1.BackupPolicyVm) (*v1alpha1.BackupPolicyVm, error) {
+func (c *FakeBackupPolicyVms) UpdateStatus(ctx context.Context, backupPolicyVm *v1alpha1.BackupPolicyVm, opts v1.UpdateOptions) (*v1alpha1.BackupPolicyVm, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(backuppolicyvmsResource, "status", c.ns, backupPolicyVm), &v1alpha1.BackupPolicyVm{})
 
@@ -114,7 +116,7 @@ func (c *FakeBackupPolicyVms) UpdateStatus(backupPolicyVm *v1alpha1.BackupPolicy
 }
 
 // Delete takes name of the backupPolicyVm and deletes it. Returns an error if one occurs.
-func (c *FakeBackupPolicyVms) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeBackupPolicyVms) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(backuppolicyvmsResource, c.ns, name), &v1alpha1.BackupPolicyVm{})
 
@@ -122,15 +124,15 @@ func (c *FakeBackupPolicyVms) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeBackupPolicyVms) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(backuppolicyvmsResource, c.ns, listOptions)
+func (c *FakeBackupPolicyVms) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(backuppolicyvmsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.BackupPolicyVmList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched backupPolicyVm.
-func (c *FakeBackupPolicyVms) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BackupPolicyVm, err error) {
+func (c *FakeBackupPolicyVms) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BackupPolicyVm, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(backuppolicyvmsResource, c.ns, name, pt, data, subresources...), &v1alpha1.BackupPolicyVm{})
 

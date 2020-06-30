@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var networkinterfaceapplicationgatewaybackendaddresspoolassociationsResource = s
 var networkinterfaceapplicationgatewaybackendaddresspoolassociationsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation"}
 
 // Get takes name of the networkInterfaceApplicationGatewayBackendAddressPoolAssociation, and returns the corresponding networkInterfaceApplicationGatewayBackendAddressPoolAssociation object, and an error if there is any.
-func (c *FakeNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations) Get(name string, options v1.GetOptions) (result *v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation, err error) {
+func (c *FakeNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(networkinterfaceapplicationgatewaybackendaddresspoolassociationsResource, c.ns, name), &v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation{})
 
@@ -51,7 +53,7 @@ func (c *FakeNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations) G
 }
 
 // List takes label and field selectors, and returns the list of NetworkInterfaceApplicationGatewayBackendAddressPoolAssociations that match those selectors.
-func (c *FakeNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations) List(opts v1.ListOptions) (result *v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationList, err error) {
+func (c *FakeNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(networkinterfaceapplicationgatewaybackendaddresspoolassociationsResource, networkinterfaceapplicationgatewaybackendaddresspoolassociationsKind, c.ns, opts), &v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations) L
 }
 
 // Watch returns a watch.Interface that watches the requested networkInterfaceApplicationGatewayBackendAddressPoolAssociations.
-func (c *FakeNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(networkinterfaceapplicationgatewaybackendaddresspoolassociationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a networkInterfaceApplicationGatewayBackendAddressPoolAssociation and creates it.  Returns the server's representation of the networkInterfaceApplicationGatewayBackendAddressPoolAssociation, and an error, if there is any.
-func (c *FakeNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations) Create(networkInterfaceApplicationGatewayBackendAddressPoolAssociation *v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation) (result *v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation, err error) {
+func (c *FakeNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations) Create(ctx context.Context, networkInterfaceApplicationGatewayBackendAddressPoolAssociation *v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation, opts v1.CreateOptions) (result *v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(networkinterfaceapplicationgatewaybackendaddresspoolassociationsResource, c.ns, networkInterfaceApplicationGatewayBackendAddressPoolAssociation), &v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation{})
 
@@ -91,7 +93,7 @@ func (c *FakeNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations) C
 }
 
 // Update takes the representation of a networkInterfaceApplicationGatewayBackendAddressPoolAssociation and updates it. Returns the server's representation of the networkInterfaceApplicationGatewayBackendAddressPoolAssociation, and an error, if there is any.
-func (c *FakeNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations) Update(networkInterfaceApplicationGatewayBackendAddressPoolAssociation *v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation) (result *v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation, err error) {
+func (c *FakeNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations) Update(ctx context.Context, networkInterfaceApplicationGatewayBackendAddressPoolAssociation *v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation, opts v1.UpdateOptions) (result *v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(networkinterfaceapplicationgatewaybackendaddresspoolassociationsResource, c.ns, networkInterfaceApplicationGatewayBackendAddressPoolAssociation), &v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation{})
 
@@ -103,7 +105,7 @@ func (c *FakeNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations) U
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations) UpdateStatus(networkInterfaceApplicationGatewayBackendAddressPoolAssociation *v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation) (*v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation, error) {
+func (c *FakeNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations) UpdateStatus(ctx context.Context, networkInterfaceApplicationGatewayBackendAddressPoolAssociation *v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation, opts v1.UpdateOptions) (*v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(networkinterfaceapplicationgatewaybackendaddresspoolassociationsResource, "status", c.ns, networkInterfaceApplicationGatewayBackendAddressPoolAssociation), &v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation{})
 
@@ -114,7 +116,7 @@ func (c *FakeNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations) U
 }
 
 // Delete takes name of the networkInterfaceApplicationGatewayBackendAddressPoolAssociation and deletes it. Returns an error if one occurs.
-func (c *FakeNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(networkinterfaceapplicationgatewaybackendaddresspoolassociationsResource, c.ns, name), &v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation{})
 
@@ -122,15 +124,15 @@ func (c *FakeNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations) D
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(networkinterfaceapplicationgatewaybackendaddresspoolassociationsResource, c.ns, listOptions)
+func (c *FakeNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(networkinterfaceapplicationgatewaybackendaddresspoolassociationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched networkInterfaceApplicationGatewayBackendAddressPoolAssociation.
-func (c *FakeNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation, err error) {
+func (c *FakeNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(networkinterfaceapplicationgatewaybackendaddresspoolassociationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation{})
 

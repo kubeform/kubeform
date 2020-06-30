@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cloudfunctionsfunctioniammembersResource = schema.GroupVersionResource{Group
 var cloudfunctionsfunctioniammembersKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "CloudfunctionsFunctionIamMember"}
 
 // Get takes name of the cloudfunctionsFunctionIamMember, and returns the corresponding cloudfunctionsFunctionIamMember object, and an error if there is any.
-func (c *FakeCloudfunctionsFunctionIamMembers) Get(name string, options v1.GetOptions) (result *v1alpha1.CloudfunctionsFunctionIamMember, err error) {
+func (c *FakeCloudfunctionsFunctionIamMembers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CloudfunctionsFunctionIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cloudfunctionsfunctioniammembersResource, c.ns, name), &v1alpha1.CloudfunctionsFunctionIamMember{})
 
@@ -51,7 +53,7 @@ func (c *FakeCloudfunctionsFunctionIamMembers) Get(name string, options v1.GetOp
 }
 
 // List takes label and field selectors, and returns the list of CloudfunctionsFunctionIamMembers that match those selectors.
-func (c *FakeCloudfunctionsFunctionIamMembers) List(opts v1.ListOptions) (result *v1alpha1.CloudfunctionsFunctionIamMemberList, err error) {
+func (c *FakeCloudfunctionsFunctionIamMembers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CloudfunctionsFunctionIamMemberList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cloudfunctionsfunctioniammembersResource, cloudfunctionsfunctioniammembersKind, c.ns, opts), &v1alpha1.CloudfunctionsFunctionIamMemberList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCloudfunctionsFunctionIamMembers) List(opts v1.ListOptions) (result
 }
 
 // Watch returns a watch.Interface that watches the requested cloudfunctionsFunctionIamMembers.
-func (c *FakeCloudfunctionsFunctionIamMembers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCloudfunctionsFunctionIamMembers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cloudfunctionsfunctioniammembersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cloudfunctionsFunctionIamMember and creates it.  Returns the server's representation of the cloudfunctionsFunctionIamMember, and an error, if there is any.
-func (c *FakeCloudfunctionsFunctionIamMembers) Create(cloudfunctionsFunctionIamMember *v1alpha1.CloudfunctionsFunctionIamMember) (result *v1alpha1.CloudfunctionsFunctionIamMember, err error) {
+func (c *FakeCloudfunctionsFunctionIamMembers) Create(ctx context.Context, cloudfunctionsFunctionIamMember *v1alpha1.CloudfunctionsFunctionIamMember, opts v1.CreateOptions) (result *v1alpha1.CloudfunctionsFunctionIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cloudfunctionsfunctioniammembersResource, c.ns, cloudfunctionsFunctionIamMember), &v1alpha1.CloudfunctionsFunctionIamMember{})
 
@@ -91,7 +93,7 @@ func (c *FakeCloudfunctionsFunctionIamMembers) Create(cloudfunctionsFunctionIamM
 }
 
 // Update takes the representation of a cloudfunctionsFunctionIamMember and updates it. Returns the server's representation of the cloudfunctionsFunctionIamMember, and an error, if there is any.
-func (c *FakeCloudfunctionsFunctionIamMembers) Update(cloudfunctionsFunctionIamMember *v1alpha1.CloudfunctionsFunctionIamMember) (result *v1alpha1.CloudfunctionsFunctionIamMember, err error) {
+func (c *FakeCloudfunctionsFunctionIamMembers) Update(ctx context.Context, cloudfunctionsFunctionIamMember *v1alpha1.CloudfunctionsFunctionIamMember, opts v1.UpdateOptions) (result *v1alpha1.CloudfunctionsFunctionIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cloudfunctionsfunctioniammembersResource, c.ns, cloudfunctionsFunctionIamMember), &v1alpha1.CloudfunctionsFunctionIamMember{})
 
@@ -103,7 +105,7 @@ func (c *FakeCloudfunctionsFunctionIamMembers) Update(cloudfunctionsFunctionIamM
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCloudfunctionsFunctionIamMembers) UpdateStatus(cloudfunctionsFunctionIamMember *v1alpha1.CloudfunctionsFunctionIamMember) (*v1alpha1.CloudfunctionsFunctionIamMember, error) {
+func (c *FakeCloudfunctionsFunctionIamMembers) UpdateStatus(ctx context.Context, cloudfunctionsFunctionIamMember *v1alpha1.CloudfunctionsFunctionIamMember, opts v1.UpdateOptions) (*v1alpha1.CloudfunctionsFunctionIamMember, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cloudfunctionsfunctioniammembersResource, "status", c.ns, cloudfunctionsFunctionIamMember), &v1alpha1.CloudfunctionsFunctionIamMember{})
 
@@ -114,7 +116,7 @@ func (c *FakeCloudfunctionsFunctionIamMembers) UpdateStatus(cloudfunctionsFuncti
 }
 
 // Delete takes name of the cloudfunctionsFunctionIamMember and deletes it. Returns an error if one occurs.
-func (c *FakeCloudfunctionsFunctionIamMembers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCloudfunctionsFunctionIamMembers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cloudfunctionsfunctioniammembersResource, c.ns, name), &v1alpha1.CloudfunctionsFunctionIamMember{})
 
@@ -122,15 +124,15 @@ func (c *FakeCloudfunctionsFunctionIamMembers) Delete(name string, options *v1.D
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCloudfunctionsFunctionIamMembers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cloudfunctionsfunctioniammembersResource, c.ns, listOptions)
+func (c *FakeCloudfunctionsFunctionIamMembers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cloudfunctionsfunctioniammembersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CloudfunctionsFunctionIamMemberList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cloudfunctionsFunctionIamMember.
-func (c *FakeCloudfunctionsFunctionIamMembers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CloudfunctionsFunctionIamMember, err error) {
+func (c *FakeCloudfunctionsFunctionIamMembers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CloudfunctionsFunctionIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cloudfunctionsfunctioniammembersResource, c.ns, name, pt, data, subresources...), &v1alpha1.CloudfunctionsFunctionIamMember{})
 

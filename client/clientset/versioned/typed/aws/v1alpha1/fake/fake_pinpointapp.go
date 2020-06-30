@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var pinpointappsResource = schema.GroupVersionResource{Group: "aws.kubeform.com"
 var pinpointappsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "PinpointApp"}
 
 // Get takes name of the pinpointApp, and returns the corresponding pinpointApp object, and an error if there is any.
-func (c *FakePinpointApps) Get(name string, options v1.GetOptions) (result *v1alpha1.PinpointApp, err error) {
+func (c *FakePinpointApps) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PinpointApp, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(pinpointappsResource, c.ns, name), &v1alpha1.PinpointApp{})
 
@@ -51,7 +53,7 @@ func (c *FakePinpointApps) Get(name string, options v1.GetOptions) (result *v1al
 }
 
 // List takes label and field selectors, and returns the list of PinpointApps that match those selectors.
-func (c *FakePinpointApps) List(opts v1.ListOptions) (result *v1alpha1.PinpointAppList, err error) {
+func (c *FakePinpointApps) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PinpointAppList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(pinpointappsResource, pinpointappsKind, c.ns, opts), &v1alpha1.PinpointAppList{})
 
@@ -73,14 +75,14 @@ func (c *FakePinpointApps) List(opts v1.ListOptions) (result *v1alpha1.PinpointA
 }
 
 // Watch returns a watch.Interface that watches the requested pinpointApps.
-func (c *FakePinpointApps) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakePinpointApps) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(pinpointappsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a pinpointApp and creates it.  Returns the server's representation of the pinpointApp, and an error, if there is any.
-func (c *FakePinpointApps) Create(pinpointApp *v1alpha1.PinpointApp) (result *v1alpha1.PinpointApp, err error) {
+func (c *FakePinpointApps) Create(ctx context.Context, pinpointApp *v1alpha1.PinpointApp, opts v1.CreateOptions) (result *v1alpha1.PinpointApp, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(pinpointappsResource, c.ns, pinpointApp), &v1alpha1.PinpointApp{})
 
@@ -91,7 +93,7 @@ func (c *FakePinpointApps) Create(pinpointApp *v1alpha1.PinpointApp) (result *v1
 }
 
 // Update takes the representation of a pinpointApp and updates it. Returns the server's representation of the pinpointApp, and an error, if there is any.
-func (c *FakePinpointApps) Update(pinpointApp *v1alpha1.PinpointApp) (result *v1alpha1.PinpointApp, err error) {
+func (c *FakePinpointApps) Update(ctx context.Context, pinpointApp *v1alpha1.PinpointApp, opts v1.UpdateOptions) (result *v1alpha1.PinpointApp, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(pinpointappsResource, c.ns, pinpointApp), &v1alpha1.PinpointApp{})
 
@@ -103,7 +105,7 @@ func (c *FakePinpointApps) Update(pinpointApp *v1alpha1.PinpointApp) (result *v1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakePinpointApps) UpdateStatus(pinpointApp *v1alpha1.PinpointApp) (*v1alpha1.PinpointApp, error) {
+func (c *FakePinpointApps) UpdateStatus(ctx context.Context, pinpointApp *v1alpha1.PinpointApp, opts v1.UpdateOptions) (*v1alpha1.PinpointApp, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(pinpointappsResource, "status", c.ns, pinpointApp), &v1alpha1.PinpointApp{})
 
@@ -114,7 +116,7 @@ func (c *FakePinpointApps) UpdateStatus(pinpointApp *v1alpha1.PinpointApp) (*v1a
 }
 
 // Delete takes name of the pinpointApp and deletes it. Returns an error if one occurs.
-func (c *FakePinpointApps) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakePinpointApps) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(pinpointappsResource, c.ns, name), &v1alpha1.PinpointApp{})
 
@@ -122,15 +124,15 @@ func (c *FakePinpointApps) Delete(name string, options *v1.DeleteOptions) error 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakePinpointApps) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(pinpointappsResource, c.ns, listOptions)
+func (c *FakePinpointApps) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(pinpointappsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.PinpointAppList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched pinpointApp.
-func (c *FakePinpointApps) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PinpointApp, err error) {
+func (c *FakePinpointApps) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PinpointApp, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(pinpointappsResource, c.ns, name, pt, data, subresources...), &v1alpha1.PinpointApp{})
 

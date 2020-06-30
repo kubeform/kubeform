@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var proximityplacementgroupsResource = schema.GroupVersionResource{Group: "azure
 var proximityplacementgroupsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "ProximityPlacementGroup"}
 
 // Get takes name of the proximityPlacementGroup, and returns the corresponding proximityPlacementGroup object, and an error if there is any.
-func (c *FakeProximityPlacementGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.ProximityPlacementGroup, err error) {
+func (c *FakeProximityPlacementGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ProximityPlacementGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(proximityplacementgroupsResource, c.ns, name), &v1alpha1.ProximityPlacementGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeProximityPlacementGroups) Get(name string, options v1.GetOptions) (
 }
 
 // List takes label and field selectors, and returns the list of ProximityPlacementGroups that match those selectors.
-func (c *FakeProximityPlacementGroups) List(opts v1.ListOptions) (result *v1alpha1.ProximityPlacementGroupList, err error) {
+func (c *FakeProximityPlacementGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ProximityPlacementGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(proximityplacementgroupsResource, proximityplacementgroupsKind, c.ns, opts), &v1alpha1.ProximityPlacementGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeProximityPlacementGroups) List(opts v1.ListOptions) (result *v1alph
 }
 
 // Watch returns a watch.Interface that watches the requested proximityPlacementGroups.
-func (c *FakeProximityPlacementGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeProximityPlacementGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(proximityplacementgroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a proximityPlacementGroup and creates it.  Returns the server's representation of the proximityPlacementGroup, and an error, if there is any.
-func (c *FakeProximityPlacementGroups) Create(proximityPlacementGroup *v1alpha1.ProximityPlacementGroup) (result *v1alpha1.ProximityPlacementGroup, err error) {
+func (c *FakeProximityPlacementGroups) Create(ctx context.Context, proximityPlacementGroup *v1alpha1.ProximityPlacementGroup, opts v1.CreateOptions) (result *v1alpha1.ProximityPlacementGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(proximityplacementgroupsResource, c.ns, proximityPlacementGroup), &v1alpha1.ProximityPlacementGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeProximityPlacementGroups) Create(proximityPlacementGroup *v1alpha1.
 }
 
 // Update takes the representation of a proximityPlacementGroup and updates it. Returns the server's representation of the proximityPlacementGroup, and an error, if there is any.
-func (c *FakeProximityPlacementGroups) Update(proximityPlacementGroup *v1alpha1.ProximityPlacementGroup) (result *v1alpha1.ProximityPlacementGroup, err error) {
+func (c *FakeProximityPlacementGroups) Update(ctx context.Context, proximityPlacementGroup *v1alpha1.ProximityPlacementGroup, opts v1.UpdateOptions) (result *v1alpha1.ProximityPlacementGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(proximityplacementgroupsResource, c.ns, proximityPlacementGroup), &v1alpha1.ProximityPlacementGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeProximityPlacementGroups) Update(proximityPlacementGroup *v1alpha1.
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeProximityPlacementGroups) UpdateStatus(proximityPlacementGroup *v1alpha1.ProximityPlacementGroup) (*v1alpha1.ProximityPlacementGroup, error) {
+func (c *FakeProximityPlacementGroups) UpdateStatus(ctx context.Context, proximityPlacementGroup *v1alpha1.ProximityPlacementGroup, opts v1.UpdateOptions) (*v1alpha1.ProximityPlacementGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(proximityplacementgroupsResource, "status", c.ns, proximityPlacementGroup), &v1alpha1.ProximityPlacementGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeProximityPlacementGroups) UpdateStatus(proximityPlacementGroup *v1a
 }
 
 // Delete takes name of the proximityPlacementGroup and deletes it. Returns an error if one occurs.
-func (c *FakeProximityPlacementGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeProximityPlacementGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(proximityplacementgroupsResource, c.ns, name), &v1alpha1.ProximityPlacementGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeProximityPlacementGroups) Delete(name string, options *v1.DeleteOpt
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeProximityPlacementGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(proximityplacementgroupsResource, c.ns, listOptions)
+func (c *FakeProximityPlacementGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(proximityplacementgroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ProximityPlacementGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched proximityPlacementGroup.
-func (c *FakeProximityPlacementGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ProximityPlacementGroup, err error) {
+func (c *FakeProximityPlacementGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ProximityPlacementGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(proximityplacementgroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ProximityPlacementGroup{})
 

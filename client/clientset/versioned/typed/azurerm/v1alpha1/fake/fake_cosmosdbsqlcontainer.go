@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cosmosdbsqlcontainersResource = schema.GroupVersionResource{Group: "azurerm.
 var cosmosdbsqlcontainersKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "CosmosdbSQLContainer"}
 
 // Get takes name of the cosmosdbSQLContainer, and returns the corresponding cosmosdbSQLContainer object, and an error if there is any.
-func (c *FakeCosmosdbSQLContainers) Get(name string, options v1.GetOptions) (result *v1alpha1.CosmosdbSQLContainer, err error) {
+func (c *FakeCosmosdbSQLContainers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CosmosdbSQLContainer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cosmosdbsqlcontainersResource, c.ns, name), &v1alpha1.CosmosdbSQLContainer{})
 
@@ -51,7 +53,7 @@ func (c *FakeCosmosdbSQLContainers) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of CosmosdbSQLContainers that match those selectors.
-func (c *FakeCosmosdbSQLContainers) List(opts v1.ListOptions) (result *v1alpha1.CosmosdbSQLContainerList, err error) {
+func (c *FakeCosmosdbSQLContainers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CosmosdbSQLContainerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cosmosdbsqlcontainersResource, cosmosdbsqlcontainersKind, c.ns, opts), &v1alpha1.CosmosdbSQLContainerList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCosmosdbSQLContainers) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested cosmosdbSQLContainers.
-func (c *FakeCosmosdbSQLContainers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCosmosdbSQLContainers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cosmosdbsqlcontainersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cosmosdbSQLContainer and creates it.  Returns the server's representation of the cosmosdbSQLContainer, and an error, if there is any.
-func (c *FakeCosmosdbSQLContainers) Create(cosmosdbSQLContainer *v1alpha1.CosmosdbSQLContainer) (result *v1alpha1.CosmosdbSQLContainer, err error) {
+func (c *FakeCosmosdbSQLContainers) Create(ctx context.Context, cosmosdbSQLContainer *v1alpha1.CosmosdbSQLContainer, opts v1.CreateOptions) (result *v1alpha1.CosmosdbSQLContainer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cosmosdbsqlcontainersResource, c.ns, cosmosdbSQLContainer), &v1alpha1.CosmosdbSQLContainer{})
 
@@ -91,7 +93,7 @@ func (c *FakeCosmosdbSQLContainers) Create(cosmosdbSQLContainer *v1alpha1.Cosmos
 }
 
 // Update takes the representation of a cosmosdbSQLContainer and updates it. Returns the server's representation of the cosmosdbSQLContainer, and an error, if there is any.
-func (c *FakeCosmosdbSQLContainers) Update(cosmosdbSQLContainer *v1alpha1.CosmosdbSQLContainer) (result *v1alpha1.CosmosdbSQLContainer, err error) {
+func (c *FakeCosmosdbSQLContainers) Update(ctx context.Context, cosmosdbSQLContainer *v1alpha1.CosmosdbSQLContainer, opts v1.UpdateOptions) (result *v1alpha1.CosmosdbSQLContainer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cosmosdbsqlcontainersResource, c.ns, cosmosdbSQLContainer), &v1alpha1.CosmosdbSQLContainer{})
 
@@ -103,7 +105,7 @@ func (c *FakeCosmosdbSQLContainers) Update(cosmosdbSQLContainer *v1alpha1.Cosmos
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCosmosdbSQLContainers) UpdateStatus(cosmosdbSQLContainer *v1alpha1.CosmosdbSQLContainer) (*v1alpha1.CosmosdbSQLContainer, error) {
+func (c *FakeCosmosdbSQLContainers) UpdateStatus(ctx context.Context, cosmosdbSQLContainer *v1alpha1.CosmosdbSQLContainer, opts v1.UpdateOptions) (*v1alpha1.CosmosdbSQLContainer, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cosmosdbsqlcontainersResource, "status", c.ns, cosmosdbSQLContainer), &v1alpha1.CosmosdbSQLContainer{})
 
@@ -114,7 +116,7 @@ func (c *FakeCosmosdbSQLContainers) UpdateStatus(cosmosdbSQLContainer *v1alpha1.
 }
 
 // Delete takes name of the cosmosdbSQLContainer and deletes it. Returns an error if one occurs.
-func (c *FakeCosmosdbSQLContainers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCosmosdbSQLContainers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cosmosdbsqlcontainersResource, c.ns, name), &v1alpha1.CosmosdbSQLContainer{})
 
@@ -122,15 +124,15 @@ func (c *FakeCosmosdbSQLContainers) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCosmosdbSQLContainers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cosmosdbsqlcontainersResource, c.ns, listOptions)
+func (c *FakeCosmosdbSQLContainers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cosmosdbsqlcontainersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CosmosdbSQLContainerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cosmosdbSQLContainer.
-func (c *FakeCosmosdbSQLContainers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CosmosdbSQLContainer, err error) {
+func (c *FakeCosmosdbSQLContainers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CosmosdbSQLContainer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cosmosdbsqlcontainersResource, c.ns, name, pt, data, subresources...), &v1alpha1.CosmosdbSQLContainer{})
 

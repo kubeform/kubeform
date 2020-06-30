@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var datasynclocationefsesResource = schema.GroupVersionResource{Group: "aws.kube
 var datasynclocationefsesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DatasyncLocationEfs"}
 
 // Get takes name of the datasyncLocationEfs, and returns the corresponding datasyncLocationEfs object, and an error if there is any.
-func (c *FakeDatasyncLocationEfses) Get(name string, options v1.GetOptions) (result *v1alpha1.DatasyncLocationEfs, err error) {
+func (c *FakeDatasyncLocationEfses) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DatasyncLocationEfs, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(datasynclocationefsesResource, c.ns, name), &v1alpha1.DatasyncLocationEfs{})
 
@@ -51,7 +53,7 @@ func (c *FakeDatasyncLocationEfses) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of DatasyncLocationEfses that match those selectors.
-func (c *FakeDatasyncLocationEfses) List(opts v1.ListOptions) (result *v1alpha1.DatasyncLocationEfsList, err error) {
+func (c *FakeDatasyncLocationEfses) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DatasyncLocationEfsList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(datasynclocationefsesResource, datasynclocationefsesKind, c.ns, opts), &v1alpha1.DatasyncLocationEfsList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDatasyncLocationEfses) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested datasyncLocationEfses.
-func (c *FakeDatasyncLocationEfses) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDatasyncLocationEfses) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(datasynclocationefsesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a datasyncLocationEfs and creates it.  Returns the server's representation of the datasyncLocationEfs, and an error, if there is any.
-func (c *FakeDatasyncLocationEfses) Create(datasyncLocationEfs *v1alpha1.DatasyncLocationEfs) (result *v1alpha1.DatasyncLocationEfs, err error) {
+func (c *FakeDatasyncLocationEfses) Create(ctx context.Context, datasyncLocationEfs *v1alpha1.DatasyncLocationEfs, opts v1.CreateOptions) (result *v1alpha1.DatasyncLocationEfs, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(datasynclocationefsesResource, c.ns, datasyncLocationEfs), &v1alpha1.DatasyncLocationEfs{})
 
@@ -91,7 +93,7 @@ func (c *FakeDatasyncLocationEfses) Create(datasyncLocationEfs *v1alpha1.Datasyn
 }
 
 // Update takes the representation of a datasyncLocationEfs and updates it. Returns the server's representation of the datasyncLocationEfs, and an error, if there is any.
-func (c *FakeDatasyncLocationEfses) Update(datasyncLocationEfs *v1alpha1.DatasyncLocationEfs) (result *v1alpha1.DatasyncLocationEfs, err error) {
+func (c *FakeDatasyncLocationEfses) Update(ctx context.Context, datasyncLocationEfs *v1alpha1.DatasyncLocationEfs, opts v1.UpdateOptions) (result *v1alpha1.DatasyncLocationEfs, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(datasynclocationefsesResource, c.ns, datasyncLocationEfs), &v1alpha1.DatasyncLocationEfs{})
 
@@ -103,7 +105,7 @@ func (c *FakeDatasyncLocationEfses) Update(datasyncLocationEfs *v1alpha1.Datasyn
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDatasyncLocationEfses) UpdateStatus(datasyncLocationEfs *v1alpha1.DatasyncLocationEfs) (*v1alpha1.DatasyncLocationEfs, error) {
+func (c *FakeDatasyncLocationEfses) UpdateStatus(ctx context.Context, datasyncLocationEfs *v1alpha1.DatasyncLocationEfs, opts v1.UpdateOptions) (*v1alpha1.DatasyncLocationEfs, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(datasynclocationefsesResource, "status", c.ns, datasyncLocationEfs), &v1alpha1.DatasyncLocationEfs{})
 
@@ -114,7 +116,7 @@ func (c *FakeDatasyncLocationEfses) UpdateStatus(datasyncLocationEfs *v1alpha1.D
 }
 
 // Delete takes name of the datasyncLocationEfs and deletes it. Returns an error if one occurs.
-func (c *FakeDatasyncLocationEfses) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDatasyncLocationEfses) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(datasynclocationefsesResource, c.ns, name), &v1alpha1.DatasyncLocationEfs{})
 
@@ -122,15 +124,15 @@ func (c *FakeDatasyncLocationEfses) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDatasyncLocationEfses) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(datasynclocationefsesResource, c.ns, listOptions)
+func (c *FakeDatasyncLocationEfses) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(datasynclocationefsesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DatasyncLocationEfsList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched datasyncLocationEfs.
-func (c *FakeDatasyncLocationEfses) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DatasyncLocationEfs, err error) {
+func (c *FakeDatasyncLocationEfses) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DatasyncLocationEfs, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(datasynclocationefsesResource, c.ns, name, pt, data, subresources...), &v1alpha1.DatasyncLocationEfs{})
 

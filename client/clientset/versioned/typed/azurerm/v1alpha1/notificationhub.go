@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type NotificationHubsGetter interface {
 
 // NotificationHubInterface has methods to work with NotificationHub resources.
 type NotificationHubInterface interface {
-	Create(*v1alpha1.NotificationHub) (*v1alpha1.NotificationHub, error)
-	Update(*v1alpha1.NotificationHub) (*v1alpha1.NotificationHub, error)
-	UpdateStatus(*v1alpha1.NotificationHub) (*v1alpha1.NotificationHub, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.NotificationHub, error)
-	List(opts v1.ListOptions) (*v1alpha1.NotificationHubList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.NotificationHub, err error)
+	Create(ctx context.Context, notificationHub *v1alpha1.NotificationHub, opts v1.CreateOptions) (*v1alpha1.NotificationHub, error)
+	Update(ctx context.Context, notificationHub *v1alpha1.NotificationHub, opts v1.UpdateOptions) (*v1alpha1.NotificationHub, error)
+	UpdateStatus(ctx context.Context, notificationHub *v1alpha1.NotificationHub, opts v1.UpdateOptions) (*v1alpha1.NotificationHub, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.NotificationHub, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.NotificationHubList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.NotificationHub, err error)
 	NotificationHubExpansion
 }
 
@@ -65,20 +66,20 @@ func newNotificationHubs(c *AzurermV1alpha1Client, namespace string) *notificati
 }
 
 // Get takes name of the notificationHub, and returns the corresponding notificationHub object, and an error if there is any.
-func (c *notificationHubs) Get(name string, options v1.GetOptions) (result *v1alpha1.NotificationHub, err error) {
+func (c *notificationHubs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.NotificationHub, err error) {
 	result = &v1alpha1.NotificationHub{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("notificationhubs").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of NotificationHubs that match those selectors.
-func (c *notificationHubs) List(opts v1.ListOptions) (result *v1alpha1.NotificationHubList, err error) {
+func (c *notificationHubs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.NotificationHubList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *notificationHubs) List(opts v1.ListOptions) (result *v1alpha1.Notificat
 		Resource("notificationhubs").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested notificationHubs.
-func (c *notificationHubs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *notificationHubs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *notificationHubs) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("notificationhubs").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a notificationHub and creates it.  Returns the server's representation of the notificationHub, and an error, if there is any.
-func (c *notificationHubs) Create(notificationHub *v1alpha1.NotificationHub) (result *v1alpha1.NotificationHub, err error) {
+func (c *notificationHubs) Create(ctx context.Context, notificationHub *v1alpha1.NotificationHub, opts v1.CreateOptions) (result *v1alpha1.NotificationHub, err error) {
 	result = &v1alpha1.NotificationHub{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("notificationhubs").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(notificationHub).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a notificationHub and updates it. Returns the server's representation of the notificationHub, and an error, if there is any.
-func (c *notificationHubs) Update(notificationHub *v1alpha1.NotificationHub) (result *v1alpha1.NotificationHub, err error) {
+func (c *notificationHubs) Update(ctx context.Context, notificationHub *v1alpha1.NotificationHub, opts v1.UpdateOptions) (result *v1alpha1.NotificationHub, err error) {
 	result = &v1alpha1.NotificationHub{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("notificationhubs").
 		Name(notificationHub.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(notificationHub).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *notificationHubs) UpdateStatus(notificationHub *v1alpha1.NotificationHub) (result *v1alpha1.NotificationHub, err error) {
+func (c *notificationHubs) UpdateStatus(ctx context.Context, notificationHub *v1alpha1.NotificationHub, opts v1.UpdateOptions) (result *v1alpha1.NotificationHub, err error) {
 	result = &v1alpha1.NotificationHub{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("notificationhubs").
 		Name(notificationHub.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(notificationHub).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the notificationHub and deletes it. Returns an error if one occurs.
-func (c *notificationHubs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *notificationHubs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("notificationhubs").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *notificationHubs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *notificationHubs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("notificationhubs").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched notificationHub.
-func (c *notificationHubs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.NotificationHub, err error) {
+func (c *notificationHubs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.NotificationHub, err error) {
 	result = &v1alpha1.NotificationHub{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("notificationhubs").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type DataFactoryDatasetMysqlsGetter interface {
 
 // DataFactoryDatasetMysqlInterface has methods to work with DataFactoryDatasetMysql resources.
 type DataFactoryDatasetMysqlInterface interface {
-	Create(*v1alpha1.DataFactoryDatasetMysql) (*v1alpha1.DataFactoryDatasetMysql, error)
-	Update(*v1alpha1.DataFactoryDatasetMysql) (*v1alpha1.DataFactoryDatasetMysql, error)
-	UpdateStatus(*v1alpha1.DataFactoryDatasetMysql) (*v1alpha1.DataFactoryDatasetMysql, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.DataFactoryDatasetMysql, error)
-	List(opts v1.ListOptions) (*v1alpha1.DataFactoryDatasetMysqlList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataFactoryDatasetMysql, err error)
+	Create(ctx context.Context, dataFactoryDatasetMysql *v1alpha1.DataFactoryDatasetMysql, opts v1.CreateOptions) (*v1alpha1.DataFactoryDatasetMysql, error)
+	Update(ctx context.Context, dataFactoryDatasetMysql *v1alpha1.DataFactoryDatasetMysql, opts v1.UpdateOptions) (*v1alpha1.DataFactoryDatasetMysql, error)
+	UpdateStatus(ctx context.Context, dataFactoryDatasetMysql *v1alpha1.DataFactoryDatasetMysql, opts v1.UpdateOptions) (*v1alpha1.DataFactoryDatasetMysql, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.DataFactoryDatasetMysql, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.DataFactoryDatasetMysqlList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataFactoryDatasetMysql, err error)
 	DataFactoryDatasetMysqlExpansion
 }
 
@@ -65,20 +66,20 @@ func newDataFactoryDatasetMysqls(c *AzurermV1alpha1Client, namespace string) *da
 }
 
 // Get takes name of the dataFactoryDatasetMysql, and returns the corresponding dataFactoryDatasetMysql object, and an error if there is any.
-func (c *dataFactoryDatasetMysqls) Get(name string, options v1.GetOptions) (result *v1alpha1.DataFactoryDatasetMysql, err error) {
+func (c *dataFactoryDatasetMysqls) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DataFactoryDatasetMysql, err error) {
 	result = &v1alpha1.DataFactoryDatasetMysql{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("datafactorydatasetmysqls").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of DataFactoryDatasetMysqls that match those selectors.
-func (c *dataFactoryDatasetMysqls) List(opts v1.ListOptions) (result *v1alpha1.DataFactoryDatasetMysqlList, err error) {
+func (c *dataFactoryDatasetMysqls) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DataFactoryDatasetMysqlList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *dataFactoryDatasetMysqls) List(opts v1.ListOptions) (result *v1alpha1.D
 		Resource("datafactorydatasetmysqls").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested dataFactoryDatasetMysqls.
-func (c *dataFactoryDatasetMysqls) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *dataFactoryDatasetMysqls) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *dataFactoryDatasetMysqls) Watch(opts v1.ListOptions) (watch.Interface, 
 		Resource("datafactorydatasetmysqls").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a dataFactoryDatasetMysql and creates it.  Returns the server's representation of the dataFactoryDatasetMysql, and an error, if there is any.
-func (c *dataFactoryDatasetMysqls) Create(dataFactoryDatasetMysql *v1alpha1.DataFactoryDatasetMysql) (result *v1alpha1.DataFactoryDatasetMysql, err error) {
+func (c *dataFactoryDatasetMysqls) Create(ctx context.Context, dataFactoryDatasetMysql *v1alpha1.DataFactoryDatasetMysql, opts v1.CreateOptions) (result *v1alpha1.DataFactoryDatasetMysql, err error) {
 	result = &v1alpha1.DataFactoryDatasetMysql{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("datafactorydatasetmysqls").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dataFactoryDatasetMysql).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a dataFactoryDatasetMysql and updates it. Returns the server's representation of the dataFactoryDatasetMysql, and an error, if there is any.
-func (c *dataFactoryDatasetMysqls) Update(dataFactoryDatasetMysql *v1alpha1.DataFactoryDatasetMysql) (result *v1alpha1.DataFactoryDatasetMysql, err error) {
+func (c *dataFactoryDatasetMysqls) Update(ctx context.Context, dataFactoryDatasetMysql *v1alpha1.DataFactoryDatasetMysql, opts v1.UpdateOptions) (result *v1alpha1.DataFactoryDatasetMysql, err error) {
 	result = &v1alpha1.DataFactoryDatasetMysql{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("datafactorydatasetmysqls").
 		Name(dataFactoryDatasetMysql.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dataFactoryDatasetMysql).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *dataFactoryDatasetMysqls) UpdateStatus(dataFactoryDatasetMysql *v1alpha1.DataFactoryDatasetMysql) (result *v1alpha1.DataFactoryDatasetMysql, err error) {
+func (c *dataFactoryDatasetMysqls) UpdateStatus(ctx context.Context, dataFactoryDatasetMysql *v1alpha1.DataFactoryDatasetMysql, opts v1.UpdateOptions) (result *v1alpha1.DataFactoryDatasetMysql, err error) {
 	result = &v1alpha1.DataFactoryDatasetMysql{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("datafactorydatasetmysqls").
 		Name(dataFactoryDatasetMysql.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dataFactoryDatasetMysql).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the dataFactoryDatasetMysql and deletes it. Returns an error if one occurs.
-func (c *dataFactoryDatasetMysqls) Delete(name string, options *v1.DeleteOptions) error {
+func (c *dataFactoryDatasetMysqls) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("datafactorydatasetmysqls").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *dataFactoryDatasetMysqls) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *dataFactoryDatasetMysqls) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("datafactorydatasetmysqls").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched dataFactoryDatasetMysql.
-func (c *dataFactoryDatasetMysqls) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataFactoryDatasetMysql, err error) {
+func (c *dataFactoryDatasetMysqls) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataFactoryDatasetMysql, err error) {
 	result = &v1alpha1.DataFactoryDatasetMysql{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("datafactorydatasetmysqls").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

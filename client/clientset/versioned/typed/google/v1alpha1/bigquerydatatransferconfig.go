@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type BigqueryDataTransferConfigsGetter interface {
 
 // BigqueryDataTransferConfigInterface has methods to work with BigqueryDataTransferConfig resources.
 type BigqueryDataTransferConfigInterface interface {
-	Create(*v1alpha1.BigqueryDataTransferConfig) (*v1alpha1.BigqueryDataTransferConfig, error)
-	Update(*v1alpha1.BigqueryDataTransferConfig) (*v1alpha1.BigqueryDataTransferConfig, error)
-	UpdateStatus(*v1alpha1.BigqueryDataTransferConfig) (*v1alpha1.BigqueryDataTransferConfig, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.BigqueryDataTransferConfig, error)
-	List(opts v1.ListOptions) (*v1alpha1.BigqueryDataTransferConfigList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BigqueryDataTransferConfig, err error)
+	Create(ctx context.Context, bigqueryDataTransferConfig *v1alpha1.BigqueryDataTransferConfig, opts v1.CreateOptions) (*v1alpha1.BigqueryDataTransferConfig, error)
+	Update(ctx context.Context, bigqueryDataTransferConfig *v1alpha1.BigqueryDataTransferConfig, opts v1.UpdateOptions) (*v1alpha1.BigqueryDataTransferConfig, error)
+	UpdateStatus(ctx context.Context, bigqueryDataTransferConfig *v1alpha1.BigqueryDataTransferConfig, opts v1.UpdateOptions) (*v1alpha1.BigqueryDataTransferConfig, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.BigqueryDataTransferConfig, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.BigqueryDataTransferConfigList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BigqueryDataTransferConfig, err error)
 	BigqueryDataTransferConfigExpansion
 }
 
@@ -65,20 +66,20 @@ func newBigqueryDataTransferConfigs(c *GoogleV1alpha1Client, namespace string) *
 }
 
 // Get takes name of the bigqueryDataTransferConfig, and returns the corresponding bigqueryDataTransferConfig object, and an error if there is any.
-func (c *bigqueryDataTransferConfigs) Get(name string, options v1.GetOptions) (result *v1alpha1.BigqueryDataTransferConfig, err error) {
+func (c *bigqueryDataTransferConfigs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BigqueryDataTransferConfig, err error) {
 	result = &v1alpha1.BigqueryDataTransferConfig{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("bigquerydatatransferconfigs").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of BigqueryDataTransferConfigs that match those selectors.
-func (c *bigqueryDataTransferConfigs) List(opts v1.ListOptions) (result *v1alpha1.BigqueryDataTransferConfigList, err error) {
+func (c *bigqueryDataTransferConfigs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BigqueryDataTransferConfigList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *bigqueryDataTransferConfigs) List(opts v1.ListOptions) (result *v1alpha
 		Resource("bigquerydatatransferconfigs").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested bigqueryDataTransferConfigs.
-func (c *bigqueryDataTransferConfigs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *bigqueryDataTransferConfigs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *bigqueryDataTransferConfigs) Watch(opts v1.ListOptions) (watch.Interfac
 		Resource("bigquerydatatransferconfigs").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a bigqueryDataTransferConfig and creates it.  Returns the server's representation of the bigqueryDataTransferConfig, and an error, if there is any.
-func (c *bigqueryDataTransferConfigs) Create(bigqueryDataTransferConfig *v1alpha1.BigqueryDataTransferConfig) (result *v1alpha1.BigqueryDataTransferConfig, err error) {
+func (c *bigqueryDataTransferConfigs) Create(ctx context.Context, bigqueryDataTransferConfig *v1alpha1.BigqueryDataTransferConfig, opts v1.CreateOptions) (result *v1alpha1.BigqueryDataTransferConfig, err error) {
 	result = &v1alpha1.BigqueryDataTransferConfig{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("bigquerydatatransferconfigs").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(bigqueryDataTransferConfig).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a bigqueryDataTransferConfig and updates it. Returns the server's representation of the bigqueryDataTransferConfig, and an error, if there is any.
-func (c *bigqueryDataTransferConfigs) Update(bigqueryDataTransferConfig *v1alpha1.BigqueryDataTransferConfig) (result *v1alpha1.BigqueryDataTransferConfig, err error) {
+func (c *bigqueryDataTransferConfigs) Update(ctx context.Context, bigqueryDataTransferConfig *v1alpha1.BigqueryDataTransferConfig, opts v1.UpdateOptions) (result *v1alpha1.BigqueryDataTransferConfig, err error) {
 	result = &v1alpha1.BigqueryDataTransferConfig{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("bigquerydatatransferconfigs").
 		Name(bigqueryDataTransferConfig.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(bigqueryDataTransferConfig).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *bigqueryDataTransferConfigs) UpdateStatus(bigqueryDataTransferConfig *v1alpha1.BigqueryDataTransferConfig) (result *v1alpha1.BigqueryDataTransferConfig, err error) {
+func (c *bigqueryDataTransferConfigs) UpdateStatus(ctx context.Context, bigqueryDataTransferConfig *v1alpha1.BigqueryDataTransferConfig, opts v1.UpdateOptions) (result *v1alpha1.BigqueryDataTransferConfig, err error) {
 	result = &v1alpha1.BigqueryDataTransferConfig{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("bigquerydatatransferconfigs").
 		Name(bigqueryDataTransferConfig.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(bigqueryDataTransferConfig).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the bigqueryDataTransferConfig and deletes it. Returns an error if one occurs.
-func (c *bigqueryDataTransferConfigs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *bigqueryDataTransferConfigs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("bigquerydatatransferconfigs").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *bigqueryDataTransferConfigs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *bigqueryDataTransferConfigs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("bigquerydatatransferconfigs").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched bigqueryDataTransferConfig.
-func (c *bigqueryDataTransferConfigs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BigqueryDataTransferConfig, err error) {
+func (c *bigqueryDataTransferConfigs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BigqueryDataTransferConfig, err error) {
 	result = &v1alpha1.BigqueryDataTransferConfig{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("bigquerydatatransferconfigs").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

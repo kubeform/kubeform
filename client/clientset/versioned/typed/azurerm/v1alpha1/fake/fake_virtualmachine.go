@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var virtualmachinesResource = schema.GroupVersionResource{Group: "azurerm.kubefo
 var virtualmachinesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "VirtualMachine"}
 
 // Get takes name of the virtualMachine, and returns the corresponding virtualMachine object, and an error if there is any.
-func (c *FakeVirtualMachines) Get(name string, options v1.GetOptions) (result *v1alpha1.VirtualMachine, err error) {
+func (c *FakeVirtualMachines) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.VirtualMachine, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(virtualmachinesResource, c.ns, name), &v1alpha1.VirtualMachine{})
 
@@ -51,7 +53,7 @@ func (c *FakeVirtualMachines) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of VirtualMachines that match those selectors.
-func (c *FakeVirtualMachines) List(opts v1.ListOptions) (result *v1alpha1.VirtualMachineList, err error) {
+func (c *FakeVirtualMachines) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.VirtualMachineList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(virtualmachinesResource, virtualmachinesKind, c.ns, opts), &v1alpha1.VirtualMachineList{})
 
@@ -73,14 +75,14 @@ func (c *FakeVirtualMachines) List(opts v1.ListOptions) (result *v1alpha1.Virtua
 }
 
 // Watch returns a watch.Interface that watches the requested virtualMachines.
-func (c *FakeVirtualMachines) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeVirtualMachines) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(virtualmachinesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a virtualMachine and creates it.  Returns the server's representation of the virtualMachine, and an error, if there is any.
-func (c *FakeVirtualMachines) Create(virtualMachine *v1alpha1.VirtualMachine) (result *v1alpha1.VirtualMachine, err error) {
+func (c *FakeVirtualMachines) Create(ctx context.Context, virtualMachine *v1alpha1.VirtualMachine, opts v1.CreateOptions) (result *v1alpha1.VirtualMachine, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(virtualmachinesResource, c.ns, virtualMachine), &v1alpha1.VirtualMachine{})
 
@@ -91,7 +93,7 @@ func (c *FakeVirtualMachines) Create(virtualMachine *v1alpha1.VirtualMachine) (r
 }
 
 // Update takes the representation of a virtualMachine and updates it. Returns the server's representation of the virtualMachine, and an error, if there is any.
-func (c *FakeVirtualMachines) Update(virtualMachine *v1alpha1.VirtualMachine) (result *v1alpha1.VirtualMachine, err error) {
+func (c *FakeVirtualMachines) Update(ctx context.Context, virtualMachine *v1alpha1.VirtualMachine, opts v1.UpdateOptions) (result *v1alpha1.VirtualMachine, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(virtualmachinesResource, c.ns, virtualMachine), &v1alpha1.VirtualMachine{})
 
@@ -103,7 +105,7 @@ func (c *FakeVirtualMachines) Update(virtualMachine *v1alpha1.VirtualMachine) (r
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeVirtualMachines) UpdateStatus(virtualMachine *v1alpha1.VirtualMachine) (*v1alpha1.VirtualMachine, error) {
+func (c *FakeVirtualMachines) UpdateStatus(ctx context.Context, virtualMachine *v1alpha1.VirtualMachine, opts v1.UpdateOptions) (*v1alpha1.VirtualMachine, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(virtualmachinesResource, "status", c.ns, virtualMachine), &v1alpha1.VirtualMachine{})
 
@@ -114,7 +116,7 @@ func (c *FakeVirtualMachines) UpdateStatus(virtualMachine *v1alpha1.VirtualMachi
 }
 
 // Delete takes name of the virtualMachine and deletes it. Returns an error if one occurs.
-func (c *FakeVirtualMachines) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeVirtualMachines) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(virtualmachinesResource, c.ns, name), &v1alpha1.VirtualMachine{})
 
@@ -122,15 +124,15 @@ func (c *FakeVirtualMachines) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeVirtualMachines) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(virtualmachinesResource, c.ns, listOptions)
+func (c *FakeVirtualMachines) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(virtualmachinesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.VirtualMachineList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched virtualMachine.
-func (c *FakeVirtualMachines) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.VirtualMachine, err error) {
+func (c *FakeVirtualMachines) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.VirtualMachine, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(virtualmachinesResource, c.ns, name, pt, data, subresources...), &v1alpha1.VirtualMachine{})
 

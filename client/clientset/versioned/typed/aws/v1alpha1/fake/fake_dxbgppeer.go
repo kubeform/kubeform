@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dxbgppeersResource = schema.GroupVersionResource{Group: "aws.kubeform.com", 
 var dxbgppeersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DxBGPPeer"}
 
 // Get takes name of the dxBGPPeer, and returns the corresponding dxBGPPeer object, and an error if there is any.
-func (c *FakeDxBGPPeers) Get(name string, options v1.GetOptions) (result *v1alpha1.DxBGPPeer, err error) {
+func (c *FakeDxBGPPeers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DxBGPPeer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dxbgppeersResource, c.ns, name), &v1alpha1.DxBGPPeer{})
 
@@ -51,7 +53,7 @@ func (c *FakeDxBGPPeers) Get(name string, options v1.GetOptions) (result *v1alph
 }
 
 // List takes label and field selectors, and returns the list of DxBGPPeers that match those selectors.
-func (c *FakeDxBGPPeers) List(opts v1.ListOptions) (result *v1alpha1.DxBGPPeerList, err error) {
+func (c *FakeDxBGPPeers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DxBGPPeerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dxbgppeersResource, dxbgppeersKind, c.ns, opts), &v1alpha1.DxBGPPeerList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDxBGPPeers) List(opts v1.ListOptions) (result *v1alpha1.DxBGPPeerLi
 }
 
 // Watch returns a watch.Interface that watches the requested dxBGPPeers.
-func (c *FakeDxBGPPeers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDxBGPPeers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dxbgppeersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dxBGPPeer and creates it.  Returns the server's representation of the dxBGPPeer, and an error, if there is any.
-func (c *FakeDxBGPPeers) Create(dxBGPPeer *v1alpha1.DxBGPPeer) (result *v1alpha1.DxBGPPeer, err error) {
+func (c *FakeDxBGPPeers) Create(ctx context.Context, dxBGPPeer *v1alpha1.DxBGPPeer, opts v1.CreateOptions) (result *v1alpha1.DxBGPPeer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dxbgppeersResource, c.ns, dxBGPPeer), &v1alpha1.DxBGPPeer{})
 
@@ -91,7 +93,7 @@ func (c *FakeDxBGPPeers) Create(dxBGPPeer *v1alpha1.DxBGPPeer) (result *v1alpha1
 }
 
 // Update takes the representation of a dxBGPPeer and updates it. Returns the server's representation of the dxBGPPeer, and an error, if there is any.
-func (c *FakeDxBGPPeers) Update(dxBGPPeer *v1alpha1.DxBGPPeer) (result *v1alpha1.DxBGPPeer, err error) {
+func (c *FakeDxBGPPeers) Update(ctx context.Context, dxBGPPeer *v1alpha1.DxBGPPeer, opts v1.UpdateOptions) (result *v1alpha1.DxBGPPeer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dxbgppeersResource, c.ns, dxBGPPeer), &v1alpha1.DxBGPPeer{})
 
@@ -103,7 +105,7 @@ func (c *FakeDxBGPPeers) Update(dxBGPPeer *v1alpha1.DxBGPPeer) (result *v1alpha1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDxBGPPeers) UpdateStatus(dxBGPPeer *v1alpha1.DxBGPPeer) (*v1alpha1.DxBGPPeer, error) {
+func (c *FakeDxBGPPeers) UpdateStatus(ctx context.Context, dxBGPPeer *v1alpha1.DxBGPPeer, opts v1.UpdateOptions) (*v1alpha1.DxBGPPeer, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dxbgppeersResource, "status", c.ns, dxBGPPeer), &v1alpha1.DxBGPPeer{})
 
@@ -114,7 +116,7 @@ func (c *FakeDxBGPPeers) UpdateStatus(dxBGPPeer *v1alpha1.DxBGPPeer) (*v1alpha1.
 }
 
 // Delete takes name of the dxBGPPeer and deletes it. Returns an error if one occurs.
-func (c *FakeDxBGPPeers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDxBGPPeers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dxbgppeersResource, c.ns, name), &v1alpha1.DxBGPPeer{})
 
@@ -122,15 +124,15 @@ func (c *FakeDxBGPPeers) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDxBGPPeers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dxbgppeersResource, c.ns, listOptions)
+func (c *FakeDxBGPPeers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dxbgppeersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DxBGPPeerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dxBGPPeer.
-func (c *FakeDxBGPPeers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DxBGPPeer, err error) {
+func (c *FakeDxBGPPeers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DxBGPPeer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dxbgppeersResource, c.ns, name, pt, data, subresources...), &v1alpha1.DxBGPPeer{})
 

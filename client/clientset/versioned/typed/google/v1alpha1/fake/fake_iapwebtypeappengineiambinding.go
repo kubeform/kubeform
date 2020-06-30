@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iapwebtypeappengineiambindingsResource = schema.GroupVersionResource{Group: 
 var iapwebtypeappengineiambindingsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "IapWebTypeAppEngineIamBinding"}
 
 // Get takes name of the iapWebTypeAppEngineIamBinding, and returns the corresponding iapWebTypeAppEngineIamBinding object, and an error if there is any.
-func (c *FakeIapWebTypeAppEngineIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.IapWebTypeAppEngineIamBinding, err error) {
+func (c *FakeIapWebTypeAppEngineIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IapWebTypeAppEngineIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iapwebtypeappengineiambindingsResource, c.ns, name), &v1alpha1.IapWebTypeAppEngineIamBinding{})
 
@@ -51,7 +53,7 @@ func (c *FakeIapWebTypeAppEngineIamBindings) Get(name string, options v1.GetOpti
 }
 
 // List takes label and field selectors, and returns the list of IapWebTypeAppEngineIamBindings that match those selectors.
-func (c *FakeIapWebTypeAppEngineIamBindings) List(opts v1.ListOptions) (result *v1alpha1.IapWebTypeAppEngineIamBindingList, err error) {
+func (c *FakeIapWebTypeAppEngineIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IapWebTypeAppEngineIamBindingList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iapwebtypeappengineiambindingsResource, iapwebtypeappengineiambindingsKind, c.ns, opts), &v1alpha1.IapWebTypeAppEngineIamBindingList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIapWebTypeAppEngineIamBindings) List(opts v1.ListOptions) (result *
 }
 
 // Watch returns a watch.Interface that watches the requested iapWebTypeAppEngineIamBindings.
-func (c *FakeIapWebTypeAppEngineIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIapWebTypeAppEngineIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iapwebtypeappengineiambindingsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iapWebTypeAppEngineIamBinding and creates it.  Returns the server's representation of the iapWebTypeAppEngineIamBinding, and an error, if there is any.
-func (c *FakeIapWebTypeAppEngineIamBindings) Create(iapWebTypeAppEngineIamBinding *v1alpha1.IapWebTypeAppEngineIamBinding) (result *v1alpha1.IapWebTypeAppEngineIamBinding, err error) {
+func (c *FakeIapWebTypeAppEngineIamBindings) Create(ctx context.Context, iapWebTypeAppEngineIamBinding *v1alpha1.IapWebTypeAppEngineIamBinding, opts v1.CreateOptions) (result *v1alpha1.IapWebTypeAppEngineIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iapwebtypeappengineiambindingsResource, c.ns, iapWebTypeAppEngineIamBinding), &v1alpha1.IapWebTypeAppEngineIamBinding{})
 
@@ -91,7 +93,7 @@ func (c *FakeIapWebTypeAppEngineIamBindings) Create(iapWebTypeAppEngineIamBindin
 }
 
 // Update takes the representation of a iapWebTypeAppEngineIamBinding and updates it. Returns the server's representation of the iapWebTypeAppEngineIamBinding, and an error, if there is any.
-func (c *FakeIapWebTypeAppEngineIamBindings) Update(iapWebTypeAppEngineIamBinding *v1alpha1.IapWebTypeAppEngineIamBinding) (result *v1alpha1.IapWebTypeAppEngineIamBinding, err error) {
+func (c *FakeIapWebTypeAppEngineIamBindings) Update(ctx context.Context, iapWebTypeAppEngineIamBinding *v1alpha1.IapWebTypeAppEngineIamBinding, opts v1.UpdateOptions) (result *v1alpha1.IapWebTypeAppEngineIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iapwebtypeappengineiambindingsResource, c.ns, iapWebTypeAppEngineIamBinding), &v1alpha1.IapWebTypeAppEngineIamBinding{})
 
@@ -103,7 +105,7 @@ func (c *FakeIapWebTypeAppEngineIamBindings) Update(iapWebTypeAppEngineIamBindin
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIapWebTypeAppEngineIamBindings) UpdateStatus(iapWebTypeAppEngineIamBinding *v1alpha1.IapWebTypeAppEngineIamBinding) (*v1alpha1.IapWebTypeAppEngineIamBinding, error) {
+func (c *FakeIapWebTypeAppEngineIamBindings) UpdateStatus(ctx context.Context, iapWebTypeAppEngineIamBinding *v1alpha1.IapWebTypeAppEngineIamBinding, opts v1.UpdateOptions) (*v1alpha1.IapWebTypeAppEngineIamBinding, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iapwebtypeappengineiambindingsResource, "status", c.ns, iapWebTypeAppEngineIamBinding), &v1alpha1.IapWebTypeAppEngineIamBinding{})
 
@@ -114,7 +116,7 @@ func (c *FakeIapWebTypeAppEngineIamBindings) UpdateStatus(iapWebTypeAppEngineIam
 }
 
 // Delete takes name of the iapWebTypeAppEngineIamBinding and deletes it. Returns an error if one occurs.
-func (c *FakeIapWebTypeAppEngineIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIapWebTypeAppEngineIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iapwebtypeappengineiambindingsResource, c.ns, name), &v1alpha1.IapWebTypeAppEngineIamBinding{})
 
@@ -122,15 +124,15 @@ func (c *FakeIapWebTypeAppEngineIamBindings) Delete(name string, options *v1.Del
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIapWebTypeAppEngineIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iapwebtypeappengineiambindingsResource, c.ns, listOptions)
+func (c *FakeIapWebTypeAppEngineIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iapwebtypeappengineiambindingsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IapWebTypeAppEngineIamBindingList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iapWebTypeAppEngineIamBinding.
-func (c *FakeIapWebTypeAppEngineIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IapWebTypeAppEngineIamBinding, err error) {
+func (c *FakeIapWebTypeAppEngineIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IapWebTypeAppEngineIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iapwebtypeappengineiambindingsResource, c.ns, name, pt, data, subresources...), &v1alpha1.IapWebTypeAppEngineIamBinding{})
 

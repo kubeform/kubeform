@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var azureadapplicationsResource = schema.GroupVersionResource{Group: "azurerm.ku
 var azureadapplicationsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "AzureadApplication"}
 
 // Get takes name of the azureadApplication, and returns the corresponding azureadApplication object, and an error if there is any.
-func (c *FakeAzureadApplications) Get(name string, options v1.GetOptions) (result *v1alpha1.AzureadApplication, err error) {
+func (c *FakeAzureadApplications) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AzureadApplication, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(azureadapplicationsResource, c.ns, name), &v1alpha1.AzureadApplication{})
 
@@ -51,7 +53,7 @@ func (c *FakeAzureadApplications) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of AzureadApplications that match those selectors.
-func (c *FakeAzureadApplications) List(opts v1.ListOptions) (result *v1alpha1.AzureadApplicationList, err error) {
+func (c *FakeAzureadApplications) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AzureadApplicationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(azureadapplicationsResource, azureadapplicationsKind, c.ns, opts), &v1alpha1.AzureadApplicationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAzureadApplications) List(opts v1.ListOptions) (result *v1alpha1.Az
 }
 
 // Watch returns a watch.Interface that watches the requested azureadApplications.
-func (c *FakeAzureadApplications) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAzureadApplications) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(azureadapplicationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a azureadApplication and creates it.  Returns the server's representation of the azureadApplication, and an error, if there is any.
-func (c *FakeAzureadApplications) Create(azureadApplication *v1alpha1.AzureadApplication) (result *v1alpha1.AzureadApplication, err error) {
+func (c *FakeAzureadApplications) Create(ctx context.Context, azureadApplication *v1alpha1.AzureadApplication, opts v1.CreateOptions) (result *v1alpha1.AzureadApplication, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(azureadapplicationsResource, c.ns, azureadApplication), &v1alpha1.AzureadApplication{})
 
@@ -91,7 +93,7 @@ func (c *FakeAzureadApplications) Create(azureadApplication *v1alpha1.AzureadApp
 }
 
 // Update takes the representation of a azureadApplication and updates it. Returns the server's representation of the azureadApplication, and an error, if there is any.
-func (c *FakeAzureadApplications) Update(azureadApplication *v1alpha1.AzureadApplication) (result *v1alpha1.AzureadApplication, err error) {
+func (c *FakeAzureadApplications) Update(ctx context.Context, azureadApplication *v1alpha1.AzureadApplication, opts v1.UpdateOptions) (result *v1alpha1.AzureadApplication, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(azureadapplicationsResource, c.ns, azureadApplication), &v1alpha1.AzureadApplication{})
 
@@ -103,7 +105,7 @@ func (c *FakeAzureadApplications) Update(azureadApplication *v1alpha1.AzureadApp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAzureadApplications) UpdateStatus(azureadApplication *v1alpha1.AzureadApplication) (*v1alpha1.AzureadApplication, error) {
+func (c *FakeAzureadApplications) UpdateStatus(ctx context.Context, azureadApplication *v1alpha1.AzureadApplication, opts v1.UpdateOptions) (*v1alpha1.AzureadApplication, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(azureadapplicationsResource, "status", c.ns, azureadApplication), &v1alpha1.AzureadApplication{})
 
@@ -114,7 +116,7 @@ func (c *FakeAzureadApplications) UpdateStatus(azureadApplication *v1alpha1.Azur
 }
 
 // Delete takes name of the azureadApplication and deletes it. Returns an error if one occurs.
-func (c *FakeAzureadApplications) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAzureadApplications) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(azureadapplicationsResource, c.ns, name), &v1alpha1.AzureadApplication{})
 
@@ -122,15 +124,15 @@ func (c *FakeAzureadApplications) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAzureadApplications) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(azureadapplicationsResource, c.ns, listOptions)
+func (c *FakeAzureadApplications) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(azureadapplicationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AzureadApplicationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched azureadApplication.
-func (c *FakeAzureadApplications) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AzureadApplication, err error) {
+func (c *FakeAzureadApplications) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AzureadApplication, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(azureadapplicationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.AzureadApplication{})
 

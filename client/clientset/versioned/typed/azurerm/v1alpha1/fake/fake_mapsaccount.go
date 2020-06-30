@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var mapsaccountsResource = schema.GroupVersionResource{Group: "azurerm.kubeform.
 var mapsaccountsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "MapsAccount"}
 
 // Get takes name of the mapsAccount, and returns the corresponding mapsAccount object, and an error if there is any.
-func (c *FakeMapsAccounts) Get(name string, options v1.GetOptions) (result *v1alpha1.MapsAccount, err error) {
+func (c *FakeMapsAccounts) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.MapsAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(mapsaccountsResource, c.ns, name), &v1alpha1.MapsAccount{})
 
@@ -51,7 +53,7 @@ func (c *FakeMapsAccounts) Get(name string, options v1.GetOptions) (result *v1al
 }
 
 // List takes label and field selectors, and returns the list of MapsAccounts that match those selectors.
-func (c *FakeMapsAccounts) List(opts v1.ListOptions) (result *v1alpha1.MapsAccountList, err error) {
+func (c *FakeMapsAccounts) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.MapsAccountList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(mapsaccountsResource, mapsaccountsKind, c.ns, opts), &v1alpha1.MapsAccountList{})
 
@@ -73,14 +75,14 @@ func (c *FakeMapsAccounts) List(opts v1.ListOptions) (result *v1alpha1.MapsAccou
 }
 
 // Watch returns a watch.Interface that watches the requested mapsAccounts.
-func (c *FakeMapsAccounts) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeMapsAccounts) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(mapsaccountsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a mapsAccount and creates it.  Returns the server's representation of the mapsAccount, and an error, if there is any.
-func (c *FakeMapsAccounts) Create(mapsAccount *v1alpha1.MapsAccount) (result *v1alpha1.MapsAccount, err error) {
+func (c *FakeMapsAccounts) Create(ctx context.Context, mapsAccount *v1alpha1.MapsAccount, opts v1.CreateOptions) (result *v1alpha1.MapsAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(mapsaccountsResource, c.ns, mapsAccount), &v1alpha1.MapsAccount{})
 
@@ -91,7 +93,7 @@ func (c *FakeMapsAccounts) Create(mapsAccount *v1alpha1.MapsAccount) (result *v1
 }
 
 // Update takes the representation of a mapsAccount and updates it. Returns the server's representation of the mapsAccount, and an error, if there is any.
-func (c *FakeMapsAccounts) Update(mapsAccount *v1alpha1.MapsAccount) (result *v1alpha1.MapsAccount, err error) {
+func (c *FakeMapsAccounts) Update(ctx context.Context, mapsAccount *v1alpha1.MapsAccount, opts v1.UpdateOptions) (result *v1alpha1.MapsAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(mapsaccountsResource, c.ns, mapsAccount), &v1alpha1.MapsAccount{})
 
@@ -103,7 +105,7 @@ func (c *FakeMapsAccounts) Update(mapsAccount *v1alpha1.MapsAccount) (result *v1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeMapsAccounts) UpdateStatus(mapsAccount *v1alpha1.MapsAccount) (*v1alpha1.MapsAccount, error) {
+func (c *FakeMapsAccounts) UpdateStatus(ctx context.Context, mapsAccount *v1alpha1.MapsAccount, opts v1.UpdateOptions) (*v1alpha1.MapsAccount, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(mapsaccountsResource, "status", c.ns, mapsAccount), &v1alpha1.MapsAccount{})
 
@@ -114,7 +116,7 @@ func (c *FakeMapsAccounts) UpdateStatus(mapsAccount *v1alpha1.MapsAccount) (*v1a
 }
 
 // Delete takes name of the mapsAccount and deletes it. Returns an error if one occurs.
-func (c *FakeMapsAccounts) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeMapsAccounts) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(mapsaccountsResource, c.ns, name), &v1alpha1.MapsAccount{})
 
@@ -122,15 +124,15 @@ func (c *FakeMapsAccounts) Delete(name string, options *v1.DeleteOptions) error 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeMapsAccounts) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(mapsaccountsResource, c.ns, listOptions)
+func (c *FakeMapsAccounts) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(mapsaccountsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.MapsAccountList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched mapsAccount.
-func (c *FakeMapsAccounts) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MapsAccount, err error) {
+func (c *FakeMapsAccounts) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MapsAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(mapsaccountsResource, c.ns, name, pt, data, subresources...), &v1alpha1.MapsAccount{})
 

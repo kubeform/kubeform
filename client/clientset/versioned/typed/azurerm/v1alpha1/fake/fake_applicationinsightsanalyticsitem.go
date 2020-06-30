@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var applicationinsightsanalyticsitemsResource = schema.GroupVersionResource{Grou
 var applicationinsightsanalyticsitemsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "ApplicationInsightsAnalyticsItem"}
 
 // Get takes name of the applicationInsightsAnalyticsItem, and returns the corresponding applicationInsightsAnalyticsItem object, and an error if there is any.
-func (c *FakeApplicationInsightsAnalyticsItems) Get(name string, options v1.GetOptions) (result *v1alpha1.ApplicationInsightsAnalyticsItem, err error) {
+func (c *FakeApplicationInsightsAnalyticsItems) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApplicationInsightsAnalyticsItem, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(applicationinsightsanalyticsitemsResource, c.ns, name), &v1alpha1.ApplicationInsightsAnalyticsItem{})
 
@@ -51,7 +53,7 @@ func (c *FakeApplicationInsightsAnalyticsItems) Get(name string, options v1.GetO
 }
 
 // List takes label and field selectors, and returns the list of ApplicationInsightsAnalyticsItems that match those selectors.
-func (c *FakeApplicationInsightsAnalyticsItems) List(opts v1.ListOptions) (result *v1alpha1.ApplicationInsightsAnalyticsItemList, err error) {
+func (c *FakeApplicationInsightsAnalyticsItems) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApplicationInsightsAnalyticsItemList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(applicationinsightsanalyticsitemsResource, applicationinsightsanalyticsitemsKind, c.ns, opts), &v1alpha1.ApplicationInsightsAnalyticsItemList{})
 
@@ -73,14 +75,14 @@ func (c *FakeApplicationInsightsAnalyticsItems) List(opts v1.ListOptions) (resul
 }
 
 // Watch returns a watch.Interface that watches the requested applicationInsightsAnalyticsItems.
-func (c *FakeApplicationInsightsAnalyticsItems) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeApplicationInsightsAnalyticsItems) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(applicationinsightsanalyticsitemsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a applicationInsightsAnalyticsItem and creates it.  Returns the server's representation of the applicationInsightsAnalyticsItem, and an error, if there is any.
-func (c *FakeApplicationInsightsAnalyticsItems) Create(applicationInsightsAnalyticsItem *v1alpha1.ApplicationInsightsAnalyticsItem) (result *v1alpha1.ApplicationInsightsAnalyticsItem, err error) {
+func (c *FakeApplicationInsightsAnalyticsItems) Create(ctx context.Context, applicationInsightsAnalyticsItem *v1alpha1.ApplicationInsightsAnalyticsItem, opts v1.CreateOptions) (result *v1alpha1.ApplicationInsightsAnalyticsItem, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(applicationinsightsanalyticsitemsResource, c.ns, applicationInsightsAnalyticsItem), &v1alpha1.ApplicationInsightsAnalyticsItem{})
 
@@ -91,7 +93,7 @@ func (c *FakeApplicationInsightsAnalyticsItems) Create(applicationInsightsAnalyt
 }
 
 // Update takes the representation of a applicationInsightsAnalyticsItem and updates it. Returns the server's representation of the applicationInsightsAnalyticsItem, and an error, if there is any.
-func (c *FakeApplicationInsightsAnalyticsItems) Update(applicationInsightsAnalyticsItem *v1alpha1.ApplicationInsightsAnalyticsItem) (result *v1alpha1.ApplicationInsightsAnalyticsItem, err error) {
+func (c *FakeApplicationInsightsAnalyticsItems) Update(ctx context.Context, applicationInsightsAnalyticsItem *v1alpha1.ApplicationInsightsAnalyticsItem, opts v1.UpdateOptions) (result *v1alpha1.ApplicationInsightsAnalyticsItem, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(applicationinsightsanalyticsitemsResource, c.ns, applicationInsightsAnalyticsItem), &v1alpha1.ApplicationInsightsAnalyticsItem{})
 
@@ -103,7 +105,7 @@ func (c *FakeApplicationInsightsAnalyticsItems) Update(applicationInsightsAnalyt
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeApplicationInsightsAnalyticsItems) UpdateStatus(applicationInsightsAnalyticsItem *v1alpha1.ApplicationInsightsAnalyticsItem) (*v1alpha1.ApplicationInsightsAnalyticsItem, error) {
+func (c *FakeApplicationInsightsAnalyticsItems) UpdateStatus(ctx context.Context, applicationInsightsAnalyticsItem *v1alpha1.ApplicationInsightsAnalyticsItem, opts v1.UpdateOptions) (*v1alpha1.ApplicationInsightsAnalyticsItem, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(applicationinsightsanalyticsitemsResource, "status", c.ns, applicationInsightsAnalyticsItem), &v1alpha1.ApplicationInsightsAnalyticsItem{})
 
@@ -114,7 +116,7 @@ func (c *FakeApplicationInsightsAnalyticsItems) UpdateStatus(applicationInsights
 }
 
 // Delete takes name of the applicationInsightsAnalyticsItem and deletes it. Returns an error if one occurs.
-func (c *FakeApplicationInsightsAnalyticsItems) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeApplicationInsightsAnalyticsItems) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(applicationinsightsanalyticsitemsResource, c.ns, name), &v1alpha1.ApplicationInsightsAnalyticsItem{})
 
@@ -122,15 +124,15 @@ func (c *FakeApplicationInsightsAnalyticsItems) Delete(name string, options *v1.
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeApplicationInsightsAnalyticsItems) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(applicationinsightsanalyticsitemsResource, c.ns, listOptions)
+func (c *FakeApplicationInsightsAnalyticsItems) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(applicationinsightsanalyticsitemsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ApplicationInsightsAnalyticsItemList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched applicationInsightsAnalyticsItem.
-func (c *FakeApplicationInsightsAnalyticsItems) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApplicationInsightsAnalyticsItem, err error) {
+func (c *FakeApplicationInsightsAnalyticsItems) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApplicationInsightsAnalyticsItem, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(applicationinsightsanalyticsitemsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ApplicationInsightsAnalyticsItem{})
 

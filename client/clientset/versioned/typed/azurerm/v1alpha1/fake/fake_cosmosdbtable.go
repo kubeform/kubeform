@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cosmosdbtablesResource = schema.GroupVersionResource{Group: "azurerm.kubefor
 var cosmosdbtablesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "CosmosdbTable"}
 
 // Get takes name of the cosmosdbTable, and returns the corresponding cosmosdbTable object, and an error if there is any.
-func (c *FakeCosmosdbTables) Get(name string, options v1.GetOptions) (result *v1alpha1.CosmosdbTable, err error) {
+func (c *FakeCosmosdbTables) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CosmosdbTable, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cosmosdbtablesResource, c.ns, name), &v1alpha1.CosmosdbTable{})
 
@@ -51,7 +53,7 @@ func (c *FakeCosmosdbTables) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of CosmosdbTables that match those selectors.
-func (c *FakeCosmosdbTables) List(opts v1.ListOptions) (result *v1alpha1.CosmosdbTableList, err error) {
+func (c *FakeCosmosdbTables) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CosmosdbTableList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cosmosdbtablesResource, cosmosdbtablesKind, c.ns, opts), &v1alpha1.CosmosdbTableList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCosmosdbTables) List(opts v1.ListOptions) (result *v1alpha1.Cosmosd
 }
 
 // Watch returns a watch.Interface that watches the requested cosmosdbTables.
-func (c *FakeCosmosdbTables) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCosmosdbTables) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cosmosdbtablesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cosmosdbTable and creates it.  Returns the server's representation of the cosmosdbTable, and an error, if there is any.
-func (c *FakeCosmosdbTables) Create(cosmosdbTable *v1alpha1.CosmosdbTable) (result *v1alpha1.CosmosdbTable, err error) {
+func (c *FakeCosmosdbTables) Create(ctx context.Context, cosmosdbTable *v1alpha1.CosmosdbTable, opts v1.CreateOptions) (result *v1alpha1.CosmosdbTable, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cosmosdbtablesResource, c.ns, cosmosdbTable), &v1alpha1.CosmosdbTable{})
 
@@ -91,7 +93,7 @@ func (c *FakeCosmosdbTables) Create(cosmosdbTable *v1alpha1.CosmosdbTable) (resu
 }
 
 // Update takes the representation of a cosmosdbTable and updates it. Returns the server's representation of the cosmosdbTable, and an error, if there is any.
-func (c *FakeCosmosdbTables) Update(cosmosdbTable *v1alpha1.CosmosdbTable) (result *v1alpha1.CosmosdbTable, err error) {
+func (c *FakeCosmosdbTables) Update(ctx context.Context, cosmosdbTable *v1alpha1.CosmosdbTable, opts v1.UpdateOptions) (result *v1alpha1.CosmosdbTable, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cosmosdbtablesResource, c.ns, cosmosdbTable), &v1alpha1.CosmosdbTable{})
 
@@ -103,7 +105,7 @@ func (c *FakeCosmosdbTables) Update(cosmosdbTable *v1alpha1.CosmosdbTable) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCosmosdbTables) UpdateStatus(cosmosdbTable *v1alpha1.CosmosdbTable) (*v1alpha1.CosmosdbTable, error) {
+func (c *FakeCosmosdbTables) UpdateStatus(ctx context.Context, cosmosdbTable *v1alpha1.CosmosdbTable, opts v1.UpdateOptions) (*v1alpha1.CosmosdbTable, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cosmosdbtablesResource, "status", c.ns, cosmosdbTable), &v1alpha1.CosmosdbTable{})
 
@@ -114,7 +116,7 @@ func (c *FakeCosmosdbTables) UpdateStatus(cosmosdbTable *v1alpha1.CosmosdbTable)
 }
 
 // Delete takes name of the cosmosdbTable and deletes it. Returns an error if one occurs.
-func (c *FakeCosmosdbTables) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCosmosdbTables) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cosmosdbtablesResource, c.ns, name), &v1alpha1.CosmosdbTable{})
 
@@ -122,15 +124,15 @@ func (c *FakeCosmosdbTables) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCosmosdbTables) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cosmosdbtablesResource, c.ns, listOptions)
+func (c *FakeCosmosdbTables) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cosmosdbtablesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CosmosdbTableList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cosmosdbTable.
-func (c *FakeCosmosdbTables) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CosmosdbTable, err error) {
+func (c *FakeCosmosdbTables) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CosmosdbTable, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cosmosdbtablesResource, c.ns, name, pt, data, subresources...), &v1alpha1.CosmosdbTable{})
 

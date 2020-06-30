@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var glueclassifiersResource = schema.GroupVersionResource{Group: "aws.kubeform.c
 var glueclassifiersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "GlueClassifier"}
 
 // Get takes name of the glueClassifier, and returns the corresponding glueClassifier object, and an error if there is any.
-func (c *FakeGlueClassifiers) Get(name string, options v1.GetOptions) (result *v1alpha1.GlueClassifier, err error) {
+func (c *FakeGlueClassifiers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.GlueClassifier, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(glueclassifiersResource, c.ns, name), &v1alpha1.GlueClassifier{})
 
@@ -51,7 +53,7 @@ func (c *FakeGlueClassifiers) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of GlueClassifiers that match those selectors.
-func (c *FakeGlueClassifiers) List(opts v1.ListOptions) (result *v1alpha1.GlueClassifierList, err error) {
+func (c *FakeGlueClassifiers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.GlueClassifierList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(glueclassifiersResource, glueclassifiersKind, c.ns, opts), &v1alpha1.GlueClassifierList{})
 
@@ -73,14 +75,14 @@ func (c *FakeGlueClassifiers) List(opts v1.ListOptions) (result *v1alpha1.GlueCl
 }
 
 // Watch returns a watch.Interface that watches the requested glueClassifiers.
-func (c *FakeGlueClassifiers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeGlueClassifiers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(glueclassifiersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a glueClassifier and creates it.  Returns the server's representation of the glueClassifier, and an error, if there is any.
-func (c *FakeGlueClassifiers) Create(glueClassifier *v1alpha1.GlueClassifier) (result *v1alpha1.GlueClassifier, err error) {
+func (c *FakeGlueClassifiers) Create(ctx context.Context, glueClassifier *v1alpha1.GlueClassifier, opts v1.CreateOptions) (result *v1alpha1.GlueClassifier, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(glueclassifiersResource, c.ns, glueClassifier), &v1alpha1.GlueClassifier{})
 
@@ -91,7 +93,7 @@ func (c *FakeGlueClassifiers) Create(glueClassifier *v1alpha1.GlueClassifier) (r
 }
 
 // Update takes the representation of a glueClassifier and updates it. Returns the server's representation of the glueClassifier, and an error, if there is any.
-func (c *FakeGlueClassifiers) Update(glueClassifier *v1alpha1.GlueClassifier) (result *v1alpha1.GlueClassifier, err error) {
+func (c *FakeGlueClassifiers) Update(ctx context.Context, glueClassifier *v1alpha1.GlueClassifier, opts v1.UpdateOptions) (result *v1alpha1.GlueClassifier, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(glueclassifiersResource, c.ns, glueClassifier), &v1alpha1.GlueClassifier{})
 
@@ -103,7 +105,7 @@ func (c *FakeGlueClassifiers) Update(glueClassifier *v1alpha1.GlueClassifier) (r
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeGlueClassifiers) UpdateStatus(glueClassifier *v1alpha1.GlueClassifier) (*v1alpha1.GlueClassifier, error) {
+func (c *FakeGlueClassifiers) UpdateStatus(ctx context.Context, glueClassifier *v1alpha1.GlueClassifier, opts v1.UpdateOptions) (*v1alpha1.GlueClassifier, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(glueclassifiersResource, "status", c.ns, glueClassifier), &v1alpha1.GlueClassifier{})
 
@@ -114,7 +116,7 @@ func (c *FakeGlueClassifiers) UpdateStatus(glueClassifier *v1alpha1.GlueClassifi
 }
 
 // Delete takes name of the glueClassifier and deletes it. Returns an error if one occurs.
-func (c *FakeGlueClassifiers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeGlueClassifiers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(glueclassifiersResource, c.ns, name), &v1alpha1.GlueClassifier{})
 
@@ -122,15 +124,15 @@ func (c *FakeGlueClassifiers) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeGlueClassifiers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(glueclassifiersResource, c.ns, listOptions)
+func (c *FakeGlueClassifiers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(glueclassifiersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.GlueClassifierList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched glueClassifier.
-func (c *FakeGlueClassifiers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.GlueClassifier, err error) {
+func (c *FakeGlueClassifiers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.GlueClassifier, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(glueclassifiersResource, c.ns, name, pt, data, subresources...), &v1alpha1.GlueClassifier{})
 

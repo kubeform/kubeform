@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var datafactorylinkedservicepostgresqlsResource = schema.GroupVersionResource{Gr
 var datafactorylinkedservicepostgresqlsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "DataFactoryLinkedServicePostgresql"}
 
 // Get takes name of the dataFactoryLinkedServicePostgresql, and returns the corresponding dataFactoryLinkedServicePostgresql object, and an error if there is any.
-func (c *FakeDataFactoryLinkedServicePostgresqls) Get(name string, options v1.GetOptions) (result *v1alpha1.DataFactoryLinkedServicePostgresql, err error) {
+func (c *FakeDataFactoryLinkedServicePostgresqls) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DataFactoryLinkedServicePostgresql, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(datafactorylinkedservicepostgresqlsResource, c.ns, name), &v1alpha1.DataFactoryLinkedServicePostgresql{})
 
@@ -51,7 +53,7 @@ func (c *FakeDataFactoryLinkedServicePostgresqls) Get(name string, options v1.Ge
 }
 
 // List takes label and field selectors, and returns the list of DataFactoryLinkedServicePostgresqls that match those selectors.
-func (c *FakeDataFactoryLinkedServicePostgresqls) List(opts v1.ListOptions) (result *v1alpha1.DataFactoryLinkedServicePostgresqlList, err error) {
+func (c *FakeDataFactoryLinkedServicePostgresqls) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DataFactoryLinkedServicePostgresqlList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(datafactorylinkedservicepostgresqlsResource, datafactorylinkedservicepostgresqlsKind, c.ns, opts), &v1alpha1.DataFactoryLinkedServicePostgresqlList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDataFactoryLinkedServicePostgresqls) List(opts v1.ListOptions) (res
 }
 
 // Watch returns a watch.Interface that watches the requested dataFactoryLinkedServicePostgresqls.
-func (c *FakeDataFactoryLinkedServicePostgresqls) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDataFactoryLinkedServicePostgresqls) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(datafactorylinkedservicepostgresqlsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dataFactoryLinkedServicePostgresql and creates it.  Returns the server's representation of the dataFactoryLinkedServicePostgresql, and an error, if there is any.
-func (c *FakeDataFactoryLinkedServicePostgresqls) Create(dataFactoryLinkedServicePostgresql *v1alpha1.DataFactoryLinkedServicePostgresql) (result *v1alpha1.DataFactoryLinkedServicePostgresql, err error) {
+func (c *FakeDataFactoryLinkedServicePostgresqls) Create(ctx context.Context, dataFactoryLinkedServicePostgresql *v1alpha1.DataFactoryLinkedServicePostgresql, opts v1.CreateOptions) (result *v1alpha1.DataFactoryLinkedServicePostgresql, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(datafactorylinkedservicepostgresqlsResource, c.ns, dataFactoryLinkedServicePostgresql), &v1alpha1.DataFactoryLinkedServicePostgresql{})
 
@@ -91,7 +93,7 @@ func (c *FakeDataFactoryLinkedServicePostgresqls) Create(dataFactoryLinkedServic
 }
 
 // Update takes the representation of a dataFactoryLinkedServicePostgresql and updates it. Returns the server's representation of the dataFactoryLinkedServicePostgresql, and an error, if there is any.
-func (c *FakeDataFactoryLinkedServicePostgresqls) Update(dataFactoryLinkedServicePostgresql *v1alpha1.DataFactoryLinkedServicePostgresql) (result *v1alpha1.DataFactoryLinkedServicePostgresql, err error) {
+func (c *FakeDataFactoryLinkedServicePostgresqls) Update(ctx context.Context, dataFactoryLinkedServicePostgresql *v1alpha1.DataFactoryLinkedServicePostgresql, opts v1.UpdateOptions) (result *v1alpha1.DataFactoryLinkedServicePostgresql, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(datafactorylinkedservicepostgresqlsResource, c.ns, dataFactoryLinkedServicePostgresql), &v1alpha1.DataFactoryLinkedServicePostgresql{})
 
@@ -103,7 +105,7 @@ func (c *FakeDataFactoryLinkedServicePostgresqls) Update(dataFactoryLinkedServic
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDataFactoryLinkedServicePostgresqls) UpdateStatus(dataFactoryLinkedServicePostgresql *v1alpha1.DataFactoryLinkedServicePostgresql) (*v1alpha1.DataFactoryLinkedServicePostgresql, error) {
+func (c *FakeDataFactoryLinkedServicePostgresqls) UpdateStatus(ctx context.Context, dataFactoryLinkedServicePostgresql *v1alpha1.DataFactoryLinkedServicePostgresql, opts v1.UpdateOptions) (*v1alpha1.DataFactoryLinkedServicePostgresql, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(datafactorylinkedservicepostgresqlsResource, "status", c.ns, dataFactoryLinkedServicePostgresql), &v1alpha1.DataFactoryLinkedServicePostgresql{})
 
@@ -114,7 +116,7 @@ func (c *FakeDataFactoryLinkedServicePostgresqls) UpdateStatus(dataFactoryLinked
 }
 
 // Delete takes name of the dataFactoryLinkedServicePostgresql and deletes it. Returns an error if one occurs.
-func (c *FakeDataFactoryLinkedServicePostgresqls) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDataFactoryLinkedServicePostgresqls) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(datafactorylinkedservicepostgresqlsResource, c.ns, name), &v1alpha1.DataFactoryLinkedServicePostgresql{})
 
@@ -122,15 +124,15 @@ func (c *FakeDataFactoryLinkedServicePostgresqls) Delete(name string, options *v
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDataFactoryLinkedServicePostgresqls) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(datafactorylinkedservicepostgresqlsResource, c.ns, listOptions)
+func (c *FakeDataFactoryLinkedServicePostgresqls) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(datafactorylinkedservicepostgresqlsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DataFactoryLinkedServicePostgresqlList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dataFactoryLinkedServicePostgresql.
-func (c *FakeDataFactoryLinkedServicePostgresqls) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataFactoryLinkedServicePostgresql, err error) {
+func (c *FakeDataFactoryLinkedServicePostgresqls) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataFactoryLinkedServicePostgresql, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(datafactorylinkedservicepostgresqlsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DataFactoryLinkedServicePostgresql{})
 

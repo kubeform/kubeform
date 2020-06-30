@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var netapppoolsResource = schema.GroupVersionResource{Group: "azurerm.kubeform.c
 var netapppoolsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "NetappPool"}
 
 // Get takes name of the netappPool, and returns the corresponding netappPool object, and an error if there is any.
-func (c *FakeNetappPools) Get(name string, options v1.GetOptions) (result *v1alpha1.NetappPool, err error) {
+func (c *FakeNetappPools) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.NetappPool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(netapppoolsResource, c.ns, name), &v1alpha1.NetappPool{})
 
@@ -51,7 +53,7 @@ func (c *FakeNetappPools) Get(name string, options v1.GetOptions) (result *v1alp
 }
 
 // List takes label and field selectors, and returns the list of NetappPools that match those selectors.
-func (c *FakeNetappPools) List(opts v1.ListOptions) (result *v1alpha1.NetappPoolList, err error) {
+func (c *FakeNetappPools) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.NetappPoolList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(netapppoolsResource, netapppoolsKind, c.ns, opts), &v1alpha1.NetappPoolList{})
 
@@ -73,14 +75,14 @@ func (c *FakeNetappPools) List(opts v1.ListOptions) (result *v1alpha1.NetappPool
 }
 
 // Watch returns a watch.Interface that watches the requested netappPools.
-func (c *FakeNetappPools) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeNetappPools) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(netapppoolsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a netappPool and creates it.  Returns the server's representation of the netappPool, and an error, if there is any.
-func (c *FakeNetappPools) Create(netappPool *v1alpha1.NetappPool) (result *v1alpha1.NetappPool, err error) {
+func (c *FakeNetappPools) Create(ctx context.Context, netappPool *v1alpha1.NetappPool, opts v1.CreateOptions) (result *v1alpha1.NetappPool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(netapppoolsResource, c.ns, netappPool), &v1alpha1.NetappPool{})
 
@@ -91,7 +93,7 @@ func (c *FakeNetappPools) Create(netappPool *v1alpha1.NetappPool) (result *v1alp
 }
 
 // Update takes the representation of a netappPool and updates it. Returns the server's representation of the netappPool, and an error, if there is any.
-func (c *FakeNetappPools) Update(netappPool *v1alpha1.NetappPool) (result *v1alpha1.NetappPool, err error) {
+func (c *FakeNetappPools) Update(ctx context.Context, netappPool *v1alpha1.NetappPool, opts v1.UpdateOptions) (result *v1alpha1.NetappPool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(netapppoolsResource, c.ns, netappPool), &v1alpha1.NetappPool{})
 
@@ -103,7 +105,7 @@ func (c *FakeNetappPools) Update(netappPool *v1alpha1.NetappPool) (result *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeNetappPools) UpdateStatus(netappPool *v1alpha1.NetappPool) (*v1alpha1.NetappPool, error) {
+func (c *FakeNetappPools) UpdateStatus(ctx context.Context, netappPool *v1alpha1.NetappPool, opts v1.UpdateOptions) (*v1alpha1.NetappPool, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(netapppoolsResource, "status", c.ns, netappPool), &v1alpha1.NetappPool{})
 
@@ -114,7 +116,7 @@ func (c *FakeNetappPools) UpdateStatus(netappPool *v1alpha1.NetappPool) (*v1alph
 }
 
 // Delete takes name of the netappPool and deletes it. Returns an error if one occurs.
-func (c *FakeNetappPools) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeNetappPools) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(netapppoolsResource, c.ns, name), &v1alpha1.NetappPool{})
 
@@ -122,15 +124,15 @@ func (c *FakeNetappPools) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeNetappPools) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(netapppoolsResource, c.ns, listOptions)
+func (c *FakeNetappPools) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(netapppoolsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.NetappPoolList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched netappPool.
-func (c *FakeNetappPools) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.NetappPool, err error) {
+func (c *FakeNetappPools) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.NetappPool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(netapppoolsResource, c.ns, name, pt, data, subresources...), &v1alpha1.NetappPool{})
 

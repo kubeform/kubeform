@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var datasynclocationnfsesResource = schema.GroupVersionResource{Group: "aws.kube
 var datasynclocationnfsesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DatasyncLocationNfs"}
 
 // Get takes name of the datasyncLocationNfs, and returns the corresponding datasyncLocationNfs object, and an error if there is any.
-func (c *FakeDatasyncLocationNfses) Get(name string, options v1.GetOptions) (result *v1alpha1.DatasyncLocationNfs, err error) {
+func (c *FakeDatasyncLocationNfses) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DatasyncLocationNfs, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(datasynclocationnfsesResource, c.ns, name), &v1alpha1.DatasyncLocationNfs{})
 
@@ -51,7 +53,7 @@ func (c *FakeDatasyncLocationNfses) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of DatasyncLocationNfses that match those selectors.
-func (c *FakeDatasyncLocationNfses) List(opts v1.ListOptions) (result *v1alpha1.DatasyncLocationNfsList, err error) {
+func (c *FakeDatasyncLocationNfses) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DatasyncLocationNfsList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(datasynclocationnfsesResource, datasynclocationnfsesKind, c.ns, opts), &v1alpha1.DatasyncLocationNfsList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDatasyncLocationNfses) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested datasyncLocationNfses.
-func (c *FakeDatasyncLocationNfses) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDatasyncLocationNfses) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(datasynclocationnfsesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a datasyncLocationNfs and creates it.  Returns the server's representation of the datasyncLocationNfs, and an error, if there is any.
-func (c *FakeDatasyncLocationNfses) Create(datasyncLocationNfs *v1alpha1.DatasyncLocationNfs) (result *v1alpha1.DatasyncLocationNfs, err error) {
+func (c *FakeDatasyncLocationNfses) Create(ctx context.Context, datasyncLocationNfs *v1alpha1.DatasyncLocationNfs, opts v1.CreateOptions) (result *v1alpha1.DatasyncLocationNfs, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(datasynclocationnfsesResource, c.ns, datasyncLocationNfs), &v1alpha1.DatasyncLocationNfs{})
 
@@ -91,7 +93,7 @@ func (c *FakeDatasyncLocationNfses) Create(datasyncLocationNfs *v1alpha1.Datasyn
 }
 
 // Update takes the representation of a datasyncLocationNfs and updates it. Returns the server's representation of the datasyncLocationNfs, and an error, if there is any.
-func (c *FakeDatasyncLocationNfses) Update(datasyncLocationNfs *v1alpha1.DatasyncLocationNfs) (result *v1alpha1.DatasyncLocationNfs, err error) {
+func (c *FakeDatasyncLocationNfses) Update(ctx context.Context, datasyncLocationNfs *v1alpha1.DatasyncLocationNfs, opts v1.UpdateOptions) (result *v1alpha1.DatasyncLocationNfs, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(datasynclocationnfsesResource, c.ns, datasyncLocationNfs), &v1alpha1.DatasyncLocationNfs{})
 
@@ -103,7 +105,7 @@ func (c *FakeDatasyncLocationNfses) Update(datasyncLocationNfs *v1alpha1.Datasyn
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDatasyncLocationNfses) UpdateStatus(datasyncLocationNfs *v1alpha1.DatasyncLocationNfs) (*v1alpha1.DatasyncLocationNfs, error) {
+func (c *FakeDatasyncLocationNfses) UpdateStatus(ctx context.Context, datasyncLocationNfs *v1alpha1.DatasyncLocationNfs, opts v1.UpdateOptions) (*v1alpha1.DatasyncLocationNfs, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(datasynclocationnfsesResource, "status", c.ns, datasyncLocationNfs), &v1alpha1.DatasyncLocationNfs{})
 
@@ -114,7 +116,7 @@ func (c *FakeDatasyncLocationNfses) UpdateStatus(datasyncLocationNfs *v1alpha1.D
 }
 
 // Delete takes name of the datasyncLocationNfs and deletes it. Returns an error if one occurs.
-func (c *FakeDatasyncLocationNfses) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDatasyncLocationNfses) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(datasynclocationnfsesResource, c.ns, name), &v1alpha1.DatasyncLocationNfs{})
 
@@ -122,15 +124,15 @@ func (c *FakeDatasyncLocationNfses) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDatasyncLocationNfses) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(datasynclocationnfsesResource, c.ns, listOptions)
+func (c *FakeDatasyncLocationNfses) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(datasynclocationnfsesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DatasyncLocationNfsList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched datasyncLocationNfs.
-func (c *FakeDatasyncLocationNfses) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DatasyncLocationNfs, err error) {
+func (c *FakeDatasyncLocationNfses) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DatasyncLocationNfs, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(datasynclocationnfsesResource, c.ns, name, pt, data, subresources...), &v1alpha1.DatasyncLocationNfs{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var kustodatabaseprincipalsResource = schema.GroupVersionResource{Group: "azurer
 var kustodatabaseprincipalsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "KustoDatabasePrincipal"}
 
 // Get takes name of the kustoDatabasePrincipal, and returns the corresponding kustoDatabasePrincipal object, and an error if there is any.
-func (c *FakeKustoDatabasePrincipals) Get(name string, options v1.GetOptions) (result *v1alpha1.KustoDatabasePrincipal, err error) {
+func (c *FakeKustoDatabasePrincipals) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KustoDatabasePrincipal, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(kustodatabaseprincipalsResource, c.ns, name), &v1alpha1.KustoDatabasePrincipal{})
 
@@ -51,7 +53,7 @@ func (c *FakeKustoDatabasePrincipals) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of KustoDatabasePrincipals that match those selectors.
-func (c *FakeKustoDatabasePrincipals) List(opts v1.ListOptions) (result *v1alpha1.KustoDatabasePrincipalList, err error) {
+func (c *FakeKustoDatabasePrincipals) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KustoDatabasePrincipalList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(kustodatabaseprincipalsResource, kustodatabaseprincipalsKind, c.ns, opts), &v1alpha1.KustoDatabasePrincipalList{})
 
@@ -73,14 +75,14 @@ func (c *FakeKustoDatabasePrincipals) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested kustoDatabasePrincipals.
-func (c *FakeKustoDatabasePrincipals) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeKustoDatabasePrincipals) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(kustodatabaseprincipalsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a kustoDatabasePrincipal and creates it.  Returns the server's representation of the kustoDatabasePrincipal, and an error, if there is any.
-func (c *FakeKustoDatabasePrincipals) Create(kustoDatabasePrincipal *v1alpha1.KustoDatabasePrincipal) (result *v1alpha1.KustoDatabasePrincipal, err error) {
+func (c *FakeKustoDatabasePrincipals) Create(ctx context.Context, kustoDatabasePrincipal *v1alpha1.KustoDatabasePrincipal, opts v1.CreateOptions) (result *v1alpha1.KustoDatabasePrincipal, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(kustodatabaseprincipalsResource, c.ns, kustoDatabasePrincipal), &v1alpha1.KustoDatabasePrincipal{})
 
@@ -91,7 +93,7 @@ func (c *FakeKustoDatabasePrincipals) Create(kustoDatabasePrincipal *v1alpha1.Ku
 }
 
 // Update takes the representation of a kustoDatabasePrincipal and updates it. Returns the server's representation of the kustoDatabasePrincipal, and an error, if there is any.
-func (c *FakeKustoDatabasePrincipals) Update(kustoDatabasePrincipal *v1alpha1.KustoDatabasePrincipal) (result *v1alpha1.KustoDatabasePrincipal, err error) {
+func (c *FakeKustoDatabasePrincipals) Update(ctx context.Context, kustoDatabasePrincipal *v1alpha1.KustoDatabasePrincipal, opts v1.UpdateOptions) (result *v1alpha1.KustoDatabasePrincipal, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(kustodatabaseprincipalsResource, c.ns, kustoDatabasePrincipal), &v1alpha1.KustoDatabasePrincipal{})
 
@@ -103,7 +105,7 @@ func (c *FakeKustoDatabasePrincipals) Update(kustoDatabasePrincipal *v1alpha1.Ku
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeKustoDatabasePrincipals) UpdateStatus(kustoDatabasePrincipal *v1alpha1.KustoDatabasePrincipal) (*v1alpha1.KustoDatabasePrincipal, error) {
+func (c *FakeKustoDatabasePrincipals) UpdateStatus(ctx context.Context, kustoDatabasePrincipal *v1alpha1.KustoDatabasePrincipal, opts v1.UpdateOptions) (*v1alpha1.KustoDatabasePrincipal, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(kustodatabaseprincipalsResource, "status", c.ns, kustoDatabasePrincipal), &v1alpha1.KustoDatabasePrincipal{})
 
@@ -114,7 +116,7 @@ func (c *FakeKustoDatabasePrincipals) UpdateStatus(kustoDatabasePrincipal *v1alp
 }
 
 // Delete takes name of the kustoDatabasePrincipal and deletes it. Returns an error if one occurs.
-func (c *FakeKustoDatabasePrincipals) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeKustoDatabasePrincipals) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(kustodatabaseprincipalsResource, c.ns, name), &v1alpha1.KustoDatabasePrincipal{})
 
@@ -122,15 +124,15 @@ func (c *FakeKustoDatabasePrincipals) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeKustoDatabasePrincipals) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(kustodatabaseprincipalsResource, c.ns, listOptions)
+func (c *FakeKustoDatabasePrincipals) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(kustodatabaseprincipalsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.KustoDatabasePrincipalList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched kustoDatabasePrincipal.
-func (c *FakeKustoDatabasePrincipals) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KustoDatabasePrincipal, err error) {
+func (c *FakeKustoDatabasePrincipals) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KustoDatabasePrincipal, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(kustodatabaseprincipalsResource, c.ns, name, pt, data, subresources...), &v1alpha1.KustoDatabasePrincipal{})
 

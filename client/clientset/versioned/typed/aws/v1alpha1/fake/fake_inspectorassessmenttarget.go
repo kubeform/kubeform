@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var inspectorassessmenttargetsResource = schema.GroupVersionResource{Group: "aws
 var inspectorassessmenttargetsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "InspectorAssessmentTarget"}
 
 // Get takes name of the inspectorAssessmentTarget, and returns the corresponding inspectorAssessmentTarget object, and an error if there is any.
-func (c *FakeInspectorAssessmentTargets) Get(name string, options v1.GetOptions) (result *v1alpha1.InspectorAssessmentTarget, err error) {
+func (c *FakeInspectorAssessmentTargets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.InspectorAssessmentTarget, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(inspectorassessmenttargetsResource, c.ns, name), &v1alpha1.InspectorAssessmentTarget{})
 
@@ -51,7 +53,7 @@ func (c *FakeInspectorAssessmentTargets) Get(name string, options v1.GetOptions)
 }
 
 // List takes label and field selectors, and returns the list of InspectorAssessmentTargets that match those selectors.
-func (c *FakeInspectorAssessmentTargets) List(opts v1.ListOptions) (result *v1alpha1.InspectorAssessmentTargetList, err error) {
+func (c *FakeInspectorAssessmentTargets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.InspectorAssessmentTargetList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(inspectorassessmenttargetsResource, inspectorassessmenttargetsKind, c.ns, opts), &v1alpha1.InspectorAssessmentTargetList{})
 
@@ -73,14 +75,14 @@ func (c *FakeInspectorAssessmentTargets) List(opts v1.ListOptions) (result *v1al
 }
 
 // Watch returns a watch.Interface that watches the requested inspectorAssessmentTargets.
-func (c *FakeInspectorAssessmentTargets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeInspectorAssessmentTargets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(inspectorassessmenttargetsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a inspectorAssessmentTarget and creates it.  Returns the server's representation of the inspectorAssessmentTarget, and an error, if there is any.
-func (c *FakeInspectorAssessmentTargets) Create(inspectorAssessmentTarget *v1alpha1.InspectorAssessmentTarget) (result *v1alpha1.InspectorAssessmentTarget, err error) {
+func (c *FakeInspectorAssessmentTargets) Create(ctx context.Context, inspectorAssessmentTarget *v1alpha1.InspectorAssessmentTarget, opts v1.CreateOptions) (result *v1alpha1.InspectorAssessmentTarget, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(inspectorassessmenttargetsResource, c.ns, inspectorAssessmentTarget), &v1alpha1.InspectorAssessmentTarget{})
 
@@ -91,7 +93,7 @@ func (c *FakeInspectorAssessmentTargets) Create(inspectorAssessmentTarget *v1alp
 }
 
 // Update takes the representation of a inspectorAssessmentTarget and updates it. Returns the server's representation of the inspectorAssessmentTarget, and an error, if there is any.
-func (c *FakeInspectorAssessmentTargets) Update(inspectorAssessmentTarget *v1alpha1.InspectorAssessmentTarget) (result *v1alpha1.InspectorAssessmentTarget, err error) {
+func (c *FakeInspectorAssessmentTargets) Update(ctx context.Context, inspectorAssessmentTarget *v1alpha1.InspectorAssessmentTarget, opts v1.UpdateOptions) (result *v1alpha1.InspectorAssessmentTarget, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(inspectorassessmenttargetsResource, c.ns, inspectorAssessmentTarget), &v1alpha1.InspectorAssessmentTarget{})
 
@@ -103,7 +105,7 @@ func (c *FakeInspectorAssessmentTargets) Update(inspectorAssessmentTarget *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeInspectorAssessmentTargets) UpdateStatus(inspectorAssessmentTarget *v1alpha1.InspectorAssessmentTarget) (*v1alpha1.InspectorAssessmentTarget, error) {
+func (c *FakeInspectorAssessmentTargets) UpdateStatus(ctx context.Context, inspectorAssessmentTarget *v1alpha1.InspectorAssessmentTarget, opts v1.UpdateOptions) (*v1alpha1.InspectorAssessmentTarget, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(inspectorassessmenttargetsResource, "status", c.ns, inspectorAssessmentTarget), &v1alpha1.InspectorAssessmentTarget{})
 
@@ -114,7 +116,7 @@ func (c *FakeInspectorAssessmentTargets) UpdateStatus(inspectorAssessmentTarget 
 }
 
 // Delete takes name of the inspectorAssessmentTarget and deletes it. Returns an error if one occurs.
-func (c *FakeInspectorAssessmentTargets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeInspectorAssessmentTargets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(inspectorassessmenttargetsResource, c.ns, name), &v1alpha1.InspectorAssessmentTarget{})
 
@@ -122,15 +124,15 @@ func (c *FakeInspectorAssessmentTargets) Delete(name string, options *v1.DeleteO
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeInspectorAssessmentTargets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(inspectorassessmenttargetsResource, c.ns, listOptions)
+func (c *FakeInspectorAssessmentTargets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(inspectorassessmenttargetsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.InspectorAssessmentTargetList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched inspectorAssessmentTarget.
-func (c *FakeInspectorAssessmentTargets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.InspectorAssessmentTarget, err error) {
+func (c *FakeInspectorAssessmentTargets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.InspectorAssessmentTarget, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(inspectorassessmenttargetsResource, c.ns, name, pt, data, subresources...), &v1alpha1.InspectorAssessmentTarget{})
 

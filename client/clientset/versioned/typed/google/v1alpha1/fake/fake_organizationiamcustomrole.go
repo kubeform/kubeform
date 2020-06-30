@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var organizationiamcustomrolesResource = schema.GroupVersionResource{Group: "goo
 var organizationiamcustomrolesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "OrganizationIamCustomRole"}
 
 // Get takes name of the organizationIamCustomRole, and returns the corresponding organizationIamCustomRole object, and an error if there is any.
-func (c *FakeOrganizationIamCustomRoles) Get(name string, options v1.GetOptions) (result *v1alpha1.OrganizationIamCustomRole, err error) {
+func (c *FakeOrganizationIamCustomRoles) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.OrganizationIamCustomRole, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(organizationiamcustomrolesResource, c.ns, name), &v1alpha1.OrganizationIamCustomRole{})
 
@@ -51,7 +53,7 @@ func (c *FakeOrganizationIamCustomRoles) Get(name string, options v1.GetOptions)
 }
 
 // List takes label and field selectors, and returns the list of OrganizationIamCustomRoles that match those selectors.
-func (c *FakeOrganizationIamCustomRoles) List(opts v1.ListOptions) (result *v1alpha1.OrganizationIamCustomRoleList, err error) {
+func (c *FakeOrganizationIamCustomRoles) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.OrganizationIamCustomRoleList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(organizationiamcustomrolesResource, organizationiamcustomrolesKind, c.ns, opts), &v1alpha1.OrganizationIamCustomRoleList{})
 
@@ -73,14 +75,14 @@ func (c *FakeOrganizationIamCustomRoles) List(opts v1.ListOptions) (result *v1al
 }
 
 // Watch returns a watch.Interface that watches the requested organizationIamCustomRoles.
-func (c *FakeOrganizationIamCustomRoles) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeOrganizationIamCustomRoles) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(organizationiamcustomrolesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a organizationIamCustomRole and creates it.  Returns the server's representation of the organizationIamCustomRole, and an error, if there is any.
-func (c *FakeOrganizationIamCustomRoles) Create(organizationIamCustomRole *v1alpha1.OrganizationIamCustomRole) (result *v1alpha1.OrganizationIamCustomRole, err error) {
+func (c *FakeOrganizationIamCustomRoles) Create(ctx context.Context, organizationIamCustomRole *v1alpha1.OrganizationIamCustomRole, opts v1.CreateOptions) (result *v1alpha1.OrganizationIamCustomRole, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(organizationiamcustomrolesResource, c.ns, organizationIamCustomRole), &v1alpha1.OrganizationIamCustomRole{})
 
@@ -91,7 +93,7 @@ func (c *FakeOrganizationIamCustomRoles) Create(organizationIamCustomRole *v1alp
 }
 
 // Update takes the representation of a organizationIamCustomRole and updates it. Returns the server's representation of the organizationIamCustomRole, and an error, if there is any.
-func (c *FakeOrganizationIamCustomRoles) Update(organizationIamCustomRole *v1alpha1.OrganizationIamCustomRole) (result *v1alpha1.OrganizationIamCustomRole, err error) {
+func (c *FakeOrganizationIamCustomRoles) Update(ctx context.Context, organizationIamCustomRole *v1alpha1.OrganizationIamCustomRole, opts v1.UpdateOptions) (result *v1alpha1.OrganizationIamCustomRole, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(organizationiamcustomrolesResource, c.ns, organizationIamCustomRole), &v1alpha1.OrganizationIamCustomRole{})
 
@@ -103,7 +105,7 @@ func (c *FakeOrganizationIamCustomRoles) Update(organizationIamCustomRole *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeOrganizationIamCustomRoles) UpdateStatus(organizationIamCustomRole *v1alpha1.OrganizationIamCustomRole) (*v1alpha1.OrganizationIamCustomRole, error) {
+func (c *FakeOrganizationIamCustomRoles) UpdateStatus(ctx context.Context, organizationIamCustomRole *v1alpha1.OrganizationIamCustomRole, opts v1.UpdateOptions) (*v1alpha1.OrganizationIamCustomRole, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(organizationiamcustomrolesResource, "status", c.ns, organizationIamCustomRole), &v1alpha1.OrganizationIamCustomRole{})
 
@@ -114,7 +116,7 @@ func (c *FakeOrganizationIamCustomRoles) UpdateStatus(organizationIamCustomRole 
 }
 
 // Delete takes name of the organizationIamCustomRole and deletes it. Returns an error if one occurs.
-func (c *FakeOrganizationIamCustomRoles) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeOrganizationIamCustomRoles) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(organizationiamcustomrolesResource, c.ns, name), &v1alpha1.OrganizationIamCustomRole{})
 
@@ -122,15 +124,15 @@ func (c *FakeOrganizationIamCustomRoles) Delete(name string, options *v1.DeleteO
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeOrganizationIamCustomRoles) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(organizationiamcustomrolesResource, c.ns, listOptions)
+func (c *FakeOrganizationIamCustomRoles) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(organizationiamcustomrolesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.OrganizationIamCustomRoleList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched organizationIamCustomRole.
-func (c *FakeOrganizationIamCustomRoles) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.OrganizationIamCustomRole, err error) {
+func (c *FakeOrganizationIamCustomRoles) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.OrganizationIamCustomRole, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(organizationiamcustomrolesResource, c.ns, name, pt, data, subresources...), &v1alpha1.OrganizationIamCustomRole{})
 

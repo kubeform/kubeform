@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var devtestvirtualnetworksResource = schema.GroupVersionResource{Group: "azurerm
 var devtestvirtualnetworksKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "DevTestVirtualNetwork"}
 
 // Get takes name of the devTestVirtualNetwork, and returns the corresponding devTestVirtualNetwork object, and an error if there is any.
-func (c *FakeDevTestVirtualNetworks) Get(name string, options v1.GetOptions) (result *v1alpha1.DevTestVirtualNetwork, err error) {
+func (c *FakeDevTestVirtualNetworks) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DevTestVirtualNetwork, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(devtestvirtualnetworksResource, c.ns, name), &v1alpha1.DevTestVirtualNetwork{})
 
@@ -51,7 +53,7 @@ func (c *FakeDevTestVirtualNetworks) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of DevTestVirtualNetworks that match those selectors.
-func (c *FakeDevTestVirtualNetworks) List(opts v1.ListOptions) (result *v1alpha1.DevTestVirtualNetworkList, err error) {
+func (c *FakeDevTestVirtualNetworks) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DevTestVirtualNetworkList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(devtestvirtualnetworksResource, devtestvirtualnetworksKind, c.ns, opts), &v1alpha1.DevTestVirtualNetworkList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDevTestVirtualNetworks) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested devTestVirtualNetworks.
-func (c *FakeDevTestVirtualNetworks) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDevTestVirtualNetworks) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(devtestvirtualnetworksResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a devTestVirtualNetwork and creates it.  Returns the server's representation of the devTestVirtualNetwork, and an error, if there is any.
-func (c *FakeDevTestVirtualNetworks) Create(devTestVirtualNetwork *v1alpha1.DevTestVirtualNetwork) (result *v1alpha1.DevTestVirtualNetwork, err error) {
+func (c *FakeDevTestVirtualNetworks) Create(ctx context.Context, devTestVirtualNetwork *v1alpha1.DevTestVirtualNetwork, opts v1.CreateOptions) (result *v1alpha1.DevTestVirtualNetwork, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(devtestvirtualnetworksResource, c.ns, devTestVirtualNetwork), &v1alpha1.DevTestVirtualNetwork{})
 
@@ -91,7 +93,7 @@ func (c *FakeDevTestVirtualNetworks) Create(devTestVirtualNetwork *v1alpha1.DevT
 }
 
 // Update takes the representation of a devTestVirtualNetwork and updates it. Returns the server's representation of the devTestVirtualNetwork, and an error, if there is any.
-func (c *FakeDevTestVirtualNetworks) Update(devTestVirtualNetwork *v1alpha1.DevTestVirtualNetwork) (result *v1alpha1.DevTestVirtualNetwork, err error) {
+func (c *FakeDevTestVirtualNetworks) Update(ctx context.Context, devTestVirtualNetwork *v1alpha1.DevTestVirtualNetwork, opts v1.UpdateOptions) (result *v1alpha1.DevTestVirtualNetwork, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(devtestvirtualnetworksResource, c.ns, devTestVirtualNetwork), &v1alpha1.DevTestVirtualNetwork{})
 
@@ -103,7 +105,7 @@ func (c *FakeDevTestVirtualNetworks) Update(devTestVirtualNetwork *v1alpha1.DevT
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDevTestVirtualNetworks) UpdateStatus(devTestVirtualNetwork *v1alpha1.DevTestVirtualNetwork) (*v1alpha1.DevTestVirtualNetwork, error) {
+func (c *FakeDevTestVirtualNetworks) UpdateStatus(ctx context.Context, devTestVirtualNetwork *v1alpha1.DevTestVirtualNetwork, opts v1.UpdateOptions) (*v1alpha1.DevTestVirtualNetwork, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(devtestvirtualnetworksResource, "status", c.ns, devTestVirtualNetwork), &v1alpha1.DevTestVirtualNetwork{})
 
@@ -114,7 +116,7 @@ func (c *FakeDevTestVirtualNetworks) UpdateStatus(devTestVirtualNetwork *v1alpha
 }
 
 // Delete takes name of the devTestVirtualNetwork and deletes it. Returns an error if one occurs.
-func (c *FakeDevTestVirtualNetworks) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDevTestVirtualNetworks) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(devtestvirtualnetworksResource, c.ns, name), &v1alpha1.DevTestVirtualNetwork{})
 
@@ -122,15 +124,15 @@ func (c *FakeDevTestVirtualNetworks) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDevTestVirtualNetworks) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(devtestvirtualnetworksResource, c.ns, listOptions)
+func (c *FakeDevTestVirtualNetworks) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(devtestvirtualnetworksResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DevTestVirtualNetworkList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched devTestVirtualNetwork.
-func (c *FakeDevTestVirtualNetworks) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DevTestVirtualNetwork, err error) {
+func (c *FakeDevTestVirtualNetworks) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DevTestVirtualNetwork, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(devtestvirtualnetworksResource, c.ns, name, pt, data, subresources...), &v1alpha1.DevTestVirtualNetwork{})
 

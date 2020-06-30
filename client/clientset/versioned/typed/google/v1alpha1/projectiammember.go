@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type ProjectIamMembersGetter interface {
 
 // ProjectIamMemberInterface has methods to work with ProjectIamMember resources.
 type ProjectIamMemberInterface interface {
-	Create(*v1alpha1.ProjectIamMember) (*v1alpha1.ProjectIamMember, error)
-	Update(*v1alpha1.ProjectIamMember) (*v1alpha1.ProjectIamMember, error)
-	UpdateStatus(*v1alpha1.ProjectIamMember) (*v1alpha1.ProjectIamMember, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ProjectIamMember, error)
-	List(opts v1.ListOptions) (*v1alpha1.ProjectIamMemberList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ProjectIamMember, err error)
+	Create(ctx context.Context, projectIamMember *v1alpha1.ProjectIamMember, opts v1.CreateOptions) (*v1alpha1.ProjectIamMember, error)
+	Update(ctx context.Context, projectIamMember *v1alpha1.ProjectIamMember, opts v1.UpdateOptions) (*v1alpha1.ProjectIamMember, error)
+	UpdateStatus(ctx context.Context, projectIamMember *v1alpha1.ProjectIamMember, opts v1.UpdateOptions) (*v1alpha1.ProjectIamMember, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ProjectIamMember, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ProjectIamMemberList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ProjectIamMember, err error)
 	ProjectIamMemberExpansion
 }
 
@@ -65,20 +66,20 @@ func newProjectIamMembers(c *GoogleV1alpha1Client, namespace string) *projectIam
 }
 
 // Get takes name of the projectIamMember, and returns the corresponding projectIamMember object, and an error if there is any.
-func (c *projectIamMembers) Get(name string, options v1.GetOptions) (result *v1alpha1.ProjectIamMember, err error) {
+func (c *projectIamMembers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ProjectIamMember, err error) {
 	result = &v1alpha1.ProjectIamMember{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("projectiammembers").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ProjectIamMembers that match those selectors.
-func (c *projectIamMembers) List(opts v1.ListOptions) (result *v1alpha1.ProjectIamMemberList, err error) {
+func (c *projectIamMembers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ProjectIamMemberList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *projectIamMembers) List(opts v1.ListOptions) (result *v1alpha1.ProjectI
 		Resource("projectiammembers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested projectIamMembers.
-func (c *projectIamMembers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *projectIamMembers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *projectIamMembers) Watch(opts v1.ListOptions) (watch.Interface, error) 
 		Resource("projectiammembers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a projectIamMember and creates it.  Returns the server's representation of the projectIamMember, and an error, if there is any.
-func (c *projectIamMembers) Create(projectIamMember *v1alpha1.ProjectIamMember) (result *v1alpha1.ProjectIamMember, err error) {
+func (c *projectIamMembers) Create(ctx context.Context, projectIamMember *v1alpha1.ProjectIamMember, opts v1.CreateOptions) (result *v1alpha1.ProjectIamMember, err error) {
 	result = &v1alpha1.ProjectIamMember{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("projectiammembers").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(projectIamMember).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a projectIamMember and updates it. Returns the server's representation of the projectIamMember, and an error, if there is any.
-func (c *projectIamMembers) Update(projectIamMember *v1alpha1.ProjectIamMember) (result *v1alpha1.ProjectIamMember, err error) {
+func (c *projectIamMembers) Update(ctx context.Context, projectIamMember *v1alpha1.ProjectIamMember, opts v1.UpdateOptions) (result *v1alpha1.ProjectIamMember, err error) {
 	result = &v1alpha1.ProjectIamMember{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("projectiammembers").
 		Name(projectIamMember.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(projectIamMember).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *projectIamMembers) UpdateStatus(projectIamMember *v1alpha1.ProjectIamMember) (result *v1alpha1.ProjectIamMember, err error) {
+func (c *projectIamMembers) UpdateStatus(ctx context.Context, projectIamMember *v1alpha1.ProjectIamMember, opts v1.UpdateOptions) (result *v1alpha1.ProjectIamMember, err error) {
 	result = &v1alpha1.ProjectIamMember{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("projectiammembers").
 		Name(projectIamMember.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(projectIamMember).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the projectIamMember and deletes it. Returns an error if one occurs.
-func (c *projectIamMembers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *projectIamMembers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("projectiammembers").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *projectIamMembers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *projectIamMembers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("projectiammembers").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched projectIamMember.
-func (c *projectIamMembers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ProjectIamMember, err error) {
+func (c *projectIamMembers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ProjectIamMember, err error) {
 	result = &v1alpha1.ProjectIamMember{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("projectiammembers").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

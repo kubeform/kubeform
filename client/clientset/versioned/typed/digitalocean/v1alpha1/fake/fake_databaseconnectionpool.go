@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/digitalocean/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var databaseconnectionpoolsResource = schema.GroupVersionResource{Group: "digita
 var databaseconnectionpoolsKind = schema.GroupVersionKind{Group: "digitalocean.kubeform.com", Version: "v1alpha1", Kind: "DatabaseConnectionPool"}
 
 // Get takes name of the databaseConnectionPool, and returns the corresponding databaseConnectionPool object, and an error if there is any.
-func (c *FakeDatabaseConnectionPools) Get(name string, options v1.GetOptions) (result *v1alpha1.DatabaseConnectionPool, err error) {
+func (c *FakeDatabaseConnectionPools) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DatabaseConnectionPool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(databaseconnectionpoolsResource, c.ns, name), &v1alpha1.DatabaseConnectionPool{})
 
@@ -51,7 +53,7 @@ func (c *FakeDatabaseConnectionPools) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of DatabaseConnectionPools that match those selectors.
-func (c *FakeDatabaseConnectionPools) List(opts v1.ListOptions) (result *v1alpha1.DatabaseConnectionPoolList, err error) {
+func (c *FakeDatabaseConnectionPools) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DatabaseConnectionPoolList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(databaseconnectionpoolsResource, databaseconnectionpoolsKind, c.ns, opts), &v1alpha1.DatabaseConnectionPoolList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDatabaseConnectionPools) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested databaseConnectionPools.
-func (c *FakeDatabaseConnectionPools) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDatabaseConnectionPools) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(databaseconnectionpoolsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a databaseConnectionPool and creates it.  Returns the server's representation of the databaseConnectionPool, and an error, if there is any.
-func (c *FakeDatabaseConnectionPools) Create(databaseConnectionPool *v1alpha1.DatabaseConnectionPool) (result *v1alpha1.DatabaseConnectionPool, err error) {
+func (c *FakeDatabaseConnectionPools) Create(ctx context.Context, databaseConnectionPool *v1alpha1.DatabaseConnectionPool, opts v1.CreateOptions) (result *v1alpha1.DatabaseConnectionPool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(databaseconnectionpoolsResource, c.ns, databaseConnectionPool), &v1alpha1.DatabaseConnectionPool{})
 
@@ -91,7 +93,7 @@ func (c *FakeDatabaseConnectionPools) Create(databaseConnectionPool *v1alpha1.Da
 }
 
 // Update takes the representation of a databaseConnectionPool and updates it. Returns the server's representation of the databaseConnectionPool, and an error, if there is any.
-func (c *FakeDatabaseConnectionPools) Update(databaseConnectionPool *v1alpha1.DatabaseConnectionPool) (result *v1alpha1.DatabaseConnectionPool, err error) {
+func (c *FakeDatabaseConnectionPools) Update(ctx context.Context, databaseConnectionPool *v1alpha1.DatabaseConnectionPool, opts v1.UpdateOptions) (result *v1alpha1.DatabaseConnectionPool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(databaseconnectionpoolsResource, c.ns, databaseConnectionPool), &v1alpha1.DatabaseConnectionPool{})
 
@@ -103,7 +105,7 @@ func (c *FakeDatabaseConnectionPools) Update(databaseConnectionPool *v1alpha1.Da
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDatabaseConnectionPools) UpdateStatus(databaseConnectionPool *v1alpha1.DatabaseConnectionPool) (*v1alpha1.DatabaseConnectionPool, error) {
+func (c *FakeDatabaseConnectionPools) UpdateStatus(ctx context.Context, databaseConnectionPool *v1alpha1.DatabaseConnectionPool, opts v1.UpdateOptions) (*v1alpha1.DatabaseConnectionPool, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(databaseconnectionpoolsResource, "status", c.ns, databaseConnectionPool), &v1alpha1.DatabaseConnectionPool{})
 
@@ -114,7 +116,7 @@ func (c *FakeDatabaseConnectionPools) UpdateStatus(databaseConnectionPool *v1alp
 }
 
 // Delete takes name of the databaseConnectionPool and deletes it. Returns an error if one occurs.
-func (c *FakeDatabaseConnectionPools) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDatabaseConnectionPools) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(databaseconnectionpoolsResource, c.ns, name), &v1alpha1.DatabaseConnectionPool{})
 
@@ -122,15 +124,15 @@ func (c *FakeDatabaseConnectionPools) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDatabaseConnectionPools) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(databaseconnectionpoolsResource, c.ns, listOptions)
+func (c *FakeDatabaseConnectionPools) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(databaseconnectionpoolsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DatabaseConnectionPoolList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched databaseConnectionPool.
-func (c *FakeDatabaseConnectionPools) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DatabaseConnectionPool, err error) {
+func (c *FakeDatabaseConnectionPools) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DatabaseConnectionPool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(databaseconnectionpoolsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DatabaseConnectionPool{})
 

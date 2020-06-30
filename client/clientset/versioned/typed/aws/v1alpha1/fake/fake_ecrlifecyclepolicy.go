@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var ecrlifecyclepoliciesResource = schema.GroupVersionResource{Group: "aws.kubef
 var ecrlifecyclepoliciesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "EcrLifecyclePolicy"}
 
 // Get takes name of the ecrLifecyclePolicy, and returns the corresponding ecrLifecyclePolicy object, and an error if there is any.
-func (c *FakeEcrLifecyclePolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.EcrLifecyclePolicy, err error) {
+func (c *FakeEcrLifecyclePolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.EcrLifecyclePolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(ecrlifecyclepoliciesResource, c.ns, name), &v1alpha1.EcrLifecyclePolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeEcrLifecyclePolicies) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of EcrLifecyclePolicies that match those selectors.
-func (c *FakeEcrLifecyclePolicies) List(opts v1.ListOptions) (result *v1alpha1.EcrLifecyclePolicyList, err error) {
+func (c *FakeEcrLifecyclePolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.EcrLifecyclePolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(ecrlifecyclepoliciesResource, ecrlifecyclepoliciesKind, c.ns, opts), &v1alpha1.EcrLifecyclePolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeEcrLifecyclePolicies) List(opts v1.ListOptions) (result *v1alpha1.E
 }
 
 // Watch returns a watch.Interface that watches the requested ecrLifecyclePolicies.
-func (c *FakeEcrLifecyclePolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeEcrLifecyclePolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(ecrlifecyclepoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a ecrLifecyclePolicy and creates it.  Returns the server's representation of the ecrLifecyclePolicy, and an error, if there is any.
-func (c *FakeEcrLifecyclePolicies) Create(ecrLifecyclePolicy *v1alpha1.EcrLifecyclePolicy) (result *v1alpha1.EcrLifecyclePolicy, err error) {
+func (c *FakeEcrLifecyclePolicies) Create(ctx context.Context, ecrLifecyclePolicy *v1alpha1.EcrLifecyclePolicy, opts v1.CreateOptions) (result *v1alpha1.EcrLifecyclePolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(ecrlifecyclepoliciesResource, c.ns, ecrLifecyclePolicy), &v1alpha1.EcrLifecyclePolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeEcrLifecyclePolicies) Create(ecrLifecyclePolicy *v1alpha1.EcrLifecy
 }
 
 // Update takes the representation of a ecrLifecyclePolicy and updates it. Returns the server's representation of the ecrLifecyclePolicy, and an error, if there is any.
-func (c *FakeEcrLifecyclePolicies) Update(ecrLifecyclePolicy *v1alpha1.EcrLifecyclePolicy) (result *v1alpha1.EcrLifecyclePolicy, err error) {
+func (c *FakeEcrLifecyclePolicies) Update(ctx context.Context, ecrLifecyclePolicy *v1alpha1.EcrLifecyclePolicy, opts v1.UpdateOptions) (result *v1alpha1.EcrLifecyclePolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(ecrlifecyclepoliciesResource, c.ns, ecrLifecyclePolicy), &v1alpha1.EcrLifecyclePolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeEcrLifecyclePolicies) Update(ecrLifecyclePolicy *v1alpha1.EcrLifecy
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeEcrLifecyclePolicies) UpdateStatus(ecrLifecyclePolicy *v1alpha1.EcrLifecyclePolicy) (*v1alpha1.EcrLifecyclePolicy, error) {
+func (c *FakeEcrLifecyclePolicies) UpdateStatus(ctx context.Context, ecrLifecyclePolicy *v1alpha1.EcrLifecyclePolicy, opts v1.UpdateOptions) (*v1alpha1.EcrLifecyclePolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(ecrlifecyclepoliciesResource, "status", c.ns, ecrLifecyclePolicy), &v1alpha1.EcrLifecyclePolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeEcrLifecyclePolicies) UpdateStatus(ecrLifecyclePolicy *v1alpha1.Ecr
 }
 
 // Delete takes name of the ecrLifecyclePolicy and deletes it. Returns an error if one occurs.
-func (c *FakeEcrLifecyclePolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeEcrLifecyclePolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(ecrlifecyclepoliciesResource, c.ns, name), &v1alpha1.EcrLifecyclePolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeEcrLifecyclePolicies) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeEcrLifecyclePolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(ecrlifecyclepoliciesResource, c.ns, listOptions)
+func (c *FakeEcrLifecyclePolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(ecrlifecyclepoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.EcrLifecyclePolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched ecrLifecyclePolicy.
-func (c *FakeEcrLifecyclePolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EcrLifecyclePolicy, err error) {
+func (c *FakeEcrLifecyclePolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EcrLifecyclePolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(ecrlifecyclepoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.EcrLifecyclePolicy{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var redshiftsubnetgroupsResource = schema.GroupVersionResource{Group: "aws.kubef
 var redshiftsubnetgroupsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "RedshiftSubnetGroup"}
 
 // Get takes name of the redshiftSubnetGroup, and returns the corresponding redshiftSubnetGroup object, and an error if there is any.
-func (c *FakeRedshiftSubnetGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.RedshiftSubnetGroup, err error) {
+func (c *FakeRedshiftSubnetGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.RedshiftSubnetGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(redshiftsubnetgroupsResource, c.ns, name), &v1alpha1.RedshiftSubnetGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeRedshiftSubnetGroups) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of RedshiftSubnetGroups that match those selectors.
-func (c *FakeRedshiftSubnetGroups) List(opts v1.ListOptions) (result *v1alpha1.RedshiftSubnetGroupList, err error) {
+func (c *FakeRedshiftSubnetGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RedshiftSubnetGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(redshiftsubnetgroupsResource, redshiftsubnetgroupsKind, c.ns, opts), &v1alpha1.RedshiftSubnetGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeRedshiftSubnetGroups) List(opts v1.ListOptions) (result *v1alpha1.R
 }
 
 // Watch returns a watch.Interface that watches the requested redshiftSubnetGroups.
-func (c *FakeRedshiftSubnetGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeRedshiftSubnetGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(redshiftsubnetgroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a redshiftSubnetGroup and creates it.  Returns the server's representation of the redshiftSubnetGroup, and an error, if there is any.
-func (c *FakeRedshiftSubnetGroups) Create(redshiftSubnetGroup *v1alpha1.RedshiftSubnetGroup) (result *v1alpha1.RedshiftSubnetGroup, err error) {
+func (c *FakeRedshiftSubnetGroups) Create(ctx context.Context, redshiftSubnetGroup *v1alpha1.RedshiftSubnetGroup, opts v1.CreateOptions) (result *v1alpha1.RedshiftSubnetGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(redshiftsubnetgroupsResource, c.ns, redshiftSubnetGroup), &v1alpha1.RedshiftSubnetGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeRedshiftSubnetGroups) Create(redshiftSubnetGroup *v1alpha1.Redshift
 }
 
 // Update takes the representation of a redshiftSubnetGroup and updates it. Returns the server's representation of the redshiftSubnetGroup, and an error, if there is any.
-func (c *FakeRedshiftSubnetGroups) Update(redshiftSubnetGroup *v1alpha1.RedshiftSubnetGroup) (result *v1alpha1.RedshiftSubnetGroup, err error) {
+func (c *FakeRedshiftSubnetGroups) Update(ctx context.Context, redshiftSubnetGroup *v1alpha1.RedshiftSubnetGroup, opts v1.UpdateOptions) (result *v1alpha1.RedshiftSubnetGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(redshiftsubnetgroupsResource, c.ns, redshiftSubnetGroup), &v1alpha1.RedshiftSubnetGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeRedshiftSubnetGroups) Update(redshiftSubnetGroup *v1alpha1.Redshift
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeRedshiftSubnetGroups) UpdateStatus(redshiftSubnetGroup *v1alpha1.RedshiftSubnetGroup) (*v1alpha1.RedshiftSubnetGroup, error) {
+func (c *FakeRedshiftSubnetGroups) UpdateStatus(ctx context.Context, redshiftSubnetGroup *v1alpha1.RedshiftSubnetGroup, opts v1.UpdateOptions) (*v1alpha1.RedshiftSubnetGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(redshiftsubnetgroupsResource, "status", c.ns, redshiftSubnetGroup), &v1alpha1.RedshiftSubnetGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeRedshiftSubnetGroups) UpdateStatus(redshiftSubnetGroup *v1alpha1.Re
 }
 
 // Delete takes name of the redshiftSubnetGroup and deletes it. Returns an error if one occurs.
-func (c *FakeRedshiftSubnetGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeRedshiftSubnetGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(redshiftsubnetgroupsResource, c.ns, name), &v1alpha1.RedshiftSubnetGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeRedshiftSubnetGroups) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeRedshiftSubnetGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(redshiftsubnetgroupsResource, c.ns, listOptions)
+func (c *FakeRedshiftSubnetGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(redshiftsubnetgroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.RedshiftSubnetGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched redshiftSubnetGroup.
-func (c *FakeRedshiftSubnetGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RedshiftSubnetGroup, err error) {
+func (c *FakeRedshiftSubnetGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RedshiftSubnetGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(redshiftsubnetgroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.RedshiftSubnetGroup{})
 

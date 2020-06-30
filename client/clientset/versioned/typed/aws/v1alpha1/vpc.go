@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type VpcsGetter interface {
 
 // VpcInterface has methods to work with Vpc resources.
 type VpcInterface interface {
-	Create(*v1alpha1.Vpc) (*v1alpha1.Vpc, error)
-	Update(*v1alpha1.Vpc) (*v1alpha1.Vpc, error)
-	UpdateStatus(*v1alpha1.Vpc) (*v1alpha1.Vpc, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.Vpc, error)
-	List(opts v1.ListOptions) (*v1alpha1.VpcList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Vpc, err error)
+	Create(ctx context.Context, vpc *v1alpha1.Vpc, opts v1.CreateOptions) (*v1alpha1.Vpc, error)
+	Update(ctx context.Context, vpc *v1alpha1.Vpc, opts v1.UpdateOptions) (*v1alpha1.Vpc, error)
+	UpdateStatus(ctx context.Context, vpc *v1alpha1.Vpc, opts v1.UpdateOptions) (*v1alpha1.Vpc, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.Vpc, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.VpcList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Vpc, err error)
 	VpcExpansion
 }
 
@@ -65,20 +66,20 @@ func newVpcs(c *AwsV1alpha1Client, namespace string) *vpcs {
 }
 
 // Get takes name of the vpc, and returns the corresponding vpc object, and an error if there is any.
-func (c *vpcs) Get(name string, options v1.GetOptions) (result *v1alpha1.Vpc, err error) {
+func (c *vpcs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Vpc, err error) {
 	result = &v1alpha1.Vpc{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("vpcs").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of Vpcs that match those selectors.
-func (c *vpcs) List(opts v1.ListOptions) (result *v1alpha1.VpcList, err error) {
+func (c *vpcs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.VpcList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *vpcs) List(opts v1.ListOptions) (result *v1alpha1.VpcList, err error) {
 		Resource("vpcs").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested vpcs.
-func (c *vpcs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *vpcs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *vpcs) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("vpcs").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a vpc and creates it.  Returns the server's representation of the vpc, and an error, if there is any.
-func (c *vpcs) Create(vpc *v1alpha1.Vpc) (result *v1alpha1.Vpc, err error) {
+func (c *vpcs) Create(ctx context.Context, vpc *v1alpha1.Vpc, opts v1.CreateOptions) (result *v1alpha1.Vpc, err error) {
 	result = &v1alpha1.Vpc{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("vpcs").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(vpc).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a vpc and updates it. Returns the server's representation of the vpc, and an error, if there is any.
-func (c *vpcs) Update(vpc *v1alpha1.Vpc) (result *v1alpha1.Vpc, err error) {
+func (c *vpcs) Update(ctx context.Context, vpc *v1alpha1.Vpc, opts v1.UpdateOptions) (result *v1alpha1.Vpc, err error) {
 	result = &v1alpha1.Vpc{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("vpcs").
 		Name(vpc.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(vpc).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *vpcs) UpdateStatus(vpc *v1alpha1.Vpc) (result *v1alpha1.Vpc, err error) {
+func (c *vpcs) UpdateStatus(ctx context.Context, vpc *v1alpha1.Vpc, opts v1.UpdateOptions) (result *v1alpha1.Vpc, err error) {
 	result = &v1alpha1.Vpc{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("vpcs").
 		Name(vpc.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(vpc).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the vpc and deletes it. Returns an error if one occurs.
-func (c *vpcs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *vpcs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("vpcs").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *vpcs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *vpcs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("vpcs").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched vpc.
-func (c *vpcs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Vpc, err error) {
+func (c *vpcs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Vpc, err error) {
 	result = &v1alpha1.Vpc{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("vpcs").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

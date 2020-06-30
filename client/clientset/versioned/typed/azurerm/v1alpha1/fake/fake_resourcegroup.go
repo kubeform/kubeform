@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var resourcegroupsResource = schema.GroupVersionResource{Group: "azurerm.kubefor
 var resourcegroupsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "ResourceGroup"}
 
 // Get takes name of the resourceGroup, and returns the corresponding resourceGroup object, and an error if there is any.
-func (c *FakeResourceGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.ResourceGroup, err error) {
+func (c *FakeResourceGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ResourceGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(resourcegroupsResource, c.ns, name), &v1alpha1.ResourceGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeResourceGroups) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of ResourceGroups that match those selectors.
-func (c *FakeResourceGroups) List(opts v1.ListOptions) (result *v1alpha1.ResourceGroupList, err error) {
+func (c *FakeResourceGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ResourceGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(resourcegroupsResource, resourcegroupsKind, c.ns, opts), &v1alpha1.ResourceGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeResourceGroups) List(opts v1.ListOptions) (result *v1alpha1.Resourc
 }
 
 // Watch returns a watch.Interface that watches the requested resourceGroups.
-func (c *FakeResourceGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeResourceGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(resourcegroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a resourceGroup and creates it.  Returns the server's representation of the resourceGroup, and an error, if there is any.
-func (c *FakeResourceGroups) Create(resourceGroup *v1alpha1.ResourceGroup) (result *v1alpha1.ResourceGroup, err error) {
+func (c *FakeResourceGroups) Create(ctx context.Context, resourceGroup *v1alpha1.ResourceGroup, opts v1.CreateOptions) (result *v1alpha1.ResourceGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(resourcegroupsResource, c.ns, resourceGroup), &v1alpha1.ResourceGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeResourceGroups) Create(resourceGroup *v1alpha1.ResourceGroup) (resu
 }
 
 // Update takes the representation of a resourceGroup and updates it. Returns the server's representation of the resourceGroup, and an error, if there is any.
-func (c *FakeResourceGroups) Update(resourceGroup *v1alpha1.ResourceGroup) (result *v1alpha1.ResourceGroup, err error) {
+func (c *FakeResourceGroups) Update(ctx context.Context, resourceGroup *v1alpha1.ResourceGroup, opts v1.UpdateOptions) (result *v1alpha1.ResourceGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(resourcegroupsResource, c.ns, resourceGroup), &v1alpha1.ResourceGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeResourceGroups) Update(resourceGroup *v1alpha1.ResourceGroup) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeResourceGroups) UpdateStatus(resourceGroup *v1alpha1.ResourceGroup) (*v1alpha1.ResourceGroup, error) {
+func (c *FakeResourceGroups) UpdateStatus(ctx context.Context, resourceGroup *v1alpha1.ResourceGroup, opts v1.UpdateOptions) (*v1alpha1.ResourceGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(resourcegroupsResource, "status", c.ns, resourceGroup), &v1alpha1.ResourceGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeResourceGroups) UpdateStatus(resourceGroup *v1alpha1.ResourceGroup)
 }
 
 // Delete takes name of the resourceGroup and deletes it. Returns an error if one occurs.
-func (c *FakeResourceGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeResourceGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(resourcegroupsResource, c.ns, name), &v1alpha1.ResourceGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeResourceGroups) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeResourceGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(resourcegroupsResource, c.ns, listOptions)
+func (c *FakeResourceGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(resourcegroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ResourceGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched resourceGroup.
-func (c *FakeResourceGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ResourceGroup, err error) {
+func (c *FakeResourceGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ResourceGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(resourcegroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ResourceGroup{})
 

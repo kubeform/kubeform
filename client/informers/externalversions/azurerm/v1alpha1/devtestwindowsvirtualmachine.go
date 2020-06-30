@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	time "time"
 
 	azurermv1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -62,13 +63,13 @@ func NewFilteredDevTestWindowsVirtualMachineInformer(client versioned.Interface,
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.AzurermV1alpha1().DevTestWindowsVirtualMachines(namespace).List(options)
+				return client.AzurermV1alpha1().DevTestWindowsVirtualMachines(namespace).List(context.TODO(), options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.AzurermV1alpha1().DevTestWindowsVirtualMachines(namespace).Watch(options)
+				return client.AzurermV1alpha1().DevTestWindowsVirtualMachines(namespace).Watch(context.TODO(), options)
 			},
 		},
 		&azurermv1alpha1.DevTestWindowsVirtualMachine{},

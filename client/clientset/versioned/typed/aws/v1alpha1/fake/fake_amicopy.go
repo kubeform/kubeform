@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var amicopiesResource = schema.GroupVersionResource{Group: "aws.kubeform.com", V
 var amicopiesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "AmiCopy"}
 
 // Get takes name of the amiCopy, and returns the corresponding amiCopy object, and an error if there is any.
-func (c *FakeAmiCopies) Get(name string, options v1.GetOptions) (result *v1alpha1.AmiCopy, err error) {
+func (c *FakeAmiCopies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AmiCopy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(amicopiesResource, c.ns, name), &v1alpha1.AmiCopy{})
 
@@ -51,7 +53,7 @@ func (c *FakeAmiCopies) Get(name string, options v1.GetOptions) (result *v1alpha
 }
 
 // List takes label and field selectors, and returns the list of AmiCopies that match those selectors.
-func (c *FakeAmiCopies) List(opts v1.ListOptions) (result *v1alpha1.AmiCopyList, err error) {
+func (c *FakeAmiCopies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AmiCopyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(amicopiesResource, amicopiesKind, c.ns, opts), &v1alpha1.AmiCopyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAmiCopies) List(opts v1.ListOptions) (result *v1alpha1.AmiCopyList,
 }
 
 // Watch returns a watch.Interface that watches the requested amiCopies.
-func (c *FakeAmiCopies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAmiCopies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(amicopiesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a amiCopy and creates it.  Returns the server's representation of the amiCopy, and an error, if there is any.
-func (c *FakeAmiCopies) Create(amiCopy *v1alpha1.AmiCopy) (result *v1alpha1.AmiCopy, err error) {
+func (c *FakeAmiCopies) Create(ctx context.Context, amiCopy *v1alpha1.AmiCopy, opts v1.CreateOptions) (result *v1alpha1.AmiCopy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(amicopiesResource, c.ns, amiCopy), &v1alpha1.AmiCopy{})
 
@@ -91,7 +93,7 @@ func (c *FakeAmiCopies) Create(amiCopy *v1alpha1.AmiCopy) (result *v1alpha1.AmiC
 }
 
 // Update takes the representation of a amiCopy and updates it. Returns the server's representation of the amiCopy, and an error, if there is any.
-func (c *FakeAmiCopies) Update(amiCopy *v1alpha1.AmiCopy) (result *v1alpha1.AmiCopy, err error) {
+func (c *FakeAmiCopies) Update(ctx context.Context, amiCopy *v1alpha1.AmiCopy, opts v1.UpdateOptions) (result *v1alpha1.AmiCopy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(amicopiesResource, c.ns, amiCopy), &v1alpha1.AmiCopy{})
 
@@ -103,7 +105,7 @@ func (c *FakeAmiCopies) Update(amiCopy *v1alpha1.AmiCopy) (result *v1alpha1.AmiC
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAmiCopies) UpdateStatus(amiCopy *v1alpha1.AmiCopy) (*v1alpha1.AmiCopy, error) {
+func (c *FakeAmiCopies) UpdateStatus(ctx context.Context, amiCopy *v1alpha1.AmiCopy, opts v1.UpdateOptions) (*v1alpha1.AmiCopy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(amicopiesResource, "status", c.ns, amiCopy), &v1alpha1.AmiCopy{})
 
@@ -114,7 +116,7 @@ func (c *FakeAmiCopies) UpdateStatus(amiCopy *v1alpha1.AmiCopy) (*v1alpha1.AmiCo
 }
 
 // Delete takes name of the amiCopy and deletes it. Returns an error if one occurs.
-func (c *FakeAmiCopies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAmiCopies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(amicopiesResource, c.ns, name), &v1alpha1.AmiCopy{})
 
@@ -122,15 +124,15 @@ func (c *FakeAmiCopies) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAmiCopies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(amicopiesResource, c.ns, listOptions)
+func (c *FakeAmiCopies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(amicopiesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AmiCopyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched amiCopy.
-func (c *FakeAmiCopies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AmiCopy, err error) {
+func (c *FakeAmiCopies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AmiCopy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(amicopiesResource, c.ns, name, pt, data, subresources...), &v1alpha1.AmiCopy{})
 

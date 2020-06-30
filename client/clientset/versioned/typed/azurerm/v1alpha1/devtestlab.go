@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type DevTestLabsGetter interface {
 
 // DevTestLabInterface has methods to work with DevTestLab resources.
 type DevTestLabInterface interface {
-	Create(*v1alpha1.DevTestLab) (*v1alpha1.DevTestLab, error)
-	Update(*v1alpha1.DevTestLab) (*v1alpha1.DevTestLab, error)
-	UpdateStatus(*v1alpha1.DevTestLab) (*v1alpha1.DevTestLab, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.DevTestLab, error)
-	List(opts v1.ListOptions) (*v1alpha1.DevTestLabList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DevTestLab, err error)
+	Create(ctx context.Context, devTestLab *v1alpha1.DevTestLab, opts v1.CreateOptions) (*v1alpha1.DevTestLab, error)
+	Update(ctx context.Context, devTestLab *v1alpha1.DevTestLab, opts v1.UpdateOptions) (*v1alpha1.DevTestLab, error)
+	UpdateStatus(ctx context.Context, devTestLab *v1alpha1.DevTestLab, opts v1.UpdateOptions) (*v1alpha1.DevTestLab, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.DevTestLab, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.DevTestLabList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DevTestLab, err error)
 	DevTestLabExpansion
 }
 
@@ -65,20 +66,20 @@ func newDevTestLabs(c *AzurermV1alpha1Client, namespace string) *devTestLabs {
 }
 
 // Get takes name of the devTestLab, and returns the corresponding devTestLab object, and an error if there is any.
-func (c *devTestLabs) Get(name string, options v1.GetOptions) (result *v1alpha1.DevTestLab, err error) {
+func (c *devTestLabs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DevTestLab, err error) {
 	result = &v1alpha1.DevTestLab{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("devtestlabs").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of DevTestLabs that match those selectors.
-func (c *devTestLabs) List(opts v1.ListOptions) (result *v1alpha1.DevTestLabList, err error) {
+func (c *devTestLabs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DevTestLabList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *devTestLabs) List(opts v1.ListOptions) (result *v1alpha1.DevTestLabList
 		Resource("devtestlabs").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested devTestLabs.
-func (c *devTestLabs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *devTestLabs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *devTestLabs) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("devtestlabs").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a devTestLab and creates it.  Returns the server's representation of the devTestLab, and an error, if there is any.
-func (c *devTestLabs) Create(devTestLab *v1alpha1.DevTestLab) (result *v1alpha1.DevTestLab, err error) {
+func (c *devTestLabs) Create(ctx context.Context, devTestLab *v1alpha1.DevTestLab, opts v1.CreateOptions) (result *v1alpha1.DevTestLab, err error) {
 	result = &v1alpha1.DevTestLab{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("devtestlabs").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(devTestLab).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a devTestLab and updates it. Returns the server's representation of the devTestLab, and an error, if there is any.
-func (c *devTestLabs) Update(devTestLab *v1alpha1.DevTestLab) (result *v1alpha1.DevTestLab, err error) {
+func (c *devTestLabs) Update(ctx context.Context, devTestLab *v1alpha1.DevTestLab, opts v1.UpdateOptions) (result *v1alpha1.DevTestLab, err error) {
 	result = &v1alpha1.DevTestLab{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("devtestlabs").
 		Name(devTestLab.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(devTestLab).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *devTestLabs) UpdateStatus(devTestLab *v1alpha1.DevTestLab) (result *v1alpha1.DevTestLab, err error) {
+func (c *devTestLabs) UpdateStatus(ctx context.Context, devTestLab *v1alpha1.DevTestLab, opts v1.UpdateOptions) (result *v1alpha1.DevTestLab, err error) {
 	result = &v1alpha1.DevTestLab{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("devtestlabs").
 		Name(devTestLab.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(devTestLab).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the devTestLab and deletes it. Returns an error if one occurs.
-func (c *devTestLabs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *devTestLabs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("devtestlabs").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *devTestLabs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *devTestLabs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("devtestlabs").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched devTestLab.
-func (c *devTestLabs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DevTestLab, err error) {
+func (c *devTestLabs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DevTestLab, err error) {
 	result = &v1alpha1.DevTestLab{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("devtestlabs").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

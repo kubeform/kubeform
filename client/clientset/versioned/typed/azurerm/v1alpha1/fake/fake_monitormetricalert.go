@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var monitormetricalertsResource = schema.GroupVersionResource{Group: "azurerm.ku
 var monitormetricalertsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "MonitorMetricAlert"}
 
 // Get takes name of the monitorMetricAlert, and returns the corresponding monitorMetricAlert object, and an error if there is any.
-func (c *FakeMonitorMetricAlerts) Get(name string, options v1.GetOptions) (result *v1alpha1.MonitorMetricAlert, err error) {
+func (c *FakeMonitorMetricAlerts) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.MonitorMetricAlert, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(monitormetricalertsResource, c.ns, name), &v1alpha1.MonitorMetricAlert{})
 
@@ -51,7 +53,7 @@ func (c *FakeMonitorMetricAlerts) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of MonitorMetricAlerts that match those selectors.
-func (c *FakeMonitorMetricAlerts) List(opts v1.ListOptions) (result *v1alpha1.MonitorMetricAlertList, err error) {
+func (c *FakeMonitorMetricAlerts) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.MonitorMetricAlertList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(monitormetricalertsResource, monitormetricalertsKind, c.ns, opts), &v1alpha1.MonitorMetricAlertList{})
 
@@ -73,14 +75,14 @@ func (c *FakeMonitorMetricAlerts) List(opts v1.ListOptions) (result *v1alpha1.Mo
 }
 
 // Watch returns a watch.Interface that watches the requested monitorMetricAlerts.
-func (c *FakeMonitorMetricAlerts) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeMonitorMetricAlerts) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(monitormetricalertsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a monitorMetricAlert and creates it.  Returns the server's representation of the monitorMetricAlert, and an error, if there is any.
-func (c *FakeMonitorMetricAlerts) Create(monitorMetricAlert *v1alpha1.MonitorMetricAlert) (result *v1alpha1.MonitorMetricAlert, err error) {
+func (c *FakeMonitorMetricAlerts) Create(ctx context.Context, monitorMetricAlert *v1alpha1.MonitorMetricAlert, opts v1.CreateOptions) (result *v1alpha1.MonitorMetricAlert, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(monitormetricalertsResource, c.ns, monitorMetricAlert), &v1alpha1.MonitorMetricAlert{})
 
@@ -91,7 +93,7 @@ func (c *FakeMonitorMetricAlerts) Create(monitorMetricAlert *v1alpha1.MonitorMet
 }
 
 // Update takes the representation of a monitorMetricAlert and updates it. Returns the server's representation of the monitorMetricAlert, and an error, if there is any.
-func (c *FakeMonitorMetricAlerts) Update(monitorMetricAlert *v1alpha1.MonitorMetricAlert) (result *v1alpha1.MonitorMetricAlert, err error) {
+func (c *FakeMonitorMetricAlerts) Update(ctx context.Context, monitorMetricAlert *v1alpha1.MonitorMetricAlert, opts v1.UpdateOptions) (result *v1alpha1.MonitorMetricAlert, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(monitormetricalertsResource, c.ns, monitorMetricAlert), &v1alpha1.MonitorMetricAlert{})
 
@@ -103,7 +105,7 @@ func (c *FakeMonitorMetricAlerts) Update(monitorMetricAlert *v1alpha1.MonitorMet
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeMonitorMetricAlerts) UpdateStatus(monitorMetricAlert *v1alpha1.MonitorMetricAlert) (*v1alpha1.MonitorMetricAlert, error) {
+func (c *FakeMonitorMetricAlerts) UpdateStatus(ctx context.Context, monitorMetricAlert *v1alpha1.MonitorMetricAlert, opts v1.UpdateOptions) (*v1alpha1.MonitorMetricAlert, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(monitormetricalertsResource, "status", c.ns, monitorMetricAlert), &v1alpha1.MonitorMetricAlert{})
 
@@ -114,7 +116,7 @@ func (c *FakeMonitorMetricAlerts) UpdateStatus(monitorMetricAlert *v1alpha1.Moni
 }
 
 // Delete takes name of the monitorMetricAlert and deletes it. Returns an error if one occurs.
-func (c *FakeMonitorMetricAlerts) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeMonitorMetricAlerts) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(monitormetricalertsResource, c.ns, name), &v1alpha1.MonitorMetricAlert{})
 
@@ -122,15 +124,15 @@ func (c *FakeMonitorMetricAlerts) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeMonitorMetricAlerts) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(monitormetricalertsResource, c.ns, listOptions)
+func (c *FakeMonitorMetricAlerts) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(monitormetricalertsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.MonitorMetricAlertList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched monitorMetricAlert.
-func (c *FakeMonitorMetricAlerts) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MonitorMetricAlert, err error) {
+func (c *FakeMonitorMetricAlerts) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MonitorMetricAlert, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(monitormetricalertsResource, c.ns, name, pt, data, subresources...), &v1alpha1.MonitorMetricAlert{})
 

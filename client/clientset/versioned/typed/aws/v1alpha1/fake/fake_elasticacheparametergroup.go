@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var elasticacheparametergroupsResource = schema.GroupVersionResource{Group: "aws
 var elasticacheparametergroupsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ElasticacheParameterGroup"}
 
 // Get takes name of the elasticacheParameterGroup, and returns the corresponding elasticacheParameterGroup object, and an error if there is any.
-func (c *FakeElasticacheParameterGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.ElasticacheParameterGroup, err error) {
+func (c *FakeElasticacheParameterGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ElasticacheParameterGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(elasticacheparametergroupsResource, c.ns, name), &v1alpha1.ElasticacheParameterGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeElasticacheParameterGroups) Get(name string, options v1.GetOptions)
 }
 
 // List takes label and field selectors, and returns the list of ElasticacheParameterGroups that match those selectors.
-func (c *FakeElasticacheParameterGroups) List(opts v1.ListOptions) (result *v1alpha1.ElasticacheParameterGroupList, err error) {
+func (c *FakeElasticacheParameterGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ElasticacheParameterGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(elasticacheparametergroupsResource, elasticacheparametergroupsKind, c.ns, opts), &v1alpha1.ElasticacheParameterGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeElasticacheParameterGroups) List(opts v1.ListOptions) (result *v1al
 }
 
 // Watch returns a watch.Interface that watches the requested elasticacheParameterGroups.
-func (c *FakeElasticacheParameterGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeElasticacheParameterGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(elasticacheparametergroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a elasticacheParameterGroup and creates it.  Returns the server's representation of the elasticacheParameterGroup, and an error, if there is any.
-func (c *FakeElasticacheParameterGroups) Create(elasticacheParameterGroup *v1alpha1.ElasticacheParameterGroup) (result *v1alpha1.ElasticacheParameterGroup, err error) {
+func (c *FakeElasticacheParameterGroups) Create(ctx context.Context, elasticacheParameterGroup *v1alpha1.ElasticacheParameterGroup, opts v1.CreateOptions) (result *v1alpha1.ElasticacheParameterGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(elasticacheparametergroupsResource, c.ns, elasticacheParameterGroup), &v1alpha1.ElasticacheParameterGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeElasticacheParameterGroups) Create(elasticacheParameterGroup *v1alp
 }
 
 // Update takes the representation of a elasticacheParameterGroup and updates it. Returns the server's representation of the elasticacheParameterGroup, and an error, if there is any.
-func (c *FakeElasticacheParameterGroups) Update(elasticacheParameterGroup *v1alpha1.ElasticacheParameterGroup) (result *v1alpha1.ElasticacheParameterGroup, err error) {
+func (c *FakeElasticacheParameterGroups) Update(ctx context.Context, elasticacheParameterGroup *v1alpha1.ElasticacheParameterGroup, opts v1.UpdateOptions) (result *v1alpha1.ElasticacheParameterGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(elasticacheparametergroupsResource, c.ns, elasticacheParameterGroup), &v1alpha1.ElasticacheParameterGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeElasticacheParameterGroups) Update(elasticacheParameterGroup *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeElasticacheParameterGroups) UpdateStatus(elasticacheParameterGroup *v1alpha1.ElasticacheParameterGroup) (*v1alpha1.ElasticacheParameterGroup, error) {
+func (c *FakeElasticacheParameterGroups) UpdateStatus(ctx context.Context, elasticacheParameterGroup *v1alpha1.ElasticacheParameterGroup, opts v1.UpdateOptions) (*v1alpha1.ElasticacheParameterGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(elasticacheparametergroupsResource, "status", c.ns, elasticacheParameterGroup), &v1alpha1.ElasticacheParameterGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeElasticacheParameterGroups) UpdateStatus(elasticacheParameterGroup 
 }
 
 // Delete takes name of the elasticacheParameterGroup and deletes it. Returns an error if one occurs.
-func (c *FakeElasticacheParameterGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeElasticacheParameterGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(elasticacheparametergroupsResource, c.ns, name), &v1alpha1.ElasticacheParameterGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeElasticacheParameterGroups) Delete(name string, options *v1.DeleteO
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeElasticacheParameterGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(elasticacheparametergroupsResource, c.ns, listOptions)
+func (c *FakeElasticacheParameterGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(elasticacheparametergroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ElasticacheParameterGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched elasticacheParameterGroup.
-func (c *FakeElasticacheParameterGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ElasticacheParameterGroup, err error) {
+func (c *FakeElasticacheParameterGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ElasticacheParameterGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(elasticacheparametergroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ElasticacheParameterGroup{})
 

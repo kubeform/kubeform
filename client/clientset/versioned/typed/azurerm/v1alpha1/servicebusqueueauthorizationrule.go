@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type ServicebusQueueAuthorizationRulesGetter interface {
 
 // ServicebusQueueAuthorizationRuleInterface has methods to work with ServicebusQueueAuthorizationRule resources.
 type ServicebusQueueAuthorizationRuleInterface interface {
-	Create(*v1alpha1.ServicebusQueueAuthorizationRule) (*v1alpha1.ServicebusQueueAuthorizationRule, error)
-	Update(*v1alpha1.ServicebusQueueAuthorizationRule) (*v1alpha1.ServicebusQueueAuthorizationRule, error)
-	UpdateStatus(*v1alpha1.ServicebusQueueAuthorizationRule) (*v1alpha1.ServicebusQueueAuthorizationRule, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ServicebusQueueAuthorizationRule, error)
-	List(opts v1.ListOptions) (*v1alpha1.ServicebusQueueAuthorizationRuleList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ServicebusQueueAuthorizationRule, err error)
+	Create(ctx context.Context, servicebusQueueAuthorizationRule *v1alpha1.ServicebusQueueAuthorizationRule, opts v1.CreateOptions) (*v1alpha1.ServicebusQueueAuthorizationRule, error)
+	Update(ctx context.Context, servicebusQueueAuthorizationRule *v1alpha1.ServicebusQueueAuthorizationRule, opts v1.UpdateOptions) (*v1alpha1.ServicebusQueueAuthorizationRule, error)
+	UpdateStatus(ctx context.Context, servicebusQueueAuthorizationRule *v1alpha1.ServicebusQueueAuthorizationRule, opts v1.UpdateOptions) (*v1alpha1.ServicebusQueueAuthorizationRule, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ServicebusQueueAuthorizationRule, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ServicebusQueueAuthorizationRuleList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ServicebusQueueAuthorizationRule, err error)
 	ServicebusQueueAuthorizationRuleExpansion
 }
 
@@ -65,20 +66,20 @@ func newServicebusQueueAuthorizationRules(c *AzurermV1alpha1Client, namespace st
 }
 
 // Get takes name of the servicebusQueueAuthorizationRule, and returns the corresponding servicebusQueueAuthorizationRule object, and an error if there is any.
-func (c *servicebusQueueAuthorizationRules) Get(name string, options v1.GetOptions) (result *v1alpha1.ServicebusQueueAuthorizationRule, err error) {
+func (c *servicebusQueueAuthorizationRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ServicebusQueueAuthorizationRule, err error) {
 	result = &v1alpha1.ServicebusQueueAuthorizationRule{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("servicebusqueueauthorizationrules").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ServicebusQueueAuthorizationRules that match those selectors.
-func (c *servicebusQueueAuthorizationRules) List(opts v1.ListOptions) (result *v1alpha1.ServicebusQueueAuthorizationRuleList, err error) {
+func (c *servicebusQueueAuthorizationRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ServicebusQueueAuthorizationRuleList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *servicebusQueueAuthorizationRules) List(opts v1.ListOptions) (result *v
 		Resource("servicebusqueueauthorizationrules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested servicebusQueueAuthorizationRules.
-func (c *servicebusQueueAuthorizationRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *servicebusQueueAuthorizationRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *servicebusQueueAuthorizationRules) Watch(opts v1.ListOptions) (watch.In
 		Resource("servicebusqueueauthorizationrules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a servicebusQueueAuthorizationRule and creates it.  Returns the server's representation of the servicebusQueueAuthorizationRule, and an error, if there is any.
-func (c *servicebusQueueAuthorizationRules) Create(servicebusQueueAuthorizationRule *v1alpha1.ServicebusQueueAuthorizationRule) (result *v1alpha1.ServicebusQueueAuthorizationRule, err error) {
+func (c *servicebusQueueAuthorizationRules) Create(ctx context.Context, servicebusQueueAuthorizationRule *v1alpha1.ServicebusQueueAuthorizationRule, opts v1.CreateOptions) (result *v1alpha1.ServicebusQueueAuthorizationRule, err error) {
 	result = &v1alpha1.ServicebusQueueAuthorizationRule{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("servicebusqueueauthorizationrules").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(servicebusQueueAuthorizationRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a servicebusQueueAuthorizationRule and updates it. Returns the server's representation of the servicebusQueueAuthorizationRule, and an error, if there is any.
-func (c *servicebusQueueAuthorizationRules) Update(servicebusQueueAuthorizationRule *v1alpha1.ServicebusQueueAuthorizationRule) (result *v1alpha1.ServicebusQueueAuthorizationRule, err error) {
+func (c *servicebusQueueAuthorizationRules) Update(ctx context.Context, servicebusQueueAuthorizationRule *v1alpha1.ServicebusQueueAuthorizationRule, opts v1.UpdateOptions) (result *v1alpha1.ServicebusQueueAuthorizationRule, err error) {
 	result = &v1alpha1.ServicebusQueueAuthorizationRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("servicebusqueueauthorizationrules").
 		Name(servicebusQueueAuthorizationRule.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(servicebusQueueAuthorizationRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *servicebusQueueAuthorizationRules) UpdateStatus(servicebusQueueAuthorizationRule *v1alpha1.ServicebusQueueAuthorizationRule) (result *v1alpha1.ServicebusQueueAuthorizationRule, err error) {
+func (c *servicebusQueueAuthorizationRules) UpdateStatus(ctx context.Context, servicebusQueueAuthorizationRule *v1alpha1.ServicebusQueueAuthorizationRule, opts v1.UpdateOptions) (result *v1alpha1.ServicebusQueueAuthorizationRule, err error) {
 	result = &v1alpha1.ServicebusQueueAuthorizationRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("servicebusqueueauthorizationrules").
 		Name(servicebusQueueAuthorizationRule.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(servicebusQueueAuthorizationRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the servicebusQueueAuthorizationRule and deletes it. Returns an error if one occurs.
-func (c *servicebusQueueAuthorizationRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *servicebusQueueAuthorizationRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("servicebusqueueauthorizationrules").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *servicebusQueueAuthorizationRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *servicebusQueueAuthorizationRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("servicebusqueueauthorizationrules").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched servicebusQueueAuthorizationRule.
-func (c *servicebusQueueAuthorizationRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ServicebusQueueAuthorizationRule, err error) {
+func (c *servicebusQueueAuthorizationRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ServicebusQueueAuthorizationRule, err error) {
 	result = &v1alpha1.ServicebusQueueAuthorizationRule{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("servicebusqueueauthorizationrules").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

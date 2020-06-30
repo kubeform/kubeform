@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type SiteRecoveryProtectionContainerMappingsGetter interface {
 
 // SiteRecoveryProtectionContainerMappingInterface has methods to work with SiteRecoveryProtectionContainerMapping resources.
 type SiteRecoveryProtectionContainerMappingInterface interface {
-	Create(*v1alpha1.SiteRecoveryProtectionContainerMapping) (*v1alpha1.SiteRecoveryProtectionContainerMapping, error)
-	Update(*v1alpha1.SiteRecoveryProtectionContainerMapping) (*v1alpha1.SiteRecoveryProtectionContainerMapping, error)
-	UpdateStatus(*v1alpha1.SiteRecoveryProtectionContainerMapping) (*v1alpha1.SiteRecoveryProtectionContainerMapping, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SiteRecoveryProtectionContainerMapping, error)
-	List(opts v1.ListOptions) (*v1alpha1.SiteRecoveryProtectionContainerMappingList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SiteRecoveryProtectionContainerMapping, err error)
+	Create(ctx context.Context, siteRecoveryProtectionContainerMapping *v1alpha1.SiteRecoveryProtectionContainerMapping, opts v1.CreateOptions) (*v1alpha1.SiteRecoveryProtectionContainerMapping, error)
+	Update(ctx context.Context, siteRecoveryProtectionContainerMapping *v1alpha1.SiteRecoveryProtectionContainerMapping, opts v1.UpdateOptions) (*v1alpha1.SiteRecoveryProtectionContainerMapping, error)
+	UpdateStatus(ctx context.Context, siteRecoveryProtectionContainerMapping *v1alpha1.SiteRecoveryProtectionContainerMapping, opts v1.UpdateOptions) (*v1alpha1.SiteRecoveryProtectionContainerMapping, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SiteRecoveryProtectionContainerMapping, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SiteRecoveryProtectionContainerMappingList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SiteRecoveryProtectionContainerMapping, err error)
 	SiteRecoveryProtectionContainerMappingExpansion
 }
 
@@ -65,20 +66,20 @@ func newSiteRecoveryProtectionContainerMappings(c *AzurermV1alpha1Client, namesp
 }
 
 // Get takes name of the siteRecoveryProtectionContainerMapping, and returns the corresponding siteRecoveryProtectionContainerMapping object, and an error if there is any.
-func (c *siteRecoveryProtectionContainerMappings) Get(name string, options v1.GetOptions) (result *v1alpha1.SiteRecoveryProtectionContainerMapping, err error) {
+func (c *siteRecoveryProtectionContainerMappings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SiteRecoveryProtectionContainerMapping, err error) {
 	result = &v1alpha1.SiteRecoveryProtectionContainerMapping{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("siterecoveryprotectioncontainermappings").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SiteRecoveryProtectionContainerMappings that match those selectors.
-func (c *siteRecoveryProtectionContainerMappings) List(opts v1.ListOptions) (result *v1alpha1.SiteRecoveryProtectionContainerMappingList, err error) {
+func (c *siteRecoveryProtectionContainerMappings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SiteRecoveryProtectionContainerMappingList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *siteRecoveryProtectionContainerMappings) List(opts v1.ListOptions) (res
 		Resource("siterecoveryprotectioncontainermappings").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested siteRecoveryProtectionContainerMappings.
-func (c *siteRecoveryProtectionContainerMappings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *siteRecoveryProtectionContainerMappings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *siteRecoveryProtectionContainerMappings) Watch(opts v1.ListOptions) (wa
 		Resource("siterecoveryprotectioncontainermappings").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a siteRecoveryProtectionContainerMapping and creates it.  Returns the server's representation of the siteRecoveryProtectionContainerMapping, and an error, if there is any.
-func (c *siteRecoveryProtectionContainerMappings) Create(siteRecoveryProtectionContainerMapping *v1alpha1.SiteRecoveryProtectionContainerMapping) (result *v1alpha1.SiteRecoveryProtectionContainerMapping, err error) {
+func (c *siteRecoveryProtectionContainerMappings) Create(ctx context.Context, siteRecoveryProtectionContainerMapping *v1alpha1.SiteRecoveryProtectionContainerMapping, opts v1.CreateOptions) (result *v1alpha1.SiteRecoveryProtectionContainerMapping, err error) {
 	result = &v1alpha1.SiteRecoveryProtectionContainerMapping{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("siterecoveryprotectioncontainermappings").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(siteRecoveryProtectionContainerMapping).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a siteRecoveryProtectionContainerMapping and updates it. Returns the server's representation of the siteRecoveryProtectionContainerMapping, and an error, if there is any.
-func (c *siteRecoveryProtectionContainerMappings) Update(siteRecoveryProtectionContainerMapping *v1alpha1.SiteRecoveryProtectionContainerMapping) (result *v1alpha1.SiteRecoveryProtectionContainerMapping, err error) {
+func (c *siteRecoveryProtectionContainerMappings) Update(ctx context.Context, siteRecoveryProtectionContainerMapping *v1alpha1.SiteRecoveryProtectionContainerMapping, opts v1.UpdateOptions) (result *v1alpha1.SiteRecoveryProtectionContainerMapping, err error) {
 	result = &v1alpha1.SiteRecoveryProtectionContainerMapping{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("siterecoveryprotectioncontainermappings").
 		Name(siteRecoveryProtectionContainerMapping.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(siteRecoveryProtectionContainerMapping).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *siteRecoveryProtectionContainerMappings) UpdateStatus(siteRecoveryProtectionContainerMapping *v1alpha1.SiteRecoveryProtectionContainerMapping) (result *v1alpha1.SiteRecoveryProtectionContainerMapping, err error) {
+func (c *siteRecoveryProtectionContainerMappings) UpdateStatus(ctx context.Context, siteRecoveryProtectionContainerMapping *v1alpha1.SiteRecoveryProtectionContainerMapping, opts v1.UpdateOptions) (result *v1alpha1.SiteRecoveryProtectionContainerMapping, err error) {
 	result = &v1alpha1.SiteRecoveryProtectionContainerMapping{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("siterecoveryprotectioncontainermappings").
 		Name(siteRecoveryProtectionContainerMapping.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(siteRecoveryProtectionContainerMapping).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the siteRecoveryProtectionContainerMapping and deletes it. Returns an error if one occurs.
-func (c *siteRecoveryProtectionContainerMappings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *siteRecoveryProtectionContainerMappings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("siterecoveryprotectioncontainermappings").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *siteRecoveryProtectionContainerMappings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *siteRecoveryProtectionContainerMappings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("siterecoveryprotectioncontainermappings").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched siteRecoveryProtectionContainerMapping.
-func (c *siteRecoveryProtectionContainerMappings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SiteRecoveryProtectionContainerMapping, err error) {
+func (c *siteRecoveryProtectionContainerMappings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SiteRecoveryProtectionContainerMapping, err error) {
 	result = &v1alpha1.SiteRecoveryProtectionContainerMapping{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("siterecoveryprotectioncontainermappings").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var s3bucketpoliciesResource = schema.GroupVersionResource{Group: "aws.kubeform.
 var s3bucketpoliciesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "S3BucketPolicy"}
 
 // Get takes name of the s3BucketPolicy, and returns the corresponding s3BucketPolicy object, and an error if there is any.
-func (c *FakeS3BucketPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.S3BucketPolicy, err error) {
+func (c *FakeS3BucketPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.S3BucketPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(s3bucketpoliciesResource, c.ns, name), &v1alpha1.S3BucketPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeS3BucketPolicies) Get(name string, options v1.GetOptions) (result *
 }
 
 // List takes label and field selectors, and returns the list of S3BucketPolicies that match those selectors.
-func (c *FakeS3BucketPolicies) List(opts v1.ListOptions) (result *v1alpha1.S3BucketPolicyList, err error) {
+func (c *FakeS3BucketPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.S3BucketPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(s3bucketpoliciesResource, s3bucketpoliciesKind, c.ns, opts), &v1alpha1.S3BucketPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeS3BucketPolicies) List(opts v1.ListOptions) (result *v1alpha1.S3Buc
 }
 
 // Watch returns a watch.Interface that watches the requested s3BucketPolicies.
-func (c *FakeS3BucketPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeS3BucketPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(s3bucketpoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a s3BucketPolicy and creates it.  Returns the server's representation of the s3BucketPolicy, and an error, if there is any.
-func (c *FakeS3BucketPolicies) Create(s3BucketPolicy *v1alpha1.S3BucketPolicy) (result *v1alpha1.S3BucketPolicy, err error) {
+func (c *FakeS3BucketPolicies) Create(ctx context.Context, s3BucketPolicy *v1alpha1.S3BucketPolicy, opts v1.CreateOptions) (result *v1alpha1.S3BucketPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(s3bucketpoliciesResource, c.ns, s3BucketPolicy), &v1alpha1.S3BucketPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeS3BucketPolicies) Create(s3BucketPolicy *v1alpha1.S3BucketPolicy) (
 }
 
 // Update takes the representation of a s3BucketPolicy and updates it. Returns the server's representation of the s3BucketPolicy, and an error, if there is any.
-func (c *FakeS3BucketPolicies) Update(s3BucketPolicy *v1alpha1.S3BucketPolicy) (result *v1alpha1.S3BucketPolicy, err error) {
+func (c *FakeS3BucketPolicies) Update(ctx context.Context, s3BucketPolicy *v1alpha1.S3BucketPolicy, opts v1.UpdateOptions) (result *v1alpha1.S3BucketPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(s3bucketpoliciesResource, c.ns, s3BucketPolicy), &v1alpha1.S3BucketPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeS3BucketPolicies) Update(s3BucketPolicy *v1alpha1.S3BucketPolicy) (
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeS3BucketPolicies) UpdateStatus(s3BucketPolicy *v1alpha1.S3BucketPolicy) (*v1alpha1.S3BucketPolicy, error) {
+func (c *FakeS3BucketPolicies) UpdateStatus(ctx context.Context, s3BucketPolicy *v1alpha1.S3BucketPolicy, opts v1.UpdateOptions) (*v1alpha1.S3BucketPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(s3bucketpoliciesResource, "status", c.ns, s3BucketPolicy), &v1alpha1.S3BucketPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeS3BucketPolicies) UpdateStatus(s3BucketPolicy *v1alpha1.S3BucketPol
 }
 
 // Delete takes name of the s3BucketPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeS3BucketPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeS3BucketPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(s3bucketpoliciesResource, c.ns, name), &v1alpha1.S3BucketPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeS3BucketPolicies) Delete(name string, options *v1.DeleteOptions) er
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeS3BucketPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(s3bucketpoliciesResource, c.ns, listOptions)
+func (c *FakeS3BucketPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(s3bucketpoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.S3BucketPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched s3BucketPolicy.
-func (c *FakeS3BucketPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.S3BucketPolicy, err error) {
+func (c *FakeS3BucketPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.S3BucketPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(s3bucketpoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.S3BucketPolicy{})
 

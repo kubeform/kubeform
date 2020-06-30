@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cognitiveaccountsResource = schema.GroupVersionResource{Group: "azurerm.kube
 var cognitiveaccountsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "CognitiveAccount"}
 
 // Get takes name of the cognitiveAccount, and returns the corresponding cognitiveAccount object, and an error if there is any.
-func (c *FakeCognitiveAccounts) Get(name string, options v1.GetOptions) (result *v1alpha1.CognitiveAccount, err error) {
+func (c *FakeCognitiveAccounts) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CognitiveAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cognitiveaccountsResource, c.ns, name), &v1alpha1.CognitiveAccount{})
 
@@ -51,7 +53,7 @@ func (c *FakeCognitiveAccounts) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of CognitiveAccounts that match those selectors.
-func (c *FakeCognitiveAccounts) List(opts v1.ListOptions) (result *v1alpha1.CognitiveAccountList, err error) {
+func (c *FakeCognitiveAccounts) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CognitiveAccountList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cognitiveaccountsResource, cognitiveaccountsKind, c.ns, opts), &v1alpha1.CognitiveAccountList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCognitiveAccounts) List(opts v1.ListOptions) (result *v1alpha1.Cogn
 }
 
 // Watch returns a watch.Interface that watches the requested cognitiveAccounts.
-func (c *FakeCognitiveAccounts) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCognitiveAccounts) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cognitiveaccountsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cognitiveAccount and creates it.  Returns the server's representation of the cognitiveAccount, and an error, if there is any.
-func (c *FakeCognitiveAccounts) Create(cognitiveAccount *v1alpha1.CognitiveAccount) (result *v1alpha1.CognitiveAccount, err error) {
+func (c *FakeCognitiveAccounts) Create(ctx context.Context, cognitiveAccount *v1alpha1.CognitiveAccount, opts v1.CreateOptions) (result *v1alpha1.CognitiveAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cognitiveaccountsResource, c.ns, cognitiveAccount), &v1alpha1.CognitiveAccount{})
 
@@ -91,7 +93,7 @@ func (c *FakeCognitiveAccounts) Create(cognitiveAccount *v1alpha1.CognitiveAccou
 }
 
 // Update takes the representation of a cognitiveAccount and updates it. Returns the server's representation of the cognitiveAccount, and an error, if there is any.
-func (c *FakeCognitiveAccounts) Update(cognitiveAccount *v1alpha1.CognitiveAccount) (result *v1alpha1.CognitiveAccount, err error) {
+func (c *FakeCognitiveAccounts) Update(ctx context.Context, cognitiveAccount *v1alpha1.CognitiveAccount, opts v1.UpdateOptions) (result *v1alpha1.CognitiveAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cognitiveaccountsResource, c.ns, cognitiveAccount), &v1alpha1.CognitiveAccount{})
 
@@ -103,7 +105,7 @@ func (c *FakeCognitiveAccounts) Update(cognitiveAccount *v1alpha1.CognitiveAccou
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCognitiveAccounts) UpdateStatus(cognitiveAccount *v1alpha1.CognitiveAccount) (*v1alpha1.CognitiveAccount, error) {
+func (c *FakeCognitiveAccounts) UpdateStatus(ctx context.Context, cognitiveAccount *v1alpha1.CognitiveAccount, opts v1.UpdateOptions) (*v1alpha1.CognitiveAccount, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cognitiveaccountsResource, "status", c.ns, cognitiveAccount), &v1alpha1.CognitiveAccount{})
 
@@ -114,7 +116,7 @@ func (c *FakeCognitiveAccounts) UpdateStatus(cognitiveAccount *v1alpha1.Cognitiv
 }
 
 // Delete takes name of the cognitiveAccount and deletes it. Returns an error if one occurs.
-func (c *FakeCognitiveAccounts) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCognitiveAccounts) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cognitiveaccountsResource, c.ns, name), &v1alpha1.CognitiveAccount{})
 
@@ -122,15 +124,15 @@ func (c *FakeCognitiveAccounts) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCognitiveAccounts) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cognitiveaccountsResource, c.ns, listOptions)
+func (c *FakeCognitiveAccounts) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cognitiveaccountsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CognitiveAccountList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cognitiveAccount.
-func (c *FakeCognitiveAccounts) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CognitiveAccount, err error) {
+func (c *FakeCognitiveAccounts) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CognitiveAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cognitiveaccountsResource, c.ns, name, pt, data, subresources...), &v1alpha1.CognitiveAccount{})
 

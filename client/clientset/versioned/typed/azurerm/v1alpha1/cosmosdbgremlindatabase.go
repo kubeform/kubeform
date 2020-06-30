@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type CosmosdbGremlinDatabasesGetter interface {
 
 // CosmosdbGremlinDatabaseInterface has methods to work with CosmosdbGremlinDatabase resources.
 type CosmosdbGremlinDatabaseInterface interface {
-	Create(*v1alpha1.CosmosdbGremlinDatabase) (*v1alpha1.CosmosdbGremlinDatabase, error)
-	Update(*v1alpha1.CosmosdbGremlinDatabase) (*v1alpha1.CosmosdbGremlinDatabase, error)
-	UpdateStatus(*v1alpha1.CosmosdbGremlinDatabase) (*v1alpha1.CosmosdbGremlinDatabase, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.CosmosdbGremlinDatabase, error)
-	List(opts v1.ListOptions) (*v1alpha1.CosmosdbGremlinDatabaseList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CosmosdbGremlinDatabase, err error)
+	Create(ctx context.Context, cosmosdbGremlinDatabase *v1alpha1.CosmosdbGremlinDatabase, opts v1.CreateOptions) (*v1alpha1.CosmosdbGremlinDatabase, error)
+	Update(ctx context.Context, cosmosdbGremlinDatabase *v1alpha1.CosmosdbGremlinDatabase, opts v1.UpdateOptions) (*v1alpha1.CosmosdbGremlinDatabase, error)
+	UpdateStatus(ctx context.Context, cosmosdbGremlinDatabase *v1alpha1.CosmosdbGremlinDatabase, opts v1.UpdateOptions) (*v1alpha1.CosmosdbGremlinDatabase, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.CosmosdbGremlinDatabase, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.CosmosdbGremlinDatabaseList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CosmosdbGremlinDatabase, err error)
 	CosmosdbGremlinDatabaseExpansion
 }
 
@@ -65,20 +66,20 @@ func newCosmosdbGremlinDatabases(c *AzurermV1alpha1Client, namespace string) *co
 }
 
 // Get takes name of the cosmosdbGremlinDatabase, and returns the corresponding cosmosdbGremlinDatabase object, and an error if there is any.
-func (c *cosmosdbGremlinDatabases) Get(name string, options v1.GetOptions) (result *v1alpha1.CosmosdbGremlinDatabase, err error) {
+func (c *cosmosdbGremlinDatabases) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CosmosdbGremlinDatabase, err error) {
 	result = &v1alpha1.CosmosdbGremlinDatabase{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("cosmosdbgremlindatabases").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of CosmosdbGremlinDatabases that match those selectors.
-func (c *cosmosdbGremlinDatabases) List(opts v1.ListOptions) (result *v1alpha1.CosmosdbGremlinDatabaseList, err error) {
+func (c *cosmosdbGremlinDatabases) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CosmosdbGremlinDatabaseList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *cosmosdbGremlinDatabases) List(opts v1.ListOptions) (result *v1alpha1.C
 		Resource("cosmosdbgremlindatabases").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested cosmosdbGremlinDatabases.
-func (c *cosmosdbGremlinDatabases) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *cosmosdbGremlinDatabases) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *cosmosdbGremlinDatabases) Watch(opts v1.ListOptions) (watch.Interface, 
 		Resource("cosmosdbgremlindatabases").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a cosmosdbGremlinDatabase and creates it.  Returns the server's representation of the cosmosdbGremlinDatabase, and an error, if there is any.
-func (c *cosmosdbGremlinDatabases) Create(cosmosdbGremlinDatabase *v1alpha1.CosmosdbGremlinDatabase) (result *v1alpha1.CosmosdbGremlinDatabase, err error) {
+func (c *cosmosdbGremlinDatabases) Create(ctx context.Context, cosmosdbGremlinDatabase *v1alpha1.CosmosdbGremlinDatabase, opts v1.CreateOptions) (result *v1alpha1.CosmosdbGremlinDatabase, err error) {
 	result = &v1alpha1.CosmosdbGremlinDatabase{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("cosmosdbgremlindatabases").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cosmosdbGremlinDatabase).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a cosmosdbGremlinDatabase and updates it. Returns the server's representation of the cosmosdbGremlinDatabase, and an error, if there is any.
-func (c *cosmosdbGremlinDatabases) Update(cosmosdbGremlinDatabase *v1alpha1.CosmosdbGremlinDatabase) (result *v1alpha1.CosmosdbGremlinDatabase, err error) {
+func (c *cosmosdbGremlinDatabases) Update(ctx context.Context, cosmosdbGremlinDatabase *v1alpha1.CosmosdbGremlinDatabase, opts v1.UpdateOptions) (result *v1alpha1.CosmosdbGremlinDatabase, err error) {
 	result = &v1alpha1.CosmosdbGremlinDatabase{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("cosmosdbgremlindatabases").
 		Name(cosmosdbGremlinDatabase.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cosmosdbGremlinDatabase).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *cosmosdbGremlinDatabases) UpdateStatus(cosmosdbGremlinDatabase *v1alpha1.CosmosdbGremlinDatabase) (result *v1alpha1.CosmosdbGremlinDatabase, err error) {
+func (c *cosmosdbGremlinDatabases) UpdateStatus(ctx context.Context, cosmosdbGremlinDatabase *v1alpha1.CosmosdbGremlinDatabase, opts v1.UpdateOptions) (result *v1alpha1.CosmosdbGremlinDatabase, err error) {
 	result = &v1alpha1.CosmosdbGremlinDatabase{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("cosmosdbgremlindatabases").
 		Name(cosmosdbGremlinDatabase.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cosmosdbGremlinDatabase).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the cosmosdbGremlinDatabase and deletes it. Returns an error if one occurs.
-func (c *cosmosdbGremlinDatabases) Delete(name string, options *v1.DeleteOptions) error {
+func (c *cosmosdbGremlinDatabases) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("cosmosdbgremlindatabases").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *cosmosdbGremlinDatabases) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *cosmosdbGremlinDatabases) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("cosmosdbgremlindatabases").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched cosmosdbGremlinDatabase.
-func (c *cosmosdbGremlinDatabases) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CosmosdbGremlinDatabase, err error) {
+func (c *cosmosdbGremlinDatabases) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CosmosdbGremlinDatabase, err error) {
 	result = &v1alpha1.CosmosdbGremlinDatabase{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("cosmosdbgremlindatabases").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

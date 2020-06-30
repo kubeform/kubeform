@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var postgresqlvirtualnetworkrulesResource = schema.GroupVersionResource{Group: "
 var postgresqlvirtualnetworkrulesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "PostgresqlVirtualNetworkRule"}
 
 // Get takes name of the postgresqlVirtualNetworkRule, and returns the corresponding postgresqlVirtualNetworkRule object, and an error if there is any.
-func (c *FakePostgresqlVirtualNetworkRules) Get(name string, options v1.GetOptions) (result *v1alpha1.PostgresqlVirtualNetworkRule, err error) {
+func (c *FakePostgresqlVirtualNetworkRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PostgresqlVirtualNetworkRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(postgresqlvirtualnetworkrulesResource, c.ns, name), &v1alpha1.PostgresqlVirtualNetworkRule{})
 
@@ -51,7 +53,7 @@ func (c *FakePostgresqlVirtualNetworkRules) Get(name string, options v1.GetOptio
 }
 
 // List takes label and field selectors, and returns the list of PostgresqlVirtualNetworkRules that match those selectors.
-func (c *FakePostgresqlVirtualNetworkRules) List(opts v1.ListOptions) (result *v1alpha1.PostgresqlVirtualNetworkRuleList, err error) {
+func (c *FakePostgresqlVirtualNetworkRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PostgresqlVirtualNetworkRuleList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(postgresqlvirtualnetworkrulesResource, postgresqlvirtualnetworkrulesKind, c.ns, opts), &v1alpha1.PostgresqlVirtualNetworkRuleList{})
 
@@ -73,14 +75,14 @@ func (c *FakePostgresqlVirtualNetworkRules) List(opts v1.ListOptions) (result *v
 }
 
 // Watch returns a watch.Interface that watches the requested postgresqlVirtualNetworkRules.
-func (c *FakePostgresqlVirtualNetworkRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakePostgresqlVirtualNetworkRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(postgresqlvirtualnetworkrulesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a postgresqlVirtualNetworkRule and creates it.  Returns the server's representation of the postgresqlVirtualNetworkRule, and an error, if there is any.
-func (c *FakePostgresqlVirtualNetworkRules) Create(postgresqlVirtualNetworkRule *v1alpha1.PostgresqlVirtualNetworkRule) (result *v1alpha1.PostgresqlVirtualNetworkRule, err error) {
+func (c *FakePostgresqlVirtualNetworkRules) Create(ctx context.Context, postgresqlVirtualNetworkRule *v1alpha1.PostgresqlVirtualNetworkRule, opts v1.CreateOptions) (result *v1alpha1.PostgresqlVirtualNetworkRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(postgresqlvirtualnetworkrulesResource, c.ns, postgresqlVirtualNetworkRule), &v1alpha1.PostgresqlVirtualNetworkRule{})
 
@@ -91,7 +93,7 @@ func (c *FakePostgresqlVirtualNetworkRules) Create(postgresqlVirtualNetworkRule 
 }
 
 // Update takes the representation of a postgresqlVirtualNetworkRule and updates it. Returns the server's representation of the postgresqlVirtualNetworkRule, and an error, if there is any.
-func (c *FakePostgresqlVirtualNetworkRules) Update(postgresqlVirtualNetworkRule *v1alpha1.PostgresqlVirtualNetworkRule) (result *v1alpha1.PostgresqlVirtualNetworkRule, err error) {
+func (c *FakePostgresqlVirtualNetworkRules) Update(ctx context.Context, postgresqlVirtualNetworkRule *v1alpha1.PostgresqlVirtualNetworkRule, opts v1.UpdateOptions) (result *v1alpha1.PostgresqlVirtualNetworkRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(postgresqlvirtualnetworkrulesResource, c.ns, postgresqlVirtualNetworkRule), &v1alpha1.PostgresqlVirtualNetworkRule{})
 
@@ -103,7 +105,7 @@ func (c *FakePostgresqlVirtualNetworkRules) Update(postgresqlVirtualNetworkRule 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakePostgresqlVirtualNetworkRules) UpdateStatus(postgresqlVirtualNetworkRule *v1alpha1.PostgresqlVirtualNetworkRule) (*v1alpha1.PostgresqlVirtualNetworkRule, error) {
+func (c *FakePostgresqlVirtualNetworkRules) UpdateStatus(ctx context.Context, postgresqlVirtualNetworkRule *v1alpha1.PostgresqlVirtualNetworkRule, opts v1.UpdateOptions) (*v1alpha1.PostgresqlVirtualNetworkRule, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(postgresqlvirtualnetworkrulesResource, "status", c.ns, postgresqlVirtualNetworkRule), &v1alpha1.PostgresqlVirtualNetworkRule{})
 
@@ -114,7 +116,7 @@ func (c *FakePostgresqlVirtualNetworkRules) UpdateStatus(postgresqlVirtualNetwor
 }
 
 // Delete takes name of the postgresqlVirtualNetworkRule and deletes it. Returns an error if one occurs.
-func (c *FakePostgresqlVirtualNetworkRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakePostgresqlVirtualNetworkRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(postgresqlvirtualnetworkrulesResource, c.ns, name), &v1alpha1.PostgresqlVirtualNetworkRule{})
 
@@ -122,15 +124,15 @@ func (c *FakePostgresqlVirtualNetworkRules) Delete(name string, options *v1.Dele
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakePostgresqlVirtualNetworkRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(postgresqlvirtualnetworkrulesResource, c.ns, listOptions)
+func (c *FakePostgresqlVirtualNetworkRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(postgresqlvirtualnetworkrulesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.PostgresqlVirtualNetworkRuleList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched postgresqlVirtualNetworkRule.
-func (c *FakePostgresqlVirtualNetworkRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PostgresqlVirtualNetworkRule, err error) {
+func (c *FakePostgresqlVirtualNetworkRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PostgresqlVirtualNetworkRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(postgresqlvirtualnetworkrulesResource, c.ns, name, pt, data, subresources...), &v1alpha1.PostgresqlVirtualNetworkRule{})
 

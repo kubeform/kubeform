@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dnsmxrecordsResource = schema.GroupVersionResource{Group: "azurerm.kubeform.
 var dnsmxrecordsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "DnsMxRecord"}
 
 // Get takes name of the dnsMxRecord, and returns the corresponding dnsMxRecord object, and an error if there is any.
-func (c *FakeDnsMxRecords) Get(name string, options v1.GetOptions) (result *v1alpha1.DnsMxRecord, err error) {
+func (c *FakeDnsMxRecords) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DnsMxRecord, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dnsmxrecordsResource, c.ns, name), &v1alpha1.DnsMxRecord{})
 
@@ -51,7 +53,7 @@ func (c *FakeDnsMxRecords) Get(name string, options v1.GetOptions) (result *v1al
 }
 
 // List takes label and field selectors, and returns the list of DnsMxRecords that match those selectors.
-func (c *FakeDnsMxRecords) List(opts v1.ListOptions) (result *v1alpha1.DnsMxRecordList, err error) {
+func (c *FakeDnsMxRecords) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DnsMxRecordList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dnsmxrecordsResource, dnsmxrecordsKind, c.ns, opts), &v1alpha1.DnsMxRecordList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDnsMxRecords) List(opts v1.ListOptions) (result *v1alpha1.DnsMxReco
 }
 
 // Watch returns a watch.Interface that watches the requested dnsMxRecords.
-func (c *FakeDnsMxRecords) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDnsMxRecords) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dnsmxrecordsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dnsMxRecord and creates it.  Returns the server's representation of the dnsMxRecord, and an error, if there is any.
-func (c *FakeDnsMxRecords) Create(dnsMxRecord *v1alpha1.DnsMxRecord) (result *v1alpha1.DnsMxRecord, err error) {
+func (c *FakeDnsMxRecords) Create(ctx context.Context, dnsMxRecord *v1alpha1.DnsMxRecord, opts v1.CreateOptions) (result *v1alpha1.DnsMxRecord, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dnsmxrecordsResource, c.ns, dnsMxRecord), &v1alpha1.DnsMxRecord{})
 
@@ -91,7 +93,7 @@ func (c *FakeDnsMxRecords) Create(dnsMxRecord *v1alpha1.DnsMxRecord) (result *v1
 }
 
 // Update takes the representation of a dnsMxRecord and updates it. Returns the server's representation of the dnsMxRecord, and an error, if there is any.
-func (c *FakeDnsMxRecords) Update(dnsMxRecord *v1alpha1.DnsMxRecord) (result *v1alpha1.DnsMxRecord, err error) {
+func (c *FakeDnsMxRecords) Update(ctx context.Context, dnsMxRecord *v1alpha1.DnsMxRecord, opts v1.UpdateOptions) (result *v1alpha1.DnsMxRecord, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dnsmxrecordsResource, c.ns, dnsMxRecord), &v1alpha1.DnsMxRecord{})
 
@@ -103,7 +105,7 @@ func (c *FakeDnsMxRecords) Update(dnsMxRecord *v1alpha1.DnsMxRecord) (result *v1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDnsMxRecords) UpdateStatus(dnsMxRecord *v1alpha1.DnsMxRecord) (*v1alpha1.DnsMxRecord, error) {
+func (c *FakeDnsMxRecords) UpdateStatus(ctx context.Context, dnsMxRecord *v1alpha1.DnsMxRecord, opts v1.UpdateOptions) (*v1alpha1.DnsMxRecord, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dnsmxrecordsResource, "status", c.ns, dnsMxRecord), &v1alpha1.DnsMxRecord{})
 
@@ -114,7 +116,7 @@ func (c *FakeDnsMxRecords) UpdateStatus(dnsMxRecord *v1alpha1.DnsMxRecord) (*v1a
 }
 
 // Delete takes name of the dnsMxRecord and deletes it. Returns an error if one occurs.
-func (c *FakeDnsMxRecords) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDnsMxRecords) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dnsmxrecordsResource, c.ns, name), &v1alpha1.DnsMxRecord{})
 
@@ -122,15 +124,15 @@ func (c *FakeDnsMxRecords) Delete(name string, options *v1.DeleteOptions) error 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDnsMxRecords) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dnsmxrecordsResource, c.ns, listOptions)
+func (c *FakeDnsMxRecords) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dnsmxrecordsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DnsMxRecordList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dnsMxRecord.
-func (c *FakeDnsMxRecords) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DnsMxRecord, err error) {
+func (c *FakeDnsMxRecords) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DnsMxRecord, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dnsmxrecordsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DnsMxRecord{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var route53resolverruleassociationsResource = schema.GroupVersionResource{Group:
 var route53resolverruleassociationsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "Route53ResolverRuleAssociation"}
 
 // Get takes name of the route53ResolverRuleAssociation, and returns the corresponding route53ResolverRuleAssociation object, and an error if there is any.
-func (c *FakeRoute53ResolverRuleAssociations) Get(name string, options v1.GetOptions) (result *v1alpha1.Route53ResolverRuleAssociation, err error) {
+func (c *FakeRoute53ResolverRuleAssociations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Route53ResolverRuleAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(route53resolverruleassociationsResource, c.ns, name), &v1alpha1.Route53ResolverRuleAssociation{})
 
@@ -51,7 +53,7 @@ func (c *FakeRoute53ResolverRuleAssociations) Get(name string, options v1.GetOpt
 }
 
 // List takes label and field selectors, and returns the list of Route53ResolverRuleAssociations that match those selectors.
-func (c *FakeRoute53ResolverRuleAssociations) List(opts v1.ListOptions) (result *v1alpha1.Route53ResolverRuleAssociationList, err error) {
+func (c *FakeRoute53ResolverRuleAssociations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.Route53ResolverRuleAssociationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(route53resolverruleassociationsResource, route53resolverruleassociationsKind, c.ns, opts), &v1alpha1.Route53ResolverRuleAssociationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeRoute53ResolverRuleAssociations) List(opts v1.ListOptions) (result 
 }
 
 // Watch returns a watch.Interface that watches the requested route53ResolverRuleAssociations.
-func (c *FakeRoute53ResolverRuleAssociations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeRoute53ResolverRuleAssociations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(route53resolverruleassociationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a route53ResolverRuleAssociation and creates it.  Returns the server's representation of the route53ResolverRuleAssociation, and an error, if there is any.
-func (c *FakeRoute53ResolverRuleAssociations) Create(route53ResolverRuleAssociation *v1alpha1.Route53ResolverRuleAssociation) (result *v1alpha1.Route53ResolverRuleAssociation, err error) {
+func (c *FakeRoute53ResolverRuleAssociations) Create(ctx context.Context, route53ResolverRuleAssociation *v1alpha1.Route53ResolverRuleAssociation, opts v1.CreateOptions) (result *v1alpha1.Route53ResolverRuleAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(route53resolverruleassociationsResource, c.ns, route53ResolverRuleAssociation), &v1alpha1.Route53ResolverRuleAssociation{})
 
@@ -91,7 +93,7 @@ func (c *FakeRoute53ResolverRuleAssociations) Create(route53ResolverRuleAssociat
 }
 
 // Update takes the representation of a route53ResolverRuleAssociation and updates it. Returns the server's representation of the route53ResolverRuleAssociation, and an error, if there is any.
-func (c *FakeRoute53ResolverRuleAssociations) Update(route53ResolverRuleAssociation *v1alpha1.Route53ResolverRuleAssociation) (result *v1alpha1.Route53ResolverRuleAssociation, err error) {
+func (c *FakeRoute53ResolverRuleAssociations) Update(ctx context.Context, route53ResolverRuleAssociation *v1alpha1.Route53ResolverRuleAssociation, opts v1.UpdateOptions) (result *v1alpha1.Route53ResolverRuleAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(route53resolverruleassociationsResource, c.ns, route53ResolverRuleAssociation), &v1alpha1.Route53ResolverRuleAssociation{})
 
@@ -103,7 +105,7 @@ func (c *FakeRoute53ResolverRuleAssociations) Update(route53ResolverRuleAssociat
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeRoute53ResolverRuleAssociations) UpdateStatus(route53ResolverRuleAssociation *v1alpha1.Route53ResolverRuleAssociation) (*v1alpha1.Route53ResolverRuleAssociation, error) {
+func (c *FakeRoute53ResolverRuleAssociations) UpdateStatus(ctx context.Context, route53ResolverRuleAssociation *v1alpha1.Route53ResolverRuleAssociation, opts v1.UpdateOptions) (*v1alpha1.Route53ResolverRuleAssociation, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(route53resolverruleassociationsResource, "status", c.ns, route53ResolverRuleAssociation), &v1alpha1.Route53ResolverRuleAssociation{})
 
@@ -114,7 +116,7 @@ func (c *FakeRoute53ResolverRuleAssociations) UpdateStatus(route53ResolverRuleAs
 }
 
 // Delete takes name of the route53ResolverRuleAssociation and deletes it. Returns an error if one occurs.
-func (c *FakeRoute53ResolverRuleAssociations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeRoute53ResolverRuleAssociations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(route53resolverruleassociationsResource, c.ns, name), &v1alpha1.Route53ResolverRuleAssociation{})
 
@@ -122,15 +124,15 @@ func (c *FakeRoute53ResolverRuleAssociations) Delete(name string, options *v1.De
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeRoute53ResolverRuleAssociations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(route53resolverruleassociationsResource, c.ns, listOptions)
+func (c *FakeRoute53ResolverRuleAssociations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(route53resolverruleassociationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.Route53ResolverRuleAssociationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched route53ResolverRuleAssociation.
-func (c *FakeRoute53ResolverRuleAssociations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Route53ResolverRuleAssociation, err error) {
+func (c *FakeRoute53ResolverRuleAssociations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Route53ResolverRuleAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(route53resolverruleassociationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.Route53ResolverRuleAssociation{})
 

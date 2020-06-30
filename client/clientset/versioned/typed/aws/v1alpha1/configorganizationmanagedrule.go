@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type ConfigOrganizationManagedRulesGetter interface {
 
 // ConfigOrganizationManagedRuleInterface has methods to work with ConfigOrganizationManagedRule resources.
 type ConfigOrganizationManagedRuleInterface interface {
-	Create(*v1alpha1.ConfigOrganizationManagedRule) (*v1alpha1.ConfigOrganizationManagedRule, error)
-	Update(*v1alpha1.ConfigOrganizationManagedRule) (*v1alpha1.ConfigOrganizationManagedRule, error)
-	UpdateStatus(*v1alpha1.ConfigOrganizationManagedRule) (*v1alpha1.ConfigOrganizationManagedRule, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ConfigOrganizationManagedRule, error)
-	List(opts v1.ListOptions) (*v1alpha1.ConfigOrganizationManagedRuleList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ConfigOrganizationManagedRule, err error)
+	Create(ctx context.Context, configOrganizationManagedRule *v1alpha1.ConfigOrganizationManagedRule, opts v1.CreateOptions) (*v1alpha1.ConfigOrganizationManagedRule, error)
+	Update(ctx context.Context, configOrganizationManagedRule *v1alpha1.ConfigOrganizationManagedRule, opts v1.UpdateOptions) (*v1alpha1.ConfigOrganizationManagedRule, error)
+	UpdateStatus(ctx context.Context, configOrganizationManagedRule *v1alpha1.ConfigOrganizationManagedRule, opts v1.UpdateOptions) (*v1alpha1.ConfigOrganizationManagedRule, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ConfigOrganizationManagedRule, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ConfigOrganizationManagedRuleList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ConfigOrganizationManagedRule, err error)
 	ConfigOrganizationManagedRuleExpansion
 }
 
@@ -65,20 +66,20 @@ func newConfigOrganizationManagedRules(c *AwsV1alpha1Client, namespace string) *
 }
 
 // Get takes name of the configOrganizationManagedRule, and returns the corresponding configOrganizationManagedRule object, and an error if there is any.
-func (c *configOrganizationManagedRules) Get(name string, options v1.GetOptions) (result *v1alpha1.ConfigOrganizationManagedRule, err error) {
+func (c *configOrganizationManagedRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ConfigOrganizationManagedRule, err error) {
 	result = &v1alpha1.ConfigOrganizationManagedRule{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("configorganizationmanagedrules").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ConfigOrganizationManagedRules that match those selectors.
-func (c *configOrganizationManagedRules) List(opts v1.ListOptions) (result *v1alpha1.ConfigOrganizationManagedRuleList, err error) {
+func (c *configOrganizationManagedRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ConfigOrganizationManagedRuleList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *configOrganizationManagedRules) List(opts v1.ListOptions) (result *v1al
 		Resource("configorganizationmanagedrules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested configOrganizationManagedRules.
-func (c *configOrganizationManagedRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *configOrganizationManagedRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *configOrganizationManagedRules) Watch(opts v1.ListOptions) (watch.Inter
 		Resource("configorganizationmanagedrules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a configOrganizationManagedRule and creates it.  Returns the server's representation of the configOrganizationManagedRule, and an error, if there is any.
-func (c *configOrganizationManagedRules) Create(configOrganizationManagedRule *v1alpha1.ConfigOrganizationManagedRule) (result *v1alpha1.ConfigOrganizationManagedRule, err error) {
+func (c *configOrganizationManagedRules) Create(ctx context.Context, configOrganizationManagedRule *v1alpha1.ConfigOrganizationManagedRule, opts v1.CreateOptions) (result *v1alpha1.ConfigOrganizationManagedRule, err error) {
 	result = &v1alpha1.ConfigOrganizationManagedRule{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("configorganizationmanagedrules").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(configOrganizationManagedRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a configOrganizationManagedRule and updates it. Returns the server's representation of the configOrganizationManagedRule, and an error, if there is any.
-func (c *configOrganizationManagedRules) Update(configOrganizationManagedRule *v1alpha1.ConfigOrganizationManagedRule) (result *v1alpha1.ConfigOrganizationManagedRule, err error) {
+func (c *configOrganizationManagedRules) Update(ctx context.Context, configOrganizationManagedRule *v1alpha1.ConfigOrganizationManagedRule, opts v1.UpdateOptions) (result *v1alpha1.ConfigOrganizationManagedRule, err error) {
 	result = &v1alpha1.ConfigOrganizationManagedRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("configorganizationmanagedrules").
 		Name(configOrganizationManagedRule.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(configOrganizationManagedRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *configOrganizationManagedRules) UpdateStatus(configOrganizationManagedRule *v1alpha1.ConfigOrganizationManagedRule) (result *v1alpha1.ConfigOrganizationManagedRule, err error) {
+func (c *configOrganizationManagedRules) UpdateStatus(ctx context.Context, configOrganizationManagedRule *v1alpha1.ConfigOrganizationManagedRule, opts v1.UpdateOptions) (result *v1alpha1.ConfigOrganizationManagedRule, err error) {
 	result = &v1alpha1.ConfigOrganizationManagedRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("configorganizationmanagedrules").
 		Name(configOrganizationManagedRule.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(configOrganizationManagedRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the configOrganizationManagedRule and deletes it. Returns an error if one occurs.
-func (c *configOrganizationManagedRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *configOrganizationManagedRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("configorganizationmanagedrules").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *configOrganizationManagedRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *configOrganizationManagedRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("configorganizationmanagedrules").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched configOrganizationManagedRule.
-func (c *configOrganizationManagedRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ConfigOrganizationManagedRule, err error) {
+func (c *configOrganizationManagedRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ConfigOrganizationManagedRule, err error) {
 	result = &v1alpha1.ConfigOrganizationManagedRule{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("configorganizationmanagedrules").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

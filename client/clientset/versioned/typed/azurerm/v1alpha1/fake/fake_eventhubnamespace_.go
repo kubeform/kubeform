@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var eventhubnamespace_sResource = schema.GroupVersionResource{Group: "azurerm.ku
 var eventhubnamespace_sKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "EventhubNamespace_"}
 
 // Get takes name of the eventhubNamespace_, and returns the corresponding eventhubNamespace_ object, and an error if there is any.
-func (c *FakeEventhubNamespace_s) Get(name string, options v1.GetOptions) (result *v1alpha1.EventhubNamespace_, err error) {
+func (c *FakeEventhubNamespace_s) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.EventhubNamespace_, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(eventhubnamespace_sResource, c.ns, name), &v1alpha1.EventhubNamespace_{})
 
@@ -51,7 +53,7 @@ func (c *FakeEventhubNamespace_s) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of EventhubNamespace_s that match those selectors.
-func (c *FakeEventhubNamespace_s) List(opts v1.ListOptions) (result *v1alpha1.EventhubNamespace_List, err error) {
+func (c *FakeEventhubNamespace_s) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.EventhubNamespace_List, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(eventhubnamespace_sResource, eventhubnamespace_sKind, c.ns, opts), &v1alpha1.EventhubNamespace_List{})
 
@@ -73,14 +75,14 @@ func (c *FakeEventhubNamespace_s) List(opts v1.ListOptions) (result *v1alpha1.Ev
 }
 
 // Watch returns a watch.Interface that watches the requested eventhubNamespace_s.
-func (c *FakeEventhubNamespace_s) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeEventhubNamespace_s) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(eventhubnamespace_sResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a eventhubNamespace_ and creates it.  Returns the server's representation of the eventhubNamespace_, and an error, if there is any.
-func (c *FakeEventhubNamespace_s) Create(eventhubNamespace_ *v1alpha1.EventhubNamespace_) (result *v1alpha1.EventhubNamespace_, err error) {
+func (c *FakeEventhubNamespace_s) Create(ctx context.Context, eventhubNamespace_ *v1alpha1.EventhubNamespace_, opts v1.CreateOptions) (result *v1alpha1.EventhubNamespace_, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(eventhubnamespace_sResource, c.ns, eventhubNamespace_), &v1alpha1.EventhubNamespace_{})
 
@@ -91,7 +93,7 @@ func (c *FakeEventhubNamespace_s) Create(eventhubNamespace_ *v1alpha1.EventhubNa
 }
 
 // Update takes the representation of a eventhubNamespace_ and updates it. Returns the server's representation of the eventhubNamespace_, and an error, if there is any.
-func (c *FakeEventhubNamespace_s) Update(eventhubNamespace_ *v1alpha1.EventhubNamespace_) (result *v1alpha1.EventhubNamespace_, err error) {
+func (c *FakeEventhubNamespace_s) Update(ctx context.Context, eventhubNamespace_ *v1alpha1.EventhubNamespace_, opts v1.UpdateOptions) (result *v1alpha1.EventhubNamespace_, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(eventhubnamespace_sResource, c.ns, eventhubNamespace_), &v1alpha1.EventhubNamespace_{})
 
@@ -103,7 +105,7 @@ func (c *FakeEventhubNamespace_s) Update(eventhubNamespace_ *v1alpha1.EventhubNa
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeEventhubNamespace_s) UpdateStatus(eventhubNamespace_ *v1alpha1.EventhubNamespace_) (*v1alpha1.EventhubNamespace_, error) {
+func (c *FakeEventhubNamespace_s) UpdateStatus(ctx context.Context, eventhubNamespace_ *v1alpha1.EventhubNamespace_, opts v1.UpdateOptions) (*v1alpha1.EventhubNamespace_, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(eventhubnamespace_sResource, "status", c.ns, eventhubNamespace_), &v1alpha1.EventhubNamespace_{})
 
@@ -114,7 +116,7 @@ func (c *FakeEventhubNamespace_s) UpdateStatus(eventhubNamespace_ *v1alpha1.Even
 }
 
 // Delete takes name of the eventhubNamespace_ and deletes it. Returns an error if one occurs.
-func (c *FakeEventhubNamespace_s) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeEventhubNamespace_s) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(eventhubnamespace_sResource, c.ns, name), &v1alpha1.EventhubNamespace_{})
 
@@ -122,15 +124,15 @@ func (c *FakeEventhubNamespace_s) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeEventhubNamespace_s) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(eventhubnamespace_sResource, c.ns, listOptions)
+func (c *FakeEventhubNamespace_s) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(eventhubnamespace_sResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.EventhubNamespace_List{})
 	return err
 }
 
 // Patch applies the patch and returns the patched eventhubNamespace_.
-func (c *FakeEventhubNamespace_s) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EventhubNamespace_, err error) {
+func (c *FakeEventhubNamespace_s) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EventhubNamespace_, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(eventhubnamespace_sResource, c.ns, name, pt, data, subresources...), &v1alpha1.EventhubNamespace_{})
 

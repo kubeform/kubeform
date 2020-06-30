@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type CdnProfilesGetter interface {
 
 // CdnProfileInterface has methods to work with CdnProfile resources.
 type CdnProfileInterface interface {
-	Create(*v1alpha1.CdnProfile) (*v1alpha1.CdnProfile, error)
-	Update(*v1alpha1.CdnProfile) (*v1alpha1.CdnProfile, error)
-	UpdateStatus(*v1alpha1.CdnProfile) (*v1alpha1.CdnProfile, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.CdnProfile, error)
-	List(opts v1.ListOptions) (*v1alpha1.CdnProfileList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CdnProfile, err error)
+	Create(ctx context.Context, cdnProfile *v1alpha1.CdnProfile, opts v1.CreateOptions) (*v1alpha1.CdnProfile, error)
+	Update(ctx context.Context, cdnProfile *v1alpha1.CdnProfile, opts v1.UpdateOptions) (*v1alpha1.CdnProfile, error)
+	UpdateStatus(ctx context.Context, cdnProfile *v1alpha1.CdnProfile, opts v1.UpdateOptions) (*v1alpha1.CdnProfile, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.CdnProfile, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.CdnProfileList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CdnProfile, err error)
 	CdnProfileExpansion
 }
 
@@ -65,20 +66,20 @@ func newCdnProfiles(c *AzurermV1alpha1Client, namespace string) *cdnProfiles {
 }
 
 // Get takes name of the cdnProfile, and returns the corresponding cdnProfile object, and an error if there is any.
-func (c *cdnProfiles) Get(name string, options v1.GetOptions) (result *v1alpha1.CdnProfile, err error) {
+func (c *cdnProfiles) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CdnProfile, err error) {
 	result = &v1alpha1.CdnProfile{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("cdnprofiles").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of CdnProfiles that match those selectors.
-func (c *cdnProfiles) List(opts v1.ListOptions) (result *v1alpha1.CdnProfileList, err error) {
+func (c *cdnProfiles) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CdnProfileList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *cdnProfiles) List(opts v1.ListOptions) (result *v1alpha1.CdnProfileList
 		Resource("cdnprofiles").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested cdnProfiles.
-func (c *cdnProfiles) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *cdnProfiles) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *cdnProfiles) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("cdnprofiles").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a cdnProfile and creates it.  Returns the server's representation of the cdnProfile, and an error, if there is any.
-func (c *cdnProfiles) Create(cdnProfile *v1alpha1.CdnProfile) (result *v1alpha1.CdnProfile, err error) {
+func (c *cdnProfiles) Create(ctx context.Context, cdnProfile *v1alpha1.CdnProfile, opts v1.CreateOptions) (result *v1alpha1.CdnProfile, err error) {
 	result = &v1alpha1.CdnProfile{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("cdnprofiles").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cdnProfile).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a cdnProfile and updates it. Returns the server's representation of the cdnProfile, and an error, if there is any.
-func (c *cdnProfiles) Update(cdnProfile *v1alpha1.CdnProfile) (result *v1alpha1.CdnProfile, err error) {
+func (c *cdnProfiles) Update(ctx context.Context, cdnProfile *v1alpha1.CdnProfile, opts v1.UpdateOptions) (result *v1alpha1.CdnProfile, err error) {
 	result = &v1alpha1.CdnProfile{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("cdnprofiles").
 		Name(cdnProfile.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cdnProfile).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *cdnProfiles) UpdateStatus(cdnProfile *v1alpha1.CdnProfile) (result *v1alpha1.CdnProfile, err error) {
+func (c *cdnProfiles) UpdateStatus(ctx context.Context, cdnProfile *v1alpha1.CdnProfile, opts v1.UpdateOptions) (result *v1alpha1.CdnProfile, err error) {
 	result = &v1alpha1.CdnProfile{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("cdnprofiles").
 		Name(cdnProfile.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cdnProfile).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the cdnProfile and deletes it. Returns an error if one occurs.
-func (c *cdnProfiles) Delete(name string, options *v1.DeleteOptions) error {
+func (c *cdnProfiles) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("cdnprofiles").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *cdnProfiles) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *cdnProfiles) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("cdnprofiles").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched cdnProfile.
-func (c *cdnProfiles) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CdnProfile, err error) {
+func (c *cdnProfiles) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CdnProfile, err error) {
 	result = &v1alpha1.CdnProfile{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("cdnprofiles").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

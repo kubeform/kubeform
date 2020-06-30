@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iapwebiammembersResource = schema.GroupVersionResource{Group: "google.kubefo
 var iapwebiammembersKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "IapWebIamMember"}
 
 // Get takes name of the iapWebIamMember, and returns the corresponding iapWebIamMember object, and an error if there is any.
-func (c *FakeIapWebIamMembers) Get(name string, options v1.GetOptions) (result *v1alpha1.IapWebIamMember, err error) {
+func (c *FakeIapWebIamMembers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IapWebIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iapwebiammembersResource, c.ns, name), &v1alpha1.IapWebIamMember{})
 
@@ -51,7 +53,7 @@ func (c *FakeIapWebIamMembers) Get(name string, options v1.GetOptions) (result *
 }
 
 // List takes label and field selectors, and returns the list of IapWebIamMembers that match those selectors.
-func (c *FakeIapWebIamMembers) List(opts v1.ListOptions) (result *v1alpha1.IapWebIamMemberList, err error) {
+func (c *FakeIapWebIamMembers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IapWebIamMemberList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iapwebiammembersResource, iapwebiammembersKind, c.ns, opts), &v1alpha1.IapWebIamMemberList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIapWebIamMembers) List(opts v1.ListOptions) (result *v1alpha1.IapWe
 }
 
 // Watch returns a watch.Interface that watches the requested iapWebIamMembers.
-func (c *FakeIapWebIamMembers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIapWebIamMembers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iapwebiammembersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iapWebIamMember and creates it.  Returns the server's representation of the iapWebIamMember, and an error, if there is any.
-func (c *FakeIapWebIamMembers) Create(iapWebIamMember *v1alpha1.IapWebIamMember) (result *v1alpha1.IapWebIamMember, err error) {
+func (c *FakeIapWebIamMembers) Create(ctx context.Context, iapWebIamMember *v1alpha1.IapWebIamMember, opts v1.CreateOptions) (result *v1alpha1.IapWebIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iapwebiammembersResource, c.ns, iapWebIamMember), &v1alpha1.IapWebIamMember{})
 
@@ -91,7 +93,7 @@ func (c *FakeIapWebIamMembers) Create(iapWebIamMember *v1alpha1.IapWebIamMember)
 }
 
 // Update takes the representation of a iapWebIamMember and updates it. Returns the server's representation of the iapWebIamMember, and an error, if there is any.
-func (c *FakeIapWebIamMembers) Update(iapWebIamMember *v1alpha1.IapWebIamMember) (result *v1alpha1.IapWebIamMember, err error) {
+func (c *FakeIapWebIamMembers) Update(ctx context.Context, iapWebIamMember *v1alpha1.IapWebIamMember, opts v1.UpdateOptions) (result *v1alpha1.IapWebIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iapwebiammembersResource, c.ns, iapWebIamMember), &v1alpha1.IapWebIamMember{})
 
@@ -103,7 +105,7 @@ func (c *FakeIapWebIamMembers) Update(iapWebIamMember *v1alpha1.IapWebIamMember)
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIapWebIamMembers) UpdateStatus(iapWebIamMember *v1alpha1.IapWebIamMember) (*v1alpha1.IapWebIamMember, error) {
+func (c *FakeIapWebIamMembers) UpdateStatus(ctx context.Context, iapWebIamMember *v1alpha1.IapWebIamMember, opts v1.UpdateOptions) (*v1alpha1.IapWebIamMember, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iapwebiammembersResource, "status", c.ns, iapWebIamMember), &v1alpha1.IapWebIamMember{})
 
@@ -114,7 +116,7 @@ func (c *FakeIapWebIamMembers) UpdateStatus(iapWebIamMember *v1alpha1.IapWebIamM
 }
 
 // Delete takes name of the iapWebIamMember and deletes it. Returns an error if one occurs.
-func (c *FakeIapWebIamMembers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIapWebIamMembers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iapwebiammembersResource, c.ns, name), &v1alpha1.IapWebIamMember{})
 
@@ -122,15 +124,15 @@ func (c *FakeIapWebIamMembers) Delete(name string, options *v1.DeleteOptions) er
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIapWebIamMembers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iapwebiammembersResource, c.ns, listOptions)
+func (c *FakeIapWebIamMembers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iapwebiammembersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IapWebIamMemberList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iapWebIamMember.
-func (c *FakeIapWebIamMembers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IapWebIamMember, err error) {
+func (c *FakeIapWebIamMembers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IapWebIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iapwebiammembersResource, c.ns, name, pt, data, subresources...), &v1alpha1.IapWebIamMember{})
 

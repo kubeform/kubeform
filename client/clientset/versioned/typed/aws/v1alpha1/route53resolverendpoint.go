@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type Route53ResolverEndpointsGetter interface {
 
 // Route53ResolverEndpointInterface has methods to work with Route53ResolverEndpoint resources.
 type Route53ResolverEndpointInterface interface {
-	Create(*v1alpha1.Route53ResolverEndpoint) (*v1alpha1.Route53ResolverEndpoint, error)
-	Update(*v1alpha1.Route53ResolverEndpoint) (*v1alpha1.Route53ResolverEndpoint, error)
-	UpdateStatus(*v1alpha1.Route53ResolverEndpoint) (*v1alpha1.Route53ResolverEndpoint, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.Route53ResolverEndpoint, error)
-	List(opts v1.ListOptions) (*v1alpha1.Route53ResolverEndpointList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Route53ResolverEndpoint, err error)
+	Create(ctx context.Context, route53ResolverEndpoint *v1alpha1.Route53ResolverEndpoint, opts v1.CreateOptions) (*v1alpha1.Route53ResolverEndpoint, error)
+	Update(ctx context.Context, route53ResolverEndpoint *v1alpha1.Route53ResolverEndpoint, opts v1.UpdateOptions) (*v1alpha1.Route53ResolverEndpoint, error)
+	UpdateStatus(ctx context.Context, route53ResolverEndpoint *v1alpha1.Route53ResolverEndpoint, opts v1.UpdateOptions) (*v1alpha1.Route53ResolverEndpoint, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.Route53ResolverEndpoint, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.Route53ResolverEndpointList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Route53ResolverEndpoint, err error)
 	Route53ResolverEndpointExpansion
 }
 
@@ -65,20 +66,20 @@ func newRoute53ResolverEndpoints(c *AwsV1alpha1Client, namespace string) *route5
 }
 
 // Get takes name of the route53ResolverEndpoint, and returns the corresponding route53ResolverEndpoint object, and an error if there is any.
-func (c *route53ResolverEndpoints) Get(name string, options v1.GetOptions) (result *v1alpha1.Route53ResolverEndpoint, err error) {
+func (c *route53ResolverEndpoints) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Route53ResolverEndpoint, err error) {
 	result = &v1alpha1.Route53ResolverEndpoint{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("route53resolverendpoints").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of Route53ResolverEndpoints that match those selectors.
-func (c *route53ResolverEndpoints) List(opts v1.ListOptions) (result *v1alpha1.Route53ResolverEndpointList, err error) {
+func (c *route53ResolverEndpoints) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.Route53ResolverEndpointList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *route53ResolverEndpoints) List(opts v1.ListOptions) (result *v1alpha1.R
 		Resource("route53resolverendpoints").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested route53ResolverEndpoints.
-func (c *route53ResolverEndpoints) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *route53ResolverEndpoints) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *route53ResolverEndpoints) Watch(opts v1.ListOptions) (watch.Interface, 
 		Resource("route53resolverendpoints").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a route53ResolverEndpoint and creates it.  Returns the server's representation of the route53ResolverEndpoint, and an error, if there is any.
-func (c *route53ResolverEndpoints) Create(route53ResolverEndpoint *v1alpha1.Route53ResolverEndpoint) (result *v1alpha1.Route53ResolverEndpoint, err error) {
+func (c *route53ResolverEndpoints) Create(ctx context.Context, route53ResolverEndpoint *v1alpha1.Route53ResolverEndpoint, opts v1.CreateOptions) (result *v1alpha1.Route53ResolverEndpoint, err error) {
 	result = &v1alpha1.Route53ResolverEndpoint{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("route53resolverendpoints").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(route53ResolverEndpoint).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a route53ResolverEndpoint and updates it. Returns the server's representation of the route53ResolverEndpoint, and an error, if there is any.
-func (c *route53ResolverEndpoints) Update(route53ResolverEndpoint *v1alpha1.Route53ResolverEndpoint) (result *v1alpha1.Route53ResolverEndpoint, err error) {
+func (c *route53ResolverEndpoints) Update(ctx context.Context, route53ResolverEndpoint *v1alpha1.Route53ResolverEndpoint, opts v1.UpdateOptions) (result *v1alpha1.Route53ResolverEndpoint, err error) {
 	result = &v1alpha1.Route53ResolverEndpoint{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("route53resolverendpoints").
 		Name(route53ResolverEndpoint.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(route53ResolverEndpoint).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *route53ResolverEndpoints) UpdateStatus(route53ResolverEndpoint *v1alpha1.Route53ResolverEndpoint) (result *v1alpha1.Route53ResolverEndpoint, err error) {
+func (c *route53ResolverEndpoints) UpdateStatus(ctx context.Context, route53ResolverEndpoint *v1alpha1.Route53ResolverEndpoint, opts v1.UpdateOptions) (result *v1alpha1.Route53ResolverEndpoint, err error) {
 	result = &v1alpha1.Route53ResolverEndpoint{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("route53resolverendpoints").
 		Name(route53ResolverEndpoint.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(route53ResolverEndpoint).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the route53ResolverEndpoint and deletes it. Returns an error if one occurs.
-func (c *route53ResolverEndpoints) Delete(name string, options *v1.DeleteOptions) error {
+func (c *route53ResolverEndpoints) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("route53resolverendpoints").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *route53ResolverEndpoints) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *route53ResolverEndpoints) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("route53resolverendpoints").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched route53ResolverEndpoint.
-func (c *route53ResolverEndpoints) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Route53ResolverEndpoint, err error) {
+func (c *route53ResolverEndpoints) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Route53ResolverEndpoint, err error) {
 	result = &v1alpha1.Route53ResolverEndpoint{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("route53resolverendpoints").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

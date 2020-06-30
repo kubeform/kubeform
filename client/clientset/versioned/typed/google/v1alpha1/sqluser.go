@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type SqlUsersGetter interface {
 
 // SqlUserInterface has methods to work with SqlUser resources.
 type SqlUserInterface interface {
-	Create(*v1alpha1.SqlUser) (*v1alpha1.SqlUser, error)
-	Update(*v1alpha1.SqlUser) (*v1alpha1.SqlUser, error)
-	UpdateStatus(*v1alpha1.SqlUser) (*v1alpha1.SqlUser, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SqlUser, error)
-	List(opts v1.ListOptions) (*v1alpha1.SqlUserList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SqlUser, err error)
+	Create(ctx context.Context, sqlUser *v1alpha1.SqlUser, opts v1.CreateOptions) (*v1alpha1.SqlUser, error)
+	Update(ctx context.Context, sqlUser *v1alpha1.SqlUser, opts v1.UpdateOptions) (*v1alpha1.SqlUser, error)
+	UpdateStatus(ctx context.Context, sqlUser *v1alpha1.SqlUser, opts v1.UpdateOptions) (*v1alpha1.SqlUser, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SqlUser, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SqlUserList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SqlUser, err error)
 	SqlUserExpansion
 }
 
@@ -65,20 +66,20 @@ func newSqlUsers(c *GoogleV1alpha1Client, namespace string) *sqlUsers {
 }
 
 // Get takes name of the sqlUser, and returns the corresponding sqlUser object, and an error if there is any.
-func (c *sqlUsers) Get(name string, options v1.GetOptions) (result *v1alpha1.SqlUser, err error) {
+func (c *sqlUsers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SqlUser, err error) {
 	result = &v1alpha1.SqlUser{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("sqlusers").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SqlUsers that match those selectors.
-func (c *sqlUsers) List(opts v1.ListOptions) (result *v1alpha1.SqlUserList, err error) {
+func (c *sqlUsers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SqlUserList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *sqlUsers) List(opts v1.ListOptions) (result *v1alpha1.SqlUserList, err 
 		Resource("sqlusers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested sqlUsers.
-func (c *sqlUsers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *sqlUsers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *sqlUsers) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("sqlusers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a sqlUser and creates it.  Returns the server's representation of the sqlUser, and an error, if there is any.
-func (c *sqlUsers) Create(sqlUser *v1alpha1.SqlUser) (result *v1alpha1.SqlUser, err error) {
+func (c *sqlUsers) Create(ctx context.Context, sqlUser *v1alpha1.SqlUser, opts v1.CreateOptions) (result *v1alpha1.SqlUser, err error) {
 	result = &v1alpha1.SqlUser{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("sqlusers").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sqlUser).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a sqlUser and updates it. Returns the server's representation of the sqlUser, and an error, if there is any.
-func (c *sqlUsers) Update(sqlUser *v1alpha1.SqlUser) (result *v1alpha1.SqlUser, err error) {
+func (c *sqlUsers) Update(ctx context.Context, sqlUser *v1alpha1.SqlUser, opts v1.UpdateOptions) (result *v1alpha1.SqlUser, err error) {
 	result = &v1alpha1.SqlUser{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sqlusers").
 		Name(sqlUser.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sqlUser).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *sqlUsers) UpdateStatus(sqlUser *v1alpha1.SqlUser) (result *v1alpha1.SqlUser, err error) {
+func (c *sqlUsers) UpdateStatus(ctx context.Context, sqlUser *v1alpha1.SqlUser, opts v1.UpdateOptions) (result *v1alpha1.SqlUser, err error) {
 	result = &v1alpha1.SqlUser{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sqlusers").
 		Name(sqlUser.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sqlUser).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the sqlUser and deletes it. Returns an error if one occurs.
-func (c *sqlUsers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *sqlUsers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sqlusers").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *sqlUsers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *sqlUsers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sqlusers").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched sqlUser.
-func (c *sqlUsers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SqlUser, err error) {
+func (c *sqlUsers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SqlUser, err error) {
 	result = &v1alpha1.SqlUser{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("sqlusers").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

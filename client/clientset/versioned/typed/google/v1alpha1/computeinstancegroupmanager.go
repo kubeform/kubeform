@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type ComputeInstanceGroupManagersGetter interface {
 
 // ComputeInstanceGroupManagerInterface has methods to work with ComputeInstanceGroupManager resources.
 type ComputeInstanceGroupManagerInterface interface {
-	Create(*v1alpha1.ComputeInstanceGroupManager) (*v1alpha1.ComputeInstanceGroupManager, error)
-	Update(*v1alpha1.ComputeInstanceGroupManager) (*v1alpha1.ComputeInstanceGroupManager, error)
-	UpdateStatus(*v1alpha1.ComputeInstanceGroupManager) (*v1alpha1.ComputeInstanceGroupManager, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ComputeInstanceGroupManager, error)
-	List(opts v1.ListOptions) (*v1alpha1.ComputeInstanceGroupManagerList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeInstanceGroupManager, err error)
+	Create(ctx context.Context, computeInstanceGroupManager *v1alpha1.ComputeInstanceGroupManager, opts v1.CreateOptions) (*v1alpha1.ComputeInstanceGroupManager, error)
+	Update(ctx context.Context, computeInstanceGroupManager *v1alpha1.ComputeInstanceGroupManager, opts v1.UpdateOptions) (*v1alpha1.ComputeInstanceGroupManager, error)
+	UpdateStatus(ctx context.Context, computeInstanceGroupManager *v1alpha1.ComputeInstanceGroupManager, opts v1.UpdateOptions) (*v1alpha1.ComputeInstanceGroupManager, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ComputeInstanceGroupManager, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ComputeInstanceGroupManagerList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeInstanceGroupManager, err error)
 	ComputeInstanceGroupManagerExpansion
 }
 
@@ -65,20 +66,20 @@ func newComputeInstanceGroupManagers(c *GoogleV1alpha1Client, namespace string) 
 }
 
 // Get takes name of the computeInstanceGroupManager, and returns the corresponding computeInstanceGroupManager object, and an error if there is any.
-func (c *computeInstanceGroupManagers) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeInstanceGroupManager, err error) {
+func (c *computeInstanceGroupManagers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeInstanceGroupManager, err error) {
 	result = &v1alpha1.ComputeInstanceGroupManager{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("computeinstancegroupmanagers").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ComputeInstanceGroupManagers that match those selectors.
-func (c *computeInstanceGroupManagers) List(opts v1.ListOptions) (result *v1alpha1.ComputeInstanceGroupManagerList, err error) {
+func (c *computeInstanceGroupManagers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeInstanceGroupManagerList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *computeInstanceGroupManagers) List(opts v1.ListOptions) (result *v1alph
 		Resource("computeinstancegroupmanagers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested computeInstanceGroupManagers.
-func (c *computeInstanceGroupManagers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *computeInstanceGroupManagers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *computeInstanceGroupManagers) Watch(opts v1.ListOptions) (watch.Interfa
 		Resource("computeinstancegroupmanagers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a computeInstanceGroupManager and creates it.  Returns the server's representation of the computeInstanceGroupManager, and an error, if there is any.
-func (c *computeInstanceGroupManagers) Create(computeInstanceGroupManager *v1alpha1.ComputeInstanceGroupManager) (result *v1alpha1.ComputeInstanceGroupManager, err error) {
+func (c *computeInstanceGroupManagers) Create(ctx context.Context, computeInstanceGroupManager *v1alpha1.ComputeInstanceGroupManager, opts v1.CreateOptions) (result *v1alpha1.ComputeInstanceGroupManager, err error) {
 	result = &v1alpha1.ComputeInstanceGroupManager{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("computeinstancegroupmanagers").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeInstanceGroupManager).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a computeInstanceGroupManager and updates it. Returns the server's representation of the computeInstanceGroupManager, and an error, if there is any.
-func (c *computeInstanceGroupManagers) Update(computeInstanceGroupManager *v1alpha1.ComputeInstanceGroupManager) (result *v1alpha1.ComputeInstanceGroupManager, err error) {
+func (c *computeInstanceGroupManagers) Update(ctx context.Context, computeInstanceGroupManager *v1alpha1.ComputeInstanceGroupManager, opts v1.UpdateOptions) (result *v1alpha1.ComputeInstanceGroupManager, err error) {
 	result = &v1alpha1.ComputeInstanceGroupManager{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computeinstancegroupmanagers").
 		Name(computeInstanceGroupManager.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeInstanceGroupManager).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *computeInstanceGroupManagers) UpdateStatus(computeInstanceGroupManager *v1alpha1.ComputeInstanceGroupManager) (result *v1alpha1.ComputeInstanceGroupManager, err error) {
+func (c *computeInstanceGroupManagers) UpdateStatus(ctx context.Context, computeInstanceGroupManager *v1alpha1.ComputeInstanceGroupManager, opts v1.UpdateOptions) (result *v1alpha1.ComputeInstanceGroupManager, err error) {
 	result = &v1alpha1.ComputeInstanceGroupManager{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computeinstancegroupmanagers").
 		Name(computeInstanceGroupManager.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeInstanceGroupManager).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the computeInstanceGroupManager and deletes it. Returns an error if one occurs.
-func (c *computeInstanceGroupManagers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *computeInstanceGroupManagers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computeinstancegroupmanagers").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *computeInstanceGroupManagers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *computeInstanceGroupManagers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computeinstancegroupmanagers").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched computeInstanceGroupManager.
-func (c *computeInstanceGroupManagers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeInstanceGroupManager, err error) {
+func (c *computeInstanceGroupManagers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeInstanceGroupManager, err error) {
 	result = &v1alpha1.ComputeInstanceGroupManager{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("computeinstancegroupmanagers").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

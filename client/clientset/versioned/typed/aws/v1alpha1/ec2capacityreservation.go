@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type Ec2CapacityReservationsGetter interface {
 
 // Ec2CapacityReservationInterface has methods to work with Ec2CapacityReservation resources.
 type Ec2CapacityReservationInterface interface {
-	Create(*v1alpha1.Ec2CapacityReservation) (*v1alpha1.Ec2CapacityReservation, error)
-	Update(*v1alpha1.Ec2CapacityReservation) (*v1alpha1.Ec2CapacityReservation, error)
-	UpdateStatus(*v1alpha1.Ec2CapacityReservation) (*v1alpha1.Ec2CapacityReservation, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.Ec2CapacityReservation, error)
-	List(opts v1.ListOptions) (*v1alpha1.Ec2CapacityReservationList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Ec2CapacityReservation, err error)
+	Create(ctx context.Context, ec2CapacityReservation *v1alpha1.Ec2CapacityReservation, opts v1.CreateOptions) (*v1alpha1.Ec2CapacityReservation, error)
+	Update(ctx context.Context, ec2CapacityReservation *v1alpha1.Ec2CapacityReservation, opts v1.UpdateOptions) (*v1alpha1.Ec2CapacityReservation, error)
+	UpdateStatus(ctx context.Context, ec2CapacityReservation *v1alpha1.Ec2CapacityReservation, opts v1.UpdateOptions) (*v1alpha1.Ec2CapacityReservation, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.Ec2CapacityReservation, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.Ec2CapacityReservationList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Ec2CapacityReservation, err error)
 	Ec2CapacityReservationExpansion
 }
 
@@ -65,20 +66,20 @@ func newEc2CapacityReservations(c *AwsV1alpha1Client, namespace string) *ec2Capa
 }
 
 // Get takes name of the ec2CapacityReservation, and returns the corresponding ec2CapacityReservation object, and an error if there is any.
-func (c *ec2CapacityReservations) Get(name string, options v1.GetOptions) (result *v1alpha1.Ec2CapacityReservation, err error) {
+func (c *ec2CapacityReservations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Ec2CapacityReservation, err error) {
 	result = &v1alpha1.Ec2CapacityReservation{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("ec2capacityreservations").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of Ec2CapacityReservations that match those selectors.
-func (c *ec2CapacityReservations) List(opts v1.ListOptions) (result *v1alpha1.Ec2CapacityReservationList, err error) {
+func (c *ec2CapacityReservations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.Ec2CapacityReservationList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *ec2CapacityReservations) List(opts v1.ListOptions) (result *v1alpha1.Ec
 		Resource("ec2capacityreservations").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested ec2CapacityReservations.
-func (c *ec2CapacityReservations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *ec2CapacityReservations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *ec2CapacityReservations) Watch(opts v1.ListOptions) (watch.Interface, e
 		Resource("ec2capacityreservations").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a ec2CapacityReservation and creates it.  Returns the server's representation of the ec2CapacityReservation, and an error, if there is any.
-func (c *ec2CapacityReservations) Create(ec2CapacityReservation *v1alpha1.Ec2CapacityReservation) (result *v1alpha1.Ec2CapacityReservation, err error) {
+func (c *ec2CapacityReservations) Create(ctx context.Context, ec2CapacityReservation *v1alpha1.Ec2CapacityReservation, opts v1.CreateOptions) (result *v1alpha1.Ec2CapacityReservation, err error) {
 	result = &v1alpha1.Ec2CapacityReservation{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("ec2capacityreservations").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(ec2CapacityReservation).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a ec2CapacityReservation and updates it. Returns the server's representation of the ec2CapacityReservation, and an error, if there is any.
-func (c *ec2CapacityReservations) Update(ec2CapacityReservation *v1alpha1.Ec2CapacityReservation) (result *v1alpha1.Ec2CapacityReservation, err error) {
+func (c *ec2CapacityReservations) Update(ctx context.Context, ec2CapacityReservation *v1alpha1.Ec2CapacityReservation, opts v1.UpdateOptions) (result *v1alpha1.Ec2CapacityReservation, err error) {
 	result = &v1alpha1.Ec2CapacityReservation{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("ec2capacityreservations").
 		Name(ec2CapacityReservation.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(ec2CapacityReservation).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *ec2CapacityReservations) UpdateStatus(ec2CapacityReservation *v1alpha1.Ec2CapacityReservation) (result *v1alpha1.Ec2CapacityReservation, err error) {
+func (c *ec2CapacityReservations) UpdateStatus(ctx context.Context, ec2CapacityReservation *v1alpha1.Ec2CapacityReservation, opts v1.UpdateOptions) (result *v1alpha1.Ec2CapacityReservation, err error) {
 	result = &v1alpha1.Ec2CapacityReservation{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("ec2capacityreservations").
 		Name(ec2CapacityReservation.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(ec2CapacityReservation).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the ec2CapacityReservation and deletes it. Returns an error if one occurs.
-func (c *ec2CapacityReservations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *ec2CapacityReservations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("ec2capacityreservations").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *ec2CapacityReservations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *ec2CapacityReservations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("ec2capacityreservations").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched ec2CapacityReservation.
-func (c *ec2CapacityReservations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Ec2CapacityReservation, err error) {
+func (c *ec2CapacityReservations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Ec2CapacityReservation, err error) {
 	result = &v1alpha1.Ec2CapacityReservation{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("ec2capacityreservations").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

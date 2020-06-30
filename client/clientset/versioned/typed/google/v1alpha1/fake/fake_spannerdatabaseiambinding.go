@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var spannerdatabaseiambindingsResource = schema.GroupVersionResource{Group: "goo
 var spannerdatabaseiambindingsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "SpannerDatabaseIamBinding"}
 
 // Get takes name of the spannerDatabaseIamBinding, and returns the corresponding spannerDatabaseIamBinding object, and an error if there is any.
-func (c *FakeSpannerDatabaseIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.SpannerDatabaseIamBinding, err error) {
+func (c *FakeSpannerDatabaseIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SpannerDatabaseIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(spannerdatabaseiambindingsResource, c.ns, name), &v1alpha1.SpannerDatabaseIamBinding{})
 
@@ -51,7 +53,7 @@ func (c *FakeSpannerDatabaseIamBindings) Get(name string, options v1.GetOptions)
 }
 
 // List takes label and field selectors, and returns the list of SpannerDatabaseIamBindings that match those selectors.
-func (c *FakeSpannerDatabaseIamBindings) List(opts v1.ListOptions) (result *v1alpha1.SpannerDatabaseIamBindingList, err error) {
+func (c *FakeSpannerDatabaseIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SpannerDatabaseIamBindingList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(spannerdatabaseiambindingsResource, spannerdatabaseiambindingsKind, c.ns, opts), &v1alpha1.SpannerDatabaseIamBindingList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSpannerDatabaseIamBindings) List(opts v1.ListOptions) (result *v1al
 }
 
 // Watch returns a watch.Interface that watches the requested spannerDatabaseIamBindings.
-func (c *FakeSpannerDatabaseIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSpannerDatabaseIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(spannerdatabaseiambindingsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a spannerDatabaseIamBinding and creates it.  Returns the server's representation of the spannerDatabaseIamBinding, and an error, if there is any.
-func (c *FakeSpannerDatabaseIamBindings) Create(spannerDatabaseIamBinding *v1alpha1.SpannerDatabaseIamBinding) (result *v1alpha1.SpannerDatabaseIamBinding, err error) {
+func (c *FakeSpannerDatabaseIamBindings) Create(ctx context.Context, spannerDatabaseIamBinding *v1alpha1.SpannerDatabaseIamBinding, opts v1.CreateOptions) (result *v1alpha1.SpannerDatabaseIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(spannerdatabaseiambindingsResource, c.ns, spannerDatabaseIamBinding), &v1alpha1.SpannerDatabaseIamBinding{})
 
@@ -91,7 +93,7 @@ func (c *FakeSpannerDatabaseIamBindings) Create(spannerDatabaseIamBinding *v1alp
 }
 
 // Update takes the representation of a spannerDatabaseIamBinding and updates it. Returns the server's representation of the spannerDatabaseIamBinding, and an error, if there is any.
-func (c *FakeSpannerDatabaseIamBindings) Update(spannerDatabaseIamBinding *v1alpha1.SpannerDatabaseIamBinding) (result *v1alpha1.SpannerDatabaseIamBinding, err error) {
+func (c *FakeSpannerDatabaseIamBindings) Update(ctx context.Context, spannerDatabaseIamBinding *v1alpha1.SpannerDatabaseIamBinding, opts v1.UpdateOptions) (result *v1alpha1.SpannerDatabaseIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(spannerdatabaseiambindingsResource, c.ns, spannerDatabaseIamBinding), &v1alpha1.SpannerDatabaseIamBinding{})
 
@@ -103,7 +105,7 @@ func (c *FakeSpannerDatabaseIamBindings) Update(spannerDatabaseIamBinding *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSpannerDatabaseIamBindings) UpdateStatus(spannerDatabaseIamBinding *v1alpha1.SpannerDatabaseIamBinding) (*v1alpha1.SpannerDatabaseIamBinding, error) {
+func (c *FakeSpannerDatabaseIamBindings) UpdateStatus(ctx context.Context, spannerDatabaseIamBinding *v1alpha1.SpannerDatabaseIamBinding, opts v1.UpdateOptions) (*v1alpha1.SpannerDatabaseIamBinding, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(spannerdatabaseiambindingsResource, "status", c.ns, spannerDatabaseIamBinding), &v1alpha1.SpannerDatabaseIamBinding{})
 
@@ -114,7 +116,7 @@ func (c *FakeSpannerDatabaseIamBindings) UpdateStatus(spannerDatabaseIamBinding 
 }
 
 // Delete takes name of the spannerDatabaseIamBinding and deletes it. Returns an error if one occurs.
-func (c *FakeSpannerDatabaseIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSpannerDatabaseIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(spannerdatabaseiambindingsResource, c.ns, name), &v1alpha1.SpannerDatabaseIamBinding{})
 
@@ -122,15 +124,15 @@ func (c *FakeSpannerDatabaseIamBindings) Delete(name string, options *v1.DeleteO
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSpannerDatabaseIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(spannerdatabaseiambindingsResource, c.ns, listOptions)
+func (c *FakeSpannerDatabaseIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(spannerdatabaseiambindingsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SpannerDatabaseIamBindingList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched spannerDatabaseIamBinding.
-func (c *FakeSpannerDatabaseIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SpannerDatabaseIamBinding, err error) {
+func (c *FakeSpannerDatabaseIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SpannerDatabaseIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(spannerdatabaseiambindingsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SpannerDatabaseIamBinding{})
 

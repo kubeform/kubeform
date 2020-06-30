@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type LambdaFunctionsGetter interface {
 
 // LambdaFunctionInterface has methods to work with LambdaFunction resources.
 type LambdaFunctionInterface interface {
-	Create(*v1alpha1.LambdaFunction) (*v1alpha1.LambdaFunction, error)
-	Update(*v1alpha1.LambdaFunction) (*v1alpha1.LambdaFunction, error)
-	UpdateStatus(*v1alpha1.LambdaFunction) (*v1alpha1.LambdaFunction, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.LambdaFunction, error)
-	List(opts v1.ListOptions) (*v1alpha1.LambdaFunctionList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LambdaFunction, err error)
+	Create(ctx context.Context, lambdaFunction *v1alpha1.LambdaFunction, opts v1.CreateOptions) (*v1alpha1.LambdaFunction, error)
+	Update(ctx context.Context, lambdaFunction *v1alpha1.LambdaFunction, opts v1.UpdateOptions) (*v1alpha1.LambdaFunction, error)
+	UpdateStatus(ctx context.Context, lambdaFunction *v1alpha1.LambdaFunction, opts v1.UpdateOptions) (*v1alpha1.LambdaFunction, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.LambdaFunction, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.LambdaFunctionList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LambdaFunction, err error)
 	LambdaFunctionExpansion
 }
 
@@ -65,20 +66,20 @@ func newLambdaFunctions(c *AwsV1alpha1Client, namespace string) *lambdaFunctions
 }
 
 // Get takes name of the lambdaFunction, and returns the corresponding lambdaFunction object, and an error if there is any.
-func (c *lambdaFunctions) Get(name string, options v1.GetOptions) (result *v1alpha1.LambdaFunction, err error) {
+func (c *lambdaFunctions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LambdaFunction, err error) {
 	result = &v1alpha1.LambdaFunction{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("lambdafunctions").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of LambdaFunctions that match those selectors.
-func (c *lambdaFunctions) List(opts v1.ListOptions) (result *v1alpha1.LambdaFunctionList, err error) {
+func (c *lambdaFunctions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LambdaFunctionList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *lambdaFunctions) List(opts v1.ListOptions) (result *v1alpha1.LambdaFunc
 		Resource("lambdafunctions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested lambdaFunctions.
-func (c *lambdaFunctions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *lambdaFunctions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *lambdaFunctions) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("lambdafunctions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a lambdaFunction and creates it.  Returns the server's representation of the lambdaFunction, and an error, if there is any.
-func (c *lambdaFunctions) Create(lambdaFunction *v1alpha1.LambdaFunction) (result *v1alpha1.LambdaFunction, err error) {
+func (c *lambdaFunctions) Create(ctx context.Context, lambdaFunction *v1alpha1.LambdaFunction, opts v1.CreateOptions) (result *v1alpha1.LambdaFunction, err error) {
 	result = &v1alpha1.LambdaFunction{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("lambdafunctions").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lambdaFunction).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a lambdaFunction and updates it. Returns the server's representation of the lambdaFunction, and an error, if there is any.
-func (c *lambdaFunctions) Update(lambdaFunction *v1alpha1.LambdaFunction) (result *v1alpha1.LambdaFunction, err error) {
+func (c *lambdaFunctions) Update(ctx context.Context, lambdaFunction *v1alpha1.LambdaFunction, opts v1.UpdateOptions) (result *v1alpha1.LambdaFunction, err error) {
 	result = &v1alpha1.LambdaFunction{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("lambdafunctions").
 		Name(lambdaFunction.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lambdaFunction).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *lambdaFunctions) UpdateStatus(lambdaFunction *v1alpha1.LambdaFunction) (result *v1alpha1.LambdaFunction, err error) {
+func (c *lambdaFunctions) UpdateStatus(ctx context.Context, lambdaFunction *v1alpha1.LambdaFunction, opts v1.UpdateOptions) (result *v1alpha1.LambdaFunction, err error) {
 	result = &v1alpha1.LambdaFunction{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("lambdafunctions").
 		Name(lambdaFunction.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lambdaFunction).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the lambdaFunction and deletes it. Returns an error if one occurs.
-func (c *lambdaFunctions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *lambdaFunctions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("lambdafunctions").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *lambdaFunctions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *lambdaFunctions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("lambdafunctions").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched lambdaFunction.
-func (c *lambdaFunctions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LambdaFunction, err error) {
+func (c *lambdaFunctions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LambdaFunction, err error) {
 	result = &v1alpha1.LambdaFunction{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("lambdafunctions").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

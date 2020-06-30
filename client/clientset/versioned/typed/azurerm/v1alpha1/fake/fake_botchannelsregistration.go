@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var botchannelsregistrationsResource = schema.GroupVersionResource{Group: "azure
 var botchannelsregistrationsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "BotChannelsRegistration"}
 
 // Get takes name of the botChannelsRegistration, and returns the corresponding botChannelsRegistration object, and an error if there is any.
-func (c *FakeBotChannelsRegistrations) Get(name string, options v1.GetOptions) (result *v1alpha1.BotChannelsRegistration, err error) {
+func (c *FakeBotChannelsRegistrations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BotChannelsRegistration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(botchannelsregistrationsResource, c.ns, name), &v1alpha1.BotChannelsRegistration{})
 
@@ -51,7 +53,7 @@ func (c *FakeBotChannelsRegistrations) Get(name string, options v1.GetOptions) (
 }
 
 // List takes label and field selectors, and returns the list of BotChannelsRegistrations that match those selectors.
-func (c *FakeBotChannelsRegistrations) List(opts v1.ListOptions) (result *v1alpha1.BotChannelsRegistrationList, err error) {
+func (c *FakeBotChannelsRegistrations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BotChannelsRegistrationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(botchannelsregistrationsResource, botchannelsregistrationsKind, c.ns, opts), &v1alpha1.BotChannelsRegistrationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeBotChannelsRegistrations) List(opts v1.ListOptions) (result *v1alph
 }
 
 // Watch returns a watch.Interface that watches the requested botChannelsRegistrations.
-func (c *FakeBotChannelsRegistrations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeBotChannelsRegistrations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(botchannelsregistrationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a botChannelsRegistration and creates it.  Returns the server's representation of the botChannelsRegistration, and an error, if there is any.
-func (c *FakeBotChannelsRegistrations) Create(botChannelsRegistration *v1alpha1.BotChannelsRegistration) (result *v1alpha1.BotChannelsRegistration, err error) {
+func (c *FakeBotChannelsRegistrations) Create(ctx context.Context, botChannelsRegistration *v1alpha1.BotChannelsRegistration, opts v1.CreateOptions) (result *v1alpha1.BotChannelsRegistration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(botchannelsregistrationsResource, c.ns, botChannelsRegistration), &v1alpha1.BotChannelsRegistration{})
 
@@ -91,7 +93,7 @@ func (c *FakeBotChannelsRegistrations) Create(botChannelsRegistration *v1alpha1.
 }
 
 // Update takes the representation of a botChannelsRegistration and updates it. Returns the server's representation of the botChannelsRegistration, and an error, if there is any.
-func (c *FakeBotChannelsRegistrations) Update(botChannelsRegistration *v1alpha1.BotChannelsRegistration) (result *v1alpha1.BotChannelsRegistration, err error) {
+func (c *FakeBotChannelsRegistrations) Update(ctx context.Context, botChannelsRegistration *v1alpha1.BotChannelsRegistration, opts v1.UpdateOptions) (result *v1alpha1.BotChannelsRegistration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(botchannelsregistrationsResource, c.ns, botChannelsRegistration), &v1alpha1.BotChannelsRegistration{})
 
@@ -103,7 +105,7 @@ func (c *FakeBotChannelsRegistrations) Update(botChannelsRegistration *v1alpha1.
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeBotChannelsRegistrations) UpdateStatus(botChannelsRegistration *v1alpha1.BotChannelsRegistration) (*v1alpha1.BotChannelsRegistration, error) {
+func (c *FakeBotChannelsRegistrations) UpdateStatus(ctx context.Context, botChannelsRegistration *v1alpha1.BotChannelsRegistration, opts v1.UpdateOptions) (*v1alpha1.BotChannelsRegistration, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(botchannelsregistrationsResource, "status", c.ns, botChannelsRegistration), &v1alpha1.BotChannelsRegistration{})
 
@@ -114,7 +116,7 @@ func (c *FakeBotChannelsRegistrations) UpdateStatus(botChannelsRegistration *v1a
 }
 
 // Delete takes name of the botChannelsRegistration and deletes it. Returns an error if one occurs.
-func (c *FakeBotChannelsRegistrations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeBotChannelsRegistrations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(botchannelsregistrationsResource, c.ns, name), &v1alpha1.BotChannelsRegistration{})
 
@@ -122,15 +124,15 @@ func (c *FakeBotChannelsRegistrations) Delete(name string, options *v1.DeleteOpt
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeBotChannelsRegistrations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(botchannelsregistrationsResource, c.ns, listOptions)
+func (c *FakeBotChannelsRegistrations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(botchannelsregistrationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.BotChannelsRegistrationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched botChannelsRegistration.
-func (c *FakeBotChannelsRegistrations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BotChannelsRegistration, err error) {
+func (c *FakeBotChannelsRegistrations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BotChannelsRegistration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(botchannelsregistrationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.BotChannelsRegistration{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/digitalocean/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var projectresourcesesResource = schema.GroupVersionResource{Group: "digitalocea
 var projectresourcesesKind = schema.GroupVersionKind{Group: "digitalocean.kubeform.com", Version: "v1alpha1", Kind: "ProjectResources"}
 
 // Get takes name of the projectResources, and returns the corresponding projectResources object, and an error if there is any.
-func (c *FakeProjectResourceses) Get(name string, options v1.GetOptions) (result *v1alpha1.ProjectResources, err error) {
+func (c *FakeProjectResourceses) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ProjectResources, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(projectresourcesesResource, c.ns, name), &v1alpha1.ProjectResources{})
 
@@ -51,7 +53,7 @@ func (c *FakeProjectResourceses) Get(name string, options v1.GetOptions) (result
 }
 
 // List takes label and field selectors, and returns the list of ProjectResourceses that match those selectors.
-func (c *FakeProjectResourceses) List(opts v1.ListOptions) (result *v1alpha1.ProjectResourcesList, err error) {
+func (c *FakeProjectResourceses) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ProjectResourcesList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(projectresourcesesResource, projectresourcesesKind, c.ns, opts), &v1alpha1.ProjectResourcesList{})
 
@@ -73,14 +75,14 @@ func (c *FakeProjectResourceses) List(opts v1.ListOptions) (result *v1alpha1.Pro
 }
 
 // Watch returns a watch.Interface that watches the requested projectResourceses.
-func (c *FakeProjectResourceses) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeProjectResourceses) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(projectresourcesesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a projectResources and creates it.  Returns the server's representation of the projectResources, and an error, if there is any.
-func (c *FakeProjectResourceses) Create(projectResources *v1alpha1.ProjectResources) (result *v1alpha1.ProjectResources, err error) {
+func (c *FakeProjectResourceses) Create(ctx context.Context, projectResources *v1alpha1.ProjectResources, opts v1.CreateOptions) (result *v1alpha1.ProjectResources, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(projectresourcesesResource, c.ns, projectResources), &v1alpha1.ProjectResources{})
 
@@ -91,7 +93,7 @@ func (c *FakeProjectResourceses) Create(projectResources *v1alpha1.ProjectResour
 }
 
 // Update takes the representation of a projectResources and updates it. Returns the server's representation of the projectResources, and an error, if there is any.
-func (c *FakeProjectResourceses) Update(projectResources *v1alpha1.ProjectResources) (result *v1alpha1.ProjectResources, err error) {
+func (c *FakeProjectResourceses) Update(ctx context.Context, projectResources *v1alpha1.ProjectResources, opts v1.UpdateOptions) (result *v1alpha1.ProjectResources, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(projectresourcesesResource, c.ns, projectResources), &v1alpha1.ProjectResources{})
 
@@ -103,7 +105,7 @@ func (c *FakeProjectResourceses) Update(projectResources *v1alpha1.ProjectResour
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeProjectResourceses) UpdateStatus(projectResources *v1alpha1.ProjectResources) (*v1alpha1.ProjectResources, error) {
+func (c *FakeProjectResourceses) UpdateStatus(ctx context.Context, projectResources *v1alpha1.ProjectResources, opts v1.UpdateOptions) (*v1alpha1.ProjectResources, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(projectresourcesesResource, "status", c.ns, projectResources), &v1alpha1.ProjectResources{})
 
@@ -114,7 +116,7 @@ func (c *FakeProjectResourceses) UpdateStatus(projectResources *v1alpha1.Project
 }
 
 // Delete takes name of the projectResources and deletes it. Returns an error if one occurs.
-func (c *FakeProjectResourceses) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeProjectResourceses) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(projectresourcesesResource, c.ns, name), &v1alpha1.ProjectResources{})
 
@@ -122,15 +124,15 @@ func (c *FakeProjectResourceses) Delete(name string, options *v1.DeleteOptions) 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeProjectResourceses) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(projectresourcesesResource, c.ns, listOptions)
+func (c *FakeProjectResourceses) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(projectresourcesesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ProjectResourcesList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched projectResources.
-func (c *FakeProjectResourceses) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ProjectResources, err error) {
+func (c *FakeProjectResourceses) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ProjectResources, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(projectresourcesesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ProjectResources{})
 

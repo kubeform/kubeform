@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var sagemakernotebookinstancelifecycleconfigurationsResource = schema.GroupVersi
 var sagemakernotebookinstancelifecycleconfigurationsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "SagemakerNotebookInstanceLifecycleConfiguration"}
 
 // Get takes name of the sagemakerNotebookInstanceLifecycleConfiguration, and returns the corresponding sagemakerNotebookInstanceLifecycleConfiguration object, and an error if there is any.
-func (c *FakeSagemakerNotebookInstanceLifecycleConfigurations) Get(name string, options v1.GetOptions) (result *v1alpha1.SagemakerNotebookInstanceLifecycleConfiguration, err error) {
+func (c *FakeSagemakerNotebookInstanceLifecycleConfigurations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SagemakerNotebookInstanceLifecycleConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(sagemakernotebookinstancelifecycleconfigurationsResource, c.ns, name), &v1alpha1.SagemakerNotebookInstanceLifecycleConfiguration{})
 
@@ -51,7 +53,7 @@ func (c *FakeSagemakerNotebookInstanceLifecycleConfigurations) Get(name string, 
 }
 
 // List takes label and field selectors, and returns the list of SagemakerNotebookInstanceLifecycleConfigurations that match those selectors.
-func (c *FakeSagemakerNotebookInstanceLifecycleConfigurations) List(opts v1.ListOptions) (result *v1alpha1.SagemakerNotebookInstanceLifecycleConfigurationList, err error) {
+func (c *FakeSagemakerNotebookInstanceLifecycleConfigurations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SagemakerNotebookInstanceLifecycleConfigurationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(sagemakernotebookinstancelifecycleconfigurationsResource, sagemakernotebookinstancelifecycleconfigurationsKind, c.ns, opts), &v1alpha1.SagemakerNotebookInstanceLifecycleConfigurationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSagemakerNotebookInstanceLifecycleConfigurations) List(opts v1.List
 }
 
 // Watch returns a watch.Interface that watches the requested sagemakerNotebookInstanceLifecycleConfigurations.
-func (c *FakeSagemakerNotebookInstanceLifecycleConfigurations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSagemakerNotebookInstanceLifecycleConfigurations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(sagemakernotebookinstancelifecycleconfigurationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a sagemakerNotebookInstanceLifecycleConfiguration and creates it.  Returns the server's representation of the sagemakerNotebookInstanceLifecycleConfiguration, and an error, if there is any.
-func (c *FakeSagemakerNotebookInstanceLifecycleConfigurations) Create(sagemakerNotebookInstanceLifecycleConfiguration *v1alpha1.SagemakerNotebookInstanceLifecycleConfiguration) (result *v1alpha1.SagemakerNotebookInstanceLifecycleConfiguration, err error) {
+func (c *FakeSagemakerNotebookInstanceLifecycleConfigurations) Create(ctx context.Context, sagemakerNotebookInstanceLifecycleConfiguration *v1alpha1.SagemakerNotebookInstanceLifecycleConfiguration, opts v1.CreateOptions) (result *v1alpha1.SagemakerNotebookInstanceLifecycleConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(sagemakernotebookinstancelifecycleconfigurationsResource, c.ns, sagemakerNotebookInstanceLifecycleConfiguration), &v1alpha1.SagemakerNotebookInstanceLifecycleConfiguration{})
 
@@ -91,7 +93,7 @@ func (c *FakeSagemakerNotebookInstanceLifecycleConfigurations) Create(sagemakerN
 }
 
 // Update takes the representation of a sagemakerNotebookInstanceLifecycleConfiguration and updates it. Returns the server's representation of the sagemakerNotebookInstanceLifecycleConfiguration, and an error, if there is any.
-func (c *FakeSagemakerNotebookInstanceLifecycleConfigurations) Update(sagemakerNotebookInstanceLifecycleConfiguration *v1alpha1.SagemakerNotebookInstanceLifecycleConfiguration) (result *v1alpha1.SagemakerNotebookInstanceLifecycleConfiguration, err error) {
+func (c *FakeSagemakerNotebookInstanceLifecycleConfigurations) Update(ctx context.Context, sagemakerNotebookInstanceLifecycleConfiguration *v1alpha1.SagemakerNotebookInstanceLifecycleConfiguration, opts v1.UpdateOptions) (result *v1alpha1.SagemakerNotebookInstanceLifecycleConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(sagemakernotebookinstancelifecycleconfigurationsResource, c.ns, sagemakerNotebookInstanceLifecycleConfiguration), &v1alpha1.SagemakerNotebookInstanceLifecycleConfiguration{})
 
@@ -103,7 +105,7 @@ func (c *FakeSagemakerNotebookInstanceLifecycleConfigurations) Update(sagemakerN
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSagemakerNotebookInstanceLifecycleConfigurations) UpdateStatus(sagemakerNotebookInstanceLifecycleConfiguration *v1alpha1.SagemakerNotebookInstanceLifecycleConfiguration) (*v1alpha1.SagemakerNotebookInstanceLifecycleConfiguration, error) {
+func (c *FakeSagemakerNotebookInstanceLifecycleConfigurations) UpdateStatus(ctx context.Context, sagemakerNotebookInstanceLifecycleConfiguration *v1alpha1.SagemakerNotebookInstanceLifecycleConfiguration, opts v1.UpdateOptions) (*v1alpha1.SagemakerNotebookInstanceLifecycleConfiguration, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(sagemakernotebookinstancelifecycleconfigurationsResource, "status", c.ns, sagemakerNotebookInstanceLifecycleConfiguration), &v1alpha1.SagemakerNotebookInstanceLifecycleConfiguration{})
 
@@ -114,7 +116,7 @@ func (c *FakeSagemakerNotebookInstanceLifecycleConfigurations) UpdateStatus(sage
 }
 
 // Delete takes name of the sagemakerNotebookInstanceLifecycleConfiguration and deletes it. Returns an error if one occurs.
-func (c *FakeSagemakerNotebookInstanceLifecycleConfigurations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSagemakerNotebookInstanceLifecycleConfigurations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(sagemakernotebookinstancelifecycleconfigurationsResource, c.ns, name), &v1alpha1.SagemakerNotebookInstanceLifecycleConfiguration{})
 
@@ -122,15 +124,15 @@ func (c *FakeSagemakerNotebookInstanceLifecycleConfigurations) Delete(name strin
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSagemakerNotebookInstanceLifecycleConfigurations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(sagemakernotebookinstancelifecycleconfigurationsResource, c.ns, listOptions)
+func (c *FakeSagemakerNotebookInstanceLifecycleConfigurations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(sagemakernotebookinstancelifecycleconfigurationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SagemakerNotebookInstanceLifecycleConfigurationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched sagemakerNotebookInstanceLifecycleConfiguration.
-func (c *FakeSagemakerNotebookInstanceLifecycleConfigurations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SagemakerNotebookInstanceLifecycleConfiguration, err error) {
+func (c *FakeSagemakerNotebookInstanceLifecycleConfigurations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SagemakerNotebookInstanceLifecycleConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(sagemakernotebookinstancelifecycleconfigurationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SagemakerNotebookInstanceLifecycleConfiguration{})
 

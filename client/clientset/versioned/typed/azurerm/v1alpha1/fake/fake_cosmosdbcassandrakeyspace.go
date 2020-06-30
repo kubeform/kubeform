@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cosmosdbcassandrakeyspacesResource = schema.GroupVersionResource{Group: "azu
 var cosmosdbcassandrakeyspacesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "CosmosdbCassandraKeyspace"}
 
 // Get takes name of the cosmosdbCassandraKeyspace, and returns the corresponding cosmosdbCassandraKeyspace object, and an error if there is any.
-func (c *FakeCosmosdbCassandraKeyspaces) Get(name string, options v1.GetOptions) (result *v1alpha1.CosmosdbCassandraKeyspace, err error) {
+func (c *FakeCosmosdbCassandraKeyspaces) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CosmosdbCassandraKeyspace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cosmosdbcassandrakeyspacesResource, c.ns, name), &v1alpha1.CosmosdbCassandraKeyspace{})
 
@@ -51,7 +53,7 @@ func (c *FakeCosmosdbCassandraKeyspaces) Get(name string, options v1.GetOptions)
 }
 
 // List takes label and field selectors, and returns the list of CosmosdbCassandraKeyspaces that match those selectors.
-func (c *FakeCosmosdbCassandraKeyspaces) List(opts v1.ListOptions) (result *v1alpha1.CosmosdbCassandraKeyspaceList, err error) {
+func (c *FakeCosmosdbCassandraKeyspaces) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CosmosdbCassandraKeyspaceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cosmosdbcassandrakeyspacesResource, cosmosdbcassandrakeyspacesKind, c.ns, opts), &v1alpha1.CosmosdbCassandraKeyspaceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCosmosdbCassandraKeyspaces) List(opts v1.ListOptions) (result *v1al
 }
 
 // Watch returns a watch.Interface that watches the requested cosmosdbCassandraKeyspaces.
-func (c *FakeCosmosdbCassandraKeyspaces) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCosmosdbCassandraKeyspaces) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cosmosdbcassandrakeyspacesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cosmosdbCassandraKeyspace and creates it.  Returns the server's representation of the cosmosdbCassandraKeyspace, and an error, if there is any.
-func (c *FakeCosmosdbCassandraKeyspaces) Create(cosmosdbCassandraKeyspace *v1alpha1.CosmosdbCassandraKeyspace) (result *v1alpha1.CosmosdbCassandraKeyspace, err error) {
+func (c *FakeCosmosdbCassandraKeyspaces) Create(ctx context.Context, cosmosdbCassandraKeyspace *v1alpha1.CosmosdbCassandraKeyspace, opts v1.CreateOptions) (result *v1alpha1.CosmosdbCassandraKeyspace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cosmosdbcassandrakeyspacesResource, c.ns, cosmosdbCassandraKeyspace), &v1alpha1.CosmosdbCassandraKeyspace{})
 
@@ -91,7 +93,7 @@ func (c *FakeCosmosdbCassandraKeyspaces) Create(cosmosdbCassandraKeyspace *v1alp
 }
 
 // Update takes the representation of a cosmosdbCassandraKeyspace and updates it. Returns the server's representation of the cosmosdbCassandraKeyspace, and an error, if there is any.
-func (c *FakeCosmosdbCassandraKeyspaces) Update(cosmosdbCassandraKeyspace *v1alpha1.CosmosdbCassandraKeyspace) (result *v1alpha1.CosmosdbCassandraKeyspace, err error) {
+func (c *FakeCosmosdbCassandraKeyspaces) Update(ctx context.Context, cosmosdbCassandraKeyspace *v1alpha1.CosmosdbCassandraKeyspace, opts v1.UpdateOptions) (result *v1alpha1.CosmosdbCassandraKeyspace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cosmosdbcassandrakeyspacesResource, c.ns, cosmosdbCassandraKeyspace), &v1alpha1.CosmosdbCassandraKeyspace{})
 
@@ -103,7 +105,7 @@ func (c *FakeCosmosdbCassandraKeyspaces) Update(cosmosdbCassandraKeyspace *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCosmosdbCassandraKeyspaces) UpdateStatus(cosmosdbCassandraKeyspace *v1alpha1.CosmosdbCassandraKeyspace) (*v1alpha1.CosmosdbCassandraKeyspace, error) {
+func (c *FakeCosmosdbCassandraKeyspaces) UpdateStatus(ctx context.Context, cosmosdbCassandraKeyspace *v1alpha1.CosmosdbCassandraKeyspace, opts v1.UpdateOptions) (*v1alpha1.CosmosdbCassandraKeyspace, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cosmosdbcassandrakeyspacesResource, "status", c.ns, cosmosdbCassandraKeyspace), &v1alpha1.CosmosdbCassandraKeyspace{})
 
@@ -114,7 +116,7 @@ func (c *FakeCosmosdbCassandraKeyspaces) UpdateStatus(cosmosdbCassandraKeyspace 
 }
 
 // Delete takes name of the cosmosdbCassandraKeyspace and deletes it. Returns an error if one occurs.
-func (c *FakeCosmosdbCassandraKeyspaces) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCosmosdbCassandraKeyspaces) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cosmosdbcassandrakeyspacesResource, c.ns, name), &v1alpha1.CosmosdbCassandraKeyspace{})
 
@@ -122,15 +124,15 @@ func (c *FakeCosmosdbCassandraKeyspaces) Delete(name string, options *v1.DeleteO
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCosmosdbCassandraKeyspaces) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cosmosdbcassandrakeyspacesResource, c.ns, listOptions)
+func (c *FakeCosmosdbCassandraKeyspaces) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cosmosdbcassandrakeyspacesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CosmosdbCassandraKeyspaceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cosmosdbCassandraKeyspace.
-func (c *FakeCosmosdbCassandraKeyspaces) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CosmosdbCassandraKeyspace, err error) {
+func (c *FakeCosmosdbCassandraKeyspaces) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CosmosdbCassandraKeyspace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cosmosdbcassandrakeyspacesResource, c.ns, name, pt, data, subresources...), &v1alpha1.CosmosdbCassandraKeyspace{})
 

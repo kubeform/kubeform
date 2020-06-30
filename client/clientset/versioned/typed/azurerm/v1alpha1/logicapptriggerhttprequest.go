@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type LogicAppTriggerHTTPRequestsGetter interface {
 
 // LogicAppTriggerHTTPRequestInterface has methods to work with LogicAppTriggerHTTPRequest resources.
 type LogicAppTriggerHTTPRequestInterface interface {
-	Create(*v1alpha1.LogicAppTriggerHTTPRequest) (*v1alpha1.LogicAppTriggerHTTPRequest, error)
-	Update(*v1alpha1.LogicAppTriggerHTTPRequest) (*v1alpha1.LogicAppTriggerHTTPRequest, error)
-	UpdateStatus(*v1alpha1.LogicAppTriggerHTTPRequest) (*v1alpha1.LogicAppTriggerHTTPRequest, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.LogicAppTriggerHTTPRequest, error)
-	List(opts v1.ListOptions) (*v1alpha1.LogicAppTriggerHTTPRequestList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LogicAppTriggerHTTPRequest, err error)
+	Create(ctx context.Context, logicAppTriggerHTTPRequest *v1alpha1.LogicAppTriggerHTTPRequest, opts v1.CreateOptions) (*v1alpha1.LogicAppTriggerHTTPRequest, error)
+	Update(ctx context.Context, logicAppTriggerHTTPRequest *v1alpha1.LogicAppTriggerHTTPRequest, opts v1.UpdateOptions) (*v1alpha1.LogicAppTriggerHTTPRequest, error)
+	UpdateStatus(ctx context.Context, logicAppTriggerHTTPRequest *v1alpha1.LogicAppTriggerHTTPRequest, opts v1.UpdateOptions) (*v1alpha1.LogicAppTriggerHTTPRequest, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.LogicAppTriggerHTTPRequest, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.LogicAppTriggerHTTPRequestList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LogicAppTriggerHTTPRequest, err error)
 	LogicAppTriggerHTTPRequestExpansion
 }
 
@@ -65,20 +66,20 @@ func newLogicAppTriggerHTTPRequests(c *AzurermV1alpha1Client, namespace string) 
 }
 
 // Get takes name of the logicAppTriggerHTTPRequest, and returns the corresponding logicAppTriggerHTTPRequest object, and an error if there is any.
-func (c *logicAppTriggerHTTPRequests) Get(name string, options v1.GetOptions) (result *v1alpha1.LogicAppTriggerHTTPRequest, err error) {
+func (c *logicAppTriggerHTTPRequests) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LogicAppTriggerHTTPRequest, err error) {
 	result = &v1alpha1.LogicAppTriggerHTTPRequest{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("logicapptriggerhttprequests").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of LogicAppTriggerHTTPRequests that match those selectors.
-func (c *logicAppTriggerHTTPRequests) List(opts v1.ListOptions) (result *v1alpha1.LogicAppTriggerHTTPRequestList, err error) {
+func (c *logicAppTriggerHTTPRequests) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LogicAppTriggerHTTPRequestList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *logicAppTriggerHTTPRequests) List(opts v1.ListOptions) (result *v1alpha
 		Resource("logicapptriggerhttprequests").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested logicAppTriggerHTTPRequests.
-func (c *logicAppTriggerHTTPRequests) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *logicAppTriggerHTTPRequests) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *logicAppTriggerHTTPRequests) Watch(opts v1.ListOptions) (watch.Interfac
 		Resource("logicapptriggerhttprequests").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a logicAppTriggerHTTPRequest and creates it.  Returns the server's representation of the logicAppTriggerHTTPRequest, and an error, if there is any.
-func (c *logicAppTriggerHTTPRequests) Create(logicAppTriggerHTTPRequest *v1alpha1.LogicAppTriggerHTTPRequest) (result *v1alpha1.LogicAppTriggerHTTPRequest, err error) {
+func (c *logicAppTriggerHTTPRequests) Create(ctx context.Context, logicAppTriggerHTTPRequest *v1alpha1.LogicAppTriggerHTTPRequest, opts v1.CreateOptions) (result *v1alpha1.LogicAppTriggerHTTPRequest, err error) {
 	result = &v1alpha1.LogicAppTriggerHTTPRequest{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("logicapptriggerhttprequests").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(logicAppTriggerHTTPRequest).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a logicAppTriggerHTTPRequest and updates it. Returns the server's representation of the logicAppTriggerHTTPRequest, and an error, if there is any.
-func (c *logicAppTriggerHTTPRequests) Update(logicAppTriggerHTTPRequest *v1alpha1.LogicAppTriggerHTTPRequest) (result *v1alpha1.LogicAppTriggerHTTPRequest, err error) {
+func (c *logicAppTriggerHTTPRequests) Update(ctx context.Context, logicAppTriggerHTTPRequest *v1alpha1.LogicAppTriggerHTTPRequest, opts v1.UpdateOptions) (result *v1alpha1.LogicAppTriggerHTTPRequest, err error) {
 	result = &v1alpha1.LogicAppTriggerHTTPRequest{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("logicapptriggerhttprequests").
 		Name(logicAppTriggerHTTPRequest.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(logicAppTriggerHTTPRequest).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *logicAppTriggerHTTPRequests) UpdateStatus(logicAppTriggerHTTPRequest *v1alpha1.LogicAppTriggerHTTPRequest) (result *v1alpha1.LogicAppTriggerHTTPRequest, err error) {
+func (c *logicAppTriggerHTTPRequests) UpdateStatus(ctx context.Context, logicAppTriggerHTTPRequest *v1alpha1.LogicAppTriggerHTTPRequest, opts v1.UpdateOptions) (result *v1alpha1.LogicAppTriggerHTTPRequest, err error) {
 	result = &v1alpha1.LogicAppTriggerHTTPRequest{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("logicapptriggerhttprequests").
 		Name(logicAppTriggerHTTPRequest.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(logicAppTriggerHTTPRequest).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the logicAppTriggerHTTPRequest and deletes it. Returns an error if one occurs.
-func (c *logicAppTriggerHTTPRequests) Delete(name string, options *v1.DeleteOptions) error {
+func (c *logicAppTriggerHTTPRequests) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("logicapptriggerhttprequests").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *logicAppTriggerHTTPRequests) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *logicAppTriggerHTTPRequests) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("logicapptriggerhttprequests").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched logicAppTriggerHTTPRequest.
-func (c *logicAppTriggerHTTPRequests) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LogicAppTriggerHTTPRequest, err error) {
+func (c *logicAppTriggerHTTPRequests) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LogicAppTriggerHTTPRequest, err error) {
 	result = &v1alpha1.LogicAppTriggerHTTPRequest{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("logicapptriggerhttprequests").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

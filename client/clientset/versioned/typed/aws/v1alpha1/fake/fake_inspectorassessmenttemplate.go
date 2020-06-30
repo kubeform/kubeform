@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var inspectorassessmenttemplatesResource = schema.GroupVersionResource{Group: "a
 var inspectorassessmenttemplatesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "InspectorAssessmentTemplate"}
 
 // Get takes name of the inspectorAssessmentTemplate, and returns the corresponding inspectorAssessmentTemplate object, and an error if there is any.
-func (c *FakeInspectorAssessmentTemplates) Get(name string, options v1.GetOptions) (result *v1alpha1.InspectorAssessmentTemplate, err error) {
+func (c *FakeInspectorAssessmentTemplates) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.InspectorAssessmentTemplate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(inspectorassessmenttemplatesResource, c.ns, name), &v1alpha1.InspectorAssessmentTemplate{})
 
@@ -51,7 +53,7 @@ func (c *FakeInspectorAssessmentTemplates) Get(name string, options v1.GetOption
 }
 
 // List takes label and field selectors, and returns the list of InspectorAssessmentTemplates that match those selectors.
-func (c *FakeInspectorAssessmentTemplates) List(opts v1.ListOptions) (result *v1alpha1.InspectorAssessmentTemplateList, err error) {
+func (c *FakeInspectorAssessmentTemplates) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.InspectorAssessmentTemplateList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(inspectorassessmenttemplatesResource, inspectorassessmenttemplatesKind, c.ns, opts), &v1alpha1.InspectorAssessmentTemplateList{})
 
@@ -73,14 +75,14 @@ func (c *FakeInspectorAssessmentTemplates) List(opts v1.ListOptions) (result *v1
 }
 
 // Watch returns a watch.Interface that watches the requested inspectorAssessmentTemplates.
-func (c *FakeInspectorAssessmentTemplates) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeInspectorAssessmentTemplates) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(inspectorassessmenttemplatesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a inspectorAssessmentTemplate and creates it.  Returns the server's representation of the inspectorAssessmentTemplate, and an error, if there is any.
-func (c *FakeInspectorAssessmentTemplates) Create(inspectorAssessmentTemplate *v1alpha1.InspectorAssessmentTemplate) (result *v1alpha1.InspectorAssessmentTemplate, err error) {
+func (c *FakeInspectorAssessmentTemplates) Create(ctx context.Context, inspectorAssessmentTemplate *v1alpha1.InspectorAssessmentTemplate, opts v1.CreateOptions) (result *v1alpha1.InspectorAssessmentTemplate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(inspectorassessmenttemplatesResource, c.ns, inspectorAssessmentTemplate), &v1alpha1.InspectorAssessmentTemplate{})
 
@@ -91,7 +93,7 @@ func (c *FakeInspectorAssessmentTemplates) Create(inspectorAssessmentTemplate *v
 }
 
 // Update takes the representation of a inspectorAssessmentTemplate and updates it. Returns the server's representation of the inspectorAssessmentTemplate, and an error, if there is any.
-func (c *FakeInspectorAssessmentTemplates) Update(inspectorAssessmentTemplate *v1alpha1.InspectorAssessmentTemplate) (result *v1alpha1.InspectorAssessmentTemplate, err error) {
+func (c *FakeInspectorAssessmentTemplates) Update(ctx context.Context, inspectorAssessmentTemplate *v1alpha1.InspectorAssessmentTemplate, opts v1.UpdateOptions) (result *v1alpha1.InspectorAssessmentTemplate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(inspectorassessmenttemplatesResource, c.ns, inspectorAssessmentTemplate), &v1alpha1.InspectorAssessmentTemplate{})
 
@@ -103,7 +105,7 @@ func (c *FakeInspectorAssessmentTemplates) Update(inspectorAssessmentTemplate *v
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeInspectorAssessmentTemplates) UpdateStatus(inspectorAssessmentTemplate *v1alpha1.InspectorAssessmentTemplate) (*v1alpha1.InspectorAssessmentTemplate, error) {
+func (c *FakeInspectorAssessmentTemplates) UpdateStatus(ctx context.Context, inspectorAssessmentTemplate *v1alpha1.InspectorAssessmentTemplate, opts v1.UpdateOptions) (*v1alpha1.InspectorAssessmentTemplate, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(inspectorassessmenttemplatesResource, "status", c.ns, inspectorAssessmentTemplate), &v1alpha1.InspectorAssessmentTemplate{})
 
@@ -114,7 +116,7 @@ func (c *FakeInspectorAssessmentTemplates) UpdateStatus(inspectorAssessmentTempl
 }
 
 // Delete takes name of the inspectorAssessmentTemplate and deletes it. Returns an error if one occurs.
-func (c *FakeInspectorAssessmentTemplates) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeInspectorAssessmentTemplates) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(inspectorassessmenttemplatesResource, c.ns, name), &v1alpha1.InspectorAssessmentTemplate{})
 
@@ -122,15 +124,15 @@ func (c *FakeInspectorAssessmentTemplates) Delete(name string, options *v1.Delet
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeInspectorAssessmentTemplates) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(inspectorassessmenttemplatesResource, c.ns, listOptions)
+func (c *FakeInspectorAssessmentTemplates) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(inspectorassessmenttemplatesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.InspectorAssessmentTemplateList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched inspectorAssessmentTemplate.
-func (c *FakeInspectorAssessmentTemplates) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.InspectorAssessmentTemplate, err error) {
+func (c *FakeInspectorAssessmentTemplates) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.InspectorAssessmentTemplate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(inspectorassessmenttemplatesResource, c.ns, name, pt, data, subresources...), &v1alpha1.InspectorAssessmentTemplate{})
 

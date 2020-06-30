@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var pinpointeventstreamsResource = schema.GroupVersionResource{Group: "aws.kubef
 var pinpointeventstreamsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "PinpointEventStream"}
 
 // Get takes name of the pinpointEventStream, and returns the corresponding pinpointEventStream object, and an error if there is any.
-func (c *FakePinpointEventStreams) Get(name string, options v1.GetOptions) (result *v1alpha1.PinpointEventStream, err error) {
+func (c *FakePinpointEventStreams) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PinpointEventStream, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(pinpointeventstreamsResource, c.ns, name), &v1alpha1.PinpointEventStream{})
 
@@ -51,7 +53,7 @@ func (c *FakePinpointEventStreams) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of PinpointEventStreams that match those selectors.
-func (c *FakePinpointEventStreams) List(opts v1.ListOptions) (result *v1alpha1.PinpointEventStreamList, err error) {
+func (c *FakePinpointEventStreams) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PinpointEventStreamList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(pinpointeventstreamsResource, pinpointeventstreamsKind, c.ns, opts), &v1alpha1.PinpointEventStreamList{})
 
@@ -73,14 +75,14 @@ func (c *FakePinpointEventStreams) List(opts v1.ListOptions) (result *v1alpha1.P
 }
 
 // Watch returns a watch.Interface that watches the requested pinpointEventStreams.
-func (c *FakePinpointEventStreams) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakePinpointEventStreams) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(pinpointeventstreamsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a pinpointEventStream and creates it.  Returns the server's representation of the pinpointEventStream, and an error, if there is any.
-func (c *FakePinpointEventStreams) Create(pinpointEventStream *v1alpha1.PinpointEventStream) (result *v1alpha1.PinpointEventStream, err error) {
+func (c *FakePinpointEventStreams) Create(ctx context.Context, pinpointEventStream *v1alpha1.PinpointEventStream, opts v1.CreateOptions) (result *v1alpha1.PinpointEventStream, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(pinpointeventstreamsResource, c.ns, pinpointEventStream), &v1alpha1.PinpointEventStream{})
 
@@ -91,7 +93,7 @@ func (c *FakePinpointEventStreams) Create(pinpointEventStream *v1alpha1.Pinpoint
 }
 
 // Update takes the representation of a pinpointEventStream and updates it. Returns the server's representation of the pinpointEventStream, and an error, if there is any.
-func (c *FakePinpointEventStreams) Update(pinpointEventStream *v1alpha1.PinpointEventStream) (result *v1alpha1.PinpointEventStream, err error) {
+func (c *FakePinpointEventStreams) Update(ctx context.Context, pinpointEventStream *v1alpha1.PinpointEventStream, opts v1.UpdateOptions) (result *v1alpha1.PinpointEventStream, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(pinpointeventstreamsResource, c.ns, pinpointEventStream), &v1alpha1.PinpointEventStream{})
 
@@ -103,7 +105,7 @@ func (c *FakePinpointEventStreams) Update(pinpointEventStream *v1alpha1.Pinpoint
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakePinpointEventStreams) UpdateStatus(pinpointEventStream *v1alpha1.PinpointEventStream) (*v1alpha1.PinpointEventStream, error) {
+func (c *FakePinpointEventStreams) UpdateStatus(ctx context.Context, pinpointEventStream *v1alpha1.PinpointEventStream, opts v1.UpdateOptions) (*v1alpha1.PinpointEventStream, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(pinpointeventstreamsResource, "status", c.ns, pinpointEventStream), &v1alpha1.PinpointEventStream{})
 
@@ -114,7 +116,7 @@ func (c *FakePinpointEventStreams) UpdateStatus(pinpointEventStream *v1alpha1.Pi
 }
 
 // Delete takes name of the pinpointEventStream and deletes it. Returns an error if one occurs.
-func (c *FakePinpointEventStreams) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakePinpointEventStreams) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(pinpointeventstreamsResource, c.ns, name), &v1alpha1.PinpointEventStream{})
 
@@ -122,15 +124,15 @@ func (c *FakePinpointEventStreams) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakePinpointEventStreams) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(pinpointeventstreamsResource, c.ns, listOptions)
+func (c *FakePinpointEventStreams) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(pinpointeventstreamsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.PinpointEventStreamList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched pinpointEventStream.
-func (c *FakePinpointEventStreams) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PinpointEventStream, err error) {
+func (c *FakePinpointEventStreams) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PinpointEventStream, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(pinpointeventstreamsResource, c.ns, name, pt, data, subresources...), &v1alpha1.PinpointEventStream{})
 

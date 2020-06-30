@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var automationdscnodeconfigurationsResource = schema.GroupVersionResource{Group:
 var automationdscnodeconfigurationsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "AutomationDscNodeconfiguration"}
 
 // Get takes name of the automationDscNodeconfiguration, and returns the corresponding automationDscNodeconfiguration object, and an error if there is any.
-func (c *FakeAutomationDscNodeconfigurations) Get(name string, options v1.GetOptions) (result *v1alpha1.AutomationDscNodeconfiguration, err error) {
+func (c *FakeAutomationDscNodeconfigurations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AutomationDscNodeconfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(automationdscnodeconfigurationsResource, c.ns, name), &v1alpha1.AutomationDscNodeconfiguration{})
 
@@ -51,7 +53,7 @@ func (c *FakeAutomationDscNodeconfigurations) Get(name string, options v1.GetOpt
 }
 
 // List takes label and field selectors, and returns the list of AutomationDscNodeconfigurations that match those selectors.
-func (c *FakeAutomationDscNodeconfigurations) List(opts v1.ListOptions) (result *v1alpha1.AutomationDscNodeconfigurationList, err error) {
+func (c *FakeAutomationDscNodeconfigurations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AutomationDscNodeconfigurationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(automationdscnodeconfigurationsResource, automationdscnodeconfigurationsKind, c.ns, opts), &v1alpha1.AutomationDscNodeconfigurationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAutomationDscNodeconfigurations) List(opts v1.ListOptions) (result 
 }
 
 // Watch returns a watch.Interface that watches the requested automationDscNodeconfigurations.
-func (c *FakeAutomationDscNodeconfigurations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAutomationDscNodeconfigurations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(automationdscnodeconfigurationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a automationDscNodeconfiguration and creates it.  Returns the server's representation of the automationDscNodeconfiguration, and an error, if there is any.
-func (c *FakeAutomationDscNodeconfigurations) Create(automationDscNodeconfiguration *v1alpha1.AutomationDscNodeconfiguration) (result *v1alpha1.AutomationDscNodeconfiguration, err error) {
+func (c *FakeAutomationDscNodeconfigurations) Create(ctx context.Context, automationDscNodeconfiguration *v1alpha1.AutomationDscNodeconfiguration, opts v1.CreateOptions) (result *v1alpha1.AutomationDscNodeconfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(automationdscnodeconfigurationsResource, c.ns, automationDscNodeconfiguration), &v1alpha1.AutomationDscNodeconfiguration{})
 
@@ -91,7 +93,7 @@ func (c *FakeAutomationDscNodeconfigurations) Create(automationDscNodeconfigurat
 }
 
 // Update takes the representation of a automationDscNodeconfiguration and updates it. Returns the server's representation of the automationDscNodeconfiguration, and an error, if there is any.
-func (c *FakeAutomationDscNodeconfigurations) Update(automationDscNodeconfiguration *v1alpha1.AutomationDscNodeconfiguration) (result *v1alpha1.AutomationDscNodeconfiguration, err error) {
+func (c *FakeAutomationDscNodeconfigurations) Update(ctx context.Context, automationDscNodeconfiguration *v1alpha1.AutomationDscNodeconfiguration, opts v1.UpdateOptions) (result *v1alpha1.AutomationDscNodeconfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(automationdscnodeconfigurationsResource, c.ns, automationDscNodeconfiguration), &v1alpha1.AutomationDscNodeconfiguration{})
 
@@ -103,7 +105,7 @@ func (c *FakeAutomationDscNodeconfigurations) Update(automationDscNodeconfigurat
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAutomationDscNodeconfigurations) UpdateStatus(automationDscNodeconfiguration *v1alpha1.AutomationDscNodeconfiguration) (*v1alpha1.AutomationDscNodeconfiguration, error) {
+func (c *FakeAutomationDscNodeconfigurations) UpdateStatus(ctx context.Context, automationDscNodeconfiguration *v1alpha1.AutomationDscNodeconfiguration, opts v1.UpdateOptions) (*v1alpha1.AutomationDscNodeconfiguration, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(automationdscnodeconfigurationsResource, "status", c.ns, automationDscNodeconfiguration), &v1alpha1.AutomationDscNodeconfiguration{})
 
@@ -114,7 +116,7 @@ func (c *FakeAutomationDscNodeconfigurations) UpdateStatus(automationDscNodeconf
 }
 
 // Delete takes name of the automationDscNodeconfiguration and deletes it. Returns an error if one occurs.
-func (c *FakeAutomationDscNodeconfigurations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAutomationDscNodeconfigurations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(automationdscnodeconfigurationsResource, c.ns, name), &v1alpha1.AutomationDscNodeconfiguration{})
 
@@ -122,15 +124,15 @@ func (c *FakeAutomationDscNodeconfigurations) Delete(name string, options *v1.De
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAutomationDscNodeconfigurations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(automationdscnodeconfigurationsResource, c.ns, listOptions)
+func (c *FakeAutomationDscNodeconfigurations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(automationdscnodeconfigurationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AutomationDscNodeconfigurationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched automationDscNodeconfiguration.
-func (c *FakeAutomationDscNodeconfigurations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AutomationDscNodeconfiguration, err error) {
+func (c *FakeAutomationDscNodeconfigurations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AutomationDscNodeconfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(automationdscnodeconfigurationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.AutomationDscNodeconfiguration{})
 

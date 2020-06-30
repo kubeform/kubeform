@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var defaultnetworkaclsResource = schema.GroupVersionResource{Group: "aws.kubefor
 var defaultnetworkaclsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DefaultNetworkACL"}
 
 // Get takes name of the defaultNetworkACL, and returns the corresponding defaultNetworkACL object, and an error if there is any.
-func (c *FakeDefaultNetworkACLs) Get(name string, options v1.GetOptions) (result *v1alpha1.DefaultNetworkACL, err error) {
+func (c *FakeDefaultNetworkACLs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DefaultNetworkACL, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(defaultnetworkaclsResource, c.ns, name), &v1alpha1.DefaultNetworkACL{})
 
@@ -51,7 +53,7 @@ func (c *FakeDefaultNetworkACLs) Get(name string, options v1.GetOptions) (result
 }
 
 // List takes label and field selectors, and returns the list of DefaultNetworkACLs that match those selectors.
-func (c *FakeDefaultNetworkACLs) List(opts v1.ListOptions) (result *v1alpha1.DefaultNetworkACLList, err error) {
+func (c *FakeDefaultNetworkACLs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DefaultNetworkACLList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(defaultnetworkaclsResource, defaultnetworkaclsKind, c.ns, opts), &v1alpha1.DefaultNetworkACLList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDefaultNetworkACLs) List(opts v1.ListOptions) (result *v1alpha1.Def
 }
 
 // Watch returns a watch.Interface that watches the requested defaultNetworkACLs.
-func (c *FakeDefaultNetworkACLs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDefaultNetworkACLs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(defaultnetworkaclsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a defaultNetworkACL and creates it.  Returns the server's representation of the defaultNetworkACL, and an error, if there is any.
-func (c *FakeDefaultNetworkACLs) Create(defaultNetworkACL *v1alpha1.DefaultNetworkACL) (result *v1alpha1.DefaultNetworkACL, err error) {
+func (c *FakeDefaultNetworkACLs) Create(ctx context.Context, defaultNetworkACL *v1alpha1.DefaultNetworkACL, opts v1.CreateOptions) (result *v1alpha1.DefaultNetworkACL, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(defaultnetworkaclsResource, c.ns, defaultNetworkACL), &v1alpha1.DefaultNetworkACL{})
 
@@ -91,7 +93,7 @@ func (c *FakeDefaultNetworkACLs) Create(defaultNetworkACL *v1alpha1.DefaultNetwo
 }
 
 // Update takes the representation of a defaultNetworkACL and updates it. Returns the server's representation of the defaultNetworkACL, and an error, if there is any.
-func (c *FakeDefaultNetworkACLs) Update(defaultNetworkACL *v1alpha1.DefaultNetworkACL) (result *v1alpha1.DefaultNetworkACL, err error) {
+func (c *FakeDefaultNetworkACLs) Update(ctx context.Context, defaultNetworkACL *v1alpha1.DefaultNetworkACL, opts v1.UpdateOptions) (result *v1alpha1.DefaultNetworkACL, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(defaultnetworkaclsResource, c.ns, defaultNetworkACL), &v1alpha1.DefaultNetworkACL{})
 
@@ -103,7 +105,7 @@ func (c *FakeDefaultNetworkACLs) Update(defaultNetworkACL *v1alpha1.DefaultNetwo
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDefaultNetworkACLs) UpdateStatus(defaultNetworkACL *v1alpha1.DefaultNetworkACL) (*v1alpha1.DefaultNetworkACL, error) {
+func (c *FakeDefaultNetworkACLs) UpdateStatus(ctx context.Context, defaultNetworkACL *v1alpha1.DefaultNetworkACL, opts v1.UpdateOptions) (*v1alpha1.DefaultNetworkACL, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(defaultnetworkaclsResource, "status", c.ns, defaultNetworkACL), &v1alpha1.DefaultNetworkACL{})
 
@@ -114,7 +116,7 @@ func (c *FakeDefaultNetworkACLs) UpdateStatus(defaultNetworkACL *v1alpha1.Defaul
 }
 
 // Delete takes name of the defaultNetworkACL and deletes it. Returns an error if one occurs.
-func (c *FakeDefaultNetworkACLs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDefaultNetworkACLs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(defaultnetworkaclsResource, c.ns, name), &v1alpha1.DefaultNetworkACL{})
 
@@ -122,15 +124,15 @@ func (c *FakeDefaultNetworkACLs) Delete(name string, options *v1.DeleteOptions) 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDefaultNetworkACLs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(defaultnetworkaclsResource, c.ns, listOptions)
+func (c *FakeDefaultNetworkACLs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(defaultnetworkaclsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DefaultNetworkACLList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched defaultNetworkACL.
-func (c *FakeDefaultNetworkACLs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DefaultNetworkACL, err error) {
+func (c *FakeDefaultNetworkACLs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DefaultNetworkACL, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(defaultnetworkaclsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DefaultNetworkACL{})
 

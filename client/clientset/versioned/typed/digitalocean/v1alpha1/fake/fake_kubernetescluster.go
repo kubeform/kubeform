@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/digitalocean/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var kubernetesclustersResource = schema.GroupVersionResource{Group: "digitalocea
 var kubernetesclustersKind = schema.GroupVersionKind{Group: "digitalocean.kubeform.com", Version: "v1alpha1", Kind: "KubernetesCluster"}
 
 // Get takes name of the kubernetesCluster, and returns the corresponding kubernetesCluster object, and an error if there is any.
-func (c *FakeKubernetesClusters) Get(name string, options v1.GetOptions) (result *v1alpha1.KubernetesCluster, err error) {
+func (c *FakeKubernetesClusters) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KubernetesCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(kubernetesclustersResource, c.ns, name), &v1alpha1.KubernetesCluster{})
 
@@ -51,7 +53,7 @@ func (c *FakeKubernetesClusters) Get(name string, options v1.GetOptions) (result
 }
 
 // List takes label and field selectors, and returns the list of KubernetesClusters that match those selectors.
-func (c *FakeKubernetesClusters) List(opts v1.ListOptions) (result *v1alpha1.KubernetesClusterList, err error) {
+func (c *FakeKubernetesClusters) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KubernetesClusterList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(kubernetesclustersResource, kubernetesclustersKind, c.ns, opts), &v1alpha1.KubernetesClusterList{})
 
@@ -73,14 +75,14 @@ func (c *FakeKubernetesClusters) List(opts v1.ListOptions) (result *v1alpha1.Kub
 }
 
 // Watch returns a watch.Interface that watches the requested kubernetesClusters.
-func (c *FakeKubernetesClusters) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeKubernetesClusters) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(kubernetesclustersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a kubernetesCluster and creates it.  Returns the server's representation of the kubernetesCluster, and an error, if there is any.
-func (c *FakeKubernetesClusters) Create(kubernetesCluster *v1alpha1.KubernetesCluster) (result *v1alpha1.KubernetesCluster, err error) {
+func (c *FakeKubernetesClusters) Create(ctx context.Context, kubernetesCluster *v1alpha1.KubernetesCluster, opts v1.CreateOptions) (result *v1alpha1.KubernetesCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(kubernetesclustersResource, c.ns, kubernetesCluster), &v1alpha1.KubernetesCluster{})
 
@@ -91,7 +93,7 @@ func (c *FakeKubernetesClusters) Create(kubernetesCluster *v1alpha1.KubernetesCl
 }
 
 // Update takes the representation of a kubernetesCluster and updates it. Returns the server's representation of the kubernetesCluster, and an error, if there is any.
-func (c *FakeKubernetesClusters) Update(kubernetesCluster *v1alpha1.KubernetesCluster) (result *v1alpha1.KubernetesCluster, err error) {
+func (c *FakeKubernetesClusters) Update(ctx context.Context, kubernetesCluster *v1alpha1.KubernetesCluster, opts v1.UpdateOptions) (result *v1alpha1.KubernetesCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(kubernetesclustersResource, c.ns, kubernetesCluster), &v1alpha1.KubernetesCluster{})
 
@@ -103,7 +105,7 @@ func (c *FakeKubernetesClusters) Update(kubernetesCluster *v1alpha1.KubernetesCl
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeKubernetesClusters) UpdateStatus(kubernetesCluster *v1alpha1.KubernetesCluster) (*v1alpha1.KubernetesCluster, error) {
+func (c *FakeKubernetesClusters) UpdateStatus(ctx context.Context, kubernetesCluster *v1alpha1.KubernetesCluster, opts v1.UpdateOptions) (*v1alpha1.KubernetesCluster, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(kubernetesclustersResource, "status", c.ns, kubernetesCluster), &v1alpha1.KubernetesCluster{})
 
@@ -114,7 +116,7 @@ func (c *FakeKubernetesClusters) UpdateStatus(kubernetesCluster *v1alpha1.Kubern
 }
 
 // Delete takes name of the kubernetesCluster and deletes it. Returns an error if one occurs.
-func (c *FakeKubernetesClusters) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeKubernetesClusters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(kubernetesclustersResource, c.ns, name), &v1alpha1.KubernetesCluster{})
 
@@ -122,15 +124,15 @@ func (c *FakeKubernetesClusters) Delete(name string, options *v1.DeleteOptions) 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeKubernetesClusters) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(kubernetesclustersResource, c.ns, listOptions)
+func (c *FakeKubernetesClusters) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(kubernetesclustersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.KubernetesClusterList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched kubernetesCluster.
-func (c *FakeKubernetesClusters) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KubernetesCluster, err error) {
+func (c *FakeKubernetesClusters) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KubernetesCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(kubernetesclustersResource, c.ns, name, pt, data, subresources...), &v1alpha1.KubernetesCluster{})
 

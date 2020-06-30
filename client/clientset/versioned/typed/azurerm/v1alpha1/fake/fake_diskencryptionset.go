@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var diskencryptionsetsResource = schema.GroupVersionResource{Group: "azurerm.kub
 var diskencryptionsetsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "DiskEncryptionSet"}
 
 // Get takes name of the diskEncryptionSet, and returns the corresponding diskEncryptionSet object, and an error if there is any.
-func (c *FakeDiskEncryptionSets) Get(name string, options v1.GetOptions) (result *v1alpha1.DiskEncryptionSet, err error) {
+func (c *FakeDiskEncryptionSets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DiskEncryptionSet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(diskencryptionsetsResource, c.ns, name), &v1alpha1.DiskEncryptionSet{})
 
@@ -51,7 +53,7 @@ func (c *FakeDiskEncryptionSets) Get(name string, options v1.GetOptions) (result
 }
 
 // List takes label and field selectors, and returns the list of DiskEncryptionSets that match those selectors.
-func (c *FakeDiskEncryptionSets) List(opts v1.ListOptions) (result *v1alpha1.DiskEncryptionSetList, err error) {
+func (c *FakeDiskEncryptionSets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DiskEncryptionSetList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(diskencryptionsetsResource, diskencryptionsetsKind, c.ns, opts), &v1alpha1.DiskEncryptionSetList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDiskEncryptionSets) List(opts v1.ListOptions) (result *v1alpha1.Dis
 }
 
 // Watch returns a watch.Interface that watches the requested diskEncryptionSets.
-func (c *FakeDiskEncryptionSets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDiskEncryptionSets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(diskencryptionsetsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a diskEncryptionSet and creates it.  Returns the server's representation of the diskEncryptionSet, and an error, if there is any.
-func (c *FakeDiskEncryptionSets) Create(diskEncryptionSet *v1alpha1.DiskEncryptionSet) (result *v1alpha1.DiskEncryptionSet, err error) {
+func (c *FakeDiskEncryptionSets) Create(ctx context.Context, diskEncryptionSet *v1alpha1.DiskEncryptionSet, opts v1.CreateOptions) (result *v1alpha1.DiskEncryptionSet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(diskencryptionsetsResource, c.ns, diskEncryptionSet), &v1alpha1.DiskEncryptionSet{})
 
@@ -91,7 +93,7 @@ func (c *FakeDiskEncryptionSets) Create(diskEncryptionSet *v1alpha1.DiskEncrypti
 }
 
 // Update takes the representation of a diskEncryptionSet and updates it. Returns the server's representation of the diskEncryptionSet, and an error, if there is any.
-func (c *FakeDiskEncryptionSets) Update(diskEncryptionSet *v1alpha1.DiskEncryptionSet) (result *v1alpha1.DiskEncryptionSet, err error) {
+func (c *FakeDiskEncryptionSets) Update(ctx context.Context, diskEncryptionSet *v1alpha1.DiskEncryptionSet, opts v1.UpdateOptions) (result *v1alpha1.DiskEncryptionSet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(diskencryptionsetsResource, c.ns, diskEncryptionSet), &v1alpha1.DiskEncryptionSet{})
 
@@ -103,7 +105,7 @@ func (c *FakeDiskEncryptionSets) Update(diskEncryptionSet *v1alpha1.DiskEncrypti
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDiskEncryptionSets) UpdateStatus(diskEncryptionSet *v1alpha1.DiskEncryptionSet) (*v1alpha1.DiskEncryptionSet, error) {
+func (c *FakeDiskEncryptionSets) UpdateStatus(ctx context.Context, diskEncryptionSet *v1alpha1.DiskEncryptionSet, opts v1.UpdateOptions) (*v1alpha1.DiskEncryptionSet, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(diskencryptionsetsResource, "status", c.ns, diskEncryptionSet), &v1alpha1.DiskEncryptionSet{})
 
@@ -114,7 +116,7 @@ func (c *FakeDiskEncryptionSets) UpdateStatus(diskEncryptionSet *v1alpha1.DiskEn
 }
 
 // Delete takes name of the diskEncryptionSet and deletes it. Returns an error if one occurs.
-func (c *FakeDiskEncryptionSets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDiskEncryptionSets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(diskencryptionsetsResource, c.ns, name), &v1alpha1.DiskEncryptionSet{})
 
@@ -122,15 +124,15 @@ func (c *FakeDiskEncryptionSets) Delete(name string, options *v1.DeleteOptions) 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDiskEncryptionSets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(diskencryptionsetsResource, c.ns, listOptions)
+func (c *FakeDiskEncryptionSets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(diskencryptionsetsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DiskEncryptionSetList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched diskEncryptionSet.
-func (c *FakeDiskEncryptionSets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DiskEncryptionSet, err error) {
+func (c *FakeDiskEncryptionSets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DiskEncryptionSet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(diskencryptionsetsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DiskEncryptionSet{})
 

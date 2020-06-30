@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var budgetsbudgetsResource = schema.GroupVersionResource{Group: "aws.kubeform.co
 var budgetsbudgetsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "BudgetsBudget"}
 
 // Get takes name of the budgetsBudget, and returns the corresponding budgetsBudget object, and an error if there is any.
-func (c *FakeBudgetsBudgets) Get(name string, options v1.GetOptions) (result *v1alpha1.BudgetsBudget, err error) {
+func (c *FakeBudgetsBudgets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BudgetsBudget, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(budgetsbudgetsResource, c.ns, name), &v1alpha1.BudgetsBudget{})
 
@@ -51,7 +53,7 @@ func (c *FakeBudgetsBudgets) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of BudgetsBudgets that match those selectors.
-func (c *FakeBudgetsBudgets) List(opts v1.ListOptions) (result *v1alpha1.BudgetsBudgetList, err error) {
+func (c *FakeBudgetsBudgets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BudgetsBudgetList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(budgetsbudgetsResource, budgetsbudgetsKind, c.ns, opts), &v1alpha1.BudgetsBudgetList{})
 
@@ -73,14 +75,14 @@ func (c *FakeBudgetsBudgets) List(opts v1.ListOptions) (result *v1alpha1.Budgets
 }
 
 // Watch returns a watch.Interface that watches the requested budgetsBudgets.
-func (c *FakeBudgetsBudgets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeBudgetsBudgets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(budgetsbudgetsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a budgetsBudget and creates it.  Returns the server's representation of the budgetsBudget, and an error, if there is any.
-func (c *FakeBudgetsBudgets) Create(budgetsBudget *v1alpha1.BudgetsBudget) (result *v1alpha1.BudgetsBudget, err error) {
+func (c *FakeBudgetsBudgets) Create(ctx context.Context, budgetsBudget *v1alpha1.BudgetsBudget, opts v1.CreateOptions) (result *v1alpha1.BudgetsBudget, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(budgetsbudgetsResource, c.ns, budgetsBudget), &v1alpha1.BudgetsBudget{})
 
@@ -91,7 +93,7 @@ func (c *FakeBudgetsBudgets) Create(budgetsBudget *v1alpha1.BudgetsBudget) (resu
 }
 
 // Update takes the representation of a budgetsBudget and updates it. Returns the server's representation of the budgetsBudget, and an error, if there is any.
-func (c *FakeBudgetsBudgets) Update(budgetsBudget *v1alpha1.BudgetsBudget) (result *v1alpha1.BudgetsBudget, err error) {
+func (c *FakeBudgetsBudgets) Update(ctx context.Context, budgetsBudget *v1alpha1.BudgetsBudget, opts v1.UpdateOptions) (result *v1alpha1.BudgetsBudget, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(budgetsbudgetsResource, c.ns, budgetsBudget), &v1alpha1.BudgetsBudget{})
 
@@ -103,7 +105,7 @@ func (c *FakeBudgetsBudgets) Update(budgetsBudget *v1alpha1.BudgetsBudget) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeBudgetsBudgets) UpdateStatus(budgetsBudget *v1alpha1.BudgetsBudget) (*v1alpha1.BudgetsBudget, error) {
+func (c *FakeBudgetsBudgets) UpdateStatus(ctx context.Context, budgetsBudget *v1alpha1.BudgetsBudget, opts v1.UpdateOptions) (*v1alpha1.BudgetsBudget, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(budgetsbudgetsResource, "status", c.ns, budgetsBudget), &v1alpha1.BudgetsBudget{})
 
@@ -114,7 +116,7 @@ func (c *FakeBudgetsBudgets) UpdateStatus(budgetsBudget *v1alpha1.BudgetsBudget)
 }
 
 // Delete takes name of the budgetsBudget and deletes it. Returns an error if one occurs.
-func (c *FakeBudgetsBudgets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeBudgetsBudgets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(budgetsbudgetsResource, c.ns, name), &v1alpha1.BudgetsBudget{})
 
@@ -122,15 +124,15 @@ func (c *FakeBudgetsBudgets) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeBudgetsBudgets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(budgetsbudgetsResource, c.ns, listOptions)
+func (c *FakeBudgetsBudgets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(budgetsbudgetsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.BudgetsBudgetList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched budgetsBudget.
-func (c *FakeBudgetsBudgets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BudgetsBudget, err error) {
+func (c *FakeBudgetsBudgets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BudgetsBudget, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(budgetsbudgetsResource, c.ns, name, pt, data, subresources...), &v1alpha1.BudgetsBudget{})
 

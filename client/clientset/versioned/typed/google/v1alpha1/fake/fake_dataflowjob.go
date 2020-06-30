@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dataflowjobsResource = schema.GroupVersionResource{Group: "google.kubeform.c
 var dataflowjobsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "DataflowJob"}
 
 // Get takes name of the dataflowJob, and returns the corresponding dataflowJob object, and an error if there is any.
-func (c *FakeDataflowJobs) Get(name string, options v1.GetOptions) (result *v1alpha1.DataflowJob, err error) {
+func (c *FakeDataflowJobs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DataflowJob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dataflowjobsResource, c.ns, name), &v1alpha1.DataflowJob{})
 
@@ -51,7 +53,7 @@ func (c *FakeDataflowJobs) Get(name string, options v1.GetOptions) (result *v1al
 }
 
 // List takes label and field selectors, and returns the list of DataflowJobs that match those selectors.
-func (c *FakeDataflowJobs) List(opts v1.ListOptions) (result *v1alpha1.DataflowJobList, err error) {
+func (c *FakeDataflowJobs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DataflowJobList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dataflowjobsResource, dataflowjobsKind, c.ns, opts), &v1alpha1.DataflowJobList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDataflowJobs) List(opts v1.ListOptions) (result *v1alpha1.DataflowJ
 }
 
 // Watch returns a watch.Interface that watches the requested dataflowJobs.
-func (c *FakeDataflowJobs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDataflowJobs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dataflowjobsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dataflowJob and creates it.  Returns the server's representation of the dataflowJob, and an error, if there is any.
-func (c *FakeDataflowJobs) Create(dataflowJob *v1alpha1.DataflowJob) (result *v1alpha1.DataflowJob, err error) {
+func (c *FakeDataflowJobs) Create(ctx context.Context, dataflowJob *v1alpha1.DataflowJob, opts v1.CreateOptions) (result *v1alpha1.DataflowJob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dataflowjobsResource, c.ns, dataflowJob), &v1alpha1.DataflowJob{})
 
@@ -91,7 +93,7 @@ func (c *FakeDataflowJobs) Create(dataflowJob *v1alpha1.DataflowJob) (result *v1
 }
 
 // Update takes the representation of a dataflowJob and updates it. Returns the server's representation of the dataflowJob, and an error, if there is any.
-func (c *FakeDataflowJobs) Update(dataflowJob *v1alpha1.DataflowJob) (result *v1alpha1.DataflowJob, err error) {
+func (c *FakeDataflowJobs) Update(ctx context.Context, dataflowJob *v1alpha1.DataflowJob, opts v1.UpdateOptions) (result *v1alpha1.DataflowJob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dataflowjobsResource, c.ns, dataflowJob), &v1alpha1.DataflowJob{})
 
@@ -103,7 +105,7 @@ func (c *FakeDataflowJobs) Update(dataflowJob *v1alpha1.DataflowJob) (result *v1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDataflowJobs) UpdateStatus(dataflowJob *v1alpha1.DataflowJob) (*v1alpha1.DataflowJob, error) {
+func (c *FakeDataflowJobs) UpdateStatus(ctx context.Context, dataflowJob *v1alpha1.DataflowJob, opts v1.UpdateOptions) (*v1alpha1.DataflowJob, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dataflowjobsResource, "status", c.ns, dataflowJob), &v1alpha1.DataflowJob{})
 
@@ -114,7 +116,7 @@ func (c *FakeDataflowJobs) UpdateStatus(dataflowJob *v1alpha1.DataflowJob) (*v1a
 }
 
 // Delete takes name of the dataflowJob and deletes it. Returns an error if one occurs.
-func (c *FakeDataflowJobs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDataflowJobs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dataflowjobsResource, c.ns, name), &v1alpha1.DataflowJob{})
 
@@ -122,15 +124,15 @@ func (c *FakeDataflowJobs) Delete(name string, options *v1.DeleteOptions) error 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDataflowJobs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dataflowjobsResource, c.ns, listOptions)
+func (c *FakeDataflowJobs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dataflowjobsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DataflowJobList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dataflowJob.
-func (c *FakeDataflowJobs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataflowJob, err error) {
+func (c *FakeDataflowJobs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataflowJob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dataflowjobsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DataflowJob{})
 

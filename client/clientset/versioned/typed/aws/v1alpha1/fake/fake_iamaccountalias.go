@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iamaccountaliasesResource = schema.GroupVersionResource{Group: "aws.kubeform
 var iamaccountaliasesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "IamAccountAlias"}
 
 // Get takes name of the iamAccountAlias, and returns the corresponding iamAccountAlias object, and an error if there is any.
-func (c *FakeIamAccountAliases) Get(name string, options v1.GetOptions) (result *v1alpha1.IamAccountAlias, err error) {
+func (c *FakeIamAccountAliases) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IamAccountAlias, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iamaccountaliasesResource, c.ns, name), &v1alpha1.IamAccountAlias{})
 
@@ -51,7 +53,7 @@ func (c *FakeIamAccountAliases) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of IamAccountAliases that match those selectors.
-func (c *FakeIamAccountAliases) List(opts v1.ListOptions) (result *v1alpha1.IamAccountAliasList, err error) {
+func (c *FakeIamAccountAliases) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IamAccountAliasList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iamaccountaliasesResource, iamaccountaliasesKind, c.ns, opts), &v1alpha1.IamAccountAliasList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIamAccountAliases) List(opts v1.ListOptions) (result *v1alpha1.IamA
 }
 
 // Watch returns a watch.Interface that watches the requested iamAccountAliases.
-func (c *FakeIamAccountAliases) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIamAccountAliases) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iamaccountaliasesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iamAccountAlias and creates it.  Returns the server's representation of the iamAccountAlias, and an error, if there is any.
-func (c *FakeIamAccountAliases) Create(iamAccountAlias *v1alpha1.IamAccountAlias) (result *v1alpha1.IamAccountAlias, err error) {
+func (c *FakeIamAccountAliases) Create(ctx context.Context, iamAccountAlias *v1alpha1.IamAccountAlias, opts v1.CreateOptions) (result *v1alpha1.IamAccountAlias, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iamaccountaliasesResource, c.ns, iamAccountAlias), &v1alpha1.IamAccountAlias{})
 
@@ -91,7 +93,7 @@ func (c *FakeIamAccountAliases) Create(iamAccountAlias *v1alpha1.IamAccountAlias
 }
 
 // Update takes the representation of a iamAccountAlias and updates it. Returns the server's representation of the iamAccountAlias, and an error, if there is any.
-func (c *FakeIamAccountAliases) Update(iamAccountAlias *v1alpha1.IamAccountAlias) (result *v1alpha1.IamAccountAlias, err error) {
+func (c *FakeIamAccountAliases) Update(ctx context.Context, iamAccountAlias *v1alpha1.IamAccountAlias, opts v1.UpdateOptions) (result *v1alpha1.IamAccountAlias, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iamaccountaliasesResource, c.ns, iamAccountAlias), &v1alpha1.IamAccountAlias{})
 
@@ -103,7 +105,7 @@ func (c *FakeIamAccountAliases) Update(iamAccountAlias *v1alpha1.IamAccountAlias
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIamAccountAliases) UpdateStatus(iamAccountAlias *v1alpha1.IamAccountAlias) (*v1alpha1.IamAccountAlias, error) {
+func (c *FakeIamAccountAliases) UpdateStatus(ctx context.Context, iamAccountAlias *v1alpha1.IamAccountAlias, opts v1.UpdateOptions) (*v1alpha1.IamAccountAlias, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iamaccountaliasesResource, "status", c.ns, iamAccountAlias), &v1alpha1.IamAccountAlias{})
 
@@ -114,7 +116,7 @@ func (c *FakeIamAccountAliases) UpdateStatus(iamAccountAlias *v1alpha1.IamAccoun
 }
 
 // Delete takes name of the iamAccountAlias and deletes it. Returns an error if one occurs.
-func (c *FakeIamAccountAliases) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIamAccountAliases) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iamaccountaliasesResource, c.ns, name), &v1alpha1.IamAccountAlias{})
 
@@ -122,15 +124,15 @@ func (c *FakeIamAccountAliases) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIamAccountAliases) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iamaccountaliasesResource, c.ns, listOptions)
+func (c *FakeIamAccountAliases) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iamaccountaliasesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IamAccountAliasList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iamAccountAlias.
-func (c *FakeIamAccountAliases) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IamAccountAlias, err error) {
+func (c *FakeIamAccountAliases) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IamAccountAlias, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iamaccountaliasesResource, c.ns, name, pt, data, subresources...), &v1alpha1.IamAccountAlias{})
 

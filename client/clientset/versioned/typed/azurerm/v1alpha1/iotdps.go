@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type IotDpsesGetter interface {
 
 // IotDpsInterface has methods to work with IotDps resources.
 type IotDpsInterface interface {
-	Create(*v1alpha1.IotDps) (*v1alpha1.IotDps, error)
-	Update(*v1alpha1.IotDps) (*v1alpha1.IotDps, error)
-	UpdateStatus(*v1alpha1.IotDps) (*v1alpha1.IotDps, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.IotDps, error)
-	List(opts v1.ListOptions) (*v1alpha1.IotDpsList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IotDps, err error)
+	Create(ctx context.Context, iotDps *v1alpha1.IotDps, opts v1.CreateOptions) (*v1alpha1.IotDps, error)
+	Update(ctx context.Context, iotDps *v1alpha1.IotDps, opts v1.UpdateOptions) (*v1alpha1.IotDps, error)
+	UpdateStatus(ctx context.Context, iotDps *v1alpha1.IotDps, opts v1.UpdateOptions) (*v1alpha1.IotDps, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.IotDps, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.IotDpsList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IotDps, err error)
 	IotDpsExpansion
 }
 
@@ -65,20 +66,20 @@ func newIotDpses(c *AzurermV1alpha1Client, namespace string) *iotDpses {
 }
 
 // Get takes name of the iotDps, and returns the corresponding iotDps object, and an error if there is any.
-func (c *iotDpses) Get(name string, options v1.GetOptions) (result *v1alpha1.IotDps, err error) {
+func (c *iotDpses) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IotDps, err error) {
 	result = &v1alpha1.IotDps{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("iotdpses").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of IotDpses that match those selectors.
-func (c *iotDpses) List(opts v1.ListOptions) (result *v1alpha1.IotDpsList, err error) {
+func (c *iotDpses) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IotDpsList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *iotDpses) List(opts v1.ListOptions) (result *v1alpha1.IotDpsList, err e
 		Resource("iotdpses").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested iotDpses.
-func (c *iotDpses) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *iotDpses) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *iotDpses) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("iotdpses").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a iotDps and creates it.  Returns the server's representation of the iotDps, and an error, if there is any.
-func (c *iotDpses) Create(iotDps *v1alpha1.IotDps) (result *v1alpha1.IotDps, err error) {
+func (c *iotDpses) Create(ctx context.Context, iotDps *v1alpha1.IotDps, opts v1.CreateOptions) (result *v1alpha1.IotDps, err error) {
 	result = &v1alpha1.IotDps{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("iotdpses").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iotDps).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a iotDps and updates it. Returns the server's representation of the iotDps, and an error, if there is any.
-func (c *iotDpses) Update(iotDps *v1alpha1.IotDps) (result *v1alpha1.IotDps, err error) {
+func (c *iotDpses) Update(ctx context.Context, iotDps *v1alpha1.IotDps, opts v1.UpdateOptions) (result *v1alpha1.IotDps, err error) {
 	result = &v1alpha1.IotDps{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iotdpses").
 		Name(iotDps.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iotDps).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *iotDpses) UpdateStatus(iotDps *v1alpha1.IotDps) (result *v1alpha1.IotDps, err error) {
+func (c *iotDpses) UpdateStatus(ctx context.Context, iotDps *v1alpha1.IotDps, opts v1.UpdateOptions) (result *v1alpha1.IotDps, err error) {
 	result = &v1alpha1.IotDps{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iotdpses").
 		Name(iotDps.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iotDps).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the iotDps and deletes it. Returns an error if one occurs.
-func (c *iotDpses) Delete(name string, options *v1.DeleteOptions) error {
+func (c *iotDpses) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iotdpses").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *iotDpses) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *iotDpses) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iotdpses").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched iotDps.
-func (c *iotDpses) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IotDps, err error) {
+func (c *iotDpses) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IotDps, err error) {
 	result = &v1alpha1.IotDps{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("iotdpses").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

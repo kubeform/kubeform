@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type RecoveryNetworkMappingsGetter interface {
 
 // RecoveryNetworkMappingInterface has methods to work with RecoveryNetworkMapping resources.
 type RecoveryNetworkMappingInterface interface {
-	Create(*v1alpha1.RecoveryNetworkMapping) (*v1alpha1.RecoveryNetworkMapping, error)
-	Update(*v1alpha1.RecoveryNetworkMapping) (*v1alpha1.RecoveryNetworkMapping, error)
-	UpdateStatus(*v1alpha1.RecoveryNetworkMapping) (*v1alpha1.RecoveryNetworkMapping, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.RecoveryNetworkMapping, error)
-	List(opts v1.ListOptions) (*v1alpha1.RecoveryNetworkMappingList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RecoveryNetworkMapping, err error)
+	Create(ctx context.Context, recoveryNetworkMapping *v1alpha1.RecoveryNetworkMapping, opts v1.CreateOptions) (*v1alpha1.RecoveryNetworkMapping, error)
+	Update(ctx context.Context, recoveryNetworkMapping *v1alpha1.RecoveryNetworkMapping, opts v1.UpdateOptions) (*v1alpha1.RecoveryNetworkMapping, error)
+	UpdateStatus(ctx context.Context, recoveryNetworkMapping *v1alpha1.RecoveryNetworkMapping, opts v1.UpdateOptions) (*v1alpha1.RecoveryNetworkMapping, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.RecoveryNetworkMapping, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.RecoveryNetworkMappingList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RecoveryNetworkMapping, err error)
 	RecoveryNetworkMappingExpansion
 }
 
@@ -65,20 +66,20 @@ func newRecoveryNetworkMappings(c *AzurermV1alpha1Client, namespace string) *rec
 }
 
 // Get takes name of the recoveryNetworkMapping, and returns the corresponding recoveryNetworkMapping object, and an error if there is any.
-func (c *recoveryNetworkMappings) Get(name string, options v1.GetOptions) (result *v1alpha1.RecoveryNetworkMapping, err error) {
+func (c *recoveryNetworkMappings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.RecoveryNetworkMapping, err error) {
 	result = &v1alpha1.RecoveryNetworkMapping{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("recoverynetworkmappings").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of RecoveryNetworkMappings that match those selectors.
-func (c *recoveryNetworkMappings) List(opts v1.ListOptions) (result *v1alpha1.RecoveryNetworkMappingList, err error) {
+func (c *recoveryNetworkMappings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RecoveryNetworkMappingList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *recoveryNetworkMappings) List(opts v1.ListOptions) (result *v1alpha1.Re
 		Resource("recoverynetworkmappings").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested recoveryNetworkMappings.
-func (c *recoveryNetworkMappings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *recoveryNetworkMappings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *recoveryNetworkMappings) Watch(opts v1.ListOptions) (watch.Interface, e
 		Resource("recoverynetworkmappings").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a recoveryNetworkMapping and creates it.  Returns the server's representation of the recoveryNetworkMapping, and an error, if there is any.
-func (c *recoveryNetworkMappings) Create(recoveryNetworkMapping *v1alpha1.RecoveryNetworkMapping) (result *v1alpha1.RecoveryNetworkMapping, err error) {
+func (c *recoveryNetworkMappings) Create(ctx context.Context, recoveryNetworkMapping *v1alpha1.RecoveryNetworkMapping, opts v1.CreateOptions) (result *v1alpha1.RecoveryNetworkMapping, err error) {
 	result = &v1alpha1.RecoveryNetworkMapping{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("recoverynetworkmappings").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(recoveryNetworkMapping).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a recoveryNetworkMapping and updates it. Returns the server's representation of the recoveryNetworkMapping, and an error, if there is any.
-func (c *recoveryNetworkMappings) Update(recoveryNetworkMapping *v1alpha1.RecoveryNetworkMapping) (result *v1alpha1.RecoveryNetworkMapping, err error) {
+func (c *recoveryNetworkMappings) Update(ctx context.Context, recoveryNetworkMapping *v1alpha1.RecoveryNetworkMapping, opts v1.UpdateOptions) (result *v1alpha1.RecoveryNetworkMapping, err error) {
 	result = &v1alpha1.RecoveryNetworkMapping{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("recoverynetworkmappings").
 		Name(recoveryNetworkMapping.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(recoveryNetworkMapping).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *recoveryNetworkMappings) UpdateStatus(recoveryNetworkMapping *v1alpha1.RecoveryNetworkMapping) (result *v1alpha1.RecoveryNetworkMapping, err error) {
+func (c *recoveryNetworkMappings) UpdateStatus(ctx context.Context, recoveryNetworkMapping *v1alpha1.RecoveryNetworkMapping, opts v1.UpdateOptions) (result *v1alpha1.RecoveryNetworkMapping, err error) {
 	result = &v1alpha1.RecoveryNetworkMapping{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("recoverynetworkmappings").
 		Name(recoveryNetworkMapping.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(recoveryNetworkMapping).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the recoveryNetworkMapping and deletes it. Returns an error if one occurs.
-func (c *recoveryNetworkMappings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *recoveryNetworkMappings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("recoverynetworkmappings").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *recoveryNetworkMappings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *recoveryNetworkMappings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("recoverynetworkmappings").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched recoveryNetworkMapping.
-func (c *recoveryNetworkMappings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RecoveryNetworkMapping, err error) {
+func (c *recoveryNetworkMappings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RecoveryNetworkMapping, err error) {
 	result = &v1alpha1.RecoveryNetworkMapping{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("recoverynetworkmappings").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

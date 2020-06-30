@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var publicipprefixesResource = schema.GroupVersionResource{Group: "azurerm.kubef
 var publicipprefixesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "PublicIPPrefix"}
 
 // Get takes name of the publicIPPrefix, and returns the corresponding publicIPPrefix object, and an error if there is any.
-func (c *FakePublicIPPrefixes) Get(name string, options v1.GetOptions) (result *v1alpha1.PublicIPPrefix, err error) {
+func (c *FakePublicIPPrefixes) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PublicIPPrefix, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(publicipprefixesResource, c.ns, name), &v1alpha1.PublicIPPrefix{})
 
@@ -51,7 +53,7 @@ func (c *FakePublicIPPrefixes) Get(name string, options v1.GetOptions) (result *
 }
 
 // List takes label and field selectors, and returns the list of PublicIPPrefixes that match those selectors.
-func (c *FakePublicIPPrefixes) List(opts v1.ListOptions) (result *v1alpha1.PublicIPPrefixList, err error) {
+func (c *FakePublicIPPrefixes) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PublicIPPrefixList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(publicipprefixesResource, publicipprefixesKind, c.ns, opts), &v1alpha1.PublicIPPrefixList{})
 
@@ -73,14 +75,14 @@ func (c *FakePublicIPPrefixes) List(opts v1.ListOptions) (result *v1alpha1.Publi
 }
 
 // Watch returns a watch.Interface that watches the requested publicIPPrefixes.
-func (c *FakePublicIPPrefixes) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakePublicIPPrefixes) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(publicipprefixesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a publicIPPrefix and creates it.  Returns the server's representation of the publicIPPrefix, and an error, if there is any.
-func (c *FakePublicIPPrefixes) Create(publicIPPrefix *v1alpha1.PublicIPPrefix) (result *v1alpha1.PublicIPPrefix, err error) {
+func (c *FakePublicIPPrefixes) Create(ctx context.Context, publicIPPrefix *v1alpha1.PublicIPPrefix, opts v1.CreateOptions) (result *v1alpha1.PublicIPPrefix, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(publicipprefixesResource, c.ns, publicIPPrefix), &v1alpha1.PublicIPPrefix{})
 
@@ -91,7 +93,7 @@ func (c *FakePublicIPPrefixes) Create(publicIPPrefix *v1alpha1.PublicIPPrefix) (
 }
 
 // Update takes the representation of a publicIPPrefix and updates it. Returns the server's representation of the publicIPPrefix, and an error, if there is any.
-func (c *FakePublicIPPrefixes) Update(publicIPPrefix *v1alpha1.PublicIPPrefix) (result *v1alpha1.PublicIPPrefix, err error) {
+func (c *FakePublicIPPrefixes) Update(ctx context.Context, publicIPPrefix *v1alpha1.PublicIPPrefix, opts v1.UpdateOptions) (result *v1alpha1.PublicIPPrefix, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(publicipprefixesResource, c.ns, publicIPPrefix), &v1alpha1.PublicIPPrefix{})
 
@@ -103,7 +105,7 @@ func (c *FakePublicIPPrefixes) Update(publicIPPrefix *v1alpha1.PublicIPPrefix) (
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakePublicIPPrefixes) UpdateStatus(publicIPPrefix *v1alpha1.PublicIPPrefix) (*v1alpha1.PublicIPPrefix, error) {
+func (c *FakePublicIPPrefixes) UpdateStatus(ctx context.Context, publicIPPrefix *v1alpha1.PublicIPPrefix, opts v1.UpdateOptions) (*v1alpha1.PublicIPPrefix, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(publicipprefixesResource, "status", c.ns, publicIPPrefix), &v1alpha1.PublicIPPrefix{})
 
@@ -114,7 +116,7 @@ func (c *FakePublicIPPrefixes) UpdateStatus(publicIPPrefix *v1alpha1.PublicIPPre
 }
 
 // Delete takes name of the publicIPPrefix and deletes it. Returns an error if one occurs.
-func (c *FakePublicIPPrefixes) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakePublicIPPrefixes) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(publicipprefixesResource, c.ns, name), &v1alpha1.PublicIPPrefix{})
 
@@ -122,15 +124,15 @@ func (c *FakePublicIPPrefixes) Delete(name string, options *v1.DeleteOptions) er
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakePublicIPPrefixes) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(publicipprefixesResource, c.ns, listOptions)
+func (c *FakePublicIPPrefixes) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(publicipprefixesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.PublicIPPrefixList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched publicIPPrefix.
-func (c *FakePublicIPPrefixes) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PublicIPPrefix, err error) {
+func (c *FakePublicIPPrefixes) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PublicIPPrefix, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(publicipprefixesResource, c.ns, name, pt, data, subresources...), &v1alpha1.PublicIPPrefix{})
 

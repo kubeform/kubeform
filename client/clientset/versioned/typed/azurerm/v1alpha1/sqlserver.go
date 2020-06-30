@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type SqlServersGetter interface {
 
 // SqlServerInterface has methods to work with SqlServer resources.
 type SqlServerInterface interface {
-	Create(*v1alpha1.SqlServer) (*v1alpha1.SqlServer, error)
-	Update(*v1alpha1.SqlServer) (*v1alpha1.SqlServer, error)
-	UpdateStatus(*v1alpha1.SqlServer) (*v1alpha1.SqlServer, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SqlServer, error)
-	List(opts v1.ListOptions) (*v1alpha1.SqlServerList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SqlServer, err error)
+	Create(ctx context.Context, sqlServer *v1alpha1.SqlServer, opts v1.CreateOptions) (*v1alpha1.SqlServer, error)
+	Update(ctx context.Context, sqlServer *v1alpha1.SqlServer, opts v1.UpdateOptions) (*v1alpha1.SqlServer, error)
+	UpdateStatus(ctx context.Context, sqlServer *v1alpha1.SqlServer, opts v1.UpdateOptions) (*v1alpha1.SqlServer, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SqlServer, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SqlServerList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SqlServer, err error)
 	SqlServerExpansion
 }
 
@@ -65,20 +66,20 @@ func newSqlServers(c *AzurermV1alpha1Client, namespace string) *sqlServers {
 }
 
 // Get takes name of the sqlServer, and returns the corresponding sqlServer object, and an error if there is any.
-func (c *sqlServers) Get(name string, options v1.GetOptions) (result *v1alpha1.SqlServer, err error) {
+func (c *sqlServers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SqlServer, err error) {
 	result = &v1alpha1.SqlServer{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("sqlservers").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SqlServers that match those selectors.
-func (c *sqlServers) List(opts v1.ListOptions) (result *v1alpha1.SqlServerList, err error) {
+func (c *sqlServers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SqlServerList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *sqlServers) List(opts v1.ListOptions) (result *v1alpha1.SqlServerList, 
 		Resource("sqlservers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested sqlServers.
-func (c *sqlServers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *sqlServers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *sqlServers) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("sqlservers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a sqlServer and creates it.  Returns the server's representation of the sqlServer, and an error, if there is any.
-func (c *sqlServers) Create(sqlServer *v1alpha1.SqlServer) (result *v1alpha1.SqlServer, err error) {
+func (c *sqlServers) Create(ctx context.Context, sqlServer *v1alpha1.SqlServer, opts v1.CreateOptions) (result *v1alpha1.SqlServer, err error) {
 	result = &v1alpha1.SqlServer{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("sqlservers").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sqlServer).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a sqlServer and updates it. Returns the server's representation of the sqlServer, and an error, if there is any.
-func (c *sqlServers) Update(sqlServer *v1alpha1.SqlServer) (result *v1alpha1.SqlServer, err error) {
+func (c *sqlServers) Update(ctx context.Context, sqlServer *v1alpha1.SqlServer, opts v1.UpdateOptions) (result *v1alpha1.SqlServer, err error) {
 	result = &v1alpha1.SqlServer{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sqlservers").
 		Name(sqlServer.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sqlServer).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *sqlServers) UpdateStatus(sqlServer *v1alpha1.SqlServer) (result *v1alpha1.SqlServer, err error) {
+func (c *sqlServers) UpdateStatus(ctx context.Context, sqlServer *v1alpha1.SqlServer, opts v1.UpdateOptions) (result *v1alpha1.SqlServer, err error) {
 	result = &v1alpha1.SqlServer{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sqlservers").
 		Name(sqlServer.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sqlServer).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the sqlServer and deletes it. Returns an error if one occurs.
-func (c *sqlServers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *sqlServers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sqlservers").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *sqlServers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *sqlServers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sqlservers").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched sqlServer.
-func (c *sqlServers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SqlServer, err error) {
+func (c *sqlServers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SqlServer, err error) {
 	result = &v1alpha1.SqlServer{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("sqlservers").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

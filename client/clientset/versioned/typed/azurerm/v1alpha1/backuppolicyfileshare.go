@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type BackupPolicyFileSharesGetter interface {
 
 // BackupPolicyFileShareInterface has methods to work with BackupPolicyFileShare resources.
 type BackupPolicyFileShareInterface interface {
-	Create(*v1alpha1.BackupPolicyFileShare) (*v1alpha1.BackupPolicyFileShare, error)
-	Update(*v1alpha1.BackupPolicyFileShare) (*v1alpha1.BackupPolicyFileShare, error)
-	UpdateStatus(*v1alpha1.BackupPolicyFileShare) (*v1alpha1.BackupPolicyFileShare, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.BackupPolicyFileShare, error)
-	List(opts v1.ListOptions) (*v1alpha1.BackupPolicyFileShareList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BackupPolicyFileShare, err error)
+	Create(ctx context.Context, backupPolicyFileShare *v1alpha1.BackupPolicyFileShare, opts v1.CreateOptions) (*v1alpha1.BackupPolicyFileShare, error)
+	Update(ctx context.Context, backupPolicyFileShare *v1alpha1.BackupPolicyFileShare, opts v1.UpdateOptions) (*v1alpha1.BackupPolicyFileShare, error)
+	UpdateStatus(ctx context.Context, backupPolicyFileShare *v1alpha1.BackupPolicyFileShare, opts v1.UpdateOptions) (*v1alpha1.BackupPolicyFileShare, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.BackupPolicyFileShare, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.BackupPolicyFileShareList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BackupPolicyFileShare, err error)
 	BackupPolicyFileShareExpansion
 }
 
@@ -65,20 +66,20 @@ func newBackupPolicyFileShares(c *AzurermV1alpha1Client, namespace string) *back
 }
 
 // Get takes name of the backupPolicyFileShare, and returns the corresponding backupPolicyFileShare object, and an error if there is any.
-func (c *backupPolicyFileShares) Get(name string, options v1.GetOptions) (result *v1alpha1.BackupPolicyFileShare, err error) {
+func (c *backupPolicyFileShares) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BackupPolicyFileShare, err error) {
 	result = &v1alpha1.BackupPolicyFileShare{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("backuppolicyfileshares").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of BackupPolicyFileShares that match those selectors.
-func (c *backupPolicyFileShares) List(opts v1.ListOptions) (result *v1alpha1.BackupPolicyFileShareList, err error) {
+func (c *backupPolicyFileShares) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BackupPolicyFileShareList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *backupPolicyFileShares) List(opts v1.ListOptions) (result *v1alpha1.Bac
 		Resource("backuppolicyfileshares").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested backupPolicyFileShares.
-func (c *backupPolicyFileShares) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *backupPolicyFileShares) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *backupPolicyFileShares) Watch(opts v1.ListOptions) (watch.Interface, er
 		Resource("backuppolicyfileshares").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a backupPolicyFileShare and creates it.  Returns the server's representation of the backupPolicyFileShare, and an error, if there is any.
-func (c *backupPolicyFileShares) Create(backupPolicyFileShare *v1alpha1.BackupPolicyFileShare) (result *v1alpha1.BackupPolicyFileShare, err error) {
+func (c *backupPolicyFileShares) Create(ctx context.Context, backupPolicyFileShare *v1alpha1.BackupPolicyFileShare, opts v1.CreateOptions) (result *v1alpha1.BackupPolicyFileShare, err error) {
 	result = &v1alpha1.BackupPolicyFileShare{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("backuppolicyfileshares").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(backupPolicyFileShare).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a backupPolicyFileShare and updates it. Returns the server's representation of the backupPolicyFileShare, and an error, if there is any.
-func (c *backupPolicyFileShares) Update(backupPolicyFileShare *v1alpha1.BackupPolicyFileShare) (result *v1alpha1.BackupPolicyFileShare, err error) {
+func (c *backupPolicyFileShares) Update(ctx context.Context, backupPolicyFileShare *v1alpha1.BackupPolicyFileShare, opts v1.UpdateOptions) (result *v1alpha1.BackupPolicyFileShare, err error) {
 	result = &v1alpha1.BackupPolicyFileShare{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("backuppolicyfileshares").
 		Name(backupPolicyFileShare.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(backupPolicyFileShare).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *backupPolicyFileShares) UpdateStatus(backupPolicyFileShare *v1alpha1.BackupPolicyFileShare) (result *v1alpha1.BackupPolicyFileShare, err error) {
+func (c *backupPolicyFileShares) UpdateStatus(ctx context.Context, backupPolicyFileShare *v1alpha1.BackupPolicyFileShare, opts v1.UpdateOptions) (result *v1alpha1.BackupPolicyFileShare, err error) {
 	result = &v1alpha1.BackupPolicyFileShare{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("backuppolicyfileshares").
 		Name(backupPolicyFileShare.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(backupPolicyFileShare).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the backupPolicyFileShare and deletes it. Returns an error if one occurs.
-func (c *backupPolicyFileShares) Delete(name string, options *v1.DeleteOptions) error {
+func (c *backupPolicyFileShares) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("backuppolicyfileshares").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *backupPolicyFileShares) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *backupPolicyFileShares) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("backuppolicyfileshares").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched backupPolicyFileShare.
-func (c *backupPolicyFileShares) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BackupPolicyFileShare, err error) {
+func (c *backupPolicyFileShares) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BackupPolicyFileShare, err error) {
 	result = &v1alpha1.BackupPolicyFileShare{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("backuppolicyfileshares").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iamgrouppoliciesResource = schema.GroupVersionResource{Group: "aws.kubeform.
 var iamgrouppoliciesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "IamGroupPolicy"}
 
 // Get takes name of the iamGroupPolicy, and returns the corresponding iamGroupPolicy object, and an error if there is any.
-func (c *FakeIamGroupPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.IamGroupPolicy, err error) {
+func (c *FakeIamGroupPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IamGroupPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iamgrouppoliciesResource, c.ns, name), &v1alpha1.IamGroupPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeIamGroupPolicies) Get(name string, options v1.GetOptions) (result *
 }
 
 // List takes label and field selectors, and returns the list of IamGroupPolicies that match those selectors.
-func (c *FakeIamGroupPolicies) List(opts v1.ListOptions) (result *v1alpha1.IamGroupPolicyList, err error) {
+func (c *FakeIamGroupPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IamGroupPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iamgrouppoliciesResource, iamgrouppoliciesKind, c.ns, opts), &v1alpha1.IamGroupPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIamGroupPolicies) List(opts v1.ListOptions) (result *v1alpha1.IamGr
 }
 
 // Watch returns a watch.Interface that watches the requested iamGroupPolicies.
-func (c *FakeIamGroupPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIamGroupPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iamgrouppoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iamGroupPolicy and creates it.  Returns the server's representation of the iamGroupPolicy, and an error, if there is any.
-func (c *FakeIamGroupPolicies) Create(iamGroupPolicy *v1alpha1.IamGroupPolicy) (result *v1alpha1.IamGroupPolicy, err error) {
+func (c *FakeIamGroupPolicies) Create(ctx context.Context, iamGroupPolicy *v1alpha1.IamGroupPolicy, opts v1.CreateOptions) (result *v1alpha1.IamGroupPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iamgrouppoliciesResource, c.ns, iamGroupPolicy), &v1alpha1.IamGroupPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeIamGroupPolicies) Create(iamGroupPolicy *v1alpha1.IamGroupPolicy) (
 }
 
 // Update takes the representation of a iamGroupPolicy and updates it. Returns the server's representation of the iamGroupPolicy, and an error, if there is any.
-func (c *FakeIamGroupPolicies) Update(iamGroupPolicy *v1alpha1.IamGroupPolicy) (result *v1alpha1.IamGroupPolicy, err error) {
+func (c *FakeIamGroupPolicies) Update(ctx context.Context, iamGroupPolicy *v1alpha1.IamGroupPolicy, opts v1.UpdateOptions) (result *v1alpha1.IamGroupPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iamgrouppoliciesResource, c.ns, iamGroupPolicy), &v1alpha1.IamGroupPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeIamGroupPolicies) Update(iamGroupPolicy *v1alpha1.IamGroupPolicy) (
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIamGroupPolicies) UpdateStatus(iamGroupPolicy *v1alpha1.IamGroupPolicy) (*v1alpha1.IamGroupPolicy, error) {
+func (c *FakeIamGroupPolicies) UpdateStatus(ctx context.Context, iamGroupPolicy *v1alpha1.IamGroupPolicy, opts v1.UpdateOptions) (*v1alpha1.IamGroupPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iamgrouppoliciesResource, "status", c.ns, iamGroupPolicy), &v1alpha1.IamGroupPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeIamGroupPolicies) UpdateStatus(iamGroupPolicy *v1alpha1.IamGroupPol
 }
 
 // Delete takes name of the iamGroupPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeIamGroupPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIamGroupPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iamgrouppoliciesResource, c.ns, name), &v1alpha1.IamGroupPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeIamGroupPolicies) Delete(name string, options *v1.DeleteOptions) er
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIamGroupPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iamgrouppoliciesResource, c.ns, listOptions)
+func (c *FakeIamGroupPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iamgrouppoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IamGroupPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iamGroupPolicy.
-func (c *FakeIamGroupPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IamGroupPolicy, err error) {
+func (c *FakeIamGroupPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IamGroupPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iamgrouppoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.IamGroupPolicy{})
 

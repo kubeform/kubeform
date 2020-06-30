@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var expressroutecircuitauthorizationsResource = schema.GroupVersionResource{Grou
 var expressroutecircuitauthorizationsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "ExpressRouteCircuitAuthorization"}
 
 // Get takes name of the expressRouteCircuitAuthorization, and returns the corresponding expressRouteCircuitAuthorization object, and an error if there is any.
-func (c *FakeExpressRouteCircuitAuthorizations) Get(name string, options v1.GetOptions) (result *v1alpha1.ExpressRouteCircuitAuthorization, err error) {
+func (c *FakeExpressRouteCircuitAuthorizations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ExpressRouteCircuitAuthorization, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(expressroutecircuitauthorizationsResource, c.ns, name), &v1alpha1.ExpressRouteCircuitAuthorization{})
 
@@ -51,7 +53,7 @@ func (c *FakeExpressRouteCircuitAuthorizations) Get(name string, options v1.GetO
 }
 
 // List takes label and field selectors, and returns the list of ExpressRouteCircuitAuthorizations that match those selectors.
-func (c *FakeExpressRouteCircuitAuthorizations) List(opts v1.ListOptions) (result *v1alpha1.ExpressRouteCircuitAuthorizationList, err error) {
+func (c *FakeExpressRouteCircuitAuthorizations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ExpressRouteCircuitAuthorizationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(expressroutecircuitauthorizationsResource, expressroutecircuitauthorizationsKind, c.ns, opts), &v1alpha1.ExpressRouteCircuitAuthorizationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeExpressRouteCircuitAuthorizations) List(opts v1.ListOptions) (resul
 }
 
 // Watch returns a watch.Interface that watches the requested expressRouteCircuitAuthorizations.
-func (c *FakeExpressRouteCircuitAuthorizations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeExpressRouteCircuitAuthorizations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(expressroutecircuitauthorizationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a expressRouteCircuitAuthorization and creates it.  Returns the server's representation of the expressRouteCircuitAuthorization, and an error, if there is any.
-func (c *FakeExpressRouteCircuitAuthorizations) Create(expressRouteCircuitAuthorization *v1alpha1.ExpressRouteCircuitAuthorization) (result *v1alpha1.ExpressRouteCircuitAuthorization, err error) {
+func (c *FakeExpressRouteCircuitAuthorizations) Create(ctx context.Context, expressRouteCircuitAuthorization *v1alpha1.ExpressRouteCircuitAuthorization, opts v1.CreateOptions) (result *v1alpha1.ExpressRouteCircuitAuthorization, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(expressroutecircuitauthorizationsResource, c.ns, expressRouteCircuitAuthorization), &v1alpha1.ExpressRouteCircuitAuthorization{})
 
@@ -91,7 +93,7 @@ func (c *FakeExpressRouteCircuitAuthorizations) Create(expressRouteCircuitAuthor
 }
 
 // Update takes the representation of a expressRouteCircuitAuthorization and updates it. Returns the server's representation of the expressRouteCircuitAuthorization, and an error, if there is any.
-func (c *FakeExpressRouteCircuitAuthorizations) Update(expressRouteCircuitAuthorization *v1alpha1.ExpressRouteCircuitAuthorization) (result *v1alpha1.ExpressRouteCircuitAuthorization, err error) {
+func (c *FakeExpressRouteCircuitAuthorizations) Update(ctx context.Context, expressRouteCircuitAuthorization *v1alpha1.ExpressRouteCircuitAuthorization, opts v1.UpdateOptions) (result *v1alpha1.ExpressRouteCircuitAuthorization, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(expressroutecircuitauthorizationsResource, c.ns, expressRouteCircuitAuthorization), &v1alpha1.ExpressRouteCircuitAuthorization{})
 
@@ -103,7 +105,7 @@ func (c *FakeExpressRouteCircuitAuthorizations) Update(expressRouteCircuitAuthor
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeExpressRouteCircuitAuthorizations) UpdateStatus(expressRouteCircuitAuthorization *v1alpha1.ExpressRouteCircuitAuthorization) (*v1alpha1.ExpressRouteCircuitAuthorization, error) {
+func (c *FakeExpressRouteCircuitAuthorizations) UpdateStatus(ctx context.Context, expressRouteCircuitAuthorization *v1alpha1.ExpressRouteCircuitAuthorization, opts v1.UpdateOptions) (*v1alpha1.ExpressRouteCircuitAuthorization, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(expressroutecircuitauthorizationsResource, "status", c.ns, expressRouteCircuitAuthorization), &v1alpha1.ExpressRouteCircuitAuthorization{})
 
@@ -114,7 +116,7 @@ func (c *FakeExpressRouteCircuitAuthorizations) UpdateStatus(expressRouteCircuit
 }
 
 // Delete takes name of the expressRouteCircuitAuthorization and deletes it. Returns an error if one occurs.
-func (c *FakeExpressRouteCircuitAuthorizations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeExpressRouteCircuitAuthorizations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(expressroutecircuitauthorizationsResource, c.ns, name), &v1alpha1.ExpressRouteCircuitAuthorization{})
 
@@ -122,15 +124,15 @@ func (c *FakeExpressRouteCircuitAuthorizations) Delete(name string, options *v1.
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeExpressRouteCircuitAuthorizations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(expressroutecircuitauthorizationsResource, c.ns, listOptions)
+func (c *FakeExpressRouteCircuitAuthorizations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(expressroutecircuitauthorizationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ExpressRouteCircuitAuthorizationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched expressRouteCircuitAuthorization.
-func (c *FakeExpressRouteCircuitAuthorizations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ExpressRouteCircuitAuthorization, err error) {
+func (c *FakeExpressRouteCircuitAuthorizations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ExpressRouteCircuitAuthorization, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(expressroutecircuitauthorizationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ExpressRouteCircuitAuthorization{})
 

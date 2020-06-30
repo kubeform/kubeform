@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type KinesisStreamsGetter interface {
 
 // KinesisStreamInterface has methods to work with KinesisStream resources.
 type KinesisStreamInterface interface {
-	Create(*v1alpha1.KinesisStream) (*v1alpha1.KinesisStream, error)
-	Update(*v1alpha1.KinesisStream) (*v1alpha1.KinesisStream, error)
-	UpdateStatus(*v1alpha1.KinesisStream) (*v1alpha1.KinesisStream, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.KinesisStream, error)
-	List(opts v1.ListOptions) (*v1alpha1.KinesisStreamList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KinesisStream, err error)
+	Create(ctx context.Context, kinesisStream *v1alpha1.KinesisStream, opts v1.CreateOptions) (*v1alpha1.KinesisStream, error)
+	Update(ctx context.Context, kinesisStream *v1alpha1.KinesisStream, opts v1.UpdateOptions) (*v1alpha1.KinesisStream, error)
+	UpdateStatus(ctx context.Context, kinesisStream *v1alpha1.KinesisStream, opts v1.UpdateOptions) (*v1alpha1.KinesisStream, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.KinesisStream, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.KinesisStreamList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KinesisStream, err error)
 	KinesisStreamExpansion
 }
 
@@ -65,20 +66,20 @@ func newKinesisStreams(c *AwsV1alpha1Client, namespace string) *kinesisStreams {
 }
 
 // Get takes name of the kinesisStream, and returns the corresponding kinesisStream object, and an error if there is any.
-func (c *kinesisStreams) Get(name string, options v1.GetOptions) (result *v1alpha1.KinesisStream, err error) {
+func (c *kinesisStreams) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KinesisStream, err error) {
 	result = &v1alpha1.KinesisStream{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("kinesisstreams").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of KinesisStreams that match those selectors.
-func (c *kinesisStreams) List(opts v1.ListOptions) (result *v1alpha1.KinesisStreamList, err error) {
+func (c *kinesisStreams) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KinesisStreamList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *kinesisStreams) List(opts v1.ListOptions) (result *v1alpha1.KinesisStre
 		Resource("kinesisstreams").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested kinesisStreams.
-func (c *kinesisStreams) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *kinesisStreams) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *kinesisStreams) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("kinesisstreams").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a kinesisStream and creates it.  Returns the server's representation of the kinesisStream, and an error, if there is any.
-func (c *kinesisStreams) Create(kinesisStream *v1alpha1.KinesisStream) (result *v1alpha1.KinesisStream, err error) {
+func (c *kinesisStreams) Create(ctx context.Context, kinesisStream *v1alpha1.KinesisStream, opts v1.CreateOptions) (result *v1alpha1.KinesisStream, err error) {
 	result = &v1alpha1.KinesisStream{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("kinesisstreams").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(kinesisStream).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a kinesisStream and updates it. Returns the server's representation of the kinesisStream, and an error, if there is any.
-func (c *kinesisStreams) Update(kinesisStream *v1alpha1.KinesisStream) (result *v1alpha1.KinesisStream, err error) {
+func (c *kinesisStreams) Update(ctx context.Context, kinesisStream *v1alpha1.KinesisStream, opts v1.UpdateOptions) (result *v1alpha1.KinesisStream, err error) {
 	result = &v1alpha1.KinesisStream{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("kinesisstreams").
 		Name(kinesisStream.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(kinesisStream).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *kinesisStreams) UpdateStatus(kinesisStream *v1alpha1.KinesisStream) (result *v1alpha1.KinesisStream, err error) {
+func (c *kinesisStreams) UpdateStatus(ctx context.Context, kinesisStream *v1alpha1.KinesisStream, opts v1.UpdateOptions) (result *v1alpha1.KinesisStream, err error) {
 	result = &v1alpha1.KinesisStream{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("kinesisstreams").
 		Name(kinesisStream.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(kinesisStream).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the kinesisStream and deletes it. Returns an error if one occurs.
-func (c *kinesisStreams) Delete(name string, options *v1.DeleteOptions) error {
+func (c *kinesisStreams) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("kinesisstreams").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *kinesisStreams) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *kinesisStreams) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("kinesisstreams").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched kinesisStream.
-func (c *kinesisStreams) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KinesisStream, err error) {
+func (c *kinesisStreams) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KinesisStream, err error) {
 	result = &v1alpha1.KinesisStream{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("kinesisstreams").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

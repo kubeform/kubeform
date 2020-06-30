@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iamgroupsResource = schema.GroupVersionResource{Group: "aws.kubeform.com", V
 var iamgroupsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "IamGroup"}
 
 // Get takes name of the iamGroup, and returns the corresponding iamGroup object, and an error if there is any.
-func (c *FakeIamGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.IamGroup, err error) {
+func (c *FakeIamGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IamGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iamgroupsResource, c.ns, name), &v1alpha1.IamGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeIamGroups) Get(name string, options v1.GetOptions) (result *v1alpha
 }
 
 // List takes label and field selectors, and returns the list of IamGroups that match those selectors.
-func (c *FakeIamGroups) List(opts v1.ListOptions) (result *v1alpha1.IamGroupList, err error) {
+func (c *FakeIamGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IamGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iamgroupsResource, iamgroupsKind, c.ns, opts), &v1alpha1.IamGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIamGroups) List(opts v1.ListOptions) (result *v1alpha1.IamGroupList
 }
 
 // Watch returns a watch.Interface that watches the requested iamGroups.
-func (c *FakeIamGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIamGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iamgroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iamGroup and creates it.  Returns the server's representation of the iamGroup, and an error, if there is any.
-func (c *FakeIamGroups) Create(iamGroup *v1alpha1.IamGroup) (result *v1alpha1.IamGroup, err error) {
+func (c *FakeIamGroups) Create(ctx context.Context, iamGroup *v1alpha1.IamGroup, opts v1.CreateOptions) (result *v1alpha1.IamGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iamgroupsResource, c.ns, iamGroup), &v1alpha1.IamGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeIamGroups) Create(iamGroup *v1alpha1.IamGroup) (result *v1alpha1.Ia
 }
 
 // Update takes the representation of a iamGroup and updates it. Returns the server's representation of the iamGroup, and an error, if there is any.
-func (c *FakeIamGroups) Update(iamGroup *v1alpha1.IamGroup) (result *v1alpha1.IamGroup, err error) {
+func (c *FakeIamGroups) Update(ctx context.Context, iamGroup *v1alpha1.IamGroup, opts v1.UpdateOptions) (result *v1alpha1.IamGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iamgroupsResource, c.ns, iamGroup), &v1alpha1.IamGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeIamGroups) Update(iamGroup *v1alpha1.IamGroup) (result *v1alpha1.Ia
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIamGroups) UpdateStatus(iamGroup *v1alpha1.IamGroup) (*v1alpha1.IamGroup, error) {
+func (c *FakeIamGroups) UpdateStatus(ctx context.Context, iamGroup *v1alpha1.IamGroup, opts v1.UpdateOptions) (*v1alpha1.IamGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iamgroupsResource, "status", c.ns, iamGroup), &v1alpha1.IamGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeIamGroups) UpdateStatus(iamGroup *v1alpha1.IamGroup) (*v1alpha1.Iam
 }
 
 // Delete takes name of the iamGroup and deletes it. Returns an error if one occurs.
-func (c *FakeIamGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIamGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iamgroupsResource, c.ns, name), &v1alpha1.IamGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeIamGroups) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIamGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iamgroupsResource, c.ns, listOptions)
+func (c *FakeIamGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iamgroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IamGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iamGroup.
-func (c *FakeIamGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IamGroup, err error) {
+func (c *FakeIamGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IamGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iamgroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.IamGroup{})
 

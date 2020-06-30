@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type SfnStateMachinesGetter interface {
 
 // SfnStateMachineInterface has methods to work with SfnStateMachine resources.
 type SfnStateMachineInterface interface {
-	Create(*v1alpha1.SfnStateMachine) (*v1alpha1.SfnStateMachine, error)
-	Update(*v1alpha1.SfnStateMachine) (*v1alpha1.SfnStateMachine, error)
-	UpdateStatus(*v1alpha1.SfnStateMachine) (*v1alpha1.SfnStateMachine, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SfnStateMachine, error)
-	List(opts v1.ListOptions) (*v1alpha1.SfnStateMachineList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SfnStateMachine, err error)
+	Create(ctx context.Context, sfnStateMachine *v1alpha1.SfnStateMachine, opts v1.CreateOptions) (*v1alpha1.SfnStateMachine, error)
+	Update(ctx context.Context, sfnStateMachine *v1alpha1.SfnStateMachine, opts v1.UpdateOptions) (*v1alpha1.SfnStateMachine, error)
+	UpdateStatus(ctx context.Context, sfnStateMachine *v1alpha1.SfnStateMachine, opts v1.UpdateOptions) (*v1alpha1.SfnStateMachine, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SfnStateMachine, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SfnStateMachineList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SfnStateMachine, err error)
 	SfnStateMachineExpansion
 }
 
@@ -65,20 +66,20 @@ func newSfnStateMachines(c *AwsV1alpha1Client, namespace string) *sfnStateMachin
 }
 
 // Get takes name of the sfnStateMachine, and returns the corresponding sfnStateMachine object, and an error if there is any.
-func (c *sfnStateMachines) Get(name string, options v1.GetOptions) (result *v1alpha1.SfnStateMachine, err error) {
+func (c *sfnStateMachines) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SfnStateMachine, err error) {
 	result = &v1alpha1.SfnStateMachine{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("sfnstatemachines").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SfnStateMachines that match those selectors.
-func (c *sfnStateMachines) List(opts v1.ListOptions) (result *v1alpha1.SfnStateMachineList, err error) {
+func (c *sfnStateMachines) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SfnStateMachineList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *sfnStateMachines) List(opts v1.ListOptions) (result *v1alpha1.SfnStateM
 		Resource("sfnstatemachines").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested sfnStateMachines.
-func (c *sfnStateMachines) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *sfnStateMachines) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *sfnStateMachines) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("sfnstatemachines").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a sfnStateMachine and creates it.  Returns the server's representation of the sfnStateMachine, and an error, if there is any.
-func (c *sfnStateMachines) Create(sfnStateMachine *v1alpha1.SfnStateMachine) (result *v1alpha1.SfnStateMachine, err error) {
+func (c *sfnStateMachines) Create(ctx context.Context, sfnStateMachine *v1alpha1.SfnStateMachine, opts v1.CreateOptions) (result *v1alpha1.SfnStateMachine, err error) {
 	result = &v1alpha1.SfnStateMachine{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("sfnstatemachines").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sfnStateMachine).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a sfnStateMachine and updates it. Returns the server's representation of the sfnStateMachine, and an error, if there is any.
-func (c *sfnStateMachines) Update(sfnStateMachine *v1alpha1.SfnStateMachine) (result *v1alpha1.SfnStateMachine, err error) {
+func (c *sfnStateMachines) Update(ctx context.Context, sfnStateMachine *v1alpha1.SfnStateMachine, opts v1.UpdateOptions) (result *v1alpha1.SfnStateMachine, err error) {
 	result = &v1alpha1.SfnStateMachine{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sfnstatemachines").
 		Name(sfnStateMachine.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sfnStateMachine).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *sfnStateMachines) UpdateStatus(sfnStateMachine *v1alpha1.SfnStateMachine) (result *v1alpha1.SfnStateMachine, err error) {
+func (c *sfnStateMachines) UpdateStatus(ctx context.Context, sfnStateMachine *v1alpha1.SfnStateMachine, opts v1.UpdateOptions) (result *v1alpha1.SfnStateMachine, err error) {
 	result = &v1alpha1.SfnStateMachine{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sfnstatemachines").
 		Name(sfnStateMachine.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sfnStateMachine).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the sfnStateMachine and deletes it. Returns an error if one occurs.
-func (c *sfnStateMachines) Delete(name string, options *v1.DeleteOptions) error {
+func (c *sfnStateMachines) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sfnstatemachines").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *sfnStateMachines) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *sfnStateMachines) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sfnstatemachines").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched sfnStateMachine.
-func (c *sfnStateMachines) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SfnStateMachine, err error) {
+func (c *sfnStateMachines) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SfnStateMachine, err error) {
 	result = &v1alpha1.SfnStateMachine{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("sfnstatemachines").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

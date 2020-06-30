@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cloudformationstacksetsResource = schema.GroupVersionResource{Group: "aws.ku
 var cloudformationstacksetsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "CloudformationStackSet"}
 
 // Get takes name of the cloudformationStackSet, and returns the corresponding cloudformationStackSet object, and an error if there is any.
-func (c *FakeCloudformationStackSets) Get(name string, options v1.GetOptions) (result *v1alpha1.CloudformationStackSet, err error) {
+func (c *FakeCloudformationStackSets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CloudformationStackSet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cloudformationstacksetsResource, c.ns, name), &v1alpha1.CloudformationStackSet{})
 
@@ -51,7 +53,7 @@ func (c *FakeCloudformationStackSets) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of CloudformationStackSets that match those selectors.
-func (c *FakeCloudformationStackSets) List(opts v1.ListOptions) (result *v1alpha1.CloudformationStackSetList, err error) {
+func (c *FakeCloudformationStackSets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CloudformationStackSetList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cloudformationstacksetsResource, cloudformationstacksetsKind, c.ns, opts), &v1alpha1.CloudformationStackSetList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCloudformationStackSets) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested cloudformationStackSets.
-func (c *FakeCloudformationStackSets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCloudformationStackSets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cloudformationstacksetsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cloudformationStackSet and creates it.  Returns the server's representation of the cloudformationStackSet, and an error, if there is any.
-func (c *FakeCloudformationStackSets) Create(cloudformationStackSet *v1alpha1.CloudformationStackSet) (result *v1alpha1.CloudformationStackSet, err error) {
+func (c *FakeCloudformationStackSets) Create(ctx context.Context, cloudformationStackSet *v1alpha1.CloudformationStackSet, opts v1.CreateOptions) (result *v1alpha1.CloudformationStackSet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cloudformationstacksetsResource, c.ns, cloudformationStackSet), &v1alpha1.CloudformationStackSet{})
 
@@ -91,7 +93,7 @@ func (c *FakeCloudformationStackSets) Create(cloudformationStackSet *v1alpha1.Cl
 }
 
 // Update takes the representation of a cloudformationStackSet and updates it. Returns the server's representation of the cloudformationStackSet, and an error, if there is any.
-func (c *FakeCloudformationStackSets) Update(cloudformationStackSet *v1alpha1.CloudformationStackSet) (result *v1alpha1.CloudformationStackSet, err error) {
+func (c *FakeCloudformationStackSets) Update(ctx context.Context, cloudformationStackSet *v1alpha1.CloudformationStackSet, opts v1.UpdateOptions) (result *v1alpha1.CloudformationStackSet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cloudformationstacksetsResource, c.ns, cloudformationStackSet), &v1alpha1.CloudformationStackSet{})
 
@@ -103,7 +105,7 @@ func (c *FakeCloudformationStackSets) Update(cloudformationStackSet *v1alpha1.Cl
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCloudformationStackSets) UpdateStatus(cloudformationStackSet *v1alpha1.CloudformationStackSet) (*v1alpha1.CloudformationStackSet, error) {
+func (c *FakeCloudformationStackSets) UpdateStatus(ctx context.Context, cloudformationStackSet *v1alpha1.CloudformationStackSet, opts v1.UpdateOptions) (*v1alpha1.CloudformationStackSet, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cloudformationstacksetsResource, "status", c.ns, cloudformationStackSet), &v1alpha1.CloudformationStackSet{})
 
@@ -114,7 +116,7 @@ func (c *FakeCloudformationStackSets) UpdateStatus(cloudformationStackSet *v1alp
 }
 
 // Delete takes name of the cloudformationStackSet and deletes it. Returns an error if one occurs.
-func (c *FakeCloudformationStackSets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCloudformationStackSets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cloudformationstacksetsResource, c.ns, name), &v1alpha1.CloudformationStackSet{})
 
@@ -122,15 +124,15 @@ func (c *FakeCloudformationStackSets) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCloudformationStackSets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cloudformationstacksetsResource, c.ns, listOptions)
+func (c *FakeCloudformationStackSets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cloudformationstacksetsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CloudformationStackSetList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cloudformationStackSet.
-func (c *FakeCloudformationStackSets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CloudformationStackSet, err error) {
+func (c *FakeCloudformationStackSets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CloudformationStackSet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cloudformationstacksetsResource, c.ns, name, pt, data, subresources...), &v1alpha1.CloudformationStackSet{})
 

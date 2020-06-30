@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computevpntunnelsResource = schema.GroupVersionResource{Group: "google.kubef
 var computevpntunnelsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeVPNTunnel"}
 
 // Get takes name of the computeVPNTunnel, and returns the corresponding computeVPNTunnel object, and an error if there is any.
-func (c *FakeComputeVPNTunnels) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeVPNTunnel, err error) {
+func (c *FakeComputeVPNTunnels) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeVPNTunnel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computevpntunnelsResource, c.ns, name), &v1alpha1.ComputeVPNTunnel{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeVPNTunnels) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of ComputeVPNTunnels that match those selectors.
-func (c *FakeComputeVPNTunnels) List(opts v1.ListOptions) (result *v1alpha1.ComputeVPNTunnelList, err error) {
+func (c *FakeComputeVPNTunnels) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeVPNTunnelList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computevpntunnelsResource, computevpntunnelsKind, c.ns, opts), &v1alpha1.ComputeVPNTunnelList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeVPNTunnels) List(opts v1.ListOptions) (result *v1alpha1.Comp
 }
 
 // Watch returns a watch.Interface that watches the requested computeVPNTunnels.
-func (c *FakeComputeVPNTunnels) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeVPNTunnels) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computevpntunnelsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeVPNTunnel and creates it.  Returns the server's representation of the computeVPNTunnel, and an error, if there is any.
-func (c *FakeComputeVPNTunnels) Create(computeVPNTunnel *v1alpha1.ComputeVPNTunnel) (result *v1alpha1.ComputeVPNTunnel, err error) {
+func (c *FakeComputeVPNTunnels) Create(ctx context.Context, computeVPNTunnel *v1alpha1.ComputeVPNTunnel, opts v1.CreateOptions) (result *v1alpha1.ComputeVPNTunnel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computevpntunnelsResource, c.ns, computeVPNTunnel), &v1alpha1.ComputeVPNTunnel{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeVPNTunnels) Create(computeVPNTunnel *v1alpha1.ComputeVPNTunn
 }
 
 // Update takes the representation of a computeVPNTunnel and updates it. Returns the server's representation of the computeVPNTunnel, and an error, if there is any.
-func (c *FakeComputeVPNTunnels) Update(computeVPNTunnel *v1alpha1.ComputeVPNTunnel) (result *v1alpha1.ComputeVPNTunnel, err error) {
+func (c *FakeComputeVPNTunnels) Update(ctx context.Context, computeVPNTunnel *v1alpha1.ComputeVPNTunnel, opts v1.UpdateOptions) (result *v1alpha1.ComputeVPNTunnel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computevpntunnelsResource, c.ns, computeVPNTunnel), &v1alpha1.ComputeVPNTunnel{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeVPNTunnels) Update(computeVPNTunnel *v1alpha1.ComputeVPNTunn
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeVPNTunnels) UpdateStatus(computeVPNTunnel *v1alpha1.ComputeVPNTunnel) (*v1alpha1.ComputeVPNTunnel, error) {
+func (c *FakeComputeVPNTunnels) UpdateStatus(ctx context.Context, computeVPNTunnel *v1alpha1.ComputeVPNTunnel, opts v1.UpdateOptions) (*v1alpha1.ComputeVPNTunnel, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computevpntunnelsResource, "status", c.ns, computeVPNTunnel), &v1alpha1.ComputeVPNTunnel{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeVPNTunnels) UpdateStatus(computeVPNTunnel *v1alpha1.ComputeV
 }
 
 // Delete takes name of the computeVPNTunnel and deletes it. Returns an error if one occurs.
-func (c *FakeComputeVPNTunnels) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeVPNTunnels) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computevpntunnelsResource, c.ns, name), &v1alpha1.ComputeVPNTunnel{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeVPNTunnels) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeVPNTunnels) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computevpntunnelsResource, c.ns, listOptions)
+func (c *FakeComputeVPNTunnels) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computevpntunnelsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeVPNTunnelList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeVPNTunnel.
-func (c *FakeComputeVPNTunnels) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeVPNTunnel, err error) {
+func (c *FakeComputeVPNTunnels) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeVPNTunnel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computevpntunnelsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeVPNTunnel{})
 

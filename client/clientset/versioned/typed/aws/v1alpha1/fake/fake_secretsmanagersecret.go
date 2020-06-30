@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var secretsmanagersecretsResource = schema.GroupVersionResource{Group: "aws.kube
 var secretsmanagersecretsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "SecretsmanagerSecret"}
 
 // Get takes name of the secretsmanagerSecret, and returns the corresponding secretsmanagerSecret object, and an error if there is any.
-func (c *FakeSecretsmanagerSecrets) Get(name string, options v1.GetOptions) (result *v1alpha1.SecretsmanagerSecret, err error) {
+func (c *FakeSecretsmanagerSecrets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SecretsmanagerSecret, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(secretsmanagersecretsResource, c.ns, name), &v1alpha1.SecretsmanagerSecret{})
 
@@ -51,7 +53,7 @@ func (c *FakeSecretsmanagerSecrets) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of SecretsmanagerSecrets that match those selectors.
-func (c *FakeSecretsmanagerSecrets) List(opts v1.ListOptions) (result *v1alpha1.SecretsmanagerSecretList, err error) {
+func (c *FakeSecretsmanagerSecrets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SecretsmanagerSecretList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(secretsmanagersecretsResource, secretsmanagersecretsKind, c.ns, opts), &v1alpha1.SecretsmanagerSecretList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSecretsmanagerSecrets) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested secretsmanagerSecrets.
-func (c *FakeSecretsmanagerSecrets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSecretsmanagerSecrets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(secretsmanagersecretsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a secretsmanagerSecret and creates it.  Returns the server's representation of the secretsmanagerSecret, and an error, if there is any.
-func (c *FakeSecretsmanagerSecrets) Create(secretsmanagerSecret *v1alpha1.SecretsmanagerSecret) (result *v1alpha1.SecretsmanagerSecret, err error) {
+func (c *FakeSecretsmanagerSecrets) Create(ctx context.Context, secretsmanagerSecret *v1alpha1.SecretsmanagerSecret, opts v1.CreateOptions) (result *v1alpha1.SecretsmanagerSecret, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(secretsmanagersecretsResource, c.ns, secretsmanagerSecret), &v1alpha1.SecretsmanagerSecret{})
 
@@ -91,7 +93,7 @@ func (c *FakeSecretsmanagerSecrets) Create(secretsmanagerSecret *v1alpha1.Secret
 }
 
 // Update takes the representation of a secretsmanagerSecret and updates it. Returns the server's representation of the secretsmanagerSecret, and an error, if there is any.
-func (c *FakeSecretsmanagerSecrets) Update(secretsmanagerSecret *v1alpha1.SecretsmanagerSecret) (result *v1alpha1.SecretsmanagerSecret, err error) {
+func (c *FakeSecretsmanagerSecrets) Update(ctx context.Context, secretsmanagerSecret *v1alpha1.SecretsmanagerSecret, opts v1.UpdateOptions) (result *v1alpha1.SecretsmanagerSecret, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(secretsmanagersecretsResource, c.ns, secretsmanagerSecret), &v1alpha1.SecretsmanagerSecret{})
 
@@ -103,7 +105,7 @@ func (c *FakeSecretsmanagerSecrets) Update(secretsmanagerSecret *v1alpha1.Secret
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSecretsmanagerSecrets) UpdateStatus(secretsmanagerSecret *v1alpha1.SecretsmanagerSecret) (*v1alpha1.SecretsmanagerSecret, error) {
+func (c *FakeSecretsmanagerSecrets) UpdateStatus(ctx context.Context, secretsmanagerSecret *v1alpha1.SecretsmanagerSecret, opts v1.UpdateOptions) (*v1alpha1.SecretsmanagerSecret, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(secretsmanagersecretsResource, "status", c.ns, secretsmanagerSecret), &v1alpha1.SecretsmanagerSecret{})
 
@@ -114,7 +116,7 @@ func (c *FakeSecretsmanagerSecrets) UpdateStatus(secretsmanagerSecret *v1alpha1.
 }
 
 // Delete takes name of the secretsmanagerSecret and deletes it. Returns an error if one occurs.
-func (c *FakeSecretsmanagerSecrets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSecretsmanagerSecrets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(secretsmanagersecretsResource, c.ns, name), &v1alpha1.SecretsmanagerSecret{})
 
@@ -122,15 +124,15 @@ func (c *FakeSecretsmanagerSecrets) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSecretsmanagerSecrets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(secretsmanagersecretsResource, c.ns, listOptions)
+func (c *FakeSecretsmanagerSecrets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(secretsmanagersecretsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SecretsmanagerSecretList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched secretsmanagerSecret.
-func (c *FakeSecretsmanagerSecrets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SecretsmanagerSecret, err error) {
+func (c *FakeSecretsmanagerSecrets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SecretsmanagerSecret, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(secretsmanagersecretsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SecretsmanagerSecret{})
 

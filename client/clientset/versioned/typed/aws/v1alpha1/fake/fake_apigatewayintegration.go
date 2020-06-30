@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var apigatewayintegrationsResource = schema.GroupVersionResource{Group: "aws.kub
 var apigatewayintegrationsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ApiGatewayIntegration"}
 
 // Get takes name of the apiGatewayIntegration, and returns the corresponding apiGatewayIntegration object, and an error if there is any.
-func (c *FakeApiGatewayIntegrations) Get(name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayIntegration, err error) {
+func (c *FakeApiGatewayIntegrations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayIntegration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(apigatewayintegrationsResource, c.ns, name), &v1alpha1.ApiGatewayIntegration{})
 
@@ -51,7 +53,7 @@ func (c *FakeApiGatewayIntegrations) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of ApiGatewayIntegrations that match those selectors.
-func (c *FakeApiGatewayIntegrations) List(opts v1.ListOptions) (result *v1alpha1.ApiGatewayIntegrationList, err error) {
+func (c *FakeApiGatewayIntegrations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApiGatewayIntegrationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(apigatewayintegrationsResource, apigatewayintegrationsKind, c.ns, opts), &v1alpha1.ApiGatewayIntegrationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeApiGatewayIntegrations) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested apiGatewayIntegrations.
-func (c *FakeApiGatewayIntegrations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeApiGatewayIntegrations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(apigatewayintegrationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a apiGatewayIntegration and creates it.  Returns the server's representation of the apiGatewayIntegration, and an error, if there is any.
-func (c *FakeApiGatewayIntegrations) Create(apiGatewayIntegration *v1alpha1.ApiGatewayIntegration) (result *v1alpha1.ApiGatewayIntegration, err error) {
+func (c *FakeApiGatewayIntegrations) Create(ctx context.Context, apiGatewayIntegration *v1alpha1.ApiGatewayIntegration, opts v1.CreateOptions) (result *v1alpha1.ApiGatewayIntegration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(apigatewayintegrationsResource, c.ns, apiGatewayIntegration), &v1alpha1.ApiGatewayIntegration{})
 
@@ -91,7 +93,7 @@ func (c *FakeApiGatewayIntegrations) Create(apiGatewayIntegration *v1alpha1.ApiG
 }
 
 // Update takes the representation of a apiGatewayIntegration and updates it. Returns the server's representation of the apiGatewayIntegration, and an error, if there is any.
-func (c *FakeApiGatewayIntegrations) Update(apiGatewayIntegration *v1alpha1.ApiGatewayIntegration) (result *v1alpha1.ApiGatewayIntegration, err error) {
+func (c *FakeApiGatewayIntegrations) Update(ctx context.Context, apiGatewayIntegration *v1alpha1.ApiGatewayIntegration, opts v1.UpdateOptions) (result *v1alpha1.ApiGatewayIntegration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(apigatewayintegrationsResource, c.ns, apiGatewayIntegration), &v1alpha1.ApiGatewayIntegration{})
 
@@ -103,7 +105,7 @@ func (c *FakeApiGatewayIntegrations) Update(apiGatewayIntegration *v1alpha1.ApiG
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeApiGatewayIntegrations) UpdateStatus(apiGatewayIntegration *v1alpha1.ApiGatewayIntegration) (*v1alpha1.ApiGatewayIntegration, error) {
+func (c *FakeApiGatewayIntegrations) UpdateStatus(ctx context.Context, apiGatewayIntegration *v1alpha1.ApiGatewayIntegration, opts v1.UpdateOptions) (*v1alpha1.ApiGatewayIntegration, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(apigatewayintegrationsResource, "status", c.ns, apiGatewayIntegration), &v1alpha1.ApiGatewayIntegration{})
 
@@ -114,7 +116,7 @@ func (c *FakeApiGatewayIntegrations) UpdateStatus(apiGatewayIntegration *v1alpha
 }
 
 // Delete takes name of the apiGatewayIntegration and deletes it. Returns an error if one occurs.
-func (c *FakeApiGatewayIntegrations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeApiGatewayIntegrations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(apigatewayintegrationsResource, c.ns, name), &v1alpha1.ApiGatewayIntegration{})
 
@@ -122,15 +124,15 @@ func (c *FakeApiGatewayIntegrations) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeApiGatewayIntegrations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(apigatewayintegrationsResource, c.ns, listOptions)
+func (c *FakeApiGatewayIntegrations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(apigatewayintegrationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ApiGatewayIntegrationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched apiGatewayIntegration.
-func (c *FakeApiGatewayIntegrations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiGatewayIntegration, err error) {
+func (c *FakeApiGatewayIntegrations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiGatewayIntegration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(apigatewayintegrationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ApiGatewayIntegration{})
 

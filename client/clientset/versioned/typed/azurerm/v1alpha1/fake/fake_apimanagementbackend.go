@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var apimanagementbackendsResource = schema.GroupVersionResource{Group: "azurerm.
 var apimanagementbackendsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "ApiManagementBackend"}
 
 // Get takes name of the apiManagementBackend, and returns the corresponding apiManagementBackend object, and an error if there is any.
-func (c *FakeApiManagementBackends) Get(name string, options v1.GetOptions) (result *v1alpha1.ApiManagementBackend, err error) {
+func (c *FakeApiManagementBackends) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApiManagementBackend, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(apimanagementbackendsResource, c.ns, name), &v1alpha1.ApiManagementBackend{})
 
@@ -51,7 +53,7 @@ func (c *FakeApiManagementBackends) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of ApiManagementBackends that match those selectors.
-func (c *FakeApiManagementBackends) List(opts v1.ListOptions) (result *v1alpha1.ApiManagementBackendList, err error) {
+func (c *FakeApiManagementBackends) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApiManagementBackendList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(apimanagementbackendsResource, apimanagementbackendsKind, c.ns, opts), &v1alpha1.ApiManagementBackendList{})
 
@@ -73,14 +75,14 @@ func (c *FakeApiManagementBackends) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested apiManagementBackends.
-func (c *FakeApiManagementBackends) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeApiManagementBackends) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(apimanagementbackendsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a apiManagementBackend and creates it.  Returns the server's representation of the apiManagementBackend, and an error, if there is any.
-func (c *FakeApiManagementBackends) Create(apiManagementBackend *v1alpha1.ApiManagementBackend) (result *v1alpha1.ApiManagementBackend, err error) {
+func (c *FakeApiManagementBackends) Create(ctx context.Context, apiManagementBackend *v1alpha1.ApiManagementBackend, opts v1.CreateOptions) (result *v1alpha1.ApiManagementBackend, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(apimanagementbackendsResource, c.ns, apiManagementBackend), &v1alpha1.ApiManagementBackend{})
 
@@ -91,7 +93,7 @@ func (c *FakeApiManagementBackends) Create(apiManagementBackend *v1alpha1.ApiMan
 }
 
 // Update takes the representation of a apiManagementBackend and updates it. Returns the server's representation of the apiManagementBackend, and an error, if there is any.
-func (c *FakeApiManagementBackends) Update(apiManagementBackend *v1alpha1.ApiManagementBackend) (result *v1alpha1.ApiManagementBackend, err error) {
+func (c *FakeApiManagementBackends) Update(ctx context.Context, apiManagementBackend *v1alpha1.ApiManagementBackend, opts v1.UpdateOptions) (result *v1alpha1.ApiManagementBackend, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(apimanagementbackendsResource, c.ns, apiManagementBackend), &v1alpha1.ApiManagementBackend{})
 
@@ -103,7 +105,7 @@ func (c *FakeApiManagementBackends) Update(apiManagementBackend *v1alpha1.ApiMan
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeApiManagementBackends) UpdateStatus(apiManagementBackend *v1alpha1.ApiManagementBackend) (*v1alpha1.ApiManagementBackend, error) {
+func (c *FakeApiManagementBackends) UpdateStatus(ctx context.Context, apiManagementBackend *v1alpha1.ApiManagementBackend, opts v1.UpdateOptions) (*v1alpha1.ApiManagementBackend, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(apimanagementbackendsResource, "status", c.ns, apiManagementBackend), &v1alpha1.ApiManagementBackend{})
 
@@ -114,7 +116,7 @@ func (c *FakeApiManagementBackends) UpdateStatus(apiManagementBackend *v1alpha1.
 }
 
 // Delete takes name of the apiManagementBackend and deletes it. Returns an error if one occurs.
-func (c *FakeApiManagementBackends) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeApiManagementBackends) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(apimanagementbackendsResource, c.ns, name), &v1alpha1.ApiManagementBackend{})
 
@@ -122,15 +124,15 @@ func (c *FakeApiManagementBackends) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeApiManagementBackends) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(apimanagementbackendsResource, c.ns, listOptions)
+func (c *FakeApiManagementBackends) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(apimanagementbackendsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ApiManagementBackendList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched apiManagementBackend.
-func (c *FakeApiManagementBackends) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiManagementBackend, err error) {
+func (c *FakeApiManagementBackends) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiManagementBackend, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(apimanagementbackendsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ApiManagementBackend{})
 

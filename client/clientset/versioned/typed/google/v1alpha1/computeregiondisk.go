@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type ComputeRegionDisksGetter interface {
 
 // ComputeRegionDiskInterface has methods to work with ComputeRegionDisk resources.
 type ComputeRegionDiskInterface interface {
-	Create(*v1alpha1.ComputeRegionDisk) (*v1alpha1.ComputeRegionDisk, error)
-	Update(*v1alpha1.ComputeRegionDisk) (*v1alpha1.ComputeRegionDisk, error)
-	UpdateStatus(*v1alpha1.ComputeRegionDisk) (*v1alpha1.ComputeRegionDisk, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ComputeRegionDisk, error)
-	List(opts v1.ListOptions) (*v1alpha1.ComputeRegionDiskList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeRegionDisk, err error)
+	Create(ctx context.Context, computeRegionDisk *v1alpha1.ComputeRegionDisk, opts v1.CreateOptions) (*v1alpha1.ComputeRegionDisk, error)
+	Update(ctx context.Context, computeRegionDisk *v1alpha1.ComputeRegionDisk, opts v1.UpdateOptions) (*v1alpha1.ComputeRegionDisk, error)
+	UpdateStatus(ctx context.Context, computeRegionDisk *v1alpha1.ComputeRegionDisk, opts v1.UpdateOptions) (*v1alpha1.ComputeRegionDisk, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ComputeRegionDisk, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ComputeRegionDiskList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeRegionDisk, err error)
 	ComputeRegionDiskExpansion
 }
 
@@ -65,20 +66,20 @@ func newComputeRegionDisks(c *GoogleV1alpha1Client, namespace string) *computeRe
 }
 
 // Get takes name of the computeRegionDisk, and returns the corresponding computeRegionDisk object, and an error if there is any.
-func (c *computeRegionDisks) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeRegionDisk, err error) {
+func (c *computeRegionDisks) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeRegionDisk, err error) {
 	result = &v1alpha1.ComputeRegionDisk{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("computeregiondisks").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ComputeRegionDisks that match those selectors.
-func (c *computeRegionDisks) List(opts v1.ListOptions) (result *v1alpha1.ComputeRegionDiskList, err error) {
+func (c *computeRegionDisks) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeRegionDiskList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *computeRegionDisks) List(opts v1.ListOptions) (result *v1alpha1.Compute
 		Resource("computeregiondisks").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested computeRegionDisks.
-func (c *computeRegionDisks) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *computeRegionDisks) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *computeRegionDisks) Watch(opts v1.ListOptions) (watch.Interface, error)
 		Resource("computeregiondisks").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a computeRegionDisk and creates it.  Returns the server's representation of the computeRegionDisk, and an error, if there is any.
-func (c *computeRegionDisks) Create(computeRegionDisk *v1alpha1.ComputeRegionDisk) (result *v1alpha1.ComputeRegionDisk, err error) {
+func (c *computeRegionDisks) Create(ctx context.Context, computeRegionDisk *v1alpha1.ComputeRegionDisk, opts v1.CreateOptions) (result *v1alpha1.ComputeRegionDisk, err error) {
 	result = &v1alpha1.ComputeRegionDisk{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("computeregiondisks").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeRegionDisk).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a computeRegionDisk and updates it. Returns the server's representation of the computeRegionDisk, and an error, if there is any.
-func (c *computeRegionDisks) Update(computeRegionDisk *v1alpha1.ComputeRegionDisk) (result *v1alpha1.ComputeRegionDisk, err error) {
+func (c *computeRegionDisks) Update(ctx context.Context, computeRegionDisk *v1alpha1.ComputeRegionDisk, opts v1.UpdateOptions) (result *v1alpha1.ComputeRegionDisk, err error) {
 	result = &v1alpha1.ComputeRegionDisk{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computeregiondisks").
 		Name(computeRegionDisk.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeRegionDisk).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *computeRegionDisks) UpdateStatus(computeRegionDisk *v1alpha1.ComputeRegionDisk) (result *v1alpha1.ComputeRegionDisk, err error) {
+func (c *computeRegionDisks) UpdateStatus(ctx context.Context, computeRegionDisk *v1alpha1.ComputeRegionDisk, opts v1.UpdateOptions) (result *v1alpha1.ComputeRegionDisk, err error) {
 	result = &v1alpha1.ComputeRegionDisk{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computeregiondisks").
 		Name(computeRegionDisk.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeRegionDisk).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the computeRegionDisk and deletes it. Returns an error if one occurs.
-func (c *computeRegionDisks) Delete(name string, options *v1.DeleteOptions) error {
+func (c *computeRegionDisks) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computeregiondisks").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *computeRegionDisks) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *computeRegionDisks) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computeregiondisks").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched computeRegionDisk.
-func (c *computeRegionDisks) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeRegionDisk, err error) {
+func (c *computeRegionDisks) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeRegionDisk, err error) {
 	result = &v1alpha1.ComputeRegionDisk{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("computeregiondisks").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

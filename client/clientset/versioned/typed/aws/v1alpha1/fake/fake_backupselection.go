@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var backupselectionsResource = schema.GroupVersionResource{Group: "aws.kubeform.
 var backupselectionsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "BackupSelection"}
 
 // Get takes name of the backupSelection, and returns the corresponding backupSelection object, and an error if there is any.
-func (c *FakeBackupSelections) Get(name string, options v1.GetOptions) (result *v1alpha1.BackupSelection, err error) {
+func (c *FakeBackupSelections) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BackupSelection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(backupselectionsResource, c.ns, name), &v1alpha1.BackupSelection{})
 
@@ -51,7 +53,7 @@ func (c *FakeBackupSelections) Get(name string, options v1.GetOptions) (result *
 }
 
 // List takes label and field selectors, and returns the list of BackupSelections that match those selectors.
-func (c *FakeBackupSelections) List(opts v1.ListOptions) (result *v1alpha1.BackupSelectionList, err error) {
+func (c *FakeBackupSelections) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BackupSelectionList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(backupselectionsResource, backupselectionsKind, c.ns, opts), &v1alpha1.BackupSelectionList{})
 
@@ -73,14 +75,14 @@ func (c *FakeBackupSelections) List(opts v1.ListOptions) (result *v1alpha1.Backu
 }
 
 // Watch returns a watch.Interface that watches the requested backupSelections.
-func (c *FakeBackupSelections) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeBackupSelections) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(backupselectionsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a backupSelection and creates it.  Returns the server's representation of the backupSelection, and an error, if there is any.
-func (c *FakeBackupSelections) Create(backupSelection *v1alpha1.BackupSelection) (result *v1alpha1.BackupSelection, err error) {
+func (c *FakeBackupSelections) Create(ctx context.Context, backupSelection *v1alpha1.BackupSelection, opts v1.CreateOptions) (result *v1alpha1.BackupSelection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(backupselectionsResource, c.ns, backupSelection), &v1alpha1.BackupSelection{})
 
@@ -91,7 +93,7 @@ func (c *FakeBackupSelections) Create(backupSelection *v1alpha1.BackupSelection)
 }
 
 // Update takes the representation of a backupSelection and updates it. Returns the server's representation of the backupSelection, and an error, if there is any.
-func (c *FakeBackupSelections) Update(backupSelection *v1alpha1.BackupSelection) (result *v1alpha1.BackupSelection, err error) {
+func (c *FakeBackupSelections) Update(ctx context.Context, backupSelection *v1alpha1.BackupSelection, opts v1.UpdateOptions) (result *v1alpha1.BackupSelection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(backupselectionsResource, c.ns, backupSelection), &v1alpha1.BackupSelection{})
 
@@ -103,7 +105,7 @@ func (c *FakeBackupSelections) Update(backupSelection *v1alpha1.BackupSelection)
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeBackupSelections) UpdateStatus(backupSelection *v1alpha1.BackupSelection) (*v1alpha1.BackupSelection, error) {
+func (c *FakeBackupSelections) UpdateStatus(ctx context.Context, backupSelection *v1alpha1.BackupSelection, opts v1.UpdateOptions) (*v1alpha1.BackupSelection, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(backupselectionsResource, "status", c.ns, backupSelection), &v1alpha1.BackupSelection{})
 
@@ -114,7 +116,7 @@ func (c *FakeBackupSelections) UpdateStatus(backupSelection *v1alpha1.BackupSele
 }
 
 // Delete takes name of the backupSelection and deletes it. Returns an error if one occurs.
-func (c *FakeBackupSelections) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeBackupSelections) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(backupselectionsResource, c.ns, name), &v1alpha1.BackupSelection{})
 
@@ -122,15 +124,15 @@ func (c *FakeBackupSelections) Delete(name string, options *v1.DeleteOptions) er
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeBackupSelections) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(backupselectionsResource, c.ns, listOptions)
+func (c *FakeBackupSelections) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(backupselectionsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.BackupSelectionList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched backupSelection.
-func (c *FakeBackupSelections) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BackupSelection, err error) {
+func (c *FakeBackupSelections) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BackupSelection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(backupselectionsResource, c.ns, name, pt, data, subresources...), &v1alpha1.BackupSelection{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var elasticbeanstalkapplicationversionsResource = schema.GroupVersionResource{Gr
 var elasticbeanstalkapplicationversionsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ElasticBeanstalkApplicationVersion"}
 
 // Get takes name of the elasticBeanstalkApplicationVersion, and returns the corresponding elasticBeanstalkApplicationVersion object, and an error if there is any.
-func (c *FakeElasticBeanstalkApplicationVersions) Get(name string, options v1.GetOptions) (result *v1alpha1.ElasticBeanstalkApplicationVersion, err error) {
+func (c *FakeElasticBeanstalkApplicationVersions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ElasticBeanstalkApplicationVersion, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(elasticbeanstalkapplicationversionsResource, c.ns, name), &v1alpha1.ElasticBeanstalkApplicationVersion{})
 
@@ -51,7 +53,7 @@ func (c *FakeElasticBeanstalkApplicationVersions) Get(name string, options v1.Ge
 }
 
 // List takes label and field selectors, and returns the list of ElasticBeanstalkApplicationVersions that match those selectors.
-func (c *FakeElasticBeanstalkApplicationVersions) List(opts v1.ListOptions) (result *v1alpha1.ElasticBeanstalkApplicationVersionList, err error) {
+func (c *FakeElasticBeanstalkApplicationVersions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ElasticBeanstalkApplicationVersionList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(elasticbeanstalkapplicationversionsResource, elasticbeanstalkapplicationversionsKind, c.ns, opts), &v1alpha1.ElasticBeanstalkApplicationVersionList{})
 
@@ -73,14 +75,14 @@ func (c *FakeElasticBeanstalkApplicationVersions) List(opts v1.ListOptions) (res
 }
 
 // Watch returns a watch.Interface that watches the requested elasticBeanstalkApplicationVersions.
-func (c *FakeElasticBeanstalkApplicationVersions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeElasticBeanstalkApplicationVersions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(elasticbeanstalkapplicationversionsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a elasticBeanstalkApplicationVersion and creates it.  Returns the server's representation of the elasticBeanstalkApplicationVersion, and an error, if there is any.
-func (c *FakeElasticBeanstalkApplicationVersions) Create(elasticBeanstalkApplicationVersion *v1alpha1.ElasticBeanstalkApplicationVersion) (result *v1alpha1.ElasticBeanstalkApplicationVersion, err error) {
+func (c *FakeElasticBeanstalkApplicationVersions) Create(ctx context.Context, elasticBeanstalkApplicationVersion *v1alpha1.ElasticBeanstalkApplicationVersion, opts v1.CreateOptions) (result *v1alpha1.ElasticBeanstalkApplicationVersion, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(elasticbeanstalkapplicationversionsResource, c.ns, elasticBeanstalkApplicationVersion), &v1alpha1.ElasticBeanstalkApplicationVersion{})
 
@@ -91,7 +93,7 @@ func (c *FakeElasticBeanstalkApplicationVersions) Create(elasticBeanstalkApplica
 }
 
 // Update takes the representation of a elasticBeanstalkApplicationVersion and updates it. Returns the server's representation of the elasticBeanstalkApplicationVersion, and an error, if there is any.
-func (c *FakeElasticBeanstalkApplicationVersions) Update(elasticBeanstalkApplicationVersion *v1alpha1.ElasticBeanstalkApplicationVersion) (result *v1alpha1.ElasticBeanstalkApplicationVersion, err error) {
+func (c *FakeElasticBeanstalkApplicationVersions) Update(ctx context.Context, elasticBeanstalkApplicationVersion *v1alpha1.ElasticBeanstalkApplicationVersion, opts v1.UpdateOptions) (result *v1alpha1.ElasticBeanstalkApplicationVersion, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(elasticbeanstalkapplicationversionsResource, c.ns, elasticBeanstalkApplicationVersion), &v1alpha1.ElasticBeanstalkApplicationVersion{})
 
@@ -103,7 +105,7 @@ func (c *FakeElasticBeanstalkApplicationVersions) Update(elasticBeanstalkApplica
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeElasticBeanstalkApplicationVersions) UpdateStatus(elasticBeanstalkApplicationVersion *v1alpha1.ElasticBeanstalkApplicationVersion) (*v1alpha1.ElasticBeanstalkApplicationVersion, error) {
+func (c *FakeElasticBeanstalkApplicationVersions) UpdateStatus(ctx context.Context, elasticBeanstalkApplicationVersion *v1alpha1.ElasticBeanstalkApplicationVersion, opts v1.UpdateOptions) (*v1alpha1.ElasticBeanstalkApplicationVersion, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(elasticbeanstalkapplicationversionsResource, "status", c.ns, elasticBeanstalkApplicationVersion), &v1alpha1.ElasticBeanstalkApplicationVersion{})
 
@@ -114,7 +116,7 @@ func (c *FakeElasticBeanstalkApplicationVersions) UpdateStatus(elasticBeanstalkA
 }
 
 // Delete takes name of the elasticBeanstalkApplicationVersion and deletes it. Returns an error if one occurs.
-func (c *FakeElasticBeanstalkApplicationVersions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeElasticBeanstalkApplicationVersions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(elasticbeanstalkapplicationversionsResource, c.ns, name), &v1alpha1.ElasticBeanstalkApplicationVersion{})
 
@@ -122,15 +124,15 @@ func (c *FakeElasticBeanstalkApplicationVersions) Delete(name string, options *v
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeElasticBeanstalkApplicationVersions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(elasticbeanstalkapplicationversionsResource, c.ns, listOptions)
+func (c *FakeElasticBeanstalkApplicationVersions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(elasticbeanstalkapplicationversionsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ElasticBeanstalkApplicationVersionList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched elasticBeanstalkApplicationVersion.
-func (c *FakeElasticBeanstalkApplicationVersions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ElasticBeanstalkApplicationVersion, err error) {
+func (c *FakeElasticBeanstalkApplicationVersions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ElasticBeanstalkApplicationVersion, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(elasticbeanstalkapplicationversionsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ElasticBeanstalkApplicationVersion{})
 

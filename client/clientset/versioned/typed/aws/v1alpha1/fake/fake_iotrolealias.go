@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iotrolealiasesResource = schema.GroupVersionResource{Group: "aws.kubeform.co
 var iotrolealiasesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "IotRoleAlias"}
 
 // Get takes name of the iotRoleAlias, and returns the corresponding iotRoleAlias object, and an error if there is any.
-func (c *FakeIotRoleAliases) Get(name string, options v1.GetOptions) (result *v1alpha1.IotRoleAlias, err error) {
+func (c *FakeIotRoleAliases) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IotRoleAlias, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iotrolealiasesResource, c.ns, name), &v1alpha1.IotRoleAlias{})
 
@@ -51,7 +53,7 @@ func (c *FakeIotRoleAliases) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of IotRoleAliases that match those selectors.
-func (c *FakeIotRoleAliases) List(opts v1.ListOptions) (result *v1alpha1.IotRoleAliasList, err error) {
+func (c *FakeIotRoleAliases) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IotRoleAliasList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iotrolealiasesResource, iotrolealiasesKind, c.ns, opts), &v1alpha1.IotRoleAliasList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIotRoleAliases) List(opts v1.ListOptions) (result *v1alpha1.IotRole
 }
 
 // Watch returns a watch.Interface that watches the requested iotRoleAliases.
-func (c *FakeIotRoleAliases) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIotRoleAliases) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iotrolealiasesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iotRoleAlias and creates it.  Returns the server's representation of the iotRoleAlias, and an error, if there is any.
-func (c *FakeIotRoleAliases) Create(iotRoleAlias *v1alpha1.IotRoleAlias) (result *v1alpha1.IotRoleAlias, err error) {
+func (c *FakeIotRoleAliases) Create(ctx context.Context, iotRoleAlias *v1alpha1.IotRoleAlias, opts v1.CreateOptions) (result *v1alpha1.IotRoleAlias, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iotrolealiasesResource, c.ns, iotRoleAlias), &v1alpha1.IotRoleAlias{})
 
@@ -91,7 +93,7 @@ func (c *FakeIotRoleAliases) Create(iotRoleAlias *v1alpha1.IotRoleAlias) (result
 }
 
 // Update takes the representation of a iotRoleAlias and updates it. Returns the server's representation of the iotRoleAlias, and an error, if there is any.
-func (c *FakeIotRoleAliases) Update(iotRoleAlias *v1alpha1.IotRoleAlias) (result *v1alpha1.IotRoleAlias, err error) {
+func (c *FakeIotRoleAliases) Update(ctx context.Context, iotRoleAlias *v1alpha1.IotRoleAlias, opts v1.UpdateOptions) (result *v1alpha1.IotRoleAlias, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iotrolealiasesResource, c.ns, iotRoleAlias), &v1alpha1.IotRoleAlias{})
 
@@ -103,7 +105,7 @@ func (c *FakeIotRoleAliases) Update(iotRoleAlias *v1alpha1.IotRoleAlias) (result
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIotRoleAliases) UpdateStatus(iotRoleAlias *v1alpha1.IotRoleAlias) (*v1alpha1.IotRoleAlias, error) {
+func (c *FakeIotRoleAliases) UpdateStatus(ctx context.Context, iotRoleAlias *v1alpha1.IotRoleAlias, opts v1.UpdateOptions) (*v1alpha1.IotRoleAlias, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iotrolealiasesResource, "status", c.ns, iotRoleAlias), &v1alpha1.IotRoleAlias{})
 
@@ -114,7 +116,7 @@ func (c *FakeIotRoleAliases) UpdateStatus(iotRoleAlias *v1alpha1.IotRoleAlias) (
 }
 
 // Delete takes name of the iotRoleAlias and deletes it. Returns an error if one occurs.
-func (c *FakeIotRoleAliases) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIotRoleAliases) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iotrolealiasesResource, c.ns, name), &v1alpha1.IotRoleAlias{})
 
@@ -122,15 +124,15 @@ func (c *FakeIotRoleAliases) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIotRoleAliases) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iotrolealiasesResource, c.ns, listOptions)
+func (c *FakeIotRoleAliases) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iotrolealiasesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IotRoleAliasList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iotRoleAlias.
-func (c *FakeIotRoleAliases) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IotRoleAlias, err error) {
+func (c *FakeIotRoleAliases) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IotRoleAlias, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iotrolealiasesResource, c.ns, name, pt, data, subresources...), &v1alpha1.IotRoleAlias{})
 

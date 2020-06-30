@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var containerclustersResource = schema.GroupVersionResource{Group: "google.kubef
 var containerclustersKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ContainerCluster"}
 
 // Get takes name of the containerCluster, and returns the corresponding containerCluster object, and an error if there is any.
-func (c *FakeContainerClusters) Get(name string, options v1.GetOptions) (result *v1alpha1.ContainerCluster, err error) {
+func (c *FakeContainerClusters) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ContainerCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(containerclustersResource, c.ns, name), &v1alpha1.ContainerCluster{})
 
@@ -51,7 +53,7 @@ func (c *FakeContainerClusters) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of ContainerClusters that match those selectors.
-func (c *FakeContainerClusters) List(opts v1.ListOptions) (result *v1alpha1.ContainerClusterList, err error) {
+func (c *FakeContainerClusters) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ContainerClusterList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(containerclustersResource, containerclustersKind, c.ns, opts), &v1alpha1.ContainerClusterList{})
 
@@ -73,14 +75,14 @@ func (c *FakeContainerClusters) List(opts v1.ListOptions) (result *v1alpha1.Cont
 }
 
 // Watch returns a watch.Interface that watches the requested containerClusters.
-func (c *FakeContainerClusters) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeContainerClusters) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(containerclustersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a containerCluster and creates it.  Returns the server's representation of the containerCluster, and an error, if there is any.
-func (c *FakeContainerClusters) Create(containerCluster *v1alpha1.ContainerCluster) (result *v1alpha1.ContainerCluster, err error) {
+func (c *FakeContainerClusters) Create(ctx context.Context, containerCluster *v1alpha1.ContainerCluster, opts v1.CreateOptions) (result *v1alpha1.ContainerCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(containerclustersResource, c.ns, containerCluster), &v1alpha1.ContainerCluster{})
 
@@ -91,7 +93,7 @@ func (c *FakeContainerClusters) Create(containerCluster *v1alpha1.ContainerClust
 }
 
 // Update takes the representation of a containerCluster and updates it. Returns the server's representation of the containerCluster, and an error, if there is any.
-func (c *FakeContainerClusters) Update(containerCluster *v1alpha1.ContainerCluster) (result *v1alpha1.ContainerCluster, err error) {
+func (c *FakeContainerClusters) Update(ctx context.Context, containerCluster *v1alpha1.ContainerCluster, opts v1.UpdateOptions) (result *v1alpha1.ContainerCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(containerclustersResource, c.ns, containerCluster), &v1alpha1.ContainerCluster{})
 
@@ -103,7 +105,7 @@ func (c *FakeContainerClusters) Update(containerCluster *v1alpha1.ContainerClust
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeContainerClusters) UpdateStatus(containerCluster *v1alpha1.ContainerCluster) (*v1alpha1.ContainerCluster, error) {
+func (c *FakeContainerClusters) UpdateStatus(ctx context.Context, containerCluster *v1alpha1.ContainerCluster, opts v1.UpdateOptions) (*v1alpha1.ContainerCluster, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(containerclustersResource, "status", c.ns, containerCluster), &v1alpha1.ContainerCluster{})
 
@@ -114,7 +116,7 @@ func (c *FakeContainerClusters) UpdateStatus(containerCluster *v1alpha1.Containe
 }
 
 // Delete takes name of the containerCluster and deletes it. Returns an error if one occurs.
-func (c *FakeContainerClusters) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeContainerClusters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(containerclustersResource, c.ns, name), &v1alpha1.ContainerCluster{})
 
@@ -122,15 +124,15 @@ func (c *FakeContainerClusters) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeContainerClusters) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(containerclustersResource, c.ns, listOptions)
+func (c *FakeContainerClusters) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(containerclustersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ContainerClusterList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched containerCluster.
-func (c *FakeContainerClusters) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ContainerCluster, err error) {
+func (c *FakeContainerClusters) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ContainerCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(containerclustersResource, c.ns, name, pt, data, subresources...), &v1alpha1.ContainerCluster{})
 

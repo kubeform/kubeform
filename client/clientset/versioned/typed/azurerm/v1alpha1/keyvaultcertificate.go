@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type KeyVaultCertificatesGetter interface {
 
 // KeyVaultCertificateInterface has methods to work with KeyVaultCertificate resources.
 type KeyVaultCertificateInterface interface {
-	Create(*v1alpha1.KeyVaultCertificate) (*v1alpha1.KeyVaultCertificate, error)
-	Update(*v1alpha1.KeyVaultCertificate) (*v1alpha1.KeyVaultCertificate, error)
-	UpdateStatus(*v1alpha1.KeyVaultCertificate) (*v1alpha1.KeyVaultCertificate, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.KeyVaultCertificate, error)
-	List(opts v1.ListOptions) (*v1alpha1.KeyVaultCertificateList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KeyVaultCertificate, err error)
+	Create(ctx context.Context, keyVaultCertificate *v1alpha1.KeyVaultCertificate, opts v1.CreateOptions) (*v1alpha1.KeyVaultCertificate, error)
+	Update(ctx context.Context, keyVaultCertificate *v1alpha1.KeyVaultCertificate, opts v1.UpdateOptions) (*v1alpha1.KeyVaultCertificate, error)
+	UpdateStatus(ctx context.Context, keyVaultCertificate *v1alpha1.KeyVaultCertificate, opts v1.UpdateOptions) (*v1alpha1.KeyVaultCertificate, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.KeyVaultCertificate, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.KeyVaultCertificateList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KeyVaultCertificate, err error)
 	KeyVaultCertificateExpansion
 }
 
@@ -65,20 +66,20 @@ func newKeyVaultCertificates(c *AzurermV1alpha1Client, namespace string) *keyVau
 }
 
 // Get takes name of the keyVaultCertificate, and returns the corresponding keyVaultCertificate object, and an error if there is any.
-func (c *keyVaultCertificates) Get(name string, options v1.GetOptions) (result *v1alpha1.KeyVaultCertificate, err error) {
+func (c *keyVaultCertificates) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KeyVaultCertificate, err error) {
 	result = &v1alpha1.KeyVaultCertificate{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("keyvaultcertificates").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of KeyVaultCertificates that match those selectors.
-func (c *keyVaultCertificates) List(opts v1.ListOptions) (result *v1alpha1.KeyVaultCertificateList, err error) {
+func (c *keyVaultCertificates) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KeyVaultCertificateList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *keyVaultCertificates) List(opts v1.ListOptions) (result *v1alpha1.KeyVa
 		Resource("keyvaultcertificates").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested keyVaultCertificates.
-func (c *keyVaultCertificates) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *keyVaultCertificates) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *keyVaultCertificates) Watch(opts v1.ListOptions) (watch.Interface, erro
 		Resource("keyvaultcertificates").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a keyVaultCertificate and creates it.  Returns the server's representation of the keyVaultCertificate, and an error, if there is any.
-func (c *keyVaultCertificates) Create(keyVaultCertificate *v1alpha1.KeyVaultCertificate) (result *v1alpha1.KeyVaultCertificate, err error) {
+func (c *keyVaultCertificates) Create(ctx context.Context, keyVaultCertificate *v1alpha1.KeyVaultCertificate, opts v1.CreateOptions) (result *v1alpha1.KeyVaultCertificate, err error) {
 	result = &v1alpha1.KeyVaultCertificate{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("keyvaultcertificates").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(keyVaultCertificate).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a keyVaultCertificate and updates it. Returns the server's representation of the keyVaultCertificate, and an error, if there is any.
-func (c *keyVaultCertificates) Update(keyVaultCertificate *v1alpha1.KeyVaultCertificate) (result *v1alpha1.KeyVaultCertificate, err error) {
+func (c *keyVaultCertificates) Update(ctx context.Context, keyVaultCertificate *v1alpha1.KeyVaultCertificate, opts v1.UpdateOptions) (result *v1alpha1.KeyVaultCertificate, err error) {
 	result = &v1alpha1.KeyVaultCertificate{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("keyvaultcertificates").
 		Name(keyVaultCertificate.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(keyVaultCertificate).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *keyVaultCertificates) UpdateStatus(keyVaultCertificate *v1alpha1.KeyVaultCertificate) (result *v1alpha1.KeyVaultCertificate, err error) {
+func (c *keyVaultCertificates) UpdateStatus(ctx context.Context, keyVaultCertificate *v1alpha1.KeyVaultCertificate, opts v1.UpdateOptions) (result *v1alpha1.KeyVaultCertificate, err error) {
 	result = &v1alpha1.KeyVaultCertificate{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("keyvaultcertificates").
 		Name(keyVaultCertificate.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(keyVaultCertificate).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the keyVaultCertificate and deletes it. Returns an error if one occurs.
-func (c *keyVaultCertificates) Delete(name string, options *v1.DeleteOptions) error {
+func (c *keyVaultCertificates) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("keyvaultcertificates").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *keyVaultCertificates) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *keyVaultCertificates) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("keyvaultcertificates").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched keyVaultCertificate.
-func (c *keyVaultCertificates) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KeyVaultCertificate, err error) {
+func (c *keyVaultCertificates) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KeyVaultCertificate, err error) {
 	result = &v1alpha1.KeyVaultCertificate{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("keyvaultcertificates").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

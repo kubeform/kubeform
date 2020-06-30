@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type RoleDefinitionsGetter interface {
 
 // RoleDefinitionInterface has methods to work with RoleDefinition resources.
 type RoleDefinitionInterface interface {
-	Create(*v1alpha1.RoleDefinition) (*v1alpha1.RoleDefinition, error)
-	Update(*v1alpha1.RoleDefinition) (*v1alpha1.RoleDefinition, error)
-	UpdateStatus(*v1alpha1.RoleDefinition) (*v1alpha1.RoleDefinition, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.RoleDefinition, error)
-	List(opts v1.ListOptions) (*v1alpha1.RoleDefinitionList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RoleDefinition, err error)
+	Create(ctx context.Context, roleDefinition *v1alpha1.RoleDefinition, opts v1.CreateOptions) (*v1alpha1.RoleDefinition, error)
+	Update(ctx context.Context, roleDefinition *v1alpha1.RoleDefinition, opts v1.UpdateOptions) (*v1alpha1.RoleDefinition, error)
+	UpdateStatus(ctx context.Context, roleDefinition *v1alpha1.RoleDefinition, opts v1.UpdateOptions) (*v1alpha1.RoleDefinition, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.RoleDefinition, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.RoleDefinitionList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RoleDefinition, err error)
 	RoleDefinitionExpansion
 }
 
@@ -65,20 +66,20 @@ func newRoleDefinitions(c *AzurermV1alpha1Client, namespace string) *roleDefinit
 }
 
 // Get takes name of the roleDefinition, and returns the corresponding roleDefinition object, and an error if there is any.
-func (c *roleDefinitions) Get(name string, options v1.GetOptions) (result *v1alpha1.RoleDefinition, err error) {
+func (c *roleDefinitions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.RoleDefinition, err error) {
 	result = &v1alpha1.RoleDefinition{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("roledefinitions").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of RoleDefinitions that match those selectors.
-func (c *roleDefinitions) List(opts v1.ListOptions) (result *v1alpha1.RoleDefinitionList, err error) {
+func (c *roleDefinitions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RoleDefinitionList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *roleDefinitions) List(opts v1.ListOptions) (result *v1alpha1.RoleDefini
 		Resource("roledefinitions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested roleDefinitions.
-func (c *roleDefinitions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *roleDefinitions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *roleDefinitions) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("roledefinitions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a roleDefinition and creates it.  Returns the server's representation of the roleDefinition, and an error, if there is any.
-func (c *roleDefinitions) Create(roleDefinition *v1alpha1.RoleDefinition) (result *v1alpha1.RoleDefinition, err error) {
+func (c *roleDefinitions) Create(ctx context.Context, roleDefinition *v1alpha1.RoleDefinition, opts v1.CreateOptions) (result *v1alpha1.RoleDefinition, err error) {
 	result = &v1alpha1.RoleDefinition{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("roledefinitions").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(roleDefinition).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a roleDefinition and updates it. Returns the server's representation of the roleDefinition, and an error, if there is any.
-func (c *roleDefinitions) Update(roleDefinition *v1alpha1.RoleDefinition) (result *v1alpha1.RoleDefinition, err error) {
+func (c *roleDefinitions) Update(ctx context.Context, roleDefinition *v1alpha1.RoleDefinition, opts v1.UpdateOptions) (result *v1alpha1.RoleDefinition, err error) {
 	result = &v1alpha1.RoleDefinition{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("roledefinitions").
 		Name(roleDefinition.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(roleDefinition).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *roleDefinitions) UpdateStatus(roleDefinition *v1alpha1.RoleDefinition) (result *v1alpha1.RoleDefinition, err error) {
+func (c *roleDefinitions) UpdateStatus(ctx context.Context, roleDefinition *v1alpha1.RoleDefinition, opts v1.UpdateOptions) (result *v1alpha1.RoleDefinition, err error) {
 	result = &v1alpha1.RoleDefinition{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("roledefinitions").
 		Name(roleDefinition.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(roleDefinition).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the roleDefinition and deletes it. Returns an error if one occurs.
-func (c *roleDefinitions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *roleDefinitions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("roledefinitions").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *roleDefinitions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *roleDefinitions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("roledefinitions").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched roleDefinition.
-func (c *roleDefinitions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RoleDefinition, err error) {
+func (c *roleDefinitions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RoleDefinition, err error) {
 	result = &v1alpha1.RoleDefinition{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("roledefinitions").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

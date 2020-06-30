@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var postgresqlserversResource = schema.GroupVersionResource{Group: "azurerm.kube
 var postgresqlserversKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "PostgresqlServer"}
 
 // Get takes name of the postgresqlServer, and returns the corresponding postgresqlServer object, and an error if there is any.
-func (c *FakePostgresqlServers) Get(name string, options v1.GetOptions) (result *v1alpha1.PostgresqlServer, err error) {
+func (c *FakePostgresqlServers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PostgresqlServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(postgresqlserversResource, c.ns, name), &v1alpha1.PostgresqlServer{})
 
@@ -51,7 +53,7 @@ func (c *FakePostgresqlServers) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of PostgresqlServers that match those selectors.
-func (c *FakePostgresqlServers) List(opts v1.ListOptions) (result *v1alpha1.PostgresqlServerList, err error) {
+func (c *FakePostgresqlServers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PostgresqlServerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(postgresqlserversResource, postgresqlserversKind, c.ns, opts), &v1alpha1.PostgresqlServerList{})
 
@@ -73,14 +75,14 @@ func (c *FakePostgresqlServers) List(opts v1.ListOptions) (result *v1alpha1.Post
 }
 
 // Watch returns a watch.Interface that watches the requested postgresqlServers.
-func (c *FakePostgresqlServers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakePostgresqlServers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(postgresqlserversResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a postgresqlServer and creates it.  Returns the server's representation of the postgresqlServer, and an error, if there is any.
-func (c *FakePostgresqlServers) Create(postgresqlServer *v1alpha1.PostgresqlServer) (result *v1alpha1.PostgresqlServer, err error) {
+func (c *FakePostgresqlServers) Create(ctx context.Context, postgresqlServer *v1alpha1.PostgresqlServer, opts v1.CreateOptions) (result *v1alpha1.PostgresqlServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(postgresqlserversResource, c.ns, postgresqlServer), &v1alpha1.PostgresqlServer{})
 
@@ -91,7 +93,7 @@ func (c *FakePostgresqlServers) Create(postgresqlServer *v1alpha1.PostgresqlServ
 }
 
 // Update takes the representation of a postgresqlServer and updates it. Returns the server's representation of the postgresqlServer, and an error, if there is any.
-func (c *FakePostgresqlServers) Update(postgresqlServer *v1alpha1.PostgresqlServer) (result *v1alpha1.PostgresqlServer, err error) {
+func (c *FakePostgresqlServers) Update(ctx context.Context, postgresqlServer *v1alpha1.PostgresqlServer, opts v1.UpdateOptions) (result *v1alpha1.PostgresqlServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(postgresqlserversResource, c.ns, postgresqlServer), &v1alpha1.PostgresqlServer{})
 
@@ -103,7 +105,7 @@ func (c *FakePostgresqlServers) Update(postgresqlServer *v1alpha1.PostgresqlServ
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakePostgresqlServers) UpdateStatus(postgresqlServer *v1alpha1.PostgresqlServer) (*v1alpha1.PostgresqlServer, error) {
+func (c *FakePostgresqlServers) UpdateStatus(ctx context.Context, postgresqlServer *v1alpha1.PostgresqlServer, opts v1.UpdateOptions) (*v1alpha1.PostgresqlServer, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(postgresqlserversResource, "status", c.ns, postgresqlServer), &v1alpha1.PostgresqlServer{})
 
@@ -114,7 +116,7 @@ func (c *FakePostgresqlServers) UpdateStatus(postgresqlServer *v1alpha1.Postgres
 }
 
 // Delete takes name of the postgresqlServer and deletes it. Returns an error if one occurs.
-func (c *FakePostgresqlServers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakePostgresqlServers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(postgresqlserversResource, c.ns, name), &v1alpha1.PostgresqlServer{})
 
@@ -122,15 +124,15 @@ func (c *FakePostgresqlServers) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakePostgresqlServers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(postgresqlserversResource, c.ns, listOptions)
+func (c *FakePostgresqlServers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(postgresqlserversResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.PostgresqlServerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched postgresqlServer.
-func (c *FakePostgresqlServers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PostgresqlServer, err error) {
+func (c *FakePostgresqlServers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PostgresqlServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(postgresqlserversResource, c.ns, name, pt, data, subresources...), &v1alpha1.PostgresqlServer{})
 

@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type MskClustersGetter interface {
 
 // MskClusterInterface has methods to work with MskCluster resources.
 type MskClusterInterface interface {
-	Create(*v1alpha1.MskCluster) (*v1alpha1.MskCluster, error)
-	Update(*v1alpha1.MskCluster) (*v1alpha1.MskCluster, error)
-	UpdateStatus(*v1alpha1.MskCluster) (*v1alpha1.MskCluster, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.MskCluster, error)
-	List(opts v1.ListOptions) (*v1alpha1.MskClusterList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MskCluster, err error)
+	Create(ctx context.Context, mskCluster *v1alpha1.MskCluster, opts v1.CreateOptions) (*v1alpha1.MskCluster, error)
+	Update(ctx context.Context, mskCluster *v1alpha1.MskCluster, opts v1.UpdateOptions) (*v1alpha1.MskCluster, error)
+	UpdateStatus(ctx context.Context, mskCluster *v1alpha1.MskCluster, opts v1.UpdateOptions) (*v1alpha1.MskCluster, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.MskCluster, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.MskClusterList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MskCluster, err error)
 	MskClusterExpansion
 }
 
@@ -65,20 +66,20 @@ func newMskClusters(c *AwsV1alpha1Client, namespace string) *mskClusters {
 }
 
 // Get takes name of the mskCluster, and returns the corresponding mskCluster object, and an error if there is any.
-func (c *mskClusters) Get(name string, options v1.GetOptions) (result *v1alpha1.MskCluster, err error) {
+func (c *mskClusters) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.MskCluster, err error) {
 	result = &v1alpha1.MskCluster{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("mskclusters").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of MskClusters that match those selectors.
-func (c *mskClusters) List(opts v1.ListOptions) (result *v1alpha1.MskClusterList, err error) {
+func (c *mskClusters) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.MskClusterList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *mskClusters) List(opts v1.ListOptions) (result *v1alpha1.MskClusterList
 		Resource("mskclusters").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested mskClusters.
-func (c *mskClusters) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *mskClusters) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *mskClusters) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("mskclusters").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a mskCluster and creates it.  Returns the server's representation of the mskCluster, and an error, if there is any.
-func (c *mskClusters) Create(mskCluster *v1alpha1.MskCluster) (result *v1alpha1.MskCluster, err error) {
+func (c *mskClusters) Create(ctx context.Context, mskCluster *v1alpha1.MskCluster, opts v1.CreateOptions) (result *v1alpha1.MskCluster, err error) {
 	result = &v1alpha1.MskCluster{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("mskclusters").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(mskCluster).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a mskCluster and updates it. Returns the server's representation of the mskCluster, and an error, if there is any.
-func (c *mskClusters) Update(mskCluster *v1alpha1.MskCluster) (result *v1alpha1.MskCluster, err error) {
+func (c *mskClusters) Update(ctx context.Context, mskCluster *v1alpha1.MskCluster, opts v1.UpdateOptions) (result *v1alpha1.MskCluster, err error) {
 	result = &v1alpha1.MskCluster{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("mskclusters").
 		Name(mskCluster.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(mskCluster).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *mskClusters) UpdateStatus(mskCluster *v1alpha1.MskCluster) (result *v1alpha1.MskCluster, err error) {
+func (c *mskClusters) UpdateStatus(ctx context.Context, mskCluster *v1alpha1.MskCluster, opts v1.UpdateOptions) (result *v1alpha1.MskCluster, err error) {
 	result = &v1alpha1.MskCluster{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("mskclusters").
 		Name(mskCluster.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(mskCluster).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the mskCluster and deletes it. Returns an error if one occurs.
-func (c *mskClusters) Delete(name string, options *v1.DeleteOptions) error {
+func (c *mskClusters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("mskclusters").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *mskClusters) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *mskClusters) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("mskclusters").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched mskCluster.
-func (c *mskClusters) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MskCluster, err error) {
+func (c *mskClusters) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MskCluster, err error) {
 	result = &v1alpha1.MskCluster{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("mskclusters").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

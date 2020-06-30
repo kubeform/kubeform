@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dataprocclusteriampoliciesResource = schema.GroupVersionResource{Group: "goo
 var dataprocclusteriampoliciesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "DataprocClusterIamPolicy"}
 
 // Get takes name of the dataprocClusterIamPolicy, and returns the corresponding dataprocClusterIamPolicy object, and an error if there is any.
-func (c *FakeDataprocClusterIamPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.DataprocClusterIamPolicy, err error) {
+func (c *FakeDataprocClusterIamPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DataprocClusterIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dataprocclusteriampoliciesResource, c.ns, name), &v1alpha1.DataprocClusterIamPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeDataprocClusterIamPolicies) Get(name string, options v1.GetOptions)
 }
 
 // List takes label and field selectors, and returns the list of DataprocClusterIamPolicies that match those selectors.
-func (c *FakeDataprocClusterIamPolicies) List(opts v1.ListOptions) (result *v1alpha1.DataprocClusterIamPolicyList, err error) {
+func (c *FakeDataprocClusterIamPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DataprocClusterIamPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dataprocclusteriampoliciesResource, dataprocclusteriampoliciesKind, c.ns, opts), &v1alpha1.DataprocClusterIamPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDataprocClusterIamPolicies) List(opts v1.ListOptions) (result *v1al
 }
 
 // Watch returns a watch.Interface that watches the requested dataprocClusterIamPolicies.
-func (c *FakeDataprocClusterIamPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDataprocClusterIamPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dataprocclusteriampoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dataprocClusterIamPolicy and creates it.  Returns the server's representation of the dataprocClusterIamPolicy, and an error, if there is any.
-func (c *FakeDataprocClusterIamPolicies) Create(dataprocClusterIamPolicy *v1alpha1.DataprocClusterIamPolicy) (result *v1alpha1.DataprocClusterIamPolicy, err error) {
+func (c *FakeDataprocClusterIamPolicies) Create(ctx context.Context, dataprocClusterIamPolicy *v1alpha1.DataprocClusterIamPolicy, opts v1.CreateOptions) (result *v1alpha1.DataprocClusterIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dataprocclusteriampoliciesResource, c.ns, dataprocClusterIamPolicy), &v1alpha1.DataprocClusterIamPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeDataprocClusterIamPolicies) Create(dataprocClusterIamPolicy *v1alph
 }
 
 // Update takes the representation of a dataprocClusterIamPolicy and updates it. Returns the server's representation of the dataprocClusterIamPolicy, and an error, if there is any.
-func (c *FakeDataprocClusterIamPolicies) Update(dataprocClusterIamPolicy *v1alpha1.DataprocClusterIamPolicy) (result *v1alpha1.DataprocClusterIamPolicy, err error) {
+func (c *FakeDataprocClusterIamPolicies) Update(ctx context.Context, dataprocClusterIamPolicy *v1alpha1.DataprocClusterIamPolicy, opts v1.UpdateOptions) (result *v1alpha1.DataprocClusterIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dataprocclusteriampoliciesResource, c.ns, dataprocClusterIamPolicy), &v1alpha1.DataprocClusterIamPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeDataprocClusterIamPolicies) Update(dataprocClusterIamPolicy *v1alph
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDataprocClusterIamPolicies) UpdateStatus(dataprocClusterIamPolicy *v1alpha1.DataprocClusterIamPolicy) (*v1alpha1.DataprocClusterIamPolicy, error) {
+func (c *FakeDataprocClusterIamPolicies) UpdateStatus(ctx context.Context, dataprocClusterIamPolicy *v1alpha1.DataprocClusterIamPolicy, opts v1.UpdateOptions) (*v1alpha1.DataprocClusterIamPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dataprocclusteriampoliciesResource, "status", c.ns, dataprocClusterIamPolicy), &v1alpha1.DataprocClusterIamPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeDataprocClusterIamPolicies) UpdateStatus(dataprocClusterIamPolicy *
 }
 
 // Delete takes name of the dataprocClusterIamPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeDataprocClusterIamPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDataprocClusterIamPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dataprocclusteriampoliciesResource, c.ns, name), &v1alpha1.DataprocClusterIamPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeDataprocClusterIamPolicies) Delete(name string, options *v1.DeleteO
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDataprocClusterIamPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dataprocclusteriampoliciesResource, c.ns, listOptions)
+func (c *FakeDataprocClusterIamPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dataprocclusteriampoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DataprocClusterIamPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dataprocClusterIamPolicy.
-func (c *FakeDataprocClusterIamPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataprocClusterIamPolicy, err error) {
+func (c *FakeDataprocClusterIamPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataprocClusterIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dataprocclusteriampoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.DataprocClusterIamPolicy{})
 

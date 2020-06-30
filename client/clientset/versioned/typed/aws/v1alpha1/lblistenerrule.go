@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type LbListenerRulesGetter interface {
 
 // LbListenerRuleInterface has methods to work with LbListenerRule resources.
 type LbListenerRuleInterface interface {
-	Create(*v1alpha1.LbListenerRule) (*v1alpha1.LbListenerRule, error)
-	Update(*v1alpha1.LbListenerRule) (*v1alpha1.LbListenerRule, error)
-	UpdateStatus(*v1alpha1.LbListenerRule) (*v1alpha1.LbListenerRule, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.LbListenerRule, error)
-	List(opts v1.ListOptions) (*v1alpha1.LbListenerRuleList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LbListenerRule, err error)
+	Create(ctx context.Context, lbListenerRule *v1alpha1.LbListenerRule, opts v1.CreateOptions) (*v1alpha1.LbListenerRule, error)
+	Update(ctx context.Context, lbListenerRule *v1alpha1.LbListenerRule, opts v1.UpdateOptions) (*v1alpha1.LbListenerRule, error)
+	UpdateStatus(ctx context.Context, lbListenerRule *v1alpha1.LbListenerRule, opts v1.UpdateOptions) (*v1alpha1.LbListenerRule, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.LbListenerRule, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.LbListenerRuleList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LbListenerRule, err error)
 	LbListenerRuleExpansion
 }
 
@@ -65,20 +66,20 @@ func newLbListenerRules(c *AwsV1alpha1Client, namespace string) *lbListenerRules
 }
 
 // Get takes name of the lbListenerRule, and returns the corresponding lbListenerRule object, and an error if there is any.
-func (c *lbListenerRules) Get(name string, options v1.GetOptions) (result *v1alpha1.LbListenerRule, err error) {
+func (c *lbListenerRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LbListenerRule, err error) {
 	result = &v1alpha1.LbListenerRule{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("lblistenerrules").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of LbListenerRules that match those selectors.
-func (c *lbListenerRules) List(opts v1.ListOptions) (result *v1alpha1.LbListenerRuleList, err error) {
+func (c *lbListenerRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LbListenerRuleList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *lbListenerRules) List(opts v1.ListOptions) (result *v1alpha1.LbListener
 		Resource("lblistenerrules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested lbListenerRules.
-func (c *lbListenerRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *lbListenerRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *lbListenerRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("lblistenerrules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a lbListenerRule and creates it.  Returns the server's representation of the lbListenerRule, and an error, if there is any.
-func (c *lbListenerRules) Create(lbListenerRule *v1alpha1.LbListenerRule) (result *v1alpha1.LbListenerRule, err error) {
+func (c *lbListenerRules) Create(ctx context.Context, lbListenerRule *v1alpha1.LbListenerRule, opts v1.CreateOptions) (result *v1alpha1.LbListenerRule, err error) {
 	result = &v1alpha1.LbListenerRule{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("lblistenerrules").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lbListenerRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a lbListenerRule and updates it. Returns the server's representation of the lbListenerRule, and an error, if there is any.
-func (c *lbListenerRules) Update(lbListenerRule *v1alpha1.LbListenerRule) (result *v1alpha1.LbListenerRule, err error) {
+func (c *lbListenerRules) Update(ctx context.Context, lbListenerRule *v1alpha1.LbListenerRule, opts v1.UpdateOptions) (result *v1alpha1.LbListenerRule, err error) {
 	result = &v1alpha1.LbListenerRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("lblistenerrules").
 		Name(lbListenerRule.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lbListenerRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *lbListenerRules) UpdateStatus(lbListenerRule *v1alpha1.LbListenerRule) (result *v1alpha1.LbListenerRule, err error) {
+func (c *lbListenerRules) UpdateStatus(ctx context.Context, lbListenerRule *v1alpha1.LbListenerRule, opts v1.UpdateOptions) (result *v1alpha1.LbListenerRule, err error) {
 	result = &v1alpha1.LbListenerRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("lblistenerrules").
 		Name(lbListenerRule.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lbListenerRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the lbListenerRule and deletes it. Returns an error if one occurs.
-func (c *lbListenerRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *lbListenerRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("lblistenerrules").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *lbListenerRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *lbListenerRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("lblistenerrules").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched lbListenerRule.
-func (c *lbListenerRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LbListenerRule, err error) {
+func (c *lbListenerRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LbListenerRule, err error) {
 	result = &v1alpha1.LbListenerRule{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("lblistenerrules").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

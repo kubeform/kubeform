@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type TransferUsersGetter interface {
 
 // TransferUserInterface has methods to work with TransferUser resources.
 type TransferUserInterface interface {
-	Create(*v1alpha1.TransferUser) (*v1alpha1.TransferUser, error)
-	Update(*v1alpha1.TransferUser) (*v1alpha1.TransferUser, error)
-	UpdateStatus(*v1alpha1.TransferUser) (*v1alpha1.TransferUser, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.TransferUser, error)
-	List(opts v1.ListOptions) (*v1alpha1.TransferUserList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.TransferUser, err error)
+	Create(ctx context.Context, transferUser *v1alpha1.TransferUser, opts v1.CreateOptions) (*v1alpha1.TransferUser, error)
+	Update(ctx context.Context, transferUser *v1alpha1.TransferUser, opts v1.UpdateOptions) (*v1alpha1.TransferUser, error)
+	UpdateStatus(ctx context.Context, transferUser *v1alpha1.TransferUser, opts v1.UpdateOptions) (*v1alpha1.TransferUser, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.TransferUser, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.TransferUserList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.TransferUser, err error)
 	TransferUserExpansion
 }
 
@@ -65,20 +66,20 @@ func newTransferUsers(c *AwsV1alpha1Client, namespace string) *transferUsers {
 }
 
 // Get takes name of the transferUser, and returns the corresponding transferUser object, and an error if there is any.
-func (c *transferUsers) Get(name string, options v1.GetOptions) (result *v1alpha1.TransferUser, err error) {
+func (c *transferUsers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.TransferUser, err error) {
 	result = &v1alpha1.TransferUser{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("transferusers").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of TransferUsers that match those selectors.
-func (c *transferUsers) List(opts v1.ListOptions) (result *v1alpha1.TransferUserList, err error) {
+func (c *transferUsers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.TransferUserList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *transferUsers) List(opts v1.ListOptions) (result *v1alpha1.TransferUser
 		Resource("transferusers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested transferUsers.
-func (c *transferUsers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *transferUsers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *transferUsers) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("transferusers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a transferUser and creates it.  Returns the server's representation of the transferUser, and an error, if there is any.
-func (c *transferUsers) Create(transferUser *v1alpha1.TransferUser) (result *v1alpha1.TransferUser, err error) {
+func (c *transferUsers) Create(ctx context.Context, transferUser *v1alpha1.TransferUser, opts v1.CreateOptions) (result *v1alpha1.TransferUser, err error) {
 	result = &v1alpha1.TransferUser{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("transferusers").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(transferUser).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a transferUser and updates it. Returns the server's representation of the transferUser, and an error, if there is any.
-func (c *transferUsers) Update(transferUser *v1alpha1.TransferUser) (result *v1alpha1.TransferUser, err error) {
+func (c *transferUsers) Update(ctx context.Context, transferUser *v1alpha1.TransferUser, opts v1.UpdateOptions) (result *v1alpha1.TransferUser, err error) {
 	result = &v1alpha1.TransferUser{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("transferusers").
 		Name(transferUser.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(transferUser).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *transferUsers) UpdateStatus(transferUser *v1alpha1.TransferUser) (result *v1alpha1.TransferUser, err error) {
+func (c *transferUsers) UpdateStatus(ctx context.Context, transferUser *v1alpha1.TransferUser, opts v1.UpdateOptions) (result *v1alpha1.TransferUser, err error) {
 	result = &v1alpha1.TransferUser{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("transferusers").
 		Name(transferUser.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(transferUser).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the transferUser and deletes it. Returns an error if one occurs.
-func (c *transferUsers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *transferUsers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("transferusers").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *transferUsers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *transferUsers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("transferusers").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched transferUser.
-func (c *transferUsers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.TransferUser, err error) {
+func (c *transferUsers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.TransferUser, err error) {
 	result = &v1alpha1.TransferUser{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("transferusers").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

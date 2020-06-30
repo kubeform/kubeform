@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var siterecoveryreplicationpoliciesResource = schema.GroupVersionResource{Group:
 var siterecoveryreplicationpoliciesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "SiteRecoveryReplicationPolicy"}
 
 // Get takes name of the siteRecoveryReplicationPolicy, and returns the corresponding siteRecoveryReplicationPolicy object, and an error if there is any.
-func (c *FakeSiteRecoveryReplicationPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.SiteRecoveryReplicationPolicy, err error) {
+func (c *FakeSiteRecoveryReplicationPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SiteRecoveryReplicationPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(siterecoveryreplicationpoliciesResource, c.ns, name), &v1alpha1.SiteRecoveryReplicationPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeSiteRecoveryReplicationPolicies) Get(name string, options v1.GetOpt
 }
 
 // List takes label and field selectors, and returns the list of SiteRecoveryReplicationPolicies that match those selectors.
-func (c *FakeSiteRecoveryReplicationPolicies) List(opts v1.ListOptions) (result *v1alpha1.SiteRecoveryReplicationPolicyList, err error) {
+func (c *FakeSiteRecoveryReplicationPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SiteRecoveryReplicationPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(siterecoveryreplicationpoliciesResource, siterecoveryreplicationpoliciesKind, c.ns, opts), &v1alpha1.SiteRecoveryReplicationPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSiteRecoveryReplicationPolicies) List(opts v1.ListOptions) (result 
 }
 
 // Watch returns a watch.Interface that watches the requested siteRecoveryReplicationPolicies.
-func (c *FakeSiteRecoveryReplicationPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSiteRecoveryReplicationPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(siterecoveryreplicationpoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a siteRecoveryReplicationPolicy and creates it.  Returns the server's representation of the siteRecoveryReplicationPolicy, and an error, if there is any.
-func (c *FakeSiteRecoveryReplicationPolicies) Create(siteRecoveryReplicationPolicy *v1alpha1.SiteRecoveryReplicationPolicy) (result *v1alpha1.SiteRecoveryReplicationPolicy, err error) {
+func (c *FakeSiteRecoveryReplicationPolicies) Create(ctx context.Context, siteRecoveryReplicationPolicy *v1alpha1.SiteRecoveryReplicationPolicy, opts v1.CreateOptions) (result *v1alpha1.SiteRecoveryReplicationPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(siterecoveryreplicationpoliciesResource, c.ns, siteRecoveryReplicationPolicy), &v1alpha1.SiteRecoveryReplicationPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeSiteRecoveryReplicationPolicies) Create(siteRecoveryReplicationPoli
 }
 
 // Update takes the representation of a siteRecoveryReplicationPolicy and updates it. Returns the server's representation of the siteRecoveryReplicationPolicy, and an error, if there is any.
-func (c *FakeSiteRecoveryReplicationPolicies) Update(siteRecoveryReplicationPolicy *v1alpha1.SiteRecoveryReplicationPolicy) (result *v1alpha1.SiteRecoveryReplicationPolicy, err error) {
+func (c *FakeSiteRecoveryReplicationPolicies) Update(ctx context.Context, siteRecoveryReplicationPolicy *v1alpha1.SiteRecoveryReplicationPolicy, opts v1.UpdateOptions) (result *v1alpha1.SiteRecoveryReplicationPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(siterecoveryreplicationpoliciesResource, c.ns, siteRecoveryReplicationPolicy), &v1alpha1.SiteRecoveryReplicationPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeSiteRecoveryReplicationPolicies) Update(siteRecoveryReplicationPoli
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSiteRecoveryReplicationPolicies) UpdateStatus(siteRecoveryReplicationPolicy *v1alpha1.SiteRecoveryReplicationPolicy) (*v1alpha1.SiteRecoveryReplicationPolicy, error) {
+func (c *FakeSiteRecoveryReplicationPolicies) UpdateStatus(ctx context.Context, siteRecoveryReplicationPolicy *v1alpha1.SiteRecoveryReplicationPolicy, opts v1.UpdateOptions) (*v1alpha1.SiteRecoveryReplicationPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(siterecoveryreplicationpoliciesResource, "status", c.ns, siteRecoveryReplicationPolicy), &v1alpha1.SiteRecoveryReplicationPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeSiteRecoveryReplicationPolicies) UpdateStatus(siteRecoveryReplicati
 }
 
 // Delete takes name of the siteRecoveryReplicationPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeSiteRecoveryReplicationPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSiteRecoveryReplicationPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(siterecoveryreplicationpoliciesResource, c.ns, name), &v1alpha1.SiteRecoveryReplicationPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeSiteRecoveryReplicationPolicies) Delete(name string, options *v1.De
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSiteRecoveryReplicationPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(siterecoveryreplicationpoliciesResource, c.ns, listOptions)
+func (c *FakeSiteRecoveryReplicationPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(siterecoveryreplicationpoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SiteRecoveryReplicationPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched siteRecoveryReplicationPolicy.
-func (c *FakeSiteRecoveryReplicationPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SiteRecoveryReplicationPolicy, err error) {
+func (c *FakeSiteRecoveryReplicationPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SiteRecoveryReplicationPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(siterecoveryreplicationpoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.SiteRecoveryReplicationPolicy{})
 

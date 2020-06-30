@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/linode/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var objectstoragebucketsResource = schema.GroupVersionResource{Group: "linode.ku
 var objectstoragebucketsKind = schema.GroupVersionKind{Group: "linode.kubeform.com", Version: "v1alpha1", Kind: "ObjectStorageBucket"}
 
 // Get takes name of the objectStorageBucket, and returns the corresponding objectStorageBucket object, and an error if there is any.
-func (c *FakeObjectStorageBuckets) Get(name string, options v1.GetOptions) (result *v1alpha1.ObjectStorageBucket, err error) {
+func (c *FakeObjectStorageBuckets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ObjectStorageBucket, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(objectstoragebucketsResource, c.ns, name), &v1alpha1.ObjectStorageBucket{})
 
@@ -51,7 +53,7 @@ func (c *FakeObjectStorageBuckets) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of ObjectStorageBuckets that match those selectors.
-func (c *FakeObjectStorageBuckets) List(opts v1.ListOptions) (result *v1alpha1.ObjectStorageBucketList, err error) {
+func (c *FakeObjectStorageBuckets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ObjectStorageBucketList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(objectstoragebucketsResource, objectstoragebucketsKind, c.ns, opts), &v1alpha1.ObjectStorageBucketList{})
 
@@ -73,14 +75,14 @@ func (c *FakeObjectStorageBuckets) List(opts v1.ListOptions) (result *v1alpha1.O
 }
 
 // Watch returns a watch.Interface that watches the requested objectStorageBuckets.
-func (c *FakeObjectStorageBuckets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeObjectStorageBuckets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(objectstoragebucketsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a objectStorageBucket and creates it.  Returns the server's representation of the objectStorageBucket, and an error, if there is any.
-func (c *FakeObjectStorageBuckets) Create(objectStorageBucket *v1alpha1.ObjectStorageBucket) (result *v1alpha1.ObjectStorageBucket, err error) {
+func (c *FakeObjectStorageBuckets) Create(ctx context.Context, objectStorageBucket *v1alpha1.ObjectStorageBucket, opts v1.CreateOptions) (result *v1alpha1.ObjectStorageBucket, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(objectstoragebucketsResource, c.ns, objectStorageBucket), &v1alpha1.ObjectStorageBucket{})
 
@@ -91,7 +93,7 @@ func (c *FakeObjectStorageBuckets) Create(objectStorageBucket *v1alpha1.ObjectSt
 }
 
 // Update takes the representation of a objectStorageBucket and updates it. Returns the server's representation of the objectStorageBucket, and an error, if there is any.
-func (c *FakeObjectStorageBuckets) Update(objectStorageBucket *v1alpha1.ObjectStorageBucket) (result *v1alpha1.ObjectStorageBucket, err error) {
+func (c *FakeObjectStorageBuckets) Update(ctx context.Context, objectStorageBucket *v1alpha1.ObjectStorageBucket, opts v1.UpdateOptions) (result *v1alpha1.ObjectStorageBucket, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(objectstoragebucketsResource, c.ns, objectStorageBucket), &v1alpha1.ObjectStorageBucket{})
 
@@ -103,7 +105,7 @@ func (c *FakeObjectStorageBuckets) Update(objectStorageBucket *v1alpha1.ObjectSt
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeObjectStorageBuckets) UpdateStatus(objectStorageBucket *v1alpha1.ObjectStorageBucket) (*v1alpha1.ObjectStorageBucket, error) {
+func (c *FakeObjectStorageBuckets) UpdateStatus(ctx context.Context, objectStorageBucket *v1alpha1.ObjectStorageBucket, opts v1.UpdateOptions) (*v1alpha1.ObjectStorageBucket, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(objectstoragebucketsResource, "status", c.ns, objectStorageBucket), &v1alpha1.ObjectStorageBucket{})
 
@@ -114,7 +116,7 @@ func (c *FakeObjectStorageBuckets) UpdateStatus(objectStorageBucket *v1alpha1.Ob
 }
 
 // Delete takes name of the objectStorageBucket and deletes it. Returns an error if one occurs.
-func (c *FakeObjectStorageBuckets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeObjectStorageBuckets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(objectstoragebucketsResource, c.ns, name), &v1alpha1.ObjectStorageBucket{})
 
@@ -122,15 +124,15 @@ func (c *FakeObjectStorageBuckets) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeObjectStorageBuckets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(objectstoragebucketsResource, c.ns, listOptions)
+func (c *FakeObjectStorageBuckets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(objectstoragebucketsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ObjectStorageBucketList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched objectStorageBucket.
-func (c *FakeObjectStorageBuckets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ObjectStorageBucket, err error) {
+func (c *FakeObjectStorageBuckets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ObjectStorageBucket, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(objectstoragebucketsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ObjectStorageBucket{})
 

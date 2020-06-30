@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cosmosdbmongocollectionsResource = schema.GroupVersionResource{Group: "azure
 var cosmosdbmongocollectionsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "CosmosdbMongoCollection"}
 
 // Get takes name of the cosmosdbMongoCollection, and returns the corresponding cosmosdbMongoCollection object, and an error if there is any.
-func (c *FakeCosmosdbMongoCollections) Get(name string, options v1.GetOptions) (result *v1alpha1.CosmosdbMongoCollection, err error) {
+func (c *FakeCosmosdbMongoCollections) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CosmosdbMongoCollection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cosmosdbmongocollectionsResource, c.ns, name), &v1alpha1.CosmosdbMongoCollection{})
 
@@ -51,7 +53,7 @@ func (c *FakeCosmosdbMongoCollections) Get(name string, options v1.GetOptions) (
 }
 
 // List takes label and field selectors, and returns the list of CosmosdbMongoCollections that match those selectors.
-func (c *FakeCosmosdbMongoCollections) List(opts v1.ListOptions) (result *v1alpha1.CosmosdbMongoCollectionList, err error) {
+func (c *FakeCosmosdbMongoCollections) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CosmosdbMongoCollectionList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cosmosdbmongocollectionsResource, cosmosdbmongocollectionsKind, c.ns, opts), &v1alpha1.CosmosdbMongoCollectionList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCosmosdbMongoCollections) List(opts v1.ListOptions) (result *v1alph
 }
 
 // Watch returns a watch.Interface that watches the requested cosmosdbMongoCollections.
-func (c *FakeCosmosdbMongoCollections) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCosmosdbMongoCollections) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cosmosdbmongocollectionsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cosmosdbMongoCollection and creates it.  Returns the server's representation of the cosmosdbMongoCollection, and an error, if there is any.
-func (c *FakeCosmosdbMongoCollections) Create(cosmosdbMongoCollection *v1alpha1.CosmosdbMongoCollection) (result *v1alpha1.CosmosdbMongoCollection, err error) {
+func (c *FakeCosmosdbMongoCollections) Create(ctx context.Context, cosmosdbMongoCollection *v1alpha1.CosmosdbMongoCollection, opts v1.CreateOptions) (result *v1alpha1.CosmosdbMongoCollection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cosmosdbmongocollectionsResource, c.ns, cosmosdbMongoCollection), &v1alpha1.CosmosdbMongoCollection{})
 
@@ -91,7 +93,7 @@ func (c *FakeCosmosdbMongoCollections) Create(cosmosdbMongoCollection *v1alpha1.
 }
 
 // Update takes the representation of a cosmosdbMongoCollection and updates it. Returns the server's representation of the cosmosdbMongoCollection, and an error, if there is any.
-func (c *FakeCosmosdbMongoCollections) Update(cosmosdbMongoCollection *v1alpha1.CosmosdbMongoCollection) (result *v1alpha1.CosmosdbMongoCollection, err error) {
+func (c *FakeCosmosdbMongoCollections) Update(ctx context.Context, cosmosdbMongoCollection *v1alpha1.CosmosdbMongoCollection, opts v1.UpdateOptions) (result *v1alpha1.CosmosdbMongoCollection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cosmosdbmongocollectionsResource, c.ns, cosmosdbMongoCollection), &v1alpha1.CosmosdbMongoCollection{})
 
@@ -103,7 +105,7 @@ func (c *FakeCosmosdbMongoCollections) Update(cosmosdbMongoCollection *v1alpha1.
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCosmosdbMongoCollections) UpdateStatus(cosmosdbMongoCollection *v1alpha1.CosmosdbMongoCollection) (*v1alpha1.CosmosdbMongoCollection, error) {
+func (c *FakeCosmosdbMongoCollections) UpdateStatus(ctx context.Context, cosmosdbMongoCollection *v1alpha1.CosmosdbMongoCollection, opts v1.UpdateOptions) (*v1alpha1.CosmosdbMongoCollection, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cosmosdbmongocollectionsResource, "status", c.ns, cosmosdbMongoCollection), &v1alpha1.CosmosdbMongoCollection{})
 
@@ -114,7 +116,7 @@ func (c *FakeCosmosdbMongoCollections) UpdateStatus(cosmosdbMongoCollection *v1a
 }
 
 // Delete takes name of the cosmosdbMongoCollection and deletes it. Returns an error if one occurs.
-func (c *FakeCosmosdbMongoCollections) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCosmosdbMongoCollections) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cosmosdbmongocollectionsResource, c.ns, name), &v1alpha1.CosmosdbMongoCollection{})
 
@@ -122,15 +124,15 @@ func (c *FakeCosmosdbMongoCollections) Delete(name string, options *v1.DeleteOpt
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCosmosdbMongoCollections) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cosmosdbmongocollectionsResource, c.ns, listOptions)
+func (c *FakeCosmosdbMongoCollections) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cosmosdbmongocollectionsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CosmosdbMongoCollectionList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cosmosdbMongoCollection.
-func (c *FakeCosmosdbMongoCollections) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CosmosdbMongoCollection, err error) {
+func (c *FakeCosmosdbMongoCollections) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CosmosdbMongoCollection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cosmosdbmongocollectionsResource, c.ns, name, pt, data, subresources...), &v1alpha1.CosmosdbMongoCollection{})
 

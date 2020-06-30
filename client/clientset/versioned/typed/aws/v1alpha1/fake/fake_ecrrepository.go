@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var ecrrepositoriesResource = schema.GroupVersionResource{Group: "aws.kubeform.c
 var ecrrepositoriesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "EcrRepository"}
 
 // Get takes name of the ecrRepository, and returns the corresponding ecrRepository object, and an error if there is any.
-func (c *FakeEcrRepositories) Get(name string, options v1.GetOptions) (result *v1alpha1.EcrRepository, err error) {
+func (c *FakeEcrRepositories) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.EcrRepository, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(ecrrepositoriesResource, c.ns, name), &v1alpha1.EcrRepository{})
 
@@ -51,7 +53,7 @@ func (c *FakeEcrRepositories) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of EcrRepositories that match those selectors.
-func (c *FakeEcrRepositories) List(opts v1.ListOptions) (result *v1alpha1.EcrRepositoryList, err error) {
+func (c *FakeEcrRepositories) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.EcrRepositoryList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(ecrrepositoriesResource, ecrrepositoriesKind, c.ns, opts), &v1alpha1.EcrRepositoryList{})
 
@@ -73,14 +75,14 @@ func (c *FakeEcrRepositories) List(opts v1.ListOptions) (result *v1alpha1.EcrRep
 }
 
 // Watch returns a watch.Interface that watches the requested ecrRepositories.
-func (c *FakeEcrRepositories) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeEcrRepositories) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(ecrrepositoriesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a ecrRepository and creates it.  Returns the server's representation of the ecrRepository, and an error, if there is any.
-func (c *FakeEcrRepositories) Create(ecrRepository *v1alpha1.EcrRepository) (result *v1alpha1.EcrRepository, err error) {
+func (c *FakeEcrRepositories) Create(ctx context.Context, ecrRepository *v1alpha1.EcrRepository, opts v1.CreateOptions) (result *v1alpha1.EcrRepository, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(ecrrepositoriesResource, c.ns, ecrRepository), &v1alpha1.EcrRepository{})
 
@@ -91,7 +93,7 @@ func (c *FakeEcrRepositories) Create(ecrRepository *v1alpha1.EcrRepository) (res
 }
 
 // Update takes the representation of a ecrRepository and updates it. Returns the server's representation of the ecrRepository, and an error, if there is any.
-func (c *FakeEcrRepositories) Update(ecrRepository *v1alpha1.EcrRepository) (result *v1alpha1.EcrRepository, err error) {
+func (c *FakeEcrRepositories) Update(ctx context.Context, ecrRepository *v1alpha1.EcrRepository, opts v1.UpdateOptions) (result *v1alpha1.EcrRepository, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(ecrrepositoriesResource, c.ns, ecrRepository), &v1alpha1.EcrRepository{})
 
@@ -103,7 +105,7 @@ func (c *FakeEcrRepositories) Update(ecrRepository *v1alpha1.EcrRepository) (res
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeEcrRepositories) UpdateStatus(ecrRepository *v1alpha1.EcrRepository) (*v1alpha1.EcrRepository, error) {
+func (c *FakeEcrRepositories) UpdateStatus(ctx context.Context, ecrRepository *v1alpha1.EcrRepository, opts v1.UpdateOptions) (*v1alpha1.EcrRepository, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(ecrrepositoriesResource, "status", c.ns, ecrRepository), &v1alpha1.EcrRepository{})
 
@@ -114,7 +116,7 @@ func (c *FakeEcrRepositories) UpdateStatus(ecrRepository *v1alpha1.EcrRepository
 }
 
 // Delete takes name of the ecrRepository and deletes it. Returns an error if one occurs.
-func (c *FakeEcrRepositories) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeEcrRepositories) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(ecrrepositoriesResource, c.ns, name), &v1alpha1.EcrRepository{})
 
@@ -122,15 +124,15 @@ func (c *FakeEcrRepositories) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeEcrRepositories) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(ecrrepositoriesResource, c.ns, listOptions)
+func (c *FakeEcrRepositories) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(ecrrepositoriesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.EcrRepositoryList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched ecrRepository.
-func (c *FakeEcrRepositories) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EcrRepository, err error) {
+func (c *FakeEcrRepositories) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EcrRepository, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(ecrrepositoriesResource, c.ns, name, pt, data, subresources...), &v1alpha1.EcrRepository{})
 

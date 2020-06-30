@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type BotConnectionsGetter interface {
 
 // BotConnectionInterface has methods to work with BotConnection resources.
 type BotConnectionInterface interface {
-	Create(*v1alpha1.BotConnection) (*v1alpha1.BotConnection, error)
-	Update(*v1alpha1.BotConnection) (*v1alpha1.BotConnection, error)
-	UpdateStatus(*v1alpha1.BotConnection) (*v1alpha1.BotConnection, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.BotConnection, error)
-	List(opts v1.ListOptions) (*v1alpha1.BotConnectionList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BotConnection, err error)
+	Create(ctx context.Context, botConnection *v1alpha1.BotConnection, opts v1.CreateOptions) (*v1alpha1.BotConnection, error)
+	Update(ctx context.Context, botConnection *v1alpha1.BotConnection, opts v1.UpdateOptions) (*v1alpha1.BotConnection, error)
+	UpdateStatus(ctx context.Context, botConnection *v1alpha1.BotConnection, opts v1.UpdateOptions) (*v1alpha1.BotConnection, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.BotConnection, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.BotConnectionList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BotConnection, err error)
 	BotConnectionExpansion
 }
 
@@ -65,20 +66,20 @@ func newBotConnections(c *AzurermV1alpha1Client, namespace string) *botConnectio
 }
 
 // Get takes name of the botConnection, and returns the corresponding botConnection object, and an error if there is any.
-func (c *botConnections) Get(name string, options v1.GetOptions) (result *v1alpha1.BotConnection, err error) {
+func (c *botConnections) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BotConnection, err error) {
 	result = &v1alpha1.BotConnection{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("botconnections").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of BotConnections that match those selectors.
-func (c *botConnections) List(opts v1.ListOptions) (result *v1alpha1.BotConnectionList, err error) {
+func (c *botConnections) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BotConnectionList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *botConnections) List(opts v1.ListOptions) (result *v1alpha1.BotConnecti
 		Resource("botconnections").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested botConnections.
-func (c *botConnections) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *botConnections) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *botConnections) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("botconnections").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a botConnection and creates it.  Returns the server's representation of the botConnection, and an error, if there is any.
-func (c *botConnections) Create(botConnection *v1alpha1.BotConnection) (result *v1alpha1.BotConnection, err error) {
+func (c *botConnections) Create(ctx context.Context, botConnection *v1alpha1.BotConnection, opts v1.CreateOptions) (result *v1alpha1.BotConnection, err error) {
 	result = &v1alpha1.BotConnection{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("botconnections").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(botConnection).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a botConnection and updates it. Returns the server's representation of the botConnection, and an error, if there is any.
-func (c *botConnections) Update(botConnection *v1alpha1.BotConnection) (result *v1alpha1.BotConnection, err error) {
+func (c *botConnections) Update(ctx context.Context, botConnection *v1alpha1.BotConnection, opts v1.UpdateOptions) (result *v1alpha1.BotConnection, err error) {
 	result = &v1alpha1.BotConnection{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("botconnections").
 		Name(botConnection.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(botConnection).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *botConnections) UpdateStatus(botConnection *v1alpha1.BotConnection) (result *v1alpha1.BotConnection, err error) {
+func (c *botConnections) UpdateStatus(ctx context.Context, botConnection *v1alpha1.BotConnection, opts v1.UpdateOptions) (result *v1alpha1.BotConnection, err error) {
 	result = &v1alpha1.BotConnection{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("botconnections").
 		Name(botConnection.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(botConnection).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the botConnection and deletes it. Returns an error if one occurs.
-func (c *botConnections) Delete(name string, options *v1.DeleteOptions) error {
+func (c *botConnections) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("botconnections").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *botConnections) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *botConnections) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("botconnections").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched botConnection.
-func (c *botConnections) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BotConnection, err error) {
+func (c *botConnections) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BotConnection, err error) {
 	result = &v1alpha1.BotConnection{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("botconnections").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

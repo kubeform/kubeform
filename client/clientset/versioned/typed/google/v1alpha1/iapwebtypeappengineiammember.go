@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type IapWebTypeAppEngineIamMembersGetter interface {
 
 // IapWebTypeAppEngineIamMemberInterface has methods to work with IapWebTypeAppEngineIamMember resources.
 type IapWebTypeAppEngineIamMemberInterface interface {
-	Create(*v1alpha1.IapWebTypeAppEngineIamMember) (*v1alpha1.IapWebTypeAppEngineIamMember, error)
-	Update(*v1alpha1.IapWebTypeAppEngineIamMember) (*v1alpha1.IapWebTypeAppEngineIamMember, error)
-	UpdateStatus(*v1alpha1.IapWebTypeAppEngineIamMember) (*v1alpha1.IapWebTypeAppEngineIamMember, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.IapWebTypeAppEngineIamMember, error)
-	List(opts v1.ListOptions) (*v1alpha1.IapWebTypeAppEngineIamMemberList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IapWebTypeAppEngineIamMember, err error)
+	Create(ctx context.Context, iapWebTypeAppEngineIamMember *v1alpha1.IapWebTypeAppEngineIamMember, opts v1.CreateOptions) (*v1alpha1.IapWebTypeAppEngineIamMember, error)
+	Update(ctx context.Context, iapWebTypeAppEngineIamMember *v1alpha1.IapWebTypeAppEngineIamMember, opts v1.UpdateOptions) (*v1alpha1.IapWebTypeAppEngineIamMember, error)
+	UpdateStatus(ctx context.Context, iapWebTypeAppEngineIamMember *v1alpha1.IapWebTypeAppEngineIamMember, opts v1.UpdateOptions) (*v1alpha1.IapWebTypeAppEngineIamMember, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.IapWebTypeAppEngineIamMember, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.IapWebTypeAppEngineIamMemberList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IapWebTypeAppEngineIamMember, err error)
 	IapWebTypeAppEngineIamMemberExpansion
 }
 
@@ -65,20 +66,20 @@ func newIapWebTypeAppEngineIamMembers(c *GoogleV1alpha1Client, namespace string)
 }
 
 // Get takes name of the iapWebTypeAppEngineIamMember, and returns the corresponding iapWebTypeAppEngineIamMember object, and an error if there is any.
-func (c *iapWebTypeAppEngineIamMembers) Get(name string, options v1.GetOptions) (result *v1alpha1.IapWebTypeAppEngineIamMember, err error) {
+func (c *iapWebTypeAppEngineIamMembers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IapWebTypeAppEngineIamMember, err error) {
 	result = &v1alpha1.IapWebTypeAppEngineIamMember{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("iapwebtypeappengineiammembers").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of IapWebTypeAppEngineIamMembers that match those selectors.
-func (c *iapWebTypeAppEngineIamMembers) List(opts v1.ListOptions) (result *v1alpha1.IapWebTypeAppEngineIamMemberList, err error) {
+func (c *iapWebTypeAppEngineIamMembers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IapWebTypeAppEngineIamMemberList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *iapWebTypeAppEngineIamMembers) List(opts v1.ListOptions) (result *v1alp
 		Resource("iapwebtypeappengineiammembers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested iapWebTypeAppEngineIamMembers.
-func (c *iapWebTypeAppEngineIamMembers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *iapWebTypeAppEngineIamMembers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *iapWebTypeAppEngineIamMembers) Watch(opts v1.ListOptions) (watch.Interf
 		Resource("iapwebtypeappengineiammembers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a iapWebTypeAppEngineIamMember and creates it.  Returns the server's representation of the iapWebTypeAppEngineIamMember, and an error, if there is any.
-func (c *iapWebTypeAppEngineIamMembers) Create(iapWebTypeAppEngineIamMember *v1alpha1.IapWebTypeAppEngineIamMember) (result *v1alpha1.IapWebTypeAppEngineIamMember, err error) {
+func (c *iapWebTypeAppEngineIamMembers) Create(ctx context.Context, iapWebTypeAppEngineIamMember *v1alpha1.IapWebTypeAppEngineIamMember, opts v1.CreateOptions) (result *v1alpha1.IapWebTypeAppEngineIamMember, err error) {
 	result = &v1alpha1.IapWebTypeAppEngineIamMember{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("iapwebtypeappengineiammembers").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iapWebTypeAppEngineIamMember).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a iapWebTypeAppEngineIamMember and updates it. Returns the server's representation of the iapWebTypeAppEngineIamMember, and an error, if there is any.
-func (c *iapWebTypeAppEngineIamMembers) Update(iapWebTypeAppEngineIamMember *v1alpha1.IapWebTypeAppEngineIamMember) (result *v1alpha1.IapWebTypeAppEngineIamMember, err error) {
+func (c *iapWebTypeAppEngineIamMembers) Update(ctx context.Context, iapWebTypeAppEngineIamMember *v1alpha1.IapWebTypeAppEngineIamMember, opts v1.UpdateOptions) (result *v1alpha1.IapWebTypeAppEngineIamMember, err error) {
 	result = &v1alpha1.IapWebTypeAppEngineIamMember{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iapwebtypeappengineiammembers").
 		Name(iapWebTypeAppEngineIamMember.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iapWebTypeAppEngineIamMember).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *iapWebTypeAppEngineIamMembers) UpdateStatus(iapWebTypeAppEngineIamMember *v1alpha1.IapWebTypeAppEngineIamMember) (result *v1alpha1.IapWebTypeAppEngineIamMember, err error) {
+func (c *iapWebTypeAppEngineIamMembers) UpdateStatus(ctx context.Context, iapWebTypeAppEngineIamMember *v1alpha1.IapWebTypeAppEngineIamMember, opts v1.UpdateOptions) (result *v1alpha1.IapWebTypeAppEngineIamMember, err error) {
 	result = &v1alpha1.IapWebTypeAppEngineIamMember{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iapwebtypeappengineiammembers").
 		Name(iapWebTypeAppEngineIamMember.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iapWebTypeAppEngineIamMember).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the iapWebTypeAppEngineIamMember and deletes it. Returns an error if one occurs.
-func (c *iapWebTypeAppEngineIamMembers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *iapWebTypeAppEngineIamMembers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iapwebtypeappengineiammembers").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *iapWebTypeAppEngineIamMembers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *iapWebTypeAppEngineIamMembers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iapwebtypeappengineiammembers").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched iapWebTypeAppEngineIamMember.
-func (c *iapWebTypeAppEngineIamMembers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IapWebTypeAppEngineIamMember, err error) {
+func (c *iapWebTypeAppEngineIamMembers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IapWebTypeAppEngineIamMember, err error) {
 	result = &v1alpha1.IapWebTypeAppEngineIamMember{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("iapwebtypeappengineiammembers").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

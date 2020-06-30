@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var devtestwindowsvirtualmachinesResource = schema.GroupVersionResource{Group: "
 var devtestwindowsvirtualmachinesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "DevTestWindowsVirtualMachine"}
 
 // Get takes name of the devTestWindowsVirtualMachine, and returns the corresponding devTestWindowsVirtualMachine object, and an error if there is any.
-func (c *FakeDevTestWindowsVirtualMachines) Get(name string, options v1.GetOptions) (result *v1alpha1.DevTestWindowsVirtualMachine, err error) {
+func (c *FakeDevTestWindowsVirtualMachines) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DevTestWindowsVirtualMachine, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(devtestwindowsvirtualmachinesResource, c.ns, name), &v1alpha1.DevTestWindowsVirtualMachine{})
 
@@ -51,7 +53,7 @@ func (c *FakeDevTestWindowsVirtualMachines) Get(name string, options v1.GetOptio
 }
 
 // List takes label and field selectors, and returns the list of DevTestWindowsVirtualMachines that match those selectors.
-func (c *FakeDevTestWindowsVirtualMachines) List(opts v1.ListOptions) (result *v1alpha1.DevTestWindowsVirtualMachineList, err error) {
+func (c *FakeDevTestWindowsVirtualMachines) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DevTestWindowsVirtualMachineList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(devtestwindowsvirtualmachinesResource, devtestwindowsvirtualmachinesKind, c.ns, opts), &v1alpha1.DevTestWindowsVirtualMachineList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDevTestWindowsVirtualMachines) List(opts v1.ListOptions) (result *v
 }
 
 // Watch returns a watch.Interface that watches the requested devTestWindowsVirtualMachines.
-func (c *FakeDevTestWindowsVirtualMachines) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDevTestWindowsVirtualMachines) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(devtestwindowsvirtualmachinesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a devTestWindowsVirtualMachine and creates it.  Returns the server's representation of the devTestWindowsVirtualMachine, and an error, if there is any.
-func (c *FakeDevTestWindowsVirtualMachines) Create(devTestWindowsVirtualMachine *v1alpha1.DevTestWindowsVirtualMachine) (result *v1alpha1.DevTestWindowsVirtualMachine, err error) {
+func (c *FakeDevTestWindowsVirtualMachines) Create(ctx context.Context, devTestWindowsVirtualMachine *v1alpha1.DevTestWindowsVirtualMachine, opts v1.CreateOptions) (result *v1alpha1.DevTestWindowsVirtualMachine, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(devtestwindowsvirtualmachinesResource, c.ns, devTestWindowsVirtualMachine), &v1alpha1.DevTestWindowsVirtualMachine{})
 
@@ -91,7 +93,7 @@ func (c *FakeDevTestWindowsVirtualMachines) Create(devTestWindowsVirtualMachine 
 }
 
 // Update takes the representation of a devTestWindowsVirtualMachine and updates it. Returns the server's representation of the devTestWindowsVirtualMachine, and an error, if there is any.
-func (c *FakeDevTestWindowsVirtualMachines) Update(devTestWindowsVirtualMachine *v1alpha1.DevTestWindowsVirtualMachine) (result *v1alpha1.DevTestWindowsVirtualMachine, err error) {
+func (c *FakeDevTestWindowsVirtualMachines) Update(ctx context.Context, devTestWindowsVirtualMachine *v1alpha1.DevTestWindowsVirtualMachine, opts v1.UpdateOptions) (result *v1alpha1.DevTestWindowsVirtualMachine, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(devtestwindowsvirtualmachinesResource, c.ns, devTestWindowsVirtualMachine), &v1alpha1.DevTestWindowsVirtualMachine{})
 
@@ -103,7 +105,7 @@ func (c *FakeDevTestWindowsVirtualMachines) Update(devTestWindowsVirtualMachine 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDevTestWindowsVirtualMachines) UpdateStatus(devTestWindowsVirtualMachine *v1alpha1.DevTestWindowsVirtualMachine) (*v1alpha1.DevTestWindowsVirtualMachine, error) {
+func (c *FakeDevTestWindowsVirtualMachines) UpdateStatus(ctx context.Context, devTestWindowsVirtualMachine *v1alpha1.DevTestWindowsVirtualMachine, opts v1.UpdateOptions) (*v1alpha1.DevTestWindowsVirtualMachine, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(devtestwindowsvirtualmachinesResource, "status", c.ns, devTestWindowsVirtualMachine), &v1alpha1.DevTestWindowsVirtualMachine{})
 
@@ -114,7 +116,7 @@ func (c *FakeDevTestWindowsVirtualMachines) UpdateStatus(devTestWindowsVirtualMa
 }
 
 // Delete takes name of the devTestWindowsVirtualMachine and deletes it. Returns an error if one occurs.
-func (c *FakeDevTestWindowsVirtualMachines) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDevTestWindowsVirtualMachines) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(devtestwindowsvirtualmachinesResource, c.ns, name), &v1alpha1.DevTestWindowsVirtualMachine{})
 
@@ -122,15 +124,15 @@ func (c *FakeDevTestWindowsVirtualMachines) Delete(name string, options *v1.Dele
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDevTestWindowsVirtualMachines) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(devtestwindowsvirtualmachinesResource, c.ns, listOptions)
+func (c *FakeDevTestWindowsVirtualMachines) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(devtestwindowsvirtualmachinesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DevTestWindowsVirtualMachineList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched devTestWindowsVirtualMachine.
-func (c *FakeDevTestWindowsVirtualMachines) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DevTestWindowsVirtualMachine, err error) {
+func (c *FakeDevTestWindowsVirtualMachines) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DevTestWindowsVirtualMachine, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(devtestwindowsvirtualmachinesResource, c.ns, name, pt, data, subresources...), &v1alpha1.DevTestWindowsVirtualMachine{})
 

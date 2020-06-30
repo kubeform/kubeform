@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var securityhubproductsubscriptionsResource = schema.GroupVersionResource{Group:
 var securityhubproductsubscriptionsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "SecurityhubProductSubscription"}
 
 // Get takes name of the securityhubProductSubscription, and returns the corresponding securityhubProductSubscription object, and an error if there is any.
-func (c *FakeSecurityhubProductSubscriptions) Get(name string, options v1.GetOptions) (result *v1alpha1.SecurityhubProductSubscription, err error) {
+func (c *FakeSecurityhubProductSubscriptions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SecurityhubProductSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(securityhubproductsubscriptionsResource, c.ns, name), &v1alpha1.SecurityhubProductSubscription{})
 
@@ -51,7 +53,7 @@ func (c *FakeSecurityhubProductSubscriptions) Get(name string, options v1.GetOpt
 }
 
 // List takes label and field selectors, and returns the list of SecurityhubProductSubscriptions that match those selectors.
-func (c *FakeSecurityhubProductSubscriptions) List(opts v1.ListOptions) (result *v1alpha1.SecurityhubProductSubscriptionList, err error) {
+func (c *FakeSecurityhubProductSubscriptions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SecurityhubProductSubscriptionList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(securityhubproductsubscriptionsResource, securityhubproductsubscriptionsKind, c.ns, opts), &v1alpha1.SecurityhubProductSubscriptionList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSecurityhubProductSubscriptions) List(opts v1.ListOptions) (result 
 }
 
 // Watch returns a watch.Interface that watches the requested securityhubProductSubscriptions.
-func (c *FakeSecurityhubProductSubscriptions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSecurityhubProductSubscriptions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(securityhubproductsubscriptionsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a securityhubProductSubscription and creates it.  Returns the server's representation of the securityhubProductSubscription, and an error, if there is any.
-func (c *FakeSecurityhubProductSubscriptions) Create(securityhubProductSubscription *v1alpha1.SecurityhubProductSubscription) (result *v1alpha1.SecurityhubProductSubscription, err error) {
+func (c *FakeSecurityhubProductSubscriptions) Create(ctx context.Context, securityhubProductSubscription *v1alpha1.SecurityhubProductSubscription, opts v1.CreateOptions) (result *v1alpha1.SecurityhubProductSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(securityhubproductsubscriptionsResource, c.ns, securityhubProductSubscription), &v1alpha1.SecurityhubProductSubscription{})
 
@@ -91,7 +93,7 @@ func (c *FakeSecurityhubProductSubscriptions) Create(securityhubProductSubscript
 }
 
 // Update takes the representation of a securityhubProductSubscription and updates it. Returns the server's representation of the securityhubProductSubscription, and an error, if there is any.
-func (c *FakeSecurityhubProductSubscriptions) Update(securityhubProductSubscription *v1alpha1.SecurityhubProductSubscription) (result *v1alpha1.SecurityhubProductSubscription, err error) {
+func (c *FakeSecurityhubProductSubscriptions) Update(ctx context.Context, securityhubProductSubscription *v1alpha1.SecurityhubProductSubscription, opts v1.UpdateOptions) (result *v1alpha1.SecurityhubProductSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(securityhubproductsubscriptionsResource, c.ns, securityhubProductSubscription), &v1alpha1.SecurityhubProductSubscription{})
 
@@ -103,7 +105,7 @@ func (c *FakeSecurityhubProductSubscriptions) Update(securityhubProductSubscript
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSecurityhubProductSubscriptions) UpdateStatus(securityhubProductSubscription *v1alpha1.SecurityhubProductSubscription) (*v1alpha1.SecurityhubProductSubscription, error) {
+func (c *FakeSecurityhubProductSubscriptions) UpdateStatus(ctx context.Context, securityhubProductSubscription *v1alpha1.SecurityhubProductSubscription, opts v1.UpdateOptions) (*v1alpha1.SecurityhubProductSubscription, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(securityhubproductsubscriptionsResource, "status", c.ns, securityhubProductSubscription), &v1alpha1.SecurityhubProductSubscription{})
 
@@ -114,7 +116,7 @@ func (c *FakeSecurityhubProductSubscriptions) UpdateStatus(securityhubProductSub
 }
 
 // Delete takes name of the securityhubProductSubscription and deletes it. Returns an error if one occurs.
-func (c *FakeSecurityhubProductSubscriptions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSecurityhubProductSubscriptions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(securityhubproductsubscriptionsResource, c.ns, name), &v1alpha1.SecurityhubProductSubscription{})
 
@@ -122,15 +124,15 @@ func (c *FakeSecurityhubProductSubscriptions) Delete(name string, options *v1.De
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSecurityhubProductSubscriptions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(securityhubproductsubscriptionsResource, c.ns, listOptions)
+func (c *FakeSecurityhubProductSubscriptions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(securityhubproductsubscriptionsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SecurityhubProductSubscriptionList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched securityhubProductSubscription.
-func (c *FakeSecurityhubProductSubscriptions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SecurityhubProductSubscription, err error) {
+func (c *FakeSecurityhubProductSubscriptions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SecurityhubProductSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(securityhubproductsubscriptionsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SecurityhubProductSubscription{})
 

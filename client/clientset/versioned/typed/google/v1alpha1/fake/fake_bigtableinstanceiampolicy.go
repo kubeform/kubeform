@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var bigtableinstanceiampoliciesResource = schema.GroupVersionResource{Group: "go
 var bigtableinstanceiampoliciesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "BigtableInstanceIamPolicy"}
 
 // Get takes name of the bigtableInstanceIamPolicy, and returns the corresponding bigtableInstanceIamPolicy object, and an error if there is any.
-func (c *FakeBigtableInstanceIamPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.BigtableInstanceIamPolicy, err error) {
+func (c *FakeBigtableInstanceIamPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BigtableInstanceIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(bigtableinstanceiampoliciesResource, c.ns, name), &v1alpha1.BigtableInstanceIamPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeBigtableInstanceIamPolicies) Get(name string, options v1.GetOptions
 }
 
 // List takes label and field selectors, and returns the list of BigtableInstanceIamPolicies that match those selectors.
-func (c *FakeBigtableInstanceIamPolicies) List(opts v1.ListOptions) (result *v1alpha1.BigtableInstanceIamPolicyList, err error) {
+func (c *FakeBigtableInstanceIamPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BigtableInstanceIamPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(bigtableinstanceiampoliciesResource, bigtableinstanceiampoliciesKind, c.ns, opts), &v1alpha1.BigtableInstanceIamPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeBigtableInstanceIamPolicies) List(opts v1.ListOptions) (result *v1a
 }
 
 // Watch returns a watch.Interface that watches the requested bigtableInstanceIamPolicies.
-func (c *FakeBigtableInstanceIamPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeBigtableInstanceIamPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(bigtableinstanceiampoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a bigtableInstanceIamPolicy and creates it.  Returns the server's representation of the bigtableInstanceIamPolicy, and an error, if there is any.
-func (c *FakeBigtableInstanceIamPolicies) Create(bigtableInstanceIamPolicy *v1alpha1.BigtableInstanceIamPolicy) (result *v1alpha1.BigtableInstanceIamPolicy, err error) {
+func (c *FakeBigtableInstanceIamPolicies) Create(ctx context.Context, bigtableInstanceIamPolicy *v1alpha1.BigtableInstanceIamPolicy, opts v1.CreateOptions) (result *v1alpha1.BigtableInstanceIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(bigtableinstanceiampoliciesResource, c.ns, bigtableInstanceIamPolicy), &v1alpha1.BigtableInstanceIamPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeBigtableInstanceIamPolicies) Create(bigtableInstanceIamPolicy *v1al
 }
 
 // Update takes the representation of a bigtableInstanceIamPolicy and updates it. Returns the server's representation of the bigtableInstanceIamPolicy, and an error, if there is any.
-func (c *FakeBigtableInstanceIamPolicies) Update(bigtableInstanceIamPolicy *v1alpha1.BigtableInstanceIamPolicy) (result *v1alpha1.BigtableInstanceIamPolicy, err error) {
+func (c *FakeBigtableInstanceIamPolicies) Update(ctx context.Context, bigtableInstanceIamPolicy *v1alpha1.BigtableInstanceIamPolicy, opts v1.UpdateOptions) (result *v1alpha1.BigtableInstanceIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(bigtableinstanceiampoliciesResource, c.ns, bigtableInstanceIamPolicy), &v1alpha1.BigtableInstanceIamPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeBigtableInstanceIamPolicies) Update(bigtableInstanceIamPolicy *v1al
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeBigtableInstanceIamPolicies) UpdateStatus(bigtableInstanceIamPolicy *v1alpha1.BigtableInstanceIamPolicy) (*v1alpha1.BigtableInstanceIamPolicy, error) {
+func (c *FakeBigtableInstanceIamPolicies) UpdateStatus(ctx context.Context, bigtableInstanceIamPolicy *v1alpha1.BigtableInstanceIamPolicy, opts v1.UpdateOptions) (*v1alpha1.BigtableInstanceIamPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(bigtableinstanceiampoliciesResource, "status", c.ns, bigtableInstanceIamPolicy), &v1alpha1.BigtableInstanceIamPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeBigtableInstanceIamPolicies) UpdateStatus(bigtableInstanceIamPolicy
 }
 
 // Delete takes name of the bigtableInstanceIamPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeBigtableInstanceIamPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeBigtableInstanceIamPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(bigtableinstanceiampoliciesResource, c.ns, name), &v1alpha1.BigtableInstanceIamPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeBigtableInstanceIamPolicies) Delete(name string, options *v1.Delete
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeBigtableInstanceIamPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(bigtableinstanceiampoliciesResource, c.ns, listOptions)
+func (c *FakeBigtableInstanceIamPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(bigtableinstanceiampoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.BigtableInstanceIamPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched bigtableInstanceIamPolicy.
-func (c *FakeBigtableInstanceIamPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BigtableInstanceIamPolicy, err error) {
+func (c *FakeBigtableInstanceIamPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BigtableInstanceIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(bigtableinstanceiampoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.BigtableInstanceIamPolicy{})
 

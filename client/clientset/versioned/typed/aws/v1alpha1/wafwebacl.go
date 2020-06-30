@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type WafWebACLsGetter interface {
 
 // WafWebACLInterface has methods to work with WafWebACL resources.
 type WafWebACLInterface interface {
-	Create(*v1alpha1.WafWebACL) (*v1alpha1.WafWebACL, error)
-	Update(*v1alpha1.WafWebACL) (*v1alpha1.WafWebACL, error)
-	UpdateStatus(*v1alpha1.WafWebACL) (*v1alpha1.WafWebACL, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.WafWebACL, error)
-	List(opts v1.ListOptions) (*v1alpha1.WafWebACLList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.WafWebACL, err error)
+	Create(ctx context.Context, wafWebACL *v1alpha1.WafWebACL, opts v1.CreateOptions) (*v1alpha1.WafWebACL, error)
+	Update(ctx context.Context, wafWebACL *v1alpha1.WafWebACL, opts v1.UpdateOptions) (*v1alpha1.WafWebACL, error)
+	UpdateStatus(ctx context.Context, wafWebACL *v1alpha1.WafWebACL, opts v1.UpdateOptions) (*v1alpha1.WafWebACL, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.WafWebACL, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.WafWebACLList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.WafWebACL, err error)
 	WafWebACLExpansion
 }
 
@@ -65,20 +66,20 @@ func newWafWebACLs(c *AwsV1alpha1Client, namespace string) *wafWebACLs {
 }
 
 // Get takes name of the wafWebACL, and returns the corresponding wafWebACL object, and an error if there is any.
-func (c *wafWebACLs) Get(name string, options v1.GetOptions) (result *v1alpha1.WafWebACL, err error) {
+func (c *wafWebACLs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.WafWebACL, err error) {
 	result = &v1alpha1.WafWebACL{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("wafwebacls").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of WafWebACLs that match those selectors.
-func (c *wafWebACLs) List(opts v1.ListOptions) (result *v1alpha1.WafWebACLList, err error) {
+func (c *wafWebACLs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.WafWebACLList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *wafWebACLs) List(opts v1.ListOptions) (result *v1alpha1.WafWebACLList, 
 		Resource("wafwebacls").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested wafWebACLs.
-func (c *wafWebACLs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *wafWebACLs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *wafWebACLs) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("wafwebacls").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a wafWebACL and creates it.  Returns the server's representation of the wafWebACL, and an error, if there is any.
-func (c *wafWebACLs) Create(wafWebACL *v1alpha1.WafWebACL) (result *v1alpha1.WafWebACL, err error) {
+func (c *wafWebACLs) Create(ctx context.Context, wafWebACL *v1alpha1.WafWebACL, opts v1.CreateOptions) (result *v1alpha1.WafWebACL, err error) {
 	result = &v1alpha1.WafWebACL{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("wafwebacls").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(wafWebACL).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a wafWebACL and updates it. Returns the server's representation of the wafWebACL, and an error, if there is any.
-func (c *wafWebACLs) Update(wafWebACL *v1alpha1.WafWebACL) (result *v1alpha1.WafWebACL, err error) {
+func (c *wafWebACLs) Update(ctx context.Context, wafWebACL *v1alpha1.WafWebACL, opts v1.UpdateOptions) (result *v1alpha1.WafWebACL, err error) {
 	result = &v1alpha1.WafWebACL{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("wafwebacls").
 		Name(wafWebACL.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(wafWebACL).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *wafWebACLs) UpdateStatus(wafWebACL *v1alpha1.WafWebACL) (result *v1alpha1.WafWebACL, err error) {
+func (c *wafWebACLs) UpdateStatus(ctx context.Context, wafWebACL *v1alpha1.WafWebACL, opts v1.UpdateOptions) (result *v1alpha1.WafWebACL, err error) {
 	result = &v1alpha1.WafWebACL{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("wafwebacls").
 		Name(wafWebACL.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(wafWebACL).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the wafWebACL and deletes it. Returns an error if one occurs.
-func (c *wafWebACLs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *wafWebACLs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("wafwebacls").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *wafWebACLs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *wafWebACLs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("wafwebacls").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched wafWebACL.
-func (c *wafWebACLs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.WafWebACL, err error) {
+func (c *wafWebACLs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.WafWebACL, err error) {
 	result = &v1alpha1.WafWebACL{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("wafwebacls").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

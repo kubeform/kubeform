@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var azureadserviceprincipalpasswordsResource = schema.GroupVersionResource{Group
 var azureadserviceprincipalpasswordsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "AzureadServicePrincipalPassword"}
 
 // Get takes name of the azureadServicePrincipalPassword, and returns the corresponding azureadServicePrincipalPassword object, and an error if there is any.
-func (c *FakeAzureadServicePrincipalPasswords) Get(name string, options v1.GetOptions) (result *v1alpha1.AzureadServicePrincipalPassword, err error) {
+func (c *FakeAzureadServicePrincipalPasswords) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AzureadServicePrincipalPassword, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(azureadserviceprincipalpasswordsResource, c.ns, name), &v1alpha1.AzureadServicePrincipalPassword{})
 
@@ -51,7 +53,7 @@ func (c *FakeAzureadServicePrincipalPasswords) Get(name string, options v1.GetOp
 }
 
 // List takes label and field selectors, and returns the list of AzureadServicePrincipalPasswords that match those selectors.
-func (c *FakeAzureadServicePrincipalPasswords) List(opts v1.ListOptions) (result *v1alpha1.AzureadServicePrincipalPasswordList, err error) {
+func (c *FakeAzureadServicePrincipalPasswords) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AzureadServicePrincipalPasswordList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(azureadserviceprincipalpasswordsResource, azureadserviceprincipalpasswordsKind, c.ns, opts), &v1alpha1.AzureadServicePrincipalPasswordList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAzureadServicePrincipalPasswords) List(opts v1.ListOptions) (result
 }
 
 // Watch returns a watch.Interface that watches the requested azureadServicePrincipalPasswords.
-func (c *FakeAzureadServicePrincipalPasswords) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAzureadServicePrincipalPasswords) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(azureadserviceprincipalpasswordsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a azureadServicePrincipalPassword and creates it.  Returns the server's representation of the azureadServicePrincipalPassword, and an error, if there is any.
-func (c *FakeAzureadServicePrincipalPasswords) Create(azureadServicePrincipalPassword *v1alpha1.AzureadServicePrincipalPassword) (result *v1alpha1.AzureadServicePrincipalPassword, err error) {
+func (c *FakeAzureadServicePrincipalPasswords) Create(ctx context.Context, azureadServicePrincipalPassword *v1alpha1.AzureadServicePrincipalPassword, opts v1.CreateOptions) (result *v1alpha1.AzureadServicePrincipalPassword, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(azureadserviceprincipalpasswordsResource, c.ns, azureadServicePrincipalPassword), &v1alpha1.AzureadServicePrincipalPassword{})
 
@@ -91,7 +93,7 @@ func (c *FakeAzureadServicePrincipalPasswords) Create(azureadServicePrincipalPas
 }
 
 // Update takes the representation of a azureadServicePrincipalPassword and updates it. Returns the server's representation of the azureadServicePrincipalPassword, and an error, if there is any.
-func (c *FakeAzureadServicePrincipalPasswords) Update(azureadServicePrincipalPassword *v1alpha1.AzureadServicePrincipalPassword) (result *v1alpha1.AzureadServicePrincipalPassword, err error) {
+func (c *FakeAzureadServicePrincipalPasswords) Update(ctx context.Context, azureadServicePrincipalPassword *v1alpha1.AzureadServicePrincipalPassword, opts v1.UpdateOptions) (result *v1alpha1.AzureadServicePrincipalPassword, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(azureadserviceprincipalpasswordsResource, c.ns, azureadServicePrincipalPassword), &v1alpha1.AzureadServicePrincipalPassword{})
 
@@ -103,7 +105,7 @@ func (c *FakeAzureadServicePrincipalPasswords) Update(azureadServicePrincipalPas
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAzureadServicePrincipalPasswords) UpdateStatus(azureadServicePrincipalPassword *v1alpha1.AzureadServicePrincipalPassword) (*v1alpha1.AzureadServicePrincipalPassword, error) {
+func (c *FakeAzureadServicePrincipalPasswords) UpdateStatus(ctx context.Context, azureadServicePrincipalPassword *v1alpha1.AzureadServicePrincipalPassword, opts v1.UpdateOptions) (*v1alpha1.AzureadServicePrincipalPassword, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(azureadserviceprincipalpasswordsResource, "status", c.ns, azureadServicePrincipalPassword), &v1alpha1.AzureadServicePrincipalPassword{})
 
@@ -114,7 +116,7 @@ func (c *FakeAzureadServicePrincipalPasswords) UpdateStatus(azureadServicePrinci
 }
 
 // Delete takes name of the azureadServicePrincipalPassword and deletes it. Returns an error if one occurs.
-func (c *FakeAzureadServicePrincipalPasswords) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAzureadServicePrincipalPasswords) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(azureadserviceprincipalpasswordsResource, c.ns, name), &v1alpha1.AzureadServicePrincipalPassword{})
 
@@ -122,15 +124,15 @@ func (c *FakeAzureadServicePrincipalPasswords) Delete(name string, options *v1.D
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAzureadServicePrincipalPasswords) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(azureadserviceprincipalpasswordsResource, c.ns, listOptions)
+func (c *FakeAzureadServicePrincipalPasswords) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(azureadserviceprincipalpasswordsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AzureadServicePrincipalPasswordList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched azureadServicePrincipalPassword.
-func (c *FakeAzureadServicePrincipalPasswords) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AzureadServicePrincipalPassword, err error) {
+func (c *FakeAzureadServicePrincipalPasswords) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AzureadServicePrincipalPassword, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(azureadserviceprincipalpasswordsResource, c.ns, name, pt, data, subresources...), &v1alpha1.AzureadServicePrincipalPassword{})
 

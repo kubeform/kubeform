@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cognitouserpoolsResource = schema.GroupVersionResource{Group: "aws.kubeform.
 var cognitouserpoolsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "CognitoUserPool"}
 
 // Get takes name of the cognitoUserPool, and returns the corresponding cognitoUserPool object, and an error if there is any.
-func (c *FakeCognitoUserPools) Get(name string, options v1.GetOptions) (result *v1alpha1.CognitoUserPool, err error) {
+func (c *FakeCognitoUserPools) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CognitoUserPool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cognitouserpoolsResource, c.ns, name), &v1alpha1.CognitoUserPool{})
 
@@ -51,7 +53,7 @@ func (c *FakeCognitoUserPools) Get(name string, options v1.GetOptions) (result *
 }
 
 // List takes label and field selectors, and returns the list of CognitoUserPools that match those selectors.
-func (c *FakeCognitoUserPools) List(opts v1.ListOptions) (result *v1alpha1.CognitoUserPoolList, err error) {
+func (c *FakeCognitoUserPools) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CognitoUserPoolList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cognitouserpoolsResource, cognitouserpoolsKind, c.ns, opts), &v1alpha1.CognitoUserPoolList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCognitoUserPools) List(opts v1.ListOptions) (result *v1alpha1.Cogni
 }
 
 // Watch returns a watch.Interface that watches the requested cognitoUserPools.
-func (c *FakeCognitoUserPools) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCognitoUserPools) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cognitouserpoolsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cognitoUserPool and creates it.  Returns the server's representation of the cognitoUserPool, and an error, if there is any.
-func (c *FakeCognitoUserPools) Create(cognitoUserPool *v1alpha1.CognitoUserPool) (result *v1alpha1.CognitoUserPool, err error) {
+func (c *FakeCognitoUserPools) Create(ctx context.Context, cognitoUserPool *v1alpha1.CognitoUserPool, opts v1.CreateOptions) (result *v1alpha1.CognitoUserPool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cognitouserpoolsResource, c.ns, cognitoUserPool), &v1alpha1.CognitoUserPool{})
 
@@ -91,7 +93,7 @@ func (c *FakeCognitoUserPools) Create(cognitoUserPool *v1alpha1.CognitoUserPool)
 }
 
 // Update takes the representation of a cognitoUserPool and updates it. Returns the server's representation of the cognitoUserPool, and an error, if there is any.
-func (c *FakeCognitoUserPools) Update(cognitoUserPool *v1alpha1.CognitoUserPool) (result *v1alpha1.CognitoUserPool, err error) {
+func (c *FakeCognitoUserPools) Update(ctx context.Context, cognitoUserPool *v1alpha1.CognitoUserPool, opts v1.UpdateOptions) (result *v1alpha1.CognitoUserPool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cognitouserpoolsResource, c.ns, cognitoUserPool), &v1alpha1.CognitoUserPool{})
 
@@ -103,7 +105,7 @@ func (c *FakeCognitoUserPools) Update(cognitoUserPool *v1alpha1.CognitoUserPool)
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCognitoUserPools) UpdateStatus(cognitoUserPool *v1alpha1.CognitoUserPool) (*v1alpha1.CognitoUserPool, error) {
+func (c *FakeCognitoUserPools) UpdateStatus(ctx context.Context, cognitoUserPool *v1alpha1.CognitoUserPool, opts v1.UpdateOptions) (*v1alpha1.CognitoUserPool, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cognitouserpoolsResource, "status", c.ns, cognitoUserPool), &v1alpha1.CognitoUserPool{})
 
@@ -114,7 +116,7 @@ func (c *FakeCognitoUserPools) UpdateStatus(cognitoUserPool *v1alpha1.CognitoUse
 }
 
 // Delete takes name of the cognitoUserPool and deletes it. Returns an error if one occurs.
-func (c *FakeCognitoUserPools) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCognitoUserPools) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cognitouserpoolsResource, c.ns, name), &v1alpha1.CognitoUserPool{})
 
@@ -122,15 +124,15 @@ func (c *FakeCognitoUserPools) Delete(name string, options *v1.DeleteOptions) er
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCognitoUserPools) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cognitouserpoolsResource, c.ns, listOptions)
+func (c *FakeCognitoUserPools) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cognitouserpoolsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CognitoUserPoolList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cognitoUserPool.
-func (c *FakeCognitoUserPools) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CognitoUserPool, err error) {
+func (c *FakeCognitoUserPools) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CognitoUserPool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cognitouserpoolsResource, c.ns, name, pt, data, subresources...), &v1alpha1.CognitoUserPool{})
 

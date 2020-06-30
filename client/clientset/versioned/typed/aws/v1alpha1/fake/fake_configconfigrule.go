@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var configconfigrulesResource = schema.GroupVersionResource{Group: "aws.kubeform
 var configconfigrulesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ConfigConfigRule"}
 
 // Get takes name of the configConfigRule, and returns the corresponding configConfigRule object, and an error if there is any.
-func (c *FakeConfigConfigRules) Get(name string, options v1.GetOptions) (result *v1alpha1.ConfigConfigRule, err error) {
+func (c *FakeConfigConfigRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ConfigConfigRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(configconfigrulesResource, c.ns, name), &v1alpha1.ConfigConfigRule{})
 
@@ -51,7 +53,7 @@ func (c *FakeConfigConfigRules) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of ConfigConfigRules that match those selectors.
-func (c *FakeConfigConfigRules) List(opts v1.ListOptions) (result *v1alpha1.ConfigConfigRuleList, err error) {
+func (c *FakeConfigConfigRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ConfigConfigRuleList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(configconfigrulesResource, configconfigrulesKind, c.ns, opts), &v1alpha1.ConfigConfigRuleList{})
 
@@ -73,14 +75,14 @@ func (c *FakeConfigConfigRules) List(opts v1.ListOptions) (result *v1alpha1.Conf
 }
 
 // Watch returns a watch.Interface that watches the requested configConfigRules.
-func (c *FakeConfigConfigRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeConfigConfigRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(configconfigrulesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a configConfigRule and creates it.  Returns the server's representation of the configConfigRule, and an error, if there is any.
-func (c *FakeConfigConfigRules) Create(configConfigRule *v1alpha1.ConfigConfigRule) (result *v1alpha1.ConfigConfigRule, err error) {
+func (c *FakeConfigConfigRules) Create(ctx context.Context, configConfigRule *v1alpha1.ConfigConfigRule, opts v1.CreateOptions) (result *v1alpha1.ConfigConfigRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(configconfigrulesResource, c.ns, configConfigRule), &v1alpha1.ConfigConfigRule{})
 
@@ -91,7 +93,7 @@ func (c *FakeConfigConfigRules) Create(configConfigRule *v1alpha1.ConfigConfigRu
 }
 
 // Update takes the representation of a configConfigRule and updates it. Returns the server's representation of the configConfigRule, and an error, if there is any.
-func (c *FakeConfigConfigRules) Update(configConfigRule *v1alpha1.ConfigConfigRule) (result *v1alpha1.ConfigConfigRule, err error) {
+func (c *FakeConfigConfigRules) Update(ctx context.Context, configConfigRule *v1alpha1.ConfigConfigRule, opts v1.UpdateOptions) (result *v1alpha1.ConfigConfigRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(configconfigrulesResource, c.ns, configConfigRule), &v1alpha1.ConfigConfigRule{})
 
@@ -103,7 +105,7 @@ func (c *FakeConfigConfigRules) Update(configConfigRule *v1alpha1.ConfigConfigRu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeConfigConfigRules) UpdateStatus(configConfigRule *v1alpha1.ConfigConfigRule) (*v1alpha1.ConfigConfigRule, error) {
+func (c *FakeConfigConfigRules) UpdateStatus(ctx context.Context, configConfigRule *v1alpha1.ConfigConfigRule, opts v1.UpdateOptions) (*v1alpha1.ConfigConfigRule, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(configconfigrulesResource, "status", c.ns, configConfigRule), &v1alpha1.ConfigConfigRule{})
 
@@ -114,7 +116,7 @@ func (c *FakeConfigConfigRules) UpdateStatus(configConfigRule *v1alpha1.ConfigCo
 }
 
 // Delete takes name of the configConfigRule and deletes it. Returns an error if one occurs.
-func (c *FakeConfigConfigRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeConfigConfigRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(configconfigrulesResource, c.ns, name), &v1alpha1.ConfigConfigRule{})
 
@@ -122,15 +124,15 @@ func (c *FakeConfigConfigRules) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeConfigConfigRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(configconfigrulesResource, c.ns, listOptions)
+func (c *FakeConfigConfigRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(configconfigrulesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ConfigConfigRuleList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched configConfigRule.
-func (c *FakeConfigConfigRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ConfigConfigRule, err error) {
+func (c *FakeConfigConfigRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ConfigConfigRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(configconfigrulesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ConfigConfigRule{})
 

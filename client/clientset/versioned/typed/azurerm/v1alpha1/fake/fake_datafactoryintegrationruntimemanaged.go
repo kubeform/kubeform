@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var datafactoryintegrationruntimemanagedsResource = schema.GroupVersionResource{
 var datafactoryintegrationruntimemanagedsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "DataFactoryIntegrationRuntimeManaged"}
 
 // Get takes name of the dataFactoryIntegrationRuntimeManaged, and returns the corresponding dataFactoryIntegrationRuntimeManaged object, and an error if there is any.
-func (c *FakeDataFactoryIntegrationRuntimeManageds) Get(name string, options v1.GetOptions) (result *v1alpha1.DataFactoryIntegrationRuntimeManaged, err error) {
+func (c *FakeDataFactoryIntegrationRuntimeManageds) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DataFactoryIntegrationRuntimeManaged, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(datafactoryintegrationruntimemanagedsResource, c.ns, name), &v1alpha1.DataFactoryIntegrationRuntimeManaged{})
 
@@ -51,7 +53,7 @@ func (c *FakeDataFactoryIntegrationRuntimeManageds) Get(name string, options v1.
 }
 
 // List takes label and field selectors, and returns the list of DataFactoryIntegrationRuntimeManageds that match those selectors.
-func (c *FakeDataFactoryIntegrationRuntimeManageds) List(opts v1.ListOptions) (result *v1alpha1.DataFactoryIntegrationRuntimeManagedList, err error) {
+func (c *FakeDataFactoryIntegrationRuntimeManageds) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DataFactoryIntegrationRuntimeManagedList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(datafactoryintegrationruntimemanagedsResource, datafactoryintegrationruntimemanagedsKind, c.ns, opts), &v1alpha1.DataFactoryIntegrationRuntimeManagedList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDataFactoryIntegrationRuntimeManageds) List(opts v1.ListOptions) (r
 }
 
 // Watch returns a watch.Interface that watches the requested dataFactoryIntegrationRuntimeManageds.
-func (c *FakeDataFactoryIntegrationRuntimeManageds) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDataFactoryIntegrationRuntimeManageds) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(datafactoryintegrationruntimemanagedsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dataFactoryIntegrationRuntimeManaged and creates it.  Returns the server's representation of the dataFactoryIntegrationRuntimeManaged, and an error, if there is any.
-func (c *FakeDataFactoryIntegrationRuntimeManageds) Create(dataFactoryIntegrationRuntimeManaged *v1alpha1.DataFactoryIntegrationRuntimeManaged) (result *v1alpha1.DataFactoryIntegrationRuntimeManaged, err error) {
+func (c *FakeDataFactoryIntegrationRuntimeManageds) Create(ctx context.Context, dataFactoryIntegrationRuntimeManaged *v1alpha1.DataFactoryIntegrationRuntimeManaged, opts v1.CreateOptions) (result *v1alpha1.DataFactoryIntegrationRuntimeManaged, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(datafactoryintegrationruntimemanagedsResource, c.ns, dataFactoryIntegrationRuntimeManaged), &v1alpha1.DataFactoryIntegrationRuntimeManaged{})
 
@@ -91,7 +93,7 @@ func (c *FakeDataFactoryIntegrationRuntimeManageds) Create(dataFactoryIntegratio
 }
 
 // Update takes the representation of a dataFactoryIntegrationRuntimeManaged and updates it. Returns the server's representation of the dataFactoryIntegrationRuntimeManaged, and an error, if there is any.
-func (c *FakeDataFactoryIntegrationRuntimeManageds) Update(dataFactoryIntegrationRuntimeManaged *v1alpha1.DataFactoryIntegrationRuntimeManaged) (result *v1alpha1.DataFactoryIntegrationRuntimeManaged, err error) {
+func (c *FakeDataFactoryIntegrationRuntimeManageds) Update(ctx context.Context, dataFactoryIntegrationRuntimeManaged *v1alpha1.DataFactoryIntegrationRuntimeManaged, opts v1.UpdateOptions) (result *v1alpha1.DataFactoryIntegrationRuntimeManaged, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(datafactoryintegrationruntimemanagedsResource, c.ns, dataFactoryIntegrationRuntimeManaged), &v1alpha1.DataFactoryIntegrationRuntimeManaged{})
 
@@ -103,7 +105,7 @@ func (c *FakeDataFactoryIntegrationRuntimeManageds) Update(dataFactoryIntegratio
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDataFactoryIntegrationRuntimeManageds) UpdateStatus(dataFactoryIntegrationRuntimeManaged *v1alpha1.DataFactoryIntegrationRuntimeManaged) (*v1alpha1.DataFactoryIntegrationRuntimeManaged, error) {
+func (c *FakeDataFactoryIntegrationRuntimeManageds) UpdateStatus(ctx context.Context, dataFactoryIntegrationRuntimeManaged *v1alpha1.DataFactoryIntegrationRuntimeManaged, opts v1.UpdateOptions) (*v1alpha1.DataFactoryIntegrationRuntimeManaged, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(datafactoryintegrationruntimemanagedsResource, "status", c.ns, dataFactoryIntegrationRuntimeManaged), &v1alpha1.DataFactoryIntegrationRuntimeManaged{})
 
@@ -114,7 +116,7 @@ func (c *FakeDataFactoryIntegrationRuntimeManageds) UpdateStatus(dataFactoryInte
 }
 
 // Delete takes name of the dataFactoryIntegrationRuntimeManaged and deletes it. Returns an error if one occurs.
-func (c *FakeDataFactoryIntegrationRuntimeManageds) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDataFactoryIntegrationRuntimeManageds) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(datafactoryintegrationruntimemanagedsResource, c.ns, name), &v1alpha1.DataFactoryIntegrationRuntimeManaged{})
 
@@ -122,15 +124,15 @@ func (c *FakeDataFactoryIntegrationRuntimeManageds) Delete(name string, options 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDataFactoryIntegrationRuntimeManageds) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(datafactoryintegrationruntimemanagedsResource, c.ns, listOptions)
+func (c *FakeDataFactoryIntegrationRuntimeManageds) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(datafactoryintegrationruntimemanagedsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DataFactoryIntegrationRuntimeManagedList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dataFactoryIntegrationRuntimeManaged.
-func (c *FakeDataFactoryIntegrationRuntimeManageds) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataFactoryIntegrationRuntimeManaged, err error) {
+func (c *FakeDataFactoryIntegrationRuntimeManageds) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataFactoryIntegrationRuntimeManaged, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(datafactoryintegrationruntimemanagedsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DataFactoryIntegrationRuntimeManaged{})
 

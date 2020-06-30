@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type ConfigConfigRulesGetter interface {
 
 // ConfigConfigRuleInterface has methods to work with ConfigConfigRule resources.
 type ConfigConfigRuleInterface interface {
-	Create(*v1alpha1.ConfigConfigRule) (*v1alpha1.ConfigConfigRule, error)
-	Update(*v1alpha1.ConfigConfigRule) (*v1alpha1.ConfigConfigRule, error)
-	UpdateStatus(*v1alpha1.ConfigConfigRule) (*v1alpha1.ConfigConfigRule, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ConfigConfigRule, error)
-	List(opts v1.ListOptions) (*v1alpha1.ConfigConfigRuleList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ConfigConfigRule, err error)
+	Create(ctx context.Context, configConfigRule *v1alpha1.ConfigConfigRule, opts v1.CreateOptions) (*v1alpha1.ConfigConfigRule, error)
+	Update(ctx context.Context, configConfigRule *v1alpha1.ConfigConfigRule, opts v1.UpdateOptions) (*v1alpha1.ConfigConfigRule, error)
+	UpdateStatus(ctx context.Context, configConfigRule *v1alpha1.ConfigConfigRule, opts v1.UpdateOptions) (*v1alpha1.ConfigConfigRule, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ConfigConfigRule, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ConfigConfigRuleList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ConfigConfigRule, err error)
 	ConfigConfigRuleExpansion
 }
 
@@ -65,20 +66,20 @@ func newConfigConfigRules(c *AwsV1alpha1Client, namespace string) *configConfigR
 }
 
 // Get takes name of the configConfigRule, and returns the corresponding configConfigRule object, and an error if there is any.
-func (c *configConfigRules) Get(name string, options v1.GetOptions) (result *v1alpha1.ConfigConfigRule, err error) {
+func (c *configConfigRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ConfigConfigRule, err error) {
 	result = &v1alpha1.ConfigConfigRule{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("configconfigrules").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ConfigConfigRules that match those selectors.
-func (c *configConfigRules) List(opts v1.ListOptions) (result *v1alpha1.ConfigConfigRuleList, err error) {
+func (c *configConfigRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ConfigConfigRuleList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *configConfigRules) List(opts v1.ListOptions) (result *v1alpha1.ConfigCo
 		Resource("configconfigrules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested configConfigRules.
-func (c *configConfigRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *configConfigRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *configConfigRules) Watch(opts v1.ListOptions) (watch.Interface, error) 
 		Resource("configconfigrules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a configConfigRule and creates it.  Returns the server's representation of the configConfigRule, and an error, if there is any.
-func (c *configConfigRules) Create(configConfigRule *v1alpha1.ConfigConfigRule) (result *v1alpha1.ConfigConfigRule, err error) {
+func (c *configConfigRules) Create(ctx context.Context, configConfigRule *v1alpha1.ConfigConfigRule, opts v1.CreateOptions) (result *v1alpha1.ConfigConfigRule, err error) {
 	result = &v1alpha1.ConfigConfigRule{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("configconfigrules").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(configConfigRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a configConfigRule and updates it. Returns the server's representation of the configConfigRule, and an error, if there is any.
-func (c *configConfigRules) Update(configConfigRule *v1alpha1.ConfigConfigRule) (result *v1alpha1.ConfigConfigRule, err error) {
+func (c *configConfigRules) Update(ctx context.Context, configConfigRule *v1alpha1.ConfigConfigRule, opts v1.UpdateOptions) (result *v1alpha1.ConfigConfigRule, err error) {
 	result = &v1alpha1.ConfigConfigRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("configconfigrules").
 		Name(configConfigRule.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(configConfigRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *configConfigRules) UpdateStatus(configConfigRule *v1alpha1.ConfigConfigRule) (result *v1alpha1.ConfigConfigRule, err error) {
+func (c *configConfigRules) UpdateStatus(ctx context.Context, configConfigRule *v1alpha1.ConfigConfigRule, opts v1.UpdateOptions) (result *v1alpha1.ConfigConfigRule, err error) {
 	result = &v1alpha1.ConfigConfigRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("configconfigrules").
 		Name(configConfigRule.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(configConfigRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the configConfigRule and deletes it. Returns an error if one occurs.
-func (c *configConfigRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *configConfigRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("configconfigrules").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *configConfigRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *configConfigRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("configconfigrules").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched configConfigRule.
-func (c *configConfigRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ConfigConfigRule, err error) {
+func (c *configConfigRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ConfigConfigRule, err error) {
 	result = &v1alpha1.ConfigConfigRule{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("configconfigrules").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

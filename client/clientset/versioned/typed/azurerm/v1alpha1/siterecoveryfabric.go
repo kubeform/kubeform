@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type SiteRecoveryFabricsGetter interface {
 
 // SiteRecoveryFabricInterface has methods to work with SiteRecoveryFabric resources.
 type SiteRecoveryFabricInterface interface {
-	Create(*v1alpha1.SiteRecoveryFabric) (*v1alpha1.SiteRecoveryFabric, error)
-	Update(*v1alpha1.SiteRecoveryFabric) (*v1alpha1.SiteRecoveryFabric, error)
-	UpdateStatus(*v1alpha1.SiteRecoveryFabric) (*v1alpha1.SiteRecoveryFabric, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SiteRecoveryFabric, error)
-	List(opts v1.ListOptions) (*v1alpha1.SiteRecoveryFabricList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SiteRecoveryFabric, err error)
+	Create(ctx context.Context, siteRecoveryFabric *v1alpha1.SiteRecoveryFabric, opts v1.CreateOptions) (*v1alpha1.SiteRecoveryFabric, error)
+	Update(ctx context.Context, siteRecoveryFabric *v1alpha1.SiteRecoveryFabric, opts v1.UpdateOptions) (*v1alpha1.SiteRecoveryFabric, error)
+	UpdateStatus(ctx context.Context, siteRecoveryFabric *v1alpha1.SiteRecoveryFabric, opts v1.UpdateOptions) (*v1alpha1.SiteRecoveryFabric, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SiteRecoveryFabric, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SiteRecoveryFabricList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SiteRecoveryFabric, err error)
 	SiteRecoveryFabricExpansion
 }
 
@@ -65,20 +66,20 @@ func newSiteRecoveryFabrics(c *AzurermV1alpha1Client, namespace string) *siteRec
 }
 
 // Get takes name of the siteRecoveryFabric, and returns the corresponding siteRecoveryFabric object, and an error if there is any.
-func (c *siteRecoveryFabrics) Get(name string, options v1.GetOptions) (result *v1alpha1.SiteRecoveryFabric, err error) {
+func (c *siteRecoveryFabrics) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SiteRecoveryFabric, err error) {
 	result = &v1alpha1.SiteRecoveryFabric{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("siterecoveryfabrics").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SiteRecoveryFabrics that match those selectors.
-func (c *siteRecoveryFabrics) List(opts v1.ListOptions) (result *v1alpha1.SiteRecoveryFabricList, err error) {
+func (c *siteRecoveryFabrics) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SiteRecoveryFabricList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *siteRecoveryFabrics) List(opts v1.ListOptions) (result *v1alpha1.SiteRe
 		Resource("siterecoveryfabrics").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested siteRecoveryFabrics.
-func (c *siteRecoveryFabrics) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *siteRecoveryFabrics) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *siteRecoveryFabrics) Watch(opts v1.ListOptions) (watch.Interface, error
 		Resource("siterecoveryfabrics").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a siteRecoveryFabric and creates it.  Returns the server's representation of the siteRecoveryFabric, and an error, if there is any.
-func (c *siteRecoveryFabrics) Create(siteRecoveryFabric *v1alpha1.SiteRecoveryFabric) (result *v1alpha1.SiteRecoveryFabric, err error) {
+func (c *siteRecoveryFabrics) Create(ctx context.Context, siteRecoveryFabric *v1alpha1.SiteRecoveryFabric, opts v1.CreateOptions) (result *v1alpha1.SiteRecoveryFabric, err error) {
 	result = &v1alpha1.SiteRecoveryFabric{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("siterecoveryfabrics").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(siteRecoveryFabric).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a siteRecoveryFabric and updates it. Returns the server's representation of the siteRecoveryFabric, and an error, if there is any.
-func (c *siteRecoveryFabrics) Update(siteRecoveryFabric *v1alpha1.SiteRecoveryFabric) (result *v1alpha1.SiteRecoveryFabric, err error) {
+func (c *siteRecoveryFabrics) Update(ctx context.Context, siteRecoveryFabric *v1alpha1.SiteRecoveryFabric, opts v1.UpdateOptions) (result *v1alpha1.SiteRecoveryFabric, err error) {
 	result = &v1alpha1.SiteRecoveryFabric{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("siterecoveryfabrics").
 		Name(siteRecoveryFabric.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(siteRecoveryFabric).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *siteRecoveryFabrics) UpdateStatus(siteRecoveryFabric *v1alpha1.SiteRecoveryFabric) (result *v1alpha1.SiteRecoveryFabric, err error) {
+func (c *siteRecoveryFabrics) UpdateStatus(ctx context.Context, siteRecoveryFabric *v1alpha1.SiteRecoveryFabric, opts v1.UpdateOptions) (result *v1alpha1.SiteRecoveryFabric, err error) {
 	result = &v1alpha1.SiteRecoveryFabric{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("siterecoveryfabrics").
 		Name(siteRecoveryFabric.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(siteRecoveryFabric).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the siteRecoveryFabric and deletes it. Returns an error if one occurs.
-func (c *siteRecoveryFabrics) Delete(name string, options *v1.DeleteOptions) error {
+func (c *siteRecoveryFabrics) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("siterecoveryfabrics").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *siteRecoveryFabrics) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *siteRecoveryFabrics) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("siterecoveryfabrics").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched siteRecoveryFabric.
-func (c *siteRecoveryFabrics) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SiteRecoveryFabric, err error) {
+func (c *siteRecoveryFabrics) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SiteRecoveryFabric, err error) {
 	result = &v1alpha1.SiteRecoveryFabric{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("siterecoveryfabrics").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

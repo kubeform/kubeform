@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var sqlactivedirectoryadministratorsResource = schema.GroupVersionResource{Group
 var sqlactivedirectoryadministratorsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "SqlActiveDirectoryAdministrator"}
 
 // Get takes name of the sqlActiveDirectoryAdministrator, and returns the corresponding sqlActiveDirectoryAdministrator object, and an error if there is any.
-func (c *FakeSqlActiveDirectoryAdministrators) Get(name string, options v1.GetOptions) (result *v1alpha1.SqlActiveDirectoryAdministrator, err error) {
+func (c *FakeSqlActiveDirectoryAdministrators) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SqlActiveDirectoryAdministrator, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(sqlactivedirectoryadministratorsResource, c.ns, name), &v1alpha1.SqlActiveDirectoryAdministrator{})
 
@@ -51,7 +53,7 @@ func (c *FakeSqlActiveDirectoryAdministrators) Get(name string, options v1.GetOp
 }
 
 // List takes label and field selectors, and returns the list of SqlActiveDirectoryAdministrators that match those selectors.
-func (c *FakeSqlActiveDirectoryAdministrators) List(opts v1.ListOptions) (result *v1alpha1.SqlActiveDirectoryAdministratorList, err error) {
+func (c *FakeSqlActiveDirectoryAdministrators) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SqlActiveDirectoryAdministratorList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(sqlactivedirectoryadministratorsResource, sqlactivedirectoryadministratorsKind, c.ns, opts), &v1alpha1.SqlActiveDirectoryAdministratorList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSqlActiveDirectoryAdministrators) List(opts v1.ListOptions) (result
 }
 
 // Watch returns a watch.Interface that watches the requested sqlActiveDirectoryAdministrators.
-func (c *FakeSqlActiveDirectoryAdministrators) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSqlActiveDirectoryAdministrators) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(sqlactivedirectoryadministratorsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a sqlActiveDirectoryAdministrator and creates it.  Returns the server's representation of the sqlActiveDirectoryAdministrator, and an error, if there is any.
-func (c *FakeSqlActiveDirectoryAdministrators) Create(sqlActiveDirectoryAdministrator *v1alpha1.SqlActiveDirectoryAdministrator) (result *v1alpha1.SqlActiveDirectoryAdministrator, err error) {
+func (c *FakeSqlActiveDirectoryAdministrators) Create(ctx context.Context, sqlActiveDirectoryAdministrator *v1alpha1.SqlActiveDirectoryAdministrator, opts v1.CreateOptions) (result *v1alpha1.SqlActiveDirectoryAdministrator, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(sqlactivedirectoryadministratorsResource, c.ns, sqlActiveDirectoryAdministrator), &v1alpha1.SqlActiveDirectoryAdministrator{})
 
@@ -91,7 +93,7 @@ func (c *FakeSqlActiveDirectoryAdministrators) Create(sqlActiveDirectoryAdminist
 }
 
 // Update takes the representation of a sqlActiveDirectoryAdministrator and updates it. Returns the server's representation of the sqlActiveDirectoryAdministrator, and an error, if there is any.
-func (c *FakeSqlActiveDirectoryAdministrators) Update(sqlActiveDirectoryAdministrator *v1alpha1.SqlActiveDirectoryAdministrator) (result *v1alpha1.SqlActiveDirectoryAdministrator, err error) {
+func (c *FakeSqlActiveDirectoryAdministrators) Update(ctx context.Context, sqlActiveDirectoryAdministrator *v1alpha1.SqlActiveDirectoryAdministrator, opts v1.UpdateOptions) (result *v1alpha1.SqlActiveDirectoryAdministrator, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(sqlactivedirectoryadministratorsResource, c.ns, sqlActiveDirectoryAdministrator), &v1alpha1.SqlActiveDirectoryAdministrator{})
 
@@ -103,7 +105,7 @@ func (c *FakeSqlActiveDirectoryAdministrators) Update(sqlActiveDirectoryAdminist
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSqlActiveDirectoryAdministrators) UpdateStatus(sqlActiveDirectoryAdministrator *v1alpha1.SqlActiveDirectoryAdministrator) (*v1alpha1.SqlActiveDirectoryAdministrator, error) {
+func (c *FakeSqlActiveDirectoryAdministrators) UpdateStatus(ctx context.Context, sqlActiveDirectoryAdministrator *v1alpha1.SqlActiveDirectoryAdministrator, opts v1.UpdateOptions) (*v1alpha1.SqlActiveDirectoryAdministrator, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(sqlactivedirectoryadministratorsResource, "status", c.ns, sqlActiveDirectoryAdministrator), &v1alpha1.SqlActiveDirectoryAdministrator{})
 
@@ -114,7 +116,7 @@ func (c *FakeSqlActiveDirectoryAdministrators) UpdateStatus(sqlActiveDirectoryAd
 }
 
 // Delete takes name of the sqlActiveDirectoryAdministrator and deletes it. Returns an error if one occurs.
-func (c *FakeSqlActiveDirectoryAdministrators) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSqlActiveDirectoryAdministrators) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(sqlactivedirectoryadministratorsResource, c.ns, name), &v1alpha1.SqlActiveDirectoryAdministrator{})
 
@@ -122,15 +124,15 @@ func (c *FakeSqlActiveDirectoryAdministrators) Delete(name string, options *v1.D
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSqlActiveDirectoryAdministrators) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(sqlactivedirectoryadministratorsResource, c.ns, listOptions)
+func (c *FakeSqlActiveDirectoryAdministrators) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(sqlactivedirectoryadministratorsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SqlActiveDirectoryAdministratorList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched sqlActiveDirectoryAdministrator.
-func (c *FakeSqlActiveDirectoryAdministrators) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SqlActiveDirectoryAdministrator, err error) {
+func (c *FakeSqlActiveDirectoryAdministrators) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SqlActiveDirectoryAdministrator, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(sqlactivedirectoryadministratorsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SqlActiveDirectoryAdministrator{})
 

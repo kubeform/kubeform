@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type BigtableInstanceIamMembersGetter interface {
 
 // BigtableInstanceIamMemberInterface has methods to work with BigtableInstanceIamMember resources.
 type BigtableInstanceIamMemberInterface interface {
-	Create(*v1alpha1.BigtableInstanceIamMember) (*v1alpha1.BigtableInstanceIamMember, error)
-	Update(*v1alpha1.BigtableInstanceIamMember) (*v1alpha1.BigtableInstanceIamMember, error)
-	UpdateStatus(*v1alpha1.BigtableInstanceIamMember) (*v1alpha1.BigtableInstanceIamMember, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.BigtableInstanceIamMember, error)
-	List(opts v1.ListOptions) (*v1alpha1.BigtableInstanceIamMemberList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BigtableInstanceIamMember, err error)
+	Create(ctx context.Context, bigtableInstanceIamMember *v1alpha1.BigtableInstanceIamMember, opts v1.CreateOptions) (*v1alpha1.BigtableInstanceIamMember, error)
+	Update(ctx context.Context, bigtableInstanceIamMember *v1alpha1.BigtableInstanceIamMember, opts v1.UpdateOptions) (*v1alpha1.BigtableInstanceIamMember, error)
+	UpdateStatus(ctx context.Context, bigtableInstanceIamMember *v1alpha1.BigtableInstanceIamMember, opts v1.UpdateOptions) (*v1alpha1.BigtableInstanceIamMember, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.BigtableInstanceIamMember, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.BigtableInstanceIamMemberList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BigtableInstanceIamMember, err error)
 	BigtableInstanceIamMemberExpansion
 }
 
@@ -65,20 +66,20 @@ func newBigtableInstanceIamMembers(c *GoogleV1alpha1Client, namespace string) *b
 }
 
 // Get takes name of the bigtableInstanceIamMember, and returns the corresponding bigtableInstanceIamMember object, and an error if there is any.
-func (c *bigtableInstanceIamMembers) Get(name string, options v1.GetOptions) (result *v1alpha1.BigtableInstanceIamMember, err error) {
+func (c *bigtableInstanceIamMembers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BigtableInstanceIamMember, err error) {
 	result = &v1alpha1.BigtableInstanceIamMember{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("bigtableinstanceiammembers").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of BigtableInstanceIamMembers that match those selectors.
-func (c *bigtableInstanceIamMembers) List(opts v1.ListOptions) (result *v1alpha1.BigtableInstanceIamMemberList, err error) {
+func (c *bigtableInstanceIamMembers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BigtableInstanceIamMemberList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *bigtableInstanceIamMembers) List(opts v1.ListOptions) (result *v1alpha1
 		Resource("bigtableinstanceiammembers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested bigtableInstanceIamMembers.
-func (c *bigtableInstanceIamMembers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *bigtableInstanceIamMembers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *bigtableInstanceIamMembers) Watch(opts v1.ListOptions) (watch.Interface
 		Resource("bigtableinstanceiammembers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a bigtableInstanceIamMember and creates it.  Returns the server's representation of the bigtableInstanceIamMember, and an error, if there is any.
-func (c *bigtableInstanceIamMembers) Create(bigtableInstanceIamMember *v1alpha1.BigtableInstanceIamMember) (result *v1alpha1.BigtableInstanceIamMember, err error) {
+func (c *bigtableInstanceIamMembers) Create(ctx context.Context, bigtableInstanceIamMember *v1alpha1.BigtableInstanceIamMember, opts v1.CreateOptions) (result *v1alpha1.BigtableInstanceIamMember, err error) {
 	result = &v1alpha1.BigtableInstanceIamMember{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("bigtableinstanceiammembers").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(bigtableInstanceIamMember).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a bigtableInstanceIamMember and updates it. Returns the server's representation of the bigtableInstanceIamMember, and an error, if there is any.
-func (c *bigtableInstanceIamMembers) Update(bigtableInstanceIamMember *v1alpha1.BigtableInstanceIamMember) (result *v1alpha1.BigtableInstanceIamMember, err error) {
+func (c *bigtableInstanceIamMembers) Update(ctx context.Context, bigtableInstanceIamMember *v1alpha1.BigtableInstanceIamMember, opts v1.UpdateOptions) (result *v1alpha1.BigtableInstanceIamMember, err error) {
 	result = &v1alpha1.BigtableInstanceIamMember{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("bigtableinstanceiammembers").
 		Name(bigtableInstanceIamMember.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(bigtableInstanceIamMember).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *bigtableInstanceIamMembers) UpdateStatus(bigtableInstanceIamMember *v1alpha1.BigtableInstanceIamMember) (result *v1alpha1.BigtableInstanceIamMember, err error) {
+func (c *bigtableInstanceIamMembers) UpdateStatus(ctx context.Context, bigtableInstanceIamMember *v1alpha1.BigtableInstanceIamMember, opts v1.UpdateOptions) (result *v1alpha1.BigtableInstanceIamMember, err error) {
 	result = &v1alpha1.BigtableInstanceIamMember{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("bigtableinstanceiammembers").
 		Name(bigtableInstanceIamMember.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(bigtableInstanceIamMember).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the bigtableInstanceIamMember and deletes it. Returns an error if one occurs.
-func (c *bigtableInstanceIamMembers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *bigtableInstanceIamMembers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("bigtableinstanceiammembers").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *bigtableInstanceIamMembers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *bigtableInstanceIamMembers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("bigtableinstanceiammembers").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched bigtableInstanceIamMember.
-func (c *bigtableInstanceIamMembers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BigtableInstanceIamMember, err error) {
+func (c *bigtableInstanceIamMembers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BigtableInstanceIamMember, err error) {
 	result = &v1alpha1.BigtableInstanceIamMember{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("bigtableinstanceiammembers").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

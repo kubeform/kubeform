@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var packetcapturesResource = schema.GroupVersionResource{Group: "azurerm.kubefor
 var packetcapturesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "PacketCapture"}
 
 // Get takes name of the packetCapture, and returns the corresponding packetCapture object, and an error if there is any.
-func (c *FakePacketCaptures) Get(name string, options v1.GetOptions) (result *v1alpha1.PacketCapture, err error) {
+func (c *FakePacketCaptures) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PacketCapture, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(packetcapturesResource, c.ns, name), &v1alpha1.PacketCapture{})
 
@@ -51,7 +53,7 @@ func (c *FakePacketCaptures) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of PacketCaptures that match those selectors.
-func (c *FakePacketCaptures) List(opts v1.ListOptions) (result *v1alpha1.PacketCaptureList, err error) {
+func (c *FakePacketCaptures) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PacketCaptureList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(packetcapturesResource, packetcapturesKind, c.ns, opts), &v1alpha1.PacketCaptureList{})
 
@@ -73,14 +75,14 @@ func (c *FakePacketCaptures) List(opts v1.ListOptions) (result *v1alpha1.PacketC
 }
 
 // Watch returns a watch.Interface that watches the requested packetCaptures.
-func (c *FakePacketCaptures) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakePacketCaptures) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(packetcapturesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a packetCapture and creates it.  Returns the server's representation of the packetCapture, and an error, if there is any.
-func (c *FakePacketCaptures) Create(packetCapture *v1alpha1.PacketCapture) (result *v1alpha1.PacketCapture, err error) {
+func (c *FakePacketCaptures) Create(ctx context.Context, packetCapture *v1alpha1.PacketCapture, opts v1.CreateOptions) (result *v1alpha1.PacketCapture, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(packetcapturesResource, c.ns, packetCapture), &v1alpha1.PacketCapture{})
 
@@ -91,7 +93,7 @@ func (c *FakePacketCaptures) Create(packetCapture *v1alpha1.PacketCapture) (resu
 }
 
 // Update takes the representation of a packetCapture and updates it. Returns the server's representation of the packetCapture, and an error, if there is any.
-func (c *FakePacketCaptures) Update(packetCapture *v1alpha1.PacketCapture) (result *v1alpha1.PacketCapture, err error) {
+func (c *FakePacketCaptures) Update(ctx context.Context, packetCapture *v1alpha1.PacketCapture, opts v1.UpdateOptions) (result *v1alpha1.PacketCapture, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(packetcapturesResource, c.ns, packetCapture), &v1alpha1.PacketCapture{})
 
@@ -103,7 +105,7 @@ func (c *FakePacketCaptures) Update(packetCapture *v1alpha1.PacketCapture) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakePacketCaptures) UpdateStatus(packetCapture *v1alpha1.PacketCapture) (*v1alpha1.PacketCapture, error) {
+func (c *FakePacketCaptures) UpdateStatus(ctx context.Context, packetCapture *v1alpha1.PacketCapture, opts v1.UpdateOptions) (*v1alpha1.PacketCapture, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(packetcapturesResource, "status", c.ns, packetCapture), &v1alpha1.PacketCapture{})
 
@@ -114,7 +116,7 @@ func (c *FakePacketCaptures) UpdateStatus(packetCapture *v1alpha1.PacketCapture)
 }
 
 // Delete takes name of the packetCapture and deletes it. Returns an error if one occurs.
-func (c *FakePacketCaptures) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakePacketCaptures) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(packetcapturesResource, c.ns, name), &v1alpha1.PacketCapture{})
 
@@ -122,15 +124,15 @@ func (c *FakePacketCaptures) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakePacketCaptures) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(packetcapturesResource, c.ns, listOptions)
+func (c *FakePacketCaptures) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(packetcapturesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.PacketCaptureList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched packetCapture.
-func (c *FakePacketCaptures) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PacketCapture, err error) {
+func (c *FakePacketCaptures) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PacketCapture, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(packetcapturesResource, c.ns, name, pt, data, subresources...), &v1alpha1.PacketCapture{})
 

@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type EmrClustersGetter interface {
 
 // EmrClusterInterface has methods to work with EmrCluster resources.
 type EmrClusterInterface interface {
-	Create(*v1alpha1.EmrCluster) (*v1alpha1.EmrCluster, error)
-	Update(*v1alpha1.EmrCluster) (*v1alpha1.EmrCluster, error)
-	UpdateStatus(*v1alpha1.EmrCluster) (*v1alpha1.EmrCluster, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.EmrCluster, error)
-	List(opts v1.ListOptions) (*v1alpha1.EmrClusterList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EmrCluster, err error)
+	Create(ctx context.Context, emrCluster *v1alpha1.EmrCluster, opts v1.CreateOptions) (*v1alpha1.EmrCluster, error)
+	Update(ctx context.Context, emrCluster *v1alpha1.EmrCluster, opts v1.UpdateOptions) (*v1alpha1.EmrCluster, error)
+	UpdateStatus(ctx context.Context, emrCluster *v1alpha1.EmrCluster, opts v1.UpdateOptions) (*v1alpha1.EmrCluster, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.EmrCluster, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.EmrClusterList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EmrCluster, err error)
 	EmrClusterExpansion
 }
 
@@ -65,20 +66,20 @@ func newEmrClusters(c *AwsV1alpha1Client, namespace string) *emrClusters {
 }
 
 // Get takes name of the emrCluster, and returns the corresponding emrCluster object, and an error if there is any.
-func (c *emrClusters) Get(name string, options v1.GetOptions) (result *v1alpha1.EmrCluster, err error) {
+func (c *emrClusters) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.EmrCluster, err error) {
 	result = &v1alpha1.EmrCluster{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("emrclusters").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of EmrClusters that match those selectors.
-func (c *emrClusters) List(opts v1.ListOptions) (result *v1alpha1.EmrClusterList, err error) {
+func (c *emrClusters) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.EmrClusterList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *emrClusters) List(opts v1.ListOptions) (result *v1alpha1.EmrClusterList
 		Resource("emrclusters").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested emrClusters.
-func (c *emrClusters) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *emrClusters) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *emrClusters) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("emrclusters").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a emrCluster and creates it.  Returns the server's representation of the emrCluster, and an error, if there is any.
-func (c *emrClusters) Create(emrCluster *v1alpha1.EmrCluster) (result *v1alpha1.EmrCluster, err error) {
+func (c *emrClusters) Create(ctx context.Context, emrCluster *v1alpha1.EmrCluster, opts v1.CreateOptions) (result *v1alpha1.EmrCluster, err error) {
 	result = &v1alpha1.EmrCluster{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("emrclusters").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(emrCluster).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a emrCluster and updates it. Returns the server's representation of the emrCluster, and an error, if there is any.
-func (c *emrClusters) Update(emrCluster *v1alpha1.EmrCluster) (result *v1alpha1.EmrCluster, err error) {
+func (c *emrClusters) Update(ctx context.Context, emrCluster *v1alpha1.EmrCluster, opts v1.UpdateOptions) (result *v1alpha1.EmrCluster, err error) {
 	result = &v1alpha1.EmrCluster{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("emrclusters").
 		Name(emrCluster.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(emrCluster).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *emrClusters) UpdateStatus(emrCluster *v1alpha1.EmrCluster) (result *v1alpha1.EmrCluster, err error) {
+func (c *emrClusters) UpdateStatus(ctx context.Context, emrCluster *v1alpha1.EmrCluster, opts v1.UpdateOptions) (result *v1alpha1.EmrCluster, err error) {
 	result = &v1alpha1.EmrCluster{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("emrclusters").
 		Name(emrCluster.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(emrCluster).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the emrCluster and deletes it. Returns an error if one occurs.
-func (c *emrClusters) Delete(name string, options *v1.DeleteOptions) error {
+func (c *emrClusters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("emrclusters").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *emrClusters) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *emrClusters) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("emrclusters").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched emrCluster.
-func (c *emrClusters) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EmrCluster, err error) {
+func (c *emrClusters) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EmrCluster, err error) {
 	result = &v1alpha1.EmrCluster{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("emrclusters").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var monitoringalertpoliciesResource = schema.GroupVersionResource{Group: "google
 var monitoringalertpoliciesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "MonitoringAlertPolicy"}
 
 // Get takes name of the monitoringAlertPolicy, and returns the corresponding monitoringAlertPolicy object, and an error if there is any.
-func (c *FakeMonitoringAlertPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.MonitoringAlertPolicy, err error) {
+func (c *FakeMonitoringAlertPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.MonitoringAlertPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(monitoringalertpoliciesResource, c.ns, name), &v1alpha1.MonitoringAlertPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeMonitoringAlertPolicies) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of MonitoringAlertPolicies that match those selectors.
-func (c *FakeMonitoringAlertPolicies) List(opts v1.ListOptions) (result *v1alpha1.MonitoringAlertPolicyList, err error) {
+func (c *FakeMonitoringAlertPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.MonitoringAlertPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(monitoringalertpoliciesResource, monitoringalertpoliciesKind, c.ns, opts), &v1alpha1.MonitoringAlertPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeMonitoringAlertPolicies) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested monitoringAlertPolicies.
-func (c *FakeMonitoringAlertPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeMonitoringAlertPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(monitoringalertpoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a monitoringAlertPolicy and creates it.  Returns the server's representation of the monitoringAlertPolicy, and an error, if there is any.
-func (c *FakeMonitoringAlertPolicies) Create(monitoringAlertPolicy *v1alpha1.MonitoringAlertPolicy) (result *v1alpha1.MonitoringAlertPolicy, err error) {
+func (c *FakeMonitoringAlertPolicies) Create(ctx context.Context, monitoringAlertPolicy *v1alpha1.MonitoringAlertPolicy, opts v1.CreateOptions) (result *v1alpha1.MonitoringAlertPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(monitoringalertpoliciesResource, c.ns, monitoringAlertPolicy), &v1alpha1.MonitoringAlertPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeMonitoringAlertPolicies) Create(monitoringAlertPolicy *v1alpha1.Mon
 }
 
 // Update takes the representation of a monitoringAlertPolicy and updates it. Returns the server's representation of the monitoringAlertPolicy, and an error, if there is any.
-func (c *FakeMonitoringAlertPolicies) Update(monitoringAlertPolicy *v1alpha1.MonitoringAlertPolicy) (result *v1alpha1.MonitoringAlertPolicy, err error) {
+func (c *FakeMonitoringAlertPolicies) Update(ctx context.Context, monitoringAlertPolicy *v1alpha1.MonitoringAlertPolicy, opts v1.UpdateOptions) (result *v1alpha1.MonitoringAlertPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(monitoringalertpoliciesResource, c.ns, monitoringAlertPolicy), &v1alpha1.MonitoringAlertPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeMonitoringAlertPolicies) Update(monitoringAlertPolicy *v1alpha1.Mon
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeMonitoringAlertPolicies) UpdateStatus(monitoringAlertPolicy *v1alpha1.MonitoringAlertPolicy) (*v1alpha1.MonitoringAlertPolicy, error) {
+func (c *FakeMonitoringAlertPolicies) UpdateStatus(ctx context.Context, monitoringAlertPolicy *v1alpha1.MonitoringAlertPolicy, opts v1.UpdateOptions) (*v1alpha1.MonitoringAlertPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(monitoringalertpoliciesResource, "status", c.ns, monitoringAlertPolicy), &v1alpha1.MonitoringAlertPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeMonitoringAlertPolicies) UpdateStatus(monitoringAlertPolicy *v1alph
 }
 
 // Delete takes name of the monitoringAlertPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeMonitoringAlertPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeMonitoringAlertPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(monitoringalertpoliciesResource, c.ns, name), &v1alpha1.MonitoringAlertPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeMonitoringAlertPolicies) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeMonitoringAlertPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(monitoringalertpoliciesResource, c.ns, listOptions)
+func (c *FakeMonitoringAlertPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(monitoringalertpoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.MonitoringAlertPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched monitoringAlertPolicy.
-func (c *FakeMonitoringAlertPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MonitoringAlertPolicy, err error) {
+func (c *FakeMonitoringAlertPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MonitoringAlertPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(monitoringalertpoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.MonitoringAlertPolicy{})
 

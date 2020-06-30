@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var subnetnetworksecuritygroupassociationsResource = schema.GroupVersionResource
 var subnetnetworksecuritygroupassociationsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "SubnetNetworkSecurityGroupAssociation"}
 
 // Get takes name of the subnetNetworkSecurityGroupAssociation, and returns the corresponding subnetNetworkSecurityGroupAssociation object, and an error if there is any.
-func (c *FakeSubnetNetworkSecurityGroupAssociations) Get(name string, options v1.GetOptions) (result *v1alpha1.SubnetNetworkSecurityGroupAssociation, err error) {
+func (c *FakeSubnetNetworkSecurityGroupAssociations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SubnetNetworkSecurityGroupAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(subnetnetworksecuritygroupassociationsResource, c.ns, name), &v1alpha1.SubnetNetworkSecurityGroupAssociation{})
 
@@ -51,7 +53,7 @@ func (c *FakeSubnetNetworkSecurityGroupAssociations) Get(name string, options v1
 }
 
 // List takes label and field selectors, and returns the list of SubnetNetworkSecurityGroupAssociations that match those selectors.
-func (c *FakeSubnetNetworkSecurityGroupAssociations) List(opts v1.ListOptions) (result *v1alpha1.SubnetNetworkSecurityGroupAssociationList, err error) {
+func (c *FakeSubnetNetworkSecurityGroupAssociations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SubnetNetworkSecurityGroupAssociationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(subnetnetworksecuritygroupassociationsResource, subnetnetworksecuritygroupassociationsKind, c.ns, opts), &v1alpha1.SubnetNetworkSecurityGroupAssociationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSubnetNetworkSecurityGroupAssociations) List(opts v1.ListOptions) (
 }
 
 // Watch returns a watch.Interface that watches the requested subnetNetworkSecurityGroupAssociations.
-func (c *FakeSubnetNetworkSecurityGroupAssociations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSubnetNetworkSecurityGroupAssociations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(subnetnetworksecuritygroupassociationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a subnetNetworkSecurityGroupAssociation and creates it.  Returns the server's representation of the subnetNetworkSecurityGroupAssociation, and an error, if there is any.
-func (c *FakeSubnetNetworkSecurityGroupAssociations) Create(subnetNetworkSecurityGroupAssociation *v1alpha1.SubnetNetworkSecurityGroupAssociation) (result *v1alpha1.SubnetNetworkSecurityGroupAssociation, err error) {
+func (c *FakeSubnetNetworkSecurityGroupAssociations) Create(ctx context.Context, subnetNetworkSecurityGroupAssociation *v1alpha1.SubnetNetworkSecurityGroupAssociation, opts v1.CreateOptions) (result *v1alpha1.SubnetNetworkSecurityGroupAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(subnetnetworksecuritygroupassociationsResource, c.ns, subnetNetworkSecurityGroupAssociation), &v1alpha1.SubnetNetworkSecurityGroupAssociation{})
 
@@ -91,7 +93,7 @@ func (c *FakeSubnetNetworkSecurityGroupAssociations) Create(subnetNetworkSecurit
 }
 
 // Update takes the representation of a subnetNetworkSecurityGroupAssociation and updates it. Returns the server's representation of the subnetNetworkSecurityGroupAssociation, and an error, if there is any.
-func (c *FakeSubnetNetworkSecurityGroupAssociations) Update(subnetNetworkSecurityGroupAssociation *v1alpha1.SubnetNetworkSecurityGroupAssociation) (result *v1alpha1.SubnetNetworkSecurityGroupAssociation, err error) {
+func (c *FakeSubnetNetworkSecurityGroupAssociations) Update(ctx context.Context, subnetNetworkSecurityGroupAssociation *v1alpha1.SubnetNetworkSecurityGroupAssociation, opts v1.UpdateOptions) (result *v1alpha1.SubnetNetworkSecurityGroupAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(subnetnetworksecuritygroupassociationsResource, c.ns, subnetNetworkSecurityGroupAssociation), &v1alpha1.SubnetNetworkSecurityGroupAssociation{})
 
@@ -103,7 +105,7 @@ func (c *FakeSubnetNetworkSecurityGroupAssociations) Update(subnetNetworkSecurit
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSubnetNetworkSecurityGroupAssociations) UpdateStatus(subnetNetworkSecurityGroupAssociation *v1alpha1.SubnetNetworkSecurityGroupAssociation) (*v1alpha1.SubnetNetworkSecurityGroupAssociation, error) {
+func (c *FakeSubnetNetworkSecurityGroupAssociations) UpdateStatus(ctx context.Context, subnetNetworkSecurityGroupAssociation *v1alpha1.SubnetNetworkSecurityGroupAssociation, opts v1.UpdateOptions) (*v1alpha1.SubnetNetworkSecurityGroupAssociation, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(subnetnetworksecuritygroupassociationsResource, "status", c.ns, subnetNetworkSecurityGroupAssociation), &v1alpha1.SubnetNetworkSecurityGroupAssociation{})
 
@@ -114,7 +116,7 @@ func (c *FakeSubnetNetworkSecurityGroupAssociations) UpdateStatus(subnetNetworkS
 }
 
 // Delete takes name of the subnetNetworkSecurityGroupAssociation and deletes it. Returns an error if one occurs.
-func (c *FakeSubnetNetworkSecurityGroupAssociations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSubnetNetworkSecurityGroupAssociations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(subnetnetworksecuritygroupassociationsResource, c.ns, name), &v1alpha1.SubnetNetworkSecurityGroupAssociation{})
 
@@ -122,15 +124,15 @@ func (c *FakeSubnetNetworkSecurityGroupAssociations) Delete(name string, options
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSubnetNetworkSecurityGroupAssociations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(subnetnetworksecuritygroupassociationsResource, c.ns, listOptions)
+func (c *FakeSubnetNetworkSecurityGroupAssociations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(subnetnetworksecuritygroupassociationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SubnetNetworkSecurityGroupAssociationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched subnetNetworkSecurityGroupAssociation.
-func (c *FakeSubnetNetworkSecurityGroupAssociations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SubnetNetworkSecurityGroupAssociation, err error) {
+func (c *FakeSubnetNetworkSecurityGroupAssociations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SubnetNetworkSecurityGroupAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(subnetnetworksecuritygroupassociationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SubnetNetworkSecurityGroupAssociation{})
 

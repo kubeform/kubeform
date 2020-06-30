@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var folderiampoliciesResource = schema.GroupVersionResource{Group: "google.kubef
 var folderiampoliciesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "FolderIamPolicy"}
 
 // Get takes name of the folderIamPolicy, and returns the corresponding folderIamPolicy object, and an error if there is any.
-func (c *FakeFolderIamPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.FolderIamPolicy, err error) {
+func (c *FakeFolderIamPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.FolderIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(folderiampoliciesResource, c.ns, name), &v1alpha1.FolderIamPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeFolderIamPolicies) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of FolderIamPolicies that match those selectors.
-func (c *FakeFolderIamPolicies) List(opts v1.ListOptions) (result *v1alpha1.FolderIamPolicyList, err error) {
+func (c *FakeFolderIamPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.FolderIamPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(folderiampoliciesResource, folderiampoliciesKind, c.ns, opts), &v1alpha1.FolderIamPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeFolderIamPolicies) List(opts v1.ListOptions) (result *v1alpha1.Fold
 }
 
 // Watch returns a watch.Interface that watches the requested folderIamPolicies.
-func (c *FakeFolderIamPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeFolderIamPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(folderiampoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a folderIamPolicy and creates it.  Returns the server's representation of the folderIamPolicy, and an error, if there is any.
-func (c *FakeFolderIamPolicies) Create(folderIamPolicy *v1alpha1.FolderIamPolicy) (result *v1alpha1.FolderIamPolicy, err error) {
+func (c *FakeFolderIamPolicies) Create(ctx context.Context, folderIamPolicy *v1alpha1.FolderIamPolicy, opts v1.CreateOptions) (result *v1alpha1.FolderIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(folderiampoliciesResource, c.ns, folderIamPolicy), &v1alpha1.FolderIamPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeFolderIamPolicies) Create(folderIamPolicy *v1alpha1.FolderIamPolicy
 }
 
 // Update takes the representation of a folderIamPolicy and updates it. Returns the server's representation of the folderIamPolicy, and an error, if there is any.
-func (c *FakeFolderIamPolicies) Update(folderIamPolicy *v1alpha1.FolderIamPolicy) (result *v1alpha1.FolderIamPolicy, err error) {
+func (c *FakeFolderIamPolicies) Update(ctx context.Context, folderIamPolicy *v1alpha1.FolderIamPolicy, opts v1.UpdateOptions) (result *v1alpha1.FolderIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(folderiampoliciesResource, c.ns, folderIamPolicy), &v1alpha1.FolderIamPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeFolderIamPolicies) Update(folderIamPolicy *v1alpha1.FolderIamPolicy
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeFolderIamPolicies) UpdateStatus(folderIamPolicy *v1alpha1.FolderIamPolicy) (*v1alpha1.FolderIamPolicy, error) {
+func (c *FakeFolderIamPolicies) UpdateStatus(ctx context.Context, folderIamPolicy *v1alpha1.FolderIamPolicy, opts v1.UpdateOptions) (*v1alpha1.FolderIamPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(folderiampoliciesResource, "status", c.ns, folderIamPolicy), &v1alpha1.FolderIamPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeFolderIamPolicies) UpdateStatus(folderIamPolicy *v1alpha1.FolderIam
 }
 
 // Delete takes name of the folderIamPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeFolderIamPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeFolderIamPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(folderiampoliciesResource, c.ns, name), &v1alpha1.FolderIamPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeFolderIamPolicies) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeFolderIamPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(folderiampoliciesResource, c.ns, listOptions)
+func (c *FakeFolderIamPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(folderiampoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.FolderIamPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched folderIamPolicy.
-func (c *FakeFolderIamPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.FolderIamPolicy, err error) {
+func (c *FakeFolderIamPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.FolderIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(folderiampoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.FolderIamPolicy{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var apigatewaymethodsettingsesResource = schema.GroupVersionResource{Group: "aws
 var apigatewaymethodsettingsesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ApiGatewayMethodSettings"}
 
 // Get takes name of the apiGatewayMethodSettings, and returns the corresponding apiGatewayMethodSettings object, and an error if there is any.
-func (c *FakeApiGatewayMethodSettingses) Get(name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayMethodSettings, err error) {
+func (c *FakeApiGatewayMethodSettingses) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayMethodSettings, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(apigatewaymethodsettingsesResource, c.ns, name), &v1alpha1.ApiGatewayMethodSettings{})
 
@@ -51,7 +53,7 @@ func (c *FakeApiGatewayMethodSettingses) Get(name string, options v1.GetOptions)
 }
 
 // List takes label and field selectors, and returns the list of ApiGatewayMethodSettingses that match those selectors.
-func (c *FakeApiGatewayMethodSettingses) List(opts v1.ListOptions) (result *v1alpha1.ApiGatewayMethodSettingsList, err error) {
+func (c *FakeApiGatewayMethodSettingses) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApiGatewayMethodSettingsList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(apigatewaymethodsettingsesResource, apigatewaymethodsettingsesKind, c.ns, opts), &v1alpha1.ApiGatewayMethodSettingsList{})
 
@@ -73,14 +75,14 @@ func (c *FakeApiGatewayMethodSettingses) List(opts v1.ListOptions) (result *v1al
 }
 
 // Watch returns a watch.Interface that watches the requested apiGatewayMethodSettingses.
-func (c *FakeApiGatewayMethodSettingses) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeApiGatewayMethodSettingses) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(apigatewaymethodsettingsesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a apiGatewayMethodSettings and creates it.  Returns the server's representation of the apiGatewayMethodSettings, and an error, if there is any.
-func (c *FakeApiGatewayMethodSettingses) Create(apiGatewayMethodSettings *v1alpha1.ApiGatewayMethodSettings) (result *v1alpha1.ApiGatewayMethodSettings, err error) {
+func (c *FakeApiGatewayMethodSettingses) Create(ctx context.Context, apiGatewayMethodSettings *v1alpha1.ApiGatewayMethodSettings, opts v1.CreateOptions) (result *v1alpha1.ApiGatewayMethodSettings, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(apigatewaymethodsettingsesResource, c.ns, apiGatewayMethodSettings), &v1alpha1.ApiGatewayMethodSettings{})
 
@@ -91,7 +93,7 @@ func (c *FakeApiGatewayMethodSettingses) Create(apiGatewayMethodSettings *v1alph
 }
 
 // Update takes the representation of a apiGatewayMethodSettings and updates it. Returns the server's representation of the apiGatewayMethodSettings, and an error, if there is any.
-func (c *FakeApiGatewayMethodSettingses) Update(apiGatewayMethodSettings *v1alpha1.ApiGatewayMethodSettings) (result *v1alpha1.ApiGatewayMethodSettings, err error) {
+func (c *FakeApiGatewayMethodSettingses) Update(ctx context.Context, apiGatewayMethodSettings *v1alpha1.ApiGatewayMethodSettings, opts v1.UpdateOptions) (result *v1alpha1.ApiGatewayMethodSettings, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(apigatewaymethodsettingsesResource, c.ns, apiGatewayMethodSettings), &v1alpha1.ApiGatewayMethodSettings{})
 
@@ -103,7 +105,7 @@ func (c *FakeApiGatewayMethodSettingses) Update(apiGatewayMethodSettings *v1alph
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeApiGatewayMethodSettingses) UpdateStatus(apiGatewayMethodSettings *v1alpha1.ApiGatewayMethodSettings) (*v1alpha1.ApiGatewayMethodSettings, error) {
+func (c *FakeApiGatewayMethodSettingses) UpdateStatus(ctx context.Context, apiGatewayMethodSettings *v1alpha1.ApiGatewayMethodSettings, opts v1.UpdateOptions) (*v1alpha1.ApiGatewayMethodSettings, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(apigatewaymethodsettingsesResource, "status", c.ns, apiGatewayMethodSettings), &v1alpha1.ApiGatewayMethodSettings{})
 
@@ -114,7 +116,7 @@ func (c *FakeApiGatewayMethodSettingses) UpdateStatus(apiGatewayMethodSettings *
 }
 
 // Delete takes name of the apiGatewayMethodSettings and deletes it. Returns an error if one occurs.
-func (c *FakeApiGatewayMethodSettingses) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeApiGatewayMethodSettingses) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(apigatewaymethodsettingsesResource, c.ns, name), &v1alpha1.ApiGatewayMethodSettings{})
 
@@ -122,15 +124,15 @@ func (c *FakeApiGatewayMethodSettingses) Delete(name string, options *v1.DeleteO
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeApiGatewayMethodSettingses) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(apigatewaymethodsettingsesResource, c.ns, listOptions)
+func (c *FakeApiGatewayMethodSettingses) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(apigatewaymethodsettingsesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ApiGatewayMethodSettingsList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched apiGatewayMethodSettings.
-func (c *FakeApiGatewayMethodSettingses) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiGatewayMethodSettings, err error) {
+func (c *FakeApiGatewayMethodSettingses) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiGatewayMethodSettings, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(apigatewaymethodsettingsesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ApiGatewayMethodSettings{})
 

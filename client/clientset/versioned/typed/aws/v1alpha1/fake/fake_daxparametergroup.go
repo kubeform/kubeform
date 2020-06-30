@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var daxparametergroupsResource = schema.GroupVersionResource{Group: "aws.kubefor
 var daxparametergroupsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DaxParameterGroup"}
 
 // Get takes name of the daxParameterGroup, and returns the corresponding daxParameterGroup object, and an error if there is any.
-func (c *FakeDaxParameterGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.DaxParameterGroup, err error) {
+func (c *FakeDaxParameterGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DaxParameterGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(daxparametergroupsResource, c.ns, name), &v1alpha1.DaxParameterGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeDaxParameterGroups) Get(name string, options v1.GetOptions) (result
 }
 
 // List takes label and field selectors, and returns the list of DaxParameterGroups that match those selectors.
-func (c *FakeDaxParameterGroups) List(opts v1.ListOptions) (result *v1alpha1.DaxParameterGroupList, err error) {
+func (c *FakeDaxParameterGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DaxParameterGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(daxparametergroupsResource, daxparametergroupsKind, c.ns, opts), &v1alpha1.DaxParameterGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDaxParameterGroups) List(opts v1.ListOptions) (result *v1alpha1.Dax
 }
 
 // Watch returns a watch.Interface that watches the requested daxParameterGroups.
-func (c *FakeDaxParameterGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDaxParameterGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(daxparametergroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a daxParameterGroup and creates it.  Returns the server's representation of the daxParameterGroup, and an error, if there is any.
-func (c *FakeDaxParameterGroups) Create(daxParameterGroup *v1alpha1.DaxParameterGroup) (result *v1alpha1.DaxParameterGroup, err error) {
+func (c *FakeDaxParameterGroups) Create(ctx context.Context, daxParameterGroup *v1alpha1.DaxParameterGroup, opts v1.CreateOptions) (result *v1alpha1.DaxParameterGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(daxparametergroupsResource, c.ns, daxParameterGroup), &v1alpha1.DaxParameterGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeDaxParameterGroups) Create(daxParameterGroup *v1alpha1.DaxParameter
 }
 
 // Update takes the representation of a daxParameterGroup and updates it. Returns the server's representation of the daxParameterGroup, and an error, if there is any.
-func (c *FakeDaxParameterGroups) Update(daxParameterGroup *v1alpha1.DaxParameterGroup) (result *v1alpha1.DaxParameterGroup, err error) {
+func (c *FakeDaxParameterGroups) Update(ctx context.Context, daxParameterGroup *v1alpha1.DaxParameterGroup, opts v1.UpdateOptions) (result *v1alpha1.DaxParameterGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(daxparametergroupsResource, c.ns, daxParameterGroup), &v1alpha1.DaxParameterGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeDaxParameterGroups) Update(daxParameterGroup *v1alpha1.DaxParameter
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDaxParameterGroups) UpdateStatus(daxParameterGroup *v1alpha1.DaxParameterGroup) (*v1alpha1.DaxParameterGroup, error) {
+func (c *FakeDaxParameterGroups) UpdateStatus(ctx context.Context, daxParameterGroup *v1alpha1.DaxParameterGroup, opts v1.UpdateOptions) (*v1alpha1.DaxParameterGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(daxparametergroupsResource, "status", c.ns, daxParameterGroup), &v1alpha1.DaxParameterGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeDaxParameterGroups) UpdateStatus(daxParameterGroup *v1alpha1.DaxPar
 }
 
 // Delete takes name of the daxParameterGroup and deletes it. Returns an error if one occurs.
-func (c *FakeDaxParameterGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDaxParameterGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(daxparametergroupsResource, c.ns, name), &v1alpha1.DaxParameterGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeDaxParameterGroups) Delete(name string, options *v1.DeleteOptions) 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDaxParameterGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(daxparametergroupsResource, c.ns, listOptions)
+func (c *FakeDaxParameterGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(daxparametergroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DaxParameterGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched daxParameterGroup.
-func (c *FakeDaxParameterGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DaxParameterGroup, err error) {
+func (c *FakeDaxParameterGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DaxParameterGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(daxparametergroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DaxParameterGroup{})
 

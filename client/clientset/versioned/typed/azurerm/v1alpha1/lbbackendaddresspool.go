@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type LbBackendAddressPoolsGetter interface {
 
 // LbBackendAddressPoolInterface has methods to work with LbBackendAddressPool resources.
 type LbBackendAddressPoolInterface interface {
-	Create(*v1alpha1.LbBackendAddressPool) (*v1alpha1.LbBackendAddressPool, error)
-	Update(*v1alpha1.LbBackendAddressPool) (*v1alpha1.LbBackendAddressPool, error)
-	UpdateStatus(*v1alpha1.LbBackendAddressPool) (*v1alpha1.LbBackendAddressPool, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.LbBackendAddressPool, error)
-	List(opts v1.ListOptions) (*v1alpha1.LbBackendAddressPoolList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LbBackendAddressPool, err error)
+	Create(ctx context.Context, lbBackendAddressPool *v1alpha1.LbBackendAddressPool, opts v1.CreateOptions) (*v1alpha1.LbBackendAddressPool, error)
+	Update(ctx context.Context, lbBackendAddressPool *v1alpha1.LbBackendAddressPool, opts v1.UpdateOptions) (*v1alpha1.LbBackendAddressPool, error)
+	UpdateStatus(ctx context.Context, lbBackendAddressPool *v1alpha1.LbBackendAddressPool, opts v1.UpdateOptions) (*v1alpha1.LbBackendAddressPool, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.LbBackendAddressPool, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.LbBackendAddressPoolList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LbBackendAddressPool, err error)
 	LbBackendAddressPoolExpansion
 }
 
@@ -65,20 +66,20 @@ func newLbBackendAddressPools(c *AzurermV1alpha1Client, namespace string) *lbBac
 }
 
 // Get takes name of the lbBackendAddressPool, and returns the corresponding lbBackendAddressPool object, and an error if there is any.
-func (c *lbBackendAddressPools) Get(name string, options v1.GetOptions) (result *v1alpha1.LbBackendAddressPool, err error) {
+func (c *lbBackendAddressPools) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LbBackendAddressPool, err error) {
 	result = &v1alpha1.LbBackendAddressPool{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("lbbackendaddresspools").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of LbBackendAddressPools that match those selectors.
-func (c *lbBackendAddressPools) List(opts v1.ListOptions) (result *v1alpha1.LbBackendAddressPoolList, err error) {
+func (c *lbBackendAddressPools) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LbBackendAddressPoolList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *lbBackendAddressPools) List(opts v1.ListOptions) (result *v1alpha1.LbBa
 		Resource("lbbackendaddresspools").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested lbBackendAddressPools.
-func (c *lbBackendAddressPools) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *lbBackendAddressPools) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *lbBackendAddressPools) Watch(opts v1.ListOptions) (watch.Interface, err
 		Resource("lbbackendaddresspools").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a lbBackendAddressPool and creates it.  Returns the server's representation of the lbBackendAddressPool, and an error, if there is any.
-func (c *lbBackendAddressPools) Create(lbBackendAddressPool *v1alpha1.LbBackendAddressPool) (result *v1alpha1.LbBackendAddressPool, err error) {
+func (c *lbBackendAddressPools) Create(ctx context.Context, lbBackendAddressPool *v1alpha1.LbBackendAddressPool, opts v1.CreateOptions) (result *v1alpha1.LbBackendAddressPool, err error) {
 	result = &v1alpha1.LbBackendAddressPool{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("lbbackendaddresspools").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lbBackendAddressPool).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a lbBackendAddressPool and updates it. Returns the server's representation of the lbBackendAddressPool, and an error, if there is any.
-func (c *lbBackendAddressPools) Update(lbBackendAddressPool *v1alpha1.LbBackendAddressPool) (result *v1alpha1.LbBackendAddressPool, err error) {
+func (c *lbBackendAddressPools) Update(ctx context.Context, lbBackendAddressPool *v1alpha1.LbBackendAddressPool, opts v1.UpdateOptions) (result *v1alpha1.LbBackendAddressPool, err error) {
 	result = &v1alpha1.LbBackendAddressPool{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("lbbackendaddresspools").
 		Name(lbBackendAddressPool.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lbBackendAddressPool).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *lbBackendAddressPools) UpdateStatus(lbBackendAddressPool *v1alpha1.LbBackendAddressPool) (result *v1alpha1.LbBackendAddressPool, err error) {
+func (c *lbBackendAddressPools) UpdateStatus(ctx context.Context, lbBackendAddressPool *v1alpha1.LbBackendAddressPool, opts v1.UpdateOptions) (result *v1alpha1.LbBackendAddressPool, err error) {
 	result = &v1alpha1.LbBackendAddressPool{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("lbbackendaddresspools").
 		Name(lbBackendAddressPool.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lbBackendAddressPool).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the lbBackendAddressPool and deletes it. Returns an error if one occurs.
-func (c *lbBackendAddressPools) Delete(name string, options *v1.DeleteOptions) error {
+func (c *lbBackendAddressPools) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("lbbackendaddresspools").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *lbBackendAddressPools) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *lbBackendAddressPools) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("lbbackendaddresspools").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched lbBackendAddressPool.
-func (c *lbBackendAddressPools) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LbBackendAddressPool, err error) {
+func (c *lbBackendAddressPools) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LbBackendAddressPool, err error) {
 	result = &v1alpha1.LbBackendAddressPool{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("lbbackendaddresspools").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

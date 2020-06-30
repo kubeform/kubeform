@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var wafsqlinjectionmatchsetsResource = schema.GroupVersionResource{Group: "aws.k
 var wafsqlinjectionmatchsetsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "WafSQLInjectionMatchSet"}
 
 // Get takes name of the wafSQLInjectionMatchSet, and returns the corresponding wafSQLInjectionMatchSet object, and an error if there is any.
-func (c *FakeWafSQLInjectionMatchSets) Get(name string, options v1.GetOptions) (result *v1alpha1.WafSQLInjectionMatchSet, err error) {
+func (c *FakeWafSQLInjectionMatchSets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.WafSQLInjectionMatchSet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(wafsqlinjectionmatchsetsResource, c.ns, name), &v1alpha1.WafSQLInjectionMatchSet{})
 
@@ -51,7 +53,7 @@ func (c *FakeWafSQLInjectionMatchSets) Get(name string, options v1.GetOptions) (
 }
 
 // List takes label and field selectors, and returns the list of WafSQLInjectionMatchSets that match those selectors.
-func (c *FakeWafSQLInjectionMatchSets) List(opts v1.ListOptions) (result *v1alpha1.WafSQLInjectionMatchSetList, err error) {
+func (c *FakeWafSQLInjectionMatchSets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.WafSQLInjectionMatchSetList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(wafsqlinjectionmatchsetsResource, wafsqlinjectionmatchsetsKind, c.ns, opts), &v1alpha1.WafSQLInjectionMatchSetList{})
 
@@ -73,14 +75,14 @@ func (c *FakeWafSQLInjectionMatchSets) List(opts v1.ListOptions) (result *v1alph
 }
 
 // Watch returns a watch.Interface that watches the requested wafSQLInjectionMatchSets.
-func (c *FakeWafSQLInjectionMatchSets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeWafSQLInjectionMatchSets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(wafsqlinjectionmatchsetsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a wafSQLInjectionMatchSet and creates it.  Returns the server's representation of the wafSQLInjectionMatchSet, and an error, if there is any.
-func (c *FakeWafSQLInjectionMatchSets) Create(wafSQLInjectionMatchSet *v1alpha1.WafSQLInjectionMatchSet) (result *v1alpha1.WafSQLInjectionMatchSet, err error) {
+func (c *FakeWafSQLInjectionMatchSets) Create(ctx context.Context, wafSQLInjectionMatchSet *v1alpha1.WafSQLInjectionMatchSet, opts v1.CreateOptions) (result *v1alpha1.WafSQLInjectionMatchSet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(wafsqlinjectionmatchsetsResource, c.ns, wafSQLInjectionMatchSet), &v1alpha1.WafSQLInjectionMatchSet{})
 
@@ -91,7 +93,7 @@ func (c *FakeWafSQLInjectionMatchSets) Create(wafSQLInjectionMatchSet *v1alpha1.
 }
 
 // Update takes the representation of a wafSQLInjectionMatchSet and updates it. Returns the server's representation of the wafSQLInjectionMatchSet, and an error, if there is any.
-func (c *FakeWafSQLInjectionMatchSets) Update(wafSQLInjectionMatchSet *v1alpha1.WafSQLInjectionMatchSet) (result *v1alpha1.WafSQLInjectionMatchSet, err error) {
+func (c *FakeWafSQLInjectionMatchSets) Update(ctx context.Context, wafSQLInjectionMatchSet *v1alpha1.WafSQLInjectionMatchSet, opts v1.UpdateOptions) (result *v1alpha1.WafSQLInjectionMatchSet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(wafsqlinjectionmatchsetsResource, c.ns, wafSQLInjectionMatchSet), &v1alpha1.WafSQLInjectionMatchSet{})
 
@@ -103,7 +105,7 @@ func (c *FakeWafSQLInjectionMatchSets) Update(wafSQLInjectionMatchSet *v1alpha1.
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeWafSQLInjectionMatchSets) UpdateStatus(wafSQLInjectionMatchSet *v1alpha1.WafSQLInjectionMatchSet) (*v1alpha1.WafSQLInjectionMatchSet, error) {
+func (c *FakeWafSQLInjectionMatchSets) UpdateStatus(ctx context.Context, wafSQLInjectionMatchSet *v1alpha1.WafSQLInjectionMatchSet, opts v1.UpdateOptions) (*v1alpha1.WafSQLInjectionMatchSet, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(wafsqlinjectionmatchsetsResource, "status", c.ns, wafSQLInjectionMatchSet), &v1alpha1.WafSQLInjectionMatchSet{})
 
@@ -114,7 +116,7 @@ func (c *FakeWafSQLInjectionMatchSets) UpdateStatus(wafSQLInjectionMatchSet *v1a
 }
 
 // Delete takes name of the wafSQLInjectionMatchSet and deletes it. Returns an error if one occurs.
-func (c *FakeWafSQLInjectionMatchSets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeWafSQLInjectionMatchSets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(wafsqlinjectionmatchsetsResource, c.ns, name), &v1alpha1.WafSQLInjectionMatchSet{})
 
@@ -122,15 +124,15 @@ func (c *FakeWafSQLInjectionMatchSets) Delete(name string, options *v1.DeleteOpt
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeWafSQLInjectionMatchSets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(wafsqlinjectionmatchsetsResource, c.ns, listOptions)
+func (c *FakeWafSQLInjectionMatchSets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(wafsqlinjectionmatchsetsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.WafSQLInjectionMatchSetList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched wafSQLInjectionMatchSet.
-func (c *FakeWafSQLInjectionMatchSets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.WafSQLInjectionMatchSet, err error) {
+func (c *FakeWafSQLInjectionMatchSets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.WafSQLInjectionMatchSet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(wafsqlinjectionmatchsetsResource, c.ns, name, pt, data, subresources...), &v1alpha1.WafSQLInjectionMatchSet{})
 

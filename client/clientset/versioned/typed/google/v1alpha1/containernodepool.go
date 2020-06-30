@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type ContainerNodePoolsGetter interface {
 
 // ContainerNodePoolInterface has methods to work with ContainerNodePool resources.
 type ContainerNodePoolInterface interface {
-	Create(*v1alpha1.ContainerNodePool) (*v1alpha1.ContainerNodePool, error)
-	Update(*v1alpha1.ContainerNodePool) (*v1alpha1.ContainerNodePool, error)
-	UpdateStatus(*v1alpha1.ContainerNodePool) (*v1alpha1.ContainerNodePool, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ContainerNodePool, error)
-	List(opts v1.ListOptions) (*v1alpha1.ContainerNodePoolList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ContainerNodePool, err error)
+	Create(ctx context.Context, containerNodePool *v1alpha1.ContainerNodePool, opts v1.CreateOptions) (*v1alpha1.ContainerNodePool, error)
+	Update(ctx context.Context, containerNodePool *v1alpha1.ContainerNodePool, opts v1.UpdateOptions) (*v1alpha1.ContainerNodePool, error)
+	UpdateStatus(ctx context.Context, containerNodePool *v1alpha1.ContainerNodePool, opts v1.UpdateOptions) (*v1alpha1.ContainerNodePool, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ContainerNodePool, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ContainerNodePoolList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ContainerNodePool, err error)
 	ContainerNodePoolExpansion
 }
 
@@ -65,20 +66,20 @@ func newContainerNodePools(c *GoogleV1alpha1Client, namespace string) *container
 }
 
 // Get takes name of the containerNodePool, and returns the corresponding containerNodePool object, and an error if there is any.
-func (c *containerNodePools) Get(name string, options v1.GetOptions) (result *v1alpha1.ContainerNodePool, err error) {
+func (c *containerNodePools) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ContainerNodePool, err error) {
 	result = &v1alpha1.ContainerNodePool{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("containernodepools").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ContainerNodePools that match those selectors.
-func (c *containerNodePools) List(opts v1.ListOptions) (result *v1alpha1.ContainerNodePoolList, err error) {
+func (c *containerNodePools) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ContainerNodePoolList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *containerNodePools) List(opts v1.ListOptions) (result *v1alpha1.Contain
 		Resource("containernodepools").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested containerNodePools.
-func (c *containerNodePools) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *containerNodePools) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *containerNodePools) Watch(opts v1.ListOptions) (watch.Interface, error)
 		Resource("containernodepools").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a containerNodePool and creates it.  Returns the server's representation of the containerNodePool, and an error, if there is any.
-func (c *containerNodePools) Create(containerNodePool *v1alpha1.ContainerNodePool) (result *v1alpha1.ContainerNodePool, err error) {
+func (c *containerNodePools) Create(ctx context.Context, containerNodePool *v1alpha1.ContainerNodePool, opts v1.CreateOptions) (result *v1alpha1.ContainerNodePool, err error) {
 	result = &v1alpha1.ContainerNodePool{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("containernodepools").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(containerNodePool).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a containerNodePool and updates it. Returns the server's representation of the containerNodePool, and an error, if there is any.
-func (c *containerNodePools) Update(containerNodePool *v1alpha1.ContainerNodePool) (result *v1alpha1.ContainerNodePool, err error) {
+func (c *containerNodePools) Update(ctx context.Context, containerNodePool *v1alpha1.ContainerNodePool, opts v1.UpdateOptions) (result *v1alpha1.ContainerNodePool, err error) {
 	result = &v1alpha1.ContainerNodePool{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("containernodepools").
 		Name(containerNodePool.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(containerNodePool).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *containerNodePools) UpdateStatus(containerNodePool *v1alpha1.ContainerNodePool) (result *v1alpha1.ContainerNodePool, err error) {
+func (c *containerNodePools) UpdateStatus(ctx context.Context, containerNodePool *v1alpha1.ContainerNodePool, opts v1.UpdateOptions) (result *v1alpha1.ContainerNodePool, err error) {
 	result = &v1alpha1.ContainerNodePool{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("containernodepools").
 		Name(containerNodePool.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(containerNodePool).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the containerNodePool and deletes it. Returns an error if one occurs.
-func (c *containerNodePools) Delete(name string, options *v1.DeleteOptions) error {
+func (c *containerNodePools) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("containernodepools").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *containerNodePools) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *containerNodePools) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("containernodepools").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched containerNodePool.
-func (c *containerNodePools) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ContainerNodePool, err error) {
+func (c *containerNodePools) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ContainerNodePool, err error) {
 	result = &v1alpha1.ContainerNodePool{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("containernodepools").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var gluecrawlersResource = schema.GroupVersionResource{Group: "aws.kubeform.com"
 var gluecrawlersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "GlueCrawler"}
 
 // Get takes name of the glueCrawler, and returns the corresponding glueCrawler object, and an error if there is any.
-func (c *FakeGlueCrawlers) Get(name string, options v1.GetOptions) (result *v1alpha1.GlueCrawler, err error) {
+func (c *FakeGlueCrawlers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.GlueCrawler, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(gluecrawlersResource, c.ns, name), &v1alpha1.GlueCrawler{})
 
@@ -51,7 +53,7 @@ func (c *FakeGlueCrawlers) Get(name string, options v1.GetOptions) (result *v1al
 }
 
 // List takes label and field selectors, and returns the list of GlueCrawlers that match those selectors.
-func (c *FakeGlueCrawlers) List(opts v1.ListOptions) (result *v1alpha1.GlueCrawlerList, err error) {
+func (c *FakeGlueCrawlers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.GlueCrawlerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(gluecrawlersResource, gluecrawlersKind, c.ns, opts), &v1alpha1.GlueCrawlerList{})
 
@@ -73,14 +75,14 @@ func (c *FakeGlueCrawlers) List(opts v1.ListOptions) (result *v1alpha1.GlueCrawl
 }
 
 // Watch returns a watch.Interface that watches the requested glueCrawlers.
-func (c *FakeGlueCrawlers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeGlueCrawlers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(gluecrawlersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a glueCrawler and creates it.  Returns the server's representation of the glueCrawler, and an error, if there is any.
-func (c *FakeGlueCrawlers) Create(glueCrawler *v1alpha1.GlueCrawler) (result *v1alpha1.GlueCrawler, err error) {
+func (c *FakeGlueCrawlers) Create(ctx context.Context, glueCrawler *v1alpha1.GlueCrawler, opts v1.CreateOptions) (result *v1alpha1.GlueCrawler, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(gluecrawlersResource, c.ns, glueCrawler), &v1alpha1.GlueCrawler{})
 
@@ -91,7 +93,7 @@ func (c *FakeGlueCrawlers) Create(glueCrawler *v1alpha1.GlueCrawler) (result *v1
 }
 
 // Update takes the representation of a glueCrawler and updates it. Returns the server's representation of the glueCrawler, and an error, if there is any.
-func (c *FakeGlueCrawlers) Update(glueCrawler *v1alpha1.GlueCrawler) (result *v1alpha1.GlueCrawler, err error) {
+func (c *FakeGlueCrawlers) Update(ctx context.Context, glueCrawler *v1alpha1.GlueCrawler, opts v1.UpdateOptions) (result *v1alpha1.GlueCrawler, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(gluecrawlersResource, c.ns, glueCrawler), &v1alpha1.GlueCrawler{})
 
@@ -103,7 +105,7 @@ func (c *FakeGlueCrawlers) Update(glueCrawler *v1alpha1.GlueCrawler) (result *v1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeGlueCrawlers) UpdateStatus(glueCrawler *v1alpha1.GlueCrawler) (*v1alpha1.GlueCrawler, error) {
+func (c *FakeGlueCrawlers) UpdateStatus(ctx context.Context, glueCrawler *v1alpha1.GlueCrawler, opts v1.UpdateOptions) (*v1alpha1.GlueCrawler, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(gluecrawlersResource, "status", c.ns, glueCrawler), &v1alpha1.GlueCrawler{})
 
@@ -114,7 +116,7 @@ func (c *FakeGlueCrawlers) UpdateStatus(glueCrawler *v1alpha1.GlueCrawler) (*v1a
 }
 
 // Delete takes name of the glueCrawler and deletes it. Returns an error if one occurs.
-func (c *FakeGlueCrawlers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeGlueCrawlers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(gluecrawlersResource, c.ns, name), &v1alpha1.GlueCrawler{})
 
@@ -122,15 +124,15 @@ func (c *FakeGlueCrawlers) Delete(name string, options *v1.DeleteOptions) error 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeGlueCrawlers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(gluecrawlersResource, c.ns, listOptions)
+func (c *FakeGlueCrawlers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(gluecrawlersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.GlueCrawlerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched glueCrawler.
-func (c *FakeGlueCrawlers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.GlueCrawler, err error) {
+func (c *FakeGlueCrawlers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.GlueCrawler, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(gluecrawlersResource, c.ns, name, pt, data, subresources...), &v1alpha1.GlueCrawler{})
 

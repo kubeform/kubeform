@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var ecsservicesResource = schema.GroupVersionResource{Group: "aws.kubeform.com",
 var ecsservicesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "EcsService"}
 
 // Get takes name of the ecsService, and returns the corresponding ecsService object, and an error if there is any.
-func (c *FakeEcsServices) Get(name string, options v1.GetOptions) (result *v1alpha1.EcsService, err error) {
+func (c *FakeEcsServices) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.EcsService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(ecsservicesResource, c.ns, name), &v1alpha1.EcsService{})
 
@@ -51,7 +53,7 @@ func (c *FakeEcsServices) Get(name string, options v1.GetOptions) (result *v1alp
 }
 
 // List takes label and field selectors, and returns the list of EcsServices that match those selectors.
-func (c *FakeEcsServices) List(opts v1.ListOptions) (result *v1alpha1.EcsServiceList, err error) {
+func (c *FakeEcsServices) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.EcsServiceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(ecsservicesResource, ecsservicesKind, c.ns, opts), &v1alpha1.EcsServiceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeEcsServices) List(opts v1.ListOptions) (result *v1alpha1.EcsService
 }
 
 // Watch returns a watch.Interface that watches the requested ecsServices.
-func (c *FakeEcsServices) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeEcsServices) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(ecsservicesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a ecsService and creates it.  Returns the server's representation of the ecsService, and an error, if there is any.
-func (c *FakeEcsServices) Create(ecsService *v1alpha1.EcsService) (result *v1alpha1.EcsService, err error) {
+func (c *FakeEcsServices) Create(ctx context.Context, ecsService *v1alpha1.EcsService, opts v1.CreateOptions) (result *v1alpha1.EcsService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(ecsservicesResource, c.ns, ecsService), &v1alpha1.EcsService{})
 
@@ -91,7 +93,7 @@ func (c *FakeEcsServices) Create(ecsService *v1alpha1.EcsService) (result *v1alp
 }
 
 // Update takes the representation of a ecsService and updates it. Returns the server's representation of the ecsService, and an error, if there is any.
-func (c *FakeEcsServices) Update(ecsService *v1alpha1.EcsService) (result *v1alpha1.EcsService, err error) {
+func (c *FakeEcsServices) Update(ctx context.Context, ecsService *v1alpha1.EcsService, opts v1.UpdateOptions) (result *v1alpha1.EcsService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(ecsservicesResource, c.ns, ecsService), &v1alpha1.EcsService{})
 
@@ -103,7 +105,7 @@ func (c *FakeEcsServices) Update(ecsService *v1alpha1.EcsService) (result *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeEcsServices) UpdateStatus(ecsService *v1alpha1.EcsService) (*v1alpha1.EcsService, error) {
+func (c *FakeEcsServices) UpdateStatus(ctx context.Context, ecsService *v1alpha1.EcsService, opts v1.UpdateOptions) (*v1alpha1.EcsService, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(ecsservicesResource, "status", c.ns, ecsService), &v1alpha1.EcsService{})
 
@@ -114,7 +116,7 @@ func (c *FakeEcsServices) UpdateStatus(ecsService *v1alpha1.EcsService) (*v1alph
 }
 
 // Delete takes name of the ecsService and deletes it. Returns an error if one occurs.
-func (c *FakeEcsServices) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeEcsServices) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(ecsservicesResource, c.ns, name), &v1alpha1.EcsService{})
 
@@ -122,15 +124,15 @@ func (c *FakeEcsServices) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeEcsServices) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(ecsservicesResource, c.ns, listOptions)
+func (c *FakeEcsServices) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(ecsservicesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.EcsServiceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched ecsService.
-func (c *FakeEcsServices) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EcsService, err error) {
+func (c *FakeEcsServices) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EcsService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(ecsservicesResource, c.ns, name, pt, data, subresources...), &v1alpha1.EcsService{})
 

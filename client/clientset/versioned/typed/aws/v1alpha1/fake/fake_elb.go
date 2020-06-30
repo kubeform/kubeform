@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var elbsResource = schema.GroupVersionResource{Group: "aws.kubeform.com", Versio
 var elbsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "Elb"}
 
 // Get takes name of the elb, and returns the corresponding elb object, and an error if there is any.
-func (c *FakeElbs) Get(name string, options v1.GetOptions) (result *v1alpha1.Elb, err error) {
+func (c *FakeElbs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Elb, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(elbsResource, c.ns, name), &v1alpha1.Elb{})
 
@@ -51,7 +53,7 @@ func (c *FakeElbs) Get(name string, options v1.GetOptions) (result *v1alpha1.Elb
 }
 
 // List takes label and field selectors, and returns the list of Elbs that match those selectors.
-func (c *FakeElbs) List(opts v1.ListOptions) (result *v1alpha1.ElbList, err error) {
+func (c *FakeElbs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ElbList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(elbsResource, elbsKind, c.ns, opts), &v1alpha1.ElbList{})
 
@@ -73,14 +75,14 @@ func (c *FakeElbs) List(opts v1.ListOptions) (result *v1alpha1.ElbList, err erro
 }
 
 // Watch returns a watch.Interface that watches the requested elbs.
-func (c *FakeElbs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeElbs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(elbsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a elb and creates it.  Returns the server's representation of the elb, and an error, if there is any.
-func (c *FakeElbs) Create(elb *v1alpha1.Elb) (result *v1alpha1.Elb, err error) {
+func (c *FakeElbs) Create(ctx context.Context, elb *v1alpha1.Elb, opts v1.CreateOptions) (result *v1alpha1.Elb, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(elbsResource, c.ns, elb), &v1alpha1.Elb{})
 
@@ -91,7 +93,7 @@ func (c *FakeElbs) Create(elb *v1alpha1.Elb) (result *v1alpha1.Elb, err error) {
 }
 
 // Update takes the representation of a elb and updates it. Returns the server's representation of the elb, and an error, if there is any.
-func (c *FakeElbs) Update(elb *v1alpha1.Elb) (result *v1alpha1.Elb, err error) {
+func (c *FakeElbs) Update(ctx context.Context, elb *v1alpha1.Elb, opts v1.UpdateOptions) (result *v1alpha1.Elb, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(elbsResource, c.ns, elb), &v1alpha1.Elb{})
 
@@ -103,7 +105,7 @@ func (c *FakeElbs) Update(elb *v1alpha1.Elb) (result *v1alpha1.Elb, err error) {
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeElbs) UpdateStatus(elb *v1alpha1.Elb) (*v1alpha1.Elb, error) {
+func (c *FakeElbs) UpdateStatus(ctx context.Context, elb *v1alpha1.Elb, opts v1.UpdateOptions) (*v1alpha1.Elb, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(elbsResource, "status", c.ns, elb), &v1alpha1.Elb{})
 
@@ -114,7 +116,7 @@ func (c *FakeElbs) UpdateStatus(elb *v1alpha1.Elb) (*v1alpha1.Elb, error) {
 }
 
 // Delete takes name of the elb and deletes it. Returns an error if one occurs.
-func (c *FakeElbs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeElbs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(elbsResource, c.ns, name), &v1alpha1.Elb{})
 
@@ -122,15 +124,15 @@ func (c *FakeElbs) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeElbs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(elbsResource, c.ns, listOptions)
+func (c *FakeElbs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(elbsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ElbList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched elb.
-func (c *FakeElbs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Elb, err error) {
+func (c *FakeElbs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Elb, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(elbsResource, c.ns, name, pt, data, subresources...), &v1alpha1.Elb{})
 

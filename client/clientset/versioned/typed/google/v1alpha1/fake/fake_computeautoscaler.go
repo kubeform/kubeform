@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computeautoscalersResource = schema.GroupVersionResource{Group: "google.kube
 var computeautoscalersKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeAutoscaler"}
 
 // Get takes name of the computeAutoscaler, and returns the corresponding computeAutoscaler object, and an error if there is any.
-func (c *FakeComputeAutoscalers) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeAutoscaler, err error) {
+func (c *FakeComputeAutoscalers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeAutoscaler, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computeautoscalersResource, c.ns, name), &v1alpha1.ComputeAutoscaler{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeAutoscalers) Get(name string, options v1.GetOptions) (result
 }
 
 // List takes label and field selectors, and returns the list of ComputeAutoscalers that match those selectors.
-func (c *FakeComputeAutoscalers) List(opts v1.ListOptions) (result *v1alpha1.ComputeAutoscalerList, err error) {
+func (c *FakeComputeAutoscalers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeAutoscalerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computeautoscalersResource, computeautoscalersKind, c.ns, opts), &v1alpha1.ComputeAutoscalerList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeAutoscalers) List(opts v1.ListOptions) (result *v1alpha1.Com
 }
 
 // Watch returns a watch.Interface that watches the requested computeAutoscalers.
-func (c *FakeComputeAutoscalers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeAutoscalers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computeautoscalersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeAutoscaler and creates it.  Returns the server's representation of the computeAutoscaler, and an error, if there is any.
-func (c *FakeComputeAutoscalers) Create(computeAutoscaler *v1alpha1.ComputeAutoscaler) (result *v1alpha1.ComputeAutoscaler, err error) {
+func (c *FakeComputeAutoscalers) Create(ctx context.Context, computeAutoscaler *v1alpha1.ComputeAutoscaler, opts v1.CreateOptions) (result *v1alpha1.ComputeAutoscaler, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computeautoscalersResource, c.ns, computeAutoscaler), &v1alpha1.ComputeAutoscaler{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeAutoscalers) Create(computeAutoscaler *v1alpha1.ComputeAutos
 }
 
 // Update takes the representation of a computeAutoscaler and updates it. Returns the server's representation of the computeAutoscaler, and an error, if there is any.
-func (c *FakeComputeAutoscalers) Update(computeAutoscaler *v1alpha1.ComputeAutoscaler) (result *v1alpha1.ComputeAutoscaler, err error) {
+func (c *FakeComputeAutoscalers) Update(ctx context.Context, computeAutoscaler *v1alpha1.ComputeAutoscaler, opts v1.UpdateOptions) (result *v1alpha1.ComputeAutoscaler, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computeautoscalersResource, c.ns, computeAutoscaler), &v1alpha1.ComputeAutoscaler{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeAutoscalers) Update(computeAutoscaler *v1alpha1.ComputeAutos
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeAutoscalers) UpdateStatus(computeAutoscaler *v1alpha1.ComputeAutoscaler) (*v1alpha1.ComputeAutoscaler, error) {
+func (c *FakeComputeAutoscalers) UpdateStatus(ctx context.Context, computeAutoscaler *v1alpha1.ComputeAutoscaler, opts v1.UpdateOptions) (*v1alpha1.ComputeAutoscaler, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computeautoscalersResource, "status", c.ns, computeAutoscaler), &v1alpha1.ComputeAutoscaler{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeAutoscalers) UpdateStatus(computeAutoscaler *v1alpha1.Comput
 }
 
 // Delete takes name of the computeAutoscaler and deletes it. Returns an error if one occurs.
-func (c *FakeComputeAutoscalers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeAutoscalers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computeautoscalersResource, c.ns, name), &v1alpha1.ComputeAutoscaler{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeAutoscalers) Delete(name string, options *v1.DeleteOptions) 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeAutoscalers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computeautoscalersResource, c.ns, listOptions)
+func (c *FakeComputeAutoscalers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computeautoscalersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeAutoscalerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeAutoscaler.
-func (c *FakeComputeAutoscalers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeAutoscaler, err error) {
+func (c *FakeComputeAutoscalers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeAutoscaler, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computeautoscalersResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeAutoscaler{})
 

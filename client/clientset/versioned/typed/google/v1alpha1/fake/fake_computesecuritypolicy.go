@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computesecuritypoliciesResource = schema.GroupVersionResource{Group: "google
 var computesecuritypoliciesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeSecurityPolicy"}
 
 // Get takes name of the computeSecurityPolicy, and returns the corresponding computeSecurityPolicy object, and an error if there is any.
-func (c *FakeComputeSecurityPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeSecurityPolicy, err error) {
+func (c *FakeComputeSecurityPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeSecurityPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computesecuritypoliciesResource, c.ns, name), &v1alpha1.ComputeSecurityPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeSecurityPolicies) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of ComputeSecurityPolicies that match those selectors.
-func (c *FakeComputeSecurityPolicies) List(opts v1.ListOptions) (result *v1alpha1.ComputeSecurityPolicyList, err error) {
+func (c *FakeComputeSecurityPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeSecurityPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computesecuritypoliciesResource, computesecuritypoliciesKind, c.ns, opts), &v1alpha1.ComputeSecurityPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeSecurityPolicies) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested computeSecurityPolicies.
-func (c *FakeComputeSecurityPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeSecurityPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computesecuritypoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeSecurityPolicy and creates it.  Returns the server's representation of the computeSecurityPolicy, and an error, if there is any.
-func (c *FakeComputeSecurityPolicies) Create(computeSecurityPolicy *v1alpha1.ComputeSecurityPolicy) (result *v1alpha1.ComputeSecurityPolicy, err error) {
+func (c *FakeComputeSecurityPolicies) Create(ctx context.Context, computeSecurityPolicy *v1alpha1.ComputeSecurityPolicy, opts v1.CreateOptions) (result *v1alpha1.ComputeSecurityPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computesecuritypoliciesResource, c.ns, computeSecurityPolicy), &v1alpha1.ComputeSecurityPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeSecurityPolicies) Create(computeSecurityPolicy *v1alpha1.Com
 }
 
 // Update takes the representation of a computeSecurityPolicy and updates it. Returns the server's representation of the computeSecurityPolicy, and an error, if there is any.
-func (c *FakeComputeSecurityPolicies) Update(computeSecurityPolicy *v1alpha1.ComputeSecurityPolicy) (result *v1alpha1.ComputeSecurityPolicy, err error) {
+func (c *FakeComputeSecurityPolicies) Update(ctx context.Context, computeSecurityPolicy *v1alpha1.ComputeSecurityPolicy, opts v1.UpdateOptions) (result *v1alpha1.ComputeSecurityPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computesecuritypoliciesResource, c.ns, computeSecurityPolicy), &v1alpha1.ComputeSecurityPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeSecurityPolicies) Update(computeSecurityPolicy *v1alpha1.Com
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeSecurityPolicies) UpdateStatus(computeSecurityPolicy *v1alpha1.ComputeSecurityPolicy) (*v1alpha1.ComputeSecurityPolicy, error) {
+func (c *FakeComputeSecurityPolicies) UpdateStatus(ctx context.Context, computeSecurityPolicy *v1alpha1.ComputeSecurityPolicy, opts v1.UpdateOptions) (*v1alpha1.ComputeSecurityPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computesecuritypoliciesResource, "status", c.ns, computeSecurityPolicy), &v1alpha1.ComputeSecurityPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeSecurityPolicies) UpdateStatus(computeSecurityPolicy *v1alph
 }
 
 // Delete takes name of the computeSecurityPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeComputeSecurityPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeSecurityPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computesecuritypoliciesResource, c.ns, name), &v1alpha1.ComputeSecurityPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeSecurityPolicies) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeSecurityPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computesecuritypoliciesResource, c.ns, listOptions)
+func (c *FakeComputeSecurityPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computesecuritypoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeSecurityPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeSecurityPolicy.
-func (c *FakeComputeSecurityPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeSecurityPolicy, err error) {
+func (c *FakeComputeSecurityPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeSecurityPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computesecuritypoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeSecurityPolicy{})
 

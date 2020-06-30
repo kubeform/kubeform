@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type SharedImagesGetter interface {
 
 // SharedImageInterface has methods to work with SharedImage resources.
 type SharedImageInterface interface {
-	Create(*v1alpha1.SharedImage) (*v1alpha1.SharedImage, error)
-	Update(*v1alpha1.SharedImage) (*v1alpha1.SharedImage, error)
-	UpdateStatus(*v1alpha1.SharedImage) (*v1alpha1.SharedImage, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SharedImage, error)
-	List(opts v1.ListOptions) (*v1alpha1.SharedImageList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SharedImage, err error)
+	Create(ctx context.Context, sharedImage *v1alpha1.SharedImage, opts v1.CreateOptions) (*v1alpha1.SharedImage, error)
+	Update(ctx context.Context, sharedImage *v1alpha1.SharedImage, opts v1.UpdateOptions) (*v1alpha1.SharedImage, error)
+	UpdateStatus(ctx context.Context, sharedImage *v1alpha1.SharedImage, opts v1.UpdateOptions) (*v1alpha1.SharedImage, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SharedImage, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SharedImageList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SharedImage, err error)
 	SharedImageExpansion
 }
 
@@ -65,20 +66,20 @@ func newSharedImages(c *AzurermV1alpha1Client, namespace string) *sharedImages {
 }
 
 // Get takes name of the sharedImage, and returns the corresponding sharedImage object, and an error if there is any.
-func (c *sharedImages) Get(name string, options v1.GetOptions) (result *v1alpha1.SharedImage, err error) {
+func (c *sharedImages) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SharedImage, err error) {
 	result = &v1alpha1.SharedImage{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("sharedimages").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SharedImages that match those selectors.
-func (c *sharedImages) List(opts v1.ListOptions) (result *v1alpha1.SharedImageList, err error) {
+func (c *sharedImages) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SharedImageList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *sharedImages) List(opts v1.ListOptions) (result *v1alpha1.SharedImageLi
 		Resource("sharedimages").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested sharedImages.
-func (c *sharedImages) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *sharedImages) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *sharedImages) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("sharedimages").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a sharedImage and creates it.  Returns the server's representation of the sharedImage, and an error, if there is any.
-func (c *sharedImages) Create(sharedImage *v1alpha1.SharedImage) (result *v1alpha1.SharedImage, err error) {
+func (c *sharedImages) Create(ctx context.Context, sharedImage *v1alpha1.SharedImage, opts v1.CreateOptions) (result *v1alpha1.SharedImage, err error) {
 	result = &v1alpha1.SharedImage{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("sharedimages").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sharedImage).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a sharedImage and updates it. Returns the server's representation of the sharedImage, and an error, if there is any.
-func (c *sharedImages) Update(sharedImage *v1alpha1.SharedImage) (result *v1alpha1.SharedImage, err error) {
+func (c *sharedImages) Update(ctx context.Context, sharedImage *v1alpha1.SharedImage, opts v1.UpdateOptions) (result *v1alpha1.SharedImage, err error) {
 	result = &v1alpha1.SharedImage{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sharedimages").
 		Name(sharedImage.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sharedImage).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *sharedImages) UpdateStatus(sharedImage *v1alpha1.SharedImage) (result *v1alpha1.SharedImage, err error) {
+func (c *sharedImages) UpdateStatus(ctx context.Context, sharedImage *v1alpha1.SharedImage, opts v1.UpdateOptions) (result *v1alpha1.SharedImage, err error) {
 	result = &v1alpha1.SharedImage{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sharedimages").
 		Name(sharedImage.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sharedImage).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the sharedImage and deletes it. Returns an error if one occurs.
-func (c *sharedImages) Delete(name string, options *v1.DeleteOptions) error {
+func (c *sharedImages) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sharedimages").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *sharedImages) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *sharedImages) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sharedimages").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched sharedImage.
-func (c *sharedImages) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SharedImage, err error) {
+func (c *sharedImages) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SharedImage, err error) {
 	result = &v1alpha1.SharedImage{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("sharedimages").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

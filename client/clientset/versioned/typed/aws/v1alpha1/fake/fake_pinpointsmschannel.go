@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var pinpointsmschannelsResource = schema.GroupVersionResource{Group: "aws.kubefo
 var pinpointsmschannelsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "PinpointSmsChannel"}
 
 // Get takes name of the pinpointSmsChannel, and returns the corresponding pinpointSmsChannel object, and an error if there is any.
-func (c *FakePinpointSmsChannels) Get(name string, options v1.GetOptions) (result *v1alpha1.PinpointSmsChannel, err error) {
+func (c *FakePinpointSmsChannels) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PinpointSmsChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(pinpointsmschannelsResource, c.ns, name), &v1alpha1.PinpointSmsChannel{})
 
@@ -51,7 +53,7 @@ func (c *FakePinpointSmsChannels) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of PinpointSmsChannels that match those selectors.
-func (c *FakePinpointSmsChannels) List(opts v1.ListOptions) (result *v1alpha1.PinpointSmsChannelList, err error) {
+func (c *FakePinpointSmsChannels) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PinpointSmsChannelList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(pinpointsmschannelsResource, pinpointsmschannelsKind, c.ns, opts), &v1alpha1.PinpointSmsChannelList{})
 
@@ -73,14 +75,14 @@ func (c *FakePinpointSmsChannels) List(opts v1.ListOptions) (result *v1alpha1.Pi
 }
 
 // Watch returns a watch.Interface that watches the requested pinpointSmsChannels.
-func (c *FakePinpointSmsChannels) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakePinpointSmsChannels) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(pinpointsmschannelsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a pinpointSmsChannel and creates it.  Returns the server's representation of the pinpointSmsChannel, and an error, if there is any.
-func (c *FakePinpointSmsChannels) Create(pinpointSmsChannel *v1alpha1.PinpointSmsChannel) (result *v1alpha1.PinpointSmsChannel, err error) {
+func (c *FakePinpointSmsChannels) Create(ctx context.Context, pinpointSmsChannel *v1alpha1.PinpointSmsChannel, opts v1.CreateOptions) (result *v1alpha1.PinpointSmsChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(pinpointsmschannelsResource, c.ns, pinpointSmsChannel), &v1alpha1.PinpointSmsChannel{})
 
@@ -91,7 +93,7 @@ func (c *FakePinpointSmsChannels) Create(pinpointSmsChannel *v1alpha1.PinpointSm
 }
 
 // Update takes the representation of a pinpointSmsChannel and updates it. Returns the server's representation of the pinpointSmsChannel, and an error, if there is any.
-func (c *FakePinpointSmsChannels) Update(pinpointSmsChannel *v1alpha1.PinpointSmsChannel) (result *v1alpha1.PinpointSmsChannel, err error) {
+func (c *FakePinpointSmsChannels) Update(ctx context.Context, pinpointSmsChannel *v1alpha1.PinpointSmsChannel, opts v1.UpdateOptions) (result *v1alpha1.PinpointSmsChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(pinpointsmschannelsResource, c.ns, pinpointSmsChannel), &v1alpha1.PinpointSmsChannel{})
 
@@ -103,7 +105,7 @@ func (c *FakePinpointSmsChannels) Update(pinpointSmsChannel *v1alpha1.PinpointSm
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakePinpointSmsChannels) UpdateStatus(pinpointSmsChannel *v1alpha1.PinpointSmsChannel) (*v1alpha1.PinpointSmsChannel, error) {
+func (c *FakePinpointSmsChannels) UpdateStatus(ctx context.Context, pinpointSmsChannel *v1alpha1.PinpointSmsChannel, opts v1.UpdateOptions) (*v1alpha1.PinpointSmsChannel, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(pinpointsmschannelsResource, "status", c.ns, pinpointSmsChannel), &v1alpha1.PinpointSmsChannel{})
 
@@ -114,7 +116,7 @@ func (c *FakePinpointSmsChannels) UpdateStatus(pinpointSmsChannel *v1alpha1.Pinp
 }
 
 // Delete takes name of the pinpointSmsChannel and deletes it. Returns an error if one occurs.
-func (c *FakePinpointSmsChannels) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakePinpointSmsChannels) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(pinpointsmschannelsResource, c.ns, name), &v1alpha1.PinpointSmsChannel{})
 
@@ -122,15 +124,15 @@ func (c *FakePinpointSmsChannels) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakePinpointSmsChannels) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(pinpointsmschannelsResource, c.ns, listOptions)
+func (c *FakePinpointSmsChannels) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(pinpointsmschannelsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.PinpointSmsChannelList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched pinpointSmsChannel.
-func (c *FakePinpointSmsChannels) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PinpointSmsChannel, err error) {
+func (c *FakePinpointSmsChannels) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PinpointSmsChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(pinpointsmschannelsResource, c.ns, name, pt, data, subresources...), &v1alpha1.PinpointSmsChannel{})
 

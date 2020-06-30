@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cosmosdbgremlingraphsResource = schema.GroupVersionResource{Group: "azurerm.
 var cosmosdbgremlingraphsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "CosmosdbGremlinGraph"}
 
 // Get takes name of the cosmosdbGremlinGraph, and returns the corresponding cosmosdbGremlinGraph object, and an error if there is any.
-func (c *FakeCosmosdbGremlinGraphs) Get(name string, options v1.GetOptions) (result *v1alpha1.CosmosdbGremlinGraph, err error) {
+func (c *FakeCosmosdbGremlinGraphs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CosmosdbGremlinGraph, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cosmosdbgremlingraphsResource, c.ns, name), &v1alpha1.CosmosdbGremlinGraph{})
 
@@ -51,7 +53,7 @@ func (c *FakeCosmosdbGremlinGraphs) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of CosmosdbGremlinGraphs that match those selectors.
-func (c *FakeCosmosdbGremlinGraphs) List(opts v1.ListOptions) (result *v1alpha1.CosmosdbGremlinGraphList, err error) {
+func (c *FakeCosmosdbGremlinGraphs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CosmosdbGremlinGraphList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cosmosdbgremlingraphsResource, cosmosdbgremlingraphsKind, c.ns, opts), &v1alpha1.CosmosdbGremlinGraphList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCosmosdbGremlinGraphs) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested cosmosdbGremlinGraphs.
-func (c *FakeCosmosdbGremlinGraphs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCosmosdbGremlinGraphs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cosmosdbgremlingraphsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cosmosdbGremlinGraph and creates it.  Returns the server's representation of the cosmosdbGremlinGraph, and an error, if there is any.
-func (c *FakeCosmosdbGremlinGraphs) Create(cosmosdbGremlinGraph *v1alpha1.CosmosdbGremlinGraph) (result *v1alpha1.CosmosdbGremlinGraph, err error) {
+func (c *FakeCosmosdbGremlinGraphs) Create(ctx context.Context, cosmosdbGremlinGraph *v1alpha1.CosmosdbGremlinGraph, opts v1.CreateOptions) (result *v1alpha1.CosmosdbGremlinGraph, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cosmosdbgremlingraphsResource, c.ns, cosmosdbGremlinGraph), &v1alpha1.CosmosdbGremlinGraph{})
 
@@ -91,7 +93,7 @@ func (c *FakeCosmosdbGremlinGraphs) Create(cosmosdbGremlinGraph *v1alpha1.Cosmos
 }
 
 // Update takes the representation of a cosmosdbGremlinGraph and updates it. Returns the server's representation of the cosmosdbGremlinGraph, and an error, if there is any.
-func (c *FakeCosmosdbGremlinGraphs) Update(cosmosdbGremlinGraph *v1alpha1.CosmosdbGremlinGraph) (result *v1alpha1.CosmosdbGremlinGraph, err error) {
+func (c *FakeCosmosdbGremlinGraphs) Update(ctx context.Context, cosmosdbGremlinGraph *v1alpha1.CosmosdbGremlinGraph, opts v1.UpdateOptions) (result *v1alpha1.CosmosdbGremlinGraph, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cosmosdbgremlingraphsResource, c.ns, cosmosdbGremlinGraph), &v1alpha1.CosmosdbGremlinGraph{})
 
@@ -103,7 +105,7 @@ func (c *FakeCosmosdbGremlinGraphs) Update(cosmosdbGremlinGraph *v1alpha1.Cosmos
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCosmosdbGremlinGraphs) UpdateStatus(cosmosdbGremlinGraph *v1alpha1.CosmosdbGremlinGraph) (*v1alpha1.CosmosdbGremlinGraph, error) {
+func (c *FakeCosmosdbGremlinGraphs) UpdateStatus(ctx context.Context, cosmosdbGremlinGraph *v1alpha1.CosmosdbGremlinGraph, opts v1.UpdateOptions) (*v1alpha1.CosmosdbGremlinGraph, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cosmosdbgremlingraphsResource, "status", c.ns, cosmosdbGremlinGraph), &v1alpha1.CosmosdbGremlinGraph{})
 
@@ -114,7 +116,7 @@ func (c *FakeCosmosdbGremlinGraphs) UpdateStatus(cosmosdbGremlinGraph *v1alpha1.
 }
 
 // Delete takes name of the cosmosdbGremlinGraph and deletes it. Returns an error if one occurs.
-func (c *FakeCosmosdbGremlinGraphs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCosmosdbGremlinGraphs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cosmosdbgremlingraphsResource, c.ns, name), &v1alpha1.CosmosdbGremlinGraph{})
 
@@ -122,15 +124,15 @@ func (c *FakeCosmosdbGremlinGraphs) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCosmosdbGremlinGraphs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cosmosdbgremlingraphsResource, c.ns, listOptions)
+func (c *FakeCosmosdbGremlinGraphs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cosmosdbgremlingraphsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CosmosdbGremlinGraphList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cosmosdbGremlinGraph.
-func (c *FakeCosmosdbGremlinGraphs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CosmosdbGremlinGraph, err error) {
+func (c *FakeCosmosdbGremlinGraphs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CosmosdbGremlinGraph, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cosmosdbgremlingraphsResource, c.ns, name, pt, data, subresources...), &v1alpha1.CosmosdbGremlinGraph{})
 

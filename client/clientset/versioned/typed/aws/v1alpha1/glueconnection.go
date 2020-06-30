@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type GlueConnectionsGetter interface {
 
 // GlueConnectionInterface has methods to work with GlueConnection resources.
 type GlueConnectionInterface interface {
-	Create(*v1alpha1.GlueConnection) (*v1alpha1.GlueConnection, error)
-	Update(*v1alpha1.GlueConnection) (*v1alpha1.GlueConnection, error)
-	UpdateStatus(*v1alpha1.GlueConnection) (*v1alpha1.GlueConnection, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.GlueConnection, error)
-	List(opts v1.ListOptions) (*v1alpha1.GlueConnectionList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.GlueConnection, err error)
+	Create(ctx context.Context, glueConnection *v1alpha1.GlueConnection, opts v1.CreateOptions) (*v1alpha1.GlueConnection, error)
+	Update(ctx context.Context, glueConnection *v1alpha1.GlueConnection, opts v1.UpdateOptions) (*v1alpha1.GlueConnection, error)
+	UpdateStatus(ctx context.Context, glueConnection *v1alpha1.GlueConnection, opts v1.UpdateOptions) (*v1alpha1.GlueConnection, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.GlueConnection, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.GlueConnectionList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.GlueConnection, err error)
 	GlueConnectionExpansion
 }
 
@@ -65,20 +66,20 @@ func newGlueConnections(c *AwsV1alpha1Client, namespace string) *glueConnections
 }
 
 // Get takes name of the glueConnection, and returns the corresponding glueConnection object, and an error if there is any.
-func (c *glueConnections) Get(name string, options v1.GetOptions) (result *v1alpha1.GlueConnection, err error) {
+func (c *glueConnections) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.GlueConnection, err error) {
 	result = &v1alpha1.GlueConnection{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("glueconnections").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of GlueConnections that match those selectors.
-func (c *glueConnections) List(opts v1.ListOptions) (result *v1alpha1.GlueConnectionList, err error) {
+func (c *glueConnections) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.GlueConnectionList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *glueConnections) List(opts v1.ListOptions) (result *v1alpha1.GlueConnec
 		Resource("glueconnections").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested glueConnections.
-func (c *glueConnections) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *glueConnections) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *glueConnections) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("glueconnections").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a glueConnection and creates it.  Returns the server's representation of the glueConnection, and an error, if there is any.
-func (c *glueConnections) Create(glueConnection *v1alpha1.GlueConnection) (result *v1alpha1.GlueConnection, err error) {
+func (c *glueConnections) Create(ctx context.Context, glueConnection *v1alpha1.GlueConnection, opts v1.CreateOptions) (result *v1alpha1.GlueConnection, err error) {
 	result = &v1alpha1.GlueConnection{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("glueconnections").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(glueConnection).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a glueConnection and updates it. Returns the server's representation of the glueConnection, and an error, if there is any.
-func (c *glueConnections) Update(glueConnection *v1alpha1.GlueConnection) (result *v1alpha1.GlueConnection, err error) {
+func (c *glueConnections) Update(ctx context.Context, glueConnection *v1alpha1.GlueConnection, opts v1.UpdateOptions) (result *v1alpha1.GlueConnection, err error) {
 	result = &v1alpha1.GlueConnection{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("glueconnections").
 		Name(glueConnection.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(glueConnection).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *glueConnections) UpdateStatus(glueConnection *v1alpha1.GlueConnection) (result *v1alpha1.GlueConnection, err error) {
+func (c *glueConnections) UpdateStatus(ctx context.Context, glueConnection *v1alpha1.GlueConnection, opts v1.UpdateOptions) (result *v1alpha1.GlueConnection, err error) {
 	result = &v1alpha1.GlueConnection{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("glueconnections").
 		Name(glueConnection.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(glueConnection).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the glueConnection and deletes it. Returns an error if one occurs.
-func (c *glueConnections) Delete(name string, options *v1.DeleteOptions) error {
+func (c *glueConnections) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("glueconnections").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *glueConnections) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *glueConnections) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("glueconnections").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched glueConnection.
-func (c *glueConnections) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.GlueConnection, err error) {
+func (c *glueConnections) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.GlueConnection, err error) {
 	result = &v1alpha1.GlueConnection{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("glueconnections").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

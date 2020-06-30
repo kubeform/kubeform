@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type SourcerepoRepositoriesGetter interface {
 
 // SourcerepoRepositoryInterface has methods to work with SourcerepoRepository resources.
 type SourcerepoRepositoryInterface interface {
-	Create(*v1alpha1.SourcerepoRepository) (*v1alpha1.SourcerepoRepository, error)
-	Update(*v1alpha1.SourcerepoRepository) (*v1alpha1.SourcerepoRepository, error)
-	UpdateStatus(*v1alpha1.SourcerepoRepository) (*v1alpha1.SourcerepoRepository, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SourcerepoRepository, error)
-	List(opts v1.ListOptions) (*v1alpha1.SourcerepoRepositoryList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SourcerepoRepository, err error)
+	Create(ctx context.Context, sourcerepoRepository *v1alpha1.SourcerepoRepository, opts v1.CreateOptions) (*v1alpha1.SourcerepoRepository, error)
+	Update(ctx context.Context, sourcerepoRepository *v1alpha1.SourcerepoRepository, opts v1.UpdateOptions) (*v1alpha1.SourcerepoRepository, error)
+	UpdateStatus(ctx context.Context, sourcerepoRepository *v1alpha1.SourcerepoRepository, opts v1.UpdateOptions) (*v1alpha1.SourcerepoRepository, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SourcerepoRepository, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SourcerepoRepositoryList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SourcerepoRepository, err error)
 	SourcerepoRepositoryExpansion
 }
 
@@ -65,20 +66,20 @@ func newSourcerepoRepositories(c *GoogleV1alpha1Client, namespace string) *sourc
 }
 
 // Get takes name of the sourcerepoRepository, and returns the corresponding sourcerepoRepository object, and an error if there is any.
-func (c *sourcerepoRepositories) Get(name string, options v1.GetOptions) (result *v1alpha1.SourcerepoRepository, err error) {
+func (c *sourcerepoRepositories) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SourcerepoRepository, err error) {
 	result = &v1alpha1.SourcerepoRepository{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("sourcereporepositories").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SourcerepoRepositories that match those selectors.
-func (c *sourcerepoRepositories) List(opts v1.ListOptions) (result *v1alpha1.SourcerepoRepositoryList, err error) {
+func (c *sourcerepoRepositories) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SourcerepoRepositoryList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *sourcerepoRepositories) List(opts v1.ListOptions) (result *v1alpha1.Sou
 		Resource("sourcereporepositories").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested sourcerepoRepositories.
-func (c *sourcerepoRepositories) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *sourcerepoRepositories) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *sourcerepoRepositories) Watch(opts v1.ListOptions) (watch.Interface, er
 		Resource("sourcereporepositories").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a sourcerepoRepository and creates it.  Returns the server's representation of the sourcerepoRepository, and an error, if there is any.
-func (c *sourcerepoRepositories) Create(sourcerepoRepository *v1alpha1.SourcerepoRepository) (result *v1alpha1.SourcerepoRepository, err error) {
+func (c *sourcerepoRepositories) Create(ctx context.Context, sourcerepoRepository *v1alpha1.SourcerepoRepository, opts v1.CreateOptions) (result *v1alpha1.SourcerepoRepository, err error) {
 	result = &v1alpha1.SourcerepoRepository{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("sourcereporepositories").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sourcerepoRepository).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a sourcerepoRepository and updates it. Returns the server's representation of the sourcerepoRepository, and an error, if there is any.
-func (c *sourcerepoRepositories) Update(sourcerepoRepository *v1alpha1.SourcerepoRepository) (result *v1alpha1.SourcerepoRepository, err error) {
+func (c *sourcerepoRepositories) Update(ctx context.Context, sourcerepoRepository *v1alpha1.SourcerepoRepository, opts v1.UpdateOptions) (result *v1alpha1.SourcerepoRepository, err error) {
 	result = &v1alpha1.SourcerepoRepository{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sourcereporepositories").
 		Name(sourcerepoRepository.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sourcerepoRepository).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *sourcerepoRepositories) UpdateStatus(sourcerepoRepository *v1alpha1.SourcerepoRepository) (result *v1alpha1.SourcerepoRepository, err error) {
+func (c *sourcerepoRepositories) UpdateStatus(ctx context.Context, sourcerepoRepository *v1alpha1.SourcerepoRepository, opts v1.UpdateOptions) (result *v1alpha1.SourcerepoRepository, err error) {
 	result = &v1alpha1.SourcerepoRepository{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sourcereporepositories").
 		Name(sourcerepoRepository.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sourcerepoRepository).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the sourcerepoRepository and deletes it. Returns an error if one occurs.
-func (c *sourcerepoRepositories) Delete(name string, options *v1.DeleteOptions) error {
+func (c *sourcerepoRepositories) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sourcereporepositories").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *sourcerepoRepositories) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *sourcerepoRepositories) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sourcereporepositories").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched sourcerepoRepository.
-func (c *sourcerepoRepositories) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SourcerepoRepository, err error) {
+func (c *sourcerepoRepositories) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SourcerepoRepository, err error) {
 	result = &v1alpha1.SourcerepoRepository{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("sourcereporepositories").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

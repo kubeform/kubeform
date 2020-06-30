@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var automationjobschedulesResource = schema.GroupVersionResource{Group: "azurerm
 var automationjobschedulesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "AutomationJobSchedule"}
 
 // Get takes name of the automationJobSchedule, and returns the corresponding automationJobSchedule object, and an error if there is any.
-func (c *FakeAutomationJobSchedules) Get(name string, options v1.GetOptions) (result *v1alpha1.AutomationJobSchedule, err error) {
+func (c *FakeAutomationJobSchedules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AutomationJobSchedule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(automationjobschedulesResource, c.ns, name), &v1alpha1.AutomationJobSchedule{})
 
@@ -51,7 +53,7 @@ func (c *FakeAutomationJobSchedules) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of AutomationJobSchedules that match those selectors.
-func (c *FakeAutomationJobSchedules) List(opts v1.ListOptions) (result *v1alpha1.AutomationJobScheduleList, err error) {
+func (c *FakeAutomationJobSchedules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AutomationJobScheduleList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(automationjobschedulesResource, automationjobschedulesKind, c.ns, opts), &v1alpha1.AutomationJobScheduleList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAutomationJobSchedules) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested automationJobSchedules.
-func (c *FakeAutomationJobSchedules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAutomationJobSchedules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(automationjobschedulesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a automationJobSchedule and creates it.  Returns the server's representation of the automationJobSchedule, and an error, if there is any.
-func (c *FakeAutomationJobSchedules) Create(automationJobSchedule *v1alpha1.AutomationJobSchedule) (result *v1alpha1.AutomationJobSchedule, err error) {
+func (c *FakeAutomationJobSchedules) Create(ctx context.Context, automationJobSchedule *v1alpha1.AutomationJobSchedule, opts v1.CreateOptions) (result *v1alpha1.AutomationJobSchedule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(automationjobschedulesResource, c.ns, automationJobSchedule), &v1alpha1.AutomationJobSchedule{})
 
@@ -91,7 +93,7 @@ func (c *FakeAutomationJobSchedules) Create(automationJobSchedule *v1alpha1.Auto
 }
 
 // Update takes the representation of a automationJobSchedule and updates it. Returns the server's representation of the automationJobSchedule, and an error, if there is any.
-func (c *FakeAutomationJobSchedules) Update(automationJobSchedule *v1alpha1.AutomationJobSchedule) (result *v1alpha1.AutomationJobSchedule, err error) {
+func (c *FakeAutomationJobSchedules) Update(ctx context.Context, automationJobSchedule *v1alpha1.AutomationJobSchedule, opts v1.UpdateOptions) (result *v1alpha1.AutomationJobSchedule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(automationjobschedulesResource, c.ns, automationJobSchedule), &v1alpha1.AutomationJobSchedule{})
 
@@ -103,7 +105,7 @@ func (c *FakeAutomationJobSchedules) Update(automationJobSchedule *v1alpha1.Auto
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAutomationJobSchedules) UpdateStatus(automationJobSchedule *v1alpha1.AutomationJobSchedule) (*v1alpha1.AutomationJobSchedule, error) {
+func (c *FakeAutomationJobSchedules) UpdateStatus(ctx context.Context, automationJobSchedule *v1alpha1.AutomationJobSchedule, opts v1.UpdateOptions) (*v1alpha1.AutomationJobSchedule, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(automationjobschedulesResource, "status", c.ns, automationJobSchedule), &v1alpha1.AutomationJobSchedule{})
 
@@ -114,7 +116,7 @@ func (c *FakeAutomationJobSchedules) UpdateStatus(automationJobSchedule *v1alpha
 }
 
 // Delete takes name of the automationJobSchedule and deletes it. Returns an error if one occurs.
-func (c *FakeAutomationJobSchedules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAutomationJobSchedules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(automationjobschedulesResource, c.ns, name), &v1alpha1.AutomationJobSchedule{})
 
@@ -122,15 +124,15 @@ func (c *FakeAutomationJobSchedules) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAutomationJobSchedules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(automationjobschedulesResource, c.ns, listOptions)
+func (c *FakeAutomationJobSchedules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(automationjobschedulesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AutomationJobScheduleList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched automationJobSchedule.
-func (c *FakeAutomationJobSchedules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AutomationJobSchedule, err error) {
+func (c *FakeAutomationJobSchedules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AutomationJobSchedule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(automationjobschedulesResource, c.ns, name, pt, data, subresources...), &v1alpha1.AutomationJobSchedule{})
 

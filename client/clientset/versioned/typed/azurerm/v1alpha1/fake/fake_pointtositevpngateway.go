@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var pointtositevpngatewaysResource = schema.GroupVersionResource{Group: "azurerm
 var pointtositevpngatewaysKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "PointToSiteVPNGateway"}
 
 // Get takes name of the pointToSiteVPNGateway, and returns the corresponding pointToSiteVPNGateway object, and an error if there is any.
-func (c *FakePointToSiteVPNGateways) Get(name string, options v1.GetOptions) (result *v1alpha1.PointToSiteVPNGateway, err error) {
+func (c *FakePointToSiteVPNGateways) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PointToSiteVPNGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(pointtositevpngatewaysResource, c.ns, name), &v1alpha1.PointToSiteVPNGateway{})
 
@@ -51,7 +53,7 @@ func (c *FakePointToSiteVPNGateways) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of PointToSiteVPNGateways that match those selectors.
-func (c *FakePointToSiteVPNGateways) List(opts v1.ListOptions) (result *v1alpha1.PointToSiteVPNGatewayList, err error) {
+func (c *FakePointToSiteVPNGateways) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PointToSiteVPNGatewayList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(pointtositevpngatewaysResource, pointtositevpngatewaysKind, c.ns, opts), &v1alpha1.PointToSiteVPNGatewayList{})
 
@@ -73,14 +75,14 @@ func (c *FakePointToSiteVPNGateways) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested pointToSiteVPNGateways.
-func (c *FakePointToSiteVPNGateways) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakePointToSiteVPNGateways) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(pointtositevpngatewaysResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a pointToSiteVPNGateway and creates it.  Returns the server's representation of the pointToSiteVPNGateway, and an error, if there is any.
-func (c *FakePointToSiteVPNGateways) Create(pointToSiteVPNGateway *v1alpha1.PointToSiteVPNGateway) (result *v1alpha1.PointToSiteVPNGateway, err error) {
+func (c *FakePointToSiteVPNGateways) Create(ctx context.Context, pointToSiteVPNGateway *v1alpha1.PointToSiteVPNGateway, opts v1.CreateOptions) (result *v1alpha1.PointToSiteVPNGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(pointtositevpngatewaysResource, c.ns, pointToSiteVPNGateway), &v1alpha1.PointToSiteVPNGateway{})
 
@@ -91,7 +93,7 @@ func (c *FakePointToSiteVPNGateways) Create(pointToSiteVPNGateway *v1alpha1.Poin
 }
 
 // Update takes the representation of a pointToSiteVPNGateway and updates it. Returns the server's representation of the pointToSiteVPNGateway, and an error, if there is any.
-func (c *FakePointToSiteVPNGateways) Update(pointToSiteVPNGateway *v1alpha1.PointToSiteVPNGateway) (result *v1alpha1.PointToSiteVPNGateway, err error) {
+func (c *FakePointToSiteVPNGateways) Update(ctx context.Context, pointToSiteVPNGateway *v1alpha1.PointToSiteVPNGateway, opts v1.UpdateOptions) (result *v1alpha1.PointToSiteVPNGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(pointtositevpngatewaysResource, c.ns, pointToSiteVPNGateway), &v1alpha1.PointToSiteVPNGateway{})
 
@@ -103,7 +105,7 @@ func (c *FakePointToSiteVPNGateways) Update(pointToSiteVPNGateway *v1alpha1.Poin
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakePointToSiteVPNGateways) UpdateStatus(pointToSiteVPNGateway *v1alpha1.PointToSiteVPNGateway) (*v1alpha1.PointToSiteVPNGateway, error) {
+func (c *FakePointToSiteVPNGateways) UpdateStatus(ctx context.Context, pointToSiteVPNGateway *v1alpha1.PointToSiteVPNGateway, opts v1.UpdateOptions) (*v1alpha1.PointToSiteVPNGateway, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(pointtositevpngatewaysResource, "status", c.ns, pointToSiteVPNGateway), &v1alpha1.PointToSiteVPNGateway{})
 
@@ -114,7 +116,7 @@ func (c *FakePointToSiteVPNGateways) UpdateStatus(pointToSiteVPNGateway *v1alpha
 }
 
 // Delete takes name of the pointToSiteVPNGateway and deletes it. Returns an error if one occurs.
-func (c *FakePointToSiteVPNGateways) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakePointToSiteVPNGateways) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(pointtositevpngatewaysResource, c.ns, name), &v1alpha1.PointToSiteVPNGateway{})
 
@@ -122,15 +124,15 @@ func (c *FakePointToSiteVPNGateways) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakePointToSiteVPNGateways) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(pointtositevpngatewaysResource, c.ns, listOptions)
+func (c *FakePointToSiteVPNGateways) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(pointtositevpngatewaysResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.PointToSiteVPNGatewayList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched pointToSiteVPNGateway.
-func (c *FakePointToSiteVPNGateways) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PointToSiteVPNGateway, err error) {
+func (c *FakePointToSiteVPNGateways) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PointToSiteVPNGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(pointtositevpngatewaysResource, c.ns, name, pt, data, subresources...), &v1alpha1.PointToSiteVPNGateway{})
 

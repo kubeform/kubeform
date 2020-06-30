@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type LogAnalyticsWorkspaceLinkedServicesGetter interface {
 
 // LogAnalyticsWorkspaceLinkedServiceInterface has methods to work with LogAnalyticsWorkspaceLinkedService resources.
 type LogAnalyticsWorkspaceLinkedServiceInterface interface {
-	Create(*v1alpha1.LogAnalyticsWorkspaceLinkedService) (*v1alpha1.LogAnalyticsWorkspaceLinkedService, error)
-	Update(*v1alpha1.LogAnalyticsWorkspaceLinkedService) (*v1alpha1.LogAnalyticsWorkspaceLinkedService, error)
-	UpdateStatus(*v1alpha1.LogAnalyticsWorkspaceLinkedService) (*v1alpha1.LogAnalyticsWorkspaceLinkedService, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.LogAnalyticsWorkspaceLinkedService, error)
-	List(opts v1.ListOptions) (*v1alpha1.LogAnalyticsWorkspaceLinkedServiceList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LogAnalyticsWorkspaceLinkedService, err error)
+	Create(ctx context.Context, logAnalyticsWorkspaceLinkedService *v1alpha1.LogAnalyticsWorkspaceLinkedService, opts v1.CreateOptions) (*v1alpha1.LogAnalyticsWorkspaceLinkedService, error)
+	Update(ctx context.Context, logAnalyticsWorkspaceLinkedService *v1alpha1.LogAnalyticsWorkspaceLinkedService, opts v1.UpdateOptions) (*v1alpha1.LogAnalyticsWorkspaceLinkedService, error)
+	UpdateStatus(ctx context.Context, logAnalyticsWorkspaceLinkedService *v1alpha1.LogAnalyticsWorkspaceLinkedService, opts v1.UpdateOptions) (*v1alpha1.LogAnalyticsWorkspaceLinkedService, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.LogAnalyticsWorkspaceLinkedService, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.LogAnalyticsWorkspaceLinkedServiceList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LogAnalyticsWorkspaceLinkedService, err error)
 	LogAnalyticsWorkspaceLinkedServiceExpansion
 }
 
@@ -65,20 +66,20 @@ func newLogAnalyticsWorkspaceLinkedServices(c *AzurermV1alpha1Client, namespace 
 }
 
 // Get takes name of the logAnalyticsWorkspaceLinkedService, and returns the corresponding logAnalyticsWorkspaceLinkedService object, and an error if there is any.
-func (c *logAnalyticsWorkspaceLinkedServices) Get(name string, options v1.GetOptions) (result *v1alpha1.LogAnalyticsWorkspaceLinkedService, err error) {
+func (c *logAnalyticsWorkspaceLinkedServices) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LogAnalyticsWorkspaceLinkedService, err error) {
 	result = &v1alpha1.LogAnalyticsWorkspaceLinkedService{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("loganalyticsworkspacelinkedservices").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of LogAnalyticsWorkspaceLinkedServices that match those selectors.
-func (c *logAnalyticsWorkspaceLinkedServices) List(opts v1.ListOptions) (result *v1alpha1.LogAnalyticsWorkspaceLinkedServiceList, err error) {
+func (c *logAnalyticsWorkspaceLinkedServices) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LogAnalyticsWorkspaceLinkedServiceList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *logAnalyticsWorkspaceLinkedServices) List(opts v1.ListOptions) (result 
 		Resource("loganalyticsworkspacelinkedservices").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested logAnalyticsWorkspaceLinkedServices.
-func (c *logAnalyticsWorkspaceLinkedServices) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *logAnalyticsWorkspaceLinkedServices) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *logAnalyticsWorkspaceLinkedServices) Watch(opts v1.ListOptions) (watch.
 		Resource("loganalyticsworkspacelinkedservices").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a logAnalyticsWorkspaceLinkedService and creates it.  Returns the server's representation of the logAnalyticsWorkspaceLinkedService, and an error, if there is any.
-func (c *logAnalyticsWorkspaceLinkedServices) Create(logAnalyticsWorkspaceLinkedService *v1alpha1.LogAnalyticsWorkspaceLinkedService) (result *v1alpha1.LogAnalyticsWorkspaceLinkedService, err error) {
+func (c *logAnalyticsWorkspaceLinkedServices) Create(ctx context.Context, logAnalyticsWorkspaceLinkedService *v1alpha1.LogAnalyticsWorkspaceLinkedService, opts v1.CreateOptions) (result *v1alpha1.LogAnalyticsWorkspaceLinkedService, err error) {
 	result = &v1alpha1.LogAnalyticsWorkspaceLinkedService{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("loganalyticsworkspacelinkedservices").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(logAnalyticsWorkspaceLinkedService).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a logAnalyticsWorkspaceLinkedService and updates it. Returns the server's representation of the logAnalyticsWorkspaceLinkedService, and an error, if there is any.
-func (c *logAnalyticsWorkspaceLinkedServices) Update(logAnalyticsWorkspaceLinkedService *v1alpha1.LogAnalyticsWorkspaceLinkedService) (result *v1alpha1.LogAnalyticsWorkspaceLinkedService, err error) {
+func (c *logAnalyticsWorkspaceLinkedServices) Update(ctx context.Context, logAnalyticsWorkspaceLinkedService *v1alpha1.LogAnalyticsWorkspaceLinkedService, opts v1.UpdateOptions) (result *v1alpha1.LogAnalyticsWorkspaceLinkedService, err error) {
 	result = &v1alpha1.LogAnalyticsWorkspaceLinkedService{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("loganalyticsworkspacelinkedservices").
 		Name(logAnalyticsWorkspaceLinkedService.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(logAnalyticsWorkspaceLinkedService).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *logAnalyticsWorkspaceLinkedServices) UpdateStatus(logAnalyticsWorkspaceLinkedService *v1alpha1.LogAnalyticsWorkspaceLinkedService) (result *v1alpha1.LogAnalyticsWorkspaceLinkedService, err error) {
+func (c *logAnalyticsWorkspaceLinkedServices) UpdateStatus(ctx context.Context, logAnalyticsWorkspaceLinkedService *v1alpha1.LogAnalyticsWorkspaceLinkedService, opts v1.UpdateOptions) (result *v1alpha1.LogAnalyticsWorkspaceLinkedService, err error) {
 	result = &v1alpha1.LogAnalyticsWorkspaceLinkedService{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("loganalyticsworkspacelinkedservices").
 		Name(logAnalyticsWorkspaceLinkedService.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(logAnalyticsWorkspaceLinkedService).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the logAnalyticsWorkspaceLinkedService and deletes it. Returns an error if one occurs.
-func (c *logAnalyticsWorkspaceLinkedServices) Delete(name string, options *v1.DeleteOptions) error {
+func (c *logAnalyticsWorkspaceLinkedServices) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("loganalyticsworkspacelinkedservices").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *logAnalyticsWorkspaceLinkedServices) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *logAnalyticsWorkspaceLinkedServices) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("loganalyticsworkspacelinkedservices").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched logAnalyticsWorkspaceLinkedService.
-func (c *logAnalyticsWorkspaceLinkedServices) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LogAnalyticsWorkspaceLinkedService, err error) {
+func (c *logAnalyticsWorkspaceLinkedServices) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LogAnalyticsWorkspaceLinkedService, err error) {
 	result = &v1alpha1.LogAnalyticsWorkspaceLinkedService{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("loganalyticsworkspacelinkedservices").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

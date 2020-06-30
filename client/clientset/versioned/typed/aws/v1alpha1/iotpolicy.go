@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type IotPoliciesGetter interface {
 
 // IotPolicyInterface has methods to work with IotPolicy resources.
 type IotPolicyInterface interface {
-	Create(*v1alpha1.IotPolicy) (*v1alpha1.IotPolicy, error)
-	Update(*v1alpha1.IotPolicy) (*v1alpha1.IotPolicy, error)
-	UpdateStatus(*v1alpha1.IotPolicy) (*v1alpha1.IotPolicy, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.IotPolicy, error)
-	List(opts v1.ListOptions) (*v1alpha1.IotPolicyList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IotPolicy, err error)
+	Create(ctx context.Context, iotPolicy *v1alpha1.IotPolicy, opts v1.CreateOptions) (*v1alpha1.IotPolicy, error)
+	Update(ctx context.Context, iotPolicy *v1alpha1.IotPolicy, opts v1.UpdateOptions) (*v1alpha1.IotPolicy, error)
+	UpdateStatus(ctx context.Context, iotPolicy *v1alpha1.IotPolicy, opts v1.UpdateOptions) (*v1alpha1.IotPolicy, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.IotPolicy, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.IotPolicyList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IotPolicy, err error)
 	IotPolicyExpansion
 }
 
@@ -65,20 +66,20 @@ func newIotPolicies(c *AwsV1alpha1Client, namespace string) *iotPolicies {
 }
 
 // Get takes name of the iotPolicy, and returns the corresponding iotPolicy object, and an error if there is any.
-func (c *iotPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.IotPolicy, err error) {
+func (c *iotPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IotPolicy, err error) {
 	result = &v1alpha1.IotPolicy{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("iotpolicies").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of IotPolicies that match those selectors.
-func (c *iotPolicies) List(opts v1.ListOptions) (result *v1alpha1.IotPolicyList, err error) {
+func (c *iotPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IotPolicyList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *iotPolicies) List(opts v1.ListOptions) (result *v1alpha1.IotPolicyList,
 		Resource("iotpolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested iotPolicies.
-func (c *iotPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *iotPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *iotPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("iotpolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a iotPolicy and creates it.  Returns the server's representation of the iotPolicy, and an error, if there is any.
-func (c *iotPolicies) Create(iotPolicy *v1alpha1.IotPolicy) (result *v1alpha1.IotPolicy, err error) {
+func (c *iotPolicies) Create(ctx context.Context, iotPolicy *v1alpha1.IotPolicy, opts v1.CreateOptions) (result *v1alpha1.IotPolicy, err error) {
 	result = &v1alpha1.IotPolicy{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("iotpolicies").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iotPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a iotPolicy and updates it. Returns the server's representation of the iotPolicy, and an error, if there is any.
-func (c *iotPolicies) Update(iotPolicy *v1alpha1.IotPolicy) (result *v1alpha1.IotPolicy, err error) {
+func (c *iotPolicies) Update(ctx context.Context, iotPolicy *v1alpha1.IotPolicy, opts v1.UpdateOptions) (result *v1alpha1.IotPolicy, err error) {
 	result = &v1alpha1.IotPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iotpolicies").
 		Name(iotPolicy.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iotPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *iotPolicies) UpdateStatus(iotPolicy *v1alpha1.IotPolicy) (result *v1alpha1.IotPolicy, err error) {
+func (c *iotPolicies) UpdateStatus(ctx context.Context, iotPolicy *v1alpha1.IotPolicy, opts v1.UpdateOptions) (result *v1alpha1.IotPolicy, err error) {
 	result = &v1alpha1.IotPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iotpolicies").
 		Name(iotPolicy.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iotPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the iotPolicy and deletes it. Returns an error if one occurs.
-func (c *iotPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *iotPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iotpolicies").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *iotPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *iotPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iotpolicies").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched iotPolicy.
-func (c *iotPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IotPolicy, err error) {
+func (c *iotPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IotPolicy, err error) {
 	result = &v1alpha1.IotPolicy{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("iotpolicies").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

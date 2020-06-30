@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var loggingprojectsinksResource = schema.GroupVersionResource{Group: "google.kub
 var loggingprojectsinksKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "LoggingProjectSink"}
 
 // Get takes name of the loggingProjectSink, and returns the corresponding loggingProjectSink object, and an error if there is any.
-func (c *FakeLoggingProjectSinks) Get(name string, options v1.GetOptions) (result *v1alpha1.LoggingProjectSink, err error) {
+func (c *FakeLoggingProjectSinks) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LoggingProjectSink, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(loggingprojectsinksResource, c.ns, name), &v1alpha1.LoggingProjectSink{})
 
@@ -51,7 +53,7 @@ func (c *FakeLoggingProjectSinks) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of LoggingProjectSinks that match those selectors.
-func (c *FakeLoggingProjectSinks) List(opts v1.ListOptions) (result *v1alpha1.LoggingProjectSinkList, err error) {
+func (c *FakeLoggingProjectSinks) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LoggingProjectSinkList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(loggingprojectsinksResource, loggingprojectsinksKind, c.ns, opts), &v1alpha1.LoggingProjectSinkList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLoggingProjectSinks) List(opts v1.ListOptions) (result *v1alpha1.Lo
 }
 
 // Watch returns a watch.Interface that watches the requested loggingProjectSinks.
-func (c *FakeLoggingProjectSinks) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLoggingProjectSinks) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(loggingprojectsinksResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a loggingProjectSink and creates it.  Returns the server's representation of the loggingProjectSink, and an error, if there is any.
-func (c *FakeLoggingProjectSinks) Create(loggingProjectSink *v1alpha1.LoggingProjectSink) (result *v1alpha1.LoggingProjectSink, err error) {
+func (c *FakeLoggingProjectSinks) Create(ctx context.Context, loggingProjectSink *v1alpha1.LoggingProjectSink, opts v1.CreateOptions) (result *v1alpha1.LoggingProjectSink, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(loggingprojectsinksResource, c.ns, loggingProjectSink), &v1alpha1.LoggingProjectSink{})
 
@@ -91,7 +93,7 @@ func (c *FakeLoggingProjectSinks) Create(loggingProjectSink *v1alpha1.LoggingPro
 }
 
 // Update takes the representation of a loggingProjectSink and updates it. Returns the server's representation of the loggingProjectSink, and an error, if there is any.
-func (c *FakeLoggingProjectSinks) Update(loggingProjectSink *v1alpha1.LoggingProjectSink) (result *v1alpha1.LoggingProjectSink, err error) {
+func (c *FakeLoggingProjectSinks) Update(ctx context.Context, loggingProjectSink *v1alpha1.LoggingProjectSink, opts v1.UpdateOptions) (result *v1alpha1.LoggingProjectSink, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(loggingprojectsinksResource, c.ns, loggingProjectSink), &v1alpha1.LoggingProjectSink{})
 
@@ -103,7 +105,7 @@ func (c *FakeLoggingProjectSinks) Update(loggingProjectSink *v1alpha1.LoggingPro
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLoggingProjectSinks) UpdateStatus(loggingProjectSink *v1alpha1.LoggingProjectSink) (*v1alpha1.LoggingProjectSink, error) {
+func (c *FakeLoggingProjectSinks) UpdateStatus(ctx context.Context, loggingProjectSink *v1alpha1.LoggingProjectSink, opts v1.UpdateOptions) (*v1alpha1.LoggingProjectSink, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(loggingprojectsinksResource, "status", c.ns, loggingProjectSink), &v1alpha1.LoggingProjectSink{})
 
@@ -114,7 +116,7 @@ func (c *FakeLoggingProjectSinks) UpdateStatus(loggingProjectSink *v1alpha1.Logg
 }
 
 // Delete takes name of the loggingProjectSink and deletes it. Returns an error if one occurs.
-func (c *FakeLoggingProjectSinks) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLoggingProjectSinks) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(loggingprojectsinksResource, c.ns, name), &v1alpha1.LoggingProjectSink{})
 
@@ -122,15 +124,15 @@ func (c *FakeLoggingProjectSinks) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLoggingProjectSinks) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(loggingprojectsinksResource, c.ns, listOptions)
+func (c *FakeLoggingProjectSinks) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(loggingprojectsinksResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LoggingProjectSinkList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched loggingProjectSink.
-func (c *FakeLoggingProjectSinks) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LoggingProjectSink, err error) {
+func (c *FakeLoggingProjectSinks) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LoggingProjectSink, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(loggingprojectsinksResource, c.ns, name, pt, data, subresources...), &v1alpha1.LoggingProjectSink{})
 

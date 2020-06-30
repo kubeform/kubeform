@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	time "time"
 
 	awsv1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -62,13 +63,13 @@ func NewFilteredRdsClusterInformer(client versioned.Interface, namespace string,
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.AwsV1alpha1().RdsClusters(namespace).List(options)
+				return client.AwsV1alpha1().RdsClusters(namespace).List(context.TODO(), options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.AwsV1alpha1().RdsClusters(namespace).Watch(options)
+				return client.AwsV1alpha1().RdsClusters(namespace).Watch(context.TODO(), options)
 			},
 		},
 		&awsv1alpha1.RdsCluster{},

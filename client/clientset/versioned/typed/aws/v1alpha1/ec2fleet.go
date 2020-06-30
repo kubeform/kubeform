@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type Ec2FleetsGetter interface {
 
 // Ec2FleetInterface has methods to work with Ec2Fleet resources.
 type Ec2FleetInterface interface {
-	Create(*v1alpha1.Ec2Fleet) (*v1alpha1.Ec2Fleet, error)
-	Update(*v1alpha1.Ec2Fleet) (*v1alpha1.Ec2Fleet, error)
-	UpdateStatus(*v1alpha1.Ec2Fleet) (*v1alpha1.Ec2Fleet, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.Ec2Fleet, error)
-	List(opts v1.ListOptions) (*v1alpha1.Ec2FleetList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Ec2Fleet, err error)
+	Create(ctx context.Context, ec2Fleet *v1alpha1.Ec2Fleet, opts v1.CreateOptions) (*v1alpha1.Ec2Fleet, error)
+	Update(ctx context.Context, ec2Fleet *v1alpha1.Ec2Fleet, opts v1.UpdateOptions) (*v1alpha1.Ec2Fleet, error)
+	UpdateStatus(ctx context.Context, ec2Fleet *v1alpha1.Ec2Fleet, opts v1.UpdateOptions) (*v1alpha1.Ec2Fleet, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.Ec2Fleet, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.Ec2FleetList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Ec2Fleet, err error)
 	Ec2FleetExpansion
 }
 
@@ -65,20 +66,20 @@ func newEc2Fleets(c *AwsV1alpha1Client, namespace string) *ec2Fleets {
 }
 
 // Get takes name of the ec2Fleet, and returns the corresponding ec2Fleet object, and an error if there is any.
-func (c *ec2Fleets) Get(name string, options v1.GetOptions) (result *v1alpha1.Ec2Fleet, err error) {
+func (c *ec2Fleets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Ec2Fleet, err error) {
 	result = &v1alpha1.Ec2Fleet{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("ec2fleets").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of Ec2Fleets that match those selectors.
-func (c *ec2Fleets) List(opts v1.ListOptions) (result *v1alpha1.Ec2FleetList, err error) {
+func (c *ec2Fleets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.Ec2FleetList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *ec2Fleets) List(opts v1.ListOptions) (result *v1alpha1.Ec2FleetList, er
 		Resource("ec2fleets").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested ec2Fleets.
-func (c *ec2Fleets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *ec2Fleets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *ec2Fleets) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("ec2fleets").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a ec2Fleet and creates it.  Returns the server's representation of the ec2Fleet, and an error, if there is any.
-func (c *ec2Fleets) Create(ec2Fleet *v1alpha1.Ec2Fleet) (result *v1alpha1.Ec2Fleet, err error) {
+func (c *ec2Fleets) Create(ctx context.Context, ec2Fleet *v1alpha1.Ec2Fleet, opts v1.CreateOptions) (result *v1alpha1.Ec2Fleet, err error) {
 	result = &v1alpha1.Ec2Fleet{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("ec2fleets").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(ec2Fleet).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a ec2Fleet and updates it. Returns the server's representation of the ec2Fleet, and an error, if there is any.
-func (c *ec2Fleets) Update(ec2Fleet *v1alpha1.Ec2Fleet) (result *v1alpha1.Ec2Fleet, err error) {
+func (c *ec2Fleets) Update(ctx context.Context, ec2Fleet *v1alpha1.Ec2Fleet, opts v1.UpdateOptions) (result *v1alpha1.Ec2Fleet, err error) {
 	result = &v1alpha1.Ec2Fleet{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("ec2fleets").
 		Name(ec2Fleet.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(ec2Fleet).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *ec2Fleets) UpdateStatus(ec2Fleet *v1alpha1.Ec2Fleet) (result *v1alpha1.Ec2Fleet, err error) {
+func (c *ec2Fleets) UpdateStatus(ctx context.Context, ec2Fleet *v1alpha1.Ec2Fleet, opts v1.UpdateOptions) (result *v1alpha1.Ec2Fleet, err error) {
 	result = &v1alpha1.Ec2Fleet{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("ec2fleets").
 		Name(ec2Fleet.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(ec2Fleet).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the ec2Fleet and deletes it. Returns an error if one occurs.
-func (c *ec2Fleets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *ec2Fleets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("ec2fleets").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *ec2Fleets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *ec2Fleets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("ec2fleets").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched ec2Fleet.
-func (c *ec2Fleets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Ec2Fleet, err error) {
+func (c *ec2Fleets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Ec2Fleet, err error) {
 	result = &v1alpha1.Ec2Fleet{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("ec2fleets").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

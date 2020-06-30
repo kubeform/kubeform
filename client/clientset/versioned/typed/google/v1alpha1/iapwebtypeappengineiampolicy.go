@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type IapWebTypeAppEngineIamPoliciesGetter interface {
 
 // IapWebTypeAppEngineIamPolicyInterface has methods to work with IapWebTypeAppEngineIamPolicy resources.
 type IapWebTypeAppEngineIamPolicyInterface interface {
-	Create(*v1alpha1.IapWebTypeAppEngineIamPolicy) (*v1alpha1.IapWebTypeAppEngineIamPolicy, error)
-	Update(*v1alpha1.IapWebTypeAppEngineIamPolicy) (*v1alpha1.IapWebTypeAppEngineIamPolicy, error)
-	UpdateStatus(*v1alpha1.IapWebTypeAppEngineIamPolicy) (*v1alpha1.IapWebTypeAppEngineIamPolicy, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.IapWebTypeAppEngineIamPolicy, error)
-	List(opts v1.ListOptions) (*v1alpha1.IapWebTypeAppEngineIamPolicyList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IapWebTypeAppEngineIamPolicy, err error)
+	Create(ctx context.Context, iapWebTypeAppEngineIamPolicy *v1alpha1.IapWebTypeAppEngineIamPolicy, opts v1.CreateOptions) (*v1alpha1.IapWebTypeAppEngineIamPolicy, error)
+	Update(ctx context.Context, iapWebTypeAppEngineIamPolicy *v1alpha1.IapWebTypeAppEngineIamPolicy, opts v1.UpdateOptions) (*v1alpha1.IapWebTypeAppEngineIamPolicy, error)
+	UpdateStatus(ctx context.Context, iapWebTypeAppEngineIamPolicy *v1alpha1.IapWebTypeAppEngineIamPolicy, opts v1.UpdateOptions) (*v1alpha1.IapWebTypeAppEngineIamPolicy, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.IapWebTypeAppEngineIamPolicy, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.IapWebTypeAppEngineIamPolicyList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IapWebTypeAppEngineIamPolicy, err error)
 	IapWebTypeAppEngineIamPolicyExpansion
 }
 
@@ -65,20 +66,20 @@ func newIapWebTypeAppEngineIamPolicies(c *GoogleV1alpha1Client, namespace string
 }
 
 // Get takes name of the iapWebTypeAppEngineIamPolicy, and returns the corresponding iapWebTypeAppEngineIamPolicy object, and an error if there is any.
-func (c *iapWebTypeAppEngineIamPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.IapWebTypeAppEngineIamPolicy, err error) {
+func (c *iapWebTypeAppEngineIamPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IapWebTypeAppEngineIamPolicy, err error) {
 	result = &v1alpha1.IapWebTypeAppEngineIamPolicy{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("iapwebtypeappengineiampolicies").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of IapWebTypeAppEngineIamPolicies that match those selectors.
-func (c *iapWebTypeAppEngineIamPolicies) List(opts v1.ListOptions) (result *v1alpha1.IapWebTypeAppEngineIamPolicyList, err error) {
+func (c *iapWebTypeAppEngineIamPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IapWebTypeAppEngineIamPolicyList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *iapWebTypeAppEngineIamPolicies) List(opts v1.ListOptions) (result *v1al
 		Resource("iapwebtypeappengineiampolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested iapWebTypeAppEngineIamPolicies.
-func (c *iapWebTypeAppEngineIamPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *iapWebTypeAppEngineIamPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *iapWebTypeAppEngineIamPolicies) Watch(opts v1.ListOptions) (watch.Inter
 		Resource("iapwebtypeappengineiampolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a iapWebTypeAppEngineIamPolicy and creates it.  Returns the server's representation of the iapWebTypeAppEngineIamPolicy, and an error, if there is any.
-func (c *iapWebTypeAppEngineIamPolicies) Create(iapWebTypeAppEngineIamPolicy *v1alpha1.IapWebTypeAppEngineIamPolicy) (result *v1alpha1.IapWebTypeAppEngineIamPolicy, err error) {
+func (c *iapWebTypeAppEngineIamPolicies) Create(ctx context.Context, iapWebTypeAppEngineIamPolicy *v1alpha1.IapWebTypeAppEngineIamPolicy, opts v1.CreateOptions) (result *v1alpha1.IapWebTypeAppEngineIamPolicy, err error) {
 	result = &v1alpha1.IapWebTypeAppEngineIamPolicy{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("iapwebtypeappengineiampolicies").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iapWebTypeAppEngineIamPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a iapWebTypeAppEngineIamPolicy and updates it. Returns the server's representation of the iapWebTypeAppEngineIamPolicy, and an error, if there is any.
-func (c *iapWebTypeAppEngineIamPolicies) Update(iapWebTypeAppEngineIamPolicy *v1alpha1.IapWebTypeAppEngineIamPolicy) (result *v1alpha1.IapWebTypeAppEngineIamPolicy, err error) {
+func (c *iapWebTypeAppEngineIamPolicies) Update(ctx context.Context, iapWebTypeAppEngineIamPolicy *v1alpha1.IapWebTypeAppEngineIamPolicy, opts v1.UpdateOptions) (result *v1alpha1.IapWebTypeAppEngineIamPolicy, err error) {
 	result = &v1alpha1.IapWebTypeAppEngineIamPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iapwebtypeappengineiampolicies").
 		Name(iapWebTypeAppEngineIamPolicy.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iapWebTypeAppEngineIamPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *iapWebTypeAppEngineIamPolicies) UpdateStatus(iapWebTypeAppEngineIamPolicy *v1alpha1.IapWebTypeAppEngineIamPolicy) (result *v1alpha1.IapWebTypeAppEngineIamPolicy, err error) {
+func (c *iapWebTypeAppEngineIamPolicies) UpdateStatus(ctx context.Context, iapWebTypeAppEngineIamPolicy *v1alpha1.IapWebTypeAppEngineIamPolicy, opts v1.UpdateOptions) (result *v1alpha1.IapWebTypeAppEngineIamPolicy, err error) {
 	result = &v1alpha1.IapWebTypeAppEngineIamPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iapwebtypeappengineiampolicies").
 		Name(iapWebTypeAppEngineIamPolicy.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iapWebTypeAppEngineIamPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the iapWebTypeAppEngineIamPolicy and deletes it. Returns an error if one occurs.
-func (c *iapWebTypeAppEngineIamPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *iapWebTypeAppEngineIamPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iapwebtypeappengineiampolicies").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *iapWebTypeAppEngineIamPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *iapWebTypeAppEngineIamPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iapwebtypeappengineiampolicies").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched iapWebTypeAppEngineIamPolicy.
-func (c *iapWebTypeAppEngineIamPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IapWebTypeAppEngineIamPolicy, err error) {
+func (c *iapWebTypeAppEngineIamPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IapWebTypeAppEngineIamPolicy, err error) {
 	result = &v1alpha1.IapWebTypeAppEngineIamPolicy{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("iapwebtypeappengineiampolicies").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

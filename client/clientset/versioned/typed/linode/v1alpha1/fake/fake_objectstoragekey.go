@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/linode/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var objectstoragekeysResource = schema.GroupVersionResource{Group: "linode.kubef
 var objectstoragekeysKind = schema.GroupVersionKind{Group: "linode.kubeform.com", Version: "v1alpha1", Kind: "ObjectStorageKey"}
 
 // Get takes name of the objectStorageKey, and returns the corresponding objectStorageKey object, and an error if there is any.
-func (c *FakeObjectStorageKeys) Get(name string, options v1.GetOptions) (result *v1alpha1.ObjectStorageKey, err error) {
+func (c *FakeObjectStorageKeys) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ObjectStorageKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(objectstoragekeysResource, c.ns, name), &v1alpha1.ObjectStorageKey{})
 
@@ -51,7 +53,7 @@ func (c *FakeObjectStorageKeys) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of ObjectStorageKeys that match those selectors.
-func (c *FakeObjectStorageKeys) List(opts v1.ListOptions) (result *v1alpha1.ObjectStorageKeyList, err error) {
+func (c *FakeObjectStorageKeys) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ObjectStorageKeyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(objectstoragekeysResource, objectstoragekeysKind, c.ns, opts), &v1alpha1.ObjectStorageKeyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeObjectStorageKeys) List(opts v1.ListOptions) (result *v1alpha1.Obje
 }
 
 // Watch returns a watch.Interface that watches the requested objectStorageKeys.
-func (c *FakeObjectStorageKeys) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeObjectStorageKeys) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(objectstoragekeysResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a objectStorageKey and creates it.  Returns the server's representation of the objectStorageKey, and an error, if there is any.
-func (c *FakeObjectStorageKeys) Create(objectStorageKey *v1alpha1.ObjectStorageKey) (result *v1alpha1.ObjectStorageKey, err error) {
+func (c *FakeObjectStorageKeys) Create(ctx context.Context, objectStorageKey *v1alpha1.ObjectStorageKey, opts v1.CreateOptions) (result *v1alpha1.ObjectStorageKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(objectstoragekeysResource, c.ns, objectStorageKey), &v1alpha1.ObjectStorageKey{})
 
@@ -91,7 +93,7 @@ func (c *FakeObjectStorageKeys) Create(objectStorageKey *v1alpha1.ObjectStorageK
 }
 
 // Update takes the representation of a objectStorageKey and updates it. Returns the server's representation of the objectStorageKey, and an error, if there is any.
-func (c *FakeObjectStorageKeys) Update(objectStorageKey *v1alpha1.ObjectStorageKey) (result *v1alpha1.ObjectStorageKey, err error) {
+func (c *FakeObjectStorageKeys) Update(ctx context.Context, objectStorageKey *v1alpha1.ObjectStorageKey, opts v1.UpdateOptions) (result *v1alpha1.ObjectStorageKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(objectstoragekeysResource, c.ns, objectStorageKey), &v1alpha1.ObjectStorageKey{})
 
@@ -103,7 +105,7 @@ func (c *FakeObjectStorageKeys) Update(objectStorageKey *v1alpha1.ObjectStorageK
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeObjectStorageKeys) UpdateStatus(objectStorageKey *v1alpha1.ObjectStorageKey) (*v1alpha1.ObjectStorageKey, error) {
+func (c *FakeObjectStorageKeys) UpdateStatus(ctx context.Context, objectStorageKey *v1alpha1.ObjectStorageKey, opts v1.UpdateOptions) (*v1alpha1.ObjectStorageKey, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(objectstoragekeysResource, "status", c.ns, objectStorageKey), &v1alpha1.ObjectStorageKey{})
 
@@ -114,7 +116,7 @@ func (c *FakeObjectStorageKeys) UpdateStatus(objectStorageKey *v1alpha1.ObjectSt
 }
 
 // Delete takes name of the objectStorageKey and deletes it. Returns an error if one occurs.
-func (c *FakeObjectStorageKeys) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeObjectStorageKeys) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(objectstoragekeysResource, c.ns, name), &v1alpha1.ObjectStorageKey{})
 
@@ -122,15 +124,15 @@ func (c *FakeObjectStorageKeys) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeObjectStorageKeys) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(objectstoragekeysResource, c.ns, listOptions)
+func (c *FakeObjectStorageKeys) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(objectstoragekeysResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ObjectStorageKeyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched objectStorageKey.
-func (c *FakeObjectStorageKeys) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ObjectStorageKey, err error) {
+func (c *FakeObjectStorageKeys) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ObjectStorageKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(objectstoragekeysResource, c.ns, name, pt, data, subresources...), &v1alpha1.ObjectStorageKey{})
 

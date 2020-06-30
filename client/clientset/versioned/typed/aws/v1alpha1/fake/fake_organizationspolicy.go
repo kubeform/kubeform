@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var organizationspoliciesResource = schema.GroupVersionResource{Group: "aws.kube
 var organizationspoliciesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "OrganizationsPolicy"}
 
 // Get takes name of the organizationsPolicy, and returns the corresponding organizationsPolicy object, and an error if there is any.
-func (c *FakeOrganizationsPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.OrganizationsPolicy, err error) {
+func (c *FakeOrganizationsPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.OrganizationsPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(organizationspoliciesResource, c.ns, name), &v1alpha1.OrganizationsPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeOrganizationsPolicies) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of OrganizationsPolicies that match those selectors.
-func (c *FakeOrganizationsPolicies) List(opts v1.ListOptions) (result *v1alpha1.OrganizationsPolicyList, err error) {
+func (c *FakeOrganizationsPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.OrganizationsPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(organizationspoliciesResource, organizationspoliciesKind, c.ns, opts), &v1alpha1.OrganizationsPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeOrganizationsPolicies) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested organizationsPolicies.
-func (c *FakeOrganizationsPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeOrganizationsPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(organizationspoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a organizationsPolicy and creates it.  Returns the server's representation of the organizationsPolicy, and an error, if there is any.
-func (c *FakeOrganizationsPolicies) Create(organizationsPolicy *v1alpha1.OrganizationsPolicy) (result *v1alpha1.OrganizationsPolicy, err error) {
+func (c *FakeOrganizationsPolicies) Create(ctx context.Context, organizationsPolicy *v1alpha1.OrganizationsPolicy, opts v1.CreateOptions) (result *v1alpha1.OrganizationsPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(organizationspoliciesResource, c.ns, organizationsPolicy), &v1alpha1.OrganizationsPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeOrganizationsPolicies) Create(organizationsPolicy *v1alpha1.Organiz
 }
 
 // Update takes the representation of a organizationsPolicy and updates it. Returns the server's representation of the organizationsPolicy, and an error, if there is any.
-func (c *FakeOrganizationsPolicies) Update(organizationsPolicy *v1alpha1.OrganizationsPolicy) (result *v1alpha1.OrganizationsPolicy, err error) {
+func (c *FakeOrganizationsPolicies) Update(ctx context.Context, organizationsPolicy *v1alpha1.OrganizationsPolicy, opts v1.UpdateOptions) (result *v1alpha1.OrganizationsPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(organizationspoliciesResource, c.ns, organizationsPolicy), &v1alpha1.OrganizationsPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeOrganizationsPolicies) Update(organizationsPolicy *v1alpha1.Organiz
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeOrganizationsPolicies) UpdateStatus(organizationsPolicy *v1alpha1.OrganizationsPolicy) (*v1alpha1.OrganizationsPolicy, error) {
+func (c *FakeOrganizationsPolicies) UpdateStatus(ctx context.Context, organizationsPolicy *v1alpha1.OrganizationsPolicy, opts v1.UpdateOptions) (*v1alpha1.OrganizationsPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(organizationspoliciesResource, "status", c.ns, organizationsPolicy), &v1alpha1.OrganizationsPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeOrganizationsPolicies) UpdateStatus(organizationsPolicy *v1alpha1.O
 }
 
 // Delete takes name of the organizationsPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeOrganizationsPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeOrganizationsPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(organizationspoliciesResource, c.ns, name), &v1alpha1.OrganizationsPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeOrganizationsPolicies) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeOrganizationsPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(organizationspoliciesResource, c.ns, listOptions)
+func (c *FakeOrganizationsPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(organizationspoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.OrganizationsPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched organizationsPolicy.
-func (c *FakeOrganizationsPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.OrganizationsPolicy, err error) {
+func (c *FakeOrganizationsPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.OrganizationsPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(organizationspoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.OrganizationsPolicy{})
 

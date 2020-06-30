@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var servicediscoveryservicesResource = schema.GroupVersionResource{Group: "aws.k
 var servicediscoveryservicesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ServiceDiscoveryService"}
 
 // Get takes name of the serviceDiscoveryService, and returns the corresponding serviceDiscoveryService object, and an error if there is any.
-func (c *FakeServiceDiscoveryServices) Get(name string, options v1.GetOptions) (result *v1alpha1.ServiceDiscoveryService, err error) {
+func (c *FakeServiceDiscoveryServices) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ServiceDiscoveryService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(servicediscoveryservicesResource, c.ns, name), &v1alpha1.ServiceDiscoveryService{})
 
@@ -51,7 +53,7 @@ func (c *FakeServiceDiscoveryServices) Get(name string, options v1.GetOptions) (
 }
 
 // List takes label and field selectors, and returns the list of ServiceDiscoveryServices that match those selectors.
-func (c *FakeServiceDiscoveryServices) List(opts v1.ListOptions) (result *v1alpha1.ServiceDiscoveryServiceList, err error) {
+func (c *FakeServiceDiscoveryServices) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ServiceDiscoveryServiceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(servicediscoveryservicesResource, servicediscoveryservicesKind, c.ns, opts), &v1alpha1.ServiceDiscoveryServiceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeServiceDiscoveryServices) List(opts v1.ListOptions) (result *v1alph
 }
 
 // Watch returns a watch.Interface that watches the requested serviceDiscoveryServices.
-func (c *FakeServiceDiscoveryServices) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeServiceDiscoveryServices) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(servicediscoveryservicesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a serviceDiscoveryService and creates it.  Returns the server's representation of the serviceDiscoveryService, and an error, if there is any.
-func (c *FakeServiceDiscoveryServices) Create(serviceDiscoveryService *v1alpha1.ServiceDiscoveryService) (result *v1alpha1.ServiceDiscoveryService, err error) {
+func (c *FakeServiceDiscoveryServices) Create(ctx context.Context, serviceDiscoveryService *v1alpha1.ServiceDiscoveryService, opts v1.CreateOptions) (result *v1alpha1.ServiceDiscoveryService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(servicediscoveryservicesResource, c.ns, serviceDiscoveryService), &v1alpha1.ServiceDiscoveryService{})
 
@@ -91,7 +93,7 @@ func (c *FakeServiceDiscoveryServices) Create(serviceDiscoveryService *v1alpha1.
 }
 
 // Update takes the representation of a serviceDiscoveryService and updates it. Returns the server's representation of the serviceDiscoveryService, and an error, if there is any.
-func (c *FakeServiceDiscoveryServices) Update(serviceDiscoveryService *v1alpha1.ServiceDiscoveryService) (result *v1alpha1.ServiceDiscoveryService, err error) {
+func (c *FakeServiceDiscoveryServices) Update(ctx context.Context, serviceDiscoveryService *v1alpha1.ServiceDiscoveryService, opts v1.UpdateOptions) (result *v1alpha1.ServiceDiscoveryService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(servicediscoveryservicesResource, c.ns, serviceDiscoveryService), &v1alpha1.ServiceDiscoveryService{})
 
@@ -103,7 +105,7 @@ func (c *FakeServiceDiscoveryServices) Update(serviceDiscoveryService *v1alpha1.
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeServiceDiscoveryServices) UpdateStatus(serviceDiscoveryService *v1alpha1.ServiceDiscoveryService) (*v1alpha1.ServiceDiscoveryService, error) {
+func (c *FakeServiceDiscoveryServices) UpdateStatus(ctx context.Context, serviceDiscoveryService *v1alpha1.ServiceDiscoveryService, opts v1.UpdateOptions) (*v1alpha1.ServiceDiscoveryService, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(servicediscoveryservicesResource, "status", c.ns, serviceDiscoveryService), &v1alpha1.ServiceDiscoveryService{})
 
@@ -114,7 +116,7 @@ func (c *FakeServiceDiscoveryServices) UpdateStatus(serviceDiscoveryService *v1a
 }
 
 // Delete takes name of the serviceDiscoveryService and deletes it. Returns an error if one occurs.
-func (c *FakeServiceDiscoveryServices) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeServiceDiscoveryServices) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(servicediscoveryservicesResource, c.ns, name), &v1alpha1.ServiceDiscoveryService{})
 
@@ -122,15 +124,15 @@ func (c *FakeServiceDiscoveryServices) Delete(name string, options *v1.DeleteOpt
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeServiceDiscoveryServices) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(servicediscoveryservicesResource, c.ns, listOptions)
+func (c *FakeServiceDiscoveryServices) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(servicediscoveryservicesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ServiceDiscoveryServiceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched serviceDiscoveryService.
-func (c *FakeServiceDiscoveryServices) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ServiceDiscoveryService, err error) {
+func (c *FakeServiceDiscoveryServices) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ServiceDiscoveryService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(servicediscoveryservicesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ServiceDiscoveryService{})
 

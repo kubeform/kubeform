@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/digitalocean/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var firewallsResource = schema.GroupVersionResource{Group: "digitalocean.kubefor
 var firewallsKind = schema.GroupVersionKind{Group: "digitalocean.kubeform.com", Version: "v1alpha1", Kind: "Firewall"}
 
 // Get takes name of the firewall, and returns the corresponding firewall object, and an error if there is any.
-func (c *FakeFirewalls) Get(name string, options v1.GetOptions) (result *v1alpha1.Firewall, err error) {
+func (c *FakeFirewalls) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Firewall, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(firewallsResource, c.ns, name), &v1alpha1.Firewall{})
 
@@ -51,7 +53,7 @@ func (c *FakeFirewalls) Get(name string, options v1.GetOptions) (result *v1alpha
 }
 
 // List takes label and field selectors, and returns the list of Firewalls that match those selectors.
-func (c *FakeFirewalls) List(opts v1.ListOptions) (result *v1alpha1.FirewallList, err error) {
+func (c *FakeFirewalls) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.FirewallList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(firewallsResource, firewallsKind, c.ns, opts), &v1alpha1.FirewallList{})
 
@@ -73,14 +75,14 @@ func (c *FakeFirewalls) List(opts v1.ListOptions) (result *v1alpha1.FirewallList
 }
 
 // Watch returns a watch.Interface that watches the requested firewalls.
-func (c *FakeFirewalls) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeFirewalls) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(firewallsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a firewall and creates it.  Returns the server's representation of the firewall, and an error, if there is any.
-func (c *FakeFirewalls) Create(firewall *v1alpha1.Firewall) (result *v1alpha1.Firewall, err error) {
+func (c *FakeFirewalls) Create(ctx context.Context, firewall *v1alpha1.Firewall, opts v1.CreateOptions) (result *v1alpha1.Firewall, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(firewallsResource, c.ns, firewall), &v1alpha1.Firewall{})
 
@@ -91,7 +93,7 @@ func (c *FakeFirewalls) Create(firewall *v1alpha1.Firewall) (result *v1alpha1.Fi
 }
 
 // Update takes the representation of a firewall and updates it. Returns the server's representation of the firewall, and an error, if there is any.
-func (c *FakeFirewalls) Update(firewall *v1alpha1.Firewall) (result *v1alpha1.Firewall, err error) {
+func (c *FakeFirewalls) Update(ctx context.Context, firewall *v1alpha1.Firewall, opts v1.UpdateOptions) (result *v1alpha1.Firewall, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(firewallsResource, c.ns, firewall), &v1alpha1.Firewall{})
 
@@ -103,7 +105,7 @@ func (c *FakeFirewalls) Update(firewall *v1alpha1.Firewall) (result *v1alpha1.Fi
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeFirewalls) UpdateStatus(firewall *v1alpha1.Firewall) (*v1alpha1.Firewall, error) {
+func (c *FakeFirewalls) UpdateStatus(ctx context.Context, firewall *v1alpha1.Firewall, opts v1.UpdateOptions) (*v1alpha1.Firewall, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(firewallsResource, "status", c.ns, firewall), &v1alpha1.Firewall{})
 
@@ -114,7 +116,7 @@ func (c *FakeFirewalls) UpdateStatus(firewall *v1alpha1.Firewall) (*v1alpha1.Fir
 }
 
 // Delete takes name of the firewall and deletes it. Returns an error if one occurs.
-func (c *FakeFirewalls) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeFirewalls) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(firewallsResource, c.ns, name), &v1alpha1.Firewall{})
 
@@ -122,15 +124,15 @@ func (c *FakeFirewalls) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeFirewalls) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(firewallsResource, c.ns, listOptions)
+func (c *FakeFirewalls) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(firewallsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.FirewallList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched firewall.
-func (c *FakeFirewalls) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Firewall, err error) {
+func (c *FakeFirewalls) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Firewall, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(firewallsResource, c.ns, name, pt, data, subresources...), &v1alpha1.Firewall{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var pubsubsubscriptioniammembersResource = schema.GroupVersionResource{Group: "g
 var pubsubsubscriptioniammembersKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "PubsubSubscriptionIamMember"}
 
 // Get takes name of the pubsubSubscriptionIamMember, and returns the corresponding pubsubSubscriptionIamMember object, and an error if there is any.
-func (c *FakePubsubSubscriptionIamMembers) Get(name string, options v1.GetOptions) (result *v1alpha1.PubsubSubscriptionIamMember, err error) {
+func (c *FakePubsubSubscriptionIamMembers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PubsubSubscriptionIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(pubsubsubscriptioniammembersResource, c.ns, name), &v1alpha1.PubsubSubscriptionIamMember{})
 
@@ -51,7 +53,7 @@ func (c *FakePubsubSubscriptionIamMembers) Get(name string, options v1.GetOption
 }
 
 // List takes label and field selectors, and returns the list of PubsubSubscriptionIamMembers that match those selectors.
-func (c *FakePubsubSubscriptionIamMembers) List(opts v1.ListOptions) (result *v1alpha1.PubsubSubscriptionIamMemberList, err error) {
+func (c *FakePubsubSubscriptionIamMembers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PubsubSubscriptionIamMemberList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(pubsubsubscriptioniammembersResource, pubsubsubscriptioniammembersKind, c.ns, opts), &v1alpha1.PubsubSubscriptionIamMemberList{})
 
@@ -73,14 +75,14 @@ func (c *FakePubsubSubscriptionIamMembers) List(opts v1.ListOptions) (result *v1
 }
 
 // Watch returns a watch.Interface that watches the requested pubsubSubscriptionIamMembers.
-func (c *FakePubsubSubscriptionIamMembers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakePubsubSubscriptionIamMembers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(pubsubsubscriptioniammembersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a pubsubSubscriptionIamMember and creates it.  Returns the server's representation of the pubsubSubscriptionIamMember, and an error, if there is any.
-func (c *FakePubsubSubscriptionIamMembers) Create(pubsubSubscriptionIamMember *v1alpha1.PubsubSubscriptionIamMember) (result *v1alpha1.PubsubSubscriptionIamMember, err error) {
+func (c *FakePubsubSubscriptionIamMembers) Create(ctx context.Context, pubsubSubscriptionIamMember *v1alpha1.PubsubSubscriptionIamMember, opts v1.CreateOptions) (result *v1alpha1.PubsubSubscriptionIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(pubsubsubscriptioniammembersResource, c.ns, pubsubSubscriptionIamMember), &v1alpha1.PubsubSubscriptionIamMember{})
 
@@ -91,7 +93,7 @@ func (c *FakePubsubSubscriptionIamMembers) Create(pubsubSubscriptionIamMember *v
 }
 
 // Update takes the representation of a pubsubSubscriptionIamMember and updates it. Returns the server's representation of the pubsubSubscriptionIamMember, and an error, if there is any.
-func (c *FakePubsubSubscriptionIamMembers) Update(pubsubSubscriptionIamMember *v1alpha1.PubsubSubscriptionIamMember) (result *v1alpha1.PubsubSubscriptionIamMember, err error) {
+func (c *FakePubsubSubscriptionIamMembers) Update(ctx context.Context, pubsubSubscriptionIamMember *v1alpha1.PubsubSubscriptionIamMember, opts v1.UpdateOptions) (result *v1alpha1.PubsubSubscriptionIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(pubsubsubscriptioniammembersResource, c.ns, pubsubSubscriptionIamMember), &v1alpha1.PubsubSubscriptionIamMember{})
 
@@ -103,7 +105,7 @@ func (c *FakePubsubSubscriptionIamMembers) Update(pubsubSubscriptionIamMember *v
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakePubsubSubscriptionIamMembers) UpdateStatus(pubsubSubscriptionIamMember *v1alpha1.PubsubSubscriptionIamMember) (*v1alpha1.PubsubSubscriptionIamMember, error) {
+func (c *FakePubsubSubscriptionIamMembers) UpdateStatus(ctx context.Context, pubsubSubscriptionIamMember *v1alpha1.PubsubSubscriptionIamMember, opts v1.UpdateOptions) (*v1alpha1.PubsubSubscriptionIamMember, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(pubsubsubscriptioniammembersResource, "status", c.ns, pubsubSubscriptionIamMember), &v1alpha1.PubsubSubscriptionIamMember{})
 
@@ -114,7 +116,7 @@ func (c *FakePubsubSubscriptionIamMembers) UpdateStatus(pubsubSubscriptionIamMem
 }
 
 // Delete takes name of the pubsubSubscriptionIamMember and deletes it. Returns an error if one occurs.
-func (c *FakePubsubSubscriptionIamMembers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakePubsubSubscriptionIamMembers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(pubsubsubscriptioniammembersResource, c.ns, name), &v1alpha1.PubsubSubscriptionIamMember{})
 
@@ -122,15 +124,15 @@ func (c *FakePubsubSubscriptionIamMembers) Delete(name string, options *v1.Delet
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakePubsubSubscriptionIamMembers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(pubsubsubscriptioniammembersResource, c.ns, listOptions)
+func (c *FakePubsubSubscriptionIamMembers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(pubsubsubscriptioniammembersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.PubsubSubscriptionIamMemberList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched pubsubSubscriptionIamMember.
-func (c *FakePubsubSubscriptionIamMembers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PubsubSubscriptionIamMember, err error) {
+func (c *FakePubsubSubscriptionIamMembers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PubsubSubscriptionIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(pubsubsubscriptioniammembersResource, c.ns, name, pt, data, subresources...), &v1alpha1.PubsubSubscriptionIamMember{})
 

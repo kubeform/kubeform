@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type ApiGatewayClientCertificatesGetter interface {
 
 // ApiGatewayClientCertificateInterface has methods to work with ApiGatewayClientCertificate resources.
 type ApiGatewayClientCertificateInterface interface {
-	Create(*v1alpha1.ApiGatewayClientCertificate) (*v1alpha1.ApiGatewayClientCertificate, error)
-	Update(*v1alpha1.ApiGatewayClientCertificate) (*v1alpha1.ApiGatewayClientCertificate, error)
-	UpdateStatus(*v1alpha1.ApiGatewayClientCertificate) (*v1alpha1.ApiGatewayClientCertificate, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ApiGatewayClientCertificate, error)
-	List(opts v1.ListOptions) (*v1alpha1.ApiGatewayClientCertificateList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiGatewayClientCertificate, err error)
+	Create(ctx context.Context, apiGatewayClientCertificate *v1alpha1.ApiGatewayClientCertificate, opts v1.CreateOptions) (*v1alpha1.ApiGatewayClientCertificate, error)
+	Update(ctx context.Context, apiGatewayClientCertificate *v1alpha1.ApiGatewayClientCertificate, opts v1.UpdateOptions) (*v1alpha1.ApiGatewayClientCertificate, error)
+	UpdateStatus(ctx context.Context, apiGatewayClientCertificate *v1alpha1.ApiGatewayClientCertificate, opts v1.UpdateOptions) (*v1alpha1.ApiGatewayClientCertificate, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ApiGatewayClientCertificate, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ApiGatewayClientCertificateList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiGatewayClientCertificate, err error)
 	ApiGatewayClientCertificateExpansion
 }
 
@@ -65,20 +66,20 @@ func newApiGatewayClientCertificates(c *AwsV1alpha1Client, namespace string) *ap
 }
 
 // Get takes name of the apiGatewayClientCertificate, and returns the corresponding apiGatewayClientCertificate object, and an error if there is any.
-func (c *apiGatewayClientCertificates) Get(name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayClientCertificate, err error) {
+func (c *apiGatewayClientCertificates) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayClientCertificate, err error) {
 	result = &v1alpha1.ApiGatewayClientCertificate{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("apigatewayclientcertificates").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ApiGatewayClientCertificates that match those selectors.
-func (c *apiGatewayClientCertificates) List(opts v1.ListOptions) (result *v1alpha1.ApiGatewayClientCertificateList, err error) {
+func (c *apiGatewayClientCertificates) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApiGatewayClientCertificateList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *apiGatewayClientCertificates) List(opts v1.ListOptions) (result *v1alph
 		Resource("apigatewayclientcertificates").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested apiGatewayClientCertificates.
-func (c *apiGatewayClientCertificates) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *apiGatewayClientCertificates) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *apiGatewayClientCertificates) Watch(opts v1.ListOptions) (watch.Interfa
 		Resource("apigatewayclientcertificates").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a apiGatewayClientCertificate and creates it.  Returns the server's representation of the apiGatewayClientCertificate, and an error, if there is any.
-func (c *apiGatewayClientCertificates) Create(apiGatewayClientCertificate *v1alpha1.ApiGatewayClientCertificate) (result *v1alpha1.ApiGatewayClientCertificate, err error) {
+func (c *apiGatewayClientCertificates) Create(ctx context.Context, apiGatewayClientCertificate *v1alpha1.ApiGatewayClientCertificate, opts v1.CreateOptions) (result *v1alpha1.ApiGatewayClientCertificate, err error) {
 	result = &v1alpha1.ApiGatewayClientCertificate{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("apigatewayclientcertificates").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(apiGatewayClientCertificate).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a apiGatewayClientCertificate and updates it. Returns the server's representation of the apiGatewayClientCertificate, and an error, if there is any.
-func (c *apiGatewayClientCertificates) Update(apiGatewayClientCertificate *v1alpha1.ApiGatewayClientCertificate) (result *v1alpha1.ApiGatewayClientCertificate, err error) {
+func (c *apiGatewayClientCertificates) Update(ctx context.Context, apiGatewayClientCertificate *v1alpha1.ApiGatewayClientCertificate, opts v1.UpdateOptions) (result *v1alpha1.ApiGatewayClientCertificate, err error) {
 	result = &v1alpha1.ApiGatewayClientCertificate{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("apigatewayclientcertificates").
 		Name(apiGatewayClientCertificate.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(apiGatewayClientCertificate).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *apiGatewayClientCertificates) UpdateStatus(apiGatewayClientCertificate *v1alpha1.ApiGatewayClientCertificate) (result *v1alpha1.ApiGatewayClientCertificate, err error) {
+func (c *apiGatewayClientCertificates) UpdateStatus(ctx context.Context, apiGatewayClientCertificate *v1alpha1.ApiGatewayClientCertificate, opts v1.UpdateOptions) (result *v1alpha1.ApiGatewayClientCertificate, err error) {
 	result = &v1alpha1.ApiGatewayClientCertificate{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("apigatewayclientcertificates").
 		Name(apiGatewayClientCertificate.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(apiGatewayClientCertificate).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the apiGatewayClientCertificate and deletes it. Returns an error if one occurs.
-func (c *apiGatewayClientCertificates) Delete(name string, options *v1.DeleteOptions) error {
+func (c *apiGatewayClientCertificates) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("apigatewayclientcertificates").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *apiGatewayClientCertificates) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *apiGatewayClientCertificates) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("apigatewayclientcertificates").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched apiGatewayClientCertificate.
-func (c *apiGatewayClientCertificates) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiGatewayClientCertificate, err error) {
+func (c *apiGatewayClientCertificates) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiGatewayClientCertificate, err error) {
 	result = &v1alpha1.ApiGatewayClientCertificate{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("apigatewayclientcertificates").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

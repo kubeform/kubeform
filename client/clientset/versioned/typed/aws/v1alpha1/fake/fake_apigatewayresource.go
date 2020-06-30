@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var apigatewayresourcesResource = schema.GroupVersionResource{Group: "aws.kubefo
 var apigatewayresourcesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ApiGatewayResource"}
 
 // Get takes name of the apiGatewayResource, and returns the corresponding apiGatewayResource object, and an error if there is any.
-func (c *FakeApiGatewayResources) Get(name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayResource, err error) {
+func (c *FakeApiGatewayResources) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayResource, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(apigatewayresourcesResource, c.ns, name), &v1alpha1.ApiGatewayResource{})
 
@@ -51,7 +53,7 @@ func (c *FakeApiGatewayResources) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of ApiGatewayResources that match those selectors.
-func (c *FakeApiGatewayResources) List(opts v1.ListOptions) (result *v1alpha1.ApiGatewayResourceList, err error) {
+func (c *FakeApiGatewayResources) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApiGatewayResourceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(apigatewayresourcesResource, apigatewayresourcesKind, c.ns, opts), &v1alpha1.ApiGatewayResourceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeApiGatewayResources) List(opts v1.ListOptions) (result *v1alpha1.Ap
 }
 
 // Watch returns a watch.Interface that watches the requested apiGatewayResources.
-func (c *FakeApiGatewayResources) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeApiGatewayResources) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(apigatewayresourcesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a apiGatewayResource and creates it.  Returns the server's representation of the apiGatewayResource, and an error, if there is any.
-func (c *FakeApiGatewayResources) Create(apiGatewayResource *v1alpha1.ApiGatewayResource) (result *v1alpha1.ApiGatewayResource, err error) {
+func (c *FakeApiGatewayResources) Create(ctx context.Context, apiGatewayResource *v1alpha1.ApiGatewayResource, opts v1.CreateOptions) (result *v1alpha1.ApiGatewayResource, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(apigatewayresourcesResource, c.ns, apiGatewayResource), &v1alpha1.ApiGatewayResource{})
 
@@ -91,7 +93,7 @@ func (c *FakeApiGatewayResources) Create(apiGatewayResource *v1alpha1.ApiGateway
 }
 
 // Update takes the representation of a apiGatewayResource and updates it. Returns the server's representation of the apiGatewayResource, and an error, if there is any.
-func (c *FakeApiGatewayResources) Update(apiGatewayResource *v1alpha1.ApiGatewayResource) (result *v1alpha1.ApiGatewayResource, err error) {
+func (c *FakeApiGatewayResources) Update(ctx context.Context, apiGatewayResource *v1alpha1.ApiGatewayResource, opts v1.UpdateOptions) (result *v1alpha1.ApiGatewayResource, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(apigatewayresourcesResource, c.ns, apiGatewayResource), &v1alpha1.ApiGatewayResource{})
 
@@ -103,7 +105,7 @@ func (c *FakeApiGatewayResources) Update(apiGatewayResource *v1alpha1.ApiGateway
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeApiGatewayResources) UpdateStatus(apiGatewayResource *v1alpha1.ApiGatewayResource) (*v1alpha1.ApiGatewayResource, error) {
+func (c *FakeApiGatewayResources) UpdateStatus(ctx context.Context, apiGatewayResource *v1alpha1.ApiGatewayResource, opts v1.UpdateOptions) (*v1alpha1.ApiGatewayResource, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(apigatewayresourcesResource, "status", c.ns, apiGatewayResource), &v1alpha1.ApiGatewayResource{})
 
@@ -114,7 +116,7 @@ func (c *FakeApiGatewayResources) UpdateStatus(apiGatewayResource *v1alpha1.ApiG
 }
 
 // Delete takes name of the apiGatewayResource and deletes it. Returns an error if one occurs.
-func (c *FakeApiGatewayResources) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeApiGatewayResources) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(apigatewayresourcesResource, c.ns, name), &v1alpha1.ApiGatewayResource{})
 
@@ -122,15 +124,15 @@ func (c *FakeApiGatewayResources) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeApiGatewayResources) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(apigatewayresourcesResource, c.ns, listOptions)
+func (c *FakeApiGatewayResources) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(apigatewayresourcesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ApiGatewayResourceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched apiGatewayResource.
-func (c *FakeApiGatewayResources) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiGatewayResource, err error) {
+func (c *FakeApiGatewayResources) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiGatewayResource, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(apigatewayresourcesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ApiGatewayResource{})
 

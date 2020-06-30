@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var loggingorganizationsinksResource = schema.GroupVersionResource{Group: "googl
 var loggingorganizationsinksKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "LoggingOrganizationSink"}
 
 // Get takes name of the loggingOrganizationSink, and returns the corresponding loggingOrganizationSink object, and an error if there is any.
-func (c *FakeLoggingOrganizationSinks) Get(name string, options v1.GetOptions) (result *v1alpha1.LoggingOrganizationSink, err error) {
+func (c *FakeLoggingOrganizationSinks) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LoggingOrganizationSink, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(loggingorganizationsinksResource, c.ns, name), &v1alpha1.LoggingOrganizationSink{})
 
@@ -51,7 +53,7 @@ func (c *FakeLoggingOrganizationSinks) Get(name string, options v1.GetOptions) (
 }
 
 // List takes label and field selectors, and returns the list of LoggingOrganizationSinks that match those selectors.
-func (c *FakeLoggingOrganizationSinks) List(opts v1.ListOptions) (result *v1alpha1.LoggingOrganizationSinkList, err error) {
+func (c *FakeLoggingOrganizationSinks) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LoggingOrganizationSinkList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(loggingorganizationsinksResource, loggingorganizationsinksKind, c.ns, opts), &v1alpha1.LoggingOrganizationSinkList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLoggingOrganizationSinks) List(opts v1.ListOptions) (result *v1alph
 }
 
 // Watch returns a watch.Interface that watches the requested loggingOrganizationSinks.
-func (c *FakeLoggingOrganizationSinks) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLoggingOrganizationSinks) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(loggingorganizationsinksResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a loggingOrganizationSink and creates it.  Returns the server's representation of the loggingOrganizationSink, and an error, if there is any.
-func (c *FakeLoggingOrganizationSinks) Create(loggingOrganizationSink *v1alpha1.LoggingOrganizationSink) (result *v1alpha1.LoggingOrganizationSink, err error) {
+func (c *FakeLoggingOrganizationSinks) Create(ctx context.Context, loggingOrganizationSink *v1alpha1.LoggingOrganizationSink, opts v1.CreateOptions) (result *v1alpha1.LoggingOrganizationSink, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(loggingorganizationsinksResource, c.ns, loggingOrganizationSink), &v1alpha1.LoggingOrganizationSink{})
 
@@ -91,7 +93,7 @@ func (c *FakeLoggingOrganizationSinks) Create(loggingOrganizationSink *v1alpha1.
 }
 
 // Update takes the representation of a loggingOrganizationSink and updates it. Returns the server's representation of the loggingOrganizationSink, and an error, if there is any.
-func (c *FakeLoggingOrganizationSinks) Update(loggingOrganizationSink *v1alpha1.LoggingOrganizationSink) (result *v1alpha1.LoggingOrganizationSink, err error) {
+func (c *FakeLoggingOrganizationSinks) Update(ctx context.Context, loggingOrganizationSink *v1alpha1.LoggingOrganizationSink, opts v1.UpdateOptions) (result *v1alpha1.LoggingOrganizationSink, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(loggingorganizationsinksResource, c.ns, loggingOrganizationSink), &v1alpha1.LoggingOrganizationSink{})
 
@@ -103,7 +105,7 @@ func (c *FakeLoggingOrganizationSinks) Update(loggingOrganizationSink *v1alpha1.
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLoggingOrganizationSinks) UpdateStatus(loggingOrganizationSink *v1alpha1.LoggingOrganizationSink) (*v1alpha1.LoggingOrganizationSink, error) {
+func (c *FakeLoggingOrganizationSinks) UpdateStatus(ctx context.Context, loggingOrganizationSink *v1alpha1.LoggingOrganizationSink, opts v1.UpdateOptions) (*v1alpha1.LoggingOrganizationSink, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(loggingorganizationsinksResource, "status", c.ns, loggingOrganizationSink), &v1alpha1.LoggingOrganizationSink{})
 
@@ -114,7 +116,7 @@ func (c *FakeLoggingOrganizationSinks) UpdateStatus(loggingOrganizationSink *v1a
 }
 
 // Delete takes name of the loggingOrganizationSink and deletes it. Returns an error if one occurs.
-func (c *FakeLoggingOrganizationSinks) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLoggingOrganizationSinks) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(loggingorganizationsinksResource, c.ns, name), &v1alpha1.LoggingOrganizationSink{})
 
@@ -122,15 +124,15 @@ func (c *FakeLoggingOrganizationSinks) Delete(name string, options *v1.DeleteOpt
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLoggingOrganizationSinks) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(loggingorganizationsinksResource, c.ns, listOptions)
+func (c *FakeLoggingOrganizationSinks) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(loggingorganizationsinksResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LoggingOrganizationSinkList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched loggingOrganizationSink.
-func (c *FakeLoggingOrganizationSinks) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LoggingOrganizationSink, err error) {
+func (c *FakeLoggingOrganizationSinks) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LoggingOrganizationSink, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(loggingorganizationsinksResource, c.ns, name, pt, data, subresources...), &v1alpha1.LoggingOrganizationSink{})
 

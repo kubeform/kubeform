@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type CloudformationStackSetsGetter interface {
 
 // CloudformationStackSetInterface has methods to work with CloudformationStackSet resources.
 type CloudformationStackSetInterface interface {
-	Create(*v1alpha1.CloudformationStackSet) (*v1alpha1.CloudformationStackSet, error)
-	Update(*v1alpha1.CloudformationStackSet) (*v1alpha1.CloudformationStackSet, error)
-	UpdateStatus(*v1alpha1.CloudformationStackSet) (*v1alpha1.CloudformationStackSet, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.CloudformationStackSet, error)
-	List(opts v1.ListOptions) (*v1alpha1.CloudformationStackSetList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CloudformationStackSet, err error)
+	Create(ctx context.Context, cloudformationStackSet *v1alpha1.CloudformationStackSet, opts v1.CreateOptions) (*v1alpha1.CloudformationStackSet, error)
+	Update(ctx context.Context, cloudformationStackSet *v1alpha1.CloudformationStackSet, opts v1.UpdateOptions) (*v1alpha1.CloudformationStackSet, error)
+	UpdateStatus(ctx context.Context, cloudformationStackSet *v1alpha1.CloudformationStackSet, opts v1.UpdateOptions) (*v1alpha1.CloudformationStackSet, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.CloudformationStackSet, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.CloudformationStackSetList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CloudformationStackSet, err error)
 	CloudformationStackSetExpansion
 }
 
@@ -65,20 +66,20 @@ func newCloudformationStackSets(c *AwsV1alpha1Client, namespace string) *cloudfo
 }
 
 // Get takes name of the cloudformationStackSet, and returns the corresponding cloudformationStackSet object, and an error if there is any.
-func (c *cloudformationStackSets) Get(name string, options v1.GetOptions) (result *v1alpha1.CloudformationStackSet, err error) {
+func (c *cloudformationStackSets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CloudformationStackSet, err error) {
 	result = &v1alpha1.CloudformationStackSet{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("cloudformationstacksets").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of CloudformationStackSets that match those selectors.
-func (c *cloudformationStackSets) List(opts v1.ListOptions) (result *v1alpha1.CloudformationStackSetList, err error) {
+func (c *cloudformationStackSets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CloudformationStackSetList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *cloudformationStackSets) List(opts v1.ListOptions) (result *v1alpha1.Cl
 		Resource("cloudformationstacksets").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested cloudformationStackSets.
-func (c *cloudformationStackSets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *cloudformationStackSets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *cloudformationStackSets) Watch(opts v1.ListOptions) (watch.Interface, e
 		Resource("cloudformationstacksets").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a cloudformationStackSet and creates it.  Returns the server's representation of the cloudformationStackSet, and an error, if there is any.
-func (c *cloudformationStackSets) Create(cloudformationStackSet *v1alpha1.CloudformationStackSet) (result *v1alpha1.CloudformationStackSet, err error) {
+func (c *cloudformationStackSets) Create(ctx context.Context, cloudformationStackSet *v1alpha1.CloudformationStackSet, opts v1.CreateOptions) (result *v1alpha1.CloudformationStackSet, err error) {
 	result = &v1alpha1.CloudformationStackSet{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("cloudformationstacksets").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cloudformationStackSet).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a cloudformationStackSet and updates it. Returns the server's representation of the cloudformationStackSet, and an error, if there is any.
-func (c *cloudformationStackSets) Update(cloudformationStackSet *v1alpha1.CloudformationStackSet) (result *v1alpha1.CloudformationStackSet, err error) {
+func (c *cloudformationStackSets) Update(ctx context.Context, cloudformationStackSet *v1alpha1.CloudformationStackSet, opts v1.UpdateOptions) (result *v1alpha1.CloudformationStackSet, err error) {
 	result = &v1alpha1.CloudformationStackSet{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("cloudformationstacksets").
 		Name(cloudformationStackSet.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cloudformationStackSet).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *cloudformationStackSets) UpdateStatus(cloudformationStackSet *v1alpha1.CloudformationStackSet) (result *v1alpha1.CloudformationStackSet, err error) {
+func (c *cloudformationStackSets) UpdateStatus(ctx context.Context, cloudformationStackSet *v1alpha1.CloudformationStackSet, opts v1.UpdateOptions) (result *v1alpha1.CloudformationStackSet, err error) {
 	result = &v1alpha1.CloudformationStackSet{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("cloudformationstacksets").
 		Name(cloudformationStackSet.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cloudformationStackSet).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the cloudformationStackSet and deletes it. Returns an error if one occurs.
-func (c *cloudformationStackSets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *cloudformationStackSets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("cloudformationstacksets").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *cloudformationStackSets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *cloudformationStackSets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("cloudformationstacksets").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched cloudformationStackSet.
-func (c *cloudformationStackSets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CloudformationStackSet, err error) {
+func (c *cloudformationStackSets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CloudformationStackSet, err error) {
 	result = &v1alpha1.CloudformationStackSet{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("cloudformationstacksets").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

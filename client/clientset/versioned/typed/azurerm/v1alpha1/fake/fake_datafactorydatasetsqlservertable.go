@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var datafactorydatasetsqlservertablesResource = schema.GroupVersionResource{Grou
 var datafactorydatasetsqlservertablesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "DataFactoryDatasetSQLServerTable"}
 
 // Get takes name of the dataFactoryDatasetSQLServerTable, and returns the corresponding dataFactoryDatasetSQLServerTable object, and an error if there is any.
-func (c *FakeDataFactoryDatasetSQLServerTables) Get(name string, options v1.GetOptions) (result *v1alpha1.DataFactoryDatasetSQLServerTable, err error) {
+func (c *FakeDataFactoryDatasetSQLServerTables) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DataFactoryDatasetSQLServerTable, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(datafactorydatasetsqlservertablesResource, c.ns, name), &v1alpha1.DataFactoryDatasetSQLServerTable{})
 
@@ -51,7 +53,7 @@ func (c *FakeDataFactoryDatasetSQLServerTables) Get(name string, options v1.GetO
 }
 
 // List takes label and field selectors, and returns the list of DataFactoryDatasetSQLServerTables that match those selectors.
-func (c *FakeDataFactoryDatasetSQLServerTables) List(opts v1.ListOptions) (result *v1alpha1.DataFactoryDatasetSQLServerTableList, err error) {
+func (c *FakeDataFactoryDatasetSQLServerTables) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DataFactoryDatasetSQLServerTableList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(datafactorydatasetsqlservertablesResource, datafactorydatasetsqlservertablesKind, c.ns, opts), &v1alpha1.DataFactoryDatasetSQLServerTableList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDataFactoryDatasetSQLServerTables) List(opts v1.ListOptions) (resul
 }
 
 // Watch returns a watch.Interface that watches the requested dataFactoryDatasetSQLServerTables.
-func (c *FakeDataFactoryDatasetSQLServerTables) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDataFactoryDatasetSQLServerTables) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(datafactorydatasetsqlservertablesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dataFactoryDatasetSQLServerTable and creates it.  Returns the server's representation of the dataFactoryDatasetSQLServerTable, and an error, if there is any.
-func (c *FakeDataFactoryDatasetSQLServerTables) Create(dataFactoryDatasetSQLServerTable *v1alpha1.DataFactoryDatasetSQLServerTable) (result *v1alpha1.DataFactoryDatasetSQLServerTable, err error) {
+func (c *FakeDataFactoryDatasetSQLServerTables) Create(ctx context.Context, dataFactoryDatasetSQLServerTable *v1alpha1.DataFactoryDatasetSQLServerTable, opts v1.CreateOptions) (result *v1alpha1.DataFactoryDatasetSQLServerTable, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(datafactorydatasetsqlservertablesResource, c.ns, dataFactoryDatasetSQLServerTable), &v1alpha1.DataFactoryDatasetSQLServerTable{})
 
@@ -91,7 +93,7 @@ func (c *FakeDataFactoryDatasetSQLServerTables) Create(dataFactoryDatasetSQLServ
 }
 
 // Update takes the representation of a dataFactoryDatasetSQLServerTable and updates it. Returns the server's representation of the dataFactoryDatasetSQLServerTable, and an error, if there is any.
-func (c *FakeDataFactoryDatasetSQLServerTables) Update(dataFactoryDatasetSQLServerTable *v1alpha1.DataFactoryDatasetSQLServerTable) (result *v1alpha1.DataFactoryDatasetSQLServerTable, err error) {
+func (c *FakeDataFactoryDatasetSQLServerTables) Update(ctx context.Context, dataFactoryDatasetSQLServerTable *v1alpha1.DataFactoryDatasetSQLServerTable, opts v1.UpdateOptions) (result *v1alpha1.DataFactoryDatasetSQLServerTable, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(datafactorydatasetsqlservertablesResource, c.ns, dataFactoryDatasetSQLServerTable), &v1alpha1.DataFactoryDatasetSQLServerTable{})
 
@@ -103,7 +105,7 @@ func (c *FakeDataFactoryDatasetSQLServerTables) Update(dataFactoryDatasetSQLServ
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDataFactoryDatasetSQLServerTables) UpdateStatus(dataFactoryDatasetSQLServerTable *v1alpha1.DataFactoryDatasetSQLServerTable) (*v1alpha1.DataFactoryDatasetSQLServerTable, error) {
+func (c *FakeDataFactoryDatasetSQLServerTables) UpdateStatus(ctx context.Context, dataFactoryDatasetSQLServerTable *v1alpha1.DataFactoryDatasetSQLServerTable, opts v1.UpdateOptions) (*v1alpha1.DataFactoryDatasetSQLServerTable, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(datafactorydatasetsqlservertablesResource, "status", c.ns, dataFactoryDatasetSQLServerTable), &v1alpha1.DataFactoryDatasetSQLServerTable{})
 
@@ -114,7 +116,7 @@ func (c *FakeDataFactoryDatasetSQLServerTables) UpdateStatus(dataFactoryDatasetS
 }
 
 // Delete takes name of the dataFactoryDatasetSQLServerTable and deletes it. Returns an error if one occurs.
-func (c *FakeDataFactoryDatasetSQLServerTables) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDataFactoryDatasetSQLServerTables) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(datafactorydatasetsqlservertablesResource, c.ns, name), &v1alpha1.DataFactoryDatasetSQLServerTable{})
 
@@ -122,15 +124,15 @@ func (c *FakeDataFactoryDatasetSQLServerTables) Delete(name string, options *v1.
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDataFactoryDatasetSQLServerTables) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(datafactorydatasetsqlservertablesResource, c.ns, listOptions)
+func (c *FakeDataFactoryDatasetSQLServerTables) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(datafactorydatasetsqlservertablesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DataFactoryDatasetSQLServerTableList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dataFactoryDatasetSQLServerTable.
-func (c *FakeDataFactoryDatasetSQLServerTables) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataFactoryDatasetSQLServerTable, err error) {
+func (c *FakeDataFactoryDatasetSQLServerTables) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataFactoryDatasetSQLServerTable, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(datafactorydatasetsqlservertablesResource, c.ns, name, pt, data, subresources...), &v1alpha1.DataFactoryDatasetSQLServerTable{})
 

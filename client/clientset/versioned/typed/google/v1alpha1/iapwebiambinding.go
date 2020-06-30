@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type IapWebIamBindingsGetter interface {
 
 // IapWebIamBindingInterface has methods to work with IapWebIamBinding resources.
 type IapWebIamBindingInterface interface {
-	Create(*v1alpha1.IapWebIamBinding) (*v1alpha1.IapWebIamBinding, error)
-	Update(*v1alpha1.IapWebIamBinding) (*v1alpha1.IapWebIamBinding, error)
-	UpdateStatus(*v1alpha1.IapWebIamBinding) (*v1alpha1.IapWebIamBinding, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.IapWebIamBinding, error)
-	List(opts v1.ListOptions) (*v1alpha1.IapWebIamBindingList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IapWebIamBinding, err error)
+	Create(ctx context.Context, iapWebIamBinding *v1alpha1.IapWebIamBinding, opts v1.CreateOptions) (*v1alpha1.IapWebIamBinding, error)
+	Update(ctx context.Context, iapWebIamBinding *v1alpha1.IapWebIamBinding, opts v1.UpdateOptions) (*v1alpha1.IapWebIamBinding, error)
+	UpdateStatus(ctx context.Context, iapWebIamBinding *v1alpha1.IapWebIamBinding, opts v1.UpdateOptions) (*v1alpha1.IapWebIamBinding, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.IapWebIamBinding, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.IapWebIamBindingList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IapWebIamBinding, err error)
 	IapWebIamBindingExpansion
 }
 
@@ -65,20 +66,20 @@ func newIapWebIamBindings(c *GoogleV1alpha1Client, namespace string) *iapWebIamB
 }
 
 // Get takes name of the iapWebIamBinding, and returns the corresponding iapWebIamBinding object, and an error if there is any.
-func (c *iapWebIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.IapWebIamBinding, err error) {
+func (c *iapWebIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IapWebIamBinding, err error) {
 	result = &v1alpha1.IapWebIamBinding{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("iapwebiambindings").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of IapWebIamBindings that match those selectors.
-func (c *iapWebIamBindings) List(opts v1.ListOptions) (result *v1alpha1.IapWebIamBindingList, err error) {
+func (c *iapWebIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IapWebIamBindingList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *iapWebIamBindings) List(opts v1.ListOptions) (result *v1alpha1.IapWebIa
 		Resource("iapwebiambindings").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested iapWebIamBindings.
-func (c *iapWebIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *iapWebIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *iapWebIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) 
 		Resource("iapwebiambindings").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a iapWebIamBinding and creates it.  Returns the server's representation of the iapWebIamBinding, and an error, if there is any.
-func (c *iapWebIamBindings) Create(iapWebIamBinding *v1alpha1.IapWebIamBinding) (result *v1alpha1.IapWebIamBinding, err error) {
+func (c *iapWebIamBindings) Create(ctx context.Context, iapWebIamBinding *v1alpha1.IapWebIamBinding, opts v1.CreateOptions) (result *v1alpha1.IapWebIamBinding, err error) {
 	result = &v1alpha1.IapWebIamBinding{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("iapwebiambindings").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iapWebIamBinding).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a iapWebIamBinding and updates it. Returns the server's representation of the iapWebIamBinding, and an error, if there is any.
-func (c *iapWebIamBindings) Update(iapWebIamBinding *v1alpha1.IapWebIamBinding) (result *v1alpha1.IapWebIamBinding, err error) {
+func (c *iapWebIamBindings) Update(ctx context.Context, iapWebIamBinding *v1alpha1.IapWebIamBinding, opts v1.UpdateOptions) (result *v1alpha1.IapWebIamBinding, err error) {
 	result = &v1alpha1.IapWebIamBinding{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iapwebiambindings").
 		Name(iapWebIamBinding.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iapWebIamBinding).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *iapWebIamBindings) UpdateStatus(iapWebIamBinding *v1alpha1.IapWebIamBinding) (result *v1alpha1.IapWebIamBinding, err error) {
+func (c *iapWebIamBindings) UpdateStatus(ctx context.Context, iapWebIamBinding *v1alpha1.IapWebIamBinding, opts v1.UpdateOptions) (result *v1alpha1.IapWebIamBinding, err error) {
 	result = &v1alpha1.IapWebIamBinding{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iapwebiambindings").
 		Name(iapWebIamBinding.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iapWebIamBinding).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the iapWebIamBinding and deletes it. Returns an error if one occurs.
-func (c *iapWebIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *iapWebIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iapwebiambindings").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *iapWebIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *iapWebIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iapwebiambindings").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched iapWebIamBinding.
-func (c *iapWebIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IapWebIamBinding, err error) {
+func (c *iapWebIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IapWebIamBinding, err error) {
 	result = &v1alpha1.IapWebIamBinding{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("iapwebiambindings").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

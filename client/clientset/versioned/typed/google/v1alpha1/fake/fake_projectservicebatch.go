@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var projectservicebatchesResource = schema.GroupVersionResource{Group: "google.k
 var projectservicebatchesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ProjectServiceBatch"}
 
 // Get takes name of the projectServiceBatch, and returns the corresponding projectServiceBatch object, and an error if there is any.
-func (c *FakeProjectServiceBatches) Get(name string, options v1.GetOptions) (result *v1alpha1.ProjectServiceBatch, err error) {
+func (c *FakeProjectServiceBatches) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ProjectServiceBatch, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(projectservicebatchesResource, c.ns, name), &v1alpha1.ProjectServiceBatch{})
 
@@ -51,7 +53,7 @@ func (c *FakeProjectServiceBatches) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of ProjectServiceBatches that match those selectors.
-func (c *FakeProjectServiceBatches) List(opts v1.ListOptions) (result *v1alpha1.ProjectServiceBatchList, err error) {
+func (c *FakeProjectServiceBatches) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ProjectServiceBatchList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(projectservicebatchesResource, projectservicebatchesKind, c.ns, opts), &v1alpha1.ProjectServiceBatchList{})
 
@@ -73,14 +75,14 @@ func (c *FakeProjectServiceBatches) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested projectServiceBatches.
-func (c *FakeProjectServiceBatches) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeProjectServiceBatches) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(projectservicebatchesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a projectServiceBatch and creates it.  Returns the server's representation of the projectServiceBatch, and an error, if there is any.
-func (c *FakeProjectServiceBatches) Create(projectServiceBatch *v1alpha1.ProjectServiceBatch) (result *v1alpha1.ProjectServiceBatch, err error) {
+func (c *FakeProjectServiceBatches) Create(ctx context.Context, projectServiceBatch *v1alpha1.ProjectServiceBatch, opts v1.CreateOptions) (result *v1alpha1.ProjectServiceBatch, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(projectservicebatchesResource, c.ns, projectServiceBatch), &v1alpha1.ProjectServiceBatch{})
 
@@ -91,7 +93,7 @@ func (c *FakeProjectServiceBatches) Create(projectServiceBatch *v1alpha1.Project
 }
 
 // Update takes the representation of a projectServiceBatch and updates it. Returns the server's representation of the projectServiceBatch, and an error, if there is any.
-func (c *FakeProjectServiceBatches) Update(projectServiceBatch *v1alpha1.ProjectServiceBatch) (result *v1alpha1.ProjectServiceBatch, err error) {
+func (c *FakeProjectServiceBatches) Update(ctx context.Context, projectServiceBatch *v1alpha1.ProjectServiceBatch, opts v1.UpdateOptions) (result *v1alpha1.ProjectServiceBatch, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(projectservicebatchesResource, c.ns, projectServiceBatch), &v1alpha1.ProjectServiceBatch{})
 
@@ -103,7 +105,7 @@ func (c *FakeProjectServiceBatches) Update(projectServiceBatch *v1alpha1.Project
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeProjectServiceBatches) UpdateStatus(projectServiceBatch *v1alpha1.ProjectServiceBatch) (*v1alpha1.ProjectServiceBatch, error) {
+func (c *FakeProjectServiceBatches) UpdateStatus(ctx context.Context, projectServiceBatch *v1alpha1.ProjectServiceBatch, opts v1.UpdateOptions) (*v1alpha1.ProjectServiceBatch, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(projectservicebatchesResource, "status", c.ns, projectServiceBatch), &v1alpha1.ProjectServiceBatch{})
 
@@ -114,7 +116,7 @@ func (c *FakeProjectServiceBatches) UpdateStatus(projectServiceBatch *v1alpha1.P
 }
 
 // Delete takes name of the projectServiceBatch and deletes it. Returns an error if one occurs.
-func (c *FakeProjectServiceBatches) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeProjectServiceBatches) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(projectservicebatchesResource, c.ns, name), &v1alpha1.ProjectServiceBatch{})
 
@@ -122,15 +124,15 @@ func (c *FakeProjectServiceBatches) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeProjectServiceBatches) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(projectservicebatchesResource, c.ns, listOptions)
+func (c *FakeProjectServiceBatches) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(projectservicebatchesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ProjectServiceBatchList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched projectServiceBatch.
-func (c *FakeProjectServiceBatches) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ProjectServiceBatch, err error) {
+func (c *FakeProjectServiceBatches) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ProjectServiceBatch, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(projectservicebatchesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ProjectServiceBatch{})
 

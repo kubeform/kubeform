@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var streamanalyticsreferenceinputblobsResource = schema.GroupVersionResource{Gro
 var streamanalyticsreferenceinputblobsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "StreamAnalyticsReferenceInputBlob"}
 
 // Get takes name of the streamAnalyticsReferenceInputBlob, and returns the corresponding streamAnalyticsReferenceInputBlob object, and an error if there is any.
-func (c *FakeStreamAnalyticsReferenceInputBlobs) Get(name string, options v1.GetOptions) (result *v1alpha1.StreamAnalyticsReferenceInputBlob, err error) {
+func (c *FakeStreamAnalyticsReferenceInputBlobs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.StreamAnalyticsReferenceInputBlob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(streamanalyticsreferenceinputblobsResource, c.ns, name), &v1alpha1.StreamAnalyticsReferenceInputBlob{})
 
@@ -51,7 +53,7 @@ func (c *FakeStreamAnalyticsReferenceInputBlobs) Get(name string, options v1.Get
 }
 
 // List takes label and field selectors, and returns the list of StreamAnalyticsReferenceInputBlobs that match those selectors.
-func (c *FakeStreamAnalyticsReferenceInputBlobs) List(opts v1.ListOptions) (result *v1alpha1.StreamAnalyticsReferenceInputBlobList, err error) {
+func (c *FakeStreamAnalyticsReferenceInputBlobs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.StreamAnalyticsReferenceInputBlobList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(streamanalyticsreferenceinputblobsResource, streamanalyticsreferenceinputblobsKind, c.ns, opts), &v1alpha1.StreamAnalyticsReferenceInputBlobList{})
 
@@ -73,14 +75,14 @@ func (c *FakeStreamAnalyticsReferenceInputBlobs) List(opts v1.ListOptions) (resu
 }
 
 // Watch returns a watch.Interface that watches the requested streamAnalyticsReferenceInputBlobs.
-func (c *FakeStreamAnalyticsReferenceInputBlobs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeStreamAnalyticsReferenceInputBlobs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(streamanalyticsreferenceinputblobsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a streamAnalyticsReferenceInputBlob and creates it.  Returns the server's representation of the streamAnalyticsReferenceInputBlob, and an error, if there is any.
-func (c *FakeStreamAnalyticsReferenceInputBlobs) Create(streamAnalyticsReferenceInputBlob *v1alpha1.StreamAnalyticsReferenceInputBlob) (result *v1alpha1.StreamAnalyticsReferenceInputBlob, err error) {
+func (c *FakeStreamAnalyticsReferenceInputBlobs) Create(ctx context.Context, streamAnalyticsReferenceInputBlob *v1alpha1.StreamAnalyticsReferenceInputBlob, opts v1.CreateOptions) (result *v1alpha1.StreamAnalyticsReferenceInputBlob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(streamanalyticsreferenceinputblobsResource, c.ns, streamAnalyticsReferenceInputBlob), &v1alpha1.StreamAnalyticsReferenceInputBlob{})
 
@@ -91,7 +93,7 @@ func (c *FakeStreamAnalyticsReferenceInputBlobs) Create(streamAnalyticsReference
 }
 
 // Update takes the representation of a streamAnalyticsReferenceInputBlob and updates it. Returns the server's representation of the streamAnalyticsReferenceInputBlob, and an error, if there is any.
-func (c *FakeStreamAnalyticsReferenceInputBlobs) Update(streamAnalyticsReferenceInputBlob *v1alpha1.StreamAnalyticsReferenceInputBlob) (result *v1alpha1.StreamAnalyticsReferenceInputBlob, err error) {
+func (c *FakeStreamAnalyticsReferenceInputBlobs) Update(ctx context.Context, streamAnalyticsReferenceInputBlob *v1alpha1.StreamAnalyticsReferenceInputBlob, opts v1.UpdateOptions) (result *v1alpha1.StreamAnalyticsReferenceInputBlob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(streamanalyticsreferenceinputblobsResource, c.ns, streamAnalyticsReferenceInputBlob), &v1alpha1.StreamAnalyticsReferenceInputBlob{})
 
@@ -103,7 +105,7 @@ func (c *FakeStreamAnalyticsReferenceInputBlobs) Update(streamAnalyticsReference
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeStreamAnalyticsReferenceInputBlobs) UpdateStatus(streamAnalyticsReferenceInputBlob *v1alpha1.StreamAnalyticsReferenceInputBlob) (*v1alpha1.StreamAnalyticsReferenceInputBlob, error) {
+func (c *FakeStreamAnalyticsReferenceInputBlobs) UpdateStatus(ctx context.Context, streamAnalyticsReferenceInputBlob *v1alpha1.StreamAnalyticsReferenceInputBlob, opts v1.UpdateOptions) (*v1alpha1.StreamAnalyticsReferenceInputBlob, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(streamanalyticsreferenceinputblobsResource, "status", c.ns, streamAnalyticsReferenceInputBlob), &v1alpha1.StreamAnalyticsReferenceInputBlob{})
 
@@ -114,7 +116,7 @@ func (c *FakeStreamAnalyticsReferenceInputBlobs) UpdateStatus(streamAnalyticsRef
 }
 
 // Delete takes name of the streamAnalyticsReferenceInputBlob and deletes it. Returns an error if one occurs.
-func (c *FakeStreamAnalyticsReferenceInputBlobs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeStreamAnalyticsReferenceInputBlobs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(streamanalyticsreferenceinputblobsResource, c.ns, name), &v1alpha1.StreamAnalyticsReferenceInputBlob{})
 
@@ -122,15 +124,15 @@ func (c *FakeStreamAnalyticsReferenceInputBlobs) Delete(name string, options *v1
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeStreamAnalyticsReferenceInputBlobs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(streamanalyticsreferenceinputblobsResource, c.ns, listOptions)
+func (c *FakeStreamAnalyticsReferenceInputBlobs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(streamanalyticsreferenceinputblobsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.StreamAnalyticsReferenceInputBlobList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched streamAnalyticsReferenceInputBlob.
-func (c *FakeStreamAnalyticsReferenceInputBlobs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StreamAnalyticsReferenceInputBlob, err error) {
+func (c *FakeStreamAnalyticsReferenceInputBlobs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StreamAnalyticsReferenceInputBlob, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(streamanalyticsreferenceinputblobsResource, c.ns, name, pt, data, subresources...), &v1alpha1.StreamAnalyticsReferenceInputBlob{})
 

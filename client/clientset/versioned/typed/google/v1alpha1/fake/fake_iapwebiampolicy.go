@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iapwebiampoliciesResource = schema.GroupVersionResource{Group: "google.kubef
 var iapwebiampoliciesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "IapWebIamPolicy"}
 
 // Get takes name of the iapWebIamPolicy, and returns the corresponding iapWebIamPolicy object, and an error if there is any.
-func (c *FakeIapWebIamPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.IapWebIamPolicy, err error) {
+func (c *FakeIapWebIamPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IapWebIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iapwebiampoliciesResource, c.ns, name), &v1alpha1.IapWebIamPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeIapWebIamPolicies) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of IapWebIamPolicies that match those selectors.
-func (c *FakeIapWebIamPolicies) List(opts v1.ListOptions) (result *v1alpha1.IapWebIamPolicyList, err error) {
+func (c *FakeIapWebIamPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IapWebIamPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iapwebiampoliciesResource, iapwebiampoliciesKind, c.ns, opts), &v1alpha1.IapWebIamPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIapWebIamPolicies) List(opts v1.ListOptions) (result *v1alpha1.IapW
 }
 
 // Watch returns a watch.Interface that watches the requested iapWebIamPolicies.
-func (c *FakeIapWebIamPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIapWebIamPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iapwebiampoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iapWebIamPolicy and creates it.  Returns the server's representation of the iapWebIamPolicy, and an error, if there is any.
-func (c *FakeIapWebIamPolicies) Create(iapWebIamPolicy *v1alpha1.IapWebIamPolicy) (result *v1alpha1.IapWebIamPolicy, err error) {
+func (c *FakeIapWebIamPolicies) Create(ctx context.Context, iapWebIamPolicy *v1alpha1.IapWebIamPolicy, opts v1.CreateOptions) (result *v1alpha1.IapWebIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iapwebiampoliciesResource, c.ns, iapWebIamPolicy), &v1alpha1.IapWebIamPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeIapWebIamPolicies) Create(iapWebIamPolicy *v1alpha1.IapWebIamPolicy
 }
 
 // Update takes the representation of a iapWebIamPolicy and updates it. Returns the server's representation of the iapWebIamPolicy, and an error, if there is any.
-func (c *FakeIapWebIamPolicies) Update(iapWebIamPolicy *v1alpha1.IapWebIamPolicy) (result *v1alpha1.IapWebIamPolicy, err error) {
+func (c *FakeIapWebIamPolicies) Update(ctx context.Context, iapWebIamPolicy *v1alpha1.IapWebIamPolicy, opts v1.UpdateOptions) (result *v1alpha1.IapWebIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iapwebiampoliciesResource, c.ns, iapWebIamPolicy), &v1alpha1.IapWebIamPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeIapWebIamPolicies) Update(iapWebIamPolicy *v1alpha1.IapWebIamPolicy
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIapWebIamPolicies) UpdateStatus(iapWebIamPolicy *v1alpha1.IapWebIamPolicy) (*v1alpha1.IapWebIamPolicy, error) {
+func (c *FakeIapWebIamPolicies) UpdateStatus(ctx context.Context, iapWebIamPolicy *v1alpha1.IapWebIamPolicy, opts v1.UpdateOptions) (*v1alpha1.IapWebIamPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iapwebiampoliciesResource, "status", c.ns, iapWebIamPolicy), &v1alpha1.IapWebIamPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeIapWebIamPolicies) UpdateStatus(iapWebIamPolicy *v1alpha1.IapWebIam
 }
 
 // Delete takes name of the iapWebIamPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeIapWebIamPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIapWebIamPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iapwebiampoliciesResource, c.ns, name), &v1alpha1.IapWebIamPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeIapWebIamPolicies) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIapWebIamPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iapwebiampoliciesResource, c.ns, listOptions)
+func (c *FakeIapWebIamPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iapwebiampoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IapWebIamPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iapWebIamPolicy.
-func (c *FakeIapWebIamPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IapWebIamPolicy, err error) {
+func (c *FakeIapWebIamPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IapWebIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iapwebiampoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.IapWebIamPolicy{})
 

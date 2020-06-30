@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dbsubnetgroupsResource = schema.GroupVersionResource{Group: "aws.kubeform.co
 var dbsubnetgroupsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DbSubnetGroup"}
 
 // Get takes name of the dbSubnetGroup, and returns the corresponding dbSubnetGroup object, and an error if there is any.
-func (c *FakeDbSubnetGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.DbSubnetGroup, err error) {
+func (c *FakeDbSubnetGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DbSubnetGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dbsubnetgroupsResource, c.ns, name), &v1alpha1.DbSubnetGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeDbSubnetGroups) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of DbSubnetGroups that match those selectors.
-func (c *FakeDbSubnetGroups) List(opts v1.ListOptions) (result *v1alpha1.DbSubnetGroupList, err error) {
+func (c *FakeDbSubnetGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DbSubnetGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dbsubnetgroupsResource, dbsubnetgroupsKind, c.ns, opts), &v1alpha1.DbSubnetGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDbSubnetGroups) List(opts v1.ListOptions) (result *v1alpha1.DbSubne
 }
 
 // Watch returns a watch.Interface that watches the requested dbSubnetGroups.
-func (c *FakeDbSubnetGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDbSubnetGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dbsubnetgroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dbSubnetGroup and creates it.  Returns the server's representation of the dbSubnetGroup, and an error, if there is any.
-func (c *FakeDbSubnetGroups) Create(dbSubnetGroup *v1alpha1.DbSubnetGroup) (result *v1alpha1.DbSubnetGroup, err error) {
+func (c *FakeDbSubnetGroups) Create(ctx context.Context, dbSubnetGroup *v1alpha1.DbSubnetGroup, opts v1.CreateOptions) (result *v1alpha1.DbSubnetGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dbsubnetgroupsResource, c.ns, dbSubnetGroup), &v1alpha1.DbSubnetGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeDbSubnetGroups) Create(dbSubnetGroup *v1alpha1.DbSubnetGroup) (resu
 }
 
 // Update takes the representation of a dbSubnetGroup and updates it. Returns the server's representation of the dbSubnetGroup, and an error, if there is any.
-func (c *FakeDbSubnetGroups) Update(dbSubnetGroup *v1alpha1.DbSubnetGroup) (result *v1alpha1.DbSubnetGroup, err error) {
+func (c *FakeDbSubnetGroups) Update(ctx context.Context, dbSubnetGroup *v1alpha1.DbSubnetGroup, opts v1.UpdateOptions) (result *v1alpha1.DbSubnetGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dbsubnetgroupsResource, c.ns, dbSubnetGroup), &v1alpha1.DbSubnetGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeDbSubnetGroups) Update(dbSubnetGroup *v1alpha1.DbSubnetGroup) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDbSubnetGroups) UpdateStatus(dbSubnetGroup *v1alpha1.DbSubnetGroup) (*v1alpha1.DbSubnetGroup, error) {
+func (c *FakeDbSubnetGroups) UpdateStatus(ctx context.Context, dbSubnetGroup *v1alpha1.DbSubnetGroup, opts v1.UpdateOptions) (*v1alpha1.DbSubnetGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dbsubnetgroupsResource, "status", c.ns, dbSubnetGroup), &v1alpha1.DbSubnetGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeDbSubnetGroups) UpdateStatus(dbSubnetGroup *v1alpha1.DbSubnetGroup)
 }
 
 // Delete takes name of the dbSubnetGroup and deletes it. Returns an error if one occurs.
-func (c *FakeDbSubnetGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDbSubnetGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dbsubnetgroupsResource, c.ns, name), &v1alpha1.DbSubnetGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeDbSubnetGroups) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDbSubnetGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dbsubnetgroupsResource, c.ns, listOptions)
+func (c *FakeDbSubnetGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dbsubnetgroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DbSubnetGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dbSubnetGroup.
-func (c *FakeDbSubnetGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DbSubnetGroup, err error) {
+func (c *FakeDbSubnetGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DbSubnetGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dbsubnetgroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DbSubnetGroup{})
 

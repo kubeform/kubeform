@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computetargethttpsproxiesResource = schema.GroupVersionResource{Group: "goog
 var computetargethttpsproxiesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeTargetHTTPSProxy"}
 
 // Get takes name of the computeTargetHTTPSProxy, and returns the corresponding computeTargetHTTPSProxy object, and an error if there is any.
-func (c *FakeComputeTargetHTTPSProxies) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeTargetHTTPSProxy, err error) {
+func (c *FakeComputeTargetHTTPSProxies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeTargetHTTPSProxy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computetargethttpsproxiesResource, c.ns, name), &v1alpha1.ComputeTargetHTTPSProxy{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeTargetHTTPSProxies) Get(name string, options v1.GetOptions) 
 }
 
 // List takes label and field selectors, and returns the list of ComputeTargetHTTPSProxies that match those selectors.
-func (c *FakeComputeTargetHTTPSProxies) List(opts v1.ListOptions) (result *v1alpha1.ComputeTargetHTTPSProxyList, err error) {
+func (c *FakeComputeTargetHTTPSProxies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeTargetHTTPSProxyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computetargethttpsproxiesResource, computetargethttpsproxiesKind, c.ns, opts), &v1alpha1.ComputeTargetHTTPSProxyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeTargetHTTPSProxies) List(opts v1.ListOptions) (result *v1alp
 }
 
 // Watch returns a watch.Interface that watches the requested computeTargetHTTPSProxies.
-func (c *FakeComputeTargetHTTPSProxies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeTargetHTTPSProxies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computetargethttpsproxiesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeTargetHTTPSProxy and creates it.  Returns the server's representation of the computeTargetHTTPSProxy, and an error, if there is any.
-func (c *FakeComputeTargetHTTPSProxies) Create(computeTargetHTTPSProxy *v1alpha1.ComputeTargetHTTPSProxy) (result *v1alpha1.ComputeTargetHTTPSProxy, err error) {
+func (c *FakeComputeTargetHTTPSProxies) Create(ctx context.Context, computeTargetHTTPSProxy *v1alpha1.ComputeTargetHTTPSProxy, opts v1.CreateOptions) (result *v1alpha1.ComputeTargetHTTPSProxy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computetargethttpsproxiesResource, c.ns, computeTargetHTTPSProxy), &v1alpha1.ComputeTargetHTTPSProxy{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeTargetHTTPSProxies) Create(computeTargetHTTPSProxy *v1alpha1
 }
 
 // Update takes the representation of a computeTargetHTTPSProxy and updates it. Returns the server's representation of the computeTargetHTTPSProxy, and an error, if there is any.
-func (c *FakeComputeTargetHTTPSProxies) Update(computeTargetHTTPSProxy *v1alpha1.ComputeTargetHTTPSProxy) (result *v1alpha1.ComputeTargetHTTPSProxy, err error) {
+func (c *FakeComputeTargetHTTPSProxies) Update(ctx context.Context, computeTargetHTTPSProxy *v1alpha1.ComputeTargetHTTPSProxy, opts v1.UpdateOptions) (result *v1alpha1.ComputeTargetHTTPSProxy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computetargethttpsproxiesResource, c.ns, computeTargetHTTPSProxy), &v1alpha1.ComputeTargetHTTPSProxy{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeTargetHTTPSProxies) Update(computeTargetHTTPSProxy *v1alpha1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeTargetHTTPSProxies) UpdateStatus(computeTargetHTTPSProxy *v1alpha1.ComputeTargetHTTPSProxy) (*v1alpha1.ComputeTargetHTTPSProxy, error) {
+func (c *FakeComputeTargetHTTPSProxies) UpdateStatus(ctx context.Context, computeTargetHTTPSProxy *v1alpha1.ComputeTargetHTTPSProxy, opts v1.UpdateOptions) (*v1alpha1.ComputeTargetHTTPSProxy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computetargethttpsproxiesResource, "status", c.ns, computeTargetHTTPSProxy), &v1alpha1.ComputeTargetHTTPSProxy{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeTargetHTTPSProxies) UpdateStatus(computeTargetHTTPSProxy *v1
 }
 
 // Delete takes name of the computeTargetHTTPSProxy and deletes it. Returns an error if one occurs.
-func (c *FakeComputeTargetHTTPSProxies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeTargetHTTPSProxies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computetargethttpsproxiesResource, c.ns, name), &v1alpha1.ComputeTargetHTTPSProxy{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeTargetHTTPSProxies) Delete(name string, options *v1.DeleteOp
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeTargetHTTPSProxies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computetargethttpsproxiesResource, c.ns, listOptions)
+func (c *FakeComputeTargetHTTPSProxies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computetargethttpsproxiesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeTargetHTTPSProxyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeTargetHTTPSProxy.
-func (c *FakeComputeTargetHTTPSProxies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeTargetHTTPSProxy, err error) {
+func (c *FakeComputeTargetHTTPSProxies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeTargetHTTPSProxy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computetargethttpsproxiesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeTargetHTTPSProxy{})
 

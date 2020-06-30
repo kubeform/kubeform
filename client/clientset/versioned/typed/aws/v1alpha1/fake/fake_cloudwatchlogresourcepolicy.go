@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cloudwatchlogresourcepoliciesResource = schema.GroupVersionResource{Group: "
 var cloudwatchlogresourcepoliciesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "CloudwatchLogResourcePolicy"}
 
 // Get takes name of the cloudwatchLogResourcePolicy, and returns the corresponding cloudwatchLogResourcePolicy object, and an error if there is any.
-func (c *FakeCloudwatchLogResourcePolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.CloudwatchLogResourcePolicy, err error) {
+func (c *FakeCloudwatchLogResourcePolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CloudwatchLogResourcePolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cloudwatchlogresourcepoliciesResource, c.ns, name), &v1alpha1.CloudwatchLogResourcePolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeCloudwatchLogResourcePolicies) Get(name string, options v1.GetOptio
 }
 
 // List takes label and field selectors, and returns the list of CloudwatchLogResourcePolicies that match those selectors.
-func (c *FakeCloudwatchLogResourcePolicies) List(opts v1.ListOptions) (result *v1alpha1.CloudwatchLogResourcePolicyList, err error) {
+func (c *FakeCloudwatchLogResourcePolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CloudwatchLogResourcePolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cloudwatchlogresourcepoliciesResource, cloudwatchlogresourcepoliciesKind, c.ns, opts), &v1alpha1.CloudwatchLogResourcePolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCloudwatchLogResourcePolicies) List(opts v1.ListOptions) (result *v
 }
 
 // Watch returns a watch.Interface that watches the requested cloudwatchLogResourcePolicies.
-func (c *FakeCloudwatchLogResourcePolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCloudwatchLogResourcePolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cloudwatchlogresourcepoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cloudwatchLogResourcePolicy and creates it.  Returns the server's representation of the cloudwatchLogResourcePolicy, and an error, if there is any.
-func (c *FakeCloudwatchLogResourcePolicies) Create(cloudwatchLogResourcePolicy *v1alpha1.CloudwatchLogResourcePolicy) (result *v1alpha1.CloudwatchLogResourcePolicy, err error) {
+func (c *FakeCloudwatchLogResourcePolicies) Create(ctx context.Context, cloudwatchLogResourcePolicy *v1alpha1.CloudwatchLogResourcePolicy, opts v1.CreateOptions) (result *v1alpha1.CloudwatchLogResourcePolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cloudwatchlogresourcepoliciesResource, c.ns, cloudwatchLogResourcePolicy), &v1alpha1.CloudwatchLogResourcePolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeCloudwatchLogResourcePolicies) Create(cloudwatchLogResourcePolicy *
 }
 
 // Update takes the representation of a cloudwatchLogResourcePolicy and updates it. Returns the server's representation of the cloudwatchLogResourcePolicy, and an error, if there is any.
-func (c *FakeCloudwatchLogResourcePolicies) Update(cloudwatchLogResourcePolicy *v1alpha1.CloudwatchLogResourcePolicy) (result *v1alpha1.CloudwatchLogResourcePolicy, err error) {
+func (c *FakeCloudwatchLogResourcePolicies) Update(ctx context.Context, cloudwatchLogResourcePolicy *v1alpha1.CloudwatchLogResourcePolicy, opts v1.UpdateOptions) (result *v1alpha1.CloudwatchLogResourcePolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cloudwatchlogresourcepoliciesResource, c.ns, cloudwatchLogResourcePolicy), &v1alpha1.CloudwatchLogResourcePolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeCloudwatchLogResourcePolicies) Update(cloudwatchLogResourcePolicy *
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCloudwatchLogResourcePolicies) UpdateStatus(cloudwatchLogResourcePolicy *v1alpha1.CloudwatchLogResourcePolicy) (*v1alpha1.CloudwatchLogResourcePolicy, error) {
+func (c *FakeCloudwatchLogResourcePolicies) UpdateStatus(ctx context.Context, cloudwatchLogResourcePolicy *v1alpha1.CloudwatchLogResourcePolicy, opts v1.UpdateOptions) (*v1alpha1.CloudwatchLogResourcePolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cloudwatchlogresourcepoliciesResource, "status", c.ns, cloudwatchLogResourcePolicy), &v1alpha1.CloudwatchLogResourcePolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeCloudwatchLogResourcePolicies) UpdateStatus(cloudwatchLogResourcePo
 }
 
 // Delete takes name of the cloudwatchLogResourcePolicy and deletes it. Returns an error if one occurs.
-func (c *FakeCloudwatchLogResourcePolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCloudwatchLogResourcePolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cloudwatchlogresourcepoliciesResource, c.ns, name), &v1alpha1.CloudwatchLogResourcePolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeCloudwatchLogResourcePolicies) Delete(name string, options *v1.Dele
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCloudwatchLogResourcePolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cloudwatchlogresourcepoliciesResource, c.ns, listOptions)
+func (c *FakeCloudwatchLogResourcePolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cloudwatchlogresourcepoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CloudwatchLogResourcePolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cloudwatchLogResourcePolicy.
-func (c *FakeCloudwatchLogResourcePolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CloudwatchLogResourcePolicy, err error) {
+func (c *FakeCloudwatchLogResourcePolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CloudwatchLogResourcePolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cloudwatchlogresourcepoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.CloudwatchLogResourcePolicy{})
 

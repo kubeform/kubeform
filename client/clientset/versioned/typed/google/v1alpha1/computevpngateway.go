@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type ComputeVPNGatewaysGetter interface {
 
 // ComputeVPNGatewayInterface has methods to work with ComputeVPNGateway resources.
 type ComputeVPNGatewayInterface interface {
-	Create(*v1alpha1.ComputeVPNGateway) (*v1alpha1.ComputeVPNGateway, error)
-	Update(*v1alpha1.ComputeVPNGateway) (*v1alpha1.ComputeVPNGateway, error)
-	UpdateStatus(*v1alpha1.ComputeVPNGateway) (*v1alpha1.ComputeVPNGateway, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ComputeVPNGateway, error)
-	List(opts v1.ListOptions) (*v1alpha1.ComputeVPNGatewayList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeVPNGateway, err error)
+	Create(ctx context.Context, computeVPNGateway *v1alpha1.ComputeVPNGateway, opts v1.CreateOptions) (*v1alpha1.ComputeVPNGateway, error)
+	Update(ctx context.Context, computeVPNGateway *v1alpha1.ComputeVPNGateway, opts v1.UpdateOptions) (*v1alpha1.ComputeVPNGateway, error)
+	UpdateStatus(ctx context.Context, computeVPNGateway *v1alpha1.ComputeVPNGateway, opts v1.UpdateOptions) (*v1alpha1.ComputeVPNGateway, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ComputeVPNGateway, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ComputeVPNGatewayList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeVPNGateway, err error)
 	ComputeVPNGatewayExpansion
 }
 
@@ -65,20 +66,20 @@ func newComputeVPNGateways(c *GoogleV1alpha1Client, namespace string) *computeVP
 }
 
 // Get takes name of the computeVPNGateway, and returns the corresponding computeVPNGateway object, and an error if there is any.
-func (c *computeVPNGateways) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeVPNGateway, err error) {
+func (c *computeVPNGateways) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeVPNGateway, err error) {
 	result = &v1alpha1.ComputeVPNGateway{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("computevpngateways").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ComputeVPNGateways that match those selectors.
-func (c *computeVPNGateways) List(opts v1.ListOptions) (result *v1alpha1.ComputeVPNGatewayList, err error) {
+func (c *computeVPNGateways) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeVPNGatewayList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *computeVPNGateways) List(opts v1.ListOptions) (result *v1alpha1.Compute
 		Resource("computevpngateways").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested computeVPNGateways.
-func (c *computeVPNGateways) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *computeVPNGateways) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *computeVPNGateways) Watch(opts v1.ListOptions) (watch.Interface, error)
 		Resource("computevpngateways").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a computeVPNGateway and creates it.  Returns the server's representation of the computeVPNGateway, and an error, if there is any.
-func (c *computeVPNGateways) Create(computeVPNGateway *v1alpha1.ComputeVPNGateway) (result *v1alpha1.ComputeVPNGateway, err error) {
+func (c *computeVPNGateways) Create(ctx context.Context, computeVPNGateway *v1alpha1.ComputeVPNGateway, opts v1.CreateOptions) (result *v1alpha1.ComputeVPNGateway, err error) {
 	result = &v1alpha1.ComputeVPNGateway{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("computevpngateways").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeVPNGateway).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a computeVPNGateway and updates it. Returns the server's representation of the computeVPNGateway, and an error, if there is any.
-func (c *computeVPNGateways) Update(computeVPNGateway *v1alpha1.ComputeVPNGateway) (result *v1alpha1.ComputeVPNGateway, err error) {
+func (c *computeVPNGateways) Update(ctx context.Context, computeVPNGateway *v1alpha1.ComputeVPNGateway, opts v1.UpdateOptions) (result *v1alpha1.ComputeVPNGateway, err error) {
 	result = &v1alpha1.ComputeVPNGateway{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computevpngateways").
 		Name(computeVPNGateway.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeVPNGateway).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *computeVPNGateways) UpdateStatus(computeVPNGateway *v1alpha1.ComputeVPNGateway) (result *v1alpha1.ComputeVPNGateway, err error) {
+func (c *computeVPNGateways) UpdateStatus(ctx context.Context, computeVPNGateway *v1alpha1.ComputeVPNGateway, opts v1.UpdateOptions) (result *v1alpha1.ComputeVPNGateway, err error) {
 	result = &v1alpha1.ComputeVPNGateway{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computevpngateways").
 		Name(computeVPNGateway.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeVPNGateway).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the computeVPNGateway and deletes it. Returns an error if one occurs.
-func (c *computeVPNGateways) Delete(name string, options *v1.DeleteOptions) error {
+func (c *computeVPNGateways) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computevpngateways").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *computeVPNGateways) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *computeVPNGateways) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computevpngateways").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched computeVPNGateway.
-func (c *computeVPNGateways) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeVPNGateway, err error) {
+func (c *computeVPNGateways) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeVPNGateway, err error) {
 	result = &v1alpha1.ComputeVPNGateway{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("computevpngateways").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

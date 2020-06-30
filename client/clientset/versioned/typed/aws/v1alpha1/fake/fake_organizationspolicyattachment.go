@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var organizationspolicyattachmentsResource = schema.GroupVersionResource{Group: 
 var organizationspolicyattachmentsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "OrganizationsPolicyAttachment"}
 
 // Get takes name of the organizationsPolicyAttachment, and returns the corresponding organizationsPolicyAttachment object, and an error if there is any.
-func (c *FakeOrganizationsPolicyAttachments) Get(name string, options v1.GetOptions) (result *v1alpha1.OrganizationsPolicyAttachment, err error) {
+func (c *FakeOrganizationsPolicyAttachments) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.OrganizationsPolicyAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(organizationspolicyattachmentsResource, c.ns, name), &v1alpha1.OrganizationsPolicyAttachment{})
 
@@ -51,7 +53,7 @@ func (c *FakeOrganizationsPolicyAttachments) Get(name string, options v1.GetOpti
 }
 
 // List takes label and field selectors, and returns the list of OrganizationsPolicyAttachments that match those selectors.
-func (c *FakeOrganizationsPolicyAttachments) List(opts v1.ListOptions) (result *v1alpha1.OrganizationsPolicyAttachmentList, err error) {
+func (c *FakeOrganizationsPolicyAttachments) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.OrganizationsPolicyAttachmentList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(organizationspolicyattachmentsResource, organizationspolicyattachmentsKind, c.ns, opts), &v1alpha1.OrganizationsPolicyAttachmentList{})
 
@@ -73,14 +75,14 @@ func (c *FakeOrganizationsPolicyAttachments) List(opts v1.ListOptions) (result *
 }
 
 // Watch returns a watch.Interface that watches the requested organizationsPolicyAttachments.
-func (c *FakeOrganizationsPolicyAttachments) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeOrganizationsPolicyAttachments) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(organizationspolicyattachmentsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a organizationsPolicyAttachment and creates it.  Returns the server's representation of the organizationsPolicyAttachment, and an error, if there is any.
-func (c *FakeOrganizationsPolicyAttachments) Create(organizationsPolicyAttachment *v1alpha1.OrganizationsPolicyAttachment) (result *v1alpha1.OrganizationsPolicyAttachment, err error) {
+func (c *FakeOrganizationsPolicyAttachments) Create(ctx context.Context, organizationsPolicyAttachment *v1alpha1.OrganizationsPolicyAttachment, opts v1.CreateOptions) (result *v1alpha1.OrganizationsPolicyAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(organizationspolicyattachmentsResource, c.ns, organizationsPolicyAttachment), &v1alpha1.OrganizationsPolicyAttachment{})
 
@@ -91,7 +93,7 @@ func (c *FakeOrganizationsPolicyAttachments) Create(organizationsPolicyAttachmen
 }
 
 // Update takes the representation of a organizationsPolicyAttachment and updates it. Returns the server's representation of the organizationsPolicyAttachment, and an error, if there is any.
-func (c *FakeOrganizationsPolicyAttachments) Update(organizationsPolicyAttachment *v1alpha1.OrganizationsPolicyAttachment) (result *v1alpha1.OrganizationsPolicyAttachment, err error) {
+func (c *FakeOrganizationsPolicyAttachments) Update(ctx context.Context, organizationsPolicyAttachment *v1alpha1.OrganizationsPolicyAttachment, opts v1.UpdateOptions) (result *v1alpha1.OrganizationsPolicyAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(organizationspolicyattachmentsResource, c.ns, organizationsPolicyAttachment), &v1alpha1.OrganizationsPolicyAttachment{})
 
@@ -103,7 +105,7 @@ func (c *FakeOrganizationsPolicyAttachments) Update(organizationsPolicyAttachmen
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeOrganizationsPolicyAttachments) UpdateStatus(organizationsPolicyAttachment *v1alpha1.OrganizationsPolicyAttachment) (*v1alpha1.OrganizationsPolicyAttachment, error) {
+func (c *FakeOrganizationsPolicyAttachments) UpdateStatus(ctx context.Context, organizationsPolicyAttachment *v1alpha1.OrganizationsPolicyAttachment, opts v1.UpdateOptions) (*v1alpha1.OrganizationsPolicyAttachment, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(organizationspolicyattachmentsResource, "status", c.ns, organizationsPolicyAttachment), &v1alpha1.OrganizationsPolicyAttachment{})
 
@@ -114,7 +116,7 @@ func (c *FakeOrganizationsPolicyAttachments) UpdateStatus(organizationsPolicyAtt
 }
 
 // Delete takes name of the organizationsPolicyAttachment and deletes it. Returns an error if one occurs.
-func (c *FakeOrganizationsPolicyAttachments) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeOrganizationsPolicyAttachments) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(organizationspolicyattachmentsResource, c.ns, name), &v1alpha1.OrganizationsPolicyAttachment{})
 
@@ -122,15 +124,15 @@ func (c *FakeOrganizationsPolicyAttachments) Delete(name string, options *v1.Del
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeOrganizationsPolicyAttachments) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(organizationspolicyattachmentsResource, c.ns, listOptions)
+func (c *FakeOrganizationsPolicyAttachments) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(organizationspolicyattachmentsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.OrganizationsPolicyAttachmentList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched organizationsPolicyAttachment.
-func (c *FakeOrganizationsPolicyAttachments) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.OrganizationsPolicyAttachment, err error) {
+func (c *FakeOrganizationsPolicyAttachments) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.OrganizationsPolicyAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(organizationspolicyattachmentsResource, c.ns, name, pt, data, subresources...), &v1alpha1.OrganizationsPolicyAttachment{})
 

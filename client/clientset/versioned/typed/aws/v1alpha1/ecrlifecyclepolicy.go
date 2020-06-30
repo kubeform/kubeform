@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type EcrLifecyclePoliciesGetter interface {
 
 // EcrLifecyclePolicyInterface has methods to work with EcrLifecyclePolicy resources.
 type EcrLifecyclePolicyInterface interface {
-	Create(*v1alpha1.EcrLifecyclePolicy) (*v1alpha1.EcrLifecyclePolicy, error)
-	Update(*v1alpha1.EcrLifecyclePolicy) (*v1alpha1.EcrLifecyclePolicy, error)
-	UpdateStatus(*v1alpha1.EcrLifecyclePolicy) (*v1alpha1.EcrLifecyclePolicy, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.EcrLifecyclePolicy, error)
-	List(opts v1.ListOptions) (*v1alpha1.EcrLifecyclePolicyList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EcrLifecyclePolicy, err error)
+	Create(ctx context.Context, ecrLifecyclePolicy *v1alpha1.EcrLifecyclePolicy, opts v1.CreateOptions) (*v1alpha1.EcrLifecyclePolicy, error)
+	Update(ctx context.Context, ecrLifecyclePolicy *v1alpha1.EcrLifecyclePolicy, opts v1.UpdateOptions) (*v1alpha1.EcrLifecyclePolicy, error)
+	UpdateStatus(ctx context.Context, ecrLifecyclePolicy *v1alpha1.EcrLifecyclePolicy, opts v1.UpdateOptions) (*v1alpha1.EcrLifecyclePolicy, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.EcrLifecyclePolicy, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.EcrLifecyclePolicyList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EcrLifecyclePolicy, err error)
 	EcrLifecyclePolicyExpansion
 }
 
@@ -65,20 +66,20 @@ func newEcrLifecyclePolicies(c *AwsV1alpha1Client, namespace string) *ecrLifecyc
 }
 
 // Get takes name of the ecrLifecyclePolicy, and returns the corresponding ecrLifecyclePolicy object, and an error if there is any.
-func (c *ecrLifecyclePolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.EcrLifecyclePolicy, err error) {
+func (c *ecrLifecyclePolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.EcrLifecyclePolicy, err error) {
 	result = &v1alpha1.EcrLifecyclePolicy{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("ecrlifecyclepolicies").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of EcrLifecyclePolicies that match those selectors.
-func (c *ecrLifecyclePolicies) List(opts v1.ListOptions) (result *v1alpha1.EcrLifecyclePolicyList, err error) {
+func (c *ecrLifecyclePolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.EcrLifecyclePolicyList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *ecrLifecyclePolicies) List(opts v1.ListOptions) (result *v1alpha1.EcrLi
 		Resource("ecrlifecyclepolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested ecrLifecyclePolicies.
-func (c *ecrLifecyclePolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *ecrLifecyclePolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *ecrLifecyclePolicies) Watch(opts v1.ListOptions) (watch.Interface, erro
 		Resource("ecrlifecyclepolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a ecrLifecyclePolicy and creates it.  Returns the server's representation of the ecrLifecyclePolicy, and an error, if there is any.
-func (c *ecrLifecyclePolicies) Create(ecrLifecyclePolicy *v1alpha1.EcrLifecyclePolicy) (result *v1alpha1.EcrLifecyclePolicy, err error) {
+func (c *ecrLifecyclePolicies) Create(ctx context.Context, ecrLifecyclePolicy *v1alpha1.EcrLifecyclePolicy, opts v1.CreateOptions) (result *v1alpha1.EcrLifecyclePolicy, err error) {
 	result = &v1alpha1.EcrLifecyclePolicy{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("ecrlifecyclepolicies").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(ecrLifecyclePolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a ecrLifecyclePolicy and updates it. Returns the server's representation of the ecrLifecyclePolicy, and an error, if there is any.
-func (c *ecrLifecyclePolicies) Update(ecrLifecyclePolicy *v1alpha1.EcrLifecyclePolicy) (result *v1alpha1.EcrLifecyclePolicy, err error) {
+func (c *ecrLifecyclePolicies) Update(ctx context.Context, ecrLifecyclePolicy *v1alpha1.EcrLifecyclePolicy, opts v1.UpdateOptions) (result *v1alpha1.EcrLifecyclePolicy, err error) {
 	result = &v1alpha1.EcrLifecyclePolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("ecrlifecyclepolicies").
 		Name(ecrLifecyclePolicy.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(ecrLifecyclePolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *ecrLifecyclePolicies) UpdateStatus(ecrLifecyclePolicy *v1alpha1.EcrLifecyclePolicy) (result *v1alpha1.EcrLifecyclePolicy, err error) {
+func (c *ecrLifecyclePolicies) UpdateStatus(ctx context.Context, ecrLifecyclePolicy *v1alpha1.EcrLifecyclePolicy, opts v1.UpdateOptions) (result *v1alpha1.EcrLifecyclePolicy, err error) {
 	result = &v1alpha1.EcrLifecyclePolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("ecrlifecyclepolicies").
 		Name(ecrLifecyclePolicy.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(ecrLifecyclePolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the ecrLifecyclePolicy and deletes it. Returns an error if one occurs.
-func (c *ecrLifecyclePolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *ecrLifecyclePolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("ecrlifecyclepolicies").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *ecrLifecyclePolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *ecrLifecyclePolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("ecrlifecyclepolicies").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched ecrLifecyclePolicy.
-func (c *ecrLifecyclePolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EcrLifecyclePolicy, err error) {
+func (c *ecrLifecyclePolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EcrLifecyclePolicy, err error) {
 	result = &v1alpha1.EcrLifecyclePolicy{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("ecrlifecyclepolicies").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type ApiManagementAPIOperationPoliciesGetter interface {
 
 // ApiManagementAPIOperationPolicyInterface has methods to work with ApiManagementAPIOperationPolicy resources.
 type ApiManagementAPIOperationPolicyInterface interface {
-	Create(*v1alpha1.ApiManagementAPIOperationPolicy) (*v1alpha1.ApiManagementAPIOperationPolicy, error)
-	Update(*v1alpha1.ApiManagementAPIOperationPolicy) (*v1alpha1.ApiManagementAPIOperationPolicy, error)
-	UpdateStatus(*v1alpha1.ApiManagementAPIOperationPolicy) (*v1alpha1.ApiManagementAPIOperationPolicy, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ApiManagementAPIOperationPolicy, error)
-	List(opts v1.ListOptions) (*v1alpha1.ApiManagementAPIOperationPolicyList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiManagementAPIOperationPolicy, err error)
+	Create(ctx context.Context, apiManagementAPIOperationPolicy *v1alpha1.ApiManagementAPIOperationPolicy, opts v1.CreateOptions) (*v1alpha1.ApiManagementAPIOperationPolicy, error)
+	Update(ctx context.Context, apiManagementAPIOperationPolicy *v1alpha1.ApiManagementAPIOperationPolicy, opts v1.UpdateOptions) (*v1alpha1.ApiManagementAPIOperationPolicy, error)
+	UpdateStatus(ctx context.Context, apiManagementAPIOperationPolicy *v1alpha1.ApiManagementAPIOperationPolicy, opts v1.UpdateOptions) (*v1alpha1.ApiManagementAPIOperationPolicy, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ApiManagementAPIOperationPolicy, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ApiManagementAPIOperationPolicyList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiManagementAPIOperationPolicy, err error)
 	ApiManagementAPIOperationPolicyExpansion
 }
 
@@ -65,20 +66,20 @@ func newApiManagementAPIOperationPolicies(c *AzurermV1alpha1Client, namespace st
 }
 
 // Get takes name of the apiManagementAPIOperationPolicy, and returns the corresponding apiManagementAPIOperationPolicy object, and an error if there is any.
-func (c *apiManagementAPIOperationPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.ApiManagementAPIOperationPolicy, err error) {
+func (c *apiManagementAPIOperationPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApiManagementAPIOperationPolicy, err error) {
 	result = &v1alpha1.ApiManagementAPIOperationPolicy{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("apimanagementapioperationpolicies").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ApiManagementAPIOperationPolicies that match those selectors.
-func (c *apiManagementAPIOperationPolicies) List(opts v1.ListOptions) (result *v1alpha1.ApiManagementAPIOperationPolicyList, err error) {
+func (c *apiManagementAPIOperationPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApiManagementAPIOperationPolicyList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *apiManagementAPIOperationPolicies) List(opts v1.ListOptions) (result *v
 		Resource("apimanagementapioperationpolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested apiManagementAPIOperationPolicies.
-func (c *apiManagementAPIOperationPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *apiManagementAPIOperationPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *apiManagementAPIOperationPolicies) Watch(opts v1.ListOptions) (watch.In
 		Resource("apimanagementapioperationpolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a apiManagementAPIOperationPolicy and creates it.  Returns the server's representation of the apiManagementAPIOperationPolicy, and an error, if there is any.
-func (c *apiManagementAPIOperationPolicies) Create(apiManagementAPIOperationPolicy *v1alpha1.ApiManagementAPIOperationPolicy) (result *v1alpha1.ApiManagementAPIOperationPolicy, err error) {
+func (c *apiManagementAPIOperationPolicies) Create(ctx context.Context, apiManagementAPIOperationPolicy *v1alpha1.ApiManagementAPIOperationPolicy, opts v1.CreateOptions) (result *v1alpha1.ApiManagementAPIOperationPolicy, err error) {
 	result = &v1alpha1.ApiManagementAPIOperationPolicy{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("apimanagementapioperationpolicies").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(apiManagementAPIOperationPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a apiManagementAPIOperationPolicy and updates it. Returns the server's representation of the apiManagementAPIOperationPolicy, and an error, if there is any.
-func (c *apiManagementAPIOperationPolicies) Update(apiManagementAPIOperationPolicy *v1alpha1.ApiManagementAPIOperationPolicy) (result *v1alpha1.ApiManagementAPIOperationPolicy, err error) {
+func (c *apiManagementAPIOperationPolicies) Update(ctx context.Context, apiManagementAPIOperationPolicy *v1alpha1.ApiManagementAPIOperationPolicy, opts v1.UpdateOptions) (result *v1alpha1.ApiManagementAPIOperationPolicy, err error) {
 	result = &v1alpha1.ApiManagementAPIOperationPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("apimanagementapioperationpolicies").
 		Name(apiManagementAPIOperationPolicy.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(apiManagementAPIOperationPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *apiManagementAPIOperationPolicies) UpdateStatus(apiManagementAPIOperationPolicy *v1alpha1.ApiManagementAPIOperationPolicy) (result *v1alpha1.ApiManagementAPIOperationPolicy, err error) {
+func (c *apiManagementAPIOperationPolicies) UpdateStatus(ctx context.Context, apiManagementAPIOperationPolicy *v1alpha1.ApiManagementAPIOperationPolicy, opts v1.UpdateOptions) (result *v1alpha1.ApiManagementAPIOperationPolicy, err error) {
 	result = &v1alpha1.ApiManagementAPIOperationPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("apimanagementapioperationpolicies").
 		Name(apiManagementAPIOperationPolicy.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(apiManagementAPIOperationPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the apiManagementAPIOperationPolicy and deletes it. Returns an error if one occurs.
-func (c *apiManagementAPIOperationPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *apiManagementAPIOperationPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("apimanagementapioperationpolicies").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *apiManagementAPIOperationPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *apiManagementAPIOperationPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("apimanagementapioperationpolicies").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched apiManagementAPIOperationPolicy.
-func (c *apiManagementAPIOperationPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiManagementAPIOperationPolicy, err error) {
+func (c *apiManagementAPIOperationPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiManagementAPIOperationPolicy, err error) {
 	result = &v1alpha1.ApiManagementAPIOperationPolicy{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("apimanagementapioperationpolicies").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var botwebappsResource = schema.GroupVersionResource{Group: "azurerm.kubeform.co
 var botwebappsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "BotWebApp"}
 
 // Get takes name of the botWebApp, and returns the corresponding botWebApp object, and an error if there is any.
-func (c *FakeBotWebApps) Get(name string, options v1.GetOptions) (result *v1alpha1.BotWebApp, err error) {
+func (c *FakeBotWebApps) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BotWebApp, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(botwebappsResource, c.ns, name), &v1alpha1.BotWebApp{})
 
@@ -51,7 +53,7 @@ func (c *FakeBotWebApps) Get(name string, options v1.GetOptions) (result *v1alph
 }
 
 // List takes label and field selectors, and returns the list of BotWebApps that match those selectors.
-func (c *FakeBotWebApps) List(opts v1.ListOptions) (result *v1alpha1.BotWebAppList, err error) {
+func (c *FakeBotWebApps) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BotWebAppList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(botwebappsResource, botwebappsKind, c.ns, opts), &v1alpha1.BotWebAppList{})
 
@@ -73,14 +75,14 @@ func (c *FakeBotWebApps) List(opts v1.ListOptions) (result *v1alpha1.BotWebAppLi
 }
 
 // Watch returns a watch.Interface that watches the requested botWebApps.
-func (c *FakeBotWebApps) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeBotWebApps) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(botwebappsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a botWebApp and creates it.  Returns the server's representation of the botWebApp, and an error, if there is any.
-func (c *FakeBotWebApps) Create(botWebApp *v1alpha1.BotWebApp) (result *v1alpha1.BotWebApp, err error) {
+func (c *FakeBotWebApps) Create(ctx context.Context, botWebApp *v1alpha1.BotWebApp, opts v1.CreateOptions) (result *v1alpha1.BotWebApp, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(botwebappsResource, c.ns, botWebApp), &v1alpha1.BotWebApp{})
 
@@ -91,7 +93,7 @@ func (c *FakeBotWebApps) Create(botWebApp *v1alpha1.BotWebApp) (result *v1alpha1
 }
 
 // Update takes the representation of a botWebApp and updates it. Returns the server's representation of the botWebApp, and an error, if there is any.
-func (c *FakeBotWebApps) Update(botWebApp *v1alpha1.BotWebApp) (result *v1alpha1.BotWebApp, err error) {
+func (c *FakeBotWebApps) Update(ctx context.Context, botWebApp *v1alpha1.BotWebApp, opts v1.UpdateOptions) (result *v1alpha1.BotWebApp, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(botwebappsResource, c.ns, botWebApp), &v1alpha1.BotWebApp{})
 
@@ -103,7 +105,7 @@ func (c *FakeBotWebApps) Update(botWebApp *v1alpha1.BotWebApp) (result *v1alpha1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeBotWebApps) UpdateStatus(botWebApp *v1alpha1.BotWebApp) (*v1alpha1.BotWebApp, error) {
+func (c *FakeBotWebApps) UpdateStatus(ctx context.Context, botWebApp *v1alpha1.BotWebApp, opts v1.UpdateOptions) (*v1alpha1.BotWebApp, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(botwebappsResource, "status", c.ns, botWebApp), &v1alpha1.BotWebApp{})
 
@@ -114,7 +116,7 @@ func (c *FakeBotWebApps) UpdateStatus(botWebApp *v1alpha1.BotWebApp) (*v1alpha1.
 }
 
 // Delete takes name of the botWebApp and deletes it. Returns an error if one occurs.
-func (c *FakeBotWebApps) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeBotWebApps) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(botwebappsResource, c.ns, name), &v1alpha1.BotWebApp{})
 
@@ -122,15 +124,15 @@ func (c *FakeBotWebApps) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeBotWebApps) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(botwebappsResource, c.ns, listOptions)
+func (c *FakeBotWebApps) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(botwebappsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.BotWebAppList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched botWebApp.
-func (c *FakeBotWebApps) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BotWebApp, err error) {
+func (c *FakeBotWebApps) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BotWebApp, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(botwebappsResource, c.ns, name, pt, data, subresources...), &v1alpha1.BotWebApp{})
 

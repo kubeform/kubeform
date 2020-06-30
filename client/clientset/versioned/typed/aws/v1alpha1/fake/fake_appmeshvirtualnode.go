@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var appmeshvirtualnodesResource = schema.GroupVersionResource{Group: "aws.kubefo
 var appmeshvirtualnodesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "AppmeshVirtualNode"}
 
 // Get takes name of the appmeshVirtualNode, and returns the corresponding appmeshVirtualNode object, and an error if there is any.
-func (c *FakeAppmeshVirtualNodes) Get(name string, options v1.GetOptions) (result *v1alpha1.AppmeshVirtualNode, err error) {
+func (c *FakeAppmeshVirtualNodes) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AppmeshVirtualNode, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(appmeshvirtualnodesResource, c.ns, name), &v1alpha1.AppmeshVirtualNode{})
 
@@ -51,7 +53,7 @@ func (c *FakeAppmeshVirtualNodes) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of AppmeshVirtualNodes that match those selectors.
-func (c *FakeAppmeshVirtualNodes) List(opts v1.ListOptions) (result *v1alpha1.AppmeshVirtualNodeList, err error) {
+func (c *FakeAppmeshVirtualNodes) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AppmeshVirtualNodeList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(appmeshvirtualnodesResource, appmeshvirtualnodesKind, c.ns, opts), &v1alpha1.AppmeshVirtualNodeList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAppmeshVirtualNodes) List(opts v1.ListOptions) (result *v1alpha1.Ap
 }
 
 // Watch returns a watch.Interface that watches the requested appmeshVirtualNodes.
-func (c *FakeAppmeshVirtualNodes) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAppmeshVirtualNodes) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(appmeshvirtualnodesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a appmeshVirtualNode and creates it.  Returns the server's representation of the appmeshVirtualNode, and an error, if there is any.
-func (c *FakeAppmeshVirtualNodes) Create(appmeshVirtualNode *v1alpha1.AppmeshVirtualNode) (result *v1alpha1.AppmeshVirtualNode, err error) {
+func (c *FakeAppmeshVirtualNodes) Create(ctx context.Context, appmeshVirtualNode *v1alpha1.AppmeshVirtualNode, opts v1.CreateOptions) (result *v1alpha1.AppmeshVirtualNode, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(appmeshvirtualnodesResource, c.ns, appmeshVirtualNode), &v1alpha1.AppmeshVirtualNode{})
 
@@ -91,7 +93,7 @@ func (c *FakeAppmeshVirtualNodes) Create(appmeshVirtualNode *v1alpha1.AppmeshVir
 }
 
 // Update takes the representation of a appmeshVirtualNode and updates it. Returns the server's representation of the appmeshVirtualNode, and an error, if there is any.
-func (c *FakeAppmeshVirtualNodes) Update(appmeshVirtualNode *v1alpha1.AppmeshVirtualNode) (result *v1alpha1.AppmeshVirtualNode, err error) {
+func (c *FakeAppmeshVirtualNodes) Update(ctx context.Context, appmeshVirtualNode *v1alpha1.AppmeshVirtualNode, opts v1.UpdateOptions) (result *v1alpha1.AppmeshVirtualNode, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(appmeshvirtualnodesResource, c.ns, appmeshVirtualNode), &v1alpha1.AppmeshVirtualNode{})
 
@@ -103,7 +105,7 @@ func (c *FakeAppmeshVirtualNodes) Update(appmeshVirtualNode *v1alpha1.AppmeshVir
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAppmeshVirtualNodes) UpdateStatus(appmeshVirtualNode *v1alpha1.AppmeshVirtualNode) (*v1alpha1.AppmeshVirtualNode, error) {
+func (c *FakeAppmeshVirtualNodes) UpdateStatus(ctx context.Context, appmeshVirtualNode *v1alpha1.AppmeshVirtualNode, opts v1.UpdateOptions) (*v1alpha1.AppmeshVirtualNode, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(appmeshvirtualnodesResource, "status", c.ns, appmeshVirtualNode), &v1alpha1.AppmeshVirtualNode{})
 
@@ -114,7 +116,7 @@ func (c *FakeAppmeshVirtualNodes) UpdateStatus(appmeshVirtualNode *v1alpha1.Appm
 }
 
 // Delete takes name of the appmeshVirtualNode and deletes it. Returns an error if one occurs.
-func (c *FakeAppmeshVirtualNodes) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAppmeshVirtualNodes) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(appmeshvirtualnodesResource, c.ns, name), &v1alpha1.AppmeshVirtualNode{})
 
@@ -122,15 +124,15 @@ func (c *FakeAppmeshVirtualNodes) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAppmeshVirtualNodes) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(appmeshvirtualnodesResource, c.ns, listOptions)
+func (c *FakeAppmeshVirtualNodes) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(appmeshvirtualnodesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AppmeshVirtualNodeList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched appmeshVirtualNode.
-func (c *FakeAppmeshVirtualNodes) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppmeshVirtualNode, err error) {
+func (c *FakeAppmeshVirtualNodes) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppmeshVirtualNode, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(appmeshvirtualnodesResource, c.ns, name, pt, data, subresources...), &v1alpha1.AppmeshVirtualNode{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var apigatewaymodelsResource = schema.GroupVersionResource{Group: "aws.kubeform.
 var apigatewaymodelsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ApiGatewayModel"}
 
 // Get takes name of the apiGatewayModel, and returns the corresponding apiGatewayModel object, and an error if there is any.
-func (c *FakeApiGatewayModels) Get(name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayModel, err error) {
+func (c *FakeApiGatewayModels) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayModel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(apigatewaymodelsResource, c.ns, name), &v1alpha1.ApiGatewayModel{})
 
@@ -51,7 +53,7 @@ func (c *FakeApiGatewayModels) Get(name string, options v1.GetOptions) (result *
 }
 
 // List takes label and field selectors, and returns the list of ApiGatewayModels that match those selectors.
-func (c *FakeApiGatewayModels) List(opts v1.ListOptions) (result *v1alpha1.ApiGatewayModelList, err error) {
+func (c *FakeApiGatewayModels) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApiGatewayModelList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(apigatewaymodelsResource, apigatewaymodelsKind, c.ns, opts), &v1alpha1.ApiGatewayModelList{})
 
@@ -73,14 +75,14 @@ func (c *FakeApiGatewayModels) List(opts v1.ListOptions) (result *v1alpha1.ApiGa
 }
 
 // Watch returns a watch.Interface that watches the requested apiGatewayModels.
-func (c *FakeApiGatewayModels) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeApiGatewayModels) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(apigatewaymodelsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a apiGatewayModel and creates it.  Returns the server's representation of the apiGatewayModel, and an error, if there is any.
-func (c *FakeApiGatewayModels) Create(apiGatewayModel *v1alpha1.ApiGatewayModel) (result *v1alpha1.ApiGatewayModel, err error) {
+func (c *FakeApiGatewayModels) Create(ctx context.Context, apiGatewayModel *v1alpha1.ApiGatewayModel, opts v1.CreateOptions) (result *v1alpha1.ApiGatewayModel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(apigatewaymodelsResource, c.ns, apiGatewayModel), &v1alpha1.ApiGatewayModel{})
 
@@ -91,7 +93,7 @@ func (c *FakeApiGatewayModels) Create(apiGatewayModel *v1alpha1.ApiGatewayModel)
 }
 
 // Update takes the representation of a apiGatewayModel and updates it. Returns the server's representation of the apiGatewayModel, and an error, if there is any.
-func (c *FakeApiGatewayModels) Update(apiGatewayModel *v1alpha1.ApiGatewayModel) (result *v1alpha1.ApiGatewayModel, err error) {
+func (c *FakeApiGatewayModels) Update(ctx context.Context, apiGatewayModel *v1alpha1.ApiGatewayModel, opts v1.UpdateOptions) (result *v1alpha1.ApiGatewayModel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(apigatewaymodelsResource, c.ns, apiGatewayModel), &v1alpha1.ApiGatewayModel{})
 
@@ -103,7 +105,7 @@ func (c *FakeApiGatewayModels) Update(apiGatewayModel *v1alpha1.ApiGatewayModel)
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeApiGatewayModels) UpdateStatus(apiGatewayModel *v1alpha1.ApiGatewayModel) (*v1alpha1.ApiGatewayModel, error) {
+func (c *FakeApiGatewayModels) UpdateStatus(ctx context.Context, apiGatewayModel *v1alpha1.ApiGatewayModel, opts v1.UpdateOptions) (*v1alpha1.ApiGatewayModel, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(apigatewaymodelsResource, "status", c.ns, apiGatewayModel), &v1alpha1.ApiGatewayModel{})
 
@@ -114,7 +116,7 @@ func (c *FakeApiGatewayModels) UpdateStatus(apiGatewayModel *v1alpha1.ApiGateway
 }
 
 // Delete takes name of the apiGatewayModel and deletes it. Returns an error if one occurs.
-func (c *FakeApiGatewayModels) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeApiGatewayModels) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(apigatewaymodelsResource, c.ns, name), &v1alpha1.ApiGatewayModel{})
 
@@ -122,15 +124,15 @@ func (c *FakeApiGatewayModels) Delete(name string, options *v1.DeleteOptions) er
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeApiGatewayModels) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(apigatewaymodelsResource, c.ns, listOptions)
+func (c *FakeApiGatewayModels) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(apigatewaymodelsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ApiGatewayModelList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched apiGatewayModel.
-func (c *FakeApiGatewayModels) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiGatewayModel, err error) {
+func (c *FakeApiGatewayModels) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiGatewayModel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(apigatewaymodelsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ApiGatewayModel{})
 

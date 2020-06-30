@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var binaryauthorizationattestoriambindingsResource = schema.GroupVersionResource
 var binaryauthorizationattestoriambindingsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "BinaryAuthorizationAttestorIamBinding"}
 
 // Get takes name of the binaryAuthorizationAttestorIamBinding, and returns the corresponding binaryAuthorizationAttestorIamBinding object, and an error if there is any.
-func (c *FakeBinaryAuthorizationAttestorIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.BinaryAuthorizationAttestorIamBinding, err error) {
+func (c *FakeBinaryAuthorizationAttestorIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BinaryAuthorizationAttestorIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(binaryauthorizationattestoriambindingsResource, c.ns, name), &v1alpha1.BinaryAuthorizationAttestorIamBinding{})
 
@@ -51,7 +53,7 @@ func (c *FakeBinaryAuthorizationAttestorIamBindings) Get(name string, options v1
 }
 
 // List takes label and field selectors, and returns the list of BinaryAuthorizationAttestorIamBindings that match those selectors.
-func (c *FakeBinaryAuthorizationAttestorIamBindings) List(opts v1.ListOptions) (result *v1alpha1.BinaryAuthorizationAttestorIamBindingList, err error) {
+func (c *FakeBinaryAuthorizationAttestorIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BinaryAuthorizationAttestorIamBindingList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(binaryauthorizationattestoriambindingsResource, binaryauthorizationattestoriambindingsKind, c.ns, opts), &v1alpha1.BinaryAuthorizationAttestorIamBindingList{})
 
@@ -73,14 +75,14 @@ func (c *FakeBinaryAuthorizationAttestorIamBindings) List(opts v1.ListOptions) (
 }
 
 // Watch returns a watch.Interface that watches the requested binaryAuthorizationAttestorIamBindings.
-func (c *FakeBinaryAuthorizationAttestorIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeBinaryAuthorizationAttestorIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(binaryauthorizationattestoriambindingsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a binaryAuthorizationAttestorIamBinding and creates it.  Returns the server's representation of the binaryAuthorizationAttestorIamBinding, and an error, if there is any.
-func (c *FakeBinaryAuthorizationAttestorIamBindings) Create(binaryAuthorizationAttestorIamBinding *v1alpha1.BinaryAuthorizationAttestorIamBinding) (result *v1alpha1.BinaryAuthorizationAttestorIamBinding, err error) {
+func (c *FakeBinaryAuthorizationAttestorIamBindings) Create(ctx context.Context, binaryAuthorizationAttestorIamBinding *v1alpha1.BinaryAuthorizationAttestorIamBinding, opts v1.CreateOptions) (result *v1alpha1.BinaryAuthorizationAttestorIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(binaryauthorizationattestoriambindingsResource, c.ns, binaryAuthorizationAttestorIamBinding), &v1alpha1.BinaryAuthorizationAttestorIamBinding{})
 
@@ -91,7 +93,7 @@ func (c *FakeBinaryAuthorizationAttestorIamBindings) Create(binaryAuthorizationA
 }
 
 // Update takes the representation of a binaryAuthorizationAttestorIamBinding and updates it. Returns the server's representation of the binaryAuthorizationAttestorIamBinding, and an error, if there is any.
-func (c *FakeBinaryAuthorizationAttestorIamBindings) Update(binaryAuthorizationAttestorIamBinding *v1alpha1.BinaryAuthorizationAttestorIamBinding) (result *v1alpha1.BinaryAuthorizationAttestorIamBinding, err error) {
+func (c *FakeBinaryAuthorizationAttestorIamBindings) Update(ctx context.Context, binaryAuthorizationAttestorIamBinding *v1alpha1.BinaryAuthorizationAttestorIamBinding, opts v1.UpdateOptions) (result *v1alpha1.BinaryAuthorizationAttestorIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(binaryauthorizationattestoriambindingsResource, c.ns, binaryAuthorizationAttestorIamBinding), &v1alpha1.BinaryAuthorizationAttestorIamBinding{})
 
@@ -103,7 +105,7 @@ func (c *FakeBinaryAuthorizationAttestorIamBindings) Update(binaryAuthorizationA
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeBinaryAuthorizationAttestorIamBindings) UpdateStatus(binaryAuthorizationAttestorIamBinding *v1alpha1.BinaryAuthorizationAttestorIamBinding) (*v1alpha1.BinaryAuthorizationAttestorIamBinding, error) {
+func (c *FakeBinaryAuthorizationAttestorIamBindings) UpdateStatus(ctx context.Context, binaryAuthorizationAttestorIamBinding *v1alpha1.BinaryAuthorizationAttestorIamBinding, opts v1.UpdateOptions) (*v1alpha1.BinaryAuthorizationAttestorIamBinding, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(binaryauthorizationattestoriambindingsResource, "status", c.ns, binaryAuthorizationAttestorIamBinding), &v1alpha1.BinaryAuthorizationAttestorIamBinding{})
 
@@ -114,7 +116,7 @@ func (c *FakeBinaryAuthorizationAttestorIamBindings) UpdateStatus(binaryAuthoriz
 }
 
 // Delete takes name of the binaryAuthorizationAttestorIamBinding and deletes it. Returns an error if one occurs.
-func (c *FakeBinaryAuthorizationAttestorIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeBinaryAuthorizationAttestorIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(binaryauthorizationattestoriambindingsResource, c.ns, name), &v1alpha1.BinaryAuthorizationAttestorIamBinding{})
 
@@ -122,15 +124,15 @@ func (c *FakeBinaryAuthorizationAttestorIamBindings) Delete(name string, options
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeBinaryAuthorizationAttestorIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(binaryauthorizationattestoriambindingsResource, c.ns, listOptions)
+func (c *FakeBinaryAuthorizationAttestorIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(binaryauthorizationattestoriambindingsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.BinaryAuthorizationAttestorIamBindingList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched binaryAuthorizationAttestorIamBinding.
-func (c *FakeBinaryAuthorizationAttestorIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BinaryAuthorizationAttestorIamBinding, err error) {
+func (c *FakeBinaryAuthorizationAttestorIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BinaryAuthorizationAttestorIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(binaryauthorizationattestoriambindingsResource, c.ns, name, pt, data, subresources...), &v1alpha1.BinaryAuthorizationAttestorIamBinding{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dataprocjobiampoliciesResource = schema.GroupVersionResource{Group: "google.
 var dataprocjobiampoliciesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "DataprocJobIamPolicy"}
 
 // Get takes name of the dataprocJobIamPolicy, and returns the corresponding dataprocJobIamPolicy object, and an error if there is any.
-func (c *FakeDataprocJobIamPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.DataprocJobIamPolicy, err error) {
+func (c *FakeDataprocJobIamPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DataprocJobIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dataprocjobiampoliciesResource, c.ns, name), &v1alpha1.DataprocJobIamPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeDataprocJobIamPolicies) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of DataprocJobIamPolicies that match those selectors.
-func (c *FakeDataprocJobIamPolicies) List(opts v1.ListOptions) (result *v1alpha1.DataprocJobIamPolicyList, err error) {
+func (c *FakeDataprocJobIamPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DataprocJobIamPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dataprocjobiampoliciesResource, dataprocjobiampoliciesKind, c.ns, opts), &v1alpha1.DataprocJobIamPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDataprocJobIamPolicies) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested dataprocJobIamPolicies.
-func (c *FakeDataprocJobIamPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDataprocJobIamPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dataprocjobiampoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dataprocJobIamPolicy and creates it.  Returns the server's representation of the dataprocJobIamPolicy, and an error, if there is any.
-func (c *FakeDataprocJobIamPolicies) Create(dataprocJobIamPolicy *v1alpha1.DataprocJobIamPolicy) (result *v1alpha1.DataprocJobIamPolicy, err error) {
+func (c *FakeDataprocJobIamPolicies) Create(ctx context.Context, dataprocJobIamPolicy *v1alpha1.DataprocJobIamPolicy, opts v1.CreateOptions) (result *v1alpha1.DataprocJobIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dataprocjobiampoliciesResource, c.ns, dataprocJobIamPolicy), &v1alpha1.DataprocJobIamPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeDataprocJobIamPolicies) Create(dataprocJobIamPolicy *v1alpha1.Datap
 }
 
 // Update takes the representation of a dataprocJobIamPolicy and updates it. Returns the server's representation of the dataprocJobIamPolicy, and an error, if there is any.
-func (c *FakeDataprocJobIamPolicies) Update(dataprocJobIamPolicy *v1alpha1.DataprocJobIamPolicy) (result *v1alpha1.DataprocJobIamPolicy, err error) {
+func (c *FakeDataprocJobIamPolicies) Update(ctx context.Context, dataprocJobIamPolicy *v1alpha1.DataprocJobIamPolicy, opts v1.UpdateOptions) (result *v1alpha1.DataprocJobIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dataprocjobiampoliciesResource, c.ns, dataprocJobIamPolicy), &v1alpha1.DataprocJobIamPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeDataprocJobIamPolicies) Update(dataprocJobIamPolicy *v1alpha1.Datap
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDataprocJobIamPolicies) UpdateStatus(dataprocJobIamPolicy *v1alpha1.DataprocJobIamPolicy) (*v1alpha1.DataprocJobIamPolicy, error) {
+func (c *FakeDataprocJobIamPolicies) UpdateStatus(ctx context.Context, dataprocJobIamPolicy *v1alpha1.DataprocJobIamPolicy, opts v1.UpdateOptions) (*v1alpha1.DataprocJobIamPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dataprocjobiampoliciesResource, "status", c.ns, dataprocJobIamPolicy), &v1alpha1.DataprocJobIamPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeDataprocJobIamPolicies) UpdateStatus(dataprocJobIamPolicy *v1alpha1
 }
 
 // Delete takes name of the dataprocJobIamPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeDataprocJobIamPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDataprocJobIamPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dataprocjobiampoliciesResource, c.ns, name), &v1alpha1.DataprocJobIamPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeDataprocJobIamPolicies) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDataprocJobIamPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dataprocjobiampoliciesResource, c.ns, listOptions)
+func (c *FakeDataprocJobIamPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dataprocjobiampoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DataprocJobIamPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dataprocJobIamPolicy.
-func (c *FakeDataprocJobIamPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataprocJobIamPolicy, err error) {
+func (c *FakeDataprocJobIamPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataprocJobIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dataprocjobiampoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.DataprocJobIamPolicy{})
 

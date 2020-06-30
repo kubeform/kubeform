@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var directoryservicedirectoriesResource = schema.GroupVersionResource{Group: "aw
 var directoryservicedirectoriesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DirectoryServiceDirectory"}
 
 // Get takes name of the directoryServiceDirectory, and returns the corresponding directoryServiceDirectory object, and an error if there is any.
-func (c *FakeDirectoryServiceDirectories) Get(name string, options v1.GetOptions) (result *v1alpha1.DirectoryServiceDirectory, err error) {
+func (c *FakeDirectoryServiceDirectories) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DirectoryServiceDirectory, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(directoryservicedirectoriesResource, c.ns, name), &v1alpha1.DirectoryServiceDirectory{})
 
@@ -51,7 +53,7 @@ func (c *FakeDirectoryServiceDirectories) Get(name string, options v1.GetOptions
 }
 
 // List takes label and field selectors, and returns the list of DirectoryServiceDirectories that match those selectors.
-func (c *FakeDirectoryServiceDirectories) List(opts v1.ListOptions) (result *v1alpha1.DirectoryServiceDirectoryList, err error) {
+func (c *FakeDirectoryServiceDirectories) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DirectoryServiceDirectoryList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(directoryservicedirectoriesResource, directoryservicedirectoriesKind, c.ns, opts), &v1alpha1.DirectoryServiceDirectoryList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDirectoryServiceDirectories) List(opts v1.ListOptions) (result *v1a
 }
 
 // Watch returns a watch.Interface that watches the requested directoryServiceDirectories.
-func (c *FakeDirectoryServiceDirectories) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDirectoryServiceDirectories) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(directoryservicedirectoriesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a directoryServiceDirectory and creates it.  Returns the server's representation of the directoryServiceDirectory, and an error, if there is any.
-func (c *FakeDirectoryServiceDirectories) Create(directoryServiceDirectory *v1alpha1.DirectoryServiceDirectory) (result *v1alpha1.DirectoryServiceDirectory, err error) {
+func (c *FakeDirectoryServiceDirectories) Create(ctx context.Context, directoryServiceDirectory *v1alpha1.DirectoryServiceDirectory, opts v1.CreateOptions) (result *v1alpha1.DirectoryServiceDirectory, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(directoryservicedirectoriesResource, c.ns, directoryServiceDirectory), &v1alpha1.DirectoryServiceDirectory{})
 
@@ -91,7 +93,7 @@ func (c *FakeDirectoryServiceDirectories) Create(directoryServiceDirectory *v1al
 }
 
 // Update takes the representation of a directoryServiceDirectory and updates it. Returns the server's representation of the directoryServiceDirectory, and an error, if there is any.
-func (c *FakeDirectoryServiceDirectories) Update(directoryServiceDirectory *v1alpha1.DirectoryServiceDirectory) (result *v1alpha1.DirectoryServiceDirectory, err error) {
+func (c *FakeDirectoryServiceDirectories) Update(ctx context.Context, directoryServiceDirectory *v1alpha1.DirectoryServiceDirectory, opts v1.UpdateOptions) (result *v1alpha1.DirectoryServiceDirectory, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(directoryservicedirectoriesResource, c.ns, directoryServiceDirectory), &v1alpha1.DirectoryServiceDirectory{})
 
@@ -103,7 +105,7 @@ func (c *FakeDirectoryServiceDirectories) Update(directoryServiceDirectory *v1al
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDirectoryServiceDirectories) UpdateStatus(directoryServiceDirectory *v1alpha1.DirectoryServiceDirectory) (*v1alpha1.DirectoryServiceDirectory, error) {
+func (c *FakeDirectoryServiceDirectories) UpdateStatus(ctx context.Context, directoryServiceDirectory *v1alpha1.DirectoryServiceDirectory, opts v1.UpdateOptions) (*v1alpha1.DirectoryServiceDirectory, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(directoryservicedirectoriesResource, "status", c.ns, directoryServiceDirectory), &v1alpha1.DirectoryServiceDirectory{})
 
@@ -114,7 +116,7 @@ func (c *FakeDirectoryServiceDirectories) UpdateStatus(directoryServiceDirectory
 }
 
 // Delete takes name of the directoryServiceDirectory and deletes it. Returns an error if one occurs.
-func (c *FakeDirectoryServiceDirectories) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDirectoryServiceDirectories) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(directoryservicedirectoriesResource, c.ns, name), &v1alpha1.DirectoryServiceDirectory{})
 
@@ -122,15 +124,15 @@ func (c *FakeDirectoryServiceDirectories) Delete(name string, options *v1.Delete
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDirectoryServiceDirectories) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(directoryservicedirectoriesResource, c.ns, listOptions)
+func (c *FakeDirectoryServiceDirectories) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(directoryservicedirectoriesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DirectoryServiceDirectoryList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched directoryServiceDirectory.
-func (c *FakeDirectoryServiceDirectories) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DirectoryServiceDirectory, err error) {
+func (c *FakeDirectoryServiceDirectories) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DirectoryServiceDirectory, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(directoryservicedirectoriesResource, c.ns, name, pt, data, subresources...), &v1alpha1.DirectoryServiceDirectory{})
 

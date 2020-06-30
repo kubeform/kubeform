@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var streamanalyticsstreaminputeventhubsResource = schema.GroupVersionResource{Gr
 var streamanalyticsstreaminputeventhubsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "StreamAnalyticsStreamInputEventhub"}
 
 // Get takes name of the streamAnalyticsStreamInputEventhub, and returns the corresponding streamAnalyticsStreamInputEventhub object, and an error if there is any.
-func (c *FakeStreamAnalyticsStreamInputEventhubs) Get(name string, options v1.GetOptions) (result *v1alpha1.StreamAnalyticsStreamInputEventhub, err error) {
+func (c *FakeStreamAnalyticsStreamInputEventhubs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.StreamAnalyticsStreamInputEventhub, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(streamanalyticsstreaminputeventhubsResource, c.ns, name), &v1alpha1.StreamAnalyticsStreamInputEventhub{})
 
@@ -51,7 +53,7 @@ func (c *FakeStreamAnalyticsStreamInputEventhubs) Get(name string, options v1.Ge
 }
 
 // List takes label and field selectors, and returns the list of StreamAnalyticsStreamInputEventhubs that match those selectors.
-func (c *FakeStreamAnalyticsStreamInputEventhubs) List(opts v1.ListOptions) (result *v1alpha1.StreamAnalyticsStreamInputEventhubList, err error) {
+func (c *FakeStreamAnalyticsStreamInputEventhubs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.StreamAnalyticsStreamInputEventhubList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(streamanalyticsstreaminputeventhubsResource, streamanalyticsstreaminputeventhubsKind, c.ns, opts), &v1alpha1.StreamAnalyticsStreamInputEventhubList{})
 
@@ -73,14 +75,14 @@ func (c *FakeStreamAnalyticsStreamInputEventhubs) List(opts v1.ListOptions) (res
 }
 
 // Watch returns a watch.Interface that watches the requested streamAnalyticsStreamInputEventhubs.
-func (c *FakeStreamAnalyticsStreamInputEventhubs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeStreamAnalyticsStreamInputEventhubs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(streamanalyticsstreaminputeventhubsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a streamAnalyticsStreamInputEventhub and creates it.  Returns the server's representation of the streamAnalyticsStreamInputEventhub, and an error, if there is any.
-func (c *FakeStreamAnalyticsStreamInputEventhubs) Create(streamAnalyticsStreamInputEventhub *v1alpha1.StreamAnalyticsStreamInputEventhub) (result *v1alpha1.StreamAnalyticsStreamInputEventhub, err error) {
+func (c *FakeStreamAnalyticsStreamInputEventhubs) Create(ctx context.Context, streamAnalyticsStreamInputEventhub *v1alpha1.StreamAnalyticsStreamInputEventhub, opts v1.CreateOptions) (result *v1alpha1.StreamAnalyticsStreamInputEventhub, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(streamanalyticsstreaminputeventhubsResource, c.ns, streamAnalyticsStreamInputEventhub), &v1alpha1.StreamAnalyticsStreamInputEventhub{})
 
@@ -91,7 +93,7 @@ func (c *FakeStreamAnalyticsStreamInputEventhubs) Create(streamAnalyticsStreamIn
 }
 
 // Update takes the representation of a streamAnalyticsStreamInputEventhub and updates it. Returns the server's representation of the streamAnalyticsStreamInputEventhub, and an error, if there is any.
-func (c *FakeStreamAnalyticsStreamInputEventhubs) Update(streamAnalyticsStreamInputEventhub *v1alpha1.StreamAnalyticsStreamInputEventhub) (result *v1alpha1.StreamAnalyticsStreamInputEventhub, err error) {
+func (c *FakeStreamAnalyticsStreamInputEventhubs) Update(ctx context.Context, streamAnalyticsStreamInputEventhub *v1alpha1.StreamAnalyticsStreamInputEventhub, opts v1.UpdateOptions) (result *v1alpha1.StreamAnalyticsStreamInputEventhub, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(streamanalyticsstreaminputeventhubsResource, c.ns, streamAnalyticsStreamInputEventhub), &v1alpha1.StreamAnalyticsStreamInputEventhub{})
 
@@ -103,7 +105,7 @@ func (c *FakeStreamAnalyticsStreamInputEventhubs) Update(streamAnalyticsStreamIn
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeStreamAnalyticsStreamInputEventhubs) UpdateStatus(streamAnalyticsStreamInputEventhub *v1alpha1.StreamAnalyticsStreamInputEventhub) (*v1alpha1.StreamAnalyticsStreamInputEventhub, error) {
+func (c *FakeStreamAnalyticsStreamInputEventhubs) UpdateStatus(ctx context.Context, streamAnalyticsStreamInputEventhub *v1alpha1.StreamAnalyticsStreamInputEventhub, opts v1.UpdateOptions) (*v1alpha1.StreamAnalyticsStreamInputEventhub, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(streamanalyticsstreaminputeventhubsResource, "status", c.ns, streamAnalyticsStreamInputEventhub), &v1alpha1.StreamAnalyticsStreamInputEventhub{})
 
@@ -114,7 +116,7 @@ func (c *FakeStreamAnalyticsStreamInputEventhubs) UpdateStatus(streamAnalyticsSt
 }
 
 // Delete takes name of the streamAnalyticsStreamInputEventhub and deletes it. Returns an error if one occurs.
-func (c *FakeStreamAnalyticsStreamInputEventhubs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeStreamAnalyticsStreamInputEventhubs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(streamanalyticsstreaminputeventhubsResource, c.ns, name), &v1alpha1.StreamAnalyticsStreamInputEventhub{})
 
@@ -122,15 +124,15 @@ func (c *FakeStreamAnalyticsStreamInputEventhubs) Delete(name string, options *v
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeStreamAnalyticsStreamInputEventhubs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(streamanalyticsstreaminputeventhubsResource, c.ns, listOptions)
+func (c *FakeStreamAnalyticsStreamInputEventhubs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(streamanalyticsstreaminputeventhubsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.StreamAnalyticsStreamInputEventhubList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched streamAnalyticsStreamInputEventhub.
-func (c *FakeStreamAnalyticsStreamInputEventhubs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StreamAnalyticsStreamInputEventhub, err error) {
+func (c *FakeStreamAnalyticsStreamInputEventhubs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StreamAnalyticsStreamInputEventhub, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(streamanalyticsstreaminputeventhubsResource, c.ns, name, pt, data, subresources...), &v1alpha1.StreamAnalyticsStreamInputEventhub{})
 

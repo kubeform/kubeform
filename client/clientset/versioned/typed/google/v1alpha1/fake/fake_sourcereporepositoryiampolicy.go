@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var sourcereporepositoryiampoliciesResource = schema.GroupVersionResource{Group:
 var sourcereporepositoryiampoliciesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "SourcerepoRepositoryIamPolicy"}
 
 // Get takes name of the sourcerepoRepositoryIamPolicy, and returns the corresponding sourcerepoRepositoryIamPolicy object, and an error if there is any.
-func (c *FakeSourcerepoRepositoryIamPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.SourcerepoRepositoryIamPolicy, err error) {
+func (c *FakeSourcerepoRepositoryIamPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SourcerepoRepositoryIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(sourcereporepositoryiampoliciesResource, c.ns, name), &v1alpha1.SourcerepoRepositoryIamPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeSourcerepoRepositoryIamPolicies) Get(name string, options v1.GetOpt
 }
 
 // List takes label and field selectors, and returns the list of SourcerepoRepositoryIamPolicies that match those selectors.
-func (c *FakeSourcerepoRepositoryIamPolicies) List(opts v1.ListOptions) (result *v1alpha1.SourcerepoRepositoryIamPolicyList, err error) {
+func (c *FakeSourcerepoRepositoryIamPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SourcerepoRepositoryIamPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(sourcereporepositoryiampoliciesResource, sourcereporepositoryiampoliciesKind, c.ns, opts), &v1alpha1.SourcerepoRepositoryIamPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSourcerepoRepositoryIamPolicies) List(opts v1.ListOptions) (result 
 }
 
 // Watch returns a watch.Interface that watches the requested sourcerepoRepositoryIamPolicies.
-func (c *FakeSourcerepoRepositoryIamPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSourcerepoRepositoryIamPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(sourcereporepositoryiampoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a sourcerepoRepositoryIamPolicy and creates it.  Returns the server's representation of the sourcerepoRepositoryIamPolicy, and an error, if there is any.
-func (c *FakeSourcerepoRepositoryIamPolicies) Create(sourcerepoRepositoryIamPolicy *v1alpha1.SourcerepoRepositoryIamPolicy) (result *v1alpha1.SourcerepoRepositoryIamPolicy, err error) {
+func (c *FakeSourcerepoRepositoryIamPolicies) Create(ctx context.Context, sourcerepoRepositoryIamPolicy *v1alpha1.SourcerepoRepositoryIamPolicy, opts v1.CreateOptions) (result *v1alpha1.SourcerepoRepositoryIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(sourcereporepositoryiampoliciesResource, c.ns, sourcerepoRepositoryIamPolicy), &v1alpha1.SourcerepoRepositoryIamPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeSourcerepoRepositoryIamPolicies) Create(sourcerepoRepositoryIamPoli
 }
 
 // Update takes the representation of a sourcerepoRepositoryIamPolicy and updates it. Returns the server's representation of the sourcerepoRepositoryIamPolicy, and an error, if there is any.
-func (c *FakeSourcerepoRepositoryIamPolicies) Update(sourcerepoRepositoryIamPolicy *v1alpha1.SourcerepoRepositoryIamPolicy) (result *v1alpha1.SourcerepoRepositoryIamPolicy, err error) {
+func (c *FakeSourcerepoRepositoryIamPolicies) Update(ctx context.Context, sourcerepoRepositoryIamPolicy *v1alpha1.SourcerepoRepositoryIamPolicy, opts v1.UpdateOptions) (result *v1alpha1.SourcerepoRepositoryIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(sourcereporepositoryiampoliciesResource, c.ns, sourcerepoRepositoryIamPolicy), &v1alpha1.SourcerepoRepositoryIamPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeSourcerepoRepositoryIamPolicies) Update(sourcerepoRepositoryIamPoli
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSourcerepoRepositoryIamPolicies) UpdateStatus(sourcerepoRepositoryIamPolicy *v1alpha1.SourcerepoRepositoryIamPolicy) (*v1alpha1.SourcerepoRepositoryIamPolicy, error) {
+func (c *FakeSourcerepoRepositoryIamPolicies) UpdateStatus(ctx context.Context, sourcerepoRepositoryIamPolicy *v1alpha1.SourcerepoRepositoryIamPolicy, opts v1.UpdateOptions) (*v1alpha1.SourcerepoRepositoryIamPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(sourcereporepositoryiampoliciesResource, "status", c.ns, sourcerepoRepositoryIamPolicy), &v1alpha1.SourcerepoRepositoryIamPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeSourcerepoRepositoryIamPolicies) UpdateStatus(sourcerepoRepositoryI
 }
 
 // Delete takes name of the sourcerepoRepositoryIamPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeSourcerepoRepositoryIamPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSourcerepoRepositoryIamPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(sourcereporepositoryiampoliciesResource, c.ns, name), &v1alpha1.SourcerepoRepositoryIamPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeSourcerepoRepositoryIamPolicies) Delete(name string, options *v1.De
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSourcerepoRepositoryIamPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(sourcereporepositoryiampoliciesResource, c.ns, listOptions)
+func (c *FakeSourcerepoRepositoryIamPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(sourcereporepositoryiampoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SourcerepoRepositoryIamPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched sourcerepoRepositoryIamPolicy.
-func (c *FakeSourcerepoRepositoryIamPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SourcerepoRepositoryIamPolicy, err error) {
+func (c *FakeSourcerepoRepositoryIamPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SourcerepoRepositoryIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(sourcereporepositoryiampoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.SourcerepoRepositoryIamPolicy{})
 

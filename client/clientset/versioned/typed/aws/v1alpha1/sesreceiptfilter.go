@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type SesReceiptFiltersGetter interface {
 
 // SesReceiptFilterInterface has methods to work with SesReceiptFilter resources.
 type SesReceiptFilterInterface interface {
-	Create(*v1alpha1.SesReceiptFilter) (*v1alpha1.SesReceiptFilter, error)
-	Update(*v1alpha1.SesReceiptFilter) (*v1alpha1.SesReceiptFilter, error)
-	UpdateStatus(*v1alpha1.SesReceiptFilter) (*v1alpha1.SesReceiptFilter, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SesReceiptFilter, error)
-	List(opts v1.ListOptions) (*v1alpha1.SesReceiptFilterList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SesReceiptFilter, err error)
+	Create(ctx context.Context, sesReceiptFilter *v1alpha1.SesReceiptFilter, opts v1.CreateOptions) (*v1alpha1.SesReceiptFilter, error)
+	Update(ctx context.Context, sesReceiptFilter *v1alpha1.SesReceiptFilter, opts v1.UpdateOptions) (*v1alpha1.SesReceiptFilter, error)
+	UpdateStatus(ctx context.Context, sesReceiptFilter *v1alpha1.SesReceiptFilter, opts v1.UpdateOptions) (*v1alpha1.SesReceiptFilter, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SesReceiptFilter, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SesReceiptFilterList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SesReceiptFilter, err error)
 	SesReceiptFilterExpansion
 }
 
@@ -65,20 +66,20 @@ func newSesReceiptFilters(c *AwsV1alpha1Client, namespace string) *sesReceiptFil
 }
 
 // Get takes name of the sesReceiptFilter, and returns the corresponding sesReceiptFilter object, and an error if there is any.
-func (c *sesReceiptFilters) Get(name string, options v1.GetOptions) (result *v1alpha1.SesReceiptFilter, err error) {
+func (c *sesReceiptFilters) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SesReceiptFilter, err error) {
 	result = &v1alpha1.SesReceiptFilter{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("sesreceiptfilters").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SesReceiptFilters that match those selectors.
-func (c *sesReceiptFilters) List(opts v1.ListOptions) (result *v1alpha1.SesReceiptFilterList, err error) {
+func (c *sesReceiptFilters) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SesReceiptFilterList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *sesReceiptFilters) List(opts v1.ListOptions) (result *v1alpha1.SesRecei
 		Resource("sesreceiptfilters").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested sesReceiptFilters.
-func (c *sesReceiptFilters) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *sesReceiptFilters) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *sesReceiptFilters) Watch(opts v1.ListOptions) (watch.Interface, error) 
 		Resource("sesreceiptfilters").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a sesReceiptFilter and creates it.  Returns the server's representation of the sesReceiptFilter, and an error, if there is any.
-func (c *sesReceiptFilters) Create(sesReceiptFilter *v1alpha1.SesReceiptFilter) (result *v1alpha1.SesReceiptFilter, err error) {
+func (c *sesReceiptFilters) Create(ctx context.Context, sesReceiptFilter *v1alpha1.SesReceiptFilter, opts v1.CreateOptions) (result *v1alpha1.SesReceiptFilter, err error) {
 	result = &v1alpha1.SesReceiptFilter{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("sesreceiptfilters").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sesReceiptFilter).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a sesReceiptFilter and updates it. Returns the server's representation of the sesReceiptFilter, and an error, if there is any.
-func (c *sesReceiptFilters) Update(sesReceiptFilter *v1alpha1.SesReceiptFilter) (result *v1alpha1.SesReceiptFilter, err error) {
+func (c *sesReceiptFilters) Update(ctx context.Context, sesReceiptFilter *v1alpha1.SesReceiptFilter, opts v1.UpdateOptions) (result *v1alpha1.SesReceiptFilter, err error) {
 	result = &v1alpha1.SesReceiptFilter{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sesreceiptfilters").
 		Name(sesReceiptFilter.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sesReceiptFilter).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *sesReceiptFilters) UpdateStatus(sesReceiptFilter *v1alpha1.SesReceiptFilter) (result *v1alpha1.SesReceiptFilter, err error) {
+func (c *sesReceiptFilters) UpdateStatus(ctx context.Context, sesReceiptFilter *v1alpha1.SesReceiptFilter, opts v1.UpdateOptions) (result *v1alpha1.SesReceiptFilter, err error) {
 	result = &v1alpha1.SesReceiptFilter{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sesreceiptfilters").
 		Name(sesReceiptFilter.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sesReceiptFilter).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the sesReceiptFilter and deletes it. Returns an error if one occurs.
-func (c *sesReceiptFilters) Delete(name string, options *v1.DeleteOptions) error {
+func (c *sesReceiptFilters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sesreceiptfilters").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *sesReceiptFilters) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *sesReceiptFilters) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sesreceiptfilters").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched sesReceiptFilter.
-func (c *sesReceiptFilters) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SesReceiptFilter, err error) {
+func (c *sesReceiptFilters) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SesReceiptFilter, err error) {
 	result = &v1alpha1.SesReceiptFilter{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("sesreceiptfilters").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

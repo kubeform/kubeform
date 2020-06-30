@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cloudwatchlogdestinationpoliciesResource = schema.GroupVersionResource{Group
 var cloudwatchlogdestinationpoliciesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "CloudwatchLogDestinationPolicy"}
 
 // Get takes name of the cloudwatchLogDestinationPolicy, and returns the corresponding cloudwatchLogDestinationPolicy object, and an error if there is any.
-func (c *FakeCloudwatchLogDestinationPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.CloudwatchLogDestinationPolicy, err error) {
+func (c *FakeCloudwatchLogDestinationPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CloudwatchLogDestinationPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cloudwatchlogdestinationpoliciesResource, c.ns, name), &v1alpha1.CloudwatchLogDestinationPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeCloudwatchLogDestinationPolicies) Get(name string, options v1.GetOp
 }
 
 // List takes label and field selectors, and returns the list of CloudwatchLogDestinationPolicies that match those selectors.
-func (c *FakeCloudwatchLogDestinationPolicies) List(opts v1.ListOptions) (result *v1alpha1.CloudwatchLogDestinationPolicyList, err error) {
+func (c *FakeCloudwatchLogDestinationPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CloudwatchLogDestinationPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cloudwatchlogdestinationpoliciesResource, cloudwatchlogdestinationpoliciesKind, c.ns, opts), &v1alpha1.CloudwatchLogDestinationPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCloudwatchLogDestinationPolicies) List(opts v1.ListOptions) (result
 }
 
 // Watch returns a watch.Interface that watches the requested cloudwatchLogDestinationPolicies.
-func (c *FakeCloudwatchLogDestinationPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCloudwatchLogDestinationPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cloudwatchlogdestinationpoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cloudwatchLogDestinationPolicy and creates it.  Returns the server's representation of the cloudwatchLogDestinationPolicy, and an error, if there is any.
-func (c *FakeCloudwatchLogDestinationPolicies) Create(cloudwatchLogDestinationPolicy *v1alpha1.CloudwatchLogDestinationPolicy) (result *v1alpha1.CloudwatchLogDestinationPolicy, err error) {
+func (c *FakeCloudwatchLogDestinationPolicies) Create(ctx context.Context, cloudwatchLogDestinationPolicy *v1alpha1.CloudwatchLogDestinationPolicy, opts v1.CreateOptions) (result *v1alpha1.CloudwatchLogDestinationPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cloudwatchlogdestinationpoliciesResource, c.ns, cloudwatchLogDestinationPolicy), &v1alpha1.CloudwatchLogDestinationPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeCloudwatchLogDestinationPolicies) Create(cloudwatchLogDestinationPo
 }
 
 // Update takes the representation of a cloudwatchLogDestinationPolicy and updates it. Returns the server's representation of the cloudwatchLogDestinationPolicy, and an error, if there is any.
-func (c *FakeCloudwatchLogDestinationPolicies) Update(cloudwatchLogDestinationPolicy *v1alpha1.CloudwatchLogDestinationPolicy) (result *v1alpha1.CloudwatchLogDestinationPolicy, err error) {
+func (c *FakeCloudwatchLogDestinationPolicies) Update(ctx context.Context, cloudwatchLogDestinationPolicy *v1alpha1.CloudwatchLogDestinationPolicy, opts v1.UpdateOptions) (result *v1alpha1.CloudwatchLogDestinationPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cloudwatchlogdestinationpoliciesResource, c.ns, cloudwatchLogDestinationPolicy), &v1alpha1.CloudwatchLogDestinationPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeCloudwatchLogDestinationPolicies) Update(cloudwatchLogDestinationPo
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCloudwatchLogDestinationPolicies) UpdateStatus(cloudwatchLogDestinationPolicy *v1alpha1.CloudwatchLogDestinationPolicy) (*v1alpha1.CloudwatchLogDestinationPolicy, error) {
+func (c *FakeCloudwatchLogDestinationPolicies) UpdateStatus(ctx context.Context, cloudwatchLogDestinationPolicy *v1alpha1.CloudwatchLogDestinationPolicy, opts v1.UpdateOptions) (*v1alpha1.CloudwatchLogDestinationPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cloudwatchlogdestinationpoliciesResource, "status", c.ns, cloudwatchLogDestinationPolicy), &v1alpha1.CloudwatchLogDestinationPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeCloudwatchLogDestinationPolicies) UpdateStatus(cloudwatchLogDestina
 }
 
 // Delete takes name of the cloudwatchLogDestinationPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeCloudwatchLogDestinationPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCloudwatchLogDestinationPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cloudwatchlogdestinationpoliciesResource, c.ns, name), &v1alpha1.CloudwatchLogDestinationPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeCloudwatchLogDestinationPolicies) Delete(name string, options *v1.D
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCloudwatchLogDestinationPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cloudwatchlogdestinationpoliciesResource, c.ns, listOptions)
+func (c *FakeCloudwatchLogDestinationPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cloudwatchlogdestinationpoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CloudwatchLogDestinationPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cloudwatchLogDestinationPolicy.
-func (c *FakeCloudwatchLogDestinationPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CloudwatchLogDestinationPolicy, err error) {
+func (c *FakeCloudwatchLogDestinationPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CloudwatchLogDestinationPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cloudwatchlogdestinationpoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.CloudwatchLogDestinationPolicy{})
 

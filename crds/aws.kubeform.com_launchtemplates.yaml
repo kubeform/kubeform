@@ -1,0 +1,580 @@
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/name: kubeform
+  name: launchtemplates.aws.kubeform.com
+spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
+  group: aws.kubeform.com
+  names:
+    kind: LaunchTemplate
+    listKind: LaunchTemplateList
+    plural: launchtemplates
+    singular: launchtemplate
+  scope: Namespaced
+  subresources:
+    status: {}
+  validation:
+    openAPIV3Schema:
+      properties:
+        apiVersion:
+          description: 'APIVersion defines the versioned schema of this representation
+            of an object. Servers should convert recognized schemas to the latest
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+          type: string
+        kind:
+          description: 'Kind is a string value representing the REST resource this
+            object represents. Servers may infer this from the endpoint the client
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+          type: string
+        metadata:
+          type: object
+        spec:
+          properties:
+            arn:
+              type: string
+            blockDeviceMappings:
+              items:
+                properties:
+                  deviceName:
+                    type: string
+                  ebs:
+                    items:
+                      properties:
+                        deleteOnTermination:
+                          type: string
+                        encrypted:
+                          type: string
+                        iops:
+                          format: int64
+                          type: integer
+                        kmsKeyID:
+                          type: string
+                        snapshotID:
+                          type: string
+                        volumeSize:
+                          format: int64
+                          type: integer
+                        volumeType:
+                          type: string
+                      type: object
+                    maxItems: 1
+                    type: array
+                  noDevice:
+                    type: string
+                  virtualName:
+                    type: string
+                type: object
+              type: array
+            capacityReservationSpecification:
+              items:
+                properties:
+                  capacityReservationPreference:
+                    type: string
+                  capacityReservationTarget:
+                    items:
+                      properties:
+                        capacityReservationID:
+                          type: string
+                      type: object
+                    maxItems: 1
+                    type: array
+                type: object
+              maxItems: 1
+              type: array
+            creditSpecification:
+              items:
+                properties:
+                  cpuCredits:
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
+            defaultVersion:
+              format: int64
+              type: integer
+            description:
+              type: string
+            disableAPITermination:
+              type: boolean
+            ebsOptimized:
+              type: string
+            elasticGpuSpecifications:
+              items:
+                properties:
+                  type:
+                    type: string
+                required:
+                - type
+                type: object
+              type: array
+            elasticInferenceAccelerator:
+              items:
+                properties:
+                  type:
+                    type: string
+                required:
+                - type
+                type: object
+              maxItems: 1
+              type: array
+            iamInstanceProfile:
+              items:
+                properties:
+                  arn:
+                    type: string
+                  name:
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
+            id:
+              type: string
+            imageID:
+              type: string
+            instanceInitiatedShutdownBehavior:
+              type: string
+            instanceMarketOptions:
+              items:
+                properties:
+                  marketType:
+                    type: string
+                  spotOptions:
+                    items:
+                      properties:
+                        blockDurationMinutes:
+                          format: int64
+                          type: integer
+                        instanceInterruptionBehavior:
+                          type: string
+                        maxPrice:
+                          type: string
+                        spotInstanceType:
+                          type: string
+                        validUntil:
+                          type: string
+                      type: object
+                    maxItems: 1
+                    type: array
+                type: object
+              maxItems: 1
+              type: array
+            instanceType:
+              type: string
+            kernelID:
+              type: string
+            keyName:
+              type: string
+            latestVersion:
+              format: int64
+              type: integer
+            licenseSpecification:
+              items:
+                properties:
+                  licenseConfigurationArn:
+                    type: string
+                required:
+                - licenseConfigurationArn
+                type: object
+              type: array
+            monitoring:
+              items:
+                properties:
+                  enabled:
+                    type: boolean
+                type: object
+              maxItems: 1
+              type: array
+            name:
+              type: string
+            namePrefix:
+              type: string
+            networkInterfaces:
+              items:
+                properties:
+                  associatePublicIPAddress:
+                    type: boolean
+                  deleteOnTermination:
+                    type: boolean
+                  description:
+                    type: string
+                  deviceIndex:
+                    format: int64
+                    type: integer
+                  ipv4AddressCount:
+                    format: int64
+                    type: integer
+                  ipv4Addresses:
+                    items:
+                      type: string
+                    type: array
+                  ipv6AddressCount:
+                    format: int64
+                    type: integer
+                  ipv6Addresses:
+                    items:
+                      type: string
+                    type: array
+                  networkInterfaceID:
+                    type: string
+                  privateIPAddress:
+                    type: string
+                  securityGroups:
+                    items:
+                      type: string
+                    type: array
+                  subnetID:
+                    type: string
+                type: object
+              type: array
+            placement:
+              items:
+                properties:
+                  affinity:
+                    type: string
+                  availabilityZone:
+                    type: string
+                  groupName:
+                    type: string
+                  hostID:
+                    type: string
+                  spreadDomain:
+                    type: string
+                  tenancy:
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
+            providerRef:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
+            ramDiskID:
+              type: string
+            securityGroupNames:
+              items:
+                type: string
+              type: array
+            tagSpecifications:
+              items:
+                properties:
+                  resourceType:
+                    type: string
+                  tags:
+                    additionalProperties:
+                      type: string
+                    type: object
+                type: object
+              type: array
+            tags:
+              additionalProperties:
+                type: string
+              type: object
+            userData:
+              type: string
+            vpcSecurityGroupIDS:
+              items:
+                type: string
+              type: array
+          required:
+          - providerRef
+          type: object
+        status:
+          properties:
+            observedGeneration:
+              description: Resource generation, which is updated on mutation by the
+                API Server.
+              format: int64
+              type: integer
+            output:
+              properties:
+                arn:
+                  type: string
+                blockDeviceMappings:
+                  items:
+                    properties:
+                      deviceName:
+                        type: string
+                      ebs:
+                        items:
+                          properties:
+                            deleteOnTermination:
+                              type: string
+                            encrypted:
+                              type: string
+                            iops:
+                              format: int64
+                              type: integer
+                            kmsKeyID:
+                              type: string
+                            snapshotID:
+                              type: string
+                            volumeSize:
+                              format: int64
+                              type: integer
+                            volumeType:
+                              type: string
+                          type: object
+                        maxItems: 1
+                        type: array
+                      noDevice:
+                        type: string
+                      virtualName:
+                        type: string
+                    type: object
+                  type: array
+                capacityReservationSpecification:
+                  items:
+                    properties:
+                      capacityReservationPreference:
+                        type: string
+                      capacityReservationTarget:
+                        items:
+                          properties:
+                            capacityReservationID:
+                              type: string
+                          type: object
+                        maxItems: 1
+                        type: array
+                    type: object
+                  maxItems: 1
+                  type: array
+                creditSpecification:
+                  items:
+                    properties:
+                      cpuCredits:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                defaultVersion:
+                  format: int64
+                  type: integer
+                description:
+                  type: string
+                disableAPITermination:
+                  type: boolean
+                ebsOptimized:
+                  type: string
+                elasticGpuSpecifications:
+                  items:
+                    properties:
+                      type:
+                        type: string
+                    required:
+                    - type
+                    type: object
+                  type: array
+                elasticInferenceAccelerator:
+                  items:
+                    properties:
+                      type:
+                        type: string
+                    required:
+                    - type
+                    type: object
+                  maxItems: 1
+                  type: array
+                iamInstanceProfile:
+                  items:
+                    properties:
+                      arn:
+                        type: string
+                      name:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                id:
+                  type: string
+                imageID:
+                  type: string
+                instanceInitiatedShutdownBehavior:
+                  type: string
+                instanceMarketOptions:
+                  items:
+                    properties:
+                      marketType:
+                        type: string
+                      spotOptions:
+                        items:
+                          properties:
+                            blockDurationMinutes:
+                              format: int64
+                              type: integer
+                            instanceInterruptionBehavior:
+                              type: string
+                            maxPrice:
+                              type: string
+                            spotInstanceType:
+                              type: string
+                            validUntil:
+                              type: string
+                          type: object
+                        maxItems: 1
+                        type: array
+                    type: object
+                  maxItems: 1
+                  type: array
+                instanceType:
+                  type: string
+                kernelID:
+                  type: string
+                keyName:
+                  type: string
+                latestVersion:
+                  format: int64
+                  type: integer
+                licenseSpecification:
+                  items:
+                    properties:
+                      licenseConfigurationArn:
+                        type: string
+                    required:
+                    - licenseConfigurationArn
+                    type: object
+                  type: array
+                monitoring:
+                  items:
+                    properties:
+                      enabled:
+                        type: boolean
+                    type: object
+                  maxItems: 1
+                  type: array
+                name:
+                  type: string
+                namePrefix:
+                  type: string
+                networkInterfaces:
+                  items:
+                    properties:
+                      associatePublicIPAddress:
+                        type: boolean
+                      deleteOnTermination:
+                        type: boolean
+                      description:
+                        type: string
+                      deviceIndex:
+                        format: int64
+                        type: integer
+                      ipv4AddressCount:
+                        format: int64
+                        type: integer
+                      ipv4Addresses:
+                        items:
+                          type: string
+                        type: array
+                      ipv6AddressCount:
+                        format: int64
+                        type: integer
+                      ipv6Addresses:
+                        items:
+                          type: string
+                        type: array
+                      networkInterfaceID:
+                        type: string
+                      privateIPAddress:
+                        type: string
+                      securityGroups:
+                        items:
+                          type: string
+                        type: array
+                      subnetID:
+                        type: string
+                    type: object
+                  type: array
+                placement:
+                  items:
+                    properties:
+                      affinity:
+                        type: string
+                      availabilityZone:
+                        type: string
+                      groupName:
+                        type: string
+                      hostID:
+                        type: string
+                      spreadDomain:
+                        type: string
+                      tenancy:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                ramDiskID:
+                  type: string
+                securityGroupNames:
+                  items:
+                    type: string
+                  type: array
+                tagSpecifications:
+                  items:
+                    properties:
+                      resourceType:
+                        type: string
+                      tags:
+                        additionalProperties:
+                          type: string
+                        type: object
+                    type: object
+                  type: array
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                userData:
+                  type: string
+                vpcSecurityGroupIDS:
+                  items:
+                    type: string
+                  type: array
+              required:
+              - providerRef
+              type: object
+            phase:
+              type: string
+            state:
+              properties:
+                lineage:
+                  type: string
+                serial:
+                  format: int64
+                  type: integer
+                terraform_version:
+                  type: string
+                version:
+                  format: int64
+                  type: integer
+              required:
+              - lineage
+              - serial
+              - terraform_version
+              - version
+              type: object
+          type: object
+      type: object
+  version: v1alpha1
+  versions:
+  - name: v1alpha1
+    served: true
+    storage: true

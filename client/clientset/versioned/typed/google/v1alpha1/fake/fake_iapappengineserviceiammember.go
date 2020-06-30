@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iapappengineserviceiammembersResource = schema.GroupVersionResource{Group: "
 var iapappengineserviceiammembersKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "IapAppEngineServiceIamMember"}
 
 // Get takes name of the iapAppEngineServiceIamMember, and returns the corresponding iapAppEngineServiceIamMember object, and an error if there is any.
-func (c *FakeIapAppEngineServiceIamMembers) Get(name string, options v1.GetOptions) (result *v1alpha1.IapAppEngineServiceIamMember, err error) {
+func (c *FakeIapAppEngineServiceIamMembers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IapAppEngineServiceIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iapappengineserviceiammembersResource, c.ns, name), &v1alpha1.IapAppEngineServiceIamMember{})
 
@@ -51,7 +53,7 @@ func (c *FakeIapAppEngineServiceIamMembers) Get(name string, options v1.GetOptio
 }
 
 // List takes label and field selectors, and returns the list of IapAppEngineServiceIamMembers that match those selectors.
-func (c *FakeIapAppEngineServiceIamMembers) List(opts v1.ListOptions) (result *v1alpha1.IapAppEngineServiceIamMemberList, err error) {
+func (c *FakeIapAppEngineServiceIamMembers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IapAppEngineServiceIamMemberList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iapappengineserviceiammembersResource, iapappengineserviceiammembersKind, c.ns, opts), &v1alpha1.IapAppEngineServiceIamMemberList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIapAppEngineServiceIamMembers) List(opts v1.ListOptions) (result *v
 }
 
 // Watch returns a watch.Interface that watches the requested iapAppEngineServiceIamMembers.
-func (c *FakeIapAppEngineServiceIamMembers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIapAppEngineServiceIamMembers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iapappengineserviceiammembersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iapAppEngineServiceIamMember and creates it.  Returns the server's representation of the iapAppEngineServiceIamMember, and an error, if there is any.
-func (c *FakeIapAppEngineServiceIamMembers) Create(iapAppEngineServiceIamMember *v1alpha1.IapAppEngineServiceIamMember) (result *v1alpha1.IapAppEngineServiceIamMember, err error) {
+func (c *FakeIapAppEngineServiceIamMembers) Create(ctx context.Context, iapAppEngineServiceIamMember *v1alpha1.IapAppEngineServiceIamMember, opts v1.CreateOptions) (result *v1alpha1.IapAppEngineServiceIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iapappengineserviceiammembersResource, c.ns, iapAppEngineServiceIamMember), &v1alpha1.IapAppEngineServiceIamMember{})
 
@@ -91,7 +93,7 @@ func (c *FakeIapAppEngineServiceIamMembers) Create(iapAppEngineServiceIamMember 
 }
 
 // Update takes the representation of a iapAppEngineServiceIamMember and updates it. Returns the server's representation of the iapAppEngineServiceIamMember, and an error, if there is any.
-func (c *FakeIapAppEngineServiceIamMembers) Update(iapAppEngineServiceIamMember *v1alpha1.IapAppEngineServiceIamMember) (result *v1alpha1.IapAppEngineServiceIamMember, err error) {
+func (c *FakeIapAppEngineServiceIamMembers) Update(ctx context.Context, iapAppEngineServiceIamMember *v1alpha1.IapAppEngineServiceIamMember, opts v1.UpdateOptions) (result *v1alpha1.IapAppEngineServiceIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iapappengineserviceiammembersResource, c.ns, iapAppEngineServiceIamMember), &v1alpha1.IapAppEngineServiceIamMember{})
 
@@ -103,7 +105,7 @@ func (c *FakeIapAppEngineServiceIamMembers) Update(iapAppEngineServiceIamMember 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIapAppEngineServiceIamMembers) UpdateStatus(iapAppEngineServiceIamMember *v1alpha1.IapAppEngineServiceIamMember) (*v1alpha1.IapAppEngineServiceIamMember, error) {
+func (c *FakeIapAppEngineServiceIamMembers) UpdateStatus(ctx context.Context, iapAppEngineServiceIamMember *v1alpha1.IapAppEngineServiceIamMember, opts v1.UpdateOptions) (*v1alpha1.IapAppEngineServiceIamMember, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iapappengineserviceiammembersResource, "status", c.ns, iapAppEngineServiceIamMember), &v1alpha1.IapAppEngineServiceIamMember{})
 
@@ -114,7 +116,7 @@ func (c *FakeIapAppEngineServiceIamMembers) UpdateStatus(iapAppEngineServiceIamM
 }
 
 // Delete takes name of the iapAppEngineServiceIamMember and deletes it. Returns an error if one occurs.
-func (c *FakeIapAppEngineServiceIamMembers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIapAppEngineServiceIamMembers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iapappengineserviceiammembersResource, c.ns, name), &v1alpha1.IapAppEngineServiceIamMember{})
 
@@ -122,15 +124,15 @@ func (c *FakeIapAppEngineServiceIamMembers) Delete(name string, options *v1.Dele
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIapAppEngineServiceIamMembers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iapappengineserviceiammembersResource, c.ns, listOptions)
+func (c *FakeIapAppEngineServiceIamMembers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iapappengineserviceiammembersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IapAppEngineServiceIamMemberList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iapAppEngineServiceIamMember.
-func (c *FakeIapAppEngineServiceIamMembers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IapAppEngineServiceIamMember, err error) {
+func (c *FakeIapAppEngineServiceIamMembers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IapAppEngineServiceIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iapappengineserviceiammembersResource, c.ns, name, pt, data, subresources...), &v1alpha1.IapAppEngineServiceIamMember{})
 

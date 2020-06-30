@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type AppsyncResolversGetter interface {
 
 // AppsyncResolverInterface has methods to work with AppsyncResolver resources.
 type AppsyncResolverInterface interface {
-	Create(*v1alpha1.AppsyncResolver) (*v1alpha1.AppsyncResolver, error)
-	Update(*v1alpha1.AppsyncResolver) (*v1alpha1.AppsyncResolver, error)
-	UpdateStatus(*v1alpha1.AppsyncResolver) (*v1alpha1.AppsyncResolver, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.AppsyncResolver, error)
-	List(opts v1.ListOptions) (*v1alpha1.AppsyncResolverList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppsyncResolver, err error)
+	Create(ctx context.Context, appsyncResolver *v1alpha1.AppsyncResolver, opts v1.CreateOptions) (*v1alpha1.AppsyncResolver, error)
+	Update(ctx context.Context, appsyncResolver *v1alpha1.AppsyncResolver, opts v1.UpdateOptions) (*v1alpha1.AppsyncResolver, error)
+	UpdateStatus(ctx context.Context, appsyncResolver *v1alpha1.AppsyncResolver, opts v1.UpdateOptions) (*v1alpha1.AppsyncResolver, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.AppsyncResolver, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.AppsyncResolverList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppsyncResolver, err error)
 	AppsyncResolverExpansion
 }
 
@@ -65,20 +66,20 @@ func newAppsyncResolvers(c *AwsV1alpha1Client, namespace string) *appsyncResolve
 }
 
 // Get takes name of the appsyncResolver, and returns the corresponding appsyncResolver object, and an error if there is any.
-func (c *appsyncResolvers) Get(name string, options v1.GetOptions) (result *v1alpha1.AppsyncResolver, err error) {
+func (c *appsyncResolvers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AppsyncResolver, err error) {
 	result = &v1alpha1.AppsyncResolver{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("appsyncresolvers").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of AppsyncResolvers that match those selectors.
-func (c *appsyncResolvers) List(opts v1.ListOptions) (result *v1alpha1.AppsyncResolverList, err error) {
+func (c *appsyncResolvers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AppsyncResolverList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *appsyncResolvers) List(opts v1.ListOptions) (result *v1alpha1.AppsyncRe
 		Resource("appsyncresolvers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested appsyncResolvers.
-func (c *appsyncResolvers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *appsyncResolvers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *appsyncResolvers) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("appsyncresolvers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a appsyncResolver and creates it.  Returns the server's representation of the appsyncResolver, and an error, if there is any.
-func (c *appsyncResolvers) Create(appsyncResolver *v1alpha1.AppsyncResolver) (result *v1alpha1.AppsyncResolver, err error) {
+func (c *appsyncResolvers) Create(ctx context.Context, appsyncResolver *v1alpha1.AppsyncResolver, opts v1.CreateOptions) (result *v1alpha1.AppsyncResolver, err error) {
 	result = &v1alpha1.AppsyncResolver{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("appsyncresolvers").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appsyncResolver).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a appsyncResolver and updates it. Returns the server's representation of the appsyncResolver, and an error, if there is any.
-func (c *appsyncResolvers) Update(appsyncResolver *v1alpha1.AppsyncResolver) (result *v1alpha1.AppsyncResolver, err error) {
+func (c *appsyncResolvers) Update(ctx context.Context, appsyncResolver *v1alpha1.AppsyncResolver, opts v1.UpdateOptions) (result *v1alpha1.AppsyncResolver, err error) {
 	result = &v1alpha1.AppsyncResolver{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("appsyncresolvers").
 		Name(appsyncResolver.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appsyncResolver).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *appsyncResolvers) UpdateStatus(appsyncResolver *v1alpha1.AppsyncResolver) (result *v1alpha1.AppsyncResolver, err error) {
+func (c *appsyncResolvers) UpdateStatus(ctx context.Context, appsyncResolver *v1alpha1.AppsyncResolver, opts v1.UpdateOptions) (result *v1alpha1.AppsyncResolver, err error) {
 	result = &v1alpha1.AppsyncResolver{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("appsyncresolvers").
 		Name(appsyncResolver.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appsyncResolver).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the appsyncResolver and deletes it. Returns an error if one occurs.
-func (c *appsyncResolvers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *appsyncResolvers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("appsyncresolvers").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *appsyncResolvers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *appsyncResolvers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("appsyncresolvers").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched appsyncResolver.
-func (c *appsyncResolvers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppsyncResolver, err error) {
+func (c *appsyncResolvers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppsyncResolver, err error) {
 	result = &v1alpha1.AppsyncResolver{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("appsyncresolvers").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

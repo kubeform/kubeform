@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type EcsTaskDefinitionsGetter interface {
 
 // EcsTaskDefinitionInterface has methods to work with EcsTaskDefinition resources.
 type EcsTaskDefinitionInterface interface {
-	Create(*v1alpha1.EcsTaskDefinition) (*v1alpha1.EcsTaskDefinition, error)
-	Update(*v1alpha1.EcsTaskDefinition) (*v1alpha1.EcsTaskDefinition, error)
-	UpdateStatus(*v1alpha1.EcsTaskDefinition) (*v1alpha1.EcsTaskDefinition, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.EcsTaskDefinition, error)
-	List(opts v1.ListOptions) (*v1alpha1.EcsTaskDefinitionList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EcsTaskDefinition, err error)
+	Create(ctx context.Context, ecsTaskDefinition *v1alpha1.EcsTaskDefinition, opts v1.CreateOptions) (*v1alpha1.EcsTaskDefinition, error)
+	Update(ctx context.Context, ecsTaskDefinition *v1alpha1.EcsTaskDefinition, opts v1.UpdateOptions) (*v1alpha1.EcsTaskDefinition, error)
+	UpdateStatus(ctx context.Context, ecsTaskDefinition *v1alpha1.EcsTaskDefinition, opts v1.UpdateOptions) (*v1alpha1.EcsTaskDefinition, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.EcsTaskDefinition, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.EcsTaskDefinitionList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EcsTaskDefinition, err error)
 	EcsTaskDefinitionExpansion
 }
 
@@ -65,20 +66,20 @@ func newEcsTaskDefinitions(c *AwsV1alpha1Client, namespace string) *ecsTaskDefin
 }
 
 // Get takes name of the ecsTaskDefinition, and returns the corresponding ecsTaskDefinition object, and an error if there is any.
-func (c *ecsTaskDefinitions) Get(name string, options v1.GetOptions) (result *v1alpha1.EcsTaskDefinition, err error) {
+func (c *ecsTaskDefinitions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.EcsTaskDefinition, err error) {
 	result = &v1alpha1.EcsTaskDefinition{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("ecstaskdefinitions").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of EcsTaskDefinitions that match those selectors.
-func (c *ecsTaskDefinitions) List(opts v1.ListOptions) (result *v1alpha1.EcsTaskDefinitionList, err error) {
+func (c *ecsTaskDefinitions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.EcsTaskDefinitionList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *ecsTaskDefinitions) List(opts v1.ListOptions) (result *v1alpha1.EcsTask
 		Resource("ecstaskdefinitions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested ecsTaskDefinitions.
-func (c *ecsTaskDefinitions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *ecsTaskDefinitions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *ecsTaskDefinitions) Watch(opts v1.ListOptions) (watch.Interface, error)
 		Resource("ecstaskdefinitions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a ecsTaskDefinition and creates it.  Returns the server's representation of the ecsTaskDefinition, and an error, if there is any.
-func (c *ecsTaskDefinitions) Create(ecsTaskDefinition *v1alpha1.EcsTaskDefinition) (result *v1alpha1.EcsTaskDefinition, err error) {
+func (c *ecsTaskDefinitions) Create(ctx context.Context, ecsTaskDefinition *v1alpha1.EcsTaskDefinition, opts v1.CreateOptions) (result *v1alpha1.EcsTaskDefinition, err error) {
 	result = &v1alpha1.EcsTaskDefinition{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("ecstaskdefinitions").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(ecsTaskDefinition).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a ecsTaskDefinition and updates it. Returns the server's representation of the ecsTaskDefinition, and an error, if there is any.
-func (c *ecsTaskDefinitions) Update(ecsTaskDefinition *v1alpha1.EcsTaskDefinition) (result *v1alpha1.EcsTaskDefinition, err error) {
+func (c *ecsTaskDefinitions) Update(ctx context.Context, ecsTaskDefinition *v1alpha1.EcsTaskDefinition, opts v1.UpdateOptions) (result *v1alpha1.EcsTaskDefinition, err error) {
 	result = &v1alpha1.EcsTaskDefinition{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("ecstaskdefinitions").
 		Name(ecsTaskDefinition.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(ecsTaskDefinition).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *ecsTaskDefinitions) UpdateStatus(ecsTaskDefinition *v1alpha1.EcsTaskDefinition) (result *v1alpha1.EcsTaskDefinition, err error) {
+func (c *ecsTaskDefinitions) UpdateStatus(ctx context.Context, ecsTaskDefinition *v1alpha1.EcsTaskDefinition, opts v1.UpdateOptions) (result *v1alpha1.EcsTaskDefinition, err error) {
 	result = &v1alpha1.EcsTaskDefinition{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("ecstaskdefinitions").
 		Name(ecsTaskDefinition.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(ecsTaskDefinition).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the ecsTaskDefinition and deletes it. Returns an error if one occurs.
-func (c *ecsTaskDefinitions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *ecsTaskDefinitions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("ecstaskdefinitions").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *ecsTaskDefinitions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *ecsTaskDefinitions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("ecstaskdefinitions").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched ecsTaskDefinition.
-func (c *ecsTaskDefinitions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EcsTaskDefinition, err error) {
+func (c *ecsTaskDefinitions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EcsTaskDefinition, err error) {
 	result = &v1alpha1.EcsTaskDefinition{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("ecstaskdefinitions").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

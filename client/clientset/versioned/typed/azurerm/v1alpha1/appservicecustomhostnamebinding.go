@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type AppServiceCustomHostnameBindingsGetter interface {
 
 // AppServiceCustomHostnameBindingInterface has methods to work with AppServiceCustomHostnameBinding resources.
 type AppServiceCustomHostnameBindingInterface interface {
-	Create(*v1alpha1.AppServiceCustomHostnameBinding) (*v1alpha1.AppServiceCustomHostnameBinding, error)
-	Update(*v1alpha1.AppServiceCustomHostnameBinding) (*v1alpha1.AppServiceCustomHostnameBinding, error)
-	UpdateStatus(*v1alpha1.AppServiceCustomHostnameBinding) (*v1alpha1.AppServiceCustomHostnameBinding, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.AppServiceCustomHostnameBinding, error)
-	List(opts v1.ListOptions) (*v1alpha1.AppServiceCustomHostnameBindingList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppServiceCustomHostnameBinding, err error)
+	Create(ctx context.Context, appServiceCustomHostnameBinding *v1alpha1.AppServiceCustomHostnameBinding, opts v1.CreateOptions) (*v1alpha1.AppServiceCustomHostnameBinding, error)
+	Update(ctx context.Context, appServiceCustomHostnameBinding *v1alpha1.AppServiceCustomHostnameBinding, opts v1.UpdateOptions) (*v1alpha1.AppServiceCustomHostnameBinding, error)
+	UpdateStatus(ctx context.Context, appServiceCustomHostnameBinding *v1alpha1.AppServiceCustomHostnameBinding, opts v1.UpdateOptions) (*v1alpha1.AppServiceCustomHostnameBinding, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.AppServiceCustomHostnameBinding, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.AppServiceCustomHostnameBindingList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppServiceCustomHostnameBinding, err error)
 	AppServiceCustomHostnameBindingExpansion
 }
 
@@ -65,20 +66,20 @@ func newAppServiceCustomHostnameBindings(c *AzurermV1alpha1Client, namespace str
 }
 
 // Get takes name of the appServiceCustomHostnameBinding, and returns the corresponding appServiceCustomHostnameBinding object, and an error if there is any.
-func (c *appServiceCustomHostnameBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.AppServiceCustomHostnameBinding, err error) {
+func (c *appServiceCustomHostnameBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AppServiceCustomHostnameBinding, err error) {
 	result = &v1alpha1.AppServiceCustomHostnameBinding{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("appservicecustomhostnamebindings").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of AppServiceCustomHostnameBindings that match those selectors.
-func (c *appServiceCustomHostnameBindings) List(opts v1.ListOptions) (result *v1alpha1.AppServiceCustomHostnameBindingList, err error) {
+func (c *appServiceCustomHostnameBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AppServiceCustomHostnameBindingList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *appServiceCustomHostnameBindings) List(opts v1.ListOptions) (result *v1
 		Resource("appservicecustomhostnamebindings").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested appServiceCustomHostnameBindings.
-func (c *appServiceCustomHostnameBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *appServiceCustomHostnameBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *appServiceCustomHostnameBindings) Watch(opts v1.ListOptions) (watch.Int
 		Resource("appservicecustomhostnamebindings").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a appServiceCustomHostnameBinding and creates it.  Returns the server's representation of the appServiceCustomHostnameBinding, and an error, if there is any.
-func (c *appServiceCustomHostnameBindings) Create(appServiceCustomHostnameBinding *v1alpha1.AppServiceCustomHostnameBinding) (result *v1alpha1.AppServiceCustomHostnameBinding, err error) {
+func (c *appServiceCustomHostnameBindings) Create(ctx context.Context, appServiceCustomHostnameBinding *v1alpha1.AppServiceCustomHostnameBinding, opts v1.CreateOptions) (result *v1alpha1.AppServiceCustomHostnameBinding, err error) {
 	result = &v1alpha1.AppServiceCustomHostnameBinding{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("appservicecustomhostnamebindings").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appServiceCustomHostnameBinding).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a appServiceCustomHostnameBinding and updates it. Returns the server's representation of the appServiceCustomHostnameBinding, and an error, if there is any.
-func (c *appServiceCustomHostnameBindings) Update(appServiceCustomHostnameBinding *v1alpha1.AppServiceCustomHostnameBinding) (result *v1alpha1.AppServiceCustomHostnameBinding, err error) {
+func (c *appServiceCustomHostnameBindings) Update(ctx context.Context, appServiceCustomHostnameBinding *v1alpha1.AppServiceCustomHostnameBinding, opts v1.UpdateOptions) (result *v1alpha1.AppServiceCustomHostnameBinding, err error) {
 	result = &v1alpha1.AppServiceCustomHostnameBinding{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("appservicecustomhostnamebindings").
 		Name(appServiceCustomHostnameBinding.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appServiceCustomHostnameBinding).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *appServiceCustomHostnameBindings) UpdateStatus(appServiceCustomHostnameBinding *v1alpha1.AppServiceCustomHostnameBinding) (result *v1alpha1.AppServiceCustomHostnameBinding, err error) {
+func (c *appServiceCustomHostnameBindings) UpdateStatus(ctx context.Context, appServiceCustomHostnameBinding *v1alpha1.AppServiceCustomHostnameBinding, opts v1.UpdateOptions) (result *v1alpha1.AppServiceCustomHostnameBinding, err error) {
 	result = &v1alpha1.AppServiceCustomHostnameBinding{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("appservicecustomhostnamebindings").
 		Name(appServiceCustomHostnameBinding.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appServiceCustomHostnameBinding).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the appServiceCustomHostnameBinding and deletes it. Returns an error if one occurs.
-func (c *appServiceCustomHostnameBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *appServiceCustomHostnameBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("appservicecustomhostnamebindings").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *appServiceCustomHostnameBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *appServiceCustomHostnameBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("appservicecustomhostnamebindings").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched appServiceCustomHostnameBinding.
-func (c *appServiceCustomHostnameBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppServiceCustomHostnameBinding, err error) {
+func (c *appServiceCustomHostnameBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppServiceCustomHostnameBinding, err error) {
 	result = &v1alpha1.AppServiceCustomHostnameBinding{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("appservicecustomhostnamebindings").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

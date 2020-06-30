@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var ssmactivationsResource = schema.GroupVersionResource{Group: "aws.kubeform.co
 var ssmactivationsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "SsmActivation"}
 
 // Get takes name of the ssmActivation, and returns the corresponding ssmActivation object, and an error if there is any.
-func (c *FakeSsmActivations) Get(name string, options v1.GetOptions) (result *v1alpha1.SsmActivation, err error) {
+func (c *FakeSsmActivations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SsmActivation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(ssmactivationsResource, c.ns, name), &v1alpha1.SsmActivation{})
 
@@ -51,7 +53,7 @@ func (c *FakeSsmActivations) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of SsmActivations that match those selectors.
-func (c *FakeSsmActivations) List(opts v1.ListOptions) (result *v1alpha1.SsmActivationList, err error) {
+func (c *FakeSsmActivations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SsmActivationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(ssmactivationsResource, ssmactivationsKind, c.ns, opts), &v1alpha1.SsmActivationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSsmActivations) List(opts v1.ListOptions) (result *v1alpha1.SsmActi
 }
 
 // Watch returns a watch.Interface that watches the requested ssmActivations.
-func (c *FakeSsmActivations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSsmActivations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(ssmactivationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a ssmActivation and creates it.  Returns the server's representation of the ssmActivation, and an error, if there is any.
-func (c *FakeSsmActivations) Create(ssmActivation *v1alpha1.SsmActivation) (result *v1alpha1.SsmActivation, err error) {
+func (c *FakeSsmActivations) Create(ctx context.Context, ssmActivation *v1alpha1.SsmActivation, opts v1.CreateOptions) (result *v1alpha1.SsmActivation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(ssmactivationsResource, c.ns, ssmActivation), &v1alpha1.SsmActivation{})
 
@@ -91,7 +93,7 @@ func (c *FakeSsmActivations) Create(ssmActivation *v1alpha1.SsmActivation) (resu
 }
 
 // Update takes the representation of a ssmActivation and updates it. Returns the server's representation of the ssmActivation, and an error, if there is any.
-func (c *FakeSsmActivations) Update(ssmActivation *v1alpha1.SsmActivation) (result *v1alpha1.SsmActivation, err error) {
+func (c *FakeSsmActivations) Update(ctx context.Context, ssmActivation *v1alpha1.SsmActivation, opts v1.UpdateOptions) (result *v1alpha1.SsmActivation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(ssmactivationsResource, c.ns, ssmActivation), &v1alpha1.SsmActivation{})
 
@@ -103,7 +105,7 @@ func (c *FakeSsmActivations) Update(ssmActivation *v1alpha1.SsmActivation) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSsmActivations) UpdateStatus(ssmActivation *v1alpha1.SsmActivation) (*v1alpha1.SsmActivation, error) {
+func (c *FakeSsmActivations) UpdateStatus(ctx context.Context, ssmActivation *v1alpha1.SsmActivation, opts v1.UpdateOptions) (*v1alpha1.SsmActivation, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(ssmactivationsResource, "status", c.ns, ssmActivation), &v1alpha1.SsmActivation{})
 
@@ -114,7 +116,7 @@ func (c *FakeSsmActivations) UpdateStatus(ssmActivation *v1alpha1.SsmActivation)
 }
 
 // Delete takes name of the ssmActivation and deletes it. Returns an error if one occurs.
-func (c *FakeSsmActivations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSsmActivations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(ssmactivationsResource, c.ns, name), &v1alpha1.SsmActivation{})
 
@@ -122,15 +124,15 @@ func (c *FakeSsmActivations) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSsmActivations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(ssmactivationsResource, c.ns, listOptions)
+func (c *FakeSsmActivations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(ssmactivationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SsmActivationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched ssmActivation.
-func (c *FakeSsmActivations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SsmActivation, err error) {
+func (c *FakeSsmActivations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SsmActivation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(ssmactivationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SsmActivation{})
 

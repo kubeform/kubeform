@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type RedshiftEventSubscriptionsGetter interface {
 
 // RedshiftEventSubscriptionInterface has methods to work with RedshiftEventSubscription resources.
 type RedshiftEventSubscriptionInterface interface {
-	Create(*v1alpha1.RedshiftEventSubscription) (*v1alpha1.RedshiftEventSubscription, error)
-	Update(*v1alpha1.RedshiftEventSubscription) (*v1alpha1.RedshiftEventSubscription, error)
-	UpdateStatus(*v1alpha1.RedshiftEventSubscription) (*v1alpha1.RedshiftEventSubscription, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.RedshiftEventSubscription, error)
-	List(opts v1.ListOptions) (*v1alpha1.RedshiftEventSubscriptionList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RedshiftEventSubscription, err error)
+	Create(ctx context.Context, redshiftEventSubscription *v1alpha1.RedshiftEventSubscription, opts v1.CreateOptions) (*v1alpha1.RedshiftEventSubscription, error)
+	Update(ctx context.Context, redshiftEventSubscription *v1alpha1.RedshiftEventSubscription, opts v1.UpdateOptions) (*v1alpha1.RedshiftEventSubscription, error)
+	UpdateStatus(ctx context.Context, redshiftEventSubscription *v1alpha1.RedshiftEventSubscription, opts v1.UpdateOptions) (*v1alpha1.RedshiftEventSubscription, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.RedshiftEventSubscription, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.RedshiftEventSubscriptionList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RedshiftEventSubscription, err error)
 	RedshiftEventSubscriptionExpansion
 }
 
@@ -65,20 +66,20 @@ func newRedshiftEventSubscriptions(c *AwsV1alpha1Client, namespace string) *reds
 }
 
 // Get takes name of the redshiftEventSubscription, and returns the corresponding redshiftEventSubscription object, and an error if there is any.
-func (c *redshiftEventSubscriptions) Get(name string, options v1.GetOptions) (result *v1alpha1.RedshiftEventSubscription, err error) {
+func (c *redshiftEventSubscriptions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.RedshiftEventSubscription, err error) {
 	result = &v1alpha1.RedshiftEventSubscription{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("redshifteventsubscriptions").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of RedshiftEventSubscriptions that match those selectors.
-func (c *redshiftEventSubscriptions) List(opts v1.ListOptions) (result *v1alpha1.RedshiftEventSubscriptionList, err error) {
+func (c *redshiftEventSubscriptions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RedshiftEventSubscriptionList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *redshiftEventSubscriptions) List(opts v1.ListOptions) (result *v1alpha1
 		Resource("redshifteventsubscriptions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested redshiftEventSubscriptions.
-func (c *redshiftEventSubscriptions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *redshiftEventSubscriptions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *redshiftEventSubscriptions) Watch(opts v1.ListOptions) (watch.Interface
 		Resource("redshifteventsubscriptions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a redshiftEventSubscription and creates it.  Returns the server's representation of the redshiftEventSubscription, and an error, if there is any.
-func (c *redshiftEventSubscriptions) Create(redshiftEventSubscription *v1alpha1.RedshiftEventSubscription) (result *v1alpha1.RedshiftEventSubscription, err error) {
+func (c *redshiftEventSubscriptions) Create(ctx context.Context, redshiftEventSubscription *v1alpha1.RedshiftEventSubscription, opts v1.CreateOptions) (result *v1alpha1.RedshiftEventSubscription, err error) {
 	result = &v1alpha1.RedshiftEventSubscription{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("redshifteventsubscriptions").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(redshiftEventSubscription).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a redshiftEventSubscription and updates it. Returns the server's representation of the redshiftEventSubscription, and an error, if there is any.
-func (c *redshiftEventSubscriptions) Update(redshiftEventSubscription *v1alpha1.RedshiftEventSubscription) (result *v1alpha1.RedshiftEventSubscription, err error) {
+func (c *redshiftEventSubscriptions) Update(ctx context.Context, redshiftEventSubscription *v1alpha1.RedshiftEventSubscription, opts v1.UpdateOptions) (result *v1alpha1.RedshiftEventSubscription, err error) {
 	result = &v1alpha1.RedshiftEventSubscription{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("redshifteventsubscriptions").
 		Name(redshiftEventSubscription.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(redshiftEventSubscription).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *redshiftEventSubscriptions) UpdateStatus(redshiftEventSubscription *v1alpha1.RedshiftEventSubscription) (result *v1alpha1.RedshiftEventSubscription, err error) {
+func (c *redshiftEventSubscriptions) UpdateStatus(ctx context.Context, redshiftEventSubscription *v1alpha1.RedshiftEventSubscription, opts v1.UpdateOptions) (result *v1alpha1.RedshiftEventSubscription, err error) {
 	result = &v1alpha1.RedshiftEventSubscription{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("redshifteventsubscriptions").
 		Name(redshiftEventSubscription.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(redshiftEventSubscription).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the redshiftEventSubscription and deletes it. Returns an error if one occurs.
-func (c *redshiftEventSubscriptions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *redshiftEventSubscriptions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("redshifteventsubscriptions").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *redshiftEventSubscriptions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *redshiftEventSubscriptions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("redshifteventsubscriptions").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched redshiftEventSubscription.
-func (c *redshiftEventSubscriptions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RedshiftEventSubscription, err error) {
+func (c *redshiftEventSubscriptions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RedshiftEventSubscription, err error) {
 	result = &v1alpha1.RedshiftEventSubscription{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("redshifteventsubscriptions").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

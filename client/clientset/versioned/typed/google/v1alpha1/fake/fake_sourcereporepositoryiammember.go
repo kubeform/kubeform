@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var sourcereporepositoryiammembersResource = schema.GroupVersionResource{Group: 
 var sourcereporepositoryiammembersKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "SourcerepoRepositoryIamMember"}
 
 // Get takes name of the sourcerepoRepositoryIamMember, and returns the corresponding sourcerepoRepositoryIamMember object, and an error if there is any.
-func (c *FakeSourcerepoRepositoryIamMembers) Get(name string, options v1.GetOptions) (result *v1alpha1.SourcerepoRepositoryIamMember, err error) {
+func (c *FakeSourcerepoRepositoryIamMembers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SourcerepoRepositoryIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(sourcereporepositoryiammembersResource, c.ns, name), &v1alpha1.SourcerepoRepositoryIamMember{})
 
@@ -51,7 +53,7 @@ func (c *FakeSourcerepoRepositoryIamMembers) Get(name string, options v1.GetOpti
 }
 
 // List takes label and field selectors, and returns the list of SourcerepoRepositoryIamMembers that match those selectors.
-func (c *FakeSourcerepoRepositoryIamMembers) List(opts v1.ListOptions) (result *v1alpha1.SourcerepoRepositoryIamMemberList, err error) {
+func (c *FakeSourcerepoRepositoryIamMembers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SourcerepoRepositoryIamMemberList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(sourcereporepositoryiammembersResource, sourcereporepositoryiammembersKind, c.ns, opts), &v1alpha1.SourcerepoRepositoryIamMemberList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSourcerepoRepositoryIamMembers) List(opts v1.ListOptions) (result *
 }
 
 // Watch returns a watch.Interface that watches the requested sourcerepoRepositoryIamMembers.
-func (c *FakeSourcerepoRepositoryIamMembers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSourcerepoRepositoryIamMembers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(sourcereporepositoryiammembersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a sourcerepoRepositoryIamMember and creates it.  Returns the server's representation of the sourcerepoRepositoryIamMember, and an error, if there is any.
-func (c *FakeSourcerepoRepositoryIamMembers) Create(sourcerepoRepositoryIamMember *v1alpha1.SourcerepoRepositoryIamMember) (result *v1alpha1.SourcerepoRepositoryIamMember, err error) {
+func (c *FakeSourcerepoRepositoryIamMembers) Create(ctx context.Context, sourcerepoRepositoryIamMember *v1alpha1.SourcerepoRepositoryIamMember, opts v1.CreateOptions) (result *v1alpha1.SourcerepoRepositoryIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(sourcereporepositoryiammembersResource, c.ns, sourcerepoRepositoryIamMember), &v1alpha1.SourcerepoRepositoryIamMember{})
 
@@ -91,7 +93,7 @@ func (c *FakeSourcerepoRepositoryIamMembers) Create(sourcerepoRepositoryIamMembe
 }
 
 // Update takes the representation of a sourcerepoRepositoryIamMember and updates it. Returns the server's representation of the sourcerepoRepositoryIamMember, and an error, if there is any.
-func (c *FakeSourcerepoRepositoryIamMembers) Update(sourcerepoRepositoryIamMember *v1alpha1.SourcerepoRepositoryIamMember) (result *v1alpha1.SourcerepoRepositoryIamMember, err error) {
+func (c *FakeSourcerepoRepositoryIamMembers) Update(ctx context.Context, sourcerepoRepositoryIamMember *v1alpha1.SourcerepoRepositoryIamMember, opts v1.UpdateOptions) (result *v1alpha1.SourcerepoRepositoryIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(sourcereporepositoryiammembersResource, c.ns, sourcerepoRepositoryIamMember), &v1alpha1.SourcerepoRepositoryIamMember{})
 
@@ -103,7 +105,7 @@ func (c *FakeSourcerepoRepositoryIamMembers) Update(sourcerepoRepositoryIamMembe
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSourcerepoRepositoryIamMembers) UpdateStatus(sourcerepoRepositoryIamMember *v1alpha1.SourcerepoRepositoryIamMember) (*v1alpha1.SourcerepoRepositoryIamMember, error) {
+func (c *FakeSourcerepoRepositoryIamMembers) UpdateStatus(ctx context.Context, sourcerepoRepositoryIamMember *v1alpha1.SourcerepoRepositoryIamMember, opts v1.UpdateOptions) (*v1alpha1.SourcerepoRepositoryIamMember, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(sourcereporepositoryiammembersResource, "status", c.ns, sourcerepoRepositoryIamMember), &v1alpha1.SourcerepoRepositoryIamMember{})
 
@@ -114,7 +116,7 @@ func (c *FakeSourcerepoRepositoryIamMembers) UpdateStatus(sourcerepoRepositoryIa
 }
 
 // Delete takes name of the sourcerepoRepositoryIamMember and deletes it. Returns an error if one occurs.
-func (c *FakeSourcerepoRepositoryIamMembers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSourcerepoRepositoryIamMembers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(sourcereporepositoryiammembersResource, c.ns, name), &v1alpha1.SourcerepoRepositoryIamMember{})
 
@@ -122,15 +124,15 @@ func (c *FakeSourcerepoRepositoryIamMembers) Delete(name string, options *v1.Del
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSourcerepoRepositoryIamMembers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(sourcereporepositoryiammembersResource, c.ns, listOptions)
+func (c *FakeSourcerepoRepositoryIamMembers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(sourcereporepositoryiammembersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SourcerepoRepositoryIamMemberList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched sourcerepoRepositoryIamMember.
-func (c *FakeSourcerepoRepositoryIamMembers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SourcerepoRepositoryIamMember, err error) {
+func (c *FakeSourcerepoRepositoryIamMembers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SourcerepoRepositoryIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(sourcereporepositoryiammembersResource, c.ns, name, pt, data, subresources...), &v1alpha1.SourcerepoRepositoryIamMember{})
 

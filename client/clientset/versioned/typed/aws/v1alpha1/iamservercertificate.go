@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type IamServerCertificatesGetter interface {
 
 // IamServerCertificateInterface has methods to work with IamServerCertificate resources.
 type IamServerCertificateInterface interface {
-	Create(*v1alpha1.IamServerCertificate) (*v1alpha1.IamServerCertificate, error)
-	Update(*v1alpha1.IamServerCertificate) (*v1alpha1.IamServerCertificate, error)
-	UpdateStatus(*v1alpha1.IamServerCertificate) (*v1alpha1.IamServerCertificate, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.IamServerCertificate, error)
-	List(opts v1.ListOptions) (*v1alpha1.IamServerCertificateList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IamServerCertificate, err error)
+	Create(ctx context.Context, iamServerCertificate *v1alpha1.IamServerCertificate, opts v1.CreateOptions) (*v1alpha1.IamServerCertificate, error)
+	Update(ctx context.Context, iamServerCertificate *v1alpha1.IamServerCertificate, opts v1.UpdateOptions) (*v1alpha1.IamServerCertificate, error)
+	UpdateStatus(ctx context.Context, iamServerCertificate *v1alpha1.IamServerCertificate, opts v1.UpdateOptions) (*v1alpha1.IamServerCertificate, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.IamServerCertificate, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.IamServerCertificateList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IamServerCertificate, err error)
 	IamServerCertificateExpansion
 }
 
@@ -65,20 +66,20 @@ func newIamServerCertificates(c *AwsV1alpha1Client, namespace string) *iamServer
 }
 
 // Get takes name of the iamServerCertificate, and returns the corresponding iamServerCertificate object, and an error if there is any.
-func (c *iamServerCertificates) Get(name string, options v1.GetOptions) (result *v1alpha1.IamServerCertificate, err error) {
+func (c *iamServerCertificates) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IamServerCertificate, err error) {
 	result = &v1alpha1.IamServerCertificate{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("iamservercertificates").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of IamServerCertificates that match those selectors.
-func (c *iamServerCertificates) List(opts v1.ListOptions) (result *v1alpha1.IamServerCertificateList, err error) {
+func (c *iamServerCertificates) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IamServerCertificateList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *iamServerCertificates) List(opts v1.ListOptions) (result *v1alpha1.IamS
 		Resource("iamservercertificates").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested iamServerCertificates.
-func (c *iamServerCertificates) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *iamServerCertificates) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *iamServerCertificates) Watch(opts v1.ListOptions) (watch.Interface, err
 		Resource("iamservercertificates").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a iamServerCertificate and creates it.  Returns the server's representation of the iamServerCertificate, and an error, if there is any.
-func (c *iamServerCertificates) Create(iamServerCertificate *v1alpha1.IamServerCertificate) (result *v1alpha1.IamServerCertificate, err error) {
+func (c *iamServerCertificates) Create(ctx context.Context, iamServerCertificate *v1alpha1.IamServerCertificate, opts v1.CreateOptions) (result *v1alpha1.IamServerCertificate, err error) {
 	result = &v1alpha1.IamServerCertificate{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("iamservercertificates").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iamServerCertificate).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a iamServerCertificate and updates it. Returns the server's representation of the iamServerCertificate, and an error, if there is any.
-func (c *iamServerCertificates) Update(iamServerCertificate *v1alpha1.IamServerCertificate) (result *v1alpha1.IamServerCertificate, err error) {
+func (c *iamServerCertificates) Update(ctx context.Context, iamServerCertificate *v1alpha1.IamServerCertificate, opts v1.UpdateOptions) (result *v1alpha1.IamServerCertificate, err error) {
 	result = &v1alpha1.IamServerCertificate{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iamservercertificates").
 		Name(iamServerCertificate.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iamServerCertificate).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *iamServerCertificates) UpdateStatus(iamServerCertificate *v1alpha1.IamServerCertificate) (result *v1alpha1.IamServerCertificate, err error) {
+func (c *iamServerCertificates) UpdateStatus(ctx context.Context, iamServerCertificate *v1alpha1.IamServerCertificate, opts v1.UpdateOptions) (result *v1alpha1.IamServerCertificate, err error) {
 	result = &v1alpha1.IamServerCertificate{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iamservercertificates").
 		Name(iamServerCertificate.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iamServerCertificate).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the iamServerCertificate and deletes it. Returns an error if one occurs.
-func (c *iamServerCertificates) Delete(name string, options *v1.DeleteOptions) error {
+func (c *iamServerCertificates) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iamservercertificates").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *iamServerCertificates) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *iamServerCertificates) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iamservercertificates").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched iamServerCertificate.
-func (c *iamServerCertificates) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IamServerCertificate, err error) {
+func (c *iamServerCertificates) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IamServerCertificate, err error) {
 	result = &v1alpha1.IamServerCertificate{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("iamservercertificates").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

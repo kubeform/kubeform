@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var eventgriddomainsResource = schema.GroupVersionResource{Group: "azurerm.kubef
 var eventgriddomainsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "EventgridDomain"}
 
 // Get takes name of the eventgridDomain, and returns the corresponding eventgridDomain object, and an error if there is any.
-func (c *FakeEventgridDomains) Get(name string, options v1.GetOptions) (result *v1alpha1.EventgridDomain, err error) {
+func (c *FakeEventgridDomains) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.EventgridDomain, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(eventgriddomainsResource, c.ns, name), &v1alpha1.EventgridDomain{})
 
@@ -51,7 +53,7 @@ func (c *FakeEventgridDomains) Get(name string, options v1.GetOptions) (result *
 }
 
 // List takes label and field selectors, and returns the list of EventgridDomains that match those selectors.
-func (c *FakeEventgridDomains) List(opts v1.ListOptions) (result *v1alpha1.EventgridDomainList, err error) {
+func (c *FakeEventgridDomains) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.EventgridDomainList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(eventgriddomainsResource, eventgriddomainsKind, c.ns, opts), &v1alpha1.EventgridDomainList{})
 
@@ -73,14 +75,14 @@ func (c *FakeEventgridDomains) List(opts v1.ListOptions) (result *v1alpha1.Event
 }
 
 // Watch returns a watch.Interface that watches the requested eventgridDomains.
-func (c *FakeEventgridDomains) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeEventgridDomains) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(eventgriddomainsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a eventgridDomain and creates it.  Returns the server's representation of the eventgridDomain, and an error, if there is any.
-func (c *FakeEventgridDomains) Create(eventgridDomain *v1alpha1.EventgridDomain) (result *v1alpha1.EventgridDomain, err error) {
+func (c *FakeEventgridDomains) Create(ctx context.Context, eventgridDomain *v1alpha1.EventgridDomain, opts v1.CreateOptions) (result *v1alpha1.EventgridDomain, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(eventgriddomainsResource, c.ns, eventgridDomain), &v1alpha1.EventgridDomain{})
 
@@ -91,7 +93,7 @@ func (c *FakeEventgridDomains) Create(eventgridDomain *v1alpha1.EventgridDomain)
 }
 
 // Update takes the representation of a eventgridDomain and updates it. Returns the server's representation of the eventgridDomain, and an error, if there is any.
-func (c *FakeEventgridDomains) Update(eventgridDomain *v1alpha1.EventgridDomain) (result *v1alpha1.EventgridDomain, err error) {
+func (c *FakeEventgridDomains) Update(ctx context.Context, eventgridDomain *v1alpha1.EventgridDomain, opts v1.UpdateOptions) (result *v1alpha1.EventgridDomain, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(eventgriddomainsResource, c.ns, eventgridDomain), &v1alpha1.EventgridDomain{})
 
@@ -103,7 +105,7 @@ func (c *FakeEventgridDomains) Update(eventgridDomain *v1alpha1.EventgridDomain)
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeEventgridDomains) UpdateStatus(eventgridDomain *v1alpha1.EventgridDomain) (*v1alpha1.EventgridDomain, error) {
+func (c *FakeEventgridDomains) UpdateStatus(ctx context.Context, eventgridDomain *v1alpha1.EventgridDomain, opts v1.UpdateOptions) (*v1alpha1.EventgridDomain, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(eventgriddomainsResource, "status", c.ns, eventgridDomain), &v1alpha1.EventgridDomain{})
 
@@ -114,7 +116,7 @@ func (c *FakeEventgridDomains) UpdateStatus(eventgridDomain *v1alpha1.EventgridD
 }
 
 // Delete takes name of the eventgridDomain and deletes it. Returns an error if one occurs.
-func (c *FakeEventgridDomains) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeEventgridDomains) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(eventgriddomainsResource, c.ns, name), &v1alpha1.EventgridDomain{})
 
@@ -122,15 +124,15 @@ func (c *FakeEventgridDomains) Delete(name string, options *v1.DeleteOptions) er
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeEventgridDomains) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(eventgriddomainsResource, c.ns, listOptions)
+func (c *FakeEventgridDomains) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(eventgriddomainsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.EventgridDomainList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched eventgridDomain.
-func (c *FakeEventgridDomains) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EventgridDomain, err error) {
+func (c *FakeEventgridDomains) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EventgridDomain, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(eventgriddomainsResource, c.ns, name, pt, data, subresources...), &v1alpha1.EventgridDomain{})
 

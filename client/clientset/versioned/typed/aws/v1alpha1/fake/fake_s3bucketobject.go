@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var s3bucketobjectsResource = schema.GroupVersionResource{Group: "aws.kubeform.c
 var s3bucketobjectsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "S3BucketObject"}
 
 // Get takes name of the s3BucketObject, and returns the corresponding s3BucketObject object, and an error if there is any.
-func (c *FakeS3BucketObjects) Get(name string, options v1.GetOptions) (result *v1alpha1.S3BucketObject, err error) {
+func (c *FakeS3BucketObjects) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.S3BucketObject, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(s3bucketobjectsResource, c.ns, name), &v1alpha1.S3BucketObject{})
 
@@ -51,7 +53,7 @@ func (c *FakeS3BucketObjects) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of S3BucketObjects that match those selectors.
-func (c *FakeS3BucketObjects) List(opts v1.ListOptions) (result *v1alpha1.S3BucketObjectList, err error) {
+func (c *FakeS3BucketObjects) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.S3BucketObjectList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(s3bucketobjectsResource, s3bucketobjectsKind, c.ns, opts), &v1alpha1.S3BucketObjectList{})
 
@@ -73,14 +75,14 @@ func (c *FakeS3BucketObjects) List(opts v1.ListOptions) (result *v1alpha1.S3Buck
 }
 
 // Watch returns a watch.Interface that watches the requested s3BucketObjects.
-func (c *FakeS3BucketObjects) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeS3BucketObjects) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(s3bucketobjectsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a s3BucketObject and creates it.  Returns the server's representation of the s3BucketObject, and an error, if there is any.
-func (c *FakeS3BucketObjects) Create(s3BucketObject *v1alpha1.S3BucketObject) (result *v1alpha1.S3BucketObject, err error) {
+func (c *FakeS3BucketObjects) Create(ctx context.Context, s3BucketObject *v1alpha1.S3BucketObject, opts v1.CreateOptions) (result *v1alpha1.S3BucketObject, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(s3bucketobjectsResource, c.ns, s3BucketObject), &v1alpha1.S3BucketObject{})
 
@@ -91,7 +93,7 @@ func (c *FakeS3BucketObjects) Create(s3BucketObject *v1alpha1.S3BucketObject) (r
 }
 
 // Update takes the representation of a s3BucketObject and updates it. Returns the server's representation of the s3BucketObject, and an error, if there is any.
-func (c *FakeS3BucketObjects) Update(s3BucketObject *v1alpha1.S3BucketObject) (result *v1alpha1.S3BucketObject, err error) {
+func (c *FakeS3BucketObjects) Update(ctx context.Context, s3BucketObject *v1alpha1.S3BucketObject, opts v1.UpdateOptions) (result *v1alpha1.S3BucketObject, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(s3bucketobjectsResource, c.ns, s3BucketObject), &v1alpha1.S3BucketObject{})
 
@@ -103,7 +105,7 @@ func (c *FakeS3BucketObjects) Update(s3BucketObject *v1alpha1.S3BucketObject) (r
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeS3BucketObjects) UpdateStatus(s3BucketObject *v1alpha1.S3BucketObject) (*v1alpha1.S3BucketObject, error) {
+func (c *FakeS3BucketObjects) UpdateStatus(ctx context.Context, s3BucketObject *v1alpha1.S3BucketObject, opts v1.UpdateOptions) (*v1alpha1.S3BucketObject, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(s3bucketobjectsResource, "status", c.ns, s3BucketObject), &v1alpha1.S3BucketObject{})
 
@@ -114,7 +116,7 @@ func (c *FakeS3BucketObjects) UpdateStatus(s3BucketObject *v1alpha1.S3BucketObje
 }
 
 // Delete takes name of the s3BucketObject and deletes it. Returns an error if one occurs.
-func (c *FakeS3BucketObjects) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeS3BucketObjects) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(s3bucketobjectsResource, c.ns, name), &v1alpha1.S3BucketObject{})
 
@@ -122,15 +124,15 @@ func (c *FakeS3BucketObjects) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeS3BucketObjects) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(s3bucketobjectsResource, c.ns, listOptions)
+func (c *FakeS3BucketObjects) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(s3bucketobjectsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.S3BucketObjectList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched s3BucketObject.
-func (c *FakeS3BucketObjects) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.S3BucketObject, err error) {
+func (c *FakeS3BucketObjects) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.S3BucketObject, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(s3bucketobjectsResource, c.ns, name, pt, data, subresources...), &v1alpha1.S3BucketObject{})
 

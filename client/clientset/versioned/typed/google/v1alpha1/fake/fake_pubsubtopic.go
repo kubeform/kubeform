@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var pubsubtopicsResource = schema.GroupVersionResource{Group: "google.kubeform.c
 var pubsubtopicsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "PubsubTopic"}
 
 // Get takes name of the pubsubTopic, and returns the corresponding pubsubTopic object, and an error if there is any.
-func (c *FakePubsubTopics) Get(name string, options v1.GetOptions) (result *v1alpha1.PubsubTopic, err error) {
+func (c *FakePubsubTopics) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PubsubTopic, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(pubsubtopicsResource, c.ns, name), &v1alpha1.PubsubTopic{})
 
@@ -51,7 +53,7 @@ func (c *FakePubsubTopics) Get(name string, options v1.GetOptions) (result *v1al
 }
 
 // List takes label and field selectors, and returns the list of PubsubTopics that match those selectors.
-func (c *FakePubsubTopics) List(opts v1.ListOptions) (result *v1alpha1.PubsubTopicList, err error) {
+func (c *FakePubsubTopics) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PubsubTopicList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(pubsubtopicsResource, pubsubtopicsKind, c.ns, opts), &v1alpha1.PubsubTopicList{})
 
@@ -73,14 +75,14 @@ func (c *FakePubsubTopics) List(opts v1.ListOptions) (result *v1alpha1.PubsubTop
 }
 
 // Watch returns a watch.Interface that watches the requested pubsubTopics.
-func (c *FakePubsubTopics) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakePubsubTopics) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(pubsubtopicsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a pubsubTopic and creates it.  Returns the server's representation of the pubsubTopic, and an error, if there is any.
-func (c *FakePubsubTopics) Create(pubsubTopic *v1alpha1.PubsubTopic) (result *v1alpha1.PubsubTopic, err error) {
+func (c *FakePubsubTopics) Create(ctx context.Context, pubsubTopic *v1alpha1.PubsubTopic, opts v1.CreateOptions) (result *v1alpha1.PubsubTopic, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(pubsubtopicsResource, c.ns, pubsubTopic), &v1alpha1.PubsubTopic{})
 
@@ -91,7 +93,7 @@ func (c *FakePubsubTopics) Create(pubsubTopic *v1alpha1.PubsubTopic) (result *v1
 }
 
 // Update takes the representation of a pubsubTopic and updates it. Returns the server's representation of the pubsubTopic, and an error, if there is any.
-func (c *FakePubsubTopics) Update(pubsubTopic *v1alpha1.PubsubTopic) (result *v1alpha1.PubsubTopic, err error) {
+func (c *FakePubsubTopics) Update(ctx context.Context, pubsubTopic *v1alpha1.PubsubTopic, opts v1.UpdateOptions) (result *v1alpha1.PubsubTopic, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(pubsubtopicsResource, c.ns, pubsubTopic), &v1alpha1.PubsubTopic{})
 
@@ -103,7 +105,7 @@ func (c *FakePubsubTopics) Update(pubsubTopic *v1alpha1.PubsubTopic) (result *v1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakePubsubTopics) UpdateStatus(pubsubTopic *v1alpha1.PubsubTopic) (*v1alpha1.PubsubTopic, error) {
+func (c *FakePubsubTopics) UpdateStatus(ctx context.Context, pubsubTopic *v1alpha1.PubsubTopic, opts v1.UpdateOptions) (*v1alpha1.PubsubTopic, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(pubsubtopicsResource, "status", c.ns, pubsubTopic), &v1alpha1.PubsubTopic{})
 
@@ -114,7 +116,7 @@ func (c *FakePubsubTopics) UpdateStatus(pubsubTopic *v1alpha1.PubsubTopic) (*v1a
 }
 
 // Delete takes name of the pubsubTopic and deletes it. Returns an error if one occurs.
-func (c *FakePubsubTopics) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakePubsubTopics) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(pubsubtopicsResource, c.ns, name), &v1alpha1.PubsubTopic{})
 
@@ -122,15 +124,15 @@ func (c *FakePubsubTopics) Delete(name string, options *v1.DeleteOptions) error 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakePubsubTopics) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(pubsubtopicsResource, c.ns, listOptions)
+func (c *FakePubsubTopics) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(pubsubtopicsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.PubsubTopicList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched pubsubTopic.
-func (c *FakePubsubTopics) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PubsubTopic, err error) {
+func (c *FakePubsubTopics) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PubsubTopic, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(pubsubtopicsResource, c.ns, name, pt, data, subresources...), &v1alpha1.PubsubTopic{})
 

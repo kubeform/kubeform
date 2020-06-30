@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type IothubsGetter interface {
 
 // IothubInterface has methods to work with Iothub resources.
 type IothubInterface interface {
-	Create(*v1alpha1.Iothub) (*v1alpha1.Iothub, error)
-	Update(*v1alpha1.Iothub) (*v1alpha1.Iothub, error)
-	UpdateStatus(*v1alpha1.Iothub) (*v1alpha1.Iothub, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.Iothub, error)
-	List(opts v1.ListOptions) (*v1alpha1.IothubList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Iothub, err error)
+	Create(ctx context.Context, iothub *v1alpha1.Iothub, opts v1.CreateOptions) (*v1alpha1.Iothub, error)
+	Update(ctx context.Context, iothub *v1alpha1.Iothub, opts v1.UpdateOptions) (*v1alpha1.Iothub, error)
+	UpdateStatus(ctx context.Context, iothub *v1alpha1.Iothub, opts v1.UpdateOptions) (*v1alpha1.Iothub, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.Iothub, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.IothubList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Iothub, err error)
 	IothubExpansion
 }
 
@@ -65,20 +66,20 @@ func newIothubs(c *AzurermV1alpha1Client, namespace string) *iothubs {
 }
 
 // Get takes name of the iothub, and returns the corresponding iothub object, and an error if there is any.
-func (c *iothubs) Get(name string, options v1.GetOptions) (result *v1alpha1.Iothub, err error) {
+func (c *iothubs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Iothub, err error) {
 	result = &v1alpha1.Iothub{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("iothubs").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of Iothubs that match those selectors.
-func (c *iothubs) List(opts v1.ListOptions) (result *v1alpha1.IothubList, err error) {
+func (c *iothubs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IothubList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *iothubs) List(opts v1.ListOptions) (result *v1alpha1.IothubList, err er
 		Resource("iothubs").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested iothubs.
-func (c *iothubs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *iothubs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *iothubs) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("iothubs").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a iothub and creates it.  Returns the server's representation of the iothub, and an error, if there is any.
-func (c *iothubs) Create(iothub *v1alpha1.Iothub) (result *v1alpha1.Iothub, err error) {
+func (c *iothubs) Create(ctx context.Context, iothub *v1alpha1.Iothub, opts v1.CreateOptions) (result *v1alpha1.Iothub, err error) {
 	result = &v1alpha1.Iothub{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("iothubs").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iothub).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a iothub and updates it. Returns the server's representation of the iothub, and an error, if there is any.
-func (c *iothubs) Update(iothub *v1alpha1.Iothub) (result *v1alpha1.Iothub, err error) {
+func (c *iothubs) Update(ctx context.Context, iothub *v1alpha1.Iothub, opts v1.UpdateOptions) (result *v1alpha1.Iothub, err error) {
 	result = &v1alpha1.Iothub{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iothubs").
 		Name(iothub.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iothub).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *iothubs) UpdateStatus(iothub *v1alpha1.Iothub) (result *v1alpha1.Iothub, err error) {
+func (c *iothubs) UpdateStatus(ctx context.Context, iothub *v1alpha1.Iothub, opts v1.UpdateOptions) (result *v1alpha1.Iothub, err error) {
 	result = &v1alpha1.Iothub{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iothubs").
 		Name(iothub.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iothub).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the iothub and deletes it. Returns an error if one occurs.
-func (c *iothubs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *iothubs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iothubs").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *iothubs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *iothubs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iothubs").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched iothub.
-func (c *iothubs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Iothub, err error) {
+func (c *iothubs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Iothub, err error) {
 	result = &v1alpha1.Iothub{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("iothubs").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

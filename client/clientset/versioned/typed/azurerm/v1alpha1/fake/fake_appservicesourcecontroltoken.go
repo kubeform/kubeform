@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var appservicesourcecontroltokensResource = schema.GroupVersionResource{Group: "
 var appservicesourcecontroltokensKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "AppServiceSourceControlToken"}
 
 // Get takes name of the appServiceSourceControlToken, and returns the corresponding appServiceSourceControlToken object, and an error if there is any.
-func (c *FakeAppServiceSourceControlTokens) Get(name string, options v1.GetOptions) (result *v1alpha1.AppServiceSourceControlToken, err error) {
+func (c *FakeAppServiceSourceControlTokens) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AppServiceSourceControlToken, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(appservicesourcecontroltokensResource, c.ns, name), &v1alpha1.AppServiceSourceControlToken{})
 
@@ -51,7 +53,7 @@ func (c *FakeAppServiceSourceControlTokens) Get(name string, options v1.GetOptio
 }
 
 // List takes label and field selectors, and returns the list of AppServiceSourceControlTokens that match those selectors.
-func (c *FakeAppServiceSourceControlTokens) List(opts v1.ListOptions) (result *v1alpha1.AppServiceSourceControlTokenList, err error) {
+func (c *FakeAppServiceSourceControlTokens) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AppServiceSourceControlTokenList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(appservicesourcecontroltokensResource, appservicesourcecontroltokensKind, c.ns, opts), &v1alpha1.AppServiceSourceControlTokenList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAppServiceSourceControlTokens) List(opts v1.ListOptions) (result *v
 }
 
 // Watch returns a watch.Interface that watches the requested appServiceSourceControlTokens.
-func (c *FakeAppServiceSourceControlTokens) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAppServiceSourceControlTokens) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(appservicesourcecontroltokensResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a appServiceSourceControlToken and creates it.  Returns the server's representation of the appServiceSourceControlToken, and an error, if there is any.
-func (c *FakeAppServiceSourceControlTokens) Create(appServiceSourceControlToken *v1alpha1.AppServiceSourceControlToken) (result *v1alpha1.AppServiceSourceControlToken, err error) {
+func (c *FakeAppServiceSourceControlTokens) Create(ctx context.Context, appServiceSourceControlToken *v1alpha1.AppServiceSourceControlToken, opts v1.CreateOptions) (result *v1alpha1.AppServiceSourceControlToken, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(appservicesourcecontroltokensResource, c.ns, appServiceSourceControlToken), &v1alpha1.AppServiceSourceControlToken{})
 
@@ -91,7 +93,7 @@ func (c *FakeAppServiceSourceControlTokens) Create(appServiceSourceControlToken 
 }
 
 // Update takes the representation of a appServiceSourceControlToken and updates it. Returns the server's representation of the appServiceSourceControlToken, and an error, if there is any.
-func (c *FakeAppServiceSourceControlTokens) Update(appServiceSourceControlToken *v1alpha1.AppServiceSourceControlToken) (result *v1alpha1.AppServiceSourceControlToken, err error) {
+func (c *FakeAppServiceSourceControlTokens) Update(ctx context.Context, appServiceSourceControlToken *v1alpha1.AppServiceSourceControlToken, opts v1.UpdateOptions) (result *v1alpha1.AppServiceSourceControlToken, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(appservicesourcecontroltokensResource, c.ns, appServiceSourceControlToken), &v1alpha1.AppServiceSourceControlToken{})
 
@@ -103,7 +105,7 @@ func (c *FakeAppServiceSourceControlTokens) Update(appServiceSourceControlToken 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAppServiceSourceControlTokens) UpdateStatus(appServiceSourceControlToken *v1alpha1.AppServiceSourceControlToken) (*v1alpha1.AppServiceSourceControlToken, error) {
+func (c *FakeAppServiceSourceControlTokens) UpdateStatus(ctx context.Context, appServiceSourceControlToken *v1alpha1.AppServiceSourceControlToken, opts v1.UpdateOptions) (*v1alpha1.AppServiceSourceControlToken, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(appservicesourcecontroltokensResource, "status", c.ns, appServiceSourceControlToken), &v1alpha1.AppServiceSourceControlToken{})
 
@@ -114,7 +116,7 @@ func (c *FakeAppServiceSourceControlTokens) UpdateStatus(appServiceSourceControl
 }
 
 // Delete takes name of the appServiceSourceControlToken and deletes it. Returns an error if one occurs.
-func (c *FakeAppServiceSourceControlTokens) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAppServiceSourceControlTokens) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(appservicesourcecontroltokensResource, c.ns, name), &v1alpha1.AppServiceSourceControlToken{})
 
@@ -122,15 +124,15 @@ func (c *FakeAppServiceSourceControlTokens) Delete(name string, options *v1.Dele
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAppServiceSourceControlTokens) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(appservicesourcecontroltokensResource, c.ns, listOptions)
+func (c *FakeAppServiceSourceControlTokens) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(appservicesourcecontroltokensResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AppServiceSourceControlTokenList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched appServiceSourceControlToken.
-func (c *FakeAppServiceSourceControlTokens) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppServiceSourceControlToken, err error) {
+func (c *FakeAppServiceSourceControlTokens) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppServiceSourceControlToken, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(appservicesourcecontroltokensResource, c.ns, name, pt, data, subresources...), &v1alpha1.AppServiceSourceControlToken{})
 

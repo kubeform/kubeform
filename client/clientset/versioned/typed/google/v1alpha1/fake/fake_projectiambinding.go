@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var projectiambindingsResource = schema.GroupVersionResource{Group: "google.kube
 var projectiambindingsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ProjectIamBinding"}
 
 // Get takes name of the projectIamBinding, and returns the corresponding projectIamBinding object, and an error if there is any.
-func (c *FakeProjectIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.ProjectIamBinding, err error) {
+func (c *FakeProjectIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ProjectIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(projectiambindingsResource, c.ns, name), &v1alpha1.ProjectIamBinding{})
 
@@ -51,7 +53,7 @@ func (c *FakeProjectIamBindings) Get(name string, options v1.GetOptions) (result
 }
 
 // List takes label and field selectors, and returns the list of ProjectIamBindings that match those selectors.
-func (c *FakeProjectIamBindings) List(opts v1.ListOptions) (result *v1alpha1.ProjectIamBindingList, err error) {
+func (c *FakeProjectIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ProjectIamBindingList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(projectiambindingsResource, projectiambindingsKind, c.ns, opts), &v1alpha1.ProjectIamBindingList{})
 
@@ -73,14 +75,14 @@ func (c *FakeProjectIamBindings) List(opts v1.ListOptions) (result *v1alpha1.Pro
 }
 
 // Watch returns a watch.Interface that watches the requested projectIamBindings.
-func (c *FakeProjectIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeProjectIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(projectiambindingsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a projectIamBinding and creates it.  Returns the server's representation of the projectIamBinding, and an error, if there is any.
-func (c *FakeProjectIamBindings) Create(projectIamBinding *v1alpha1.ProjectIamBinding) (result *v1alpha1.ProjectIamBinding, err error) {
+func (c *FakeProjectIamBindings) Create(ctx context.Context, projectIamBinding *v1alpha1.ProjectIamBinding, opts v1.CreateOptions) (result *v1alpha1.ProjectIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(projectiambindingsResource, c.ns, projectIamBinding), &v1alpha1.ProjectIamBinding{})
 
@@ -91,7 +93,7 @@ func (c *FakeProjectIamBindings) Create(projectIamBinding *v1alpha1.ProjectIamBi
 }
 
 // Update takes the representation of a projectIamBinding and updates it. Returns the server's representation of the projectIamBinding, and an error, if there is any.
-func (c *FakeProjectIamBindings) Update(projectIamBinding *v1alpha1.ProjectIamBinding) (result *v1alpha1.ProjectIamBinding, err error) {
+func (c *FakeProjectIamBindings) Update(ctx context.Context, projectIamBinding *v1alpha1.ProjectIamBinding, opts v1.UpdateOptions) (result *v1alpha1.ProjectIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(projectiambindingsResource, c.ns, projectIamBinding), &v1alpha1.ProjectIamBinding{})
 
@@ -103,7 +105,7 @@ func (c *FakeProjectIamBindings) Update(projectIamBinding *v1alpha1.ProjectIamBi
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeProjectIamBindings) UpdateStatus(projectIamBinding *v1alpha1.ProjectIamBinding) (*v1alpha1.ProjectIamBinding, error) {
+func (c *FakeProjectIamBindings) UpdateStatus(ctx context.Context, projectIamBinding *v1alpha1.ProjectIamBinding, opts v1.UpdateOptions) (*v1alpha1.ProjectIamBinding, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(projectiambindingsResource, "status", c.ns, projectIamBinding), &v1alpha1.ProjectIamBinding{})
 
@@ -114,7 +116,7 @@ func (c *FakeProjectIamBindings) UpdateStatus(projectIamBinding *v1alpha1.Projec
 }
 
 // Delete takes name of the projectIamBinding and deletes it. Returns an error if one occurs.
-func (c *FakeProjectIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeProjectIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(projectiambindingsResource, c.ns, name), &v1alpha1.ProjectIamBinding{})
 
@@ -122,15 +124,15 @@ func (c *FakeProjectIamBindings) Delete(name string, options *v1.DeleteOptions) 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeProjectIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(projectiambindingsResource, c.ns, listOptions)
+func (c *FakeProjectIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(projectiambindingsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ProjectIamBindingList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched projectIamBinding.
-func (c *FakeProjectIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ProjectIamBinding, err error) {
+func (c *FakeProjectIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ProjectIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(projectiambindingsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ProjectIamBinding{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var loggingmetricsResource = schema.GroupVersionResource{Group: "google.kubeform
 var loggingmetricsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "LoggingMetric"}
 
 // Get takes name of the loggingMetric, and returns the corresponding loggingMetric object, and an error if there is any.
-func (c *FakeLoggingMetrics) Get(name string, options v1.GetOptions) (result *v1alpha1.LoggingMetric, err error) {
+func (c *FakeLoggingMetrics) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LoggingMetric, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(loggingmetricsResource, c.ns, name), &v1alpha1.LoggingMetric{})
 
@@ -51,7 +53,7 @@ func (c *FakeLoggingMetrics) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of LoggingMetrics that match those selectors.
-func (c *FakeLoggingMetrics) List(opts v1.ListOptions) (result *v1alpha1.LoggingMetricList, err error) {
+func (c *FakeLoggingMetrics) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LoggingMetricList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(loggingmetricsResource, loggingmetricsKind, c.ns, opts), &v1alpha1.LoggingMetricList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLoggingMetrics) List(opts v1.ListOptions) (result *v1alpha1.Logging
 }
 
 // Watch returns a watch.Interface that watches the requested loggingMetrics.
-func (c *FakeLoggingMetrics) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLoggingMetrics) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(loggingmetricsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a loggingMetric and creates it.  Returns the server's representation of the loggingMetric, and an error, if there is any.
-func (c *FakeLoggingMetrics) Create(loggingMetric *v1alpha1.LoggingMetric) (result *v1alpha1.LoggingMetric, err error) {
+func (c *FakeLoggingMetrics) Create(ctx context.Context, loggingMetric *v1alpha1.LoggingMetric, opts v1.CreateOptions) (result *v1alpha1.LoggingMetric, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(loggingmetricsResource, c.ns, loggingMetric), &v1alpha1.LoggingMetric{})
 
@@ -91,7 +93,7 @@ func (c *FakeLoggingMetrics) Create(loggingMetric *v1alpha1.LoggingMetric) (resu
 }
 
 // Update takes the representation of a loggingMetric and updates it. Returns the server's representation of the loggingMetric, and an error, if there is any.
-func (c *FakeLoggingMetrics) Update(loggingMetric *v1alpha1.LoggingMetric) (result *v1alpha1.LoggingMetric, err error) {
+func (c *FakeLoggingMetrics) Update(ctx context.Context, loggingMetric *v1alpha1.LoggingMetric, opts v1.UpdateOptions) (result *v1alpha1.LoggingMetric, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(loggingmetricsResource, c.ns, loggingMetric), &v1alpha1.LoggingMetric{})
 
@@ -103,7 +105,7 @@ func (c *FakeLoggingMetrics) Update(loggingMetric *v1alpha1.LoggingMetric) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLoggingMetrics) UpdateStatus(loggingMetric *v1alpha1.LoggingMetric) (*v1alpha1.LoggingMetric, error) {
+func (c *FakeLoggingMetrics) UpdateStatus(ctx context.Context, loggingMetric *v1alpha1.LoggingMetric, opts v1.UpdateOptions) (*v1alpha1.LoggingMetric, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(loggingmetricsResource, "status", c.ns, loggingMetric), &v1alpha1.LoggingMetric{})
 
@@ -114,7 +116,7 @@ func (c *FakeLoggingMetrics) UpdateStatus(loggingMetric *v1alpha1.LoggingMetric)
 }
 
 // Delete takes name of the loggingMetric and deletes it. Returns an error if one occurs.
-func (c *FakeLoggingMetrics) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLoggingMetrics) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(loggingmetricsResource, c.ns, name), &v1alpha1.LoggingMetric{})
 
@@ -122,15 +124,15 @@ func (c *FakeLoggingMetrics) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLoggingMetrics) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(loggingmetricsResource, c.ns, listOptions)
+func (c *FakeLoggingMetrics) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(loggingmetricsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LoggingMetricList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched loggingMetric.
-func (c *FakeLoggingMetrics) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LoggingMetric, err error) {
+func (c *FakeLoggingMetrics) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LoggingMetric, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(loggingmetricsResource, c.ns, name, pt, data, subresources...), &v1alpha1.LoggingMetric{})
 

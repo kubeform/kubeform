@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var logicappactionhttpsResource = schema.GroupVersionResource{Group: "azurerm.ku
 var logicappactionhttpsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "LogicAppActionHTTP"}
 
 // Get takes name of the logicAppActionHTTP, and returns the corresponding logicAppActionHTTP object, and an error if there is any.
-func (c *FakeLogicAppActionHTTPs) Get(name string, options v1.GetOptions) (result *v1alpha1.LogicAppActionHTTP, err error) {
+func (c *FakeLogicAppActionHTTPs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LogicAppActionHTTP, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(logicappactionhttpsResource, c.ns, name), &v1alpha1.LogicAppActionHTTP{})
 
@@ -51,7 +53,7 @@ func (c *FakeLogicAppActionHTTPs) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of LogicAppActionHTTPs that match those selectors.
-func (c *FakeLogicAppActionHTTPs) List(opts v1.ListOptions) (result *v1alpha1.LogicAppActionHTTPList, err error) {
+func (c *FakeLogicAppActionHTTPs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LogicAppActionHTTPList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(logicappactionhttpsResource, logicappactionhttpsKind, c.ns, opts), &v1alpha1.LogicAppActionHTTPList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLogicAppActionHTTPs) List(opts v1.ListOptions) (result *v1alpha1.Lo
 }
 
 // Watch returns a watch.Interface that watches the requested logicAppActionHTTPs.
-func (c *FakeLogicAppActionHTTPs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLogicAppActionHTTPs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(logicappactionhttpsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a logicAppActionHTTP and creates it.  Returns the server's representation of the logicAppActionHTTP, and an error, if there is any.
-func (c *FakeLogicAppActionHTTPs) Create(logicAppActionHTTP *v1alpha1.LogicAppActionHTTP) (result *v1alpha1.LogicAppActionHTTP, err error) {
+func (c *FakeLogicAppActionHTTPs) Create(ctx context.Context, logicAppActionHTTP *v1alpha1.LogicAppActionHTTP, opts v1.CreateOptions) (result *v1alpha1.LogicAppActionHTTP, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(logicappactionhttpsResource, c.ns, logicAppActionHTTP), &v1alpha1.LogicAppActionHTTP{})
 
@@ -91,7 +93,7 @@ func (c *FakeLogicAppActionHTTPs) Create(logicAppActionHTTP *v1alpha1.LogicAppAc
 }
 
 // Update takes the representation of a logicAppActionHTTP and updates it. Returns the server's representation of the logicAppActionHTTP, and an error, if there is any.
-func (c *FakeLogicAppActionHTTPs) Update(logicAppActionHTTP *v1alpha1.LogicAppActionHTTP) (result *v1alpha1.LogicAppActionHTTP, err error) {
+func (c *FakeLogicAppActionHTTPs) Update(ctx context.Context, logicAppActionHTTP *v1alpha1.LogicAppActionHTTP, opts v1.UpdateOptions) (result *v1alpha1.LogicAppActionHTTP, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(logicappactionhttpsResource, c.ns, logicAppActionHTTP), &v1alpha1.LogicAppActionHTTP{})
 
@@ -103,7 +105,7 @@ func (c *FakeLogicAppActionHTTPs) Update(logicAppActionHTTP *v1alpha1.LogicAppAc
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLogicAppActionHTTPs) UpdateStatus(logicAppActionHTTP *v1alpha1.LogicAppActionHTTP) (*v1alpha1.LogicAppActionHTTP, error) {
+func (c *FakeLogicAppActionHTTPs) UpdateStatus(ctx context.Context, logicAppActionHTTP *v1alpha1.LogicAppActionHTTP, opts v1.UpdateOptions) (*v1alpha1.LogicAppActionHTTP, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(logicappactionhttpsResource, "status", c.ns, logicAppActionHTTP), &v1alpha1.LogicAppActionHTTP{})
 
@@ -114,7 +116,7 @@ func (c *FakeLogicAppActionHTTPs) UpdateStatus(logicAppActionHTTP *v1alpha1.Logi
 }
 
 // Delete takes name of the logicAppActionHTTP and deletes it. Returns an error if one occurs.
-func (c *FakeLogicAppActionHTTPs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLogicAppActionHTTPs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(logicappactionhttpsResource, c.ns, name), &v1alpha1.LogicAppActionHTTP{})
 
@@ -122,15 +124,15 @@ func (c *FakeLogicAppActionHTTPs) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLogicAppActionHTTPs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(logicappactionhttpsResource, c.ns, listOptions)
+func (c *FakeLogicAppActionHTTPs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(logicappactionhttpsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LogicAppActionHTTPList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched logicAppActionHTTP.
-func (c *FakeLogicAppActionHTTPs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LogicAppActionHTTP, err error) {
+func (c *FakeLogicAppActionHTTPs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LogicAppActionHTTP, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(logicappactionhttpsResource, c.ns, name, pt, data, subresources...), &v1alpha1.LogicAppActionHTTP{})
 

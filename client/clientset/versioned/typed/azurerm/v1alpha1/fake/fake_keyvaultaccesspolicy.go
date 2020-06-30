@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var keyvaultaccesspoliciesResource = schema.GroupVersionResource{Group: "azurerm
 var keyvaultaccesspoliciesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "KeyVaultAccessPolicy"}
 
 // Get takes name of the keyVaultAccessPolicy, and returns the corresponding keyVaultAccessPolicy object, and an error if there is any.
-func (c *FakeKeyVaultAccessPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.KeyVaultAccessPolicy, err error) {
+func (c *FakeKeyVaultAccessPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KeyVaultAccessPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(keyvaultaccesspoliciesResource, c.ns, name), &v1alpha1.KeyVaultAccessPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeKeyVaultAccessPolicies) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of KeyVaultAccessPolicies that match those selectors.
-func (c *FakeKeyVaultAccessPolicies) List(opts v1.ListOptions) (result *v1alpha1.KeyVaultAccessPolicyList, err error) {
+func (c *FakeKeyVaultAccessPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KeyVaultAccessPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(keyvaultaccesspoliciesResource, keyvaultaccesspoliciesKind, c.ns, opts), &v1alpha1.KeyVaultAccessPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeKeyVaultAccessPolicies) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested keyVaultAccessPolicies.
-func (c *FakeKeyVaultAccessPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeKeyVaultAccessPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(keyvaultaccesspoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a keyVaultAccessPolicy and creates it.  Returns the server's representation of the keyVaultAccessPolicy, and an error, if there is any.
-func (c *FakeKeyVaultAccessPolicies) Create(keyVaultAccessPolicy *v1alpha1.KeyVaultAccessPolicy) (result *v1alpha1.KeyVaultAccessPolicy, err error) {
+func (c *FakeKeyVaultAccessPolicies) Create(ctx context.Context, keyVaultAccessPolicy *v1alpha1.KeyVaultAccessPolicy, opts v1.CreateOptions) (result *v1alpha1.KeyVaultAccessPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(keyvaultaccesspoliciesResource, c.ns, keyVaultAccessPolicy), &v1alpha1.KeyVaultAccessPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeKeyVaultAccessPolicies) Create(keyVaultAccessPolicy *v1alpha1.KeyVa
 }
 
 // Update takes the representation of a keyVaultAccessPolicy and updates it. Returns the server's representation of the keyVaultAccessPolicy, and an error, if there is any.
-func (c *FakeKeyVaultAccessPolicies) Update(keyVaultAccessPolicy *v1alpha1.KeyVaultAccessPolicy) (result *v1alpha1.KeyVaultAccessPolicy, err error) {
+func (c *FakeKeyVaultAccessPolicies) Update(ctx context.Context, keyVaultAccessPolicy *v1alpha1.KeyVaultAccessPolicy, opts v1.UpdateOptions) (result *v1alpha1.KeyVaultAccessPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(keyvaultaccesspoliciesResource, c.ns, keyVaultAccessPolicy), &v1alpha1.KeyVaultAccessPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeKeyVaultAccessPolicies) Update(keyVaultAccessPolicy *v1alpha1.KeyVa
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeKeyVaultAccessPolicies) UpdateStatus(keyVaultAccessPolicy *v1alpha1.KeyVaultAccessPolicy) (*v1alpha1.KeyVaultAccessPolicy, error) {
+func (c *FakeKeyVaultAccessPolicies) UpdateStatus(ctx context.Context, keyVaultAccessPolicy *v1alpha1.KeyVaultAccessPolicy, opts v1.UpdateOptions) (*v1alpha1.KeyVaultAccessPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(keyvaultaccesspoliciesResource, "status", c.ns, keyVaultAccessPolicy), &v1alpha1.KeyVaultAccessPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeKeyVaultAccessPolicies) UpdateStatus(keyVaultAccessPolicy *v1alpha1
 }
 
 // Delete takes name of the keyVaultAccessPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeKeyVaultAccessPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeKeyVaultAccessPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(keyvaultaccesspoliciesResource, c.ns, name), &v1alpha1.KeyVaultAccessPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeKeyVaultAccessPolicies) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeKeyVaultAccessPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(keyvaultaccesspoliciesResource, c.ns, listOptions)
+func (c *FakeKeyVaultAccessPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(keyvaultaccesspoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.KeyVaultAccessPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched keyVaultAccessPolicy.
-func (c *FakeKeyVaultAccessPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KeyVaultAccessPolicy, err error) {
+func (c *FakeKeyVaultAccessPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KeyVaultAccessPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(keyvaultaccesspoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.KeyVaultAccessPolicy{})
 

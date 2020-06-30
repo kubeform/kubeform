@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iothubroutesResource = schema.GroupVersionResource{Group: "azurerm.kubeform.
 var iothubroutesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "IothubRoute"}
 
 // Get takes name of the iothubRoute, and returns the corresponding iothubRoute object, and an error if there is any.
-func (c *FakeIothubRoutes) Get(name string, options v1.GetOptions) (result *v1alpha1.IothubRoute, err error) {
+func (c *FakeIothubRoutes) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IothubRoute, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iothubroutesResource, c.ns, name), &v1alpha1.IothubRoute{})
 
@@ -51,7 +53,7 @@ func (c *FakeIothubRoutes) Get(name string, options v1.GetOptions) (result *v1al
 }
 
 // List takes label and field selectors, and returns the list of IothubRoutes that match those selectors.
-func (c *FakeIothubRoutes) List(opts v1.ListOptions) (result *v1alpha1.IothubRouteList, err error) {
+func (c *FakeIothubRoutes) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IothubRouteList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iothubroutesResource, iothubroutesKind, c.ns, opts), &v1alpha1.IothubRouteList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIothubRoutes) List(opts v1.ListOptions) (result *v1alpha1.IothubRou
 }
 
 // Watch returns a watch.Interface that watches the requested iothubRoutes.
-func (c *FakeIothubRoutes) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIothubRoutes) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iothubroutesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iothubRoute and creates it.  Returns the server's representation of the iothubRoute, and an error, if there is any.
-func (c *FakeIothubRoutes) Create(iothubRoute *v1alpha1.IothubRoute) (result *v1alpha1.IothubRoute, err error) {
+func (c *FakeIothubRoutes) Create(ctx context.Context, iothubRoute *v1alpha1.IothubRoute, opts v1.CreateOptions) (result *v1alpha1.IothubRoute, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iothubroutesResource, c.ns, iothubRoute), &v1alpha1.IothubRoute{})
 
@@ -91,7 +93,7 @@ func (c *FakeIothubRoutes) Create(iothubRoute *v1alpha1.IothubRoute) (result *v1
 }
 
 // Update takes the representation of a iothubRoute and updates it. Returns the server's representation of the iothubRoute, and an error, if there is any.
-func (c *FakeIothubRoutes) Update(iothubRoute *v1alpha1.IothubRoute) (result *v1alpha1.IothubRoute, err error) {
+func (c *FakeIothubRoutes) Update(ctx context.Context, iothubRoute *v1alpha1.IothubRoute, opts v1.UpdateOptions) (result *v1alpha1.IothubRoute, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iothubroutesResource, c.ns, iothubRoute), &v1alpha1.IothubRoute{})
 
@@ -103,7 +105,7 @@ func (c *FakeIothubRoutes) Update(iothubRoute *v1alpha1.IothubRoute) (result *v1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIothubRoutes) UpdateStatus(iothubRoute *v1alpha1.IothubRoute) (*v1alpha1.IothubRoute, error) {
+func (c *FakeIothubRoutes) UpdateStatus(ctx context.Context, iothubRoute *v1alpha1.IothubRoute, opts v1.UpdateOptions) (*v1alpha1.IothubRoute, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iothubroutesResource, "status", c.ns, iothubRoute), &v1alpha1.IothubRoute{})
 
@@ -114,7 +116,7 @@ func (c *FakeIothubRoutes) UpdateStatus(iothubRoute *v1alpha1.IothubRoute) (*v1a
 }
 
 // Delete takes name of the iothubRoute and deletes it. Returns an error if one occurs.
-func (c *FakeIothubRoutes) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIothubRoutes) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iothubroutesResource, c.ns, name), &v1alpha1.IothubRoute{})
 
@@ -122,15 +124,15 @@ func (c *FakeIothubRoutes) Delete(name string, options *v1.DeleteOptions) error 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIothubRoutes) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iothubroutesResource, c.ns, listOptions)
+func (c *FakeIothubRoutes) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iothubroutesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IothubRouteList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iothubRoute.
-func (c *FakeIothubRoutes) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IothubRoute, err error) {
+func (c *FakeIothubRoutes) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IothubRoute, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iothubroutesResource, c.ns, name, pt, data, subresources...), &v1alpha1.IothubRoute{})
 

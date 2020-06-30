@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var apigatewaydeploymentsResource = schema.GroupVersionResource{Group: "aws.kube
 var apigatewaydeploymentsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ApiGatewayDeployment"}
 
 // Get takes name of the apiGatewayDeployment, and returns the corresponding apiGatewayDeployment object, and an error if there is any.
-func (c *FakeApiGatewayDeployments) Get(name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayDeployment, err error) {
+func (c *FakeApiGatewayDeployments) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayDeployment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(apigatewaydeploymentsResource, c.ns, name), &v1alpha1.ApiGatewayDeployment{})
 
@@ -51,7 +53,7 @@ func (c *FakeApiGatewayDeployments) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of ApiGatewayDeployments that match those selectors.
-func (c *FakeApiGatewayDeployments) List(opts v1.ListOptions) (result *v1alpha1.ApiGatewayDeploymentList, err error) {
+func (c *FakeApiGatewayDeployments) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApiGatewayDeploymentList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(apigatewaydeploymentsResource, apigatewaydeploymentsKind, c.ns, opts), &v1alpha1.ApiGatewayDeploymentList{})
 
@@ -73,14 +75,14 @@ func (c *FakeApiGatewayDeployments) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested apiGatewayDeployments.
-func (c *FakeApiGatewayDeployments) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeApiGatewayDeployments) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(apigatewaydeploymentsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a apiGatewayDeployment and creates it.  Returns the server's representation of the apiGatewayDeployment, and an error, if there is any.
-func (c *FakeApiGatewayDeployments) Create(apiGatewayDeployment *v1alpha1.ApiGatewayDeployment) (result *v1alpha1.ApiGatewayDeployment, err error) {
+func (c *FakeApiGatewayDeployments) Create(ctx context.Context, apiGatewayDeployment *v1alpha1.ApiGatewayDeployment, opts v1.CreateOptions) (result *v1alpha1.ApiGatewayDeployment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(apigatewaydeploymentsResource, c.ns, apiGatewayDeployment), &v1alpha1.ApiGatewayDeployment{})
 
@@ -91,7 +93,7 @@ func (c *FakeApiGatewayDeployments) Create(apiGatewayDeployment *v1alpha1.ApiGat
 }
 
 // Update takes the representation of a apiGatewayDeployment and updates it. Returns the server's representation of the apiGatewayDeployment, and an error, if there is any.
-func (c *FakeApiGatewayDeployments) Update(apiGatewayDeployment *v1alpha1.ApiGatewayDeployment) (result *v1alpha1.ApiGatewayDeployment, err error) {
+func (c *FakeApiGatewayDeployments) Update(ctx context.Context, apiGatewayDeployment *v1alpha1.ApiGatewayDeployment, opts v1.UpdateOptions) (result *v1alpha1.ApiGatewayDeployment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(apigatewaydeploymentsResource, c.ns, apiGatewayDeployment), &v1alpha1.ApiGatewayDeployment{})
 
@@ -103,7 +105,7 @@ func (c *FakeApiGatewayDeployments) Update(apiGatewayDeployment *v1alpha1.ApiGat
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeApiGatewayDeployments) UpdateStatus(apiGatewayDeployment *v1alpha1.ApiGatewayDeployment) (*v1alpha1.ApiGatewayDeployment, error) {
+func (c *FakeApiGatewayDeployments) UpdateStatus(ctx context.Context, apiGatewayDeployment *v1alpha1.ApiGatewayDeployment, opts v1.UpdateOptions) (*v1alpha1.ApiGatewayDeployment, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(apigatewaydeploymentsResource, "status", c.ns, apiGatewayDeployment), &v1alpha1.ApiGatewayDeployment{})
 
@@ -114,7 +116,7 @@ func (c *FakeApiGatewayDeployments) UpdateStatus(apiGatewayDeployment *v1alpha1.
 }
 
 // Delete takes name of the apiGatewayDeployment and deletes it. Returns an error if one occurs.
-func (c *FakeApiGatewayDeployments) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeApiGatewayDeployments) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(apigatewaydeploymentsResource, c.ns, name), &v1alpha1.ApiGatewayDeployment{})
 
@@ -122,15 +124,15 @@ func (c *FakeApiGatewayDeployments) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeApiGatewayDeployments) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(apigatewaydeploymentsResource, c.ns, listOptions)
+func (c *FakeApiGatewayDeployments) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(apigatewaydeploymentsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ApiGatewayDeploymentList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched apiGatewayDeployment.
-func (c *FakeApiGatewayDeployments) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiGatewayDeployment, err error) {
+func (c *FakeApiGatewayDeployments) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiGatewayDeployment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(apigatewaydeploymentsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ApiGatewayDeployment{})
 

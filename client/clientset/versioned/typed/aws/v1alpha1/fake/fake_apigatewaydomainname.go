@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var apigatewaydomainnamesResource = schema.GroupVersionResource{Group: "aws.kube
 var apigatewaydomainnamesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ApiGatewayDomainName"}
 
 // Get takes name of the apiGatewayDomainName, and returns the corresponding apiGatewayDomainName object, and an error if there is any.
-func (c *FakeApiGatewayDomainNames) Get(name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayDomainName, err error) {
+func (c *FakeApiGatewayDomainNames) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayDomainName, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(apigatewaydomainnamesResource, c.ns, name), &v1alpha1.ApiGatewayDomainName{})
 
@@ -51,7 +53,7 @@ func (c *FakeApiGatewayDomainNames) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of ApiGatewayDomainNames that match those selectors.
-func (c *FakeApiGatewayDomainNames) List(opts v1.ListOptions) (result *v1alpha1.ApiGatewayDomainNameList, err error) {
+func (c *FakeApiGatewayDomainNames) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApiGatewayDomainNameList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(apigatewaydomainnamesResource, apigatewaydomainnamesKind, c.ns, opts), &v1alpha1.ApiGatewayDomainNameList{})
 
@@ -73,14 +75,14 @@ func (c *FakeApiGatewayDomainNames) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested apiGatewayDomainNames.
-func (c *FakeApiGatewayDomainNames) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeApiGatewayDomainNames) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(apigatewaydomainnamesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a apiGatewayDomainName and creates it.  Returns the server's representation of the apiGatewayDomainName, and an error, if there is any.
-func (c *FakeApiGatewayDomainNames) Create(apiGatewayDomainName *v1alpha1.ApiGatewayDomainName) (result *v1alpha1.ApiGatewayDomainName, err error) {
+func (c *FakeApiGatewayDomainNames) Create(ctx context.Context, apiGatewayDomainName *v1alpha1.ApiGatewayDomainName, opts v1.CreateOptions) (result *v1alpha1.ApiGatewayDomainName, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(apigatewaydomainnamesResource, c.ns, apiGatewayDomainName), &v1alpha1.ApiGatewayDomainName{})
 
@@ -91,7 +93,7 @@ func (c *FakeApiGatewayDomainNames) Create(apiGatewayDomainName *v1alpha1.ApiGat
 }
 
 // Update takes the representation of a apiGatewayDomainName and updates it. Returns the server's representation of the apiGatewayDomainName, and an error, if there is any.
-func (c *FakeApiGatewayDomainNames) Update(apiGatewayDomainName *v1alpha1.ApiGatewayDomainName) (result *v1alpha1.ApiGatewayDomainName, err error) {
+func (c *FakeApiGatewayDomainNames) Update(ctx context.Context, apiGatewayDomainName *v1alpha1.ApiGatewayDomainName, opts v1.UpdateOptions) (result *v1alpha1.ApiGatewayDomainName, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(apigatewaydomainnamesResource, c.ns, apiGatewayDomainName), &v1alpha1.ApiGatewayDomainName{})
 
@@ -103,7 +105,7 @@ func (c *FakeApiGatewayDomainNames) Update(apiGatewayDomainName *v1alpha1.ApiGat
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeApiGatewayDomainNames) UpdateStatus(apiGatewayDomainName *v1alpha1.ApiGatewayDomainName) (*v1alpha1.ApiGatewayDomainName, error) {
+func (c *FakeApiGatewayDomainNames) UpdateStatus(ctx context.Context, apiGatewayDomainName *v1alpha1.ApiGatewayDomainName, opts v1.UpdateOptions) (*v1alpha1.ApiGatewayDomainName, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(apigatewaydomainnamesResource, "status", c.ns, apiGatewayDomainName), &v1alpha1.ApiGatewayDomainName{})
 
@@ -114,7 +116,7 @@ func (c *FakeApiGatewayDomainNames) UpdateStatus(apiGatewayDomainName *v1alpha1.
 }
 
 // Delete takes name of the apiGatewayDomainName and deletes it. Returns an error if one occurs.
-func (c *FakeApiGatewayDomainNames) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeApiGatewayDomainNames) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(apigatewaydomainnamesResource, c.ns, name), &v1alpha1.ApiGatewayDomainName{})
 
@@ -122,15 +124,15 @@ func (c *FakeApiGatewayDomainNames) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeApiGatewayDomainNames) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(apigatewaydomainnamesResource, c.ns, listOptions)
+func (c *FakeApiGatewayDomainNames) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(apigatewaydomainnamesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ApiGatewayDomainNameList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched apiGatewayDomainName.
-func (c *FakeApiGatewayDomainNames) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiGatewayDomainName, err error) {
+func (c *FakeApiGatewayDomainNames) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiGatewayDomainName, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(apigatewaydomainnamesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ApiGatewayDomainName{})
 

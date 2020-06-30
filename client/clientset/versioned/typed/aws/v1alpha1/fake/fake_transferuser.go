@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var transferusersResource = schema.GroupVersionResource{Group: "aws.kubeform.com
 var transferusersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "TransferUser"}
 
 // Get takes name of the transferUser, and returns the corresponding transferUser object, and an error if there is any.
-func (c *FakeTransferUsers) Get(name string, options v1.GetOptions) (result *v1alpha1.TransferUser, err error) {
+func (c *FakeTransferUsers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.TransferUser, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(transferusersResource, c.ns, name), &v1alpha1.TransferUser{})
 
@@ -51,7 +53,7 @@ func (c *FakeTransferUsers) Get(name string, options v1.GetOptions) (result *v1a
 }
 
 // List takes label and field selectors, and returns the list of TransferUsers that match those selectors.
-func (c *FakeTransferUsers) List(opts v1.ListOptions) (result *v1alpha1.TransferUserList, err error) {
+func (c *FakeTransferUsers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.TransferUserList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(transferusersResource, transferusersKind, c.ns, opts), &v1alpha1.TransferUserList{})
 
@@ -73,14 +75,14 @@ func (c *FakeTransferUsers) List(opts v1.ListOptions) (result *v1alpha1.Transfer
 }
 
 // Watch returns a watch.Interface that watches the requested transferUsers.
-func (c *FakeTransferUsers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeTransferUsers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(transferusersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a transferUser and creates it.  Returns the server's representation of the transferUser, and an error, if there is any.
-func (c *FakeTransferUsers) Create(transferUser *v1alpha1.TransferUser) (result *v1alpha1.TransferUser, err error) {
+func (c *FakeTransferUsers) Create(ctx context.Context, transferUser *v1alpha1.TransferUser, opts v1.CreateOptions) (result *v1alpha1.TransferUser, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(transferusersResource, c.ns, transferUser), &v1alpha1.TransferUser{})
 
@@ -91,7 +93,7 @@ func (c *FakeTransferUsers) Create(transferUser *v1alpha1.TransferUser) (result 
 }
 
 // Update takes the representation of a transferUser and updates it. Returns the server's representation of the transferUser, and an error, if there is any.
-func (c *FakeTransferUsers) Update(transferUser *v1alpha1.TransferUser) (result *v1alpha1.TransferUser, err error) {
+func (c *FakeTransferUsers) Update(ctx context.Context, transferUser *v1alpha1.TransferUser, opts v1.UpdateOptions) (result *v1alpha1.TransferUser, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(transferusersResource, c.ns, transferUser), &v1alpha1.TransferUser{})
 
@@ -103,7 +105,7 @@ func (c *FakeTransferUsers) Update(transferUser *v1alpha1.TransferUser) (result 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeTransferUsers) UpdateStatus(transferUser *v1alpha1.TransferUser) (*v1alpha1.TransferUser, error) {
+func (c *FakeTransferUsers) UpdateStatus(ctx context.Context, transferUser *v1alpha1.TransferUser, opts v1.UpdateOptions) (*v1alpha1.TransferUser, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(transferusersResource, "status", c.ns, transferUser), &v1alpha1.TransferUser{})
 
@@ -114,7 +116,7 @@ func (c *FakeTransferUsers) UpdateStatus(transferUser *v1alpha1.TransferUser) (*
 }
 
 // Delete takes name of the transferUser and deletes it. Returns an error if one occurs.
-func (c *FakeTransferUsers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeTransferUsers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(transferusersResource, c.ns, name), &v1alpha1.TransferUser{})
 
@@ -122,15 +124,15 @@ func (c *FakeTransferUsers) Delete(name string, options *v1.DeleteOptions) error
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeTransferUsers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(transferusersResource, c.ns, listOptions)
+func (c *FakeTransferUsers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(transferusersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.TransferUserList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched transferUser.
-func (c *FakeTransferUsers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.TransferUser, err error) {
+func (c *FakeTransferUsers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.TransferUser, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(transferusersResource, c.ns, name, pt, data, subresources...), &v1alpha1.TransferUser{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var gluecatalogtablesResource = schema.GroupVersionResource{Group: "aws.kubeform
 var gluecatalogtablesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "GlueCatalogTable"}
 
 // Get takes name of the glueCatalogTable, and returns the corresponding glueCatalogTable object, and an error if there is any.
-func (c *FakeGlueCatalogTables) Get(name string, options v1.GetOptions) (result *v1alpha1.GlueCatalogTable, err error) {
+func (c *FakeGlueCatalogTables) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.GlueCatalogTable, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(gluecatalogtablesResource, c.ns, name), &v1alpha1.GlueCatalogTable{})
 
@@ -51,7 +53,7 @@ func (c *FakeGlueCatalogTables) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of GlueCatalogTables that match those selectors.
-func (c *FakeGlueCatalogTables) List(opts v1.ListOptions) (result *v1alpha1.GlueCatalogTableList, err error) {
+func (c *FakeGlueCatalogTables) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.GlueCatalogTableList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(gluecatalogtablesResource, gluecatalogtablesKind, c.ns, opts), &v1alpha1.GlueCatalogTableList{})
 
@@ -73,14 +75,14 @@ func (c *FakeGlueCatalogTables) List(opts v1.ListOptions) (result *v1alpha1.Glue
 }
 
 // Watch returns a watch.Interface that watches the requested glueCatalogTables.
-func (c *FakeGlueCatalogTables) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeGlueCatalogTables) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(gluecatalogtablesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a glueCatalogTable and creates it.  Returns the server's representation of the glueCatalogTable, and an error, if there is any.
-func (c *FakeGlueCatalogTables) Create(glueCatalogTable *v1alpha1.GlueCatalogTable) (result *v1alpha1.GlueCatalogTable, err error) {
+func (c *FakeGlueCatalogTables) Create(ctx context.Context, glueCatalogTable *v1alpha1.GlueCatalogTable, opts v1.CreateOptions) (result *v1alpha1.GlueCatalogTable, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(gluecatalogtablesResource, c.ns, glueCatalogTable), &v1alpha1.GlueCatalogTable{})
 
@@ -91,7 +93,7 @@ func (c *FakeGlueCatalogTables) Create(glueCatalogTable *v1alpha1.GlueCatalogTab
 }
 
 // Update takes the representation of a glueCatalogTable and updates it. Returns the server's representation of the glueCatalogTable, and an error, if there is any.
-func (c *FakeGlueCatalogTables) Update(glueCatalogTable *v1alpha1.GlueCatalogTable) (result *v1alpha1.GlueCatalogTable, err error) {
+func (c *FakeGlueCatalogTables) Update(ctx context.Context, glueCatalogTable *v1alpha1.GlueCatalogTable, opts v1.UpdateOptions) (result *v1alpha1.GlueCatalogTable, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(gluecatalogtablesResource, c.ns, glueCatalogTable), &v1alpha1.GlueCatalogTable{})
 
@@ -103,7 +105,7 @@ func (c *FakeGlueCatalogTables) Update(glueCatalogTable *v1alpha1.GlueCatalogTab
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeGlueCatalogTables) UpdateStatus(glueCatalogTable *v1alpha1.GlueCatalogTable) (*v1alpha1.GlueCatalogTable, error) {
+func (c *FakeGlueCatalogTables) UpdateStatus(ctx context.Context, glueCatalogTable *v1alpha1.GlueCatalogTable, opts v1.UpdateOptions) (*v1alpha1.GlueCatalogTable, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(gluecatalogtablesResource, "status", c.ns, glueCatalogTable), &v1alpha1.GlueCatalogTable{})
 
@@ -114,7 +116,7 @@ func (c *FakeGlueCatalogTables) UpdateStatus(glueCatalogTable *v1alpha1.GlueCata
 }
 
 // Delete takes name of the glueCatalogTable and deletes it. Returns an error if one occurs.
-func (c *FakeGlueCatalogTables) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeGlueCatalogTables) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(gluecatalogtablesResource, c.ns, name), &v1alpha1.GlueCatalogTable{})
 
@@ -122,15 +124,15 @@ func (c *FakeGlueCatalogTables) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeGlueCatalogTables) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(gluecatalogtablesResource, c.ns, listOptions)
+func (c *FakeGlueCatalogTables) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(gluecatalogtablesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.GlueCatalogTableList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched glueCatalogTable.
-func (c *FakeGlueCatalogTables) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.GlueCatalogTable, err error) {
+func (c *FakeGlueCatalogTables) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.GlueCatalogTable, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(gluecatalogtablesResource, c.ns, name, pt, data, subresources...), &v1alpha1.GlueCatalogTable{})
 

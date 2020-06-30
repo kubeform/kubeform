@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dataprocclusteriambindingsResource = schema.GroupVersionResource{Group: "goo
 var dataprocclusteriambindingsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "DataprocClusterIamBinding"}
 
 // Get takes name of the dataprocClusterIamBinding, and returns the corresponding dataprocClusterIamBinding object, and an error if there is any.
-func (c *FakeDataprocClusterIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.DataprocClusterIamBinding, err error) {
+func (c *FakeDataprocClusterIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DataprocClusterIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dataprocclusteriambindingsResource, c.ns, name), &v1alpha1.DataprocClusterIamBinding{})
 
@@ -51,7 +53,7 @@ func (c *FakeDataprocClusterIamBindings) Get(name string, options v1.GetOptions)
 }
 
 // List takes label and field selectors, and returns the list of DataprocClusterIamBindings that match those selectors.
-func (c *FakeDataprocClusterIamBindings) List(opts v1.ListOptions) (result *v1alpha1.DataprocClusterIamBindingList, err error) {
+func (c *FakeDataprocClusterIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DataprocClusterIamBindingList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dataprocclusteriambindingsResource, dataprocclusteriambindingsKind, c.ns, opts), &v1alpha1.DataprocClusterIamBindingList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDataprocClusterIamBindings) List(opts v1.ListOptions) (result *v1al
 }
 
 // Watch returns a watch.Interface that watches the requested dataprocClusterIamBindings.
-func (c *FakeDataprocClusterIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDataprocClusterIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dataprocclusteriambindingsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dataprocClusterIamBinding and creates it.  Returns the server's representation of the dataprocClusterIamBinding, and an error, if there is any.
-func (c *FakeDataprocClusterIamBindings) Create(dataprocClusterIamBinding *v1alpha1.DataprocClusterIamBinding) (result *v1alpha1.DataprocClusterIamBinding, err error) {
+func (c *FakeDataprocClusterIamBindings) Create(ctx context.Context, dataprocClusterIamBinding *v1alpha1.DataprocClusterIamBinding, opts v1.CreateOptions) (result *v1alpha1.DataprocClusterIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dataprocclusteriambindingsResource, c.ns, dataprocClusterIamBinding), &v1alpha1.DataprocClusterIamBinding{})
 
@@ -91,7 +93,7 @@ func (c *FakeDataprocClusterIamBindings) Create(dataprocClusterIamBinding *v1alp
 }
 
 // Update takes the representation of a dataprocClusterIamBinding and updates it. Returns the server's representation of the dataprocClusterIamBinding, and an error, if there is any.
-func (c *FakeDataprocClusterIamBindings) Update(dataprocClusterIamBinding *v1alpha1.DataprocClusterIamBinding) (result *v1alpha1.DataprocClusterIamBinding, err error) {
+func (c *FakeDataprocClusterIamBindings) Update(ctx context.Context, dataprocClusterIamBinding *v1alpha1.DataprocClusterIamBinding, opts v1.UpdateOptions) (result *v1alpha1.DataprocClusterIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dataprocclusteriambindingsResource, c.ns, dataprocClusterIamBinding), &v1alpha1.DataprocClusterIamBinding{})
 
@@ -103,7 +105,7 @@ func (c *FakeDataprocClusterIamBindings) Update(dataprocClusterIamBinding *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDataprocClusterIamBindings) UpdateStatus(dataprocClusterIamBinding *v1alpha1.DataprocClusterIamBinding) (*v1alpha1.DataprocClusterIamBinding, error) {
+func (c *FakeDataprocClusterIamBindings) UpdateStatus(ctx context.Context, dataprocClusterIamBinding *v1alpha1.DataprocClusterIamBinding, opts v1.UpdateOptions) (*v1alpha1.DataprocClusterIamBinding, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dataprocclusteriambindingsResource, "status", c.ns, dataprocClusterIamBinding), &v1alpha1.DataprocClusterIamBinding{})
 
@@ -114,7 +116,7 @@ func (c *FakeDataprocClusterIamBindings) UpdateStatus(dataprocClusterIamBinding 
 }
 
 // Delete takes name of the dataprocClusterIamBinding and deletes it. Returns an error if one occurs.
-func (c *FakeDataprocClusterIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDataprocClusterIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dataprocclusteriambindingsResource, c.ns, name), &v1alpha1.DataprocClusterIamBinding{})
 
@@ -122,15 +124,15 @@ func (c *FakeDataprocClusterIamBindings) Delete(name string, options *v1.DeleteO
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDataprocClusterIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dataprocclusteriambindingsResource, c.ns, listOptions)
+func (c *FakeDataprocClusterIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dataprocclusteriambindingsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DataprocClusterIamBindingList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dataprocClusterIamBinding.
-func (c *FakeDataprocClusterIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataprocClusterIamBinding, err error) {
+func (c *FakeDataprocClusterIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataprocClusterIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dataprocclusteriambindingsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DataprocClusterIamBinding{})
 

@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type EventhubAuthorizationRulesGetter interface {
 
 // EventhubAuthorizationRuleInterface has methods to work with EventhubAuthorizationRule resources.
 type EventhubAuthorizationRuleInterface interface {
-	Create(*v1alpha1.EventhubAuthorizationRule) (*v1alpha1.EventhubAuthorizationRule, error)
-	Update(*v1alpha1.EventhubAuthorizationRule) (*v1alpha1.EventhubAuthorizationRule, error)
-	UpdateStatus(*v1alpha1.EventhubAuthorizationRule) (*v1alpha1.EventhubAuthorizationRule, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.EventhubAuthorizationRule, error)
-	List(opts v1.ListOptions) (*v1alpha1.EventhubAuthorizationRuleList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EventhubAuthorizationRule, err error)
+	Create(ctx context.Context, eventhubAuthorizationRule *v1alpha1.EventhubAuthorizationRule, opts v1.CreateOptions) (*v1alpha1.EventhubAuthorizationRule, error)
+	Update(ctx context.Context, eventhubAuthorizationRule *v1alpha1.EventhubAuthorizationRule, opts v1.UpdateOptions) (*v1alpha1.EventhubAuthorizationRule, error)
+	UpdateStatus(ctx context.Context, eventhubAuthorizationRule *v1alpha1.EventhubAuthorizationRule, opts v1.UpdateOptions) (*v1alpha1.EventhubAuthorizationRule, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.EventhubAuthorizationRule, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.EventhubAuthorizationRuleList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EventhubAuthorizationRule, err error)
 	EventhubAuthorizationRuleExpansion
 }
 
@@ -65,20 +66,20 @@ func newEventhubAuthorizationRules(c *AzurermV1alpha1Client, namespace string) *
 }
 
 // Get takes name of the eventhubAuthorizationRule, and returns the corresponding eventhubAuthorizationRule object, and an error if there is any.
-func (c *eventhubAuthorizationRules) Get(name string, options v1.GetOptions) (result *v1alpha1.EventhubAuthorizationRule, err error) {
+func (c *eventhubAuthorizationRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.EventhubAuthorizationRule, err error) {
 	result = &v1alpha1.EventhubAuthorizationRule{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("eventhubauthorizationrules").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of EventhubAuthorizationRules that match those selectors.
-func (c *eventhubAuthorizationRules) List(opts v1.ListOptions) (result *v1alpha1.EventhubAuthorizationRuleList, err error) {
+func (c *eventhubAuthorizationRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.EventhubAuthorizationRuleList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *eventhubAuthorizationRules) List(opts v1.ListOptions) (result *v1alpha1
 		Resource("eventhubauthorizationrules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested eventhubAuthorizationRules.
-func (c *eventhubAuthorizationRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *eventhubAuthorizationRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *eventhubAuthorizationRules) Watch(opts v1.ListOptions) (watch.Interface
 		Resource("eventhubauthorizationrules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a eventhubAuthorizationRule and creates it.  Returns the server's representation of the eventhubAuthorizationRule, and an error, if there is any.
-func (c *eventhubAuthorizationRules) Create(eventhubAuthorizationRule *v1alpha1.EventhubAuthorizationRule) (result *v1alpha1.EventhubAuthorizationRule, err error) {
+func (c *eventhubAuthorizationRules) Create(ctx context.Context, eventhubAuthorizationRule *v1alpha1.EventhubAuthorizationRule, opts v1.CreateOptions) (result *v1alpha1.EventhubAuthorizationRule, err error) {
 	result = &v1alpha1.EventhubAuthorizationRule{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("eventhubauthorizationrules").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(eventhubAuthorizationRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a eventhubAuthorizationRule and updates it. Returns the server's representation of the eventhubAuthorizationRule, and an error, if there is any.
-func (c *eventhubAuthorizationRules) Update(eventhubAuthorizationRule *v1alpha1.EventhubAuthorizationRule) (result *v1alpha1.EventhubAuthorizationRule, err error) {
+func (c *eventhubAuthorizationRules) Update(ctx context.Context, eventhubAuthorizationRule *v1alpha1.EventhubAuthorizationRule, opts v1.UpdateOptions) (result *v1alpha1.EventhubAuthorizationRule, err error) {
 	result = &v1alpha1.EventhubAuthorizationRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("eventhubauthorizationrules").
 		Name(eventhubAuthorizationRule.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(eventhubAuthorizationRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *eventhubAuthorizationRules) UpdateStatus(eventhubAuthorizationRule *v1alpha1.EventhubAuthorizationRule) (result *v1alpha1.EventhubAuthorizationRule, err error) {
+func (c *eventhubAuthorizationRules) UpdateStatus(ctx context.Context, eventhubAuthorizationRule *v1alpha1.EventhubAuthorizationRule, opts v1.UpdateOptions) (result *v1alpha1.EventhubAuthorizationRule, err error) {
 	result = &v1alpha1.EventhubAuthorizationRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("eventhubauthorizationrules").
 		Name(eventhubAuthorizationRule.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(eventhubAuthorizationRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the eventhubAuthorizationRule and deletes it. Returns an error if one occurs.
-func (c *eventhubAuthorizationRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *eventhubAuthorizationRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("eventhubauthorizationrules").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *eventhubAuthorizationRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *eventhubAuthorizationRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("eventhubauthorizationrules").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched eventhubAuthorizationRule.
-func (c *eventhubAuthorizationRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EventhubAuthorizationRule, err error) {
+func (c *eventhubAuthorizationRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EventhubAuthorizationRule, err error) {
 	result = &v1alpha1.EventhubAuthorizationRule{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("eventhubauthorizationrules").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

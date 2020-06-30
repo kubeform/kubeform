@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	time "time"
 
 	linodev1alpha1 "kubeform.dev/kubeform/apis/linode/v1alpha1"
@@ -62,13 +63,13 @@ func NewFilteredLkeClusterInformer(client versioned.Interface, namespace string,
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.LinodeV1alpha1().LkeClusters(namespace).List(options)
+				return client.LinodeV1alpha1().LkeClusters(namespace).List(context.TODO(), options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.LinodeV1alpha1().LkeClusters(namespace).Watch(options)
+				return client.LinodeV1alpha1().LkeClusters(namespace).Watch(context.TODO(), options)
 			},
 		},
 		&linodev1alpha1.LkeCluster{},

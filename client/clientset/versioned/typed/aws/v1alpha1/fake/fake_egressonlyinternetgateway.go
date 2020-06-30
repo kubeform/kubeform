@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var egressonlyinternetgatewaysResource = schema.GroupVersionResource{Group: "aws
 var egressonlyinternetgatewaysKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "EgressOnlyInternetGateway"}
 
 // Get takes name of the egressOnlyInternetGateway, and returns the corresponding egressOnlyInternetGateway object, and an error if there is any.
-func (c *FakeEgressOnlyInternetGateways) Get(name string, options v1.GetOptions) (result *v1alpha1.EgressOnlyInternetGateway, err error) {
+func (c *FakeEgressOnlyInternetGateways) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.EgressOnlyInternetGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(egressonlyinternetgatewaysResource, c.ns, name), &v1alpha1.EgressOnlyInternetGateway{})
 
@@ -51,7 +53,7 @@ func (c *FakeEgressOnlyInternetGateways) Get(name string, options v1.GetOptions)
 }
 
 // List takes label and field selectors, and returns the list of EgressOnlyInternetGateways that match those selectors.
-func (c *FakeEgressOnlyInternetGateways) List(opts v1.ListOptions) (result *v1alpha1.EgressOnlyInternetGatewayList, err error) {
+func (c *FakeEgressOnlyInternetGateways) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.EgressOnlyInternetGatewayList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(egressonlyinternetgatewaysResource, egressonlyinternetgatewaysKind, c.ns, opts), &v1alpha1.EgressOnlyInternetGatewayList{})
 
@@ -73,14 +75,14 @@ func (c *FakeEgressOnlyInternetGateways) List(opts v1.ListOptions) (result *v1al
 }
 
 // Watch returns a watch.Interface that watches the requested egressOnlyInternetGateways.
-func (c *FakeEgressOnlyInternetGateways) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeEgressOnlyInternetGateways) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(egressonlyinternetgatewaysResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a egressOnlyInternetGateway and creates it.  Returns the server's representation of the egressOnlyInternetGateway, and an error, if there is any.
-func (c *FakeEgressOnlyInternetGateways) Create(egressOnlyInternetGateway *v1alpha1.EgressOnlyInternetGateway) (result *v1alpha1.EgressOnlyInternetGateway, err error) {
+func (c *FakeEgressOnlyInternetGateways) Create(ctx context.Context, egressOnlyInternetGateway *v1alpha1.EgressOnlyInternetGateway, opts v1.CreateOptions) (result *v1alpha1.EgressOnlyInternetGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(egressonlyinternetgatewaysResource, c.ns, egressOnlyInternetGateway), &v1alpha1.EgressOnlyInternetGateway{})
 
@@ -91,7 +93,7 @@ func (c *FakeEgressOnlyInternetGateways) Create(egressOnlyInternetGateway *v1alp
 }
 
 // Update takes the representation of a egressOnlyInternetGateway and updates it. Returns the server's representation of the egressOnlyInternetGateway, and an error, if there is any.
-func (c *FakeEgressOnlyInternetGateways) Update(egressOnlyInternetGateway *v1alpha1.EgressOnlyInternetGateway) (result *v1alpha1.EgressOnlyInternetGateway, err error) {
+func (c *FakeEgressOnlyInternetGateways) Update(ctx context.Context, egressOnlyInternetGateway *v1alpha1.EgressOnlyInternetGateway, opts v1.UpdateOptions) (result *v1alpha1.EgressOnlyInternetGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(egressonlyinternetgatewaysResource, c.ns, egressOnlyInternetGateway), &v1alpha1.EgressOnlyInternetGateway{})
 
@@ -103,7 +105,7 @@ func (c *FakeEgressOnlyInternetGateways) Update(egressOnlyInternetGateway *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeEgressOnlyInternetGateways) UpdateStatus(egressOnlyInternetGateway *v1alpha1.EgressOnlyInternetGateway) (*v1alpha1.EgressOnlyInternetGateway, error) {
+func (c *FakeEgressOnlyInternetGateways) UpdateStatus(ctx context.Context, egressOnlyInternetGateway *v1alpha1.EgressOnlyInternetGateway, opts v1.UpdateOptions) (*v1alpha1.EgressOnlyInternetGateway, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(egressonlyinternetgatewaysResource, "status", c.ns, egressOnlyInternetGateway), &v1alpha1.EgressOnlyInternetGateway{})
 
@@ -114,7 +116,7 @@ func (c *FakeEgressOnlyInternetGateways) UpdateStatus(egressOnlyInternetGateway 
 }
 
 // Delete takes name of the egressOnlyInternetGateway and deletes it. Returns an error if one occurs.
-func (c *FakeEgressOnlyInternetGateways) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeEgressOnlyInternetGateways) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(egressonlyinternetgatewaysResource, c.ns, name), &v1alpha1.EgressOnlyInternetGateway{})
 
@@ -122,15 +124,15 @@ func (c *FakeEgressOnlyInternetGateways) Delete(name string, options *v1.DeleteO
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeEgressOnlyInternetGateways) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(egressonlyinternetgatewaysResource, c.ns, listOptions)
+func (c *FakeEgressOnlyInternetGateways) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(egressonlyinternetgatewaysResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.EgressOnlyInternetGatewayList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched egressOnlyInternetGateway.
-func (c *FakeEgressOnlyInternetGateways) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EgressOnlyInternetGateway, err error) {
+func (c *FakeEgressOnlyInternetGateways) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EgressOnlyInternetGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(egressonlyinternetgatewaysResource, c.ns, name, pt, data, subresources...), &v1alpha1.EgressOnlyInternetGateway{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var codedeploydeploymentconfigsResource = schema.GroupVersionResource{Group: "aw
 var codedeploydeploymentconfigsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "CodedeployDeploymentConfig"}
 
 // Get takes name of the codedeployDeploymentConfig, and returns the corresponding codedeployDeploymentConfig object, and an error if there is any.
-func (c *FakeCodedeployDeploymentConfigs) Get(name string, options v1.GetOptions) (result *v1alpha1.CodedeployDeploymentConfig, err error) {
+func (c *FakeCodedeployDeploymentConfigs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CodedeployDeploymentConfig, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(codedeploydeploymentconfigsResource, c.ns, name), &v1alpha1.CodedeployDeploymentConfig{})
 
@@ -51,7 +53,7 @@ func (c *FakeCodedeployDeploymentConfigs) Get(name string, options v1.GetOptions
 }
 
 // List takes label and field selectors, and returns the list of CodedeployDeploymentConfigs that match those selectors.
-func (c *FakeCodedeployDeploymentConfigs) List(opts v1.ListOptions) (result *v1alpha1.CodedeployDeploymentConfigList, err error) {
+func (c *FakeCodedeployDeploymentConfigs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CodedeployDeploymentConfigList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(codedeploydeploymentconfigsResource, codedeploydeploymentconfigsKind, c.ns, opts), &v1alpha1.CodedeployDeploymentConfigList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCodedeployDeploymentConfigs) List(opts v1.ListOptions) (result *v1a
 }
 
 // Watch returns a watch.Interface that watches the requested codedeployDeploymentConfigs.
-func (c *FakeCodedeployDeploymentConfigs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCodedeployDeploymentConfigs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(codedeploydeploymentconfigsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a codedeployDeploymentConfig and creates it.  Returns the server's representation of the codedeployDeploymentConfig, and an error, if there is any.
-func (c *FakeCodedeployDeploymentConfigs) Create(codedeployDeploymentConfig *v1alpha1.CodedeployDeploymentConfig) (result *v1alpha1.CodedeployDeploymentConfig, err error) {
+func (c *FakeCodedeployDeploymentConfigs) Create(ctx context.Context, codedeployDeploymentConfig *v1alpha1.CodedeployDeploymentConfig, opts v1.CreateOptions) (result *v1alpha1.CodedeployDeploymentConfig, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(codedeploydeploymentconfigsResource, c.ns, codedeployDeploymentConfig), &v1alpha1.CodedeployDeploymentConfig{})
 
@@ -91,7 +93,7 @@ func (c *FakeCodedeployDeploymentConfigs) Create(codedeployDeploymentConfig *v1a
 }
 
 // Update takes the representation of a codedeployDeploymentConfig and updates it. Returns the server's representation of the codedeployDeploymentConfig, and an error, if there is any.
-func (c *FakeCodedeployDeploymentConfigs) Update(codedeployDeploymentConfig *v1alpha1.CodedeployDeploymentConfig) (result *v1alpha1.CodedeployDeploymentConfig, err error) {
+func (c *FakeCodedeployDeploymentConfigs) Update(ctx context.Context, codedeployDeploymentConfig *v1alpha1.CodedeployDeploymentConfig, opts v1.UpdateOptions) (result *v1alpha1.CodedeployDeploymentConfig, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(codedeploydeploymentconfigsResource, c.ns, codedeployDeploymentConfig), &v1alpha1.CodedeployDeploymentConfig{})
 
@@ -103,7 +105,7 @@ func (c *FakeCodedeployDeploymentConfigs) Update(codedeployDeploymentConfig *v1a
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCodedeployDeploymentConfigs) UpdateStatus(codedeployDeploymentConfig *v1alpha1.CodedeployDeploymentConfig) (*v1alpha1.CodedeployDeploymentConfig, error) {
+func (c *FakeCodedeployDeploymentConfigs) UpdateStatus(ctx context.Context, codedeployDeploymentConfig *v1alpha1.CodedeployDeploymentConfig, opts v1.UpdateOptions) (*v1alpha1.CodedeployDeploymentConfig, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(codedeploydeploymentconfigsResource, "status", c.ns, codedeployDeploymentConfig), &v1alpha1.CodedeployDeploymentConfig{})
 
@@ -114,7 +116,7 @@ func (c *FakeCodedeployDeploymentConfigs) UpdateStatus(codedeployDeploymentConfi
 }
 
 // Delete takes name of the codedeployDeploymentConfig and deletes it. Returns an error if one occurs.
-func (c *FakeCodedeployDeploymentConfigs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCodedeployDeploymentConfigs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(codedeploydeploymentconfigsResource, c.ns, name), &v1alpha1.CodedeployDeploymentConfig{})
 
@@ -122,15 +124,15 @@ func (c *FakeCodedeployDeploymentConfigs) Delete(name string, options *v1.Delete
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCodedeployDeploymentConfigs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(codedeploydeploymentconfigsResource, c.ns, listOptions)
+func (c *FakeCodedeployDeploymentConfigs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(codedeploydeploymentconfigsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CodedeployDeploymentConfigList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched codedeployDeploymentConfig.
-func (c *FakeCodedeployDeploymentConfigs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CodedeployDeploymentConfig, err error) {
+func (c *FakeCodedeployDeploymentConfigs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CodedeployDeploymentConfig, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(codedeploydeploymentconfigsResource, c.ns, name, pt, data, subresources...), &v1alpha1.CodedeployDeploymentConfig{})
 

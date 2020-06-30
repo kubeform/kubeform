@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dmsreplicationtasksResource = schema.GroupVersionResource{Group: "aws.kubefo
 var dmsreplicationtasksKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DmsReplicationTask"}
 
 // Get takes name of the dmsReplicationTask, and returns the corresponding dmsReplicationTask object, and an error if there is any.
-func (c *FakeDmsReplicationTasks) Get(name string, options v1.GetOptions) (result *v1alpha1.DmsReplicationTask, err error) {
+func (c *FakeDmsReplicationTasks) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DmsReplicationTask, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dmsreplicationtasksResource, c.ns, name), &v1alpha1.DmsReplicationTask{})
 
@@ -51,7 +53,7 @@ func (c *FakeDmsReplicationTasks) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of DmsReplicationTasks that match those selectors.
-func (c *FakeDmsReplicationTasks) List(opts v1.ListOptions) (result *v1alpha1.DmsReplicationTaskList, err error) {
+func (c *FakeDmsReplicationTasks) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DmsReplicationTaskList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dmsreplicationtasksResource, dmsreplicationtasksKind, c.ns, opts), &v1alpha1.DmsReplicationTaskList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDmsReplicationTasks) List(opts v1.ListOptions) (result *v1alpha1.Dm
 }
 
 // Watch returns a watch.Interface that watches the requested dmsReplicationTasks.
-func (c *FakeDmsReplicationTasks) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDmsReplicationTasks) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dmsreplicationtasksResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dmsReplicationTask and creates it.  Returns the server's representation of the dmsReplicationTask, and an error, if there is any.
-func (c *FakeDmsReplicationTasks) Create(dmsReplicationTask *v1alpha1.DmsReplicationTask) (result *v1alpha1.DmsReplicationTask, err error) {
+func (c *FakeDmsReplicationTasks) Create(ctx context.Context, dmsReplicationTask *v1alpha1.DmsReplicationTask, opts v1.CreateOptions) (result *v1alpha1.DmsReplicationTask, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dmsreplicationtasksResource, c.ns, dmsReplicationTask), &v1alpha1.DmsReplicationTask{})
 
@@ -91,7 +93,7 @@ func (c *FakeDmsReplicationTasks) Create(dmsReplicationTask *v1alpha1.DmsReplica
 }
 
 // Update takes the representation of a dmsReplicationTask and updates it. Returns the server's representation of the dmsReplicationTask, and an error, if there is any.
-func (c *FakeDmsReplicationTasks) Update(dmsReplicationTask *v1alpha1.DmsReplicationTask) (result *v1alpha1.DmsReplicationTask, err error) {
+func (c *FakeDmsReplicationTasks) Update(ctx context.Context, dmsReplicationTask *v1alpha1.DmsReplicationTask, opts v1.UpdateOptions) (result *v1alpha1.DmsReplicationTask, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dmsreplicationtasksResource, c.ns, dmsReplicationTask), &v1alpha1.DmsReplicationTask{})
 
@@ -103,7 +105,7 @@ func (c *FakeDmsReplicationTasks) Update(dmsReplicationTask *v1alpha1.DmsReplica
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDmsReplicationTasks) UpdateStatus(dmsReplicationTask *v1alpha1.DmsReplicationTask) (*v1alpha1.DmsReplicationTask, error) {
+func (c *FakeDmsReplicationTasks) UpdateStatus(ctx context.Context, dmsReplicationTask *v1alpha1.DmsReplicationTask, opts v1.UpdateOptions) (*v1alpha1.DmsReplicationTask, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dmsreplicationtasksResource, "status", c.ns, dmsReplicationTask), &v1alpha1.DmsReplicationTask{})
 
@@ -114,7 +116,7 @@ func (c *FakeDmsReplicationTasks) UpdateStatus(dmsReplicationTask *v1alpha1.DmsR
 }
 
 // Delete takes name of the dmsReplicationTask and deletes it. Returns an error if one occurs.
-func (c *FakeDmsReplicationTasks) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDmsReplicationTasks) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dmsreplicationtasksResource, c.ns, name), &v1alpha1.DmsReplicationTask{})
 
@@ -122,15 +124,15 @@ func (c *FakeDmsReplicationTasks) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDmsReplicationTasks) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dmsreplicationtasksResource, c.ns, listOptions)
+func (c *FakeDmsReplicationTasks) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dmsreplicationtasksResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DmsReplicationTaskList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dmsReplicationTask.
-func (c *FakeDmsReplicationTasks) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DmsReplicationTask, err error) {
+func (c *FakeDmsReplicationTasks) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DmsReplicationTask, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dmsreplicationtasksResource, c.ns, name, pt, data, subresources...), &v1alpha1.DmsReplicationTask{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var mysqlconfigurationsResource = schema.GroupVersionResource{Group: "azurerm.ku
 var mysqlconfigurationsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "MysqlConfiguration"}
 
 // Get takes name of the mysqlConfiguration, and returns the corresponding mysqlConfiguration object, and an error if there is any.
-func (c *FakeMysqlConfigurations) Get(name string, options v1.GetOptions) (result *v1alpha1.MysqlConfiguration, err error) {
+func (c *FakeMysqlConfigurations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.MysqlConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(mysqlconfigurationsResource, c.ns, name), &v1alpha1.MysqlConfiguration{})
 
@@ -51,7 +53,7 @@ func (c *FakeMysqlConfigurations) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of MysqlConfigurations that match those selectors.
-func (c *FakeMysqlConfigurations) List(opts v1.ListOptions) (result *v1alpha1.MysqlConfigurationList, err error) {
+func (c *FakeMysqlConfigurations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.MysqlConfigurationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(mysqlconfigurationsResource, mysqlconfigurationsKind, c.ns, opts), &v1alpha1.MysqlConfigurationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeMysqlConfigurations) List(opts v1.ListOptions) (result *v1alpha1.My
 }
 
 // Watch returns a watch.Interface that watches the requested mysqlConfigurations.
-func (c *FakeMysqlConfigurations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeMysqlConfigurations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(mysqlconfigurationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a mysqlConfiguration and creates it.  Returns the server's representation of the mysqlConfiguration, and an error, if there is any.
-func (c *FakeMysqlConfigurations) Create(mysqlConfiguration *v1alpha1.MysqlConfiguration) (result *v1alpha1.MysqlConfiguration, err error) {
+func (c *FakeMysqlConfigurations) Create(ctx context.Context, mysqlConfiguration *v1alpha1.MysqlConfiguration, opts v1.CreateOptions) (result *v1alpha1.MysqlConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(mysqlconfigurationsResource, c.ns, mysqlConfiguration), &v1alpha1.MysqlConfiguration{})
 
@@ -91,7 +93,7 @@ func (c *FakeMysqlConfigurations) Create(mysqlConfiguration *v1alpha1.MysqlConfi
 }
 
 // Update takes the representation of a mysqlConfiguration and updates it. Returns the server's representation of the mysqlConfiguration, and an error, if there is any.
-func (c *FakeMysqlConfigurations) Update(mysqlConfiguration *v1alpha1.MysqlConfiguration) (result *v1alpha1.MysqlConfiguration, err error) {
+func (c *FakeMysqlConfigurations) Update(ctx context.Context, mysqlConfiguration *v1alpha1.MysqlConfiguration, opts v1.UpdateOptions) (result *v1alpha1.MysqlConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(mysqlconfigurationsResource, c.ns, mysqlConfiguration), &v1alpha1.MysqlConfiguration{})
 
@@ -103,7 +105,7 @@ func (c *FakeMysqlConfigurations) Update(mysqlConfiguration *v1alpha1.MysqlConfi
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeMysqlConfigurations) UpdateStatus(mysqlConfiguration *v1alpha1.MysqlConfiguration) (*v1alpha1.MysqlConfiguration, error) {
+func (c *FakeMysqlConfigurations) UpdateStatus(ctx context.Context, mysqlConfiguration *v1alpha1.MysqlConfiguration, opts v1.UpdateOptions) (*v1alpha1.MysqlConfiguration, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(mysqlconfigurationsResource, "status", c.ns, mysqlConfiguration), &v1alpha1.MysqlConfiguration{})
 
@@ -114,7 +116,7 @@ func (c *FakeMysqlConfigurations) UpdateStatus(mysqlConfiguration *v1alpha1.Mysq
 }
 
 // Delete takes name of the mysqlConfiguration and deletes it. Returns an error if one occurs.
-func (c *FakeMysqlConfigurations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeMysqlConfigurations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(mysqlconfigurationsResource, c.ns, name), &v1alpha1.MysqlConfiguration{})
 
@@ -122,15 +124,15 @@ func (c *FakeMysqlConfigurations) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeMysqlConfigurations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(mysqlconfigurationsResource, c.ns, listOptions)
+func (c *FakeMysqlConfigurations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(mysqlconfigurationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.MysqlConfigurationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched mysqlConfiguration.
-func (c *FakeMysqlConfigurations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MysqlConfiguration, err error) {
+func (c *FakeMysqlConfigurations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MysqlConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(mysqlconfigurationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.MysqlConfiguration{})
 

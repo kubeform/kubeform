@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var eventhubconsumergroupsResource = schema.GroupVersionResource{Group: "azurerm
 var eventhubconsumergroupsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "EventhubConsumerGroup"}
 
 // Get takes name of the eventhubConsumerGroup, and returns the corresponding eventhubConsumerGroup object, and an error if there is any.
-func (c *FakeEventhubConsumerGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.EventhubConsumerGroup, err error) {
+func (c *FakeEventhubConsumerGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.EventhubConsumerGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(eventhubconsumergroupsResource, c.ns, name), &v1alpha1.EventhubConsumerGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeEventhubConsumerGroups) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of EventhubConsumerGroups that match those selectors.
-func (c *FakeEventhubConsumerGroups) List(opts v1.ListOptions) (result *v1alpha1.EventhubConsumerGroupList, err error) {
+func (c *FakeEventhubConsumerGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.EventhubConsumerGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(eventhubconsumergroupsResource, eventhubconsumergroupsKind, c.ns, opts), &v1alpha1.EventhubConsumerGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeEventhubConsumerGroups) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested eventhubConsumerGroups.
-func (c *FakeEventhubConsumerGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeEventhubConsumerGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(eventhubconsumergroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a eventhubConsumerGroup and creates it.  Returns the server's representation of the eventhubConsumerGroup, and an error, if there is any.
-func (c *FakeEventhubConsumerGroups) Create(eventhubConsumerGroup *v1alpha1.EventhubConsumerGroup) (result *v1alpha1.EventhubConsumerGroup, err error) {
+func (c *FakeEventhubConsumerGroups) Create(ctx context.Context, eventhubConsumerGroup *v1alpha1.EventhubConsumerGroup, opts v1.CreateOptions) (result *v1alpha1.EventhubConsumerGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(eventhubconsumergroupsResource, c.ns, eventhubConsumerGroup), &v1alpha1.EventhubConsumerGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeEventhubConsumerGroups) Create(eventhubConsumerGroup *v1alpha1.Even
 }
 
 // Update takes the representation of a eventhubConsumerGroup and updates it. Returns the server's representation of the eventhubConsumerGroup, and an error, if there is any.
-func (c *FakeEventhubConsumerGroups) Update(eventhubConsumerGroup *v1alpha1.EventhubConsumerGroup) (result *v1alpha1.EventhubConsumerGroup, err error) {
+func (c *FakeEventhubConsumerGroups) Update(ctx context.Context, eventhubConsumerGroup *v1alpha1.EventhubConsumerGroup, opts v1.UpdateOptions) (result *v1alpha1.EventhubConsumerGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(eventhubconsumergroupsResource, c.ns, eventhubConsumerGroup), &v1alpha1.EventhubConsumerGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeEventhubConsumerGroups) Update(eventhubConsumerGroup *v1alpha1.Even
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeEventhubConsumerGroups) UpdateStatus(eventhubConsumerGroup *v1alpha1.EventhubConsumerGroup) (*v1alpha1.EventhubConsumerGroup, error) {
+func (c *FakeEventhubConsumerGroups) UpdateStatus(ctx context.Context, eventhubConsumerGroup *v1alpha1.EventhubConsumerGroup, opts v1.UpdateOptions) (*v1alpha1.EventhubConsumerGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(eventhubconsumergroupsResource, "status", c.ns, eventhubConsumerGroup), &v1alpha1.EventhubConsumerGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeEventhubConsumerGroups) UpdateStatus(eventhubConsumerGroup *v1alpha
 }
 
 // Delete takes name of the eventhubConsumerGroup and deletes it. Returns an error if one occurs.
-func (c *FakeEventhubConsumerGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeEventhubConsumerGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(eventhubconsumergroupsResource, c.ns, name), &v1alpha1.EventhubConsumerGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeEventhubConsumerGroups) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeEventhubConsumerGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(eventhubconsumergroupsResource, c.ns, listOptions)
+func (c *FakeEventhubConsumerGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(eventhubconsumergroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.EventhubConsumerGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched eventhubConsumerGroup.
-func (c *FakeEventhubConsumerGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EventhubConsumerGroup, err error) {
+func (c *FakeEventhubConsumerGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EventhubConsumerGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(eventhubconsumergroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.EventhubConsumerGroup{})
 

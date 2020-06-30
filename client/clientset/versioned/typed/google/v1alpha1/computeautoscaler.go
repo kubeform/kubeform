@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type ComputeAutoscalersGetter interface {
 
 // ComputeAutoscalerInterface has methods to work with ComputeAutoscaler resources.
 type ComputeAutoscalerInterface interface {
-	Create(*v1alpha1.ComputeAutoscaler) (*v1alpha1.ComputeAutoscaler, error)
-	Update(*v1alpha1.ComputeAutoscaler) (*v1alpha1.ComputeAutoscaler, error)
-	UpdateStatus(*v1alpha1.ComputeAutoscaler) (*v1alpha1.ComputeAutoscaler, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ComputeAutoscaler, error)
-	List(opts v1.ListOptions) (*v1alpha1.ComputeAutoscalerList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeAutoscaler, err error)
+	Create(ctx context.Context, computeAutoscaler *v1alpha1.ComputeAutoscaler, opts v1.CreateOptions) (*v1alpha1.ComputeAutoscaler, error)
+	Update(ctx context.Context, computeAutoscaler *v1alpha1.ComputeAutoscaler, opts v1.UpdateOptions) (*v1alpha1.ComputeAutoscaler, error)
+	UpdateStatus(ctx context.Context, computeAutoscaler *v1alpha1.ComputeAutoscaler, opts v1.UpdateOptions) (*v1alpha1.ComputeAutoscaler, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ComputeAutoscaler, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ComputeAutoscalerList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeAutoscaler, err error)
 	ComputeAutoscalerExpansion
 }
 
@@ -65,20 +66,20 @@ func newComputeAutoscalers(c *GoogleV1alpha1Client, namespace string) *computeAu
 }
 
 // Get takes name of the computeAutoscaler, and returns the corresponding computeAutoscaler object, and an error if there is any.
-func (c *computeAutoscalers) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeAutoscaler, err error) {
+func (c *computeAutoscalers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeAutoscaler, err error) {
 	result = &v1alpha1.ComputeAutoscaler{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("computeautoscalers").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ComputeAutoscalers that match those selectors.
-func (c *computeAutoscalers) List(opts v1.ListOptions) (result *v1alpha1.ComputeAutoscalerList, err error) {
+func (c *computeAutoscalers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeAutoscalerList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *computeAutoscalers) List(opts v1.ListOptions) (result *v1alpha1.Compute
 		Resource("computeautoscalers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested computeAutoscalers.
-func (c *computeAutoscalers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *computeAutoscalers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *computeAutoscalers) Watch(opts v1.ListOptions) (watch.Interface, error)
 		Resource("computeautoscalers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a computeAutoscaler and creates it.  Returns the server's representation of the computeAutoscaler, and an error, if there is any.
-func (c *computeAutoscalers) Create(computeAutoscaler *v1alpha1.ComputeAutoscaler) (result *v1alpha1.ComputeAutoscaler, err error) {
+func (c *computeAutoscalers) Create(ctx context.Context, computeAutoscaler *v1alpha1.ComputeAutoscaler, opts v1.CreateOptions) (result *v1alpha1.ComputeAutoscaler, err error) {
 	result = &v1alpha1.ComputeAutoscaler{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("computeautoscalers").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeAutoscaler).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a computeAutoscaler and updates it. Returns the server's representation of the computeAutoscaler, and an error, if there is any.
-func (c *computeAutoscalers) Update(computeAutoscaler *v1alpha1.ComputeAutoscaler) (result *v1alpha1.ComputeAutoscaler, err error) {
+func (c *computeAutoscalers) Update(ctx context.Context, computeAutoscaler *v1alpha1.ComputeAutoscaler, opts v1.UpdateOptions) (result *v1alpha1.ComputeAutoscaler, err error) {
 	result = &v1alpha1.ComputeAutoscaler{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computeautoscalers").
 		Name(computeAutoscaler.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeAutoscaler).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *computeAutoscalers) UpdateStatus(computeAutoscaler *v1alpha1.ComputeAutoscaler) (result *v1alpha1.ComputeAutoscaler, err error) {
+func (c *computeAutoscalers) UpdateStatus(ctx context.Context, computeAutoscaler *v1alpha1.ComputeAutoscaler, opts v1.UpdateOptions) (result *v1alpha1.ComputeAutoscaler, err error) {
 	result = &v1alpha1.ComputeAutoscaler{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computeautoscalers").
 		Name(computeAutoscaler.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeAutoscaler).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the computeAutoscaler and deletes it. Returns an error if one occurs.
-func (c *computeAutoscalers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *computeAutoscalers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computeautoscalers").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *computeAutoscalers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *computeAutoscalers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computeautoscalers").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched computeAutoscaler.
-func (c *computeAutoscalers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeAutoscaler, err error) {
+func (c *computeAutoscalers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeAutoscaler, err error) {
 	result = &v1alpha1.ComputeAutoscaler{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("computeautoscalers").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

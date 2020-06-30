@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type PubsubTopicIamPoliciesGetter interface {
 
 // PubsubTopicIamPolicyInterface has methods to work with PubsubTopicIamPolicy resources.
 type PubsubTopicIamPolicyInterface interface {
-	Create(*v1alpha1.PubsubTopicIamPolicy) (*v1alpha1.PubsubTopicIamPolicy, error)
-	Update(*v1alpha1.PubsubTopicIamPolicy) (*v1alpha1.PubsubTopicIamPolicy, error)
-	UpdateStatus(*v1alpha1.PubsubTopicIamPolicy) (*v1alpha1.PubsubTopicIamPolicy, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.PubsubTopicIamPolicy, error)
-	List(opts v1.ListOptions) (*v1alpha1.PubsubTopicIamPolicyList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PubsubTopicIamPolicy, err error)
+	Create(ctx context.Context, pubsubTopicIamPolicy *v1alpha1.PubsubTopicIamPolicy, opts v1.CreateOptions) (*v1alpha1.PubsubTopicIamPolicy, error)
+	Update(ctx context.Context, pubsubTopicIamPolicy *v1alpha1.PubsubTopicIamPolicy, opts v1.UpdateOptions) (*v1alpha1.PubsubTopicIamPolicy, error)
+	UpdateStatus(ctx context.Context, pubsubTopicIamPolicy *v1alpha1.PubsubTopicIamPolicy, opts v1.UpdateOptions) (*v1alpha1.PubsubTopicIamPolicy, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.PubsubTopicIamPolicy, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.PubsubTopicIamPolicyList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PubsubTopicIamPolicy, err error)
 	PubsubTopicIamPolicyExpansion
 }
 
@@ -65,20 +66,20 @@ func newPubsubTopicIamPolicies(c *GoogleV1alpha1Client, namespace string) *pubsu
 }
 
 // Get takes name of the pubsubTopicIamPolicy, and returns the corresponding pubsubTopicIamPolicy object, and an error if there is any.
-func (c *pubsubTopicIamPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.PubsubTopicIamPolicy, err error) {
+func (c *pubsubTopicIamPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PubsubTopicIamPolicy, err error) {
 	result = &v1alpha1.PubsubTopicIamPolicy{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("pubsubtopiciampolicies").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of PubsubTopicIamPolicies that match those selectors.
-func (c *pubsubTopicIamPolicies) List(opts v1.ListOptions) (result *v1alpha1.PubsubTopicIamPolicyList, err error) {
+func (c *pubsubTopicIamPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PubsubTopicIamPolicyList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *pubsubTopicIamPolicies) List(opts v1.ListOptions) (result *v1alpha1.Pub
 		Resource("pubsubtopiciampolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested pubsubTopicIamPolicies.
-func (c *pubsubTopicIamPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *pubsubTopicIamPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *pubsubTopicIamPolicies) Watch(opts v1.ListOptions) (watch.Interface, er
 		Resource("pubsubtopiciampolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a pubsubTopicIamPolicy and creates it.  Returns the server's representation of the pubsubTopicIamPolicy, and an error, if there is any.
-func (c *pubsubTopicIamPolicies) Create(pubsubTopicIamPolicy *v1alpha1.PubsubTopicIamPolicy) (result *v1alpha1.PubsubTopicIamPolicy, err error) {
+func (c *pubsubTopicIamPolicies) Create(ctx context.Context, pubsubTopicIamPolicy *v1alpha1.PubsubTopicIamPolicy, opts v1.CreateOptions) (result *v1alpha1.PubsubTopicIamPolicy, err error) {
 	result = &v1alpha1.PubsubTopicIamPolicy{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("pubsubtopiciampolicies").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(pubsubTopicIamPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a pubsubTopicIamPolicy and updates it. Returns the server's representation of the pubsubTopicIamPolicy, and an error, if there is any.
-func (c *pubsubTopicIamPolicies) Update(pubsubTopicIamPolicy *v1alpha1.PubsubTopicIamPolicy) (result *v1alpha1.PubsubTopicIamPolicy, err error) {
+func (c *pubsubTopicIamPolicies) Update(ctx context.Context, pubsubTopicIamPolicy *v1alpha1.PubsubTopicIamPolicy, opts v1.UpdateOptions) (result *v1alpha1.PubsubTopicIamPolicy, err error) {
 	result = &v1alpha1.PubsubTopicIamPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("pubsubtopiciampolicies").
 		Name(pubsubTopicIamPolicy.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(pubsubTopicIamPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *pubsubTopicIamPolicies) UpdateStatus(pubsubTopicIamPolicy *v1alpha1.PubsubTopicIamPolicy) (result *v1alpha1.PubsubTopicIamPolicy, err error) {
+func (c *pubsubTopicIamPolicies) UpdateStatus(ctx context.Context, pubsubTopicIamPolicy *v1alpha1.PubsubTopicIamPolicy, opts v1.UpdateOptions) (result *v1alpha1.PubsubTopicIamPolicy, err error) {
 	result = &v1alpha1.PubsubTopicIamPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("pubsubtopiciampolicies").
 		Name(pubsubTopicIamPolicy.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(pubsubTopicIamPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the pubsubTopicIamPolicy and deletes it. Returns an error if one occurs.
-func (c *pubsubTopicIamPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *pubsubTopicIamPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("pubsubtopiciampolicies").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *pubsubTopicIamPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *pubsubTopicIamPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("pubsubtopiciampolicies").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched pubsubTopicIamPolicy.
-func (c *pubsubTopicIamPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PubsubTopicIamPolicy, err error) {
+func (c *pubsubTopicIamPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PubsubTopicIamPolicy, err error) {
 	result = &v1alpha1.PubsubTopicIamPolicy{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("pubsubtopiciampolicies").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type OpsworksMysqlLayersGetter interface {
 
 // OpsworksMysqlLayerInterface has methods to work with OpsworksMysqlLayer resources.
 type OpsworksMysqlLayerInterface interface {
-	Create(*v1alpha1.OpsworksMysqlLayer) (*v1alpha1.OpsworksMysqlLayer, error)
-	Update(*v1alpha1.OpsworksMysqlLayer) (*v1alpha1.OpsworksMysqlLayer, error)
-	UpdateStatus(*v1alpha1.OpsworksMysqlLayer) (*v1alpha1.OpsworksMysqlLayer, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.OpsworksMysqlLayer, error)
-	List(opts v1.ListOptions) (*v1alpha1.OpsworksMysqlLayerList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.OpsworksMysqlLayer, err error)
+	Create(ctx context.Context, opsworksMysqlLayer *v1alpha1.OpsworksMysqlLayer, opts v1.CreateOptions) (*v1alpha1.OpsworksMysqlLayer, error)
+	Update(ctx context.Context, opsworksMysqlLayer *v1alpha1.OpsworksMysqlLayer, opts v1.UpdateOptions) (*v1alpha1.OpsworksMysqlLayer, error)
+	UpdateStatus(ctx context.Context, opsworksMysqlLayer *v1alpha1.OpsworksMysqlLayer, opts v1.UpdateOptions) (*v1alpha1.OpsworksMysqlLayer, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.OpsworksMysqlLayer, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.OpsworksMysqlLayerList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.OpsworksMysqlLayer, err error)
 	OpsworksMysqlLayerExpansion
 }
 
@@ -65,20 +66,20 @@ func newOpsworksMysqlLayers(c *AwsV1alpha1Client, namespace string) *opsworksMys
 }
 
 // Get takes name of the opsworksMysqlLayer, and returns the corresponding opsworksMysqlLayer object, and an error if there is any.
-func (c *opsworksMysqlLayers) Get(name string, options v1.GetOptions) (result *v1alpha1.OpsworksMysqlLayer, err error) {
+func (c *opsworksMysqlLayers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.OpsworksMysqlLayer, err error) {
 	result = &v1alpha1.OpsworksMysqlLayer{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("opsworksmysqllayers").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of OpsworksMysqlLayers that match those selectors.
-func (c *opsworksMysqlLayers) List(opts v1.ListOptions) (result *v1alpha1.OpsworksMysqlLayerList, err error) {
+func (c *opsworksMysqlLayers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.OpsworksMysqlLayerList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *opsworksMysqlLayers) List(opts v1.ListOptions) (result *v1alpha1.Opswor
 		Resource("opsworksmysqllayers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested opsworksMysqlLayers.
-func (c *opsworksMysqlLayers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *opsworksMysqlLayers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *opsworksMysqlLayers) Watch(opts v1.ListOptions) (watch.Interface, error
 		Resource("opsworksmysqllayers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a opsworksMysqlLayer and creates it.  Returns the server's representation of the opsworksMysqlLayer, and an error, if there is any.
-func (c *opsworksMysqlLayers) Create(opsworksMysqlLayer *v1alpha1.OpsworksMysqlLayer) (result *v1alpha1.OpsworksMysqlLayer, err error) {
+func (c *opsworksMysqlLayers) Create(ctx context.Context, opsworksMysqlLayer *v1alpha1.OpsworksMysqlLayer, opts v1.CreateOptions) (result *v1alpha1.OpsworksMysqlLayer, err error) {
 	result = &v1alpha1.OpsworksMysqlLayer{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("opsworksmysqllayers").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(opsworksMysqlLayer).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a opsworksMysqlLayer and updates it. Returns the server's representation of the opsworksMysqlLayer, and an error, if there is any.
-func (c *opsworksMysqlLayers) Update(opsworksMysqlLayer *v1alpha1.OpsworksMysqlLayer) (result *v1alpha1.OpsworksMysqlLayer, err error) {
+func (c *opsworksMysqlLayers) Update(ctx context.Context, opsworksMysqlLayer *v1alpha1.OpsworksMysqlLayer, opts v1.UpdateOptions) (result *v1alpha1.OpsworksMysqlLayer, err error) {
 	result = &v1alpha1.OpsworksMysqlLayer{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("opsworksmysqllayers").
 		Name(opsworksMysqlLayer.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(opsworksMysqlLayer).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *opsworksMysqlLayers) UpdateStatus(opsworksMysqlLayer *v1alpha1.OpsworksMysqlLayer) (result *v1alpha1.OpsworksMysqlLayer, err error) {
+func (c *opsworksMysqlLayers) UpdateStatus(ctx context.Context, opsworksMysqlLayer *v1alpha1.OpsworksMysqlLayer, opts v1.UpdateOptions) (result *v1alpha1.OpsworksMysqlLayer, err error) {
 	result = &v1alpha1.OpsworksMysqlLayer{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("opsworksmysqllayers").
 		Name(opsworksMysqlLayer.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(opsworksMysqlLayer).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the opsworksMysqlLayer and deletes it. Returns an error if one occurs.
-func (c *opsworksMysqlLayers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *opsworksMysqlLayers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("opsworksmysqllayers").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *opsworksMysqlLayers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *opsworksMysqlLayers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("opsworksmysqllayers").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched opsworksMysqlLayer.
-func (c *opsworksMysqlLayers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.OpsworksMysqlLayer, err error) {
+func (c *opsworksMysqlLayers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.OpsworksMysqlLayer, err error) {
 	result = &v1alpha1.OpsworksMysqlLayer{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("opsworksmysqllayers").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

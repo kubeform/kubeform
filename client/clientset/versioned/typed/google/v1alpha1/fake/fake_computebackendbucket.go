@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computebackendbucketsResource = schema.GroupVersionResource{Group: "google.k
 var computebackendbucketsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeBackendBucket"}
 
 // Get takes name of the computeBackendBucket, and returns the corresponding computeBackendBucket object, and an error if there is any.
-func (c *FakeComputeBackendBuckets) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeBackendBucket, err error) {
+func (c *FakeComputeBackendBuckets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeBackendBucket, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computebackendbucketsResource, c.ns, name), &v1alpha1.ComputeBackendBucket{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeBackendBuckets) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of ComputeBackendBuckets that match those selectors.
-func (c *FakeComputeBackendBuckets) List(opts v1.ListOptions) (result *v1alpha1.ComputeBackendBucketList, err error) {
+func (c *FakeComputeBackendBuckets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeBackendBucketList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computebackendbucketsResource, computebackendbucketsKind, c.ns, opts), &v1alpha1.ComputeBackendBucketList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeBackendBuckets) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested computeBackendBuckets.
-func (c *FakeComputeBackendBuckets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeBackendBuckets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computebackendbucketsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeBackendBucket and creates it.  Returns the server's representation of the computeBackendBucket, and an error, if there is any.
-func (c *FakeComputeBackendBuckets) Create(computeBackendBucket *v1alpha1.ComputeBackendBucket) (result *v1alpha1.ComputeBackendBucket, err error) {
+func (c *FakeComputeBackendBuckets) Create(ctx context.Context, computeBackendBucket *v1alpha1.ComputeBackendBucket, opts v1.CreateOptions) (result *v1alpha1.ComputeBackendBucket, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computebackendbucketsResource, c.ns, computeBackendBucket), &v1alpha1.ComputeBackendBucket{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeBackendBuckets) Create(computeBackendBucket *v1alpha1.Comput
 }
 
 // Update takes the representation of a computeBackendBucket and updates it. Returns the server's representation of the computeBackendBucket, and an error, if there is any.
-func (c *FakeComputeBackendBuckets) Update(computeBackendBucket *v1alpha1.ComputeBackendBucket) (result *v1alpha1.ComputeBackendBucket, err error) {
+func (c *FakeComputeBackendBuckets) Update(ctx context.Context, computeBackendBucket *v1alpha1.ComputeBackendBucket, opts v1.UpdateOptions) (result *v1alpha1.ComputeBackendBucket, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computebackendbucketsResource, c.ns, computeBackendBucket), &v1alpha1.ComputeBackendBucket{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeBackendBuckets) Update(computeBackendBucket *v1alpha1.Comput
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeBackendBuckets) UpdateStatus(computeBackendBucket *v1alpha1.ComputeBackendBucket) (*v1alpha1.ComputeBackendBucket, error) {
+func (c *FakeComputeBackendBuckets) UpdateStatus(ctx context.Context, computeBackendBucket *v1alpha1.ComputeBackendBucket, opts v1.UpdateOptions) (*v1alpha1.ComputeBackendBucket, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computebackendbucketsResource, "status", c.ns, computeBackendBucket), &v1alpha1.ComputeBackendBucket{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeBackendBuckets) UpdateStatus(computeBackendBucket *v1alpha1.
 }
 
 // Delete takes name of the computeBackendBucket and deletes it. Returns an error if one occurs.
-func (c *FakeComputeBackendBuckets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeBackendBuckets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computebackendbucketsResource, c.ns, name), &v1alpha1.ComputeBackendBucket{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeBackendBuckets) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeBackendBuckets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computebackendbucketsResource, c.ns, listOptions)
+func (c *FakeComputeBackendBuckets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computebackendbucketsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeBackendBucketList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeBackendBucket.
-func (c *FakeComputeBackendBuckets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeBackendBucket, err error) {
+func (c *FakeComputeBackendBuckets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeBackendBucket, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computebackendbucketsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeBackendBucket{})
 

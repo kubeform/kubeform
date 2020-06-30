@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var redshiftsecuritygroupsResource = schema.GroupVersionResource{Group: "aws.kub
 var redshiftsecuritygroupsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "RedshiftSecurityGroup"}
 
 // Get takes name of the redshiftSecurityGroup, and returns the corresponding redshiftSecurityGroup object, and an error if there is any.
-func (c *FakeRedshiftSecurityGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.RedshiftSecurityGroup, err error) {
+func (c *FakeRedshiftSecurityGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.RedshiftSecurityGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(redshiftsecuritygroupsResource, c.ns, name), &v1alpha1.RedshiftSecurityGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeRedshiftSecurityGroups) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of RedshiftSecurityGroups that match those selectors.
-func (c *FakeRedshiftSecurityGroups) List(opts v1.ListOptions) (result *v1alpha1.RedshiftSecurityGroupList, err error) {
+func (c *FakeRedshiftSecurityGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RedshiftSecurityGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(redshiftsecuritygroupsResource, redshiftsecuritygroupsKind, c.ns, opts), &v1alpha1.RedshiftSecurityGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeRedshiftSecurityGroups) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested redshiftSecurityGroups.
-func (c *FakeRedshiftSecurityGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeRedshiftSecurityGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(redshiftsecuritygroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a redshiftSecurityGroup and creates it.  Returns the server's representation of the redshiftSecurityGroup, and an error, if there is any.
-func (c *FakeRedshiftSecurityGroups) Create(redshiftSecurityGroup *v1alpha1.RedshiftSecurityGroup) (result *v1alpha1.RedshiftSecurityGroup, err error) {
+func (c *FakeRedshiftSecurityGroups) Create(ctx context.Context, redshiftSecurityGroup *v1alpha1.RedshiftSecurityGroup, opts v1.CreateOptions) (result *v1alpha1.RedshiftSecurityGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(redshiftsecuritygroupsResource, c.ns, redshiftSecurityGroup), &v1alpha1.RedshiftSecurityGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeRedshiftSecurityGroups) Create(redshiftSecurityGroup *v1alpha1.Reds
 }
 
 // Update takes the representation of a redshiftSecurityGroup and updates it. Returns the server's representation of the redshiftSecurityGroup, and an error, if there is any.
-func (c *FakeRedshiftSecurityGroups) Update(redshiftSecurityGroup *v1alpha1.RedshiftSecurityGroup) (result *v1alpha1.RedshiftSecurityGroup, err error) {
+func (c *FakeRedshiftSecurityGroups) Update(ctx context.Context, redshiftSecurityGroup *v1alpha1.RedshiftSecurityGroup, opts v1.UpdateOptions) (result *v1alpha1.RedshiftSecurityGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(redshiftsecuritygroupsResource, c.ns, redshiftSecurityGroup), &v1alpha1.RedshiftSecurityGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeRedshiftSecurityGroups) Update(redshiftSecurityGroup *v1alpha1.Reds
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeRedshiftSecurityGroups) UpdateStatus(redshiftSecurityGroup *v1alpha1.RedshiftSecurityGroup) (*v1alpha1.RedshiftSecurityGroup, error) {
+func (c *FakeRedshiftSecurityGroups) UpdateStatus(ctx context.Context, redshiftSecurityGroup *v1alpha1.RedshiftSecurityGroup, opts v1.UpdateOptions) (*v1alpha1.RedshiftSecurityGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(redshiftsecuritygroupsResource, "status", c.ns, redshiftSecurityGroup), &v1alpha1.RedshiftSecurityGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeRedshiftSecurityGroups) UpdateStatus(redshiftSecurityGroup *v1alpha
 }
 
 // Delete takes name of the redshiftSecurityGroup and deletes it. Returns an error if one occurs.
-func (c *FakeRedshiftSecurityGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeRedshiftSecurityGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(redshiftsecuritygroupsResource, c.ns, name), &v1alpha1.RedshiftSecurityGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeRedshiftSecurityGroups) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeRedshiftSecurityGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(redshiftsecuritygroupsResource, c.ns, listOptions)
+func (c *FakeRedshiftSecurityGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(redshiftsecuritygroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.RedshiftSecurityGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched redshiftSecurityGroup.
-func (c *FakeRedshiftSecurityGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RedshiftSecurityGroup, err error) {
+func (c *FakeRedshiftSecurityGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RedshiftSecurityGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(redshiftsecuritygroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.RedshiftSecurityGroup{})
 

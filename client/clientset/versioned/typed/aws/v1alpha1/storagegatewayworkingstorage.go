@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type StoragegatewayWorkingStoragesGetter interface {
 
 // StoragegatewayWorkingStorageInterface has methods to work with StoragegatewayWorkingStorage resources.
 type StoragegatewayWorkingStorageInterface interface {
-	Create(*v1alpha1.StoragegatewayWorkingStorage) (*v1alpha1.StoragegatewayWorkingStorage, error)
-	Update(*v1alpha1.StoragegatewayWorkingStorage) (*v1alpha1.StoragegatewayWorkingStorage, error)
-	UpdateStatus(*v1alpha1.StoragegatewayWorkingStorage) (*v1alpha1.StoragegatewayWorkingStorage, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.StoragegatewayWorkingStorage, error)
-	List(opts v1.ListOptions) (*v1alpha1.StoragegatewayWorkingStorageList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StoragegatewayWorkingStorage, err error)
+	Create(ctx context.Context, storagegatewayWorkingStorage *v1alpha1.StoragegatewayWorkingStorage, opts v1.CreateOptions) (*v1alpha1.StoragegatewayWorkingStorage, error)
+	Update(ctx context.Context, storagegatewayWorkingStorage *v1alpha1.StoragegatewayWorkingStorage, opts v1.UpdateOptions) (*v1alpha1.StoragegatewayWorkingStorage, error)
+	UpdateStatus(ctx context.Context, storagegatewayWorkingStorage *v1alpha1.StoragegatewayWorkingStorage, opts v1.UpdateOptions) (*v1alpha1.StoragegatewayWorkingStorage, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.StoragegatewayWorkingStorage, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.StoragegatewayWorkingStorageList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StoragegatewayWorkingStorage, err error)
 	StoragegatewayWorkingStorageExpansion
 }
 
@@ -65,20 +66,20 @@ func newStoragegatewayWorkingStorages(c *AwsV1alpha1Client, namespace string) *s
 }
 
 // Get takes name of the storagegatewayWorkingStorage, and returns the corresponding storagegatewayWorkingStorage object, and an error if there is any.
-func (c *storagegatewayWorkingStorages) Get(name string, options v1.GetOptions) (result *v1alpha1.StoragegatewayWorkingStorage, err error) {
+func (c *storagegatewayWorkingStorages) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.StoragegatewayWorkingStorage, err error) {
 	result = &v1alpha1.StoragegatewayWorkingStorage{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("storagegatewayworkingstorages").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of StoragegatewayWorkingStorages that match those selectors.
-func (c *storagegatewayWorkingStorages) List(opts v1.ListOptions) (result *v1alpha1.StoragegatewayWorkingStorageList, err error) {
+func (c *storagegatewayWorkingStorages) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.StoragegatewayWorkingStorageList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *storagegatewayWorkingStorages) List(opts v1.ListOptions) (result *v1alp
 		Resource("storagegatewayworkingstorages").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested storagegatewayWorkingStorages.
-func (c *storagegatewayWorkingStorages) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *storagegatewayWorkingStorages) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *storagegatewayWorkingStorages) Watch(opts v1.ListOptions) (watch.Interf
 		Resource("storagegatewayworkingstorages").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a storagegatewayWorkingStorage and creates it.  Returns the server's representation of the storagegatewayWorkingStorage, and an error, if there is any.
-func (c *storagegatewayWorkingStorages) Create(storagegatewayWorkingStorage *v1alpha1.StoragegatewayWorkingStorage) (result *v1alpha1.StoragegatewayWorkingStorage, err error) {
+func (c *storagegatewayWorkingStorages) Create(ctx context.Context, storagegatewayWorkingStorage *v1alpha1.StoragegatewayWorkingStorage, opts v1.CreateOptions) (result *v1alpha1.StoragegatewayWorkingStorage, err error) {
 	result = &v1alpha1.StoragegatewayWorkingStorage{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("storagegatewayworkingstorages").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(storagegatewayWorkingStorage).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a storagegatewayWorkingStorage and updates it. Returns the server's representation of the storagegatewayWorkingStorage, and an error, if there is any.
-func (c *storagegatewayWorkingStorages) Update(storagegatewayWorkingStorage *v1alpha1.StoragegatewayWorkingStorage) (result *v1alpha1.StoragegatewayWorkingStorage, err error) {
+func (c *storagegatewayWorkingStorages) Update(ctx context.Context, storagegatewayWorkingStorage *v1alpha1.StoragegatewayWorkingStorage, opts v1.UpdateOptions) (result *v1alpha1.StoragegatewayWorkingStorage, err error) {
 	result = &v1alpha1.StoragegatewayWorkingStorage{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("storagegatewayworkingstorages").
 		Name(storagegatewayWorkingStorage.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(storagegatewayWorkingStorage).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *storagegatewayWorkingStorages) UpdateStatus(storagegatewayWorkingStorage *v1alpha1.StoragegatewayWorkingStorage) (result *v1alpha1.StoragegatewayWorkingStorage, err error) {
+func (c *storagegatewayWorkingStorages) UpdateStatus(ctx context.Context, storagegatewayWorkingStorage *v1alpha1.StoragegatewayWorkingStorage, opts v1.UpdateOptions) (result *v1alpha1.StoragegatewayWorkingStorage, err error) {
 	result = &v1alpha1.StoragegatewayWorkingStorage{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("storagegatewayworkingstorages").
 		Name(storagegatewayWorkingStorage.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(storagegatewayWorkingStorage).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the storagegatewayWorkingStorage and deletes it. Returns an error if one occurs.
-func (c *storagegatewayWorkingStorages) Delete(name string, options *v1.DeleteOptions) error {
+func (c *storagegatewayWorkingStorages) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("storagegatewayworkingstorages").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *storagegatewayWorkingStorages) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *storagegatewayWorkingStorages) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("storagegatewayworkingstorages").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched storagegatewayWorkingStorage.
-func (c *storagegatewayWorkingStorages) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StoragegatewayWorkingStorage, err error) {
+func (c *storagegatewayWorkingStorages) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StoragegatewayWorkingStorage, err error) {
 	result = &v1alpha1.StoragegatewayWorkingStorage{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("storagegatewayworkingstorages").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

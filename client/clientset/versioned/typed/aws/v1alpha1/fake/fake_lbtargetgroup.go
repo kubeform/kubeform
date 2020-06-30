@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var lbtargetgroupsResource = schema.GroupVersionResource{Group: "aws.kubeform.co
 var lbtargetgroupsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "LbTargetGroup"}
 
 // Get takes name of the lbTargetGroup, and returns the corresponding lbTargetGroup object, and an error if there is any.
-func (c *FakeLbTargetGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.LbTargetGroup, err error) {
+func (c *FakeLbTargetGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LbTargetGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(lbtargetgroupsResource, c.ns, name), &v1alpha1.LbTargetGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeLbTargetGroups) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of LbTargetGroups that match those selectors.
-func (c *FakeLbTargetGroups) List(opts v1.ListOptions) (result *v1alpha1.LbTargetGroupList, err error) {
+func (c *FakeLbTargetGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LbTargetGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(lbtargetgroupsResource, lbtargetgroupsKind, c.ns, opts), &v1alpha1.LbTargetGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLbTargetGroups) List(opts v1.ListOptions) (result *v1alpha1.LbTarge
 }
 
 // Watch returns a watch.Interface that watches the requested lbTargetGroups.
-func (c *FakeLbTargetGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLbTargetGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(lbtargetgroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a lbTargetGroup and creates it.  Returns the server's representation of the lbTargetGroup, and an error, if there is any.
-func (c *FakeLbTargetGroups) Create(lbTargetGroup *v1alpha1.LbTargetGroup) (result *v1alpha1.LbTargetGroup, err error) {
+func (c *FakeLbTargetGroups) Create(ctx context.Context, lbTargetGroup *v1alpha1.LbTargetGroup, opts v1.CreateOptions) (result *v1alpha1.LbTargetGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(lbtargetgroupsResource, c.ns, lbTargetGroup), &v1alpha1.LbTargetGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeLbTargetGroups) Create(lbTargetGroup *v1alpha1.LbTargetGroup) (resu
 }
 
 // Update takes the representation of a lbTargetGroup and updates it. Returns the server's representation of the lbTargetGroup, and an error, if there is any.
-func (c *FakeLbTargetGroups) Update(lbTargetGroup *v1alpha1.LbTargetGroup) (result *v1alpha1.LbTargetGroup, err error) {
+func (c *FakeLbTargetGroups) Update(ctx context.Context, lbTargetGroup *v1alpha1.LbTargetGroup, opts v1.UpdateOptions) (result *v1alpha1.LbTargetGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(lbtargetgroupsResource, c.ns, lbTargetGroup), &v1alpha1.LbTargetGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeLbTargetGroups) Update(lbTargetGroup *v1alpha1.LbTargetGroup) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLbTargetGroups) UpdateStatus(lbTargetGroup *v1alpha1.LbTargetGroup) (*v1alpha1.LbTargetGroup, error) {
+func (c *FakeLbTargetGroups) UpdateStatus(ctx context.Context, lbTargetGroup *v1alpha1.LbTargetGroup, opts v1.UpdateOptions) (*v1alpha1.LbTargetGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(lbtargetgroupsResource, "status", c.ns, lbTargetGroup), &v1alpha1.LbTargetGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeLbTargetGroups) UpdateStatus(lbTargetGroup *v1alpha1.LbTargetGroup)
 }
 
 // Delete takes name of the lbTargetGroup and deletes it. Returns an error if one occurs.
-func (c *FakeLbTargetGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLbTargetGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(lbtargetgroupsResource, c.ns, name), &v1alpha1.LbTargetGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeLbTargetGroups) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLbTargetGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(lbtargetgroupsResource, c.ns, listOptions)
+func (c *FakeLbTargetGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(lbtargetgroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LbTargetGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched lbTargetGroup.
-func (c *FakeLbTargetGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LbTargetGroup, err error) {
+func (c *FakeLbTargetGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LbTargetGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(lbtargetgroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.LbTargetGroup{})
 

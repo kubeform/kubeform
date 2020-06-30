@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type AppServiceCertificatesGetter interface {
 
 // AppServiceCertificateInterface has methods to work with AppServiceCertificate resources.
 type AppServiceCertificateInterface interface {
-	Create(*v1alpha1.AppServiceCertificate) (*v1alpha1.AppServiceCertificate, error)
-	Update(*v1alpha1.AppServiceCertificate) (*v1alpha1.AppServiceCertificate, error)
-	UpdateStatus(*v1alpha1.AppServiceCertificate) (*v1alpha1.AppServiceCertificate, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.AppServiceCertificate, error)
-	List(opts v1.ListOptions) (*v1alpha1.AppServiceCertificateList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppServiceCertificate, err error)
+	Create(ctx context.Context, appServiceCertificate *v1alpha1.AppServiceCertificate, opts v1.CreateOptions) (*v1alpha1.AppServiceCertificate, error)
+	Update(ctx context.Context, appServiceCertificate *v1alpha1.AppServiceCertificate, opts v1.UpdateOptions) (*v1alpha1.AppServiceCertificate, error)
+	UpdateStatus(ctx context.Context, appServiceCertificate *v1alpha1.AppServiceCertificate, opts v1.UpdateOptions) (*v1alpha1.AppServiceCertificate, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.AppServiceCertificate, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.AppServiceCertificateList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppServiceCertificate, err error)
 	AppServiceCertificateExpansion
 }
 
@@ -65,20 +66,20 @@ func newAppServiceCertificates(c *AzurermV1alpha1Client, namespace string) *appS
 }
 
 // Get takes name of the appServiceCertificate, and returns the corresponding appServiceCertificate object, and an error if there is any.
-func (c *appServiceCertificates) Get(name string, options v1.GetOptions) (result *v1alpha1.AppServiceCertificate, err error) {
+func (c *appServiceCertificates) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AppServiceCertificate, err error) {
 	result = &v1alpha1.AppServiceCertificate{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("appservicecertificates").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of AppServiceCertificates that match those selectors.
-func (c *appServiceCertificates) List(opts v1.ListOptions) (result *v1alpha1.AppServiceCertificateList, err error) {
+func (c *appServiceCertificates) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AppServiceCertificateList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *appServiceCertificates) List(opts v1.ListOptions) (result *v1alpha1.App
 		Resource("appservicecertificates").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested appServiceCertificates.
-func (c *appServiceCertificates) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *appServiceCertificates) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *appServiceCertificates) Watch(opts v1.ListOptions) (watch.Interface, er
 		Resource("appservicecertificates").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a appServiceCertificate and creates it.  Returns the server's representation of the appServiceCertificate, and an error, if there is any.
-func (c *appServiceCertificates) Create(appServiceCertificate *v1alpha1.AppServiceCertificate) (result *v1alpha1.AppServiceCertificate, err error) {
+func (c *appServiceCertificates) Create(ctx context.Context, appServiceCertificate *v1alpha1.AppServiceCertificate, opts v1.CreateOptions) (result *v1alpha1.AppServiceCertificate, err error) {
 	result = &v1alpha1.AppServiceCertificate{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("appservicecertificates").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appServiceCertificate).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a appServiceCertificate and updates it. Returns the server's representation of the appServiceCertificate, and an error, if there is any.
-func (c *appServiceCertificates) Update(appServiceCertificate *v1alpha1.AppServiceCertificate) (result *v1alpha1.AppServiceCertificate, err error) {
+func (c *appServiceCertificates) Update(ctx context.Context, appServiceCertificate *v1alpha1.AppServiceCertificate, opts v1.UpdateOptions) (result *v1alpha1.AppServiceCertificate, err error) {
 	result = &v1alpha1.AppServiceCertificate{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("appservicecertificates").
 		Name(appServiceCertificate.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appServiceCertificate).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *appServiceCertificates) UpdateStatus(appServiceCertificate *v1alpha1.AppServiceCertificate) (result *v1alpha1.AppServiceCertificate, err error) {
+func (c *appServiceCertificates) UpdateStatus(ctx context.Context, appServiceCertificate *v1alpha1.AppServiceCertificate, opts v1.UpdateOptions) (result *v1alpha1.AppServiceCertificate, err error) {
 	result = &v1alpha1.AppServiceCertificate{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("appservicecertificates").
 		Name(appServiceCertificate.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appServiceCertificate).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the appServiceCertificate and deletes it. Returns an error if one occurs.
-func (c *appServiceCertificates) Delete(name string, options *v1.DeleteOptions) error {
+func (c *appServiceCertificates) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("appservicecertificates").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *appServiceCertificates) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *appServiceCertificates) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("appservicecertificates").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched appServiceCertificate.
-func (c *appServiceCertificates) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppServiceCertificate, err error) {
+func (c *appServiceCertificates) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppServiceCertificate, err error) {
 	result = &v1alpha1.AppServiceCertificate{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("appservicecertificates").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

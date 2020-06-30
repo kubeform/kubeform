@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var foldersResource = schema.GroupVersionResource{Group: "google.kubeform.com", 
 var foldersKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "Folder"}
 
 // Get takes name of the folder, and returns the corresponding folder object, and an error if there is any.
-func (c *FakeFolders) Get(name string, options v1.GetOptions) (result *v1alpha1.Folder, err error) {
+func (c *FakeFolders) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Folder, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(foldersResource, c.ns, name), &v1alpha1.Folder{})
 
@@ -51,7 +53,7 @@ func (c *FakeFolders) Get(name string, options v1.GetOptions) (result *v1alpha1.
 }
 
 // List takes label and field selectors, and returns the list of Folders that match those selectors.
-func (c *FakeFolders) List(opts v1.ListOptions) (result *v1alpha1.FolderList, err error) {
+func (c *FakeFolders) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.FolderList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(foldersResource, foldersKind, c.ns, opts), &v1alpha1.FolderList{})
 
@@ -73,14 +75,14 @@ func (c *FakeFolders) List(opts v1.ListOptions) (result *v1alpha1.FolderList, er
 }
 
 // Watch returns a watch.Interface that watches the requested folders.
-func (c *FakeFolders) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeFolders) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(foldersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a folder and creates it.  Returns the server's representation of the folder, and an error, if there is any.
-func (c *FakeFolders) Create(folder *v1alpha1.Folder) (result *v1alpha1.Folder, err error) {
+func (c *FakeFolders) Create(ctx context.Context, folder *v1alpha1.Folder, opts v1.CreateOptions) (result *v1alpha1.Folder, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(foldersResource, c.ns, folder), &v1alpha1.Folder{})
 
@@ -91,7 +93,7 @@ func (c *FakeFolders) Create(folder *v1alpha1.Folder) (result *v1alpha1.Folder, 
 }
 
 // Update takes the representation of a folder and updates it. Returns the server's representation of the folder, and an error, if there is any.
-func (c *FakeFolders) Update(folder *v1alpha1.Folder) (result *v1alpha1.Folder, err error) {
+func (c *FakeFolders) Update(ctx context.Context, folder *v1alpha1.Folder, opts v1.UpdateOptions) (result *v1alpha1.Folder, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(foldersResource, c.ns, folder), &v1alpha1.Folder{})
 
@@ -103,7 +105,7 @@ func (c *FakeFolders) Update(folder *v1alpha1.Folder) (result *v1alpha1.Folder, 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeFolders) UpdateStatus(folder *v1alpha1.Folder) (*v1alpha1.Folder, error) {
+func (c *FakeFolders) UpdateStatus(ctx context.Context, folder *v1alpha1.Folder, opts v1.UpdateOptions) (*v1alpha1.Folder, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(foldersResource, "status", c.ns, folder), &v1alpha1.Folder{})
 
@@ -114,7 +116,7 @@ func (c *FakeFolders) UpdateStatus(folder *v1alpha1.Folder) (*v1alpha1.Folder, e
 }
 
 // Delete takes name of the folder and deletes it. Returns an error if one occurs.
-func (c *FakeFolders) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeFolders) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(foldersResource, c.ns, name), &v1alpha1.Folder{})
 
@@ -122,15 +124,15 @@ func (c *FakeFolders) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeFolders) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(foldersResource, c.ns, listOptions)
+func (c *FakeFolders) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(foldersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.FolderList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched folder.
-func (c *FakeFolders) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Folder, err error) {
+func (c *FakeFolders) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Folder, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(foldersResource, c.ns, name, pt, data, subresources...), &v1alpha1.Folder{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var servicebustopicsResource = schema.GroupVersionResource{Group: "azurerm.kubef
 var servicebustopicsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "ServicebusTopic"}
 
 // Get takes name of the servicebusTopic, and returns the corresponding servicebusTopic object, and an error if there is any.
-func (c *FakeServicebusTopics) Get(name string, options v1.GetOptions) (result *v1alpha1.ServicebusTopic, err error) {
+func (c *FakeServicebusTopics) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ServicebusTopic, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(servicebustopicsResource, c.ns, name), &v1alpha1.ServicebusTopic{})
 
@@ -51,7 +53,7 @@ func (c *FakeServicebusTopics) Get(name string, options v1.GetOptions) (result *
 }
 
 // List takes label and field selectors, and returns the list of ServicebusTopics that match those selectors.
-func (c *FakeServicebusTopics) List(opts v1.ListOptions) (result *v1alpha1.ServicebusTopicList, err error) {
+func (c *FakeServicebusTopics) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ServicebusTopicList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(servicebustopicsResource, servicebustopicsKind, c.ns, opts), &v1alpha1.ServicebusTopicList{})
 
@@ -73,14 +75,14 @@ func (c *FakeServicebusTopics) List(opts v1.ListOptions) (result *v1alpha1.Servi
 }
 
 // Watch returns a watch.Interface that watches the requested servicebusTopics.
-func (c *FakeServicebusTopics) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeServicebusTopics) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(servicebustopicsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a servicebusTopic and creates it.  Returns the server's representation of the servicebusTopic, and an error, if there is any.
-func (c *FakeServicebusTopics) Create(servicebusTopic *v1alpha1.ServicebusTopic) (result *v1alpha1.ServicebusTopic, err error) {
+func (c *FakeServicebusTopics) Create(ctx context.Context, servicebusTopic *v1alpha1.ServicebusTopic, opts v1.CreateOptions) (result *v1alpha1.ServicebusTopic, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(servicebustopicsResource, c.ns, servicebusTopic), &v1alpha1.ServicebusTopic{})
 
@@ -91,7 +93,7 @@ func (c *FakeServicebusTopics) Create(servicebusTopic *v1alpha1.ServicebusTopic)
 }
 
 // Update takes the representation of a servicebusTopic and updates it. Returns the server's representation of the servicebusTopic, and an error, if there is any.
-func (c *FakeServicebusTopics) Update(servicebusTopic *v1alpha1.ServicebusTopic) (result *v1alpha1.ServicebusTopic, err error) {
+func (c *FakeServicebusTopics) Update(ctx context.Context, servicebusTopic *v1alpha1.ServicebusTopic, opts v1.UpdateOptions) (result *v1alpha1.ServicebusTopic, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(servicebustopicsResource, c.ns, servicebusTopic), &v1alpha1.ServicebusTopic{})
 
@@ -103,7 +105,7 @@ func (c *FakeServicebusTopics) Update(servicebusTopic *v1alpha1.ServicebusTopic)
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeServicebusTopics) UpdateStatus(servicebusTopic *v1alpha1.ServicebusTopic) (*v1alpha1.ServicebusTopic, error) {
+func (c *FakeServicebusTopics) UpdateStatus(ctx context.Context, servicebusTopic *v1alpha1.ServicebusTopic, opts v1.UpdateOptions) (*v1alpha1.ServicebusTopic, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(servicebustopicsResource, "status", c.ns, servicebusTopic), &v1alpha1.ServicebusTopic{})
 
@@ -114,7 +116,7 @@ func (c *FakeServicebusTopics) UpdateStatus(servicebusTopic *v1alpha1.Servicebus
 }
 
 // Delete takes name of the servicebusTopic and deletes it. Returns an error if one occurs.
-func (c *FakeServicebusTopics) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeServicebusTopics) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(servicebustopicsResource, c.ns, name), &v1alpha1.ServicebusTopic{})
 
@@ -122,15 +124,15 @@ func (c *FakeServicebusTopics) Delete(name string, options *v1.DeleteOptions) er
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeServicebusTopics) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(servicebustopicsResource, c.ns, listOptions)
+func (c *FakeServicebusTopics) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(servicebustopicsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ServicebusTopicList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched servicebusTopic.
-func (c *FakeServicebusTopics) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ServicebusTopic, err error) {
+func (c *FakeServicebusTopics) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ServicebusTopic, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(servicebustopicsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ServicebusTopic{})
 

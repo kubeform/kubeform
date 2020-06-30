@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var networkaclrulesResource = schema.GroupVersionResource{Group: "aws.kubeform.c
 var networkaclrulesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "NetworkACLRule"}
 
 // Get takes name of the networkACLRule, and returns the corresponding networkACLRule object, and an error if there is any.
-func (c *FakeNetworkACLRules) Get(name string, options v1.GetOptions) (result *v1alpha1.NetworkACLRule, err error) {
+func (c *FakeNetworkACLRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.NetworkACLRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(networkaclrulesResource, c.ns, name), &v1alpha1.NetworkACLRule{})
 
@@ -51,7 +53,7 @@ func (c *FakeNetworkACLRules) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of NetworkACLRules that match those selectors.
-func (c *FakeNetworkACLRules) List(opts v1.ListOptions) (result *v1alpha1.NetworkACLRuleList, err error) {
+func (c *FakeNetworkACLRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.NetworkACLRuleList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(networkaclrulesResource, networkaclrulesKind, c.ns, opts), &v1alpha1.NetworkACLRuleList{})
 
@@ -73,14 +75,14 @@ func (c *FakeNetworkACLRules) List(opts v1.ListOptions) (result *v1alpha1.Networ
 }
 
 // Watch returns a watch.Interface that watches the requested networkACLRules.
-func (c *FakeNetworkACLRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeNetworkACLRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(networkaclrulesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a networkACLRule and creates it.  Returns the server's representation of the networkACLRule, and an error, if there is any.
-func (c *FakeNetworkACLRules) Create(networkACLRule *v1alpha1.NetworkACLRule) (result *v1alpha1.NetworkACLRule, err error) {
+func (c *FakeNetworkACLRules) Create(ctx context.Context, networkACLRule *v1alpha1.NetworkACLRule, opts v1.CreateOptions) (result *v1alpha1.NetworkACLRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(networkaclrulesResource, c.ns, networkACLRule), &v1alpha1.NetworkACLRule{})
 
@@ -91,7 +93,7 @@ func (c *FakeNetworkACLRules) Create(networkACLRule *v1alpha1.NetworkACLRule) (r
 }
 
 // Update takes the representation of a networkACLRule and updates it. Returns the server's representation of the networkACLRule, and an error, if there is any.
-func (c *FakeNetworkACLRules) Update(networkACLRule *v1alpha1.NetworkACLRule) (result *v1alpha1.NetworkACLRule, err error) {
+func (c *FakeNetworkACLRules) Update(ctx context.Context, networkACLRule *v1alpha1.NetworkACLRule, opts v1.UpdateOptions) (result *v1alpha1.NetworkACLRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(networkaclrulesResource, c.ns, networkACLRule), &v1alpha1.NetworkACLRule{})
 
@@ -103,7 +105,7 @@ func (c *FakeNetworkACLRules) Update(networkACLRule *v1alpha1.NetworkACLRule) (r
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeNetworkACLRules) UpdateStatus(networkACLRule *v1alpha1.NetworkACLRule) (*v1alpha1.NetworkACLRule, error) {
+func (c *FakeNetworkACLRules) UpdateStatus(ctx context.Context, networkACLRule *v1alpha1.NetworkACLRule, opts v1.UpdateOptions) (*v1alpha1.NetworkACLRule, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(networkaclrulesResource, "status", c.ns, networkACLRule), &v1alpha1.NetworkACLRule{})
 
@@ -114,7 +116,7 @@ func (c *FakeNetworkACLRules) UpdateStatus(networkACLRule *v1alpha1.NetworkACLRu
 }
 
 // Delete takes name of the networkACLRule and deletes it. Returns an error if one occurs.
-func (c *FakeNetworkACLRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeNetworkACLRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(networkaclrulesResource, c.ns, name), &v1alpha1.NetworkACLRule{})
 
@@ -122,15 +124,15 @@ func (c *FakeNetworkACLRules) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeNetworkACLRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(networkaclrulesResource, c.ns, listOptions)
+func (c *FakeNetworkACLRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(networkaclrulesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.NetworkACLRuleList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched networkACLRule.
-func (c *FakeNetworkACLRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.NetworkACLRule, err error) {
+func (c *FakeNetworkACLRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.NetworkACLRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(networkaclrulesResource, c.ns, name, pt, data, subresources...), &v1alpha1.NetworkACLRule{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/digitalocean/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var loadbalancersResource = schema.GroupVersionResource{Group: "digitalocean.kub
 var loadbalancersKind = schema.GroupVersionKind{Group: "digitalocean.kubeform.com", Version: "v1alpha1", Kind: "Loadbalancer"}
 
 // Get takes name of the loadbalancer, and returns the corresponding loadbalancer object, and an error if there is any.
-func (c *FakeLoadbalancers) Get(name string, options v1.GetOptions) (result *v1alpha1.Loadbalancer, err error) {
+func (c *FakeLoadbalancers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Loadbalancer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(loadbalancersResource, c.ns, name), &v1alpha1.Loadbalancer{})
 
@@ -51,7 +53,7 @@ func (c *FakeLoadbalancers) Get(name string, options v1.GetOptions) (result *v1a
 }
 
 // List takes label and field selectors, and returns the list of Loadbalancers that match those selectors.
-func (c *FakeLoadbalancers) List(opts v1.ListOptions) (result *v1alpha1.LoadbalancerList, err error) {
+func (c *FakeLoadbalancers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LoadbalancerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(loadbalancersResource, loadbalancersKind, c.ns, opts), &v1alpha1.LoadbalancerList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLoadbalancers) List(opts v1.ListOptions) (result *v1alpha1.Loadbala
 }
 
 // Watch returns a watch.Interface that watches the requested loadbalancers.
-func (c *FakeLoadbalancers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLoadbalancers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(loadbalancersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a loadbalancer and creates it.  Returns the server's representation of the loadbalancer, and an error, if there is any.
-func (c *FakeLoadbalancers) Create(loadbalancer *v1alpha1.Loadbalancer) (result *v1alpha1.Loadbalancer, err error) {
+func (c *FakeLoadbalancers) Create(ctx context.Context, loadbalancer *v1alpha1.Loadbalancer, opts v1.CreateOptions) (result *v1alpha1.Loadbalancer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(loadbalancersResource, c.ns, loadbalancer), &v1alpha1.Loadbalancer{})
 
@@ -91,7 +93,7 @@ func (c *FakeLoadbalancers) Create(loadbalancer *v1alpha1.Loadbalancer) (result 
 }
 
 // Update takes the representation of a loadbalancer and updates it. Returns the server's representation of the loadbalancer, and an error, if there is any.
-func (c *FakeLoadbalancers) Update(loadbalancer *v1alpha1.Loadbalancer) (result *v1alpha1.Loadbalancer, err error) {
+func (c *FakeLoadbalancers) Update(ctx context.Context, loadbalancer *v1alpha1.Loadbalancer, opts v1.UpdateOptions) (result *v1alpha1.Loadbalancer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(loadbalancersResource, c.ns, loadbalancer), &v1alpha1.Loadbalancer{})
 
@@ -103,7 +105,7 @@ func (c *FakeLoadbalancers) Update(loadbalancer *v1alpha1.Loadbalancer) (result 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLoadbalancers) UpdateStatus(loadbalancer *v1alpha1.Loadbalancer) (*v1alpha1.Loadbalancer, error) {
+func (c *FakeLoadbalancers) UpdateStatus(ctx context.Context, loadbalancer *v1alpha1.Loadbalancer, opts v1.UpdateOptions) (*v1alpha1.Loadbalancer, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(loadbalancersResource, "status", c.ns, loadbalancer), &v1alpha1.Loadbalancer{})
 
@@ -114,7 +116,7 @@ func (c *FakeLoadbalancers) UpdateStatus(loadbalancer *v1alpha1.Loadbalancer) (*
 }
 
 // Delete takes name of the loadbalancer and deletes it. Returns an error if one occurs.
-func (c *FakeLoadbalancers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLoadbalancers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(loadbalancersResource, c.ns, name), &v1alpha1.Loadbalancer{})
 
@@ -122,15 +124,15 @@ func (c *FakeLoadbalancers) Delete(name string, options *v1.DeleteOptions) error
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLoadbalancers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(loadbalancersResource, c.ns, listOptions)
+func (c *FakeLoadbalancers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(loadbalancersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LoadbalancerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched loadbalancer.
-func (c *FakeLoadbalancers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Loadbalancer, err error) {
+func (c *FakeLoadbalancers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Loadbalancer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(loadbalancersResource, c.ns, name, pt, data, subresources...), &v1alpha1.Loadbalancer{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var botchannelemailsResource = schema.GroupVersionResource{Group: "azurerm.kubef
 var botchannelemailsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "BotChannelEmail"}
 
 // Get takes name of the botChannelEmail, and returns the corresponding botChannelEmail object, and an error if there is any.
-func (c *FakeBotChannelEmails) Get(name string, options v1.GetOptions) (result *v1alpha1.BotChannelEmail, err error) {
+func (c *FakeBotChannelEmails) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BotChannelEmail, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(botchannelemailsResource, c.ns, name), &v1alpha1.BotChannelEmail{})
 
@@ -51,7 +53,7 @@ func (c *FakeBotChannelEmails) Get(name string, options v1.GetOptions) (result *
 }
 
 // List takes label and field selectors, and returns the list of BotChannelEmails that match those selectors.
-func (c *FakeBotChannelEmails) List(opts v1.ListOptions) (result *v1alpha1.BotChannelEmailList, err error) {
+func (c *FakeBotChannelEmails) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BotChannelEmailList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(botchannelemailsResource, botchannelemailsKind, c.ns, opts), &v1alpha1.BotChannelEmailList{})
 
@@ -73,14 +75,14 @@ func (c *FakeBotChannelEmails) List(opts v1.ListOptions) (result *v1alpha1.BotCh
 }
 
 // Watch returns a watch.Interface that watches the requested botChannelEmails.
-func (c *FakeBotChannelEmails) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeBotChannelEmails) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(botchannelemailsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a botChannelEmail and creates it.  Returns the server's representation of the botChannelEmail, and an error, if there is any.
-func (c *FakeBotChannelEmails) Create(botChannelEmail *v1alpha1.BotChannelEmail) (result *v1alpha1.BotChannelEmail, err error) {
+func (c *FakeBotChannelEmails) Create(ctx context.Context, botChannelEmail *v1alpha1.BotChannelEmail, opts v1.CreateOptions) (result *v1alpha1.BotChannelEmail, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(botchannelemailsResource, c.ns, botChannelEmail), &v1alpha1.BotChannelEmail{})
 
@@ -91,7 +93,7 @@ func (c *FakeBotChannelEmails) Create(botChannelEmail *v1alpha1.BotChannelEmail)
 }
 
 // Update takes the representation of a botChannelEmail and updates it. Returns the server's representation of the botChannelEmail, and an error, if there is any.
-func (c *FakeBotChannelEmails) Update(botChannelEmail *v1alpha1.BotChannelEmail) (result *v1alpha1.BotChannelEmail, err error) {
+func (c *FakeBotChannelEmails) Update(ctx context.Context, botChannelEmail *v1alpha1.BotChannelEmail, opts v1.UpdateOptions) (result *v1alpha1.BotChannelEmail, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(botchannelemailsResource, c.ns, botChannelEmail), &v1alpha1.BotChannelEmail{})
 
@@ -103,7 +105,7 @@ func (c *FakeBotChannelEmails) Update(botChannelEmail *v1alpha1.BotChannelEmail)
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeBotChannelEmails) UpdateStatus(botChannelEmail *v1alpha1.BotChannelEmail) (*v1alpha1.BotChannelEmail, error) {
+func (c *FakeBotChannelEmails) UpdateStatus(ctx context.Context, botChannelEmail *v1alpha1.BotChannelEmail, opts v1.UpdateOptions) (*v1alpha1.BotChannelEmail, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(botchannelemailsResource, "status", c.ns, botChannelEmail), &v1alpha1.BotChannelEmail{})
 
@@ -114,7 +116,7 @@ func (c *FakeBotChannelEmails) UpdateStatus(botChannelEmail *v1alpha1.BotChannel
 }
 
 // Delete takes name of the botChannelEmail and deletes it. Returns an error if one occurs.
-func (c *FakeBotChannelEmails) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeBotChannelEmails) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(botchannelemailsResource, c.ns, name), &v1alpha1.BotChannelEmail{})
 
@@ -122,15 +124,15 @@ func (c *FakeBotChannelEmails) Delete(name string, options *v1.DeleteOptions) er
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeBotChannelEmails) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(botchannelemailsResource, c.ns, listOptions)
+func (c *FakeBotChannelEmails) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(botchannelemailsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.BotChannelEmailList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched botChannelEmail.
-func (c *FakeBotChannelEmails) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BotChannelEmail, err error) {
+func (c *FakeBotChannelEmails) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BotChannelEmail, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(botchannelemailsResource, c.ns, name, pt, data, subresources...), &v1alpha1.BotChannelEmail{})
 

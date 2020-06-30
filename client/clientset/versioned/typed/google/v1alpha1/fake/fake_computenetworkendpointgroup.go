@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computenetworkendpointgroupsResource = schema.GroupVersionResource{Group: "g
 var computenetworkendpointgroupsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeNetworkEndpointGroup"}
 
 // Get takes name of the computeNetworkEndpointGroup, and returns the corresponding computeNetworkEndpointGroup object, and an error if there is any.
-func (c *FakeComputeNetworkEndpointGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeNetworkEndpointGroup, err error) {
+func (c *FakeComputeNetworkEndpointGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeNetworkEndpointGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computenetworkendpointgroupsResource, c.ns, name), &v1alpha1.ComputeNetworkEndpointGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeNetworkEndpointGroups) Get(name string, options v1.GetOption
 }
 
 // List takes label and field selectors, and returns the list of ComputeNetworkEndpointGroups that match those selectors.
-func (c *FakeComputeNetworkEndpointGroups) List(opts v1.ListOptions) (result *v1alpha1.ComputeNetworkEndpointGroupList, err error) {
+func (c *FakeComputeNetworkEndpointGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeNetworkEndpointGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computenetworkendpointgroupsResource, computenetworkendpointgroupsKind, c.ns, opts), &v1alpha1.ComputeNetworkEndpointGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeNetworkEndpointGroups) List(opts v1.ListOptions) (result *v1
 }
 
 // Watch returns a watch.Interface that watches the requested computeNetworkEndpointGroups.
-func (c *FakeComputeNetworkEndpointGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeNetworkEndpointGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computenetworkendpointgroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeNetworkEndpointGroup and creates it.  Returns the server's representation of the computeNetworkEndpointGroup, and an error, if there is any.
-func (c *FakeComputeNetworkEndpointGroups) Create(computeNetworkEndpointGroup *v1alpha1.ComputeNetworkEndpointGroup) (result *v1alpha1.ComputeNetworkEndpointGroup, err error) {
+func (c *FakeComputeNetworkEndpointGroups) Create(ctx context.Context, computeNetworkEndpointGroup *v1alpha1.ComputeNetworkEndpointGroup, opts v1.CreateOptions) (result *v1alpha1.ComputeNetworkEndpointGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computenetworkendpointgroupsResource, c.ns, computeNetworkEndpointGroup), &v1alpha1.ComputeNetworkEndpointGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeNetworkEndpointGroups) Create(computeNetworkEndpointGroup *v
 }
 
 // Update takes the representation of a computeNetworkEndpointGroup and updates it. Returns the server's representation of the computeNetworkEndpointGroup, and an error, if there is any.
-func (c *FakeComputeNetworkEndpointGroups) Update(computeNetworkEndpointGroup *v1alpha1.ComputeNetworkEndpointGroup) (result *v1alpha1.ComputeNetworkEndpointGroup, err error) {
+func (c *FakeComputeNetworkEndpointGroups) Update(ctx context.Context, computeNetworkEndpointGroup *v1alpha1.ComputeNetworkEndpointGroup, opts v1.UpdateOptions) (result *v1alpha1.ComputeNetworkEndpointGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computenetworkendpointgroupsResource, c.ns, computeNetworkEndpointGroup), &v1alpha1.ComputeNetworkEndpointGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeNetworkEndpointGroups) Update(computeNetworkEndpointGroup *v
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeNetworkEndpointGroups) UpdateStatus(computeNetworkEndpointGroup *v1alpha1.ComputeNetworkEndpointGroup) (*v1alpha1.ComputeNetworkEndpointGroup, error) {
+func (c *FakeComputeNetworkEndpointGroups) UpdateStatus(ctx context.Context, computeNetworkEndpointGroup *v1alpha1.ComputeNetworkEndpointGroup, opts v1.UpdateOptions) (*v1alpha1.ComputeNetworkEndpointGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computenetworkendpointgroupsResource, "status", c.ns, computeNetworkEndpointGroup), &v1alpha1.ComputeNetworkEndpointGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeNetworkEndpointGroups) UpdateStatus(computeNetworkEndpointGr
 }
 
 // Delete takes name of the computeNetworkEndpointGroup and deletes it. Returns an error if one occurs.
-func (c *FakeComputeNetworkEndpointGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeNetworkEndpointGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computenetworkendpointgroupsResource, c.ns, name), &v1alpha1.ComputeNetworkEndpointGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeNetworkEndpointGroups) Delete(name string, options *v1.Delet
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeNetworkEndpointGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computenetworkendpointgroupsResource, c.ns, listOptions)
+func (c *FakeComputeNetworkEndpointGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computenetworkendpointgroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeNetworkEndpointGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeNetworkEndpointGroup.
-func (c *FakeComputeNetworkEndpointGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeNetworkEndpointGroup, err error) {
+func (c *FakeComputeNetworkEndpointGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeNetworkEndpointGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computenetworkendpointgroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeNetworkEndpointGroup{})
 

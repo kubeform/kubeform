@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iothubendpointservicebusqueuesResource = schema.GroupVersionResource{Group: 
 var iothubendpointservicebusqueuesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "IothubEndpointServicebusQueue"}
 
 // Get takes name of the iothubEndpointServicebusQueue, and returns the corresponding iothubEndpointServicebusQueue object, and an error if there is any.
-func (c *FakeIothubEndpointServicebusQueues) Get(name string, options v1.GetOptions) (result *v1alpha1.IothubEndpointServicebusQueue, err error) {
+func (c *FakeIothubEndpointServicebusQueues) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IothubEndpointServicebusQueue, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iothubendpointservicebusqueuesResource, c.ns, name), &v1alpha1.IothubEndpointServicebusQueue{})
 
@@ -51,7 +53,7 @@ func (c *FakeIothubEndpointServicebusQueues) Get(name string, options v1.GetOpti
 }
 
 // List takes label and field selectors, and returns the list of IothubEndpointServicebusQueues that match those selectors.
-func (c *FakeIothubEndpointServicebusQueues) List(opts v1.ListOptions) (result *v1alpha1.IothubEndpointServicebusQueueList, err error) {
+func (c *FakeIothubEndpointServicebusQueues) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IothubEndpointServicebusQueueList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iothubendpointservicebusqueuesResource, iothubendpointservicebusqueuesKind, c.ns, opts), &v1alpha1.IothubEndpointServicebusQueueList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIothubEndpointServicebusQueues) List(opts v1.ListOptions) (result *
 }
 
 // Watch returns a watch.Interface that watches the requested iothubEndpointServicebusQueues.
-func (c *FakeIothubEndpointServicebusQueues) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIothubEndpointServicebusQueues) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iothubendpointservicebusqueuesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iothubEndpointServicebusQueue and creates it.  Returns the server's representation of the iothubEndpointServicebusQueue, and an error, if there is any.
-func (c *FakeIothubEndpointServicebusQueues) Create(iothubEndpointServicebusQueue *v1alpha1.IothubEndpointServicebusQueue) (result *v1alpha1.IothubEndpointServicebusQueue, err error) {
+func (c *FakeIothubEndpointServicebusQueues) Create(ctx context.Context, iothubEndpointServicebusQueue *v1alpha1.IothubEndpointServicebusQueue, opts v1.CreateOptions) (result *v1alpha1.IothubEndpointServicebusQueue, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iothubendpointservicebusqueuesResource, c.ns, iothubEndpointServicebusQueue), &v1alpha1.IothubEndpointServicebusQueue{})
 
@@ -91,7 +93,7 @@ func (c *FakeIothubEndpointServicebusQueues) Create(iothubEndpointServicebusQueu
 }
 
 // Update takes the representation of a iothubEndpointServicebusQueue and updates it. Returns the server's representation of the iothubEndpointServicebusQueue, and an error, if there is any.
-func (c *FakeIothubEndpointServicebusQueues) Update(iothubEndpointServicebusQueue *v1alpha1.IothubEndpointServicebusQueue) (result *v1alpha1.IothubEndpointServicebusQueue, err error) {
+func (c *FakeIothubEndpointServicebusQueues) Update(ctx context.Context, iothubEndpointServicebusQueue *v1alpha1.IothubEndpointServicebusQueue, opts v1.UpdateOptions) (result *v1alpha1.IothubEndpointServicebusQueue, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iothubendpointservicebusqueuesResource, c.ns, iothubEndpointServicebusQueue), &v1alpha1.IothubEndpointServicebusQueue{})
 
@@ -103,7 +105,7 @@ func (c *FakeIothubEndpointServicebusQueues) Update(iothubEndpointServicebusQueu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIothubEndpointServicebusQueues) UpdateStatus(iothubEndpointServicebusQueue *v1alpha1.IothubEndpointServicebusQueue) (*v1alpha1.IothubEndpointServicebusQueue, error) {
+func (c *FakeIothubEndpointServicebusQueues) UpdateStatus(ctx context.Context, iothubEndpointServicebusQueue *v1alpha1.IothubEndpointServicebusQueue, opts v1.UpdateOptions) (*v1alpha1.IothubEndpointServicebusQueue, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iothubendpointservicebusqueuesResource, "status", c.ns, iothubEndpointServicebusQueue), &v1alpha1.IothubEndpointServicebusQueue{})
 
@@ -114,7 +116,7 @@ func (c *FakeIothubEndpointServicebusQueues) UpdateStatus(iothubEndpointServiceb
 }
 
 // Delete takes name of the iothubEndpointServicebusQueue and deletes it. Returns an error if one occurs.
-func (c *FakeIothubEndpointServicebusQueues) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIothubEndpointServicebusQueues) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iothubendpointservicebusqueuesResource, c.ns, name), &v1alpha1.IothubEndpointServicebusQueue{})
 
@@ -122,15 +124,15 @@ func (c *FakeIothubEndpointServicebusQueues) Delete(name string, options *v1.Del
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIothubEndpointServicebusQueues) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iothubendpointservicebusqueuesResource, c.ns, listOptions)
+func (c *FakeIothubEndpointServicebusQueues) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iothubendpointservicebusqueuesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IothubEndpointServicebusQueueList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iothubEndpointServicebusQueue.
-func (c *FakeIothubEndpointServicebusQueues) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IothubEndpointServicebusQueue, err error) {
+func (c *FakeIothubEndpointServicebusQueues) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IothubEndpointServicebusQueue, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iothubendpointservicebusqueuesResource, c.ns, name, pt, data, subresources...), &v1alpha1.IothubEndpointServicebusQueue{})
 

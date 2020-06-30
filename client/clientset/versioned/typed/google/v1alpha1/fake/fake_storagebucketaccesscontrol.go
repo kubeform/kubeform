@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var storagebucketaccesscontrolsResource = schema.GroupVersionResource{Group: "go
 var storagebucketaccesscontrolsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "StorageBucketAccessControl"}
 
 // Get takes name of the storageBucketAccessControl, and returns the corresponding storageBucketAccessControl object, and an error if there is any.
-func (c *FakeStorageBucketAccessControls) Get(name string, options v1.GetOptions) (result *v1alpha1.StorageBucketAccessControl, err error) {
+func (c *FakeStorageBucketAccessControls) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.StorageBucketAccessControl, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(storagebucketaccesscontrolsResource, c.ns, name), &v1alpha1.StorageBucketAccessControl{})
 
@@ -51,7 +53,7 @@ func (c *FakeStorageBucketAccessControls) Get(name string, options v1.GetOptions
 }
 
 // List takes label and field selectors, and returns the list of StorageBucketAccessControls that match those selectors.
-func (c *FakeStorageBucketAccessControls) List(opts v1.ListOptions) (result *v1alpha1.StorageBucketAccessControlList, err error) {
+func (c *FakeStorageBucketAccessControls) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.StorageBucketAccessControlList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(storagebucketaccesscontrolsResource, storagebucketaccesscontrolsKind, c.ns, opts), &v1alpha1.StorageBucketAccessControlList{})
 
@@ -73,14 +75,14 @@ func (c *FakeStorageBucketAccessControls) List(opts v1.ListOptions) (result *v1a
 }
 
 // Watch returns a watch.Interface that watches the requested storageBucketAccessControls.
-func (c *FakeStorageBucketAccessControls) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeStorageBucketAccessControls) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(storagebucketaccesscontrolsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a storageBucketAccessControl and creates it.  Returns the server's representation of the storageBucketAccessControl, and an error, if there is any.
-func (c *FakeStorageBucketAccessControls) Create(storageBucketAccessControl *v1alpha1.StorageBucketAccessControl) (result *v1alpha1.StorageBucketAccessControl, err error) {
+func (c *FakeStorageBucketAccessControls) Create(ctx context.Context, storageBucketAccessControl *v1alpha1.StorageBucketAccessControl, opts v1.CreateOptions) (result *v1alpha1.StorageBucketAccessControl, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(storagebucketaccesscontrolsResource, c.ns, storageBucketAccessControl), &v1alpha1.StorageBucketAccessControl{})
 
@@ -91,7 +93,7 @@ func (c *FakeStorageBucketAccessControls) Create(storageBucketAccessControl *v1a
 }
 
 // Update takes the representation of a storageBucketAccessControl and updates it. Returns the server's representation of the storageBucketAccessControl, and an error, if there is any.
-func (c *FakeStorageBucketAccessControls) Update(storageBucketAccessControl *v1alpha1.StorageBucketAccessControl) (result *v1alpha1.StorageBucketAccessControl, err error) {
+func (c *FakeStorageBucketAccessControls) Update(ctx context.Context, storageBucketAccessControl *v1alpha1.StorageBucketAccessControl, opts v1.UpdateOptions) (result *v1alpha1.StorageBucketAccessControl, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(storagebucketaccesscontrolsResource, c.ns, storageBucketAccessControl), &v1alpha1.StorageBucketAccessControl{})
 
@@ -103,7 +105,7 @@ func (c *FakeStorageBucketAccessControls) Update(storageBucketAccessControl *v1a
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeStorageBucketAccessControls) UpdateStatus(storageBucketAccessControl *v1alpha1.StorageBucketAccessControl) (*v1alpha1.StorageBucketAccessControl, error) {
+func (c *FakeStorageBucketAccessControls) UpdateStatus(ctx context.Context, storageBucketAccessControl *v1alpha1.StorageBucketAccessControl, opts v1.UpdateOptions) (*v1alpha1.StorageBucketAccessControl, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(storagebucketaccesscontrolsResource, "status", c.ns, storageBucketAccessControl), &v1alpha1.StorageBucketAccessControl{})
 
@@ -114,7 +116,7 @@ func (c *FakeStorageBucketAccessControls) UpdateStatus(storageBucketAccessContro
 }
 
 // Delete takes name of the storageBucketAccessControl and deletes it. Returns an error if one occurs.
-func (c *FakeStorageBucketAccessControls) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeStorageBucketAccessControls) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(storagebucketaccesscontrolsResource, c.ns, name), &v1alpha1.StorageBucketAccessControl{})
 
@@ -122,15 +124,15 @@ func (c *FakeStorageBucketAccessControls) Delete(name string, options *v1.Delete
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeStorageBucketAccessControls) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(storagebucketaccesscontrolsResource, c.ns, listOptions)
+func (c *FakeStorageBucketAccessControls) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(storagebucketaccesscontrolsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.StorageBucketAccessControlList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched storageBucketAccessControl.
-func (c *FakeStorageBucketAccessControls) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StorageBucketAccessControl, err error) {
+func (c *FakeStorageBucketAccessControls) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StorageBucketAccessControl, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(storagebucketaccesscontrolsResource, c.ns, name, pt, data, subresources...), &v1alpha1.StorageBucketAccessControl{})
 

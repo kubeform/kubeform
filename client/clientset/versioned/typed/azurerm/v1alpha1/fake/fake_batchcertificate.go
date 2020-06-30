@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var batchcertificatesResource = schema.GroupVersionResource{Group: "azurerm.kube
 var batchcertificatesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "BatchCertificate"}
 
 // Get takes name of the batchCertificate, and returns the corresponding batchCertificate object, and an error if there is any.
-func (c *FakeBatchCertificates) Get(name string, options v1.GetOptions) (result *v1alpha1.BatchCertificate, err error) {
+func (c *FakeBatchCertificates) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BatchCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(batchcertificatesResource, c.ns, name), &v1alpha1.BatchCertificate{})
 
@@ -51,7 +53,7 @@ func (c *FakeBatchCertificates) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of BatchCertificates that match those selectors.
-func (c *FakeBatchCertificates) List(opts v1.ListOptions) (result *v1alpha1.BatchCertificateList, err error) {
+func (c *FakeBatchCertificates) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BatchCertificateList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(batchcertificatesResource, batchcertificatesKind, c.ns, opts), &v1alpha1.BatchCertificateList{})
 
@@ -73,14 +75,14 @@ func (c *FakeBatchCertificates) List(opts v1.ListOptions) (result *v1alpha1.Batc
 }
 
 // Watch returns a watch.Interface that watches the requested batchCertificates.
-func (c *FakeBatchCertificates) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeBatchCertificates) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(batchcertificatesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a batchCertificate and creates it.  Returns the server's representation of the batchCertificate, and an error, if there is any.
-func (c *FakeBatchCertificates) Create(batchCertificate *v1alpha1.BatchCertificate) (result *v1alpha1.BatchCertificate, err error) {
+func (c *FakeBatchCertificates) Create(ctx context.Context, batchCertificate *v1alpha1.BatchCertificate, opts v1.CreateOptions) (result *v1alpha1.BatchCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(batchcertificatesResource, c.ns, batchCertificate), &v1alpha1.BatchCertificate{})
 
@@ -91,7 +93,7 @@ func (c *FakeBatchCertificates) Create(batchCertificate *v1alpha1.BatchCertifica
 }
 
 // Update takes the representation of a batchCertificate and updates it. Returns the server's representation of the batchCertificate, and an error, if there is any.
-func (c *FakeBatchCertificates) Update(batchCertificate *v1alpha1.BatchCertificate) (result *v1alpha1.BatchCertificate, err error) {
+func (c *FakeBatchCertificates) Update(ctx context.Context, batchCertificate *v1alpha1.BatchCertificate, opts v1.UpdateOptions) (result *v1alpha1.BatchCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(batchcertificatesResource, c.ns, batchCertificate), &v1alpha1.BatchCertificate{})
 
@@ -103,7 +105,7 @@ func (c *FakeBatchCertificates) Update(batchCertificate *v1alpha1.BatchCertifica
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeBatchCertificates) UpdateStatus(batchCertificate *v1alpha1.BatchCertificate) (*v1alpha1.BatchCertificate, error) {
+func (c *FakeBatchCertificates) UpdateStatus(ctx context.Context, batchCertificate *v1alpha1.BatchCertificate, opts v1.UpdateOptions) (*v1alpha1.BatchCertificate, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(batchcertificatesResource, "status", c.ns, batchCertificate), &v1alpha1.BatchCertificate{})
 
@@ -114,7 +116,7 @@ func (c *FakeBatchCertificates) UpdateStatus(batchCertificate *v1alpha1.BatchCer
 }
 
 // Delete takes name of the batchCertificate and deletes it. Returns an error if one occurs.
-func (c *FakeBatchCertificates) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeBatchCertificates) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(batchcertificatesResource, c.ns, name), &v1alpha1.BatchCertificate{})
 
@@ -122,15 +124,15 @@ func (c *FakeBatchCertificates) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeBatchCertificates) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(batchcertificatesResource, c.ns, listOptions)
+func (c *FakeBatchCertificates) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(batchcertificatesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.BatchCertificateList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched batchCertificate.
-func (c *FakeBatchCertificates) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BatchCertificate, err error) {
+func (c *FakeBatchCertificates) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BatchCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(batchcertificatesResource, c.ns, name, pt, data, subresources...), &v1alpha1.BatchCertificate{})
 

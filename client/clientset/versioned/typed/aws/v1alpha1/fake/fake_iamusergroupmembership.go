@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iamusergroupmembershipsResource = schema.GroupVersionResource{Group: "aws.ku
 var iamusergroupmembershipsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "IamUserGroupMembership"}
 
 // Get takes name of the iamUserGroupMembership, and returns the corresponding iamUserGroupMembership object, and an error if there is any.
-func (c *FakeIamUserGroupMemberships) Get(name string, options v1.GetOptions) (result *v1alpha1.IamUserGroupMembership, err error) {
+func (c *FakeIamUserGroupMemberships) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IamUserGroupMembership, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iamusergroupmembershipsResource, c.ns, name), &v1alpha1.IamUserGroupMembership{})
 
@@ -51,7 +53,7 @@ func (c *FakeIamUserGroupMemberships) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of IamUserGroupMemberships that match those selectors.
-func (c *FakeIamUserGroupMemberships) List(opts v1.ListOptions) (result *v1alpha1.IamUserGroupMembershipList, err error) {
+func (c *FakeIamUserGroupMemberships) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IamUserGroupMembershipList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iamusergroupmembershipsResource, iamusergroupmembershipsKind, c.ns, opts), &v1alpha1.IamUserGroupMembershipList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIamUserGroupMemberships) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested iamUserGroupMemberships.
-func (c *FakeIamUserGroupMemberships) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIamUserGroupMemberships) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iamusergroupmembershipsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iamUserGroupMembership and creates it.  Returns the server's representation of the iamUserGroupMembership, and an error, if there is any.
-func (c *FakeIamUserGroupMemberships) Create(iamUserGroupMembership *v1alpha1.IamUserGroupMembership) (result *v1alpha1.IamUserGroupMembership, err error) {
+func (c *FakeIamUserGroupMemberships) Create(ctx context.Context, iamUserGroupMembership *v1alpha1.IamUserGroupMembership, opts v1.CreateOptions) (result *v1alpha1.IamUserGroupMembership, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iamusergroupmembershipsResource, c.ns, iamUserGroupMembership), &v1alpha1.IamUserGroupMembership{})
 
@@ -91,7 +93,7 @@ func (c *FakeIamUserGroupMemberships) Create(iamUserGroupMembership *v1alpha1.Ia
 }
 
 // Update takes the representation of a iamUserGroupMembership and updates it. Returns the server's representation of the iamUserGroupMembership, and an error, if there is any.
-func (c *FakeIamUserGroupMemberships) Update(iamUserGroupMembership *v1alpha1.IamUserGroupMembership) (result *v1alpha1.IamUserGroupMembership, err error) {
+func (c *FakeIamUserGroupMemberships) Update(ctx context.Context, iamUserGroupMembership *v1alpha1.IamUserGroupMembership, opts v1.UpdateOptions) (result *v1alpha1.IamUserGroupMembership, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iamusergroupmembershipsResource, c.ns, iamUserGroupMembership), &v1alpha1.IamUserGroupMembership{})
 
@@ -103,7 +105,7 @@ func (c *FakeIamUserGroupMemberships) Update(iamUserGroupMembership *v1alpha1.Ia
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIamUserGroupMemberships) UpdateStatus(iamUserGroupMembership *v1alpha1.IamUserGroupMembership) (*v1alpha1.IamUserGroupMembership, error) {
+func (c *FakeIamUserGroupMemberships) UpdateStatus(ctx context.Context, iamUserGroupMembership *v1alpha1.IamUserGroupMembership, opts v1.UpdateOptions) (*v1alpha1.IamUserGroupMembership, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iamusergroupmembershipsResource, "status", c.ns, iamUserGroupMembership), &v1alpha1.IamUserGroupMembership{})
 
@@ -114,7 +116,7 @@ func (c *FakeIamUserGroupMemberships) UpdateStatus(iamUserGroupMembership *v1alp
 }
 
 // Delete takes name of the iamUserGroupMembership and deletes it. Returns an error if one occurs.
-func (c *FakeIamUserGroupMemberships) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIamUserGroupMemberships) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iamusergroupmembershipsResource, c.ns, name), &v1alpha1.IamUserGroupMembership{})
 
@@ -122,15 +124,15 @@ func (c *FakeIamUserGroupMemberships) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIamUserGroupMemberships) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iamusergroupmembershipsResource, c.ns, listOptions)
+func (c *FakeIamUserGroupMemberships) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iamusergroupmembershipsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IamUserGroupMembershipList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iamUserGroupMembership.
-func (c *FakeIamUserGroupMemberships) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IamUserGroupMembership, err error) {
+func (c *FakeIamUserGroupMemberships) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IamUserGroupMembership, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iamusergroupmembershipsResource, c.ns, name, pt, data, subresources...), &v1alpha1.IamUserGroupMembership{})
 

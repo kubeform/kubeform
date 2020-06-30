@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var neptuneeventsubscriptionsResource = schema.GroupVersionResource{Group: "aws.
 var neptuneeventsubscriptionsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "NeptuneEventSubscription"}
 
 // Get takes name of the neptuneEventSubscription, and returns the corresponding neptuneEventSubscription object, and an error if there is any.
-func (c *FakeNeptuneEventSubscriptions) Get(name string, options v1.GetOptions) (result *v1alpha1.NeptuneEventSubscription, err error) {
+func (c *FakeNeptuneEventSubscriptions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.NeptuneEventSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(neptuneeventsubscriptionsResource, c.ns, name), &v1alpha1.NeptuneEventSubscription{})
 
@@ -51,7 +53,7 @@ func (c *FakeNeptuneEventSubscriptions) Get(name string, options v1.GetOptions) 
 }
 
 // List takes label and field selectors, and returns the list of NeptuneEventSubscriptions that match those selectors.
-func (c *FakeNeptuneEventSubscriptions) List(opts v1.ListOptions) (result *v1alpha1.NeptuneEventSubscriptionList, err error) {
+func (c *FakeNeptuneEventSubscriptions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.NeptuneEventSubscriptionList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(neptuneeventsubscriptionsResource, neptuneeventsubscriptionsKind, c.ns, opts), &v1alpha1.NeptuneEventSubscriptionList{})
 
@@ -73,14 +75,14 @@ func (c *FakeNeptuneEventSubscriptions) List(opts v1.ListOptions) (result *v1alp
 }
 
 // Watch returns a watch.Interface that watches the requested neptuneEventSubscriptions.
-func (c *FakeNeptuneEventSubscriptions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeNeptuneEventSubscriptions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(neptuneeventsubscriptionsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a neptuneEventSubscription and creates it.  Returns the server's representation of the neptuneEventSubscription, and an error, if there is any.
-func (c *FakeNeptuneEventSubscriptions) Create(neptuneEventSubscription *v1alpha1.NeptuneEventSubscription) (result *v1alpha1.NeptuneEventSubscription, err error) {
+func (c *FakeNeptuneEventSubscriptions) Create(ctx context.Context, neptuneEventSubscription *v1alpha1.NeptuneEventSubscription, opts v1.CreateOptions) (result *v1alpha1.NeptuneEventSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(neptuneeventsubscriptionsResource, c.ns, neptuneEventSubscription), &v1alpha1.NeptuneEventSubscription{})
 
@@ -91,7 +93,7 @@ func (c *FakeNeptuneEventSubscriptions) Create(neptuneEventSubscription *v1alpha
 }
 
 // Update takes the representation of a neptuneEventSubscription and updates it. Returns the server's representation of the neptuneEventSubscription, and an error, if there is any.
-func (c *FakeNeptuneEventSubscriptions) Update(neptuneEventSubscription *v1alpha1.NeptuneEventSubscription) (result *v1alpha1.NeptuneEventSubscription, err error) {
+func (c *FakeNeptuneEventSubscriptions) Update(ctx context.Context, neptuneEventSubscription *v1alpha1.NeptuneEventSubscription, opts v1.UpdateOptions) (result *v1alpha1.NeptuneEventSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(neptuneeventsubscriptionsResource, c.ns, neptuneEventSubscription), &v1alpha1.NeptuneEventSubscription{})
 
@@ -103,7 +105,7 @@ func (c *FakeNeptuneEventSubscriptions) Update(neptuneEventSubscription *v1alpha
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeNeptuneEventSubscriptions) UpdateStatus(neptuneEventSubscription *v1alpha1.NeptuneEventSubscription) (*v1alpha1.NeptuneEventSubscription, error) {
+func (c *FakeNeptuneEventSubscriptions) UpdateStatus(ctx context.Context, neptuneEventSubscription *v1alpha1.NeptuneEventSubscription, opts v1.UpdateOptions) (*v1alpha1.NeptuneEventSubscription, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(neptuneeventsubscriptionsResource, "status", c.ns, neptuneEventSubscription), &v1alpha1.NeptuneEventSubscription{})
 
@@ -114,7 +116,7 @@ func (c *FakeNeptuneEventSubscriptions) UpdateStatus(neptuneEventSubscription *v
 }
 
 // Delete takes name of the neptuneEventSubscription and deletes it. Returns an error if one occurs.
-func (c *FakeNeptuneEventSubscriptions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeNeptuneEventSubscriptions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(neptuneeventsubscriptionsResource, c.ns, name), &v1alpha1.NeptuneEventSubscription{})
 
@@ -122,15 +124,15 @@ func (c *FakeNeptuneEventSubscriptions) Delete(name string, options *v1.DeleteOp
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeNeptuneEventSubscriptions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(neptuneeventsubscriptionsResource, c.ns, listOptions)
+func (c *FakeNeptuneEventSubscriptions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(neptuneeventsubscriptionsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.NeptuneEventSubscriptionList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched neptuneEventSubscription.
-func (c *FakeNeptuneEventSubscriptions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.NeptuneEventSubscription, err error) {
+func (c *FakeNeptuneEventSubscriptions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.NeptuneEventSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(neptuneeventsubscriptionsResource, c.ns, name, pt, data, subresources...), &v1alpha1.NeptuneEventSubscription{})
 

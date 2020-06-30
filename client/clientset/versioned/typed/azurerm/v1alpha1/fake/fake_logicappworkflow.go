@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var logicappworkflowsResource = schema.GroupVersionResource{Group: "azurerm.kube
 var logicappworkflowsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "LogicAppWorkflow"}
 
 // Get takes name of the logicAppWorkflow, and returns the corresponding logicAppWorkflow object, and an error if there is any.
-func (c *FakeLogicAppWorkflows) Get(name string, options v1.GetOptions) (result *v1alpha1.LogicAppWorkflow, err error) {
+func (c *FakeLogicAppWorkflows) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LogicAppWorkflow, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(logicappworkflowsResource, c.ns, name), &v1alpha1.LogicAppWorkflow{})
 
@@ -51,7 +53,7 @@ func (c *FakeLogicAppWorkflows) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of LogicAppWorkflows that match those selectors.
-func (c *FakeLogicAppWorkflows) List(opts v1.ListOptions) (result *v1alpha1.LogicAppWorkflowList, err error) {
+func (c *FakeLogicAppWorkflows) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LogicAppWorkflowList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(logicappworkflowsResource, logicappworkflowsKind, c.ns, opts), &v1alpha1.LogicAppWorkflowList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLogicAppWorkflows) List(opts v1.ListOptions) (result *v1alpha1.Logi
 }
 
 // Watch returns a watch.Interface that watches the requested logicAppWorkflows.
-func (c *FakeLogicAppWorkflows) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLogicAppWorkflows) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(logicappworkflowsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a logicAppWorkflow and creates it.  Returns the server's representation of the logicAppWorkflow, and an error, if there is any.
-func (c *FakeLogicAppWorkflows) Create(logicAppWorkflow *v1alpha1.LogicAppWorkflow) (result *v1alpha1.LogicAppWorkflow, err error) {
+func (c *FakeLogicAppWorkflows) Create(ctx context.Context, logicAppWorkflow *v1alpha1.LogicAppWorkflow, opts v1.CreateOptions) (result *v1alpha1.LogicAppWorkflow, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(logicappworkflowsResource, c.ns, logicAppWorkflow), &v1alpha1.LogicAppWorkflow{})
 
@@ -91,7 +93,7 @@ func (c *FakeLogicAppWorkflows) Create(logicAppWorkflow *v1alpha1.LogicAppWorkfl
 }
 
 // Update takes the representation of a logicAppWorkflow and updates it. Returns the server's representation of the logicAppWorkflow, and an error, if there is any.
-func (c *FakeLogicAppWorkflows) Update(logicAppWorkflow *v1alpha1.LogicAppWorkflow) (result *v1alpha1.LogicAppWorkflow, err error) {
+func (c *FakeLogicAppWorkflows) Update(ctx context.Context, logicAppWorkflow *v1alpha1.LogicAppWorkflow, opts v1.UpdateOptions) (result *v1alpha1.LogicAppWorkflow, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(logicappworkflowsResource, c.ns, logicAppWorkflow), &v1alpha1.LogicAppWorkflow{})
 
@@ -103,7 +105,7 @@ func (c *FakeLogicAppWorkflows) Update(logicAppWorkflow *v1alpha1.LogicAppWorkfl
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLogicAppWorkflows) UpdateStatus(logicAppWorkflow *v1alpha1.LogicAppWorkflow) (*v1alpha1.LogicAppWorkflow, error) {
+func (c *FakeLogicAppWorkflows) UpdateStatus(ctx context.Context, logicAppWorkflow *v1alpha1.LogicAppWorkflow, opts v1.UpdateOptions) (*v1alpha1.LogicAppWorkflow, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(logicappworkflowsResource, "status", c.ns, logicAppWorkflow), &v1alpha1.LogicAppWorkflow{})
 
@@ -114,7 +116,7 @@ func (c *FakeLogicAppWorkflows) UpdateStatus(logicAppWorkflow *v1alpha1.LogicApp
 }
 
 // Delete takes name of the logicAppWorkflow and deletes it. Returns an error if one occurs.
-func (c *FakeLogicAppWorkflows) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLogicAppWorkflows) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(logicappworkflowsResource, c.ns, name), &v1alpha1.LogicAppWorkflow{})
 
@@ -122,15 +124,15 @@ func (c *FakeLogicAppWorkflows) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLogicAppWorkflows) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(logicappworkflowsResource, c.ns, listOptions)
+func (c *FakeLogicAppWorkflows) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(logicappworkflowsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LogicAppWorkflowList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched logicAppWorkflow.
-func (c *FakeLogicAppWorkflows) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LogicAppWorkflow, err error) {
+func (c *FakeLogicAppWorkflows) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LogicAppWorkflow, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(logicappworkflowsResource, c.ns, name, pt, data, subresources...), &v1alpha1.LogicAppWorkflow{})
 

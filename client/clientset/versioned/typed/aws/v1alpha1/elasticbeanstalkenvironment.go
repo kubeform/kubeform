@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type ElasticBeanstalkEnvironmentsGetter interface {
 
 // ElasticBeanstalkEnvironmentInterface has methods to work with ElasticBeanstalkEnvironment resources.
 type ElasticBeanstalkEnvironmentInterface interface {
-	Create(*v1alpha1.ElasticBeanstalkEnvironment) (*v1alpha1.ElasticBeanstalkEnvironment, error)
-	Update(*v1alpha1.ElasticBeanstalkEnvironment) (*v1alpha1.ElasticBeanstalkEnvironment, error)
-	UpdateStatus(*v1alpha1.ElasticBeanstalkEnvironment) (*v1alpha1.ElasticBeanstalkEnvironment, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ElasticBeanstalkEnvironment, error)
-	List(opts v1.ListOptions) (*v1alpha1.ElasticBeanstalkEnvironmentList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ElasticBeanstalkEnvironment, err error)
+	Create(ctx context.Context, elasticBeanstalkEnvironment *v1alpha1.ElasticBeanstalkEnvironment, opts v1.CreateOptions) (*v1alpha1.ElasticBeanstalkEnvironment, error)
+	Update(ctx context.Context, elasticBeanstalkEnvironment *v1alpha1.ElasticBeanstalkEnvironment, opts v1.UpdateOptions) (*v1alpha1.ElasticBeanstalkEnvironment, error)
+	UpdateStatus(ctx context.Context, elasticBeanstalkEnvironment *v1alpha1.ElasticBeanstalkEnvironment, opts v1.UpdateOptions) (*v1alpha1.ElasticBeanstalkEnvironment, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ElasticBeanstalkEnvironment, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ElasticBeanstalkEnvironmentList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ElasticBeanstalkEnvironment, err error)
 	ElasticBeanstalkEnvironmentExpansion
 }
 
@@ -65,20 +66,20 @@ func newElasticBeanstalkEnvironments(c *AwsV1alpha1Client, namespace string) *el
 }
 
 // Get takes name of the elasticBeanstalkEnvironment, and returns the corresponding elasticBeanstalkEnvironment object, and an error if there is any.
-func (c *elasticBeanstalkEnvironments) Get(name string, options v1.GetOptions) (result *v1alpha1.ElasticBeanstalkEnvironment, err error) {
+func (c *elasticBeanstalkEnvironments) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ElasticBeanstalkEnvironment, err error) {
 	result = &v1alpha1.ElasticBeanstalkEnvironment{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("elasticbeanstalkenvironments").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ElasticBeanstalkEnvironments that match those selectors.
-func (c *elasticBeanstalkEnvironments) List(opts v1.ListOptions) (result *v1alpha1.ElasticBeanstalkEnvironmentList, err error) {
+func (c *elasticBeanstalkEnvironments) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ElasticBeanstalkEnvironmentList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *elasticBeanstalkEnvironments) List(opts v1.ListOptions) (result *v1alph
 		Resource("elasticbeanstalkenvironments").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested elasticBeanstalkEnvironments.
-func (c *elasticBeanstalkEnvironments) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *elasticBeanstalkEnvironments) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *elasticBeanstalkEnvironments) Watch(opts v1.ListOptions) (watch.Interfa
 		Resource("elasticbeanstalkenvironments").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a elasticBeanstalkEnvironment and creates it.  Returns the server's representation of the elasticBeanstalkEnvironment, and an error, if there is any.
-func (c *elasticBeanstalkEnvironments) Create(elasticBeanstalkEnvironment *v1alpha1.ElasticBeanstalkEnvironment) (result *v1alpha1.ElasticBeanstalkEnvironment, err error) {
+func (c *elasticBeanstalkEnvironments) Create(ctx context.Context, elasticBeanstalkEnvironment *v1alpha1.ElasticBeanstalkEnvironment, opts v1.CreateOptions) (result *v1alpha1.ElasticBeanstalkEnvironment, err error) {
 	result = &v1alpha1.ElasticBeanstalkEnvironment{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("elasticbeanstalkenvironments").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(elasticBeanstalkEnvironment).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a elasticBeanstalkEnvironment and updates it. Returns the server's representation of the elasticBeanstalkEnvironment, and an error, if there is any.
-func (c *elasticBeanstalkEnvironments) Update(elasticBeanstalkEnvironment *v1alpha1.ElasticBeanstalkEnvironment) (result *v1alpha1.ElasticBeanstalkEnvironment, err error) {
+func (c *elasticBeanstalkEnvironments) Update(ctx context.Context, elasticBeanstalkEnvironment *v1alpha1.ElasticBeanstalkEnvironment, opts v1.UpdateOptions) (result *v1alpha1.ElasticBeanstalkEnvironment, err error) {
 	result = &v1alpha1.ElasticBeanstalkEnvironment{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("elasticbeanstalkenvironments").
 		Name(elasticBeanstalkEnvironment.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(elasticBeanstalkEnvironment).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *elasticBeanstalkEnvironments) UpdateStatus(elasticBeanstalkEnvironment *v1alpha1.ElasticBeanstalkEnvironment) (result *v1alpha1.ElasticBeanstalkEnvironment, err error) {
+func (c *elasticBeanstalkEnvironments) UpdateStatus(ctx context.Context, elasticBeanstalkEnvironment *v1alpha1.ElasticBeanstalkEnvironment, opts v1.UpdateOptions) (result *v1alpha1.ElasticBeanstalkEnvironment, err error) {
 	result = &v1alpha1.ElasticBeanstalkEnvironment{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("elasticbeanstalkenvironments").
 		Name(elasticBeanstalkEnvironment.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(elasticBeanstalkEnvironment).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the elasticBeanstalkEnvironment and deletes it. Returns an error if one occurs.
-func (c *elasticBeanstalkEnvironments) Delete(name string, options *v1.DeleteOptions) error {
+func (c *elasticBeanstalkEnvironments) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("elasticbeanstalkenvironments").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *elasticBeanstalkEnvironments) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *elasticBeanstalkEnvironments) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("elasticbeanstalkenvironments").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched elasticBeanstalkEnvironment.
-func (c *elasticBeanstalkEnvironments) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ElasticBeanstalkEnvironment, err error) {
+func (c *elasticBeanstalkEnvironments) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ElasticBeanstalkEnvironment, err error) {
 	result = &v1alpha1.ElasticBeanstalkEnvironment{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("elasticbeanstalkenvironments").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

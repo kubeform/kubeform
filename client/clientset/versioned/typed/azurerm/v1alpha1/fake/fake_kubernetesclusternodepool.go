@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var kubernetesclusternodepoolsResource = schema.GroupVersionResource{Group: "azu
 var kubernetesclusternodepoolsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "KubernetesClusterNodePool"}
 
 // Get takes name of the kubernetesClusterNodePool, and returns the corresponding kubernetesClusterNodePool object, and an error if there is any.
-func (c *FakeKubernetesClusterNodePools) Get(name string, options v1.GetOptions) (result *v1alpha1.KubernetesClusterNodePool, err error) {
+func (c *FakeKubernetesClusterNodePools) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KubernetesClusterNodePool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(kubernetesclusternodepoolsResource, c.ns, name), &v1alpha1.KubernetesClusterNodePool{})
 
@@ -51,7 +53,7 @@ func (c *FakeKubernetesClusterNodePools) Get(name string, options v1.GetOptions)
 }
 
 // List takes label and field selectors, and returns the list of KubernetesClusterNodePools that match those selectors.
-func (c *FakeKubernetesClusterNodePools) List(opts v1.ListOptions) (result *v1alpha1.KubernetesClusterNodePoolList, err error) {
+func (c *FakeKubernetesClusterNodePools) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KubernetesClusterNodePoolList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(kubernetesclusternodepoolsResource, kubernetesclusternodepoolsKind, c.ns, opts), &v1alpha1.KubernetesClusterNodePoolList{})
 
@@ -73,14 +75,14 @@ func (c *FakeKubernetesClusterNodePools) List(opts v1.ListOptions) (result *v1al
 }
 
 // Watch returns a watch.Interface that watches the requested kubernetesClusterNodePools.
-func (c *FakeKubernetesClusterNodePools) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeKubernetesClusterNodePools) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(kubernetesclusternodepoolsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a kubernetesClusterNodePool and creates it.  Returns the server's representation of the kubernetesClusterNodePool, and an error, if there is any.
-func (c *FakeKubernetesClusterNodePools) Create(kubernetesClusterNodePool *v1alpha1.KubernetesClusterNodePool) (result *v1alpha1.KubernetesClusterNodePool, err error) {
+func (c *FakeKubernetesClusterNodePools) Create(ctx context.Context, kubernetesClusterNodePool *v1alpha1.KubernetesClusterNodePool, opts v1.CreateOptions) (result *v1alpha1.KubernetesClusterNodePool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(kubernetesclusternodepoolsResource, c.ns, kubernetesClusterNodePool), &v1alpha1.KubernetesClusterNodePool{})
 
@@ -91,7 +93,7 @@ func (c *FakeKubernetesClusterNodePools) Create(kubernetesClusterNodePool *v1alp
 }
 
 // Update takes the representation of a kubernetesClusterNodePool and updates it. Returns the server's representation of the kubernetesClusterNodePool, and an error, if there is any.
-func (c *FakeKubernetesClusterNodePools) Update(kubernetesClusterNodePool *v1alpha1.KubernetesClusterNodePool) (result *v1alpha1.KubernetesClusterNodePool, err error) {
+func (c *FakeKubernetesClusterNodePools) Update(ctx context.Context, kubernetesClusterNodePool *v1alpha1.KubernetesClusterNodePool, opts v1.UpdateOptions) (result *v1alpha1.KubernetesClusterNodePool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(kubernetesclusternodepoolsResource, c.ns, kubernetesClusterNodePool), &v1alpha1.KubernetesClusterNodePool{})
 
@@ -103,7 +105,7 @@ func (c *FakeKubernetesClusterNodePools) Update(kubernetesClusterNodePool *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeKubernetesClusterNodePools) UpdateStatus(kubernetesClusterNodePool *v1alpha1.KubernetesClusterNodePool) (*v1alpha1.KubernetesClusterNodePool, error) {
+func (c *FakeKubernetesClusterNodePools) UpdateStatus(ctx context.Context, kubernetesClusterNodePool *v1alpha1.KubernetesClusterNodePool, opts v1.UpdateOptions) (*v1alpha1.KubernetesClusterNodePool, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(kubernetesclusternodepoolsResource, "status", c.ns, kubernetesClusterNodePool), &v1alpha1.KubernetesClusterNodePool{})
 
@@ -114,7 +116,7 @@ func (c *FakeKubernetesClusterNodePools) UpdateStatus(kubernetesClusterNodePool 
 }
 
 // Delete takes name of the kubernetesClusterNodePool and deletes it. Returns an error if one occurs.
-func (c *FakeKubernetesClusterNodePools) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeKubernetesClusterNodePools) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(kubernetesclusternodepoolsResource, c.ns, name), &v1alpha1.KubernetesClusterNodePool{})
 
@@ -122,15 +124,15 @@ func (c *FakeKubernetesClusterNodePools) Delete(name string, options *v1.DeleteO
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeKubernetesClusterNodePools) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(kubernetesclusternodepoolsResource, c.ns, listOptions)
+func (c *FakeKubernetesClusterNodePools) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(kubernetesclusternodepoolsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.KubernetesClusterNodePoolList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched kubernetesClusterNodePool.
-func (c *FakeKubernetesClusterNodePools) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KubernetesClusterNodePool, err error) {
+func (c *FakeKubernetesClusterNodePools) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KubernetesClusterNodePool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(kubernetesclusternodepoolsResource, c.ns, name, pt, data, subresources...), &v1alpha1.KubernetesClusterNodePool{})
 

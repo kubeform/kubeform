@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computereservationsResource = schema.GroupVersionResource{Group: "google.kub
 var computereservationsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeReservation"}
 
 // Get takes name of the computeReservation, and returns the corresponding computeReservation object, and an error if there is any.
-func (c *FakeComputeReservations) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeReservation, err error) {
+func (c *FakeComputeReservations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeReservation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computereservationsResource, c.ns, name), &v1alpha1.ComputeReservation{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeReservations) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of ComputeReservations that match those selectors.
-func (c *FakeComputeReservations) List(opts v1.ListOptions) (result *v1alpha1.ComputeReservationList, err error) {
+func (c *FakeComputeReservations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeReservationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computereservationsResource, computereservationsKind, c.ns, opts), &v1alpha1.ComputeReservationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeReservations) List(opts v1.ListOptions) (result *v1alpha1.Co
 }
 
 // Watch returns a watch.Interface that watches the requested computeReservations.
-func (c *FakeComputeReservations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeReservations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computereservationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeReservation and creates it.  Returns the server's representation of the computeReservation, and an error, if there is any.
-func (c *FakeComputeReservations) Create(computeReservation *v1alpha1.ComputeReservation) (result *v1alpha1.ComputeReservation, err error) {
+func (c *FakeComputeReservations) Create(ctx context.Context, computeReservation *v1alpha1.ComputeReservation, opts v1.CreateOptions) (result *v1alpha1.ComputeReservation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computereservationsResource, c.ns, computeReservation), &v1alpha1.ComputeReservation{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeReservations) Create(computeReservation *v1alpha1.ComputeRes
 }
 
 // Update takes the representation of a computeReservation and updates it. Returns the server's representation of the computeReservation, and an error, if there is any.
-func (c *FakeComputeReservations) Update(computeReservation *v1alpha1.ComputeReservation) (result *v1alpha1.ComputeReservation, err error) {
+func (c *FakeComputeReservations) Update(ctx context.Context, computeReservation *v1alpha1.ComputeReservation, opts v1.UpdateOptions) (result *v1alpha1.ComputeReservation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computereservationsResource, c.ns, computeReservation), &v1alpha1.ComputeReservation{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeReservations) Update(computeReservation *v1alpha1.ComputeRes
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeReservations) UpdateStatus(computeReservation *v1alpha1.ComputeReservation) (*v1alpha1.ComputeReservation, error) {
+func (c *FakeComputeReservations) UpdateStatus(ctx context.Context, computeReservation *v1alpha1.ComputeReservation, opts v1.UpdateOptions) (*v1alpha1.ComputeReservation, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computereservationsResource, "status", c.ns, computeReservation), &v1alpha1.ComputeReservation{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeReservations) UpdateStatus(computeReservation *v1alpha1.Comp
 }
 
 // Delete takes name of the computeReservation and deletes it. Returns an error if one occurs.
-func (c *FakeComputeReservations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeReservations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computereservationsResource, c.ns, name), &v1alpha1.ComputeReservation{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeReservations) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeReservations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computereservationsResource, c.ns, listOptions)
+func (c *FakeComputeReservations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computereservationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeReservationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeReservation.
-func (c *FakeComputeReservations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeReservation, err error) {
+func (c *FakeComputeReservations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeReservation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computereservationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeReservation{})
 

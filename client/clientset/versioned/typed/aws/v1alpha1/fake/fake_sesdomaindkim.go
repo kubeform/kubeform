@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var sesdomaindkimsResource = schema.GroupVersionResource{Group: "aws.kubeform.co
 var sesdomaindkimsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "SesDomainDkim"}
 
 // Get takes name of the sesDomainDkim, and returns the corresponding sesDomainDkim object, and an error if there is any.
-func (c *FakeSesDomainDkims) Get(name string, options v1.GetOptions) (result *v1alpha1.SesDomainDkim, err error) {
+func (c *FakeSesDomainDkims) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SesDomainDkim, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(sesdomaindkimsResource, c.ns, name), &v1alpha1.SesDomainDkim{})
 
@@ -51,7 +53,7 @@ func (c *FakeSesDomainDkims) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of SesDomainDkims that match those selectors.
-func (c *FakeSesDomainDkims) List(opts v1.ListOptions) (result *v1alpha1.SesDomainDkimList, err error) {
+func (c *FakeSesDomainDkims) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SesDomainDkimList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(sesdomaindkimsResource, sesdomaindkimsKind, c.ns, opts), &v1alpha1.SesDomainDkimList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSesDomainDkims) List(opts v1.ListOptions) (result *v1alpha1.SesDoma
 }
 
 // Watch returns a watch.Interface that watches the requested sesDomainDkims.
-func (c *FakeSesDomainDkims) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSesDomainDkims) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(sesdomaindkimsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a sesDomainDkim and creates it.  Returns the server's representation of the sesDomainDkim, and an error, if there is any.
-func (c *FakeSesDomainDkims) Create(sesDomainDkim *v1alpha1.SesDomainDkim) (result *v1alpha1.SesDomainDkim, err error) {
+func (c *FakeSesDomainDkims) Create(ctx context.Context, sesDomainDkim *v1alpha1.SesDomainDkim, opts v1.CreateOptions) (result *v1alpha1.SesDomainDkim, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(sesdomaindkimsResource, c.ns, sesDomainDkim), &v1alpha1.SesDomainDkim{})
 
@@ -91,7 +93,7 @@ func (c *FakeSesDomainDkims) Create(sesDomainDkim *v1alpha1.SesDomainDkim) (resu
 }
 
 // Update takes the representation of a sesDomainDkim and updates it. Returns the server's representation of the sesDomainDkim, and an error, if there is any.
-func (c *FakeSesDomainDkims) Update(sesDomainDkim *v1alpha1.SesDomainDkim) (result *v1alpha1.SesDomainDkim, err error) {
+func (c *FakeSesDomainDkims) Update(ctx context.Context, sesDomainDkim *v1alpha1.SesDomainDkim, opts v1.UpdateOptions) (result *v1alpha1.SesDomainDkim, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(sesdomaindkimsResource, c.ns, sesDomainDkim), &v1alpha1.SesDomainDkim{})
 
@@ -103,7 +105,7 @@ func (c *FakeSesDomainDkims) Update(sesDomainDkim *v1alpha1.SesDomainDkim) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSesDomainDkims) UpdateStatus(sesDomainDkim *v1alpha1.SesDomainDkim) (*v1alpha1.SesDomainDkim, error) {
+func (c *FakeSesDomainDkims) UpdateStatus(ctx context.Context, sesDomainDkim *v1alpha1.SesDomainDkim, opts v1.UpdateOptions) (*v1alpha1.SesDomainDkim, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(sesdomaindkimsResource, "status", c.ns, sesDomainDkim), &v1alpha1.SesDomainDkim{})
 
@@ -114,7 +116,7 @@ func (c *FakeSesDomainDkims) UpdateStatus(sesDomainDkim *v1alpha1.SesDomainDkim)
 }
 
 // Delete takes name of the sesDomainDkim and deletes it. Returns an error if one occurs.
-func (c *FakeSesDomainDkims) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSesDomainDkims) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(sesdomaindkimsResource, c.ns, name), &v1alpha1.SesDomainDkim{})
 
@@ -122,15 +124,15 @@ func (c *FakeSesDomainDkims) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSesDomainDkims) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(sesdomaindkimsResource, c.ns, listOptions)
+func (c *FakeSesDomainDkims) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(sesdomaindkimsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SesDomainDkimList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched sesDomainDkim.
-func (c *FakeSesDomainDkims) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SesDomainDkim, err error) {
+func (c *FakeSesDomainDkims) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SesDomainDkim, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(sesdomaindkimsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SesDomainDkim{})
 

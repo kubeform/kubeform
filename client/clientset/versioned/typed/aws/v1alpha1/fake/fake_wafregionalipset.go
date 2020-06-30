@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var wafregionalipsetsResource = schema.GroupVersionResource{Group: "aws.kubeform
 var wafregionalipsetsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "WafregionalIpset"}
 
 // Get takes name of the wafregionalIpset, and returns the corresponding wafregionalIpset object, and an error if there is any.
-func (c *FakeWafregionalIpsets) Get(name string, options v1.GetOptions) (result *v1alpha1.WafregionalIpset, err error) {
+func (c *FakeWafregionalIpsets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.WafregionalIpset, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(wafregionalipsetsResource, c.ns, name), &v1alpha1.WafregionalIpset{})
 
@@ -51,7 +53,7 @@ func (c *FakeWafregionalIpsets) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of WafregionalIpsets that match those selectors.
-func (c *FakeWafregionalIpsets) List(opts v1.ListOptions) (result *v1alpha1.WafregionalIpsetList, err error) {
+func (c *FakeWafregionalIpsets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.WafregionalIpsetList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(wafregionalipsetsResource, wafregionalipsetsKind, c.ns, opts), &v1alpha1.WafregionalIpsetList{})
 
@@ -73,14 +75,14 @@ func (c *FakeWafregionalIpsets) List(opts v1.ListOptions) (result *v1alpha1.Wafr
 }
 
 // Watch returns a watch.Interface that watches the requested wafregionalIpsets.
-func (c *FakeWafregionalIpsets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeWafregionalIpsets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(wafregionalipsetsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a wafregionalIpset and creates it.  Returns the server's representation of the wafregionalIpset, and an error, if there is any.
-func (c *FakeWafregionalIpsets) Create(wafregionalIpset *v1alpha1.WafregionalIpset) (result *v1alpha1.WafregionalIpset, err error) {
+func (c *FakeWafregionalIpsets) Create(ctx context.Context, wafregionalIpset *v1alpha1.WafregionalIpset, opts v1.CreateOptions) (result *v1alpha1.WafregionalIpset, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(wafregionalipsetsResource, c.ns, wafregionalIpset), &v1alpha1.WafregionalIpset{})
 
@@ -91,7 +93,7 @@ func (c *FakeWafregionalIpsets) Create(wafregionalIpset *v1alpha1.WafregionalIps
 }
 
 // Update takes the representation of a wafregionalIpset and updates it. Returns the server's representation of the wafregionalIpset, and an error, if there is any.
-func (c *FakeWafregionalIpsets) Update(wafregionalIpset *v1alpha1.WafregionalIpset) (result *v1alpha1.WafregionalIpset, err error) {
+func (c *FakeWafregionalIpsets) Update(ctx context.Context, wafregionalIpset *v1alpha1.WafregionalIpset, opts v1.UpdateOptions) (result *v1alpha1.WafregionalIpset, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(wafregionalipsetsResource, c.ns, wafregionalIpset), &v1alpha1.WafregionalIpset{})
 
@@ -103,7 +105,7 @@ func (c *FakeWafregionalIpsets) Update(wafregionalIpset *v1alpha1.WafregionalIps
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeWafregionalIpsets) UpdateStatus(wafregionalIpset *v1alpha1.WafregionalIpset) (*v1alpha1.WafregionalIpset, error) {
+func (c *FakeWafregionalIpsets) UpdateStatus(ctx context.Context, wafregionalIpset *v1alpha1.WafregionalIpset, opts v1.UpdateOptions) (*v1alpha1.WafregionalIpset, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(wafregionalipsetsResource, "status", c.ns, wafregionalIpset), &v1alpha1.WafregionalIpset{})
 
@@ -114,7 +116,7 @@ func (c *FakeWafregionalIpsets) UpdateStatus(wafregionalIpset *v1alpha1.Wafregio
 }
 
 // Delete takes name of the wafregionalIpset and deletes it. Returns an error if one occurs.
-func (c *FakeWafregionalIpsets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeWafregionalIpsets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(wafregionalipsetsResource, c.ns, name), &v1alpha1.WafregionalIpset{})
 
@@ -122,15 +124,15 @@ func (c *FakeWafregionalIpsets) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeWafregionalIpsets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(wafregionalipsetsResource, c.ns, listOptions)
+func (c *FakeWafregionalIpsets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(wafregionalipsetsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.WafregionalIpsetList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched wafregionalIpset.
-func (c *FakeWafregionalIpsets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.WafregionalIpset, err error) {
+func (c *FakeWafregionalIpsets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.WafregionalIpset, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(wafregionalipsetsResource, c.ns, name, pt, data, subresources...), &v1alpha1.WafregionalIpset{})
 

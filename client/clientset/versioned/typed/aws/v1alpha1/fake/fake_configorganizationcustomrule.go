@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var configorganizationcustomrulesResource = schema.GroupVersionResource{Group: "
 var configorganizationcustomrulesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ConfigOrganizationCustomRule"}
 
 // Get takes name of the configOrganizationCustomRule, and returns the corresponding configOrganizationCustomRule object, and an error if there is any.
-func (c *FakeConfigOrganizationCustomRules) Get(name string, options v1.GetOptions) (result *v1alpha1.ConfigOrganizationCustomRule, err error) {
+func (c *FakeConfigOrganizationCustomRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ConfigOrganizationCustomRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(configorganizationcustomrulesResource, c.ns, name), &v1alpha1.ConfigOrganizationCustomRule{})
 
@@ -51,7 +53,7 @@ func (c *FakeConfigOrganizationCustomRules) Get(name string, options v1.GetOptio
 }
 
 // List takes label and field selectors, and returns the list of ConfigOrganizationCustomRules that match those selectors.
-func (c *FakeConfigOrganizationCustomRules) List(opts v1.ListOptions) (result *v1alpha1.ConfigOrganizationCustomRuleList, err error) {
+func (c *FakeConfigOrganizationCustomRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ConfigOrganizationCustomRuleList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(configorganizationcustomrulesResource, configorganizationcustomrulesKind, c.ns, opts), &v1alpha1.ConfigOrganizationCustomRuleList{})
 
@@ -73,14 +75,14 @@ func (c *FakeConfigOrganizationCustomRules) List(opts v1.ListOptions) (result *v
 }
 
 // Watch returns a watch.Interface that watches the requested configOrganizationCustomRules.
-func (c *FakeConfigOrganizationCustomRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeConfigOrganizationCustomRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(configorganizationcustomrulesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a configOrganizationCustomRule and creates it.  Returns the server's representation of the configOrganizationCustomRule, and an error, if there is any.
-func (c *FakeConfigOrganizationCustomRules) Create(configOrganizationCustomRule *v1alpha1.ConfigOrganizationCustomRule) (result *v1alpha1.ConfigOrganizationCustomRule, err error) {
+func (c *FakeConfigOrganizationCustomRules) Create(ctx context.Context, configOrganizationCustomRule *v1alpha1.ConfigOrganizationCustomRule, opts v1.CreateOptions) (result *v1alpha1.ConfigOrganizationCustomRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(configorganizationcustomrulesResource, c.ns, configOrganizationCustomRule), &v1alpha1.ConfigOrganizationCustomRule{})
 
@@ -91,7 +93,7 @@ func (c *FakeConfigOrganizationCustomRules) Create(configOrganizationCustomRule 
 }
 
 // Update takes the representation of a configOrganizationCustomRule and updates it. Returns the server's representation of the configOrganizationCustomRule, and an error, if there is any.
-func (c *FakeConfigOrganizationCustomRules) Update(configOrganizationCustomRule *v1alpha1.ConfigOrganizationCustomRule) (result *v1alpha1.ConfigOrganizationCustomRule, err error) {
+func (c *FakeConfigOrganizationCustomRules) Update(ctx context.Context, configOrganizationCustomRule *v1alpha1.ConfigOrganizationCustomRule, opts v1.UpdateOptions) (result *v1alpha1.ConfigOrganizationCustomRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(configorganizationcustomrulesResource, c.ns, configOrganizationCustomRule), &v1alpha1.ConfigOrganizationCustomRule{})
 
@@ -103,7 +105,7 @@ func (c *FakeConfigOrganizationCustomRules) Update(configOrganizationCustomRule 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeConfigOrganizationCustomRules) UpdateStatus(configOrganizationCustomRule *v1alpha1.ConfigOrganizationCustomRule) (*v1alpha1.ConfigOrganizationCustomRule, error) {
+func (c *FakeConfigOrganizationCustomRules) UpdateStatus(ctx context.Context, configOrganizationCustomRule *v1alpha1.ConfigOrganizationCustomRule, opts v1.UpdateOptions) (*v1alpha1.ConfigOrganizationCustomRule, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(configorganizationcustomrulesResource, "status", c.ns, configOrganizationCustomRule), &v1alpha1.ConfigOrganizationCustomRule{})
 
@@ -114,7 +116,7 @@ func (c *FakeConfigOrganizationCustomRules) UpdateStatus(configOrganizationCusto
 }
 
 // Delete takes name of the configOrganizationCustomRule and deletes it. Returns an error if one occurs.
-func (c *FakeConfigOrganizationCustomRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeConfigOrganizationCustomRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(configorganizationcustomrulesResource, c.ns, name), &v1alpha1.ConfigOrganizationCustomRule{})
 
@@ -122,15 +124,15 @@ func (c *FakeConfigOrganizationCustomRules) Delete(name string, options *v1.Dele
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeConfigOrganizationCustomRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(configorganizationcustomrulesResource, c.ns, listOptions)
+func (c *FakeConfigOrganizationCustomRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(configorganizationcustomrulesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ConfigOrganizationCustomRuleList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched configOrganizationCustomRule.
-func (c *FakeConfigOrganizationCustomRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ConfigOrganizationCustomRule, err error) {
+func (c *FakeConfigOrganizationCustomRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ConfigOrganizationCustomRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(configorganizationcustomrulesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ConfigOrganizationCustomRule{})
 

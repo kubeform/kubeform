@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type KmsAliasesGetter interface {
 
 // KmsAliasInterface has methods to work with KmsAlias resources.
 type KmsAliasInterface interface {
-	Create(*v1alpha1.KmsAlias) (*v1alpha1.KmsAlias, error)
-	Update(*v1alpha1.KmsAlias) (*v1alpha1.KmsAlias, error)
-	UpdateStatus(*v1alpha1.KmsAlias) (*v1alpha1.KmsAlias, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.KmsAlias, error)
-	List(opts v1.ListOptions) (*v1alpha1.KmsAliasList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KmsAlias, err error)
+	Create(ctx context.Context, kmsAlias *v1alpha1.KmsAlias, opts v1.CreateOptions) (*v1alpha1.KmsAlias, error)
+	Update(ctx context.Context, kmsAlias *v1alpha1.KmsAlias, opts v1.UpdateOptions) (*v1alpha1.KmsAlias, error)
+	UpdateStatus(ctx context.Context, kmsAlias *v1alpha1.KmsAlias, opts v1.UpdateOptions) (*v1alpha1.KmsAlias, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.KmsAlias, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.KmsAliasList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KmsAlias, err error)
 	KmsAliasExpansion
 }
 
@@ -65,20 +66,20 @@ func newKmsAliases(c *AwsV1alpha1Client, namespace string) *kmsAliases {
 }
 
 // Get takes name of the kmsAlias, and returns the corresponding kmsAlias object, and an error if there is any.
-func (c *kmsAliases) Get(name string, options v1.GetOptions) (result *v1alpha1.KmsAlias, err error) {
+func (c *kmsAliases) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KmsAlias, err error) {
 	result = &v1alpha1.KmsAlias{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("kmsaliases").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of KmsAliases that match those selectors.
-func (c *kmsAliases) List(opts v1.ListOptions) (result *v1alpha1.KmsAliasList, err error) {
+func (c *kmsAliases) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KmsAliasList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *kmsAliases) List(opts v1.ListOptions) (result *v1alpha1.KmsAliasList, e
 		Resource("kmsaliases").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested kmsAliases.
-func (c *kmsAliases) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *kmsAliases) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *kmsAliases) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("kmsaliases").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a kmsAlias and creates it.  Returns the server's representation of the kmsAlias, and an error, if there is any.
-func (c *kmsAliases) Create(kmsAlias *v1alpha1.KmsAlias) (result *v1alpha1.KmsAlias, err error) {
+func (c *kmsAliases) Create(ctx context.Context, kmsAlias *v1alpha1.KmsAlias, opts v1.CreateOptions) (result *v1alpha1.KmsAlias, err error) {
 	result = &v1alpha1.KmsAlias{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("kmsaliases").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(kmsAlias).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a kmsAlias and updates it. Returns the server's representation of the kmsAlias, and an error, if there is any.
-func (c *kmsAliases) Update(kmsAlias *v1alpha1.KmsAlias) (result *v1alpha1.KmsAlias, err error) {
+func (c *kmsAliases) Update(ctx context.Context, kmsAlias *v1alpha1.KmsAlias, opts v1.UpdateOptions) (result *v1alpha1.KmsAlias, err error) {
 	result = &v1alpha1.KmsAlias{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("kmsaliases").
 		Name(kmsAlias.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(kmsAlias).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *kmsAliases) UpdateStatus(kmsAlias *v1alpha1.KmsAlias) (result *v1alpha1.KmsAlias, err error) {
+func (c *kmsAliases) UpdateStatus(ctx context.Context, kmsAlias *v1alpha1.KmsAlias, opts v1.UpdateOptions) (result *v1alpha1.KmsAlias, err error) {
 	result = &v1alpha1.KmsAlias{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("kmsaliases").
 		Name(kmsAlias.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(kmsAlias).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the kmsAlias and deletes it. Returns an error if one occurs.
-func (c *kmsAliases) Delete(name string, options *v1.DeleteOptions) error {
+func (c *kmsAliases) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("kmsaliases").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *kmsAliases) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *kmsAliases) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("kmsaliases").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched kmsAlias.
-func (c *kmsAliases) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KmsAlias, err error) {
+func (c *kmsAliases) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KmsAlias, err error) {
 	result = &v1alpha1.KmsAlias{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("kmsaliases").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

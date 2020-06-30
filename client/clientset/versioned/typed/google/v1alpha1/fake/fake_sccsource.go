@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var sccsourcesResource = schema.GroupVersionResource{Group: "google.kubeform.com
 var sccsourcesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "SccSource"}
 
 // Get takes name of the sccSource, and returns the corresponding sccSource object, and an error if there is any.
-func (c *FakeSccSources) Get(name string, options v1.GetOptions) (result *v1alpha1.SccSource, err error) {
+func (c *FakeSccSources) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SccSource, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(sccsourcesResource, c.ns, name), &v1alpha1.SccSource{})
 
@@ -51,7 +53,7 @@ func (c *FakeSccSources) Get(name string, options v1.GetOptions) (result *v1alph
 }
 
 // List takes label and field selectors, and returns the list of SccSources that match those selectors.
-func (c *FakeSccSources) List(opts v1.ListOptions) (result *v1alpha1.SccSourceList, err error) {
+func (c *FakeSccSources) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SccSourceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(sccsourcesResource, sccsourcesKind, c.ns, opts), &v1alpha1.SccSourceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSccSources) List(opts v1.ListOptions) (result *v1alpha1.SccSourceLi
 }
 
 // Watch returns a watch.Interface that watches the requested sccSources.
-func (c *FakeSccSources) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSccSources) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(sccsourcesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a sccSource and creates it.  Returns the server's representation of the sccSource, and an error, if there is any.
-func (c *FakeSccSources) Create(sccSource *v1alpha1.SccSource) (result *v1alpha1.SccSource, err error) {
+func (c *FakeSccSources) Create(ctx context.Context, sccSource *v1alpha1.SccSource, opts v1.CreateOptions) (result *v1alpha1.SccSource, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(sccsourcesResource, c.ns, sccSource), &v1alpha1.SccSource{})
 
@@ -91,7 +93,7 @@ func (c *FakeSccSources) Create(sccSource *v1alpha1.SccSource) (result *v1alpha1
 }
 
 // Update takes the representation of a sccSource and updates it. Returns the server's representation of the sccSource, and an error, if there is any.
-func (c *FakeSccSources) Update(sccSource *v1alpha1.SccSource) (result *v1alpha1.SccSource, err error) {
+func (c *FakeSccSources) Update(ctx context.Context, sccSource *v1alpha1.SccSource, opts v1.UpdateOptions) (result *v1alpha1.SccSource, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(sccsourcesResource, c.ns, sccSource), &v1alpha1.SccSource{})
 
@@ -103,7 +105,7 @@ func (c *FakeSccSources) Update(sccSource *v1alpha1.SccSource) (result *v1alpha1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSccSources) UpdateStatus(sccSource *v1alpha1.SccSource) (*v1alpha1.SccSource, error) {
+func (c *FakeSccSources) UpdateStatus(ctx context.Context, sccSource *v1alpha1.SccSource, opts v1.UpdateOptions) (*v1alpha1.SccSource, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(sccsourcesResource, "status", c.ns, sccSource), &v1alpha1.SccSource{})
 
@@ -114,7 +116,7 @@ func (c *FakeSccSources) UpdateStatus(sccSource *v1alpha1.SccSource) (*v1alpha1.
 }
 
 // Delete takes name of the sccSource and deletes it. Returns an error if one occurs.
-func (c *FakeSccSources) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSccSources) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(sccsourcesResource, c.ns, name), &v1alpha1.SccSource{})
 
@@ -122,15 +124,15 @@ func (c *FakeSccSources) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSccSources) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(sccsourcesResource, c.ns, listOptions)
+func (c *FakeSccSources) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(sccsourcesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SccSourceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched sccSource.
-func (c *FakeSccSources) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SccSource, err error) {
+func (c *FakeSccSources) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SccSource, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(sccsourcesResource, c.ns, name, pt, data, subresources...), &v1alpha1.SccSource{})
 

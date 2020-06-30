@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iotcertificatesResource = schema.GroupVersionResource{Group: "aws.kubeform.c
 var iotcertificatesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "IotCertificate"}
 
 // Get takes name of the iotCertificate, and returns the corresponding iotCertificate object, and an error if there is any.
-func (c *FakeIotCertificates) Get(name string, options v1.GetOptions) (result *v1alpha1.IotCertificate, err error) {
+func (c *FakeIotCertificates) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IotCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iotcertificatesResource, c.ns, name), &v1alpha1.IotCertificate{})
 
@@ -51,7 +53,7 @@ func (c *FakeIotCertificates) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of IotCertificates that match those selectors.
-func (c *FakeIotCertificates) List(opts v1.ListOptions) (result *v1alpha1.IotCertificateList, err error) {
+func (c *FakeIotCertificates) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IotCertificateList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iotcertificatesResource, iotcertificatesKind, c.ns, opts), &v1alpha1.IotCertificateList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIotCertificates) List(opts v1.ListOptions) (result *v1alpha1.IotCer
 }
 
 // Watch returns a watch.Interface that watches the requested iotCertificates.
-func (c *FakeIotCertificates) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIotCertificates) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iotcertificatesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iotCertificate and creates it.  Returns the server's representation of the iotCertificate, and an error, if there is any.
-func (c *FakeIotCertificates) Create(iotCertificate *v1alpha1.IotCertificate) (result *v1alpha1.IotCertificate, err error) {
+func (c *FakeIotCertificates) Create(ctx context.Context, iotCertificate *v1alpha1.IotCertificate, opts v1.CreateOptions) (result *v1alpha1.IotCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iotcertificatesResource, c.ns, iotCertificate), &v1alpha1.IotCertificate{})
 
@@ -91,7 +93,7 @@ func (c *FakeIotCertificates) Create(iotCertificate *v1alpha1.IotCertificate) (r
 }
 
 // Update takes the representation of a iotCertificate and updates it. Returns the server's representation of the iotCertificate, and an error, if there is any.
-func (c *FakeIotCertificates) Update(iotCertificate *v1alpha1.IotCertificate) (result *v1alpha1.IotCertificate, err error) {
+func (c *FakeIotCertificates) Update(ctx context.Context, iotCertificate *v1alpha1.IotCertificate, opts v1.UpdateOptions) (result *v1alpha1.IotCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iotcertificatesResource, c.ns, iotCertificate), &v1alpha1.IotCertificate{})
 
@@ -103,7 +105,7 @@ func (c *FakeIotCertificates) Update(iotCertificate *v1alpha1.IotCertificate) (r
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIotCertificates) UpdateStatus(iotCertificate *v1alpha1.IotCertificate) (*v1alpha1.IotCertificate, error) {
+func (c *FakeIotCertificates) UpdateStatus(ctx context.Context, iotCertificate *v1alpha1.IotCertificate, opts v1.UpdateOptions) (*v1alpha1.IotCertificate, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iotcertificatesResource, "status", c.ns, iotCertificate), &v1alpha1.IotCertificate{})
 
@@ -114,7 +116,7 @@ func (c *FakeIotCertificates) UpdateStatus(iotCertificate *v1alpha1.IotCertifica
 }
 
 // Delete takes name of the iotCertificate and deletes it. Returns an error if one occurs.
-func (c *FakeIotCertificates) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIotCertificates) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iotcertificatesResource, c.ns, name), &v1alpha1.IotCertificate{})
 
@@ -122,15 +124,15 @@ func (c *FakeIotCertificates) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIotCertificates) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iotcertificatesResource, c.ns, listOptions)
+func (c *FakeIotCertificates) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iotcertificatesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IotCertificateList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iotCertificate.
-func (c *FakeIotCertificates) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IotCertificate, err error) {
+func (c *FakeIotCertificates) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IotCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iotcertificatesResource, c.ns, name, pt, data, subresources...), &v1alpha1.IotCertificate{})
 

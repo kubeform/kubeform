@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type MacieMemberAccountAssociationsGetter interface {
 
 // MacieMemberAccountAssociationInterface has methods to work with MacieMemberAccountAssociation resources.
 type MacieMemberAccountAssociationInterface interface {
-	Create(*v1alpha1.MacieMemberAccountAssociation) (*v1alpha1.MacieMemberAccountAssociation, error)
-	Update(*v1alpha1.MacieMemberAccountAssociation) (*v1alpha1.MacieMemberAccountAssociation, error)
-	UpdateStatus(*v1alpha1.MacieMemberAccountAssociation) (*v1alpha1.MacieMemberAccountAssociation, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.MacieMemberAccountAssociation, error)
-	List(opts v1.ListOptions) (*v1alpha1.MacieMemberAccountAssociationList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MacieMemberAccountAssociation, err error)
+	Create(ctx context.Context, macieMemberAccountAssociation *v1alpha1.MacieMemberAccountAssociation, opts v1.CreateOptions) (*v1alpha1.MacieMemberAccountAssociation, error)
+	Update(ctx context.Context, macieMemberAccountAssociation *v1alpha1.MacieMemberAccountAssociation, opts v1.UpdateOptions) (*v1alpha1.MacieMemberAccountAssociation, error)
+	UpdateStatus(ctx context.Context, macieMemberAccountAssociation *v1alpha1.MacieMemberAccountAssociation, opts v1.UpdateOptions) (*v1alpha1.MacieMemberAccountAssociation, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.MacieMemberAccountAssociation, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.MacieMemberAccountAssociationList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MacieMemberAccountAssociation, err error)
 	MacieMemberAccountAssociationExpansion
 }
 
@@ -65,20 +66,20 @@ func newMacieMemberAccountAssociations(c *AwsV1alpha1Client, namespace string) *
 }
 
 // Get takes name of the macieMemberAccountAssociation, and returns the corresponding macieMemberAccountAssociation object, and an error if there is any.
-func (c *macieMemberAccountAssociations) Get(name string, options v1.GetOptions) (result *v1alpha1.MacieMemberAccountAssociation, err error) {
+func (c *macieMemberAccountAssociations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.MacieMemberAccountAssociation, err error) {
 	result = &v1alpha1.MacieMemberAccountAssociation{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("maciememberaccountassociations").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of MacieMemberAccountAssociations that match those selectors.
-func (c *macieMemberAccountAssociations) List(opts v1.ListOptions) (result *v1alpha1.MacieMemberAccountAssociationList, err error) {
+func (c *macieMemberAccountAssociations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.MacieMemberAccountAssociationList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *macieMemberAccountAssociations) List(opts v1.ListOptions) (result *v1al
 		Resource("maciememberaccountassociations").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested macieMemberAccountAssociations.
-func (c *macieMemberAccountAssociations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *macieMemberAccountAssociations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *macieMemberAccountAssociations) Watch(opts v1.ListOptions) (watch.Inter
 		Resource("maciememberaccountassociations").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a macieMemberAccountAssociation and creates it.  Returns the server's representation of the macieMemberAccountAssociation, and an error, if there is any.
-func (c *macieMemberAccountAssociations) Create(macieMemberAccountAssociation *v1alpha1.MacieMemberAccountAssociation) (result *v1alpha1.MacieMemberAccountAssociation, err error) {
+func (c *macieMemberAccountAssociations) Create(ctx context.Context, macieMemberAccountAssociation *v1alpha1.MacieMemberAccountAssociation, opts v1.CreateOptions) (result *v1alpha1.MacieMemberAccountAssociation, err error) {
 	result = &v1alpha1.MacieMemberAccountAssociation{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("maciememberaccountassociations").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(macieMemberAccountAssociation).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a macieMemberAccountAssociation and updates it. Returns the server's representation of the macieMemberAccountAssociation, and an error, if there is any.
-func (c *macieMemberAccountAssociations) Update(macieMemberAccountAssociation *v1alpha1.MacieMemberAccountAssociation) (result *v1alpha1.MacieMemberAccountAssociation, err error) {
+func (c *macieMemberAccountAssociations) Update(ctx context.Context, macieMemberAccountAssociation *v1alpha1.MacieMemberAccountAssociation, opts v1.UpdateOptions) (result *v1alpha1.MacieMemberAccountAssociation, err error) {
 	result = &v1alpha1.MacieMemberAccountAssociation{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("maciememberaccountassociations").
 		Name(macieMemberAccountAssociation.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(macieMemberAccountAssociation).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *macieMemberAccountAssociations) UpdateStatus(macieMemberAccountAssociation *v1alpha1.MacieMemberAccountAssociation) (result *v1alpha1.MacieMemberAccountAssociation, err error) {
+func (c *macieMemberAccountAssociations) UpdateStatus(ctx context.Context, macieMemberAccountAssociation *v1alpha1.MacieMemberAccountAssociation, opts v1.UpdateOptions) (result *v1alpha1.MacieMemberAccountAssociation, err error) {
 	result = &v1alpha1.MacieMemberAccountAssociation{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("maciememberaccountassociations").
 		Name(macieMemberAccountAssociation.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(macieMemberAccountAssociation).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the macieMemberAccountAssociation and deletes it. Returns an error if one occurs.
-func (c *macieMemberAccountAssociations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *macieMemberAccountAssociations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("maciememberaccountassociations").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *macieMemberAccountAssociations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *macieMemberAccountAssociations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("maciememberaccountassociations").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched macieMemberAccountAssociation.
-func (c *macieMemberAccountAssociations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MacieMemberAccountAssociation, err error) {
+func (c *macieMemberAccountAssociations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MacieMemberAccountAssociation, err error) {
 	result = &v1alpha1.MacieMemberAccountAssociation{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("maciememberaccountassociations").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

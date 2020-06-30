@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type DnsMxRecordsGetter interface {
 
 // DnsMxRecordInterface has methods to work with DnsMxRecord resources.
 type DnsMxRecordInterface interface {
-	Create(*v1alpha1.DnsMxRecord) (*v1alpha1.DnsMxRecord, error)
-	Update(*v1alpha1.DnsMxRecord) (*v1alpha1.DnsMxRecord, error)
-	UpdateStatus(*v1alpha1.DnsMxRecord) (*v1alpha1.DnsMxRecord, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.DnsMxRecord, error)
-	List(opts v1.ListOptions) (*v1alpha1.DnsMxRecordList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DnsMxRecord, err error)
+	Create(ctx context.Context, dnsMxRecord *v1alpha1.DnsMxRecord, opts v1.CreateOptions) (*v1alpha1.DnsMxRecord, error)
+	Update(ctx context.Context, dnsMxRecord *v1alpha1.DnsMxRecord, opts v1.UpdateOptions) (*v1alpha1.DnsMxRecord, error)
+	UpdateStatus(ctx context.Context, dnsMxRecord *v1alpha1.DnsMxRecord, opts v1.UpdateOptions) (*v1alpha1.DnsMxRecord, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.DnsMxRecord, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.DnsMxRecordList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DnsMxRecord, err error)
 	DnsMxRecordExpansion
 }
 
@@ -65,20 +66,20 @@ func newDnsMxRecords(c *AzurermV1alpha1Client, namespace string) *dnsMxRecords {
 }
 
 // Get takes name of the dnsMxRecord, and returns the corresponding dnsMxRecord object, and an error if there is any.
-func (c *dnsMxRecords) Get(name string, options v1.GetOptions) (result *v1alpha1.DnsMxRecord, err error) {
+func (c *dnsMxRecords) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DnsMxRecord, err error) {
 	result = &v1alpha1.DnsMxRecord{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("dnsmxrecords").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of DnsMxRecords that match those selectors.
-func (c *dnsMxRecords) List(opts v1.ListOptions) (result *v1alpha1.DnsMxRecordList, err error) {
+func (c *dnsMxRecords) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DnsMxRecordList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *dnsMxRecords) List(opts v1.ListOptions) (result *v1alpha1.DnsMxRecordLi
 		Resource("dnsmxrecords").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested dnsMxRecords.
-func (c *dnsMxRecords) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *dnsMxRecords) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *dnsMxRecords) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("dnsmxrecords").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a dnsMxRecord and creates it.  Returns the server's representation of the dnsMxRecord, and an error, if there is any.
-func (c *dnsMxRecords) Create(dnsMxRecord *v1alpha1.DnsMxRecord) (result *v1alpha1.DnsMxRecord, err error) {
+func (c *dnsMxRecords) Create(ctx context.Context, dnsMxRecord *v1alpha1.DnsMxRecord, opts v1.CreateOptions) (result *v1alpha1.DnsMxRecord, err error) {
 	result = &v1alpha1.DnsMxRecord{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("dnsmxrecords").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dnsMxRecord).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a dnsMxRecord and updates it. Returns the server's representation of the dnsMxRecord, and an error, if there is any.
-func (c *dnsMxRecords) Update(dnsMxRecord *v1alpha1.DnsMxRecord) (result *v1alpha1.DnsMxRecord, err error) {
+func (c *dnsMxRecords) Update(ctx context.Context, dnsMxRecord *v1alpha1.DnsMxRecord, opts v1.UpdateOptions) (result *v1alpha1.DnsMxRecord, err error) {
 	result = &v1alpha1.DnsMxRecord{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("dnsmxrecords").
 		Name(dnsMxRecord.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dnsMxRecord).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *dnsMxRecords) UpdateStatus(dnsMxRecord *v1alpha1.DnsMxRecord) (result *v1alpha1.DnsMxRecord, err error) {
+func (c *dnsMxRecords) UpdateStatus(ctx context.Context, dnsMxRecord *v1alpha1.DnsMxRecord, opts v1.UpdateOptions) (result *v1alpha1.DnsMxRecord, err error) {
 	result = &v1alpha1.DnsMxRecord{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("dnsmxrecords").
 		Name(dnsMxRecord.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dnsMxRecord).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the dnsMxRecord and deletes it. Returns an error if one occurs.
-func (c *dnsMxRecords) Delete(name string, options *v1.DeleteOptions) error {
+func (c *dnsMxRecords) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("dnsmxrecords").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *dnsMxRecords) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *dnsMxRecords) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("dnsmxrecords").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched dnsMxRecord.
-func (c *dnsMxRecords) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DnsMxRecord, err error) {
+func (c *dnsMxRecords) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DnsMxRecord, err error) {
 	result = &v1alpha1.DnsMxRecord{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("dnsmxrecords").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

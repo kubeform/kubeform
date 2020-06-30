@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var emrsecurityconfigurationsResource = schema.GroupVersionResource{Group: "aws.
 var emrsecurityconfigurationsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "EmrSecurityConfiguration"}
 
 // Get takes name of the emrSecurityConfiguration, and returns the corresponding emrSecurityConfiguration object, and an error if there is any.
-func (c *FakeEmrSecurityConfigurations) Get(name string, options v1.GetOptions) (result *v1alpha1.EmrSecurityConfiguration, err error) {
+func (c *FakeEmrSecurityConfigurations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.EmrSecurityConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(emrsecurityconfigurationsResource, c.ns, name), &v1alpha1.EmrSecurityConfiguration{})
 
@@ -51,7 +53,7 @@ func (c *FakeEmrSecurityConfigurations) Get(name string, options v1.GetOptions) 
 }
 
 // List takes label and field selectors, and returns the list of EmrSecurityConfigurations that match those selectors.
-func (c *FakeEmrSecurityConfigurations) List(opts v1.ListOptions) (result *v1alpha1.EmrSecurityConfigurationList, err error) {
+func (c *FakeEmrSecurityConfigurations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.EmrSecurityConfigurationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(emrsecurityconfigurationsResource, emrsecurityconfigurationsKind, c.ns, opts), &v1alpha1.EmrSecurityConfigurationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeEmrSecurityConfigurations) List(opts v1.ListOptions) (result *v1alp
 }
 
 // Watch returns a watch.Interface that watches the requested emrSecurityConfigurations.
-func (c *FakeEmrSecurityConfigurations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeEmrSecurityConfigurations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(emrsecurityconfigurationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a emrSecurityConfiguration and creates it.  Returns the server's representation of the emrSecurityConfiguration, and an error, if there is any.
-func (c *FakeEmrSecurityConfigurations) Create(emrSecurityConfiguration *v1alpha1.EmrSecurityConfiguration) (result *v1alpha1.EmrSecurityConfiguration, err error) {
+func (c *FakeEmrSecurityConfigurations) Create(ctx context.Context, emrSecurityConfiguration *v1alpha1.EmrSecurityConfiguration, opts v1.CreateOptions) (result *v1alpha1.EmrSecurityConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(emrsecurityconfigurationsResource, c.ns, emrSecurityConfiguration), &v1alpha1.EmrSecurityConfiguration{})
 
@@ -91,7 +93,7 @@ func (c *FakeEmrSecurityConfigurations) Create(emrSecurityConfiguration *v1alpha
 }
 
 // Update takes the representation of a emrSecurityConfiguration and updates it. Returns the server's representation of the emrSecurityConfiguration, and an error, if there is any.
-func (c *FakeEmrSecurityConfigurations) Update(emrSecurityConfiguration *v1alpha1.EmrSecurityConfiguration) (result *v1alpha1.EmrSecurityConfiguration, err error) {
+func (c *FakeEmrSecurityConfigurations) Update(ctx context.Context, emrSecurityConfiguration *v1alpha1.EmrSecurityConfiguration, opts v1.UpdateOptions) (result *v1alpha1.EmrSecurityConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(emrsecurityconfigurationsResource, c.ns, emrSecurityConfiguration), &v1alpha1.EmrSecurityConfiguration{})
 
@@ -103,7 +105,7 @@ func (c *FakeEmrSecurityConfigurations) Update(emrSecurityConfiguration *v1alpha
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeEmrSecurityConfigurations) UpdateStatus(emrSecurityConfiguration *v1alpha1.EmrSecurityConfiguration) (*v1alpha1.EmrSecurityConfiguration, error) {
+func (c *FakeEmrSecurityConfigurations) UpdateStatus(ctx context.Context, emrSecurityConfiguration *v1alpha1.EmrSecurityConfiguration, opts v1.UpdateOptions) (*v1alpha1.EmrSecurityConfiguration, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(emrsecurityconfigurationsResource, "status", c.ns, emrSecurityConfiguration), &v1alpha1.EmrSecurityConfiguration{})
 
@@ -114,7 +116,7 @@ func (c *FakeEmrSecurityConfigurations) UpdateStatus(emrSecurityConfiguration *v
 }
 
 // Delete takes name of the emrSecurityConfiguration and deletes it. Returns an error if one occurs.
-func (c *FakeEmrSecurityConfigurations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeEmrSecurityConfigurations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(emrsecurityconfigurationsResource, c.ns, name), &v1alpha1.EmrSecurityConfiguration{})
 
@@ -122,15 +124,15 @@ func (c *FakeEmrSecurityConfigurations) Delete(name string, options *v1.DeleteOp
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeEmrSecurityConfigurations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(emrsecurityconfigurationsResource, c.ns, listOptions)
+func (c *FakeEmrSecurityConfigurations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(emrsecurityconfigurationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.EmrSecurityConfigurationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched emrSecurityConfiguration.
-func (c *FakeEmrSecurityConfigurations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EmrSecurityConfiguration, err error) {
+func (c *FakeEmrSecurityConfigurations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EmrSecurityConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(emrsecurityconfigurationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.EmrSecurityConfiguration{})
 

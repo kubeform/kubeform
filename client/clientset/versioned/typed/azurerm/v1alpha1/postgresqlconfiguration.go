@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type PostgresqlConfigurationsGetter interface {
 
 // PostgresqlConfigurationInterface has methods to work with PostgresqlConfiguration resources.
 type PostgresqlConfigurationInterface interface {
-	Create(*v1alpha1.PostgresqlConfiguration) (*v1alpha1.PostgresqlConfiguration, error)
-	Update(*v1alpha1.PostgresqlConfiguration) (*v1alpha1.PostgresqlConfiguration, error)
-	UpdateStatus(*v1alpha1.PostgresqlConfiguration) (*v1alpha1.PostgresqlConfiguration, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.PostgresqlConfiguration, error)
-	List(opts v1.ListOptions) (*v1alpha1.PostgresqlConfigurationList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PostgresqlConfiguration, err error)
+	Create(ctx context.Context, postgresqlConfiguration *v1alpha1.PostgresqlConfiguration, opts v1.CreateOptions) (*v1alpha1.PostgresqlConfiguration, error)
+	Update(ctx context.Context, postgresqlConfiguration *v1alpha1.PostgresqlConfiguration, opts v1.UpdateOptions) (*v1alpha1.PostgresqlConfiguration, error)
+	UpdateStatus(ctx context.Context, postgresqlConfiguration *v1alpha1.PostgresqlConfiguration, opts v1.UpdateOptions) (*v1alpha1.PostgresqlConfiguration, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.PostgresqlConfiguration, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.PostgresqlConfigurationList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PostgresqlConfiguration, err error)
 	PostgresqlConfigurationExpansion
 }
 
@@ -65,20 +66,20 @@ func newPostgresqlConfigurations(c *AzurermV1alpha1Client, namespace string) *po
 }
 
 // Get takes name of the postgresqlConfiguration, and returns the corresponding postgresqlConfiguration object, and an error if there is any.
-func (c *postgresqlConfigurations) Get(name string, options v1.GetOptions) (result *v1alpha1.PostgresqlConfiguration, err error) {
+func (c *postgresqlConfigurations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PostgresqlConfiguration, err error) {
 	result = &v1alpha1.PostgresqlConfiguration{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("postgresqlconfigurations").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of PostgresqlConfigurations that match those selectors.
-func (c *postgresqlConfigurations) List(opts v1.ListOptions) (result *v1alpha1.PostgresqlConfigurationList, err error) {
+func (c *postgresqlConfigurations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PostgresqlConfigurationList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *postgresqlConfigurations) List(opts v1.ListOptions) (result *v1alpha1.P
 		Resource("postgresqlconfigurations").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested postgresqlConfigurations.
-func (c *postgresqlConfigurations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *postgresqlConfigurations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *postgresqlConfigurations) Watch(opts v1.ListOptions) (watch.Interface, 
 		Resource("postgresqlconfigurations").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a postgresqlConfiguration and creates it.  Returns the server's representation of the postgresqlConfiguration, and an error, if there is any.
-func (c *postgresqlConfigurations) Create(postgresqlConfiguration *v1alpha1.PostgresqlConfiguration) (result *v1alpha1.PostgresqlConfiguration, err error) {
+func (c *postgresqlConfigurations) Create(ctx context.Context, postgresqlConfiguration *v1alpha1.PostgresqlConfiguration, opts v1.CreateOptions) (result *v1alpha1.PostgresqlConfiguration, err error) {
 	result = &v1alpha1.PostgresqlConfiguration{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("postgresqlconfigurations").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(postgresqlConfiguration).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a postgresqlConfiguration and updates it. Returns the server's representation of the postgresqlConfiguration, and an error, if there is any.
-func (c *postgresqlConfigurations) Update(postgresqlConfiguration *v1alpha1.PostgresqlConfiguration) (result *v1alpha1.PostgresqlConfiguration, err error) {
+func (c *postgresqlConfigurations) Update(ctx context.Context, postgresqlConfiguration *v1alpha1.PostgresqlConfiguration, opts v1.UpdateOptions) (result *v1alpha1.PostgresqlConfiguration, err error) {
 	result = &v1alpha1.PostgresqlConfiguration{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("postgresqlconfigurations").
 		Name(postgresqlConfiguration.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(postgresqlConfiguration).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *postgresqlConfigurations) UpdateStatus(postgresqlConfiguration *v1alpha1.PostgresqlConfiguration) (result *v1alpha1.PostgresqlConfiguration, err error) {
+func (c *postgresqlConfigurations) UpdateStatus(ctx context.Context, postgresqlConfiguration *v1alpha1.PostgresqlConfiguration, opts v1.UpdateOptions) (result *v1alpha1.PostgresqlConfiguration, err error) {
 	result = &v1alpha1.PostgresqlConfiguration{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("postgresqlconfigurations").
 		Name(postgresqlConfiguration.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(postgresqlConfiguration).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the postgresqlConfiguration and deletes it. Returns an error if one occurs.
-func (c *postgresqlConfigurations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *postgresqlConfigurations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("postgresqlconfigurations").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *postgresqlConfigurations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *postgresqlConfigurations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("postgresqlconfigurations").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched postgresqlConfiguration.
-func (c *postgresqlConfigurations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PostgresqlConfiguration, err error) {
+func (c *postgresqlConfigurations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PostgresqlConfiguration, err error) {
 	result = &v1alpha1.PostgresqlConfiguration{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("postgresqlconfigurations").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

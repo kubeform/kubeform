@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type DataprocJobIamBindingsGetter interface {
 
 // DataprocJobIamBindingInterface has methods to work with DataprocJobIamBinding resources.
 type DataprocJobIamBindingInterface interface {
-	Create(*v1alpha1.DataprocJobIamBinding) (*v1alpha1.DataprocJobIamBinding, error)
-	Update(*v1alpha1.DataprocJobIamBinding) (*v1alpha1.DataprocJobIamBinding, error)
-	UpdateStatus(*v1alpha1.DataprocJobIamBinding) (*v1alpha1.DataprocJobIamBinding, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.DataprocJobIamBinding, error)
-	List(opts v1.ListOptions) (*v1alpha1.DataprocJobIamBindingList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataprocJobIamBinding, err error)
+	Create(ctx context.Context, dataprocJobIamBinding *v1alpha1.DataprocJobIamBinding, opts v1.CreateOptions) (*v1alpha1.DataprocJobIamBinding, error)
+	Update(ctx context.Context, dataprocJobIamBinding *v1alpha1.DataprocJobIamBinding, opts v1.UpdateOptions) (*v1alpha1.DataprocJobIamBinding, error)
+	UpdateStatus(ctx context.Context, dataprocJobIamBinding *v1alpha1.DataprocJobIamBinding, opts v1.UpdateOptions) (*v1alpha1.DataprocJobIamBinding, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.DataprocJobIamBinding, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.DataprocJobIamBindingList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataprocJobIamBinding, err error)
 	DataprocJobIamBindingExpansion
 }
 
@@ -65,20 +66,20 @@ func newDataprocJobIamBindings(c *GoogleV1alpha1Client, namespace string) *datap
 }
 
 // Get takes name of the dataprocJobIamBinding, and returns the corresponding dataprocJobIamBinding object, and an error if there is any.
-func (c *dataprocJobIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.DataprocJobIamBinding, err error) {
+func (c *dataprocJobIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DataprocJobIamBinding, err error) {
 	result = &v1alpha1.DataprocJobIamBinding{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("dataprocjobiambindings").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of DataprocJobIamBindings that match those selectors.
-func (c *dataprocJobIamBindings) List(opts v1.ListOptions) (result *v1alpha1.DataprocJobIamBindingList, err error) {
+func (c *dataprocJobIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DataprocJobIamBindingList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *dataprocJobIamBindings) List(opts v1.ListOptions) (result *v1alpha1.Dat
 		Resource("dataprocjobiambindings").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested dataprocJobIamBindings.
-func (c *dataprocJobIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *dataprocJobIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *dataprocJobIamBindings) Watch(opts v1.ListOptions) (watch.Interface, er
 		Resource("dataprocjobiambindings").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a dataprocJobIamBinding and creates it.  Returns the server's representation of the dataprocJobIamBinding, and an error, if there is any.
-func (c *dataprocJobIamBindings) Create(dataprocJobIamBinding *v1alpha1.DataprocJobIamBinding) (result *v1alpha1.DataprocJobIamBinding, err error) {
+func (c *dataprocJobIamBindings) Create(ctx context.Context, dataprocJobIamBinding *v1alpha1.DataprocJobIamBinding, opts v1.CreateOptions) (result *v1alpha1.DataprocJobIamBinding, err error) {
 	result = &v1alpha1.DataprocJobIamBinding{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("dataprocjobiambindings").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dataprocJobIamBinding).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a dataprocJobIamBinding and updates it. Returns the server's representation of the dataprocJobIamBinding, and an error, if there is any.
-func (c *dataprocJobIamBindings) Update(dataprocJobIamBinding *v1alpha1.DataprocJobIamBinding) (result *v1alpha1.DataprocJobIamBinding, err error) {
+func (c *dataprocJobIamBindings) Update(ctx context.Context, dataprocJobIamBinding *v1alpha1.DataprocJobIamBinding, opts v1.UpdateOptions) (result *v1alpha1.DataprocJobIamBinding, err error) {
 	result = &v1alpha1.DataprocJobIamBinding{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("dataprocjobiambindings").
 		Name(dataprocJobIamBinding.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dataprocJobIamBinding).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *dataprocJobIamBindings) UpdateStatus(dataprocJobIamBinding *v1alpha1.DataprocJobIamBinding) (result *v1alpha1.DataprocJobIamBinding, err error) {
+func (c *dataprocJobIamBindings) UpdateStatus(ctx context.Context, dataprocJobIamBinding *v1alpha1.DataprocJobIamBinding, opts v1.UpdateOptions) (result *v1alpha1.DataprocJobIamBinding, err error) {
 	result = &v1alpha1.DataprocJobIamBinding{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("dataprocjobiambindings").
 		Name(dataprocJobIamBinding.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dataprocJobIamBinding).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the dataprocJobIamBinding and deletes it. Returns an error if one occurs.
-func (c *dataprocJobIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *dataprocJobIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("dataprocjobiambindings").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *dataprocJobIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *dataprocJobIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("dataprocjobiambindings").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched dataprocJobIamBinding.
-func (c *dataprocJobIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataprocJobIamBinding, err error) {
+func (c *dataprocJobIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataprocJobIamBinding, err error) {
 	result = &v1alpha1.DataprocJobIamBinding{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("dataprocjobiambindings").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

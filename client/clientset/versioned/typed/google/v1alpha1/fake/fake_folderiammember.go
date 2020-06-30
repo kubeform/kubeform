@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var folderiammembersResource = schema.GroupVersionResource{Group: "google.kubefo
 var folderiammembersKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "FolderIamMember"}
 
 // Get takes name of the folderIamMember, and returns the corresponding folderIamMember object, and an error if there is any.
-func (c *FakeFolderIamMembers) Get(name string, options v1.GetOptions) (result *v1alpha1.FolderIamMember, err error) {
+func (c *FakeFolderIamMembers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.FolderIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(folderiammembersResource, c.ns, name), &v1alpha1.FolderIamMember{})
 
@@ -51,7 +53,7 @@ func (c *FakeFolderIamMembers) Get(name string, options v1.GetOptions) (result *
 }
 
 // List takes label and field selectors, and returns the list of FolderIamMembers that match those selectors.
-func (c *FakeFolderIamMembers) List(opts v1.ListOptions) (result *v1alpha1.FolderIamMemberList, err error) {
+func (c *FakeFolderIamMembers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.FolderIamMemberList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(folderiammembersResource, folderiammembersKind, c.ns, opts), &v1alpha1.FolderIamMemberList{})
 
@@ -73,14 +75,14 @@ func (c *FakeFolderIamMembers) List(opts v1.ListOptions) (result *v1alpha1.Folde
 }
 
 // Watch returns a watch.Interface that watches the requested folderIamMembers.
-func (c *FakeFolderIamMembers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeFolderIamMembers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(folderiammembersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a folderIamMember and creates it.  Returns the server's representation of the folderIamMember, and an error, if there is any.
-func (c *FakeFolderIamMembers) Create(folderIamMember *v1alpha1.FolderIamMember) (result *v1alpha1.FolderIamMember, err error) {
+func (c *FakeFolderIamMembers) Create(ctx context.Context, folderIamMember *v1alpha1.FolderIamMember, opts v1.CreateOptions) (result *v1alpha1.FolderIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(folderiammembersResource, c.ns, folderIamMember), &v1alpha1.FolderIamMember{})
 
@@ -91,7 +93,7 @@ func (c *FakeFolderIamMembers) Create(folderIamMember *v1alpha1.FolderIamMember)
 }
 
 // Update takes the representation of a folderIamMember and updates it. Returns the server's representation of the folderIamMember, and an error, if there is any.
-func (c *FakeFolderIamMembers) Update(folderIamMember *v1alpha1.FolderIamMember) (result *v1alpha1.FolderIamMember, err error) {
+func (c *FakeFolderIamMembers) Update(ctx context.Context, folderIamMember *v1alpha1.FolderIamMember, opts v1.UpdateOptions) (result *v1alpha1.FolderIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(folderiammembersResource, c.ns, folderIamMember), &v1alpha1.FolderIamMember{})
 
@@ -103,7 +105,7 @@ func (c *FakeFolderIamMembers) Update(folderIamMember *v1alpha1.FolderIamMember)
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeFolderIamMembers) UpdateStatus(folderIamMember *v1alpha1.FolderIamMember) (*v1alpha1.FolderIamMember, error) {
+func (c *FakeFolderIamMembers) UpdateStatus(ctx context.Context, folderIamMember *v1alpha1.FolderIamMember, opts v1.UpdateOptions) (*v1alpha1.FolderIamMember, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(folderiammembersResource, "status", c.ns, folderIamMember), &v1alpha1.FolderIamMember{})
 
@@ -114,7 +116,7 @@ func (c *FakeFolderIamMembers) UpdateStatus(folderIamMember *v1alpha1.FolderIamM
 }
 
 // Delete takes name of the folderIamMember and deletes it. Returns an error if one occurs.
-func (c *FakeFolderIamMembers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeFolderIamMembers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(folderiammembersResource, c.ns, name), &v1alpha1.FolderIamMember{})
 
@@ -122,15 +124,15 @@ func (c *FakeFolderIamMembers) Delete(name string, options *v1.DeleteOptions) er
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeFolderIamMembers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(folderiammembersResource, c.ns, listOptions)
+func (c *FakeFolderIamMembers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(folderiammembersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.FolderIamMemberList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched folderIamMember.
-func (c *FakeFolderIamMembers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.FolderIamMember, err error) {
+func (c *FakeFolderIamMembers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.FolderIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(folderiammembersResource, c.ns, name, pt, data, subresources...), &v1alpha1.FolderIamMember{})
 

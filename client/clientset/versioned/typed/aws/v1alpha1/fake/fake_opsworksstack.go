@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var opsworksstacksResource = schema.GroupVersionResource{Group: "aws.kubeform.co
 var opsworksstacksKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "OpsworksStack"}
 
 // Get takes name of the opsworksStack, and returns the corresponding opsworksStack object, and an error if there is any.
-func (c *FakeOpsworksStacks) Get(name string, options v1.GetOptions) (result *v1alpha1.OpsworksStack, err error) {
+func (c *FakeOpsworksStacks) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.OpsworksStack, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(opsworksstacksResource, c.ns, name), &v1alpha1.OpsworksStack{})
 
@@ -51,7 +53,7 @@ func (c *FakeOpsworksStacks) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of OpsworksStacks that match those selectors.
-func (c *FakeOpsworksStacks) List(opts v1.ListOptions) (result *v1alpha1.OpsworksStackList, err error) {
+func (c *FakeOpsworksStacks) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.OpsworksStackList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(opsworksstacksResource, opsworksstacksKind, c.ns, opts), &v1alpha1.OpsworksStackList{})
 
@@ -73,14 +75,14 @@ func (c *FakeOpsworksStacks) List(opts v1.ListOptions) (result *v1alpha1.Opswork
 }
 
 // Watch returns a watch.Interface that watches the requested opsworksStacks.
-func (c *FakeOpsworksStacks) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeOpsworksStacks) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(opsworksstacksResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a opsworksStack and creates it.  Returns the server's representation of the opsworksStack, and an error, if there is any.
-func (c *FakeOpsworksStacks) Create(opsworksStack *v1alpha1.OpsworksStack) (result *v1alpha1.OpsworksStack, err error) {
+func (c *FakeOpsworksStacks) Create(ctx context.Context, opsworksStack *v1alpha1.OpsworksStack, opts v1.CreateOptions) (result *v1alpha1.OpsworksStack, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(opsworksstacksResource, c.ns, opsworksStack), &v1alpha1.OpsworksStack{})
 
@@ -91,7 +93,7 @@ func (c *FakeOpsworksStacks) Create(opsworksStack *v1alpha1.OpsworksStack) (resu
 }
 
 // Update takes the representation of a opsworksStack and updates it. Returns the server's representation of the opsworksStack, and an error, if there is any.
-func (c *FakeOpsworksStacks) Update(opsworksStack *v1alpha1.OpsworksStack) (result *v1alpha1.OpsworksStack, err error) {
+func (c *FakeOpsworksStacks) Update(ctx context.Context, opsworksStack *v1alpha1.OpsworksStack, opts v1.UpdateOptions) (result *v1alpha1.OpsworksStack, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(opsworksstacksResource, c.ns, opsworksStack), &v1alpha1.OpsworksStack{})
 
@@ -103,7 +105,7 @@ func (c *FakeOpsworksStacks) Update(opsworksStack *v1alpha1.OpsworksStack) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeOpsworksStacks) UpdateStatus(opsworksStack *v1alpha1.OpsworksStack) (*v1alpha1.OpsworksStack, error) {
+func (c *FakeOpsworksStacks) UpdateStatus(ctx context.Context, opsworksStack *v1alpha1.OpsworksStack, opts v1.UpdateOptions) (*v1alpha1.OpsworksStack, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(opsworksstacksResource, "status", c.ns, opsworksStack), &v1alpha1.OpsworksStack{})
 
@@ -114,7 +116,7 @@ func (c *FakeOpsworksStacks) UpdateStatus(opsworksStack *v1alpha1.OpsworksStack)
 }
 
 // Delete takes name of the opsworksStack and deletes it. Returns an error if one occurs.
-func (c *FakeOpsworksStacks) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeOpsworksStacks) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(opsworksstacksResource, c.ns, name), &v1alpha1.OpsworksStack{})
 
@@ -122,15 +124,15 @@ func (c *FakeOpsworksStacks) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeOpsworksStacks) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(opsworksstacksResource, c.ns, listOptions)
+func (c *FakeOpsworksStacks) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(opsworksstacksResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.OpsworksStackList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched opsworksStack.
-func (c *FakeOpsworksStacks) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.OpsworksStack, err error) {
+func (c *FakeOpsworksStacks) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.OpsworksStack, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(opsworksstacksResource, c.ns, name, pt, data, subresources...), &v1alpha1.OpsworksStack{})
 

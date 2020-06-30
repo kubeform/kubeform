@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type StorageBucketObjectsGetter interface {
 
 // StorageBucketObjectInterface has methods to work with StorageBucketObject resources.
 type StorageBucketObjectInterface interface {
-	Create(*v1alpha1.StorageBucketObject) (*v1alpha1.StorageBucketObject, error)
-	Update(*v1alpha1.StorageBucketObject) (*v1alpha1.StorageBucketObject, error)
-	UpdateStatus(*v1alpha1.StorageBucketObject) (*v1alpha1.StorageBucketObject, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.StorageBucketObject, error)
-	List(opts v1.ListOptions) (*v1alpha1.StorageBucketObjectList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StorageBucketObject, err error)
+	Create(ctx context.Context, storageBucketObject *v1alpha1.StorageBucketObject, opts v1.CreateOptions) (*v1alpha1.StorageBucketObject, error)
+	Update(ctx context.Context, storageBucketObject *v1alpha1.StorageBucketObject, opts v1.UpdateOptions) (*v1alpha1.StorageBucketObject, error)
+	UpdateStatus(ctx context.Context, storageBucketObject *v1alpha1.StorageBucketObject, opts v1.UpdateOptions) (*v1alpha1.StorageBucketObject, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.StorageBucketObject, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.StorageBucketObjectList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StorageBucketObject, err error)
 	StorageBucketObjectExpansion
 }
 
@@ -65,20 +66,20 @@ func newStorageBucketObjects(c *GoogleV1alpha1Client, namespace string) *storage
 }
 
 // Get takes name of the storageBucketObject, and returns the corresponding storageBucketObject object, and an error if there is any.
-func (c *storageBucketObjects) Get(name string, options v1.GetOptions) (result *v1alpha1.StorageBucketObject, err error) {
+func (c *storageBucketObjects) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.StorageBucketObject, err error) {
 	result = &v1alpha1.StorageBucketObject{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("storagebucketobjects").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of StorageBucketObjects that match those selectors.
-func (c *storageBucketObjects) List(opts v1.ListOptions) (result *v1alpha1.StorageBucketObjectList, err error) {
+func (c *storageBucketObjects) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.StorageBucketObjectList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *storageBucketObjects) List(opts v1.ListOptions) (result *v1alpha1.Stora
 		Resource("storagebucketobjects").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested storageBucketObjects.
-func (c *storageBucketObjects) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *storageBucketObjects) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *storageBucketObjects) Watch(opts v1.ListOptions) (watch.Interface, erro
 		Resource("storagebucketobjects").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a storageBucketObject and creates it.  Returns the server's representation of the storageBucketObject, and an error, if there is any.
-func (c *storageBucketObjects) Create(storageBucketObject *v1alpha1.StorageBucketObject) (result *v1alpha1.StorageBucketObject, err error) {
+func (c *storageBucketObjects) Create(ctx context.Context, storageBucketObject *v1alpha1.StorageBucketObject, opts v1.CreateOptions) (result *v1alpha1.StorageBucketObject, err error) {
 	result = &v1alpha1.StorageBucketObject{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("storagebucketobjects").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(storageBucketObject).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a storageBucketObject and updates it. Returns the server's representation of the storageBucketObject, and an error, if there is any.
-func (c *storageBucketObjects) Update(storageBucketObject *v1alpha1.StorageBucketObject) (result *v1alpha1.StorageBucketObject, err error) {
+func (c *storageBucketObjects) Update(ctx context.Context, storageBucketObject *v1alpha1.StorageBucketObject, opts v1.UpdateOptions) (result *v1alpha1.StorageBucketObject, err error) {
 	result = &v1alpha1.StorageBucketObject{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("storagebucketobjects").
 		Name(storageBucketObject.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(storageBucketObject).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *storageBucketObjects) UpdateStatus(storageBucketObject *v1alpha1.StorageBucketObject) (result *v1alpha1.StorageBucketObject, err error) {
+func (c *storageBucketObjects) UpdateStatus(ctx context.Context, storageBucketObject *v1alpha1.StorageBucketObject, opts v1.UpdateOptions) (result *v1alpha1.StorageBucketObject, err error) {
 	result = &v1alpha1.StorageBucketObject{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("storagebucketobjects").
 		Name(storageBucketObject.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(storageBucketObject).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the storageBucketObject and deletes it. Returns an error if one occurs.
-func (c *storageBucketObjects) Delete(name string, options *v1.DeleteOptions) error {
+func (c *storageBucketObjects) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("storagebucketobjects").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *storageBucketObjects) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *storageBucketObjects) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("storagebucketobjects").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched storageBucketObject.
-func (c *storageBucketObjects) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StorageBucketObject, err error) {
+func (c *storageBucketObjects) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StorageBucketObject, err error) {
 	result = &v1alpha1.StorageBucketObject{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("storagebucketobjects").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

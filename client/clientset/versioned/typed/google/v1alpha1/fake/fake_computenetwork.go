@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computenetworksResource = schema.GroupVersionResource{Group: "google.kubefor
 var computenetworksKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeNetwork"}
 
 // Get takes name of the computeNetwork, and returns the corresponding computeNetwork object, and an error if there is any.
-func (c *FakeComputeNetworks) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeNetwork, err error) {
+func (c *FakeComputeNetworks) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeNetwork, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computenetworksResource, c.ns, name), &v1alpha1.ComputeNetwork{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeNetworks) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of ComputeNetworks that match those selectors.
-func (c *FakeComputeNetworks) List(opts v1.ListOptions) (result *v1alpha1.ComputeNetworkList, err error) {
+func (c *FakeComputeNetworks) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeNetworkList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computenetworksResource, computenetworksKind, c.ns, opts), &v1alpha1.ComputeNetworkList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeNetworks) List(opts v1.ListOptions) (result *v1alpha1.Comput
 }
 
 // Watch returns a watch.Interface that watches the requested computeNetworks.
-func (c *FakeComputeNetworks) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeNetworks) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computenetworksResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeNetwork and creates it.  Returns the server's representation of the computeNetwork, and an error, if there is any.
-func (c *FakeComputeNetworks) Create(computeNetwork *v1alpha1.ComputeNetwork) (result *v1alpha1.ComputeNetwork, err error) {
+func (c *FakeComputeNetworks) Create(ctx context.Context, computeNetwork *v1alpha1.ComputeNetwork, opts v1.CreateOptions) (result *v1alpha1.ComputeNetwork, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computenetworksResource, c.ns, computeNetwork), &v1alpha1.ComputeNetwork{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeNetworks) Create(computeNetwork *v1alpha1.ComputeNetwork) (r
 }
 
 // Update takes the representation of a computeNetwork and updates it. Returns the server's representation of the computeNetwork, and an error, if there is any.
-func (c *FakeComputeNetworks) Update(computeNetwork *v1alpha1.ComputeNetwork) (result *v1alpha1.ComputeNetwork, err error) {
+func (c *FakeComputeNetworks) Update(ctx context.Context, computeNetwork *v1alpha1.ComputeNetwork, opts v1.UpdateOptions) (result *v1alpha1.ComputeNetwork, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computenetworksResource, c.ns, computeNetwork), &v1alpha1.ComputeNetwork{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeNetworks) Update(computeNetwork *v1alpha1.ComputeNetwork) (r
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeNetworks) UpdateStatus(computeNetwork *v1alpha1.ComputeNetwork) (*v1alpha1.ComputeNetwork, error) {
+func (c *FakeComputeNetworks) UpdateStatus(ctx context.Context, computeNetwork *v1alpha1.ComputeNetwork, opts v1.UpdateOptions) (*v1alpha1.ComputeNetwork, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computenetworksResource, "status", c.ns, computeNetwork), &v1alpha1.ComputeNetwork{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeNetworks) UpdateStatus(computeNetwork *v1alpha1.ComputeNetwo
 }
 
 // Delete takes name of the computeNetwork and deletes it. Returns an error if one occurs.
-func (c *FakeComputeNetworks) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeNetworks) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computenetworksResource, c.ns, name), &v1alpha1.ComputeNetwork{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeNetworks) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeNetworks) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computenetworksResource, c.ns, listOptions)
+func (c *FakeComputeNetworks) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computenetworksResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeNetworkList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeNetwork.
-func (c *FakeComputeNetworks) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeNetwork, err error) {
+func (c *FakeComputeNetworks) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeNetwork, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computenetworksResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeNetwork{})
 

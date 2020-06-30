@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computenodetemplatesResource = schema.GroupVersionResource{Group: "google.ku
 var computenodetemplatesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeNodeTemplate"}
 
 // Get takes name of the computeNodeTemplate, and returns the corresponding computeNodeTemplate object, and an error if there is any.
-func (c *FakeComputeNodeTemplates) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeNodeTemplate, err error) {
+func (c *FakeComputeNodeTemplates) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeNodeTemplate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computenodetemplatesResource, c.ns, name), &v1alpha1.ComputeNodeTemplate{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeNodeTemplates) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of ComputeNodeTemplates that match those selectors.
-func (c *FakeComputeNodeTemplates) List(opts v1.ListOptions) (result *v1alpha1.ComputeNodeTemplateList, err error) {
+func (c *FakeComputeNodeTemplates) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeNodeTemplateList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computenodetemplatesResource, computenodetemplatesKind, c.ns, opts), &v1alpha1.ComputeNodeTemplateList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeNodeTemplates) List(opts v1.ListOptions) (result *v1alpha1.C
 }
 
 // Watch returns a watch.Interface that watches the requested computeNodeTemplates.
-func (c *FakeComputeNodeTemplates) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeNodeTemplates) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computenodetemplatesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeNodeTemplate and creates it.  Returns the server's representation of the computeNodeTemplate, and an error, if there is any.
-func (c *FakeComputeNodeTemplates) Create(computeNodeTemplate *v1alpha1.ComputeNodeTemplate) (result *v1alpha1.ComputeNodeTemplate, err error) {
+func (c *FakeComputeNodeTemplates) Create(ctx context.Context, computeNodeTemplate *v1alpha1.ComputeNodeTemplate, opts v1.CreateOptions) (result *v1alpha1.ComputeNodeTemplate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computenodetemplatesResource, c.ns, computeNodeTemplate), &v1alpha1.ComputeNodeTemplate{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeNodeTemplates) Create(computeNodeTemplate *v1alpha1.ComputeN
 }
 
 // Update takes the representation of a computeNodeTemplate and updates it. Returns the server's representation of the computeNodeTemplate, and an error, if there is any.
-func (c *FakeComputeNodeTemplates) Update(computeNodeTemplate *v1alpha1.ComputeNodeTemplate) (result *v1alpha1.ComputeNodeTemplate, err error) {
+func (c *FakeComputeNodeTemplates) Update(ctx context.Context, computeNodeTemplate *v1alpha1.ComputeNodeTemplate, opts v1.UpdateOptions) (result *v1alpha1.ComputeNodeTemplate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computenodetemplatesResource, c.ns, computeNodeTemplate), &v1alpha1.ComputeNodeTemplate{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeNodeTemplates) Update(computeNodeTemplate *v1alpha1.ComputeN
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeNodeTemplates) UpdateStatus(computeNodeTemplate *v1alpha1.ComputeNodeTemplate) (*v1alpha1.ComputeNodeTemplate, error) {
+func (c *FakeComputeNodeTemplates) UpdateStatus(ctx context.Context, computeNodeTemplate *v1alpha1.ComputeNodeTemplate, opts v1.UpdateOptions) (*v1alpha1.ComputeNodeTemplate, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computenodetemplatesResource, "status", c.ns, computeNodeTemplate), &v1alpha1.ComputeNodeTemplate{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeNodeTemplates) UpdateStatus(computeNodeTemplate *v1alpha1.Co
 }
 
 // Delete takes name of the computeNodeTemplate and deletes it. Returns an error if one occurs.
-func (c *FakeComputeNodeTemplates) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeNodeTemplates) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computenodetemplatesResource, c.ns, name), &v1alpha1.ComputeNodeTemplate{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeNodeTemplates) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeNodeTemplates) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computenodetemplatesResource, c.ns, listOptions)
+func (c *FakeComputeNodeTemplates) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computenodetemplatesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeNodeTemplateList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeNodeTemplate.
-func (c *FakeComputeNodeTemplates) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeNodeTemplate, err error) {
+func (c *FakeComputeNodeTemplates) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeNodeTemplate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computenodetemplatesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeNodeTemplate{})
 

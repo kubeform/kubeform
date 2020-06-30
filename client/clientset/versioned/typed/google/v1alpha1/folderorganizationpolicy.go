@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type FolderOrganizationPoliciesGetter interface {
 
 // FolderOrganizationPolicyInterface has methods to work with FolderOrganizationPolicy resources.
 type FolderOrganizationPolicyInterface interface {
-	Create(*v1alpha1.FolderOrganizationPolicy) (*v1alpha1.FolderOrganizationPolicy, error)
-	Update(*v1alpha1.FolderOrganizationPolicy) (*v1alpha1.FolderOrganizationPolicy, error)
-	UpdateStatus(*v1alpha1.FolderOrganizationPolicy) (*v1alpha1.FolderOrganizationPolicy, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.FolderOrganizationPolicy, error)
-	List(opts v1.ListOptions) (*v1alpha1.FolderOrganizationPolicyList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.FolderOrganizationPolicy, err error)
+	Create(ctx context.Context, folderOrganizationPolicy *v1alpha1.FolderOrganizationPolicy, opts v1.CreateOptions) (*v1alpha1.FolderOrganizationPolicy, error)
+	Update(ctx context.Context, folderOrganizationPolicy *v1alpha1.FolderOrganizationPolicy, opts v1.UpdateOptions) (*v1alpha1.FolderOrganizationPolicy, error)
+	UpdateStatus(ctx context.Context, folderOrganizationPolicy *v1alpha1.FolderOrganizationPolicy, opts v1.UpdateOptions) (*v1alpha1.FolderOrganizationPolicy, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.FolderOrganizationPolicy, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.FolderOrganizationPolicyList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.FolderOrganizationPolicy, err error)
 	FolderOrganizationPolicyExpansion
 }
 
@@ -65,20 +66,20 @@ func newFolderOrganizationPolicies(c *GoogleV1alpha1Client, namespace string) *f
 }
 
 // Get takes name of the folderOrganizationPolicy, and returns the corresponding folderOrganizationPolicy object, and an error if there is any.
-func (c *folderOrganizationPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.FolderOrganizationPolicy, err error) {
+func (c *folderOrganizationPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.FolderOrganizationPolicy, err error) {
 	result = &v1alpha1.FolderOrganizationPolicy{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("folderorganizationpolicies").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of FolderOrganizationPolicies that match those selectors.
-func (c *folderOrganizationPolicies) List(opts v1.ListOptions) (result *v1alpha1.FolderOrganizationPolicyList, err error) {
+func (c *folderOrganizationPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.FolderOrganizationPolicyList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *folderOrganizationPolicies) List(opts v1.ListOptions) (result *v1alpha1
 		Resource("folderorganizationpolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested folderOrganizationPolicies.
-func (c *folderOrganizationPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *folderOrganizationPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *folderOrganizationPolicies) Watch(opts v1.ListOptions) (watch.Interface
 		Resource("folderorganizationpolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a folderOrganizationPolicy and creates it.  Returns the server's representation of the folderOrganizationPolicy, and an error, if there is any.
-func (c *folderOrganizationPolicies) Create(folderOrganizationPolicy *v1alpha1.FolderOrganizationPolicy) (result *v1alpha1.FolderOrganizationPolicy, err error) {
+func (c *folderOrganizationPolicies) Create(ctx context.Context, folderOrganizationPolicy *v1alpha1.FolderOrganizationPolicy, opts v1.CreateOptions) (result *v1alpha1.FolderOrganizationPolicy, err error) {
 	result = &v1alpha1.FolderOrganizationPolicy{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("folderorganizationpolicies").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(folderOrganizationPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a folderOrganizationPolicy and updates it. Returns the server's representation of the folderOrganizationPolicy, and an error, if there is any.
-func (c *folderOrganizationPolicies) Update(folderOrganizationPolicy *v1alpha1.FolderOrganizationPolicy) (result *v1alpha1.FolderOrganizationPolicy, err error) {
+func (c *folderOrganizationPolicies) Update(ctx context.Context, folderOrganizationPolicy *v1alpha1.FolderOrganizationPolicy, opts v1.UpdateOptions) (result *v1alpha1.FolderOrganizationPolicy, err error) {
 	result = &v1alpha1.FolderOrganizationPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("folderorganizationpolicies").
 		Name(folderOrganizationPolicy.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(folderOrganizationPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *folderOrganizationPolicies) UpdateStatus(folderOrganizationPolicy *v1alpha1.FolderOrganizationPolicy) (result *v1alpha1.FolderOrganizationPolicy, err error) {
+func (c *folderOrganizationPolicies) UpdateStatus(ctx context.Context, folderOrganizationPolicy *v1alpha1.FolderOrganizationPolicy, opts v1.UpdateOptions) (result *v1alpha1.FolderOrganizationPolicy, err error) {
 	result = &v1alpha1.FolderOrganizationPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("folderorganizationpolicies").
 		Name(folderOrganizationPolicy.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(folderOrganizationPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the folderOrganizationPolicy and deletes it. Returns an error if one occurs.
-func (c *folderOrganizationPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *folderOrganizationPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("folderorganizationpolicies").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *folderOrganizationPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *folderOrganizationPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("folderorganizationpolicies").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched folderOrganizationPolicy.
-func (c *folderOrganizationPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.FolderOrganizationPolicy, err error) {
+func (c *folderOrganizationPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.FolderOrganizationPolicy, err error) {
 	result = &v1alpha1.FolderOrganizationPolicy{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("folderorganizationpolicies").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type AppEngineApplicationsGetter interface {
 
 // AppEngineApplicationInterface has methods to work with AppEngineApplication resources.
 type AppEngineApplicationInterface interface {
-	Create(*v1alpha1.AppEngineApplication) (*v1alpha1.AppEngineApplication, error)
-	Update(*v1alpha1.AppEngineApplication) (*v1alpha1.AppEngineApplication, error)
-	UpdateStatus(*v1alpha1.AppEngineApplication) (*v1alpha1.AppEngineApplication, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.AppEngineApplication, error)
-	List(opts v1.ListOptions) (*v1alpha1.AppEngineApplicationList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppEngineApplication, err error)
+	Create(ctx context.Context, appEngineApplication *v1alpha1.AppEngineApplication, opts v1.CreateOptions) (*v1alpha1.AppEngineApplication, error)
+	Update(ctx context.Context, appEngineApplication *v1alpha1.AppEngineApplication, opts v1.UpdateOptions) (*v1alpha1.AppEngineApplication, error)
+	UpdateStatus(ctx context.Context, appEngineApplication *v1alpha1.AppEngineApplication, opts v1.UpdateOptions) (*v1alpha1.AppEngineApplication, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.AppEngineApplication, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.AppEngineApplicationList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppEngineApplication, err error)
 	AppEngineApplicationExpansion
 }
 
@@ -65,20 +66,20 @@ func newAppEngineApplications(c *GoogleV1alpha1Client, namespace string) *appEng
 }
 
 // Get takes name of the appEngineApplication, and returns the corresponding appEngineApplication object, and an error if there is any.
-func (c *appEngineApplications) Get(name string, options v1.GetOptions) (result *v1alpha1.AppEngineApplication, err error) {
+func (c *appEngineApplications) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AppEngineApplication, err error) {
 	result = &v1alpha1.AppEngineApplication{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("appengineapplications").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of AppEngineApplications that match those selectors.
-func (c *appEngineApplications) List(opts v1.ListOptions) (result *v1alpha1.AppEngineApplicationList, err error) {
+func (c *appEngineApplications) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AppEngineApplicationList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *appEngineApplications) List(opts v1.ListOptions) (result *v1alpha1.AppE
 		Resource("appengineapplications").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested appEngineApplications.
-func (c *appEngineApplications) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *appEngineApplications) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *appEngineApplications) Watch(opts v1.ListOptions) (watch.Interface, err
 		Resource("appengineapplications").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a appEngineApplication and creates it.  Returns the server's representation of the appEngineApplication, and an error, if there is any.
-func (c *appEngineApplications) Create(appEngineApplication *v1alpha1.AppEngineApplication) (result *v1alpha1.AppEngineApplication, err error) {
+func (c *appEngineApplications) Create(ctx context.Context, appEngineApplication *v1alpha1.AppEngineApplication, opts v1.CreateOptions) (result *v1alpha1.AppEngineApplication, err error) {
 	result = &v1alpha1.AppEngineApplication{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("appengineapplications").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appEngineApplication).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a appEngineApplication and updates it. Returns the server's representation of the appEngineApplication, and an error, if there is any.
-func (c *appEngineApplications) Update(appEngineApplication *v1alpha1.AppEngineApplication) (result *v1alpha1.AppEngineApplication, err error) {
+func (c *appEngineApplications) Update(ctx context.Context, appEngineApplication *v1alpha1.AppEngineApplication, opts v1.UpdateOptions) (result *v1alpha1.AppEngineApplication, err error) {
 	result = &v1alpha1.AppEngineApplication{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("appengineapplications").
 		Name(appEngineApplication.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appEngineApplication).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *appEngineApplications) UpdateStatus(appEngineApplication *v1alpha1.AppEngineApplication) (result *v1alpha1.AppEngineApplication, err error) {
+func (c *appEngineApplications) UpdateStatus(ctx context.Context, appEngineApplication *v1alpha1.AppEngineApplication, opts v1.UpdateOptions) (result *v1alpha1.AppEngineApplication, err error) {
 	result = &v1alpha1.AppEngineApplication{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("appengineapplications").
 		Name(appEngineApplication.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appEngineApplication).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the appEngineApplication and deletes it. Returns an error if one occurs.
-func (c *appEngineApplications) Delete(name string, options *v1.DeleteOptions) error {
+func (c *appEngineApplications) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("appengineapplications").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *appEngineApplications) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *appEngineApplications) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("appengineapplications").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched appEngineApplication.
-func (c *appEngineApplications) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppEngineApplication, err error) {
+func (c *appEngineApplications) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppEngineApplication, err error) {
 	result = &v1alpha1.AppEngineApplication{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("appengineapplications").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

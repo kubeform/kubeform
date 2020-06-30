@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cdnendpointsResource = schema.GroupVersionResource{Group: "azurerm.kubeform.
 var cdnendpointsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "CdnEndpoint"}
 
 // Get takes name of the cdnEndpoint, and returns the corresponding cdnEndpoint object, and an error if there is any.
-func (c *FakeCdnEndpoints) Get(name string, options v1.GetOptions) (result *v1alpha1.CdnEndpoint, err error) {
+func (c *FakeCdnEndpoints) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CdnEndpoint, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cdnendpointsResource, c.ns, name), &v1alpha1.CdnEndpoint{})
 
@@ -51,7 +53,7 @@ func (c *FakeCdnEndpoints) Get(name string, options v1.GetOptions) (result *v1al
 }
 
 // List takes label and field selectors, and returns the list of CdnEndpoints that match those selectors.
-func (c *FakeCdnEndpoints) List(opts v1.ListOptions) (result *v1alpha1.CdnEndpointList, err error) {
+func (c *FakeCdnEndpoints) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CdnEndpointList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cdnendpointsResource, cdnendpointsKind, c.ns, opts), &v1alpha1.CdnEndpointList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCdnEndpoints) List(opts v1.ListOptions) (result *v1alpha1.CdnEndpoi
 }
 
 // Watch returns a watch.Interface that watches the requested cdnEndpoints.
-func (c *FakeCdnEndpoints) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCdnEndpoints) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cdnendpointsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cdnEndpoint and creates it.  Returns the server's representation of the cdnEndpoint, and an error, if there is any.
-func (c *FakeCdnEndpoints) Create(cdnEndpoint *v1alpha1.CdnEndpoint) (result *v1alpha1.CdnEndpoint, err error) {
+func (c *FakeCdnEndpoints) Create(ctx context.Context, cdnEndpoint *v1alpha1.CdnEndpoint, opts v1.CreateOptions) (result *v1alpha1.CdnEndpoint, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cdnendpointsResource, c.ns, cdnEndpoint), &v1alpha1.CdnEndpoint{})
 
@@ -91,7 +93,7 @@ func (c *FakeCdnEndpoints) Create(cdnEndpoint *v1alpha1.CdnEndpoint) (result *v1
 }
 
 // Update takes the representation of a cdnEndpoint and updates it. Returns the server's representation of the cdnEndpoint, and an error, if there is any.
-func (c *FakeCdnEndpoints) Update(cdnEndpoint *v1alpha1.CdnEndpoint) (result *v1alpha1.CdnEndpoint, err error) {
+func (c *FakeCdnEndpoints) Update(ctx context.Context, cdnEndpoint *v1alpha1.CdnEndpoint, opts v1.UpdateOptions) (result *v1alpha1.CdnEndpoint, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cdnendpointsResource, c.ns, cdnEndpoint), &v1alpha1.CdnEndpoint{})
 
@@ -103,7 +105,7 @@ func (c *FakeCdnEndpoints) Update(cdnEndpoint *v1alpha1.CdnEndpoint) (result *v1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCdnEndpoints) UpdateStatus(cdnEndpoint *v1alpha1.CdnEndpoint) (*v1alpha1.CdnEndpoint, error) {
+func (c *FakeCdnEndpoints) UpdateStatus(ctx context.Context, cdnEndpoint *v1alpha1.CdnEndpoint, opts v1.UpdateOptions) (*v1alpha1.CdnEndpoint, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cdnendpointsResource, "status", c.ns, cdnEndpoint), &v1alpha1.CdnEndpoint{})
 
@@ -114,7 +116,7 @@ func (c *FakeCdnEndpoints) UpdateStatus(cdnEndpoint *v1alpha1.CdnEndpoint) (*v1a
 }
 
 // Delete takes name of the cdnEndpoint and deletes it. Returns an error if one occurs.
-func (c *FakeCdnEndpoints) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCdnEndpoints) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cdnendpointsResource, c.ns, name), &v1alpha1.CdnEndpoint{})
 
@@ -122,15 +124,15 @@ func (c *FakeCdnEndpoints) Delete(name string, options *v1.DeleteOptions) error 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCdnEndpoints) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cdnendpointsResource, c.ns, listOptions)
+func (c *FakeCdnEndpoints) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cdnendpointsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CdnEndpointList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cdnEndpoint.
-func (c *FakeCdnEndpoints) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CdnEndpoint, err error) {
+func (c *FakeCdnEndpoints) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CdnEndpoint, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cdnendpointsResource, c.ns, name, pt, data, subresources...), &v1alpha1.CdnEndpoint{})
 

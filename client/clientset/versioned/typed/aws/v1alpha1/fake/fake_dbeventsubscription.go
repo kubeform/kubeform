@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dbeventsubscriptionsResource = schema.GroupVersionResource{Group: "aws.kubef
 var dbeventsubscriptionsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DbEventSubscription"}
 
 // Get takes name of the dbEventSubscription, and returns the corresponding dbEventSubscription object, and an error if there is any.
-func (c *FakeDbEventSubscriptions) Get(name string, options v1.GetOptions) (result *v1alpha1.DbEventSubscription, err error) {
+func (c *FakeDbEventSubscriptions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DbEventSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dbeventsubscriptionsResource, c.ns, name), &v1alpha1.DbEventSubscription{})
 
@@ -51,7 +53,7 @@ func (c *FakeDbEventSubscriptions) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of DbEventSubscriptions that match those selectors.
-func (c *FakeDbEventSubscriptions) List(opts v1.ListOptions) (result *v1alpha1.DbEventSubscriptionList, err error) {
+func (c *FakeDbEventSubscriptions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DbEventSubscriptionList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dbeventsubscriptionsResource, dbeventsubscriptionsKind, c.ns, opts), &v1alpha1.DbEventSubscriptionList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDbEventSubscriptions) List(opts v1.ListOptions) (result *v1alpha1.D
 }
 
 // Watch returns a watch.Interface that watches the requested dbEventSubscriptions.
-func (c *FakeDbEventSubscriptions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDbEventSubscriptions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dbeventsubscriptionsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dbEventSubscription and creates it.  Returns the server's representation of the dbEventSubscription, and an error, if there is any.
-func (c *FakeDbEventSubscriptions) Create(dbEventSubscription *v1alpha1.DbEventSubscription) (result *v1alpha1.DbEventSubscription, err error) {
+func (c *FakeDbEventSubscriptions) Create(ctx context.Context, dbEventSubscription *v1alpha1.DbEventSubscription, opts v1.CreateOptions) (result *v1alpha1.DbEventSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dbeventsubscriptionsResource, c.ns, dbEventSubscription), &v1alpha1.DbEventSubscription{})
 
@@ -91,7 +93,7 @@ func (c *FakeDbEventSubscriptions) Create(dbEventSubscription *v1alpha1.DbEventS
 }
 
 // Update takes the representation of a dbEventSubscription and updates it. Returns the server's representation of the dbEventSubscription, and an error, if there is any.
-func (c *FakeDbEventSubscriptions) Update(dbEventSubscription *v1alpha1.DbEventSubscription) (result *v1alpha1.DbEventSubscription, err error) {
+func (c *FakeDbEventSubscriptions) Update(ctx context.Context, dbEventSubscription *v1alpha1.DbEventSubscription, opts v1.UpdateOptions) (result *v1alpha1.DbEventSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dbeventsubscriptionsResource, c.ns, dbEventSubscription), &v1alpha1.DbEventSubscription{})
 
@@ -103,7 +105,7 @@ func (c *FakeDbEventSubscriptions) Update(dbEventSubscription *v1alpha1.DbEventS
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDbEventSubscriptions) UpdateStatus(dbEventSubscription *v1alpha1.DbEventSubscription) (*v1alpha1.DbEventSubscription, error) {
+func (c *FakeDbEventSubscriptions) UpdateStatus(ctx context.Context, dbEventSubscription *v1alpha1.DbEventSubscription, opts v1.UpdateOptions) (*v1alpha1.DbEventSubscription, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dbeventsubscriptionsResource, "status", c.ns, dbEventSubscription), &v1alpha1.DbEventSubscription{})
 
@@ -114,7 +116,7 @@ func (c *FakeDbEventSubscriptions) UpdateStatus(dbEventSubscription *v1alpha1.Db
 }
 
 // Delete takes name of the dbEventSubscription and deletes it. Returns an error if one occurs.
-func (c *FakeDbEventSubscriptions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDbEventSubscriptions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dbeventsubscriptionsResource, c.ns, name), &v1alpha1.DbEventSubscription{})
 
@@ -122,15 +124,15 @@ func (c *FakeDbEventSubscriptions) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDbEventSubscriptions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dbeventsubscriptionsResource, c.ns, listOptions)
+func (c *FakeDbEventSubscriptions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dbeventsubscriptionsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DbEventSubscriptionList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dbEventSubscription.
-func (c *FakeDbEventSubscriptions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DbEventSubscription, err error) {
+func (c *FakeDbEventSubscriptions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DbEventSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dbeventsubscriptionsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DbEventSubscription{})
 

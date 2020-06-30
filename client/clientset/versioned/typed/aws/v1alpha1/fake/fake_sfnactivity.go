@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var sfnactivitiesResource = schema.GroupVersionResource{Group: "aws.kubeform.com
 var sfnactivitiesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "SfnActivity"}
 
 // Get takes name of the sfnActivity, and returns the corresponding sfnActivity object, and an error if there is any.
-func (c *FakeSfnActivities) Get(name string, options v1.GetOptions) (result *v1alpha1.SfnActivity, err error) {
+func (c *FakeSfnActivities) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SfnActivity, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(sfnactivitiesResource, c.ns, name), &v1alpha1.SfnActivity{})
 
@@ -51,7 +53,7 @@ func (c *FakeSfnActivities) Get(name string, options v1.GetOptions) (result *v1a
 }
 
 // List takes label and field selectors, and returns the list of SfnActivities that match those selectors.
-func (c *FakeSfnActivities) List(opts v1.ListOptions) (result *v1alpha1.SfnActivityList, err error) {
+func (c *FakeSfnActivities) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SfnActivityList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(sfnactivitiesResource, sfnactivitiesKind, c.ns, opts), &v1alpha1.SfnActivityList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSfnActivities) List(opts v1.ListOptions) (result *v1alpha1.SfnActiv
 }
 
 // Watch returns a watch.Interface that watches the requested sfnActivities.
-func (c *FakeSfnActivities) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSfnActivities) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(sfnactivitiesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a sfnActivity and creates it.  Returns the server's representation of the sfnActivity, and an error, if there is any.
-func (c *FakeSfnActivities) Create(sfnActivity *v1alpha1.SfnActivity) (result *v1alpha1.SfnActivity, err error) {
+func (c *FakeSfnActivities) Create(ctx context.Context, sfnActivity *v1alpha1.SfnActivity, opts v1.CreateOptions) (result *v1alpha1.SfnActivity, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(sfnactivitiesResource, c.ns, sfnActivity), &v1alpha1.SfnActivity{})
 
@@ -91,7 +93,7 @@ func (c *FakeSfnActivities) Create(sfnActivity *v1alpha1.SfnActivity) (result *v
 }
 
 // Update takes the representation of a sfnActivity and updates it. Returns the server's representation of the sfnActivity, and an error, if there is any.
-func (c *FakeSfnActivities) Update(sfnActivity *v1alpha1.SfnActivity) (result *v1alpha1.SfnActivity, err error) {
+func (c *FakeSfnActivities) Update(ctx context.Context, sfnActivity *v1alpha1.SfnActivity, opts v1.UpdateOptions) (result *v1alpha1.SfnActivity, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(sfnactivitiesResource, c.ns, sfnActivity), &v1alpha1.SfnActivity{})
 
@@ -103,7 +105,7 @@ func (c *FakeSfnActivities) Update(sfnActivity *v1alpha1.SfnActivity) (result *v
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSfnActivities) UpdateStatus(sfnActivity *v1alpha1.SfnActivity) (*v1alpha1.SfnActivity, error) {
+func (c *FakeSfnActivities) UpdateStatus(ctx context.Context, sfnActivity *v1alpha1.SfnActivity, opts v1.UpdateOptions) (*v1alpha1.SfnActivity, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(sfnactivitiesResource, "status", c.ns, sfnActivity), &v1alpha1.SfnActivity{})
 
@@ -114,7 +116,7 @@ func (c *FakeSfnActivities) UpdateStatus(sfnActivity *v1alpha1.SfnActivity) (*v1
 }
 
 // Delete takes name of the sfnActivity and deletes it. Returns an error if one occurs.
-func (c *FakeSfnActivities) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSfnActivities) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(sfnactivitiesResource, c.ns, name), &v1alpha1.SfnActivity{})
 
@@ -122,15 +124,15 @@ func (c *FakeSfnActivities) Delete(name string, options *v1.DeleteOptions) error
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSfnActivities) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(sfnactivitiesResource, c.ns, listOptions)
+func (c *FakeSfnActivities) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(sfnactivitiesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SfnActivityList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched sfnActivity.
-func (c *FakeSfnActivities) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SfnActivity, err error) {
+func (c *FakeSfnActivities) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SfnActivity, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(sfnactivitiesResource, c.ns, name, pt, data, subresources...), &v1alpha1.SfnActivity{})
 

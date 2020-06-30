@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var apimanagementproductapisResource = schema.GroupVersionResource{Group: "azure
 var apimanagementproductapisKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "ApiManagementProductAPI"}
 
 // Get takes name of the apiManagementProductAPI, and returns the corresponding apiManagementProductAPI object, and an error if there is any.
-func (c *FakeApiManagementProductAPIs) Get(name string, options v1.GetOptions) (result *v1alpha1.ApiManagementProductAPI, err error) {
+func (c *FakeApiManagementProductAPIs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApiManagementProductAPI, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(apimanagementproductapisResource, c.ns, name), &v1alpha1.ApiManagementProductAPI{})
 
@@ -51,7 +53,7 @@ func (c *FakeApiManagementProductAPIs) Get(name string, options v1.GetOptions) (
 }
 
 // List takes label and field selectors, and returns the list of ApiManagementProductAPIs that match those selectors.
-func (c *FakeApiManagementProductAPIs) List(opts v1.ListOptions) (result *v1alpha1.ApiManagementProductAPIList, err error) {
+func (c *FakeApiManagementProductAPIs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApiManagementProductAPIList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(apimanagementproductapisResource, apimanagementproductapisKind, c.ns, opts), &v1alpha1.ApiManagementProductAPIList{})
 
@@ -73,14 +75,14 @@ func (c *FakeApiManagementProductAPIs) List(opts v1.ListOptions) (result *v1alph
 }
 
 // Watch returns a watch.Interface that watches the requested apiManagementProductAPIs.
-func (c *FakeApiManagementProductAPIs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeApiManagementProductAPIs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(apimanagementproductapisResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a apiManagementProductAPI and creates it.  Returns the server's representation of the apiManagementProductAPI, and an error, if there is any.
-func (c *FakeApiManagementProductAPIs) Create(apiManagementProductAPI *v1alpha1.ApiManagementProductAPI) (result *v1alpha1.ApiManagementProductAPI, err error) {
+func (c *FakeApiManagementProductAPIs) Create(ctx context.Context, apiManagementProductAPI *v1alpha1.ApiManagementProductAPI, opts v1.CreateOptions) (result *v1alpha1.ApiManagementProductAPI, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(apimanagementproductapisResource, c.ns, apiManagementProductAPI), &v1alpha1.ApiManagementProductAPI{})
 
@@ -91,7 +93,7 @@ func (c *FakeApiManagementProductAPIs) Create(apiManagementProductAPI *v1alpha1.
 }
 
 // Update takes the representation of a apiManagementProductAPI and updates it. Returns the server's representation of the apiManagementProductAPI, and an error, if there is any.
-func (c *FakeApiManagementProductAPIs) Update(apiManagementProductAPI *v1alpha1.ApiManagementProductAPI) (result *v1alpha1.ApiManagementProductAPI, err error) {
+func (c *FakeApiManagementProductAPIs) Update(ctx context.Context, apiManagementProductAPI *v1alpha1.ApiManagementProductAPI, opts v1.UpdateOptions) (result *v1alpha1.ApiManagementProductAPI, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(apimanagementproductapisResource, c.ns, apiManagementProductAPI), &v1alpha1.ApiManagementProductAPI{})
 
@@ -103,7 +105,7 @@ func (c *FakeApiManagementProductAPIs) Update(apiManagementProductAPI *v1alpha1.
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeApiManagementProductAPIs) UpdateStatus(apiManagementProductAPI *v1alpha1.ApiManagementProductAPI) (*v1alpha1.ApiManagementProductAPI, error) {
+func (c *FakeApiManagementProductAPIs) UpdateStatus(ctx context.Context, apiManagementProductAPI *v1alpha1.ApiManagementProductAPI, opts v1.UpdateOptions) (*v1alpha1.ApiManagementProductAPI, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(apimanagementproductapisResource, "status", c.ns, apiManagementProductAPI), &v1alpha1.ApiManagementProductAPI{})
 
@@ -114,7 +116,7 @@ func (c *FakeApiManagementProductAPIs) UpdateStatus(apiManagementProductAPI *v1a
 }
 
 // Delete takes name of the apiManagementProductAPI and deletes it. Returns an error if one occurs.
-func (c *FakeApiManagementProductAPIs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeApiManagementProductAPIs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(apimanagementproductapisResource, c.ns, name), &v1alpha1.ApiManagementProductAPI{})
 
@@ -122,15 +124,15 @@ func (c *FakeApiManagementProductAPIs) Delete(name string, options *v1.DeleteOpt
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeApiManagementProductAPIs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(apimanagementproductapisResource, c.ns, listOptions)
+func (c *FakeApiManagementProductAPIs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(apimanagementproductapisResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ApiManagementProductAPIList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched apiManagementProductAPI.
-func (c *FakeApiManagementProductAPIs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiManagementProductAPI, err error) {
+func (c *FakeApiManagementProductAPIs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiManagementProductAPI, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(apimanagementproductapisResource, c.ns, name, pt, data, subresources...), &v1alpha1.ApiManagementProductAPI{})
 

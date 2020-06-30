@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type KeyVaultSecretsGetter interface {
 
 // KeyVaultSecretInterface has methods to work with KeyVaultSecret resources.
 type KeyVaultSecretInterface interface {
-	Create(*v1alpha1.KeyVaultSecret) (*v1alpha1.KeyVaultSecret, error)
-	Update(*v1alpha1.KeyVaultSecret) (*v1alpha1.KeyVaultSecret, error)
-	UpdateStatus(*v1alpha1.KeyVaultSecret) (*v1alpha1.KeyVaultSecret, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.KeyVaultSecret, error)
-	List(opts v1.ListOptions) (*v1alpha1.KeyVaultSecretList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KeyVaultSecret, err error)
+	Create(ctx context.Context, keyVaultSecret *v1alpha1.KeyVaultSecret, opts v1.CreateOptions) (*v1alpha1.KeyVaultSecret, error)
+	Update(ctx context.Context, keyVaultSecret *v1alpha1.KeyVaultSecret, opts v1.UpdateOptions) (*v1alpha1.KeyVaultSecret, error)
+	UpdateStatus(ctx context.Context, keyVaultSecret *v1alpha1.KeyVaultSecret, opts v1.UpdateOptions) (*v1alpha1.KeyVaultSecret, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.KeyVaultSecret, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.KeyVaultSecretList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KeyVaultSecret, err error)
 	KeyVaultSecretExpansion
 }
 
@@ -65,20 +66,20 @@ func newKeyVaultSecrets(c *AzurermV1alpha1Client, namespace string) *keyVaultSec
 }
 
 // Get takes name of the keyVaultSecret, and returns the corresponding keyVaultSecret object, and an error if there is any.
-func (c *keyVaultSecrets) Get(name string, options v1.GetOptions) (result *v1alpha1.KeyVaultSecret, err error) {
+func (c *keyVaultSecrets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KeyVaultSecret, err error) {
 	result = &v1alpha1.KeyVaultSecret{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("keyvaultsecrets").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of KeyVaultSecrets that match those selectors.
-func (c *keyVaultSecrets) List(opts v1.ListOptions) (result *v1alpha1.KeyVaultSecretList, err error) {
+func (c *keyVaultSecrets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KeyVaultSecretList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *keyVaultSecrets) List(opts v1.ListOptions) (result *v1alpha1.KeyVaultSe
 		Resource("keyvaultsecrets").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested keyVaultSecrets.
-func (c *keyVaultSecrets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *keyVaultSecrets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *keyVaultSecrets) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("keyvaultsecrets").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a keyVaultSecret and creates it.  Returns the server's representation of the keyVaultSecret, and an error, if there is any.
-func (c *keyVaultSecrets) Create(keyVaultSecret *v1alpha1.KeyVaultSecret) (result *v1alpha1.KeyVaultSecret, err error) {
+func (c *keyVaultSecrets) Create(ctx context.Context, keyVaultSecret *v1alpha1.KeyVaultSecret, opts v1.CreateOptions) (result *v1alpha1.KeyVaultSecret, err error) {
 	result = &v1alpha1.KeyVaultSecret{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("keyvaultsecrets").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(keyVaultSecret).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a keyVaultSecret and updates it. Returns the server's representation of the keyVaultSecret, and an error, if there is any.
-func (c *keyVaultSecrets) Update(keyVaultSecret *v1alpha1.KeyVaultSecret) (result *v1alpha1.KeyVaultSecret, err error) {
+func (c *keyVaultSecrets) Update(ctx context.Context, keyVaultSecret *v1alpha1.KeyVaultSecret, opts v1.UpdateOptions) (result *v1alpha1.KeyVaultSecret, err error) {
 	result = &v1alpha1.KeyVaultSecret{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("keyvaultsecrets").
 		Name(keyVaultSecret.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(keyVaultSecret).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *keyVaultSecrets) UpdateStatus(keyVaultSecret *v1alpha1.KeyVaultSecret) (result *v1alpha1.KeyVaultSecret, err error) {
+func (c *keyVaultSecrets) UpdateStatus(ctx context.Context, keyVaultSecret *v1alpha1.KeyVaultSecret, opts v1.UpdateOptions) (result *v1alpha1.KeyVaultSecret, err error) {
 	result = &v1alpha1.KeyVaultSecret{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("keyvaultsecrets").
 		Name(keyVaultSecret.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(keyVaultSecret).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the keyVaultSecret and deletes it. Returns an error if one occurs.
-func (c *keyVaultSecrets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *keyVaultSecrets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("keyvaultsecrets").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *keyVaultSecrets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *keyVaultSecrets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("keyvaultsecrets").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched keyVaultSecret.
-func (c *keyVaultSecrets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KeyVaultSecret, err error) {
+func (c *keyVaultSecrets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KeyVaultSecret, err error) {
 	result = &v1alpha1.KeyVaultSecret{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("keyvaultsecrets").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

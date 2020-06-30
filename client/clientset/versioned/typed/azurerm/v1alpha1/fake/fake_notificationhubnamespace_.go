@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var notificationhubnamespace_sResource = schema.GroupVersionResource{Group: "azu
 var notificationhubnamespace_sKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "NotificationHubNamespace_"}
 
 // Get takes name of the notificationHubNamespace_, and returns the corresponding notificationHubNamespace_ object, and an error if there is any.
-func (c *FakeNotificationHubNamespace_s) Get(name string, options v1.GetOptions) (result *v1alpha1.NotificationHubNamespace_, err error) {
+func (c *FakeNotificationHubNamespace_s) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.NotificationHubNamespace_, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(notificationhubnamespace_sResource, c.ns, name), &v1alpha1.NotificationHubNamespace_{})
 
@@ -51,7 +53,7 @@ func (c *FakeNotificationHubNamespace_s) Get(name string, options v1.GetOptions)
 }
 
 // List takes label and field selectors, and returns the list of NotificationHubNamespace_s that match those selectors.
-func (c *FakeNotificationHubNamespace_s) List(opts v1.ListOptions) (result *v1alpha1.NotificationHubNamespace_List, err error) {
+func (c *FakeNotificationHubNamespace_s) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.NotificationHubNamespace_List, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(notificationhubnamespace_sResource, notificationhubnamespace_sKind, c.ns, opts), &v1alpha1.NotificationHubNamespace_List{})
 
@@ -73,14 +75,14 @@ func (c *FakeNotificationHubNamespace_s) List(opts v1.ListOptions) (result *v1al
 }
 
 // Watch returns a watch.Interface that watches the requested notificationHubNamespace_s.
-func (c *FakeNotificationHubNamespace_s) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeNotificationHubNamespace_s) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(notificationhubnamespace_sResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a notificationHubNamespace_ and creates it.  Returns the server's representation of the notificationHubNamespace_, and an error, if there is any.
-func (c *FakeNotificationHubNamespace_s) Create(notificationHubNamespace_ *v1alpha1.NotificationHubNamespace_) (result *v1alpha1.NotificationHubNamespace_, err error) {
+func (c *FakeNotificationHubNamespace_s) Create(ctx context.Context, notificationHubNamespace_ *v1alpha1.NotificationHubNamespace_, opts v1.CreateOptions) (result *v1alpha1.NotificationHubNamespace_, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(notificationhubnamespace_sResource, c.ns, notificationHubNamespace_), &v1alpha1.NotificationHubNamespace_{})
 
@@ -91,7 +93,7 @@ func (c *FakeNotificationHubNamespace_s) Create(notificationHubNamespace_ *v1alp
 }
 
 // Update takes the representation of a notificationHubNamespace_ and updates it. Returns the server's representation of the notificationHubNamespace_, and an error, if there is any.
-func (c *FakeNotificationHubNamespace_s) Update(notificationHubNamespace_ *v1alpha1.NotificationHubNamespace_) (result *v1alpha1.NotificationHubNamespace_, err error) {
+func (c *FakeNotificationHubNamespace_s) Update(ctx context.Context, notificationHubNamespace_ *v1alpha1.NotificationHubNamespace_, opts v1.UpdateOptions) (result *v1alpha1.NotificationHubNamespace_, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(notificationhubnamespace_sResource, c.ns, notificationHubNamespace_), &v1alpha1.NotificationHubNamespace_{})
 
@@ -103,7 +105,7 @@ func (c *FakeNotificationHubNamespace_s) Update(notificationHubNamespace_ *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeNotificationHubNamespace_s) UpdateStatus(notificationHubNamespace_ *v1alpha1.NotificationHubNamespace_) (*v1alpha1.NotificationHubNamespace_, error) {
+func (c *FakeNotificationHubNamespace_s) UpdateStatus(ctx context.Context, notificationHubNamespace_ *v1alpha1.NotificationHubNamespace_, opts v1.UpdateOptions) (*v1alpha1.NotificationHubNamespace_, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(notificationhubnamespace_sResource, "status", c.ns, notificationHubNamespace_), &v1alpha1.NotificationHubNamespace_{})
 
@@ -114,7 +116,7 @@ func (c *FakeNotificationHubNamespace_s) UpdateStatus(notificationHubNamespace_ 
 }
 
 // Delete takes name of the notificationHubNamespace_ and deletes it. Returns an error if one occurs.
-func (c *FakeNotificationHubNamespace_s) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeNotificationHubNamespace_s) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(notificationhubnamespace_sResource, c.ns, name), &v1alpha1.NotificationHubNamespace_{})
 
@@ -122,15 +124,15 @@ func (c *FakeNotificationHubNamespace_s) Delete(name string, options *v1.DeleteO
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeNotificationHubNamespace_s) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(notificationhubnamespace_sResource, c.ns, listOptions)
+func (c *FakeNotificationHubNamespace_s) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(notificationhubnamespace_sResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.NotificationHubNamespace_List{})
 	return err
 }
 
 // Patch applies the patch and returns the patched notificationHubNamespace_.
-func (c *FakeNotificationHubNamespace_s) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.NotificationHubNamespace_, err error) {
+func (c *FakeNotificationHubNamespace_s) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.NotificationHubNamespace_, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(notificationhubnamespace_sResource, c.ns, name, pt, data, subresources...), &v1alpha1.NotificationHubNamespace_{})
 

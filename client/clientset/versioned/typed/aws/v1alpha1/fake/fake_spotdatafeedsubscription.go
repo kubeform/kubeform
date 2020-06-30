@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var spotdatafeedsubscriptionsResource = schema.GroupVersionResource{Group: "aws.
 var spotdatafeedsubscriptionsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "SpotDatafeedSubscription"}
 
 // Get takes name of the spotDatafeedSubscription, and returns the corresponding spotDatafeedSubscription object, and an error if there is any.
-func (c *FakeSpotDatafeedSubscriptions) Get(name string, options v1.GetOptions) (result *v1alpha1.SpotDatafeedSubscription, err error) {
+func (c *FakeSpotDatafeedSubscriptions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SpotDatafeedSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(spotdatafeedsubscriptionsResource, c.ns, name), &v1alpha1.SpotDatafeedSubscription{})
 
@@ -51,7 +53,7 @@ func (c *FakeSpotDatafeedSubscriptions) Get(name string, options v1.GetOptions) 
 }
 
 // List takes label and field selectors, and returns the list of SpotDatafeedSubscriptions that match those selectors.
-func (c *FakeSpotDatafeedSubscriptions) List(opts v1.ListOptions) (result *v1alpha1.SpotDatafeedSubscriptionList, err error) {
+func (c *FakeSpotDatafeedSubscriptions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SpotDatafeedSubscriptionList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(spotdatafeedsubscriptionsResource, spotdatafeedsubscriptionsKind, c.ns, opts), &v1alpha1.SpotDatafeedSubscriptionList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSpotDatafeedSubscriptions) List(opts v1.ListOptions) (result *v1alp
 }
 
 // Watch returns a watch.Interface that watches the requested spotDatafeedSubscriptions.
-func (c *FakeSpotDatafeedSubscriptions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSpotDatafeedSubscriptions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(spotdatafeedsubscriptionsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a spotDatafeedSubscription and creates it.  Returns the server's representation of the spotDatafeedSubscription, and an error, if there is any.
-func (c *FakeSpotDatafeedSubscriptions) Create(spotDatafeedSubscription *v1alpha1.SpotDatafeedSubscription) (result *v1alpha1.SpotDatafeedSubscription, err error) {
+func (c *FakeSpotDatafeedSubscriptions) Create(ctx context.Context, spotDatafeedSubscription *v1alpha1.SpotDatafeedSubscription, opts v1.CreateOptions) (result *v1alpha1.SpotDatafeedSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(spotdatafeedsubscriptionsResource, c.ns, spotDatafeedSubscription), &v1alpha1.SpotDatafeedSubscription{})
 
@@ -91,7 +93,7 @@ func (c *FakeSpotDatafeedSubscriptions) Create(spotDatafeedSubscription *v1alpha
 }
 
 // Update takes the representation of a spotDatafeedSubscription and updates it. Returns the server's representation of the spotDatafeedSubscription, and an error, if there is any.
-func (c *FakeSpotDatafeedSubscriptions) Update(spotDatafeedSubscription *v1alpha1.SpotDatafeedSubscription) (result *v1alpha1.SpotDatafeedSubscription, err error) {
+func (c *FakeSpotDatafeedSubscriptions) Update(ctx context.Context, spotDatafeedSubscription *v1alpha1.SpotDatafeedSubscription, opts v1.UpdateOptions) (result *v1alpha1.SpotDatafeedSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(spotdatafeedsubscriptionsResource, c.ns, spotDatafeedSubscription), &v1alpha1.SpotDatafeedSubscription{})
 
@@ -103,7 +105,7 @@ func (c *FakeSpotDatafeedSubscriptions) Update(spotDatafeedSubscription *v1alpha
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSpotDatafeedSubscriptions) UpdateStatus(spotDatafeedSubscription *v1alpha1.SpotDatafeedSubscription) (*v1alpha1.SpotDatafeedSubscription, error) {
+func (c *FakeSpotDatafeedSubscriptions) UpdateStatus(ctx context.Context, spotDatafeedSubscription *v1alpha1.SpotDatafeedSubscription, opts v1.UpdateOptions) (*v1alpha1.SpotDatafeedSubscription, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(spotdatafeedsubscriptionsResource, "status", c.ns, spotDatafeedSubscription), &v1alpha1.SpotDatafeedSubscription{})
 
@@ -114,7 +116,7 @@ func (c *FakeSpotDatafeedSubscriptions) UpdateStatus(spotDatafeedSubscription *v
 }
 
 // Delete takes name of the spotDatafeedSubscription and deletes it. Returns an error if one occurs.
-func (c *FakeSpotDatafeedSubscriptions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSpotDatafeedSubscriptions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(spotdatafeedsubscriptionsResource, c.ns, name), &v1alpha1.SpotDatafeedSubscription{})
 
@@ -122,15 +124,15 @@ func (c *FakeSpotDatafeedSubscriptions) Delete(name string, options *v1.DeleteOp
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSpotDatafeedSubscriptions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(spotdatafeedsubscriptionsResource, c.ns, listOptions)
+func (c *FakeSpotDatafeedSubscriptions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(spotdatafeedsubscriptionsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SpotDatafeedSubscriptionList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched spotDatafeedSubscription.
-func (c *FakeSpotDatafeedSubscriptions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SpotDatafeedSubscription, err error) {
+func (c *FakeSpotDatafeedSubscriptions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SpotDatafeedSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(spotdatafeedsubscriptionsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SpotDatafeedSubscription{})
 

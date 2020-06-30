@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var sqlfirewallrulesResource = schema.GroupVersionResource{Group: "azurerm.kubef
 var sqlfirewallrulesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "SqlFirewallRule"}
 
 // Get takes name of the sqlFirewallRule, and returns the corresponding sqlFirewallRule object, and an error if there is any.
-func (c *FakeSqlFirewallRules) Get(name string, options v1.GetOptions) (result *v1alpha1.SqlFirewallRule, err error) {
+func (c *FakeSqlFirewallRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SqlFirewallRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(sqlfirewallrulesResource, c.ns, name), &v1alpha1.SqlFirewallRule{})
 
@@ -51,7 +53,7 @@ func (c *FakeSqlFirewallRules) Get(name string, options v1.GetOptions) (result *
 }
 
 // List takes label and field selectors, and returns the list of SqlFirewallRules that match those selectors.
-func (c *FakeSqlFirewallRules) List(opts v1.ListOptions) (result *v1alpha1.SqlFirewallRuleList, err error) {
+func (c *FakeSqlFirewallRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SqlFirewallRuleList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(sqlfirewallrulesResource, sqlfirewallrulesKind, c.ns, opts), &v1alpha1.SqlFirewallRuleList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSqlFirewallRules) List(opts v1.ListOptions) (result *v1alpha1.SqlFi
 }
 
 // Watch returns a watch.Interface that watches the requested sqlFirewallRules.
-func (c *FakeSqlFirewallRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSqlFirewallRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(sqlfirewallrulesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a sqlFirewallRule and creates it.  Returns the server's representation of the sqlFirewallRule, and an error, if there is any.
-func (c *FakeSqlFirewallRules) Create(sqlFirewallRule *v1alpha1.SqlFirewallRule) (result *v1alpha1.SqlFirewallRule, err error) {
+func (c *FakeSqlFirewallRules) Create(ctx context.Context, sqlFirewallRule *v1alpha1.SqlFirewallRule, opts v1.CreateOptions) (result *v1alpha1.SqlFirewallRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(sqlfirewallrulesResource, c.ns, sqlFirewallRule), &v1alpha1.SqlFirewallRule{})
 
@@ -91,7 +93,7 @@ func (c *FakeSqlFirewallRules) Create(sqlFirewallRule *v1alpha1.SqlFirewallRule)
 }
 
 // Update takes the representation of a sqlFirewallRule and updates it. Returns the server's representation of the sqlFirewallRule, and an error, if there is any.
-func (c *FakeSqlFirewallRules) Update(sqlFirewallRule *v1alpha1.SqlFirewallRule) (result *v1alpha1.SqlFirewallRule, err error) {
+func (c *FakeSqlFirewallRules) Update(ctx context.Context, sqlFirewallRule *v1alpha1.SqlFirewallRule, opts v1.UpdateOptions) (result *v1alpha1.SqlFirewallRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(sqlfirewallrulesResource, c.ns, sqlFirewallRule), &v1alpha1.SqlFirewallRule{})
 
@@ -103,7 +105,7 @@ func (c *FakeSqlFirewallRules) Update(sqlFirewallRule *v1alpha1.SqlFirewallRule)
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSqlFirewallRules) UpdateStatus(sqlFirewallRule *v1alpha1.SqlFirewallRule) (*v1alpha1.SqlFirewallRule, error) {
+func (c *FakeSqlFirewallRules) UpdateStatus(ctx context.Context, sqlFirewallRule *v1alpha1.SqlFirewallRule, opts v1.UpdateOptions) (*v1alpha1.SqlFirewallRule, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(sqlfirewallrulesResource, "status", c.ns, sqlFirewallRule), &v1alpha1.SqlFirewallRule{})
 
@@ -114,7 +116,7 @@ func (c *FakeSqlFirewallRules) UpdateStatus(sqlFirewallRule *v1alpha1.SqlFirewal
 }
 
 // Delete takes name of the sqlFirewallRule and deletes it. Returns an error if one occurs.
-func (c *FakeSqlFirewallRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSqlFirewallRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(sqlfirewallrulesResource, c.ns, name), &v1alpha1.SqlFirewallRule{})
 
@@ -122,15 +124,15 @@ func (c *FakeSqlFirewallRules) Delete(name string, options *v1.DeleteOptions) er
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSqlFirewallRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(sqlfirewallrulesResource, c.ns, listOptions)
+func (c *FakeSqlFirewallRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(sqlfirewallrulesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SqlFirewallRuleList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched sqlFirewallRule.
-func (c *FakeSqlFirewallRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SqlFirewallRule, err error) {
+func (c *FakeSqlFirewallRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SqlFirewallRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(sqlfirewallrulesResource, c.ns, name, pt, data, subresources...), &v1alpha1.SqlFirewallRule{})
 

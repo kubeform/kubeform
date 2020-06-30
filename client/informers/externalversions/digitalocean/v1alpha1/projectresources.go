@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	time "time"
 
 	digitaloceanv1alpha1 "kubeform.dev/kubeform/apis/digitalocean/v1alpha1"
@@ -62,13 +63,13 @@ func NewFilteredProjectResourcesInformer(client versioned.Interface, namespace s
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.DigitaloceanV1alpha1().ProjectResourceses(namespace).List(options)
+				return client.DigitaloceanV1alpha1().ProjectResourceses(namespace).List(context.TODO(), options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.DigitaloceanV1alpha1().ProjectResourceses(namespace).Watch(options)
+				return client.DigitaloceanV1alpha1().ProjectResourceses(namespace).Watch(context.TODO(), options)
 			},
 		},
 		&digitaloceanv1alpha1.ProjectResources{},

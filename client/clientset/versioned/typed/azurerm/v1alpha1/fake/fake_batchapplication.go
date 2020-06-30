@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var batchapplicationsResource = schema.GroupVersionResource{Group: "azurerm.kube
 var batchapplicationsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "BatchApplication"}
 
 // Get takes name of the batchApplication, and returns the corresponding batchApplication object, and an error if there is any.
-func (c *FakeBatchApplications) Get(name string, options v1.GetOptions) (result *v1alpha1.BatchApplication, err error) {
+func (c *FakeBatchApplications) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BatchApplication, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(batchapplicationsResource, c.ns, name), &v1alpha1.BatchApplication{})
 
@@ -51,7 +53,7 @@ func (c *FakeBatchApplications) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of BatchApplications that match those selectors.
-func (c *FakeBatchApplications) List(opts v1.ListOptions) (result *v1alpha1.BatchApplicationList, err error) {
+func (c *FakeBatchApplications) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BatchApplicationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(batchapplicationsResource, batchapplicationsKind, c.ns, opts), &v1alpha1.BatchApplicationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeBatchApplications) List(opts v1.ListOptions) (result *v1alpha1.Batc
 }
 
 // Watch returns a watch.Interface that watches the requested batchApplications.
-func (c *FakeBatchApplications) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeBatchApplications) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(batchapplicationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a batchApplication and creates it.  Returns the server's representation of the batchApplication, and an error, if there is any.
-func (c *FakeBatchApplications) Create(batchApplication *v1alpha1.BatchApplication) (result *v1alpha1.BatchApplication, err error) {
+func (c *FakeBatchApplications) Create(ctx context.Context, batchApplication *v1alpha1.BatchApplication, opts v1.CreateOptions) (result *v1alpha1.BatchApplication, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(batchapplicationsResource, c.ns, batchApplication), &v1alpha1.BatchApplication{})
 
@@ -91,7 +93,7 @@ func (c *FakeBatchApplications) Create(batchApplication *v1alpha1.BatchApplicati
 }
 
 // Update takes the representation of a batchApplication and updates it. Returns the server's representation of the batchApplication, and an error, if there is any.
-func (c *FakeBatchApplications) Update(batchApplication *v1alpha1.BatchApplication) (result *v1alpha1.BatchApplication, err error) {
+func (c *FakeBatchApplications) Update(ctx context.Context, batchApplication *v1alpha1.BatchApplication, opts v1.UpdateOptions) (result *v1alpha1.BatchApplication, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(batchapplicationsResource, c.ns, batchApplication), &v1alpha1.BatchApplication{})
 
@@ -103,7 +105,7 @@ func (c *FakeBatchApplications) Update(batchApplication *v1alpha1.BatchApplicati
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeBatchApplications) UpdateStatus(batchApplication *v1alpha1.BatchApplication) (*v1alpha1.BatchApplication, error) {
+func (c *FakeBatchApplications) UpdateStatus(ctx context.Context, batchApplication *v1alpha1.BatchApplication, opts v1.UpdateOptions) (*v1alpha1.BatchApplication, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(batchapplicationsResource, "status", c.ns, batchApplication), &v1alpha1.BatchApplication{})
 
@@ -114,7 +116,7 @@ func (c *FakeBatchApplications) UpdateStatus(batchApplication *v1alpha1.BatchApp
 }
 
 // Delete takes name of the batchApplication and deletes it. Returns an error if one occurs.
-func (c *FakeBatchApplications) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeBatchApplications) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(batchapplicationsResource, c.ns, name), &v1alpha1.BatchApplication{})
 
@@ -122,15 +124,15 @@ func (c *FakeBatchApplications) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeBatchApplications) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(batchapplicationsResource, c.ns, listOptions)
+func (c *FakeBatchApplications) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(batchapplicationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.BatchApplicationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched batchApplication.
-func (c *FakeBatchApplications) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BatchApplication, err error) {
+func (c *FakeBatchApplications) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BatchApplication, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(batchapplicationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.BatchApplication{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var netappvolumesResource = schema.GroupVersionResource{Group: "azurerm.kubeform
 var netappvolumesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "NetappVolume"}
 
 // Get takes name of the netappVolume, and returns the corresponding netappVolume object, and an error if there is any.
-func (c *FakeNetappVolumes) Get(name string, options v1.GetOptions) (result *v1alpha1.NetappVolume, err error) {
+func (c *FakeNetappVolumes) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.NetappVolume, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(netappvolumesResource, c.ns, name), &v1alpha1.NetappVolume{})
 
@@ -51,7 +53,7 @@ func (c *FakeNetappVolumes) Get(name string, options v1.GetOptions) (result *v1a
 }
 
 // List takes label and field selectors, and returns the list of NetappVolumes that match those selectors.
-func (c *FakeNetappVolumes) List(opts v1.ListOptions) (result *v1alpha1.NetappVolumeList, err error) {
+func (c *FakeNetappVolumes) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.NetappVolumeList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(netappvolumesResource, netappvolumesKind, c.ns, opts), &v1alpha1.NetappVolumeList{})
 
@@ -73,14 +75,14 @@ func (c *FakeNetappVolumes) List(opts v1.ListOptions) (result *v1alpha1.NetappVo
 }
 
 // Watch returns a watch.Interface that watches the requested netappVolumes.
-func (c *FakeNetappVolumes) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeNetappVolumes) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(netappvolumesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a netappVolume and creates it.  Returns the server's representation of the netappVolume, and an error, if there is any.
-func (c *FakeNetappVolumes) Create(netappVolume *v1alpha1.NetappVolume) (result *v1alpha1.NetappVolume, err error) {
+func (c *FakeNetappVolumes) Create(ctx context.Context, netappVolume *v1alpha1.NetappVolume, opts v1.CreateOptions) (result *v1alpha1.NetappVolume, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(netappvolumesResource, c.ns, netappVolume), &v1alpha1.NetappVolume{})
 
@@ -91,7 +93,7 @@ func (c *FakeNetappVolumes) Create(netappVolume *v1alpha1.NetappVolume) (result 
 }
 
 // Update takes the representation of a netappVolume and updates it. Returns the server's representation of the netappVolume, and an error, if there is any.
-func (c *FakeNetappVolumes) Update(netappVolume *v1alpha1.NetappVolume) (result *v1alpha1.NetappVolume, err error) {
+func (c *FakeNetappVolumes) Update(ctx context.Context, netappVolume *v1alpha1.NetappVolume, opts v1.UpdateOptions) (result *v1alpha1.NetappVolume, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(netappvolumesResource, c.ns, netappVolume), &v1alpha1.NetappVolume{})
 
@@ -103,7 +105,7 @@ func (c *FakeNetappVolumes) Update(netappVolume *v1alpha1.NetappVolume) (result 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeNetappVolumes) UpdateStatus(netappVolume *v1alpha1.NetappVolume) (*v1alpha1.NetappVolume, error) {
+func (c *FakeNetappVolumes) UpdateStatus(ctx context.Context, netappVolume *v1alpha1.NetappVolume, opts v1.UpdateOptions) (*v1alpha1.NetappVolume, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(netappvolumesResource, "status", c.ns, netappVolume), &v1alpha1.NetappVolume{})
 
@@ -114,7 +116,7 @@ func (c *FakeNetappVolumes) UpdateStatus(netappVolume *v1alpha1.NetappVolume) (*
 }
 
 // Delete takes name of the netappVolume and deletes it. Returns an error if one occurs.
-func (c *FakeNetappVolumes) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeNetappVolumes) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(netappvolumesResource, c.ns, name), &v1alpha1.NetappVolume{})
 
@@ -122,15 +124,15 @@ func (c *FakeNetappVolumes) Delete(name string, options *v1.DeleteOptions) error
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeNetappVolumes) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(netappvolumesResource, c.ns, listOptions)
+func (c *FakeNetappVolumes) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(netappvolumesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.NetappVolumeList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched netappVolume.
-func (c *FakeNetappVolumes) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.NetappVolume, err error) {
+func (c *FakeNetappVolumes) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.NetappVolume, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(netappvolumesResource, c.ns, name, pt, data, subresources...), &v1alpha1.NetappVolume{})
 

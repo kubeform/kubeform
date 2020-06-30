@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computeinstancegroupsResource = schema.GroupVersionResource{Group: "google.k
 var computeinstancegroupsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeInstanceGroup"}
 
 // Get takes name of the computeInstanceGroup, and returns the corresponding computeInstanceGroup object, and an error if there is any.
-func (c *FakeComputeInstanceGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeInstanceGroup, err error) {
+func (c *FakeComputeInstanceGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeInstanceGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computeinstancegroupsResource, c.ns, name), &v1alpha1.ComputeInstanceGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeInstanceGroups) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of ComputeInstanceGroups that match those selectors.
-func (c *FakeComputeInstanceGroups) List(opts v1.ListOptions) (result *v1alpha1.ComputeInstanceGroupList, err error) {
+func (c *FakeComputeInstanceGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeInstanceGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computeinstancegroupsResource, computeinstancegroupsKind, c.ns, opts), &v1alpha1.ComputeInstanceGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeInstanceGroups) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested computeInstanceGroups.
-func (c *FakeComputeInstanceGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeInstanceGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computeinstancegroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeInstanceGroup and creates it.  Returns the server's representation of the computeInstanceGroup, and an error, if there is any.
-func (c *FakeComputeInstanceGroups) Create(computeInstanceGroup *v1alpha1.ComputeInstanceGroup) (result *v1alpha1.ComputeInstanceGroup, err error) {
+func (c *FakeComputeInstanceGroups) Create(ctx context.Context, computeInstanceGroup *v1alpha1.ComputeInstanceGroup, opts v1.CreateOptions) (result *v1alpha1.ComputeInstanceGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computeinstancegroupsResource, c.ns, computeInstanceGroup), &v1alpha1.ComputeInstanceGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeInstanceGroups) Create(computeInstanceGroup *v1alpha1.Comput
 }
 
 // Update takes the representation of a computeInstanceGroup and updates it. Returns the server's representation of the computeInstanceGroup, and an error, if there is any.
-func (c *FakeComputeInstanceGroups) Update(computeInstanceGroup *v1alpha1.ComputeInstanceGroup) (result *v1alpha1.ComputeInstanceGroup, err error) {
+func (c *FakeComputeInstanceGroups) Update(ctx context.Context, computeInstanceGroup *v1alpha1.ComputeInstanceGroup, opts v1.UpdateOptions) (result *v1alpha1.ComputeInstanceGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computeinstancegroupsResource, c.ns, computeInstanceGroup), &v1alpha1.ComputeInstanceGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeInstanceGroups) Update(computeInstanceGroup *v1alpha1.Comput
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeInstanceGroups) UpdateStatus(computeInstanceGroup *v1alpha1.ComputeInstanceGroup) (*v1alpha1.ComputeInstanceGroup, error) {
+func (c *FakeComputeInstanceGroups) UpdateStatus(ctx context.Context, computeInstanceGroup *v1alpha1.ComputeInstanceGroup, opts v1.UpdateOptions) (*v1alpha1.ComputeInstanceGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computeinstancegroupsResource, "status", c.ns, computeInstanceGroup), &v1alpha1.ComputeInstanceGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeInstanceGroups) UpdateStatus(computeInstanceGroup *v1alpha1.
 }
 
 // Delete takes name of the computeInstanceGroup and deletes it. Returns an error if one occurs.
-func (c *FakeComputeInstanceGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeInstanceGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computeinstancegroupsResource, c.ns, name), &v1alpha1.ComputeInstanceGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeInstanceGroups) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeInstanceGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computeinstancegroupsResource, c.ns, listOptions)
+func (c *FakeComputeInstanceGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computeinstancegroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeInstanceGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeInstanceGroup.
-func (c *FakeComputeInstanceGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeInstanceGroup, err error) {
+func (c *FakeComputeInstanceGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeInstanceGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computeinstancegroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeInstanceGroup{})
 

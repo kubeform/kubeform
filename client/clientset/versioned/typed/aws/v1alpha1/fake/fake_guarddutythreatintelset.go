@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var guarddutythreatintelsetsResource = schema.GroupVersionResource{Group: "aws.k
 var guarddutythreatintelsetsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "GuarddutyThreatintelset"}
 
 // Get takes name of the guarddutyThreatintelset, and returns the corresponding guarddutyThreatintelset object, and an error if there is any.
-func (c *FakeGuarddutyThreatintelsets) Get(name string, options v1.GetOptions) (result *v1alpha1.GuarddutyThreatintelset, err error) {
+func (c *FakeGuarddutyThreatintelsets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.GuarddutyThreatintelset, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(guarddutythreatintelsetsResource, c.ns, name), &v1alpha1.GuarddutyThreatintelset{})
 
@@ -51,7 +53,7 @@ func (c *FakeGuarddutyThreatintelsets) Get(name string, options v1.GetOptions) (
 }
 
 // List takes label and field selectors, and returns the list of GuarddutyThreatintelsets that match those selectors.
-func (c *FakeGuarddutyThreatintelsets) List(opts v1.ListOptions) (result *v1alpha1.GuarddutyThreatintelsetList, err error) {
+func (c *FakeGuarddutyThreatintelsets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.GuarddutyThreatintelsetList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(guarddutythreatintelsetsResource, guarddutythreatintelsetsKind, c.ns, opts), &v1alpha1.GuarddutyThreatintelsetList{})
 
@@ -73,14 +75,14 @@ func (c *FakeGuarddutyThreatintelsets) List(opts v1.ListOptions) (result *v1alph
 }
 
 // Watch returns a watch.Interface that watches the requested guarddutyThreatintelsets.
-func (c *FakeGuarddutyThreatintelsets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeGuarddutyThreatintelsets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(guarddutythreatintelsetsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a guarddutyThreatintelset and creates it.  Returns the server's representation of the guarddutyThreatintelset, and an error, if there is any.
-func (c *FakeGuarddutyThreatintelsets) Create(guarddutyThreatintelset *v1alpha1.GuarddutyThreatintelset) (result *v1alpha1.GuarddutyThreatintelset, err error) {
+func (c *FakeGuarddutyThreatintelsets) Create(ctx context.Context, guarddutyThreatintelset *v1alpha1.GuarddutyThreatintelset, opts v1.CreateOptions) (result *v1alpha1.GuarddutyThreatintelset, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(guarddutythreatintelsetsResource, c.ns, guarddutyThreatintelset), &v1alpha1.GuarddutyThreatintelset{})
 
@@ -91,7 +93,7 @@ func (c *FakeGuarddutyThreatintelsets) Create(guarddutyThreatintelset *v1alpha1.
 }
 
 // Update takes the representation of a guarddutyThreatintelset and updates it. Returns the server's representation of the guarddutyThreatintelset, and an error, if there is any.
-func (c *FakeGuarddutyThreatintelsets) Update(guarddutyThreatintelset *v1alpha1.GuarddutyThreatintelset) (result *v1alpha1.GuarddutyThreatintelset, err error) {
+func (c *FakeGuarddutyThreatintelsets) Update(ctx context.Context, guarddutyThreatintelset *v1alpha1.GuarddutyThreatintelset, opts v1.UpdateOptions) (result *v1alpha1.GuarddutyThreatintelset, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(guarddutythreatintelsetsResource, c.ns, guarddutyThreatintelset), &v1alpha1.GuarddutyThreatintelset{})
 
@@ -103,7 +105,7 @@ func (c *FakeGuarddutyThreatintelsets) Update(guarddutyThreatintelset *v1alpha1.
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeGuarddutyThreatintelsets) UpdateStatus(guarddutyThreatintelset *v1alpha1.GuarddutyThreatintelset) (*v1alpha1.GuarddutyThreatintelset, error) {
+func (c *FakeGuarddutyThreatintelsets) UpdateStatus(ctx context.Context, guarddutyThreatintelset *v1alpha1.GuarddutyThreatintelset, opts v1.UpdateOptions) (*v1alpha1.GuarddutyThreatintelset, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(guarddutythreatintelsetsResource, "status", c.ns, guarddutyThreatintelset), &v1alpha1.GuarddutyThreatintelset{})
 
@@ -114,7 +116,7 @@ func (c *FakeGuarddutyThreatintelsets) UpdateStatus(guarddutyThreatintelset *v1a
 }
 
 // Delete takes name of the guarddutyThreatintelset and deletes it. Returns an error if one occurs.
-func (c *FakeGuarddutyThreatintelsets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeGuarddutyThreatintelsets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(guarddutythreatintelsetsResource, c.ns, name), &v1alpha1.GuarddutyThreatintelset{})
 
@@ -122,15 +124,15 @@ func (c *FakeGuarddutyThreatintelsets) Delete(name string, options *v1.DeleteOpt
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeGuarddutyThreatintelsets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(guarddutythreatintelsetsResource, c.ns, listOptions)
+func (c *FakeGuarddutyThreatintelsets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(guarddutythreatintelsetsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.GuarddutyThreatintelsetList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched guarddutyThreatintelset.
-func (c *FakeGuarddutyThreatintelsets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.GuarddutyThreatintelset, err error) {
+func (c *FakeGuarddutyThreatintelsets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.GuarddutyThreatintelset, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(guarddutythreatintelsetsResource, c.ns, name, pt, data, subresources...), &v1alpha1.GuarddutyThreatintelset{})
 

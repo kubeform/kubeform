@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cloudwatcheventpermissionsResource = schema.GroupVersionResource{Group: "aws
 var cloudwatcheventpermissionsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "CloudwatchEventPermission"}
 
 // Get takes name of the cloudwatchEventPermission, and returns the corresponding cloudwatchEventPermission object, and an error if there is any.
-func (c *FakeCloudwatchEventPermissions) Get(name string, options v1.GetOptions) (result *v1alpha1.CloudwatchEventPermission, err error) {
+func (c *FakeCloudwatchEventPermissions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CloudwatchEventPermission, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cloudwatcheventpermissionsResource, c.ns, name), &v1alpha1.CloudwatchEventPermission{})
 
@@ -51,7 +53,7 @@ func (c *FakeCloudwatchEventPermissions) Get(name string, options v1.GetOptions)
 }
 
 // List takes label and field selectors, and returns the list of CloudwatchEventPermissions that match those selectors.
-func (c *FakeCloudwatchEventPermissions) List(opts v1.ListOptions) (result *v1alpha1.CloudwatchEventPermissionList, err error) {
+func (c *FakeCloudwatchEventPermissions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CloudwatchEventPermissionList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cloudwatcheventpermissionsResource, cloudwatcheventpermissionsKind, c.ns, opts), &v1alpha1.CloudwatchEventPermissionList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCloudwatchEventPermissions) List(opts v1.ListOptions) (result *v1al
 }
 
 // Watch returns a watch.Interface that watches the requested cloudwatchEventPermissions.
-func (c *FakeCloudwatchEventPermissions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCloudwatchEventPermissions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cloudwatcheventpermissionsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cloudwatchEventPermission and creates it.  Returns the server's representation of the cloudwatchEventPermission, and an error, if there is any.
-func (c *FakeCloudwatchEventPermissions) Create(cloudwatchEventPermission *v1alpha1.CloudwatchEventPermission) (result *v1alpha1.CloudwatchEventPermission, err error) {
+func (c *FakeCloudwatchEventPermissions) Create(ctx context.Context, cloudwatchEventPermission *v1alpha1.CloudwatchEventPermission, opts v1.CreateOptions) (result *v1alpha1.CloudwatchEventPermission, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cloudwatcheventpermissionsResource, c.ns, cloudwatchEventPermission), &v1alpha1.CloudwatchEventPermission{})
 
@@ -91,7 +93,7 @@ func (c *FakeCloudwatchEventPermissions) Create(cloudwatchEventPermission *v1alp
 }
 
 // Update takes the representation of a cloudwatchEventPermission and updates it. Returns the server's representation of the cloudwatchEventPermission, and an error, if there is any.
-func (c *FakeCloudwatchEventPermissions) Update(cloudwatchEventPermission *v1alpha1.CloudwatchEventPermission) (result *v1alpha1.CloudwatchEventPermission, err error) {
+func (c *FakeCloudwatchEventPermissions) Update(ctx context.Context, cloudwatchEventPermission *v1alpha1.CloudwatchEventPermission, opts v1.UpdateOptions) (result *v1alpha1.CloudwatchEventPermission, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cloudwatcheventpermissionsResource, c.ns, cloudwatchEventPermission), &v1alpha1.CloudwatchEventPermission{})
 
@@ -103,7 +105,7 @@ func (c *FakeCloudwatchEventPermissions) Update(cloudwatchEventPermission *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCloudwatchEventPermissions) UpdateStatus(cloudwatchEventPermission *v1alpha1.CloudwatchEventPermission) (*v1alpha1.CloudwatchEventPermission, error) {
+func (c *FakeCloudwatchEventPermissions) UpdateStatus(ctx context.Context, cloudwatchEventPermission *v1alpha1.CloudwatchEventPermission, opts v1.UpdateOptions) (*v1alpha1.CloudwatchEventPermission, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cloudwatcheventpermissionsResource, "status", c.ns, cloudwatchEventPermission), &v1alpha1.CloudwatchEventPermission{})
 
@@ -114,7 +116,7 @@ func (c *FakeCloudwatchEventPermissions) UpdateStatus(cloudwatchEventPermission 
 }
 
 // Delete takes name of the cloudwatchEventPermission and deletes it. Returns an error if one occurs.
-func (c *FakeCloudwatchEventPermissions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCloudwatchEventPermissions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cloudwatcheventpermissionsResource, c.ns, name), &v1alpha1.CloudwatchEventPermission{})
 
@@ -122,15 +124,15 @@ func (c *FakeCloudwatchEventPermissions) Delete(name string, options *v1.DeleteO
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCloudwatchEventPermissions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cloudwatcheventpermissionsResource, c.ns, listOptions)
+func (c *FakeCloudwatchEventPermissions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cloudwatcheventpermissionsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CloudwatchEventPermissionList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cloudwatchEventPermission.
-func (c *FakeCloudwatchEventPermissions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CloudwatchEventPermission, err error) {
+func (c *FakeCloudwatchEventPermissions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CloudwatchEventPermission, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cloudwatcheventpermissionsResource, c.ns, name, pt, data, subresources...), &v1alpha1.CloudwatchEventPermission{})
 

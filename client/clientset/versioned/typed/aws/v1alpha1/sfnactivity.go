@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type SfnActivitiesGetter interface {
 
 // SfnActivityInterface has methods to work with SfnActivity resources.
 type SfnActivityInterface interface {
-	Create(*v1alpha1.SfnActivity) (*v1alpha1.SfnActivity, error)
-	Update(*v1alpha1.SfnActivity) (*v1alpha1.SfnActivity, error)
-	UpdateStatus(*v1alpha1.SfnActivity) (*v1alpha1.SfnActivity, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SfnActivity, error)
-	List(opts v1.ListOptions) (*v1alpha1.SfnActivityList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SfnActivity, err error)
+	Create(ctx context.Context, sfnActivity *v1alpha1.SfnActivity, opts v1.CreateOptions) (*v1alpha1.SfnActivity, error)
+	Update(ctx context.Context, sfnActivity *v1alpha1.SfnActivity, opts v1.UpdateOptions) (*v1alpha1.SfnActivity, error)
+	UpdateStatus(ctx context.Context, sfnActivity *v1alpha1.SfnActivity, opts v1.UpdateOptions) (*v1alpha1.SfnActivity, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SfnActivity, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SfnActivityList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SfnActivity, err error)
 	SfnActivityExpansion
 }
 
@@ -65,20 +66,20 @@ func newSfnActivities(c *AwsV1alpha1Client, namespace string) *sfnActivities {
 }
 
 // Get takes name of the sfnActivity, and returns the corresponding sfnActivity object, and an error if there is any.
-func (c *sfnActivities) Get(name string, options v1.GetOptions) (result *v1alpha1.SfnActivity, err error) {
+func (c *sfnActivities) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SfnActivity, err error) {
 	result = &v1alpha1.SfnActivity{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("sfnactivities").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SfnActivities that match those selectors.
-func (c *sfnActivities) List(opts v1.ListOptions) (result *v1alpha1.SfnActivityList, err error) {
+func (c *sfnActivities) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SfnActivityList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *sfnActivities) List(opts v1.ListOptions) (result *v1alpha1.SfnActivityL
 		Resource("sfnactivities").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested sfnActivities.
-func (c *sfnActivities) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *sfnActivities) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *sfnActivities) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("sfnactivities").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a sfnActivity and creates it.  Returns the server's representation of the sfnActivity, and an error, if there is any.
-func (c *sfnActivities) Create(sfnActivity *v1alpha1.SfnActivity) (result *v1alpha1.SfnActivity, err error) {
+func (c *sfnActivities) Create(ctx context.Context, sfnActivity *v1alpha1.SfnActivity, opts v1.CreateOptions) (result *v1alpha1.SfnActivity, err error) {
 	result = &v1alpha1.SfnActivity{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("sfnactivities").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sfnActivity).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a sfnActivity and updates it. Returns the server's representation of the sfnActivity, and an error, if there is any.
-func (c *sfnActivities) Update(sfnActivity *v1alpha1.SfnActivity) (result *v1alpha1.SfnActivity, err error) {
+func (c *sfnActivities) Update(ctx context.Context, sfnActivity *v1alpha1.SfnActivity, opts v1.UpdateOptions) (result *v1alpha1.SfnActivity, err error) {
 	result = &v1alpha1.SfnActivity{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sfnactivities").
 		Name(sfnActivity.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sfnActivity).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *sfnActivities) UpdateStatus(sfnActivity *v1alpha1.SfnActivity) (result *v1alpha1.SfnActivity, err error) {
+func (c *sfnActivities) UpdateStatus(ctx context.Context, sfnActivity *v1alpha1.SfnActivity, opts v1.UpdateOptions) (result *v1alpha1.SfnActivity, err error) {
 	result = &v1alpha1.SfnActivity{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sfnactivities").
 		Name(sfnActivity.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sfnActivity).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the sfnActivity and deletes it. Returns an error if one occurs.
-func (c *sfnActivities) Delete(name string, options *v1.DeleteOptions) error {
+func (c *sfnActivities) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sfnactivities").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *sfnActivities) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *sfnActivities) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sfnactivities").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched sfnActivity.
-func (c *sfnActivities) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SfnActivity, err error) {
+func (c *sfnActivities) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SfnActivity, err error) {
 	result = &v1alpha1.SfnActivity{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("sfnactivities").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var apigatewaydocumentationpartsResource = schema.GroupVersionResource{Group: "a
 var apigatewaydocumentationpartsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ApiGatewayDocumentationPart"}
 
 // Get takes name of the apiGatewayDocumentationPart, and returns the corresponding apiGatewayDocumentationPart object, and an error if there is any.
-func (c *FakeApiGatewayDocumentationParts) Get(name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayDocumentationPart, err error) {
+func (c *FakeApiGatewayDocumentationParts) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayDocumentationPart, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(apigatewaydocumentationpartsResource, c.ns, name), &v1alpha1.ApiGatewayDocumentationPart{})
 
@@ -51,7 +53,7 @@ func (c *FakeApiGatewayDocumentationParts) Get(name string, options v1.GetOption
 }
 
 // List takes label and field selectors, and returns the list of ApiGatewayDocumentationParts that match those selectors.
-func (c *FakeApiGatewayDocumentationParts) List(opts v1.ListOptions) (result *v1alpha1.ApiGatewayDocumentationPartList, err error) {
+func (c *FakeApiGatewayDocumentationParts) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApiGatewayDocumentationPartList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(apigatewaydocumentationpartsResource, apigatewaydocumentationpartsKind, c.ns, opts), &v1alpha1.ApiGatewayDocumentationPartList{})
 
@@ -73,14 +75,14 @@ func (c *FakeApiGatewayDocumentationParts) List(opts v1.ListOptions) (result *v1
 }
 
 // Watch returns a watch.Interface that watches the requested apiGatewayDocumentationParts.
-func (c *FakeApiGatewayDocumentationParts) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeApiGatewayDocumentationParts) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(apigatewaydocumentationpartsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a apiGatewayDocumentationPart and creates it.  Returns the server's representation of the apiGatewayDocumentationPart, and an error, if there is any.
-func (c *FakeApiGatewayDocumentationParts) Create(apiGatewayDocumentationPart *v1alpha1.ApiGatewayDocumentationPart) (result *v1alpha1.ApiGatewayDocumentationPart, err error) {
+func (c *FakeApiGatewayDocumentationParts) Create(ctx context.Context, apiGatewayDocumentationPart *v1alpha1.ApiGatewayDocumentationPart, opts v1.CreateOptions) (result *v1alpha1.ApiGatewayDocumentationPart, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(apigatewaydocumentationpartsResource, c.ns, apiGatewayDocumentationPart), &v1alpha1.ApiGatewayDocumentationPart{})
 
@@ -91,7 +93,7 @@ func (c *FakeApiGatewayDocumentationParts) Create(apiGatewayDocumentationPart *v
 }
 
 // Update takes the representation of a apiGatewayDocumentationPart and updates it. Returns the server's representation of the apiGatewayDocumentationPart, and an error, if there is any.
-func (c *FakeApiGatewayDocumentationParts) Update(apiGatewayDocumentationPart *v1alpha1.ApiGatewayDocumentationPart) (result *v1alpha1.ApiGatewayDocumentationPart, err error) {
+func (c *FakeApiGatewayDocumentationParts) Update(ctx context.Context, apiGatewayDocumentationPart *v1alpha1.ApiGatewayDocumentationPart, opts v1.UpdateOptions) (result *v1alpha1.ApiGatewayDocumentationPart, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(apigatewaydocumentationpartsResource, c.ns, apiGatewayDocumentationPart), &v1alpha1.ApiGatewayDocumentationPart{})
 
@@ -103,7 +105,7 @@ func (c *FakeApiGatewayDocumentationParts) Update(apiGatewayDocumentationPart *v
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeApiGatewayDocumentationParts) UpdateStatus(apiGatewayDocumentationPart *v1alpha1.ApiGatewayDocumentationPart) (*v1alpha1.ApiGatewayDocumentationPart, error) {
+func (c *FakeApiGatewayDocumentationParts) UpdateStatus(ctx context.Context, apiGatewayDocumentationPart *v1alpha1.ApiGatewayDocumentationPart, opts v1.UpdateOptions) (*v1alpha1.ApiGatewayDocumentationPart, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(apigatewaydocumentationpartsResource, "status", c.ns, apiGatewayDocumentationPart), &v1alpha1.ApiGatewayDocumentationPart{})
 
@@ -114,7 +116,7 @@ func (c *FakeApiGatewayDocumentationParts) UpdateStatus(apiGatewayDocumentationP
 }
 
 // Delete takes name of the apiGatewayDocumentationPart and deletes it. Returns an error if one occurs.
-func (c *FakeApiGatewayDocumentationParts) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeApiGatewayDocumentationParts) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(apigatewaydocumentationpartsResource, c.ns, name), &v1alpha1.ApiGatewayDocumentationPart{})
 
@@ -122,15 +124,15 @@ func (c *FakeApiGatewayDocumentationParts) Delete(name string, options *v1.Delet
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeApiGatewayDocumentationParts) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(apigatewaydocumentationpartsResource, c.ns, listOptions)
+func (c *FakeApiGatewayDocumentationParts) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(apigatewaydocumentationpartsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ApiGatewayDocumentationPartList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched apiGatewayDocumentationPart.
-func (c *FakeApiGatewayDocumentationParts) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiGatewayDocumentationPart, err error) {
+func (c *FakeApiGatewayDocumentationParts) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiGatewayDocumentationPart, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(apigatewaydocumentationpartsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ApiGatewayDocumentationPart{})
 

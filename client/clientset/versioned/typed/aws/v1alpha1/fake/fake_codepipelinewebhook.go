@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var codepipelinewebhooksResource = schema.GroupVersionResource{Group: "aws.kubef
 var codepipelinewebhooksKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "CodepipelineWebhook"}
 
 // Get takes name of the codepipelineWebhook, and returns the corresponding codepipelineWebhook object, and an error if there is any.
-func (c *FakeCodepipelineWebhooks) Get(name string, options v1.GetOptions) (result *v1alpha1.CodepipelineWebhook, err error) {
+func (c *FakeCodepipelineWebhooks) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CodepipelineWebhook, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(codepipelinewebhooksResource, c.ns, name), &v1alpha1.CodepipelineWebhook{})
 
@@ -51,7 +53,7 @@ func (c *FakeCodepipelineWebhooks) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of CodepipelineWebhooks that match those selectors.
-func (c *FakeCodepipelineWebhooks) List(opts v1.ListOptions) (result *v1alpha1.CodepipelineWebhookList, err error) {
+func (c *FakeCodepipelineWebhooks) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CodepipelineWebhookList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(codepipelinewebhooksResource, codepipelinewebhooksKind, c.ns, opts), &v1alpha1.CodepipelineWebhookList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCodepipelineWebhooks) List(opts v1.ListOptions) (result *v1alpha1.C
 }
 
 // Watch returns a watch.Interface that watches the requested codepipelineWebhooks.
-func (c *FakeCodepipelineWebhooks) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCodepipelineWebhooks) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(codepipelinewebhooksResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a codepipelineWebhook and creates it.  Returns the server's representation of the codepipelineWebhook, and an error, if there is any.
-func (c *FakeCodepipelineWebhooks) Create(codepipelineWebhook *v1alpha1.CodepipelineWebhook) (result *v1alpha1.CodepipelineWebhook, err error) {
+func (c *FakeCodepipelineWebhooks) Create(ctx context.Context, codepipelineWebhook *v1alpha1.CodepipelineWebhook, opts v1.CreateOptions) (result *v1alpha1.CodepipelineWebhook, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(codepipelinewebhooksResource, c.ns, codepipelineWebhook), &v1alpha1.CodepipelineWebhook{})
 
@@ -91,7 +93,7 @@ func (c *FakeCodepipelineWebhooks) Create(codepipelineWebhook *v1alpha1.Codepipe
 }
 
 // Update takes the representation of a codepipelineWebhook and updates it. Returns the server's representation of the codepipelineWebhook, and an error, if there is any.
-func (c *FakeCodepipelineWebhooks) Update(codepipelineWebhook *v1alpha1.CodepipelineWebhook) (result *v1alpha1.CodepipelineWebhook, err error) {
+func (c *FakeCodepipelineWebhooks) Update(ctx context.Context, codepipelineWebhook *v1alpha1.CodepipelineWebhook, opts v1.UpdateOptions) (result *v1alpha1.CodepipelineWebhook, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(codepipelinewebhooksResource, c.ns, codepipelineWebhook), &v1alpha1.CodepipelineWebhook{})
 
@@ -103,7 +105,7 @@ func (c *FakeCodepipelineWebhooks) Update(codepipelineWebhook *v1alpha1.Codepipe
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCodepipelineWebhooks) UpdateStatus(codepipelineWebhook *v1alpha1.CodepipelineWebhook) (*v1alpha1.CodepipelineWebhook, error) {
+func (c *FakeCodepipelineWebhooks) UpdateStatus(ctx context.Context, codepipelineWebhook *v1alpha1.CodepipelineWebhook, opts v1.UpdateOptions) (*v1alpha1.CodepipelineWebhook, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(codepipelinewebhooksResource, "status", c.ns, codepipelineWebhook), &v1alpha1.CodepipelineWebhook{})
 
@@ -114,7 +116,7 @@ func (c *FakeCodepipelineWebhooks) UpdateStatus(codepipelineWebhook *v1alpha1.Co
 }
 
 // Delete takes name of the codepipelineWebhook and deletes it. Returns an error if one occurs.
-func (c *FakeCodepipelineWebhooks) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCodepipelineWebhooks) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(codepipelinewebhooksResource, c.ns, name), &v1alpha1.CodepipelineWebhook{})
 
@@ -122,15 +124,15 @@ func (c *FakeCodepipelineWebhooks) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCodepipelineWebhooks) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(codepipelinewebhooksResource, c.ns, listOptions)
+func (c *FakeCodepipelineWebhooks) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(codepipelinewebhooksResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CodepipelineWebhookList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched codepipelineWebhook.
-func (c *FakeCodepipelineWebhooks) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CodepipelineWebhook, err error) {
+func (c *FakeCodepipelineWebhooks) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CodepipelineWebhook, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(codepipelinewebhooksResource, c.ns, name, pt, data, subresources...), &v1alpha1.CodepipelineWebhook{})
 

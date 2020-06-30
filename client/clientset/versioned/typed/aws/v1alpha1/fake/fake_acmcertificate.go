@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var acmcertificatesResource = schema.GroupVersionResource{Group: "aws.kubeform.c
 var acmcertificatesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "AcmCertificate"}
 
 // Get takes name of the acmCertificate, and returns the corresponding acmCertificate object, and an error if there is any.
-func (c *FakeAcmCertificates) Get(name string, options v1.GetOptions) (result *v1alpha1.AcmCertificate, err error) {
+func (c *FakeAcmCertificates) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AcmCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(acmcertificatesResource, c.ns, name), &v1alpha1.AcmCertificate{})
 
@@ -51,7 +53,7 @@ func (c *FakeAcmCertificates) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of AcmCertificates that match those selectors.
-func (c *FakeAcmCertificates) List(opts v1.ListOptions) (result *v1alpha1.AcmCertificateList, err error) {
+func (c *FakeAcmCertificates) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AcmCertificateList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(acmcertificatesResource, acmcertificatesKind, c.ns, opts), &v1alpha1.AcmCertificateList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAcmCertificates) List(opts v1.ListOptions) (result *v1alpha1.AcmCer
 }
 
 // Watch returns a watch.Interface that watches the requested acmCertificates.
-func (c *FakeAcmCertificates) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAcmCertificates) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(acmcertificatesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a acmCertificate and creates it.  Returns the server's representation of the acmCertificate, and an error, if there is any.
-func (c *FakeAcmCertificates) Create(acmCertificate *v1alpha1.AcmCertificate) (result *v1alpha1.AcmCertificate, err error) {
+func (c *FakeAcmCertificates) Create(ctx context.Context, acmCertificate *v1alpha1.AcmCertificate, opts v1.CreateOptions) (result *v1alpha1.AcmCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(acmcertificatesResource, c.ns, acmCertificate), &v1alpha1.AcmCertificate{})
 
@@ -91,7 +93,7 @@ func (c *FakeAcmCertificates) Create(acmCertificate *v1alpha1.AcmCertificate) (r
 }
 
 // Update takes the representation of a acmCertificate and updates it. Returns the server's representation of the acmCertificate, and an error, if there is any.
-func (c *FakeAcmCertificates) Update(acmCertificate *v1alpha1.AcmCertificate) (result *v1alpha1.AcmCertificate, err error) {
+func (c *FakeAcmCertificates) Update(ctx context.Context, acmCertificate *v1alpha1.AcmCertificate, opts v1.UpdateOptions) (result *v1alpha1.AcmCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(acmcertificatesResource, c.ns, acmCertificate), &v1alpha1.AcmCertificate{})
 
@@ -103,7 +105,7 @@ func (c *FakeAcmCertificates) Update(acmCertificate *v1alpha1.AcmCertificate) (r
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAcmCertificates) UpdateStatus(acmCertificate *v1alpha1.AcmCertificate) (*v1alpha1.AcmCertificate, error) {
+func (c *FakeAcmCertificates) UpdateStatus(ctx context.Context, acmCertificate *v1alpha1.AcmCertificate, opts v1.UpdateOptions) (*v1alpha1.AcmCertificate, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(acmcertificatesResource, "status", c.ns, acmCertificate), &v1alpha1.AcmCertificate{})
 
@@ -114,7 +116,7 @@ func (c *FakeAcmCertificates) UpdateStatus(acmCertificate *v1alpha1.AcmCertifica
 }
 
 // Delete takes name of the acmCertificate and deletes it. Returns an error if one occurs.
-func (c *FakeAcmCertificates) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAcmCertificates) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(acmcertificatesResource, c.ns, name), &v1alpha1.AcmCertificate{})
 
@@ -122,15 +124,15 @@ func (c *FakeAcmCertificates) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAcmCertificates) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(acmcertificatesResource, c.ns, listOptions)
+func (c *FakeAcmCertificates) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(acmcertificatesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AcmCertificateList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched acmCertificate.
-func (c *FakeAcmCertificates) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AcmCertificate, err error) {
+func (c *FakeAcmCertificates) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AcmCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(acmcertificatesResource, c.ns, name, pt, data, subresources...), &v1alpha1.AcmCertificate{})
 

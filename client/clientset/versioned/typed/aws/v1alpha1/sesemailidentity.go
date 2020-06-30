@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type SesEmailIdentitiesGetter interface {
 
 // SesEmailIdentityInterface has methods to work with SesEmailIdentity resources.
 type SesEmailIdentityInterface interface {
-	Create(*v1alpha1.SesEmailIdentity) (*v1alpha1.SesEmailIdentity, error)
-	Update(*v1alpha1.SesEmailIdentity) (*v1alpha1.SesEmailIdentity, error)
-	UpdateStatus(*v1alpha1.SesEmailIdentity) (*v1alpha1.SesEmailIdentity, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SesEmailIdentity, error)
-	List(opts v1.ListOptions) (*v1alpha1.SesEmailIdentityList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SesEmailIdentity, err error)
+	Create(ctx context.Context, sesEmailIdentity *v1alpha1.SesEmailIdentity, opts v1.CreateOptions) (*v1alpha1.SesEmailIdentity, error)
+	Update(ctx context.Context, sesEmailIdentity *v1alpha1.SesEmailIdentity, opts v1.UpdateOptions) (*v1alpha1.SesEmailIdentity, error)
+	UpdateStatus(ctx context.Context, sesEmailIdentity *v1alpha1.SesEmailIdentity, opts v1.UpdateOptions) (*v1alpha1.SesEmailIdentity, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SesEmailIdentity, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SesEmailIdentityList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SesEmailIdentity, err error)
 	SesEmailIdentityExpansion
 }
 
@@ -65,20 +66,20 @@ func newSesEmailIdentities(c *AwsV1alpha1Client, namespace string) *sesEmailIden
 }
 
 // Get takes name of the sesEmailIdentity, and returns the corresponding sesEmailIdentity object, and an error if there is any.
-func (c *sesEmailIdentities) Get(name string, options v1.GetOptions) (result *v1alpha1.SesEmailIdentity, err error) {
+func (c *sesEmailIdentities) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SesEmailIdentity, err error) {
 	result = &v1alpha1.SesEmailIdentity{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("sesemailidentities").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SesEmailIdentities that match those selectors.
-func (c *sesEmailIdentities) List(opts v1.ListOptions) (result *v1alpha1.SesEmailIdentityList, err error) {
+func (c *sesEmailIdentities) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SesEmailIdentityList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *sesEmailIdentities) List(opts v1.ListOptions) (result *v1alpha1.SesEmai
 		Resource("sesemailidentities").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested sesEmailIdentities.
-func (c *sesEmailIdentities) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *sesEmailIdentities) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *sesEmailIdentities) Watch(opts v1.ListOptions) (watch.Interface, error)
 		Resource("sesemailidentities").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a sesEmailIdentity and creates it.  Returns the server's representation of the sesEmailIdentity, and an error, if there is any.
-func (c *sesEmailIdentities) Create(sesEmailIdentity *v1alpha1.SesEmailIdentity) (result *v1alpha1.SesEmailIdentity, err error) {
+func (c *sesEmailIdentities) Create(ctx context.Context, sesEmailIdentity *v1alpha1.SesEmailIdentity, opts v1.CreateOptions) (result *v1alpha1.SesEmailIdentity, err error) {
 	result = &v1alpha1.SesEmailIdentity{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("sesemailidentities").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sesEmailIdentity).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a sesEmailIdentity and updates it. Returns the server's representation of the sesEmailIdentity, and an error, if there is any.
-func (c *sesEmailIdentities) Update(sesEmailIdentity *v1alpha1.SesEmailIdentity) (result *v1alpha1.SesEmailIdentity, err error) {
+func (c *sesEmailIdentities) Update(ctx context.Context, sesEmailIdentity *v1alpha1.SesEmailIdentity, opts v1.UpdateOptions) (result *v1alpha1.SesEmailIdentity, err error) {
 	result = &v1alpha1.SesEmailIdentity{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sesemailidentities").
 		Name(sesEmailIdentity.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sesEmailIdentity).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *sesEmailIdentities) UpdateStatus(sesEmailIdentity *v1alpha1.SesEmailIdentity) (result *v1alpha1.SesEmailIdentity, err error) {
+func (c *sesEmailIdentities) UpdateStatus(ctx context.Context, sesEmailIdentity *v1alpha1.SesEmailIdentity, opts v1.UpdateOptions) (result *v1alpha1.SesEmailIdentity, err error) {
 	result = &v1alpha1.SesEmailIdentity{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sesemailidentities").
 		Name(sesEmailIdentity.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sesEmailIdentity).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the sesEmailIdentity and deletes it. Returns an error if one occurs.
-func (c *sesEmailIdentities) Delete(name string, options *v1.DeleteOptions) error {
+func (c *sesEmailIdentities) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sesemailidentities").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *sesEmailIdentities) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *sesEmailIdentities) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sesemailidentities").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched sesEmailIdentity.
-func (c *sesEmailIdentities) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SesEmailIdentity, err error) {
+func (c *sesEmailIdentities) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SesEmailIdentity, err error) {
 	result = &v1alpha1.SesEmailIdentity{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("sesemailidentities").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

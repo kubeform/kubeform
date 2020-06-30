@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type SignalrServicesGetter interface {
 
 // SignalrServiceInterface has methods to work with SignalrService resources.
 type SignalrServiceInterface interface {
-	Create(*v1alpha1.SignalrService) (*v1alpha1.SignalrService, error)
-	Update(*v1alpha1.SignalrService) (*v1alpha1.SignalrService, error)
-	UpdateStatus(*v1alpha1.SignalrService) (*v1alpha1.SignalrService, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SignalrService, error)
-	List(opts v1.ListOptions) (*v1alpha1.SignalrServiceList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SignalrService, err error)
+	Create(ctx context.Context, signalrService *v1alpha1.SignalrService, opts v1.CreateOptions) (*v1alpha1.SignalrService, error)
+	Update(ctx context.Context, signalrService *v1alpha1.SignalrService, opts v1.UpdateOptions) (*v1alpha1.SignalrService, error)
+	UpdateStatus(ctx context.Context, signalrService *v1alpha1.SignalrService, opts v1.UpdateOptions) (*v1alpha1.SignalrService, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SignalrService, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SignalrServiceList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SignalrService, err error)
 	SignalrServiceExpansion
 }
 
@@ -65,20 +66,20 @@ func newSignalrServices(c *AzurermV1alpha1Client, namespace string) *signalrServ
 }
 
 // Get takes name of the signalrService, and returns the corresponding signalrService object, and an error if there is any.
-func (c *signalrServices) Get(name string, options v1.GetOptions) (result *v1alpha1.SignalrService, err error) {
+func (c *signalrServices) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SignalrService, err error) {
 	result = &v1alpha1.SignalrService{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("signalrservices").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SignalrServices that match those selectors.
-func (c *signalrServices) List(opts v1.ListOptions) (result *v1alpha1.SignalrServiceList, err error) {
+func (c *signalrServices) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SignalrServiceList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *signalrServices) List(opts v1.ListOptions) (result *v1alpha1.SignalrSer
 		Resource("signalrservices").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested signalrServices.
-func (c *signalrServices) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *signalrServices) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *signalrServices) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("signalrservices").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a signalrService and creates it.  Returns the server's representation of the signalrService, and an error, if there is any.
-func (c *signalrServices) Create(signalrService *v1alpha1.SignalrService) (result *v1alpha1.SignalrService, err error) {
+func (c *signalrServices) Create(ctx context.Context, signalrService *v1alpha1.SignalrService, opts v1.CreateOptions) (result *v1alpha1.SignalrService, err error) {
 	result = &v1alpha1.SignalrService{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("signalrservices").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(signalrService).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a signalrService and updates it. Returns the server's representation of the signalrService, and an error, if there is any.
-func (c *signalrServices) Update(signalrService *v1alpha1.SignalrService) (result *v1alpha1.SignalrService, err error) {
+func (c *signalrServices) Update(ctx context.Context, signalrService *v1alpha1.SignalrService, opts v1.UpdateOptions) (result *v1alpha1.SignalrService, err error) {
 	result = &v1alpha1.SignalrService{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("signalrservices").
 		Name(signalrService.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(signalrService).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *signalrServices) UpdateStatus(signalrService *v1alpha1.SignalrService) (result *v1alpha1.SignalrService, err error) {
+func (c *signalrServices) UpdateStatus(ctx context.Context, signalrService *v1alpha1.SignalrService, opts v1.UpdateOptions) (result *v1alpha1.SignalrService, err error) {
 	result = &v1alpha1.SignalrService{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("signalrservices").
 		Name(signalrService.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(signalrService).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the signalrService and deletes it. Returns an error if one occurs.
-func (c *signalrServices) Delete(name string, options *v1.DeleteOptions) error {
+func (c *signalrServices) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("signalrservices").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *signalrServices) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *signalrServices) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("signalrservices").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched signalrService.
-func (c *signalrServices) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SignalrService, err error) {
+func (c *signalrServices) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SignalrService, err error) {
 	result = &v1alpha1.SignalrService{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("signalrservices").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

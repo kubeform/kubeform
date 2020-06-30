@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type LbNATRulesGetter interface {
 
 // LbNATRuleInterface has methods to work with LbNATRule resources.
 type LbNATRuleInterface interface {
-	Create(*v1alpha1.LbNATRule) (*v1alpha1.LbNATRule, error)
-	Update(*v1alpha1.LbNATRule) (*v1alpha1.LbNATRule, error)
-	UpdateStatus(*v1alpha1.LbNATRule) (*v1alpha1.LbNATRule, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.LbNATRule, error)
-	List(opts v1.ListOptions) (*v1alpha1.LbNATRuleList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LbNATRule, err error)
+	Create(ctx context.Context, lbNATRule *v1alpha1.LbNATRule, opts v1.CreateOptions) (*v1alpha1.LbNATRule, error)
+	Update(ctx context.Context, lbNATRule *v1alpha1.LbNATRule, opts v1.UpdateOptions) (*v1alpha1.LbNATRule, error)
+	UpdateStatus(ctx context.Context, lbNATRule *v1alpha1.LbNATRule, opts v1.UpdateOptions) (*v1alpha1.LbNATRule, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.LbNATRule, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.LbNATRuleList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LbNATRule, err error)
 	LbNATRuleExpansion
 }
 
@@ -65,20 +66,20 @@ func newLbNATRules(c *AzurermV1alpha1Client, namespace string) *lbNATRules {
 }
 
 // Get takes name of the lbNATRule, and returns the corresponding lbNATRule object, and an error if there is any.
-func (c *lbNATRules) Get(name string, options v1.GetOptions) (result *v1alpha1.LbNATRule, err error) {
+func (c *lbNATRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LbNATRule, err error) {
 	result = &v1alpha1.LbNATRule{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("lbnatrules").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of LbNATRules that match those selectors.
-func (c *lbNATRules) List(opts v1.ListOptions) (result *v1alpha1.LbNATRuleList, err error) {
+func (c *lbNATRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LbNATRuleList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *lbNATRules) List(opts v1.ListOptions) (result *v1alpha1.LbNATRuleList, 
 		Resource("lbnatrules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested lbNATRules.
-func (c *lbNATRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *lbNATRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *lbNATRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("lbnatrules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a lbNATRule and creates it.  Returns the server's representation of the lbNATRule, and an error, if there is any.
-func (c *lbNATRules) Create(lbNATRule *v1alpha1.LbNATRule) (result *v1alpha1.LbNATRule, err error) {
+func (c *lbNATRules) Create(ctx context.Context, lbNATRule *v1alpha1.LbNATRule, opts v1.CreateOptions) (result *v1alpha1.LbNATRule, err error) {
 	result = &v1alpha1.LbNATRule{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("lbnatrules").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lbNATRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a lbNATRule and updates it. Returns the server's representation of the lbNATRule, and an error, if there is any.
-func (c *lbNATRules) Update(lbNATRule *v1alpha1.LbNATRule) (result *v1alpha1.LbNATRule, err error) {
+func (c *lbNATRules) Update(ctx context.Context, lbNATRule *v1alpha1.LbNATRule, opts v1.UpdateOptions) (result *v1alpha1.LbNATRule, err error) {
 	result = &v1alpha1.LbNATRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("lbnatrules").
 		Name(lbNATRule.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lbNATRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *lbNATRules) UpdateStatus(lbNATRule *v1alpha1.LbNATRule) (result *v1alpha1.LbNATRule, err error) {
+func (c *lbNATRules) UpdateStatus(ctx context.Context, lbNATRule *v1alpha1.LbNATRule, opts v1.UpdateOptions) (result *v1alpha1.LbNATRule, err error) {
 	result = &v1alpha1.LbNATRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("lbnatrules").
 		Name(lbNATRule.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lbNATRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the lbNATRule and deletes it. Returns an error if one occurs.
-func (c *lbNATRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *lbNATRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("lbnatrules").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *lbNATRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *lbNATRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("lbnatrules").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched lbNATRule.
-func (c *lbNATRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LbNATRule, err error) {
+func (c *lbNATRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LbNATRule, err error) {
 	result = &v1alpha1.LbNATRule{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("lbnatrules").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type ApplicationInsightsAnalyticsItemsGetter interface {
 
 // ApplicationInsightsAnalyticsItemInterface has methods to work with ApplicationInsightsAnalyticsItem resources.
 type ApplicationInsightsAnalyticsItemInterface interface {
-	Create(*v1alpha1.ApplicationInsightsAnalyticsItem) (*v1alpha1.ApplicationInsightsAnalyticsItem, error)
-	Update(*v1alpha1.ApplicationInsightsAnalyticsItem) (*v1alpha1.ApplicationInsightsAnalyticsItem, error)
-	UpdateStatus(*v1alpha1.ApplicationInsightsAnalyticsItem) (*v1alpha1.ApplicationInsightsAnalyticsItem, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ApplicationInsightsAnalyticsItem, error)
-	List(opts v1.ListOptions) (*v1alpha1.ApplicationInsightsAnalyticsItemList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApplicationInsightsAnalyticsItem, err error)
+	Create(ctx context.Context, applicationInsightsAnalyticsItem *v1alpha1.ApplicationInsightsAnalyticsItem, opts v1.CreateOptions) (*v1alpha1.ApplicationInsightsAnalyticsItem, error)
+	Update(ctx context.Context, applicationInsightsAnalyticsItem *v1alpha1.ApplicationInsightsAnalyticsItem, opts v1.UpdateOptions) (*v1alpha1.ApplicationInsightsAnalyticsItem, error)
+	UpdateStatus(ctx context.Context, applicationInsightsAnalyticsItem *v1alpha1.ApplicationInsightsAnalyticsItem, opts v1.UpdateOptions) (*v1alpha1.ApplicationInsightsAnalyticsItem, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ApplicationInsightsAnalyticsItem, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ApplicationInsightsAnalyticsItemList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApplicationInsightsAnalyticsItem, err error)
 	ApplicationInsightsAnalyticsItemExpansion
 }
 
@@ -65,20 +66,20 @@ func newApplicationInsightsAnalyticsItems(c *AzurermV1alpha1Client, namespace st
 }
 
 // Get takes name of the applicationInsightsAnalyticsItem, and returns the corresponding applicationInsightsAnalyticsItem object, and an error if there is any.
-func (c *applicationInsightsAnalyticsItems) Get(name string, options v1.GetOptions) (result *v1alpha1.ApplicationInsightsAnalyticsItem, err error) {
+func (c *applicationInsightsAnalyticsItems) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApplicationInsightsAnalyticsItem, err error) {
 	result = &v1alpha1.ApplicationInsightsAnalyticsItem{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("applicationinsightsanalyticsitems").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ApplicationInsightsAnalyticsItems that match those selectors.
-func (c *applicationInsightsAnalyticsItems) List(opts v1.ListOptions) (result *v1alpha1.ApplicationInsightsAnalyticsItemList, err error) {
+func (c *applicationInsightsAnalyticsItems) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApplicationInsightsAnalyticsItemList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *applicationInsightsAnalyticsItems) List(opts v1.ListOptions) (result *v
 		Resource("applicationinsightsanalyticsitems").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested applicationInsightsAnalyticsItems.
-func (c *applicationInsightsAnalyticsItems) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *applicationInsightsAnalyticsItems) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *applicationInsightsAnalyticsItems) Watch(opts v1.ListOptions) (watch.In
 		Resource("applicationinsightsanalyticsitems").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a applicationInsightsAnalyticsItem and creates it.  Returns the server's representation of the applicationInsightsAnalyticsItem, and an error, if there is any.
-func (c *applicationInsightsAnalyticsItems) Create(applicationInsightsAnalyticsItem *v1alpha1.ApplicationInsightsAnalyticsItem) (result *v1alpha1.ApplicationInsightsAnalyticsItem, err error) {
+func (c *applicationInsightsAnalyticsItems) Create(ctx context.Context, applicationInsightsAnalyticsItem *v1alpha1.ApplicationInsightsAnalyticsItem, opts v1.CreateOptions) (result *v1alpha1.ApplicationInsightsAnalyticsItem, err error) {
 	result = &v1alpha1.ApplicationInsightsAnalyticsItem{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("applicationinsightsanalyticsitems").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(applicationInsightsAnalyticsItem).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a applicationInsightsAnalyticsItem and updates it. Returns the server's representation of the applicationInsightsAnalyticsItem, and an error, if there is any.
-func (c *applicationInsightsAnalyticsItems) Update(applicationInsightsAnalyticsItem *v1alpha1.ApplicationInsightsAnalyticsItem) (result *v1alpha1.ApplicationInsightsAnalyticsItem, err error) {
+func (c *applicationInsightsAnalyticsItems) Update(ctx context.Context, applicationInsightsAnalyticsItem *v1alpha1.ApplicationInsightsAnalyticsItem, opts v1.UpdateOptions) (result *v1alpha1.ApplicationInsightsAnalyticsItem, err error) {
 	result = &v1alpha1.ApplicationInsightsAnalyticsItem{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("applicationinsightsanalyticsitems").
 		Name(applicationInsightsAnalyticsItem.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(applicationInsightsAnalyticsItem).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *applicationInsightsAnalyticsItems) UpdateStatus(applicationInsightsAnalyticsItem *v1alpha1.ApplicationInsightsAnalyticsItem) (result *v1alpha1.ApplicationInsightsAnalyticsItem, err error) {
+func (c *applicationInsightsAnalyticsItems) UpdateStatus(ctx context.Context, applicationInsightsAnalyticsItem *v1alpha1.ApplicationInsightsAnalyticsItem, opts v1.UpdateOptions) (result *v1alpha1.ApplicationInsightsAnalyticsItem, err error) {
 	result = &v1alpha1.ApplicationInsightsAnalyticsItem{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("applicationinsightsanalyticsitems").
 		Name(applicationInsightsAnalyticsItem.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(applicationInsightsAnalyticsItem).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the applicationInsightsAnalyticsItem and deletes it. Returns an error if one occurs.
-func (c *applicationInsightsAnalyticsItems) Delete(name string, options *v1.DeleteOptions) error {
+func (c *applicationInsightsAnalyticsItems) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("applicationinsightsanalyticsitems").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *applicationInsightsAnalyticsItems) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *applicationInsightsAnalyticsItems) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("applicationinsightsanalyticsitems").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched applicationInsightsAnalyticsItem.
-func (c *applicationInsightsAnalyticsItems) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApplicationInsightsAnalyticsItem, err error) {
+func (c *applicationInsightsAnalyticsItems) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApplicationInsightsAnalyticsItem, err error) {
 	result = &v1alpha1.ApplicationInsightsAnalyticsItem{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("applicationinsightsanalyticsitems").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

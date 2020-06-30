@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var projectservicesResource = schema.GroupVersionResource{Group: "google.kubefor
 var projectservicesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ProjectService"}
 
 // Get takes name of the projectService, and returns the corresponding projectService object, and an error if there is any.
-func (c *FakeProjectServices) Get(name string, options v1.GetOptions) (result *v1alpha1.ProjectService, err error) {
+func (c *FakeProjectServices) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ProjectService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(projectservicesResource, c.ns, name), &v1alpha1.ProjectService{})
 
@@ -51,7 +53,7 @@ func (c *FakeProjectServices) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of ProjectServices that match those selectors.
-func (c *FakeProjectServices) List(opts v1.ListOptions) (result *v1alpha1.ProjectServiceList, err error) {
+func (c *FakeProjectServices) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ProjectServiceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(projectservicesResource, projectservicesKind, c.ns, opts), &v1alpha1.ProjectServiceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeProjectServices) List(opts v1.ListOptions) (result *v1alpha1.Projec
 }
 
 // Watch returns a watch.Interface that watches the requested projectServices.
-func (c *FakeProjectServices) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeProjectServices) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(projectservicesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a projectService and creates it.  Returns the server's representation of the projectService, and an error, if there is any.
-func (c *FakeProjectServices) Create(projectService *v1alpha1.ProjectService) (result *v1alpha1.ProjectService, err error) {
+func (c *FakeProjectServices) Create(ctx context.Context, projectService *v1alpha1.ProjectService, opts v1.CreateOptions) (result *v1alpha1.ProjectService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(projectservicesResource, c.ns, projectService), &v1alpha1.ProjectService{})
 
@@ -91,7 +93,7 @@ func (c *FakeProjectServices) Create(projectService *v1alpha1.ProjectService) (r
 }
 
 // Update takes the representation of a projectService and updates it. Returns the server's representation of the projectService, and an error, if there is any.
-func (c *FakeProjectServices) Update(projectService *v1alpha1.ProjectService) (result *v1alpha1.ProjectService, err error) {
+func (c *FakeProjectServices) Update(ctx context.Context, projectService *v1alpha1.ProjectService, opts v1.UpdateOptions) (result *v1alpha1.ProjectService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(projectservicesResource, c.ns, projectService), &v1alpha1.ProjectService{})
 
@@ -103,7 +105,7 @@ func (c *FakeProjectServices) Update(projectService *v1alpha1.ProjectService) (r
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeProjectServices) UpdateStatus(projectService *v1alpha1.ProjectService) (*v1alpha1.ProjectService, error) {
+func (c *FakeProjectServices) UpdateStatus(ctx context.Context, projectService *v1alpha1.ProjectService, opts v1.UpdateOptions) (*v1alpha1.ProjectService, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(projectservicesResource, "status", c.ns, projectService), &v1alpha1.ProjectService{})
 
@@ -114,7 +116,7 @@ func (c *FakeProjectServices) UpdateStatus(projectService *v1alpha1.ProjectServi
 }
 
 // Delete takes name of the projectService and deletes it. Returns an error if one occurs.
-func (c *FakeProjectServices) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeProjectServices) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(projectservicesResource, c.ns, name), &v1alpha1.ProjectService{})
 
@@ -122,15 +124,15 @@ func (c *FakeProjectServices) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeProjectServices) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(projectservicesResource, c.ns, listOptions)
+func (c *FakeProjectServices) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(projectservicesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ProjectServiceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched projectService.
-func (c *FakeProjectServices) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ProjectService, err error) {
+func (c *FakeProjectServices) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ProjectService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(projectservicesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ProjectService{})
 

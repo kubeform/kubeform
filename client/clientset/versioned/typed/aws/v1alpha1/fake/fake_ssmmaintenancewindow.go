@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var ssmmaintenancewindowsResource = schema.GroupVersionResource{Group: "aws.kube
 var ssmmaintenancewindowsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "SsmMaintenanceWindow"}
 
 // Get takes name of the ssmMaintenanceWindow, and returns the corresponding ssmMaintenanceWindow object, and an error if there is any.
-func (c *FakeSsmMaintenanceWindows) Get(name string, options v1.GetOptions) (result *v1alpha1.SsmMaintenanceWindow, err error) {
+func (c *FakeSsmMaintenanceWindows) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SsmMaintenanceWindow, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(ssmmaintenancewindowsResource, c.ns, name), &v1alpha1.SsmMaintenanceWindow{})
 
@@ -51,7 +53,7 @@ func (c *FakeSsmMaintenanceWindows) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of SsmMaintenanceWindows that match those selectors.
-func (c *FakeSsmMaintenanceWindows) List(opts v1.ListOptions) (result *v1alpha1.SsmMaintenanceWindowList, err error) {
+func (c *FakeSsmMaintenanceWindows) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SsmMaintenanceWindowList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(ssmmaintenancewindowsResource, ssmmaintenancewindowsKind, c.ns, opts), &v1alpha1.SsmMaintenanceWindowList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSsmMaintenanceWindows) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested ssmMaintenanceWindows.
-func (c *FakeSsmMaintenanceWindows) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSsmMaintenanceWindows) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(ssmmaintenancewindowsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a ssmMaintenanceWindow and creates it.  Returns the server's representation of the ssmMaintenanceWindow, and an error, if there is any.
-func (c *FakeSsmMaintenanceWindows) Create(ssmMaintenanceWindow *v1alpha1.SsmMaintenanceWindow) (result *v1alpha1.SsmMaintenanceWindow, err error) {
+func (c *FakeSsmMaintenanceWindows) Create(ctx context.Context, ssmMaintenanceWindow *v1alpha1.SsmMaintenanceWindow, opts v1.CreateOptions) (result *v1alpha1.SsmMaintenanceWindow, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(ssmmaintenancewindowsResource, c.ns, ssmMaintenanceWindow), &v1alpha1.SsmMaintenanceWindow{})
 
@@ -91,7 +93,7 @@ func (c *FakeSsmMaintenanceWindows) Create(ssmMaintenanceWindow *v1alpha1.SsmMai
 }
 
 // Update takes the representation of a ssmMaintenanceWindow and updates it. Returns the server's representation of the ssmMaintenanceWindow, and an error, if there is any.
-func (c *FakeSsmMaintenanceWindows) Update(ssmMaintenanceWindow *v1alpha1.SsmMaintenanceWindow) (result *v1alpha1.SsmMaintenanceWindow, err error) {
+func (c *FakeSsmMaintenanceWindows) Update(ctx context.Context, ssmMaintenanceWindow *v1alpha1.SsmMaintenanceWindow, opts v1.UpdateOptions) (result *v1alpha1.SsmMaintenanceWindow, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(ssmmaintenancewindowsResource, c.ns, ssmMaintenanceWindow), &v1alpha1.SsmMaintenanceWindow{})
 
@@ -103,7 +105,7 @@ func (c *FakeSsmMaintenanceWindows) Update(ssmMaintenanceWindow *v1alpha1.SsmMai
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSsmMaintenanceWindows) UpdateStatus(ssmMaintenanceWindow *v1alpha1.SsmMaintenanceWindow) (*v1alpha1.SsmMaintenanceWindow, error) {
+func (c *FakeSsmMaintenanceWindows) UpdateStatus(ctx context.Context, ssmMaintenanceWindow *v1alpha1.SsmMaintenanceWindow, opts v1.UpdateOptions) (*v1alpha1.SsmMaintenanceWindow, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(ssmmaintenancewindowsResource, "status", c.ns, ssmMaintenanceWindow), &v1alpha1.SsmMaintenanceWindow{})
 
@@ -114,7 +116,7 @@ func (c *FakeSsmMaintenanceWindows) UpdateStatus(ssmMaintenanceWindow *v1alpha1.
 }
 
 // Delete takes name of the ssmMaintenanceWindow and deletes it. Returns an error if one occurs.
-func (c *FakeSsmMaintenanceWindows) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSsmMaintenanceWindows) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(ssmmaintenancewindowsResource, c.ns, name), &v1alpha1.SsmMaintenanceWindow{})
 
@@ -122,15 +124,15 @@ func (c *FakeSsmMaintenanceWindows) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSsmMaintenanceWindows) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(ssmmaintenancewindowsResource, c.ns, listOptions)
+func (c *FakeSsmMaintenanceWindows) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(ssmmaintenancewindowsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SsmMaintenanceWindowList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched ssmMaintenanceWindow.
-func (c *FakeSsmMaintenanceWindows) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SsmMaintenanceWindow, err error) {
+func (c *FakeSsmMaintenanceWindows) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SsmMaintenanceWindow, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(ssmmaintenancewindowsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SsmMaintenanceWindow{})
 

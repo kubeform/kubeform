@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type CodecommitRepositoriesGetter interface {
 
 // CodecommitRepositoryInterface has methods to work with CodecommitRepository resources.
 type CodecommitRepositoryInterface interface {
-	Create(*v1alpha1.CodecommitRepository) (*v1alpha1.CodecommitRepository, error)
-	Update(*v1alpha1.CodecommitRepository) (*v1alpha1.CodecommitRepository, error)
-	UpdateStatus(*v1alpha1.CodecommitRepository) (*v1alpha1.CodecommitRepository, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.CodecommitRepository, error)
-	List(opts v1.ListOptions) (*v1alpha1.CodecommitRepositoryList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CodecommitRepository, err error)
+	Create(ctx context.Context, codecommitRepository *v1alpha1.CodecommitRepository, opts v1.CreateOptions) (*v1alpha1.CodecommitRepository, error)
+	Update(ctx context.Context, codecommitRepository *v1alpha1.CodecommitRepository, opts v1.UpdateOptions) (*v1alpha1.CodecommitRepository, error)
+	UpdateStatus(ctx context.Context, codecommitRepository *v1alpha1.CodecommitRepository, opts v1.UpdateOptions) (*v1alpha1.CodecommitRepository, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.CodecommitRepository, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.CodecommitRepositoryList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CodecommitRepository, err error)
 	CodecommitRepositoryExpansion
 }
 
@@ -65,20 +66,20 @@ func newCodecommitRepositories(c *AwsV1alpha1Client, namespace string) *codecomm
 }
 
 // Get takes name of the codecommitRepository, and returns the corresponding codecommitRepository object, and an error if there is any.
-func (c *codecommitRepositories) Get(name string, options v1.GetOptions) (result *v1alpha1.CodecommitRepository, err error) {
+func (c *codecommitRepositories) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CodecommitRepository, err error) {
 	result = &v1alpha1.CodecommitRepository{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("codecommitrepositories").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of CodecommitRepositories that match those selectors.
-func (c *codecommitRepositories) List(opts v1.ListOptions) (result *v1alpha1.CodecommitRepositoryList, err error) {
+func (c *codecommitRepositories) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CodecommitRepositoryList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *codecommitRepositories) List(opts v1.ListOptions) (result *v1alpha1.Cod
 		Resource("codecommitrepositories").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested codecommitRepositories.
-func (c *codecommitRepositories) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *codecommitRepositories) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *codecommitRepositories) Watch(opts v1.ListOptions) (watch.Interface, er
 		Resource("codecommitrepositories").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a codecommitRepository and creates it.  Returns the server's representation of the codecommitRepository, and an error, if there is any.
-func (c *codecommitRepositories) Create(codecommitRepository *v1alpha1.CodecommitRepository) (result *v1alpha1.CodecommitRepository, err error) {
+func (c *codecommitRepositories) Create(ctx context.Context, codecommitRepository *v1alpha1.CodecommitRepository, opts v1.CreateOptions) (result *v1alpha1.CodecommitRepository, err error) {
 	result = &v1alpha1.CodecommitRepository{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("codecommitrepositories").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(codecommitRepository).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a codecommitRepository and updates it. Returns the server's representation of the codecommitRepository, and an error, if there is any.
-func (c *codecommitRepositories) Update(codecommitRepository *v1alpha1.CodecommitRepository) (result *v1alpha1.CodecommitRepository, err error) {
+func (c *codecommitRepositories) Update(ctx context.Context, codecommitRepository *v1alpha1.CodecommitRepository, opts v1.UpdateOptions) (result *v1alpha1.CodecommitRepository, err error) {
 	result = &v1alpha1.CodecommitRepository{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("codecommitrepositories").
 		Name(codecommitRepository.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(codecommitRepository).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *codecommitRepositories) UpdateStatus(codecommitRepository *v1alpha1.CodecommitRepository) (result *v1alpha1.CodecommitRepository, err error) {
+func (c *codecommitRepositories) UpdateStatus(ctx context.Context, codecommitRepository *v1alpha1.CodecommitRepository, opts v1.UpdateOptions) (result *v1alpha1.CodecommitRepository, err error) {
 	result = &v1alpha1.CodecommitRepository{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("codecommitrepositories").
 		Name(codecommitRepository.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(codecommitRepository).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the codecommitRepository and deletes it. Returns an error if one occurs.
-func (c *codecommitRepositories) Delete(name string, options *v1.DeleteOptions) error {
+func (c *codecommitRepositories) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("codecommitrepositories").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *codecommitRepositories) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *codecommitRepositories) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("codecommitrepositories").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched codecommitRepository.
-func (c *codecommitRepositories) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CodecommitRepository, err error) {
+func (c *codecommitRepositories) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CodecommitRepository, err error) {
 	result = &v1alpha1.CodecommitRepository{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("codecommitrepositories").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

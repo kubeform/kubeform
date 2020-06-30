@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type AppmeshRoutesGetter interface {
 
 // AppmeshRouteInterface has methods to work with AppmeshRoute resources.
 type AppmeshRouteInterface interface {
-	Create(*v1alpha1.AppmeshRoute) (*v1alpha1.AppmeshRoute, error)
-	Update(*v1alpha1.AppmeshRoute) (*v1alpha1.AppmeshRoute, error)
-	UpdateStatus(*v1alpha1.AppmeshRoute) (*v1alpha1.AppmeshRoute, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.AppmeshRoute, error)
-	List(opts v1.ListOptions) (*v1alpha1.AppmeshRouteList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppmeshRoute, err error)
+	Create(ctx context.Context, appmeshRoute *v1alpha1.AppmeshRoute, opts v1.CreateOptions) (*v1alpha1.AppmeshRoute, error)
+	Update(ctx context.Context, appmeshRoute *v1alpha1.AppmeshRoute, opts v1.UpdateOptions) (*v1alpha1.AppmeshRoute, error)
+	UpdateStatus(ctx context.Context, appmeshRoute *v1alpha1.AppmeshRoute, opts v1.UpdateOptions) (*v1alpha1.AppmeshRoute, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.AppmeshRoute, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.AppmeshRouteList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppmeshRoute, err error)
 	AppmeshRouteExpansion
 }
 
@@ -65,20 +66,20 @@ func newAppmeshRoutes(c *AwsV1alpha1Client, namespace string) *appmeshRoutes {
 }
 
 // Get takes name of the appmeshRoute, and returns the corresponding appmeshRoute object, and an error if there is any.
-func (c *appmeshRoutes) Get(name string, options v1.GetOptions) (result *v1alpha1.AppmeshRoute, err error) {
+func (c *appmeshRoutes) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AppmeshRoute, err error) {
 	result = &v1alpha1.AppmeshRoute{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("appmeshroutes").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of AppmeshRoutes that match those selectors.
-func (c *appmeshRoutes) List(opts v1.ListOptions) (result *v1alpha1.AppmeshRouteList, err error) {
+func (c *appmeshRoutes) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AppmeshRouteList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *appmeshRoutes) List(opts v1.ListOptions) (result *v1alpha1.AppmeshRoute
 		Resource("appmeshroutes").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested appmeshRoutes.
-func (c *appmeshRoutes) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *appmeshRoutes) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *appmeshRoutes) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("appmeshroutes").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a appmeshRoute and creates it.  Returns the server's representation of the appmeshRoute, and an error, if there is any.
-func (c *appmeshRoutes) Create(appmeshRoute *v1alpha1.AppmeshRoute) (result *v1alpha1.AppmeshRoute, err error) {
+func (c *appmeshRoutes) Create(ctx context.Context, appmeshRoute *v1alpha1.AppmeshRoute, opts v1.CreateOptions) (result *v1alpha1.AppmeshRoute, err error) {
 	result = &v1alpha1.AppmeshRoute{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("appmeshroutes").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appmeshRoute).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a appmeshRoute and updates it. Returns the server's representation of the appmeshRoute, and an error, if there is any.
-func (c *appmeshRoutes) Update(appmeshRoute *v1alpha1.AppmeshRoute) (result *v1alpha1.AppmeshRoute, err error) {
+func (c *appmeshRoutes) Update(ctx context.Context, appmeshRoute *v1alpha1.AppmeshRoute, opts v1.UpdateOptions) (result *v1alpha1.AppmeshRoute, err error) {
 	result = &v1alpha1.AppmeshRoute{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("appmeshroutes").
 		Name(appmeshRoute.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appmeshRoute).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *appmeshRoutes) UpdateStatus(appmeshRoute *v1alpha1.AppmeshRoute) (result *v1alpha1.AppmeshRoute, err error) {
+func (c *appmeshRoutes) UpdateStatus(ctx context.Context, appmeshRoute *v1alpha1.AppmeshRoute, opts v1.UpdateOptions) (result *v1alpha1.AppmeshRoute, err error) {
 	result = &v1alpha1.AppmeshRoute{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("appmeshroutes").
 		Name(appmeshRoute.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appmeshRoute).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the appmeshRoute and deletes it. Returns an error if one occurs.
-func (c *appmeshRoutes) Delete(name string, options *v1.DeleteOptions) error {
+func (c *appmeshRoutes) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("appmeshroutes").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *appmeshRoutes) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *appmeshRoutes) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("appmeshroutes").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched appmeshRoute.
-func (c *appmeshRoutes) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppmeshRoute, err error) {
+func (c *appmeshRoutes) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppmeshRoute, err error) {
 	result = &v1alpha1.AppmeshRoute{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("appmeshroutes").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

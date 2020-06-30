@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var wafrulesResource = schema.GroupVersionResource{Group: "aws.kubeform.com", Ve
 var wafrulesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "WafRule"}
 
 // Get takes name of the wafRule, and returns the corresponding wafRule object, and an error if there is any.
-func (c *FakeWafRules) Get(name string, options v1.GetOptions) (result *v1alpha1.WafRule, err error) {
+func (c *FakeWafRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.WafRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(wafrulesResource, c.ns, name), &v1alpha1.WafRule{})
 
@@ -51,7 +53,7 @@ func (c *FakeWafRules) Get(name string, options v1.GetOptions) (result *v1alpha1
 }
 
 // List takes label and field selectors, and returns the list of WafRules that match those selectors.
-func (c *FakeWafRules) List(opts v1.ListOptions) (result *v1alpha1.WafRuleList, err error) {
+func (c *FakeWafRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.WafRuleList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(wafrulesResource, wafrulesKind, c.ns, opts), &v1alpha1.WafRuleList{})
 
@@ -73,14 +75,14 @@ func (c *FakeWafRules) List(opts v1.ListOptions) (result *v1alpha1.WafRuleList, 
 }
 
 // Watch returns a watch.Interface that watches the requested wafRules.
-func (c *FakeWafRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeWafRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(wafrulesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a wafRule and creates it.  Returns the server's representation of the wafRule, and an error, if there is any.
-func (c *FakeWafRules) Create(wafRule *v1alpha1.WafRule) (result *v1alpha1.WafRule, err error) {
+func (c *FakeWafRules) Create(ctx context.Context, wafRule *v1alpha1.WafRule, opts v1.CreateOptions) (result *v1alpha1.WafRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(wafrulesResource, c.ns, wafRule), &v1alpha1.WafRule{})
 
@@ -91,7 +93,7 @@ func (c *FakeWafRules) Create(wafRule *v1alpha1.WafRule) (result *v1alpha1.WafRu
 }
 
 // Update takes the representation of a wafRule and updates it. Returns the server's representation of the wafRule, and an error, if there is any.
-func (c *FakeWafRules) Update(wafRule *v1alpha1.WafRule) (result *v1alpha1.WafRule, err error) {
+func (c *FakeWafRules) Update(ctx context.Context, wafRule *v1alpha1.WafRule, opts v1.UpdateOptions) (result *v1alpha1.WafRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(wafrulesResource, c.ns, wafRule), &v1alpha1.WafRule{})
 
@@ -103,7 +105,7 @@ func (c *FakeWafRules) Update(wafRule *v1alpha1.WafRule) (result *v1alpha1.WafRu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeWafRules) UpdateStatus(wafRule *v1alpha1.WafRule) (*v1alpha1.WafRule, error) {
+func (c *FakeWafRules) UpdateStatus(ctx context.Context, wafRule *v1alpha1.WafRule, opts v1.UpdateOptions) (*v1alpha1.WafRule, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(wafrulesResource, "status", c.ns, wafRule), &v1alpha1.WafRule{})
 
@@ -114,7 +116,7 @@ func (c *FakeWafRules) UpdateStatus(wafRule *v1alpha1.WafRule) (*v1alpha1.WafRul
 }
 
 // Delete takes name of the wafRule and deletes it. Returns an error if one occurs.
-func (c *FakeWafRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeWafRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(wafrulesResource, c.ns, name), &v1alpha1.WafRule{})
 
@@ -122,15 +124,15 @@ func (c *FakeWafRules) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeWafRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(wafrulesResource, c.ns, listOptions)
+func (c *FakeWafRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(wafrulesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.WafRuleList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched wafRule.
-func (c *FakeWafRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.WafRule, err error) {
+func (c *FakeWafRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.WafRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(wafrulesResource, c.ns, name, pt, data, subresources...), &v1alpha1.WafRule{})
 

@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type TemplateDeploymentsGetter interface {
 
 // TemplateDeploymentInterface has methods to work with TemplateDeployment resources.
 type TemplateDeploymentInterface interface {
-	Create(*v1alpha1.TemplateDeployment) (*v1alpha1.TemplateDeployment, error)
-	Update(*v1alpha1.TemplateDeployment) (*v1alpha1.TemplateDeployment, error)
-	UpdateStatus(*v1alpha1.TemplateDeployment) (*v1alpha1.TemplateDeployment, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.TemplateDeployment, error)
-	List(opts v1.ListOptions) (*v1alpha1.TemplateDeploymentList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.TemplateDeployment, err error)
+	Create(ctx context.Context, templateDeployment *v1alpha1.TemplateDeployment, opts v1.CreateOptions) (*v1alpha1.TemplateDeployment, error)
+	Update(ctx context.Context, templateDeployment *v1alpha1.TemplateDeployment, opts v1.UpdateOptions) (*v1alpha1.TemplateDeployment, error)
+	UpdateStatus(ctx context.Context, templateDeployment *v1alpha1.TemplateDeployment, opts v1.UpdateOptions) (*v1alpha1.TemplateDeployment, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.TemplateDeployment, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.TemplateDeploymentList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.TemplateDeployment, err error)
 	TemplateDeploymentExpansion
 }
 
@@ -65,20 +66,20 @@ func newTemplateDeployments(c *AzurermV1alpha1Client, namespace string) *templat
 }
 
 // Get takes name of the templateDeployment, and returns the corresponding templateDeployment object, and an error if there is any.
-func (c *templateDeployments) Get(name string, options v1.GetOptions) (result *v1alpha1.TemplateDeployment, err error) {
+func (c *templateDeployments) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.TemplateDeployment, err error) {
 	result = &v1alpha1.TemplateDeployment{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("templatedeployments").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of TemplateDeployments that match those selectors.
-func (c *templateDeployments) List(opts v1.ListOptions) (result *v1alpha1.TemplateDeploymentList, err error) {
+func (c *templateDeployments) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.TemplateDeploymentList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *templateDeployments) List(opts v1.ListOptions) (result *v1alpha1.Templa
 		Resource("templatedeployments").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested templateDeployments.
-func (c *templateDeployments) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *templateDeployments) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *templateDeployments) Watch(opts v1.ListOptions) (watch.Interface, error
 		Resource("templatedeployments").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a templateDeployment and creates it.  Returns the server's representation of the templateDeployment, and an error, if there is any.
-func (c *templateDeployments) Create(templateDeployment *v1alpha1.TemplateDeployment) (result *v1alpha1.TemplateDeployment, err error) {
+func (c *templateDeployments) Create(ctx context.Context, templateDeployment *v1alpha1.TemplateDeployment, opts v1.CreateOptions) (result *v1alpha1.TemplateDeployment, err error) {
 	result = &v1alpha1.TemplateDeployment{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("templatedeployments").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(templateDeployment).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a templateDeployment and updates it. Returns the server's representation of the templateDeployment, and an error, if there is any.
-func (c *templateDeployments) Update(templateDeployment *v1alpha1.TemplateDeployment) (result *v1alpha1.TemplateDeployment, err error) {
+func (c *templateDeployments) Update(ctx context.Context, templateDeployment *v1alpha1.TemplateDeployment, opts v1.UpdateOptions) (result *v1alpha1.TemplateDeployment, err error) {
 	result = &v1alpha1.TemplateDeployment{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("templatedeployments").
 		Name(templateDeployment.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(templateDeployment).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *templateDeployments) UpdateStatus(templateDeployment *v1alpha1.TemplateDeployment) (result *v1alpha1.TemplateDeployment, err error) {
+func (c *templateDeployments) UpdateStatus(ctx context.Context, templateDeployment *v1alpha1.TemplateDeployment, opts v1.UpdateOptions) (result *v1alpha1.TemplateDeployment, err error) {
 	result = &v1alpha1.TemplateDeployment{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("templatedeployments").
 		Name(templateDeployment.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(templateDeployment).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the templateDeployment and deletes it. Returns an error if one occurs.
-func (c *templateDeployments) Delete(name string, options *v1.DeleteOptions) error {
+func (c *templateDeployments) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("templatedeployments").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *templateDeployments) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *templateDeployments) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("templatedeployments").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched templateDeployment.
-func (c *templateDeployments) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.TemplateDeployment, err error) {
+func (c *templateDeployments) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.TemplateDeployment, err error) {
 	result = &v1alpha1.TemplateDeployment{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("templatedeployments").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

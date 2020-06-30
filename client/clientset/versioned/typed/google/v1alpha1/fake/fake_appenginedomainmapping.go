@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var appenginedomainmappingsResource = schema.GroupVersionResource{Group: "google
 var appenginedomainmappingsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "AppEngineDomainMapping"}
 
 // Get takes name of the appEngineDomainMapping, and returns the corresponding appEngineDomainMapping object, and an error if there is any.
-func (c *FakeAppEngineDomainMappings) Get(name string, options v1.GetOptions) (result *v1alpha1.AppEngineDomainMapping, err error) {
+func (c *FakeAppEngineDomainMappings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AppEngineDomainMapping, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(appenginedomainmappingsResource, c.ns, name), &v1alpha1.AppEngineDomainMapping{})
 
@@ -51,7 +53,7 @@ func (c *FakeAppEngineDomainMappings) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of AppEngineDomainMappings that match those selectors.
-func (c *FakeAppEngineDomainMappings) List(opts v1.ListOptions) (result *v1alpha1.AppEngineDomainMappingList, err error) {
+func (c *FakeAppEngineDomainMappings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AppEngineDomainMappingList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(appenginedomainmappingsResource, appenginedomainmappingsKind, c.ns, opts), &v1alpha1.AppEngineDomainMappingList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAppEngineDomainMappings) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested appEngineDomainMappings.
-func (c *FakeAppEngineDomainMappings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAppEngineDomainMappings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(appenginedomainmappingsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a appEngineDomainMapping and creates it.  Returns the server's representation of the appEngineDomainMapping, and an error, if there is any.
-func (c *FakeAppEngineDomainMappings) Create(appEngineDomainMapping *v1alpha1.AppEngineDomainMapping) (result *v1alpha1.AppEngineDomainMapping, err error) {
+func (c *FakeAppEngineDomainMappings) Create(ctx context.Context, appEngineDomainMapping *v1alpha1.AppEngineDomainMapping, opts v1.CreateOptions) (result *v1alpha1.AppEngineDomainMapping, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(appenginedomainmappingsResource, c.ns, appEngineDomainMapping), &v1alpha1.AppEngineDomainMapping{})
 
@@ -91,7 +93,7 @@ func (c *FakeAppEngineDomainMappings) Create(appEngineDomainMapping *v1alpha1.Ap
 }
 
 // Update takes the representation of a appEngineDomainMapping and updates it. Returns the server's representation of the appEngineDomainMapping, and an error, if there is any.
-func (c *FakeAppEngineDomainMappings) Update(appEngineDomainMapping *v1alpha1.AppEngineDomainMapping) (result *v1alpha1.AppEngineDomainMapping, err error) {
+func (c *FakeAppEngineDomainMappings) Update(ctx context.Context, appEngineDomainMapping *v1alpha1.AppEngineDomainMapping, opts v1.UpdateOptions) (result *v1alpha1.AppEngineDomainMapping, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(appenginedomainmappingsResource, c.ns, appEngineDomainMapping), &v1alpha1.AppEngineDomainMapping{})
 
@@ -103,7 +105,7 @@ func (c *FakeAppEngineDomainMappings) Update(appEngineDomainMapping *v1alpha1.Ap
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAppEngineDomainMappings) UpdateStatus(appEngineDomainMapping *v1alpha1.AppEngineDomainMapping) (*v1alpha1.AppEngineDomainMapping, error) {
+func (c *FakeAppEngineDomainMappings) UpdateStatus(ctx context.Context, appEngineDomainMapping *v1alpha1.AppEngineDomainMapping, opts v1.UpdateOptions) (*v1alpha1.AppEngineDomainMapping, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(appenginedomainmappingsResource, "status", c.ns, appEngineDomainMapping), &v1alpha1.AppEngineDomainMapping{})
 
@@ -114,7 +116,7 @@ func (c *FakeAppEngineDomainMappings) UpdateStatus(appEngineDomainMapping *v1alp
 }
 
 // Delete takes name of the appEngineDomainMapping and deletes it. Returns an error if one occurs.
-func (c *FakeAppEngineDomainMappings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAppEngineDomainMappings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(appenginedomainmappingsResource, c.ns, name), &v1alpha1.AppEngineDomainMapping{})
 
@@ -122,15 +124,15 @@ func (c *FakeAppEngineDomainMappings) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAppEngineDomainMappings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(appenginedomainmappingsResource, c.ns, listOptions)
+func (c *FakeAppEngineDomainMappings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(appenginedomainmappingsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AppEngineDomainMappingList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched appEngineDomainMapping.
-func (c *FakeAppEngineDomainMappings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppEngineDomainMapping, err error) {
+func (c *FakeAppEngineDomainMappings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppEngineDomainMapping, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(appenginedomainmappingsResource, c.ns, name, pt, data, subresources...), &v1alpha1.AppEngineDomainMapping{})
 

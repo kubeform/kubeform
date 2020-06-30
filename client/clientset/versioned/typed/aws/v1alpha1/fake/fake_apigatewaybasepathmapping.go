@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var apigatewaybasepathmappingsResource = schema.GroupVersionResource{Group: "aws
 var apigatewaybasepathmappingsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ApiGatewayBasePathMapping"}
 
 // Get takes name of the apiGatewayBasePathMapping, and returns the corresponding apiGatewayBasePathMapping object, and an error if there is any.
-func (c *FakeApiGatewayBasePathMappings) Get(name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayBasePathMapping, err error) {
+func (c *FakeApiGatewayBasePathMappings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayBasePathMapping, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(apigatewaybasepathmappingsResource, c.ns, name), &v1alpha1.ApiGatewayBasePathMapping{})
 
@@ -51,7 +53,7 @@ func (c *FakeApiGatewayBasePathMappings) Get(name string, options v1.GetOptions)
 }
 
 // List takes label and field selectors, and returns the list of ApiGatewayBasePathMappings that match those selectors.
-func (c *FakeApiGatewayBasePathMappings) List(opts v1.ListOptions) (result *v1alpha1.ApiGatewayBasePathMappingList, err error) {
+func (c *FakeApiGatewayBasePathMappings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApiGatewayBasePathMappingList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(apigatewaybasepathmappingsResource, apigatewaybasepathmappingsKind, c.ns, opts), &v1alpha1.ApiGatewayBasePathMappingList{})
 
@@ -73,14 +75,14 @@ func (c *FakeApiGatewayBasePathMappings) List(opts v1.ListOptions) (result *v1al
 }
 
 // Watch returns a watch.Interface that watches the requested apiGatewayBasePathMappings.
-func (c *FakeApiGatewayBasePathMappings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeApiGatewayBasePathMappings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(apigatewaybasepathmappingsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a apiGatewayBasePathMapping and creates it.  Returns the server's representation of the apiGatewayBasePathMapping, and an error, if there is any.
-func (c *FakeApiGatewayBasePathMappings) Create(apiGatewayBasePathMapping *v1alpha1.ApiGatewayBasePathMapping) (result *v1alpha1.ApiGatewayBasePathMapping, err error) {
+func (c *FakeApiGatewayBasePathMappings) Create(ctx context.Context, apiGatewayBasePathMapping *v1alpha1.ApiGatewayBasePathMapping, opts v1.CreateOptions) (result *v1alpha1.ApiGatewayBasePathMapping, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(apigatewaybasepathmappingsResource, c.ns, apiGatewayBasePathMapping), &v1alpha1.ApiGatewayBasePathMapping{})
 
@@ -91,7 +93,7 @@ func (c *FakeApiGatewayBasePathMappings) Create(apiGatewayBasePathMapping *v1alp
 }
 
 // Update takes the representation of a apiGatewayBasePathMapping and updates it. Returns the server's representation of the apiGatewayBasePathMapping, and an error, if there is any.
-func (c *FakeApiGatewayBasePathMappings) Update(apiGatewayBasePathMapping *v1alpha1.ApiGatewayBasePathMapping) (result *v1alpha1.ApiGatewayBasePathMapping, err error) {
+func (c *FakeApiGatewayBasePathMappings) Update(ctx context.Context, apiGatewayBasePathMapping *v1alpha1.ApiGatewayBasePathMapping, opts v1.UpdateOptions) (result *v1alpha1.ApiGatewayBasePathMapping, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(apigatewaybasepathmappingsResource, c.ns, apiGatewayBasePathMapping), &v1alpha1.ApiGatewayBasePathMapping{})
 
@@ -103,7 +105,7 @@ func (c *FakeApiGatewayBasePathMappings) Update(apiGatewayBasePathMapping *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeApiGatewayBasePathMappings) UpdateStatus(apiGatewayBasePathMapping *v1alpha1.ApiGatewayBasePathMapping) (*v1alpha1.ApiGatewayBasePathMapping, error) {
+func (c *FakeApiGatewayBasePathMappings) UpdateStatus(ctx context.Context, apiGatewayBasePathMapping *v1alpha1.ApiGatewayBasePathMapping, opts v1.UpdateOptions) (*v1alpha1.ApiGatewayBasePathMapping, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(apigatewaybasepathmappingsResource, "status", c.ns, apiGatewayBasePathMapping), &v1alpha1.ApiGatewayBasePathMapping{})
 
@@ -114,7 +116,7 @@ func (c *FakeApiGatewayBasePathMappings) UpdateStatus(apiGatewayBasePathMapping 
 }
 
 // Delete takes name of the apiGatewayBasePathMapping and deletes it. Returns an error if one occurs.
-func (c *FakeApiGatewayBasePathMappings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeApiGatewayBasePathMappings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(apigatewaybasepathmappingsResource, c.ns, name), &v1alpha1.ApiGatewayBasePathMapping{})
 
@@ -122,15 +124,15 @@ func (c *FakeApiGatewayBasePathMappings) Delete(name string, options *v1.DeleteO
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeApiGatewayBasePathMappings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(apigatewaybasepathmappingsResource, c.ns, listOptions)
+func (c *FakeApiGatewayBasePathMappings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(apigatewaybasepathmappingsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ApiGatewayBasePathMappingList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched apiGatewayBasePathMapping.
-func (c *FakeApiGatewayBasePathMappings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiGatewayBasePathMapping, err error) {
+func (c *FakeApiGatewayBasePathMappings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiGatewayBasePathMapping, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(apigatewaybasepathmappingsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ApiGatewayBasePathMapping{})
 

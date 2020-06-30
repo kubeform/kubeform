@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type IamServiceLinkedRolesGetter interface {
 
 // IamServiceLinkedRoleInterface has methods to work with IamServiceLinkedRole resources.
 type IamServiceLinkedRoleInterface interface {
-	Create(*v1alpha1.IamServiceLinkedRole) (*v1alpha1.IamServiceLinkedRole, error)
-	Update(*v1alpha1.IamServiceLinkedRole) (*v1alpha1.IamServiceLinkedRole, error)
-	UpdateStatus(*v1alpha1.IamServiceLinkedRole) (*v1alpha1.IamServiceLinkedRole, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.IamServiceLinkedRole, error)
-	List(opts v1.ListOptions) (*v1alpha1.IamServiceLinkedRoleList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IamServiceLinkedRole, err error)
+	Create(ctx context.Context, iamServiceLinkedRole *v1alpha1.IamServiceLinkedRole, opts v1.CreateOptions) (*v1alpha1.IamServiceLinkedRole, error)
+	Update(ctx context.Context, iamServiceLinkedRole *v1alpha1.IamServiceLinkedRole, opts v1.UpdateOptions) (*v1alpha1.IamServiceLinkedRole, error)
+	UpdateStatus(ctx context.Context, iamServiceLinkedRole *v1alpha1.IamServiceLinkedRole, opts v1.UpdateOptions) (*v1alpha1.IamServiceLinkedRole, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.IamServiceLinkedRole, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.IamServiceLinkedRoleList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IamServiceLinkedRole, err error)
 	IamServiceLinkedRoleExpansion
 }
 
@@ -65,20 +66,20 @@ func newIamServiceLinkedRoles(c *AwsV1alpha1Client, namespace string) *iamServic
 }
 
 // Get takes name of the iamServiceLinkedRole, and returns the corresponding iamServiceLinkedRole object, and an error if there is any.
-func (c *iamServiceLinkedRoles) Get(name string, options v1.GetOptions) (result *v1alpha1.IamServiceLinkedRole, err error) {
+func (c *iamServiceLinkedRoles) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IamServiceLinkedRole, err error) {
 	result = &v1alpha1.IamServiceLinkedRole{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("iamservicelinkedroles").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of IamServiceLinkedRoles that match those selectors.
-func (c *iamServiceLinkedRoles) List(opts v1.ListOptions) (result *v1alpha1.IamServiceLinkedRoleList, err error) {
+func (c *iamServiceLinkedRoles) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IamServiceLinkedRoleList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *iamServiceLinkedRoles) List(opts v1.ListOptions) (result *v1alpha1.IamS
 		Resource("iamservicelinkedroles").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested iamServiceLinkedRoles.
-func (c *iamServiceLinkedRoles) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *iamServiceLinkedRoles) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *iamServiceLinkedRoles) Watch(opts v1.ListOptions) (watch.Interface, err
 		Resource("iamservicelinkedroles").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a iamServiceLinkedRole and creates it.  Returns the server's representation of the iamServiceLinkedRole, and an error, if there is any.
-func (c *iamServiceLinkedRoles) Create(iamServiceLinkedRole *v1alpha1.IamServiceLinkedRole) (result *v1alpha1.IamServiceLinkedRole, err error) {
+func (c *iamServiceLinkedRoles) Create(ctx context.Context, iamServiceLinkedRole *v1alpha1.IamServiceLinkedRole, opts v1.CreateOptions) (result *v1alpha1.IamServiceLinkedRole, err error) {
 	result = &v1alpha1.IamServiceLinkedRole{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("iamservicelinkedroles").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iamServiceLinkedRole).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a iamServiceLinkedRole and updates it. Returns the server's representation of the iamServiceLinkedRole, and an error, if there is any.
-func (c *iamServiceLinkedRoles) Update(iamServiceLinkedRole *v1alpha1.IamServiceLinkedRole) (result *v1alpha1.IamServiceLinkedRole, err error) {
+func (c *iamServiceLinkedRoles) Update(ctx context.Context, iamServiceLinkedRole *v1alpha1.IamServiceLinkedRole, opts v1.UpdateOptions) (result *v1alpha1.IamServiceLinkedRole, err error) {
 	result = &v1alpha1.IamServiceLinkedRole{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iamservicelinkedroles").
 		Name(iamServiceLinkedRole.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iamServiceLinkedRole).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *iamServiceLinkedRoles) UpdateStatus(iamServiceLinkedRole *v1alpha1.IamServiceLinkedRole) (result *v1alpha1.IamServiceLinkedRole, err error) {
+func (c *iamServiceLinkedRoles) UpdateStatus(ctx context.Context, iamServiceLinkedRole *v1alpha1.IamServiceLinkedRole, opts v1.UpdateOptions) (result *v1alpha1.IamServiceLinkedRole, err error) {
 	result = &v1alpha1.IamServiceLinkedRole{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iamservicelinkedroles").
 		Name(iamServiceLinkedRole.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iamServiceLinkedRole).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the iamServiceLinkedRole and deletes it. Returns an error if one occurs.
-func (c *iamServiceLinkedRoles) Delete(name string, options *v1.DeleteOptions) error {
+func (c *iamServiceLinkedRoles) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iamservicelinkedroles").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *iamServiceLinkedRoles) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *iamServiceLinkedRoles) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iamservicelinkedroles").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched iamServiceLinkedRole.
-func (c *iamServiceLinkedRoles) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IamServiceLinkedRole, err error) {
+func (c *iamServiceLinkedRoles) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IamServiceLinkedRole, err error) {
 	result = &v1alpha1.IamServiceLinkedRole{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("iamservicelinkedroles").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

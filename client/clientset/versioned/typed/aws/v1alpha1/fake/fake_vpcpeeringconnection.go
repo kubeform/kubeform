@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var vpcpeeringconnectionsResource = schema.GroupVersionResource{Group: "aws.kube
 var vpcpeeringconnectionsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "VpcPeeringConnection"}
 
 // Get takes name of the vpcPeeringConnection, and returns the corresponding vpcPeeringConnection object, and an error if there is any.
-func (c *FakeVpcPeeringConnections) Get(name string, options v1.GetOptions) (result *v1alpha1.VpcPeeringConnection, err error) {
+func (c *FakeVpcPeeringConnections) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.VpcPeeringConnection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(vpcpeeringconnectionsResource, c.ns, name), &v1alpha1.VpcPeeringConnection{})
 
@@ -51,7 +53,7 @@ func (c *FakeVpcPeeringConnections) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of VpcPeeringConnections that match those selectors.
-func (c *FakeVpcPeeringConnections) List(opts v1.ListOptions) (result *v1alpha1.VpcPeeringConnectionList, err error) {
+func (c *FakeVpcPeeringConnections) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.VpcPeeringConnectionList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(vpcpeeringconnectionsResource, vpcpeeringconnectionsKind, c.ns, opts), &v1alpha1.VpcPeeringConnectionList{})
 
@@ -73,14 +75,14 @@ func (c *FakeVpcPeeringConnections) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested vpcPeeringConnections.
-func (c *FakeVpcPeeringConnections) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeVpcPeeringConnections) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(vpcpeeringconnectionsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a vpcPeeringConnection and creates it.  Returns the server's representation of the vpcPeeringConnection, and an error, if there is any.
-func (c *FakeVpcPeeringConnections) Create(vpcPeeringConnection *v1alpha1.VpcPeeringConnection) (result *v1alpha1.VpcPeeringConnection, err error) {
+func (c *FakeVpcPeeringConnections) Create(ctx context.Context, vpcPeeringConnection *v1alpha1.VpcPeeringConnection, opts v1.CreateOptions) (result *v1alpha1.VpcPeeringConnection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(vpcpeeringconnectionsResource, c.ns, vpcPeeringConnection), &v1alpha1.VpcPeeringConnection{})
 
@@ -91,7 +93,7 @@ func (c *FakeVpcPeeringConnections) Create(vpcPeeringConnection *v1alpha1.VpcPee
 }
 
 // Update takes the representation of a vpcPeeringConnection and updates it. Returns the server's representation of the vpcPeeringConnection, and an error, if there is any.
-func (c *FakeVpcPeeringConnections) Update(vpcPeeringConnection *v1alpha1.VpcPeeringConnection) (result *v1alpha1.VpcPeeringConnection, err error) {
+func (c *FakeVpcPeeringConnections) Update(ctx context.Context, vpcPeeringConnection *v1alpha1.VpcPeeringConnection, opts v1.UpdateOptions) (result *v1alpha1.VpcPeeringConnection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(vpcpeeringconnectionsResource, c.ns, vpcPeeringConnection), &v1alpha1.VpcPeeringConnection{})
 
@@ -103,7 +105,7 @@ func (c *FakeVpcPeeringConnections) Update(vpcPeeringConnection *v1alpha1.VpcPee
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeVpcPeeringConnections) UpdateStatus(vpcPeeringConnection *v1alpha1.VpcPeeringConnection) (*v1alpha1.VpcPeeringConnection, error) {
+func (c *FakeVpcPeeringConnections) UpdateStatus(ctx context.Context, vpcPeeringConnection *v1alpha1.VpcPeeringConnection, opts v1.UpdateOptions) (*v1alpha1.VpcPeeringConnection, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(vpcpeeringconnectionsResource, "status", c.ns, vpcPeeringConnection), &v1alpha1.VpcPeeringConnection{})
 
@@ -114,7 +116,7 @@ func (c *FakeVpcPeeringConnections) UpdateStatus(vpcPeeringConnection *v1alpha1.
 }
 
 // Delete takes name of the vpcPeeringConnection and deletes it. Returns an error if one occurs.
-func (c *FakeVpcPeeringConnections) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeVpcPeeringConnections) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(vpcpeeringconnectionsResource, c.ns, name), &v1alpha1.VpcPeeringConnection{})
 
@@ -122,15 +124,15 @@ func (c *FakeVpcPeeringConnections) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeVpcPeeringConnections) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(vpcpeeringconnectionsResource, c.ns, listOptions)
+func (c *FakeVpcPeeringConnections) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(vpcpeeringconnectionsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.VpcPeeringConnectionList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched vpcPeeringConnection.
-func (c *FakeVpcPeeringConnections) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.VpcPeeringConnection, err error) {
+func (c *FakeVpcPeeringConnections) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.VpcPeeringConnection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(vpcpeeringconnectionsResource, c.ns, name, pt, data, subresources...), &v1alpha1.VpcPeeringConnection{})
 

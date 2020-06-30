@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cloud9environmentec2sResource = schema.GroupVersionResource{Group: "aws.kube
 var cloud9environmentec2sKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "Cloud9EnvironmentEc2"}
 
 // Get takes name of the cloud9EnvironmentEc2, and returns the corresponding cloud9EnvironmentEc2 object, and an error if there is any.
-func (c *FakeCloud9EnvironmentEc2s) Get(name string, options v1.GetOptions) (result *v1alpha1.Cloud9EnvironmentEc2, err error) {
+func (c *FakeCloud9EnvironmentEc2s) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Cloud9EnvironmentEc2, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cloud9environmentec2sResource, c.ns, name), &v1alpha1.Cloud9EnvironmentEc2{})
 
@@ -51,7 +53,7 @@ func (c *FakeCloud9EnvironmentEc2s) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of Cloud9EnvironmentEc2s that match those selectors.
-func (c *FakeCloud9EnvironmentEc2s) List(opts v1.ListOptions) (result *v1alpha1.Cloud9EnvironmentEc2List, err error) {
+func (c *FakeCloud9EnvironmentEc2s) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.Cloud9EnvironmentEc2List, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cloud9environmentec2sResource, cloud9environmentec2sKind, c.ns, opts), &v1alpha1.Cloud9EnvironmentEc2List{})
 
@@ -73,14 +75,14 @@ func (c *FakeCloud9EnvironmentEc2s) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested cloud9EnvironmentEc2s.
-func (c *FakeCloud9EnvironmentEc2s) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCloud9EnvironmentEc2s) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cloud9environmentec2sResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cloud9EnvironmentEc2 and creates it.  Returns the server's representation of the cloud9EnvironmentEc2, and an error, if there is any.
-func (c *FakeCloud9EnvironmentEc2s) Create(cloud9EnvironmentEc2 *v1alpha1.Cloud9EnvironmentEc2) (result *v1alpha1.Cloud9EnvironmentEc2, err error) {
+func (c *FakeCloud9EnvironmentEc2s) Create(ctx context.Context, cloud9EnvironmentEc2 *v1alpha1.Cloud9EnvironmentEc2, opts v1.CreateOptions) (result *v1alpha1.Cloud9EnvironmentEc2, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cloud9environmentec2sResource, c.ns, cloud9EnvironmentEc2), &v1alpha1.Cloud9EnvironmentEc2{})
 
@@ -91,7 +93,7 @@ func (c *FakeCloud9EnvironmentEc2s) Create(cloud9EnvironmentEc2 *v1alpha1.Cloud9
 }
 
 // Update takes the representation of a cloud9EnvironmentEc2 and updates it. Returns the server's representation of the cloud9EnvironmentEc2, and an error, if there is any.
-func (c *FakeCloud9EnvironmentEc2s) Update(cloud9EnvironmentEc2 *v1alpha1.Cloud9EnvironmentEc2) (result *v1alpha1.Cloud9EnvironmentEc2, err error) {
+func (c *FakeCloud9EnvironmentEc2s) Update(ctx context.Context, cloud9EnvironmentEc2 *v1alpha1.Cloud9EnvironmentEc2, opts v1.UpdateOptions) (result *v1alpha1.Cloud9EnvironmentEc2, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cloud9environmentec2sResource, c.ns, cloud9EnvironmentEc2), &v1alpha1.Cloud9EnvironmentEc2{})
 
@@ -103,7 +105,7 @@ func (c *FakeCloud9EnvironmentEc2s) Update(cloud9EnvironmentEc2 *v1alpha1.Cloud9
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCloud9EnvironmentEc2s) UpdateStatus(cloud9EnvironmentEc2 *v1alpha1.Cloud9EnvironmentEc2) (*v1alpha1.Cloud9EnvironmentEc2, error) {
+func (c *FakeCloud9EnvironmentEc2s) UpdateStatus(ctx context.Context, cloud9EnvironmentEc2 *v1alpha1.Cloud9EnvironmentEc2, opts v1.UpdateOptions) (*v1alpha1.Cloud9EnvironmentEc2, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cloud9environmentec2sResource, "status", c.ns, cloud9EnvironmentEc2), &v1alpha1.Cloud9EnvironmentEc2{})
 
@@ -114,7 +116,7 @@ func (c *FakeCloud9EnvironmentEc2s) UpdateStatus(cloud9EnvironmentEc2 *v1alpha1.
 }
 
 // Delete takes name of the cloud9EnvironmentEc2 and deletes it. Returns an error if one occurs.
-func (c *FakeCloud9EnvironmentEc2s) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCloud9EnvironmentEc2s) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cloud9environmentec2sResource, c.ns, name), &v1alpha1.Cloud9EnvironmentEc2{})
 
@@ -122,15 +124,15 @@ func (c *FakeCloud9EnvironmentEc2s) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCloud9EnvironmentEc2s) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cloud9environmentec2sResource, c.ns, listOptions)
+func (c *FakeCloud9EnvironmentEc2s) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cloud9environmentec2sResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.Cloud9EnvironmentEc2List{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cloud9EnvironmentEc2.
-func (c *FakeCloud9EnvironmentEc2s) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Cloud9EnvironmentEc2, err error) {
+func (c *FakeCloud9EnvironmentEc2s) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Cloud9EnvironmentEc2, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cloud9environmentec2sResource, c.ns, name, pt, data, subresources...), &v1alpha1.Cloud9EnvironmentEc2{})
 

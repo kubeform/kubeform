@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type ConfigDeliveryChannelsGetter interface {
 
 // ConfigDeliveryChannelInterface has methods to work with ConfigDeliveryChannel resources.
 type ConfigDeliveryChannelInterface interface {
-	Create(*v1alpha1.ConfigDeliveryChannel) (*v1alpha1.ConfigDeliveryChannel, error)
-	Update(*v1alpha1.ConfigDeliveryChannel) (*v1alpha1.ConfigDeliveryChannel, error)
-	UpdateStatus(*v1alpha1.ConfigDeliveryChannel) (*v1alpha1.ConfigDeliveryChannel, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ConfigDeliveryChannel, error)
-	List(opts v1.ListOptions) (*v1alpha1.ConfigDeliveryChannelList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ConfigDeliveryChannel, err error)
+	Create(ctx context.Context, configDeliveryChannel *v1alpha1.ConfigDeliveryChannel, opts v1.CreateOptions) (*v1alpha1.ConfigDeliveryChannel, error)
+	Update(ctx context.Context, configDeliveryChannel *v1alpha1.ConfigDeliveryChannel, opts v1.UpdateOptions) (*v1alpha1.ConfigDeliveryChannel, error)
+	UpdateStatus(ctx context.Context, configDeliveryChannel *v1alpha1.ConfigDeliveryChannel, opts v1.UpdateOptions) (*v1alpha1.ConfigDeliveryChannel, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ConfigDeliveryChannel, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ConfigDeliveryChannelList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ConfigDeliveryChannel, err error)
 	ConfigDeliveryChannelExpansion
 }
 
@@ -65,20 +66,20 @@ func newConfigDeliveryChannels(c *AwsV1alpha1Client, namespace string) *configDe
 }
 
 // Get takes name of the configDeliveryChannel, and returns the corresponding configDeliveryChannel object, and an error if there is any.
-func (c *configDeliveryChannels) Get(name string, options v1.GetOptions) (result *v1alpha1.ConfigDeliveryChannel, err error) {
+func (c *configDeliveryChannels) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ConfigDeliveryChannel, err error) {
 	result = &v1alpha1.ConfigDeliveryChannel{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("configdeliverychannels").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ConfigDeliveryChannels that match those selectors.
-func (c *configDeliveryChannels) List(opts v1.ListOptions) (result *v1alpha1.ConfigDeliveryChannelList, err error) {
+func (c *configDeliveryChannels) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ConfigDeliveryChannelList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *configDeliveryChannels) List(opts v1.ListOptions) (result *v1alpha1.Con
 		Resource("configdeliverychannels").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested configDeliveryChannels.
-func (c *configDeliveryChannels) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *configDeliveryChannels) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *configDeliveryChannels) Watch(opts v1.ListOptions) (watch.Interface, er
 		Resource("configdeliverychannels").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a configDeliveryChannel and creates it.  Returns the server's representation of the configDeliveryChannel, and an error, if there is any.
-func (c *configDeliveryChannels) Create(configDeliveryChannel *v1alpha1.ConfigDeliveryChannel) (result *v1alpha1.ConfigDeliveryChannel, err error) {
+func (c *configDeliveryChannels) Create(ctx context.Context, configDeliveryChannel *v1alpha1.ConfigDeliveryChannel, opts v1.CreateOptions) (result *v1alpha1.ConfigDeliveryChannel, err error) {
 	result = &v1alpha1.ConfigDeliveryChannel{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("configdeliverychannels").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(configDeliveryChannel).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a configDeliveryChannel and updates it. Returns the server's representation of the configDeliveryChannel, and an error, if there is any.
-func (c *configDeliveryChannels) Update(configDeliveryChannel *v1alpha1.ConfigDeliveryChannel) (result *v1alpha1.ConfigDeliveryChannel, err error) {
+func (c *configDeliveryChannels) Update(ctx context.Context, configDeliveryChannel *v1alpha1.ConfigDeliveryChannel, opts v1.UpdateOptions) (result *v1alpha1.ConfigDeliveryChannel, err error) {
 	result = &v1alpha1.ConfigDeliveryChannel{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("configdeliverychannels").
 		Name(configDeliveryChannel.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(configDeliveryChannel).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *configDeliveryChannels) UpdateStatus(configDeliveryChannel *v1alpha1.ConfigDeliveryChannel) (result *v1alpha1.ConfigDeliveryChannel, err error) {
+func (c *configDeliveryChannels) UpdateStatus(ctx context.Context, configDeliveryChannel *v1alpha1.ConfigDeliveryChannel, opts v1.UpdateOptions) (result *v1alpha1.ConfigDeliveryChannel, err error) {
 	result = &v1alpha1.ConfigDeliveryChannel{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("configdeliverychannels").
 		Name(configDeliveryChannel.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(configDeliveryChannel).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the configDeliveryChannel and deletes it. Returns an error if one occurs.
-func (c *configDeliveryChannels) Delete(name string, options *v1.DeleteOptions) error {
+func (c *configDeliveryChannels) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("configdeliverychannels").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *configDeliveryChannels) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *configDeliveryChannels) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("configdeliverychannels").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched configDeliveryChannel.
-func (c *configDeliveryChannels) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ConfigDeliveryChannel, err error) {
+func (c *configDeliveryChannels) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ConfigDeliveryChannel, err error) {
 	result = &v1alpha1.ConfigDeliveryChannel{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("configdeliverychannels").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

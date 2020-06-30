@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type LoggingOrganizationExclusionsGetter interface {
 
 // LoggingOrganizationExclusionInterface has methods to work with LoggingOrganizationExclusion resources.
 type LoggingOrganizationExclusionInterface interface {
-	Create(*v1alpha1.LoggingOrganizationExclusion) (*v1alpha1.LoggingOrganizationExclusion, error)
-	Update(*v1alpha1.LoggingOrganizationExclusion) (*v1alpha1.LoggingOrganizationExclusion, error)
-	UpdateStatus(*v1alpha1.LoggingOrganizationExclusion) (*v1alpha1.LoggingOrganizationExclusion, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.LoggingOrganizationExclusion, error)
-	List(opts v1.ListOptions) (*v1alpha1.LoggingOrganizationExclusionList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LoggingOrganizationExclusion, err error)
+	Create(ctx context.Context, loggingOrganizationExclusion *v1alpha1.LoggingOrganizationExclusion, opts v1.CreateOptions) (*v1alpha1.LoggingOrganizationExclusion, error)
+	Update(ctx context.Context, loggingOrganizationExclusion *v1alpha1.LoggingOrganizationExclusion, opts v1.UpdateOptions) (*v1alpha1.LoggingOrganizationExclusion, error)
+	UpdateStatus(ctx context.Context, loggingOrganizationExclusion *v1alpha1.LoggingOrganizationExclusion, opts v1.UpdateOptions) (*v1alpha1.LoggingOrganizationExclusion, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.LoggingOrganizationExclusion, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.LoggingOrganizationExclusionList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LoggingOrganizationExclusion, err error)
 	LoggingOrganizationExclusionExpansion
 }
 
@@ -65,20 +66,20 @@ func newLoggingOrganizationExclusions(c *GoogleV1alpha1Client, namespace string)
 }
 
 // Get takes name of the loggingOrganizationExclusion, and returns the corresponding loggingOrganizationExclusion object, and an error if there is any.
-func (c *loggingOrganizationExclusions) Get(name string, options v1.GetOptions) (result *v1alpha1.LoggingOrganizationExclusion, err error) {
+func (c *loggingOrganizationExclusions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LoggingOrganizationExclusion, err error) {
 	result = &v1alpha1.LoggingOrganizationExclusion{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("loggingorganizationexclusions").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of LoggingOrganizationExclusions that match those selectors.
-func (c *loggingOrganizationExclusions) List(opts v1.ListOptions) (result *v1alpha1.LoggingOrganizationExclusionList, err error) {
+func (c *loggingOrganizationExclusions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LoggingOrganizationExclusionList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *loggingOrganizationExclusions) List(opts v1.ListOptions) (result *v1alp
 		Resource("loggingorganizationexclusions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested loggingOrganizationExclusions.
-func (c *loggingOrganizationExclusions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *loggingOrganizationExclusions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *loggingOrganizationExclusions) Watch(opts v1.ListOptions) (watch.Interf
 		Resource("loggingorganizationexclusions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a loggingOrganizationExclusion and creates it.  Returns the server's representation of the loggingOrganizationExclusion, and an error, if there is any.
-func (c *loggingOrganizationExclusions) Create(loggingOrganizationExclusion *v1alpha1.LoggingOrganizationExclusion) (result *v1alpha1.LoggingOrganizationExclusion, err error) {
+func (c *loggingOrganizationExclusions) Create(ctx context.Context, loggingOrganizationExclusion *v1alpha1.LoggingOrganizationExclusion, opts v1.CreateOptions) (result *v1alpha1.LoggingOrganizationExclusion, err error) {
 	result = &v1alpha1.LoggingOrganizationExclusion{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("loggingorganizationexclusions").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(loggingOrganizationExclusion).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a loggingOrganizationExclusion and updates it. Returns the server's representation of the loggingOrganizationExclusion, and an error, if there is any.
-func (c *loggingOrganizationExclusions) Update(loggingOrganizationExclusion *v1alpha1.LoggingOrganizationExclusion) (result *v1alpha1.LoggingOrganizationExclusion, err error) {
+func (c *loggingOrganizationExclusions) Update(ctx context.Context, loggingOrganizationExclusion *v1alpha1.LoggingOrganizationExclusion, opts v1.UpdateOptions) (result *v1alpha1.LoggingOrganizationExclusion, err error) {
 	result = &v1alpha1.LoggingOrganizationExclusion{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("loggingorganizationexclusions").
 		Name(loggingOrganizationExclusion.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(loggingOrganizationExclusion).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *loggingOrganizationExclusions) UpdateStatus(loggingOrganizationExclusion *v1alpha1.LoggingOrganizationExclusion) (result *v1alpha1.LoggingOrganizationExclusion, err error) {
+func (c *loggingOrganizationExclusions) UpdateStatus(ctx context.Context, loggingOrganizationExclusion *v1alpha1.LoggingOrganizationExclusion, opts v1.UpdateOptions) (result *v1alpha1.LoggingOrganizationExclusion, err error) {
 	result = &v1alpha1.LoggingOrganizationExclusion{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("loggingorganizationexclusions").
 		Name(loggingOrganizationExclusion.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(loggingOrganizationExclusion).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the loggingOrganizationExclusion and deletes it. Returns an error if one occurs.
-func (c *loggingOrganizationExclusions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *loggingOrganizationExclusions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("loggingorganizationexclusions").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *loggingOrganizationExclusions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *loggingOrganizationExclusions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("loggingorganizationexclusions").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched loggingOrganizationExclusion.
-func (c *loggingOrganizationExclusions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LoggingOrganizationExclusion, err error) {
+func (c *loggingOrganizationExclusions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LoggingOrganizationExclusion, err error) {
 	result = &v1alpha1.LoggingOrganizationExclusion{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("loggingorganizationexclusions").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

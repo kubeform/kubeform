@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type SourcerepoRepositoryIamMembersGetter interface {
 
 // SourcerepoRepositoryIamMemberInterface has methods to work with SourcerepoRepositoryIamMember resources.
 type SourcerepoRepositoryIamMemberInterface interface {
-	Create(*v1alpha1.SourcerepoRepositoryIamMember) (*v1alpha1.SourcerepoRepositoryIamMember, error)
-	Update(*v1alpha1.SourcerepoRepositoryIamMember) (*v1alpha1.SourcerepoRepositoryIamMember, error)
-	UpdateStatus(*v1alpha1.SourcerepoRepositoryIamMember) (*v1alpha1.SourcerepoRepositoryIamMember, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SourcerepoRepositoryIamMember, error)
-	List(opts v1.ListOptions) (*v1alpha1.SourcerepoRepositoryIamMemberList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SourcerepoRepositoryIamMember, err error)
+	Create(ctx context.Context, sourcerepoRepositoryIamMember *v1alpha1.SourcerepoRepositoryIamMember, opts v1.CreateOptions) (*v1alpha1.SourcerepoRepositoryIamMember, error)
+	Update(ctx context.Context, sourcerepoRepositoryIamMember *v1alpha1.SourcerepoRepositoryIamMember, opts v1.UpdateOptions) (*v1alpha1.SourcerepoRepositoryIamMember, error)
+	UpdateStatus(ctx context.Context, sourcerepoRepositoryIamMember *v1alpha1.SourcerepoRepositoryIamMember, opts v1.UpdateOptions) (*v1alpha1.SourcerepoRepositoryIamMember, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SourcerepoRepositoryIamMember, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SourcerepoRepositoryIamMemberList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SourcerepoRepositoryIamMember, err error)
 	SourcerepoRepositoryIamMemberExpansion
 }
 
@@ -65,20 +66,20 @@ func newSourcerepoRepositoryIamMembers(c *GoogleV1alpha1Client, namespace string
 }
 
 // Get takes name of the sourcerepoRepositoryIamMember, and returns the corresponding sourcerepoRepositoryIamMember object, and an error if there is any.
-func (c *sourcerepoRepositoryIamMembers) Get(name string, options v1.GetOptions) (result *v1alpha1.SourcerepoRepositoryIamMember, err error) {
+func (c *sourcerepoRepositoryIamMembers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SourcerepoRepositoryIamMember, err error) {
 	result = &v1alpha1.SourcerepoRepositoryIamMember{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("sourcereporepositoryiammembers").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SourcerepoRepositoryIamMembers that match those selectors.
-func (c *sourcerepoRepositoryIamMembers) List(opts v1.ListOptions) (result *v1alpha1.SourcerepoRepositoryIamMemberList, err error) {
+func (c *sourcerepoRepositoryIamMembers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SourcerepoRepositoryIamMemberList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *sourcerepoRepositoryIamMembers) List(opts v1.ListOptions) (result *v1al
 		Resource("sourcereporepositoryiammembers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested sourcerepoRepositoryIamMembers.
-func (c *sourcerepoRepositoryIamMembers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *sourcerepoRepositoryIamMembers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *sourcerepoRepositoryIamMembers) Watch(opts v1.ListOptions) (watch.Inter
 		Resource("sourcereporepositoryiammembers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a sourcerepoRepositoryIamMember and creates it.  Returns the server's representation of the sourcerepoRepositoryIamMember, and an error, if there is any.
-func (c *sourcerepoRepositoryIamMembers) Create(sourcerepoRepositoryIamMember *v1alpha1.SourcerepoRepositoryIamMember) (result *v1alpha1.SourcerepoRepositoryIamMember, err error) {
+func (c *sourcerepoRepositoryIamMembers) Create(ctx context.Context, sourcerepoRepositoryIamMember *v1alpha1.SourcerepoRepositoryIamMember, opts v1.CreateOptions) (result *v1alpha1.SourcerepoRepositoryIamMember, err error) {
 	result = &v1alpha1.SourcerepoRepositoryIamMember{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("sourcereporepositoryiammembers").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sourcerepoRepositoryIamMember).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a sourcerepoRepositoryIamMember and updates it. Returns the server's representation of the sourcerepoRepositoryIamMember, and an error, if there is any.
-func (c *sourcerepoRepositoryIamMembers) Update(sourcerepoRepositoryIamMember *v1alpha1.SourcerepoRepositoryIamMember) (result *v1alpha1.SourcerepoRepositoryIamMember, err error) {
+func (c *sourcerepoRepositoryIamMembers) Update(ctx context.Context, sourcerepoRepositoryIamMember *v1alpha1.SourcerepoRepositoryIamMember, opts v1.UpdateOptions) (result *v1alpha1.SourcerepoRepositoryIamMember, err error) {
 	result = &v1alpha1.SourcerepoRepositoryIamMember{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sourcereporepositoryiammembers").
 		Name(sourcerepoRepositoryIamMember.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sourcerepoRepositoryIamMember).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *sourcerepoRepositoryIamMembers) UpdateStatus(sourcerepoRepositoryIamMember *v1alpha1.SourcerepoRepositoryIamMember) (result *v1alpha1.SourcerepoRepositoryIamMember, err error) {
+func (c *sourcerepoRepositoryIamMembers) UpdateStatus(ctx context.Context, sourcerepoRepositoryIamMember *v1alpha1.SourcerepoRepositoryIamMember, opts v1.UpdateOptions) (result *v1alpha1.SourcerepoRepositoryIamMember, err error) {
 	result = &v1alpha1.SourcerepoRepositoryIamMember{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sourcereporepositoryiammembers").
 		Name(sourcerepoRepositoryIamMember.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sourcerepoRepositoryIamMember).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the sourcerepoRepositoryIamMember and deletes it. Returns an error if one occurs.
-func (c *sourcerepoRepositoryIamMembers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *sourcerepoRepositoryIamMembers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sourcereporepositoryiammembers").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *sourcerepoRepositoryIamMembers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *sourcerepoRepositoryIamMembers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sourcereporepositoryiammembers").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched sourcerepoRepositoryIamMember.
-func (c *sourcerepoRepositoryIamMembers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SourcerepoRepositoryIamMember, err error) {
+func (c *sourcerepoRepositoryIamMembers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SourcerepoRepositoryIamMember, err error) {
 	result = &v1alpha1.SourcerepoRepositoryIamMember{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("sourcereporepositoryiammembers").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

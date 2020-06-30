@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type MonitorActionGroupsGetter interface {
 
 // MonitorActionGroupInterface has methods to work with MonitorActionGroup resources.
 type MonitorActionGroupInterface interface {
-	Create(*v1alpha1.MonitorActionGroup) (*v1alpha1.MonitorActionGroup, error)
-	Update(*v1alpha1.MonitorActionGroup) (*v1alpha1.MonitorActionGroup, error)
-	UpdateStatus(*v1alpha1.MonitorActionGroup) (*v1alpha1.MonitorActionGroup, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.MonitorActionGroup, error)
-	List(opts v1.ListOptions) (*v1alpha1.MonitorActionGroupList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MonitorActionGroup, err error)
+	Create(ctx context.Context, monitorActionGroup *v1alpha1.MonitorActionGroup, opts v1.CreateOptions) (*v1alpha1.MonitorActionGroup, error)
+	Update(ctx context.Context, monitorActionGroup *v1alpha1.MonitorActionGroup, opts v1.UpdateOptions) (*v1alpha1.MonitorActionGroup, error)
+	UpdateStatus(ctx context.Context, monitorActionGroup *v1alpha1.MonitorActionGroup, opts v1.UpdateOptions) (*v1alpha1.MonitorActionGroup, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.MonitorActionGroup, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.MonitorActionGroupList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MonitorActionGroup, err error)
 	MonitorActionGroupExpansion
 }
 
@@ -65,20 +66,20 @@ func newMonitorActionGroups(c *AzurermV1alpha1Client, namespace string) *monitor
 }
 
 // Get takes name of the monitorActionGroup, and returns the corresponding monitorActionGroup object, and an error if there is any.
-func (c *monitorActionGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.MonitorActionGroup, err error) {
+func (c *monitorActionGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.MonitorActionGroup, err error) {
 	result = &v1alpha1.MonitorActionGroup{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("monitoractiongroups").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of MonitorActionGroups that match those selectors.
-func (c *monitorActionGroups) List(opts v1.ListOptions) (result *v1alpha1.MonitorActionGroupList, err error) {
+func (c *monitorActionGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.MonitorActionGroupList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *monitorActionGroups) List(opts v1.ListOptions) (result *v1alpha1.Monito
 		Resource("monitoractiongroups").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested monitorActionGroups.
-func (c *monitorActionGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *monitorActionGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *monitorActionGroups) Watch(opts v1.ListOptions) (watch.Interface, error
 		Resource("monitoractiongroups").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a monitorActionGroup and creates it.  Returns the server's representation of the monitorActionGroup, and an error, if there is any.
-func (c *monitorActionGroups) Create(monitorActionGroup *v1alpha1.MonitorActionGroup) (result *v1alpha1.MonitorActionGroup, err error) {
+func (c *monitorActionGroups) Create(ctx context.Context, monitorActionGroup *v1alpha1.MonitorActionGroup, opts v1.CreateOptions) (result *v1alpha1.MonitorActionGroup, err error) {
 	result = &v1alpha1.MonitorActionGroup{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("monitoractiongroups").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(monitorActionGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a monitorActionGroup and updates it. Returns the server's representation of the monitorActionGroup, and an error, if there is any.
-func (c *monitorActionGroups) Update(monitorActionGroup *v1alpha1.MonitorActionGroup) (result *v1alpha1.MonitorActionGroup, err error) {
+func (c *monitorActionGroups) Update(ctx context.Context, monitorActionGroup *v1alpha1.MonitorActionGroup, opts v1.UpdateOptions) (result *v1alpha1.MonitorActionGroup, err error) {
 	result = &v1alpha1.MonitorActionGroup{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("monitoractiongroups").
 		Name(monitorActionGroup.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(monitorActionGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *monitorActionGroups) UpdateStatus(monitorActionGroup *v1alpha1.MonitorActionGroup) (result *v1alpha1.MonitorActionGroup, err error) {
+func (c *monitorActionGroups) UpdateStatus(ctx context.Context, monitorActionGroup *v1alpha1.MonitorActionGroup, opts v1.UpdateOptions) (result *v1alpha1.MonitorActionGroup, err error) {
 	result = &v1alpha1.MonitorActionGroup{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("monitoractiongroups").
 		Name(monitorActionGroup.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(monitorActionGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the monitorActionGroup and deletes it. Returns an error if one occurs.
-func (c *monitorActionGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *monitorActionGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("monitoractiongroups").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *monitorActionGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *monitorActionGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("monitoractiongroups").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched monitorActionGroup.
-func (c *monitorActionGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MonitorActionGroup, err error) {
+func (c *monitorActionGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MonitorActionGroup, err error) {
 	result = &v1alpha1.MonitorActionGroup{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("monitoractiongroups").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

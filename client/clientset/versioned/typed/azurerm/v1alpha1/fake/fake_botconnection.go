@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var botconnectionsResource = schema.GroupVersionResource{Group: "azurerm.kubefor
 var botconnectionsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "BotConnection"}
 
 // Get takes name of the botConnection, and returns the corresponding botConnection object, and an error if there is any.
-func (c *FakeBotConnections) Get(name string, options v1.GetOptions) (result *v1alpha1.BotConnection, err error) {
+func (c *FakeBotConnections) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BotConnection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(botconnectionsResource, c.ns, name), &v1alpha1.BotConnection{})
 
@@ -51,7 +53,7 @@ func (c *FakeBotConnections) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of BotConnections that match those selectors.
-func (c *FakeBotConnections) List(opts v1.ListOptions) (result *v1alpha1.BotConnectionList, err error) {
+func (c *FakeBotConnections) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BotConnectionList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(botconnectionsResource, botconnectionsKind, c.ns, opts), &v1alpha1.BotConnectionList{})
 
@@ -73,14 +75,14 @@ func (c *FakeBotConnections) List(opts v1.ListOptions) (result *v1alpha1.BotConn
 }
 
 // Watch returns a watch.Interface that watches the requested botConnections.
-func (c *FakeBotConnections) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeBotConnections) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(botconnectionsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a botConnection and creates it.  Returns the server's representation of the botConnection, and an error, if there is any.
-func (c *FakeBotConnections) Create(botConnection *v1alpha1.BotConnection) (result *v1alpha1.BotConnection, err error) {
+func (c *FakeBotConnections) Create(ctx context.Context, botConnection *v1alpha1.BotConnection, opts v1.CreateOptions) (result *v1alpha1.BotConnection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(botconnectionsResource, c.ns, botConnection), &v1alpha1.BotConnection{})
 
@@ -91,7 +93,7 @@ func (c *FakeBotConnections) Create(botConnection *v1alpha1.BotConnection) (resu
 }
 
 // Update takes the representation of a botConnection and updates it. Returns the server's representation of the botConnection, and an error, if there is any.
-func (c *FakeBotConnections) Update(botConnection *v1alpha1.BotConnection) (result *v1alpha1.BotConnection, err error) {
+func (c *FakeBotConnections) Update(ctx context.Context, botConnection *v1alpha1.BotConnection, opts v1.UpdateOptions) (result *v1alpha1.BotConnection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(botconnectionsResource, c.ns, botConnection), &v1alpha1.BotConnection{})
 
@@ -103,7 +105,7 @@ func (c *FakeBotConnections) Update(botConnection *v1alpha1.BotConnection) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeBotConnections) UpdateStatus(botConnection *v1alpha1.BotConnection) (*v1alpha1.BotConnection, error) {
+func (c *FakeBotConnections) UpdateStatus(ctx context.Context, botConnection *v1alpha1.BotConnection, opts v1.UpdateOptions) (*v1alpha1.BotConnection, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(botconnectionsResource, "status", c.ns, botConnection), &v1alpha1.BotConnection{})
 
@@ -114,7 +116,7 @@ func (c *FakeBotConnections) UpdateStatus(botConnection *v1alpha1.BotConnection)
 }
 
 // Delete takes name of the botConnection and deletes it. Returns an error if one occurs.
-func (c *FakeBotConnections) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeBotConnections) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(botconnectionsResource, c.ns, name), &v1alpha1.BotConnection{})
 
@@ -122,15 +124,15 @@ func (c *FakeBotConnections) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeBotConnections) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(botconnectionsResource, c.ns, listOptions)
+func (c *FakeBotConnections) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(botconnectionsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.BotConnectionList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched botConnection.
-func (c *FakeBotConnections) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BotConnection, err error) {
+func (c *FakeBotConnections) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BotConnection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(botconnectionsResource, c.ns, name, pt, data, subresources...), &v1alpha1.BotConnection{})
 

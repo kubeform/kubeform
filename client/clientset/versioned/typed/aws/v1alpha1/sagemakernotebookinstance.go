@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type SagemakerNotebookInstancesGetter interface {
 
 // SagemakerNotebookInstanceInterface has methods to work with SagemakerNotebookInstance resources.
 type SagemakerNotebookInstanceInterface interface {
-	Create(*v1alpha1.SagemakerNotebookInstance) (*v1alpha1.SagemakerNotebookInstance, error)
-	Update(*v1alpha1.SagemakerNotebookInstance) (*v1alpha1.SagemakerNotebookInstance, error)
-	UpdateStatus(*v1alpha1.SagemakerNotebookInstance) (*v1alpha1.SagemakerNotebookInstance, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SagemakerNotebookInstance, error)
-	List(opts v1.ListOptions) (*v1alpha1.SagemakerNotebookInstanceList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SagemakerNotebookInstance, err error)
+	Create(ctx context.Context, sagemakerNotebookInstance *v1alpha1.SagemakerNotebookInstance, opts v1.CreateOptions) (*v1alpha1.SagemakerNotebookInstance, error)
+	Update(ctx context.Context, sagemakerNotebookInstance *v1alpha1.SagemakerNotebookInstance, opts v1.UpdateOptions) (*v1alpha1.SagemakerNotebookInstance, error)
+	UpdateStatus(ctx context.Context, sagemakerNotebookInstance *v1alpha1.SagemakerNotebookInstance, opts v1.UpdateOptions) (*v1alpha1.SagemakerNotebookInstance, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SagemakerNotebookInstance, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SagemakerNotebookInstanceList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SagemakerNotebookInstance, err error)
 	SagemakerNotebookInstanceExpansion
 }
 
@@ -65,20 +66,20 @@ func newSagemakerNotebookInstances(c *AwsV1alpha1Client, namespace string) *sage
 }
 
 // Get takes name of the sagemakerNotebookInstance, and returns the corresponding sagemakerNotebookInstance object, and an error if there is any.
-func (c *sagemakerNotebookInstances) Get(name string, options v1.GetOptions) (result *v1alpha1.SagemakerNotebookInstance, err error) {
+func (c *sagemakerNotebookInstances) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SagemakerNotebookInstance, err error) {
 	result = &v1alpha1.SagemakerNotebookInstance{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("sagemakernotebookinstances").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SagemakerNotebookInstances that match those selectors.
-func (c *sagemakerNotebookInstances) List(opts v1.ListOptions) (result *v1alpha1.SagemakerNotebookInstanceList, err error) {
+func (c *sagemakerNotebookInstances) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SagemakerNotebookInstanceList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *sagemakerNotebookInstances) List(opts v1.ListOptions) (result *v1alpha1
 		Resource("sagemakernotebookinstances").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested sagemakerNotebookInstances.
-func (c *sagemakerNotebookInstances) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *sagemakerNotebookInstances) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *sagemakerNotebookInstances) Watch(opts v1.ListOptions) (watch.Interface
 		Resource("sagemakernotebookinstances").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a sagemakerNotebookInstance and creates it.  Returns the server's representation of the sagemakerNotebookInstance, and an error, if there is any.
-func (c *sagemakerNotebookInstances) Create(sagemakerNotebookInstance *v1alpha1.SagemakerNotebookInstance) (result *v1alpha1.SagemakerNotebookInstance, err error) {
+func (c *sagemakerNotebookInstances) Create(ctx context.Context, sagemakerNotebookInstance *v1alpha1.SagemakerNotebookInstance, opts v1.CreateOptions) (result *v1alpha1.SagemakerNotebookInstance, err error) {
 	result = &v1alpha1.SagemakerNotebookInstance{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("sagemakernotebookinstances").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sagemakerNotebookInstance).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a sagemakerNotebookInstance and updates it. Returns the server's representation of the sagemakerNotebookInstance, and an error, if there is any.
-func (c *sagemakerNotebookInstances) Update(sagemakerNotebookInstance *v1alpha1.SagemakerNotebookInstance) (result *v1alpha1.SagemakerNotebookInstance, err error) {
+func (c *sagemakerNotebookInstances) Update(ctx context.Context, sagemakerNotebookInstance *v1alpha1.SagemakerNotebookInstance, opts v1.UpdateOptions) (result *v1alpha1.SagemakerNotebookInstance, err error) {
 	result = &v1alpha1.SagemakerNotebookInstance{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sagemakernotebookinstances").
 		Name(sagemakerNotebookInstance.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sagemakerNotebookInstance).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *sagemakerNotebookInstances) UpdateStatus(sagemakerNotebookInstance *v1alpha1.SagemakerNotebookInstance) (result *v1alpha1.SagemakerNotebookInstance, err error) {
+func (c *sagemakerNotebookInstances) UpdateStatus(ctx context.Context, sagemakerNotebookInstance *v1alpha1.SagemakerNotebookInstance, opts v1.UpdateOptions) (result *v1alpha1.SagemakerNotebookInstance, err error) {
 	result = &v1alpha1.SagemakerNotebookInstance{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sagemakernotebookinstances").
 		Name(sagemakerNotebookInstance.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sagemakerNotebookInstance).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the sagemakerNotebookInstance and deletes it. Returns an error if one occurs.
-func (c *sagemakerNotebookInstances) Delete(name string, options *v1.DeleteOptions) error {
+func (c *sagemakerNotebookInstances) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sagemakernotebookinstances").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *sagemakerNotebookInstances) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *sagemakerNotebookInstances) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sagemakernotebookinstances").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched sagemakerNotebookInstance.
-func (c *sagemakerNotebookInstances) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SagemakerNotebookInstance, err error) {
+func (c *sagemakerNotebookInstances) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SagemakerNotebookInstance, err error) {
 	result = &v1alpha1.SagemakerNotebookInstance{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("sagemakernotebookinstances").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

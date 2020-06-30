@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var lightsailstaticipsResource = schema.GroupVersionResource{Group: "aws.kubefor
 var lightsailstaticipsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "LightsailStaticIP"}
 
 // Get takes name of the lightsailStaticIP, and returns the corresponding lightsailStaticIP object, and an error if there is any.
-func (c *FakeLightsailStaticIPs) Get(name string, options v1.GetOptions) (result *v1alpha1.LightsailStaticIP, err error) {
+func (c *FakeLightsailStaticIPs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LightsailStaticIP, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(lightsailstaticipsResource, c.ns, name), &v1alpha1.LightsailStaticIP{})
 
@@ -51,7 +53,7 @@ func (c *FakeLightsailStaticIPs) Get(name string, options v1.GetOptions) (result
 }
 
 // List takes label and field selectors, and returns the list of LightsailStaticIPs that match those selectors.
-func (c *FakeLightsailStaticIPs) List(opts v1.ListOptions) (result *v1alpha1.LightsailStaticIPList, err error) {
+func (c *FakeLightsailStaticIPs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LightsailStaticIPList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(lightsailstaticipsResource, lightsailstaticipsKind, c.ns, opts), &v1alpha1.LightsailStaticIPList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLightsailStaticIPs) List(opts v1.ListOptions) (result *v1alpha1.Lig
 }
 
 // Watch returns a watch.Interface that watches the requested lightsailStaticIPs.
-func (c *FakeLightsailStaticIPs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLightsailStaticIPs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(lightsailstaticipsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a lightsailStaticIP and creates it.  Returns the server's representation of the lightsailStaticIP, and an error, if there is any.
-func (c *FakeLightsailStaticIPs) Create(lightsailStaticIP *v1alpha1.LightsailStaticIP) (result *v1alpha1.LightsailStaticIP, err error) {
+func (c *FakeLightsailStaticIPs) Create(ctx context.Context, lightsailStaticIP *v1alpha1.LightsailStaticIP, opts v1.CreateOptions) (result *v1alpha1.LightsailStaticIP, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(lightsailstaticipsResource, c.ns, lightsailStaticIP), &v1alpha1.LightsailStaticIP{})
 
@@ -91,7 +93,7 @@ func (c *FakeLightsailStaticIPs) Create(lightsailStaticIP *v1alpha1.LightsailSta
 }
 
 // Update takes the representation of a lightsailStaticIP and updates it. Returns the server's representation of the lightsailStaticIP, and an error, if there is any.
-func (c *FakeLightsailStaticIPs) Update(lightsailStaticIP *v1alpha1.LightsailStaticIP) (result *v1alpha1.LightsailStaticIP, err error) {
+func (c *FakeLightsailStaticIPs) Update(ctx context.Context, lightsailStaticIP *v1alpha1.LightsailStaticIP, opts v1.UpdateOptions) (result *v1alpha1.LightsailStaticIP, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(lightsailstaticipsResource, c.ns, lightsailStaticIP), &v1alpha1.LightsailStaticIP{})
 
@@ -103,7 +105,7 @@ func (c *FakeLightsailStaticIPs) Update(lightsailStaticIP *v1alpha1.LightsailSta
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLightsailStaticIPs) UpdateStatus(lightsailStaticIP *v1alpha1.LightsailStaticIP) (*v1alpha1.LightsailStaticIP, error) {
+func (c *FakeLightsailStaticIPs) UpdateStatus(ctx context.Context, lightsailStaticIP *v1alpha1.LightsailStaticIP, opts v1.UpdateOptions) (*v1alpha1.LightsailStaticIP, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(lightsailstaticipsResource, "status", c.ns, lightsailStaticIP), &v1alpha1.LightsailStaticIP{})
 
@@ -114,7 +116,7 @@ func (c *FakeLightsailStaticIPs) UpdateStatus(lightsailStaticIP *v1alpha1.Lights
 }
 
 // Delete takes name of the lightsailStaticIP and deletes it. Returns an error if one occurs.
-func (c *FakeLightsailStaticIPs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLightsailStaticIPs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(lightsailstaticipsResource, c.ns, name), &v1alpha1.LightsailStaticIP{})
 
@@ -122,15 +124,15 @@ func (c *FakeLightsailStaticIPs) Delete(name string, options *v1.DeleteOptions) 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLightsailStaticIPs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(lightsailstaticipsResource, c.ns, listOptions)
+func (c *FakeLightsailStaticIPs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(lightsailstaticipsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LightsailStaticIPList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched lightsailStaticIP.
-func (c *FakeLightsailStaticIPs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LightsailStaticIP, err error) {
+func (c *FakeLightsailStaticIPs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LightsailStaticIP, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(lightsailstaticipsResource, c.ns, name, pt, data, subresources...), &v1alpha1.LightsailStaticIP{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var privatelinkservicesResource = schema.GroupVersionResource{Group: "azurerm.ku
 var privatelinkservicesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "PrivateLinkService"}
 
 // Get takes name of the privateLinkService, and returns the corresponding privateLinkService object, and an error if there is any.
-func (c *FakePrivateLinkServices) Get(name string, options v1.GetOptions) (result *v1alpha1.PrivateLinkService, err error) {
+func (c *FakePrivateLinkServices) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PrivateLinkService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(privatelinkservicesResource, c.ns, name), &v1alpha1.PrivateLinkService{})
 
@@ -51,7 +53,7 @@ func (c *FakePrivateLinkServices) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of PrivateLinkServices that match those selectors.
-func (c *FakePrivateLinkServices) List(opts v1.ListOptions) (result *v1alpha1.PrivateLinkServiceList, err error) {
+func (c *FakePrivateLinkServices) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PrivateLinkServiceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(privatelinkservicesResource, privatelinkservicesKind, c.ns, opts), &v1alpha1.PrivateLinkServiceList{})
 
@@ -73,14 +75,14 @@ func (c *FakePrivateLinkServices) List(opts v1.ListOptions) (result *v1alpha1.Pr
 }
 
 // Watch returns a watch.Interface that watches the requested privateLinkServices.
-func (c *FakePrivateLinkServices) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakePrivateLinkServices) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(privatelinkservicesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a privateLinkService and creates it.  Returns the server's representation of the privateLinkService, and an error, if there is any.
-func (c *FakePrivateLinkServices) Create(privateLinkService *v1alpha1.PrivateLinkService) (result *v1alpha1.PrivateLinkService, err error) {
+func (c *FakePrivateLinkServices) Create(ctx context.Context, privateLinkService *v1alpha1.PrivateLinkService, opts v1.CreateOptions) (result *v1alpha1.PrivateLinkService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(privatelinkservicesResource, c.ns, privateLinkService), &v1alpha1.PrivateLinkService{})
 
@@ -91,7 +93,7 @@ func (c *FakePrivateLinkServices) Create(privateLinkService *v1alpha1.PrivateLin
 }
 
 // Update takes the representation of a privateLinkService and updates it. Returns the server's representation of the privateLinkService, and an error, if there is any.
-func (c *FakePrivateLinkServices) Update(privateLinkService *v1alpha1.PrivateLinkService) (result *v1alpha1.PrivateLinkService, err error) {
+func (c *FakePrivateLinkServices) Update(ctx context.Context, privateLinkService *v1alpha1.PrivateLinkService, opts v1.UpdateOptions) (result *v1alpha1.PrivateLinkService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(privatelinkservicesResource, c.ns, privateLinkService), &v1alpha1.PrivateLinkService{})
 
@@ -103,7 +105,7 @@ func (c *FakePrivateLinkServices) Update(privateLinkService *v1alpha1.PrivateLin
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakePrivateLinkServices) UpdateStatus(privateLinkService *v1alpha1.PrivateLinkService) (*v1alpha1.PrivateLinkService, error) {
+func (c *FakePrivateLinkServices) UpdateStatus(ctx context.Context, privateLinkService *v1alpha1.PrivateLinkService, opts v1.UpdateOptions) (*v1alpha1.PrivateLinkService, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(privatelinkservicesResource, "status", c.ns, privateLinkService), &v1alpha1.PrivateLinkService{})
 
@@ -114,7 +116,7 @@ func (c *FakePrivateLinkServices) UpdateStatus(privateLinkService *v1alpha1.Priv
 }
 
 // Delete takes name of the privateLinkService and deletes it. Returns an error if one occurs.
-func (c *FakePrivateLinkServices) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakePrivateLinkServices) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(privatelinkservicesResource, c.ns, name), &v1alpha1.PrivateLinkService{})
 
@@ -122,15 +124,15 @@ func (c *FakePrivateLinkServices) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakePrivateLinkServices) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(privatelinkservicesResource, c.ns, listOptions)
+func (c *FakePrivateLinkServices) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(privatelinkservicesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.PrivateLinkServiceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched privateLinkService.
-func (c *FakePrivateLinkServices) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PrivateLinkService, err error) {
+func (c *FakePrivateLinkServices) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PrivateLinkService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(privatelinkservicesResource, c.ns, name, pt, data, subresources...), &v1alpha1.PrivateLinkService{})
 

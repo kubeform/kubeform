@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var docdbclusterparametergroupsResource = schema.GroupVersionResource{Group: "aw
 var docdbclusterparametergroupsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DocdbClusterParameterGroup"}
 
 // Get takes name of the docdbClusterParameterGroup, and returns the corresponding docdbClusterParameterGroup object, and an error if there is any.
-func (c *FakeDocdbClusterParameterGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.DocdbClusterParameterGroup, err error) {
+func (c *FakeDocdbClusterParameterGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DocdbClusterParameterGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(docdbclusterparametergroupsResource, c.ns, name), &v1alpha1.DocdbClusterParameterGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeDocdbClusterParameterGroups) Get(name string, options v1.GetOptions
 }
 
 // List takes label and field selectors, and returns the list of DocdbClusterParameterGroups that match those selectors.
-func (c *FakeDocdbClusterParameterGroups) List(opts v1.ListOptions) (result *v1alpha1.DocdbClusterParameterGroupList, err error) {
+func (c *FakeDocdbClusterParameterGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DocdbClusterParameterGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(docdbclusterparametergroupsResource, docdbclusterparametergroupsKind, c.ns, opts), &v1alpha1.DocdbClusterParameterGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDocdbClusterParameterGroups) List(opts v1.ListOptions) (result *v1a
 }
 
 // Watch returns a watch.Interface that watches the requested docdbClusterParameterGroups.
-func (c *FakeDocdbClusterParameterGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDocdbClusterParameterGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(docdbclusterparametergroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a docdbClusterParameterGroup and creates it.  Returns the server's representation of the docdbClusterParameterGroup, and an error, if there is any.
-func (c *FakeDocdbClusterParameterGroups) Create(docdbClusterParameterGroup *v1alpha1.DocdbClusterParameterGroup) (result *v1alpha1.DocdbClusterParameterGroup, err error) {
+func (c *FakeDocdbClusterParameterGroups) Create(ctx context.Context, docdbClusterParameterGroup *v1alpha1.DocdbClusterParameterGroup, opts v1.CreateOptions) (result *v1alpha1.DocdbClusterParameterGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(docdbclusterparametergroupsResource, c.ns, docdbClusterParameterGroup), &v1alpha1.DocdbClusterParameterGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeDocdbClusterParameterGroups) Create(docdbClusterParameterGroup *v1a
 }
 
 // Update takes the representation of a docdbClusterParameterGroup and updates it. Returns the server's representation of the docdbClusterParameterGroup, and an error, if there is any.
-func (c *FakeDocdbClusterParameterGroups) Update(docdbClusterParameterGroup *v1alpha1.DocdbClusterParameterGroup) (result *v1alpha1.DocdbClusterParameterGroup, err error) {
+func (c *FakeDocdbClusterParameterGroups) Update(ctx context.Context, docdbClusterParameterGroup *v1alpha1.DocdbClusterParameterGroup, opts v1.UpdateOptions) (result *v1alpha1.DocdbClusterParameterGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(docdbclusterparametergroupsResource, c.ns, docdbClusterParameterGroup), &v1alpha1.DocdbClusterParameterGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeDocdbClusterParameterGroups) Update(docdbClusterParameterGroup *v1a
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDocdbClusterParameterGroups) UpdateStatus(docdbClusterParameterGroup *v1alpha1.DocdbClusterParameterGroup) (*v1alpha1.DocdbClusterParameterGroup, error) {
+func (c *FakeDocdbClusterParameterGroups) UpdateStatus(ctx context.Context, docdbClusterParameterGroup *v1alpha1.DocdbClusterParameterGroup, opts v1.UpdateOptions) (*v1alpha1.DocdbClusterParameterGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(docdbclusterparametergroupsResource, "status", c.ns, docdbClusterParameterGroup), &v1alpha1.DocdbClusterParameterGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeDocdbClusterParameterGroups) UpdateStatus(docdbClusterParameterGrou
 }
 
 // Delete takes name of the docdbClusterParameterGroup and deletes it. Returns an error if one occurs.
-func (c *FakeDocdbClusterParameterGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDocdbClusterParameterGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(docdbclusterparametergroupsResource, c.ns, name), &v1alpha1.DocdbClusterParameterGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeDocdbClusterParameterGroups) Delete(name string, options *v1.Delete
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDocdbClusterParameterGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(docdbclusterparametergroupsResource, c.ns, listOptions)
+func (c *FakeDocdbClusterParameterGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(docdbclusterparametergroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DocdbClusterParameterGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched docdbClusterParameterGroup.
-func (c *FakeDocdbClusterParameterGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DocdbClusterParameterGroup, err error) {
+func (c *FakeDocdbClusterParameterGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DocdbClusterParameterGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(docdbclusterparametergroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DocdbClusterParameterGroup{})
 

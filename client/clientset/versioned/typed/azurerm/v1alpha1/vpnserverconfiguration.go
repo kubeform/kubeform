@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type VpnServerConfigurationsGetter interface {
 
 // VpnServerConfigurationInterface has methods to work with VpnServerConfiguration resources.
 type VpnServerConfigurationInterface interface {
-	Create(*v1alpha1.VpnServerConfiguration) (*v1alpha1.VpnServerConfiguration, error)
-	Update(*v1alpha1.VpnServerConfiguration) (*v1alpha1.VpnServerConfiguration, error)
-	UpdateStatus(*v1alpha1.VpnServerConfiguration) (*v1alpha1.VpnServerConfiguration, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.VpnServerConfiguration, error)
-	List(opts v1.ListOptions) (*v1alpha1.VpnServerConfigurationList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.VpnServerConfiguration, err error)
+	Create(ctx context.Context, vpnServerConfiguration *v1alpha1.VpnServerConfiguration, opts v1.CreateOptions) (*v1alpha1.VpnServerConfiguration, error)
+	Update(ctx context.Context, vpnServerConfiguration *v1alpha1.VpnServerConfiguration, opts v1.UpdateOptions) (*v1alpha1.VpnServerConfiguration, error)
+	UpdateStatus(ctx context.Context, vpnServerConfiguration *v1alpha1.VpnServerConfiguration, opts v1.UpdateOptions) (*v1alpha1.VpnServerConfiguration, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.VpnServerConfiguration, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.VpnServerConfigurationList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.VpnServerConfiguration, err error)
 	VpnServerConfigurationExpansion
 }
 
@@ -65,20 +66,20 @@ func newVpnServerConfigurations(c *AzurermV1alpha1Client, namespace string) *vpn
 }
 
 // Get takes name of the vpnServerConfiguration, and returns the corresponding vpnServerConfiguration object, and an error if there is any.
-func (c *vpnServerConfigurations) Get(name string, options v1.GetOptions) (result *v1alpha1.VpnServerConfiguration, err error) {
+func (c *vpnServerConfigurations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.VpnServerConfiguration, err error) {
 	result = &v1alpha1.VpnServerConfiguration{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("vpnserverconfigurations").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of VpnServerConfigurations that match those selectors.
-func (c *vpnServerConfigurations) List(opts v1.ListOptions) (result *v1alpha1.VpnServerConfigurationList, err error) {
+func (c *vpnServerConfigurations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.VpnServerConfigurationList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *vpnServerConfigurations) List(opts v1.ListOptions) (result *v1alpha1.Vp
 		Resource("vpnserverconfigurations").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested vpnServerConfigurations.
-func (c *vpnServerConfigurations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *vpnServerConfigurations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *vpnServerConfigurations) Watch(opts v1.ListOptions) (watch.Interface, e
 		Resource("vpnserverconfigurations").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a vpnServerConfiguration and creates it.  Returns the server's representation of the vpnServerConfiguration, and an error, if there is any.
-func (c *vpnServerConfigurations) Create(vpnServerConfiguration *v1alpha1.VpnServerConfiguration) (result *v1alpha1.VpnServerConfiguration, err error) {
+func (c *vpnServerConfigurations) Create(ctx context.Context, vpnServerConfiguration *v1alpha1.VpnServerConfiguration, opts v1.CreateOptions) (result *v1alpha1.VpnServerConfiguration, err error) {
 	result = &v1alpha1.VpnServerConfiguration{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("vpnserverconfigurations").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(vpnServerConfiguration).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a vpnServerConfiguration and updates it. Returns the server's representation of the vpnServerConfiguration, and an error, if there is any.
-func (c *vpnServerConfigurations) Update(vpnServerConfiguration *v1alpha1.VpnServerConfiguration) (result *v1alpha1.VpnServerConfiguration, err error) {
+func (c *vpnServerConfigurations) Update(ctx context.Context, vpnServerConfiguration *v1alpha1.VpnServerConfiguration, opts v1.UpdateOptions) (result *v1alpha1.VpnServerConfiguration, err error) {
 	result = &v1alpha1.VpnServerConfiguration{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("vpnserverconfigurations").
 		Name(vpnServerConfiguration.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(vpnServerConfiguration).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *vpnServerConfigurations) UpdateStatus(vpnServerConfiguration *v1alpha1.VpnServerConfiguration) (result *v1alpha1.VpnServerConfiguration, err error) {
+func (c *vpnServerConfigurations) UpdateStatus(ctx context.Context, vpnServerConfiguration *v1alpha1.VpnServerConfiguration, opts v1.UpdateOptions) (result *v1alpha1.VpnServerConfiguration, err error) {
 	result = &v1alpha1.VpnServerConfiguration{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("vpnserverconfigurations").
 		Name(vpnServerConfiguration.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(vpnServerConfiguration).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the vpnServerConfiguration and deletes it. Returns an error if one occurs.
-func (c *vpnServerConfigurations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *vpnServerConfigurations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("vpnserverconfigurations").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *vpnServerConfigurations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *vpnServerConfigurations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("vpnserverconfigurations").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched vpnServerConfiguration.
-func (c *vpnServerConfigurations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.VpnServerConfiguration, err error) {
+func (c *vpnServerConfigurations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.VpnServerConfiguration, err error) {
 	result = &v1alpha1.VpnServerConfiguration{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("vpnserverconfigurations").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var mediapackagechannelsResource = schema.GroupVersionResource{Group: "aws.kubef
 var mediapackagechannelsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "MediaPackageChannel"}
 
 // Get takes name of the mediaPackageChannel, and returns the corresponding mediaPackageChannel object, and an error if there is any.
-func (c *FakeMediaPackageChannels) Get(name string, options v1.GetOptions) (result *v1alpha1.MediaPackageChannel, err error) {
+func (c *FakeMediaPackageChannels) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.MediaPackageChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(mediapackagechannelsResource, c.ns, name), &v1alpha1.MediaPackageChannel{})
 
@@ -51,7 +53,7 @@ func (c *FakeMediaPackageChannels) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of MediaPackageChannels that match those selectors.
-func (c *FakeMediaPackageChannels) List(opts v1.ListOptions) (result *v1alpha1.MediaPackageChannelList, err error) {
+func (c *FakeMediaPackageChannels) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.MediaPackageChannelList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(mediapackagechannelsResource, mediapackagechannelsKind, c.ns, opts), &v1alpha1.MediaPackageChannelList{})
 
@@ -73,14 +75,14 @@ func (c *FakeMediaPackageChannels) List(opts v1.ListOptions) (result *v1alpha1.M
 }
 
 // Watch returns a watch.Interface that watches the requested mediaPackageChannels.
-func (c *FakeMediaPackageChannels) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeMediaPackageChannels) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(mediapackagechannelsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a mediaPackageChannel and creates it.  Returns the server's representation of the mediaPackageChannel, and an error, if there is any.
-func (c *FakeMediaPackageChannels) Create(mediaPackageChannel *v1alpha1.MediaPackageChannel) (result *v1alpha1.MediaPackageChannel, err error) {
+func (c *FakeMediaPackageChannels) Create(ctx context.Context, mediaPackageChannel *v1alpha1.MediaPackageChannel, opts v1.CreateOptions) (result *v1alpha1.MediaPackageChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(mediapackagechannelsResource, c.ns, mediaPackageChannel), &v1alpha1.MediaPackageChannel{})
 
@@ -91,7 +93,7 @@ func (c *FakeMediaPackageChannels) Create(mediaPackageChannel *v1alpha1.MediaPac
 }
 
 // Update takes the representation of a mediaPackageChannel and updates it. Returns the server's representation of the mediaPackageChannel, and an error, if there is any.
-func (c *FakeMediaPackageChannels) Update(mediaPackageChannel *v1alpha1.MediaPackageChannel) (result *v1alpha1.MediaPackageChannel, err error) {
+func (c *FakeMediaPackageChannels) Update(ctx context.Context, mediaPackageChannel *v1alpha1.MediaPackageChannel, opts v1.UpdateOptions) (result *v1alpha1.MediaPackageChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(mediapackagechannelsResource, c.ns, mediaPackageChannel), &v1alpha1.MediaPackageChannel{})
 
@@ -103,7 +105,7 @@ func (c *FakeMediaPackageChannels) Update(mediaPackageChannel *v1alpha1.MediaPac
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeMediaPackageChannels) UpdateStatus(mediaPackageChannel *v1alpha1.MediaPackageChannel) (*v1alpha1.MediaPackageChannel, error) {
+func (c *FakeMediaPackageChannels) UpdateStatus(ctx context.Context, mediaPackageChannel *v1alpha1.MediaPackageChannel, opts v1.UpdateOptions) (*v1alpha1.MediaPackageChannel, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(mediapackagechannelsResource, "status", c.ns, mediaPackageChannel), &v1alpha1.MediaPackageChannel{})
 
@@ -114,7 +116,7 @@ func (c *FakeMediaPackageChannels) UpdateStatus(mediaPackageChannel *v1alpha1.Me
 }
 
 // Delete takes name of the mediaPackageChannel and deletes it. Returns an error if one occurs.
-func (c *FakeMediaPackageChannels) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeMediaPackageChannels) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(mediapackagechannelsResource, c.ns, name), &v1alpha1.MediaPackageChannel{})
 
@@ -122,15 +124,15 @@ func (c *FakeMediaPackageChannels) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeMediaPackageChannels) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(mediapackagechannelsResource, c.ns, listOptions)
+func (c *FakeMediaPackageChannels) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(mediapackagechannelsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.MediaPackageChannelList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched mediaPackageChannel.
-func (c *FakeMediaPackageChannels) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MediaPackageChannel, err error) {
+func (c *FakeMediaPackageChannels) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MediaPackageChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(mediapackagechannelsResource, c.ns, name, pt, data, subresources...), &v1alpha1.MediaPackageChannel{})
 

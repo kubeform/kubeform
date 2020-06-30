@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type DnsARecordsGetter interface {
 
 // DnsARecordInterface has methods to work with DnsARecord resources.
 type DnsARecordInterface interface {
-	Create(*v1alpha1.DnsARecord) (*v1alpha1.DnsARecord, error)
-	Update(*v1alpha1.DnsARecord) (*v1alpha1.DnsARecord, error)
-	UpdateStatus(*v1alpha1.DnsARecord) (*v1alpha1.DnsARecord, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.DnsARecord, error)
-	List(opts v1.ListOptions) (*v1alpha1.DnsARecordList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DnsARecord, err error)
+	Create(ctx context.Context, dnsARecord *v1alpha1.DnsARecord, opts v1.CreateOptions) (*v1alpha1.DnsARecord, error)
+	Update(ctx context.Context, dnsARecord *v1alpha1.DnsARecord, opts v1.UpdateOptions) (*v1alpha1.DnsARecord, error)
+	UpdateStatus(ctx context.Context, dnsARecord *v1alpha1.DnsARecord, opts v1.UpdateOptions) (*v1alpha1.DnsARecord, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.DnsARecord, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.DnsARecordList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DnsARecord, err error)
 	DnsARecordExpansion
 }
 
@@ -65,20 +66,20 @@ func newDnsARecords(c *AzurermV1alpha1Client, namespace string) *dnsARecords {
 }
 
 // Get takes name of the dnsARecord, and returns the corresponding dnsARecord object, and an error if there is any.
-func (c *dnsARecords) Get(name string, options v1.GetOptions) (result *v1alpha1.DnsARecord, err error) {
+func (c *dnsARecords) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DnsARecord, err error) {
 	result = &v1alpha1.DnsARecord{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("dnsarecords").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of DnsARecords that match those selectors.
-func (c *dnsARecords) List(opts v1.ListOptions) (result *v1alpha1.DnsARecordList, err error) {
+func (c *dnsARecords) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DnsARecordList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *dnsARecords) List(opts v1.ListOptions) (result *v1alpha1.DnsARecordList
 		Resource("dnsarecords").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested dnsARecords.
-func (c *dnsARecords) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *dnsARecords) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *dnsARecords) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("dnsarecords").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a dnsARecord and creates it.  Returns the server's representation of the dnsARecord, and an error, if there is any.
-func (c *dnsARecords) Create(dnsARecord *v1alpha1.DnsARecord) (result *v1alpha1.DnsARecord, err error) {
+func (c *dnsARecords) Create(ctx context.Context, dnsARecord *v1alpha1.DnsARecord, opts v1.CreateOptions) (result *v1alpha1.DnsARecord, err error) {
 	result = &v1alpha1.DnsARecord{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("dnsarecords").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dnsARecord).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a dnsARecord and updates it. Returns the server's representation of the dnsARecord, and an error, if there is any.
-func (c *dnsARecords) Update(dnsARecord *v1alpha1.DnsARecord) (result *v1alpha1.DnsARecord, err error) {
+func (c *dnsARecords) Update(ctx context.Context, dnsARecord *v1alpha1.DnsARecord, opts v1.UpdateOptions) (result *v1alpha1.DnsARecord, err error) {
 	result = &v1alpha1.DnsARecord{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("dnsarecords").
 		Name(dnsARecord.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dnsARecord).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *dnsARecords) UpdateStatus(dnsARecord *v1alpha1.DnsARecord) (result *v1alpha1.DnsARecord, err error) {
+func (c *dnsARecords) UpdateStatus(ctx context.Context, dnsARecord *v1alpha1.DnsARecord, opts v1.UpdateOptions) (result *v1alpha1.DnsARecord, err error) {
 	result = &v1alpha1.DnsARecord{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("dnsarecords").
 		Name(dnsARecord.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dnsARecord).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the dnsARecord and deletes it. Returns an error if one occurs.
-func (c *dnsARecords) Delete(name string, options *v1.DeleteOptions) error {
+func (c *dnsARecords) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("dnsarecords").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *dnsARecords) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *dnsARecords) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("dnsarecords").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched dnsARecord.
-func (c *dnsARecords) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DnsARecord, err error) {
+func (c *dnsARecords) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DnsARecord, err error) {
 	result = &v1alpha1.DnsARecord{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("dnsarecords").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

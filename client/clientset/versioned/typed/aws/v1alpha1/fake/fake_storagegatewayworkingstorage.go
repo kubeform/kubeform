@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var storagegatewayworkingstoragesResource = schema.GroupVersionResource{Group: "
 var storagegatewayworkingstoragesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "StoragegatewayWorkingStorage"}
 
 // Get takes name of the storagegatewayWorkingStorage, and returns the corresponding storagegatewayWorkingStorage object, and an error if there is any.
-func (c *FakeStoragegatewayWorkingStorages) Get(name string, options v1.GetOptions) (result *v1alpha1.StoragegatewayWorkingStorage, err error) {
+func (c *FakeStoragegatewayWorkingStorages) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.StoragegatewayWorkingStorage, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(storagegatewayworkingstoragesResource, c.ns, name), &v1alpha1.StoragegatewayWorkingStorage{})
 
@@ -51,7 +53,7 @@ func (c *FakeStoragegatewayWorkingStorages) Get(name string, options v1.GetOptio
 }
 
 // List takes label and field selectors, and returns the list of StoragegatewayWorkingStorages that match those selectors.
-func (c *FakeStoragegatewayWorkingStorages) List(opts v1.ListOptions) (result *v1alpha1.StoragegatewayWorkingStorageList, err error) {
+func (c *FakeStoragegatewayWorkingStorages) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.StoragegatewayWorkingStorageList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(storagegatewayworkingstoragesResource, storagegatewayworkingstoragesKind, c.ns, opts), &v1alpha1.StoragegatewayWorkingStorageList{})
 
@@ -73,14 +75,14 @@ func (c *FakeStoragegatewayWorkingStorages) List(opts v1.ListOptions) (result *v
 }
 
 // Watch returns a watch.Interface that watches the requested storagegatewayWorkingStorages.
-func (c *FakeStoragegatewayWorkingStorages) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeStoragegatewayWorkingStorages) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(storagegatewayworkingstoragesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a storagegatewayWorkingStorage and creates it.  Returns the server's representation of the storagegatewayWorkingStorage, and an error, if there is any.
-func (c *FakeStoragegatewayWorkingStorages) Create(storagegatewayWorkingStorage *v1alpha1.StoragegatewayWorkingStorage) (result *v1alpha1.StoragegatewayWorkingStorage, err error) {
+func (c *FakeStoragegatewayWorkingStorages) Create(ctx context.Context, storagegatewayWorkingStorage *v1alpha1.StoragegatewayWorkingStorage, opts v1.CreateOptions) (result *v1alpha1.StoragegatewayWorkingStorage, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(storagegatewayworkingstoragesResource, c.ns, storagegatewayWorkingStorage), &v1alpha1.StoragegatewayWorkingStorage{})
 
@@ -91,7 +93,7 @@ func (c *FakeStoragegatewayWorkingStorages) Create(storagegatewayWorkingStorage 
 }
 
 // Update takes the representation of a storagegatewayWorkingStorage and updates it. Returns the server's representation of the storagegatewayWorkingStorage, and an error, if there is any.
-func (c *FakeStoragegatewayWorkingStorages) Update(storagegatewayWorkingStorage *v1alpha1.StoragegatewayWorkingStorage) (result *v1alpha1.StoragegatewayWorkingStorage, err error) {
+func (c *FakeStoragegatewayWorkingStorages) Update(ctx context.Context, storagegatewayWorkingStorage *v1alpha1.StoragegatewayWorkingStorage, opts v1.UpdateOptions) (result *v1alpha1.StoragegatewayWorkingStorage, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(storagegatewayworkingstoragesResource, c.ns, storagegatewayWorkingStorage), &v1alpha1.StoragegatewayWorkingStorage{})
 
@@ -103,7 +105,7 @@ func (c *FakeStoragegatewayWorkingStorages) Update(storagegatewayWorkingStorage 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeStoragegatewayWorkingStorages) UpdateStatus(storagegatewayWorkingStorage *v1alpha1.StoragegatewayWorkingStorage) (*v1alpha1.StoragegatewayWorkingStorage, error) {
+func (c *FakeStoragegatewayWorkingStorages) UpdateStatus(ctx context.Context, storagegatewayWorkingStorage *v1alpha1.StoragegatewayWorkingStorage, opts v1.UpdateOptions) (*v1alpha1.StoragegatewayWorkingStorage, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(storagegatewayworkingstoragesResource, "status", c.ns, storagegatewayWorkingStorage), &v1alpha1.StoragegatewayWorkingStorage{})
 
@@ -114,7 +116,7 @@ func (c *FakeStoragegatewayWorkingStorages) UpdateStatus(storagegatewayWorkingSt
 }
 
 // Delete takes name of the storagegatewayWorkingStorage and deletes it. Returns an error if one occurs.
-func (c *FakeStoragegatewayWorkingStorages) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeStoragegatewayWorkingStorages) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(storagegatewayworkingstoragesResource, c.ns, name), &v1alpha1.StoragegatewayWorkingStorage{})
 
@@ -122,15 +124,15 @@ func (c *FakeStoragegatewayWorkingStorages) Delete(name string, options *v1.Dele
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeStoragegatewayWorkingStorages) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(storagegatewayworkingstoragesResource, c.ns, listOptions)
+func (c *FakeStoragegatewayWorkingStorages) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(storagegatewayworkingstoragesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.StoragegatewayWorkingStorageList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched storagegatewayWorkingStorage.
-func (c *FakeStoragegatewayWorkingStorages) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StoragegatewayWorkingStorage, err error) {
+func (c *FakeStoragegatewayWorkingStorages) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StoragegatewayWorkingStorage, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(storagegatewayworkingstoragesResource, c.ns, name, pt, data, subresources...), &v1alpha1.StoragegatewayWorkingStorage{})
 

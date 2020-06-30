@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var mediastorecontainerpoliciesResource = schema.GroupVersionResource{Group: "aw
 var mediastorecontainerpoliciesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "MediaStoreContainerPolicy"}
 
 // Get takes name of the mediaStoreContainerPolicy, and returns the corresponding mediaStoreContainerPolicy object, and an error if there is any.
-func (c *FakeMediaStoreContainerPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.MediaStoreContainerPolicy, err error) {
+func (c *FakeMediaStoreContainerPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.MediaStoreContainerPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(mediastorecontainerpoliciesResource, c.ns, name), &v1alpha1.MediaStoreContainerPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeMediaStoreContainerPolicies) Get(name string, options v1.GetOptions
 }
 
 // List takes label and field selectors, and returns the list of MediaStoreContainerPolicies that match those selectors.
-func (c *FakeMediaStoreContainerPolicies) List(opts v1.ListOptions) (result *v1alpha1.MediaStoreContainerPolicyList, err error) {
+func (c *FakeMediaStoreContainerPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.MediaStoreContainerPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(mediastorecontainerpoliciesResource, mediastorecontainerpoliciesKind, c.ns, opts), &v1alpha1.MediaStoreContainerPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeMediaStoreContainerPolicies) List(opts v1.ListOptions) (result *v1a
 }
 
 // Watch returns a watch.Interface that watches the requested mediaStoreContainerPolicies.
-func (c *FakeMediaStoreContainerPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeMediaStoreContainerPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(mediastorecontainerpoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a mediaStoreContainerPolicy and creates it.  Returns the server's representation of the mediaStoreContainerPolicy, and an error, if there is any.
-func (c *FakeMediaStoreContainerPolicies) Create(mediaStoreContainerPolicy *v1alpha1.MediaStoreContainerPolicy) (result *v1alpha1.MediaStoreContainerPolicy, err error) {
+func (c *FakeMediaStoreContainerPolicies) Create(ctx context.Context, mediaStoreContainerPolicy *v1alpha1.MediaStoreContainerPolicy, opts v1.CreateOptions) (result *v1alpha1.MediaStoreContainerPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(mediastorecontainerpoliciesResource, c.ns, mediaStoreContainerPolicy), &v1alpha1.MediaStoreContainerPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeMediaStoreContainerPolicies) Create(mediaStoreContainerPolicy *v1al
 }
 
 // Update takes the representation of a mediaStoreContainerPolicy and updates it. Returns the server's representation of the mediaStoreContainerPolicy, and an error, if there is any.
-func (c *FakeMediaStoreContainerPolicies) Update(mediaStoreContainerPolicy *v1alpha1.MediaStoreContainerPolicy) (result *v1alpha1.MediaStoreContainerPolicy, err error) {
+func (c *FakeMediaStoreContainerPolicies) Update(ctx context.Context, mediaStoreContainerPolicy *v1alpha1.MediaStoreContainerPolicy, opts v1.UpdateOptions) (result *v1alpha1.MediaStoreContainerPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(mediastorecontainerpoliciesResource, c.ns, mediaStoreContainerPolicy), &v1alpha1.MediaStoreContainerPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeMediaStoreContainerPolicies) Update(mediaStoreContainerPolicy *v1al
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeMediaStoreContainerPolicies) UpdateStatus(mediaStoreContainerPolicy *v1alpha1.MediaStoreContainerPolicy) (*v1alpha1.MediaStoreContainerPolicy, error) {
+func (c *FakeMediaStoreContainerPolicies) UpdateStatus(ctx context.Context, mediaStoreContainerPolicy *v1alpha1.MediaStoreContainerPolicy, opts v1.UpdateOptions) (*v1alpha1.MediaStoreContainerPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(mediastorecontainerpoliciesResource, "status", c.ns, mediaStoreContainerPolicy), &v1alpha1.MediaStoreContainerPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeMediaStoreContainerPolicies) UpdateStatus(mediaStoreContainerPolicy
 }
 
 // Delete takes name of the mediaStoreContainerPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeMediaStoreContainerPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeMediaStoreContainerPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(mediastorecontainerpoliciesResource, c.ns, name), &v1alpha1.MediaStoreContainerPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeMediaStoreContainerPolicies) Delete(name string, options *v1.Delete
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeMediaStoreContainerPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(mediastorecontainerpoliciesResource, c.ns, listOptions)
+func (c *FakeMediaStoreContainerPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(mediastorecontainerpoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.MediaStoreContainerPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched mediaStoreContainerPolicy.
-func (c *FakeMediaStoreContainerPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MediaStoreContainerPolicy, err error) {
+func (c *FakeMediaStoreContainerPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MediaStoreContainerPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(mediastorecontainerpoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.MediaStoreContainerPolicy{})
 

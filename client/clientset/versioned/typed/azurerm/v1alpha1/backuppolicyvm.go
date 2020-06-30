@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type BackupPolicyVmsGetter interface {
 
 // BackupPolicyVmInterface has methods to work with BackupPolicyVm resources.
 type BackupPolicyVmInterface interface {
-	Create(*v1alpha1.BackupPolicyVm) (*v1alpha1.BackupPolicyVm, error)
-	Update(*v1alpha1.BackupPolicyVm) (*v1alpha1.BackupPolicyVm, error)
-	UpdateStatus(*v1alpha1.BackupPolicyVm) (*v1alpha1.BackupPolicyVm, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.BackupPolicyVm, error)
-	List(opts v1.ListOptions) (*v1alpha1.BackupPolicyVmList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BackupPolicyVm, err error)
+	Create(ctx context.Context, backupPolicyVm *v1alpha1.BackupPolicyVm, opts v1.CreateOptions) (*v1alpha1.BackupPolicyVm, error)
+	Update(ctx context.Context, backupPolicyVm *v1alpha1.BackupPolicyVm, opts v1.UpdateOptions) (*v1alpha1.BackupPolicyVm, error)
+	UpdateStatus(ctx context.Context, backupPolicyVm *v1alpha1.BackupPolicyVm, opts v1.UpdateOptions) (*v1alpha1.BackupPolicyVm, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.BackupPolicyVm, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.BackupPolicyVmList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BackupPolicyVm, err error)
 	BackupPolicyVmExpansion
 }
 
@@ -65,20 +66,20 @@ func newBackupPolicyVms(c *AzurermV1alpha1Client, namespace string) *backupPolic
 }
 
 // Get takes name of the backupPolicyVm, and returns the corresponding backupPolicyVm object, and an error if there is any.
-func (c *backupPolicyVms) Get(name string, options v1.GetOptions) (result *v1alpha1.BackupPolicyVm, err error) {
+func (c *backupPolicyVms) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BackupPolicyVm, err error) {
 	result = &v1alpha1.BackupPolicyVm{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("backuppolicyvms").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of BackupPolicyVms that match those selectors.
-func (c *backupPolicyVms) List(opts v1.ListOptions) (result *v1alpha1.BackupPolicyVmList, err error) {
+func (c *backupPolicyVms) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BackupPolicyVmList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *backupPolicyVms) List(opts v1.ListOptions) (result *v1alpha1.BackupPoli
 		Resource("backuppolicyvms").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested backupPolicyVms.
-func (c *backupPolicyVms) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *backupPolicyVms) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *backupPolicyVms) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("backuppolicyvms").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a backupPolicyVm and creates it.  Returns the server's representation of the backupPolicyVm, and an error, if there is any.
-func (c *backupPolicyVms) Create(backupPolicyVm *v1alpha1.BackupPolicyVm) (result *v1alpha1.BackupPolicyVm, err error) {
+func (c *backupPolicyVms) Create(ctx context.Context, backupPolicyVm *v1alpha1.BackupPolicyVm, opts v1.CreateOptions) (result *v1alpha1.BackupPolicyVm, err error) {
 	result = &v1alpha1.BackupPolicyVm{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("backuppolicyvms").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(backupPolicyVm).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a backupPolicyVm and updates it. Returns the server's representation of the backupPolicyVm, and an error, if there is any.
-func (c *backupPolicyVms) Update(backupPolicyVm *v1alpha1.BackupPolicyVm) (result *v1alpha1.BackupPolicyVm, err error) {
+func (c *backupPolicyVms) Update(ctx context.Context, backupPolicyVm *v1alpha1.BackupPolicyVm, opts v1.UpdateOptions) (result *v1alpha1.BackupPolicyVm, err error) {
 	result = &v1alpha1.BackupPolicyVm{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("backuppolicyvms").
 		Name(backupPolicyVm.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(backupPolicyVm).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *backupPolicyVms) UpdateStatus(backupPolicyVm *v1alpha1.BackupPolicyVm) (result *v1alpha1.BackupPolicyVm, err error) {
+func (c *backupPolicyVms) UpdateStatus(ctx context.Context, backupPolicyVm *v1alpha1.BackupPolicyVm, opts v1.UpdateOptions) (result *v1alpha1.BackupPolicyVm, err error) {
 	result = &v1alpha1.BackupPolicyVm{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("backuppolicyvms").
 		Name(backupPolicyVm.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(backupPolicyVm).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the backupPolicyVm and deletes it. Returns an error if one occurs.
-func (c *backupPolicyVms) Delete(name string, options *v1.DeleteOptions) error {
+func (c *backupPolicyVms) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("backuppolicyvms").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *backupPolicyVms) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *backupPolicyVms) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("backuppolicyvms").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched backupPolicyVm.
-func (c *backupPolicyVms) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BackupPolicyVm, err error) {
+func (c *backupPolicyVms) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BackupPolicyVm, err error) {
 	result = &v1alpha1.BackupPolicyVm{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("backuppolicyvms").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

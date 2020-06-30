@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var fmsadminaccountsResource = schema.GroupVersionResource{Group: "aws.kubeform.
 var fmsadminaccountsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "FmsAdminAccount"}
 
 // Get takes name of the fmsAdminAccount, and returns the corresponding fmsAdminAccount object, and an error if there is any.
-func (c *FakeFmsAdminAccounts) Get(name string, options v1.GetOptions) (result *v1alpha1.FmsAdminAccount, err error) {
+func (c *FakeFmsAdminAccounts) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.FmsAdminAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(fmsadminaccountsResource, c.ns, name), &v1alpha1.FmsAdminAccount{})
 
@@ -51,7 +53,7 @@ func (c *FakeFmsAdminAccounts) Get(name string, options v1.GetOptions) (result *
 }
 
 // List takes label and field selectors, and returns the list of FmsAdminAccounts that match those selectors.
-func (c *FakeFmsAdminAccounts) List(opts v1.ListOptions) (result *v1alpha1.FmsAdminAccountList, err error) {
+func (c *FakeFmsAdminAccounts) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.FmsAdminAccountList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(fmsadminaccountsResource, fmsadminaccountsKind, c.ns, opts), &v1alpha1.FmsAdminAccountList{})
 
@@ -73,14 +75,14 @@ func (c *FakeFmsAdminAccounts) List(opts v1.ListOptions) (result *v1alpha1.FmsAd
 }
 
 // Watch returns a watch.Interface that watches the requested fmsAdminAccounts.
-func (c *FakeFmsAdminAccounts) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeFmsAdminAccounts) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(fmsadminaccountsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a fmsAdminAccount and creates it.  Returns the server's representation of the fmsAdminAccount, and an error, if there is any.
-func (c *FakeFmsAdminAccounts) Create(fmsAdminAccount *v1alpha1.FmsAdminAccount) (result *v1alpha1.FmsAdminAccount, err error) {
+func (c *FakeFmsAdminAccounts) Create(ctx context.Context, fmsAdminAccount *v1alpha1.FmsAdminAccount, opts v1.CreateOptions) (result *v1alpha1.FmsAdminAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(fmsadminaccountsResource, c.ns, fmsAdminAccount), &v1alpha1.FmsAdminAccount{})
 
@@ -91,7 +93,7 @@ func (c *FakeFmsAdminAccounts) Create(fmsAdminAccount *v1alpha1.FmsAdminAccount)
 }
 
 // Update takes the representation of a fmsAdminAccount and updates it. Returns the server's representation of the fmsAdminAccount, and an error, if there is any.
-func (c *FakeFmsAdminAccounts) Update(fmsAdminAccount *v1alpha1.FmsAdminAccount) (result *v1alpha1.FmsAdminAccount, err error) {
+func (c *FakeFmsAdminAccounts) Update(ctx context.Context, fmsAdminAccount *v1alpha1.FmsAdminAccount, opts v1.UpdateOptions) (result *v1alpha1.FmsAdminAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(fmsadminaccountsResource, c.ns, fmsAdminAccount), &v1alpha1.FmsAdminAccount{})
 
@@ -103,7 +105,7 @@ func (c *FakeFmsAdminAccounts) Update(fmsAdminAccount *v1alpha1.FmsAdminAccount)
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeFmsAdminAccounts) UpdateStatus(fmsAdminAccount *v1alpha1.FmsAdminAccount) (*v1alpha1.FmsAdminAccount, error) {
+func (c *FakeFmsAdminAccounts) UpdateStatus(ctx context.Context, fmsAdminAccount *v1alpha1.FmsAdminAccount, opts v1.UpdateOptions) (*v1alpha1.FmsAdminAccount, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(fmsadminaccountsResource, "status", c.ns, fmsAdminAccount), &v1alpha1.FmsAdminAccount{})
 
@@ -114,7 +116,7 @@ func (c *FakeFmsAdminAccounts) UpdateStatus(fmsAdminAccount *v1alpha1.FmsAdminAc
 }
 
 // Delete takes name of the fmsAdminAccount and deletes it. Returns an error if one occurs.
-func (c *FakeFmsAdminAccounts) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeFmsAdminAccounts) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(fmsadminaccountsResource, c.ns, name), &v1alpha1.FmsAdminAccount{})
 
@@ -122,15 +124,15 @@ func (c *FakeFmsAdminAccounts) Delete(name string, options *v1.DeleteOptions) er
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeFmsAdminAccounts) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(fmsadminaccountsResource, c.ns, listOptions)
+func (c *FakeFmsAdminAccounts) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(fmsadminaccountsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.FmsAdminAccountList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched fmsAdminAccount.
-func (c *FakeFmsAdminAccounts) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.FmsAdminAccount, err error) {
+func (c *FakeFmsAdminAccounts) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.FmsAdminAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(fmsadminaccountsResource, c.ns, name, pt, data, subresources...), &v1alpha1.FmsAdminAccount{})
 

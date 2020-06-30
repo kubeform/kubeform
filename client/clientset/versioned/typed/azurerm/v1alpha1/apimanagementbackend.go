@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type ApiManagementBackendsGetter interface {
 
 // ApiManagementBackendInterface has methods to work with ApiManagementBackend resources.
 type ApiManagementBackendInterface interface {
-	Create(*v1alpha1.ApiManagementBackend) (*v1alpha1.ApiManagementBackend, error)
-	Update(*v1alpha1.ApiManagementBackend) (*v1alpha1.ApiManagementBackend, error)
-	UpdateStatus(*v1alpha1.ApiManagementBackend) (*v1alpha1.ApiManagementBackend, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ApiManagementBackend, error)
-	List(opts v1.ListOptions) (*v1alpha1.ApiManagementBackendList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiManagementBackend, err error)
+	Create(ctx context.Context, apiManagementBackend *v1alpha1.ApiManagementBackend, opts v1.CreateOptions) (*v1alpha1.ApiManagementBackend, error)
+	Update(ctx context.Context, apiManagementBackend *v1alpha1.ApiManagementBackend, opts v1.UpdateOptions) (*v1alpha1.ApiManagementBackend, error)
+	UpdateStatus(ctx context.Context, apiManagementBackend *v1alpha1.ApiManagementBackend, opts v1.UpdateOptions) (*v1alpha1.ApiManagementBackend, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ApiManagementBackend, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ApiManagementBackendList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiManagementBackend, err error)
 	ApiManagementBackendExpansion
 }
 
@@ -65,20 +66,20 @@ func newApiManagementBackends(c *AzurermV1alpha1Client, namespace string) *apiMa
 }
 
 // Get takes name of the apiManagementBackend, and returns the corresponding apiManagementBackend object, and an error if there is any.
-func (c *apiManagementBackends) Get(name string, options v1.GetOptions) (result *v1alpha1.ApiManagementBackend, err error) {
+func (c *apiManagementBackends) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApiManagementBackend, err error) {
 	result = &v1alpha1.ApiManagementBackend{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("apimanagementbackends").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ApiManagementBackends that match those selectors.
-func (c *apiManagementBackends) List(opts v1.ListOptions) (result *v1alpha1.ApiManagementBackendList, err error) {
+func (c *apiManagementBackends) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApiManagementBackendList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *apiManagementBackends) List(opts v1.ListOptions) (result *v1alpha1.ApiM
 		Resource("apimanagementbackends").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested apiManagementBackends.
-func (c *apiManagementBackends) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *apiManagementBackends) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *apiManagementBackends) Watch(opts v1.ListOptions) (watch.Interface, err
 		Resource("apimanagementbackends").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a apiManagementBackend and creates it.  Returns the server's representation of the apiManagementBackend, and an error, if there is any.
-func (c *apiManagementBackends) Create(apiManagementBackend *v1alpha1.ApiManagementBackend) (result *v1alpha1.ApiManagementBackend, err error) {
+func (c *apiManagementBackends) Create(ctx context.Context, apiManagementBackend *v1alpha1.ApiManagementBackend, opts v1.CreateOptions) (result *v1alpha1.ApiManagementBackend, err error) {
 	result = &v1alpha1.ApiManagementBackend{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("apimanagementbackends").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(apiManagementBackend).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a apiManagementBackend and updates it. Returns the server's representation of the apiManagementBackend, and an error, if there is any.
-func (c *apiManagementBackends) Update(apiManagementBackend *v1alpha1.ApiManagementBackend) (result *v1alpha1.ApiManagementBackend, err error) {
+func (c *apiManagementBackends) Update(ctx context.Context, apiManagementBackend *v1alpha1.ApiManagementBackend, opts v1.UpdateOptions) (result *v1alpha1.ApiManagementBackend, err error) {
 	result = &v1alpha1.ApiManagementBackend{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("apimanagementbackends").
 		Name(apiManagementBackend.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(apiManagementBackend).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *apiManagementBackends) UpdateStatus(apiManagementBackend *v1alpha1.ApiManagementBackend) (result *v1alpha1.ApiManagementBackend, err error) {
+func (c *apiManagementBackends) UpdateStatus(ctx context.Context, apiManagementBackend *v1alpha1.ApiManagementBackend, opts v1.UpdateOptions) (result *v1alpha1.ApiManagementBackend, err error) {
 	result = &v1alpha1.ApiManagementBackend{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("apimanagementbackends").
 		Name(apiManagementBackend.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(apiManagementBackend).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the apiManagementBackend and deletes it. Returns an error if one occurs.
-func (c *apiManagementBackends) Delete(name string, options *v1.DeleteOptions) error {
+func (c *apiManagementBackends) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("apimanagementbackends").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *apiManagementBackends) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *apiManagementBackends) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("apimanagementbackends").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched apiManagementBackend.
-func (c *apiManagementBackends) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiManagementBackend, err error) {
+func (c *apiManagementBackends) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiManagementBackend, err error) {
 	result = &v1alpha1.ApiManagementBackend{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("apimanagementbackends").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

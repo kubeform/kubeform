@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var organizationsorganizationalunitsResource = schema.GroupVersionResource{Group
 var organizationsorganizationalunitsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "OrganizationsOrganizationalUnit"}
 
 // Get takes name of the organizationsOrganizationalUnit, and returns the corresponding organizationsOrganizationalUnit object, and an error if there is any.
-func (c *FakeOrganizationsOrganizationalUnits) Get(name string, options v1.GetOptions) (result *v1alpha1.OrganizationsOrganizationalUnit, err error) {
+func (c *FakeOrganizationsOrganizationalUnits) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.OrganizationsOrganizationalUnit, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(organizationsorganizationalunitsResource, c.ns, name), &v1alpha1.OrganizationsOrganizationalUnit{})
 
@@ -51,7 +53,7 @@ func (c *FakeOrganizationsOrganizationalUnits) Get(name string, options v1.GetOp
 }
 
 // List takes label and field selectors, and returns the list of OrganizationsOrganizationalUnits that match those selectors.
-func (c *FakeOrganizationsOrganizationalUnits) List(opts v1.ListOptions) (result *v1alpha1.OrganizationsOrganizationalUnitList, err error) {
+func (c *FakeOrganizationsOrganizationalUnits) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.OrganizationsOrganizationalUnitList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(organizationsorganizationalunitsResource, organizationsorganizationalunitsKind, c.ns, opts), &v1alpha1.OrganizationsOrganizationalUnitList{})
 
@@ -73,14 +75,14 @@ func (c *FakeOrganizationsOrganizationalUnits) List(opts v1.ListOptions) (result
 }
 
 // Watch returns a watch.Interface that watches the requested organizationsOrganizationalUnits.
-func (c *FakeOrganizationsOrganizationalUnits) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeOrganizationsOrganizationalUnits) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(organizationsorganizationalunitsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a organizationsOrganizationalUnit and creates it.  Returns the server's representation of the organizationsOrganizationalUnit, and an error, if there is any.
-func (c *FakeOrganizationsOrganizationalUnits) Create(organizationsOrganizationalUnit *v1alpha1.OrganizationsOrganizationalUnit) (result *v1alpha1.OrganizationsOrganizationalUnit, err error) {
+func (c *FakeOrganizationsOrganizationalUnits) Create(ctx context.Context, organizationsOrganizationalUnit *v1alpha1.OrganizationsOrganizationalUnit, opts v1.CreateOptions) (result *v1alpha1.OrganizationsOrganizationalUnit, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(organizationsorganizationalunitsResource, c.ns, organizationsOrganizationalUnit), &v1alpha1.OrganizationsOrganizationalUnit{})
 
@@ -91,7 +93,7 @@ func (c *FakeOrganizationsOrganizationalUnits) Create(organizationsOrganizationa
 }
 
 // Update takes the representation of a organizationsOrganizationalUnit and updates it. Returns the server's representation of the organizationsOrganizationalUnit, and an error, if there is any.
-func (c *FakeOrganizationsOrganizationalUnits) Update(organizationsOrganizationalUnit *v1alpha1.OrganizationsOrganizationalUnit) (result *v1alpha1.OrganizationsOrganizationalUnit, err error) {
+func (c *FakeOrganizationsOrganizationalUnits) Update(ctx context.Context, organizationsOrganizationalUnit *v1alpha1.OrganizationsOrganizationalUnit, opts v1.UpdateOptions) (result *v1alpha1.OrganizationsOrganizationalUnit, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(organizationsorganizationalunitsResource, c.ns, organizationsOrganizationalUnit), &v1alpha1.OrganizationsOrganizationalUnit{})
 
@@ -103,7 +105,7 @@ func (c *FakeOrganizationsOrganizationalUnits) Update(organizationsOrganizationa
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeOrganizationsOrganizationalUnits) UpdateStatus(organizationsOrganizationalUnit *v1alpha1.OrganizationsOrganizationalUnit) (*v1alpha1.OrganizationsOrganizationalUnit, error) {
+func (c *FakeOrganizationsOrganizationalUnits) UpdateStatus(ctx context.Context, organizationsOrganizationalUnit *v1alpha1.OrganizationsOrganizationalUnit, opts v1.UpdateOptions) (*v1alpha1.OrganizationsOrganizationalUnit, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(organizationsorganizationalunitsResource, "status", c.ns, organizationsOrganizationalUnit), &v1alpha1.OrganizationsOrganizationalUnit{})
 
@@ -114,7 +116,7 @@ func (c *FakeOrganizationsOrganizationalUnits) UpdateStatus(organizationsOrganiz
 }
 
 // Delete takes name of the organizationsOrganizationalUnit and deletes it. Returns an error if one occurs.
-func (c *FakeOrganizationsOrganizationalUnits) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeOrganizationsOrganizationalUnits) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(organizationsorganizationalunitsResource, c.ns, name), &v1alpha1.OrganizationsOrganizationalUnit{})
 
@@ -122,15 +124,15 @@ func (c *FakeOrganizationsOrganizationalUnits) Delete(name string, options *v1.D
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeOrganizationsOrganizationalUnits) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(organizationsorganizationalunitsResource, c.ns, listOptions)
+func (c *FakeOrganizationsOrganizationalUnits) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(organizationsorganizationalunitsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.OrganizationsOrganizationalUnitList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched organizationsOrganizationalUnit.
-func (c *FakeOrganizationsOrganizationalUnits) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.OrganizationsOrganizationalUnit, err error) {
+func (c *FakeOrganizationsOrganizationalUnits) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.OrganizationsOrganizationalUnit, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(organizationsorganizationalunitsResource, c.ns, name, pt, data, subresources...), &v1alpha1.OrganizationsOrganizationalUnit{})
 

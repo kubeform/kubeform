@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type StorageDefaultObjectAccessControlsGetter interface {
 
 // StorageDefaultObjectAccessControlInterface has methods to work with StorageDefaultObjectAccessControl resources.
 type StorageDefaultObjectAccessControlInterface interface {
-	Create(*v1alpha1.StorageDefaultObjectAccessControl) (*v1alpha1.StorageDefaultObjectAccessControl, error)
-	Update(*v1alpha1.StorageDefaultObjectAccessControl) (*v1alpha1.StorageDefaultObjectAccessControl, error)
-	UpdateStatus(*v1alpha1.StorageDefaultObjectAccessControl) (*v1alpha1.StorageDefaultObjectAccessControl, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.StorageDefaultObjectAccessControl, error)
-	List(opts v1.ListOptions) (*v1alpha1.StorageDefaultObjectAccessControlList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StorageDefaultObjectAccessControl, err error)
+	Create(ctx context.Context, storageDefaultObjectAccessControl *v1alpha1.StorageDefaultObjectAccessControl, opts v1.CreateOptions) (*v1alpha1.StorageDefaultObjectAccessControl, error)
+	Update(ctx context.Context, storageDefaultObjectAccessControl *v1alpha1.StorageDefaultObjectAccessControl, opts v1.UpdateOptions) (*v1alpha1.StorageDefaultObjectAccessControl, error)
+	UpdateStatus(ctx context.Context, storageDefaultObjectAccessControl *v1alpha1.StorageDefaultObjectAccessControl, opts v1.UpdateOptions) (*v1alpha1.StorageDefaultObjectAccessControl, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.StorageDefaultObjectAccessControl, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.StorageDefaultObjectAccessControlList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StorageDefaultObjectAccessControl, err error)
 	StorageDefaultObjectAccessControlExpansion
 }
 
@@ -65,20 +66,20 @@ func newStorageDefaultObjectAccessControls(c *GoogleV1alpha1Client, namespace st
 }
 
 // Get takes name of the storageDefaultObjectAccessControl, and returns the corresponding storageDefaultObjectAccessControl object, and an error if there is any.
-func (c *storageDefaultObjectAccessControls) Get(name string, options v1.GetOptions) (result *v1alpha1.StorageDefaultObjectAccessControl, err error) {
+func (c *storageDefaultObjectAccessControls) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.StorageDefaultObjectAccessControl, err error) {
 	result = &v1alpha1.StorageDefaultObjectAccessControl{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("storagedefaultobjectaccesscontrols").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of StorageDefaultObjectAccessControls that match those selectors.
-func (c *storageDefaultObjectAccessControls) List(opts v1.ListOptions) (result *v1alpha1.StorageDefaultObjectAccessControlList, err error) {
+func (c *storageDefaultObjectAccessControls) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.StorageDefaultObjectAccessControlList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *storageDefaultObjectAccessControls) List(opts v1.ListOptions) (result *
 		Resource("storagedefaultobjectaccesscontrols").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested storageDefaultObjectAccessControls.
-func (c *storageDefaultObjectAccessControls) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *storageDefaultObjectAccessControls) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *storageDefaultObjectAccessControls) Watch(opts v1.ListOptions) (watch.I
 		Resource("storagedefaultobjectaccesscontrols").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a storageDefaultObjectAccessControl and creates it.  Returns the server's representation of the storageDefaultObjectAccessControl, and an error, if there is any.
-func (c *storageDefaultObjectAccessControls) Create(storageDefaultObjectAccessControl *v1alpha1.StorageDefaultObjectAccessControl) (result *v1alpha1.StorageDefaultObjectAccessControl, err error) {
+func (c *storageDefaultObjectAccessControls) Create(ctx context.Context, storageDefaultObjectAccessControl *v1alpha1.StorageDefaultObjectAccessControl, opts v1.CreateOptions) (result *v1alpha1.StorageDefaultObjectAccessControl, err error) {
 	result = &v1alpha1.StorageDefaultObjectAccessControl{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("storagedefaultobjectaccesscontrols").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(storageDefaultObjectAccessControl).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a storageDefaultObjectAccessControl and updates it. Returns the server's representation of the storageDefaultObjectAccessControl, and an error, if there is any.
-func (c *storageDefaultObjectAccessControls) Update(storageDefaultObjectAccessControl *v1alpha1.StorageDefaultObjectAccessControl) (result *v1alpha1.StorageDefaultObjectAccessControl, err error) {
+func (c *storageDefaultObjectAccessControls) Update(ctx context.Context, storageDefaultObjectAccessControl *v1alpha1.StorageDefaultObjectAccessControl, opts v1.UpdateOptions) (result *v1alpha1.StorageDefaultObjectAccessControl, err error) {
 	result = &v1alpha1.StorageDefaultObjectAccessControl{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("storagedefaultobjectaccesscontrols").
 		Name(storageDefaultObjectAccessControl.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(storageDefaultObjectAccessControl).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *storageDefaultObjectAccessControls) UpdateStatus(storageDefaultObjectAccessControl *v1alpha1.StorageDefaultObjectAccessControl) (result *v1alpha1.StorageDefaultObjectAccessControl, err error) {
+func (c *storageDefaultObjectAccessControls) UpdateStatus(ctx context.Context, storageDefaultObjectAccessControl *v1alpha1.StorageDefaultObjectAccessControl, opts v1.UpdateOptions) (result *v1alpha1.StorageDefaultObjectAccessControl, err error) {
 	result = &v1alpha1.StorageDefaultObjectAccessControl{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("storagedefaultobjectaccesscontrols").
 		Name(storageDefaultObjectAccessControl.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(storageDefaultObjectAccessControl).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the storageDefaultObjectAccessControl and deletes it. Returns an error if one occurs.
-func (c *storageDefaultObjectAccessControls) Delete(name string, options *v1.DeleteOptions) error {
+func (c *storageDefaultObjectAccessControls) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("storagedefaultobjectaccesscontrols").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *storageDefaultObjectAccessControls) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *storageDefaultObjectAccessControls) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("storagedefaultobjectaccesscontrols").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched storageDefaultObjectAccessControl.
-func (c *storageDefaultObjectAccessControls) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StorageDefaultObjectAccessControl, err error) {
+func (c *storageDefaultObjectAccessControls) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StorageDefaultObjectAccessControl, err error) {
 	result = &v1alpha1.StorageDefaultObjectAccessControl{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("storagedefaultobjectaccesscontrols").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

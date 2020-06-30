@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var albsResource = schema.GroupVersionResource{Group: "aws.kubeform.com", Versio
 var albsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "Alb"}
 
 // Get takes name of the alb, and returns the corresponding alb object, and an error if there is any.
-func (c *FakeAlbs) Get(name string, options v1.GetOptions) (result *v1alpha1.Alb, err error) {
+func (c *FakeAlbs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Alb, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(albsResource, c.ns, name), &v1alpha1.Alb{})
 
@@ -51,7 +53,7 @@ func (c *FakeAlbs) Get(name string, options v1.GetOptions) (result *v1alpha1.Alb
 }
 
 // List takes label and field selectors, and returns the list of Albs that match those selectors.
-func (c *FakeAlbs) List(opts v1.ListOptions) (result *v1alpha1.AlbList, err error) {
+func (c *FakeAlbs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AlbList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(albsResource, albsKind, c.ns, opts), &v1alpha1.AlbList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAlbs) List(opts v1.ListOptions) (result *v1alpha1.AlbList, err erro
 }
 
 // Watch returns a watch.Interface that watches the requested albs.
-func (c *FakeAlbs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAlbs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(albsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a alb and creates it.  Returns the server's representation of the alb, and an error, if there is any.
-func (c *FakeAlbs) Create(alb *v1alpha1.Alb) (result *v1alpha1.Alb, err error) {
+func (c *FakeAlbs) Create(ctx context.Context, alb *v1alpha1.Alb, opts v1.CreateOptions) (result *v1alpha1.Alb, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(albsResource, c.ns, alb), &v1alpha1.Alb{})
 
@@ -91,7 +93,7 @@ func (c *FakeAlbs) Create(alb *v1alpha1.Alb) (result *v1alpha1.Alb, err error) {
 }
 
 // Update takes the representation of a alb and updates it. Returns the server's representation of the alb, and an error, if there is any.
-func (c *FakeAlbs) Update(alb *v1alpha1.Alb) (result *v1alpha1.Alb, err error) {
+func (c *FakeAlbs) Update(ctx context.Context, alb *v1alpha1.Alb, opts v1.UpdateOptions) (result *v1alpha1.Alb, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(albsResource, c.ns, alb), &v1alpha1.Alb{})
 
@@ -103,7 +105,7 @@ func (c *FakeAlbs) Update(alb *v1alpha1.Alb) (result *v1alpha1.Alb, err error) {
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAlbs) UpdateStatus(alb *v1alpha1.Alb) (*v1alpha1.Alb, error) {
+func (c *FakeAlbs) UpdateStatus(ctx context.Context, alb *v1alpha1.Alb, opts v1.UpdateOptions) (*v1alpha1.Alb, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(albsResource, "status", c.ns, alb), &v1alpha1.Alb{})
 
@@ -114,7 +116,7 @@ func (c *FakeAlbs) UpdateStatus(alb *v1alpha1.Alb) (*v1alpha1.Alb, error) {
 }
 
 // Delete takes name of the alb and deletes it. Returns an error if one occurs.
-func (c *FakeAlbs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAlbs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(albsResource, c.ns, name), &v1alpha1.Alb{})
 
@@ -122,15 +124,15 @@ func (c *FakeAlbs) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAlbs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(albsResource, c.ns, listOptions)
+func (c *FakeAlbs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(albsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AlbList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched alb.
-func (c *FakeAlbs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Alb, err error) {
+func (c *FakeAlbs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Alb, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(albsResource, c.ns, name, pt, data, subresources...), &v1alpha1.Alb{})
 

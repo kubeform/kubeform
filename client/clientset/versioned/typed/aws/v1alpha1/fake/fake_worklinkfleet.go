@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var worklinkfleetsResource = schema.GroupVersionResource{Group: "aws.kubeform.co
 var worklinkfleetsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "WorklinkFleet"}
 
 // Get takes name of the worklinkFleet, and returns the corresponding worklinkFleet object, and an error if there is any.
-func (c *FakeWorklinkFleets) Get(name string, options v1.GetOptions) (result *v1alpha1.WorklinkFleet, err error) {
+func (c *FakeWorklinkFleets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.WorklinkFleet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(worklinkfleetsResource, c.ns, name), &v1alpha1.WorklinkFleet{})
 
@@ -51,7 +53,7 @@ func (c *FakeWorklinkFleets) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of WorklinkFleets that match those selectors.
-func (c *FakeWorklinkFleets) List(opts v1.ListOptions) (result *v1alpha1.WorklinkFleetList, err error) {
+func (c *FakeWorklinkFleets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.WorklinkFleetList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(worklinkfleetsResource, worklinkfleetsKind, c.ns, opts), &v1alpha1.WorklinkFleetList{})
 
@@ -73,14 +75,14 @@ func (c *FakeWorklinkFleets) List(opts v1.ListOptions) (result *v1alpha1.Worklin
 }
 
 // Watch returns a watch.Interface that watches the requested worklinkFleets.
-func (c *FakeWorklinkFleets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeWorklinkFleets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(worklinkfleetsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a worklinkFleet and creates it.  Returns the server's representation of the worklinkFleet, and an error, if there is any.
-func (c *FakeWorklinkFleets) Create(worklinkFleet *v1alpha1.WorklinkFleet) (result *v1alpha1.WorklinkFleet, err error) {
+func (c *FakeWorklinkFleets) Create(ctx context.Context, worklinkFleet *v1alpha1.WorklinkFleet, opts v1.CreateOptions) (result *v1alpha1.WorklinkFleet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(worklinkfleetsResource, c.ns, worklinkFleet), &v1alpha1.WorklinkFleet{})
 
@@ -91,7 +93,7 @@ func (c *FakeWorklinkFleets) Create(worklinkFleet *v1alpha1.WorklinkFleet) (resu
 }
 
 // Update takes the representation of a worklinkFleet and updates it. Returns the server's representation of the worklinkFleet, and an error, if there is any.
-func (c *FakeWorklinkFleets) Update(worklinkFleet *v1alpha1.WorklinkFleet) (result *v1alpha1.WorklinkFleet, err error) {
+func (c *FakeWorklinkFleets) Update(ctx context.Context, worklinkFleet *v1alpha1.WorklinkFleet, opts v1.UpdateOptions) (result *v1alpha1.WorklinkFleet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(worklinkfleetsResource, c.ns, worklinkFleet), &v1alpha1.WorklinkFleet{})
 
@@ -103,7 +105,7 @@ func (c *FakeWorklinkFleets) Update(worklinkFleet *v1alpha1.WorklinkFleet) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeWorklinkFleets) UpdateStatus(worklinkFleet *v1alpha1.WorklinkFleet) (*v1alpha1.WorklinkFleet, error) {
+func (c *FakeWorklinkFleets) UpdateStatus(ctx context.Context, worklinkFleet *v1alpha1.WorklinkFleet, opts v1.UpdateOptions) (*v1alpha1.WorklinkFleet, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(worklinkfleetsResource, "status", c.ns, worklinkFleet), &v1alpha1.WorklinkFleet{})
 
@@ -114,7 +116,7 @@ func (c *FakeWorklinkFleets) UpdateStatus(worklinkFleet *v1alpha1.WorklinkFleet)
 }
 
 // Delete takes name of the worklinkFleet and deletes it. Returns an error if one occurs.
-func (c *FakeWorklinkFleets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeWorklinkFleets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(worklinkfleetsResource, c.ns, name), &v1alpha1.WorklinkFleet{})
 
@@ -122,15 +124,15 @@ func (c *FakeWorklinkFleets) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeWorklinkFleets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(worklinkfleetsResource, c.ns, listOptions)
+func (c *FakeWorklinkFleets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(worklinkfleetsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.WorklinkFleetList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched worklinkFleet.
-func (c *FakeWorklinkFleets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.WorklinkFleet, err error) {
+func (c *FakeWorklinkFleets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.WorklinkFleet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(worklinkfleetsResource, c.ns, name, pt, data, subresources...), &v1alpha1.WorklinkFleet{})
 

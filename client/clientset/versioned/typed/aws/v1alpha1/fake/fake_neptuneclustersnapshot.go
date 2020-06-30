@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var neptuneclustersnapshotsResource = schema.GroupVersionResource{Group: "aws.ku
 var neptuneclustersnapshotsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "NeptuneClusterSnapshot"}
 
 // Get takes name of the neptuneClusterSnapshot, and returns the corresponding neptuneClusterSnapshot object, and an error if there is any.
-func (c *FakeNeptuneClusterSnapshots) Get(name string, options v1.GetOptions) (result *v1alpha1.NeptuneClusterSnapshot, err error) {
+func (c *FakeNeptuneClusterSnapshots) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.NeptuneClusterSnapshot, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(neptuneclustersnapshotsResource, c.ns, name), &v1alpha1.NeptuneClusterSnapshot{})
 
@@ -51,7 +53,7 @@ func (c *FakeNeptuneClusterSnapshots) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of NeptuneClusterSnapshots that match those selectors.
-func (c *FakeNeptuneClusterSnapshots) List(opts v1.ListOptions) (result *v1alpha1.NeptuneClusterSnapshotList, err error) {
+func (c *FakeNeptuneClusterSnapshots) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.NeptuneClusterSnapshotList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(neptuneclustersnapshotsResource, neptuneclustersnapshotsKind, c.ns, opts), &v1alpha1.NeptuneClusterSnapshotList{})
 
@@ -73,14 +75,14 @@ func (c *FakeNeptuneClusterSnapshots) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested neptuneClusterSnapshots.
-func (c *FakeNeptuneClusterSnapshots) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeNeptuneClusterSnapshots) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(neptuneclustersnapshotsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a neptuneClusterSnapshot and creates it.  Returns the server's representation of the neptuneClusterSnapshot, and an error, if there is any.
-func (c *FakeNeptuneClusterSnapshots) Create(neptuneClusterSnapshot *v1alpha1.NeptuneClusterSnapshot) (result *v1alpha1.NeptuneClusterSnapshot, err error) {
+func (c *FakeNeptuneClusterSnapshots) Create(ctx context.Context, neptuneClusterSnapshot *v1alpha1.NeptuneClusterSnapshot, opts v1.CreateOptions) (result *v1alpha1.NeptuneClusterSnapshot, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(neptuneclustersnapshotsResource, c.ns, neptuneClusterSnapshot), &v1alpha1.NeptuneClusterSnapshot{})
 
@@ -91,7 +93,7 @@ func (c *FakeNeptuneClusterSnapshots) Create(neptuneClusterSnapshot *v1alpha1.Ne
 }
 
 // Update takes the representation of a neptuneClusterSnapshot and updates it. Returns the server's representation of the neptuneClusterSnapshot, and an error, if there is any.
-func (c *FakeNeptuneClusterSnapshots) Update(neptuneClusterSnapshot *v1alpha1.NeptuneClusterSnapshot) (result *v1alpha1.NeptuneClusterSnapshot, err error) {
+func (c *FakeNeptuneClusterSnapshots) Update(ctx context.Context, neptuneClusterSnapshot *v1alpha1.NeptuneClusterSnapshot, opts v1.UpdateOptions) (result *v1alpha1.NeptuneClusterSnapshot, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(neptuneclustersnapshotsResource, c.ns, neptuneClusterSnapshot), &v1alpha1.NeptuneClusterSnapshot{})
 
@@ -103,7 +105,7 @@ func (c *FakeNeptuneClusterSnapshots) Update(neptuneClusterSnapshot *v1alpha1.Ne
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeNeptuneClusterSnapshots) UpdateStatus(neptuneClusterSnapshot *v1alpha1.NeptuneClusterSnapshot) (*v1alpha1.NeptuneClusterSnapshot, error) {
+func (c *FakeNeptuneClusterSnapshots) UpdateStatus(ctx context.Context, neptuneClusterSnapshot *v1alpha1.NeptuneClusterSnapshot, opts v1.UpdateOptions) (*v1alpha1.NeptuneClusterSnapshot, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(neptuneclustersnapshotsResource, "status", c.ns, neptuneClusterSnapshot), &v1alpha1.NeptuneClusterSnapshot{})
 
@@ -114,7 +116,7 @@ func (c *FakeNeptuneClusterSnapshots) UpdateStatus(neptuneClusterSnapshot *v1alp
 }
 
 // Delete takes name of the neptuneClusterSnapshot and deletes it. Returns an error if one occurs.
-func (c *FakeNeptuneClusterSnapshots) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeNeptuneClusterSnapshots) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(neptuneclustersnapshotsResource, c.ns, name), &v1alpha1.NeptuneClusterSnapshot{})
 
@@ -122,15 +124,15 @@ func (c *FakeNeptuneClusterSnapshots) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeNeptuneClusterSnapshots) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(neptuneclustersnapshotsResource, c.ns, listOptions)
+func (c *FakeNeptuneClusterSnapshots) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(neptuneclustersnapshotsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.NeptuneClusterSnapshotList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched neptuneClusterSnapshot.
-func (c *FakeNeptuneClusterSnapshots) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.NeptuneClusterSnapshot, err error) {
+func (c *FakeNeptuneClusterSnapshots) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.NeptuneClusterSnapshot, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(neptuneclustersnapshotsResource, c.ns, name, pt, data, subresources...), &v1alpha1.NeptuneClusterSnapshot{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var pubsubsubscriptioniambindingsResource = schema.GroupVersionResource{Group: "
 var pubsubsubscriptioniambindingsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "PubsubSubscriptionIamBinding"}
 
 // Get takes name of the pubsubSubscriptionIamBinding, and returns the corresponding pubsubSubscriptionIamBinding object, and an error if there is any.
-func (c *FakePubsubSubscriptionIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.PubsubSubscriptionIamBinding, err error) {
+func (c *FakePubsubSubscriptionIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PubsubSubscriptionIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(pubsubsubscriptioniambindingsResource, c.ns, name), &v1alpha1.PubsubSubscriptionIamBinding{})
 
@@ -51,7 +53,7 @@ func (c *FakePubsubSubscriptionIamBindings) Get(name string, options v1.GetOptio
 }
 
 // List takes label and field selectors, and returns the list of PubsubSubscriptionIamBindings that match those selectors.
-func (c *FakePubsubSubscriptionIamBindings) List(opts v1.ListOptions) (result *v1alpha1.PubsubSubscriptionIamBindingList, err error) {
+func (c *FakePubsubSubscriptionIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PubsubSubscriptionIamBindingList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(pubsubsubscriptioniambindingsResource, pubsubsubscriptioniambindingsKind, c.ns, opts), &v1alpha1.PubsubSubscriptionIamBindingList{})
 
@@ -73,14 +75,14 @@ func (c *FakePubsubSubscriptionIamBindings) List(opts v1.ListOptions) (result *v
 }
 
 // Watch returns a watch.Interface that watches the requested pubsubSubscriptionIamBindings.
-func (c *FakePubsubSubscriptionIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakePubsubSubscriptionIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(pubsubsubscriptioniambindingsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a pubsubSubscriptionIamBinding and creates it.  Returns the server's representation of the pubsubSubscriptionIamBinding, and an error, if there is any.
-func (c *FakePubsubSubscriptionIamBindings) Create(pubsubSubscriptionIamBinding *v1alpha1.PubsubSubscriptionIamBinding) (result *v1alpha1.PubsubSubscriptionIamBinding, err error) {
+func (c *FakePubsubSubscriptionIamBindings) Create(ctx context.Context, pubsubSubscriptionIamBinding *v1alpha1.PubsubSubscriptionIamBinding, opts v1.CreateOptions) (result *v1alpha1.PubsubSubscriptionIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(pubsubsubscriptioniambindingsResource, c.ns, pubsubSubscriptionIamBinding), &v1alpha1.PubsubSubscriptionIamBinding{})
 
@@ -91,7 +93,7 @@ func (c *FakePubsubSubscriptionIamBindings) Create(pubsubSubscriptionIamBinding 
 }
 
 // Update takes the representation of a pubsubSubscriptionIamBinding and updates it. Returns the server's representation of the pubsubSubscriptionIamBinding, and an error, if there is any.
-func (c *FakePubsubSubscriptionIamBindings) Update(pubsubSubscriptionIamBinding *v1alpha1.PubsubSubscriptionIamBinding) (result *v1alpha1.PubsubSubscriptionIamBinding, err error) {
+func (c *FakePubsubSubscriptionIamBindings) Update(ctx context.Context, pubsubSubscriptionIamBinding *v1alpha1.PubsubSubscriptionIamBinding, opts v1.UpdateOptions) (result *v1alpha1.PubsubSubscriptionIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(pubsubsubscriptioniambindingsResource, c.ns, pubsubSubscriptionIamBinding), &v1alpha1.PubsubSubscriptionIamBinding{})
 
@@ -103,7 +105,7 @@ func (c *FakePubsubSubscriptionIamBindings) Update(pubsubSubscriptionIamBinding 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakePubsubSubscriptionIamBindings) UpdateStatus(pubsubSubscriptionIamBinding *v1alpha1.PubsubSubscriptionIamBinding) (*v1alpha1.PubsubSubscriptionIamBinding, error) {
+func (c *FakePubsubSubscriptionIamBindings) UpdateStatus(ctx context.Context, pubsubSubscriptionIamBinding *v1alpha1.PubsubSubscriptionIamBinding, opts v1.UpdateOptions) (*v1alpha1.PubsubSubscriptionIamBinding, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(pubsubsubscriptioniambindingsResource, "status", c.ns, pubsubSubscriptionIamBinding), &v1alpha1.PubsubSubscriptionIamBinding{})
 
@@ -114,7 +116,7 @@ func (c *FakePubsubSubscriptionIamBindings) UpdateStatus(pubsubSubscriptionIamBi
 }
 
 // Delete takes name of the pubsubSubscriptionIamBinding and deletes it. Returns an error if one occurs.
-func (c *FakePubsubSubscriptionIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakePubsubSubscriptionIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(pubsubsubscriptioniambindingsResource, c.ns, name), &v1alpha1.PubsubSubscriptionIamBinding{})
 
@@ -122,15 +124,15 @@ func (c *FakePubsubSubscriptionIamBindings) Delete(name string, options *v1.Dele
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakePubsubSubscriptionIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(pubsubsubscriptioniambindingsResource, c.ns, listOptions)
+func (c *FakePubsubSubscriptionIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(pubsubsubscriptioniambindingsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.PubsubSubscriptionIamBindingList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched pubsubSubscriptionIamBinding.
-func (c *FakePubsubSubscriptionIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PubsubSubscriptionIamBinding, err error) {
+func (c *FakePubsubSubscriptionIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PubsubSubscriptionIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(pubsubsubscriptioniambindingsResource, c.ns, name, pt, data, subresources...), &v1alpha1.PubsubSubscriptionIamBinding{})
 

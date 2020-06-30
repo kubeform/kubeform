@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var userassignedidentitiesResource = schema.GroupVersionResource{Group: "azurerm
 var userassignedidentitiesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "UserAssignedIdentity"}
 
 // Get takes name of the userAssignedIdentity, and returns the corresponding userAssignedIdentity object, and an error if there is any.
-func (c *FakeUserAssignedIdentities) Get(name string, options v1.GetOptions) (result *v1alpha1.UserAssignedIdentity, err error) {
+func (c *FakeUserAssignedIdentities) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.UserAssignedIdentity, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(userassignedidentitiesResource, c.ns, name), &v1alpha1.UserAssignedIdentity{})
 
@@ -51,7 +53,7 @@ func (c *FakeUserAssignedIdentities) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of UserAssignedIdentities that match those selectors.
-func (c *FakeUserAssignedIdentities) List(opts v1.ListOptions) (result *v1alpha1.UserAssignedIdentityList, err error) {
+func (c *FakeUserAssignedIdentities) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.UserAssignedIdentityList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(userassignedidentitiesResource, userassignedidentitiesKind, c.ns, opts), &v1alpha1.UserAssignedIdentityList{})
 
@@ -73,14 +75,14 @@ func (c *FakeUserAssignedIdentities) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested userAssignedIdentities.
-func (c *FakeUserAssignedIdentities) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeUserAssignedIdentities) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(userassignedidentitiesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a userAssignedIdentity and creates it.  Returns the server's representation of the userAssignedIdentity, and an error, if there is any.
-func (c *FakeUserAssignedIdentities) Create(userAssignedIdentity *v1alpha1.UserAssignedIdentity) (result *v1alpha1.UserAssignedIdentity, err error) {
+func (c *FakeUserAssignedIdentities) Create(ctx context.Context, userAssignedIdentity *v1alpha1.UserAssignedIdentity, opts v1.CreateOptions) (result *v1alpha1.UserAssignedIdentity, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(userassignedidentitiesResource, c.ns, userAssignedIdentity), &v1alpha1.UserAssignedIdentity{})
 
@@ -91,7 +93,7 @@ func (c *FakeUserAssignedIdentities) Create(userAssignedIdentity *v1alpha1.UserA
 }
 
 // Update takes the representation of a userAssignedIdentity and updates it. Returns the server's representation of the userAssignedIdentity, and an error, if there is any.
-func (c *FakeUserAssignedIdentities) Update(userAssignedIdentity *v1alpha1.UserAssignedIdentity) (result *v1alpha1.UserAssignedIdentity, err error) {
+func (c *FakeUserAssignedIdentities) Update(ctx context.Context, userAssignedIdentity *v1alpha1.UserAssignedIdentity, opts v1.UpdateOptions) (result *v1alpha1.UserAssignedIdentity, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(userassignedidentitiesResource, c.ns, userAssignedIdentity), &v1alpha1.UserAssignedIdentity{})
 
@@ -103,7 +105,7 @@ func (c *FakeUserAssignedIdentities) Update(userAssignedIdentity *v1alpha1.UserA
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeUserAssignedIdentities) UpdateStatus(userAssignedIdentity *v1alpha1.UserAssignedIdentity) (*v1alpha1.UserAssignedIdentity, error) {
+func (c *FakeUserAssignedIdentities) UpdateStatus(ctx context.Context, userAssignedIdentity *v1alpha1.UserAssignedIdentity, opts v1.UpdateOptions) (*v1alpha1.UserAssignedIdentity, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(userassignedidentitiesResource, "status", c.ns, userAssignedIdentity), &v1alpha1.UserAssignedIdentity{})
 
@@ -114,7 +116,7 @@ func (c *FakeUserAssignedIdentities) UpdateStatus(userAssignedIdentity *v1alpha1
 }
 
 // Delete takes name of the userAssignedIdentity and deletes it. Returns an error if one occurs.
-func (c *FakeUserAssignedIdentities) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeUserAssignedIdentities) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(userassignedidentitiesResource, c.ns, name), &v1alpha1.UserAssignedIdentity{})
 
@@ -122,15 +124,15 @@ func (c *FakeUserAssignedIdentities) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeUserAssignedIdentities) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(userassignedidentitiesResource, c.ns, listOptions)
+func (c *FakeUserAssignedIdentities) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(userassignedidentitiesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.UserAssignedIdentityList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched userAssignedIdentity.
-func (c *FakeUserAssignedIdentities) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.UserAssignedIdentity, err error) {
+func (c *FakeUserAssignedIdentities) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.UserAssignedIdentity, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(userassignedidentitiesResource, c.ns, name, pt, data, subresources...), &v1alpha1.UserAssignedIdentity{})
 

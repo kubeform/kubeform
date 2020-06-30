@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type ApiManagementIdentityProviderTwittersGetter interface {
 
 // ApiManagementIdentityProviderTwitterInterface has methods to work with ApiManagementIdentityProviderTwitter resources.
 type ApiManagementIdentityProviderTwitterInterface interface {
-	Create(*v1alpha1.ApiManagementIdentityProviderTwitter) (*v1alpha1.ApiManagementIdentityProviderTwitter, error)
-	Update(*v1alpha1.ApiManagementIdentityProviderTwitter) (*v1alpha1.ApiManagementIdentityProviderTwitter, error)
-	UpdateStatus(*v1alpha1.ApiManagementIdentityProviderTwitter) (*v1alpha1.ApiManagementIdentityProviderTwitter, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ApiManagementIdentityProviderTwitter, error)
-	List(opts v1.ListOptions) (*v1alpha1.ApiManagementIdentityProviderTwitterList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiManagementIdentityProviderTwitter, err error)
+	Create(ctx context.Context, apiManagementIdentityProviderTwitter *v1alpha1.ApiManagementIdentityProviderTwitter, opts v1.CreateOptions) (*v1alpha1.ApiManagementIdentityProviderTwitter, error)
+	Update(ctx context.Context, apiManagementIdentityProviderTwitter *v1alpha1.ApiManagementIdentityProviderTwitter, opts v1.UpdateOptions) (*v1alpha1.ApiManagementIdentityProviderTwitter, error)
+	UpdateStatus(ctx context.Context, apiManagementIdentityProviderTwitter *v1alpha1.ApiManagementIdentityProviderTwitter, opts v1.UpdateOptions) (*v1alpha1.ApiManagementIdentityProviderTwitter, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ApiManagementIdentityProviderTwitter, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ApiManagementIdentityProviderTwitterList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiManagementIdentityProviderTwitter, err error)
 	ApiManagementIdentityProviderTwitterExpansion
 }
 
@@ -65,20 +66,20 @@ func newApiManagementIdentityProviderTwitters(c *AzurermV1alpha1Client, namespac
 }
 
 // Get takes name of the apiManagementIdentityProviderTwitter, and returns the corresponding apiManagementIdentityProviderTwitter object, and an error if there is any.
-func (c *apiManagementIdentityProviderTwitters) Get(name string, options v1.GetOptions) (result *v1alpha1.ApiManagementIdentityProviderTwitter, err error) {
+func (c *apiManagementIdentityProviderTwitters) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApiManagementIdentityProviderTwitter, err error) {
 	result = &v1alpha1.ApiManagementIdentityProviderTwitter{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("apimanagementidentityprovidertwitters").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ApiManagementIdentityProviderTwitters that match those selectors.
-func (c *apiManagementIdentityProviderTwitters) List(opts v1.ListOptions) (result *v1alpha1.ApiManagementIdentityProviderTwitterList, err error) {
+func (c *apiManagementIdentityProviderTwitters) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApiManagementIdentityProviderTwitterList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *apiManagementIdentityProviderTwitters) List(opts v1.ListOptions) (resul
 		Resource("apimanagementidentityprovidertwitters").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested apiManagementIdentityProviderTwitters.
-func (c *apiManagementIdentityProviderTwitters) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *apiManagementIdentityProviderTwitters) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *apiManagementIdentityProviderTwitters) Watch(opts v1.ListOptions) (watc
 		Resource("apimanagementidentityprovidertwitters").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a apiManagementIdentityProviderTwitter and creates it.  Returns the server's representation of the apiManagementIdentityProviderTwitter, and an error, if there is any.
-func (c *apiManagementIdentityProviderTwitters) Create(apiManagementIdentityProviderTwitter *v1alpha1.ApiManagementIdentityProviderTwitter) (result *v1alpha1.ApiManagementIdentityProviderTwitter, err error) {
+func (c *apiManagementIdentityProviderTwitters) Create(ctx context.Context, apiManagementIdentityProviderTwitter *v1alpha1.ApiManagementIdentityProviderTwitter, opts v1.CreateOptions) (result *v1alpha1.ApiManagementIdentityProviderTwitter, err error) {
 	result = &v1alpha1.ApiManagementIdentityProviderTwitter{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("apimanagementidentityprovidertwitters").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(apiManagementIdentityProviderTwitter).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a apiManagementIdentityProviderTwitter and updates it. Returns the server's representation of the apiManagementIdentityProviderTwitter, and an error, if there is any.
-func (c *apiManagementIdentityProviderTwitters) Update(apiManagementIdentityProviderTwitter *v1alpha1.ApiManagementIdentityProviderTwitter) (result *v1alpha1.ApiManagementIdentityProviderTwitter, err error) {
+func (c *apiManagementIdentityProviderTwitters) Update(ctx context.Context, apiManagementIdentityProviderTwitter *v1alpha1.ApiManagementIdentityProviderTwitter, opts v1.UpdateOptions) (result *v1alpha1.ApiManagementIdentityProviderTwitter, err error) {
 	result = &v1alpha1.ApiManagementIdentityProviderTwitter{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("apimanagementidentityprovidertwitters").
 		Name(apiManagementIdentityProviderTwitter.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(apiManagementIdentityProviderTwitter).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *apiManagementIdentityProviderTwitters) UpdateStatus(apiManagementIdentityProviderTwitter *v1alpha1.ApiManagementIdentityProviderTwitter) (result *v1alpha1.ApiManagementIdentityProviderTwitter, err error) {
+func (c *apiManagementIdentityProviderTwitters) UpdateStatus(ctx context.Context, apiManagementIdentityProviderTwitter *v1alpha1.ApiManagementIdentityProviderTwitter, opts v1.UpdateOptions) (result *v1alpha1.ApiManagementIdentityProviderTwitter, err error) {
 	result = &v1alpha1.ApiManagementIdentityProviderTwitter{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("apimanagementidentityprovidertwitters").
 		Name(apiManagementIdentityProviderTwitter.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(apiManagementIdentityProviderTwitter).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the apiManagementIdentityProviderTwitter and deletes it. Returns an error if one occurs.
-func (c *apiManagementIdentityProviderTwitters) Delete(name string, options *v1.DeleteOptions) error {
+func (c *apiManagementIdentityProviderTwitters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("apimanagementidentityprovidertwitters").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *apiManagementIdentityProviderTwitters) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *apiManagementIdentityProviderTwitters) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("apimanagementidentityprovidertwitters").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched apiManagementIdentityProviderTwitter.
-func (c *apiManagementIdentityProviderTwitters) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiManagementIdentityProviderTwitter, err error) {
+func (c *apiManagementIdentityProviderTwitters) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiManagementIdentityProviderTwitter, err error) {
 	result = &v1alpha1.ApiManagementIdentityProviderTwitter{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("apimanagementidentityprovidertwitters").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

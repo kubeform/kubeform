@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var route53delegationsetsResource = schema.GroupVersionResource{Group: "aws.kube
 var route53delegationsetsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "Route53DelegationSet"}
 
 // Get takes name of the route53DelegationSet, and returns the corresponding route53DelegationSet object, and an error if there is any.
-func (c *FakeRoute53DelegationSets) Get(name string, options v1.GetOptions) (result *v1alpha1.Route53DelegationSet, err error) {
+func (c *FakeRoute53DelegationSets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Route53DelegationSet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(route53delegationsetsResource, c.ns, name), &v1alpha1.Route53DelegationSet{})
 
@@ -51,7 +53,7 @@ func (c *FakeRoute53DelegationSets) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of Route53DelegationSets that match those selectors.
-func (c *FakeRoute53DelegationSets) List(opts v1.ListOptions) (result *v1alpha1.Route53DelegationSetList, err error) {
+func (c *FakeRoute53DelegationSets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.Route53DelegationSetList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(route53delegationsetsResource, route53delegationsetsKind, c.ns, opts), &v1alpha1.Route53DelegationSetList{})
 
@@ -73,14 +75,14 @@ func (c *FakeRoute53DelegationSets) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested route53DelegationSets.
-func (c *FakeRoute53DelegationSets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeRoute53DelegationSets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(route53delegationsetsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a route53DelegationSet and creates it.  Returns the server's representation of the route53DelegationSet, and an error, if there is any.
-func (c *FakeRoute53DelegationSets) Create(route53DelegationSet *v1alpha1.Route53DelegationSet) (result *v1alpha1.Route53DelegationSet, err error) {
+func (c *FakeRoute53DelegationSets) Create(ctx context.Context, route53DelegationSet *v1alpha1.Route53DelegationSet, opts v1.CreateOptions) (result *v1alpha1.Route53DelegationSet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(route53delegationsetsResource, c.ns, route53DelegationSet), &v1alpha1.Route53DelegationSet{})
 
@@ -91,7 +93,7 @@ func (c *FakeRoute53DelegationSets) Create(route53DelegationSet *v1alpha1.Route5
 }
 
 // Update takes the representation of a route53DelegationSet and updates it. Returns the server's representation of the route53DelegationSet, and an error, if there is any.
-func (c *FakeRoute53DelegationSets) Update(route53DelegationSet *v1alpha1.Route53DelegationSet) (result *v1alpha1.Route53DelegationSet, err error) {
+func (c *FakeRoute53DelegationSets) Update(ctx context.Context, route53DelegationSet *v1alpha1.Route53DelegationSet, opts v1.UpdateOptions) (result *v1alpha1.Route53DelegationSet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(route53delegationsetsResource, c.ns, route53DelegationSet), &v1alpha1.Route53DelegationSet{})
 
@@ -103,7 +105,7 @@ func (c *FakeRoute53DelegationSets) Update(route53DelegationSet *v1alpha1.Route5
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeRoute53DelegationSets) UpdateStatus(route53DelegationSet *v1alpha1.Route53DelegationSet) (*v1alpha1.Route53DelegationSet, error) {
+func (c *FakeRoute53DelegationSets) UpdateStatus(ctx context.Context, route53DelegationSet *v1alpha1.Route53DelegationSet, opts v1.UpdateOptions) (*v1alpha1.Route53DelegationSet, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(route53delegationsetsResource, "status", c.ns, route53DelegationSet), &v1alpha1.Route53DelegationSet{})
 
@@ -114,7 +116,7 @@ func (c *FakeRoute53DelegationSets) UpdateStatus(route53DelegationSet *v1alpha1.
 }
 
 // Delete takes name of the route53DelegationSet and deletes it. Returns an error if one occurs.
-func (c *FakeRoute53DelegationSets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeRoute53DelegationSets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(route53delegationsetsResource, c.ns, name), &v1alpha1.Route53DelegationSet{})
 
@@ -122,15 +124,15 @@ func (c *FakeRoute53DelegationSets) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeRoute53DelegationSets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(route53delegationsetsResource, c.ns, listOptions)
+func (c *FakeRoute53DelegationSets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(route53delegationsetsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.Route53DelegationSetList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched route53DelegationSet.
-func (c *FakeRoute53DelegationSets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Route53DelegationSet, err error) {
+func (c *FakeRoute53DelegationSets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Route53DelegationSet, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(route53delegationsetsResource, c.ns, name, pt, data, subresources...), &v1alpha1.Route53DelegationSet{})
 

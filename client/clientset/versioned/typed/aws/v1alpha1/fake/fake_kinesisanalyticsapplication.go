@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var kinesisanalyticsapplicationsResource = schema.GroupVersionResource{Group: "a
 var kinesisanalyticsapplicationsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "KinesisAnalyticsApplication"}
 
 // Get takes name of the kinesisAnalyticsApplication, and returns the corresponding kinesisAnalyticsApplication object, and an error if there is any.
-func (c *FakeKinesisAnalyticsApplications) Get(name string, options v1.GetOptions) (result *v1alpha1.KinesisAnalyticsApplication, err error) {
+func (c *FakeKinesisAnalyticsApplications) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KinesisAnalyticsApplication, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(kinesisanalyticsapplicationsResource, c.ns, name), &v1alpha1.KinesisAnalyticsApplication{})
 
@@ -51,7 +53,7 @@ func (c *FakeKinesisAnalyticsApplications) Get(name string, options v1.GetOption
 }
 
 // List takes label and field selectors, and returns the list of KinesisAnalyticsApplications that match those selectors.
-func (c *FakeKinesisAnalyticsApplications) List(opts v1.ListOptions) (result *v1alpha1.KinesisAnalyticsApplicationList, err error) {
+func (c *FakeKinesisAnalyticsApplications) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KinesisAnalyticsApplicationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(kinesisanalyticsapplicationsResource, kinesisanalyticsapplicationsKind, c.ns, opts), &v1alpha1.KinesisAnalyticsApplicationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeKinesisAnalyticsApplications) List(opts v1.ListOptions) (result *v1
 }
 
 // Watch returns a watch.Interface that watches the requested kinesisAnalyticsApplications.
-func (c *FakeKinesisAnalyticsApplications) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeKinesisAnalyticsApplications) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(kinesisanalyticsapplicationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a kinesisAnalyticsApplication and creates it.  Returns the server's representation of the kinesisAnalyticsApplication, and an error, if there is any.
-func (c *FakeKinesisAnalyticsApplications) Create(kinesisAnalyticsApplication *v1alpha1.KinesisAnalyticsApplication) (result *v1alpha1.KinesisAnalyticsApplication, err error) {
+func (c *FakeKinesisAnalyticsApplications) Create(ctx context.Context, kinesisAnalyticsApplication *v1alpha1.KinesisAnalyticsApplication, opts v1.CreateOptions) (result *v1alpha1.KinesisAnalyticsApplication, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(kinesisanalyticsapplicationsResource, c.ns, kinesisAnalyticsApplication), &v1alpha1.KinesisAnalyticsApplication{})
 
@@ -91,7 +93,7 @@ func (c *FakeKinesisAnalyticsApplications) Create(kinesisAnalyticsApplication *v
 }
 
 // Update takes the representation of a kinesisAnalyticsApplication and updates it. Returns the server's representation of the kinesisAnalyticsApplication, and an error, if there is any.
-func (c *FakeKinesisAnalyticsApplications) Update(kinesisAnalyticsApplication *v1alpha1.KinesisAnalyticsApplication) (result *v1alpha1.KinesisAnalyticsApplication, err error) {
+func (c *FakeKinesisAnalyticsApplications) Update(ctx context.Context, kinesisAnalyticsApplication *v1alpha1.KinesisAnalyticsApplication, opts v1.UpdateOptions) (result *v1alpha1.KinesisAnalyticsApplication, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(kinesisanalyticsapplicationsResource, c.ns, kinesisAnalyticsApplication), &v1alpha1.KinesisAnalyticsApplication{})
 
@@ -103,7 +105,7 @@ func (c *FakeKinesisAnalyticsApplications) Update(kinesisAnalyticsApplication *v
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeKinesisAnalyticsApplications) UpdateStatus(kinesisAnalyticsApplication *v1alpha1.KinesisAnalyticsApplication) (*v1alpha1.KinesisAnalyticsApplication, error) {
+func (c *FakeKinesisAnalyticsApplications) UpdateStatus(ctx context.Context, kinesisAnalyticsApplication *v1alpha1.KinesisAnalyticsApplication, opts v1.UpdateOptions) (*v1alpha1.KinesisAnalyticsApplication, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(kinesisanalyticsapplicationsResource, "status", c.ns, kinesisAnalyticsApplication), &v1alpha1.KinesisAnalyticsApplication{})
 
@@ -114,7 +116,7 @@ func (c *FakeKinesisAnalyticsApplications) UpdateStatus(kinesisAnalyticsApplicat
 }
 
 // Delete takes name of the kinesisAnalyticsApplication and deletes it. Returns an error if one occurs.
-func (c *FakeKinesisAnalyticsApplications) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeKinesisAnalyticsApplications) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(kinesisanalyticsapplicationsResource, c.ns, name), &v1alpha1.KinesisAnalyticsApplication{})
 
@@ -122,15 +124,15 @@ func (c *FakeKinesisAnalyticsApplications) Delete(name string, options *v1.Delet
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeKinesisAnalyticsApplications) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(kinesisanalyticsapplicationsResource, c.ns, listOptions)
+func (c *FakeKinesisAnalyticsApplications) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(kinesisanalyticsapplicationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.KinesisAnalyticsApplicationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched kinesisAnalyticsApplication.
-func (c *FakeKinesisAnalyticsApplications) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KinesisAnalyticsApplication, err error) {
+func (c *FakeKinesisAnalyticsApplications) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KinesisAnalyticsApplication, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(kinesisanalyticsapplicationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.KinesisAnalyticsApplication{})
 

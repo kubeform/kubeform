@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var devtestschedulesResource = schema.GroupVersionResource{Group: "azurerm.kubef
 var devtestschedulesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "DevTestSchedule"}
 
 // Get takes name of the devTestSchedule, and returns the corresponding devTestSchedule object, and an error if there is any.
-func (c *FakeDevTestSchedules) Get(name string, options v1.GetOptions) (result *v1alpha1.DevTestSchedule, err error) {
+func (c *FakeDevTestSchedules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DevTestSchedule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(devtestschedulesResource, c.ns, name), &v1alpha1.DevTestSchedule{})
 
@@ -51,7 +53,7 @@ func (c *FakeDevTestSchedules) Get(name string, options v1.GetOptions) (result *
 }
 
 // List takes label and field selectors, and returns the list of DevTestSchedules that match those selectors.
-func (c *FakeDevTestSchedules) List(opts v1.ListOptions) (result *v1alpha1.DevTestScheduleList, err error) {
+func (c *FakeDevTestSchedules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DevTestScheduleList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(devtestschedulesResource, devtestschedulesKind, c.ns, opts), &v1alpha1.DevTestScheduleList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDevTestSchedules) List(opts v1.ListOptions) (result *v1alpha1.DevTe
 }
 
 // Watch returns a watch.Interface that watches the requested devTestSchedules.
-func (c *FakeDevTestSchedules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDevTestSchedules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(devtestschedulesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a devTestSchedule and creates it.  Returns the server's representation of the devTestSchedule, and an error, if there is any.
-func (c *FakeDevTestSchedules) Create(devTestSchedule *v1alpha1.DevTestSchedule) (result *v1alpha1.DevTestSchedule, err error) {
+func (c *FakeDevTestSchedules) Create(ctx context.Context, devTestSchedule *v1alpha1.DevTestSchedule, opts v1.CreateOptions) (result *v1alpha1.DevTestSchedule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(devtestschedulesResource, c.ns, devTestSchedule), &v1alpha1.DevTestSchedule{})
 
@@ -91,7 +93,7 @@ func (c *FakeDevTestSchedules) Create(devTestSchedule *v1alpha1.DevTestSchedule)
 }
 
 // Update takes the representation of a devTestSchedule and updates it. Returns the server's representation of the devTestSchedule, and an error, if there is any.
-func (c *FakeDevTestSchedules) Update(devTestSchedule *v1alpha1.DevTestSchedule) (result *v1alpha1.DevTestSchedule, err error) {
+func (c *FakeDevTestSchedules) Update(ctx context.Context, devTestSchedule *v1alpha1.DevTestSchedule, opts v1.UpdateOptions) (result *v1alpha1.DevTestSchedule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(devtestschedulesResource, c.ns, devTestSchedule), &v1alpha1.DevTestSchedule{})
 
@@ -103,7 +105,7 @@ func (c *FakeDevTestSchedules) Update(devTestSchedule *v1alpha1.DevTestSchedule)
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDevTestSchedules) UpdateStatus(devTestSchedule *v1alpha1.DevTestSchedule) (*v1alpha1.DevTestSchedule, error) {
+func (c *FakeDevTestSchedules) UpdateStatus(ctx context.Context, devTestSchedule *v1alpha1.DevTestSchedule, opts v1.UpdateOptions) (*v1alpha1.DevTestSchedule, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(devtestschedulesResource, "status", c.ns, devTestSchedule), &v1alpha1.DevTestSchedule{})
 
@@ -114,7 +116,7 @@ func (c *FakeDevTestSchedules) UpdateStatus(devTestSchedule *v1alpha1.DevTestSch
 }
 
 // Delete takes name of the devTestSchedule and deletes it. Returns an error if one occurs.
-func (c *FakeDevTestSchedules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDevTestSchedules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(devtestschedulesResource, c.ns, name), &v1alpha1.DevTestSchedule{})
 
@@ -122,15 +124,15 @@ func (c *FakeDevTestSchedules) Delete(name string, options *v1.DeleteOptions) er
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDevTestSchedules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(devtestschedulesResource, c.ns, listOptions)
+func (c *FakeDevTestSchedules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(devtestschedulesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DevTestScheduleList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched devTestSchedule.
-func (c *FakeDevTestSchedules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DevTestSchedule, err error) {
+func (c *FakeDevTestSchedules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DevTestSchedule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(devtestschedulesResource, c.ns, name, pt, data, subresources...), &v1alpha1.DevTestSchedule{})
 

@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type SccSourcesGetter interface {
 
 // SccSourceInterface has methods to work with SccSource resources.
 type SccSourceInterface interface {
-	Create(*v1alpha1.SccSource) (*v1alpha1.SccSource, error)
-	Update(*v1alpha1.SccSource) (*v1alpha1.SccSource, error)
-	UpdateStatus(*v1alpha1.SccSource) (*v1alpha1.SccSource, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SccSource, error)
-	List(opts v1.ListOptions) (*v1alpha1.SccSourceList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SccSource, err error)
+	Create(ctx context.Context, sccSource *v1alpha1.SccSource, opts v1.CreateOptions) (*v1alpha1.SccSource, error)
+	Update(ctx context.Context, sccSource *v1alpha1.SccSource, opts v1.UpdateOptions) (*v1alpha1.SccSource, error)
+	UpdateStatus(ctx context.Context, sccSource *v1alpha1.SccSource, opts v1.UpdateOptions) (*v1alpha1.SccSource, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SccSource, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SccSourceList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SccSource, err error)
 	SccSourceExpansion
 }
 
@@ -65,20 +66,20 @@ func newSccSources(c *GoogleV1alpha1Client, namespace string) *sccSources {
 }
 
 // Get takes name of the sccSource, and returns the corresponding sccSource object, and an error if there is any.
-func (c *sccSources) Get(name string, options v1.GetOptions) (result *v1alpha1.SccSource, err error) {
+func (c *sccSources) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SccSource, err error) {
 	result = &v1alpha1.SccSource{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("sccsources").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SccSources that match those selectors.
-func (c *sccSources) List(opts v1.ListOptions) (result *v1alpha1.SccSourceList, err error) {
+func (c *sccSources) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SccSourceList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *sccSources) List(opts v1.ListOptions) (result *v1alpha1.SccSourceList, 
 		Resource("sccsources").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested sccSources.
-func (c *sccSources) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *sccSources) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *sccSources) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("sccsources").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a sccSource and creates it.  Returns the server's representation of the sccSource, and an error, if there is any.
-func (c *sccSources) Create(sccSource *v1alpha1.SccSource) (result *v1alpha1.SccSource, err error) {
+func (c *sccSources) Create(ctx context.Context, sccSource *v1alpha1.SccSource, opts v1.CreateOptions) (result *v1alpha1.SccSource, err error) {
 	result = &v1alpha1.SccSource{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("sccsources").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sccSource).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a sccSource and updates it. Returns the server's representation of the sccSource, and an error, if there is any.
-func (c *sccSources) Update(sccSource *v1alpha1.SccSource) (result *v1alpha1.SccSource, err error) {
+func (c *sccSources) Update(ctx context.Context, sccSource *v1alpha1.SccSource, opts v1.UpdateOptions) (result *v1alpha1.SccSource, err error) {
 	result = &v1alpha1.SccSource{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sccsources").
 		Name(sccSource.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sccSource).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *sccSources) UpdateStatus(sccSource *v1alpha1.SccSource) (result *v1alpha1.SccSource, err error) {
+func (c *sccSources) UpdateStatus(ctx context.Context, sccSource *v1alpha1.SccSource, opts v1.UpdateOptions) (result *v1alpha1.SccSource, err error) {
 	result = &v1alpha1.SccSource{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sccsources").
 		Name(sccSource.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sccSource).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the sccSource and deletes it. Returns an error if one occurs.
-func (c *sccSources) Delete(name string, options *v1.DeleteOptions) error {
+func (c *sccSources) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sccsources").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *sccSources) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *sccSources) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sccsources").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched sccSource.
-func (c *sccSources) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SccSource, err error) {
+func (c *sccSources) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SccSource, err error) {
 	result = &v1alpha1.SccSource{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("sccsources").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var directoryservicelogsubscriptionsResource = schema.GroupVersionResource{Group
 var directoryservicelogsubscriptionsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DirectoryServiceLogSubscription"}
 
 // Get takes name of the directoryServiceLogSubscription, and returns the corresponding directoryServiceLogSubscription object, and an error if there is any.
-func (c *FakeDirectoryServiceLogSubscriptions) Get(name string, options v1.GetOptions) (result *v1alpha1.DirectoryServiceLogSubscription, err error) {
+func (c *FakeDirectoryServiceLogSubscriptions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DirectoryServiceLogSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(directoryservicelogsubscriptionsResource, c.ns, name), &v1alpha1.DirectoryServiceLogSubscription{})
 
@@ -51,7 +53,7 @@ func (c *FakeDirectoryServiceLogSubscriptions) Get(name string, options v1.GetOp
 }
 
 // List takes label and field selectors, and returns the list of DirectoryServiceLogSubscriptions that match those selectors.
-func (c *FakeDirectoryServiceLogSubscriptions) List(opts v1.ListOptions) (result *v1alpha1.DirectoryServiceLogSubscriptionList, err error) {
+func (c *FakeDirectoryServiceLogSubscriptions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DirectoryServiceLogSubscriptionList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(directoryservicelogsubscriptionsResource, directoryservicelogsubscriptionsKind, c.ns, opts), &v1alpha1.DirectoryServiceLogSubscriptionList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDirectoryServiceLogSubscriptions) List(opts v1.ListOptions) (result
 }
 
 // Watch returns a watch.Interface that watches the requested directoryServiceLogSubscriptions.
-func (c *FakeDirectoryServiceLogSubscriptions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDirectoryServiceLogSubscriptions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(directoryservicelogsubscriptionsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a directoryServiceLogSubscription and creates it.  Returns the server's representation of the directoryServiceLogSubscription, and an error, if there is any.
-func (c *FakeDirectoryServiceLogSubscriptions) Create(directoryServiceLogSubscription *v1alpha1.DirectoryServiceLogSubscription) (result *v1alpha1.DirectoryServiceLogSubscription, err error) {
+func (c *FakeDirectoryServiceLogSubscriptions) Create(ctx context.Context, directoryServiceLogSubscription *v1alpha1.DirectoryServiceLogSubscription, opts v1.CreateOptions) (result *v1alpha1.DirectoryServiceLogSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(directoryservicelogsubscriptionsResource, c.ns, directoryServiceLogSubscription), &v1alpha1.DirectoryServiceLogSubscription{})
 
@@ -91,7 +93,7 @@ func (c *FakeDirectoryServiceLogSubscriptions) Create(directoryServiceLogSubscri
 }
 
 // Update takes the representation of a directoryServiceLogSubscription and updates it. Returns the server's representation of the directoryServiceLogSubscription, and an error, if there is any.
-func (c *FakeDirectoryServiceLogSubscriptions) Update(directoryServiceLogSubscription *v1alpha1.DirectoryServiceLogSubscription) (result *v1alpha1.DirectoryServiceLogSubscription, err error) {
+func (c *FakeDirectoryServiceLogSubscriptions) Update(ctx context.Context, directoryServiceLogSubscription *v1alpha1.DirectoryServiceLogSubscription, opts v1.UpdateOptions) (result *v1alpha1.DirectoryServiceLogSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(directoryservicelogsubscriptionsResource, c.ns, directoryServiceLogSubscription), &v1alpha1.DirectoryServiceLogSubscription{})
 
@@ -103,7 +105,7 @@ func (c *FakeDirectoryServiceLogSubscriptions) Update(directoryServiceLogSubscri
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDirectoryServiceLogSubscriptions) UpdateStatus(directoryServiceLogSubscription *v1alpha1.DirectoryServiceLogSubscription) (*v1alpha1.DirectoryServiceLogSubscription, error) {
+func (c *FakeDirectoryServiceLogSubscriptions) UpdateStatus(ctx context.Context, directoryServiceLogSubscription *v1alpha1.DirectoryServiceLogSubscription, opts v1.UpdateOptions) (*v1alpha1.DirectoryServiceLogSubscription, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(directoryservicelogsubscriptionsResource, "status", c.ns, directoryServiceLogSubscription), &v1alpha1.DirectoryServiceLogSubscription{})
 
@@ -114,7 +116,7 @@ func (c *FakeDirectoryServiceLogSubscriptions) UpdateStatus(directoryServiceLogS
 }
 
 // Delete takes name of the directoryServiceLogSubscription and deletes it. Returns an error if one occurs.
-func (c *FakeDirectoryServiceLogSubscriptions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDirectoryServiceLogSubscriptions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(directoryservicelogsubscriptionsResource, c.ns, name), &v1alpha1.DirectoryServiceLogSubscription{})
 
@@ -122,15 +124,15 @@ func (c *FakeDirectoryServiceLogSubscriptions) Delete(name string, options *v1.D
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDirectoryServiceLogSubscriptions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(directoryservicelogsubscriptionsResource, c.ns, listOptions)
+func (c *FakeDirectoryServiceLogSubscriptions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(directoryservicelogsubscriptionsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DirectoryServiceLogSubscriptionList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched directoryServiceLogSubscription.
-func (c *FakeDirectoryServiceLogSubscriptions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DirectoryServiceLogSubscription, err error) {
+func (c *FakeDirectoryServiceLogSubscriptions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DirectoryServiceLogSubscription, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(directoryservicelogsubscriptionsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DirectoryServiceLogSubscription{})
 

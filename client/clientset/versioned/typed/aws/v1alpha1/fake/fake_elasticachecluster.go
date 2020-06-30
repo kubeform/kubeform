@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var elasticacheclustersResource = schema.GroupVersionResource{Group: "aws.kubefo
 var elasticacheclustersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ElasticacheCluster"}
 
 // Get takes name of the elasticacheCluster, and returns the corresponding elasticacheCluster object, and an error if there is any.
-func (c *FakeElasticacheClusters) Get(name string, options v1.GetOptions) (result *v1alpha1.ElasticacheCluster, err error) {
+func (c *FakeElasticacheClusters) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ElasticacheCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(elasticacheclustersResource, c.ns, name), &v1alpha1.ElasticacheCluster{})
 
@@ -51,7 +53,7 @@ func (c *FakeElasticacheClusters) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of ElasticacheClusters that match those selectors.
-func (c *FakeElasticacheClusters) List(opts v1.ListOptions) (result *v1alpha1.ElasticacheClusterList, err error) {
+func (c *FakeElasticacheClusters) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ElasticacheClusterList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(elasticacheclustersResource, elasticacheclustersKind, c.ns, opts), &v1alpha1.ElasticacheClusterList{})
 
@@ -73,14 +75,14 @@ func (c *FakeElasticacheClusters) List(opts v1.ListOptions) (result *v1alpha1.El
 }
 
 // Watch returns a watch.Interface that watches the requested elasticacheClusters.
-func (c *FakeElasticacheClusters) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeElasticacheClusters) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(elasticacheclustersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a elasticacheCluster and creates it.  Returns the server's representation of the elasticacheCluster, and an error, if there is any.
-func (c *FakeElasticacheClusters) Create(elasticacheCluster *v1alpha1.ElasticacheCluster) (result *v1alpha1.ElasticacheCluster, err error) {
+func (c *FakeElasticacheClusters) Create(ctx context.Context, elasticacheCluster *v1alpha1.ElasticacheCluster, opts v1.CreateOptions) (result *v1alpha1.ElasticacheCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(elasticacheclustersResource, c.ns, elasticacheCluster), &v1alpha1.ElasticacheCluster{})
 
@@ -91,7 +93,7 @@ func (c *FakeElasticacheClusters) Create(elasticacheCluster *v1alpha1.Elasticach
 }
 
 // Update takes the representation of a elasticacheCluster and updates it. Returns the server's representation of the elasticacheCluster, and an error, if there is any.
-func (c *FakeElasticacheClusters) Update(elasticacheCluster *v1alpha1.ElasticacheCluster) (result *v1alpha1.ElasticacheCluster, err error) {
+func (c *FakeElasticacheClusters) Update(ctx context.Context, elasticacheCluster *v1alpha1.ElasticacheCluster, opts v1.UpdateOptions) (result *v1alpha1.ElasticacheCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(elasticacheclustersResource, c.ns, elasticacheCluster), &v1alpha1.ElasticacheCluster{})
 
@@ -103,7 +105,7 @@ func (c *FakeElasticacheClusters) Update(elasticacheCluster *v1alpha1.Elasticach
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeElasticacheClusters) UpdateStatus(elasticacheCluster *v1alpha1.ElasticacheCluster) (*v1alpha1.ElasticacheCluster, error) {
+func (c *FakeElasticacheClusters) UpdateStatus(ctx context.Context, elasticacheCluster *v1alpha1.ElasticacheCluster, opts v1.UpdateOptions) (*v1alpha1.ElasticacheCluster, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(elasticacheclustersResource, "status", c.ns, elasticacheCluster), &v1alpha1.ElasticacheCluster{})
 
@@ -114,7 +116,7 @@ func (c *FakeElasticacheClusters) UpdateStatus(elasticacheCluster *v1alpha1.Elas
 }
 
 // Delete takes name of the elasticacheCluster and deletes it. Returns an error if one occurs.
-func (c *FakeElasticacheClusters) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeElasticacheClusters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(elasticacheclustersResource, c.ns, name), &v1alpha1.ElasticacheCluster{})
 
@@ -122,15 +124,15 @@ func (c *FakeElasticacheClusters) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeElasticacheClusters) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(elasticacheclustersResource, c.ns, listOptions)
+func (c *FakeElasticacheClusters) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(elasticacheclustersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ElasticacheClusterList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched elasticacheCluster.
-func (c *FakeElasticacheClusters) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ElasticacheCluster, err error) {
+func (c *FakeElasticacheClusters) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ElasticacheCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(elasticacheclustersResource, c.ns, name, pt, data, subresources...), &v1alpha1.ElasticacheCluster{})
 

@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type CloudhsmV2HsmsGetter interface {
 
 // CloudhsmV2HsmInterface has methods to work with CloudhsmV2Hsm resources.
 type CloudhsmV2HsmInterface interface {
-	Create(*v1alpha1.CloudhsmV2Hsm) (*v1alpha1.CloudhsmV2Hsm, error)
-	Update(*v1alpha1.CloudhsmV2Hsm) (*v1alpha1.CloudhsmV2Hsm, error)
-	UpdateStatus(*v1alpha1.CloudhsmV2Hsm) (*v1alpha1.CloudhsmV2Hsm, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.CloudhsmV2Hsm, error)
-	List(opts v1.ListOptions) (*v1alpha1.CloudhsmV2HsmList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CloudhsmV2Hsm, err error)
+	Create(ctx context.Context, cloudhsmV2Hsm *v1alpha1.CloudhsmV2Hsm, opts v1.CreateOptions) (*v1alpha1.CloudhsmV2Hsm, error)
+	Update(ctx context.Context, cloudhsmV2Hsm *v1alpha1.CloudhsmV2Hsm, opts v1.UpdateOptions) (*v1alpha1.CloudhsmV2Hsm, error)
+	UpdateStatus(ctx context.Context, cloudhsmV2Hsm *v1alpha1.CloudhsmV2Hsm, opts v1.UpdateOptions) (*v1alpha1.CloudhsmV2Hsm, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.CloudhsmV2Hsm, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.CloudhsmV2HsmList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CloudhsmV2Hsm, err error)
 	CloudhsmV2HsmExpansion
 }
 
@@ -65,20 +66,20 @@ func newCloudhsmV2Hsms(c *AwsV1alpha1Client, namespace string) *cloudhsmV2Hsms {
 }
 
 // Get takes name of the cloudhsmV2Hsm, and returns the corresponding cloudhsmV2Hsm object, and an error if there is any.
-func (c *cloudhsmV2Hsms) Get(name string, options v1.GetOptions) (result *v1alpha1.CloudhsmV2Hsm, err error) {
+func (c *cloudhsmV2Hsms) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CloudhsmV2Hsm, err error) {
 	result = &v1alpha1.CloudhsmV2Hsm{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("cloudhsmv2hsms").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of CloudhsmV2Hsms that match those selectors.
-func (c *cloudhsmV2Hsms) List(opts v1.ListOptions) (result *v1alpha1.CloudhsmV2HsmList, err error) {
+func (c *cloudhsmV2Hsms) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CloudhsmV2HsmList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *cloudhsmV2Hsms) List(opts v1.ListOptions) (result *v1alpha1.CloudhsmV2H
 		Resource("cloudhsmv2hsms").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested cloudhsmV2Hsms.
-func (c *cloudhsmV2Hsms) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *cloudhsmV2Hsms) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *cloudhsmV2Hsms) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("cloudhsmv2hsms").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a cloudhsmV2Hsm and creates it.  Returns the server's representation of the cloudhsmV2Hsm, and an error, if there is any.
-func (c *cloudhsmV2Hsms) Create(cloudhsmV2Hsm *v1alpha1.CloudhsmV2Hsm) (result *v1alpha1.CloudhsmV2Hsm, err error) {
+func (c *cloudhsmV2Hsms) Create(ctx context.Context, cloudhsmV2Hsm *v1alpha1.CloudhsmV2Hsm, opts v1.CreateOptions) (result *v1alpha1.CloudhsmV2Hsm, err error) {
 	result = &v1alpha1.CloudhsmV2Hsm{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("cloudhsmv2hsms").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cloudhsmV2Hsm).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a cloudhsmV2Hsm and updates it. Returns the server's representation of the cloudhsmV2Hsm, and an error, if there is any.
-func (c *cloudhsmV2Hsms) Update(cloudhsmV2Hsm *v1alpha1.CloudhsmV2Hsm) (result *v1alpha1.CloudhsmV2Hsm, err error) {
+func (c *cloudhsmV2Hsms) Update(ctx context.Context, cloudhsmV2Hsm *v1alpha1.CloudhsmV2Hsm, opts v1.UpdateOptions) (result *v1alpha1.CloudhsmV2Hsm, err error) {
 	result = &v1alpha1.CloudhsmV2Hsm{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("cloudhsmv2hsms").
 		Name(cloudhsmV2Hsm.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cloudhsmV2Hsm).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *cloudhsmV2Hsms) UpdateStatus(cloudhsmV2Hsm *v1alpha1.CloudhsmV2Hsm) (result *v1alpha1.CloudhsmV2Hsm, err error) {
+func (c *cloudhsmV2Hsms) UpdateStatus(ctx context.Context, cloudhsmV2Hsm *v1alpha1.CloudhsmV2Hsm, opts v1.UpdateOptions) (result *v1alpha1.CloudhsmV2Hsm, err error) {
 	result = &v1alpha1.CloudhsmV2Hsm{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("cloudhsmv2hsms").
 		Name(cloudhsmV2Hsm.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cloudhsmV2Hsm).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the cloudhsmV2Hsm and deletes it. Returns an error if one occurs.
-func (c *cloudhsmV2Hsms) Delete(name string, options *v1.DeleteOptions) error {
+func (c *cloudhsmV2Hsms) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("cloudhsmv2hsms").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *cloudhsmV2Hsms) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *cloudhsmV2Hsms) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("cloudhsmv2hsms").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched cloudhsmV2Hsm.
-func (c *cloudhsmV2Hsms) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CloudhsmV2Hsm, err error) {
+func (c *cloudhsmV2Hsms) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CloudhsmV2Hsm, err error) {
 	result = &v1alpha1.CloudhsmV2Hsm{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("cloudhsmv2hsms").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

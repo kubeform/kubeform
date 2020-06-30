@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var codepipelinesResource = schema.GroupVersionResource{Group: "aws.kubeform.com
 var codepipelinesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "Codepipeline"}
 
 // Get takes name of the codepipeline, and returns the corresponding codepipeline object, and an error if there is any.
-func (c *FakeCodepipelines) Get(name string, options v1.GetOptions) (result *v1alpha1.Codepipeline, err error) {
+func (c *FakeCodepipelines) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Codepipeline, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(codepipelinesResource, c.ns, name), &v1alpha1.Codepipeline{})
 
@@ -51,7 +53,7 @@ func (c *FakeCodepipelines) Get(name string, options v1.GetOptions) (result *v1a
 }
 
 // List takes label and field selectors, and returns the list of Codepipelines that match those selectors.
-func (c *FakeCodepipelines) List(opts v1.ListOptions) (result *v1alpha1.CodepipelineList, err error) {
+func (c *FakeCodepipelines) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CodepipelineList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(codepipelinesResource, codepipelinesKind, c.ns, opts), &v1alpha1.CodepipelineList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCodepipelines) List(opts v1.ListOptions) (result *v1alpha1.Codepipe
 }
 
 // Watch returns a watch.Interface that watches the requested codepipelines.
-func (c *FakeCodepipelines) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCodepipelines) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(codepipelinesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a codepipeline and creates it.  Returns the server's representation of the codepipeline, and an error, if there is any.
-func (c *FakeCodepipelines) Create(codepipeline *v1alpha1.Codepipeline) (result *v1alpha1.Codepipeline, err error) {
+func (c *FakeCodepipelines) Create(ctx context.Context, codepipeline *v1alpha1.Codepipeline, opts v1.CreateOptions) (result *v1alpha1.Codepipeline, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(codepipelinesResource, c.ns, codepipeline), &v1alpha1.Codepipeline{})
 
@@ -91,7 +93,7 @@ func (c *FakeCodepipelines) Create(codepipeline *v1alpha1.Codepipeline) (result 
 }
 
 // Update takes the representation of a codepipeline and updates it. Returns the server's representation of the codepipeline, and an error, if there is any.
-func (c *FakeCodepipelines) Update(codepipeline *v1alpha1.Codepipeline) (result *v1alpha1.Codepipeline, err error) {
+func (c *FakeCodepipelines) Update(ctx context.Context, codepipeline *v1alpha1.Codepipeline, opts v1.UpdateOptions) (result *v1alpha1.Codepipeline, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(codepipelinesResource, c.ns, codepipeline), &v1alpha1.Codepipeline{})
 
@@ -103,7 +105,7 @@ func (c *FakeCodepipelines) Update(codepipeline *v1alpha1.Codepipeline) (result 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCodepipelines) UpdateStatus(codepipeline *v1alpha1.Codepipeline) (*v1alpha1.Codepipeline, error) {
+func (c *FakeCodepipelines) UpdateStatus(ctx context.Context, codepipeline *v1alpha1.Codepipeline, opts v1.UpdateOptions) (*v1alpha1.Codepipeline, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(codepipelinesResource, "status", c.ns, codepipeline), &v1alpha1.Codepipeline{})
 
@@ -114,7 +116,7 @@ func (c *FakeCodepipelines) UpdateStatus(codepipeline *v1alpha1.Codepipeline) (*
 }
 
 // Delete takes name of the codepipeline and deletes it. Returns an error if one occurs.
-func (c *FakeCodepipelines) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCodepipelines) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(codepipelinesResource, c.ns, name), &v1alpha1.Codepipeline{})
 
@@ -122,15 +124,15 @@ func (c *FakeCodepipelines) Delete(name string, options *v1.DeleteOptions) error
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCodepipelines) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(codepipelinesResource, c.ns, listOptions)
+func (c *FakeCodepipelines) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(codepipelinesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CodepipelineList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched codepipeline.
-func (c *FakeCodepipelines) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Codepipeline, err error) {
+func (c *FakeCodepipelines) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Codepipeline, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(codepipelinesResource, c.ns, name, pt, data, subresources...), &v1alpha1.Codepipeline{})
 

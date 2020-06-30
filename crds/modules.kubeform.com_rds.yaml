@@ -1,0 +1,398 @@
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/name: kubeform
+  name: rds.modules.kubeform.com
+spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
+  group: modules.kubeform.com
+  names:
+    kind: RDS
+    listKind: RDSList
+    plural: rds
+    singular: rds
+  scope: Namespaced
+  subresources:
+    status: {}
+  validation:
+    openAPIV3Schema:
+      properties:
+        apiVersion:
+          description: 'APIVersion defines the versioned schema of this representation
+            of an object. Servers should convert recognized schemas to the latest
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+          type: string
+        kind:
+          description: 'Kind is a string value representing the REST resource this
+            object represents. Servers may infer this from the endpoint the client
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+          type: string
+        metadata:
+          type: object
+        spec:
+          properties:
+            allocatedStorage:
+              description: The allocated storage in gigabytes
+              type: string
+            allowMajorVersionUpgrade:
+              description: Indicates that major version upgrades are allowed. Changing
+                this parameter does not result in an outage and the change is asynchronously
+                applied as soon as possible
+              type: boolean
+            applyImmediately:
+              description: Specifies whether any database modifications are applied
+                immediately, or during the next maintenance window
+              type: boolean
+            autoMinorVersionUpgrade:
+              description: Indicates that minor engine upgrades will be applied automatically
+                to the DB instance during the maintenance window
+              type: boolean
+            availabilityZone:
+              description: The Availability Zone of the RDS instance
+              type: string
+            backupRetentionPeriod:
+              description: The days to retain backups for
+              type: string
+            backupWindow:
+              description: 'The daily time range (in UTC) during which automated backups
+                are created if they are enabled. Example: ''09:46-10:16''. Must not
+                overlap with maintenance_window'
+              type: string
+            caCertIdentifier:
+              description: Specifies the identifier of the CA certificate for the
+                DB instance
+              type: string
+            characterSetName:
+              description: (Optional) The character set name to use for DB encoding
+                in Oracle instances. This can't be changed. See Oracle Character Sets
+                Supported in Amazon RDS for more information
+              type: string
+            copyTagsToSnapshot:
+              description: On delete, copy all Instance tags to the final snapshot
+                (if final_snapshot_identifier is specified)
+              type: boolean
+            createDbInstance:
+              description: Whether to create a database instance
+              type: boolean
+            createDbOptionGroup:
+              description: (Optional) Create a database option group
+              type: boolean
+            createDbParameterGroup:
+              description: Whether to create a database parameter group
+              type: boolean
+            createDbSubnetGroup:
+              description: Whether to create a database subnet group
+              type: boolean
+            createMonitoringRole:
+              description: Create IAM role with a defined name that permits RDS to
+                send enhanced monitoring metrics to CloudWatch Logs.
+              type: boolean
+            dbSubnetGroupName:
+              description: Name of DB subnet group. DB instance will be created in
+                the VPC associated with the DB subnet group. If unspecified, will
+                be created in the default VPC
+              type: string
+            deleteAutomatedBackups:
+              description: Specifies whether to remove automated backups immediately
+                after the DB instance is deleted
+              type: boolean
+            deletionProtection:
+              description: The database can't be deleted when this value is set to
+                true.
+              type: boolean
+            enabledCloudwatchLogsExports:
+              description: 'List of log types to enable for exporting to CloudWatch
+                logs. If omitted, no logs will be exported. Valid values (depending
+                on engine): alert, audit, error, general, listener, slowquery, trace,
+                postgresql (PostgreSQL), upgrade (PostgreSQL).'
+              items:
+                type: string
+              type: array
+            engine:
+              description: The database engine to use
+              type: string
+            engineVersion:
+              description: The engine version to use
+              type: string
+            family:
+              description: The family of the DB parameter group
+              type: string
+            finalSnapshotIdentifier:
+              description: The name of your final DB snapshot when this DB instance
+                is deleted.
+              type: string
+            iamDatabaseAuthenticationEnabled:
+              description: Specifies whether or mappings of AWS Identity and Access
+                Management (IAM) accounts to database accounts is enabled
+              type: boolean
+            identifier:
+              description: The name of the RDS instance, if omitted, Terraform will
+                assign a random, unique identifier
+              type: string
+            instanceClass:
+              description: The instance type of the RDS instance
+              type: string
+            iops:
+              description: The amount of provisioned IOPS. Setting this implies a
+                storage_type of 'io1'
+              type: string
+            kmsKeyID:
+              description: The ARN for the KMS encryption key. If creating an encrypted
+                replica, set this to the destination KMS ARN. If storage_encrypted
+                is set to true and kms_key_id is not specified the default KMS key
+                created in your account will be used
+              type: string
+            licenseModel:
+              description: License model information for this DB instance. Optional,
+                but required for some DB engines, i.e. Oracle SE1
+              type: string
+            maintenanceWindow:
+              description: 'The window to perform maintenance in. Syntax: ''ddd:hh24:mi-ddd:hh24:mi''.
+                Eg: ''Mon:00:00-Mon:03:00'''
+              type: string
+            majorEngineVersion:
+              description: Specifies the major version of the engine that this option
+                group should be associated with
+              type: string
+            maxAllocatedStorage:
+              description: Specifies the value for Storage Autoscaling
+              type: string
+            monitoringInterval:
+              description: 'The interval, in seconds, between points when Enhanced
+                Monitoring metrics are collected for the DB instance. To disable collecting
+                Enhanced Monitoring metrics, specify 0. The default is 0. Valid Values:
+                0, 1, 5, 10, 15, 30, 60.'
+              type: string
+            monitoringRoleArn:
+              description: The ARN for the IAM role that permits RDS to send enhanced
+                monitoring metrics to CloudWatch Logs. Must be specified if monitoring_interval
+                is non-zero.
+              type: string
+            monitoringRoleName:
+              description: Name of the IAM role which will be created when create_monitoring_role
+                is enabled.
+              type: string
+            multiAz:
+              description: Specifies if the RDS instance is multi-AZ
+              type: boolean
+            name:
+              description: The DB name to create. If omitted, no database is created
+                initially
+              type: string
+            optionGroupDescription:
+              description: The description of the option group
+              type: string
+            optionGroupName:
+              description: Name of the DB option group to associate
+              type: string
+            optionGroupTimeouts:
+              additionalProperties:
+                type: string
+              description: Define maximum timeout for deletion of `aws_db_option_group`
+                resource
+              type: object
+            options:
+              description: A list of Options to apply.
+              format: byte
+              type: string
+            parameterGroupDescription:
+              description: Description of the DB parameter group to create
+              type: string
+            parameterGroupName:
+              description: Name of the DB parameter group to associate or create
+              type: string
+            parameters:
+              description: A list of DB parameters (map) to apply
+              format: byte
+              type: string
+            password:
+              description: Password for the master DB user. Note that this may show
+                up in logs, and it will be stored in the state file
+              type: string
+            performanceInsightsEnabled:
+              description: Specifies whether Performance Insights are enabled
+              type: boolean
+            performanceInsightsRetentionPeriod:
+              description: The amount of time in days to retain Performance Insights
+                data. Either 7 (7 days) or 731 (2 years).
+              type: string
+            port:
+              description: The port on which the DB accepts connections
+              type: string
+            providerRef:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
+            publiclyAccessible:
+              description: Bool to control if instance is publicly accessible
+              type: boolean
+            replicateSourceDb:
+              description: Specifies that this resource is a Replicate database, and
+                to use this value as the source database. This correlates to the identifier
+                of another Amazon RDS Database to replicate.
+              type: string
+            secretRef:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
+            skipFinalSnapshot:
+              description: Determines whether a final DB snapshot is created before
+                the DB instance is deleted. If true is specified, no DBSnapshot is
+                created. If false is specified, a DB snapshot is created before the
+                DB instance is deleted, using the value from final_snapshot_identifier
+              type: boolean
+            snapshotIdentifier:
+              description: 'Specifies whether or not to create this database from
+                a snapshot. This correlates to the snapshot ID you''d find in the
+                RDS console, e.g: rds:production-2015-06-26-06-05.'
+              type: string
+            source:
+              type: string
+            storageEncrypted:
+              description: Specifies whether the DB instance is encrypted
+              type: boolean
+            storageType:
+              description: One of 'standard' (magnetic), 'gp2' (general purpose SSD),
+                or 'io1' (provisioned IOPS SSD). The default is 'io1' if iops is specified,
+                'standard' if not. Note that this behaviour is different from the
+                AWS web console, where the default is 'gp2'.
+              type: string
+            subnetIDS:
+              description: A list of VPC subnet IDs
+              items:
+                type: string
+              type: array
+            tags:
+              additionalProperties:
+                type: string
+              description: A mapping of tags to assign to all resources
+              type: object
+            timeouts:
+              additionalProperties:
+                type: string
+              description: (Optional) Updated Terraform resource management timeouts.
+                Applies to `aws_db_instance` in particular to permit resource management
+                times
+              type: object
+            timezone:
+              description: (Optional) Time zone of the DB instance. timezone is currently
+                only supported by Microsoft SQL Server. The timezone can only be set
+                on creation. See MSSQL User Guide for more information.
+              type: string
+            useParameterGroupNamePrefix:
+              description: Whether to use the parameter group name prefix or not
+              type: boolean
+            username:
+              description: Username for the master DB user
+              type: string
+            vpcSecurityGroupIDS:
+              description: List of VPC security groups to associate
+              items:
+                type: string
+              type: array
+          required:
+          - providerRef
+          type: object
+        status:
+          properties:
+            observedGeneration:
+              description: Resource generation, which is updated on mutation by the
+                API Server.
+              format: int64
+              type: integer
+            output:
+              properties:
+                enhancedMonitoringIamRoleArn:
+                  description: The Amazon Resource Name (ARN) specifying the monitoring
+                    role
+                  type: string
+                enhancedMonitoringIamRoleName:
+                  description: The name of the monitoring role
+                  type: string
+                thisDbInstanceAddress:
+                  description: The address of the RDS instance
+                  type: string
+                thisDbInstanceArn:
+                  description: The ARN of the RDS instance
+                  type: string
+                thisDbInstanceAvailabilityZone:
+                  description: The availability zone of the RDS instance
+                  type: string
+                thisDbInstanceCaCertIdentifier:
+                  description: Specifies the identifier of the CA certificate for
+                    the DB instance
+                  type: string
+                thisDbInstanceEndpoint:
+                  description: The connection endpoint
+                  type: string
+                thisDbInstanceHostedZoneID:
+                  description: The canonical hosted zone ID of the DB instance (to
+                    be used in a Route 53 Alias record)
+                  type: string
+                thisDbInstanceID:
+                  description: The RDS instance ID
+                  type: string
+                thisDbInstanceName:
+                  description: The database name
+                  type: string
+                thisDbInstancePassword:
+                  description: The database password (this password may be old, because
+                    Terraform doesn't track it after initial creation)
+                  type: string
+                thisDbInstancePort:
+                  description: The database port
+                  type: string
+                thisDbInstanceResourceID:
+                  description: The RDS Resource ID of this instance
+                  type: string
+                thisDbInstanceStatus:
+                  description: The RDS instance status
+                  type: string
+                thisDbInstanceUsername:
+                  description: The master username for the database
+                  type: string
+                thisDbOptionGroupArn:
+                  description: The ARN of the db option group
+                  type: string
+                thisDbOptionGroupID:
+                  description: The db option group id
+                  type: string
+                thisDbParameterGroupArn:
+                  description: The ARN of the db parameter group
+                  type: string
+                thisDbParameterGroupID:
+                  description: The db parameter group id
+                  type: string
+                thisDbSubnetGroupArn:
+                  description: The ARN of the db subnet group
+                  type: string
+                thisDbSubnetGroupID:
+                  description: The db subnet group name
+                  type: string
+              type: object
+            phase:
+              type: string
+            state:
+              type: string
+          type: object
+      type: object
+  version: v1alpha1
+  versions:
+  - name: v1alpha1
+    served: true
+    storage: true

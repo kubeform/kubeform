@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iapwebbackendserviceiammembersResource = schema.GroupVersionResource{Group: 
 var iapwebbackendserviceiammembersKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "IapWebBackendServiceIamMember"}
 
 // Get takes name of the iapWebBackendServiceIamMember, and returns the corresponding iapWebBackendServiceIamMember object, and an error if there is any.
-func (c *FakeIapWebBackendServiceIamMembers) Get(name string, options v1.GetOptions) (result *v1alpha1.IapWebBackendServiceIamMember, err error) {
+func (c *FakeIapWebBackendServiceIamMembers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IapWebBackendServiceIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iapwebbackendserviceiammembersResource, c.ns, name), &v1alpha1.IapWebBackendServiceIamMember{})
 
@@ -51,7 +53,7 @@ func (c *FakeIapWebBackendServiceIamMembers) Get(name string, options v1.GetOpti
 }
 
 // List takes label and field selectors, and returns the list of IapWebBackendServiceIamMembers that match those selectors.
-func (c *FakeIapWebBackendServiceIamMembers) List(opts v1.ListOptions) (result *v1alpha1.IapWebBackendServiceIamMemberList, err error) {
+func (c *FakeIapWebBackendServiceIamMembers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IapWebBackendServiceIamMemberList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iapwebbackendserviceiammembersResource, iapwebbackendserviceiammembersKind, c.ns, opts), &v1alpha1.IapWebBackendServiceIamMemberList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIapWebBackendServiceIamMembers) List(opts v1.ListOptions) (result *
 }
 
 // Watch returns a watch.Interface that watches the requested iapWebBackendServiceIamMembers.
-func (c *FakeIapWebBackendServiceIamMembers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIapWebBackendServiceIamMembers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iapwebbackendserviceiammembersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iapWebBackendServiceIamMember and creates it.  Returns the server's representation of the iapWebBackendServiceIamMember, and an error, if there is any.
-func (c *FakeIapWebBackendServiceIamMembers) Create(iapWebBackendServiceIamMember *v1alpha1.IapWebBackendServiceIamMember) (result *v1alpha1.IapWebBackendServiceIamMember, err error) {
+func (c *FakeIapWebBackendServiceIamMembers) Create(ctx context.Context, iapWebBackendServiceIamMember *v1alpha1.IapWebBackendServiceIamMember, opts v1.CreateOptions) (result *v1alpha1.IapWebBackendServiceIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iapwebbackendserviceiammembersResource, c.ns, iapWebBackendServiceIamMember), &v1alpha1.IapWebBackendServiceIamMember{})
 
@@ -91,7 +93,7 @@ func (c *FakeIapWebBackendServiceIamMembers) Create(iapWebBackendServiceIamMembe
 }
 
 // Update takes the representation of a iapWebBackendServiceIamMember and updates it. Returns the server's representation of the iapWebBackendServiceIamMember, and an error, if there is any.
-func (c *FakeIapWebBackendServiceIamMembers) Update(iapWebBackendServiceIamMember *v1alpha1.IapWebBackendServiceIamMember) (result *v1alpha1.IapWebBackendServiceIamMember, err error) {
+func (c *FakeIapWebBackendServiceIamMembers) Update(ctx context.Context, iapWebBackendServiceIamMember *v1alpha1.IapWebBackendServiceIamMember, opts v1.UpdateOptions) (result *v1alpha1.IapWebBackendServiceIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iapwebbackendserviceiammembersResource, c.ns, iapWebBackendServiceIamMember), &v1alpha1.IapWebBackendServiceIamMember{})
 
@@ -103,7 +105,7 @@ func (c *FakeIapWebBackendServiceIamMembers) Update(iapWebBackendServiceIamMembe
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIapWebBackendServiceIamMembers) UpdateStatus(iapWebBackendServiceIamMember *v1alpha1.IapWebBackendServiceIamMember) (*v1alpha1.IapWebBackendServiceIamMember, error) {
+func (c *FakeIapWebBackendServiceIamMembers) UpdateStatus(ctx context.Context, iapWebBackendServiceIamMember *v1alpha1.IapWebBackendServiceIamMember, opts v1.UpdateOptions) (*v1alpha1.IapWebBackendServiceIamMember, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iapwebbackendserviceiammembersResource, "status", c.ns, iapWebBackendServiceIamMember), &v1alpha1.IapWebBackendServiceIamMember{})
 
@@ -114,7 +116,7 @@ func (c *FakeIapWebBackendServiceIamMembers) UpdateStatus(iapWebBackendServiceIa
 }
 
 // Delete takes name of the iapWebBackendServiceIamMember and deletes it. Returns an error if one occurs.
-func (c *FakeIapWebBackendServiceIamMembers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIapWebBackendServiceIamMembers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iapwebbackendserviceiammembersResource, c.ns, name), &v1alpha1.IapWebBackendServiceIamMember{})
 
@@ -122,15 +124,15 @@ func (c *FakeIapWebBackendServiceIamMembers) Delete(name string, options *v1.Del
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIapWebBackendServiceIamMembers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iapwebbackendserviceiammembersResource, c.ns, listOptions)
+func (c *FakeIapWebBackendServiceIamMembers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iapwebbackendserviceiammembersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IapWebBackendServiceIamMemberList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iapWebBackendServiceIamMember.
-func (c *FakeIapWebBackendServiceIamMembers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IapWebBackendServiceIamMember, err error) {
+func (c *FakeIapWebBackendServiceIamMembers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IapWebBackendServiceIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iapwebbackendserviceiammembersResource, c.ns, name, pt, data, subresources...), &v1alpha1.IapWebBackendServiceIamMember{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computeregionautoscalersResource = schema.GroupVersionResource{Group: "googl
 var computeregionautoscalersKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeRegionAutoscaler"}
 
 // Get takes name of the computeRegionAutoscaler, and returns the corresponding computeRegionAutoscaler object, and an error if there is any.
-func (c *FakeComputeRegionAutoscalers) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeRegionAutoscaler, err error) {
+func (c *FakeComputeRegionAutoscalers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeRegionAutoscaler, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computeregionautoscalersResource, c.ns, name), &v1alpha1.ComputeRegionAutoscaler{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeRegionAutoscalers) Get(name string, options v1.GetOptions) (
 }
 
 // List takes label and field selectors, and returns the list of ComputeRegionAutoscalers that match those selectors.
-func (c *FakeComputeRegionAutoscalers) List(opts v1.ListOptions) (result *v1alpha1.ComputeRegionAutoscalerList, err error) {
+func (c *FakeComputeRegionAutoscalers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeRegionAutoscalerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computeregionautoscalersResource, computeregionautoscalersKind, c.ns, opts), &v1alpha1.ComputeRegionAutoscalerList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeRegionAutoscalers) List(opts v1.ListOptions) (result *v1alph
 }
 
 // Watch returns a watch.Interface that watches the requested computeRegionAutoscalers.
-func (c *FakeComputeRegionAutoscalers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeRegionAutoscalers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computeregionautoscalersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeRegionAutoscaler and creates it.  Returns the server's representation of the computeRegionAutoscaler, and an error, if there is any.
-func (c *FakeComputeRegionAutoscalers) Create(computeRegionAutoscaler *v1alpha1.ComputeRegionAutoscaler) (result *v1alpha1.ComputeRegionAutoscaler, err error) {
+func (c *FakeComputeRegionAutoscalers) Create(ctx context.Context, computeRegionAutoscaler *v1alpha1.ComputeRegionAutoscaler, opts v1.CreateOptions) (result *v1alpha1.ComputeRegionAutoscaler, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computeregionautoscalersResource, c.ns, computeRegionAutoscaler), &v1alpha1.ComputeRegionAutoscaler{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeRegionAutoscalers) Create(computeRegionAutoscaler *v1alpha1.
 }
 
 // Update takes the representation of a computeRegionAutoscaler and updates it. Returns the server's representation of the computeRegionAutoscaler, and an error, if there is any.
-func (c *FakeComputeRegionAutoscalers) Update(computeRegionAutoscaler *v1alpha1.ComputeRegionAutoscaler) (result *v1alpha1.ComputeRegionAutoscaler, err error) {
+func (c *FakeComputeRegionAutoscalers) Update(ctx context.Context, computeRegionAutoscaler *v1alpha1.ComputeRegionAutoscaler, opts v1.UpdateOptions) (result *v1alpha1.ComputeRegionAutoscaler, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computeregionautoscalersResource, c.ns, computeRegionAutoscaler), &v1alpha1.ComputeRegionAutoscaler{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeRegionAutoscalers) Update(computeRegionAutoscaler *v1alpha1.
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeRegionAutoscalers) UpdateStatus(computeRegionAutoscaler *v1alpha1.ComputeRegionAutoscaler) (*v1alpha1.ComputeRegionAutoscaler, error) {
+func (c *FakeComputeRegionAutoscalers) UpdateStatus(ctx context.Context, computeRegionAutoscaler *v1alpha1.ComputeRegionAutoscaler, opts v1.UpdateOptions) (*v1alpha1.ComputeRegionAutoscaler, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computeregionautoscalersResource, "status", c.ns, computeRegionAutoscaler), &v1alpha1.ComputeRegionAutoscaler{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeRegionAutoscalers) UpdateStatus(computeRegionAutoscaler *v1a
 }
 
 // Delete takes name of the computeRegionAutoscaler and deletes it. Returns an error if one occurs.
-func (c *FakeComputeRegionAutoscalers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeRegionAutoscalers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computeregionautoscalersResource, c.ns, name), &v1alpha1.ComputeRegionAutoscaler{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeRegionAutoscalers) Delete(name string, options *v1.DeleteOpt
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeRegionAutoscalers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computeregionautoscalersResource, c.ns, listOptions)
+func (c *FakeComputeRegionAutoscalers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computeregionautoscalersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeRegionAutoscalerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeRegionAutoscaler.
-func (c *FakeComputeRegionAutoscalers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeRegionAutoscaler, err error) {
+func (c *FakeComputeRegionAutoscalers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeRegionAutoscaler, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computeregionautoscalersResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeRegionAutoscaler{})
 

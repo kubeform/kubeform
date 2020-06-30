@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var gluetriggersResource = schema.GroupVersionResource{Group: "aws.kubeform.com"
 var gluetriggersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "GlueTrigger"}
 
 // Get takes name of the glueTrigger, and returns the corresponding glueTrigger object, and an error if there is any.
-func (c *FakeGlueTriggers) Get(name string, options v1.GetOptions) (result *v1alpha1.GlueTrigger, err error) {
+func (c *FakeGlueTriggers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.GlueTrigger, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(gluetriggersResource, c.ns, name), &v1alpha1.GlueTrigger{})
 
@@ -51,7 +53,7 @@ func (c *FakeGlueTriggers) Get(name string, options v1.GetOptions) (result *v1al
 }
 
 // List takes label and field selectors, and returns the list of GlueTriggers that match those selectors.
-func (c *FakeGlueTriggers) List(opts v1.ListOptions) (result *v1alpha1.GlueTriggerList, err error) {
+func (c *FakeGlueTriggers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.GlueTriggerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(gluetriggersResource, gluetriggersKind, c.ns, opts), &v1alpha1.GlueTriggerList{})
 
@@ -73,14 +75,14 @@ func (c *FakeGlueTriggers) List(opts v1.ListOptions) (result *v1alpha1.GlueTrigg
 }
 
 // Watch returns a watch.Interface that watches the requested glueTriggers.
-func (c *FakeGlueTriggers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeGlueTriggers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(gluetriggersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a glueTrigger and creates it.  Returns the server's representation of the glueTrigger, and an error, if there is any.
-func (c *FakeGlueTriggers) Create(glueTrigger *v1alpha1.GlueTrigger) (result *v1alpha1.GlueTrigger, err error) {
+func (c *FakeGlueTriggers) Create(ctx context.Context, glueTrigger *v1alpha1.GlueTrigger, opts v1.CreateOptions) (result *v1alpha1.GlueTrigger, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(gluetriggersResource, c.ns, glueTrigger), &v1alpha1.GlueTrigger{})
 
@@ -91,7 +93,7 @@ func (c *FakeGlueTriggers) Create(glueTrigger *v1alpha1.GlueTrigger) (result *v1
 }
 
 // Update takes the representation of a glueTrigger and updates it. Returns the server's representation of the glueTrigger, and an error, if there is any.
-func (c *FakeGlueTriggers) Update(glueTrigger *v1alpha1.GlueTrigger) (result *v1alpha1.GlueTrigger, err error) {
+func (c *FakeGlueTriggers) Update(ctx context.Context, glueTrigger *v1alpha1.GlueTrigger, opts v1.UpdateOptions) (result *v1alpha1.GlueTrigger, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(gluetriggersResource, c.ns, glueTrigger), &v1alpha1.GlueTrigger{})
 
@@ -103,7 +105,7 @@ func (c *FakeGlueTriggers) Update(glueTrigger *v1alpha1.GlueTrigger) (result *v1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeGlueTriggers) UpdateStatus(glueTrigger *v1alpha1.GlueTrigger) (*v1alpha1.GlueTrigger, error) {
+func (c *FakeGlueTriggers) UpdateStatus(ctx context.Context, glueTrigger *v1alpha1.GlueTrigger, opts v1.UpdateOptions) (*v1alpha1.GlueTrigger, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(gluetriggersResource, "status", c.ns, glueTrigger), &v1alpha1.GlueTrigger{})
 
@@ -114,7 +116,7 @@ func (c *FakeGlueTriggers) UpdateStatus(glueTrigger *v1alpha1.GlueTrigger) (*v1a
 }
 
 // Delete takes name of the glueTrigger and deletes it. Returns an error if one occurs.
-func (c *FakeGlueTriggers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeGlueTriggers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(gluetriggersResource, c.ns, name), &v1alpha1.GlueTrigger{})
 
@@ -122,15 +124,15 @@ func (c *FakeGlueTriggers) Delete(name string, options *v1.DeleteOptions) error 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeGlueTriggers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(gluetriggersResource, c.ns, listOptions)
+func (c *FakeGlueTriggers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(gluetriggersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.GlueTriggerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched glueTrigger.
-func (c *FakeGlueTriggers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.GlueTrigger, err error) {
+func (c *FakeGlueTriggers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.GlueTrigger, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(gluetriggersResource, c.ns, name, pt, data, subresources...), &v1alpha1.GlueTrigger{})
 

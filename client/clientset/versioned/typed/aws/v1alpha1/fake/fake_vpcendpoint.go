@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var vpcendpointsResource = schema.GroupVersionResource{Group: "aws.kubeform.com"
 var vpcendpointsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "VpcEndpoint"}
 
 // Get takes name of the vpcEndpoint, and returns the corresponding vpcEndpoint object, and an error if there is any.
-func (c *FakeVpcEndpoints) Get(name string, options v1.GetOptions) (result *v1alpha1.VpcEndpoint, err error) {
+func (c *FakeVpcEndpoints) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.VpcEndpoint, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(vpcendpointsResource, c.ns, name), &v1alpha1.VpcEndpoint{})
 
@@ -51,7 +53,7 @@ func (c *FakeVpcEndpoints) Get(name string, options v1.GetOptions) (result *v1al
 }
 
 // List takes label and field selectors, and returns the list of VpcEndpoints that match those selectors.
-func (c *FakeVpcEndpoints) List(opts v1.ListOptions) (result *v1alpha1.VpcEndpointList, err error) {
+func (c *FakeVpcEndpoints) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.VpcEndpointList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(vpcendpointsResource, vpcendpointsKind, c.ns, opts), &v1alpha1.VpcEndpointList{})
 
@@ -73,14 +75,14 @@ func (c *FakeVpcEndpoints) List(opts v1.ListOptions) (result *v1alpha1.VpcEndpoi
 }
 
 // Watch returns a watch.Interface that watches the requested vpcEndpoints.
-func (c *FakeVpcEndpoints) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeVpcEndpoints) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(vpcendpointsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a vpcEndpoint and creates it.  Returns the server's representation of the vpcEndpoint, and an error, if there is any.
-func (c *FakeVpcEndpoints) Create(vpcEndpoint *v1alpha1.VpcEndpoint) (result *v1alpha1.VpcEndpoint, err error) {
+func (c *FakeVpcEndpoints) Create(ctx context.Context, vpcEndpoint *v1alpha1.VpcEndpoint, opts v1.CreateOptions) (result *v1alpha1.VpcEndpoint, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(vpcendpointsResource, c.ns, vpcEndpoint), &v1alpha1.VpcEndpoint{})
 
@@ -91,7 +93,7 @@ func (c *FakeVpcEndpoints) Create(vpcEndpoint *v1alpha1.VpcEndpoint) (result *v1
 }
 
 // Update takes the representation of a vpcEndpoint and updates it. Returns the server's representation of the vpcEndpoint, and an error, if there is any.
-func (c *FakeVpcEndpoints) Update(vpcEndpoint *v1alpha1.VpcEndpoint) (result *v1alpha1.VpcEndpoint, err error) {
+func (c *FakeVpcEndpoints) Update(ctx context.Context, vpcEndpoint *v1alpha1.VpcEndpoint, opts v1.UpdateOptions) (result *v1alpha1.VpcEndpoint, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(vpcendpointsResource, c.ns, vpcEndpoint), &v1alpha1.VpcEndpoint{})
 
@@ -103,7 +105,7 @@ func (c *FakeVpcEndpoints) Update(vpcEndpoint *v1alpha1.VpcEndpoint) (result *v1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeVpcEndpoints) UpdateStatus(vpcEndpoint *v1alpha1.VpcEndpoint) (*v1alpha1.VpcEndpoint, error) {
+func (c *FakeVpcEndpoints) UpdateStatus(ctx context.Context, vpcEndpoint *v1alpha1.VpcEndpoint, opts v1.UpdateOptions) (*v1alpha1.VpcEndpoint, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(vpcendpointsResource, "status", c.ns, vpcEndpoint), &v1alpha1.VpcEndpoint{})
 
@@ -114,7 +116,7 @@ func (c *FakeVpcEndpoints) UpdateStatus(vpcEndpoint *v1alpha1.VpcEndpoint) (*v1a
 }
 
 // Delete takes name of the vpcEndpoint and deletes it. Returns an error if one occurs.
-func (c *FakeVpcEndpoints) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeVpcEndpoints) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(vpcendpointsResource, c.ns, name), &v1alpha1.VpcEndpoint{})
 
@@ -122,15 +124,15 @@ func (c *FakeVpcEndpoints) Delete(name string, options *v1.DeleteOptions) error 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeVpcEndpoints) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(vpcendpointsResource, c.ns, listOptions)
+func (c *FakeVpcEndpoints) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(vpcendpointsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.VpcEndpointList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched vpcEndpoint.
-func (c *FakeVpcEndpoints) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.VpcEndpoint, err error) {
+func (c *FakeVpcEndpoints) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.VpcEndpoint, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(vpcendpointsResource, c.ns, name, pt, data, subresources...), &v1alpha1.VpcEndpoint{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iothubdpssharedaccesspoliciesResource = schema.GroupVersionResource{Group: "
 var iothubdpssharedaccesspoliciesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "IothubDpsSharedAccessPolicy"}
 
 // Get takes name of the iothubDpsSharedAccessPolicy, and returns the corresponding iothubDpsSharedAccessPolicy object, and an error if there is any.
-func (c *FakeIothubDpsSharedAccessPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.IothubDpsSharedAccessPolicy, err error) {
+func (c *FakeIothubDpsSharedAccessPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IothubDpsSharedAccessPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iothubdpssharedaccesspoliciesResource, c.ns, name), &v1alpha1.IothubDpsSharedAccessPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeIothubDpsSharedAccessPolicies) Get(name string, options v1.GetOptio
 }
 
 // List takes label and field selectors, and returns the list of IothubDpsSharedAccessPolicies that match those selectors.
-func (c *FakeIothubDpsSharedAccessPolicies) List(opts v1.ListOptions) (result *v1alpha1.IothubDpsSharedAccessPolicyList, err error) {
+func (c *FakeIothubDpsSharedAccessPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IothubDpsSharedAccessPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iothubdpssharedaccesspoliciesResource, iothubdpssharedaccesspoliciesKind, c.ns, opts), &v1alpha1.IothubDpsSharedAccessPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIothubDpsSharedAccessPolicies) List(opts v1.ListOptions) (result *v
 }
 
 // Watch returns a watch.Interface that watches the requested iothubDpsSharedAccessPolicies.
-func (c *FakeIothubDpsSharedAccessPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIothubDpsSharedAccessPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iothubdpssharedaccesspoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iothubDpsSharedAccessPolicy and creates it.  Returns the server's representation of the iothubDpsSharedAccessPolicy, and an error, if there is any.
-func (c *FakeIothubDpsSharedAccessPolicies) Create(iothubDpsSharedAccessPolicy *v1alpha1.IothubDpsSharedAccessPolicy) (result *v1alpha1.IothubDpsSharedAccessPolicy, err error) {
+func (c *FakeIothubDpsSharedAccessPolicies) Create(ctx context.Context, iothubDpsSharedAccessPolicy *v1alpha1.IothubDpsSharedAccessPolicy, opts v1.CreateOptions) (result *v1alpha1.IothubDpsSharedAccessPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iothubdpssharedaccesspoliciesResource, c.ns, iothubDpsSharedAccessPolicy), &v1alpha1.IothubDpsSharedAccessPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeIothubDpsSharedAccessPolicies) Create(iothubDpsSharedAccessPolicy *
 }
 
 // Update takes the representation of a iothubDpsSharedAccessPolicy and updates it. Returns the server's representation of the iothubDpsSharedAccessPolicy, and an error, if there is any.
-func (c *FakeIothubDpsSharedAccessPolicies) Update(iothubDpsSharedAccessPolicy *v1alpha1.IothubDpsSharedAccessPolicy) (result *v1alpha1.IothubDpsSharedAccessPolicy, err error) {
+func (c *FakeIothubDpsSharedAccessPolicies) Update(ctx context.Context, iothubDpsSharedAccessPolicy *v1alpha1.IothubDpsSharedAccessPolicy, opts v1.UpdateOptions) (result *v1alpha1.IothubDpsSharedAccessPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iothubdpssharedaccesspoliciesResource, c.ns, iothubDpsSharedAccessPolicy), &v1alpha1.IothubDpsSharedAccessPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeIothubDpsSharedAccessPolicies) Update(iothubDpsSharedAccessPolicy *
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIothubDpsSharedAccessPolicies) UpdateStatus(iothubDpsSharedAccessPolicy *v1alpha1.IothubDpsSharedAccessPolicy) (*v1alpha1.IothubDpsSharedAccessPolicy, error) {
+func (c *FakeIothubDpsSharedAccessPolicies) UpdateStatus(ctx context.Context, iothubDpsSharedAccessPolicy *v1alpha1.IothubDpsSharedAccessPolicy, opts v1.UpdateOptions) (*v1alpha1.IothubDpsSharedAccessPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iothubdpssharedaccesspoliciesResource, "status", c.ns, iothubDpsSharedAccessPolicy), &v1alpha1.IothubDpsSharedAccessPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeIothubDpsSharedAccessPolicies) UpdateStatus(iothubDpsSharedAccessPo
 }
 
 // Delete takes name of the iothubDpsSharedAccessPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeIothubDpsSharedAccessPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIothubDpsSharedAccessPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iothubdpssharedaccesspoliciesResource, c.ns, name), &v1alpha1.IothubDpsSharedAccessPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeIothubDpsSharedAccessPolicies) Delete(name string, options *v1.Dele
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIothubDpsSharedAccessPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iothubdpssharedaccesspoliciesResource, c.ns, listOptions)
+func (c *FakeIothubDpsSharedAccessPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iothubdpssharedaccesspoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IothubDpsSharedAccessPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iothubDpsSharedAccessPolicy.
-func (c *FakeIothubDpsSharedAccessPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IothubDpsSharedAccessPolicy, err error) {
+func (c *FakeIothubDpsSharedAccessPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IothubDpsSharedAccessPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iothubdpssharedaccesspoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.IothubDpsSharedAccessPolicy{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var virtualhubsResource = schema.GroupVersionResource{Group: "azurerm.kubeform.c
 var virtualhubsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "VirtualHub"}
 
 // Get takes name of the virtualHub, and returns the corresponding virtualHub object, and an error if there is any.
-func (c *FakeVirtualHubs) Get(name string, options v1.GetOptions) (result *v1alpha1.VirtualHub, err error) {
+func (c *FakeVirtualHubs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.VirtualHub, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(virtualhubsResource, c.ns, name), &v1alpha1.VirtualHub{})
 
@@ -51,7 +53,7 @@ func (c *FakeVirtualHubs) Get(name string, options v1.GetOptions) (result *v1alp
 }
 
 // List takes label and field selectors, and returns the list of VirtualHubs that match those selectors.
-func (c *FakeVirtualHubs) List(opts v1.ListOptions) (result *v1alpha1.VirtualHubList, err error) {
+func (c *FakeVirtualHubs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.VirtualHubList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(virtualhubsResource, virtualhubsKind, c.ns, opts), &v1alpha1.VirtualHubList{})
 
@@ -73,14 +75,14 @@ func (c *FakeVirtualHubs) List(opts v1.ListOptions) (result *v1alpha1.VirtualHub
 }
 
 // Watch returns a watch.Interface that watches the requested virtualHubs.
-func (c *FakeVirtualHubs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeVirtualHubs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(virtualhubsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a virtualHub and creates it.  Returns the server's representation of the virtualHub, and an error, if there is any.
-func (c *FakeVirtualHubs) Create(virtualHub *v1alpha1.VirtualHub) (result *v1alpha1.VirtualHub, err error) {
+func (c *FakeVirtualHubs) Create(ctx context.Context, virtualHub *v1alpha1.VirtualHub, opts v1.CreateOptions) (result *v1alpha1.VirtualHub, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(virtualhubsResource, c.ns, virtualHub), &v1alpha1.VirtualHub{})
 
@@ -91,7 +93,7 @@ func (c *FakeVirtualHubs) Create(virtualHub *v1alpha1.VirtualHub) (result *v1alp
 }
 
 // Update takes the representation of a virtualHub and updates it. Returns the server's representation of the virtualHub, and an error, if there is any.
-func (c *FakeVirtualHubs) Update(virtualHub *v1alpha1.VirtualHub) (result *v1alpha1.VirtualHub, err error) {
+func (c *FakeVirtualHubs) Update(ctx context.Context, virtualHub *v1alpha1.VirtualHub, opts v1.UpdateOptions) (result *v1alpha1.VirtualHub, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(virtualhubsResource, c.ns, virtualHub), &v1alpha1.VirtualHub{})
 
@@ -103,7 +105,7 @@ func (c *FakeVirtualHubs) Update(virtualHub *v1alpha1.VirtualHub) (result *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeVirtualHubs) UpdateStatus(virtualHub *v1alpha1.VirtualHub) (*v1alpha1.VirtualHub, error) {
+func (c *FakeVirtualHubs) UpdateStatus(ctx context.Context, virtualHub *v1alpha1.VirtualHub, opts v1.UpdateOptions) (*v1alpha1.VirtualHub, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(virtualhubsResource, "status", c.ns, virtualHub), &v1alpha1.VirtualHub{})
 
@@ -114,7 +116,7 @@ func (c *FakeVirtualHubs) UpdateStatus(virtualHub *v1alpha1.VirtualHub) (*v1alph
 }
 
 // Delete takes name of the virtualHub and deletes it. Returns an error if one occurs.
-func (c *FakeVirtualHubs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeVirtualHubs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(virtualhubsResource, c.ns, name), &v1alpha1.VirtualHub{})
 
@@ -122,15 +124,15 @@ func (c *FakeVirtualHubs) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeVirtualHubs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(virtualhubsResource, c.ns, listOptions)
+func (c *FakeVirtualHubs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(virtualhubsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.VirtualHubList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched virtualHub.
-func (c *FakeVirtualHubs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.VirtualHub, err error) {
+func (c *FakeVirtualHubs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.VirtualHub, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(virtualhubsResource, c.ns, name, pt, data, subresources...), &v1alpha1.VirtualHub{})
 

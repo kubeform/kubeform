@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var appmeshmeshesResource = schema.GroupVersionResource{Group: "aws.kubeform.com
 var appmeshmeshesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "AppmeshMesh"}
 
 // Get takes name of the appmeshMesh, and returns the corresponding appmeshMesh object, and an error if there is any.
-func (c *FakeAppmeshMeshes) Get(name string, options v1.GetOptions) (result *v1alpha1.AppmeshMesh, err error) {
+func (c *FakeAppmeshMeshes) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AppmeshMesh, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(appmeshmeshesResource, c.ns, name), &v1alpha1.AppmeshMesh{})
 
@@ -51,7 +53,7 @@ func (c *FakeAppmeshMeshes) Get(name string, options v1.GetOptions) (result *v1a
 }
 
 // List takes label and field selectors, and returns the list of AppmeshMeshes that match those selectors.
-func (c *FakeAppmeshMeshes) List(opts v1.ListOptions) (result *v1alpha1.AppmeshMeshList, err error) {
+func (c *FakeAppmeshMeshes) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AppmeshMeshList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(appmeshmeshesResource, appmeshmeshesKind, c.ns, opts), &v1alpha1.AppmeshMeshList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAppmeshMeshes) List(opts v1.ListOptions) (result *v1alpha1.AppmeshM
 }
 
 // Watch returns a watch.Interface that watches the requested appmeshMeshes.
-func (c *FakeAppmeshMeshes) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAppmeshMeshes) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(appmeshmeshesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a appmeshMesh and creates it.  Returns the server's representation of the appmeshMesh, and an error, if there is any.
-func (c *FakeAppmeshMeshes) Create(appmeshMesh *v1alpha1.AppmeshMesh) (result *v1alpha1.AppmeshMesh, err error) {
+func (c *FakeAppmeshMeshes) Create(ctx context.Context, appmeshMesh *v1alpha1.AppmeshMesh, opts v1.CreateOptions) (result *v1alpha1.AppmeshMesh, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(appmeshmeshesResource, c.ns, appmeshMesh), &v1alpha1.AppmeshMesh{})
 
@@ -91,7 +93,7 @@ func (c *FakeAppmeshMeshes) Create(appmeshMesh *v1alpha1.AppmeshMesh) (result *v
 }
 
 // Update takes the representation of a appmeshMesh and updates it. Returns the server's representation of the appmeshMesh, and an error, if there is any.
-func (c *FakeAppmeshMeshes) Update(appmeshMesh *v1alpha1.AppmeshMesh) (result *v1alpha1.AppmeshMesh, err error) {
+func (c *FakeAppmeshMeshes) Update(ctx context.Context, appmeshMesh *v1alpha1.AppmeshMesh, opts v1.UpdateOptions) (result *v1alpha1.AppmeshMesh, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(appmeshmeshesResource, c.ns, appmeshMesh), &v1alpha1.AppmeshMesh{})
 
@@ -103,7 +105,7 @@ func (c *FakeAppmeshMeshes) Update(appmeshMesh *v1alpha1.AppmeshMesh) (result *v
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAppmeshMeshes) UpdateStatus(appmeshMesh *v1alpha1.AppmeshMesh) (*v1alpha1.AppmeshMesh, error) {
+func (c *FakeAppmeshMeshes) UpdateStatus(ctx context.Context, appmeshMesh *v1alpha1.AppmeshMesh, opts v1.UpdateOptions) (*v1alpha1.AppmeshMesh, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(appmeshmeshesResource, "status", c.ns, appmeshMesh), &v1alpha1.AppmeshMesh{})
 
@@ -114,7 +116,7 @@ func (c *FakeAppmeshMeshes) UpdateStatus(appmeshMesh *v1alpha1.AppmeshMesh) (*v1
 }
 
 // Delete takes name of the appmeshMesh and deletes it. Returns an error if one occurs.
-func (c *FakeAppmeshMeshes) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAppmeshMeshes) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(appmeshmeshesResource, c.ns, name), &v1alpha1.AppmeshMesh{})
 
@@ -122,15 +124,15 @@ func (c *FakeAppmeshMeshes) Delete(name string, options *v1.DeleteOptions) error
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAppmeshMeshes) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(appmeshmeshesResource, c.ns, listOptions)
+func (c *FakeAppmeshMeshes) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(appmeshmeshesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AppmeshMeshList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched appmeshMesh.
-func (c *FakeAppmeshMeshes) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppmeshMesh, err error) {
+func (c *FakeAppmeshMeshes) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppmeshMesh, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(appmeshmeshesResource, c.ns, name, pt, data, subresources...), &v1alpha1.AppmeshMesh{})
 

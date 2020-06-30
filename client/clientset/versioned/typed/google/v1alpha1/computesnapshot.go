@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type ComputeSnapshotsGetter interface {
 
 // ComputeSnapshotInterface has methods to work with ComputeSnapshot resources.
 type ComputeSnapshotInterface interface {
-	Create(*v1alpha1.ComputeSnapshot) (*v1alpha1.ComputeSnapshot, error)
-	Update(*v1alpha1.ComputeSnapshot) (*v1alpha1.ComputeSnapshot, error)
-	UpdateStatus(*v1alpha1.ComputeSnapshot) (*v1alpha1.ComputeSnapshot, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ComputeSnapshot, error)
-	List(opts v1.ListOptions) (*v1alpha1.ComputeSnapshotList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeSnapshot, err error)
+	Create(ctx context.Context, computeSnapshot *v1alpha1.ComputeSnapshot, opts v1.CreateOptions) (*v1alpha1.ComputeSnapshot, error)
+	Update(ctx context.Context, computeSnapshot *v1alpha1.ComputeSnapshot, opts v1.UpdateOptions) (*v1alpha1.ComputeSnapshot, error)
+	UpdateStatus(ctx context.Context, computeSnapshot *v1alpha1.ComputeSnapshot, opts v1.UpdateOptions) (*v1alpha1.ComputeSnapshot, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ComputeSnapshot, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ComputeSnapshotList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeSnapshot, err error)
 	ComputeSnapshotExpansion
 }
 
@@ -65,20 +66,20 @@ func newComputeSnapshots(c *GoogleV1alpha1Client, namespace string) *computeSnap
 }
 
 // Get takes name of the computeSnapshot, and returns the corresponding computeSnapshot object, and an error if there is any.
-func (c *computeSnapshots) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeSnapshot, err error) {
+func (c *computeSnapshots) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeSnapshot, err error) {
 	result = &v1alpha1.ComputeSnapshot{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("computesnapshots").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ComputeSnapshots that match those selectors.
-func (c *computeSnapshots) List(opts v1.ListOptions) (result *v1alpha1.ComputeSnapshotList, err error) {
+func (c *computeSnapshots) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeSnapshotList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *computeSnapshots) List(opts v1.ListOptions) (result *v1alpha1.ComputeSn
 		Resource("computesnapshots").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested computeSnapshots.
-func (c *computeSnapshots) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *computeSnapshots) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *computeSnapshots) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("computesnapshots").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a computeSnapshot and creates it.  Returns the server's representation of the computeSnapshot, and an error, if there is any.
-func (c *computeSnapshots) Create(computeSnapshot *v1alpha1.ComputeSnapshot) (result *v1alpha1.ComputeSnapshot, err error) {
+func (c *computeSnapshots) Create(ctx context.Context, computeSnapshot *v1alpha1.ComputeSnapshot, opts v1.CreateOptions) (result *v1alpha1.ComputeSnapshot, err error) {
 	result = &v1alpha1.ComputeSnapshot{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("computesnapshots").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeSnapshot).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a computeSnapshot and updates it. Returns the server's representation of the computeSnapshot, and an error, if there is any.
-func (c *computeSnapshots) Update(computeSnapshot *v1alpha1.ComputeSnapshot) (result *v1alpha1.ComputeSnapshot, err error) {
+func (c *computeSnapshots) Update(ctx context.Context, computeSnapshot *v1alpha1.ComputeSnapshot, opts v1.UpdateOptions) (result *v1alpha1.ComputeSnapshot, err error) {
 	result = &v1alpha1.ComputeSnapshot{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computesnapshots").
 		Name(computeSnapshot.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeSnapshot).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *computeSnapshots) UpdateStatus(computeSnapshot *v1alpha1.ComputeSnapshot) (result *v1alpha1.ComputeSnapshot, err error) {
+func (c *computeSnapshots) UpdateStatus(ctx context.Context, computeSnapshot *v1alpha1.ComputeSnapshot, opts v1.UpdateOptions) (result *v1alpha1.ComputeSnapshot, err error) {
 	result = &v1alpha1.ComputeSnapshot{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computesnapshots").
 		Name(computeSnapshot.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeSnapshot).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the computeSnapshot and deletes it. Returns an error if one occurs.
-func (c *computeSnapshots) Delete(name string, options *v1.DeleteOptions) error {
+func (c *computeSnapshots) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computesnapshots").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *computeSnapshots) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *computeSnapshots) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computesnapshots").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched computeSnapshot.
-func (c *computeSnapshots) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeSnapshot, err error) {
+func (c *computeSnapshots) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeSnapshot, err error) {
 	result = &v1alpha1.ComputeSnapshot{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("computesnapshots").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

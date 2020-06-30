@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computeprojectmetadatasResource = schema.GroupVersionResource{Group: "google
 var computeprojectmetadatasKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeProjectMetadata"}
 
 // Get takes name of the computeProjectMetadata, and returns the corresponding computeProjectMetadata object, and an error if there is any.
-func (c *FakeComputeProjectMetadatas) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeProjectMetadata, err error) {
+func (c *FakeComputeProjectMetadatas) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeProjectMetadata, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computeprojectmetadatasResource, c.ns, name), &v1alpha1.ComputeProjectMetadata{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeProjectMetadatas) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of ComputeProjectMetadatas that match those selectors.
-func (c *FakeComputeProjectMetadatas) List(opts v1.ListOptions) (result *v1alpha1.ComputeProjectMetadataList, err error) {
+func (c *FakeComputeProjectMetadatas) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeProjectMetadataList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computeprojectmetadatasResource, computeprojectmetadatasKind, c.ns, opts), &v1alpha1.ComputeProjectMetadataList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeProjectMetadatas) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested computeProjectMetadatas.
-func (c *FakeComputeProjectMetadatas) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeProjectMetadatas) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computeprojectmetadatasResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeProjectMetadata and creates it.  Returns the server's representation of the computeProjectMetadata, and an error, if there is any.
-func (c *FakeComputeProjectMetadatas) Create(computeProjectMetadata *v1alpha1.ComputeProjectMetadata) (result *v1alpha1.ComputeProjectMetadata, err error) {
+func (c *FakeComputeProjectMetadatas) Create(ctx context.Context, computeProjectMetadata *v1alpha1.ComputeProjectMetadata, opts v1.CreateOptions) (result *v1alpha1.ComputeProjectMetadata, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computeprojectmetadatasResource, c.ns, computeProjectMetadata), &v1alpha1.ComputeProjectMetadata{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeProjectMetadatas) Create(computeProjectMetadata *v1alpha1.Co
 }
 
 // Update takes the representation of a computeProjectMetadata and updates it. Returns the server's representation of the computeProjectMetadata, and an error, if there is any.
-func (c *FakeComputeProjectMetadatas) Update(computeProjectMetadata *v1alpha1.ComputeProjectMetadata) (result *v1alpha1.ComputeProjectMetadata, err error) {
+func (c *FakeComputeProjectMetadatas) Update(ctx context.Context, computeProjectMetadata *v1alpha1.ComputeProjectMetadata, opts v1.UpdateOptions) (result *v1alpha1.ComputeProjectMetadata, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computeprojectmetadatasResource, c.ns, computeProjectMetadata), &v1alpha1.ComputeProjectMetadata{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeProjectMetadatas) Update(computeProjectMetadata *v1alpha1.Co
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeProjectMetadatas) UpdateStatus(computeProjectMetadata *v1alpha1.ComputeProjectMetadata) (*v1alpha1.ComputeProjectMetadata, error) {
+func (c *FakeComputeProjectMetadatas) UpdateStatus(ctx context.Context, computeProjectMetadata *v1alpha1.ComputeProjectMetadata, opts v1.UpdateOptions) (*v1alpha1.ComputeProjectMetadata, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computeprojectmetadatasResource, "status", c.ns, computeProjectMetadata), &v1alpha1.ComputeProjectMetadata{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeProjectMetadatas) UpdateStatus(computeProjectMetadata *v1alp
 }
 
 // Delete takes name of the computeProjectMetadata and deletes it. Returns an error if one occurs.
-func (c *FakeComputeProjectMetadatas) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeProjectMetadatas) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computeprojectmetadatasResource, c.ns, name), &v1alpha1.ComputeProjectMetadata{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeProjectMetadatas) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeProjectMetadatas) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computeprojectmetadatasResource, c.ns, listOptions)
+func (c *FakeComputeProjectMetadatas) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computeprojectmetadatasResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeProjectMetadataList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeProjectMetadata.
-func (c *FakeComputeProjectMetadatas) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeProjectMetadata, err error) {
+func (c *FakeComputeProjectMetadatas) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeProjectMetadata, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computeprojectmetadatasResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeProjectMetadata{})
 

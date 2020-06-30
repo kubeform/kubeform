@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/linode/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var nodebalancersResource = schema.GroupVersionResource{Group: "linode.kubeform.
 var nodebalancersKind = schema.GroupVersionKind{Group: "linode.kubeform.com", Version: "v1alpha1", Kind: "Nodebalancer"}
 
 // Get takes name of the nodebalancer, and returns the corresponding nodebalancer object, and an error if there is any.
-func (c *FakeNodebalancers) Get(name string, options v1.GetOptions) (result *v1alpha1.Nodebalancer, err error) {
+func (c *FakeNodebalancers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Nodebalancer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(nodebalancersResource, c.ns, name), &v1alpha1.Nodebalancer{})
 
@@ -51,7 +53,7 @@ func (c *FakeNodebalancers) Get(name string, options v1.GetOptions) (result *v1a
 }
 
 // List takes label and field selectors, and returns the list of Nodebalancers that match those selectors.
-func (c *FakeNodebalancers) List(opts v1.ListOptions) (result *v1alpha1.NodebalancerList, err error) {
+func (c *FakeNodebalancers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.NodebalancerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(nodebalancersResource, nodebalancersKind, c.ns, opts), &v1alpha1.NodebalancerList{})
 
@@ -73,14 +75,14 @@ func (c *FakeNodebalancers) List(opts v1.ListOptions) (result *v1alpha1.Nodebala
 }
 
 // Watch returns a watch.Interface that watches the requested nodebalancers.
-func (c *FakeNodebalancers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeNodebalancers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(nodebalancersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a nodebalancer and creates it.  Returns the server's representation of the nodebalancer, and an error, if there is any.
-func (c *FakeNodebalancers) Create(nodebalancer *v1alpha1.Nodebalancer) (result *v1alpha1.Nodebalancer, err error) {
+func (c *FakeNodebalancers) Create(ctx context.Context, nodebalancer *v1alpha1.Nodebalancer, opts v1.CreateOptions) (result *v1alpha1.Nodebalancer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(nodebalancersResource, c.ns, nodebalancer), &v1alpha1.Nodebalancer{})
 
@@ -91,7 +93,7 @@ func (c *FakeNodebalancers) Create(nodebalancer *v1alpha1.Nodebalancer) (result 
 }
 
 // Update takes the representation of a nodebalancer and updates it. Returns the server's representation of the nodebalancer, and an error, if there is any.
-func (c *FakeNodebalancers) Update(nodebalancer *v1alpha1.Nodebalancer) (result *v1alpha1.Nodebalancer, err error) {
+func (c *FakeNodebalancers) Update(ctx context.Context, nodebalancer *v1alpha1.Nodebalancer, opts v1.UpdateOptions) (result *v1alpha1.Nodebalancer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(nodebalancersResource, c.ns, nodebalancer), &v1alpha1.Nodebalancer{})
 
@@ -103,7 +105,7 @@ func (c *FakeNodebalancers) Update(nodebalancer *v1alpha1.Nodebalancer) (result 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeNodebalancers) UpdateStatus(nodebalancer *v1alpha1.Nodebalancer) (*v1alpha1.Nodebalancer, error) {
+func (c *FakeNodebalancers) UpdateStatus(ctx context.Context, nodebalancer *v1alpha1.Nodebalancer, opts v1.UpdateOptions) (*v1alpha1.Nodebalancer, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(nodebalancersResource, "status", c.ns, nodebalancer), &v1alpha1.Nodebalancer{})
 
@@ -114,7 +116,7 @@ func (c *FakeNodebalancers) UpdateStatus(nodebalancer *v1alpha1.Nodebalancer) (*
 }
 
 // Delete takes name of the nodebalancer and deletes it. Returns an error if one occurs.
-func (c *FakeNodebalancers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeNodebalancers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(nodebalancersResource, c.ns, name), &v1alpha1.Nodebalancer{})
 
@@ -122,15 +124,15 @@ func (c *FakeNodebalancers) Delete(name string, options *v1.DeleteOptions) error
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeNodebalancers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(nodebalancersResource, c.ns, listOptions)
+func (c *FakeNodebalancers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(nodebalancersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.NodebalancerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched nodebalancer.
-func (c *FakeNodebalancers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Nodebalancer, err error) {
+func (c *FakeNodebalancers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Nodebalancer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(nodebalancersResource, c.ns, name, pt, data, subresources...), &v1alpha1.Nodebalancer{})
 

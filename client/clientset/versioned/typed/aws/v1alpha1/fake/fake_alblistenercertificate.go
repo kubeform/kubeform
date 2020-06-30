@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var alblistenercertificatesResource = schema.GroupVersionResource{Group: "aws.ku
 var alblistenercertificatesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "AlbListenerCertificate"}
 
 // Get takes name of the albListenerCertificate, and returns the corresponding albListenerCertificate object, and an error if there is any.
-func (c *FakeAlbListenerCertificates) Get(name string, options v1.GetOptions) (result *v1alpha1.AlbListenerCertificate, err error) {
+func (c *FakeAlbListenerCertificates) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AlbListenerCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(alblistenercertificatesResource, c.ns, name), &v1alpha1.AlbListenerCertificate{})
 
@@ -51,7 +53,7 @@ func (c *FakeAlbListenerCertificates) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of AlbListenerCertificates that match those selectors.
-func (c *FakeAlbListenerCertificates) List(opts v1.ListOptions) (result *v1alpha1.AlbListenerCertificateList, err error) {
+func (c *FakeAlbListenerCertificates) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AlbListenerCertificateList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(alblistenercertificatesResource, alblistenercertificatesKind, c.ns, opts), &v1alpha1.AlbListenerCertificateList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAlbListenerCertificates) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested albListenerCertificates.
-func (c *FakeAlbListenerCertificates) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAlbListenerCertificates) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(alblistenercertificatesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a albListenerCertificate and creates it.  Returns the server's representation of the albListenerCertificate, and an error, if there is any.
-func (c *FakeAlbListenerCertificates) Create(albListenerCertificate *v1alpha1.AlbListenerCertificate) (result *v1alpha1.AlbListenerCertificate, err error) {
+func (c *FakeAlbListenerCertificates) Create(ctx context.Context, albListenerCertificate *v1alpha1.AlbListenerCertificate, opts v1.CreateOptions) (result *v1alpha1.AlbListenerCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(alblistenercertificatesResource, c.ns, albListenerCertificate), &v1alpha1.AlbListenerCertificate{})
 
@@ -91,7 +93,7 @@ func (c *FakeAlbListenerCertificates) Create(albListenerCertificate *v1alpha1.Al
 }
 
 // Update takes the representation of a albListenerCertificate and updates it. Returns the server's representation of the albListenerCertificate, and an error, if there is any.
-func (c *FakeAlbListenerCertificates) Update(albListenerCertificate *v1alpha1.AlbListenerCertificate) (result *v1alpha1.AlbListenerCertificate, err error) {
+func (c *FakeAlbListenerCertificates) Update(ctx context.Context, albListenerCertificate *v1alpha1.AlbListenerCertificate, opts v1.UpdateOptions) (result *v1alpha1.AlbListenerCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(alblistenercertificatesResource, c.ns, albListenerCertificate), &v1alpha1.AlbListenerCertificate{})
 
@@ -103,7 +105,7 @@ func (c *FakeAlbListenerCertificates) Update(albListenerCertificate *v1alpha1.Al
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAlbListenerCertificates) UpdateStatus(albListenerCertificate *v1alpha1.AlbListenerCertificate) (*v1alpha1.AlbListenerCertificate, error) {
+func (c *FakeAlbListenerCertificates) UpdateStatus(ctx context.Context, albListenerCertificate *v1alpha1.AlbListenerCertificate, opts v1.UpdateOptions) (*v1alpha1.AlbListenerCertificate, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(alblistenercertificatesResource, "status", c.ns, albListenerCertificate), &v1alpha1.AlbListenerCertificate{})
 
@@ -114,7 +116,7 @@ func (c *FakeAlbListenerCertificates) UpdateStatus(albListenerCertificate *v1alp
 }
 
 // Delete takes name of the albListenerCertificate and deletes it. Returns an error if one occurs.
-func (c *FakeAlbListenerCertificates) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAlbListenerCertificates) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(alblistenercertificatesResource, c.ns, name), &v1alpha1.AlbListenerCertificate{})
 
@@ -122,15 +124,15 @@ func (c *FakeAlbListenerCertificates) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAlbListenerCertificates) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(alblistenercertificatesResource, c.ns, listOptions)
+func (c *FakeAlbListenerCertificates) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(alblistenercertificatesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AlbListenerCertificateList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched albListenerCertificate.
-func (c *FakeAlbListenerCertificates) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AlbListenerCertificate, err error) {
+func (c *FakeAlbListenerCertificates) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AlbListenerCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(alblistenercertificatesResource, c.ns, name, pt, data, subresources...), &v1alpha1.AlbListenerCertificate{})
 

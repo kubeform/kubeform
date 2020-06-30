@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var appsyncapikeysResource = schema.GroupVersionResource{Group: "aws.kubeform.co
 var appsyncapikeysKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "AppsyncAPIKey"}
 
 // Get takes name of the appsyncAPIKey, and returns the corresponding appsyncAPIKey object, and an error if there is any.
-func (c *FakeAppsyncAPIKeys) Get(name string, options v1.GetOptions) (result *v1alpha1.AppsyncAPIKey, err error) {
+func (c *FakeAppsyncAPIKeys) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AppsyncAPIKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(appsyncapikeysResource, c.ns, name), &v1alpha1.AppsyncAPIKey{})
 
@@ -51,7 +53,7 @@ func (c *FakeAppsyncAPIKeys) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of AppsyncAPIKeys that match those selectors.
-func (c *FakeAppsyncAPIKeys) List(opts v1.ListOptions) (result *v1alpha1.AppsyncAPIKeyList, err error) {
+func (c *FakeAppsyncAPIKeys) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AppsyncAPIKeyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(appsyncapikeysResource, appsyncapikeysKind, c.ns, opts), &v1alpha1.AppsyncAPIKeyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAppsyncAPIKeys) List(opts v1.ListOptions) (result *v1alpha1.Appsync
 }
 
 // Watch returns a watch.Interface that watches the requested appsyncAPIKeys.
-func (c *FakeAppsyncAPIKeys) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAppsyncAPIKeys) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(appsyncapikeysResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a appsyncAPIKey and creates it.  Returns the server's representation of the appsyncAPIKey, and an error, if there is any.
-func (c *FakeAppsyncAPIKeys) Create(appsyncAPIKey *v1alpha1.AppsyncAPIKey) (result *v1alpha1.AppsyncAPIKey, err error) {
+func (c *FakeAppsyncAPIKeys) Create(ctx context.Context, appsyncAPIKey *v1alpha1.AppsyncAPIKey, opts v1.CreateOptions) (result *v1alpha1.AppsyncAPIKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(appsyncapikeysResource, c.ns, appsyncAPIKey), &v1alpha1.AppsyncAPIKey{})
 
@@ -91,7 +93,7 @@ func (c *FakeAppsyncAPIKeys) Create(appsyncAPIKey *v1alpha1.AppsyncAPIKey) (resu
 }
 
 // Update takes the representation of a appsyncAPIKey and updates it. Returns the server's representation of the appsyncAPIKey, and an error, if there is any.
-func (c *FakeAppsyncAPIKeys) Update(appsyncAPIKey *v1alpha1.AppsyncAPIKey) (result *v1alpha1.AppsyncAPIKey, err error) {
+func (c *FakeAppsyncAPIKeys) Update(ctx context.Context, appsyncAPIKey *v1alpha1.AppsyncAPIKey, opts v1.UpdateOptions) (result *v1alpha1.AppsyncAPIKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(appsyncapikeysResource, c.ns, appsyncAPIKey), &v1alpha1.AppsyncAPIKey{})
 
@@ -103,7 +105,7 @@ func (c *FakeAppsyncAPIKeys) Update(appsyncAPIKey *v1alpha1.AppsyncAPIKey) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAppsyncAPIKeys) UpdateStatus(appsyncAPIKey *v1alpha1.AppsyncAPIKey) (*v1alpha1.AppsyncAPIKey, error) {
+func (c *FakeAppsyncAPIKeys) UpdateStatus(ctx context.Context, appsyncAPIKey *v1alpha1.AppsyncAPIKey, opts v1.UpdateOptions) (*v1alpha1.AppsyncAPIKey, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(appsyncapikeysResource, "status", c.ns, appsyncAPIKey), &v1alpha1.AppsyncAPIKey{})
 
@@ -114,7 +116,7 @@ func (c *FakeAppsyncAPIKeys) UpdateStatus(appsyncAPIKey *v1alpha1.AppsyncAPIKey)
 }
 
 // Delete takes name of the appsyncAPIKey and deletes it. Returns an error if one occurs.
-func (c *FakeAppsyncAPIKeys) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAppsyncAPIKeys) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(appsyncapikeysResource, c.ns, name), &v1alpha1.AppsyncAPIKey{})
 
@@ -122,15 +124,15 @@ func (c *FakeAppsyncAPIKeys) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAppsyncAPIKeys) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(appsyncapikeysResource, c.ns, listOptions)
+func (c *FakeAppsyncAPIKeys) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(appsyncapikeysResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AppsyncAPIKeyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched appsyncAPIKey.
-func (c *FakeAppsyncAPIKeys) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppsyncAPIKey, err error) {
+func (c *FakeAppsyncAPIKeys) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppsyncAPIKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(appsyncapikeysResource, c.ns, name, pt, data, subresources...), &v1alpha1.AppsyncAPIKey{})
 

@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type ProjectUsageExportBucketsGetter interface {
 
 // ProjectUsageExportBucketInterface has methods to work with ProjectUsageExportBucket resources.
 type ProjectUsageExportBucketInterface interface {
-	Create(*v1alpha1.ProjectUsageExportBucket) (*v1alpha1.ProjectUsageExportBucket, error)
-	Update(*v1alpha1.ProjectUsageExportBucket) (*v1alpha1.ProjectUsageExportBucket, error)
-	UpdateStatus(*v1alpha1.ProjectUsageExportBucket) (*v1alpha1.ProjectUsageExportBucket, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ProjectUsageExportBucket, error)
-	List(opts v1.ListOptions) (*v1alpha1.ProjectUsageExportBucketList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ProjectUsageExportBucket, err error)
+	Create(ctx context.Context, projectUsageExportBucket *v1alpha1.ProjectUsageExportBucket, opts v1.CreateOptions) (*v1alpha1.ProjectUsageExportBucket, error)
+	Update(ctx context.Context, projectUsageExportBucket *v1alpha1.ProjectUsageExportBucket, opts v1.UpdateOptions) (*v1alpha1.ProjectUsageExportBucket, error)
+	UpdateStatus(ctx context.Context, projectUsageExportBucket *v1alpha1.ProjectUsageExportBucket, opts v1.UpdateOptions) (*v1alpha1.ProjectUsageExportBucket, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ProjectUsageExportBucket, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ProjectUsageExportBucketList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ProjectUsageExportBucket, err error)
 	ProjectUsageExportBucketExpansion
 }
 
@@ -65,20 +66,20 @@ func newProjectUsageExportBuckets(c *GoogleV1alpha1Client, namespace string) *pr
 }
 
 // Get takes name of the projectUsageExportBucket, and returns the corresponding projectUsageExportBucket object, and an error if there is any.
-func (c *projectUsageExportBuckets) Get(name string, options v1.GetOptions) (result *v1alpha1.ProjectUsageExportBucket, err error) {
+func (c *projectUsageExportBuckets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ProjectUsageExportBucket, err error) {
 	result = &v1alpha1.ProjectUsageExportBucket{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("projectusageexportbuckets").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ProjectUsageExportBuckets that match those selectors.
-func (c *projectUsageExportBuckets) List(opts v1.ListOptions) (result *v1alpha1.ProjectUsageExportBucketList, err error) {
+func (c *projectUsageExportBuckets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ProjectUsageExportBucketList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *projectUsageExportBuckets) List(opts v1.ListOptions) (result *v1alpha1.
 		Resource("projectusageexportbuckets").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested projectUsageExportBuckets.
-func (c *projectUsageExportBuckets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *projectUsageExportBuckets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *projectUsageExportBuckets) Watch(opts v1.ListOptions) (watch.Interface,
 		Resource("projectusageexportbuckets").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a projectUsageExportBucket and creates it.  Returns the server's representation of the projectUsageExportBucket, and an error, if there is any.
-func (c *projectUsageExportBuckets) Create(projectUsageExportBucket *v1alpha1.ProjectUsageExportBucket) (result *v1alpha1.ProjectUsageExportBucket, err error) {
+func (c *projectUsageExportBuckets) Create(ctx context.Context, projectUsageExportBucket *v1alpha1.ProjectUsageExportBucket, opts v1.CreateOptions) (result *v1alpha1.ProjectUsageExportBucket, err error) {
 	result = &v1alpha1.ProjectUsageExportBucket{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("projectusageexportbuckets").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(projectUsageExportBucket).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a projectUsageExportBucket and updates it. Returns the server's representation of the projectUsageExportBucket, and an error, if there is any.
-func (c *projectUsageExportBuckets) Update(projectUsageExportBucket *v1alpha1.ProjectUsageExportBucket) (result *v1alpha1.ProjectUsageExportBucket, err error) {
+func (c *projectUsageExportBuckets) Update(ctx context.Context, projectUsageExportBucket *v1alpha1.ProjectUsageExportBucket, opts v1.UpdateOptions) (result *v1alpha1.ProjectUsageExportBucket, err error) {
 	result = &v1alpha1.ProjectUsageExportBucket{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("projectusageexportbuckets").
 		Name(projectUsageExportBucket.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(projectUsageExportBucket).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *projectUsageExportBuckets) UpdateStatus(projectUsageExportBucket *v1alpha1.ProjectUsageExportBucket) (result *v1alpha1.ProjectUsageExportBucket, err error) {
+func (c *projectUsageExportBuckets) UpdateStatus(ctx context.Context, projectUsageExportBucket *v1alpha1.ProjectUsageExportBucket, opts v1.UpdateOptions) (result *v1alpha1.ProjectUsageExportBucket, err error) {
 	result = &v1alpha1.ProjectUsageExportBucket{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("projectusageexportbuckets").
 		Name(projectUsageExportBucket.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(projectUsageExportBucket).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the projectUsageExportBucket and deletes it. Returns an error if one occurs.
-func (c *projectUsageExportBuckets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *projectUsageExportBuckets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("projectusageexportbuckets").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *projectUsageExportBuckets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *projectUsageExportBuckets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("projectusageexportbuckets").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched projectUsageExportBucket.
-func (c *projectUsageExportBuckets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ProjectUsageExportBucket, err error) {
+func (c *projectUsageExportBuckets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ProjectUsageExportBucket, err error) {
 	result = &v1alpha1.ProjectUsageExportBucket{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("projectusageexportbuckets").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var flowlogsResource = schema.GroupVersionResource{Group: "aws.kubeform.com", Ve
 var flowlogsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "FlowLog"}
 
 // Get takes name of the flowLog, and returns the corresponding flowLog object, and an error if there is any.
-func (c *FakeFlowLogs) Get(name string, options v1.GetOptions) (result *v1alpha1.FlowLog, err error) {
+func (c *FakeFlowLogs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.FlowLog, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(flowlogsResource, c.ns, name), &v1alpha1.FlowLog{})
 
@@ -51,7 +53,7 @@ func (c *FakeFlowLogs) Get(name string, options v1.GetOptions) (result *v1alpha1
 }
 
 // List takes label and field selectors, and returns the list of FlowLogs that match those selectors.
-func (c *FakeFlowLogs) List(opts v1.ListOptions) (result *v1alpha1.FlowLogList, err error) {
+func (c *FakeFlowLogs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.FlowLogList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(flowlogsResource, flowlogsKind, c.ns, opts), &v1alpha1.FlowLogList{})
 
@@ -73,14 +75,14 @@ func (c *FakeFlowLogs) List(opts v1.ListOptions) (result *v1alpha1.FlowLogList, 
 }
 
 // Watch returns a watch.Interface that watches the requested flowLogs.
-func (c *FakeFlowLogs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeFlowLogs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(flowlogsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a flowLog and creates it.  Returns the server's representation of the flowLog, and an error, if there is any.
-func (c *FakeFlowLogs) Create(flowLog *v1alpha1.FlowLog) (result *v1alpha1.FlowLog, err error) {
+func (c *FakeFlowLogs) Create(ctx context.Context, flowLog *v1alpha1.FlowLog, opts v1.CreateOptions) (result *v1alpha1.FlowLog, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(flowlogsResource, c.ns, flowLog), &v1alpha1.FlowLog{})
 
@@ -91,7 +93,7 @@ func (c *FakeFlowLogs) Create(flowLog *v1alpha1.FlowLog) (result *v1alpha1.FlowL
 }
 
 // Update takes the representation of a flowLog and updates it. Returns the server's representation of the flowLog, and an error, if there is any.
-func (c *FakeFlowLogs) Update(flowLog *v1alpha1.FlowLog) (result *v1alpha1.FlowLog, err error) {
+func (c *FakeFlowLogs) Update(ctx context.Context, flowLog *v1alpha1.FlowLog, opts v1.UpdateOptions) (result *v1alpha1.FlowLog, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(flowlogsResource, c.ns, flowLog), &v1alpha1.FlowLog{})
 
@@ -103,7 +105,7 @@ func (c *FakeFlowLogs) Update(flowLog *v1alpha1.FlowLog) (result *v1alpha1.FlowL
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeFlowLogs) UpdateStatus(flowLog *v1alpha1.FlowLog) (*v1alpha1.FlowLog, error) {
+func (c *FakeFlowLogs) UpdateStatus(ctx context.Context, flowLog *v1alpha1.FlowLog, opts v1.UpdateOptions) (*v1alpha1.FlowLog, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(flowlogsResource, "status", c.ns, flowLog), &v1alpha1.FlowLog{})
 
@@ -114,7 +116,7 @@ func (c *FakeFlowLogs) UpdateStatus(flowLog *v1alpha1.FlowLog) (*v1alpha1.FlowLo
 }
 
 // Delete takes name of the flowLog and deletes it. Returns an error if one occurs.
-func (c *FakeFlowLogs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeFlowLogs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(flowlogsResource, c.ns, name), &v1alpha1.FlowLog{})
 
@@ -122,15 +124,15 @@ func (c *FakeFlowLogs) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeFlowLogs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(flowlogsResource, c.ns, listOptions)
+func (c *FakeFlowLogs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(flowlogsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.FlowLogList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched flowLog.
-func (c *FakeFlowLogs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.FlowLog, err error) {
+func (c *FakeFlowLogs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.FlowLog, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(flowlogsResource, c.ns, name, pt, data, subresources...), &v1alpha1.FlowLog{})
 

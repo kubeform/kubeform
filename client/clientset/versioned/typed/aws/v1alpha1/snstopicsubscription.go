@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type SnsTopicSubscriptionsGetter interface {
 
 // SnsTopicSubscriptionInterface has methods to work with SnsTopicSubscription resources.
 type SnsTopicSubscriptionInterface interface {
-	Create(*v1alpha1.SnsTopicSubscription) (*v1alpha1.SnsTopicSubscription, error)
-	Update(*v1alpha1.SnsTopicSubscription) (*v1alpha1.SnsTopicSubscription, error)
-	UpdateStatus(*v1alpha1.SnsTopicSubscription) (*v1alpha1.SnsTopicSubscription, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SnsTopicSubscription, error)
-	List(opts v1.ListOptions) (*v1alpha1.SnsTopicSubscriptionList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SnsTopicSubscription, err error)
+	Create(ctx context.Context, snsTopicSubscription *v1alpha1.SnsTopicSubscription, opts v1.CreateOptions) (*v1alpha1.SnsTopicSubscription, error)
+	Update(ctx context.Context, snsTopicSubscription *v1alpha1.SnsTopicSubscription, opts v1.UpdateOptions) (*v1alpha1.SnsTopicSubscription, error)
+	UpdateStatus(ctx context.Context, snsTopicSubscription *v1alpha1.SnsTopicSubscription, opts v1.UpdateOptions) (*v1alpha1.SnsTopicSubscription, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SnsTopicSubscription, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SnsTopicSubscriptionList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SnsTopicSubscription, err error)
 	SnsTopicSubscriptionExpansion
 }
 
@@ -65,20 +66,20 @@ func newSnsTopicSubscriptions(c *AwsV1alpha1Client, namespace string) *snsTopicS
 }
 
 // Get takes name of the snsTopicSubscription, and returns the corresponding snsTopicSubscription object, and an error if there is any.
-func (c *snsTopicSubscriptions) Get(name string, options v1.GetOptions) (result *v1alpha1.SnsTopicSubscription, err error) {
+func (c *snsTopicSubscriptions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SnsTopicSubscription, err error) {
 	result = &v1alpha1.SnsTopicSubscription{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("snstopicsubscriptions").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SnsTopicSubscriptions that match those selectors.
-func (c *snsTopicSubscriptions) List(opts v1.ListOptions) (result *v1alpha1.SnsTopicSubscriptionList, err error) {
+func (c *snsTopicSubscriptions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SnsTopicSubscriptionList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *snsTopicSubscriptions) List(opts v1.ListOptions) (result *v1alpha1.SnsT
 		Resource("snstopicsubscriptions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested snsTopicSubscriptions.
-func (c *snsTopicSubscriptions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *snsTopicSubscriptions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *snsTopicSubscriptions) Watch(opts v1.ListOptions) (watch.Interface, err
 		Resource("snstopicsubscriptions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a snsTopicSubscription and creates it.  Returns the server's representation of the snsTopicSubscription, and an error, if there is any.
-func (c *snsTopicSubscriptions) Create(snsTopicSubscription *v1alpha1.SnsTopicSubscription) (result *v1alpha1.SnsTopicSubscription, err error) {
+func (c *snsTopicSubscriptions) Create(ctx context.Context, snsTopicSubscription *v1alpha1.SnsTopicSubscription, opts v1.CreateOptions) (result *v1alpha1.SnsTopicSubscription, err error) {
 	result = &v1alpha1.SnsTopicSubscription{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("snstopicsubscriptions").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(snsTopicSubscription).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a snsTopicSubscription and updates it. Returns the server's representation of the snsTopicSubscription, and an error, if there is any.
-func (c *snsTopicSubscriptions) Update(snsTopicSubscription *v1alpha1.SnsTopicSubscription) (result *v1alpha1.SnsTopicSubscription, err error) {
+func (c *snsTopicSubscriptions) Update(ctx context.Context, snsTopicSubscription *v1alpha1.SnsTopicSubscription, opts v1.UpdateOptions) (result *v1alpha1.SnsTopicSubscription, err error) {
 	result = &v1alpha1.SnsTopicSubscription{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("snstopicsubscriptions").
 		Name(snsTopicSubscription.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(snsTopicSubscription).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *snsTopicSubscriptions) UpdateStatus(snsTopicSubscription *v1alpha1.SnsTopicSubscription) (result *v1alpha1.SnsTopicSubscription, err error) {
+func (c *snsTopicSubscriptions) UpdateStatus(ctx context.Context, snsTopicSubscription *v1alpha1.SnsTopicSubscription, opts v1.UpdateOptions) (result *v1alpha1.SnsTopicSubscription, err error) {
 	result = &v1alpha1.SnsTopicSubscription{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("snstopicsubscriptions").
 		Name(snsTopicSubscription.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(snsTopicSubscription).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the snsTopicSubscription and deletes it. Returns an error if one occurs.
-func (c *snsTopicSubscriptions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *snsTopicSubscriptions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("snstopicsubscriptions").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *snsTopicSubscriptions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *snsTopicSubscriptions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("snstopicsubscriptions").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched snsTopicSubscription.
-func (c *snsTopicSubscriptions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SnsTopicSubscription, err error) {
+func (c *snsTopicSubscriptions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SnsTopicSubscription, err error) {
 	result = &v1alpha1.SnsTopicSubscription{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("snstopicsubscriptions").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

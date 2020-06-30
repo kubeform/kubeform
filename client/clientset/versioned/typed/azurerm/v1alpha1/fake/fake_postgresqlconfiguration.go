@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var postgresqlconfigurationsResource = schema.GroupVersionResource{Group: "azure
 var postgresqlconfigurationsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "PostgresqlConfiguration"}
 
 // Get takes name of the postgresqlConfiguration, and returns the corresponding postgresqlConfiguration object, and an error if there is any.
-func (c *FakePostgresqlConfigurations) Get(name string, options v1.GetOptions) (result *v1alpha1.PostgresqlConfiguration, err error) {
+func (c *FakePostgresqlConfigurations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PostgresqlConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(postgresqlconfigurationsResource, c.ns, name), &v1alpha1.PostgresqlConfiguration{})
 
@@ -51,7 +53,7 @@ func (c *FakePostgresqlConfigurations) Get(name string, options v1.GetOptions) (
 }
 
 // List takes label and field selectors, and returns the list of PostgresqlConfigurations that match those selectors.
-func (c *FakePostgresqlConfigurations) List(opts v1.ListOptions) (result *v1alpha1.PostgresqlConfigurationList, err error) {
+func (c *FakePostgresqlConfigurations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PostgresqlConfigurationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(postgresqlconfigurationsResource, postgresqlconfigurationsKind, c.ns, opts), &v1alpha1.PostgresqlConfigurationList{})
 
@@ -73,14 +75,14 @@ func (c *FakePostgresqlConfigurations) List(opts v1.ListOptions) (result *v1alph
 }
 
 // Watch returns a watch.Interface that watches the requested postgresqlConfigurations.
-func (c *FakePostgresqlConfigurations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakePostgresqlConfigurations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(postgresqlconfigurationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a postgresqlConfiguration and creates it.  Returns the server's representation of the postgresqlConfiguration, and an error, if there is any.
-func (c *FakePostgresqlConfigurations) Create(postgresqlConfiguration *v1alpha1.PostgresqlConfiguration) (result *v1alpha1.PostgresqlConfiguration, err error) {
+func (c *FakePostgresqlConfigurations) Create(ctx context.Context, postgresqlConfiguration *v1alpha1.PostgresqlConfiguration, opts v1.CreateOptions) (result *v1alpha1.PostgresqlConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(postgresqlconfigurationsResource, c.ns, postgresqlConfiguration), &v1alpha1.PostgresqlConfiguration{})
 
@@ -91,7 +93,7 @@ func (c *FakePostgresqlConfigurations) Create(postgresqlConfiguration *v1alpha1.
 }
 
 // Update takes the representation of a postgresqlConfiguration and updates it. Returns the server's representation of the postgresqlConfiguration, and an error, if there is any.
-func (c *FakePostgresqlConfigurations) Update(postgresqlConfiguration *v1alpha1.PostgresqlConfiguration) (result *v1alpha1.PostgresqlConfiguration, err error) {
+func (c *FakePostgresqlConfigurations) Update(ctx context.Context, postgresqlConfiguration *v1alpha1.PostgresqlConfiguration, opts v1.UpdateOptions) (result *v1alpha1.PostgresqlConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(postgresqlconfigurationsResource, c.ns, postgresqlConfiguration), &v1alpha1.PostgresqlConfiguration{})
 
@@ -103,7 +105,7 @@ func (c *FakePostgresqlConfigurations) Update(postgresqlConfiguration *v1alpha1.
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakePostgresqlConfigurations) UpdateStatus(postgresqlConfiguration *v1alpha1.PostgresqlConfiguration) (*v1alpha1.PostgresqlConfiguration, error) {
+func (c *FakePostgresqlConfigurations) UpdateStatus(ctx context.Context, postgresqlConfiguration *v1alpha1.PostgresqlConfiguration, opts v1.UpdateOptions) (*v1alpha1.PostgresqlConfiguration, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(postgresqlconfigurationsResource, "status", c.ns, postgresqlConfiguration), &v1alpha1.PostgresqlConfiguration{})
 
@@ -114,7 +116,7 @@ func (c *FakePostgresqlConfigurations) UpdateStatus(postgresqlConfiguration *v1a
 }
 
 // Delete takes name of the postgresqlConfiguration and deletes it. Returns an error if one occurs.
-func (c *FakePostgresqlConfigurations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakePostgresqlConfigurations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(postgresqlconfigurationsResource, c.ns, name), &v1alpha1.PostgresqlConfiguration{})
 
@@ -122,15 +124,15 @@ func (c *FakePostgresqlConfigurations) Delete(name string, options *v1.DeleteOpt
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakePostgresqlConfigurations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(postgresqlconfigurationsResource, c.ns, listOptions)
+func (c *FakePostgresqlConfigurations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(postgresqlconfigurationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.PostgresqlConfigurationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched postgresqlConfiguration.
-func (c *FakePostgresqlConfigurations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PostgresqlConfiguration, err error) {
+func (c *FakePostgresqlConfigurations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PostgresqlConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(postgresqlconfigurationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.PostgresqlConfiguration{})
 

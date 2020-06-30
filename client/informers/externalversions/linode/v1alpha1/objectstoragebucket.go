@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	time "time"
 
 	linodev1alpha1 "kubeform.dev/kubeform/apis/linode/v1alpha1"
@@ -62,13 +63,13 @@ func NewFilteredObjectStorageBucketInformer(client versioned.Interface, namespac
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.LinodeV1alpha1().ObjectStorageBuckets(namespace).List(options)
+				return client.LinodeV1alpha1().ObjectStorageBuckets(namespace).List(context.TODO(), options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.LinodeV1alpha1().ObjectStorageBuckets(namespace).Watch(options)
+				return client.LinodeV1alpha1().ObjectStorageBuckets(namespace).Watch(context.TODO(), options)
 			},
 		},
 		&linodev1alpha1.ObjectStorageBucket{},

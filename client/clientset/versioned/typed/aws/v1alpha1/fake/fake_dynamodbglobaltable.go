@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dynamodbglobaltablesResource = schema.GroupVersionResource{Group: "aws.kubef
 var dynamodbglobaltablesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DynamodbGlobalTable"}
 
 // Get takes name of the dynamodbGlobalTable, and returns the corresponding dynamodbGlobalTable object, and an error if there is any.
-func (c *FakeDynamodbGlobalTables) Get(name string, options v1.GetOptions) (result *v1alpha1.DynamodbGlobalTable, err error) {
+func (c *FakeDynamodbGlobalTables) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DynamodbGlobalTable, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dynamodbglobaltablesResource, c.ns, name), &v1alpha1.DynamodbGlobalTable{})
 
@@ -51,7 +53,7 @@ func (c *FakeDynamodbGlobalTables) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of DynamodbGlobalTables that match those selectors.
-func (c *FakeDynamodbGlobalTables) List(opts v1.ListOptions) (result *v1alpha1.DynamodbGlobalTableList, err error) {
+func (c *FakeDynamodbGlobalTables) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DynamodbGlobalTableList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dynamodbglobaltablesResource, dynamodbglobaltablesKind, c.ns, opts), &v1alpha1.DynamodbGlobalTableList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDynamodbGlobalTables) List(opts v1.ListOptions) (result *v1alpha1.D
 }
 
 // Watch returns a watch.Interface that watches the requested dynamodbGlobalTables.
-func (c *FakeDynamodbGlobalTables) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDynamodbGlobalTables) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dynamodbglobaltablesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dynamodbGlobalTable and creates it.  Returns the server's representation of the dynamodbGlobalTable, and an error, if there is any.
-func (c *FakeDynamodbGlobalTables) Create(dynamodbGlobalTable *v1alpha1.DynamodbGlobalTable) (result *v1alpha1.DynamodbGlobalTable, err error) {
+func (c *FakeDynamodbGlobalTables) Create(ctx context.Context, dynamodbGlobalTable *v1alpha1.DynamodbGlobalTable, opts v1.CreateOptions) (result *v1alpha1.DynamodbGlobalTable, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dynamodbglobaltablesResource, c.ns, dynamodbGlobalTable), &v1alpha1.DynamodbGlobalTable{})
 
@@ -91,7 +93,7 @@ func (c *FakeDynamodbGlobalTables) Create(dynamodbGlobalTable *v1alpha1.Dynamodb
 }
 
 // Update takes the representation of a dynamodbGlobalTable and updates it. Returns the server's representation of the dynamodbGlobalTable, and an error, if there is any.
-func (c *FakeDynamodbGlobalTables) Update(dynamodbGlobalTable *v1alpha1.DynamodbGlobalTable) (result *v1alpha1.DynamodbGlobalTable, err error) {
+func (c *FakeDynamodbGlobalTables) Update(ctx context.Context, dynamodbGlobalTable *v1alpha1.DynamodbGlobalTable, opts v1.UpdateOptions) (result *v1alpha1.DynamodbGlobalTable, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dynamodbglobaltablesResource, c.ns, dynamodbGlobalTable), &v1alpha1.DynamodbGlobalTable{})
 
@@ -103,7 +105,7 @@ func (c *FakeDynamodbGlobalTables) Update(dynamodbGlobalTable *v1alpha1.Dynamodb
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDynamodbGlobalTables) UpdateStatus(dynamodbGlobalTable *v1alpha1.DynamodbGlobalTable) (*v1alpha1.DynamodbGlobalTable, error) {
+func (c *FakeDynamodbGlobalTables) UpdateStatus(ctx context.Context, dynamodbGlobalTable *v1alpha1.DynamodbGlobalTable, opts v1.UpdateOptions) (*v1alpha1.DynamodbGlobalTable, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dynamodbglobaltablesResource, "status", c.ns, dynamodbGlobalTable), &v1alpha1.DynamodbGlobalTable{})
 
@@ -114,7 +116,7 @@ func (c *FakeDynamodbGlobalTables) UpdateStatus(dynamodbGlobalTable *v1alpha1.Dy
 }
 
 // Delete takes name of the dynamodbGlobalTable and deletes it. Returns an error if one occurs.
-func (c *FakeDynamodbGlobalTables) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDynamodbGlobalTables) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dynamodbglobaltablesResource, c.ns, name), &v1alpha1.DynamodbGlobalTable{})
 
@@ -122,15 +124,15 @@ func (c *FakeDynamodbGlobalTables) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDynamodbGlobalTables) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dynamodbglobaltablesResource, c.ns, listOptions)
+func (c *FakeDynamodbGlobalTables) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dynamodbglobaltablesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DynamodbGlobalTableList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dynamodbGlobalTable.
-func (c *FakeDynamodbGlobalTables) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DynamodbGlobalTable, err error) {
+func (c *FakeDynamodbGlobalTables) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DynamodbGlobalTable, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dynamodbglobaltablesResource, c.ns, name, pt, data, subresources...), &v1alpha1.DynamodbGlobalTable{})
 

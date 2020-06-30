@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var templatedeploymentsResource = schema.GroupVersionResource{Group: "azurerm.ku
 var templatedeploymentsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "TemplateDeployment"}
 
 // Get takes name of the templateDeployment, and returns the corresponding templateDeployment object, and an error if there is any.
-func (c *FakeTemplateDeployments) Get(name string, options v1.GetOptions) (result *v1alpha1.TemplateDeployment, err error) {
+func (c *FakeTemplateDeployments) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.TemplateDeployment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(templatedeploymentsResource, c.ns, name), &v1alpha1.TemplateDeployment{})
 
@@ -51,7 +53,7 @@ func (c *FakeTemplateDeployments) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of TemplateDeployments that match those selectors.
-func (c *FakeTemplateDeployments) List(opts v1.ListOptions) (result *v1alpha1.TemplateDeploymentList, err error) {
+func (c *FakeTemplateDeployments) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.TemplateDeploymentList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(templatedeploymentsResource, templatedeploymentsKind, c.ns, opts), &v1alpha1.TemplateDeploymentList{})
 
@@ -73,14 +75,14 @@ func (c *FakeTemplateDeployments) List(opts v1.ListOptions) (result *v1alpha1.Te
 }
 
 // Watch returns a watch.Interface that watches the requested templateDeployments.
-func (c *FakeTemplateDeployments) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeTemplateDeployments) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(templatedeploymentsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a templateDeployment and creates it.  Returns the server's representation of the templateDeployment, and an error, if there is any.
-func (c *FakeTemplateDeployments) Create(templateDeployment *v1alpha1.TemplateDeployment) (result *v1alpha1.TemplateDeployment, err error) {
+func (c *FakeTemplateDeployments) Create(ctx context.Context, templateDeployment *v1alpha1.TemplateDeployment, opts v1.CreateOptions) (result *v1alpha1.TemplateDeployment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(templatedeploymentsResource, c.ns, templateDeployment), &v1alpha1.TemplateDeployment{})
 
@@ -91,7 +93,7 @@ func (c *FakeTemplateDeployments) Create(templateDeployment *v1alpha1.TemplateDe
 }
 
 // Update takes the representation of a templateDeployment and updates it. Returns the server's representation of the templateDeployment, and an error, if there is any.
-func (c *FakeTemplateDeployments) Update(templateDeployment *v1alpha1.TemplateDeployment) (result *v1alpha1.TemplateDeployment, err error) {
+func (c *FakeTemplateDeployments) Update(ctx context.Context, templateDeployment *v1alpha1.TemplateDeployment, opts v1.UpdateOptions) (result *v1alpha1.TemplateDeployment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(templatedeploymentsResource, c.ns, templateDeployment), &v1alpha1.TemplateDeployment{})
 
@@ -103,7 +105,7 @@ func (c *FakeTemplateDeployments) Update(templateDeployment *v1alpha1.TemplateDe
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeTemplateDeployments) UpdateStatus(templateDeployment *v1alpha1.TemplateDeployment) (*v1alpha1.TemplateDeployment, error) {
+func (c *FakeTemplateDeployments) UpdateStatus(ctx context.Context, templateDeployment *v1alpha1.TemplateDeployment, opts v1.UpdateOptions) (*v1alpha1.TemplateDeployment, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(templatedeploymentsResource, "status", c.ns, templateDeployment), &v1alpha1.TemplateDeployment{})
 
@@ -114,7 +116,7 @@ func (c *FakeTemplateDeployments) UpdateStatus(templateDeployment *v1alpha1.Temp
 }
 
 // Delete takes name of the templateDeployment and deletes it. Returns an error if one occurs.
-func (c *FakeTemplateDeployments) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeTemplateDeployments) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(templatedeploymentsResource, c.ns, name), &v1alpha1.TemplateDeployment{})
 
@@ -122,15 +124,15 @@ func (c *FakeTemplateDeployments) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeTemplateDeployments) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(templatedeploymentsResource, c.ns, listOptions)
+func (c *FakeTemplateDeployments) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(templatedeploymentsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.TemplateDeploymentList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched templateDeployment.
-func (c *FakeTemplateDeployments) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.TemplateDeployment, err error) {
+func (c *FakeTemplateDeployments) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.TemplateDeployment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(templatedeploymentsResource, c.ns, name, pt, data, subresources...), &v1alpha1.TemplateDeployment{})
 

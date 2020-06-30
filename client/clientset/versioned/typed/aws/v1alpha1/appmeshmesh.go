@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type AppmeshMeshesGetter interface {
 
 // AppmeshMeshInterface has methods to work with AppmeshMesh resources.
 type AppmeshMeshInterface interface {
-	Create(*v1alpha1.AppmeshMesh) (*v1alpha1.AppmeshMesh, error)
-	Update(*v1alpha1.AppmeshMesh) (*v1alpha1.AppmeshMesh, error)
-	UpdateStatus(*v1alpha1.AppmeshMesh) (*v1alpha1.AppmeshMesh, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.AppmeshMesh, error)
-	List(opts v1.ListOptions) (*v1alpha1.AppmeshMeshList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppmeshMesh, err error)
+	Create(ctx context.Context, appmeshMesh *v1alpha1.AppmeshMesh, opts v1.CreateOptions) (*v1alpha1.AppmeshMesh, error)
+	Update(ctx context.Context, appmeshMesh *v1alpha1.AppmeshMesh, opts v1.UpdateOptions) (*v1alpha1.AppmeshMesh, error)
+	UpdateStatus(ctx context.Context, appmeshMesh *v1alpha1.AppmeshMesh, opts v1.UpdateOptions) (*v1alpha1.AppmeshMesh, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.AppmeshMesh, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.AppmeshMeshList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppmeshMesh, err error)
 	AppmeshMeshExpansion
 }
 
@@ -65,20 +66,20 @@ func newAppmeshMeshes(c *AwsV1alpha1Client, namespace string) *appmeshMeshes {
 }
 
 // Get takes name of the appmeshMesh, and returns the corresponding appmeshMesh object, and an error if there is any.
-func (c *appmeshMeshes) Get(name string, options v1.GetOptions) (result *v1alpha1.AppmeshMesh, err error) {
+func (c *appmeshMeshes) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AppmeshMesh, err error) {
 	result = &v1alpha1.AppmeshMesh{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("appmeshmeshes").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of AppmeshMeshes that match those selectors.
-func (c *appmeshMeshes) List(opts v1.ListOptions) (result *v1alpha1.AppmeshMeshList, err error) {
+func (c *appmeshMeshes) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AppmeshMeshList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *appmeshMeshes) List(opts v1.ListOptions) (result *v1alpha1.AppmeshMeshL
 		Resource("appmeshmeshes").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested appmeshMeshes.
-func (c *appmeshMeshes) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *appmeshMeshes) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *appmeshMeshes) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("appmeshmeshes").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a appmeshMesh and creates it.  Returns the server's representation of the appmeshMesh, and an error, if there is any.
-func (c *appmeshMeshes) Create(appmeshMesh *v1alpha1.AppmeshMesh) (result *v1alpha1.AppmeshMesh, err error) {
+func (c *appmeshMeshes) Create(ctx context.Context, appmeshMesh *v1alpha1.AppmeshMesh, opts v1.CreateOptions) (result *v1alpha1.AppmeshMesh, err error) {
 	result = &v1alpha1.AppmeshMesh{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("appmeshmeshes").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appmeshMesh).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a appmeshMesh and updates it. Returns the server's representation of the appmeshMesh, and an error, if there is any.
-func (c *appmeshMeshes) Update(appmeshMesh *v1alpha1.AppmeshMesh) (result *v1alpha1.AppmeshMesh, err error) {
+func (c *appmeshMeshes) Update(ctx context.Context, appmeshMesh *v1alpha1.AppmeshMesh, opts v1.UpdateOptions) (result *v1alpha1.AppmeshMesh, err error) {
 	result = &v1alpha1.AppmeshMesh{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("appmeshmeshes").
 		Name(appmeshMesh.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appmeshMesh).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *appmeshMeshes) UpdateStatus(appmeshMesh *v1alpha1.AppmeshMesh) (result *v1alpha1.AppmeshMesh, err error) {
+func (c *appmeshMeshes) UpdateStatus(ctx context.Context, appmeshMesh *v1alpha1.AppmeshMesh, opts v1.UpdateOptions) (result *v1alpha1.AppmeshMesh, err error) {
 	result = &v1alpha1.AppmeshMesh{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("appmeshmeshes").
 		Name(appmeshMesh.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appmeshMesh).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the appmeshMesh and deletes it. Returns an error if one occurs.
-func (c *appmeshMeshes) Delete(name string, options *v1.DeleteOptions) error {
+func (c *appmeshMeshes) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("appmeshmeshes").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *appmeshMeshes) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *appmeshMeshes) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("appmeshmeshes").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched appmeshMesh.
-func (c *appmeshMeshes) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppmeshMesh, err error) {
+func (c *appmeshMeshes) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppmeshMesh, err error) {
 	result = &v1alpha1.AppmeshMesh{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("appmeshmeshes").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

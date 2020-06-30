@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cognitoidentityprovidersResource = schema.GroupVersionResource{Group: "aws.k
 var cognitoidentityprovidersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "CognitoIdentityProvider"}
 
 // Get takes name of the cognitoIdentityProvider, and returns the corresponding cognitoIdentityProvider object, and an error if there is any.
-func (c *FakeCognitoIdentityProviders) Get(name string, options v1.GetOptions) (result *v1alpha1.CognitoIdentityProvider, err error) {
+func (c *FakeCognitoIdentityProviders) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CognitoIdentityProvider, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cognitoidentityprovidersResource, c.ns, name), &v1alpha1.CognitoIdentityProvider{})
 
@@ -51,7 +53,7 @@ func (c *FakeCognitoIdentityProviders) Get(name string, options v1.GetOptions) (
 }
 
 // List takes label and field selectors, and returns the list of CognitoIdentityProviders that match those selectors.
-func (c *FakeCognitoIdentityProviders) List(opts v1.ListOptions) (result *v1alpha1.CognitoIdentityProviderList, err error) {
+func (c *FakeCognitoIdentityProviders) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CognitoIdentityProviderList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cognitoidentityprovidersResource, cognitoidentityprovidersKind, c.ns, opts), &v1alpha1.CognitoIdentityProviderList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCognitoIdentityProviders) List(opts v1.ListOptions) (result *v1alph
 }
 
 // Watch returns a watch.Interface that watches the requested cognitoIdentityProviders.
-func (c *FakeCognitoIdentityProviders) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCognitoIdentityProviders) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cognitoidentityprovidersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cognitoIdentityProvider and creates it.  Returns the server's representation of the cognitoIdentityProvider, and an error, if there is any.
-func (c *FakeCognitoIdentityProviders) Create(cognitoIdentityProvider *v1alpha1.CognitoIdentityProvider) (result *v1alpha1.CognitoIdentityProvider, err error) {
+func (c *FakeCognitoIdentityProviders) Create(ctx context.Context, cognitoIdentityProvider *v1alpha1.CognitoIdentityProvider, opts v1.CreateOptions) (result *v1alpha1.CognitoIdentityProvider, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cognitoidentityprovidersResource, c.ns, cognitoIdentityProvider), &v1alpha1.CognitoIdentityProvider{})
 
@@ -91,7 +93,7 @@ func (c *FakeCognitoIdentityProviders) Create(cognitoIdentityProvider *v1alpha1.
 }
 
 // Update takes the representation of a cognitoIdentityProvider and updates it. Returns the server's representation of the cognitoIdentityProvider, and an error, if there is any.
-func (c *FakeCognitoIdentityProviders) Update(cognitoIdentityProvider *v1alpha1.CognitoIdentityProvider) (result *v1alpha1.CognitoIdentityProvider, err error) {
+func (c *FakeCognitoIdentityProviders) Update(ctx context.Context, cognitoIdentityProvider *v1alpha1.CognitoIdentityProvider, opts v1.UpdateOptions) (result *v1alpha1.CognitoIdentityProvider, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cognitoidentityprovidersResource, c.ns, cognitoIdentityProvider), &v1alpha1.CognitoIdentityProvider{})
 
@@ -103,7 +105,7 @@ func (c *FakeCognitoIdentityProviders) Update(cognitoIdentityProvider *v1alpha1.
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCognitoIdentityProviders) UpdateStatus(cognitoIdentityProvider *v1alpha1.CognitoIdentityProvider) (*v1alpha1.CognitoIdentityProvider, error) {
+func (c *FakeCognitoIdentityProviders) UpdateStatus(ctx context.Context, cognitoIdentityProvider *v1alpha1.CognitoIdentityProvider, opts v1.UpdateOptions) (*v1alpha1.CognitoIdentityProvider, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cognitoidentityprovidersResource, "status", c.ns, cognitoIdentityProvider), &v1alpha1.CognitoIdentityProvider{})
 
@@ -114,7 +116,7 @@ func (c *FakeCognitoIdentityProviders) UpdateStatus(cognitoIdentityProvider *v1a
 }
 
 // Delete takes name of the cognitoIdentityProvider and deletes it. Returns an error if one occurs.
-func (c *FakeCognitoIdentityProviders) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCognitoIdentityProviders) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cognitoidentityprovidersResource, c.ns, name), &v1alpha1.CognitoIdentityProvider{})
 
@@ -122,15 +124,15 @@ func (c *FakeCognitoIdentityProviders) Delete(name string, options *v1.DeleteOpt
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCognitoIdentityProviders) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cognitoidentityprovidersResource, c.ns, listOptions)
+func (c *FakeCognitoIdentityProviders) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cognitoidentityprovidersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CognitoIdentityProviderList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cognitoIdentityProvider.
-func (c *FakeCognitoIdentityProviders) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CognitoIdentityProvider, err error) {
+func (c *FakeCognitoIdentityProviders) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CognitoIdentityProvider, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cognitoidentityprovidersResource, c.ns, name, pt, data, subresources...), &v1alpha1.CognitoIdentityProvider{})
 

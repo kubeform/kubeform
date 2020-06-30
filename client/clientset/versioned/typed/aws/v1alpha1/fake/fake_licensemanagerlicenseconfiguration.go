@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var licensemanagerlicenseconfigurationsResource = schema.GroupVersionResource{Gr
 var licensemanagerlicenseconfigurationsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "LicensemanagerLicenseConfiguration"}
 
 // Get takes name of the licensemanagerLicenseConfiguration, and returns the corresponding licensemanagerLicenseConfiguration object, and an error if there is any.
-func (c *FakeLicensemanagerLicenseConfigurations) Get(name string, options v1.GetOptions) (result *v1alpha1.LicensemanagerLicenseConfiguration, err error) {
+func (c *FakeLicensemanagerLicenseConfigurations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LicensemanagerLicenseConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(licensemanagerlicenseconfigurationsResource, c.ns, name), &v1alpha1.LicensemanagerLicenseConfiguration{})
 
@@ -51,7 +53,7 @@ func (c *FakeLicensemanagerLicenseConfigurations) Get(name string, options v1.Ge
 }
 
 // List takes label and field selectors, and returns the list of LicensemanagerLicenseConfigurations that match those selectors.
-func (c *FakeLicensemanagerLicenseConfigurations) List(opts v1.ListOptions) (result *v1alpha1.LicensemanagerLicenseConfigurationList, err error) {
+func (c *FakeLicensemanagerLicenseConfigurations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LicensemanagerLicenseConfigurationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(licensemanagerlicenseconfigurationsResource, licensemanagerlicenseconfigurationsKind, c.ns, opts), &v1alpha1.LicensemanagerLicenseConfigurationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLicensemanagerLicenseConfigurations) List(opts v1.ListOptions) (res
 }
 
 // Watch returns a watch.Interface that watches the requested licensemanagerLicenseConfigurations.
-func (c *FakeLicensemanagerLicenseConfigurations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLicensemanagerLicenseConfigurations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(licensemanagerlicenseconfigurationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a licensemanagerLicenseConfiguration and creates it.  Returns the server's representation of the licensemanagerLicenseConfiguration, and an error, if there is any.
-func (c *FakeLicensemanagerLicenseConfigurations) Create(licensemanagerLicenseConfiguration *v1alpha1.LicensemanagerLicenseConfiguration) (result *v1alpha1.LicensemanagerLicenseConfiguration, err error) {
+func (c *FakeLicensemanagerLicenseConfigurations) Create(ctx context.Context, licensemanagerLicenseConfiguration *v1alpha1.LicensemanagerLicenseConfiguration, opts v1.CreateOptions) (result *v1alpha1.LicensemanagerLicenseConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(licensemanagerlicenseconfigurationsResource, c.ns, licensemanagerLicenseConfiguration), &v1alpha1.LicensemanagerLicenseConfiguration{})
 
@@ -91,7 +93,7 @@ func (c *FakeLicensemanagerLicenseConfigurations) Create(licensemanagerLicenseCo
 }
 
 // Update takes the representation of a licensemanagerLicenseConfiguration and updates it. Returns the server's representation of the licensemanagerLicenseConfiguration, and an error, if there is any.
-func (c *FakeLicensemanagerLicenseConfigurations) Update(licensemanagerLicenseConfiguration *v1alpha1.LicensemanagerLicenseConfiguration) (result *v1alpha1.LicensemanagerLicenseConfiguration, err error) {
+func (c *FakeLicensemanagerLicenseConfigurations) Update(ctx context.Context, licensemanagerLicenseConfiguration *v1alpha1.LicensemanagerLicenseConfiguration, opts v1.UpdateOptions) (result *v1alpha1.LicensemanagerLicenseConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(licensemanagerlicenseconfigurationsResource, c.ns, licensemanagerLicenseConfiguration), &v1alpha1.LicensemanagerLicenseConfiguration{})
 
@@ -103,7 +105,7 @@ func (c *FakeLicensemanagerLicenseConfigurations) Update(licensemanagerLicenseCo
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLicensemanagerLicenseConfigurations) UpdateStatus(licensemanagerLicenseConfiguration *v1alpha1.LicensemanagerLicenseConfiguration) (*v1alpha1.LicensemanagerLicenseConfiguration, error) {
+func (c *FakeLicensemanagerLicenseConfigurations) UpdateStatus(ctx context.Context, licensemanagerLicenseConfiguration *v1alpha1.LicensemanagerLicenseConfiguration, opts v1.UpdateOptions) (*v1alpha1.LicensemanagerLicenseConfiguration, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(licensemanagerlicenseconfigurationsResource, "status", c.ns, licensemanagerLicenseConfiguration), &v1alpha1.LicensemanagerLicenseConfiguration{})
 
@@ -114,7 +116,7 @@ func (c *FakeLicensemanagerLicenseConfigurations) UpdateStatus(licensemanagerLic
 }
 
 // Delete takes name of the licensemanagerLicenseConfiguration and deletes it. Returns an error if one occurs.
-func (c *FakeLicensemanagerLicenseConfigurations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLicensemanagerLicenseConfigurations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(licensemanagerlicenseconfigurationsResource, c.ns, name), &v1alpha1.LicensemanagerLicenseConfiguration{})
 
@@ -122,15 +124,15 @@ func (c *FakeLicensemanagerLicenseConfigurations) Delete(name string, options *v
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLicensemanagerLicenseConfigurations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(licensemanagerlicenseconfigurationsResource, c.ns, listOptions)
+func (c *FakeLicensemanagerLicenseConfigurations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(licensemanagerlicenseconfigurationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LicensemanagerLicenseConfigurationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched licensemanagerLicenseConfiguration.
-func (c *FakeLicensemanagerLicenseConfigurations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LicensemanagerLicenseConfiguration, err error) {
+func (c *FakeLicensemanagerLicenseConfigurations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LicensemanagerLicenseConfiguration, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(licensemanagerlicenseconfigurationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.LicensemanagerLicenseConfiguration{})
 

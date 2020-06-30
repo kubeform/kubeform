@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var keypairsResource = schema.GroupVersionResource{Group: "aws.kubeform.com", Ve
 var keypairsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "KeyPair"}
 
 // Get takes name of the keyPair, and returns the corresponding keyPair object, and an error if there is any.
-func (c *FakeKeyPairs) Get(name string, options v1.GetOptions) (result *v1alpha1.KeyPair, err error) {
+func (c *FakeKeyPairs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KeyPair, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(keypairsResource, c.ns, name), &v1alpha1.KeyPair{})
 
@@ -51,7 +53,7 @@ func (c *FakeKeyPairs) Get(name string, options v1.GetOptions) (result *v1alpha1
 }
 
 // List takes label and field selectors, and returns the list of KeyPairs that match those selectors.
-func (c *FakeKeyPairs) List(opts v1.ListOptions) (result *v1alpha1.KeyPairList, err error) {
+func (c *FakeKeyPairs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KeyPairList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(keypairsResource, keypairsKind, c.ns, opts), &v1alpha1.KeyPairList{})
 
@@ -73,14 +75,14 @@ func (c *FakeKeyPairs) List(opts v1.ListOptions) (result *v1alpha1.KeyPairList, 
 }
 
 // Watch returns a watch.Interface that watches the requested keyPairs.
-func (c *FakeKeyPairs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeKeyPairs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(keypairsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a keyPair and creates it.  Returns the server's representation of the keyPair, and an error, if there is any.
-func (c *FakeKeyPairs) Create(keyPair *v1alpha1.KeyPair) (result *v1alpha1.KeyPair, err error) {
+func (c *FakeKeyPairs) Create(ctx context.Context, keyPair *v1alpha1.KeyPair, opts v1.CreateOptions) (result *v1alpha1.KeyPair, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(keypairsResource, c.ns, keyPair), &v1alpha1.KeyPair{})
 
@@ -91,7 +93,7 @@ func (c *FakeKeyPairs) Create(keyPair *v1alpha1.KeyPair) (result *v1alpha1.KeyPa
 }
 
 // Update takes the representation of a keyPair and updates it. Returns the server's representation of the keyPair, and an error, if there is any.
-func (c *FakeKeyPairs) Update(keyPair *v1alpha1.KeyPair) (result *v1alpha1.KeyPair, err error) {
+func (c *FakeKeyPairs) Update(ctx context.Context, keyPair *v1alpha1.KeyPair, opts v1.UpdateOptions) (result *v1alpha1.KeyPair, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(keypairsResource, c.ns, keyPair), &v1alpha1.KeyPair{})
 
@@ -103,7 +105,7 @@ func (c *FakeKeyPairs) Update(keyPair *v1alpha1.KeyPair) (result *v1alpha1.KeyPa
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeKeyPairs) UpdateStatus(keyPair *v1alpha1.KeyPair) (*v1alpha1.KeyPair, error) {
+func (c *FakeKeyPairs) UpdateStatus(ctx context.Context, keyPair *v1alpha1.KeyPair, opts v1.UpdateOptions) (*v1alpha1.KeyPair, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(keypairsResource, "status", c.ns, keyPair), &v1alpha1.KeyPair{})
 
@@ -114,7 +116,7 @@ func (c *FakeKeyPairs) UpdateStatus(keyPair *v1alpha1.KeyPair) (*v1alpha1.KeyPai
 }
 
 // Delete takes name of the keyPair and deletes it. Returns an error if one occurs.
-func (c *FakeKeyPairs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeKeyPairs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(keypairsResource, c.ns, name), &v1alpha1.KeyPair{})
 
@@ -122,15 +124,15 @@ func (c *FakeKeyPairs) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeKeyPairs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(keypairsResource, c.ns, listOptions)
+func (c *FakeKeyPairs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(keypairsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.KeyPairList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched keyPair.
-func (c *FakeKeyPairs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KeyPair, err error) {
+func (c *FakeKeyPairs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KeyPair, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(keypairsResource, c.ns, name, pt, data, subresources...), &v1alpha1.KeyPair{})
 

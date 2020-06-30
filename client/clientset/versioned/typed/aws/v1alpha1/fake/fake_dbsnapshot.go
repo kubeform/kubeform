@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dbsnapshotsResource = schema.GroupVersionResource{Group: "aws.kubeform.com",
 var dbsnapshotsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DbSnapshot"}
 
 // Get takes name of the dbSnapshot, and returns the corresponding dbSnapshot object, and an error if there is any.
-func (c *FakeDbSnapshots) Get(name string, options v1.GetOptions) (result *v1alpha1.DbSnapshot, err error) {
+func (c *FakeDbSnapshots) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DbSnapshot, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dbsnapshotsResource, c.ns, name), &v1alpha1.DbSnapshot{})
 
@@ -51,7 +53,7 @@ func (c *FakeDbSnapshots) Get(name string, options v1.GetOptions) (result *v1alp
 }
 
 // List takes label and field selectors, and returns the list of DbSnapshots that match those selectors.
-func (c *FakeDbSnapshots) List(opts v1.ListOptions) (result *v1alpha1.DbSnapshotList, err error) {
+func (c *FakeDbSnapshots) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DbSnapshotList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dbsnapshotsResource, dbsnapshotsKind, c.ns, opts), &v1alpha1.DbSnapshotList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDbSnapshots) List(opts v1.ListOptions) (result *v1alpha1.DbSnapshot
 }
 
 // Watch returns a watch.Interface that watches the requested dbSnapshots.
-func (c *FakeDbSnapshots) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDbSnapshots) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dbsnapshotsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dbSnapshot and creates it.  Returns the server's representation of the dbSnapshot, and an error, if there is any.
-func (c *FakeDbSnapshots) Create(dbSnapshot *v1alpha1.DbSnapshot) (result *v1alpha1.DbSnapshot, err error) {
+func (c *FakeDbSnapshots) Create(ctx context.Context, dbSnapshot *v1alpha1.DbSnapshot, opts v1.CreateOptions) (result *v1alpha1.DbSnapshot, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dbsnapshotsResource, c.ns, dbSnapshot), &v1alpha1.DbSnapshot{})
 
@@ -91,7 +93,7 @@ func (c *FakeDbSnapshots) Create(dbSnapshot *v1alpha1.DbSnapshot) (result *v1alp
 }
 
 // Update takes the representation of a dbSnapshot and updates it. Returns the server's representation of the dbSnapshot, and an error, if there is any.
-func (c *FakeDbSnapshots) Update(dbSnapshot *v1alpha1.DbSnapshot) (result *v1alpha1.DbSnapshot, err error) {
+func (c *FakeDbSnapshots) Update(ctx context.Context, dbSnapshot *v1alpha1.DbSnapshot, opts v1.UpdateOptions) (result *v1alpha1.DbSnapshot, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dbsnapshotsResource, c.ns, dbSnapshot), &v1alpha1.DbSnapshot{})
 
@@ -103,7 +105,7 @@ func (c *FakeDbSnapshots) Update(dbSnapshot *v1alpha1.DbSnapshot) (result *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDbSnapshots) UpdateStatus(dbSnapshot *v1alpha1.DbSnapshot) (*v1alpha1.DbSnapshot, error) {
+func (c *FakeDbSnapshots) UpdateStatus(ctx context.Context, dbSnapshot *v1alpha1.DbSnapshot, opts v1.UpdateOptions) (*v1alpha1.DbSnapshot, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dbsnapshotsResource, "status", c.ns, dbSnapshot), &v1alpha1.DbSnapshot{})
 
@@ -114,7 +116,7 @@ func (c *FakeDbSnapshots) UpdateStatus(dbSnapshot *v1alpha1.DbSnapshot) (*v1alph
 }
 
 // Delete takes name of the dbSnapshot and deletes it. Returns an error if one occurs.
-func (c *FakeDbSnapshots) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDbSnapshots) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dbsnapshotsResource, c.ns, name), &v1alpha1.DbSnapshot{})
 
@@ -122,15 +124,15 @@ func (c *FakeDbSnapshots) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDbSnapshots) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dbsnapshotsResource, c.ns, listOptions)
+func (c *FakeDbSnapshots) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dbsnapshotsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DbSnapshotList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dbSnapshot.
-func (c *FakeDbSnapshots) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DbSnapshot, err error) {
+func (c *FakeDbSnapshots) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DbSnapshot, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dbsnapshotsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DbSnapshot{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dnszonesResource = schema.GroupVersionResource{Group: "azurerm.kubeform.com"
 var dnszonesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "DnsZone"}
 
 // Get takes name of the dnsZone, and returns the corresponding dnsZone object, and an error if there is any.
-func (c *FakeDnsZones) Get(name string, options v1.GetOptions) (result *v1alpha1.DnsZone, err error) {
+func (c *FakeDnsZones) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DnsZone, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dnszonesResource, c.ns, name), &v1alpha1.DnsZone{})
 
@@ -51,7 +53,7 @@ func (c *FakeDnsZones) Get(name string, options v1.GetOptions) (result *v1alpha1
 }
 
 // List takes label and field selectors, and returns the list of DnsZones that match those selectors.
-func (c *FakeDnsZones) List(opts v1.ListOptions) (result *v1alpha1.DnsZoneList, err error) {
+func (c *FakeDnsZones) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DnsZoneList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dnszonesResource, dnszonesKind, c.ns, opts), &v1alpha1.DnsZoneList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDnsZones) List(opts v1.ListOptions) (result *v1alpha1.DnsZoneList, 
 }
 
 // Watch returns a watch.Interface that watches the requested dnsZones.
-func (c *FakeDnsZones) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDnsZones) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dnszonesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dnsZone and creates it.  Returns the server's representation of the dnsZone, and an error, if there is any.
-func (c *FakeDnsZones) Create(dnsZone *v1alpha1.DnsZone) (result *v1alpha1.DnsZone, err error) {
+func (c *FakeDnsZones) Create(ctx context.Context, dnsZone *v1alpha1.DnsZone, opts v1.CreateOptions) (result *v1alpha1.DnsZone, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dnszonesResource, c.ns, dnsZone), &v1alpha1.DnsZone{})
 
@@ -91,7 +93,7 @@ func (c *FakeDnsZones) Create(dnsZone *v1alpha1.DnsZone) (result *v1alpha1.DnsZo
 }
 
 // Update takes the representation of a dnsZone and updates it. Returns the server's representation of the dnsZone, and an error, if there is any.
-func (c *FakeDnsZones) Update(dnsZone *v1alpha1.DnsZone) (result *v1alpha1.DnsZone, err error) {
+func (c *FakeDnsZones) Update(ctx context.Context, dnsZone *v1alpha1.DnsZone, opts v1.UpdateOptions) (result *v1alpha1.DnsZone, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dnszonesResource, c.ns, dnsZone), &v1alpha1.DnsZone{})
 
@@ -103,7 +105,7 @@ func (c *FakeDnsZones) Update(dnsZone *v1alpha1.DnsZone) (result *v1alpha1.DnsZo
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDnsZones) UpdateStatus(dnsZone *v1alpha1.DnsZone) (*v1alpha1.DnsZone, error) {
+func (c *FakeDnsZones) UpdateStatus(ctx context.Context, dnsZone *v1alpha1.DnsZone, opts v1.UpdateOptions) (*v1alpha1.DnsZone, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dnszonesResource, "status", c.ns, dnsZone), &v1alpha1.DnsZone{})
 
@@ -114,7 +116,7 @@ func (c *FakeDnsZones) UpdateStatus(dnsZone *v1alpha1.DnsZone) (*v1alpha1.DnsZon
 }
 
 // Delete takes name of the dnsZone and deletes it. Returns an error if one occurs.
-func (c *FakeDnsZones) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDnsZones) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dnszonesResource, c.ns, name), &v1alpha1.DnsZone{})
 
@@ -122,15 +124,15 @@ func (c *FakeDnsZones) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDnsZones) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dnszonesResource, c.ns, listOptions)
+func (c *FakeDnsZones) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dnszonesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DnsZoneList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dnsZone.
-func (c *FakeDnsZones) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DnsZone, err error) {
+func (c *FakeDnsZones) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DnsZone, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dnszonesResource, c.ns, name, pt, data, subresources...), &v1alpha1.DnsZone{})
 

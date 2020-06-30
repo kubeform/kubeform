@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var sagemakernotebookinstancesResource = schema.GroupVersionResource{Group: "aws
 var sagemakernotebookinstancesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "SagemakerNotebookInstance"}
 
 // Get takes name of the sagemakerNotebookInstance, and returns the corresponding sagemakerNotebookInstance object, and an error if there is any.
-func (c *FakeSagemakerNotebookInstances) Get(name string, options v1.GetOptions) (result *v1alpha1.SagemakerNotebookInstance, err error) {
+func (c *FakeSagemakerNotebookInstances) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SagemakerNotebookInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(sagemakernotebookinstancesResource, c.ns, name), &v1alpha1.SagemakerNotebookInstance{})
 
@@ -51,7 +53,7 @@ func (c *FakeSagemakerNotebookInstances) Get(name string, options v1.GetOptions)
 }
 
 // List takes label and field selectors, and returns the list of SagemakerNotebookInstances that match those selectors.
-func (c *FakeSagemakerNotebookInstances) List(opts v1.ListOptions) (result *v1alpha1.SagemakerNotebookInstanceList, err error) {
+func (c *FakeSagemakerNotebookInstances) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SagemakerNotebookInstanceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(sagemakernotebookinstancesResource, sagemakernotebookinstancesKind, c.ns, opts), &v1alpha1.SagemakerNotebookInstanceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSagemakerNotebookInstances) List(opts v1.ListOptions) (result *v1al
 }
 
 // Watch returns a watch.Interface that watches the requested sagemakerNotebookInstances.
-func (c *FakeSagemakerNotebookInstances) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSagemakerNotebookInstances) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(sagemakernotebookinstancesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a sagemakerNotebookInstance and creates it.  Returns the server's representation of the sagemakerNotebookInstance, and an error, if there is any.
-func (c *FakeSagemakerNotebookInstances) Create(sagemakerNotebookInstance *v1alpha1.SagemakerNotebookInstance) (result *v1alpha1.SagemakerNotebookInstance, err error) {
+func (c *FakeSagemakerNotebookInstances) Create(ctx context.Context, sagemakerNotebookInstance *v1alpha1.SagemakerNotebookInstance, opts v1.CreateOptions) (result *v1alpha1.SagemakerNotebookInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(sagemakernotebookinstancesResource, c.ns, sagemakerNotebookInstance), &v1alpha1.SagemakerNotebookInstance{})
 
@@ -91,7 +93,7 @@ func (c *FakeSagemakerNotebookInstances) Create(sagemakerNotebookInstance *v1alp
 }
 
 // Update takes the representation of a sagemakerNotebookInstance and updates it. Returns the server's representation of the sagemakerNotebookInstance, and an error, if there is any.
-func (c *FakeSagemakerNotebookInstances) Update(sagemakerNotebookInstance *v1alpha1.SagemakerNotebookInstance) (result *v1alpha1.SagemakerNotebookInstance, err error) {
+func (c *FakeSagemakerNotebookInstances) Update(ctx context.Context, sagemakerNotebookInstance *v1alpha1.SagemakerNotebookInstance, opts v1.UpdateOptions) (result *v1alpha1.SagemakerNotebookInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(sagemakernotebookinstancesResource, c.ns, sagemakerNotebookInstance), &v1alpha1.SagemakerNotebookInstance{})
 
@@ -103,7 +105,7 @@ func (c *FakeSagemakerNotebookInstances) Update(sagemakerNotebookInstance *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSagemakerNotebookInstances) UpdateStatus(sagemakerNotebookInstance *v1alpha1.SagemakerNotebookInstance) (*v1alpha1.SagemakerNotebookInstance, error) {
+func (c *FakeSagemakerNotebookInstances) UpdateStatus(ctx context.Context, sagemakerNotebookInstance *v1alpha1.SagemakerNotebookInstance, opts v1.UpdateOptions) (*v1alpha1.SagemakerNotebookInstance, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(sagemakernotebookinstancesResource, "status", c.ns, sagemakerNotebookInstance), &v1alpha1.SagemakerNotebookInstance{})
 
@@ -114,7 +116,7 @@ func (c *FakeSagemakerNotebookInstances) UpdateStatus(sagemakerNotebookInstance 
 }
 
 // Delete takes name of the sagemakerNotebookInstance and deletes it. Returns an error if one occurs.
-func (c *FakeSagemakerNotebookInstances) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSagemakerNotebookInstances) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(sagemakernotebookinstancesResource, c.ns, name), &v1alpha1.SagemakerNotebookInstance{})
 
@@ -122,15 +124,15 @@ func (c *FakeSagemakerNotebookInstances) Delete(name string, options *v1.DeleteO
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSagemakerNotebookInstances) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(sagemakernotebookinstancesResource, c.ns, listOptions)
+func (c *FakeSagemakerNotebookInstances) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(sagemakernotebookinstancesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SagemakerNotebookInstanceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched sagemakerNotebookInstance.
-func (c *FakeSagemakerNotebookInstances) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SagemakerNotebookInstance, err error) {
+func (c *FakeSagemakerNotebookInstances) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SagemakerNotebookInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(sagemakernotebookinstancesResource, c.ns, name, pt, data, subresources...), &v1alpha1.SagemakerNotebookInstance{})
 

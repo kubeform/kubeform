@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type FmsAdminAccountsGetter interface {
 
 // FmsAdminAccountInterface has methods to work with FmsAdminAccount resources.
 type FmsAdminAccountInterface interface {
-	Create(*v1alpha1.FmsAdminAccount) (*v1alpha1.FmsAdminAccount, error)
-	Update(*v1alpha1.FmsAdminAccount) (*v1alpha1.FmsAdminAccount, error)
-	UpdateStatus(*v1alpha1.FmsAdminAccount) (*v1alpha1.FmsAdminAccount, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.FmsAdminAccount, error)
-	List(opts v1.ListOptions) (*v1alpha1.FmsAdminAccountList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.FmsAdminAccount, err error)
+	Create(ctx context.Context, fmsAdminAccount *v1alpha1.FmsAdminAccount, opts v1.CreateOptions) (*v1alpha1.FmsAdminAccount, error)
+	Update(ctx context.Context, fmsAdminAccount *v1alpha1.FmsAdminAccount, opts v1.UpdateOptions) (*v1alpha1.FmsAdminAccount, error)
+	UpdateStatus(ctx context.Context, fmsAdminAccount *v1alpha1.FmsAdminAccount, opts v1.UpdateOptions) (*v1alpha1.FmsAdminAccount, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.FmsAdminAccount, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.FmsAdminAccountList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.FmsAdminAccount, err error)
 	FmsAdminAccountExpansion
 }
 
@@ -65,20 +66,20 @@ func newFmsAdminAccounts(c *AwsV1alpha1Client, namespace string) *fmsAdminAccoun
 }
 
 // Get takes name of the fmsAdminAccount, and returns the corresponding fmsAdminAccount object, and an error if there is any.
-func (c *fmsAdminAccounts) Get(name string, options v1.GetOptions) (result *v1alpha1.FmsAdminAccount, err error) {
+func (c *fmsAdminAccounts) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.FmsAdminAccount, err error) {
 	result = &v1alpha1.FmsAdminAccount{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("fmsadminaccounts").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of FmsAdminAccounts that match those selectors.
-func (c *fmsAdminAccounts) List(opts v1.ListOptions) (result *v1alpha1.FmsAdminAccountList, err error) {
+func (c *fmsAdminAccounts) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.FmsAdminAccountList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *fmsAdminAccounts) List(opts v1.ListOptions) (result *v1alpha1.FmsAdminA
 		Resource("fmsadminaccounts").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested fmsAdminAccounts.
-func (c *fmsAdminAccounts) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *fmsAdminAccounts) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *fmsAdminAccounts) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("fmsadminaccounts").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a fmsAdminAccount and creates it.  Returns the server's representation of the fmsAdminAccount, and an error, if there is any.
-func (c *fmsAdminAccounts) Create(fmsAdminAccount *v1alpha1.FmsAdminAccount) (result *v1alpha1.FmsAdminAccount, err error) {
+func (c *fmsAdminAccounts) Create(ctx context.Context, fmsAdminAccount *v1alpha1.FmsAdminAccount, opts v1.CreateOptions) (result *v1alpha1.FmsAdminAccount, err error) {
 	result = &v1alpha1.FmsAdminAccount{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("fmsadminaccounts").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(fmsAdminAccount).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a fmsAdminAccount and updates it. Returns the server's representation of the fmsAdminAccount, and an error, if there is any.
-func (c *fmsAdminAccounts) Update(fmsAdminAccount *v1alpha1.FmsAdminAccount) (result *v1alpha1.FmsAdminAccount, err error) {
+func (c *fmsAdminAccounts) Update(ctx context.Context, fmsAdminAccount *v1alpha1.FmsAdminAccount, opts v1.UpdateOptions) (result *v1alpha1.FmsAdminAccount, err error) {
 	result = &v1alpha1.FmsAdminAccount{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("fmsadminaccounts").
 		Name(fmsAdminAccount.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(fmsAdminAccount).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *fmsAdminAccounts) UpdateStatus(fmsAdminAccount *v1alpha1.FmsAdminAccount) (result *v1alpha1.FmsAdminAccount, err error) {
+func (c *fmsAdminAccounts) UpdateStatus(ctx context.Context, fmsAdminAccount *v1alpha1.FmsAdminAccount, opts v1.UpdateOptions) (result *v1alpha1.FmsAdminAccount, err error) {
 	result = &v1alpha1.FmsAdminAccount{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("fmsadminaccounts").
 		Name(fmsAdminAccount.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(fmsAdminAccount).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the fmsAdminAccount and deletes it. Returns an error if one occurs.
-func (c *fmsAdminAccounts) Delete(name string, options *v1.DeleteOptions) error {
+func (c *fmsAdminAccounts) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("fmsadminaccounts").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *fmsAdminAccounts) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *fmsAdminAccounts) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("fmsadminaccounts").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched fmsAdminAccount.
-func (c *fmsAdminAccounts) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.FmsAdminAccount, err error) {
+func (c *fmsAdminAccounts) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.FmsAdminAccount, err error) {
 	result = &v1alpha1.FmsAdminAccount{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("fmsadminaccounts").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

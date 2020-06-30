@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type ComputeSharedVpcHostProjectsGetter interface {
 
 // ComputeSharedVpcHostProjectInterface has methods to work with ComputeSharedVpcHostProject resources.
 type ComputeSharedVpcHostProjectInterface interface {
-	Create(*v1alpha1.ComputeSharedVpcHostProject) (*v1alpha1.ComputeSharedVpcHostProject, error)
-	Update(*v1alpha1.ComputeSharedVpcHostProject) (*v1alpha1.ComputeSharedVpcHostProject, error)
-	UpdateStatus(*v1alpha1.ComputeSharedVpcHostProject) (*v1alpha1.ComputeSharedVpcHostProject, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ComputeSharedVpcHostProject, error)
-	List(opts v1.ListOptions) (*v1alpha1.ComputeSharedVpcHostProjectList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeSharedVpcHostProject, err error)
+	Create(ctx context.Context, computeSharedVpcHostProject *v1alpha1.ComputeSharedVpcHostProject, opts v1.CreateOptions) (*v1alpha1.ComputeSharedVpcHostProject, error)
+	Update(ctx context.Context, computeSharedVpcHostProject *v1alpha1.ComputeSharedVpcHostProject, opts v1.UpdateOptions) (*v1alpha1.ComputeSharedVpcHostProject, error)
+	UpdateStatus(ctx context.Context, computeSharedVpcHostProject *v1alpha1.ComputeSharedVpcHostProject, opts v1.UpdateOptions) (*v1alpha1.ComputeSharedVpcHostProject, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ComputeSharedVpcHostProject, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ComputeSharedVpcHostProjectList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeSharedVpcHostProject, err error)
 	ComputeSharedVpcHostProjectExpansion
 }
 
@@ -65,20 +66,20 @@ func newComputeSharedVpcHostProjects(c *GoogleV1alpha1Client, namespace string) 
 }
 
 // Get takes name of the computeSharedVpcHostProject, and returns the corresponding computeSharedVpcHostProject object, and an error if there is any.
-func (c *computeSharedVpcHostProjects) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeSharedVpcHostProject, err error) {
+func (c *computeSharedVpcHostProjects) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeSharedVpcHostProject, err error) {
 	result = &v1alpha1.ComputeSharedVpcHostProject{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("computesharedvpchostprojects").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ComputeSharedVpcHostProjects that match those selectors.
-func (c *computeSharedVpcHostProjects) List(opts v1.ListOptions) (result *v1alpha1.ComputeSharedVpcHostProjectList, err error) {
+func (c *computeSharedVpcHostProjects) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeSharedVpcHostProjectList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *computeSharedVpcHostProjects) List(opts v1.ListOptions) (result *v1alph
 		Resource("computesharedvpchostprojects").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested computeSharedVpcHostProjects.
-func (c *computeSharedVpcHostProjects) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *computeSharedVpcHostProjects) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *computeSharedVpcHostProjects) Watch(opts v1.ListOptions) (watch.Interfa
 		Resource("computesharedvpchostprojects").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a computeSharedVpcHostProject and creates it.  Returns the server's representation of the computeSharedVpcHostProject, and an error, if there is any.
-func (c *computeSharedVpcHostProjects) Create(computeSharedVpcHostProject *v1alpha1.ComputeSharedVpcHostProject) (result *v1alpha1.ComputeSharedVpcHostProject, err error) {
+func (c *computeSharedVpcHostProjects) Create(ctx context.Context, computeSharedVpcHostProject *v1alpha1.ComputeSharedVpcHostProject, opts v1.CreateOptions) (result *v1alpha1.ComputeSharedVpcHostProject, err error) {
 	result = &v1alpha1.ComputeSharedVpcHostProject{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("computesharedvpchostprojects").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeSharedVpcHostProject).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a computeSharedVpcHostProject and updates it. Returns the server's representation of the computeSharedVpcHostProject, and an error, if there is any.
-func (c *computeSharedVpcHostProjects) Update(computeSharedVpcHostProject *v1alpha1.ComputeSharedVpcHostProject) (result *v1alpha1.ComputeSharedVpcHostProject, err error) {
+func (c *computeSharedVpcHostProjects) Update(ctx context.Context, computeSharedVpcHostProject *v1alpha1.ComputeSharedVpcHostProject, opts v1.UpdateOptions) (result *v1alpha1.ComputeSharedVpcHostProject, err error) {
 	result = &v1alpha1.ComputeSharedVpcHostProject{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computesharedvpchostprojects").
 		Name(computeSharedVpcHostProject.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeSharedVpcHostProject).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *computeSharedVpcHostProjects) UpdateStatus(computeSharedVpcHostProject *v1alpha1.ComputeSharedVpcHostProject) (result *v1alpha1.ComputeSharedVpcHostProject, err error) {
+func (c *computeSharedVpcHostProjects) UpdateStatus(ctx context.Context, computeSharedVpcHostProject *v1alpha1.ComputeSharedVpcHostProject, opts v1.UpdateOptions) (result *v1alpha1.ComputeSharedVpcHostProject, err error) {
 	result = &v1alpha1.ComputeSharedVpcHostProject{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computesharedvpchostprojects").
 		Name(computeSharedVpcHostProject.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeSharedVpcHostProject).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the computeSharedVpcHostProject and deletes it. Returns an error if one occurs.
-func (c *computeSharedVpcHostProjects) Delete(name string, options *v1.DeleteOptions) error {
+func (c *computeSharedVpcHostProjects) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computesharedvpchostprojects").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *computeSharedVpcHostProjects) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *computeSharedVpcHostProjects) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computesharedvpchostprojects").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched computeSharedVpcHostProject.
-func (c *computeSharedVpcHostProjects) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeSharedVpcHostProject, err error) {
+func (c *computeSharedVpcHostProjects) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeSharedVpcHostProject, err error) {
 	result = &v1alpha1.ComputeSharedVpcHostProject{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("computesharedvpchostprojects").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

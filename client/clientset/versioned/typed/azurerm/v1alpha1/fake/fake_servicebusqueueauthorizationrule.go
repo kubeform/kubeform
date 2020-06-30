@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var servicebusqueueauthorizationrulesResource = schema.GroupVersionResource{Grou
 var servicebusqueueauthorizationrulesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "ServicebusQueueAuthorizationRule"}
 
 // Get takes name of the servicebusQueueAuthorizationRule, and returns the corresponding servicebusQueueAuthorizationRule object, and an error if there is any.
-func (c *FakeServicebusQueueAuthorizationRules) Get(name string, options v1.GetOptions) (result *v1alpha1.ServicebusQueueAuthorizationRule, err error) {
+func (c *FakeServicebusQueueAuthorizationRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ServicebusQueueAuthorizationRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(servicebusqueueauthorizationrulesResource, c.ns, name), &v1alpha1.ServicebusQueueAuthorizationRule{})
 
@@ -51,7 +53,7 @@ func (c *FakeServicebusQueueAuthorizationRules) Get(name string, options v1.GetO
 }
 
 // List takes label and field selectors, and returns the list of ServicebusQueueAuthorizationRules that match those selectors.
-func (c *FakeServicebusQueueAuthorizationRules) List(opts v1.ListOptions) (result *v1alpha1.ServicebusQueueAuthorizationRuleList, err error) {
+func (c *FakeServicebusQueueAuthorizationRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ServicebusQueueAuthorizationRuleList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(servicebusqueueauthorizationrulesResource, servicebusqueueauthorizationrulesKind, c.ns, opts), &v1alpha1.ServicebusQueueAuthorizationRuleList{})
 
@@ -73,14 +75,14 @@ func (c *FakeServicebusQueueAuthorizationRules) List(opts v1.ListOptions) (resul
 }
 
 // Watch returns a watch.Interface that watches the requested servicebusQueueAuthorizationRules.
-func (c *FakeServicebusQueueAuthorizationRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeServicebusQueueAuthorizationRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(servicebusqueueauthorizationrulesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a servicebusQueueAuthorizationRule and creates it.  Returns the server's representation of the servicebusQueueAuthorizationRule, and an error, if there is any.
-func (c *FakeServicebusQueueAuthorizationRules) Create(servicebusQueueAuthorizationRule *v1alpha1.ServicebusQueueAuthorizationRule) (result *v1alpha1.ServicebusQueueAuthorizationRule, err error) {
+func (c *FakeServicebusQueueAuthorizationRules) Create(ctx context.Context, servicebusQueueAuthorizationRule *v1alpha1.ServicebusQueueAuthorizationRule, opts v1.CreateOptions) (result *v1alpha1.ServicebusQueueAuthorizationRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(servicebusqueueauthorizationrulesResource, c.ns, servicebusQueueAuthorizationRule), &v1alpha1.ServicebusQueueAuthorizationRule{})
 
@@ -91,7 +93,7 @@ func (c *FakeServicebusQueueAuthorizationRules) Create(servicebusQueueAuthorizat
 }
 
 // Update takes the representation of a servicebusQueueAuthorizationRule and updates it. Returns the server's representation of the servicebusQueueAuthorizationRule, and an error, if there is any.
-func (c *FakeServicebusQueueAuthorizationRules) Update(servicebusQueueAuthorizationRule *v1alpha1.ServicebusQueueAuthorizationRule) (result *v1alpha1.ServicebusQueueAuthorizationRule, err error) {
+func (c *FakeServicebusQueueAuthorizationRules) Update(ctx context.Context, servicebusQueueAuthorizationRule *v1alpha1.ServicebusQueueAuthorizationRule, opts v1.UpdateOptions) (result *v1alpha1.ServicebusQueueAuthorizationRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(servicebusqueueauthorizationrulesResource, c.ns, servicebusQueueAuthorizationRule), &v1alpha1.ServicebusQueueAuthorizationRule{})
 
@@ -103,7 +105,7 @@ func (c *FakeServicebusQueueAuthorizationRules) Update(servicebusQueueAuthorizat
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeServicebusQueueAuthorizationRules) UpdateStatus(servicebusQueueAuthorizationRule *v1alpha1.ServicebusQueueAuthorizationRule) (*v1alpha1.ServicebusQueueAuthorizationRule, error) {
+func (c *FakeServicebusQueueAuthorizationRules) UpdateStatus(ctx context.Context, servicebusQueueAuthorizationRule *v1alpha1.ServicebusQueueAuthorizationRule, opts v1.UpdateOptions) (*v1alpha1.ServicebusQueueAuthorizationRule, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(servicebusqueueauthorizationrulesResource, "status", c.ns, servicebusQueueAuthorizationRule), &v1alpha1.ServicebusQueueAuthorizationRule{})
 
@@ -114,7 +116,7 @@ func (c *FakeServicebusQueueAuthorizationRules) UpdateStatus(servicebusQueueAuth
 }
 
 // Delete takes name of the servicebusQueueAuthorizationRule and deletes it. Returns an error if one occurs.
-func (c *FakeServicebusQueueAuthorizationRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeServicebusQueueAuthorizationRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(servicebusqueueauthorizationrulesResource, c.ns, name), &v1alpha1.ServicebusQueueAuthorizationRule{})
 
@@ -122,15 +124,15 @@ func (c *FakeServicebusQueueAuthorizationRules) Delete(name string, options *v1.
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeServicebusQueueAuthorizationRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(servicebusqueueauthorizationrulesResource, c.ns, listOptions)
+func (c *FakeServicebusQueueAuthorizationRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(servicebusqueueauthorizationrulesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ServicebusQueueAuthorizationRuleList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched servicebusQueueAuthorizationRule.
-func (c *FakeServicebusQueueAuthorizationRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ServicebusQueueAuthorizationRule, err error) {
+func (c *FakeServicebusQueueAuthorizationRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ServicebusQueueAuthorizationRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(servicebusqueueauthorizationrulesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ServicebusQueueAuthorizationRule{})
 

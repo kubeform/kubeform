@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var pubsubsubscriptioniampoliciesResource = schema.GroupVersionResource{Group: "
 var pubsubsubscriptioniampoliciesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "PubsubSubscriptionIamPolicy"}
 
 // Get takes name of the pubsubSubscriptionIamPolicy, and returns the corresponding pubsubSubscriptionIamPolicy object, and an error if there is any.
-func (c *FakePubsubSubscriptionIamPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.PubsubSubscriptionIamPolicy, err error) {
+func (c *FakePubsubSubscriptionIamPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PubsubSubscriptionIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(pubsubsubscriptioniampoliciesResource, c.ns, name), &v1alpha1.PubsubSubscriptionIamPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakePubsubSubscriptionIamPolicies) Get(name string, options v1.GetOptio
 }
 
 // List takes label and field selectors, and returns the list of PubsubSubscriptionIamPolicies that match those selectors.
-func (c *FakePubsubSubscriptionIamPolicies) List(opts v1.ListOptions) (result *v1alpha1.PubsubSubscriptionIamPolicyList, err error) {
+func (c *FakePubsubSubscriptionIamPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PubsubSubscriptionIamPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(pubsubsubscriptioniampoliciesResource, pubsubsubscriptioniampoliciesKind, c.ns, opts), &v1alpha1.PubsubSubscriptionIamPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakePubsubSubscriptionIamPolicies) List(opts v1.ListOptions) (result *v
 }
 
 // Watch returns a watch.Interface that watches the requested pubsubSubscriptionIamPolicies.
-func (c *FakePubsubSubscriptionIamPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakePubsubSubscriptionIamPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(pubsubsubscriptioniampoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a pubsubSubscriptionIamPolicy and creates it.  Returns the server's representation of the pubsubSubscriptionIamPolicy, and an error, if there is any.
-func (c *FakePubsubSubscriptionIamPolicies) Create(pubsubSubscriptionIamPolicy *v1alpha1.PubsubSubscriptionIamPolicy) (result *v1alpha1.PubsubSubscriptionIamPolicy, err error) {
+func (c *FakePubsubSubscriptionIamPolicies) Create(ctx context.Context, pubsubSubscriptionIamPolicy *v1alpha1.PubsubSubscriptionIamPolicy, opts v1.CreateOptions) (result *v1alpha1.PubsubSubscriptionIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(pubsubsubscriptioniampoliciesResource, c.ns, pubsubSubscriptionIamPolicy), &v1alpha1.PubsubSubscriptionIamPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakePubsubSubscriptionIamPolicies) Create(pubsubSubscriptionIamPolicy *
 }
 
 // Update takes the representation of a pubsubSubscriptionIamPolicy and updates it. Returns the server's representation of the pubsubSubscriptionIamPolicy, and an error, if there is any.
-func (c *FakePubsubSubscriptionIamPolicies) Update(pubsubSubscriptionIamPolicy *v1alpha1.PubsubSubscriptionIamPolicy) (result *v1alpha1.PubsubSubscriptionIamPolicy, err error) {
+func (c *FakePubsubSubscriptionIamPolicies) Update(ctx context.Context, pubsubSubscriptionIamPolicy *v1alpha1.PubsubSubscriptionIamPolicy, opts v1.UpdateOptions) (result *v1alpha1.PubsubSubscriptionIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(pubsubsubscriptioniampoliciesResource, c.ns, pubsubSubscriptionIamPolicy), &v1alpha1.PubsubSubscriptionIamPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakePubsubSubscriptionIamPolicies) Update(pubsubSubscriptionIamPolicy *
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakePubsubSubscriptionIamPolicies) UpdateStatus(pubsubSubscriptionIamPolicy *v1alpha1.PubsubSubscriptionIamPolicy) (*v1alpha1.PubsubSubscriptionIamPolicy, error) {
+func (c *FakePubsubSubscriptionIamPolicies) UpdateStatus(ctx context.Context, pubsubSubscriptionIamPolicy *v1alpha1.PubsubSubscriptionIamPolicy, opts v1.UpdateOptions) (*v1alpha1.PubsubSubscriptionIamPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(pubsubsubscriptioniampoliciesResource, "status", c.ns, pubsubSubscriptionIamPolicy), &v1alpha1.PubsubSubscriptionIamPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakePubsubSubscriptionIamPolicies) UpdateStatus(pubsubSubscriptionIamPo
 }
 
 // Delete takes name of the pubsubSubscriptionIamPolicy and deletes it. Returns an error if one occurs.
-func (c *FakePubsubSubscriptionIamPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakePubsubSubscriptionIamPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(pubsubsubscriptioniampoliciesResource, c.ns, name), &v1alpha1.PubsubSubscriptionIamPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakePubsubSubscriptionIamPolicies) Delete(name string, options *v1.Dele
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakePubsubSubscriptionIamPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(pubsubsubscriptioniampoliciesResource, c.ns, listOptions)
+func (c *FakePubsubSubscriptionIamPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(pubsubsubscriptioniampoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.PubsubSubscriptionIamPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched pubsubSubscriptionIamPolicy.
-func (c *FakePubsubSubscriptionIamPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PubsubSubscriptionIamPolicy, err error) {
+func (c *FakePubsubSubscriptionIamPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PubsubSubscriptionIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(pubsubsubscriptioniampoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.PubsubSubscriptionIamPolicy{})
 

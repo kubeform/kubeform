@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var recoverynetworkmappingsResource = schema.GroupVersionResource{Group: "azurer
 var recoverynetworkmappingsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "RecoveryNetworkMapping"}
 
 // Get takes name of the recoveryNetworkMapping, and returns the corresponding recoveryNetworkMapping object, and an error if there is any.
-func (c *FakeRecoveryNetworkMappings) Get(name string, options v1.GetOptions) (result *v1alpha1.RecoveryNetworkMapping, err error) {
+func (c *FakeRecoveryNetworkMappings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.RecoveryNetworkMapping, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(recoverynetworkmappingsResource, c.ns, name), &v1alpha1.RecoveryNetworkMapping{})
 
@@ -51,7 +53,7 @@ func (c *FakeRecoveryNetworkMappings) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of RecoveryNetworkMappings that match those selectors.
-func (c *FakeRecoveryNetworkMappings) List(opts v1.ListOptions) (result *v1alpha1.RecoveryNetworkMappingList, err error) {
+func (c *FakeRecoveryNetworkMappings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RecoveryNetworkMappingList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(recoverynetworkmappingsResource, recoverynetworkmappingsKind, c.ns, opts), &v1alpha1.RecoveryNetworkMappingList{})
 
@@ -73,14 +75,14 @@ func (c *FakeRecoveryNetworkMappings) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested recoveryNetworkMappings.
-func (c *FakeRecoveryNetworkMappings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeRecoveryNetworkMappings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(recoverynetworkmappingsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a recoveryNetworkMapping and creates it.  Returns the server's representation of the recoveryNetworkMapping, and an error, if there is any.
-func (c *FakeRecoveryNetworkMappings) Create(recoveryNetworkMapping *v1alpha1.RecoveryNetworkMapping) (result *v1alpha1.RecoveryNetworkMapping, err error) {
+func (c *FakeRecoveryNetworkMappings) Create(ctx context.Context, recoveryNetworkMapping *v1alpha1.RecoveryNetworkMapping, opts v1.CreateOptions) (result *v1alpha1.RecoveryNetworkMapping, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(recoverynetworkmappingsResource, c.ns, recoveryNetworkMapping), &v1alpha1.RecoveryNetworkMapping{})
 
@@ -91,7 +93,7 @@ func (c *FakeRecoveryNetworkMappings) Create(recoveryNetworkMapping *v1alpha1.Re
 }
 
 // Update takes the representation of a recoveryNetworkMapping and updates it. Returns the server's representation of the recoveryNetworkMapping, and an error, if there is any.
-func (c *FakeRecoveryNetworkMappings) Update(recoveryNetworkMapping *v1alpha1.RecoveryNetworkMapping) (result *v1alpha1.RecoveryNetworkMapping, err error) {
+func (c *FakeRecoveryNetworkMappings) Update(ctx context.Context, recoveryNetworkMapping *v1alpha1.RecoveryNetworkMapping, opts v1.UpdateOptions) (result *v1alpha1.RecoveryNetworkMapping, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(recoverynetworkmappingsResource, c.ns, recoveryNetworkMapping), &v1alpha1.RecoveryNetworkMapping{})
 
@@ -103,7 +105,7 @@ func (c *FakeRecoveryNetworkMappings) Update(recoveryNetworkMapping *v1alpha1.Re
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeRecoveryNetworkMappings) UpdateStatus(recoveryNetworkMapping *v1alpha1.RecoveryNetworkMapping) (*v1alpha1.RecoveryNetworkMapping, error) {
+func (c *FakeRecoveryNetworkMappings) UpdateStatus(ctx context.Context, recoveryNetworkMapping *v1alpha1.RecoveryNetworkMapping, opts v1.UpdateOptions) (*v1alpha1.RecoveryNetworkMapping, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(recoverynetworkmappingsResource, "status", c.ns, recoveryNetworkMapping), &v1alpha1.RecoveryNetworkMapping{})
 
@@ -114,7 +116,7 @@ func (c *FakeRecoveryNetworkMappings) UpdateStatus(recoveryNetworkMapping *v1alp
 }
 
 // Delete takes name of the recoveryNetworkMapping and deletes it. Returns an error if one occurs.
-func (c *FakeRecoveryNetworkMappings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeRecoveryNetworkMappings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(recoverynetworkmappingsResource, c.ns, name), &v1alpha1.RecoveryNetworkMapping{})
 
@@ -122,15 +124,15 @@ func (c *FakeRecoveryNetworkMappings) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeRecoveryNetworkMappings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(recoverynetworkmappingsResource, c.ns, listOptions)
+func (c *FakeRecoveryNetworkMappings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(recoverynetworkmappingsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.RecoveryNetworkMappingList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched recoveryNetworkMapping.
-func (c *FakeRecoveryNetworkMappings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RecoveryNetworkMapping, err error) {
+func (c *FakeRecoveryNetworkMappings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RecoveryNetworkMapping, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(recoverynetworkmappingsResource, c.ns, name, pt, data, subresources...), &v1alpha1.RecoveryNetworkMapping{})
 

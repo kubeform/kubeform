@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type ApplicationInsightsWebTestsGetter interface {
 
 // ApplicationInsightsWebTestInterface has methods to work with ApplicationInsightsWebTest resources.
 type ApplicationInsightsWebTestInterface interface {
-	Create(*v1alpha1.ApplicationInsightsWebTest) (*v1alpha1.ApplicationInsightsWebTest, error)
-	Update(*v1alpha1.ApplicationInsightsWebTest) (*v1alpha1.ApplicationInsightsWebTest, error)
-	UpdateStatus(*v1alpha1.ApplicationInsightsWebTest) (*v1alpha1.ApplicationInsightsWebTest, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ApplicationInsightsWebTest, error)
-	List(opts v1.ListOptions) (*v1alpha1.ApplicationInsightsWebTestList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApplicationInsightsWebTest, err error)
+	Create(ctx context.Context, applicationInsightsWebTest *v1alpha1.ApplicationInsightsWebTest, opts v1.CreateOptions) (*v1alpha1.ApplicationInsightsWebTest, error)
+	Update(ctx context.Context, applicationInsightsWebTest *v1alpha1.ApplicationInsightsWebTest, opts v1.UpdateOptions) (*v1alpha1.ApplicationInsightsWebTest, error)
+	UpdateStatus(ctx context.Context, applicationInsightsWebTest *v1alpha1.ApplicationInsightsWebTest, opts v1.UpdateOptions) (*v1alpha1.ApplicationInsightsWebTest, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ApplicationInsightsWebTest, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ApplicationInsightsWebTestList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApplicationInsightsWebTest, err error)
 	ApplicationInsightsWebTestExpansion
 }
 
@@ -65,20 +66,20 @@ func newApplicationInsightsWebTests(c *AzurermV1alpha1Client, namespace string) 
 }
 
 // Get takes name of the applicationInsightsWebTest, and returns the corresponding applicationInsightsWebTest object, and an error if there is any.
-func (c *applicationInsightsWebTests) Get(name string, options v1.GetOptions) (result *v1alpha1.ApplicationInsightsWebTest, err error) {
+func (c *applicationInsightsWebTests) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApplicationInsightsWebTest, err error) {
 	result = &v1alpha1.ApplicationInsightsWebTest{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("applicationinsightswebtests").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ApplicationInsightsWebTests that match those selectors.
-func (c *applicationInsightsWebTests) List(opts v1.ListOptions) (result *v1alpha1.ApplicationInsightsWebTestList, err error) {
+func (c *applicationInsightsWebTests) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApplicationInsightsWebTestList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *applicationInsightsWebTests) List(opts v1.ListOptions) (result *v1alpha
 		Resource("applicationinsightswebtests").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested applicationInsightsWebTests.
-func (c *applicationInsightsWebTests) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *applicationInsightsWebTests) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *applicationInsightsWebTests) Watch(opts v1.ListOptions) (watch.Interfac
 		Resource("applicationinsightswebtests").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a applicationInsightsWebTest and creates it.  Returns the server's representation of the applicationInsightsWebTest, and an error, if there is any.
-func (c *applicationInsightsWebTests) Create(applicationInsightsWebTest *v1alpha1.ApplicationInsightsWebTest) (result *v1alpha1.ApplicationInsightsWebTest, err error) {
+func (c *applicationInsightsWebTests) Create(ctx context.Context, applicationInsightsWebTest *v1alpha1.ApplicationInsightsWebTest, opts v1.CreateOptions) (result *v1alpha1.ApplicationInsightsWebTest, err error) {
 	result = &v1alpha1.ApplicationInsightsWebTest{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("applicationinsightswebtests").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(applicationInsightsWebTest).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a applicationInsightsWebTest and updates it. Returns the server's representation of the applicationInsightsWebTest, and an error, if there is any.
-func (c *applicationInsightsWebTests) Update(applicationInsightsWebTest *v1alpha1.ApplicationInsightsWebTest) (result *v1alpha1.ApplicationInsightsWebTest, err error) {
+func (c *applicationInsightsWebTests) Update(ctx context.Context, applicationInsightsWebTest *v1alpha1.ApplicationInsightsWebTest, opts v1.UpdateOptions) (result *v1alpha1.ApplicationInsightsWebTest, err error) {
 	result = &v1alpha1.ApplicationInsightsWebTest{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("applicationinsightswebtests").
 		Name(applicationInsightsWebTest.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(applicationInsightsWebTest).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *applicationInsightsWebTests) UpdateStatus(applicationInsightsWebTest *v1alpha1.ApplicationInsightsWebTest) (result *v1alpha1.ApplicationInsightsWebTest, err error) {
+func (c *applicationInsightsWebTests) UpdateStatus(ctx context.Context, applicationInsightsWebTest *v1alpha1.ApplicationInsightsWebTest, opts v1.UpdateOptions) (result *v1alpha1.ApplicationInsightsWebTest, err error) {
 	result = &v1alpha1.ApplicationInsightsWebTest{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("applicationinsightswebtests").
 		Name(applicationInsightsWebTest.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(applicationInsightsWebTest).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the applicationInsightsWebTest and deletes it. Returns an error if one occurs.
-func (c *applicationInsightsWebTests) Delete(name string, options *v1.DeleteOptions) error {
+func (c *applicationInsightsWebTests) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("applicationinsightswebtests").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *applicationInsightsWebTests) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *applicationInsightsWebTests) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("applicationinsightswebtests").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched applicationInsightsWebTest.
-func (c *applicationInsightsWebTests) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApplicationInsightsWebTest, err error) {
+func (c *applicationInsightsWebTests) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApplicationInsightsWebTest, err error) {
 	result = &v1alpha1.ApplicationInsightsWebTest{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("applicationinsightswebtests").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

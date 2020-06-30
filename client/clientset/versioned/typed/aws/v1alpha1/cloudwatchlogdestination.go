@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type CloudwatchLogDestinationsGetter interface {
 
 // CloudwatchLogDestinationInterface has methods to work with CloudwatchLogDestination resources.
 type CloudwatchLogDestinationInterface interface {
-	Create(*v1alpha1.CloudwatchLogDestination) (*v1alpha1.CloudwatchLogDestination, error)
-	Update(*v1alpha1.CloudwatchLogDestination) (*v1alpha1.CloudwatchLogDestination, error)
-	UpdateStatus(*v1alpha1.CloudwatchLogDestination) (*v1alpha1.CloudwatchLogDestination, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.CloudwatchLogDestination, error)
-	List(opts v1.ListOptions) (*v1alpha1.CloudwatchLogDestinationList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CloudwatchLogDestination, err error)
+	Create(ctx context.Context, cloudwatchLogDestination *v1alpha1.CloudwatchLogDestination, opts v1.CreateOptions) (*v1alpha1.CloudwatchLogDestination, error)
+	Update(ctx context.Context, cloudwatchLogDestination *v1alpha1.CloudwatchLogDestination, opts v1.UpdateOptions) (*v1alpha1.CloudwatchLogDestination, error)
+	UpdateStatus(ctx context.Context, cloudwatchLogDestination *v1alpha1.CloudwatchLogDestination, opts v1.UpdateOptions) (*v1alpha1.CloudwatchLogDestination, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.CloudwatchLogDestination, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.CloudwatchLogDestinationList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CloudwatchLogDestination, err error)
 	CloudwatchLogDestinationExpansion
 }
 
@@ -65,20 +66,20 @@ func newCloudwatchLogDestinations(c *AwsV1alpha1Client, namespace string) *cloud
 }
 
 // Get takes name of the cloudwatchLogDestination, and returns the corresponding cloudwatchLogDestination object, and an error if there is any.
-func (c *cloudwatchLogDestinations) Get(name string, options v1.GetOptions) (result *v1alpha1.CloudwatchLogDestination, err error) {
+func (c *cloudwatchLogDestinations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CloudwatchLogDestination, err error) {
 	result = &v1alpha1.CloudwatchLogDestination{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("cloudwatchlogdestinations").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of CloudwatchLogDestinations that match those selectors.
-func (c *cloudwatchLogDestinations) List(opts v1.ListOptions) (result *v1alpha1.CloudwatchLogDestinationList, err error) {
+func (c *cloudwatchLogDestinations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CloudwatchLogDestinationList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *cloudwatchLogDestinations) List(opts v1.ListOptions) (result *v1alpha1.
 		Resource("cloudwatchlogdestinations").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested cloudwatchLogDestinations.
-func (c *cloudwatchLogDestinations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *cloudwatchLogDestinations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *cloudwatchLogDestinations) Watch(opts v1.ListOptions) (watch.Interface,
 		Resource("cloudwatchlogdestinations").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a cloudwatchLogDestination and creates it.  Returns the server's representation of the cloudwatchLogDestination, and an error, if there is any.
-func (c *cloudwatchLogDestinations) Create(cloudwatchLogDestination *v1alpha1.CloudwatchLogDestination) (result *v1alpha1.CloudwatchLogDestination, err error) {
+func (c *cloudwatchLogDestinations) Create(ctx context.Context, cloudwatchLogDestination *v1alpha1.CloudwatchLogDestination, opts v1.CreateOptions) (result *v1alpha1.CloudwatchLogDestination, err error) {
 	result = &v1alpha1.CloudwatchLogDestination{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("cloudwatchlogdestinations").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cloudwatchLogDestination).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a cloudwatchLogDestination and updates it. Returns the server's representation of the cloudwatchLogDestination, and an error, if there is any.
-func (c *cloudwatchLogDestinations) Update(cloudwatchLogDestination *v1alpha1.CloudwatchLogDestination) (result *v1alpha1.CloudwatchLogDestination, err error) {
+func (c *cloudwatchLogDestinations) Update(ctx context.Context, cloudwatchLogDestination *v1alpha1.CloudwatchLogDestination, opts v1.UpdateOptions) (result *v1alpha1.CloudwatchLogDestination, err error) {
 	result = &v1alpha1.CloudwatchLogDestination{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("cloudwatchlogdestinations").
 		Name(cloudwatchLogDestination.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cloudwatchLogDestination).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *cloudwatchLogDestinations) UpdateStatus(cloudwatchLogDestination *v1alpha1.CloudwatchLogDestination) (result *v1alpha1.CloudwatchLogDestination, err error) {
+func (c *cloudwatchLogDestinations) UpdateStatus(ctx context.Context, cloudwatchLogDestination *v1alpha1.CloudwatchLogDestination, opts v1.UpdateOptions) (result *v1alpha1.CloudwatchLogDestination, err error) {
 	result = &v1alpha1.CloudwatchLogDestination{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("cloudwatchlogdestinations").
 		Name(cloudwatchLogDestination.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cloudwatchLogDestination).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the cloudwatchLogDestination and deletes it. Returns an error if one occurs.
-func (c *cloudwatchLogDestinations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *cloudwatchLogDestinations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("cloudwatchlogdestinations").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *cloudwatchLogDestinations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *cloudwatchLogDestinations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("cloudwatchlogdestinations").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched cloudwatchLogDestination.
-func (c *cloudwatchLogDestinations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CloudwatchLogDestination, err error) {
+func (c *cloudwatchLogDestinations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CloudwatchLogDestination, err error) {
 	result = &v1alpha1.CloudwatchLogDestination{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("cloudwatchlogdestinations").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

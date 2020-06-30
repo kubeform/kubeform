@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computedisksResource = schema.GroupVersionResource{Group: "google.kubeform.c
 var computedisksKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeDisk"}
 
 // Get takes name of the computeDisk, and returns the corresponding computeDisk object, and an error if there is any.
-func (c *FakeComputeDisks) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeDisk, err error) {
+func (c *FakeComputeDisks) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeDisk, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computedisksResource, c.ns, name), &v1alpha1.ComputeDisk{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeDisks) Get(name string, options v1.GetOptions) (result *v1al
 }
 
 // List takes label and field selectors, and returns the list of ComputeDisks that match those selectors.
-func (c *FakeComputeDisks) List(opts v1.ListOptions) (result *v1alpha1.ComputeDiskList, err error) {
+func (c *FakeComputeDisks) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeDiskList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computedisksResource, computedisksKind, c.ns, opts), &v1alpha1.ComputeDiskList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeDisks) List(opts v1.ListOptions) (result *v1alpha1.ComputeDi
 }
 
 // Watch returns a watch.Interface that watches the requested computeDisks.
-func (c *FakeComputeDisks) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeDisks) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computedisksResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeDisk and creates it.  Returns the server's representation of the computeDisk, and an error, if there is any.
-func (c *FakeComputeDisks) Create(computeDisk *v1alpha1.ComputeDisk) (result *v1alpha1.ComputeDisk, err error) {
+func (c *FakeComputeDisks) Create(ctx context.Context, computeDisk *v1alpha1.ComputeDisk, opts v1.CreateOptions) (result *v1alpha1.ComputeDisk, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computedisksResource, c.ns, computeDisk), &v1alpha1.ComputeDisk{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeDisks) Create(computeDisk *v1alpha1.ComputeDisk) (result *v1
 }
 
 // Update takes the representation of a computeDisk and updates it. Returns the server's representation of the computeDisk, and an error, if there is any.
-func (c *FakeComputeDisks) Update(computeDisk *v1alpha1.ComputeDisk) (result *v1alpha1.ComputeDisk, err error) {
+func (c *FakeComputeDisks) Update(ctx context.Context, computeDisk *v1alpha1.ComputeDisk, opts v1.UpdateOptions) (result *v1alpha1.ComputeDisk, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computedisksResource, c.ns, computeDisk), &v1alpha1.ComputeDisk{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeDisks) Update(computeDisk *v1alpha1.ComputeDisk) (result *v1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeDisks) UpdateStatus(computeDisk *v1alpha1.ComputeDisk) (*v1alpha1.ComputeDisk, error) {
+func (c *FakeComputeDisks) UpdateStatus(ctx context.Context, computeDisk *v1alpha1.ComputeDisk, opts v1.UpdateOptions) (*v1alpha1.ComputeDisk, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computedisksResource, "status", c.ns, computeDisk), &v1alpha1.ComputeDisk{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeDisks) UpdateStatus(computeDisk *v1alpha1.ComputeDisk) (*v1a
 }
 
 // Delete takes name of the computeDisk and deletes it. Returns an error if one occurs.
-func (c *FakeComputeDisks) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeDisks) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computedisksResource, c.ns, name), &v1alpha1.ComputeDisk{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeDisks) Delete(name string, options *v1.DeleteOptions) error 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeDisks) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computedisksResource, c.ns, listOptions)
+func (c *FakeComputeDisks) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computedisksResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeDiskList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeDisk.
-func (c *FakeComputeDisks) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeDisk, err error) {
+func (c *FakeComputeDisks) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeDisk, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computedisksResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeDisk{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var datafactoriesResource = schema.GroupVersionResource{Group: "azurerm.kubeform
 var datafactoriesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "DataFactory"}
 
 // Get takes name of the dataFactory, and returns the corresponding dataFactory object, and an error if there is any.
-func (c *FakeDataFactories) Get(name string, options v1.GetOptions) (result *v1alpha1.DataFactory, err error) {
+func (c *FakeDataFactories) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DataFactory, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(datafactoriesResource, c.ns, name), &v1alpha1.DataFactory{})
 
@@ -51,7 +53,7 @@ func (c *FakeDataFactories) Get(name string, options v1.GetOptions) (result *v1a
 }
 
 // List takes label and field selectors, and returns the list of DataFactories that match those selectors.
-func (c *FakeDataFactories) List(opts v1.ListOptions) (result *v1alpha1.DataFactoryList, err error) {
+func (c *FakeDataFactories) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DataFactoryList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(datafactoriesResource, datafactoriesKind, c.ns, opts), &v1alpha1.DataFactoryList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDataFactories) List(opts v1.ListOptions) (result *v1alpha1.DataFact
 }
 
 // Watch returns a watch.Interface that watches the requested dataFactories.
-func (c *FakeDataFactories) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDataFactories) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(datafactoriesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dataFactory and creates it.  Returns the server's representation of the dataFactory, and an error, if there is any.
-func (c *FakeDataFactories) Create(dataFactory *v1alpha1.DataFactory) (result *v1alpha1.DataFactory, err error) {
+func (c *FakeDataFactories) Create(ctx context.Context, dataFactory *v1alpha1.DataFactory, opts v1.CreateOptions) (result *v1alpha1.DataFactory, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(datafactoriesResource, c.ns, dataFactory), &v1alpha1.DataFactory{})
 
@@ -91,7 +93,7 @@ func (c *FakeDataFactories) Create(dataFactory *v1alpha1.DataFactory) (result *v
 }
 
 // Update takes the representation of a dataFactory and updates it. Returns the server's representation of the dataFactory, and an error, if there is any.
-func (c *FakeDataFactories) Update(dataFactory *v1alpha1.DataFactory) (result *v1alpha1.DataFactory, err error) {
+func (c *FakeDataFactories) Update(ctx context.Context, dataFactory *v1alpha1.DataFactory, opts v1.UpdateOptions) (result *v1alpha1.DataFactory, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(datafactoriesResource, c.ns, dataFactory), &v1alpha1.DataFactory{})
 
@@ -103,7 +105,7 @@ func (c *FakeDataFactories) Update(dataFactory *v1alpha1.DataFactory) (result *v
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDataFactories) UpdateStatus(dataFactory *v1alpha1.DataFactory) (*v1alpha1.DataFactory, error) {
+func (c *FakeDataFactories) UpdateStatus(ctx context.Context, dataFactory *v1alpha1.DataFactory, opts v1.UpdateOptions) (*v1alpha1.DataFactory, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(datafactoriesResource, "status", c.ns, dataFactory), &v1alpha1.DataFactory{})
 
@@ -114,7 +116,7 @@ func (c *FakeDataFactories) UpdateStatus(dataFactory *v1alpha1.DataFactory) (*v1
 }
 
 // Delete takes name of the dataFactory and deletes it. Returns an error if one occurs.
-func (c *FakeDataFactories) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDataFactories) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(datafactoriesResource, c.ns, name), &v1alpha1.DataFactory{})
 
@@ -122,15 +124,15 @@ func (c *FakeDataFactories) Delete(name string, options *v1.DeleteOptions) error
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDataFactories) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(datafactoriesResource, c.ns, listOptions)
+func (c *FakeDataFactories) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(datafactoriesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DataFactoryList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dataFactory.
-func (c *FakeDataFactories) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataFactory, err error) {
+func (c *FakeDataFactories) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataFactory, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(datafactoriesResource, c.ns, name, pt, data, subresources...), &v1alpha1.DataFactory{})
 

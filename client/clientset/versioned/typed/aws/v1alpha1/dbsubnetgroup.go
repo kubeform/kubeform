@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type DbSubnetGroupsGetter interface {
 
 // DbSubnetGroupInterface has methods to work with DbSubnetGroup resources.
 type DbSubnetGroupInterface interface {
-	Create(*v1alpha1.DbSubnetGroup) (*v1alpha1.DbSubnetGroup, error)
-	Update(*v1alpha1.DbSubnetGroup) (*v1alpha1.DbSubnetGroup, error)
-	UpdateStatus(*v1alpha1.DbSubnetGroup) (*v1alpha1.DbSubnetGroup, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.DbSubnetGroup, error)
-	List(opts v1.ListOptions) (*v1alpha1.DbSubnetGroupList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DbSubnetGroup, err error)
+	Create(ctx context.Context, dbSubnetGroup *v1alpha1.DbSubnetGroup, opts v1.CreateOptions) (*v1alpha1.DbSubnetGroup, error)
+	Update(ctx context.Context, dbSubnetGroup *v1alpha1.DbSubnetGroup, opts v1.UpdateOptions) (*v1alpha1.DbSubnetGroup, error)
+	UpdateStatus(ctx context.Context, dbSubnetGroup *v1alpha1.DbSubnetGroup, opts v1.UpdateOptions) (*v1alpha1.DbSubnetGroup, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.DbSubnetGroup, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.DbSubnetGroupList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DbSubnetGroup, err error)
 	DbSubnetGroupExpansion
 }
 
@@ -65,20 +66,20 @@ func newDbSubnetGroups(c *AwsV1alpha1Client, namespace string) *dbSubnetGroups {
 }
 
 // Get takes name of the dbSubnetGroup, and returns the corresponding dbSubnetGroup object, and an error if there is any.
-func (c *dbSubnetGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.DbSubnetGroup, err error) {
+func (c *dbSubnetGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DbSubnetGroup, err error) {
 	result = &v1alpha1.DbSubnetGroup{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("dbsubnetgroups").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of DbSubnetGroups that match those selectors.
-func (c *dbSubnetGroups) List(opts v1.ListOptions) (result *v1alpha1.DbSubnetGroupList, err error) {
+func (c *dbSubnetGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DbSubnetGroupList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *dbSubnetGroups) List(opts v1.ListOptions) (result *v1alpha1.DbSubnetGro
 		Resource("dbsubnetgroups").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested dbSubnetGroups.
-func (c *dbSubnetGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *dbSubnetGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *dbSubnetGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("dbsubnetgroups").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a dbSubnetGroup and creates it.  Returns the server's representation of the dbSubnetGroup, and an error, if there is any.
-func (c *dbSubnetGroups) Create(dbSubnetGroup *v1alpha1.DbSubnetGroup) (result *v1alpha1.DbSubnetGroup, err error) {
+func (c *dbSubnetGroups) Create(ctx context.Context, dbSubnetGroup *v1alpha1.DbSubnetGroup, opts v1.CreateOptions) (result *v1alpha1.DbSubnetGroup, err error) {
 	result = &v1alpha1.DbSubnetGroup{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("dbsubnetgroups").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dbSubnetGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a dbSubnetGroup and updates it. Returns the server's representation of the dbSubnetGroup, and an error, if there is any.
-func (c *dbSubnetGroups) Update(dbSubnetGroup *v1alpha1.DbSubnetGroup) (result *v1alpha1.DbSubnetGroup, err error) {
+func (c *dbSubnetGroups) Update(ctx context.Context, dbSubnetGroup *v1alpha1.DbSubnetGroup, opts v1.UpdateOptions) (result *v1alpha1.DbSubnetGroup, err error) {
 	result = &v1alpha1.DbSubnetGroup{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("dbsubnetgroups").
 		Name(dbSubnetGroup.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dbSubnetGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *dbSubnetGroups) UpdateStatus(dbSubnetGroup *v1alpha1.DbSubnetGroup) (result *v1alpha1.DbSubnetGroup, err error) {
+func (c *dbSubnetGroups) UpdateStatus(ctx context.Context, dbSubnetGroup *v1alpha1.DbSubnetGroup, opts v1.UpdateOptions) (result *v1alpha1.DbSubnetGroup, err error) {
 	result = &v1alpha1.DbSubnetGroup{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("dbsubnetgroups").
 		Name(dbSubnetGroup.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dbSubnetGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the dbSubnetGroup and deletes it. Returns an error if one occurs.
-func (c *dbSubnetGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *dbSubnetGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("dbsubnetgroups").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *dbSubnetGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *dbSubnetGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("dbsubnetgroups").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched dbSubnetGroup.
-func (c *dbSubnetGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DbSubnetGroup, err error) {
+func (c *dbSubnetGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DbSubnetGroup, err error) {
 	result = &v1alpha1.DbSubnetGroup{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("dbsubnetgroups").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

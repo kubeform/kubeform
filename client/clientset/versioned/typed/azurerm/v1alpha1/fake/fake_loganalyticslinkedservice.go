@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var loganalyticslinkedservicesResource = schema.GroupVersionResource{Group: "azu
 var loganalyticslinkedservicesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "LogAnalyticsLinkedService"}
 
 // Get takes name of the logAnalyticsLinkedService, and returns the corresponding logAnalyticsLinkedService object, and an error if there is any.
-func (c *FakeLogAnalyticsLinkedServices) Get(name string, options v1.GetOptions) (result *v1alpha1.LogAnalyticsLinkedService, err error) {
+func (c *FakeLogAnalyticsLinkedServices) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LogAnalyticsLinkedService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(loganalyticslinkedservicesResource, c.ns, name), &v1alpha1.LogAnalyticsLinkedService{})
 
@@ -51,7 +53,7 @@ func (c *FakeLogAnalyticsLinkedServices) Get(name string, options v1.GetOptions)
 }
 
 // List takes label and field selectors, and returns the list of LogAnalyticsLinkedServices that match those selectors.
-func (c *FakeLogAnalyticsLinkedServices) List(opts v1.ListOptions) (result *v1alpha1.LogAnalyticsLinkedServiceList, err error) {
+func (c *FakeLogAnalyticsLinkedServices) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LogAnalyticsLinkedServiceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(loganalyticslinkedservicesResource, loganalyticslinkedservicesKind, c.ns, opts), &v1alpha1.LogAnalyticsLinkedServiceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLogAnalyticsLinkedServices) List(opts v1.ListOptions) (result *v1al
 }
 
 // Watch returns a watch.Interface that watches the requested logAnalyticsLinkedServices.
-func (c *FakeLogAnalyticsLinkedServices) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLogAnalyticsLinkedServices) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(loganalyticslinkedservicesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a logAnalyticsLinkedService and creates it.  Returns the server's representation of the logAnalyticsLinkedService, and an error, if there is any.
-func (c *FakeLogAnalyticsLinkedServices) Create(logAnalyticsLinkedService *v1alpha1.LogAnalyticsLinkedService) (result *v1alpha1.LogAnalyticsLinkedService, err error) {
+func (c *FakeLogAnalyticsLinkedServices) Create(ctx context.Context, logAnalyticsLinkedService *v1alpha1.LogAnalyticsLinkedService, opts v1.CreateOptions) (result *v1alpha1.LogAnalyticsLinkedService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(loganalyticslinkedservicesResource, c.ns, logAnalyticsLinkedService), &v1alpha1.LogAnalyticsLinkedService{})
 
@@ -91,7 +93,7 @@ func (c *FakeLogAnalyticsLinkedServices) Create(logAnalyticsLinkedService *v1alp
 }
 
 // Update takes the representation of a logAnalyticsLinkedService and updates it. Returns the server's representation of the logAnalyticsLinkedService, and an error, if there is any.
-func (c *FakeLogAnalyticsLinkedServices) Update(logAnalyticsLinkedService *v1alpha1.LogAnalyticsLinkedService) (result *v1alpha1.LogAnalyticsLinkedService, err error) {
+func (c *FakeLogAnalyticsLinkedServices) Update(ctx context.Context, logAnalyticsLinkedService *v1alpha1.LogAnalyticsLinkedService, opts v1.UpdateOptions) (result *v1alpha1.LogAnalyticsLinkedService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(loganalyticslinkedservicesResource, c.ns, logAnalyticsLinkedService), &v1alpha1.LogAnalyticsLinkedService{})
 
@@ -103,7 +105,7 @@ func (c *FakeLogAnalyticsLinkedServices) Update(logAnalyticsLinkedService *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLogAnalyticsLinkedServices) UpdateStatus(logAnalyticsLinkedService *v1alpha1.LogAnalyticsLinkedService) (*v1alpha1.LogAnalyticsLinkedService, error) {
+func (c *FakeLogAnalyticsLinkedServices) UpdateStatus(ctx context.Context, logAnalyticsLinkedService *v1alpha1.LogAnalyticsLinkedService, opts v1.UpdateOptions) (*v1alpha1.LogAnalyticsLinkedService, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(loganalyticslinkedservicesResource, "status", c.ns, logAnalyticsLinkedService), &v1alpha1.LogAnalyticsLinkedService{})
 
@@ -114,7 +116,7 @@ func (c *FakeLogAnalyticsLinkedServices) UpdateStatus(logAnalyticsLinkedService 
 }
 
 // Delete takes name of the logAnalyticsLinkedService and deletes it. Returns an error if one occurs.
-func (c *FakeLogAnalyticsLinkedServices) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLogAnalyticsLinkedServices) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(loganalyticslinkedservicesResource, c.ns, name), &v1alpha1.LogAnalyticsLinkedService{})
 
@@ -122,15 +124,15 @@ func (c *FakeLogAnalyticsLinkedServices) Delete(name string, options *v1.DeleteO
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLogAnalyticsLinkedServices) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(loganalyticslinkedservicesResource, c.ns, listOptions)
+func (c *FakeLogAnalyticsLinkedServices) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(loganalyticslinkedservicesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LogAnalyticsLinkedServiceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched logAnalyticsLinkedService.
-func (c *FakeLogAnalyticsLinkedServices) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LogAnalyticsLinkedService, err error) {
+func (c *FakeLogAnalyticsLinkedServices) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LogAnalyticsLinkedService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(loganalyticslinkedservicesResource, c.ns, name, pt, data, subresources...), &v1alpha1.LogAnalyticsLinkedService{})
 

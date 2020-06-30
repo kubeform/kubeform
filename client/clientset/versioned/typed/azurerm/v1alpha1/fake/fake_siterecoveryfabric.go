@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var siterecoveryfabricsResource = schema.GroupVersionResource{Group: "azurerm.ku
 var siterecoveryfabricsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "SiteRecoveryFabric"}
 
 // Get takes name of the siteRecoveryFabric, and returns the corresponding siteRecoveryFabric object, and an error if there is any.
-func (c *FakeSiteRecoveryFabrics) Get(name string, options v1.GetOptions) (result *v1alpha1.SiteRecoveryFabric, err error) {
+func (c *FakeSiteRecoveryFabrics) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SiteRecoveryFabric, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(siterecoveryfabricsResource, c.ns, name), &v1alpha1.SiteRecoveryFabric{})
 
@@ -51,7 +53,7 @@ func (c *FakeSiteRecoveryFabrics) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of SiteRecoveryFabrics that match those selectors.
-func (c *FakeSiteRecoveryFabrics) List(opts v1.ListOptions) (result *v1alpha1.SiteRecoveryFabricList, err error) {
+func (c *FakeSiteRecoveryFabrics) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SiteRecoveryFabricList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(siterecoveryfabricsResource, siterecoveryfabricsKind, c.ns, opts), &v1alpha1.SiteRecoveryFabricList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSiteRecoveryFabrics) List(opts v1.ListOptions) (result *v1alpha1.Si
 }
 
 // Watch returns a watch.Interface that watches the requested siteRecoveryFabrics.
-func (c *FakeSiteRecoveryFabrics) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSiteRecoveryFabrics) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(siterecoveryfabricsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a siteRecoveryFabric and creates it.  Returns the server's representation of the siteRecoveryFabric, and an error, if there is any.
-func (c *FakeSiteRecoveryFabrics) Create(siteRecoveryFabric *v1alpha1.SiteRecoveryFabric) (result *v1alpha1.SiteRecoveryFabric, err error) {
+func (c *FakeSiteRecoveryFabrics) Create(ctx context.Context, siteRecoveryFabric *v1alpha1.SiteRecoveryFabric, opts v1.CreateOptions) (result *v1alpha1.SiteRecoveryFabric, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(siterecoveryfabricsResource, c.ns, siteRecoveryFabric), &v1alpha1.SiteRecoveryFabric{})
 
@@ -91,7 +93,7 @@ func (c *FakeSiteRecoveryFabrics) Create(siteRecoveryFabric *v1alpha1.SiteRecove
 }
 
 // Update takes the representation of a siteRecoveryFabric and updates it. Returns the server's representation of the siteRecoveryFabric, and an error, if there is any.
-func (c *FakeSiteRecoveryFabrics) Update(siteRecoveryFabric *v1alpha1.SiteRecoveryFabric) (result *v1alpha1.SiteRecoveryFabric, err error) {
+func (c *FakeSiteRecoveryFabrics) Update(ctx context.Context, siteRecoveryFabric *v1alpha1.SiteRecoveryFabric, opts v1.UpdateOptions) (result *v1alpha1.SiteRecoveryFabric, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(siterecoveryfabricsResource, c.ns, siteRecoveryFabric), &v1alpha1.SiteRecoveryFabric{})
 
@@ -103,7 +105,7 @@ func (c *FakeSiteRecoveryFabrics) Update(siteRecoveryFabric *v1alpha1.SiteRecove
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSiteRecoveryFabrics) UpdateStatus(siteRecoveryFabric *v1alpha1.SiteRecoveryFabric) (*v1alpha1.SiteRecoveryFabric, error) {
+func (c *FakeSiteRecoveryFabrics) UpdateStatus(ctx context.Context, siteRecoveryFabric *v1alpha1.SiteRecoveryFabric, opts v1.UpdateOptions) (*v1alpha1.SiteRecoveryFabric, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(siterecoveryfabricsResource, "status", c.ns, siteRecoveryFabric), &v1alpha1.SiteRecoveryFabric{})
 
@@ -114,7 +116,7 @@ func (c *FakeSiteRecoveryFabrics) UpdateStatus(siteRecoveryFabric *v1alpha1.Site
 }
 
 // Delete takes name of the siteRecoveryFabric and deletes it. Returns an error if one occurs.
-func (c *FakeSiteRecoveryFabrics) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSiteRecoveryFabrics) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(siterecoveryfabricsResource, c.ns, name), &v1alpha1.SiteRecoveryFabric{})
 
@@ -122,15 +124,15 @@ func (c *FakeSiteRecoveryFabrics) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSiteRecoveryFabrics) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(siterecoveryfabricsResource, c.ns, listOptions)
+func (c *FakeSiteRecoveryFabrics) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(siterecoveryfabricsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SiteRecoveryFabricList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched siteRecoveryFabric.
-func (c *FakeSiteRecoveryFabrics) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SiteRecoveryFabric, err error) {
+func (c *FakeSiteRecoveryFabrics) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SiteRecoveryFabric, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(siterecoveryfabricsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SiteRecoveryFabric{})
 

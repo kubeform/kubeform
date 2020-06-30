@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var backupprotectedfilesharesResource = schema.GroupVersionResource{Group: "azur
 var backupprotectedfilesharesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "BackupProtectedFileShare"}
 
 // Get takes name of the backupProtectedFileShare, and returns the corresponding backupProtectedFileShare object, and an error if there is any.
-func (c *FakeBackupProtectedFileShares) Get(name string, options v1.GetOptions) (result *v1alpha1.BackupProtectedFileShare, err error) {
+func (c *FakeBackupProtectedFileShares) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BackupProtectedFileShare, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(backupprotectedfilesharesResource, c.ns, name), &v1alpha1.BackupProtectedFileShare{})
 
@@ -51,7 +53,7 @@ func (c *FakeBackupProtectedFileShares) Get(name string, options v1.GetOptions) 
 }
 
 // List takes label and field selectors, and returns the list of BackupProtectedFileShares that match those selectors.
-func (c *FakeBackupProtectedFileShares) List(opts v1.ListOptions) (result *v1alpha1.BackupProtectedFileShareList, err error) {
+func (c *FakeBackupProtectedFileShares) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BackupProtectedFileShareList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(backupprotectedfilesharesResource, backupprotectedfilesharesKind, c.ns, opts), &v1alpha1.BackupProtectedFileShareList{})
 
@@ -73,14 +75,14 @@ func (c *FakeBackupProtectedFileShares) List(opts v1.ListOptions) (result *v1alp
 }
 
 // Watch returns a watch.Interface that watches the requested backupProtectedFileShares.
-func (c *FakeBackupProtectedFileShares) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeBackupProtectedFileShares) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(backupprotectedfilesharesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a backupProtectedFileShare and creates it.  Returns the server's representation of the backupProtectedFileShare, and an error, if there is any.
-func (c *FakeBackupProtectedFileShares) Create(backupProtectedFileShare *v1alpha1.BackupProtectedFileShare) (result *v1alpha1.BackupProtectedFileShare, err error) {
+func (c *FakeBackupProtectedFileShares) Create(ctx context.Context, backupProtectedFileShare *v1alpha1.BackupProtectedFileShare, opts v1.CreateOptions) (result *v1alpha1.BackupProtectedFileShare, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(backupprotectedfilesharesResource, c.ns, backupProtectedFileShare), &v1alpha1.BackupProtectedFileShare{})
 
@@ -91,7 +93,7 @@ func (c *FakeBackupProtectedFileShares) Create(backupProtectedFileShare *v1alpha
 }
 
 // Update takes the representation of a backupProtectedFileShare and updates it. Returns the server's representation of the backupProtectedFileShare, and an error, if there is any.
-func (c *FakeBackupProtectedFileShares) Update(backupProtectedFileShare *v1alpha1.BackupProtectedFileShare) (result *v1alpha1.BackupProtectedFileShare, err error) {
+func (c *FakeBackupProtectedFileShares) Update(ctx context.Context, backupProtectedFileShare *v1alpha1.BackupProtectedFileShare, opts v1.UpdateOptions) (result *v1alpha1.BackupProtectedFileShare, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(backupprotectedfilesharesResource, c.ns, backupProtectedFileShare), &v1alpha1.BackupProtectedFileShare{})
 
@@ -103,7 +105,7 @@ func (c *FakeBackupProtectedFileShares) Update(backupProtectedFileShare *v1alpha
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeBackupProtectedFileShares) UpdateStatus(backupProtectedFileShare *v1alpha1.BackupProtectedFileShare) (*v1alpha1.BackupProtectedFileShare, error) {
+func (c *FakeBackupProtectedFileShares) UpdateStatus(ctx context.Context, backupProtectedFileShare *v1alpha1.BackupProtectedFileShare, opts v1.UpdateOptions) (*v1alpha1.BackupProtectedFileShare, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(backupprotectedfilesharesResource, "status", c.ns, backupProtectedFileShare), &v1alpha1.BackupProtectedFileShare{})
 
@@ -114,7 +116,7 @@ func (c *FakeBackupProtectedFileShares) UpdateStatus(backupProtectedFileShare *v
 }
 
 // Delete takes name of the backupProtectedFileShare and deletes it. Returns an error if one occurs.
-func (c *FakeBackupProtectedFileShares) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeBackupProtectedFileShares) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(backupprotectedfilesharesResource, c.ns, name), &v1alpha1.BackupProtectedFileShare{})
 
@@ -122,15 +124,15 @@ func (c *FakeBackupProtectedFileShares) Delete(name string, options *v1.DeleteOp
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeBackupProtectedFileShares) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(backupprotectedfilesharesResource, c.ns, listOptions)
+func (c *FakeBackupProtectedFileShares) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(backupprotectedfilesharesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.BackupProtectedFileShareList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched backupProtectedFileShare.
-func (c *FakeBackupProtectedFileShares) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BackupProtectedFileShare, err error) {
+func (c *FakeBackupProtectedFileShares) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BackupProtectedFileShare, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(backupprotectedfilesharesResource, c.ns, name, pt, data, subresources...), &v1alpha1.BackupProtectedFileShare{})
 

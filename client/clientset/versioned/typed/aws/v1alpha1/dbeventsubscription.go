@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type DbEventSubscriptionsGetter interface {
 
 // DbEventSubscriptionInterface has methods to work with DbEventSubscription resources.
 type DbEventSubscriptionInterface interface {
-	Create(*v1alpha1.DbEventSubscription) (*v1alpha1.DbEventSubscription, error)
-	Update(*v1alpha1.DbEventSubscription) (*v1alpha1.DbEventSubscription, error)
-	UpdateStatus(*v1alpha1.DbEventSubscription) (*v1alpha1.DbEventSubscription, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.DbEventSubscription, error)
-	List(opts v1.ListOptions) (*v1alpha1.DbEventSubscriptionList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DbEventSubscription, err error)
+	Create(ctx context.Context, dbEventSubscription *v1alpha1.DbEventSubscription, opts v1.CreateOptions) (*v1alpha1.DbEventSubscription, error)
+	Update(ctx context.Context, dbEventSubscription *v1alpha1.DbEventSubscription, opts v1.UpdateOptions) (*v1alpha1.DbEventSubscription, error)
+	UpdateStatus(ctx context.Context, dbEventSubscription *v1alpha1.DbEventSubscription, opts v1.UpdateOptions) (*v1alpha1.DbEventSubscription, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.DbEventSubscription, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.DbEventSubscriptionList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DbEventSubscription, err error)
 	DbEventSubscriptionExpansion
 }
 
@@ -65,20 +66,20 @@ func newDbEventSubscriptions(c *AwsV1alpha1Client, namespace string) *dbEventSub
 }
 
 // Get takes name of the dbEventSubscription, and returns the corresponding dbEventSubscription object, and an error if there is any.
-func (c *dbEventSubscriptions) Get(name string, options v1.GetOptions) (result *v1alpha1.DbEventSubscription, err error) {
+func (c *dbEventSubscriptions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DbEventSubscription, err error) {
 	result = &v1alpha1.DbEventSubscription{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("dbeventsubscriptions").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of DbEventSubscriptions that match those selectors.
-func (c *dbEventSubscriptions) List(opts v1.ListOptions) (result *v1alpha1.DbEventSubscriptionList, err error) {
+func (c *dbEventSubscriptions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DbEventSubscriptionList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *dbEventSubscriptions) List(opts v1.ListOptions) (result *v1alpha1.DbEve
 		Resource("dbeventsubscriptions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested dbEventSubscriptions.
-func (c *dbEventSubscriptions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *dbEventSubscriptions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *dbEventSubscriptions) Watch(opts v1.ListOptions) (watch.Interface, erro
 		Resource("dbeventsubscriptions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a dbEventSubscription and creates it.  Returns the server's representation of the dbEventSubscription, and an error, if there is any.
-func (c *dbEventSubscriptions) Create(dbEventSubscription *v1alpha1.DbEventSubscription) (result *v1alpha1.DbEventSubscription, err error) {
+func (c *dbEventSubscriptions) Create(ctx context.Context, dbEventSubscription *v1alpha1.DbEventSubscription, opts v1.CreateOptions) (result *v1alpha1.DbEventSubscription, err error) {
 	result = &v1alpha1.DbEventSubscription{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("dbeventsubscriptions").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dbEventSubscription).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a dbEventSubscription and updates it. Returns the server's representation of the dbEventSubscription, and an error, if there is any.
-func (c *dbEventSubscriptions) Update(dbEventSubscription *v1alpha1.DbEventSubscription) (result *v1alpha1.DbEventSubscription, err error) {
+func (c *dbEventSubscriptions) Update(ctx context.Context, dbEventSubscription *v1alpha1.DbEventSubscription, opts v1.UpdateOptions) (result *v1alpha1.DbEventSubscription, err error) {
 	result = &v1alpha1.DbEventSubscription{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("dbeventsubscriptions").
 		Name(dbEventSubscription.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dbEventSubscription).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *dbEventSubscriptions) UpdateStatus(dbEventSubscription *v1alpha1.DbEventSubscription) (result *v1alpha1.DbEventSubscription, err error) {
+func (c *dbEventSubscriptions) UpdateStatus(ctx context.Context, dbEventSubscription *v1alpha1.DbEventSubscription, opts v1.UpdateOptions) (result *v1alpha1.DbEventSubscription, err error) {
 	result = &v1alpha1.DbEventSubscription{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("dbeventsubscriptions").
 		Name(dbEventSubscription.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dbEventSubscription).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the dbEventSubscription and deletes it. Returns an error if one occurs.
-func (c *dbEventSubscriptions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *dbEventSubscriptions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("dbeventsubscriptions").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *dbEventSubscriptions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *dbEventSubscriptions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("dbeventsubscriptions").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched dbEventSubscription.
-func (c *dbEventSubscriptions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DbEventSubscription, err error) {
+func (c *dbEventSubscriptions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DbEventSubscription, err error) {
 	result = &v1alpha1.DbEventSubscription{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("dbeventsubscriptions").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

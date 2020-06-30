@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computeforwardingrulesResource = schema.GroupVersionResource{Group: "google.
 var computeforwardingrulesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeForwardingRule"}
 
 // Get takes name of the computeForwardingRule, and returns the corresponding computeForwardingRule object, and an error if there is any.
-func (c *FakeComputeForwardingRules) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeForwardingRule, err error) {
+func (c *FakeComputeForwardingRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeForwardingRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computeforwardingrulesResource, c.ns, name), &v1alpha1.ComputeForwardingRule{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeForwardingRules) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of ComputeForwardingRules that match those selectors.
-func (c *FakeComputeForwardingRules) List(opts v1.ListOptions) (result *v1alpha1.ComputeForwardingRuleList, err error) {
+func (c *FakeComputeForwardingRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeForwardingRuleList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computeforwardingrulesResource, computeforwardingrulesKind, c.ns, opts), &v1alpha1.ComputeForwardingRuleList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeForwardingRules) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested computeForwardingRules.
-func (c *FakeComputeForwardingRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeForwardingRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computeforwardingrulesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeForwardingRule and creates it.  Returns the server's representation of the computeForwardingRule, and an error, if there is any.
-func (c *FakeComputeForwardingRules) Create(computeForwardingRule *v1alpha1.ComputeForwardingRule) (result *v1alpha1.ComputeForwardingRule, err error) {
+func (c *FakeComputeForwardingRules) Create(ctx context.Context, computeForwardingRule *v1alpha1.ComputeForwardingRule, opts v1.CreateOptions) (result *v1alpha1.ComputeForwardingRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computeforwardingrulesResource, c.ns, computeForwardingRule), &v1alpha1.ComputeForwardingRule{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeForwardingRules) Create(computeForwardingRule *v1alpha1.Comp
 }
 
 // Update takes the representation of a computeForwardingRule and updates it. Returns the server's representation of the computeForwardingRule, and an error, if there is any.
-func (c *FakeComputeForwardingRules) Update(computeForwardingRule *v1alpha1.ComputeForwardingRule) (result *v1alpha1.ComputeForwardingRule, err error) {
+func (c *FakeComputeForwardingRules) Update(ctx context.Context, computeForwardingRule *v1alpha1.ComputeForwardingRule, opts v1.UpdateOptions) (result *v1alpha1.ComputeForwardingRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computeforwardingrulesResource, c.ns, computeForwardingRule), &v1alpha1.ComputeForwardingRule{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeForwardingRules) Update(computeForwardingRule *v1alpha1.Comp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeForwardingRules) UpdateStatus(computeForwardingRule *v1alpha1.ComputeForwardingRule) (*v1alpha1.ComputeForwardingRule, error) {
+func (c *FakeComputeForwardingRules) UpdateStatus(ctx context.Context, computeForwardingRule *v1alpha1.ComputeForwardingRule, opts v1.UpdateOptions) (*v1alpha1.ComputeForwardingRule, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computeforwardingrulesResource, "status", c.ns, computeForwardingRule), &v1alpha1.ComputeForwardingRule{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeForwardingRules) UpdateStatus(computeForwardingRule *v1alpha
 }
 
 // Delete takes name of the computeForwardingRule and deletes it. Returns an error if one occurs.
-func (c *FakeComputeForwardingRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeForwardingRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computeforwardingrulesResource, c.ns, name), &v1alpha1.ComputeForwardingRule{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeForwardingRules) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeForwardingRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computeforwardingrulesResource, c.ns, listOptions)
+func (c *FakeComputeForwardingRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computeforwardingrulesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeForwardingRuleList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeForwardingRule.
-func (c *FakeComputeForwardingRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeForwardingRule, err error) {
+func (c *FakeComputeForwardingRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeForwardingRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computeforwardingrulesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeForwardingRule{})
 

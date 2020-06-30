@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var elasticbeanstalkapplicationsResource = schema.GroupVersionResource{Group: "a
 var elasticbeanstalkapplicationsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ElasticBeanstalkApplication"}
 
 // Get takes name of the elasticBeanstalkApplication, and returns the corresponding elasticBeanstalkApplication object, and an error if there is any.
-func (c *FakeElasticBeanstalkApplications) Get(name string, options v1.GetOptions) (result *v1alpha1.ElasticBeanstalkApplication, err error) {
+func (c *FakeElasticBeanstalkApplications) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ElasticBeanstalkApplication, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(elasticbeanstalkapplicationsResource, c.ns, name), &v1alpha1.ElasticBeanstalkApplication{})
 
@@ -51,7 +53,7 @@ func (c *FakeElasticBeanstalkApplications) Get(name string, options v1.GetOption
 }
 
 // List takes label and field selectors, and returns the list of ElasticBeanstalkApplications that match those selectors.
-func (c *FakeElasticBeanstalkApplications) List(opts v1.ListOptions) (result *v1alpha1.ElasticBeanstalkApplicationList, err error) {
+func (c *FakeElasticBeanstalkApplications) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ElasticBeanstalkApplicationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(elasticbeanstalkapplicationsResource, elasticbeanstalkapplicationsKind, c.ns, opts), &v1alpha1.ElasticBeanstalkApplicationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeElasticBeanstalkApplications) List(opts v1.ListOptions) (result *v1
 }
 
 // Watch returns a watch.Interface that watches the requested elasticBeanstalkApplications.
-func (c *FakeElasticBeanstalkApplications) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeElasticBeanstalkApplications) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(elasticbeanstalkapplicationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a elasticBeanstalkApplication and creates it.  Returns the server's representation of the elasticBeanstalkApplication, and an error, if there is any.
-func (c *FakeElasticBeanstalkApplications) Create(elasticBeanstalkApplication *v1alpha1.ElasticBeanstalkApplication) (result *v1alpha1.ElasticBeanstalkApplication, err error) {
+func (c *FakeElasticBeanstalkApplications) Create(ctx context.Context, elasticBeanstalkApplication *v1alpha1.ElasticBeanstalkApplication, opts v1.CreateOptions) (result *v1alpha1.ElasticBeanstalkApplication, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(elasticbeanstalkapplicationsResource, c.ns, elasticBeanstalkApplication), &v1alpha1.ElasticBeanstalkApplication{})
 
@@ -91,7 +93,7 @@ func (c *FakeElasticBeanstalkApplications) Create(elasticBeanstalkApplication *v
 }
 
 // Update takes the representation of a elasticBeanstalkApplication and updates it. Returns the server's representation of the elasticBeanstalkApplication, and an error, if there is any.
-func (c *FakeElasticBeanstalkApplications) Update(elasticBeanstalkApplication *v1alpha1.ElasticBeanstalkApplication) (result *v1alpha1.ElasticBeanstalkApplication, err error) {
+func (c *FakeElasticBeanstalkApplications) Update(ctx context.Context, elasticBeanstalkApplication *v1alpha1.ElasticBeanstalkApplication, opts v1.UpdateOptions) (result *v1alpha1.ElasticBeanstalkApplication, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(elasticbeanstalkapplicationsResource, c.ns, elasticBeanstalkApplication), &v1alpha1.ElasticBeanstalkApplication{})
 
@@ -103,7 +105,7 @@ func (c *FakeElasticBeanstalkApplications) Update(elasticBeanstalkApplication *v
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeElasticBeanstalkApplications) UpdateStatus(elasticBeanstalkApplication *v1alpha1.ElasticBeanstalkApplication) (*v1alpha1.ElasticBeanstalkApplication, error) {
+func (c *FakeElasticBeanstalkApplications) UpdateStatus(ctx context.Context, elasticBeanstalkApplication *v1alpha1.ElasticBeanstalkApplication, opts v1.UpdateOptions) (*v1alpha1.ElasticBeanstalkApplication, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(elasticbeanstalkapplicationsResource, "status", c.ns, elasticBeanstalkApplication), &v1alpha1.ElasticBeanstalkApplication{})
 
@@ -114,7 +116,7 @@ func (c *FakeElasticBeanstalkApplications) UpdateStatus(elasticBeanstalkApplicat
 }
 
 // Delete takes name of the elasticBeanstalkApplication and deletes it. Returns an error if one occurs.
-func (c *FakeElasticBeanstalkApplications) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeElasticBeanstalkApplications) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(elasticbeanstalkapplicationsResource, c.ns, name), &v1alpha1.ElasticBeanstalkApplication{})
 
@@ -122,15 +124,15 @@ func (c *FakeElasticBeanstalkApplications) Delete(name string, options *v1.Delet
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeElasticBeanstalkApplications) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(elasticbeanstalkapplicationsResource, c.ns, listOptions)
+func (c *FakeElasticBeanstalkApplications) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(elasticbeanstalkapplicationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ElasticBeanstalkApplicationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched elasticBeanstalkApplication.
-func (c *FakeElasticBeanstalkApplications) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ElasticBeanstalkApplication, err error) {
+func (c *FakeElasticBeanstalkApplications) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ElasticBeanstalkApplication, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(elasticbeanstalkapplicationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ElasticBeanstalkApplication{})
 

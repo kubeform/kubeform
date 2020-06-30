@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iamopenidconnectprovidersResource = schema.GroupVersionResource{Group: "aws.
 var iamopenidconnectprovidersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "IamOpenidConnectProvider"}
 
 // Get takes name of the iamOpenidConnectProvider, and returns the corresponding iamOpenidConnectProvider object, and an error if there is any.
-func (c *FakeIamOpenidConnectProviders) Get(name string, options v1.GetOptions) (result *v1alpha1.IamOpenidConnectProvider, err error) {
+func (c *FakeIamOpenidConnectProviders) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IamOpenidConnectProvider, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iamopenidconnectprovidersResource, c.ns, name), &v1alpha1.IamOpenidConnectProvider{})
 
@@ -51,7 +53,7 @@ func (c *FakeIamOpenidConnectProviders) Get(name string, options v1.GetOptions) 
 }
 
 // List takes label and field selectors, and returns the list of IamOpenidConnectProviders that match those selectors.
-func (c *FakeIamOpenidConnectProviders) List(opts v1.ListOptions) (result *v1alpha1.IamOpenidConnectProviderList, err error) {
+func (c *FakeIamOpenidConnectProviders) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IamOpenidConnectProviderList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iamopenidconnectprovidersResource, iamopenidconnectprovidersKind, c.ns, opts), &v1alpha1.IamOpenidConnectProviderList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIamOpenidConnectProviders) List(opts v1.ListOptions) (result *v1alp
 }
 
 // Watch returns a watch.Interface that watches the requested iamOpenidConnectProviders.
-func (c *FakeIamOpenidConnectProviders) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIamOpenidConnectProviders) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iamopenidconnectprovidersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iamOpenidConnectProvider and creates it.  Returns the server's representation of the iamOpenidConnectProvider, and an error, if there is any.
-func (c *FakeIamOpenidConnectProviders) Create(iamOpenidConnectProvider *v1alpha1.IamOpenidConnectProvider) (result *v1alpha1.IamOpenidConnectProvider, err error) {
+func (c *FakeIamOpenidConnectProviders) Create(ctx context.Context, iamOpenidConnectProvider *v1alpha1.IamOpenidConnectProvider, opts v1.CreateOptions) (result *v1alpha1.IamOpenidConnectProvider, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iamopenidconnectprovidersResource, c.ns, iamOpenidConnectProvider), &v1alpha1.IamOpenidConnectProvider{})
 
@@ -91,7 +93,7 @@ func (c *FakeIamOpenidConnectProviders) Create(iamOpenidConnectProvider *v1alpha
 }
 
 // Update takes the representation of a iamOpenidConnectProvider and updates it. Returns the server's representation of the iamOpenidConnectProvider, and an error, if there is any.
-func (c *FakeIamOpenidConnectProviders) Update(iamOpenidConnectProvider *v1alpha1.IamOpenidConnectProvider) (result *v1alpha1.IamOpenidConnectProvider, err error) {
+func (c *FakeIamOpenidConnectProviders) Update(ctx context.Context, iamOpenidConnectProvider *v1alpha1.IamOpenidConnectProvider, opts v1.UpdateOptions) (result *v1alpha1.IamOpenidConnectProvider, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iamopenidconnectprovidersResource, c.ns, iamOpenidConnectProvider), &v1alpha1.IamOpenidConnectProvider{})
 
@@ -103,7 +105,7 @@ func (c *FakeIamOpenidConnectProviders) Update(iamOpenidConnectProvider *v1alpha
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIamOpenidConnectProviders) UpdateStatus(iamOpenidConnectProvider *v1alpha1.IamOpenidConnectProvider) (*v1alpha1.IamOpenidConnectProvider, error) {
+func (c *FakeIamOpenidConnectProviders) UpdateStatus(ctx context.Context, iamOpenidConnectProvider *v1alpha1.IamOpenidConnectProvider, opts v1.UpdateOptions) (*v1alpha1.IamOpenidConnectProvider, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iamopenidconnectprovidersResource, "status", c.ns, iamOpenidConnectProvider), &v1alpha1.IamOpenidConnectProvider{})
 
@@ -114,7 +116,7 @@ func (c *FakeIamOpenidConnectProviders) UpdateStatus(iamOpenidConnectProvider *v
 }
 
 // Delete takes name of the iamOpenidConnectProvider and deletes it. Returns an error if one occurs.
-func (c *FakeIamOpenidConnectProviders) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIamOpenidConnectProviders) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iamopenidconnectprovidersResource, c.ns, name), &v1alpha1.IamOpenidConnectProvider{})
 
@@ -122,15 +124,15 @@ func (c *FakeIamOpenidConnectProviders) Delete(name string, options *v1.DeleteOp
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIamOpenidConnectProviders) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iamopenidconnectprovidersResource, c.ns, listOptions)
+func (c *FakeIamOpenidConnectProviders) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iamopenidconnectprovidersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IamOpenidConnectProviderList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iamOpenidConnectProvider.
-func (c *FakeIamOpenidConnectProviders) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IamOpenidConnectProvider, err error) {
+func (c *FakeIamOpenidConnectProviders) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IamOpenidConnectProvider, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iamopenidconnectprovidersResource, c.ns, name, pt, data, subresources...), &v1alpha1.IamOpenidConnectProvider{})
 

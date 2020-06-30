@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dxlagsResource = schema.GroupVersionResource{Group: "aws.kubeform.com", Vers
 var dxlagsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DxLag"}
 
 // Get takes name of the dxLag, and returns the corresponding dxLag object, and an error if there is any.
-func (c *FakeDxLags) Get(name string, options v1.GetOptions) (result *v1alpha1.DxLag, err error) {
+func (c *FakeDxLags) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DxLag, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dxlagsResource, c.ns, name), &v1alpha1.DxLag{})
 
@@ -51,7 +53,7 @@ func (c *FakeDxLags) Get(name string, options v1.GetOptions) (result *v1alpha1.D
 }
 
 // List takes label and field selectors, and returns the list of DxLags that match those selectors.
-func (c *FakeDxLags) List(opts v1.ListOptions) (result *v1alpha1.DxLagList, err error) {
+func (c *FakeDxLags) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DxLagList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dxlagsResource, dxlagsKind, c.ns, opts), &v1alpha1.DxLagList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDxLags) List(opts v1.ListOptions) (result *v1alpha1.DxLagList, err 
 }
 
 // Watch returns a watch.Interface that watches the requested dxLags.
-func (c *FakeDxLags) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDxLags) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dxlagsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dxLag and creates it.  Returns the server's representation of the dxLag, and an error, if there is any.
-func (c *FakeDxLags) Create(dxLag *v1alpha1.DxLag) (result *v1alpha1.DxLag, err error) {
+func (c *FakeDxLags) Create(ctx context.Context, dxLag *v1alpha1.DxLag, opts v1.CreateOptions) (result *v1alpha1.DxLag, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dxlagsResource, c.ns, dxLag), &v1alpha1.DxLag{})
 
@@ -91,7 +93,7 @@ func (c *FakeDxLags) Create(dxLag *v1alpha1.DxLag) (result *v1alpha1.DxLag, err 
 }
 
 // Update takes the representation of a dxLag and updates it. Returns the server's representation of the dxLag, and an error, if there is any.
-func (c *FakeDxLags) Update(dxLag *v1alpha1.DxLag) (result *v1alpha1.DxLag, err error) {
+func (c *FakeDxLags) Update(ctx context.Context, dxLag *v1alpha1.DxLag, opts v1.UpdateOptions) (result *v1alpha1.DxLag, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dxlagsResource, c.ns, dxLag), &v1alpha1.DxLag{})
 
@@ -103,7 +105,7 @@ func (c *FakeDxLags) Update(dxLag *v1alpha1.DxLag) (result *v1alpha1.DxLag, err 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDxLags) UpdateStatus(dxLag *v1alpha1.DxLag) (*v1alpha1.DxLag, error) {
+func (c *FakeDxLags) UpdateStatus(ctx context.Context, dxLag *v1alpha1.DxLag, opts v1.UpdateOptions) (*v1alpha1.DxLag, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dxlagsResource, "status", c.ns, dxLag), &v1alpha1.DxLag{})
 
@@ -114,7 +116,7 @@ func (c *FakeDxLags) UpdateStatus(dxLag *v1alpha1.DxLag) (*v1alpha1.DxLag, error
 }
 
 // Delete takes name of the dxLag and deletes it. Returns an error if one occurs.
-func (c *FakeDxLags) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDxLags) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dxlagsResource, c.ns, name), &v1alpha1.DxLag{})
 
@@ -122,15 +124,15 @@ func (c *FakeDxLags) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDxLags) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dxlagsResource, c.ns, listOptions)
+func (c *FakeDxLags) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dxlagsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DxLagList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dxLag.
-func (c *FakeDxLags) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DxLag, err error) {
+func (c *FakeDxLags) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DxLag, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dxlagsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DxLag{})
 

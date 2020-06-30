@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var appserviceplansResource = schema.GroupVersionResource{Group: "azurerm.kubefo
 var appserviceplansKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "AppServicePlan"}
 
 // Get takes name of the appServicePlan, and returns the corresponding appServicePlan object, and an error if there is any.
-func (c *FakeAppServicePlans) Get(name string, options v1.GetOptions) (result *v1alpha1.AppServicePlan, err error) {
+func (c *FakeAppServicePlans) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AppServicePlan, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(appserviceplansResource, c.ns, name), &v1alpha1.AppServicePlan{})
 
@@ -51,7 +53,7 @@ func (c *FakeAppServicePlans) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of AppServicePlans that match those selectors.
-func (c *FakeAppServicePlans) List(opts v1.ListOptions) (result *v1alpha1.AppServicePlanList, err error) {
+func (c *FakeAppServicePlans) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AppServicePlanList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(appserviceplansResource, appserviceplansKind, c.ns, opts), &v1alpha1.AppServicePlanList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAppServicePlans) List(opts v1.ListOptions) (result *v1alpha1.AppSer
 }
 
 // Watch returns a watch.Interface that watches the requested appServicePlans.
-func (c *FakeAppServicePlans) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAppServicePlans) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(appserviceplansResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a appServicePlan and creates it.  Returns the server's representation of the appServicePlan, and an error, if there is any.
-func (c *FakeAppServicePlans) Create(appServicePlan *v1alpha1.AppServicePlan) (result *v1alpha1.AppServicePlan, err error) {
+func (c *FakeAppServicePlans) Create(ctx context.Context, appServicePlan *v1alpha1.AppServicePlan, opts v1.CreateOptions) (result *v1alpha1.AppServicePlan, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(appserviceplansResource, c.ns, appServicePlan), &v1alpha1.AppServicePlan{})
 
@@ -91,7 +93,7 @@ func (c *FakeAppServicePlans) Create(appServicePlan *v1alpha1.AppServicePlan) (r
 }
 
 // Update takes the representation of a appServicePlan and updates it. Returns the server's representation of the appServicePlan, and an error, if there is any.
-func (c *FakeAppServicePlans) Update(appServicePlan *v1alpha1.AppServicePlan) (result *v1alpha1.AppServicePlan, err error) {
+func (c *FakeAppServicePlans) Update(ctx context.Context, appServicePlan *v1alpha1.AppServicePlan, opts v1.UpdateOptions) (result *v1alpha1.AppServicePlan, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(appserviceplansResource, c.ns, appServicePlan), &v1alpha1.AppServicePlan{})
 
@@ -103,7 +105,7 @@ func (c *FakeAppServicePlans) Update(appServicePlan *v1alpha1.AppServicePlan) (r
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAppServicePlans) UpdateStatus(appServicePlan *v1alpha1.AppServicePlan) (*v1alpha1.AppServicePlan, error) {
+func (c *FakeAppServicePlans) UpdateStatus(ctx context.Context, appServicePlan *v1alpha1.AppServicePlan, opts v1.UpdateOptions) (*v1alpha1.AppServicePlan, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(appserviceplansResource, "status", c.ns, appServicePlan), &v1alpha1.AppServicePlan{})
 
@@ -114,7 +116,7 @@ func (c *FakeAppServicePlans) UpdateStatus(appServicePlan *v1alpha1.AppServicePl
 }
 
 // Delete takes name of the appServicePlan and deletes it. Returns an error if one occurs.
-func (c *FakeAppServicePlans) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAppServicePlans) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(appserviceplansResource, c.ns, name), &v1alpha1.AppServicePlan{})
 
@@ -122,15 +124,15 @@ func (c *FakeAppServicePlans) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAppServicePlans) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(appserviceplansResource, c.ns, listOptions)
+func (c *FakeAppServicePlans) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(appserviceplansResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AppServicePlanList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched appServicePlan.
-func (c *FakeAppServicePlans) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppServicePlan, err error) {
+func (c *FakeAppServicePlans) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppServicePlan, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(appserviceplansResource, c.ns, name, pt, data, subresources...), &v1alpha1.AppServicePlan{})
 

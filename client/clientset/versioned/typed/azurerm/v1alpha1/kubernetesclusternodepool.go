@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type KubernetesClusterNodePoolsGetter interface {
 
 // KubernetesClusterNodePoolInterface has methods to work with KubernetesClusterNodePool resources.
 type KubernetesClusterNodePoolInterface interface {
-	Create(*v1alpha1.KubernetesClusterNodePool) (*v1alpha1.KubernetesClusterNodePool, error)
-	Update(*v1alpha1.KubernetesClusterNodePool) (*v1alpha1.KubernetesClusterNodePool, error)
-	UpdateStatus(*v1alpha1.KubernetesClusterNodePool) (*v1alpha1.KubernetesClusterNodePool, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.KubernetesClusterNodePool, error)
-	List(opts v1.ListOptions) (*v1alpha1.KubernetesClusterNodePoolList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KubernetesClusterNodePool, err error)
+	Create(ctx context.Context, kubernetesClusterNodePool *v1alpha1.KubernetesClusterNodePool, opts v1.CreateOptions) (*v1alpha1.KubernetesClusterNodePool, error)
+	Update(ctx context.Context, kubernetesClusterNodePool *v1alpha1.KubernetesClusterNodePool, opts v1.UpdateOptions) (*v1alpha1.KubernetesClusterNodePool, error)
+	UpdateStatus(ctx context.Context, kubernetesClusterNodePool *v1alpha1.KubernetesClusterNodePool, opts v1.UpdateOptions) (*v1alpha1.KubernetesClusterNodePool, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.KubernetesClusterNodePool, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.KubernetesClusterNodePoolList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KubernetesClusterNodePool, err error)
 	KubernetesClusterNodePoolExpansion
 }
 
@@ -65,20 +66,20 @@ func newKubernetesClusterNodePools(c *AzurermV1alpha1Client, namespace string) *
 }
 
 // Get takes name of the kubernetesClusterNodePool, and returns the corresponding kubernetesClusterNodePool object, and an error if there is any.
-func (c *kubernetesClusterNodePools) Get(name string, options v1.GetOptions) (result *v1alpha1.KubernetesClusterNodePool, err error) {
+func (c *kubernetesClusterNodePools) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KubernetesClusterNodePool, err error) {
 	result = &v1alpha1.KubernetesClusterNodePool{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("kubernetesclusternodepools").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of KubernetesClusterNodePools that match those selectors.
-func (c *kubernetesClusterNodePools) List(opts v1.ListOptions) (result *v1alpha1.KubernetesClusterNodePoolList, err error) {
+func (c *kubernetesClusterNodePools) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KubernetesClusterNodePoolList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *kubernetesClusterNodePools) List(opts v1.ListOptions) (result *v1alpha1
 		Resource("kubernetesclusternodepools").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested kubernetesClusterNodePools.
-func (c *kubernetesClusterNodePools) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *kubernetesClusterNodePools) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *kubernetesClusterNodePools) Watch(opts v1.ListOptions) (watch.Interface
 		Resource("kubernetesclusternodepools").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a kubernetesClusterNodePool and creates it.  Returns the server's representation of the kubernetesClusterNodePool, and an error, if there is any.
-func (c *kubernetesClusterNodePools) Create(kubernetesClusterNodePool *v1alpha1.KubernetesClusterNodePool) (result *v1alpha1.KubernetesClusterNodePool, err error) {
+func (c *kubernetesClusterNodePools) Create(ctx context.Context, kubernetesClusterNodePool *v1alpha1.KubernetesClusterNodePool, opts v1.CreateOptions) (result *v1alpha1.KubernetesClusterNodePool, err error) {
 	result = &v1alpha1.KubernetesClusterNodePool{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("kubernetesclusternodepools").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(kubernetesClusterNodePool).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a kubernetesClusterNodePool and updates it. Returns the server's representation of the kubernetesClusterNodePool, and an error, if there is any.
-func (c *kubernetesClusterNodePools) Update(kubernetesClusterNodePool *v1alpha1.KubernetesClusterNodePool) (result *v1alpha1.KubernetesClusterNodePool, err error) {
+func (c *kubernetesClusterNodePools) Update(ctx context.Context, kubernetesClusterNodePool *v1alpha1.KubernetesClusterNodePool, opts v1.UpdateOptions) (result *v1alpha1.KubernetesClusterNodePool, err error) {
 	result = &v1alpha1.KubernetesClusterNodePool{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("kubernetesclusternodepools").
 		Name(kubernetesClusterNodePool.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(kubernetesClusterNodePool).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *kubernetesClusterNodePools) UpdateStatus(kubernetesClusterNodePool *v1alpha1.KubernetesClusterNodePool) (result *v1alpha1.KubernetesClusterNodePool, err error) {
+func (c *kubernetesClusterNodePools) UpdateStatus(ctx context.Context, kubernetesClusterNodePool *v1alpha1.KubernetesClusterNodePool, opts v1.UpdateOptions) (result *v1alpha1.KubernetesClusterNodePool, err error) {
 	result = &v1alpha1.KubernetesClusterNodePool{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("kubernetesclusternodepools").
 		Name(kubernetesClusterNodePool.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(kubernetesClusterNodePool).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the kubernetesClusterNodePool and deletes it. Returns an error if one occurs.
-func (c *kubernetesClusterNodePools) Delete(name string, options *v1.DeleteOptions) error {
+func (c *kubernetesClusterNodePools) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("kubernetesclusternodepools").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *kubernetesClusterNodePools) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *kubernetesClusterNodePools) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("kubernetesclusternodepools").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched kubernetesClusterNodePool.
-func (c *kubernetesClusterNodePools) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KubernetesClusterNodePool, err error) {
+func (c *kubernetesClusterNodePools) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KubernetesClusterNodePool, err error) {
 	result = &v1alpha1.KubernetesClusterNodePool{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("kubernetesclusternodepools").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

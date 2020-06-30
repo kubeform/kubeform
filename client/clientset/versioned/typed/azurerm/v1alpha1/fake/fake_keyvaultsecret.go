@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var keyvaultsecretsResource = schema.GroupVersionResource{Group: "azurerm.kubefo
 var keyvaultsecretsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "KeyVaultSecret"}
 
 // Get takes name of the keyVaultSecret, and returns the corresponding keyVaultSecret object, and an error if there is any.
-func (c *FakeKeyVaultSecrets) Get(name string, options v1.GetOptions) (result *v1alpha1.KeyVaultSecret, err error) {
+func (c *FakeKeyVaultSecrets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KeyVaultSecret, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(keyvaultsecretsResource, c.ns, name), &v1alpha1.KeyVaultSecret{})
 
@@ -51,7 +53,7 @@ func (c *FakeKeyVaultSecrets) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of KeyVaultSecrets that match those selectors.
-func (c *FakeKeyVaultSecrets) List(opts v1.ListOptions) (result *v1alpha1.KeyVaultSecretList, err error) {
+func (c *FakeKeyVaultSecrets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KeyVaultSecretList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(keyvaultsecretsResource, keyvaultsecretsKind, c.ns, opts), &v1alpha1.KeyVaultSecretList{})
 
@@ -73,14 +75,14 @@ func (c *FakeKeyVaultSecrets) List(opts v1.ListOptions) (result *v1alpha1.KeyVau
 }
 
 // Watch returns a watch.Interface that watches the requested keyVaultSecrets.
-func (c *FakeKeyVaultSecrets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeKeyVaultSecrets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(keyvaultsecretsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a keyVaultSecret and creates it.  Returns the server's representation of the keyVaultSecret, and an error, if there is any.
-func (c *FakeKeyVaultSecrets) Create(keyVaultSecret *v1alpha1.KeyVaultSecret) (result *v1alpha1.KeyVaultSecret, err error) {
+func (c *FakeKeyVaultSecrets) Create(ctx context.Context, keyVaultSecret *v1alpha1.KeyVaultSecret, opts v1.CreateOptions) (result *v1alpha1.KeyVaultSecret, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(keyvaultsecretsResource, c.ns, keyVaultSecret), &v1alpha1.KeyVaultSecret{})
 
@@ -91,7 +93,7 @@ func (c *FakeKeyVaultSecrets) Create(keyVaultSecret *v1alpha1.KeyVaultSecret) (r
 }
 
 // Update takes the representation of a keyVaultSecret and updates it. Returns the server's representation of the keyVaultSecret, and an error, if there is any.
-func (c *FakeKeyVaultSecrets) Update(keyVaultSecret *v1alpha1.KeyVaultSecret) (result *v1alpha1.KeyVaultSecret, err error) {
+func (c *FakeKeyVaultSecrets) Update(ctx context.Context, keyVaultSecret *v1alpha1.KeyVaultSecret, opts v1.UpdateOptions) (result *v1alpha1.KeyVaultSecret, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(keyvaultsecretsResource, c.ns, keyVaultSecret), &v1alpha1.KeyVaultSecret{})
 
@@ -103,7 +105,7 @@ func (c *FakeKeyVaultSecrets) Update(keyVaultSecret *v1alpha1.KeyVaultSecret) (r
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeKeyVaultSecrets) UpdateStatus(keyVaultSecret *v1alpha1.KeyVaultSecret) (*v1alpha1.KeyVaultSecret, error) {
+func (c *FakeKeyVaultSecrets) UpdateStatus(ctx context.Context, keyVaultSecret *v1alpha1.KeyVaultSecret, opts v1.UpdateOptions) (*v1alpha1.KeyVaultSecret, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(keyvaultsecretsResource, "status", c.ns, keyVaultSecret), &v1alpha1.KeyVaultSecret{})
 
@@ -114,7 +116,7 @@ func (c *FakeKeyVaultSecrets) UpdateStatus(keyVaultSecret *v1alpha1.KeyVaultSecr
 }
 
 // Delete takes name of the keyVaultSecret and deletes it. Returns an error if one occurs.
-func (c *FakeKeyVaultSecrets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeKeyVaultSecrets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(keyvaultsecretsResource, c.ns, name), &v1alpha1.KeyVaultSecret{})
 
@@ -122,15 +124,15 @@ func (c *FakeKeyVaultSecrets) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeKeyVaultSecrets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(keyvaultsecretsResource, c.ns, listOptions)
+func (c *FakeKeyVaultSecrets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(keyvaultsecretsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.KeyVaultSecretList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched keyVaultSecret.
-func (c *FakeKeyVaultSecrets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KeyVaultSecret, err error) {
+func (c *FakeKeyVaultSecrets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KeyVaultSecret, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(keyvaultsecretsResource, c.ns, name, pt, data, subresources...), &v1alpha1.KeyVaultSecret{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var sesreceiptrulesResource = schema.GroupVersionResource{Group: "aws.kubeform.c
 var sesreceiptrulesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "SesReceiptRule"}
 
 // Get takes name of the sesReceiptRule, and returns the corresponding sesReceiptRule object, and an error if there is any.
-func (c *FakeSesReceiptRules) Get(name string, options v1.GetOptions) (result *v1alpha1.SesReceiptRule, err error) {
+func (c *FakeSesReceiptRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SesReceiptRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(sesreceiptrulesResource, c.ns, name), &v1alpha1.SesReceiptRule{})
 
@@ -51,7 +53,7 @@ func (c *FakeSesReceiptRules) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of SesReceiptRules that match those selectors.
-func (c *FakeSesReceiptRules) List(opts v1.ListOptions) (result *v1alpha1.SesReceiptRuleList, err error) {
+func (c *FakeSesReceiptRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SesReceiptRuleList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(sesreceiptrulesResource, sesreceiptrulesKind, c.ns, opts), &v1alpha1.SesReceiptRuleList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSesReceiptRules) List(opts v1.ListOptions) (result *v1alpha1.SesRec
 }
 
 // Watch returns a watch.Interface that watches the requested sesReceiptRules.
-func (c *FakeSesReceiptRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSesReceiptRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(sesreceiptrulesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a sesReceiptRule and creates it.  Returns the server's representation of the sesReceiptRule, and an error, if there is any.
-func (c *FakeSesReceiptRules) Create(sesReceiptRule *v1alpha1.SesReceiptRule) (result *v1alpha1.SesReceiptRule, err error) {
+func (c *FakeSesReceiptRules) Create(ctx context.Context, sesReceiptRule *v1alpha1.SesReceiptRule, opts v1.CreateOptions) (result *v1alpha1.SesReceiptRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(sesreceiptrulesResource, c.ns, sesReceiptRule), &v1alpha1.SesReceiptRule{})
 
@@ -91,7 +93,7 @@ func (c *FakeSesReceiptRules) Create(sesReceiptRule *v1alpha1.SesReceiptRule) (r
 }
 
 // Update takes the representation of a sesReceiptRule and updates it. Returns the server's representation of the sesReceiptRule, and an error, if there is any.
-func (c *FakeSesReceiptRules) Update(sesReceiptRule *v1alpha1.SesReceiptRule) (result *v1alpha1.SesReceiptRule, err error) {
+func (c *FakeSesReceiptRules) Update(ctx context.Context, sesReceiptRule *v1alpha1.SesReceiptRule, opts v1.UpdateOptions) (result *v1alpha1.SesReceiptRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(sesreceiptrulesResource, c.ns, sesReceiptRule), &v1alpha1.SesReceiptRule{})
 
@@ -103,7 +105,7 @@ func (c *FakeSesReceiptRules) Update(sesReceiptRule *v1alpha1.SesReceiptRule) (r
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSesReceiptRules) UpdateStatus(sesReceiptRule *v1alpha1.SesReceiptRule) (*v1alpha1.SesReceiptRule, error) {
+func (c *FakeSesReceiptRules) UpdateStatus(ctx context.Context, sesReceiptRule *v1alpha1.SesReceiptRule, opts v1.UpdateOptions) (*v1alpha1.SesReceiptRule, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(sesreceiptrulesResource, "status", c.ns, sesReceiptRule), &v1alpha1.SesReceiptRule{})
 
@@ -114,7 +116,7 @@ func (c *FakeSesReceiptRules) UpdateStatus(sesReceiptRule *v1alpha1.SesReceiptRu
 }
 
 // Delete takes name of the sesReceiptRule and deletes it. Returns an error if one occurs.
-func (c *FakeSesReceiptRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSesReceiptRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(sesreceiptrulesResource, c.ns, name), &v1alpha1.SesReceiptRule{})
 
@@ -122,15 +124,15 @@ func (c *FakeSesReceiptRules) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSesReceiptRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(sesreceiptrulesResource, c.ns, listOptions)
+func (c *FakeSesReceiptRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(sesreceiptrulesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SesReceiptRuleList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched sesReceiptRule.
-func (c *FakeSesReceiptRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SesReceiptRule, err error) {
+func (c *FakeSesReceiptRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SesReceiptRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(sesreceiptrulesResource, c.ns, name, pt, data, subresources...), &v1alpha1.SesReceiptRule{})
 

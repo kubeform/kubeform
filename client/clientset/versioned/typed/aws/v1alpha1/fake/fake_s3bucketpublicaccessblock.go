@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var s3bucketpublicaccessblocksResource = schema.GroupVersionResource{Group: "aws
 var s3bucketpublicaccessblocksKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "S3BucketPublicAccessBlock"}
 
 // Get takes name of the s3BucketPublicAccessBlock, and returns the corresponding s3BucketPublicAccessBlock object, and an error if there is any.
-func (c *FakeS3BucketPublicAccessBlocks) Get(name string, options v1.GetOptions) (result *v1alpha1.S3BucketPublicAccessBlock, err error) {
+func (c *FakeS3BucketPublicAccessBlocks) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.S3BucketPublicAccessBlock, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(s3bucketpublicaccessblocksResource, c.ns, name), &v1alpha1.S3BucketPublicAccessBlock{})
 
@@ -51,7 +53,7 @@ func (c *FakeS3BucketPublicAccessBlocks) Get(name string, options v1.GetOptions)
 }
 
 // List takes label and field selectors, and returns the list of S3BucketPublicAccessBlocks that match those selectors.
-func (c *FakeS3BucketPublicAccessBlocks) List(opts v1.ListOptions) (result *v1alpha1.S3BucketPublicAccessBlockList, err error) {
+func (c *FakeS3BucketPublicAccessBlocks) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.S3BucketPublicAccessBlockList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(s3bucketpublicaccessblocksResource, s3bucketpublicaccessblocksKind, c.ns, opts), &v1alpha1.S3BucketPublicAccessBlockList{})
 
@@ -73,14 +75,14 @@ func (c *FakeS3BucketPublicAccessBlocks) List(opts v1.ListOptions) (result *v1al
 }
 
 // Watch returns a watch.Interface that watches the requested s3BucketPublicAccessBlocks.
-func (c *FakeS3BucketPublicAccessBlocks) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeS3BucketPublicAccessBlocks) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(s3bucketpublicaccessblocksResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a s3BucketPublicAccessBlock and creates it.  Returns the server's representation of the s3BucketPublicAccessBlock, and an error, if there is any.
-func (c *FakeS3BucketPublicAccessBlocks) Create(s3BucketPublicAccessBlock *v1alpha1.S3BucketPublicAccessBlock) (result *v1alpha1.S3BucketPublicAccessBlock, err error) {
+func (c *FakeS3BucketPublicAccessBlocks) Create(ctx context.Context, s3BucketPublicAccessBlock *v1alpha1.S3BucketPublicAccessBlock, opts v1.CreateOptions) (result *v1alpha1.S3BucketPublicAccessBlock, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(s3bucketpublicaccessblocksResource, c.ns, s3BucketPublicAccessBlock), &v1alpha1.S3BucketPublicAccessBlock{})
 
@@ -91,7 +93,7 @@ func (c *FakeS3BucketPublicAccessBlocks) Create(s3BucketPublicAccessBlock *v1alp
 }
 
 // Update takes the representation of a s3BucketPublicAccessBlock and updates it. Returns the server's representation of the s3BucketPublicAccessBlock, and an error, if there is any.
-func (c *FakeS3BucketPublicAccessBlocks) Update(s3BucketPublicAccessBlock *v1alpha1.S3BucketPublicAccessBlock) (result *v1alpha1.S3BucketPublicAccessBlock, err error) {
+func (c *FakeS3BucketPublicAccessBlocks) Update(ctx context.Context, s3BucketPublicAccessBlock *v1alpha1.S3BucketPublicAccessBlock, opts v1.UpdateOptions) (result *v1alpha1.S3BucketPublicAccessBlock, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(s3bucketpublicaccessblocksResource, c.ns, s3BucketPublicAccessBlock), &v1alpha1.S3BucketPublicAccessBlock{})
 
@@ -103,7 +105,7 @@ func (c *FakeS3BucketPublicAccessBlocks) Update(s3BucketPublicAccessBlock *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeS3BucketPublicAccessBlocks) UpdateStatus(s3BucketPublicAccessBlock *v1alpha1.S3BucketPublicAccessBlock) (*v1alpha1.S3BucketPublicAccessBlock, error) {
+func (c *FakeS3BucketPublicAccessBlocks) UpdateStatus(ctx context.Context, s3BucketPublicAccessBlock *v1alpha1.S3BucketPublicAccessBlock, opts v1.UpdateOptions) (*v1alpha1.S3BucketPublicAccessBlock, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(s3bucketpublicaccessblocksResource, "status", c.ns, s3BucketPublicAccessBlock), &v1alpha1.S3BucketPublicAccessBlock{})
 
@@ -114,7 +116,7 @@ func (c *FakeS3BucketPublicAccessBlocks) UpdateStatus(s3BucketPublicAccessBlock 
 }
 
 // Delete takes name of the s3BucketPublicAccessBlock and deletes it. Returns an error if one occurs.
-func (c *FakeS3BucketPublicAccessBlocks) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeS3BucketPublicAccessBlocks) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(s3bucketpublicaccessblocksResource, c.ns, name), &v1alpha1.S3BucketPublicAccessBlock{})
 
@@ -122,15 +124,15 @@ func (c *FakeS3BucketPublicAccessBlocks) Delete(name string, options *v1.DeleteO
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeS3BucketPublicAccessBlocks) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(s3bucketpublicaccessblocksResource, c.ns, listOptions)
+func (c *FakeS3BucketPublicAccessBlocks) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(s3bucketpublicaccessblocksResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.S3BucketPublicAccessBlockList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched s3BucketPublicAccessBlock.
-func (c *FakeS3BucketPublicAccessBlocks) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.S3BucketPublicAccessBlock, err error) {
+func (c *FakeS3BucketPublicAccessBlocks) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.S3BucketPublicAccessBlock, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(s3bucketpublicaccessblocksResource, c.ns, name, pt, data, subresources...), &v1alpha1.S3BucketPublicAccessBlock{})
 

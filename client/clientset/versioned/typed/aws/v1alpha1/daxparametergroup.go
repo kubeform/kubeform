@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type DaxParameterGroupsGetter interface {
 
 // DaxParameterGroupInterface has methods to work with DaxParameterGroup resources.
 type DaxParameterGroupInterface interface {
-	Create(*v1alpha1.DaxParameterGroup) (*v1alpha1.DaxParameterGroup, error)
-	Update(*v1alpha1.DaxParameterGroup) (*v1alpha1.DaxParameterGroup, error)
-	UpdateStatus(*v1alpha1.DaxParameterGroup) (*v1alpha1.DaxParameterGroup, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.DaxParameterGroup, error)
-	List(opts v1.ListOptions) (*v1alpha1.DaxParameterGroupList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DaxParameterGroup, err error)
+	Create(ctx context.Context, daxParameterGroup *v1alpha1.DaxParameterGroup, opts v1.CreateOptions) (*v1alpha1.DaxParameterGroup, error)
+	Update(ctx context.Context, daxParameterGroup *v1alpha1.DaxParameterGroup, opts v1.UpdateOptions) (*v1alpha1.DaxParameterGroup, error)
+	UpdateStatus(ctx context.Context, daxParameterGroup *v1alpha1.DaxParameterGroup, opts v1.UpdateOptions) (*v1alpha1.DaxParameterGroup, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.DaxParameterGroup, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.DaxParameterGroupList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DaxParameterGroup, err error)
 	DaxParameterGroupExpansion
 }
 
@@ -65,20 +66,20 @@ func newDaxParameterGroups(c *AwsV1alpha1Client, namespace string) *daxParameter
 }
 
 // Get takes name of the daxParameterGroup, and returns the corresponding daxParameterGroup object, and an error if there is any.
-func (c *daxParameterGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.DaxParameterGroup, err error) {
+func (c *daxParameterGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DaxParameterGroup, err error) {
 	result = &v1alpha1.DaxParameterGroup{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("daxparametergroups").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of DaxParameterGroups that match those selectors.
-func (c *daxParameterGroups) List(opts v1.ListOptions) (result *v1alpha1.DaxParameterGroupList, err error) {
+func (c *daxParameterGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DaxParameterGroupList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *daxParameterGroups) List(opts v1.ListOptions) (result *v1alpha1.DaxPara
 		Resource("daxparametergroups").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested daxParameterGroups.
-func (c *daxParameterGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *daxParameterGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *daxParameterGroups) Watch(opts v1.ListOptions) (watch.Interface, error)
 		Resource("daxparametergroups").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a daxParameterGroup and creates it.  Returns the server's representation of the daxParameterGroup, and an error, if there is any.
-func (c *daxParameterGroups) Create(daxParameterGroup *v1alpha1.DaxParameterGroup) (result *v1alpha1.DaxParameterGroup, err error) {
+func (c *daxParameterGroups) Create(ctx context.Context, daxParameterGroup *v1alpha1.DaxParameterGroup, opts v1.CreateOptions) (result *v1alpha1.DaxParameterGroup, err error) {
 	result = &v1alpha1.DaxParameterGroup{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("daxparametergroups").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(daxParameterGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a daxParameterGroup and updates it. Returns the server's representation of the daxParameterGroup, and an error, if there is any.
-func (c *daxParameterGroups) Update(daxParameterGroup *v1alpha1.DaxParameterGroup) (result *v1alpha1.DaxParameterGroup, err error) {
+func (c *daxParameterGroups) Update(ctx context.Context, daxParameterGroup *v1alpha1.DaxParameterGroup, opts v1.UpdateOptions) (result *v1alpha1.DaxParameterGroup, err error) {
 	result = &v1alpha1.DaxParameterGroup{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("daxparametergroups").
 		Name(daxParameterGroup.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(daxParameterGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *daxParameterGroups) UpdateStatus(daxParameterGroup *v1alpha1.DaxParameterGroup) (result *v1alpha1.DaxParameterGroup, err error) {
+func (c *daxParameterGroups) UpdateStatus(ctx context.Context, daxParameterGroup *v1alpha1.DaxParameterGroup, opts v1.UpdateOptions) (result *v1alpha1.DaxParameterGroup, err error) {
 	result = &v1alpha1.DaxParameterGroup{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("daxparametergroups").
 		Name(daxParameterGroup.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(daxParameterGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the daxParameterGroup and deletes it. Returns an error if one occurs.
-func (c *daxParameterGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *daxParameterGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("daxparametergroups").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *daxParameterGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *daxParameterGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("daxparametergroups").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched daxParameterGroup.
-func (c *daxParameterGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DaxParameterGroup, err error) {
+func (c *daxParameterGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DaxParameterGroup, err error) {
 	result = &v1alpha1.DaxParameterGroup{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("daxparametergroups").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

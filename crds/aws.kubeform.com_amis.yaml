@@ -1,0 +1,230 @@
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/name: kubeform
+  name: amis.aws.kubeform.com
+spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
+  group: aws.kubeform.com
+  names:
+    kind: Ami
+    listKind: AmiList
+    plural: amis
+    singular: ami
+  scope: Namespaced
+  subresources:
+    status: {}
+  validation:
+    openAPIV3Schema:
+      properties:
+        apiVersion:
+          description: 'APIVersion defines the versioned schema of this representation
+            of an object. Servers should convert recognized schemas to the latest
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+          type: string
+        kind:
+          description: 'Kind is a string value representing the REST resource this
+            object represents. Servers may infer this from the endpoint the client
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+          type: string
+        metadata:
+          type: object
+        spec:
+          properties:
+            architecture:
+              type: string
+            description:
+              type: string
+            ebsBlockDevice:
+              items:
+                properties:
+                  deleteOnTermination:
+                    type: boolean
+                  deviceName:
+                    type: string
+                  encrypted:
+                    type: boolean
+                  iops:
+                    format: int64
+                    type: integer
+                  snapshotID:
+                    type: string
+                  volumeSize:
+                    format: int64
+                    type: integer
+                  volumeType:
+                    type: string
+                required:
+                - deviceName
+                type: object
+              type: array
+            enaSupport:
+              type: boolean
+            ephemeralBlockDevice:
+              items:
+                properties:
+                  deviceName:
+                    type: string
+                  virtualName:
+                    type: string
+                required:
+                - deviceName
+                - virtualName
+                type: object
+              type: array
+            id:
+              type: string
+            imageLocation:
+              type: string
+            kernelID:
+              type: string
+            manageEbsSnapshots:
+              type: boolean
+            name:
+              type: string
+            providerRef:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
+            ramdiskID:
+              type: string
+            rootDeviceName:
+              type: string
+            rootSnapshotID:
+              type: string
+            sriovNetSupport:
+              type: string
+            tags:
+              additionalProperties:
+                type: string
+              type: object
+            virtualizationType:
+              type: string
+          required:
+          - name
+          - providerRef
+          type: object
+        status:
+          properties:
+            observedGeneration:
+              description: Resource generation, which is updated on mutation by the
+                API Server.
+              format: int64
+              type: integer
+            output:
+              properties:
+                architecture:
+                  type: string
+                description:
+                  type: string
+                ebsBlockDevice:
+                  items:
+                    properties:
+                      deleteOnTermination:
+                        type: boolean
+                      deviceName:
+                        type: string
+                      encrypted:
+                        type: boolean
+                      iops:
+                        format: int64
+                        type: integer
+                      snapshotID:
+                        type: string
+                      volumeSize:
+                        format: int64
+                        type: integer
+                      volumeType:
+                        type: string
+                    required:
+                    - deviceName
+                    type: object
+                  type: array
+                enaSupport:
+                  type: boolean
+                ephemeralBlockDevice:
+                  items:
+                    properties:
+                      deviceName:
+                        type: string
+                      virtualName:
+                        type: string
+                    required:
+                    - deviceName
+                    - virtualName
+                    type: object
+                  type: array
+                id:
+                  type: string
+                imageLocation:
+                  type: string
+                kernelID:
+                  type: string
+                manageEbsSnapshots:
+                  type: boolean
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                ramdiskID:
+                  type: string
+                rootDeviceName:
+                  type: string
+                rootSnapshotID:
+                  type: string
+                sriovNetSupport:
+                  type: string
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                virtualizationType:
+                  type: string
+              required:
+              - name
+              - providerRef
+              type: object
+            phase:
+              type: string
+            state:
+              properties:
+                lineage:
+                  type: string
+                serial:
+                  format: int64
+                  type: integer
+                terraform_version:
+                  type: string
+                version:
+                  format: int64
+                  type: integer
+              required:
+              - lineage
+              - serial
+              - terraform_version
+              - version
+              type: object
+          type: object
+      type: object
+  version: v1alpha1
+  versions:
+  - name: v1alpha1
+    served: true
+    storage: true

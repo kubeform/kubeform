@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var expressroutecircuitpeeringsResource = schema.GroupVersionResource{Group: "az
 var expressroutecircuitpeeringsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "ExpressRouteCircuitPeering"}
 
 // Get takes name of the expressRouteCircuitPeering, and returns the corresponding expressRouteCircuitPeering object, and an error if there is any.
-func (c *FakeExpressRouteCircuitPeerings) Get(name string, options v1.GetOptions) (result *v1alpha1.ExpressRouteCircuitPeering, err error) {
+func (c *FakeExpressRouteCircuitPeerings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ExpressRouteCircuitPeering, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(expressroutecircuitpeeringsResource, c.ns, name), &v1alpha1.ExpressRouteCircuitPeering{})
 
@@ -51,7 +53,7 @@ func (c *FakeExpressRouteCircuitPeerings) Get(name string, options v1.GetOptions
 }
 
 // List takes label and field selectors, and returns the list of ExpressRouteCircuitPeerings that match those selectors.
-func (c *FakeExpressRouteCircuitPeerings) List(opts v1.ListOptions) (result *v1alpha1.ExpressRouteCircuitPeeringList, err error) {
+func (c *FakeExpressRouteCircuitPeerings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ExpressRouteCircuitPeeringList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(expressroutecircuitpeeringsResource, expressroutecircuitpeeringsKind, c.ns, opts), &v1alpha1.ExpressRouteCircuitPeeringList{})
 
@@ -73,14 +75,14 @@ func (c *FakeExpressRouteCircuitPeerings) List(opts v1.ListOptions) (result *v1a
 }
 
 // Watch returns a watch.Interface that watches the requested expressRouteCircuitPeerings.
-func (c *FakeExpressRouteCircuitPeerings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeExpressRouteCircuitPeerings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(expressroutecircuitpeeringsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a expressRouteCircuitPeering and creates it.  Returns the server's representation of the expressRouteCircuitPeering, and an error, if there is any.
-func (c *FakeExpressRouteCircuitPeerings) Create(expressRouteCircuitPeering *v1alpha1.ExpressRouteCircuitPeering) (result *v1alpha1.ExpressRouteCircuitPeering, err error) {
+func (c *FakeExpressRouteCircuitPeerings) Create(ctx context.Context, expressRouteCircuitPeering *v1alpha1.ExpressRouteCircuitPeering, opts v1.CreateOptions) (result *v1alpha1.ExpressRouteCircuitPeering, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(expressroutecircuitpeeringsResource, c.ns, expressRouteCircuitPeering), &v1alpha1.ExpressRouteCircuitPeering{})
 
@@ -91,7 +93,7 @@ func (c *FakeExpressRouteCircuitPeerings) Create(expressRouteCircuitPeering *v1a
 }
 
 // Update takes the representation of a expressRouteCircuitPeering and updates it. Returns the server's representation of the expressRouteCircuitPeering, and an error, if there is any.
-func (c *FakeExpressRouteCircuitPeerings) Update(expressRouteCircuitPeering *v1alpha1.ExpressRouteCircuitPeering) (result *v1alpha1.ExpressRouteCircuitPeering, err error) {
+func (c *FakeExpressRouteCircuitPeerings) Update(ctx context.Context, expressRouteCircuitPeering *v1alpha1.ExpressRouteCircuitPeering, opts v1.UpdateOptions) (result *v1alpha1.ExpressRouteCircuitPeering, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(expressroutecircuitpeeringsResource, c.ns, expressRouteCircuitPeering), &v1alpha1.ExpressRouteCircuitPeering{})
 
@@ -103,7 +105,7 @@ func (c *FakeExpressRouteCircuitPeerings) Update(expressRouteCircuitPeering *v1a
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeExpressRouteCircuitPeerings) UpdateStatus(expressRouteCircuitPeering *v1alpha1.ExpressRouteCircuitPeering) (*v1alpha1.ExpressRouteCircuitPeering, error) {
+func (c *FakeExpressRouteCircuitPeerings) UpdateStatus(ctx context.Context, expressRouteCircuitPeering *v1alpha1.ExpressRouteCircuitPeering, opts v1.UpdateOptions) (*v1alpha1.ExpressRouteCircuitPeering, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(expressroutecircuitpeeringsResource, "status", c.ns, expressRouteCircuitPeering), &v1alpha1.ExpressRouteCircuitPeering{})
 
@@ -114,7 +116,7 @@ func (c *FakeExpressRouteCircuitPeerings) UpdateStatus(expressRouteCircuitPeerin
 }
 
 // Delete takes name of the expressRouteCircuitPeering and deletes it. Returns an error if one occurs.
-func (c *FakeExpressRouteCircuitPeerings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeExpressRouteCircuitPeerings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(expressroutecircuitpeeringsResource, c.ns, name), &v1alpha1.ExpressRouteCircuitPeering{})
 
@@ -122,15 +124,15 @@ func (c *FakeExpressRouteCircuitPeerings) Delete(name string, options *v1.Delete
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeExpressRouteCircuitPeerings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(expressroutecircuitpeeringsResource, c.ns, listOptions)
+func (c *FakeExpressRouteCircuitPeerings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(expressroutecircuitpeeringsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ExpressRouteCircuitPeeringList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched expressRouteCircuitPeering.
-func (c *FakeExpressRouteCircuitPeerings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ExpressRouteCircuitPeering, err error) {
+func (c *FakeExpressRouteCircuitPeerings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ExpressRouteCircuitPeering, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(expressroutecircuitpeeringsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ExpressRouteCircuitPeering{})
 

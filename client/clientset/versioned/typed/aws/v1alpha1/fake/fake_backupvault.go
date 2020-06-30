@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var backupvaultsResource = schema.GroupVersionResource{Group: "aws.kubeform.com"
 var backupvaultsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "BackupVault"}
 
 // Get takes name of the backupVault, and returns the corresponding backupVault object, and an error if there is any.
-func (c *FakeBackupVaults) Get(name string, options v1.GetOptions) (result *v1alpha1.BackupVault, err error) {
+func (c *FakeBackupVaults) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BackupVault, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(backupvaultsResource, c.ns, name), &v1alpha1.BackupVault{})
 
@@ -51,7 +53,7 @@ func (c *FakeBackupVaults) Get(name string, options v1.GetOptions) (result *v1al
 }
 
 // List takes label and field selectors, and returns the list of BackupVaults that match those selectors.
-func (c *FakeBackupVaults) List(opts v1.ListOptions) (result *v1alpha1.BackupVaultList, err error) {
+func (c *FakeBackupVaults) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BackupVaultList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(backupvaultsResource, backupvaultsKind, c.ns, opts), &v1alpha1.BackupVaultList{})
 
@@ -73,14 +75,14 @@ func (c *FakeBackupVaults) List(opts v1.ListOptions) (result *v1alpha1.BackupVau
 }
 
 // Watch returns a watch.Interface that watches the requested backupVaults.
-func (c *FakeBackupVaults) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeBackupVaults) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(backupvaultsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a backupVault and creates it.  Returns the server's representation of the backupVault, and an error, if there is any.
-func (c *FakeBackupVaults) Create(backupVault *v1alpha1.BackupVault) (result *v1alpha1.BackupVault, err error) {
+func (c *FakeBackupVaults) Create(ctx context.Context, backupVault *v1alpha1.BackupVault, opts v1.CreateOptions) (result *v1alpha1.BackupVault, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(backupvaultsResource, c.ns, backupVault), &v1alpha1.BackupVault{})
 
@@ -91,7 +93,7 @@ func (c *FakeBackupVaults) Create(backupVault *v1alpha1.BackupVault) (result *v1
 }
 
 // Update takes the representation of a backupVault and updates it. Returns the server's representation of the backupVault, and an error, if there is any.
-func (c *FakeBackupVaults) Update(backupVault *v1alpha1.BackupVault) (result *v1alpha1.BackupVault, err error) {
+func (c *FakeBackupVaults) Update(ctx context.Context, backupVault *v1alpha1.BackupVault, opts v1.UpdateOptions) (result *v1alpha1.BackupVault, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(backupvaultsResource, c.ns, backupVault), &v1alpha1.BackupVault{})
 
@@ -103,7 +105,7 @@ func (c *FakeBackupVaults) Update(backupVault *v1alpha1.BackupVault) (result *v1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeBackupVaults) UpdateStatus(backupVault *v1alpha1.BackupVault) (*v1alpha1.BackupVault, error) {
+func (c *FakeBackupVaults) UpdateStatus(ctx context.Context, backupVault *v1alpha1.BackupVault, opts v1.UpdateOptions) (*v1alpha1.BackupVault, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(backupvaultsResource, "status", c.ns, backupVault), &v1alpha1.BackupVault{})
 
@@ -114,7 +116,7 @@ func (c *FakeBackupVaults) UpdateStatus(backupVault *v1alpha1.BackupVault) (*v1a
 }
 
 // Delete takes name of the backupVault and deletes it. Returns an error if one occurs.
-func (c *FakeBackupVaults) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeBackupVaults) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(backupvaultsResource, c.ns, name), &v1alpha1.BackupVault{})
 
@@ -122,15 +124,15 @@ func (c *FakeBackupVaults) Delete(name string, options *v1.DeleteOptions) error 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeBackupVaults) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(backupvaultsResource, c.ns, listOptions)
+func (c *FakeBackupVaults) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(backupvaultsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.BackupVaultList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched backupVault.
-func (c *FakeBackupVaults) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BackupVault, err error) {
+func (c *FakeBackupVaults) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BackupVault, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(backupvaultsResource, c.ns, name, pt, data, subresources...), &v1alpha1.BackupVault{})
 

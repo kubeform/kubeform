@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type PublicIPPrefixesGetter interface {
 
 // PublicIPPrefixInterface has methods to work with PublicIPPrefix resources.
 type PublicIPPrefixInterface interface {
-	Create(*v1alpha1.PublicIPPrefix) (*v1alpha1.PublicIPPrefix, error)
-	Update(*v1alpha1.PublicIPPrefix) (*v1alpha1.PublicIPPrefix, error)
-	UpdateStatus(*v1alpha1.PublicIPPrefix) (*v1alpha1.PublicIPPrefix, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.PublicIPPrefix, error)
-	List(opts v1.ListOptions) (*v1alpha1.PublicIPPrefixList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PublicIPPrefix, err error)
+	Create(ctx context.Context, publicIPPrefix *v1alpha1.PublicIPPrefix, opts v1.CreateOptions) (*v1alpha1.PublicIPPrefix, error)
+	Update(ctx context.Context, publicIPPrefix *v1alpha1.PublicIPPrefix, opts v1.UpdateOptions) (*v1alpha1.PublicIPPrefix, error)
+	UpdateStatus(ctx context.Context, publicIPPrefix *v1alpha1.PublicIPPrefix, opts v1.UpdateOptions) (*v1alpha1.PublicIPPrefix, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.PublicIPPrefix, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.PublicIPPrefixList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PublicIPPrefix, err error)
 	PublicIPPrefixExpansion
 }
 
@@ -65,20 +66,20 @@ func newPublicIPPrefixes(c *AzurermV1alpha1Client, namespace string) *publicIPPr
 }
 
 // Get takes name of the publicIPPrefix, and returns the corresponding publicIPPrefix object, and an error if there is any.
-func (c *publicIPPrefixes) Get(name string, options v1.GetOptions) (result *v1alpha1.PublicIPPrefix, err error) {
+func (c *publicIPPrefixes) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PublicIPPrefix, err error) {
 	result = &v1alpha1.PublicIPPrefix{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("publicipprefixes").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of PublicIPPrefixes that match those selectors.
-func (c *publicIPPrefixes) List(opts v1.ListOptions) (result *v1alpha1.PublicIPPrefixList, err error) {
+func (c *publicIPPrefixes) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PublicIPPrefixList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *publicIPPrefixes) List(opts v1.ListOptions) (result *v1alpha1.PublicIPP
 		Resource("publicipprefixes").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested publicIPPrefixes.
-func (c *publicIPPrefixes) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *publicIPPrefixes) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *publicIPPrefixes) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("publicipprefixes").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a publicIPPrefix and creates it.  Returns the server's representation of the publicIPPrefix, and an error, if there is any.
-func (c *publicIPPrefixes) Create(publicIPPrefix *v1alpha1.PublicIPPrefix) (result *v1alpha1.PublicIPPrefix, err error) {
+func (c *publicIPPrefixes) Create(ctx context.Context, publicIPPrefix *v1alpha1.PublicIPPrefix, opts v1.CreateOptions) (result *v1alpha1.PublicIPPrefix, err error) {
 	result = &v1alpha1.PublicIPPrefix{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("publicipprefixes").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(publicIPPrefix).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a publicIPPrefix and updates it. Returns the server's representation of the publicIPPrefix, and an error, if there is any.
-func (c *publicIPPrefixes) Update(publicIPPrefix *v1alpha1.PublicIPPrefix) (result *v1alpha1.PublicIPPrefix, err error) {
+func (c *publicIPPrefixes) Update(ctx context.Context, publicIPPrefix *v1alpha1.PublicIPPrefix, opts v1.UpdateOptions) (result *v1alpha1.PublicIPPrefix, err error) {
 	result = &v1alpha1.PublicIPPrefix{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("publicipprefixes").
 		Name(publicIPPrefix.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(publicIPPrefix).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *publicIPPrefixes) UpdateStatus(publicIPPrefix *v1alpha1.PublicIPPrefix) (result *v1alpha1.PublicIPPrefix, err error) {
+func (c *publicIPPrefixes) UpdateStatus(ctx context.Context, publicIPPrefix *v1alpha1.PublicIPPrefix, opts v1.UpdateOptions) (result *v1alpha1.PublicIPPrefix, err error) {
 	result = &v1alpha1.PublicIPPrefix{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("publicipprefixes").
 		Name(publicIPPrefix.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(publicIPPrefix).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the publicIPPrefix and deletes it. Returns an error if one occurs.
-func (c *publicIPPrefixes) Delete(name string, options *v1.DeleteOptions) error {
+func (c *publicIPPrefixes) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("publicipprefixes").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *publicIPPrefixes) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *publicIPPrefixes) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("publicipprefixes").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched publicIPPrefix.
-func (c *publicIPPrefixes) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PublicIPPrefix, err error) {
+func (c *publicIPPrefixes) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PublicIPPrefix, err error) {
 	result = &v1alpha1.PublicIPPrefix{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("publicipprefixes").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

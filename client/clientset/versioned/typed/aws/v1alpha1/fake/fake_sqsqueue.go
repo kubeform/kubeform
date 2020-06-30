@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var sqsqueuesResource = schema.GroupVersionResource{Group: "aws.kubeform.com", V
 var sqsqueuesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "SqsQueue"}
 
 // Get takes name of the sqsQueue, and returns the corresponding sqsQueue object, and an error if there is any.
-func (c *FakeSqsQueues) Get(name string, options v1.GetOptions) (result *v1alpha1.SqsQueue, err error) {
+func (c *FakeSqsQueues) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SqsQueue, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(sqsqueuesResource, c.ns, name), &v1alpha1.SqsQueue{})
 
@@ -51,7 +53,7 @@ func (c *FakeSqsQueues) Get(name string, options v1.GetOptions) (result *v1alpha
 }
 
 // List takes label and field selectors, and returns the list of SqsQueues that match those selectors.
-func (c *FakeSqsQueues) List(opts v1.ListOptions) (result *v1alpha1.SqsQueueList, err error) {
+func (c *FakeSqsQueues) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SqsQueueList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(sqsqueuesResource, sqsqueuesKind, c.ns, opts), &v1alpha1.SqsQueueList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSqsQueues) List(opts v1.ListOptions) (result *v1alpha1.SqsQueueList
 }
 
 // Watch returns a watch.Interface that watches the requested sqsQueues.
-func (c *FakeSqsQueues) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSqsQueues) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(sqsqueuesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a sqsQueue and creates it.  Returns the server's representation of the sqsQueue, and an error, if there is any.
-func (c *FakeSqsQueues) Create(sqsQueue *v1alpha1.SqsQueue) (result *v1alpha1.SqsQueue, err error) {
+func (c *FakeSqsQueues) Create(ctx context.Context, sqsQueue *v1alpha1.SqsQueue, opts v1.CreateOptions) (result *v1alpha1.SqsQueue, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(sqsqueuesResource, c.ns, sqsQueue), &v1alpha1.SqsQueue{})
 
@@ -91,7 +93,7 @@ func (c *FakeSqsQueues) Create(sqsQueue *v1alpha1.SqsQueue) (result *v1alpha1.Sq
 }
 
 // Update takes the representation of a sqsQueue and updates it. Returns the server's representation of the sqsQueue, and an error, if there is any.
-func (c *FakeSqsQueues) Update(sqsQueue *v1alpha1.SqsQueue) (result *v1alpha1.SqsQueue, err error) {
+func (c *FakeSqsQueues) Update(ctx context.Context, sqsQueue *v1alpha1.SqsQueue, opts v1.UpdateOptions) (result *v1alpha1.SqsQueue, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(sqsqueuesResource, c.ns, sqsQueue), &v1alpha1.SqsQueue{})
 
@@ -103,7 +105,7 @@ func (c *FakeSqsQueues) Update(sqsQueue *v1alpha1.SqsQueue) (result *v1alpha1.Sq
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSqsQueues) UpdateStatus(sqsQueue *v1alpha1.SqsQueue) (*v1alpha1.SqsQueue, error) {
+func (c *FakeSqsQueues) UpdateStatus(ctx context.Context, sqsQueue *v1alpha1.SqsQueue, opts v1.UpdateOptions) (*v1alpha1.SqsQueue, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(sqsqueuesResource, "status", c.ns, sqsQueue), &v1alpha1.SqsQueue{})
 
@@ -114,7 +116,7 @@ func (c *FakeSqsQueues) UpdateStatus(sqsQueue *v1alpha1.SqsQueue) (*v1alpha1.Sqs
 }
 
 // Delete takes name of the sqsQueue and deletes it. Returns an error if one occurs.
-func (c *FakeSqsQueues) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSqsQueues) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(sqsqueuesResource, c.ns, name), &v1alpha1.SqsQueue{})
 
@@ -122,15 +124,15 @@ func (c *FakeSqsQueues) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSqsQueues) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(sqsqueuesResource, c.ns, listOptions)
+func (c *FakeSqsQueues) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(sqsqueuesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SqsQueueList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched sqsQueue.
-func (c *FakeSqsQueues) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SqsQueue, err error) {
+func (c *FakeSqsQueues) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SqsQueue, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(sqsqueuesResource, c.ns, name, pt, data, subresources...), &v1alpha1.SqsQueue{})
 

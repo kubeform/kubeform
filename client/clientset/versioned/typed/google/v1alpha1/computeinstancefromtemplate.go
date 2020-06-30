@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type ComputeInstanceFromTemplatesGetter interface {
 
 // ComputeInstanceFromTemplateInterface has methods to work with ComputeInstanceFromTemplate resources.
 type ComputeInstanceFromTemplateInterface interface {
-	Create(*v1alpha1.ComputeInstanceFromTemplate) (*v1alpha1.ComputeInstanceFromTemplate, error)
-	Update(*v1alpha1.ComputeInstanceFromTemplate) (*v1alpha1.ComputeInstanceFromTemplate, error)
-	UpdateStatus(*v1alpha1.ComputeInstanceFromTemplate) (*v1alpha1.ComputeInstanceFromTemplate, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ComputeInstanceFromTemplate, error)
-	List(opts v1.ListOptions) (*v1alpha1.ComputeInstanceFromTemplateList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeInstanceFromTemplate, err error)
+	Create(ctx context.Context, computeInstanceFromTemplate *v1alpha1.ComputeInstanceFromTemplate, opts v1.CreateOptions) (*v1alpha1.ComputeInstanceFromTemplate, error)
+	Update(ctx context.Context, computeInstanceFromTemplate *v1alpha1.ComputeInstanceFromTemplate, opts v1.UpdateOptions) (*v1alpha1.ComputeInstanceFromTemplate, error)
+	UpdateStatus(ctx context.Context, computeInstanceFromTemplate *v1alpha1.ComputeInstanceFromTemplate, opts v1.UpdateOptions) (*v1alpha1.ComputeInstanceFromTemplate, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ComputeInstanceFromTemplate, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ComputeInstanceFromTemplateList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeInstanceFromTemplate, err error)
 	ComputeInstanceFromTemplateExpansion
 }
 
@@ -65,20 +66,20 @@ func newComputeInstanceFromTemplates(c *GoogleV1alpha1Client, namespace string) 
 }
 
 // Get takes name of the computeInstanceFromTemplate, and returns the corresponding computeInstanceFromTemplate object, and an error if there is any.
-func (c *computeInstanceFromTemplates) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeInstanceFromTemplate, err error) {
+func (c *computeInstanceFromTemplates) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeInstanceFromTemplate, err error) {
 	result = &v1alpha1.ComputeInstanceFromTemplate{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("computeinstancefromtemplates").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ComputeInstanceFromTemplates that match those selectors.
-func (c *computeInstanceFromTemplates) List(opts v1.ListOptions) (result *v1alpha1.ComputeInstanceFromTemplateList, err error) {
+func (c *computeInstanceFromTemplates) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeInstanceFromTemplateList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *computeInstanceFromTemplates) List(opts v1.ListOptions) (result *v1alph
 		Resource("computeinstancefromtemplates").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested computeInstanceFromTemplates.
-func (c *computeInstanceFromTemplates) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *computeInstanceFromTemplates) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *computeInstanceFromTemplates) Watch(opts v1.ListOptions) (watch.Interfa
 		Resource("computeinstancefromtemplates").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a computeInstanceFromTemplate and creates it.  Returns the server's representation of the computeInstanceFromTemplate, and an error, if there is any.
-func (c *computeInstanceFromTemplates) Create(computeInstanceFromTemplate *v1alpha1.ComputeInstanceFromTemplate) (result *v1alpha1.ComputeInstanceFromTemplate, err error) {
+func (c *computeInstanceFromTemplates) Create(ctx context.Context, computeInstanceFromTemplate *v1alpha1.ComputeInstanceFromTemplate, opts v1.CreateOptions) (result *v1alpha1.ComputeInstanceFromTemplate, err error) {
 	result = &v1alpha1.ComputeInstanceFromTemplate{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("computeinstancefromtemplates").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeInstanceFromTemplate).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a computeInstanceFromTemplate and updates it. Returns the server's representation of the computeInstanceFromTemplate, and an error, if there is any.
-func (c *computeInstanceFromTemplates) Update(computeInstanceFromTemplate *v1alpha1.ComputeInstanceFromTemplate) (result *v1alpha1.ComputeInstanceFromTemplate, err error) {
+func (c *computeInstanceFromTemplates) Update(ctx context.Context, computeInstanceFromTemplate *v1alpha1.ComputeInstanceFromTemplate, opts v1.UpdateOptions) (result *v1alpha1.ComputeInstanceFromTemplate, err error) {
 	result = &v1alpha1.ComputeInstanceFromTemplate{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computeinstancefromtemplates").
 		Name(computeInstanceFromTemplate.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeInstanceFromTemplate).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *computeInstanceFromTemplates) UpdateStatus(computeInstanceFromTemplate *v1alpha1.ComputeInstanceFromTemplate) (result *v1alpha1.ComputeInstanceFromTemplate, err error) {
+func (c *computeInstanceFromTemplates) UpdateStatus(ctx context.Context, computeInstanceFromTemplate *v1alpha1.ComputeInstanceFromTemplate, opts v1.UpdateOptions) (result *v1alpha1.ComputeInstanceFromTemplate, err error) {
 	result = &v1alpha1.ComputeInstanceFromTemplate{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computeinstancefromtemplates").
 		Name(computeInstanceFromTemplate.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeInstanceFromTemplate).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the computeInstanceFromTemplate and deletes it. Returns an error if one occurs.
-func (c *computeInstanceFromTemplates) Delete(name string, options *v1.DeleteOptions) error {
+func (c *computeInstanceFromTemplates) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computeinstancefromtemplates").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *computeInstanceFromTemplates) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *computeInstanceFromTemplates) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computeinstancefromtemplates").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched computeInstanceFromTemplate.
-func (c *computeInstanceFromTemplates) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeInstanceFromTemplate, err error) {
+func (c *computeInstanceFromTemplates) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeInstanceFromTemplate, err error) {
 	result = &v1alpha1.ComputeInstanceFromTemplate{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("computeinstancefromtemplates").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iothubendpointstoragecontainersResource = schema.GroupVersionResource{Group:
 var iothubendpointstoragecontainersKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "IothubEndpointStorageContainer"}
 
 // Get takes name of the iothubEndpointStorageContainer, and returns the corresponding iothubEndpointStorageContainer object, and an error if there is any.
-func (c *FakeIothubEndpointStorageContainers) Get(name string, options v1.GetOptions) (result *v1alpha1.IothubEndpointStorageContainer, err error) {
+func (c *FakeIothubEndpointStorageContainers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IothubEndpointStorageContainer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iothubendpointstoragecontainersResource, c.ns, name), &v1alpha1.IothubEndpointStorageContainer{})
 
@@ -51,7 +53,7 @@ func (c *FakeIothubEndpointStorageContainers) Get(name string, options v1.GetOpt
 }
 
 // List takes label and field selectors, and returns the list of IothubEndpointStorageContainers that match those selectors.
-func (c *FakeIothubEndpointStorageContainers) List(opts v1.ListOptions) (result *v1alpha1.IothubEndpointStorageContainerList, err error) {
+func (c *FakeIothubEndpointStorageContainers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IothubEndpointStorageContainerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iothubendpointstoragecontainersResource, iothubendpointstoragecontainersKind, c.ns, opts), &v1alpha1.IothubEndpointStorageContainerList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIothubEndpointStorageContainers) List(opts v1.ListOptions) (result 
 }
 
 // Watch returns a watch.Interface that watches the requested iothubEndpointStorageContainers.
-func (c *FakeIothubEndpointStorageContainers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIothubEndpointStorageContainers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iothubendpointstoragecontainersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iothubEndpointStorageContainer and creates it.  Returns the server's representation of the iothubEndpointStorageContainer, and an error, if there is any.
-func (c *FakeIothubEndpointStorageContainers) Create(iothubEndpointStorageContainer *v1alpha1.IothubEndpointStorageContainer) (result *v1alpha1.IothubEndpointStorageContainer, err error) {
+func (c *FakeIothubEndpointStorageContainers) Create(ctx context.Context, iothubEndpointStorageContainer *v1alpha1.IothubEndpointStorageContainer, opts v1.CreateOptions) (result *v1alpha1.IothubEndpointStorageContainer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iothubendpointstoragecontainersResource, c.ns, iothubEndpointStorageContainer), &v1alpha1.IothubEndpointStorageContainer{})
 
@@ -91,7 +93,7 @@ func (c *FakeIothubEndpointStorageContainers) Create(iothubEndpointStorageContai
 }
 
 // Update takes the representation of a iothubEndpointStorageContainer and updates it. Returns the server's representation of the iothubEndpointStorageContainer, and an error, if there is any.
-func (c *FakeIothubEndpointStorageContainers) Update(iothubEndpointStorageContainer *v1alpha1.IothubEndpointStorageContainer) (result *v1alpha1.IothubEndpointStorageContainer, err error) {
+func (c *FakeIothubEndpointStorageContainers) Update(ctx context.Context, iothubEndpointStorageContainer *v1alpha1.IothubEndpointStorageContainer, opts v1.UpdateOptions) (result *v1alpha1.IothubEndpointStorageContainer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iothubendpointstoragecontainersResource, c.ns, iothubEndpointStorageContainer), &v1alpha1.IothubEndpointStorageContainer{})
 
@@ -103,7 +105,7 @@ func (c *FakeIothubEndpointStorageContainers) Update(iothubEndpointStorageContai
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIothubEndpointStorageContainers) UpdateStatus(iothubEndpointStorageContainer *v1alpha1.IothubEndpointStorageContainer) (*v1alpha1.IothubEndpointStorageContainer, error) {
+func (c *FakeIothubEndpointStorageContainers) UpdateStatus(ctx context.Context, iothubEndpointStorageContainer *v1alpha1.IothubEndpointStorageContainer, opts v1.UpdateOptions) (*v1alpha1.IothubEndpointStorageContainer, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iothubendpointstoragecontainersResource, "status", c.ns, iothubEndpointStorageContainer), &v1alpha1.IothubEndpointStorageContainer{})
 
@@ -114,7 +116,7 @@ func (c *FakeIothubEndpointStorageContainers) UpdateStatus(iothubEndpointStorage
 }
 
 // Delete takes name of the iothubEndpointStorageContainer and deletes it. Returns an error if one occurs.
-func (c *FakeIothubEndpointStorageContainers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIothubEndpointStorageContainers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iothubendpointstoragecontainersResource, c.ns, name), &v1alpha1.IothubEndpointStorageContainer{})
 
@@ -122,15 +124,15 @@ func (c *FakeIothubEndpointStorageContainers) Delete(name string, options *v1.De
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIothubEndpointStorageContainers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iothubendpointstoragecontainersResource, c.ns, listOptions)
+func (c *FakeIothubEndpointStorageContainers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iothubendpointstoragecontainersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IothubEndpointStorageContainerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iothubEndpointStorageContainer.
-func (c *FakeIothubEndpointStorageContainers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IothubEndpointStorageContainer, err error) {
+func (c *FakeIothubEndpointStorageContainers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IothubEndpointStorageContainer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iothubendpointstoragecontainersResource, c.ns, name, pt, data, subresources...), &v1alpha1.IothubEndpointStorageContainer{})
 

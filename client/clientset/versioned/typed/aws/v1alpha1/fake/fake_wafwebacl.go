@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var wafwebaclsResource = schema.GroupVersionResource{Group: "aws.kubeform.com", 
 var wafwebaclsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "WafWebACL"}
 
 // Get takes name of the wafWebACL, and returns the corresponding wafWebACL object, and an error if there is any.
-func (c *FakeWafWebACLs) Get(name string, options v1.GetOptions) (result *v1alpha1.WafWebACL, err error) {
+func (c *FakeWafWebACLs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.WafWebACL, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(wafwebaclsResource, c.ns, name), &v1alpha1.WafWebACL{})
 
@@ -51,7 +53,7 @@ func (c *FakeWafWebACLs) Get(name string, options v1.GetOptions) (result *v1alph
 }
 
 // List takes label and field selectors, and returns the list of WafWebACLs that match those selectors.
-func (c *FakeWafWebACLs) List(opts v1.ListOptions) (result *v1alpha1.WafWebACLList, err error) {
+func (c *FakeWafWebACLs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.WafWebACLList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(wafwebaclsResource, wafwebaclsKind, c.ns, opts), &v1alpha1.WafWebACLList{})
 
@@ -73,14 +75,14 @@ func (c *FakeWafWebACLs) List(opts v1.ListOptions) (result *v1alpha1.WafWebACLLi
 }
 
 // Watch returns a watch.Interface that watches the requested wafWebACLs.
-func (c *FakeWafWebACLs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeWafWebACLs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(wafwebaclsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a wafWebACL and creates it.  Returns the server's representation of the wafWebACL, and an error, if there is any.
-func (c *FakeWafWebACLs) Create(wafWebACL *v1alpha1.WafWebACL) (result *v1alpha1.WafWebACL, err error) {
+func (c *FakeWafWebACLs) Create(ctx context.Context, wafWebACL *v1alpha1.WafWebACL, opts v1.CreateOptions) (result *v1alpha1.WafWebACL, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(wafwebaclsResource, c.ns, wafWebACL), &v1alpha1.WafWebACL{})
 
@@ -91,7 +93,7 @@ func (c *FakeWafWebACLs) Create(wafWebACL *v1alpha1.WafWebACL) (result *v1alpha1
 }
 
 // Update takes the representation of a wafWebACL and updates it. Returns the server's representation of the wafWebACL, and an error, if there is any.
-func (c *FakeWafWebACLs) Update(wafWebACL *v1alpha1.WafWebACL) (result *v1alpha1.WafWebACL, err error) {
+func (c *FakeWafWebACLs) Update(ctx context.Context, wafWebACL *v1alpha1.WafWebACL, opts v1.UpdateOptions) (result *v1alpha1.WafWebACL, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(wafwebaclsResource, c.ns, wafWebACL), &v1alpha1.WafWebACL{})
 
@@ -103,7 +105,7 @@ func (c *FakeWafWebACLs) Update(wafWebACL *v1alpha1.WafWebACL) (result *v1alpha1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeWafWebACLs) UpdateStatus(wafWebACL *v1alpha1.WafWebACL) (*v1alpha1.WafWebACL, error) {
+func (c *FakeWafWebACLs) UpdateStatus(ctx context.Context, wafWebACL *v1alpha1.WafWebACL, opts v1.UpdateOptions) (*v1alpha1.WafWebACL, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(wafwebaclsResource, "status", c.ns, wafWebACL), &v1alpha1.WafWebACL{})
 
@@ -114,7 +116,7 @@ func (c *FakeWafWebACLs) UpdateStatus(wafWebACL *v1alpha1.WafWebACL) (*v1alpha1.
 }
 
 // Delete takes name of the wafWebACL and deletes it. Returns an error if one occurs.
-func (c *FakeWafWebACLs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeWafWebACLs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(wafwebaclsResource, c.ns, name), &v1alpha1.WafWebACL{})
 
@@ -122,15 +124,15 @@ func (c *FakeWafWebACLs) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeWafWebACLs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(wafwebaclsResource, c.ns, listOptions)
+func (c *FakeWafWebACLs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(wafwebaclsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.WafWebACLList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched wafWebACL.
-func (c *FakeWafWebACLs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.WafWebACL, err error) {
+func (c *FakeWafWebACLs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.WafWebACL, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(wafwebaclsResource, c.ns, name, pt, data, subresources...), &v1alpha1.WafWebACL{})
 

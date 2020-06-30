@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var automationschedulesResource = schema.GroupVersionResource{Group: "azurerm.ku
 var automationschedulesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "AutomationSchedule"}
 
 // Get takes name of the automationSchedule, and returns the corresponding automationSchedule object, and an error if there is any.
-func (c *FakeAutomationSchedules) Get(name string, options v1.GetOptions) (result *v1alpha1.AutomationSchedule, err error) {
+func (c *FakeAutomationSchedules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AutomationSchedule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(automationschedulesResource, c.ns, name), &v1alpha1.AutomationSchedule{})
 
@@ -51,7 +53,7 @@ func (c *FakeAutomationSchedules) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of AutomationSchedules that match those selectors.
-func (c *FakeAutomationSchedules) List(opts v1.ListOptions) (result *v1alpha1.AutomationScheduleList, err error) {
+func (c *FakeAutomationSchedules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AutomationScheduleList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(automationschedulesResource, automationschedulesKind, c.ns, opts), &v1alpha1.AutomationScheduleList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAutomationSchedules) List(opts v1.ListOptions) (result *v1alpha1.Au
 }
 
 // Watch returns a watch.Interface that watches the requested automationSchedules.
-func (c *FakeAutomationSchedules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAutomationSchedules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(automationschedulesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a automationSchedule and creates it.  Returns the server's representation of the automationSchedule, and an error, if there is any.
-func (c *FakeAutomationSchedules) Create(automationSchedule *v1alpha1.AutomationSchedule) (result *v1alpha1.AutomationSchedule, err error) {
+func (c *FakeAutomationSchedules) Create(ctx context.Context, automationSchedule *v1alpha1.AutomationSchedule, opts v1.CreateOptions) (result *v1alpha1.AutomationSchedule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(automationschedulesResource, c.ns, automationSchedule), &v1alpha1.AutomationSchedule{})
 
@@ -91,7 +93,7 @@ func (c *FakeAutomationSchedules) Create(automationSchedule *v1alpha1.Automation
 }
 
 // Update takes the representation of a automationSchedule and updates it. Returns the server's representation of the automationSchedule, and an error, if there is any.
-func (c *FakeAutomationSchedules) Update(automationSchedule *v1alpha1.AutomationSchedule) (result *v1alpha1.AutomationSchedule, err error) {
+func (c *FakeAutomationSchedules) Update(ctx context.Context, automationSchedule *v1alpha1.AutomationSchedule, opts v1.UpdateOptions) (result *v1alpha1.AutomationSchedule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(automationschedulesResource, c.ns, automationSchedule), &v1alpha1.AutomationSchedule{})
 
@@ -103,7 +105,7 @@ func (c *FakeAutomationSchedules) Update(automationSchedule *v1alpha1.Automation
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAutomationSchedules) UpdateStatus(automationSchedule *v1alpha1.AutomationSchedule) (*v1alpha1.AutomationSchedule, error) {
+func (c *FakeAutomationSchedules) UpdateStatus(ctx context.Context, automationSchedule *v1alpha1.AutomationSchedule, opts v1.UpdateOptions) (*v1alpha1.AutomationSchedule, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(automationschedulesResource, "status", c.ns, automationSchedule), &v1alpha1.AutomationSchedule{})
 
@@ -114,7 +116,7 @@ func (c *FakeAutomationSchedules) UpdateStatus(automationSchedule *v1alpha1.Auto
 }
 
 // Delete takes name of the automationSchedule and deletes it. Returns an error if one occurs.
-func (c *FakeAutomationSchedules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAutomationSchedules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(automationschedulesResource, c.ns, name), &v1alpha1.AutomationSchedule{})
 
@@ -122,15 +124,15 @@ func (c *FakeAutomationSchedules) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAutomationSchedules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(automationschedulesResource, c.ns, listOptions)
+func (c *FakeAutomationSchedules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(automationschedulesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AutomationScheduleList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched automationSchedule.
-func (c *FakeAutomationSchedules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AutomationSchedule, err error) {
+func (c *FakeAutomationSchedules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AutomationSchedule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(automationschedulesResource, c.ns, name, pt, data, subresources...), &v1alpha1.AutomationSchedule{})
 

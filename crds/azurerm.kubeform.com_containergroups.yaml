@@ -1,0 +1,590 @@
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/name: kubeform
+  name: containergroups.azurerm.kubeform.com
+spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
+  group: azurerm.kubeform.com
+  names:
+    kind: ContainerGroup
+    listKind: ContainerGroupList
+    plural: containergroups
+    singular: containergroup
+  scope: Namespaced
+  subresources:
+    status: {}
+  validation:
+    openAPIV3Schema:
+      properties:
+        apiVersion:
+          description: 'APIVersion defines the versioned schema of this representation
+            of an object. Servers should convert recognized schemas to the latest
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+          type: string
+        kind:
+          description: 'Kind is a string value representing the REST resource this
+            object represents. Servers may infer this from the endpoint the client
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+          type: string
+        metadata:
+          type: object
+        spec:
+          properties:
+            container:
+              items:
+                properties:
+                  command:
+                    description: Deprecated
+                    type: string
+                  commands:
+                    items:
+                      type: string
+                    type: array
+                  cpu:
+                    format: float
+                    type: number
+                  environmentVariables:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  gpu:
+                    items:
+                      properties:
+                        count:
+                          format: int64
+                          type: integer
+                        sku:
+                          type: string
+                      type: object
+                    maxItems: 1
+                    type: array
+                  image:
+                    type: string
+                  livenessProbe:
+                    items:
+                      properties:
+                        exec:
+                          items:
+                            type: string
+                          type: array
+                        failureThreshold:
+                          format: int64
+                          type: integer
+                        httpGet:
+                          items:
+                            properties:
+                              path:
+                                type: string
+                              port:
+                                format: int64
+                                type: integer
+                              scheme:
+                                type: string
+                            type: object
+                          type: array
+                        initialDelaySeconds:
+                          format: int64
+                          type: integer
+                        periodSeconds:
+                          format: int64
+                          type: integer
+                        successThreshold:
+                          format: int64
+                          type: integer
+                        timeoutSeconds:
+                          format: int64
+                          type: integer
+                      type: object
+                    maxItems: 1
+                    type: array
+                  memory:
+                    format: float
+                    type: number
+                  name:
+                    type: string
+                  port:
+                    description: Deprecated
+                    format: int64
+                    type: integer
+                  ports:
+                    items:
+                      properties:
+                        port:
+                          format: int64
+                          type: integer
+                        protocol:
+                          type: string
+                      type: object
+                    type: array
+                  protocol:
+                    description: Deprecated
+                    type: string
+                  readinessProbe:
+                    items:
+                      properties:
+                        exec:
+                          items:
+                            type: string
+                          type: array
+                        failureThreshold:
+                          format: int64
+                          type: integer
+                        httpGet:
+                          items:
+                            properties:
+                              path:
+                                type: string
+                              port:
+                                format: int64
+                                type: integer
+                              scheme:
+                                type: string
+                            type: object
+                          type: array
+                        initialDelaySeconds:
+                          format: int64
+                          type: integer
+                        periodSeconds:
+                          format: int64
+                          type: integer
+                        successThreshold:
+                          format: int64
+                          type: integer
+                        timeoutSeconds:
+                          format: int64
+                          type: integer
+                      type: object
+                    maxItems: 1
+                    type: array
+                  volume:
+                    items:
+                      properties:
+                        mountPath:
+                          type: string
+                        name:
+                          type: string
+                        readOnly:
+                          type: boolean
+                        shareName:
+                          type: string
+                        storageAccountName:
+                          type: string
+                      required:
+                      - mountPath
+                      - name
+                      - shareName
+                      - storageAccountName
+                      type: object
+                    type: array
+                required:
+                - cpu
+                - image
+                - memory
+                - name
+                type: object
+              type: array
+            diagnostics:
+              items:
+                properties:
+                  logAnalytics:
+                    items:
+                      properties:
+                        logType:
+                          type: string
+                        metadata:
+                          additionalProperties:
+                            type: string
+                          type: object
+                        workspaceID:
+                          type: string
+                      required:
+                      - workspaceID
+                      type: object
+                    maxItems: 1
+                    type: array
+                required:
+                - logAnalytics
+                type: object
+              maxItems: 1
+              type: array
+            dnsNameLabel:
+              type: string
+            fqdn:
+              type: string
+            id:
+              type: string
+            identity:
+              items:
+                properties:
+                  identityIDS:
+                    items:
+                      type: string
+                    minItems: 1
+                    type: array
+                  principalID:
+                    type: string
+                  type:
+                    type: string
+                required:
+                - type
+                type: object
+              maxItems: 1
+              type: array
+            imageRegistryCredential:
+              items:
+                properties:
+                  server:
+                    type: string
+                  username:
+                    type: string
+                required:
+                - server
+                - username
+                type: object
+              type: array
+            ipAddress:
+              type: string
+            ipAddressType:
+              type: string
+            location:
+              type: string
+            name:
+              type: string
+            networkProfileID:
+              type: string
+            osType:
+              type: string
+            providerRef:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
+            resourceGroupName:
+              type: string
+            restartPolicy:
+              type: string
+            secretRef:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
+            tags:
+              additionalProperties:
+                type: string
+              type: object
+          required:
+          - container
+          - location
+          - name
+          - osType
+          - providerRef
+          - resourceGroupName
+          type: object
+        status:
+          properties:
+            observedGeneration:
+              description: Resource generation, which is updated on mutation by the
+                API Server.
+              format: int64
+              type: integer
+            output:
+              properties:
+                container:
+                  items:
+                    properties:
+                      command:
+                        description: Deprecated
+                        type: string
+                      commands:
+                        items:
+                          type: string
+                        type: array
+                      cpu:
+                        format: float
+                        type: number
+                      environmentVariables:
+                        additionalProperties:
+                          type: string
+                        type: object
+                      gpu:
+                        items:
+                          properties:
+                            count:
+                              format: int64
+                              type: integer
+                            sku:
+                              type: string
+                          type: object
+                        maxItems: 1
+                        type: array
+                      image:
+                        type: string
+                      livenessProbe:
+                        items:
+                          properties:
+                            exec:
+                              items:
+                                type: string
+                              type: array
+                            failureThreshold:
+                              format: int64
+                              type: integer
+                            httpGet:
+                              items:
+                                properties:
+                                  path:
+                                    type: string
+                                  port:
+                                    format: int64
+                                    type: integer
+                                  scheme:
+                                    type: string
+                                type: object
+                              type: array
+                            initialDelaySeconds:
+                              format: int64
+                              type: integer
+                            periodSeconds:
+                              format: int64
+                              type: integer
+                            successThreshold:
+                              format: int64
+                              type: integer
+                            timeoutSeconds:
+                              format: int64
+                              type: integer
+                          type: object
+                        maxItems: 1
+                        type: array
+                      memory:
+                        format: float
+                        type: number
+                      name:
+                        type: string
+                      port:
+                        description: Deprecated
+                        format: int64
+                        type: integer
+                      ports:
+                        items:
+                          properties:
+                            port:
+                              format: int64
+                              type: integer
+                            protocol:
+                              type: string
+                          type: object
+                        type: array
+                      protocol:
+                        description: Deprecated
+                        type: string
+                      readinessProbe:
+                        items:
+                          properties:
+                            exec:
+                              items:
+                                type: string
+                              type: array
+                            failureThreshold:
+                              format: int64
+                              type: integer
+                            httpGet:
+                              items:
+                                properties:
+                                  path:
+                                    type: string
+                                  port:
+                                    format: int64
+                                    type: integer
+                                  scheme:
+                                    type: string
+                                type: object
+                              type: array
+                            initialDelaySeconds:
+                              format: int64
+                              type: integer
+                            periodSeconds:
+                              format: int64
+                              type: integer
+                            successThreshold:
+                              format: int64
+                              type: integer
+                            timeoutSeconds:
+                              format: int64
+                              type: integer
+                          type: object
+                        maxItems: 1
+                        type: array
+                      volume:
+                        items:
+                          properties:
+                            mountPath:
+                              type: string
+                            name:
+                              type: string
+                            readOnly:
+                              type: boolean
+                            shareName:
+                              type: string
+                            storageAccountName:
+                              type: string
+                          required:
+                          - mountPath
+                          - name
+                          - shareName
+                          - storageAccountName
+                          type: object
+                        type: array
+                    required:
+                    - cpu
+                    - image
+                    - memory
+                    - name
+                    type: object
+                  type: array
+                diagnostics:
+                  items:
+                    properties:
+                      logAnalytics:
+                        items:
+                          properties:
+                            logType:
+                              type: string
+                            metadata:
+                              additionalProperties:
+                                type: string
+                              type: object
+                            workspaceID:
+                              type: string
+                          required:
+                          - workspaceID
+                          type: object
+                        maxItems: 1
+                        type: array
+                    required:
+                    - logAnalytics
+                    type: object
+                  maxItems: 1
+                  type: array
+                dnsNameLabel:
+                  type: string
+                fqdn:
+                  type: string
+                id:
+                  type: string
+                identity:
+                  items:
+                    properties:
+                      identityIDS:
+                        items:
+                          type: string
+                        minItems: 1
+                        type: array
+                      principalID:
+                        type: string
+                      type:
+                        type: string
+                    required:
+                    - type
+                    type: object
+                  maxItems: 1
+                  type: array
+                imageRegistryCredential:
+                  items:
+                    properties:
+                      server:
+                        type: string
+                      username:
+                        type: string
+                    required:
+                    - server
+                    - username
+                    type: object
+                  type: array
+                ipAddress:
+                  type: string
+                ipAddressType:
+                  type: string
+                location:
+                  type: string
+                name:
+                  type: string
+                networkProfileID:
+                  type: string
+                osType:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                restartPolicy:
+                  type: string
+                secretRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+              required:
+              - container
+              - location
+              - name
+              - osType
+              - providerRef
+              - resourceGroupName
+              type: object
+            phase:
+              type: string
+            state:
+              properties:
+                lineage:
+                  type: string
+                serial:
+                  format: int64
+                  type: integer
+                terraform_version:
+                  type: string
+                version:
+                  format: int64
+                  type: integer
+              required:
+              - lineage
+              - serial
+              - terraform_version
+              - version
+              type: object
+          type: object
+      type: object
+  version: v1alpha1
+  versions:
+  - name: v1alpha1
+    served: true
+    storage: true

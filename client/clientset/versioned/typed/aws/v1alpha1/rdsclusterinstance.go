@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type RdsClusterInstancesGetter interface {
 
 // RdsClusterInstanceInterface has methods to work with RdsClusterInstance resources.
 type RdsClusterInstanceInterface interface {
-	Create(*v1alpha1.RdsClusterInstance) (*v1alpha1.RdsClusterInstance, error)
-	Update(*v1alpha1.RdsClusterInstance) (*v1alpha1.RdsClusterInstance, error)
-	UpdateStatus(*v1alpha1.RdsClusterInstance) (*v1alpha1.RdsClusterInstance, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.RdsClusterInstance, error)
-	List(opts v1.ListOptions) (*v1alpha1.RdsClusterInstanceList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RdsClusterInstance, err error)
+	Create(ctx context.Context, rdsClusterInstance *v1alpha1.RdsClusterInstance, opts v1.CreateOptions) (*v1alpha1.RdsClusterInstance, error)
+	Update(ctx context.Context, rdsClusterInstance *v1alpha1.RdsClusterInstance, opts v1.UpdateOptions) (*v1alpha1.RdsClusterInstance, error)
+	UpdateStatus(ctx context.Context, rdsClusterInstance *v1alpha1.RdsClusterInstance, opts v1.UpdateOptions) (*v1alpha1.RdsClusterInstance, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.RdsClusterInstance, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.RdsClusterInstanceList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RdsClusterInstance, err error)
 	RdsClusterInstanceExpansion
 }
 
@@ -65,20 +66,20 @@ func newRdsClusterInstances(c *AwsV1alpha1Client, namespace string) *rdsClusterI
 }
 
 // Get takes name of the rdsClusterInstance, and returns the corresponding rdsClusterInstance object, and an error if there is any.
-func (c *rdsClusterInstances) Get(name string, options v1.GetOptions) (result *v1alpha1.RdsClusterInstance, err error) {
+func (c *rdsClusterInstances) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.RdsClusterInstance, err error) {
 	result = &v1alpha1.RdsClusterInstance{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("rdsclusterinstances").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of RdsClusterInstances that match those selectors.
-func (c *rdsClusterInstances) List(opts v1.ListOptions) (result *v1alpha1.RdsClusterInstanceList, err error) {
+func (c *rdsClusterInstances) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RdsClusterInstanceList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *rdsClusterInstances) List(opts v1.ListOptions) (result *v1alpha1.RdsClu
 		Resource("rdsclusterinstances").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested rdsClusterInstances.
-func (c *rdsClusterInstances) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *rdsClusterInstances) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *rdsClusterInstances) Watch(opts v1.ListOptions) (watch.Interface, error
 		Resource("rdsclusterinstances").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a rdsClusterInstance and creates it.  Returns the server's representation of the rdsClusterInstance, and an error, if there is any.
-func (c *rdsClusterInstances) Create(rdsClusterInstance *v1alpha1.RdsClusterInstance) (result *v1alpha1.RdsClusterInstance, err error) {
+func (c *rdsClusterInstances) Create(ctx context.Context, rdsClusterInstance *v1alpha1.RdsClusterInstance, opts v1.CreateOptions) (result *v1alpha1.RdsClusterInstance, err error) {
 	result = &v1alpha1.RdsClusterInstance{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("rdsclusterinstances").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(rdsClusterInstance).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a rdsClusterInstance and updates it. Returns the server's representation of the rdsClusterInstance, and an error, if there is any.
-func (c *rdsClusterInstances) Update(rdsClusterInstance *v1alpha1.RdsClusterInstance) (result *v1alpha1.RdsClusterInstance, err error) {
+func (c *rdsClusterInstances) Update(ctx context.Context, rdsClusterInstance *v1alpha1.RdsClusterInstance, opts v1.UpdateOptions) (result *v1alpha1.RdsClusterInstance, err error) {
 	result = &v1alpha1.RdsClusterInstance{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("rdsclusterinstances").
 		Name(rdsClusterInstance.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(rdsClusterInstance).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *rdsClusterInstances) UpdateStatus(rdsClusterInstance *v1alpha1.RdsClusterInstance) (result *v1alpha1.RdsClusterInstance, err error) {
+func (c *rdsClusterInstances) UpdateStatus(ctx context.Context, rdsClusterInstance *v1alpha1.RdsClusterInstance, opts v1.UpdateOptions) (result *v1alpha1.RdsClusterInstance, err error) {
 	result = &v1alpha1.RdsClusterInstance{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("rdsclusterinstances").
 		Name(rdsClusterInstance.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(rdsClusterInstance).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the rdsClusterInstance and deletes it. Returns an error if one occurs.
-func (c *rdsClusterInstances) Delete(name string, options *v1.DeleteOptions) error {
+func (c *rdsClusterInstances) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("rdsclusterinstances").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *rdsClusterInstances) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *rdsClusterInstances) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("rdsclusterinstances").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched rdsClusterInstance.
-func (c *rdsClusterInstances) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RdsClusterInstance, err error) {
+func (c *rdsClusterInstances) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RdsClusterInstance, err error) {
 	result = &v1alpha1.RdsClusterInstance{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("rdsclusterinstances").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

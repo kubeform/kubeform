@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computeregionbackendservicesResource = schema.GroupVersionResource{Group: "g
 var computeregionbackendservicesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeRegionBackendService"}
 
 // Get takes name of the computeRegionBackendService, and returns the corresponding computeRegionBackendService object, and an error if there is any.
-func (c *FakeComputeRegionBackendServices) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeRegionBackendService, err error) {
+func (c *FakeComputeRegionBackendServices) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeRegionBackendService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computeregionbackendservicesResource, c.ns, name), &v1alpha1.ComputeRegionBackendService{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeRegionBackendServices) Get(name string, options v1.GetOption
 }
 
 // List takes label and field selectors, and returns the list of ComputeRegionBackendServices that match those selectors.
-func (c *FakeComputeRegionBackendServices) List(opts v1.ListOptions) (result *v1alpha1.ComputeRegionBackendServiceList, err error) {
+func (c *FakeComputeRegionBackendServices) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeRegionBackendServiceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computeregionbackendservicesResource, computeregionbackendservicesKind, c.ns, opts), &v1alpha1.ComputeRegionBackendServiceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeRegionBackendServices) List(opts v1.ListOptions) (result *v1
 }
 
 // Watch returns a watch.Interface that watches the requested computeRegionBackendServices.
-func (c *FakeComputeRegionBackendServices) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeRegionBackendServices) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computeregionbackendservicesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeRegionBackendService and creates it.  Returns the server's representation of the computeRegionBackendService, and an error, if there is any.
-func (c *FakeComputeRegionBackendServices) Create(computeRegionBackendService *v1alpha1.ComputeRegionBackendService) (result *v1alpha1.ComputeRegionBackendService, err error) {
+func (c *FakeComputeRegionBackendServices) Create(ctx context.Context, computeRegionBackendService *v1alpha1.ComputeRegionBackendService, opts v1.CreateOptions) (result *v1alpha1.ComputeRegionBackendService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computeregionbackendservicesResource, c.ns, computeRegionBackendService), &v1alpha1.ComputeRegionBackendService{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeRegionBackendServices) Create(computeRegionBackendService *v
 }
 
 // Update takes the representation of a computeRegionBackendService and updates it. Returns the server's representation of the computeRegionBackendService, and an error, if there is any.
-func (c *FakeComputeRegionBackendServices) Update(computeRegionBackendService *v1alpha1.ComputeRegionBackendService) (result *v1alpha1.ComputeRegionBackendService, err error) {
+func (c *FakeComputeRegionBackendServices) Update(ctx context.Context, computeRegionBackendService *v1alpha1.ComputeRegionBackendService, opts v1.UpdateOptions) (result *v1alpha1.ComputeRegionBackendService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computeregionbackendservicesResource, c.ns, computeRegionBackendService), &v1alpha1.ComputeRegionBackendService{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeRegionBackendServices) Update(computeRegionBackendService *v
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeRegionBackendServices) UpdateStatus(computeRegionBackendService *v1alpha1.ComputeRegionBackendService) (*v1alpha1.ComputeRegionBackendService, error) {
+func (c *FakeComputeRegionBackendServices) UpdateStatus(ctx context.Context, computeRegionBackendService *v1alpha1.ComputeRegionBackendService, opts v1.UpdateOptions) (*v1alpha1.ComputeRegionBackendService, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computeregionbackendservicesResource, "status", c.ns, computeRegionBackendService), &v1alpha1.ComputeRegionBackendService{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeRegionBackendServices) UpdateStatus(computeRegionBackendServ
 }
 
 // Delete takes name of the computeRegionBackendService and deletes it. Returns an error if one occurs.
-func (c *FakeComputeRegionBackendServices) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeRegionBackendServices) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computeregionbackendservicesResource, c.ns, name), &v1alpha1.ComputeRegionBackendService{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeRegionBackendServices) Delete(name string, options *v1.Delet
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeRegionBackendServices) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computeregionbackendservicesResource, c.ns, listOptions)
+func (c *FakeComputeRegionBackendServices) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computeregionbackendservicesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeRegionBackendServiceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeRegionBackendService.
-func (c *FakeComputeRegionBackendServices) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeRegionBackendService, err error) {
+func (c *FakeComputeRegionBackendServices) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeRegionBackendService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computeregionbackendservicesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeRegionBackendService{})
 

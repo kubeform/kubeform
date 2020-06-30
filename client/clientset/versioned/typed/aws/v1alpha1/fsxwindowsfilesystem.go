@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type FsxWindowsFileSystemsGetter interface {
 
 // FsxWindowsFileSystemInterface has methods to work with FsxWindowsFileSystem resources.
 type FsxWindowsFileSystemInterface interface {
-	Create(*v1alpha1.FsxWindowsFileSystem) (*v1alpha1.FsxWindowsFileSystem, error)
-	Update(*v1alpha1.FsxWindowsFileSystem) (*v1alpha1.FsxWindowsFileSystem, error)
-	UpdateStatus(*v1alpha1.FsxWindowsFileSystem) (*v1alpha1.FsxWindowsFileSystem, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.FsxWindowsFileSystem, error)
-	List(opts v1.ListOptions) (*v1alpha1.FsxWindowsFileSystemList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.FsxWindowsFileSystem, err error)
+	Create(ctx context.Context, fsxWindowsFileSystem *v1alpha1.FsxWindowsFileSystem, opts v1.CreateOptions) (*v1alpha1.FsxWindowsFileSystem, error)
+	Update(ctx context.Context, fsxWindowsFileSystem *v1alpha1.FsxWindowsFileSystem, opts v1.UpdateOptions) (*v1alpha1.FsxWindowsFileSystem, error)
+	UpdateStatus(ctx context.Context, fsxWindowsFileSystem *v1alpha1.FsxWindowsFileSystem, opts v1.UpdateOptions) (*v1alpha1.FsxWindowsFileSystem, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.FsxWindowsFileSystem, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.FsxWindowsFileSystemList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.FsxWindowsFileSystem, err error)
 	FsxWindowsFileSystemExpansion
 }
 
@@ -65,20 +66,20 @@ func newFsxWindowsFileSystems(c *AwsV1alpha1Client, namespace string) *fsxWindow
 }
 
 // Get takes name of the fsxWindowsFileSystem, and returns the corresponding fsxWindowsFileSystem object, and an error if there is any.
-func (c *fsxWindowsFileSystems) Get(name string, options v1.GetOptions) (result *v1alpha1.FsxWindowsFileSystem, err error) {
+func (c *fsxWindowsFileSystems) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.FsxWindowsFileSystem, err error) {
 	result = &v1alpha1.FsxWindowsFileSystem{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("fsxwindowsfilesystems").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of FsxWindowsFileSystems that match those selectors.
-func (c *fsxWindowsFileSystems) List(opts v1.ListOptions) (result *v1alpha1.FsxWindowsFileSystemList, err error) {
+func (c *fsxWindowsFileSystems) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.FsxWindowsFileSystemList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *fsxWindowsFileSystems) List(opts v1.ListOptions) (result *v1alpha1.FsxW
 		Resource("fsxwindowsfilesystems").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested fsxWindowsFileSystems.
-func (c *fsxWindowsFileSystems) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *fsxWindowsFileSystems) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *fsxWindowsFileSystems) Watch(opts v1.ListOptions) (watch.Interface, err
 		Resource("fsxwindowsfilesystems").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a fsxWindowsFileSystem and creates it.  Returns the server's representation of the fsxWindowsFileSystem, and an error, if there is any.
-func (c *fsxWindowsFileSystems) Create(fsxWindowsFileSystem *v1alpha1.FsxWindowsFileSystem) (result *v1alpha1.FsxWindowsFileSystem, err error) {
+func (c *fsxWindowsFileSystems) Create(ctx context.Context, fsxWindowsFileSystem *v1alpha1.FsxWindowsFileSystem, opts v1.CreateOptions) (result *v1alpha1.FsxWindowsFileSystem, err error) {
 	result = &v1alpha1.FsxWindowsFileSystem{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("fsxwindowsfilesystems").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(fsxWindowsFileSystem).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a fsxWindowsFileSystem and updates it. Returns the server's representation of the fsxWindowsFileSystem, and an error, if there is any.
-func (c *fsxWindowsFileSystems) Update(fsxWindowsFileSystem *v1alpha1.FsxWindowsFileSystem) (result *v1alpha1.FsxWindowsFileSystem, err error) {
+func (c *fsxWindowsFileSystems) Update(ctx context.Context, fsxWindowsFileSystem *v1alpha1.FsxWindowsFileSystem, opts v1.UpdateOptions) (result *v1alpha1.FsxWindowsFileSystem, err error) {
 	result = &v1alpha1.FsxWindowsFileSystem{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("fsxwindowsfilesystems").
 		Name(fsxWindowsFileSystem.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(fsxWindowsFileSystem).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *fsxWindowsFileSystems) UpdateStatus(fsxWindowsFileSystem *v1alpha1.FsxWindowsFileSystem) (result *v1alpha1.FsxWindowsFileSystem, err error) {
+func (c *fsxWindowsFileSystems) UpdateStatus(ctx context.Context, fsxWindowsFileSystem *v1alpha1.FsxWindowsFileSystem, opts v1.UpdateOptions) (result *v1alpha1.FsxWindowsFileSystem, err error) {
 	result = &v1alpha1.FsxWindowsFileSystem{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("fsxwindowsfilesystems").
 		Name(fsxWindowsFileSystem.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(fsxWindowsFileSystem).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the fsxWindowsFileSystem and deletes it. Returns an error if one occurs.
-func (c *fsxWindowsFileSystems) Delete(name string, options *v1.DeleteOptions) error {
+func (c *fsxWindowsFileSystems) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("fsxwindowsfilesystems").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *fsxWindowsFileSystems) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *fsxWindowsFileSystems) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("fsxwindowsfilesystems").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched fsxWindowsFileSystem.
-func (c *fsxWindowsFileSystems) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.FsxWindowsFileSystem, err error) {
+func (c *fsxWindowsFileSystems) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.FsxWindowsFileSystem, err error) {
 	result = &v1alpha1.FsxWindowsFileSystem{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("fsxwindowsfilesystems").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

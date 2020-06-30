@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cloudfrontpublickeysResource = schema.GroupVersionResource{Group: "aws.kubef
 var cloudfrontpublickeysKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "CloudfrontPublicKey"}
 
 // Get takes name of the cloudfrontPublicKey, and returns the corresponding cloudfrontPublicKey object, and an error if there is any.
-func (c *FakeCloudfrontPublicKeys) Get(name string, options v1.GetOptions) (result *v1alpha1.CloudfrontPublicKey, err error) {
+func (c *FakeCloudfrontPublicKeys) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CloudfrontPublicKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cloudfrontpublickeysResource, c.ns, name), &v1alpha1.CloudfrontPublicKey{})
 
@@ -51,7 +53,7 @@ func (c *FakeCloudfrontPublicKeys) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of CloudfrontPublicKeys that match those selectors.
-func (c *FakeCloudfrontPublicKeys) List(opts v1.ListOptions) (result *v1alpha1.CloudfrontPublicKeyList, err error) {
+func (c *FakeCloudfrontPublicKeys) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CloudfrontPublicKeyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cloudfrontpublickeysResource, cloudfrontpublickeysKind, c.ns, opts), &v1alpha1.CloudfrontPublicKeyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCloudfrontPublicKeys) List(opts v1.ListOptions) (result *v1alpha1.C
 }
 
 // Watch returns a watch.Interface that watches the requested cloudfrontPublicKeys.
-func (c *FakeCloudfrontPublicKeys) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCloudfrontPublicKeys) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cloudfrontpublickeysResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cloudfrontPublicKey and creates it.  Returns the server's representation of the cloudfrontPublicKey, and an error, if there is any.
-func (c *FakeCloudfrontPublicKeys) Create(cloudfrontPublicKey *v1alpha1.CloudfrontPublicKey) (result *v1alpha1.CloudfrontPublicKey, err error) {
+func (c *FakeCloudfrontPublicKeys) Create(ctx context.Context, cloudfrontPublicKey *v1alpha1.CloudfrontPublicKey, opts v1.CreateOptions) (result *v1alpha1.CloudfrontPublicKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cloudfrontpublickeysResource, c.ns, cloudfrontPublicKey), &v1alpha1.CloudfrontPublicKey{})
 
@@ -91,7 +93,7 @@ func (c *FakeCloudfrontPublicKeys) Create(cloudfrontPublicKey *v1alpha1.Cloudfro
 }
 
 // Update takes the representation of a cloudfrontPublicKey and updates it. Returns the server's representation of the cloudfrontPublicKey, and an error, if there is any.
-func (c *FakeCloudfrontPublicKeys) Update(cloudfrontPublicKey *v1alpha1.CloudfrontPublicKey) (result *v1alpha1.CloudfrontPublicKey, err error) {
+func (c *FakeCloudfrontPublicKeys) Update(ctx context.Context, cloudfrontPublicKey *v1alpha1.CloudfrontPublicKey, opts v1.UpdateOptions) (result *v1alpha1.CloudfrontPublicKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cloudfrontpublickeysResource, c.ns, cloudfrontPublicKey), &v1alpha1.CloudfrontPublicKey{})
 
@@ -103,7 +105,7 @@ func (c *FakeCloudfrontPublicKeys) Update(cloudfrontPublicKey *v1alpha1.Cloudfro
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCloudfrontPublicKeys) UpdateStatus(cloudfrontPublicKey *v1alpha1.CloudfrontPublicKey) (*v1alpha1.CloudfrontPublicKey, error) {
+func (c *FakeCloudfrontPublicKeys) UpdateStatus(ctx context.Context, cloudfrontPublicKey *v1alpha1.CloudfrontPublicKey, opts v1.UpdateOptions) (*v1alpha1.CloudfrontPublicKey, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cloudfrontpublickeysResource, "status", c.ns, cloudfrontPublicKey), &v1alpha1.CloudfrontPublicKey{})
 
@@ -114,7 +116,7 @@ func (c *FakeCloudfrontPublicKeys) UpdateStatus(cloudfrontPublicKey *v1alpha1.Cl
 }
 
 // Delete takes name of the cloudfrontPublicKey and deletes it. Returns an error if one occurs.
-func (c *FakeCloudfrontPublicKeys) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCloudfrontPublicKeys) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cloudfrontpublickeysResource, c.ns, name), &v1alpha1.CloudfrontPublicKey{})
 
@@ -122,15 +124,15 @@ func (c *FakeCloudfrontPublicKeys) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCloudfrontPublicKeys) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cloudfrontpublickeysResource, c.ns, listOptions)
+func (c *FakeCloudfrontPublicKeys) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cloudfrontpublickeysResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CloudfrontPublicKeyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cloudfrontPublicKey.
-func (c *FakeCloudfrontPublicKeys) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CloudfrontPublicKey, err error) {
+func (c *FakeCloudfrontPublicKeys) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CloudfrontPublicKey, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cloudfrontpublickeysResource, c.ns, name, pt, data, subresources...), &v1alpha1.CloudfrontPublicKey{})
 

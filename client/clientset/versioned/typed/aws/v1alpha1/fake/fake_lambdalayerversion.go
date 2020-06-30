@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var lambdalayerversionsResource = schema.GroupVersionResource{Group: "aws.kubefo
 var lambdalayerversionsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "LambdaLayerVersion"}
 
 // Get takes name of the lambdaLayerVersion, and returns the corresponding lambdaLayerVersion object, and an error if there is any.
-func (c *FakeLambdaLayerVersions) Get(name string, options v1.GetOptions) (result *v1alpha1.LambdaLayerVersion, err error) {
+func (c *FakeLambdaLayerVersions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LambdaLayerVersion, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(lambdalayerversionsResource, c.ns, name), &v1alpha1.LambdaLayerVersion{})
 
@@ -51,7 +53,7 @@ func (c *FakeLambdaLayerVersions) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of LambdaLayerVersions that match those selectors.
-func (c *FakeLambdaLayerVersions) List(opts v1.ListOptions) (result *v1alpha1.LambdaLayerVersionList, err error) {
+func (c *FakeLambdaLayerVersions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LambdaLayerVersionList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(lambdalayerversionsResource, lambdalayerversionsKind, c.ns, opts), &v1alpha1.LambdaLayerVersionList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLambdaLayerVersions) List(opts v1.ListOptions) (result *v1alpha1.La
 }
 
 // Watch returns a watch.Interface that watches the requested lambdaLayerVersions.
-func (c *FakeLambdaLayerVersions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLambdaLayerVersions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(lambdalayerversionsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a lambdaLayerVersion and creates it.  Returns the server's representation of the lambdaLayerVersion, and an error, if there is any.
-func (c *FakeLambdaLayerVersions) Create(lambdaLayerVersion *v1alpha1.LambdaLayerVersion) (result *v1alpha1.LambdaLayerVersion, err error) {
+func (c *FakeLambdaLayerVersions) Create(ctx context.Context, lambdaLayerVersion *v1alpha1.LambdaLayerVersion, opts v1.CreateOptions) (result *v1alpha1.LambdaLayerVersion, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(lambdalayerversionsResource, c.ns, lambdaLayerVersion), &v1alpha1.LambdaLayerVersion{})
 
@@ -91,7 +93,7 @@ func (c *FakeLambdaLayerVersions) Create(lambdaLayerVersion *v1alpha1.LambdaLaye
 }
 
 // Update takes the representation of a lambdaLayerVersion and updates it. Returns the server's representation of the lambdaLayerVersion, and an error, if there is any.
-func (c *FakeLambdaLayerVersions) Update(lambdaLayerVersion *v1alpha1.LambdaLayerVersion) (result *v1alpha1.LambdaLayerVersion, err error) {
+func (c *FakeLambdaLayerVersions) Update(ctx context.Context, lambdaLayerVersion *v1alpha1.LambdaLayerVersion, opts v1.UpdateOptions) (result *v1alpha1.LambdaLayerVersion, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(lambdalayerversionsResource, c.ns, lambdaLayerVersion), &v1alpha1.LambdaLayerVersion{})
 
@@ -103,7 +105,7 @@ func (c *FakeLambdaLayerVersions) Update(lambdaLayerVersion *v1alpha1.LambdaLaye
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLambdaLayerVersions) UpdateStatus(lambdaLayerVersion *v1alpha1.LambdaLayerVersion) (*v1alpha1.LambdaLayerVersion, error) {
+func (c *FakeLambdaLayerVersions) UpdateStatus(ctx context.Context, lambdaLayerVersion *v1alpha1.LambdaLayerVersion, opts v1.UpdateOptions) (*v1alpha1.LambdaLayerVersion, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(lambdalayerversionsResource, "status", c.ns, lambdaLayerVersion), &v1alpha1.LambdaLayerVersion{})
 
@@ -114,7 +116,7 @@ func (c *FakeLambdaLayerVersions) UpdateStatus(lambdaLayerVersion *v1alpha1.Lamb
 }
 
 // Delete takes name of the lambdaLayerVersion and deletes it. Returns an error if one occurs.
-func (c *FakeLambdaLayerVersions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLambdaLayerVersions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(lambdalayerversionsResource, c.ns, name), &v1alpha1.LambdaLayerVersion{})
 
@@ -122,15 +124,15 @@ func (c *FakeLambdaLayerVersions) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLambdaLayerVersions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(lambdalayerversionsResource, c.ns, listOptions)
+func (c *FakeLambdaLayerVersions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(lambdalayerversionsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LambdaLayerVersionList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched lambdaLayerVersion.
-func (c *FakeLambdaLayerVersions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LambdaLayerVersion, err error) {
+func (c *FakeLambdaLayerVersions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LambdaLayerVersion, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(lambdalayerversionsResource, c.ns, name, pt, data, subresources...), &v1alpha1.LambdaLayerVersion{})
 

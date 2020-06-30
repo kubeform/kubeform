@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var expressroutecircuitsResource = schema.GroupVersionResource{Group: "azurerm.k
 var expressroutecircuitsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "ExpressRouteCircuit"}
 
 // Get takes name of the expressRouteCircuit, and returns the corresponding expressRouteCircuit object, and an error if there is any.
-func (c *FakeExpressRouteCircuits) Get(name string, options v1.GetOptions) (result *v1alpha1.ExpressRouteCircuit, err error) {
+func (c *FakeExpressRouteCircuits) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ExpressRouteCircuit, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(expressroutecircuitsResource, c.ns, name), &v1alpha1.ExpressRouteCircuit{})
 
@@ -51,7 +53,7 @@ func (c *FakeExpressRouteCircuits) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of ExpressRouteCircuits that match those selectors.
-func (c *FakeExpressRouteCircuits) List(opts v1.ListOptions) (result *v1alpha1.ExpressRouteCircuitList, err error) {
+func (c *FakeExpressRouteCircuits) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ExpressRouteCircuitList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(expressroutecircuitsResource, expressroutecircuitsKind, c.ns, opts), &v1alpha1.ExpressRouteCircuitList{})
 
@@ -73,14 +75,14 @@ func (c *FakeExpressRouteCircuits) List(opts v1.ListOptions) (result *v1alpha1.E
 }
 
 // Watch returns a watch.Interface that watches the requested expressRouteCircuits.
-func (c *FakeExpressRouteCircuits) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeExpressRouteCircuits) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(expressroutecircuitsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a expressRouteCircuit and creates it.  Returns the server's representation of the expressRouteCircuit, and an error, if there is any.
-func (c *FakeExpressRouteCircuits) Create(expressRouteCircuit *v1alpha1.ExpressRouteCircuit) (result *v1alpha1.ExpressRouteCircuit, err error) {
+func (c *FakeExpressRouteCircuits) Create(ctx context.Context, expressRouteCircuit *v1alpha1.ExpressRouteCircuit, opts v1.CreateOptions) (result *v1alpha1.ExpressRouteCircuit, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(expressroutecircuitsResource, c.ns, expressRouteCircuit), &v1alpha1.ExpressRouteCircuit{})
 
@@ -91,7 +93,7 @@ func (c *FakeExpressRouteCircuits) Create(expressRouteCircuit *v1alpha1.ExpressR
 }
 
 // Update takes the representation of a expressRouteCircuit and updates it. Returns the server's representation of the expressRouteCircuit, and an error, if there is any.
-func (c *FakeExpressRouteCircuits) Update(expressRouteCircuit *v1alpha1.ExpressRouteCircuit) (result *v1alpha1.ExpressRouteCircuit, err error) {
+func (c *FakeExpressRouteCircuits) Update(ctx context.Context, expressRouteCircuit *v1alpha1.ExpressRouteCircuit, opts v1.UpdateOptions) (result *v1alpha1.ExpressRouteCircuit, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(expressroutecircuitsResource, c.ns, expressRouteCircuit), &v1alpha1.ExpressRouteCircuit{})
 
@@ -103,7 +105,7 @@ func (c *FakeExpressRouteCircuits) Update(expressRouteCircuit *v1alpha1.ExpressR
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeExpressRouteCircuits) UpdateStatus(expressRouteCircuit *v1alpha1.ExpressRouteCircuit) (*v1alpha1.ExpressRouteCircuit, error) {
+func (c *FakeExpressRouteCircuits) UpdateStatus(ctx context.Context, expressRouteCircuit *v1alpha1.ExpressRouteCircuit, opts v1.UpdateOptions) (*v1alpha1.ExpressRouteCircuit, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(expressroutecircuitsResource, "status", c.ns, expressRouteCircuit), &v1alpha1.ExpressRouteCircuit{})
 
@@ -114,7 +116,7 @@ func (c *FakeExpressRouteCircuits) UpdateStatus(expressRouteCircuit *v1alpha1.Ex
 }
 
 // Delete takes name of the expressRouteCircuit and deletes it. Returns an error if one occurs.
-func (c *FakeExpressRouteCircuits) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeExpressRouteCircuits) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(expressroutecircuitsResource, c.ns, name), &v1alpha1.ExpressRouteCircuit{})
 
@@ -122,15 +124,15 @@ func (c *FakeExpressRouteCircuits) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeExpressRouteCircuits) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(expressroutecircuitsResource, c.ns, listOptions)
+func (c *FakeExpressRouteCircuits) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(expressroutecircuitsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ExpressRouteCircuitList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched expressRouteCircuit.
-func (c *FakeExpressRouteCircuits) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ExpressRouteCircuit, err error) {
+func (c *FakeExpressRouteCircuits) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ExpressRouteCircuit, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(expressroutecircuitsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ExpressRouteCircuit{})
 

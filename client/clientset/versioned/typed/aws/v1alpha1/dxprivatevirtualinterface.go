@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type DxPrivateVirtualInterfacesGetter interface {
 
 // DxPrivateVirtualInterfaceInterface has methods to work with DxPrivateVirtualInterface resources.
 type DxPrivateVirtualInterfaceInterface interface {
-	Create(*v1alpha1.DxPrivateVirtualInterface) (*v1alpha1.DxPrivateVirtualInterface, error)
-	Update(*v1alpha1.DxPrivateVirtualInterface) (*v1alpha1.DxPrivateVirtualInterface, error)
-	UpdateStatus(*v1alpha1.DxPrivateVirtualInterface) (*v1alpha1.DxPrivateVirtualInterface, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.DxPrivateVirtualInterface, error)
-	List(opts v1.ListOptions) (*v1alpha1.DxPrivateVirtualInterfaceList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DxPrivateVirtualInterface, err error)
+	Create(ctx context.Context, dxPrivateVirtualInterface *v1alpha1.DxPrivateVirtualInterface, opts v1.CreateOptions) (*v1alpha1.DxPrivateVirtualInterface, error)
+	Update(ctx context.Context, dxPrivateVirtualInterface *v1alpha1.DxPrivateVirtualInterface, opts v1.UpdateOptions) (*v1alpha1.DxPrivateVirtualInterface, error)
+	UpdateStatus(ctx context.Context, dxPrivateVirtualInterface *v1alpha1.DxPrivateVirtualInterface, opts v1.UpdateOptions) (*v1alpha1.DxPrivateVirtualInterface, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.DxPrivateVirtualInterface, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.DxPrivateVirtualInterfaceList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DxPrivateVirtualInterface, err error)
 	DxPrivateVirtualInterfaceExpansion
 }
 
@@ -65,20 +66,20 @@ func newDxPrivateVirtualInterfaces(c *AwsV1alpha1Client, namespace string) *dxPr
 }
 
 // Get takes name of the dxPrivateVirtualInterface, and returns the corresponding dxPrivateVirtualInterface object, and an error if there is any.
-func (c *dxPrivateVirtualInterfaces) Get(name string, options v1.GetOptions) (result *v1alpha1.DxPrivateVirtualInterface, err error) {
+func (c *dxPrivateVirtualInterfaces) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DxPrivateVirtualInterface, err error) {
 	result = &v1alpha1.DxPrivateVirtualInterface{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("dxprivatevirtualinterfaces").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of DxPrivateVirtualInterfaces that match those selectors.
-func (c *dxPrivateVirtualInterfaces) List(opts v1.ListOptions) (result *v1alpha1.DxPrivateVirtualInterfaceList, err error) {
+func (c *dxPrivateVirtualInterfaces) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DxPrivateVirtualInterfaceList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *dxPrivateVirtualInterfaces) List(opts v1.ListOptions) (result *v1alpha1
 		Resource("dxprivatevirtualinterfaces").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested dxPrivateVirtualInterfaces.
-func (c *dxPrivateVirtualInterfaces) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *dxPrivateVirtualInterfaces) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *dxPrivateVirtualInterfaces) Watch(opts v1.ListOptions) (watch.Interface
 		Resource("dxprivatevirtualinterfaces").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a dxPrivateVirtualInterface and creates it.  Returns the server's representation of the dxPrivateVirtualInterface, and an error, if there is any.
-func (c *dxPrivateVirtualInterfaces) Create(dxPrivateVirtualInterface *v1alpha1.DxPrivateVirtualInterface) (result *v1alpha1.DxPrivateVirtualInterface, err error) {
+func (c *dxPrivateVirtualInterfaces) Create(ctx context.Context, dxPrivateVirtualInterface *v1alpha1.DxPrivateVirtualInterface, opts v1.CreateOptions) (result *v1alpha1.DxPrivateVirtualInterface, err error) {
 	result = &v1alpha1.DxPrivateVirtualInterface{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("dxprivatevirtualinterfaces").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dxPrivateVirtualInterface).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a dxPrivateVirtualInterface and updates it. Returns the server's representation of the dxPrivateVirtualInterface, and an error, if there is any.
-func (c *dxPrivateVirtualInterfaces) Update(dxPrivateVirtualInterface *v1alpha1.DxPrivateVirtualInterface) (result *v1alpha1.DxPrivateVirtualInterface, err error) {
+func (c *dxPrivateVirtualInterfaces) Update(ctx context.Context, dxPrivateVirtualInterface *v1alpha1.DxPrivateVirtualInterface, opts v1.UpdateOptions) (result *v1alpha1.DxPrivateVirtualInterface, err error) {
 	result = &v1alpha1.DxPrivateVirtualInterface{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("dxprivatevirtualinterfaces").
 		Name(dxPrivateVirtualInterface.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dxPrivateVirtualInterface).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *dxPrivateVirtualInterfaces) UpdateStatus(dxPrivateVirtualInterface *v1alpha1.DxPrivateVirtualInterface) (result *v1alpha1.DxPrivateVirtualInterface, err error) {
+func (c *dxPrivateVirtualInterfaces) UpdateStatus(ctx context.Context, dxPrivateVirtualInterface *v1alpha1.DxPrivateVirtualInterface, opts v1.UpdateOptions) (result *v1alpha1.DxPrivateVirtualInterface, err error) {
 	result = &v1alpha1.DxPrivateVirtualInterface{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("dxprivatevirtualinterfaces").
 		Name(dxPrivateVirtualInterface.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dxPrivateVirtualInterface).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the dxPrivateVirtualInterface and deletes it. Returns an error if one occurs.
-func (c *dxPrivateVirtualInterfaces) Delete(name string, options *v1.DeleteOptions) error {
+func (c *dxPrivateVirtualInterfaces) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("dxprivatevirtualinterfaces").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *dxPrivateVirtualInterfaces) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *dxPrivateVirtualInterfaces) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("dxprivatevirtualinterfaces").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched dxPrivateVirtualInterface.
-func (c *dxPrivateVirtualInterfaces) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DxPrivateVirtualInterface, err error) {
+func (c *dxPrivateVirtualInterfaces) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DxPrivateVirtualInterface, err error) {
 	result = &v1alpha1.DxPrivateVirtualInterface{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("dxprivatevirtualinterfaces").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

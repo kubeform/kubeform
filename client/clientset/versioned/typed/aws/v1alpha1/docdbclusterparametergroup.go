@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type DocdbClusterParameterGroupsGetter interface {
 
 // DocdbClusterParameterGroupInterface has methods to work with DocdbClusterParameterGroup resources.
 type DocdbClusterParameterGroupInterface interface {
-	Create(*v1alpha1.DocdbClusterParameterGroup) (*v1alpha1.DocdbClusterParameterGroup, error)
-	Update(*v1alpha1.DocdbClusterParameterGroup) (*v1alpha1.DocdbClusterParameterGroup, error)
-	UpdateStatus(*v1alpha1.DocdbClusterParameterGroup) (*v1alpha1.DocdbClusterParameterGroup, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.DocdbClusterParameterGroup, error)
-	List(opts v1.ListOptions) (*v1alpha1.DocdbClusterParameterGroupList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DocdbClusterParameterGroup, err error)
+	Create(ctx context.Context, docdbClusterParameterGroup *v1alpha1.DocdbClusterParameterGroup, opts v1.CreateOptions) (*v1alpha1.DocdbClusterParameterGroup, error)
+	Update(ctx context.Context, docdbClusterParameterGroup *v1alpha1.DocdbClusterParameterGroup, opts v1.UpdateOptions) (*v1alpha1.DocdbClusterParameterGroup, error)
+	UpdateStatus(ctx context.Context, docdbClusterParameterGroup *v1alpha1.DocdbClusterParameterGroup, opts v1.UpdateOptions) (*v1alpha1.DocdbClusterParameterGroup, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.DocdbClusterParameterGroup, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.DocdbClusterParameterGroupList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DocdbClusterParameterGroup, err error)
 	DocdbClusterParameterGroupExpansion
 }
 
@@ -65,20 +66,20 @@ func newDocdbClusterParameterGroups(c *AwsV1alpha1Client, namespace string) *doc
 }
 
 // Get takes name of the docdbClusterParameterGroup, and returns the corresponding docdbClusterParameterGroup object, and an error if there is any.
-func (c *docdbClusterParameterGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.DocdbClusterParameterGroup, err error) {
+func (c *docdbClusterParameterGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DocdbClusterParameterGroup, err error) {
 	result = &v1alpha1.DocdbClusterParameterGroup{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("docdbclusterparametergroups").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of DocdbClusterParameterGroups that match those selectors.
-func (c *docdbClusterParameterGroups) List(opts v1.ListOptions) (result *v1alpha1.DocdbClusterParameterGroupList, err error) {
+func (c *docdbClusterParameterGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DocdbClusterParameterGroupList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *docdbClusterParameterGroups) List(opts v1.ListOptions) (result *v1alpha
 		Resource("docdbclusterparametergroups").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested docdbClusterParameterGroups.
-func (c *docdbClusterParameterGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *docdbClusterParameterGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *docdbClusterParameterGroups) Watch(opts v1.ListOptions) (watch.Interfac
 		Resource("docdbclusterparametergroups").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a docdbClusterParameterGroup and creates it.  Returns the server's representation of the docdbClusterParameterGroup, and an error, if there is any.
-func (c *docdbClusterParameterGroups) Create(docdbClusterParameterGroup *v1alpha1.DocdbClusterParameterGroup) (result *v1alpha1.DocdbClusterParameterGroup, err error) {
+func (c *docdbClusterParameterGroups) Create(ctx context.Context, docdbClusterParameterGroup *v1alpha1.DocdbClusterParameterGroup, opts v1.CreateOptions) (result *v1alpha1.DocdbClusterParameterGroup, err error) {
 	result = &v1alpha1.DocdbClusterParameterGroup{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("docdbclusterparametergroups").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(docdbClusterParameterGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a docdbClusterParameterGroup and updates it. Returns the server's representation of the docdbClusterParameterGroup, and an error, if there is any.
-func (c *docdbClusterParameterGroups) Update(docdbClusterParameterGroup *v1alpha1.DocdbClusterParameterGroup) (result *v1alpha1.DocdbClusterParameterGroup, err error) {
+func (c *docdbClusterParameterGroups) Update(ctx context.Context, docdbClusterParameterGroup *v1alpha1.DocdbClusterParameterGroup, opts v1.UpdateOptions) (result *v1alpha1.DocdbClusterParameterGroup, err error) {
 	result = &v1alpha1.DocdbClusterParameterGroup{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("docdbclusterparametergroups").
 		Name(docdbClusterParameterGroup.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(docdbClusterParameterGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *docdbClusterParameterGroups) UpdateStatus(docdbClusterParameterGroup *v1alpha1.DocdbClusterParameterGroup) (result *v1alpha1.DocdbClusterParameterGroup, err error) {
+func (c *docdbClusterParameterGroups) UpdateStatus(ctx context.Context, docdbClusterParameterGroup *v1alpha1.DocdbClusterParameterGroup, opts v1.UpdateOptions) (result *v1alpha1.DocdbClusterParameterGroup, err error) {
 	result = &v1alpha1.DocdbClusterParameterGroup{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("docdbclusterparametergroups").
 		Name(docdbClusterParameterGroup.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(docdbClusterParameterGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the docdbClusterParameterGroup and deletes it. Returns an error if one occurs.
-func (c *docdbClusterParameterGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *docdbClusterParameterGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("docdbclusterparametergroups").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *docdbClusterParameterGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *docdbClusterParameterGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("docdbclusterparametergroups").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched docdbClusterParameterGroup.
-func (c *docdbClusterParameterGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DocdbClusterParameterGroup, err error) {
+func (c *docdbClusterParameterGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DocdbClusterParameterGroup, err error) {
 	result = &v1alpha1.DocdbClusterParameterGroup{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("docdbclusterparametergroups").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

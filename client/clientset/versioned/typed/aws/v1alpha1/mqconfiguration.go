@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type MqConfigurationsGetter interface {
 
 // MqConfigurationInterface has methods to work with MqConfiguration resources.
 type MqConfigurationInterface interface {
-	Create(*v1alpha1.MqConfiguration) (*v1alpha1.MqConfiguration, error)
-	Update(*v1alpha1.MqConfiguration) (*v1alpha1.MqConfiguration, error)
-	UpdateStatus(*v1alpha1.MqConfiguration) (*v1alpha1.MqConfiguration, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.MqConfiguration, error)
-	List(opts v1.ListOptions) (*v1alpha1.MqConfigurationList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MqConfiguration, err error)
+	Create(ctx context.Context, mqConfiguration *v1alpha1.MqConfiguration, opts v1.CreateOptions) (*v1alpha1.MqConfiguration, error)
+	Update(ctx context.Context, mqConfiguration *v1alpha1.MqConfiguration, opts v1.UpdateOptions) (*v1alpha1.MqConfiguration, error)
+	UpdateStatus(ctx context.Context, mqConfiguration *v1alpha1.MqConfiguration, opts v1.UpdateOptions) (*v1alpha1.MqConfiguration, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.MqConfiguration, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.MqConfigurationList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MqConfiguration, err error)
 	MqConfigurationExpansion
 }
 
@@ -65,20 +66,20 @@ func newMqConfigurations(c *AwsV1alpha1Client, namespace string) *mqConfiguratio
 }
 
 // Get takes name of the mqConfiguration, and returns the corresponding mqConfiguration object, and an error if there is any.
-func (c *mqConfigurations) Get(name string, options v1.GetOptions) (result *v1alpha1.MqConfiguration, err error) {
+func (c *mqConfigurations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.MqConfiguration, err error) {
 	result = &v1alpha1.MqConfiguration{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("mqconfigurations").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of MqConfigurations that match those selectors.
-func (c *mqConfigurations) List(opts v1.ListOptions) (result *v1alpha1.MqConfigurationList, err error) {
+func (c *mqConfigurations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.MqConfigurationList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *mqConfigurations) List(opts v1.ListOptions) (result *v1alpha1.MqConfigu
 		Resource("mqconfigurations").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested mqConfigurations.
-func (c *mqConfigurations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *mqConfigurations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *mqConfigurations) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("mqconfigurations").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a mqConfiguration and creates it.  Returns the server's representation of the mqConfiguration, and an error, if there is any.
-func (c *mqConfigurations) Create(mqConfiguration *v1alpha1.MqConfiguration) (result *v1alpha1.MqConfiguration, err error) {
+func (c *mqConfigurations) Create(ctx context.Context, mqConfiguration *v1alpha1.MqConfiguration, opts v1.CreateOptions) (result *v1alpha1.MqConfiguration, err error) {
 	result = &v1alpha1.MqConfiguration{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("mqconfigurations").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(mqConfiguration).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a mqConfiguration and updates it. Returns the server's representation of the mqConfiguration, and an error, if there is any.
-func (c *mqConfigurations) Update(mqConfiguration *v1alpha1.MqConfiguration) (result *v1alpha1.MqConfiguration, err error) {
+func (c *mqConfigurations) Update(ctx context.Context, mqConfiguration *v1alpha1.MqConfiguration, opts v1.UpdateOptions) (result *v1alpha1.MqConfiguration, err error) {
 	result = &v1alpha1.MqConfiguration{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("mqconfigurations").
 		Name(mqConfiguration.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(mqConfiguration).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *mqConfigurations) UpdateStatus(mqConfiguration *v1alpha1.MqConfiguration) (result *v1alpha1.MqConfiguration, err error) {
+func (c *mqConfigurations) UpdateStatus(ctx context.Context, mqConfiguration *v1alpha1.MqConfiguration, opts v1.UpdateOptions) (result *v1alpha1.MqConfiguration, err error) {
 	result = &v1alpha1.MqConfiguration{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("mqconfigurations").
 		Name(mqConfiguration.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(mqConfiguration).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the mqConfiguration and deletes it. Returns an error if one occurs.
-func (c *mqConfigurations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *mqConfigurations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("mqconfigurations").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *mqConfigurations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *mqConfigurations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("mqconfigurations").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched mqConfiguration.
-func (c *mqConfigurations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MqConfiguration, err error) {
+func (c *mqConfigurations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MqConfiguration, err error) {
 	result = &v1alpha1.MqConfiguration{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("mqconfigurations").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

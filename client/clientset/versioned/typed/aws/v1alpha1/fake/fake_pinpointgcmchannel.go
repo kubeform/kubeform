@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var pinpointgcmchannelsResource = schema.GroupVersionResource{Group: "aws.kubefo
 var pinpointgcmchannelsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "PinpointGcmChannel"}
 
 // Get takes name of the pinpointGcmChannel, and returns the corresponding pinpointGcmChannel object, and an error if there is any.
-func (c *FakePinpointGcmChannels) Get(name string, options v1.GetOptions) (result *v1alpha1.PinpointGcmChannel, err error) {
+func (c *FakePinpointGcmChannels) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PinpointGcmChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(pinpointgcmchannelsResource, c.ns, name), &v1alpha1.PinpointGcmChannel{})
 
@@ -51,7 +53,7 @@ func (c *FakePinpointGcmChannels) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of PinpointGcmChannels that match those selectors.
-func (c *FakePinpointGcmChannels) List(opts v1.ListOptions) (result *v1alpha1.PinpointGcmChannelList, err error) {
+func (c *FakePinpointGcmChannels) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PinpointGcmChannelList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(pinpointgcmchannelsResource, pinpointgcmchannelsKind, c.ns, opts), &v1alpha1.PinpointGcmChannelList{})
 
@@ -73,14 +75,14 @@ func (c *FakePinpointGcmChannels) List(opts v1.ListOptions) (result *v1alpha1.Pi
 }
 
 // Watch returns a watch.Interface that watches the requested pinpointGcmChannels.
-func (c *FakePinpointGcmChannels) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakePinpointGcmChannels) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(pinpointgcmchannelsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a pinpointGcmChannel and creates it.  Returns the server's representation of the pinpointGcmChannel, and an error, if there is any.
-func (c *FakePinpointGcmChannels) Create(pinpointGcmChannel *v1alpha1.PinpointGcmChannel) (result *v1alpha1.PinpointGcmChannel, err error) {
+func (c *FakePinpointGcmChannels) Create(ctx context.Context, pinpointGcmChannel *v1alpha1.PinpointGcmChannel, opts v1.CreateOptions) (result *v1alpha1.PinpointGcmChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(pinpointgcmchannelsResource, c.ns, pinpointGcmChannel), &v1alpha1.PinpointGcmChannel{})
 
@@ -91,7 +93,7 @@ func (c *FakePinpointGcmChannels) Create(pinpointGcmChannel *v1alpha1.PinpointGc
 }
 
 // Update takes the representation of a pinpointGcmChannel and updates it. Returns the server's representation of the pinpointGcmChannel, and an error, if there is any.
-func (c *FakePinpointGcmChannels) Update(pinpointGcmChannel *v1alpha1.PinpointGcmChannel) (result *v1alpha1.PinpointGcmChannel, err error) {
+func (c *FakePinpointGcmChannels) Update(ctx context.Context, pinpointGcmChannel *v1alpha1.PinpointGcmChannel, opts v1.UpdateOptions) (result *v1alpha1.PinpointGcmChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(pinpointgcmchannelsResource, c.ns, pinpointGcmChannel), &v1alpha1.PinpointGcmChannel{})
 
@@ -103,7 +105,7 @@ func (c *FakePinpointGcmChannels) Update(pinpointGcmChannel *v1alpha1.PinpointGc
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakePinpointGcmChannels) UpdateStatus(pinpointGcmChannel *v1alpha1.PinpointGcmChannel) (*v1alpha1.PinpointGcmChannel, error) {
+func (c *FakePinpointGcmChannels) UpdateStatus(ctx context.Context, pinpointGcmChannel *v1alpha1.PinpointGcmChannel, opts v1.UpdateOptions) (*v1alpha1.PinpointGcmChannel, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(pinpointgcmchannelsResource, "status", c.ns, pinpointGcmChannel), &v1alpha1.PinpointGcmChannel{})
 
@@ -114,7 +116,7 @@ func (c *FakePinpointGcmChannels) UpdateStatus(pinpointGcmChannel *v1alpha1.Pinp
 }
 
 // Delete takes name of the pinpointGcmChannel and deletes it. Returns an error if one occurs.
-func (c *FakePinpointGcmChannels) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakePinpointGcmChannels) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(pinpointgcmchannelsResource, c.ns, name), &v1alpha1.PinpointGcmChannel{})
 
@@ -122,15 +124,15 @@ func (c *FakePinpointGcmChannels) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakePinpointGcmChannels) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(pinpointgcmchannelsResource, c.ns, listOptions)
+func (c *FakePinpointGcmChannels) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(pinpointgcmchannelsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.PinpointGcmChannelList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched pinpointGcmChannel.
-func (c *FakePinpointGcmChannels) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PinpointGcmChannel, err error) {
+func (c *FakePinpointGcmChannels) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PinpointGcmChannel, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(pinpointgcmchannelsResource, c.ns, name, pt, data, subresources...), &v1alpha1.PinpointGcmChannel{})
 

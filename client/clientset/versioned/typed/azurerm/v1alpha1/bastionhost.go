@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type BastionHostsGetter interface {
 
 // BastionHostInterface has methods to work with BastionHost resources.
 type BastionHostInterface interface {
-	Create(*v1alpha1.BastionHost) (*v1alpha1.BastionHost, error)
-	Update(*v1alpha1.BastionHost) (*v1alpha1.BastionHost, error)
-	UpdateStatus(*v1alpha1.BastionHost) (*v1alpha1.BastionHost, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.BastionHost, error)
-	List(opts v1.ListOptions) (*v1alpha1.BastionHostList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BastionHost, err error)
+	Create(ctx context.Context, bastionHost *v1alpha1.BastionHost, opts v1.CreateOptions) (*v1alpha1.BastionHost, error)
+	Update(ctx context.Context, bastionHost *v1alpha1.BastionHost, opts v1.UpdateOptions) (*v1alpha1.BastionHost, error)
+	UpdateStatus(ctx context.Context, bastionHost *v1alpha1.BastionHost, opts v1.UpdateOptions) (*v1alpha1.BastionHost, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.BastionHost, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.BastionHostList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BastionHost, err error)
 	BastionHostExpansion
 }
 
@@ -65,20 +66,20 @@ func newBastionHosts(c *AzurermV1alpha1Client, namespace string) *bastionHosts {
 }
 
 // Get takes name of the bastionHost, and returns the corresponding bastionHost object, and an error if there is any.
-func (c *bastionHosts) Get(name string, options v1.GetOptions) (result *v1alpha1.BastionHost, err error) {
+func (c *bastionHosts) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BastionHost, err error) {
 	result = &v1alpha1.BastionHost{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("bastionhosts").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of BastionHosts that match those selectors.
-func (c *bastionHosts) List(opts v1.ListOptions) (result *v1alpha1.BastionHostList, err error) {
+func (c *bastionHosts) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BastionHostList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *bastionHosts) List(opts v1.ListOptions) (result *v1alpha1.BastionHostLi
 		Resource("bastionhosts").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested bastionHosts.
-func (c *bastionHosts) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *bastionHosts) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *bastionHosts) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("bastionhosts").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a bastionHost and creates it.  Returns the server's representation of the bastionHost, and an error, if there is any.
-func (c *bastionHosts) Create(bastionHost *v1alpha1.BastionHost) (result *v1alpha1.BastionHost, err error) {
+func (c *bastionHosts) Create(ctx context.Context, bastionHost *v1alpha1.BastionHost, opts v1.CreateOptions) (result *v1alpha1.BastionHost, err error) {
 	result = &v1alpha1.BastionHost{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("bastionhosts").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(bastionHost).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a bastionHost and updates it. Returns the server's representation of the bastionHost, and an error, if there is any.
-func (c *bastionHosts) Update(bastionHost *v1alpha1.BastionHost) (result *v1alpha1.BastionHost, err error) {
+func (c *bastionHosts) Update(ctx context.Context, bastionHost *v1alpha1.BastionHost, opts v1.UpdateOptions) (result *v1alpha1.BastionHost, err error) {
 	result = &v1alpha1.BastionHost{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("bastionhosts").
 		Name(bastionHost.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(bastionHost).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *bastionHosts) UpdateStatus(bastionHost *v1alpha1.BastionHost) (result *v1alpha1.BastionHost, err error) {
+func (c *bastionHosts) UpdateStatus(ctx context.Context, bastionHost *v1alpha1.BastionHost, opts v1.UpdateOptions) (result *v1alpha1.BastionHost, err error) {
 	result = &v1alpha1.BastionHost{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("bastionhosts").
 		Name(bastionHost.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(bastionHost).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the bastionHost and deletes it. Returns an error if one occurs.
-func (c *bastionHosts) Delete(name string, options *v1.DeleteOptions) error {
+func (c *bastionHosts) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("bastionhosts").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *bastionHosts) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *bastionHosts) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("bastionhosts").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched bastionHost.
-func (c *bastionHosts) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BastionHost, err error) {
+func (c *bastionHosts) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BastionHost, err error) {
 	result = &v1alpha1.BastionHost{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("bastionhosts").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

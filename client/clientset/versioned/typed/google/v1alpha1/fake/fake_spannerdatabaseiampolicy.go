@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var spannerdatabaseiampoliciesResource = schema.GroupVersionResource{Group: "goo
 var spannerdatabaseiampoliciesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "SpannerDatabaseIamPolicy"}
 
 // Get takes name of the spannerDatabaseIamPolicy, and returns the corresponding spannerDatabaseIamPolicy object, and an error if there is any.
-func (c *FakeSpannerDatabaseIamPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.SpannerDatabaseIamPolicy, err error) {
+func (c *FakeSpannerDatabaseIamPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SpannerDatabaseIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(spannerdatabaseiampoliciesResource, c.ns, name), &v1alpha1.SpannerDatabaseIamPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeSpannerDatabaseIamPolicies) Get(name string, options v1.GetOptions)
 }
 
 // List takes label and field selectors, and returns the list of SpannerDatabaseIamPolicies that match those selectors.
-func (c *FakeSpannerDatabaseIamPolicies) List(opts v1.ListOptions) (result *v1alpha1.SpannerDatabaseIamPolicyList, err error) {
+func (c *FakeSpannerDatabaseIamPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SpannerDatabaseIamPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(spannerdatabaseiampoliciesResource, spannerdatabaseiampoliciesKind, c.ns, opts), &v1alpha1.SpannerDatabaseIamPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSpannerDatabaseIamPolicies) List(opts v1.ListOptions) (result *v1al
 }
 
 // Watch returns a watch.Interface that watches the requested spannerDatabaseIamPolicies.
-func (c *FakeSpannerDatabaseIamPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSpannerDatabaseIamPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(spannerdatabaseiampoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a spannerDatabaseIamPolicy and creates it.  Returns the server's representation of the spannerDatabaseIamPolicy, and an error, if there is any.
-func (c *FakeSpannerDatabaseIamPolicies) Create(spannerDatabaseIamPolicy *v1alpha1.SpannerDatabaseIamPolicy) (result *v1alpha1.SpannerDatabaseIamPolicy, err error) {
+func (c *FakeSpannerDatabaseIamPolicies) Create(ctx context.Context, spannerDatabaseIamPolicy *v1alpha1.SpannerDatabaseIamPolicy, opts v1.CreateOptions) (result *v1alpha1.SpannerDatabaseIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(spannerdatabaseiampoliciesResource, c.ns, spannerDatabaseIamPolicy), &v1alpha1.SpannerDatabaseIamPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeSpannerDatabaseIamPolicies) Create(spannerDatabaseIamPolicy *v1alph
 }
 
 // Update takes the representation of a spannerDatabaseIamPolicy and updates it. Returns the server's representation of the spannerDatabaseIamPolicy, and an error, if there is any.
-func (c *FakeSpannerDatabaseIamPolicies) Update(spannerDatabaseIamPolicy *v1alpha1.SpannerDatabaseIamPolicy) (result *v1alpha1.SpannerDatabaseIamPolicy, err error) {
+func (c *FakeSpannerDatabaseIamPolicies) Update(ctx context.Context, spannerDatabaseIamPolicy *v1alpha1.SpannerDatabaseIamPolicy, opts v1.UpdateOptions) (result *v1alpha1.SpannerDatabaseIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(spannerdatabaseiampoliciesResource, c.ns, spannerDatabaseIamPolicy), &v1alpha1.SpannerDatabaseIamPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeSpannerDatabaseIamPolicies) Update(spannerDatabaseIamPolicy *v1alph
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSpannerDatabaseIamPolicies) UpdateStatus(spannerDatabaseIamPolicy *v1alpha1.SpannerDatabaseIamPolicy) (*v1alpha1.SpannerDatabaseIamPolicy, error) {
+func (c *FakeSpannerDatabaseIamPolicies) UpdateStatus(ctx context.Context, spannerDatabaseIamPolicy *v1alpha1.SpannerDatabaseIamPolicy, opts v1.UpdateOptions) (*v1alpha1.SpannerDatabaseIamPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(spannerdatabaseiampoliciesResource, "status", c.ns, spannerDatabaseIamPolicy), &v1alpha1.SpannerDatabaseIamPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeSpannerDatabaseIamPolicies) UpdateStatus(spannerDatabaseIamPolicy *
 }
 
 // Delete takes name of the spannerDatabaseIamPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeSpannerDatabaseIamPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSpannerDatabaseIamPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(spannerdatabaseiampoliciesResource, c.ns, name), &v1alpha1.SpannerDatabaseIamPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeSpannerDatabaseIamPolicies) Delete(name string, options *v1.DeleteO
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSpannerDatabaseIamPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(spannerdatabaseiampoliciesResource, c.ns, listOptions)
+func (c *FakeSpannerDatabaseIamPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(spannerdatabaseiampoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SpannerDatabaseIamPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched spannerDatabaseIamPolicy.
-func (c *FakeSpannerDatabaseIamPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SpannerDatabaseIamPolicy, err error) {
+func (c *FakeSpannerDatabaseIamPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SpannerDatabaseIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(spannerdatabaseiampoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.SpannerDatabaseIamPolicy{})
 

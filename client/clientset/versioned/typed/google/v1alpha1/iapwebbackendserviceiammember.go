@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type IapWebBackendServiceIamMembersGetter interface {
 
 // IapWebBackendServiceIamMemberInterface has methods to work with IapWebBackendServiceIamMember resources.
 type IapWebBackendServiceIamMemberInterface interface {
-	Create(*v1alpha1.IapWebBackendServiceIamMember) (*v1alpha1.IapWebBackendServiceIamMember, error)
-	Update(*v1alpha1.IapWebBackendServiceIamMember) (*v1alpha1.IapWebBackendServiceIamMember, error)
-	UpdateStatus(*v1alpha1.IapWebBackendServiceIamMember) (*v1alpha1.IapWebBackendServiceIamMember, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.IapWebBackendServiceIamMember, error)
-	List(opts v1.ListOptions) (*v1alpha1.IapWebBackendServiceIamMemberList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IapWebBackendServiceIamMember, err error)
+	Create(ctx context.Context, iapWebBackendServiceIamMember *v1alpha1.IapWebBackendServiceIamMember, opts v1.CreateOptions) (*v1alpha1.IapWebBackendServiceIamMember, error)
+	Update(ctx context.Context, iapWebBackendServiceIamMember *v1alpha1.IapWebBackendServiceIamMember, opts v1.UpdateOptions) (*v1alpha1.IapWebBackendServiceIamMember, error)
+	UpdateStatus(ctx context.Context, iapWebBackendServiceIamMember *v1alpha1.IapWebBackendServiceIamMember, opts v1.UpdateOptions) (*v1alpha1.IapWebBackendServiceIamMember, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.IapWebBackendServiceIamMember, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.IapWebBackendServiceIamMemberList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IapWebBackendServiceIamMember, err error)
 	IapWebBackendServiceIamMemberExpansion
 }
 
@@ -65,20 +66,20 @@ func newIapWebBackendServiceIamMembers(c *GoogleV1alpha1Client, namespace string
 }
 
 // Get takes name of the iapWebBackendServiceIamMember, and returns the corresponding iapWebBackendServiceIamMember object, and an error if there is any.
-func (c *iapWebBackendServiceIamMembers) Get(name string, options v1.GetOptions) (result *v1alpha1.IapWebBackendServiceIamMember, err error) {
+func (c *iapWebBackendServiceIamMembers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IapWebBackendServiceIamMember, err error) {
 	result = &v1alpha1.IapWebBackendServiceIamMember{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("iapwebbackendserviceiammembers").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of IapWebBackendServiceIamMembers that match those selectors.
-func (c *iapWebBackendServiceIamMembers) List(opts v1.ListOptions) (result *v1alpha1.IapWebBackendServiceIamMemberList, err error) {
+func (c *iapWebBackendServiceIamMembers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IapWebBackendServiceIamMemberList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *iapWebBackendServiceIamMembers) List(opts v1.ListOptions) (result *v1al
 		Resource("iapwebbackendserviceiammembers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested iapWebBackendServiceIamMembers.
-func (c *iapWebBackendServiceIamMembers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *iapWebBackendServiceIamMembers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *iapWebBackendServiceIamMembers) Watch(opts v1.ListOptions) (watch.Inter
 		Resource("iapwebbackendserviceiammembers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a iapWebBackendServiceIamMember and creates it.  Returns the server's representation of the iapWebBackendServiceIamMember, and an error, if there is any.
-func (c *iapWebBackendServiceIamMembers) Create(iapWebBackendServiceIamMember *v1alpha1.IapWebBackendServiceIamMember) (result *v1alpha1.IapWebBackendServiceIamMember, err error) {
+func (c *iapWebBackendServiceIamMembers) Create(ctx context.Context, iapWebBackendServiceIamMember *v1alpha1.IapWebBackendServiceIamMember, opts v1.CreateOptions) (result *v1alpha1.IapWebBackendServiceIamMember, err error) {
 	result = &v1alpha1.IapWebBackendServiceIamMember{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("iapwebbackendserviceiammembers").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iapWebBackendServiceIamMember).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a iapWebBackendServiceIamMember and updates it. Returns the server's representation of the iapWebBackendServiceIamMember, and an error, if there is any.
-func (c *iapWebBackendServiceIamMembers) Update(iapWebBackendServiceIamMember *v1alpha1.IapWebBackendServiceIamMember) (result *v1alpha1.IapWebBackendServiceIamMember, err error) {
+func (c *iapWebBackendServiceIamMembers) Update(ctx context.Context, iapWebBackendServiceIamMember *v1alpha1.IapWebBackendServiceIamMember, opts v1.UpdateOptions) (result *v1alpha1.IapWebBackendServiceIamMember, err error) {
 	result = &v1alpha1.IapWebBackendServiceIamMember{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iapwebbackendserviceiammembers").
 		Name(iapWebBackendServiceIamMember.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iapWebBackendServiceIamMember).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *iapWebBackendServiceIamMembers) UpdateStatus(iapWebBackendServiceIamMember *v1alpha1.IapWebBackendServiceIamMember) (result *v1alpha1.IapWebBackendServiceIamMember, err error) {
+func (c *iapWebBackendServiceIamMembers) UpdateStatus(ctx context.Context, iapWebBackendServiceIamMember *v1alpha1.IapWebBackendServiceIamMember, opts v1.UpdateOptions) (result *v1alpha1.IapWebBackendServiceIamMember, err error) {
 	result = &v1alpha1.IapWebBackendServiceIamMember{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iapwebbackendserviceiammembers").
 		Name(iapWebBackendServiceIamMember.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iapWebBackendServiceIamMember).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the iapWebBackendServiceIamMember and deletes it. Returns an error if one occurs.
-func (c *iapWebBackendServiceIamMembers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *iapWebBackendServiceIamMembers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iapwebbackendserviceiammembers").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *iapWebBackendServiceIamMembers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *iapWebBackendServiceIamMembers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iapwebbackendserviceiammembers").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched iapWebBackendServiceIamMember.
-func (c *iapWebBackendServiceIamMembers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IapWebBackendServiceIamMember, err error) {
+func (c *iapWebBackendServiceIamMembers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IapWebBackendServiceIamMember, err error) {
 	result = &v1alpha1.IapWebBackendServiceIamMember{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("iapwebbackendserviceiammembers").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

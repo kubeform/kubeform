@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var servicediscoverypublicdnsnamespacesResource = schema.GroupVersionResource{Gr
 var servicediscoverypublicdnsnamespacesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ServiceDiscoveryPublicDNSNamespace"}
 
 // Get takes name of the serviceDiscoveryPublicDNSNamespace, and returns the corresponding serviceDiscoveryPublicDNSNamespace object, and an error if there is any.
-func (c *FakeServiceDiscoveryPublicDNSNamespaces) Get(name string, options v1.GetOptions) (result *v1alpha1.ServiceDiscoveryPublicDNSNamespace, err error) {
+func (c *FakeServiceDiscoveryPublicDNSNamespaces) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ServiceDiscoveryPublicDNSNamespace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(servicediscoverypublicdnsnamespacesResource, c.ns, name), &v1alpha1.ServiceDiscoveryPublicDNSNamespace{})
 
@@ -51,7 +53,7 @@ func (c *FakeServiceDiscoveryPublicDNSNamespaces) Get(name string, options v1.Ge
 }
 
 // List takes label and field selectors, and returns the list of ServiceDiscoveryPublicDNSNamespaces that match those selectors.
-func (c *FakeServiceDiscoveryPublicDNSNamespaces) List(opts v1.ListOptions) (result *v1alpha1.ServiceDiscoveryPublicDNSNamespaceList, err error) {
+func (c *FakeServiceDiscoveryPublicDNSNamespaces) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ServiceDiscoveryPublicDNSNamespaceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(servicediscoverypublicdnsnamespacesResource, servicediscoverypublicdnsnamespacesKind, c.ns, opts), &v1alpha1.ServiceDiscoveryPublicDNSNamespaceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeServiceDiscoveryPublicDNSNamespaces) List(opts v1.ListOptions) (res
 }
 
 // Watch returns a watch.Interface that watches the requested serviceDiscoveryPublicDNSNamespaces.
-func (c *FakeServiceDiscoveryPublicDNSNamespaces) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeServiceDiscoveryPublicDNSNamespaces) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(servicediscoverypublicdnsnamespacesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a serviceDiscoveryPublicDNSNamespace and creates it.  Returns the server's representation of the serviceDiscoveryPublicDNSNamespace, and an error, if there is any.
-func (c *FakeServiceDiscoveryPublicDNSNamespaces) Create(serviceDiscoveryPublicDNSNamespace *v1alpha1.ServiceDiscoveryPublicDNSNamespace) (result *v1alpha1.ServiceDiscoveryPublicDNSNamespace, err error) {
+func (c *FakeServiceDiscoveryPublicDNSNamespaces) Create(ctx context.Context, serviceDiscoveryPublicDNSNamespace *v1alpha1.ServiceDiscoveryPublicDNSNamespace, opts v1.CreateOptions) (result *v1alpha1.ServiceDiscoveryPublicDNSNamespace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(servicediscoverypublicdnsnamespacesResource, c.ns, serviceDiscoveryPublicDNSNamespace), &v1alpha1.ServiceDiscoveryPublicDNSNamespace{})
 
@@ -91,7 +93,7 @@ func (c *FakeServiceDiscoveryPublicDNSNamespaces) Create(serviceDiscoveryPublicD
 }
 
 // Update takes the representation of a serviceDiscoveryPublicDNSNamespace and updates it. Returns the server's representation of the serviceDiscoveryPublicDNSNamespace, and an error, if there is any.
-func (c *FakeServiceDiscoveryPublicDNSNamespaces) Update(serviceDiscoveryPublicDNSNamespace *v1alpha1.ServiceDiscoveryPublicDNSNamespace) (result *v1alpha1.ServiceDiscoveryPublicDNSNamespace, err error) {
+func (c *FakeServiceDiscoveryPublicDNSNamespaces) Update(ctx context.Context, serviceDiscoveryPublicDNSNamespace *v1alpha1.ServiceDiscoveryPublicDNSNamespace, opts v1.UpdateOptions) (result *v1alpha1.ServiceDiscoveryPublicDNSNamespace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(servicediscoverypublicdnsnamespacesResource, c.ns, serviceDiscoveryPublicDNSNamespace), &v1alpha1.ServiceDiscoveryPublicDNSNamespace{})
 
@@ -103,7 +105,7 @@ func (c *FakeServiceDiscoveryPublicDNSNamespaces) Update(serviceDiscoveryPublicD
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeServiceDiscoveryPublicDNSNamespaces) UpdateStatus(serviceDiscoveryPublicDNSNamespace *v1alpha1.ServiceDiscoveryPublicDNSNamespace) (*v1alpha1.ServiceDiscoveryPublicDNSNamespace, error) {
+func (c *FakeServiceDiscoveryPublicDNSNamespaces) UpdateStatus(ctx context.Context, serviceDiscoveryPublicDNSNamespace *v1alpha1.ServiceDiscoveryPublicDNSNamespace, opts v1.UpdateOptions) (*v1alpha1.ServiceDiscoveryPublicDNSNamespace, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(servicediscoverypublicdnsnamespacesResource, "status", c.ns, serviceDiscoveryPublicDNSNamespace), &v1alpha1.ServiceDiscoveryPublicDNSNamespace{})
 
@@ -114,7 +116,7 @@ func (c *FakeServiceDiscoveryPublicDNSNamespaces) UpdateStatus(serviceDiscoveryP
 }
 
 // Delete takes name of the serviceDiscoveryPublicDNSNamespace and deletes it. Returns an error if one occurs.
-func (c *FakeServiceDiscoveryPublicDNSNamespaces) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeServiceDiscoveryPublicDNSNamespaces) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(servicediscoverypublicdnsnamespacesResource, c.ns, name), &v1alpha1.ServiceDiscoveryPublicDNSNamespace{})
 
@@ -122,15 +124,15 @@ func (c *FakeServiceDiscoveryPublicDNSNamespaces) Delete(name string, options *v
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeServiceDiscoveryPublicDNSNamespaces) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(servicediscoverypublicdnsnamespacesResource, c.ns, listOptions)
+func (c *FakeServiceDiscoveryPublicDNSNamespaces) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(servicediscoverypublicdnsnamespacesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ServiceDiscoveryPublicDNSNamespaceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched serviceDiscoveryPublicDNSNamespace.
-func (c *FakeServiceDiscoveryPublicDNSNamespaces) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ServiceDiscoveryPublicDNSNamespace, err error) {
+func (c *FakeServiceDiscoveryPublicDNSNamespaces) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ServiceDiscoveryPublicDNSNamespace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(servicediscoverypublicdnsnamespacesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ServiceDiscoveryPublicDNSNamespace{})
 

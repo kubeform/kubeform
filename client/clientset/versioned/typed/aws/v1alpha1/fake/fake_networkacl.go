@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var networkaclsResource = schema.GroupVersionResource{Group: "aws.kubeform.com",
 var networkaclsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "NetworkACL"}
 
 // Get takes name of the networkACL, and returns the corresponding networkACL object, and an error if there is any.
-func (c *FakeNetworkACLs) Get(name string, options v1.GetOptions) (result *v1alpha1.NetworkACL, err error) {
+func (c *FakeNetworkACLs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.NetworkACL, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(networkaclsResource, c.ns, name), &v1alpha1.NetworkACL{})
 
@@ -51,7 +53,7 @@ func (c *FakeNetworkACLs) Get(name string, options v1.GetOptions) (result *v1alp
 }
 
 // List takes label and field selectors, and returns the list of NetworkACLs that match those selectors.
-func (c *FakeNetworkACLs) List(opts v1.ListOptions) (result *v1alpha1.NetworkACLList, err error) {
+func (c *FakeNetworkACLs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.NetworkACLList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(networkaclsResource, networkaclsKind, c.ns, opts), &v1alpha1.NetworkACLList{})
 
@@ -73,14 +75,14 @@ func (c *FakeNetworkACLs) List(opts v1.ListOptions) (result *v1alpha1.NetworkACL
 }
 
 // Watch returns a watch.Interface that watches the requested networkACLs.
-func (c *FakeNetworkACLs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeNetworkACLs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(networkaclsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a networkACL and creates it.  Returns the server's representation of the networkACL, and an error, if there is any.
-func (c *FakeNetworkACLs) Create(networkACL *v1alpha1.NetworkACL) (result *v1alpha1.NetworkACL, err error) {
+func (c *FakeNetworkACLs) Create(ctx context.Context, networkACL *v1alpha1.NetworkACL, opts v1.CreateOptions) (result *v1alpha1.NetworkACL, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(networkaclsResource, c.ns, networkACL), &v1alpha1.NetworkACL{})
 
@@ -91,7 +93,7 @@ func (c *FakeNetworkACLs) Create(networkACL *v1alpha1.NetworkACL) (result *v1alp
 }
 
 // Update takes the representation of a networkACL and updates it. Returns the server's representation of the networkACL, and an error, if there is any.
-func (c *FakeNetworkACLs) Update(networkACL *v1alpha1.NetworkACL) (result *v1alpha1.NetworkACL, err error) {
+func (c *FakeNetworkACLs) Update(ctx context.Context, networkACL *v1alpha1.NetworkACL, opts v1.UpdateOptions) (result *v1alpha1.NetworkACL, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(networkaclsResource, c.ns, networkACL), &v1alpha1.NetworkACL{})
 
@@ -103,7 +105,7 @@ func (c *FakeNetworkACLs) Update(networkACL *v1alpha1.NetworkACL) (result *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeNetworkACLs) UpdateStatus(networkACL *v1alpha1.NetworkACL) (*v1alpha1.NetworkACL, error) {
+func (c *FakeNetworkACLs) UpdateStatus(ctx context.Context, networkACL *v1alpha1.NetworkACL, opts v1.UpdateOptions) (*v1alpha1.NetworkACL, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(networkaclsResource, "status", c.ns, networkACL), &v1alpha1.NetworkACL{})
 
@@ -114,7 +116,7 @@ func (c *FakeNetworkACLs) UpdateStatus(networkACL *v1alpha1.NetworkACL) (*v1alph
 }
 
 // Delete takes name of the networkACL and deletes it. Returns an error if one occurs.
-func (c *FakeNetworkACLs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeNetworkACLs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(networkaclsResource, c.ns, name), &v1alpha1.NetworkACL{})
 
@@ -122,15 +124,15 @@ func (c *FakeNetworkACLs) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeNetworkACLs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(networkaclsResource, c.ns, listOptions)
+func (c *FakeNetworkACLs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(networkaclsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.NetworkACLList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched networkACL.
-func (c *FakeNetworkACLs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.NetworkACL, err error) {
+func (c *FakeNetworkACLs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.NetworkACL, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(networkaclsResource, c.ns, name, pt, data, subresources...), &v1alpha1.NetworkACL{})
 

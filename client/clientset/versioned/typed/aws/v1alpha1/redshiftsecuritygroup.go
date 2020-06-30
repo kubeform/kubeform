@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type RedshiftSecurityGroupsGetter interface {
 
 // RedshiftSecurityGroupInterface has methods to work with RedshiftSecurityGroup resources.
 type RedshiftSecurityGroupInterface interface {
-	Create(*v1alpha1.RedshiftSecurityGroup) (*v1alpha1.RedshiftSecurityGroup, error)
-	Update(*v1alpha1.RedshiftSecurityGroup) (*v1alpha1.RedshiftSecurityGroup, error)
-	UpdateStatus(*v1alpha1.RedshiftSecurityGroup) (*v1alpha1.RedshiftSecurityGroup, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.RedshiftSecurityGroup, error)
-	List(opts v1.ListOptions) (*v1alpha1.RedshiftSecurityGroupList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RedshiftSecurityGroup, err error)
+	Create(ctx context.Context, redshiftSecurityGroup *v1alpha1.RedshiftSecurityGroup, opts v1.CreateOptions) (*v1alpha1.RedshiftSecurityGroup, error)
+	Update(ctx context.Context, redshiftSecurityGroup *v1alpha1.RedshiftSecurityGroup, opts v1.UpdateOptions) (*v1alpha1.RedshiftSecurityGroup, error)
+	UpdateStatus(ctx context.Context, redshiftSecurityGroup *v1alpha1.RedshiftSecurityGroup, opts v1.UpdateOptions) (*v1alpha1.RedshiftSecurityGroup, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.RedshiftSecurityGroup, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.RedshiftSecurityGroupList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RedshiftSecurityGroup, err error)
 	RedshiftSecurityGroupExpansion
 }
 
@@ -65,20 +66,20 @@ func newRedshiftSecurityGroups(c *AwsV1alpha1Client, namespace string) *redshift
 }
 
 // Get takes name of the redshiftSecurityGroup, and returns the corresponding redshiftSecurityGroup object, and an error if there is any.
-func (c *redshiftSecurityGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.RedshiftSecurityGroup, err error) {
+func (c *redshiftSecurityGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.RedshiftSecurityGroup, err error) {
 	result = &v1alpha1.RedshiftSecurityGroup{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("redshiftsecuritygroups").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of RedshiftSecurityGroups that match those selectors.
-func (c *redshiftSecurityGroups) List(opts v1.ListOptions) (result *v1alpha1.RedshiftSecurityGroupList, err error) {
+func (c *redshiftSecurityGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RedshiftSecurityGroupList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *redshiftSecurityGroups) List(opts v1.ListOptions) (result *v1alpha1.Red
 		Resource("redshiftsecuritygroups").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested redshiftSecurityGroups.
-func (c *redshiftSecurityGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *redshiftSecurityGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *redshiftSecurityGroups) Watch(opts v1.ListOptions) (watch.Interface, er
 		Resource("redshiftsecuritygroups").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a redshiftSecurityGroup and creates it.  Returns the server's representation of the redshiftSecurityGroup, and an error, if there is any.
-func (c *redshiftSecurityGroups) Create(redshiftSecurityGroup *v1alpha1.RedshiftSecurityGroup) (result *v1alpha1.RedshiftSecurityGroup, err error) {
+func (c *redshiftSecurityGroups) Create(ctx context.Context, redshiftSecurityGroup *v1alpha1.RedshiftSecurityGroup, opts v1.CreateOptions) (result *v1alpha1.RedshiftSecurityGroup, err error) {
 	result = &v1alpha1.RedshiftSecurityGroup{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("redshiftsecuritygroups").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(redshiftSecurityGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a redshiftSecurityGroup and updates it. Returns the server's representation of the redshiftSecurityGroup, and an error, if there is any.
-func (c *redshiftSecurityGroups) Update(redshiftSecurityGroup *v1alpha1.RedshiftSecurityGroup) (result *v1alpha1.RedshiftSecurityGroup, err error) {
+func (c *redshiftSecurityGroups) Update(ctx context.Context, redshiftSecurityGroup *v1alpha1.RedshiftSecurityGroup, opts v1.UpdateOptions) (result *v1alpha1.RedshiftSecurityGroup, err error) {
 	result = &v1alpha1.RedshiftSecurityGroup{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("redshiftsecuritygroups").
 		Name(redshiftSecurityGroup.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(redshiftSecurityGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *redshiftSecurityGroups) UpdateStatus(redshiftSecurityGroup *v1alpha1.RedshiftSecurityGroup) (result *v1alpha1.RedshiftSecurityGroup, err error) {
+func (c *redshiftSecurityGroups) UpdateStatus(ctx context.Context, redshiftSecurityGroup *v1alpha1.RedshiftSecurityGroup, opts v1.UpdateOptions) (result *v1alpha1.RedshiftSecurityGroup, err error) {
 	result = &v1alpha1.RedshiftSecurityGroup{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("redshiftsecuritygroups").
 		Name(redshiftSecurityGroup.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(redshiftSecurityGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the redshiftSecurityGroup and deletes it. Returns an error if one occurs.
-func (c *redshiftSecurityGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *redshiftSecurityGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("redshiftsecuritygroups").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *redshiftSecurityGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *redshiftSecurityGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("redshiftsecuritygroups").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched redshiftSecurityGroup.
-func (c *redshiftSecurityGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RedshiftSecurityGroup, err error) {
+func (c *redshiftSecurityGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RedshiftSecurityGroup, err error) {
 	result = &v1alpha1.RedshiftSecurityGroup{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("redshiftsecuritygroups").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

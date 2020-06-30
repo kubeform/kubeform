@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dmsreplicationinstancesResource = schema.GroupVersionResource{Group: "aws.ku
 var dmsreplicationinstancesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DmsReplicationInstance"}
 
 // Get takes name of the dmsReplicationInstance, and returns the corresponding dmsReplicationInstance object, and an error if there is any.
-func (c *FakeDmsReplicationInstances) Get(name string, options v1.GetOptions) (result *v1alpha1.DmsReplicationInstance, err error) {
+func (c *FakeDmsReplicationInstances) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DmsReplicationInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dmsreplicationinstancesResource, c.ns, name), &v1alpha1.DmsReplicationInstance{})
 
@@ -51,7 +53,7 @@ func (c *FakeDmsReplicationInstances) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of DmsReplicationInstances that match those selectors.
-func (c *FakeDmsReplicationInstances) List(opts v1.ListOptions) (result *v1alpha1.DmsReplicationInstanceList, err error) {
+func (c *FakeDmsReplicationInstances) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DmsReplicationInstanceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dmsreplicationinstancesResource, dmsreplicationinstancesKind, c.ns, opts), &v1alpha1.DmsReplicationInstanceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDmsReplicationInstances) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested dmsReplicationInstances.
-func (c *FakeDmsReplicationInstances) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDmsReplicationInstances) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dmsreplicationinstancesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dmsReplicationInstance and creates it.  Returns the server's representation of the dmsReplicationInstance, and an error, if there is any.
-func (c *FakeDmsReplicationInstances) Create(dmsReplicationInstance *v1alpha1.DmsReplicationInstance) (result *v1alpha1.DmsReplicationInstance, err error) {
+func (c *FakeDmsReplicationInstances) Create(ctx context.Context, dmsReplicationInstance *v1alpha1.DmsReplicationInstance, opts v1.CreateOptions) (result *v1alpha1.DmsReplicationInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dmsreplicationinstancesResource, c.ns, dmsReplicationInstance), &v1alpha1.DmsReplicationInstance{})
 
@@ -91,7 +93,7 @@ func (c *FakeDmsReplicationInstances) Create(dmsReplicationInstance *v1alpha1.Dm
 }
 
 // Update takes the representation of a dmsReplicationInstance and updates it. Returns the server's representation of the dmsReplicationInstance, and an error, if there is any.
-func (c *FakeDmsReplicationInstances) Update(dmsReplicationInstance *v1alpha1.DmsReplicationInstance) (result *v1alpha1.DmsReplicationInstance, err error) {
+func (c *FakeDmsReplicationInstances) Update(ctx context.Context, dmsReplicationInstance *v1alpha1.DmsReplicationInstance, opts v1.UpdateOptions) (result *v1alpha1.DmsReplicationInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dmsreplicationinstancesResource, c.ns, dmsReplicationInstance), &v1alpha1.DmsReplicationInstance{})
 
@@ -103,7 +105,7 @@ func (c *FakeDmsReplicationInstances) Update(dmsReplicationInstance *v1alpha1.Dm
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDmsReplicationInstances) UpdateStatus(dmsReplicationInstance *v1alpha1.DmsReplicationInstance) (*v1alpha1.DmsReplicationInstance, error) {
+func (c *FakeDmsReplicationInstances) UpdateStatus(ctx context.Context, dmsReplicationInstance *v1alpha1.DmsReplicationInstance, opts v1.UpdateOptions) (*v1alpha1.DmsReplicationInstance, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dmsreplicationinstancesResource, "status", c.ns, dmsReplicationInstance), &v1alpha1.DmsReplicationInstance{})
 
@@ -114,7 +116,7 @@ func (c *FakeDmsReplicationInstances) UpdateStatus(dmsReplicationInstance *v1alp
 }
 
 // Delete takes name of the dmsReplicationInstance and deletes it. Returns an error if one occurs.
-func (c *FakeDmsReplicationInstances) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDmsReplicationInstances) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dmsreplicationinstancesResource, c.ns, name), &v1alpha1.DmsReplicationInstance{})
 
@@ -122,15 +124,15 @@ func (c *FakeDmsReplicationInstances) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDmsReplicationInstances) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dmsreplicationinstancesResource, c.ns, listOptions)
+func (c *FakeDmsReplicationInstances) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dmsreplicationinstancesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DmsReplicationInstanceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dmsReplicationInstance.
-func (c *FakeDmsReplicationInstances) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DmsReplicationInstance, err error) {
+func (c *FakeDmsReplicationInstances) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DmsReplicationInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dmsreplicationinstancesResource, c.ns, name, pt, data, subresources...), &v1alpha1.DmsReplicationInstance{})
 

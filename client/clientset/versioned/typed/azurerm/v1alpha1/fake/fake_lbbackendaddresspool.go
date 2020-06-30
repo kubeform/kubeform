@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var lbbackendaddresspoolsResource = schema.GroupVersionResource{Group: "azurerm.
 var lbbackendaddresspoolsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "LbBackendAddressPool"}
 
 // Get takes name of the lbBackendAddressPool, and returns the corresponding lbBackendAddressPool object, and an error if there is any.
-func (c *FakeLbBackendAddressPools) Get(name string, options v1.GetOptions) (result *v1alpha1.LbBackendAddressPool, err error) {
+func (c *FakeLbBackendAddressPools) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LbBackendAddressPool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(lbbackendaddresspoolsResource, c.ns, name), &v1alpha1.LbBackendAddressPool{})
 
@@ -51,7 +53,7 @@ func (c *FakeLbBackendAddressPools) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of LbBackendAddressPools that match those selectors.
-func (c *FakeLbBackendAddressPools) List(opts v1.ListOptions) (result *v1alpha1.LbBackendAddressPoolList, err error) {
+func (c *FakeLbBackendAddressPools) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LbBackendAddressPoolList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(lbbackendaddresspoolsResource, lbbackendaddresspoolsKind, c.ns, opts), &v1alpha1.LbBackendAddressPoolList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLbBackendAddressPools) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested lbBackendAddressPools.
-func (c *FakeLbBackendAddressPools) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLbBackendAddressPools) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(lbbackendaddresspoolsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a lbBackendAddressPool and creates it.  Returns the server's representation of the lbBackendAddressPool, and an error, if there is any.
-func (c *FakeLbBackendAddressPools) Create(lbBackendAddressPool *v1alpha1.LbBackendAddressPool) (result *v1alpha1.LbBackendAddressPool, err error) {
+func (c *FakeLbBackendAddressPools) Create(ctx context.Context, lbBackendAddressPool *v1alpha1.LbBackendAddressPool, opts v1.CreateOptions) (result *v1alpha1.LbBackendAddressPool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(lbbackendaddresspoolsResource, c.ns, lbBackendAddressPool), &v1alpha1.LbBackendAddressPool{})
 
@@ -91,7 +93,7 @@ func (c *FakeLbBackendAddressPools) Create(lbBackendAddressPool *v1alpha1.LbBack
 }
 
 // Update takes the representation of a lbBackendAddressPool and updates it. Returns the server's representation of the lbBackendAddressPool, and an error, if there is any.
-func (c *FakeLbBackendAddressPools) Update(lbBackendAddressPool *v1alpha1.LbBackendAddressPool) (result *v1alpha1.LbBackendAddressPool, err error) {
+func (c *FakeLbBackendAddressPools) Update(ctx context.Context, lbBackendAddressPool *v1alpha1.LbBackendAddressPool, opts v1.UpdateOptions) (result *v1alpha1.LbBackendAddressPool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(lbbackendaddresspoolsResource, c.ns, lbBackendAddressPool), &v1alpha1.LbBackendAddressPool{})
 
@@ -103,7 +105,7 @@ func (c *FakeLbBackendAddressPools) Update(lbBackendAddressPool *v1alpha1.LbBack
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLbBackendAddressPools) UpdateStatus(lbBackendAddressPool *v1alpha1.LbBackendAddressPool) (*v1alpha1.LbBackendAddressPool, error) {
+func (c *FakeLbBackendAddressPools) UpdateStatus(ctx context.Context, lbBackendAddressPool *v1alpha1.LbBackendAddressPool, opts v1.UpdateOptions) (*v1alpha1.LbBackendAddressPool, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(lbbackendaddresspoolsResource, "status", c.ns, lbBackendAddressPool), &v1alpha1.LbBackendAddressPool{})
 
@@ -114,7 +116,7 @@ func (c *FakeLbBackendAddressPools) UpdateStatus(lbBackendAddressPool *v1alpha1.
 }
 
 // Delete takes name of the lbBackendAddressPool and deletes it. Returns an error if one occurs.
-func (c *FakeLbBackendAddressPools) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLbBackendAddressPools) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(lbbackendaddresspoolsResource, c.ns, name), &v1alpha1.LbBackendAddressPool{})
 
@@ -122,15 +124,15 @@ func (c *FakeLbBackendAddressPools) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLbBackendAddressPools) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(lbbackendaddresspoolsResource, c.ns, listOptions)
+func (c *FakeLbBackendAddressPools) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(lbbackendaddresspoolsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LbBackendAddressPoolList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched lbBackendAddressPool.
-func (c *FakeLbBackendAddressPools) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LbBackendAddressPool, err error) {
+func (c *FakeLbBackendAddressPools) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LbBackendAddressPool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(lbbackendaddresspoolsResource, c.ns, name, pt, data, subresources...), &v1alpha1.LbBackendAddressPool{})
 

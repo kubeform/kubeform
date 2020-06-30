@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var storagesharedirectoriesResource = schema.GroupVersionResource{Group: "azurer
 var storagesharedirectoriesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "StorageShareDirectory"}
 
 // Get takes name of the storageShareDirectory, and returns the corresponding storageShareDirectory object, and an error if there is any.
-func (c *FakeStorageShareDirectories) Get(name string, options v1.GetOptions) (result *v1alpha1.StorageShareDirectory, err error) {
+func (c *FakeStorageShareDirectories) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.StorageShareDirectory, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(storagesharedirectoriesResource, c.ns, name), &v1alpha1.StorageShareDirectory{})
 
@@ -51,7 +53,7 @@ func (c *FakeStorageShareDirectories) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of StorageShareDirectories that match those selectors.
-func (c *FakeStorageShareDirectories) List(opts v1.ListOptions) (result *v1alpha1.StorageShareDirectoryList, err error) {
+func (c *FakeStorageShareDirectories) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.StorageShareDirectoryList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(storagesharedirectoriesResource, storagesharedirectoriesKind, c.ns, opts), &v1alpha1.StorageShareDirectoryList{})
 
@@ -73,14 +75,14 @@ func (c *FakeStorageShareDirectories) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested storageShareDirectories.
-func (c *FakeStorageShareDirectories) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeStorageShareDirectories) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(storagesharedirectoriesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a storageShareDirectory and creates it.  Returns the server's representation of the storageShareDirectory, and an error, if there is any.
-func (c *FakeStorageShareDirectories) Create(storageShareDirectory *v1alpha1.StorageShareDirectory) (result *v1alpha1.StorageShareDirectory, err error) {
+func (c *FakeStorageShareDirectories) Create(ctx context.Context, storageShareDirectory *v1alpha1.StorageShareDirectory, opts v1.CreateOptions) (result *v1alpha1.StorageShareDirectory, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(storagesharedirectoriesResource, c.ns, storageShareDirectory), &v1alpha1.StorageShareDirectory{})
 
@@ -91,7 +93,7 @@ func (c *FakeStorageShareDirectories) Create(storageShareDirectory *v1alpha1.Sto
 }
 
 // Update takes the representation of a storageShareDirectory and updates it. Returns the server's representation of the storageShareDirectory, and an error, if there is any.
-func (c *FakeStorageShareDirectories) Update(storageShareDirectory *v1alpha1.StorageShareDirectory) (result *v1alpha1.StorageShareDirectory, err error) {
+func (c *FakeStorageShareDirectories) Update(ctx context.Context, storageShareDirectory *v1alpha1.StorageShareDirectory, opts v1.UpdateOptions) (result *v1alpha1.StorageShareDirectory, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(storagesharedirectoriesResource, c.ns, storageShareDirectory), &v1alpha1.StorageShareDirectory{})
 
@@ -103,7 +105,7 @@ func (c *FakeStorageShareDirectories) Update(storageShareDirectory *v1alpha1.Sto
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeStorageShareDirectories) UpdateStatus(storageShareDirectory *v1alpha1.StorageShareDirectory) (*v1alpha1.StorageShareDirectory, error) {
+func (c *FakeStorageShareDirectories) UpdateStatus(ctx context.Context, storageShareDirectory *v1alpha1.StorageShareDirectory, opts v1.UpdateOptions) (*v1alpha1.StorageShareDirectory, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(storagesharedirectoriesResource, "status", c.ns, storageShareDirectory), &v1alpha1.StorageShareDirectory{})
 
@@ -114,7 +116,7 @@ func (c *FakeStorageShareDirectories) UpdateStatus(storageShareDirectory *v1alph
 }
 
 // Delete takes name of the storageShareDirectory and deletes it. Returns an error if one occurs.
-func (c *FakeStorageShareDirectories) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeStorageShareDirectories) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(storagesharedirectoriesResource, c.ns, name), &v1alpha1.StorageShareDirectory{})
 
@@ -122,15 +124,15 @@ func (c *FakeStorageShareDirectories) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeStorageShareDirectories) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(storagesharedirectoriesResource, c.ns, listOptions)
+func (c *FakeStorageShareDirectories) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(storagesharedirectoriesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.StorageShareDirectoryList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched storageShareDirectory.
-func (c *FakeStorageShareDirectories) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StorageShareDirectory, err error) {
+func (c *FakeStorageShareDirectories) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StorageShareDirectory, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(storagesharedirectoriesResource, c.ns, name, pt, data, subresources...), &v1alpha1.StorageShareDirectory{})
 

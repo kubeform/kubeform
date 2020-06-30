@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computesharedvpcserviceprojectsResource = schema.GroupVersionResource{Group:
 var computesharedvpcserviceprojectsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeSharedVpcServiceProject"}
 
 // Get takes name of the computeSharedVpcServiceProject, and returns the corresponding computeSharedVpcServiceProject object, and an error if there is any.
-func (c *FakeComputeSharedVpcServiceProjects) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeSharedVpcServiceProject, err error) {
+func (c *FakeComputeSharedVpcServiceProjects) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeSharedVpcServiceProject, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computesharedvpcserviceprojectsResource, c.ns, name), &v1alpha1.ComputeSharedVpcServiceProject{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeSharedVpcServiceProjects) Get(name string, options v1.GetOpt
 }
 
 // List takes label and field selectors, and returns the list of ComputeSharedVpcServiceProjects that match those selectors.
-func (c *FakeComputeSharedVpcServiceProjects) List(opts v1.ListOptions) (result *v1alpha1.ComputeSharedVpcServiceProjectList, err error) {
+func (c *FakeComputeSharedVpcServiceProjects) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeSharedVpcServiceProjectList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computesharedvpcserviceprojectsResource, computesharedvpcserviceprojectsKind, c.ns, opts), &v1alpha1.ComputeSharedVpcServiceProjectList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeSharedVpcServiceProjects) List(opts v1.ListOptions) (result 
 }
 
 // Watch returns a watch.Interface that watches the requested computeSharedVpcServiceProjects.
-func (c *FakeComputeSharedVpcServiceProjects) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeSharedVpcServiceProjects) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computesharedvpcserviceprojectsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeSharedVpcServiceProject and creates it.  Returns the server's representation of the computeSharedVpcServiceProject, and an error, if there is any.
-func (c *FakeComputeSharedVpcServiceProjects) Create(computeSharedVpcServiceProject *v1alpha1.ComputeSharedVpcServiceProject) (result *v1alpha1.ComputeSharedVpcServiceProject, err error) {
+func (c *FakeComputeSharedVpcServiceProjects) Create(ctx context.Context, computeSharedVpcServiceProject *v1alpha1.ComputeSharedVpcServiceProject, opts v1.CreateOptions) (result *v1alpha1.ComputeSharedVpcServiceProject, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computesharedvpcserviceprojectsResource, c.ns, computeSharedVpcServiceProject), &v1alpha1.ComputeSharedVpcServiceProject{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeSharedVpcServiceProjects) Create(computeSharedVpcServiceProj
 }
 
 // Update takes the representation of a computeSharedVpcServiceProject and updates it. Returns the server's representation of the computeSharedVpcServiceProject, and an error, if there is any.
-func (c *FakeComputeSharedVpcServiceProjects) Update(computeSharedVpcServiceProject *v1alpha1.ComputeSharedVpcServiceProject) (result *v1alpha1.ComputeSharedVpcServiceProject, err error) {
+func (c *FakeComputeSharedVpcServiceProjects) Update(ctx context.Context, computeSharedVpcServiceProject *v1alpha1.ComputeSharedVpcServiceProject, opts v1.UpdateOptions) (result *v1alpha1.ComputeSharedVpcServiceProject, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computesharedvpcserviceprojectsResource, c.ns, computeSharedVpcServiceProject), &v1alpha1.ComputeSharedVpcServiceProject{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeSharedVpcServiceProjects) Update(computeSharedVpcServiceProj
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeSharedVpcServiceProjects) UpdateStatus(computeSharedVpcServiceProject *v1alpha1.ComputeSharedVpcServiceProject) (*v1alpha1.ComputeSharedVpcServiceProject, error) {
+func (c *FakeComputeSharedVpcServiceProjects) UpdateStatus(ctx context.Context, computeSharedVpcServiceProject *v1alpha1.ComputeSharedVpcServiceProject, opts v1.UpdateOptions) (*v1alpha1.ComputeSharedVpcServiceProject, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computesharedvpcserviceprojectsResource, "status", c.ns, computeSharedVpcServiceProject), &v1alpha1.ComputeSharedVpcServiceProject{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeSharedVpcServiceProjects) UpdateStatus(computeSharedVpcServi
 }
 
 // Delete takes name of the computeSharedVpcServiceProject and deletes it. Returns an error if one occurs.
-func (c *FakeComputeSharedVpcServiceProjects) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeSharedVpcServiceProjects) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computesharedvpcserviceprojectsResource, c.ns, name), &v1alpha1.ComputeSharedVpcServiceProject{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeSharedVpcServiceProjects) Delete(name string, options *v1.De
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeSharedVpcServiceProjects) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computesharedvpcserviceprojectsResource, c.ns, listOptions)
+func (c *FakeComputeSharedVpcServiceProjects) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computesharedvpcserviceprojectsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeSharedVpcServiceProjectList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeSharedVpcServiceProject.
-func (c *FakeComputeSharedVpcServiceProjects) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeSharedVpcServiceProject, err error) {
+func (c *FakeComputeSharedVpcServiceProjects) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeSharedVpcServiceProject, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computesharedvpcserviceprojectsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeSharedVpcServiceProject{})
 

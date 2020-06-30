@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type AppServiceActiveSlotsGetter interface {
 
 // AppServiceActiveSlotInterface has methods to work with AppServiceActiveSlot resources.
 type AppServiceActiveSlotInterface interface {
-	Create(*v1alpha1.AppServiceActiveSlot) (*v1alpha1.AppServiceActiveSlot, error)
-	Update(*v1alpha1.AppServiceActiveSlot) (*v1alpha1.AppServiceActiveSlot, error)
-	UpdateStatus(*v1alpha1.AppServiceActiveSlot) (*v1alpha1.AppServiceActiveSlot, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.AppServiceActiveSlot, error)
-	List(opts v1.ListOptions) (*v1alpha1.AppServiceActiveSlotList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppServiceActiveSlot, err error)
+	Create(ctx context.Context, appServiceActiveSlot *v1alpha1.AppServiceActiveSlot, opts v1.CreateOptions) (*v1alpha1.AppServiceActiveSlot, error)
+	Update(ctx context.Context, appServiceActiveSlot *v1alpha1.AppServiceActiveSlot, opts v1.UpdateOptions) (*v1alpha1.AppServiceActiveSlot, error)
+	UpdateStatus(ctx context.Context, appServiceActiveSlot *v1alpha1.AppServiceActiveSlot, opts v1.UpdateOptions) (*v1alpha1.AppServiceActiveSlot, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.AppServiceActiveSlot, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.AppServiceActiveSlotList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppServiceActiveSlot, err error)
 	AppServiceActiveSlotExpansion
 }
 
@@ -65,20 +66,20 @@ func newAppServiceActiveSlots(c *AzurermV1alpha1Client, namespace string) *appSe
 }
 
 // Get takes name of the appServiceActiveSlot, and returns the corresponding appServiceActiveSlot object, and an error if there is any.
-func (c *appServiceActiveSlots) Get(name string, options v1.GetOptions) (result *v1alpha1.AppServiceActiveSlot, err error) {
+func (c *appServiceActiveSlots) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AppServiceActiveSlot, err error) {
 	result = &v1alpha1.AppServiceActiveSlot{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("appserviceactiveslots").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of AppServiceActiveSlots that match those selectors.
-func (c *appServiceActiveSlots) List(opts v1.ListOptions) (result *v1alpha1.AppServiceActiveSlotList, err error) {
+func (c *appServiceActiveSlots) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AppServiceActiveSlotList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *appServiceActiveSlots) List(opts v1.ListOptions) (result *v1alpha1.AppS
 		Resource("appserviceactiveslots").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested appServiceActiveSlots.
-func (c *appServiceActiveSlots) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *appServiceActiveSlots) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *appServiceActiveSlots) Watch(opts v1.ListOptions) (watch.Interface, err
 		Resource("appserviceactiveslots").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a appServiceActiveSlot and creates it.  Returns the server's representation of the appServiceActiveSlot, and an error, if there is any.
-func (c *appServiceActiveSlots) Create(appServiceActiveSlot *v1alpha1.AppServiceActiveSlot) (result *v1alpha1.AppServiceActiveSlot, err error) {
+func (c *appServiceActiveSlots) Create(ctx context.Context, appServiceActiveSlot *v1alpha1.AppServiceActiveSlot, opts v1.CreateOptions) (result *v1alpha1.AppServiceActiveSlot, err error) {
 	result = &v1alpha1.AppServiceActiveSlot{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("appserviceactiveslots").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appServiceActiveSlot).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a appServiceActiveSlot and updates it. Returns the server's representation of the appServiceActiveSlot, and an error, if there is any.
-func (c *appServiceActiveSlots) Update(appServiceActiveSlot *v1alpha1.AppServiceActiveSlot) (result *v1alpha1.AppServiceActiveSlot, err error) {
+func (c *appServiceActiveSlots) Update(ctx context.Context, appServiceActiveSlot *v1alpha1.AppServiceActiveSlot, opts v1.UpdateOptions) (result *v1alpha1.AppServiceActiveSlot, err error) {
 	result = &v1alpha1.AppServiceActiveSlot{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("appserviceactiveslots").
 		Name(appServiceActiveSlot.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appServiceActiveSlot).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *appServiceActiveSlots) UpdateStatus(appServiceActiveSlot *v1alpha1.AppServiceActiveSlot) (result *v1alpha1.AppServiceActiveSlot, err error) {
+func (c *appServiceActiveSlots) UpdateStatus(ctx context.Context, appServiceActiveSlot *v1alpha1.AppServiceActiveSlot, opts v1.UpdateOptions) (result *v1alpha1.AppServiceActiveSlot, err error) {
 	result = &v1alpha1.AppServiceActiveSlot{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("appserviceactiveslots").
 		Name(appServiceActiveSlot.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appServiceActiveSlot).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the appServiceActiveSlot and deletes it. Returns an error if one occurs.
-func (c *appServiceActiveSlots) Delete(name string, options *v1.DeleteOptions) error {
+func (c *appServiceActiveSlots) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("appserviceactiveslots").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *appServiceActiveSlots) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *appServiceActiveSlots) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("appserviceactiveslots").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched appServiceActiveSlot.
-func (c *appServiceActiveSlots) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppServiceActiveSlot, err error) {
+func (c *appServiceActiveSlots) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppServiceActiveSlot, err error) {
 	result = &v1alpha1.AppServiceActiveSlot{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("appserviceactiveslots").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var billingaccountiambindingsResource = schema.GroupVersionResource{Group: "goog
 var billingaccountiambindingsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "BillingAccountIamBinding"}
 
 // Get takes name of the billingAccountIamBinding, and returns the corresponding billingAccountIamBinding object, and an error if there is any.
-func (c *FakeBillingAccountIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.BillingAccountIamBinding, err error) {
+func (c *FakeBillingAccountIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BillingAccountIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(billingaccountiambindingsResource, c.ns, name), &v1alpha1.BillingAccountIamBinding{})
 
@@ -51,7 +53,7 @@ func (c *FakeBillingAccountIamBindings) Get(name string, options v1.GetOptions) 
 }
 
 // List takes label and field selectors, and returns the list of BillingAccountIamBindings that match those selectors.
-func (c *FakeBillingAccountIamBindings) List(opts v1.ListOptions) (result *v1alpha1.BillingAccountIamBindingList, err error) {
+func (c *FakeBillingAccountIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BillingAccountIamBindingList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(billingaccountiambindingsResource, billingaccountiambindingsKind, c.ns, opts), &v1alpha1.BillingAccountIamBindingList{})
 
@@ -73,14 +75,14 @@ func (c *FakeBillingAccountIamBindings) List(opts v1.ListOptions) (result *v1alp
 }
 
 // Watch returns a watch.Interface that watches the requested billingAccountIamBindings.
-func (c *FakeBillingAccountIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeBillingAccountIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(billingaccountiambindingsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a billingAccountIamBinding and creates it.  Returns the server's representation of the billingAccountIamBinding, and an error, if there is any.
-func (c *FakeBillingAccountIamBindings) Create(billingAccountIamBinding *v1alpha1.BillingAccountIamBinding) (result *v1alpha1.BillingAccountIamBinding, err error) {
+func (c *FakeBillingAccountIamBindings) Create(ctx context.Context, billingAccountIamBinding *v1alpha1.BillingAccountIamBinding, opts v1.CreateOptions) (result *v1alpha1.BillingAccountIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(billingaccountiambindingsResource, c.ns, billingAccountIamBinding), &v1alpha1.BillingAccountIamBinding{})
 
@@ -91,7 +93,7 @@ func (c *FakeBillingAccountIamBindings) Create(billingAccountIamBinding *v1alpha
 }
 
 // Update takes the representation of a billingAccountIamBinding and updates it. Returns the server's representation of the billingAccountIamBinding, and an error, if there is any.
-func (c *FakeBillingAccountIamBindings) Update(billingAccountIamBinding *v1alpha1.BillingAccountIamBinding) (result *v1alpha1.BillingAccountIamBinding, err error) {
+func (c *FakeBillingAccountIamBindings) Update(ctx context.Context, billingAccountIamBinding *v1alpha1.BillingAccountIamBinding, opts v1.UpdateOptions) (result *v1alpha1.BillingAccountIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(billingaccountiambindingsResource, c.ns, billingAccountIamBinding), &v1alpha1.BillingAccountIamBinding{})
 
@@ -103,7 +105,7 @@ func (c *FakeBillingAccountIamBindings) Update(billingAccountIamBinding *v1alpha
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeBillingAccountIamBindings) UpdateStatus(billingAccountIamBinding *v1alpha1.BillingAccountIamBinding) (*v1alpha1.BillingAccountIamBinding, error) {
+func (c *FakeBillingAccountIamBindings) UpdateStatus(ctx context.Context, billingAccountIamBinding *v1alpha1.BillingAccountIamBinding, opts v1.UpdateOptions) (*v1alpha1.BillingAccountIamBinding, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(billingaccountiambindingsResource, "status", c.ns, billingAccountIamBinding), &v1alpha1.BillingAccountIamBinding{})
 
@@ -114,7 +116,7 @@ func (c *FakeBillingAccountIamBindings) UpdateStatus(billingAccountIamBinding *v
 }
 
 // Delete takes name of the billingAccountIamBinding and deletes it. Returns an error if one occurs.
-func (c *FakeBillingAccountIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeBillingAccountIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(billingaccountiambindingsResource, c.ns, name), &v1alpha1.BillingAccountIamBinding{})
 
@@ -122,15 +124,15 @@ func (c *FakeBillingAccountIamBindings) Delete(name string, options *v1.DeleteOp
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeBillingAccountIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(billingaccountiambindingsResource, c.ns, listOptions)
+func (c *FakeBillingAccountIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(billingaccountiambindingsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.BillingAccountIamBindingList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched billingAccountIamBinding.
-func (c *FakeBillingAccountIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BillingAccountIamBinding, err error) {
+func (c *FakeBillingAccountIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BillingAccountIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(billingaccountiambindingsResource, c.ns, name, pt, data, subresources...), &v1alpha1.BillingAccountIamBinding{})
 

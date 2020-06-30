@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var serviceaccountiambindingsResource = schema.GroupVersionResource{Group: "goog
 var serviceaccountiambindingsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ServiceAccountIamBinding"}
 
 // Get takes name of the serviceAccountIamBinding, and returns the corresponding serviceAccountIamBinding object, and an error if there is any.
-func (c *FakeServiceAccountIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.ServiceAccountIamBinding, err error) {
+func (c *FakeServiceAccountIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ServiceAccountIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(serviceaccountiambindingsResource, c.ns, name), &v1alpha1.ServiceAccountIamBinding{})
 
@@ -51,7 +53,7 @@ func (c *FakeServiceAccountIamBindings) Get(name string, options v1.GetOptions) 
 }
 
 // List takes label and field selectors, and returns the list of ServiceAccountIamBindings that match those selectors.
-func (c *FakeServiceAccountIamBindings) List(opts v1.ListOptions) (result *v1alpha1.ServiceAccountIamBindingList, err error) {
+func (c *FakeServiceAccountIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ServiceAccountIamBindingList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(serviceaccountiambindingsResource, serviceaccountiambindingsKind, c.ns, opts), &v1alpha1.ServiceAccountIamBindingList{})
 
@@ -73,14 +75,14 @@ func (c *FakeServiceAccountIamBindings) List(opts v1.ListOptions) (result *v1alp
 }
 
 // Watch returns a watch.Interface that watches the requested serviceAccountIamBindings.
-func (c *FakeServiceAccountIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeServiceAccountIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(serviceaccountiambindingsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a serviceAccountIamBinding and creates it.  Returns the server's representation of the serviceAccountIamBinding, and an error, if there is any.
-func (c *FakeServiceAccountIamBindings) Create(serviceAccountIamBinding *v1alpha1.ServiceAccountIamBinding) (result *v1alpha1.ServiceAccountIamBinding, err error) {
+func (c *FakeServiceAccountIamBindings) Create(ctx context.Context, serviceAccountIamBinding *v1alpha1.ServiceAccountIamBinding, opts v1.CreateOptions) (result *v1alpha1.ServiceAccountIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(serviceaccountiambindingsResource, c.ns, serviceAccountIamBinding), &v1alpha1.ServiceAccountIamBinding{})
 
@@ -91,7 +93,7 @@ func (c *FakeServiceAccountIamBindings) Create(serviceAccountIamBinding *v1alpha
 }
 
 // Update takes the representation of a serviceAccountIamBinding and updates it. Returns the server's representation of the serviceAccountIamBinding, and an error, if there is any.
-func (c *FakeServiceAccountIamBindings) Update(serviceAccountIamBinding *v1alpha1.ServiceAccountIamBinding) (result *v1alpha1.ServiceAccountIamBinding, err error) {
+func (c *FakeServiceAccountIamBindings) Update(ctx context.Context, serviceAccountIamBinding *v1alpha1.ServiceAccountIamBinding, opts v1.UpdateOptions) (result *v1alpha1.ServiceAccountIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(serviceaccountiambindingsResource, c.ns, serviceAccountIamBinding), &v1alpha1.ServiceAccountIamBinding{})
 
@@ -103,7 +105,7 @@ func (c *FakeServiceAccountIamBindings) Update(serviceAccountIamBinding *v1alpha
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeServiceAccountIamBindings) UpdateStatus(serviceAccountIamBinding *v1alpha1.ServiceAccountIamBinding) (*v1alpha1.ServiceAccountIamBinding, error) {
+func (c *FakeServiceAccountIamBindings) UpdateStatus(ctx context.Context, serviceAccountIamBinding *v1alpha1.ServiceAccountIamBinding, opts v1.UpdateOptions) (*v1alpha1.ServiceAccountIamBinding, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(serviceaccountiambindingsResource, "status", c.ns, serviceAccountIamBinding), &v1alpha1.ServiceAccountIamBinding{})
 
@@ -114,7 +116,7 @@ func (c *FakeServiceAccountIamBindings) UpdateStatus(serviceAccountIamBinding *v
 }
 
 // Delete takes name of the serviceAccountIamBinding and deletes it. Returns an error if one occurs.
-func (c *FakeServiceAccountIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeServiceAccountIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(serviceaccountiambindingsResource, c.ns, name), &v1alpha1.ServiceAccountIamBinding{})
 
@@ -122,15 +124,15 @@ func (c *FakeServiceAccountIamBindings) Delete(name string, options *v1.DeleteOp
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeServiceAccountIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(serviceaccountiambindingsResource, c.ns, listOptions)
+func (c *FakeServiceAccountIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(serviceaccountiambindingsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ServiceAccountIamBindingList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched serviceAccountIamBinding.
-func (c *FakeServiceAccountIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ServiceAccountIamBinding, err error) {
+func (c *FakeServiceAccountIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ServiceAccountIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(serviceaccountiambindingsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ServiceAccountIamBinding{})
 

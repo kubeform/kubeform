@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var sqlvirtualnetworkrulesResource = schema.GroupVersionResource{Group: "azurerm
 var sqlvirtualnetworkrulesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "SqlVirtualNetworkRule"}
 
 // Get takes name of the sqlVirtualNetworkRule, and returns the corresponding sqlVirtualNetworkRule object, and an error if there is any.
-func (c *FakeSqlVirtualNetworkRules) Get(name string, options v1.GetOptions) (result *v1alpha1.SqlVirtualNetworkRule, err error) {
+func (c *FakeSqlVirtualNetworkRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SqlVirtualNetworkRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(sqlvirtualnetworkrulesResource, c.ns, name), &v1alpha1.SqlVirtualNetworkRule{})
 
@@ -51,7 +53,7 @@ func (c *FakeSqlVirtualNetworkRules) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of SqlVirtualNetworkRules that match those selectors.
-func (c *FakeSqlVirtualNetworkRules) List(opts v1.ListOptions) (result *v1alpha1.SqlVirtualNetworkRuleList, err error) {
+func (c *FakeSqlVirtualNetworkRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SqlVirtualNetworkRuleList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(sqlvirtualnetworkrulesResource, sqlvirtualnetworkrulesKind, c.ns, opts), &v1alpha1.SqlVirtualNetworkRuleList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSqlVirtualNetworkRules) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested sqlVirtualNetworkRules.
-func (c *FakeSqlVirtualNetworkRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSqlVirtualNetworkRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(sqlvirtualnetworkrulesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a sqlVirtualNetworkRule and creates it.  Returns the server's representation of the sqlVirtualNetworkRule, and an error, if there is any.
-func (c *FakeSqlVirtualNetworkRules) Create(sqlVirtualNetworkRule *v1alpha1.SqlVirtualNetworkRule) (result *v1alpha1.SqlVirtualNetworkRule, err error) {
+func (c *FakeSqlVirtualNetworkRules) Create(ctx context.Context, sqlVirtualNetworkRule *v1alpha1.SqlVirtualNetworkRule, opts v1.CreateOptions) (result *v1alpha1.SqlVirtualNetworkRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(sqlvirtualnetworkrulesResource, c.ns, sqlVirtualNetworkRule), &v1alpha1.SqlVirtualNetworkRule{})
 
@@ -91,7 +93,7 @@ func (c *FakeSqlVirtualNetworkRules) Create(sqlVirtualNetworkRule *v1alpha1.SqlV
 }
 
 // Update takes the representation of a sqlVirtualNetworkRule and updates it. Returns the server's representation of the sqlVirtualNetworkRule, and an error, if there is any.
-func (c *FakeSqlVirtualNetworkRules) Update(sqlVirtualNetworkRule *v1alpha1.SqlVirtualNetworkRule) (result *v1alpha1.SqlVirtualNetworkRule, err error) {
+func (c *FakeSqlVirtualNetworkRules) Update(ctx context.Context, sqlVirtualNetworkRule *v1alpha1.SqlVirtualNetworkRule, opts v1.UpdateOptions) (result *v1alpha1.SqlVirtualNetworkRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(sqlvirtualnetworkrulesResource, c.ns, sqlVirtualNetworkRule), &v1alpha1.SqlVirtualNetworkRule{})
 
@@ -103,7 +105,7 @@ func (c *FakeSqlVirtualNetworkRules) Update(sqlVirtualNetworkRule *v1alpha1.SqlV
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSqlVirtualNetworkRules) UpdateStatus(sqlVirtualNetworkRule *v1alpha1.SqlVirtualNetworkRule) (*v1alpha1.SqlVirtualNetworkRule, error) {
+func (c *FakeSqlVirtualNetworkRules) UpdateStatus(ctx context.Context, sqlVirtualNetworkRule *v1alpha1.SqlVirtualNetworkRule, opts v1.UpdateOptions) (*v1alpha1.SqlVirtualNetworkRule, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(sqlvirtualnetworkrulesResource, "status", c.ns, sqlVirtualNetworkRule), &v1alpha1.SqlVirtualNetworkRule{})
 
@@ -114,7 +116,7 @@ func (c *FakeSqlVirtualNetworkRules) UpdateStatus(sqlVirtualNetworkRule *v1alpha
 }
 
 // Delete takes name of the sqlVirtualNetworkRule and deletes it. Returns an error if one occurs.
-func (c *FakeSqlVirtualNetworkRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSqlVirtualNetworkRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(sqlvirtualnetworkrulesResource, c.ns, name), &v1alpha1.SqlVirtualNetworkRule{})
 
@@ -122,15 +124,15 @@ func (c *FakeSqlVirtualNetworkRules) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSqlVirtualNetworkRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(sqlvirtualnetworkrulesResource, c.ns, listOptions)
+func (c *FakeSqlVirtualNetworkRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(sqlvirtualnetworkrulesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SqlVirtualNetworkRuleList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched sqlVirtualNetworkRule.
-func (c *FakeSqlVirtualNetworkRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SqlVirtualNetworkRule, err error) {
+func (c *FakeSqlVirtualNetworkRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SqlVirtualNetworkRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(sqlvirtualnetworkrulesResource, c.ns, name, pt, data, subresources...), &v1alpha1.SqlVirtualNetworkRule{})
 

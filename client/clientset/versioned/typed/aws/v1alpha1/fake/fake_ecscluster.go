@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var ecsclustersResource = schema.GroupVersionResource{Group: "aws.kubeform.com",
 var ecsclustersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "EcsCluster"}
 
 // Get takes name of the ecsCluster, and returns the corresponding ecsCluster object, and an error if there is any.
-func (c *FakeEcsClusters) Get(name string, options v1.GetOptions) (result *v1alpha1.EcsCluster, err error) {
+func (c *FakeEcsClusters) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.EcsCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(ecsclustersResource, c.ns, name), &v1alpha1.EcsCluster{})
 
@@ -51,7 +53,7 @@ func (c *FakeEcsClusters) Get(name string, options v1.GetOptions) (result *v1alp
 }
 
 // List takes label and field selectors, and returns the list of EcsClusters that match those selectors.
-func (c *FakeEcsClusters) List(opts v1.ListOptions) (result *v1alpha1.EcsClusterList, err error) {
+func (c *FakeEcsClusters) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.EcsClusterList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(ecsclustersResource, ecsclustersKind, c.ns, opts), &v1alpha1.EcsClusterList{})
 
@@ -73,14 +75,14 @@ func (c *FakeEcsClusters) List(opts v1.ListOptions) (result *v1alpha1.EcsCluster
 }
 
 // Watch returns a watch.Interface that watches the requested ecsClusters.
-func (c *FakeEcsClusters) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeEcsClusters) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(ecsclustersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a ecsCluster and creates it.  Returns the server's representation of the ecsCluster, and an error, if there is any.
-func (c *FakeEcsClusters) Create(ecsCluster *v1alpha1.EcsCluster) (result *v1alpha1.EcsCluster, err error) {
+func (c *FakeEcsClusters) Create(ctx context.Context, ecsCluster *v1alpha1.EcsCluster, opts v1.CreateOptions) (result *v1alpha1.EcsCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(ecsclustersResource, c.ns, ecsCluster), &v1alpha1.EcsCluster{})
 
@@ -91,7 +93,7 @@ func (c *FakeEcsClusters) Create(ecsCluster *v1alpha1.EcsCluster) (result *v1alp
 }
 
 // Update takes the representation of a ecsCluster and updates it. Returns the server's representation of the ecsCluster, and an error, if there is any.
-func (c *FakeEcsClusters) Update(ecsCluster *v1alpha1.EcsCluster) (result *v1alpha1.EcsCluster, err error) {
+func (c *FakeEcsClusters) Update(ctx context.Context, ecsCluster *v1alpha1.EcsCluster, opts v1.UpdateOptions) (result *v1alpha1.EcsCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(ecsclustersResource, c.ns, ecsCluster), &v1alpha1.EcsCluster{})
 
@@ -103,7 +105,7 @@ func (c *FakeEcsClusters) Update(ecsCluster *v1alpha1.EcsCluster) (result *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeEcsClusters) UpdateStatus(ecsCluster *v1alpha1.EcsCluster) (*v1alpha1.EcsCluster, error) {
+func (c *FakeEcsClusters) UpdateStatus(ctx context.Context, ecsCluster *v1alpha1.EcsCluster, opts v1.UpdateOptions) (*v1alpha1.EcsCluster, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(ecsclustersResource, "status", c.ns, ecsCluster), &v1alpha1.EcsCluster{})
 
@@ -114,7 +116,7 @@ func (c *FakeEcsClusters) UpdateStatus(ecsCluster *v1alpha1.EcsCluster) (*v1alph
 }
 
 // Delete takes name of the ecsCluster and deletes it. Returns an error if one occurs.
-func (c *FakeEcsClusters) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeEcsClusters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(ecsclustersResource, c.ns, name), &v1alpha1.EcsCluster{})
 
@@ -122,15 +124,15 @@ func (c *FakeEcsClusters) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeEcsClusters) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(ecsclustersResource, c.ns, listOptions)
+func (c *FakeEcsClusters) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(ecsclustersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.EcsClusterList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched ecsCluster.
-func (c *FakeEcsClusters) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EcsCluster, err error) {
+func (c *FakeEcsClusters) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EcsCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(ecsclustersResource, c.ns, name, pt, data, subresources...), &v1alpha1.EcsCluster{})
 

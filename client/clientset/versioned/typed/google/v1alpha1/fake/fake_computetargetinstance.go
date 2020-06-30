@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computetargetinstancesResource = schema.GroupVersionResource{Group: "google.
 var computetargetinstancesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeTargetInstance"}
 
 // Get takes name of the computeTargetInstance, and returns the corresponding computeTargetInstance object, and an error if there is any.
-func (c *FakeComputeTargetInstances) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeTargetInstance, err error) {
+func (c *FakeComputeTargetInstances) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeTargetInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computetargetinstancesResource, c.ns, name), &v1alpha1.ComputeTargetInstance{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeTargetInstances) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of ComputeTargetInstances that match those selectors.
-func (c *FakeComputeTargetInstances) List(opts v1.ListOptions) (result *v1alpha1.ComputeTargetInstanceList, err error) {
+func (c *FakeComputeTargetInstances) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeTargetInstanceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computetargetinstancesResource, computetargetinstancesKind, c.ns, opts), &v1alpha1.ComputeTargetInstanceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeTargetInstances) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested computeTargetInstances.
-func (c *FakeComputeTargetInstances) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeTargetInstances) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computetargetinstancesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeTargetInstance and creates it.  Returns the server's representation of the computeTargetInstance, and an error, if there is any.
-func (c *FakeComputeTargetInstances) Create(computeTargetInstance *v1alpha1.ComputeTargetInstance) (result *v1alpha1.ComputeTargetInstance, err error) {
+func (c *FakeComputeTargetInstances) Create(ctx context.Context, computeTargetInstance *v1alpha1.ComputeTargetInstance, opts v1.CreateOptions) (result *v1alpha1.ComputeTargetInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computetargetinstancesResource, c.ns, computeTargetInstance), &v1alpha1.ComputeTargetInstance{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeTargetInstances) Create(computeTargetInstance *v1alpha1.Comp
 }
 
 // Update takes the representation of a computeTargetInstance and updates it. Returns the server's representation of the computeTargetInstance, and an error, if there is any.
-func (c *FakeComputeTargetInstances) Update(computeTargetInstance *v1alpha1.ComputeTargetInstance) (result *v1alpha1.ComputeTargetInstance, err error) {
+func (c *FakeComputeTargetInstances) Update(ctx context.Context, computeTargetInstance *v1alpha1.ComputeTargetInstance, opts v1.UpdateOptions) (result *v1alpha1.ComputeTargetInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computetargetinstancesResource, c.ns, computeTargetInstance), &v1alpha1.ComputeTargetInstance{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeTargetInstances) Update(computeTargetInstance *v1alpha1.Comp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeTargetInstances) UpdateStatus(computeTargetInstance *v1alpha1.ComputeTargetInstance) (*v1alpha1.ComputeTargetInstance, error) {
+func (c *FakeComputeTargetInstances) UpdateStatus(ctx context.Context, computeTargetInstance *v1alpha1.ComputeTargetInstance, opts v1.UpdateOptions) (*v1alpha1.ComputeTargetInstance, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computetargetinstancesResource, "status", c.ns, computeTargetInstance), &v1alpha1.ComputeTargetInstance{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeTargetInstances) UpdateStatus(computeTargetInstance *v1alpha
 }
 
 // Delete takes name of the computeTargetInstance and deletes it. Returns an error if one occurs.
-func (c *FakeComputeTargetInstances) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeTargetInstances) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computetargetinstancesResource, c.ns, name), &v1alpha1.ComputeTargetInstance{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeTargetInstances) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeTargetInstances) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computetargetinstancesResource, c.ns, listOptions)
+func (c *FakeComputeTargetInstances) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computetargetinstancesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeTargetInstanceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeTargetInstance.
-func (c *FakeComputeTargetInstances) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeTargetInstance, err error) {
+func (c *FakeComputeTargetInstances) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeTargetInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computetargetinstancesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeTargetInstance{})
 

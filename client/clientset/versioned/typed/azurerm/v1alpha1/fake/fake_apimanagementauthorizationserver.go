@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var apimanagementauthorizationserversResource = schema.GroupVersionResource{Grou
 var apimanagementauthorizationserversKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "ApiManagementAuthorizationServer"}
 
 // Get takes name of the apiManagementAuthorizationServer, and returns the corresponding apiManagementAuthorizationServer object, and an error if there is any.
-func (c *FakeApiManagementAuthorizationServers) Get(name string, options v1.GetOptions) (result *v1alpha1.ApiManagementAuthorizationServer, err error) {
+func (c *FakeApiManagementAuthorizationServers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApiManagementAuthorizationServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(apimanagementauthorizationserversResource, c.ns, name), &v1alpha1.ApiManagementAuthorizationServer{})
 
@@ -51,7 +53,7 @@ func (c *FakeApiManagementAuthorizationServers) Get(name string, options v1.GetO
 }
 
 // List takes label and field selectors, and returns the list of ApiManagementAuthorizationServers that match those selectors.
-func (c *FakeApiManagementAuthorizationServers) List(opts v1.ListOptions) (result *v1alpha1.ApiManagementAuthorizationServerList, err error) {
+func (c *FakeApiManagementAuthorizationServers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApiManagementAuthorizationServerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(apimanagementauthorizationserversResource, apimanagementauthorizationserversKind, c.ns, opts), &v1alpha1.ApiManagementAuthorizationServerList{})
 
@@ -73,14 +75,14 @@ func (c *FakeApiManagementAuthorizationServers) List(opts v1.ListOptions) (resul
 }
 
 // Watch returns a watch.Interface that watches the requested apiManagementAuthorizationServers.
-func (c *FakeApiManagementAuthorizationServers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeApiManagementAuthorizationServers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(apimanagementauthorizationserversResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a apiManagementAuthorizationServer and creates it.  Returns the server's representation of the apiManagementAuthorizationServer, and an error, if there is any.
-func (c *FakeApiManagementAuthorizationServers) Create(apiManagementAuthorizationServer *v1alpha1.ApiManagementAuthorizationServer) (result *v1alpha1.ApiManagementAuthorizationServer, err error) {
+func (c *FakeApiManagementAuthorizationServers) Create(ctx context.Context, apiManagementAuthorizationServer *v1alpha1.ApiManagementAuthorizationServer, opts v1.CreateOptions) (result *v1alpha1.ApiManagementAuthorizationServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(apimanagementauthorizationserversResource, c.ns, apiManagementAuthorizationServer), &v1alpha1.ApiManagementAuthorizationServer{})
 
@@ -91,7 +93,7 @@ func (c *FakeApiManagementAuthorizationServers) Create(apiManagementAuthorizatio
 }
 
 // Update takes the representation of a apiManagementAuthorizationServer and updates it. Returns the server's representation of the apiManagementAuthorizationServer, and an error, if there is any.
-func (c *FakeApiManagementAuthorizationServers) Update(apiManagementAuthorizationServer *v1alpha1.ApiManagementAuthorizationServer) (result *v1alpha1.ApiManagementAuthorizationServer, err error) {
+func (c *FakeApiManagementAuthorizationServers) Update(ctx context.Context, apiManagementAuthorizationServer *v1alpha1.ApiManagementAuthorizationServer, opts v1.UpdateOptions) (result *v1alpha1.ApiManagementAuthorizationServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(apimanagementauthorizationserversResource, c.ns, apiManagementAuthorizationServer), &v1alpha1.ApiManagementAuthorizationServer{})
 
@@ -103,7 +105,7 @@ func (c *FakeApiManagementAuthorizationServers) Update(apiManagementAuthorizatio
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeApiManagementAuthorizationServers) UpdateStatus(apiManagementAuthorizationServer *v1alpha1.ApiManagementAuthorizationServer) (*v1alpha1.ApiManagementAuthorizationServer, error) {
+func (c *FakeApiManagementAuthorizationServers) UpdateStatus(ctx context.Context, apiManagementAuthorizationServer *v1alpha1.ApiManagementAuthorizationServer, opts v1.UpdateOptions) (*v1alpha1.ApiManagementAuthorizationServer, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(apimanagementauthorizationserversResource, "status", c.ns, apiManagementAuthorizationServer), &v1alpha1.ApiManagementAuthorizationServer{})
 
@@ -114,7 +116,7 @@ func (c *FakeApiManagementAuthorizationServers) UpdateStatus(apiManagementAuthor
 }
 
 // Delete takes name of the apiManagementAuthorizationServer and deletes it. Returns an error if one occurs.
-func (c *FakeApiManagementAuthorizationServers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeApiManagementAuthorizationServers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(apimanagementauthorizationserversResource, c.ns, name), &v1alpha1.ApiManagementAuthorizationServer{})
 
@@ -122,15 +124,15 @@ func (c *FakeApiManagementAuthorizationServers) Delete(name string, options *v1.
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeApiManagementAuthorizationServers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(apimanagementauthorizationserversResource, c.ns, listOptions)
+func (c *FakeApiManagementAuthorizationServers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(apimanagementauthorizationserversResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ApiManagementAuthorizationServerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched apiManagementAuthorizationServer.
-func (c *FakeApiManagementAuthorizationServers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiManagementAuthorizationServer, err error) {
+func (c *FakeApiManagementAuthorizationServers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiManagementAuthorizationServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(apimanagementauthorizationserversResource, c.ns, name, pt, data, subresources...), &v1alpha1.ApiManagementAuthorizationServer{})
 

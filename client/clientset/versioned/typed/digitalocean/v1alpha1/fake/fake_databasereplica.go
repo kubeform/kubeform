@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/digitalocean/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var databasereplicasResource = schema.GroupVersionResource{Group: "digitalocean.
 var databasereplicasKind = schema.GroupVersionKind{Group: "digitalocean.kubeform.com", Version: "v1alpha1", Kind: "DatabaseReplica"}
 
 // Get takes name of the databaseReplica, and returns the corresponding databaseReplica object, and an error if there is any.
-func (c *FakeDatabaseReplicas) Get(name string, options v1.GetOptions) (result *v1alpha1.DatabaseReplica, err error) {
+func (c *FakeDatabaseReplicas) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DatabaseReplica, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(databasereplicasResource, c.ns, name), &v1alpha1.DatabaseReplica{})
 
@@ -51,7 +53,7 @@ func (c *FakeDatabaseReplicas) Get(name string, options v1.GetOptions) (result *
 }
 
 // List takes label and field selectors, and returns the list of DatabaseReplicas that match those selectors.
-func (c *FakeDatabaseReplicas) List(opts v1.ListOptions) (result *v1alpha1.DatabaseReplicaList, err error) {
+func (c *FakeDatabaseReplicas) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DatabaseReplicaList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(databasereplicasResource, databasereplicasKind, c.ns, opts), &v1alpha1.DatabaseReplicaList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDatabaseReplicas) List(opts v1.ListOptions) (result *v1alpha1.Datab
 }
 
 // Watch returns a watch.Interface that watches the requested databaseReplicas.
-func (c *FakeDatabaseReplicas) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDatabaseReplicas) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(databasereplicasResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a databaseReplica and creates it.  Returns the server's representation of the databaseReplica, and an error, if there is any.
-func (c *FakeDatabaseReplicas) Create(databaseReplica *v1alpha1.DatabaseReplica) (result *v1alpha1.DatabaseReplica, err error) {
+func (c *FakeDatabaseReplicas) Create(ctx context.Context, databaseReplica *v1alpha1.DatabaseReplica, opts v1.CreateOptions) (result *v1alpha1.DatabaseReplica, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(databasereplicasResource, c.ns, databaseReplica), &v1alpha1.DatabaseReplica{})
 
@@ -91,7 +93,7 @@ func (c *FakeDatabaseReplicas) Create(databaseReplica *v1alpha1.DatabaseReplica)
 }
 
 // Update takes the representation of a databaseReplica and updates it. Returns the server's representation of the databaseReplica, and an error, if there is any.
-func (c *FakeDatabaseReplicas) Update(databaseReplica *v1alpha1.DatabaseReplica) (result *v1alpha1.DatabaseReplica, err error) {
+func (c *FakeDatabaseReplicas) Update(ctx context.Context, databaseReplica *v1alpha1.DatabaseReplica, opts v1.UpdateOptions) (result *v1alpha1.DatabaseReplica, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(databasereplicasResource, c.ns, databaseReplica), &v1alpha1.DatabaseReplica{})
 
@@ -103,7 +105,7 @@ func (c *FakeDatabaseReplicas) Update(databaseReplica *v1alpha1.DatabaseReplica)
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDatabaseReplicas) UpdateStatus(databaseReplica *v1alpha1.DatabaseReplica) (*v1alpha1.DatabaseReplica, error) {
+func (c *FakeDatabaseReplicas) UpdateStatus(ctx context.Context, databaseReplica *v1alpha1.DatabaseReplica, opts v1.UpdateOptions) (*v1alpha1.DatabaseReplica, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(databasereplicasResource, "status", c.ns, databaseReplica), &v1alpha1.DatabaseReplica{})
 
@@ -114,7 +116,7 @@ func (c *FakeDatabaseReplicas) UpdateStatus(databaseReplica *v1alpha1.DatabaseRe
 }
 
 // Delete takes name of the databaseReplica and deletes it. Returns an error if one occurs.
-func (c *FakeDatabaseReplicas) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDatabaseReplicas) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(databasereplicasResource, c.ns, name), &v1alpha1.DatabaseReplica{})
 
@@ -122,15 +124,15 @@ func (c *FakeDatabaseReplicas) Delete(name string, options *v1.DeleteOptions) er
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDatabaseReplicas) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(databasereplicasResource, c.ns, listOptions)
+func (c *FakeDatabaseReplicas) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(databasereplicasResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DatabaseReplicaList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched databaseReplica.
-func (c *FakeDatabaseReplicas) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DatabaseReplica, err error) {
+func (c *FakeDatabaseReplicas) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DatabaseReplica, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(databasereplicasResource, c.ns, name, pt, data, subresources...), &v1alpha1.DatabaseReplica{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var bigtableinstanceiambindingsResource = schema.GroupVersionResource{Group: "go
 var bigtableinstanceiambindingsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "BigtableInstanceIamBinding"}
 
 // Get takes name of the bigtableInstanceIamBinding, and returns the corresponding bigtableInstanceIamBinding object, and an error if there is any.
-func (c *FakeBigtableInstanceIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.BigtableInstanceIamBinding, err error) {
+func (c *FakeBigtableInstanceIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BigtableInstanceIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(bigtableinstanceiambindingsResource, c.ns, name), &v1alpha1.BigtableInstanceIamBinding{})
 
@@ -51,7 +53,7 @@ func (c *FakeBigtableInstanceIamBindings) Get(name string, options v1.GetOptions
 }
 
 // List takes label and field selectors, and returns the list of BigtableInstanceIamBindings that match those selectors.
-func (c *FakeBigtableInstanceIamBindings) List(opts v1.ListOptions) (result *v1alpha1.BigtableInstanceIamBindingList, err error) {
+func (c *FakeBigtableInstanceIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BigtableInstanceIamBindingList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(bigtableinstanceiambindingsResource, bigtableinstanceiambindingsKind, c.ns, opts), &v1alpha1.BigtableInstanceIamBindingList{})
 
@@ -73,14 +75,14 @@ func (c *FakeBigtableInstanceIamBindings) List(opts v1.ListOptions) (result *v1a
 }
 
 // Watch returns a watch.Interface that watches the requested bigtableInstanceIamBindings.
-func (c *FakeBigtableInstanceIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeBigtableInstanceIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(bigtableinstanceiambindingsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a bigtableInstanceIamBinding and creates it.  Returns the server's representation of the bigtableInstanceIamBinding, and an error, if there is any.
-func (c *FakeBigtableInstanceIamBindings) Create(bigtableInstanceIamBinding *v1alpha1.BigtableInstanceIamBinding) (result *v1alpha1.BigtableInstanceIamBinding, err error) {
+func (c *FakeBigtableInstanceIamBindings) Create(ctx context.Context, bigtableInstanceIamBinding *v1alpha1.BigtableInstanceIamBinding, opts v1.CreateOptions) (result *v1alpha1.BigtableInstanceIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(bigtableinstanceiambindingsResource, c.ns, bigtableInstanceIamBinding), &v1alpha1.BigtableInstanceIamBinding{})
 
@@ -91,7 +93,7 @@ func (c *FakeBigtableInstanceIamBindings) Create(bigtableInstanceIamBinding *v1a
 }
 
 // Update takes the representation of a bigtableInstanceIamBinding and updates it. Returns the server's representation of the bigtableInstanceIamBinding, and an error, if there is any.
-func (c *FakeBigtableInstanceIamBindings) Update(bigtableInstanceIamBinding *v1alpha1.BigtableInstanceIamBinding) (result *v1alpha1.BigtableInstanceIamBinding, err error) {
+func (c *FakeBigtableInstanceIamBindings) Update(ctx context.Context, bigtableInstanceIamBinding *v1alpha1.BigtableInstanceIamBinding, opts v1.UpdateOptions) (result *v1alpha1.BigtableInstanceIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(bigtableinstanceiambindingsResource, c.ns, bigtableInstanceIamBinding), &v1alpha1.BigtableInstanceIamBinding{})
 
@@ -103,7 +105,7 @@ func (c *FakeBigtableInstanceIamBindings) Update(bigtableInstanceIamBinding *v1a
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeBigtableInstanceIamBindings) UpdateStatus(bigtableInstanceIamBinding *v1alpha1.BigtableInstanceIamBinding) (*v1alpha1.BigtableInstanceIamBinding, error) {
+func (c *FakeBigtableInstanceIamBindings) UpdateStatus(ctx context.Context, bigtableInstanceIamBinding *v1alpha1.BigtableInstanceIamBinding, opts v1.UpdateOptions) (*v1alpha1.BigtableInstanceIamBinding, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(bigtableinstanceiambindingsResource, "status", c.ns, bigtableInstanceIamBinding), &v1alpha1.BigtableInstanceIamBinding{})
 
@@ -114,7 +116,7 @@ func (c *FakeBigtableInstanceIamBindings) UpdateStatus(bigtableInstanceIamBindin
 }
 
 // Delete takes name of the bigtableInstanceIamBinding and deletes it. Returns an error if one occurs.
-func (c *FakeBigtableInstanceIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeBigtableInstanceIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(bigtableinstanceiambindingsResource, c.ns, name), &v1alpha1.BigtableInstanceIamBinding{})
 
@@ -122,15 +124,15 @@ func (c *FakeBigtableInstanceIamBindings) Delete(name string, options *v1.Delete
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeBigtableInstanceIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(bigtableinstanceiambindingsResource, c.ns, listOptions)
+func (c *FakeBigtableInstanceIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(bigtableinstanceiambindingsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.BigtableInstanceIamBindingList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched bigtableInstanceIamBinding.
-func (c *FakeBigtableInstanceIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BigtableInstanceIamBinding, err error) {
+func (c *FakeBigtableInstanceIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BigtableInstanceIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(bigtableinstanceiambindingsResource, c.ns, name, pt, data, subresources...), &v1alpha1.BigtableInstanceIamBinding{})
 

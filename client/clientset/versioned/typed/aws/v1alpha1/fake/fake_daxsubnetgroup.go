@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var daxsubnetgroupsResource = schema.GroupVersionResource{Group: "aws.kubeform.c
 var daxsubnetgroupsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DaxSubnetGroup"}
 
 // Get takes name of the daxSubnetGroup, and returns the corresponding daxSubnetGroup object, and an error if there is any.
-func (c *FakeDaxSubnetGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.DaxSubnetGroup, err error) {
+func (c *FakeDaxSubnetGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DaxSubnetGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(daxsubnetgroupsResource, c.ns, name), &v1alpha1.DaxSubnetGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeDaxSubnetGroups) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of DaxSubnetGroups that match those selectors.
-func (c *FakeDaxSubnetGroups) List(opts v1.ListOptions) (result *v1alpha1.DaxSubnetGroupList, err error) {
+func (c *FakeDaxSubnetGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DaxSubnetGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(daxsubnetgroupsResource, daxsubnetgroupsKind, c.ns, opts), &v1alpha1.DaxSubnetGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDaxSubnetGroups) List(opts v1.ListOptions) (result *v1alpha1.DaxSub
 }
 
 // Watch returns a watch.Interface that watches the requested daxSubnetGroups.
-func (c *FakeDaxSubnetGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDaxSubnetGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(daxsubnetgroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a daxSubnetGroup and creates it.  Returns the server's representation of the daxSubnetGroup, and an error, if there is any.
-func (c *FakeDaxSubnetGroups) Create(daxSubnetGroup *v1alpha1.DaxSubnetGroup) (result *v1alpha1.DaxSubnetGroup, err error) {
+func (c *FakeDaxSubnetGroups) Create(ctx context.Context, daxSubnetGroup *v1alpha1.DaxSubnetGroup, opts v1.CreateOptions) (result *v1alpha1.DaxSubnetGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(daxsubnetgroupsResource, c.ns, daxSubnetGroup), &v1alpha1.DaxSubnetGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeDaxSubnetGroups) Create(daxSubnetGroup *v1alpha1.DaxSubnetGroup) (r
 }
 
 // Update takes the representation of a daxSubnetGroup and updates it. Returns the server's representation of the daxSubnetGroup, and an error, if there is any.
-func (c *FakeDaxSubnetGroups) Update(daxSubnetGroup *v1alpha1.DaxSubnetGroup) (result *v1alpha1.DaxSubnetGroup, err error) {
+func (c *FakeDaxSubnetGroups) Update(ctx context.Context, daxSubnetGroup *v1alpha1.DaxSubnetGroup, opts v1.UpdateOptions) (result *v1alpha1.DaxSubnetGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(daxsubnetgroupsResource, c.ns, daxSubnetGroup), &v1alpha1.DaxSubnetGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeDaxSubnetGroups) Update(daxSubnetGroup *v1alpha1.DaxSubnetGroup) (r
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDaxSubnetGroups) UpdateStatus(daxSubnetGroup *v1alpha1.DaxSubnetGroup) (*v1alpha1.DaxSubnetGroup, error) {
+func (c *FakeDaxSubnetGroups) UpdateStatus(ctx context.Context, daxSubnetGroup *v1alpha1.DaxSubnetGroup, opts v1.UpdateOptions) (*v1alpha1.DaxSubnetGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(daxsubnetgroupsResource, "status", c.ns, daxSubnetGroup), &v1alpha1.DaxSubnetGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeDaxSubnetGroups) UpdateStatus(daxSubnetGroup *v1alpha1.DaxSubnetGro
 }
 
 // Delete takes name of the daxSubnetGroup and deletes it. Returns an error if one occurs.
-func (c *FakeDaxSubnetGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDaxSubnetGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(daxsubnetgroupsResource, c.ns, name), &v1alpha1.DaxSubnetGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeDaxSubnetGroups) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDaxSubnetGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(daxsubnetgroupsResource, c.ns, listOptions)
+func (c *FakeDaxSubnetGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(daxsubnetgroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DaxSubnetGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched daxSubnetGroup.
-func (c *FakeDaxSubnetGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DaxSubnetGroup, err error) {
+func (c *FakeDaxSubnetGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DaxSubnetGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(daxsubnetgroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DaxSubnetGroup{})
 

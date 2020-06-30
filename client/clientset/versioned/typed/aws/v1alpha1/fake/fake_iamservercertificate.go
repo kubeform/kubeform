@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iamservercertificatesResource = schema.GroupVersionResource{Group: "aws.kube
 var iamservercertificatesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "IamServerCertificate"}
 
 // Get takes name of the iamServerCertificate, and returns the corresponding iamServerCertificate object, and an error if there is any.
-func (c *FakeIamServerCertificates) Get(name string, options v1.GetOptions) (result *v1alpha1.IamServerCertificate, err error) {
+func (c *FakeIamServerCertificates) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IamServerCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iamservercertificatesResource, c.ns, name), &v1alpha1.IamServerCertificate{})
 
@@ -51,7 +53,7 @@ func (c *FakeIamServerCertificates) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of IamServerCertificates that match those selectors.
-func (c *FakeIamServerCertificates) List(opts v1.ListOptions) (result *v1alpha1.IamServerCertificateList, err error) {
+func (c *FakeIamServerCertificates) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IamServerCertificateList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iamservercertificatesResource, iamservercertificatesKind, c.ns, opts), &v1alpha1.IamServerCertificateList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIamServerCertificates) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested iamServerCertificates.
-func (c *FakeIamServerCertificates) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIamServerCertificates) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iamservercertificatesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iamServerCertificate and creates it.  Returns the server's representation of the iamServerCertificate, and an error, if there is any.
-func (c *FakeIamServerCertificates) Create(iamServerCertificate *v1alpha1.IamServerCertificate) (result *v1alpha1.IamServerCertificate, err error) {
+func (c *FakeIamServerCertificates) Create(ctx context.Context, iamServerCertificate *v1alpha1.IamServerCertificate, opts v1.CreateOptions) (result *v1alpha1.IamServerCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iamservercertificatesResource, c.ns, iamServerCertificate), &v1alpha1.IamServerCertificate{})
 
@@ -91,7 +93,7 @@ func (c *FakeIamServerCertificates) Create(iamServerCertificate *v1alpha1.IamSer
 }
 
 // Update takes the representation of a iamServerCertificate and updates it. Returns the server's representation of the iamServerCertificate, and an error, if there is any.
-func (c *FakeIamServerCertificates) Update(iamServerCertificate *v1alpha1.IamServerCertificate) (result *v1alpha1.IamServerCertificate, err error) {
+func (c *FakeIamServerCertificates) Update(ctx context.Context, iamServerCertificate *v1alpha1.IamServerCertificate, opts v1.UpdateOptions) (result *v1alpha1.IamServerCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iamservercertificatesResource, c.ns, iamServerCertificate), &v1alpha1.IamServerCertificate{})
 
@@ -103,7 +105,7 @@ func (c *FakeIamServerCertificates) Update(iamServerCertificate *v1alpha1.IamSer
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIamServerCertificates) UpdateStatus(iamServerCertificate *v1alpha1.IamServerCertificate) (*v1alpha1.IamServerCertificate, error) {
+func (c *FakeIamServerCertificates) UpdateStatus(ctx context.Context, iamServerCertificate *v1alpha1.IamServerCertificate, opts v1.UpdateOptions) (*v1alpha1.IamServerCertificate, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iamservercertificatesResource, "status", c.ns, iamServerCertificate), &v1alpha1.IamServerCertificate{})
 
@@ -114,7 +116,7 @@ func (c *FakeIamServerCertificates) UpdateStatus(iamServerCertificate *v1alpha1.
 }
 
 // Delete takes name of the iamServerCertificate and deletes it. Returns an error if one occurs.
-func (c *FakeIamServerCertificates) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIamServerCertificates) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iamservercertificatesResource, c.ns, name), &v1alpha1.IamServerCertificate{})
 
@@ -122,15 +124,15 @@ func (c *FakeIamServerCertificates) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIamServerCertificates) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iamservercertificatesResource, c.ns, listOptions)
+func (c *FakeIamServerCertificates) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iamservercertificatesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IamServerCertificateList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iamServerCertificate.
-func (c *FakeIamServerCertificates) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IamServerCertificate, err error) {
+func (c *FakeIamServerCertificates) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IamServerCertificate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iamservercertificatesResource, c.ns, name, pt, data, subresources...), &v1alpha1.IamServerCertificate{})
 

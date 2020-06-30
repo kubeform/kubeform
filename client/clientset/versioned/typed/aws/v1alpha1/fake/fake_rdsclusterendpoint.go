@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var rdsclusterendpointsResource = schema.GroupVersionResource{Group: "aws.kubefo
 var rdsclusterendpointsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "RdsClusterEndpoint"}
 
 // Get takes name of the rdsClusterEndpoint, and returns the corresponding rdsClusterEndpoint object, and an error if there is any.
-func (c *FakeRdsClusterEndpoints) Get(name string, options v1.GetOptions) (result *v1alpha1.RdsClusterEndpoint, err error) {
+func (c *FakeRdsClusterEndpoints) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.RdsClusterEndpoint, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(rdsclusterendpointsResource, c.ns, name), &v1alpha1.RdsClusterEndpoint{})
 
@@ -51,7 +53,7 @@ func (c *FakeRdsClusterEndpoints) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of RdsClusterEndpoints that match those selectors.
-func (c *FakeRdsClusterEndpoints) List(opts v1.ListOptions) (result *v1alpha1.RdsClusterEndpointList, err error) {
+func (c *FakeRdsClusterEndpoints) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RdsClusterEndpointList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(rdsclusterendpointsResource, rdsclusterendpointsKind, c.ns, opts), &v1alpha1.RdsClusterEndpointList{})
 
@@ -73,14 +75,14 @@ func (c *FakeRdsClusterEndpoints) List(opts v1.ListOptions) (result *v1alpha1.Rd
 }
 
 // Watch returns a watch.Interface that watches the requested rdsClusterEndpoints.
-func (c *FakeRdsClusterEndpoints) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeRdsClusterEndpoints) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(rdsclusterendpointsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a rdsClusterEndpoint and creates it.  Returns the server's representation of the rdsClusterEndpoint, and an error, if there is any.
-func (c *FakeRdsClusterEndpoints) Create(rdsClusterEndpoint *v1alpha1.RdsClusterEndpoint) (result *v1alpha1.RdsClusterEndpoint, err error) {
+func (c *FakeRdsClusterEndpoints) Create(ctx context.Context, rdsClusterEndpoint *v1alpha1.RdsClusterEndpoint, opts v1.CreateOptions) (result *v1alpha1.RdsClusterEndpoint, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(rdsclusterendpointsResource, c.ns, rdsClusterEndpoint), &v1alpha1.RdsClusterEndpoint{})
 
@@ -91,7 +93,7 @@ func (c *FakeRdsClusterEndpoints) Create(rdsClusterEndpoint *v1alpha1.RdsCluster
 }
 
 // Update takes the representation of a rdsClusterEndpoint and updates it. Returns the server's representation of the rdsClusterEndpoint, and an error, if there is any.
-func (c *FakeRdsClusterEndpoints) Update(rdsClusterEndpoint *v1alpha1.RdsClusterEndpoint) (result *v1alpha1.RdsClusterEndpoint, err error) {
+func (c *FakeRdsClusterEndpoints) Update(ctx context.Context, rdsClusterEndpoint *v1alpha1.RdsClusterEndpoint, opts v1.UpdateOptions) (result *v1alpha1.RdsClusterEndpoint, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(rdsclusterendpointsResource, c.ns, rdsClusterEndpoint), &v1alpha1.RdsClusterEndpoint{})
 
@@ -103,7 +105,7 @@ func (c *FakeRdsClusterEndpoints) Update(rdsClusterEndpoint *v1alpha1.RdsCluster
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeRdsClusterEndpoints) UpdateStatus(rdsClusterEndpoint *v1alpha1.RdsClusterEndpoint) (*v1alpha1.RdsClusterEndpoint, error) {
+func (c *FakeRdsClusterEndpoints) UpdateStatus(ctx context.Context, rdsClusterEndpoint *v1alpha1.RdsClusterEndpoint, opts v1.UpdateOptions) (*v1alpha1.RdsClusterEndpoint, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(rdsclusterendpointsResource, "status", c.ns, rdsClusterEndpoint), &v1alpha1.RdsClusterEndpoint{})
 
@@ -114,7 +116,7 @@ func (c *FakeRdsClusterEndpoints) UpdateStatus(rdsClusterEndpoint *v1alpha1.RdsC
 }
 
 // Delete takes name of the rdsClusterEndpoint and deletes it. Returns an error if one occurs.
-func (c *FakeRdsClusterEndpoints) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeRdsClusterEndpoints) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(rdsclusterendpointsResource, c.ns, name), &v1alpha1.RdsClusterEndpoint{})
 
@@ -122,15 +124,15 @@ func (c *FakeRdsClusterEndpoints) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeRdsClusterEndpoints) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(rdsclusterendpointsResource, c.ns, listOptions)
+func (c *FakeRdsClusterEndpoints) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(rdsclusterendpointsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.RdsClusterEndpointList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched rdsClusterEndpoint.
-func (c *FakeRdsClusterEndpoints) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RdsClusterEndpoint, err error) {
+func (c *FakeRdsClusterEndpoints) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RdsClusterEndpoint, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(rdsclusterendpointsResource, c.ns, name, pt, data, subresources...), &v1alpha1.RdsClusterEndpoint{})
 

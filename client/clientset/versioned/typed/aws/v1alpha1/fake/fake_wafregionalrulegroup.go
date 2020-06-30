@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var wafregionalrulegroupsResource = schema.GroupVersionResource{Group: "aws.kube
 var wafregionalrulegroupsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "WafregionalRuleGroup"}
 
 // Get takes name of the wafregionalRuleGroup, and returns the corresponding wafregionalRuleGroup object, and an error if there is any.
-func (c *FakeWafregionalRuleGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.WafregionalRuleGroup, err error) {
+func (c *FakeWafregionalRuleGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.WafregionalRuleGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(wafregionalrulegroupsResource, c.ns, name), &v1alpha1.WafregionalRuleGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeWafregionalRuleGroups) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of WafregionalRuleGroups that match those selectors.
-func (c *FakeWafregionalRuleGroups) List(opts v1.ListOptions) (result *v1alpha1.WafregionalRuleGroupList, err error) {
+func (c *FakeWafregionalRuleGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.WafregionalRuleGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(wafregionalrulegroupsResource, wafregionalrulegroupsKind, c.ns, opts), &v1alpha1.WafregionalRuleGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeWafregionalRuleGroups) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested wafregionalRuleGroups.
-func (c *FakeWafregionalRuleGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeWafregionalRuleGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(wafregionalrulegroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a wafregionalRuleGroup and creates it.  Returns the server's representation of the wafregionalRuleGroup, and an error, if there is any.
-func (c *FakeWafregionalRuleGroups) Create(wafregionalRuleGroup *v1alpha1.WafregionalRuleGroup) (result *v1alpha1.WafregionalRuleGroup, err error) {
+func (c *FakeWafregionalRuleGroups) Create(ctx context.Context, wafregionalRuleGroup *v1alpha1.WafregionalRuleGroup, opts v1.CreateOptions) (result *v1alpha1.WafregionalRuleGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(wafregionalrulegroupsResource, c.ns, wafregionalRuleGroup), &v1alpha1.WafregionalRuleGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeWafregionalRuleGroups) Create(wafregionalRuleGroup *v1alpha1.Wafreg
 }
 
 // Update takes the representation of a wafregionalRuleGroup and updates it. Returns the server's representation of the wafregionalRuleGroup, and an error, if there is any.
-func (c *FakeWafregionalRuleGroups) Update(wafregionalRuleGroup *v1alpha1.WafregionalRuleGroup) (result *v1alpha1.WafregionalRuleGroup, err error) {
+func (c *FakeWafregionalRuleGroups) Update(ctx context.Context, wafregionalRuleGroup *v1alpha1.WafregionalRuleGroup, opts v1.UpdateOptions) (result *v1alpha1.WafregionalRuleGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(wafregionalrulegroupsResource, c.ns, wafregionalRuleGroup), &v1alpha1.WafregionalRuleGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeWafregionalRuleGroups) Update(wafregionalRuleGroup *v1alpha1.Wafreg
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeWafregionalRuleGroups) UpdateStatus(wafregionalRuleGroup *v1alpha1.WafregionalRuleGroup) (*v1alpha1.WafregionalRuleGroup, error) {
+func (c *FakeWafregionalRuleGroups) UpdateStatus(ctx context.Context, wafregionalRuleGroup *v1alpha1.WafregionalRuleGroup, opts v1.UpdateOptions) (*v1alpha1.WafregionalRuleGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(wafregionalrulegroupsResource, "status", c.ns, wafregionalRuleGroup), &v1alpha1.WafregionalRuleGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeWafregionalRuleGroups) UpdateStatus(wafregionalRuleGroup *v1alpha1.
 }
 
 // Delete takes name of the wafregionalRuleGroup and deletes it. Returns an error if one occurs.
-func (c *FakeWafregionalRuleGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeWafregionalRuleGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(wafregionalrulegroupsResource, c.ns, name), &v1alpha1.WafregionalRuleGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeWafregionalRuleGroups) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeWafregionalRuleGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(wafregionalrulegroupsResource, c.ns, listOptions)
+func (c *FakeWafregionalRuleGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(wafregionalrulegroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.WafregionalRuleGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched wafregionalRuleGroup.
-func (c *FakeWafregionalRuleGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.WafregionalRuleGroup, err error) {
+func (c *FakeWafregionalRuleGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.WafregionalRuleGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(wafregionalrulegroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.WafregionalRuleGroup{})
 

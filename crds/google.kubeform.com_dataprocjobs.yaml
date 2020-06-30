@@ -1,0 +1,802 @@
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/name: kubeform
+  name: dataprocjobs.google.kubeform.com
+spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
+  group: google.kubeform.com
+  names:
+    kind: DataprocJob
+    listKind: DataprocJobList
+    plural: dataprocjobs
+    singular: dataprocjob
+  scope: Namespaced
+  subresources:
+    status: {}
+  validation:
+    openAPIV3Schema:
+      properties:
+        apiVersion:
+          description: 'APIVersion defines the versioned schema of this representation
+            of an object. Servers should convert recognized schemas to the latest
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+          type: string
+        kind:
+          description: 'Kind is a string value representing the REST resource this
+            object represents. Servers may infer this from the endpoint the client
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+          type: string
+        metadata:
+          type: object
+        spec:
+          properties:
+            driverControlsFilesURI:
+              description: Output-only. If present, the location of miscellaneous
+                control files which may be used as part of job setup and handling.
+                If not present, control files may be placed in the same location as
+                driver_output_uri.
+              type: string
+            driverOutputResourceURI:
+              description: Output-only. A URI pointing to the location of the stdout
+                of the job's driver program
+              type: string
+            forceDelete:
+              type: boolean
+            hadoopConfig:
+              items:
+                properties:
+                  archiveUris:
+                    items:
+                      type: string
+                    type: array
+                  args:
+                    items:
+                      type: string
+                    type: array
+                  fileUris:
+                    items:
+                      type: string
+                    type: array
+                  jarFileUris:
+                    items:
+                      type: string
+                    type: array
+                  loggingConfig:
+                    description: The runtime logging config of the job
+                    items:
+                      properties:
+                        driverLogLevels:
+                          additionalProperties:
+                            type: string
+                          description: 'Optional. The per-package log levels for the
+                            driver. This may include ''root'' package name to configure
+                            rootLogger. Examples: ''com.google = FATAL'', ''root =
+                            INFO'', ''org.apache = DEBUG''.'
+                          type: object
+                      type: object
+                    maxItems: 1
+                    type: array
+                  mainClass:
+                    type: string
+                  mainJarFileURI:
+                    type: string
+                  properties:
+                    additionalProperties:
+                      type: string
+                    type: object
+                type: object
+              maxItems: 1
+              type: array
+            hiveConfig:
+              items:
+                properties:
+                  continueOnFailure:
+                    type: boolean
+                  jarFileUris:
+                    items:
+                      type: string
+                    type: array
+                  properties:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  queryFileURI:
+                    type: string
+                  queryList:
+                    items:
+                      type: string
+                    type: array
+                  scriptVariables:
+                    additionalProperties:
+                      type: string
+                    type: object
+                type: object
+              maxItems: 1
+              type: array
+            id:
+              type: string
+            labels:
+              additionalProperties:
+                type: string
+              description: Optional. The labels to associate with this job.
+              type: object
+            pigConfig:
+              items:
+                properties:
+                  continueOnFailure:
+                    type: boolean
+                  jarFileUris:
+                    items:
+                      type: string
+                    type: array
+                  loggingConfig:
+                    description: The runtime logging config of the job
+                    items:
+                      properties:
+                        driverLogLevels:
+                          additionalProperties:
+                            type: string
+                          description: 'Optional. The per-package log levels for the
+                            driver. This may include ''root'' package name to configure
+                            rootLogger. Examples: ''com.google = FATAL'', ''root =
+                            INFO'', ''org.apache = DEBUG''.'
+                          type: object
+                      type: object
+                    maxItems: 1
+                    type: array
+                  properties:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  queryFileURI:
+                    type: string
+                  queryList:
+                    items:
+                      type: string
+                    type: array
+                  scriptVariables:
+                    additionalProperties:
+                      type: string
+                    type: object
+                type: object
+              maxItems: 1
+              type: array
+            placement:
+              items:
+                properties:
+                  clusterName:
+                    description: The name of the cluster where the job will be submitted
+                    type: string
+                  clusterUUID:
+                    description: Output-only. A cluster UUID generated by the Cloud
+                      Dataproc service when the job is submitted
+                    type: string
+                required:
+                - clusterName
+                type: object
+              maxItems: 1
+              type: array
+            project:
+              type: string
+            providerRef:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
+            pysparkConfig:
+              items:
+                properties:
+                  archiveUris:
+                    description: Optional. HCFS URIs of archives to be extracted in
+                      the working directory of .jar, .tar, .tar.gz, .tgz, and .zip
+                    items:
+                      type: string
+                    type: array
+                  args:
+                    description: Optional. The arguments to pass to the driver. Do
+                      not include arguments, such as --conf, that can be set as job
+                      properties, since a collision may occur that causes an incorrect
+                      job submission
+                    items:
+                      type: string
+                    type: array
+                  fileUris:
+                    description: Optional. HCFS URIs of files to be copied to the
+                      working directory of Python drivers and distributed tasks. Useful
+                      for naively parallel tasks
+                    items:
+                      type: string
+                    type: array
+                  jarFileUris:
+                    description: Optional. HCFS URIs of jar files to add to the CLASSPATHs
+                      of the Python driver and tasks
+                    items:
+                      type: string
+                    type: array
+                  loggingConfig:
+                    description: The runtime logging config of the job
+                    items:
+                      properties:
+                        driverLogLevels:
+                          additionalProperties:
+                            type: string
+                          description: 'Optional. The per-package log levels for the
+                            driver. This may include ''root'' package name to configure
+                            rootLogger. Examples: ''com.google = FATAL'', ''root =
+                            INFO'', ''org.apache = DEBUG''.'
+                          type: object
+                      type: object
+                    maxItems: 1
+                    type: array
+                  mainPythonFileURI:
+                    description: Required. The HCFS URI of the main Python file to
+                      use as the driver. Must be a .py file
+                    type: string
+                  properties:
+                    additionalProperties:
+                      type: string
+                    description: Optional. A mapping of property names to values,
+                      used to configure PySpark. Properties that conflict with values
+                      set by the Cloud Dataproc API may be overwritten. Can include
+                      properties set in /etc/spark/conf/spark-defaults.conf and classes
+                      in user code
+                    type: object
+                  pythonFileUris:
+                    description: 'Optional. HCFS file URIs of Python files to pass
+                      to the PySpark framework. Supported file types: .py, .egg, and
+                      .zip'
+                    items:
+                      type: string
+                    type: array
+                required:
+                - mainPythonFileURI
+                type: object
+              maxItems: 1
+              type: array
+            reference:
+              items:
+                properties:
+                  jobID:
+                    description: The job ID, which must be unique within the project.
+                      The job ID is generated by the server upon job submission or
+                      provided by the user as a means to perform retries without creating
+                      duplicate jobs
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
+            region:
+              type: string
+            scheduling:
+              description: Optional. Job scheduling configuration.
+              items:
+                properties:
+                  maxFailuresPerHour:
+                    description: Maximum number of times per hour a driver may be
+                      restarted as a result of driver terminating with non-zero code
+                      before job is reported failed.
+                    format: int64
+                    type: integer
+                type: object
+              maxItems: 1
+              type: array
+            sparkConfig:
+              items:
+                properties:
+                  archiveUris:
+                    items:
+                      type: string
+                    type: array
+                  args:
+                    items:
+                      type: string
+                    type: array
+                  fileUris:
+                    items:
+                      type: string
+                    type: array
+                  jarFileUris:
+                    items:
+                      type: string
+                    type: array
+                  loggingConfig:
+                    description: The runtime logging config of the job
+                    items:
+                      properties:
+                        driverLogLevels:
+                          additionalProperties:
+                            type: string
+                          description: 'Optional. The per-package log levels for the
+                            driver. This may include ''root'' package name to configure
+                            rootLogger. Examples: ''com.google = FATAL'', ''root =
+                            INFO'', ''org.apache = DEBUG''.'
+                          type: object
+                      type: object
+                    maxItems: 1
+                    type: array
+                  mainClass:
+                    type: string
+                  mainJarFileURI:
+                    type: string
+                  properties:
+                    additionalProperties:
+                      type: string
+                    type: object
+                type: object
+              maxItems: 1
+              type: array
+            sparksqlConfig:
+              items:
+                properties:
+                  jarFileUris:
+                    items:
+                      type: string
+                    type: array
+                  loggingConfig:
+                    description: The runtime logging config of the job
+                    items:
+                      properties:
+                        driverLogLevels:
+                          additionalProperties:
+                            type: string
+                          description: 'Optional. The per-package log levels for the
+                            driver. This may include ''root'' package name to configure
+                            rootLogger. Examples: ''com.google = FATAL'', ''root =
+                            INFO'', ''org.apache = DEBUG''.'
+                          type: object
+                      type: object
+                    maxItems: 1
+                    type: array
+                  properties:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  queryFileURI:
+                    type: string
+                  queryList:
+                    items:
+                      type: string
+                    type: array
+                  scriptVariables:
+                    additionalProperties:
+                      type: string
+                    type: object
+                type: object
+              maxItems: 1
+              type: array
+            status:
+              items:
+                properties:
+                  details:
+                    description: Output-only. Optional job state details, such as
+                      an error description if the state is ERROR
+                    type: string
+                  state:
+                    description: Output-only. A state message specifying the overall
+                      job state
+                    type: string
+                  stateStartTime:
+                    description: Output-only. The time when this state was entered
+                    type: string
+                  substate:
+                    description: Output-only. Additional state information, which
+                      includes status reported by the agent
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
+          required:
+          - placement
+          - providerRef
+          type: object
+        status:
+          properties:
+            observedGeneration:
+              description: Resource generation, which is updated on mutation by the
+                API Server.
+              format: int64
+              type: integer
+            output:
+              properties:
+                driverControlsFilesURI:
+                  description: Output-only. If present, the location of miscellaneous
+                    control files which may be used as part of job setup and handling.
+                    If not present, control files may be placed in the same location
+                    as driver_output_uri.
+                  type: string
+                driverOutputResourceURI:
+                  description: Output-only. A URI pointing to the location of the
+                    stdout of the job's driver program
+                  type: string
+                forceDelete:
+                  type: boolean
+                hadoopConfig:
+                  items:
+                    properties:
+                      archiveUris:
+                        items:
+                          type: string
+                        type: array
+                      args:
+                        items:
+                          type: string
+                        type: array
+                      fileUris:
+                        items:
+                          type: string
+                        type: array
+                      jarFileUris:
+                        items:
+                          type: string
+                        type: array
+                      loggingConfig:
+                        description: The runtime logging config of the job
+                        items:
+                          properties:
+                            driverLogLevels:
+                              additionalProperties:
+                                type: string
+                              description: 'Optional. The per-package log levels for
+                                the driver. This may include ''root'' package name
+                                to configure rootLogger. Examples: ''com.google =
+                                FATAL'', ''root = INFO'', ''org.apache = DEBUG''.'
+                              type: object
+                          type: object
+                        maxItems: 1
+                        type: array
+                      mainClass:
+                        type: string
+                      mainJarFileURI:
+                        type: string
+                      properties:
+                        additionalProperties:
+                          type: string
+                        type: object
+                    type: object
+                  maxItems: 1
+                  type: array
+                hiveConfig:
+                  items:
+                    properties:
+                      continueOnFailure:
+                        type: boolean
+                      jarFileUris:
+                        items:
+                          type: string
+                        type: array
+                      properties:
+                        additionalProperties:
+                          type: string
+                        type: object
+                      queryFileURI:
+                        type: string
+                      queryList:
+                        items:
+                          type: string
+                        type: array
+                      scriptVariables:
+                        additionalProperties:
+                          type: string
+                        type: object
+                    type: object
+                  maxItems: 1
+                  type: array
+                id:
+                  type: string
+                labels:
+                  additionalProperties:
+                    type: string
+                  description: Optional. The labels to associate with this job.
+                  type: object
+                pigConfig:
+                  items:
+                    properties:
+                      continueOnFailure:
+                        type: boolean
+                      jarFileUris:
+                        items:
+                          type: string
+                        type: array
+                      loggingConfig:
+                        description: The runtime logging config of the job
+                        items:
+                          properties:
+                            driverLogLevels:
+                              additionalProperties:
+                                type: string
+                              description: 'Optional. The per-package log levels for
+                                the driver. This may include ''root'' package name
+                                to configure rootLogger. Examples: ''com.google =
+                                FATAL'', ''root = INFO'', ''org.apache = DEBUG''.'
+                              type: object
+                          type: object
+                        maxItems: 1
+                        type: array
+                      properties:
+                        additionalProperties:
+                          type: string
+                        type: object
+                      queryFileURI:
+                        type: string
+                      queryList:
+                        items:
+                          type: string
+                        type: array
+                      scriptVariables:
+                        additionalProperties:
+                          type: string
+                        type: object
+                    type: object
+                  maxItems: 1
+                  type: array
+                placement:
+                  items:
+                    properties:
+                      clusterName:
+                        description: The name of the cluster where the job will be
+                          submitted
+                        type: string
+                      clusterUUID:
+                        description: Output-only. A cluster UUID generated by the
+                          Cloud Dataproc service when the job is submitted
+                        type: string
+                    required:
+                    - clusterName
+                    type: object
+                  maxItems: 1
+                  type: array
+                project:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                pysparkConfig:
+                  items:
+                    properties:
+                      archiveUris:
+                        description: Optional. HCFS URIs of archives to be extracted
+                          in the working directory of .jar, .tar, .tar.gz, .tgz, and
+                          .zip
+                        items:
+                          type: string
+                        type: array
+                      args:
+                        description: Optional. The arguments to pass to the driver.
+                          Do not include arguments, such as --conf, that can be set
+                          as job properties, since a collision may occur that causes
+                          an incorrect job submission
+                        items:
+                          type: string
+                        type: array
+                      fileUris:
+                        description: Optional. HCFS URIs of files to be copied to
+                          the working directory of Python drivers and distributed
+                          tasks. Useful for naively parallel tasks
+                        items:
+                          type: string
+                        type: array
+                      jarFileUris:
+                        description: Optional. HCFS URIs of jar files to add to the
+                          CLASSPATHs of the Python driver and tasks
+                        items:
+                          type: string
+                        type: array
+                      loggingConfig:
+                        description: The runtime logging config of the job
+                        items:
+                          properties:
+                            driverLogLevels:
+                              additionalProperties:
+                                type: string
+                              description: 'Optional. The per-package log levels for
+                                the driver. This may include ''root'' package name
+                                to configure rootLogger. Examples: ''com.google =
+                                FATAL'', ''root = INFO'', ''org.apache = DEBUG''.'
+                              type: object
+                          type: object
+                        maxItems: 1
+                        type: array
+                      mainPythonFileURI:
+                        description: Required. The HCFS URI of the main Python file
+                          to use as the driver. Must be a .py file
+                        type: string
+                      properties:
+                        additionalProperties:
+                          type: string
+                        description: Optional. A mapping of property names to values,
+                          used to configure PySpark. Properties that conflict with
+                          values set by the Cloud Dataproc API may be overwritten.
+                          Can include properties set in /etc/spark/conf/spark-defaults.conf
+                          and classes in user code
+                        type: object
+                      pythonFileUris:
+                        description: 'Optional. HCFS file URIs of Python files to
+                          pass to the PySpark framework. Supported file types: .py,
+                          .egg, and .zip'
+                        items:
+                          type: string
+                        type: array
+                    required:
+                    - mainPythonFileURI
+                    type: object
+                  maxItems: 1
+                  type: array
+                reference:
+                  items:
+                    properties:
+                      jobID:
+                        description: The job ID, which must be unique within the project.
+                          The job ID is generated by the server upon job submission
+                          or provided by the user as a means to perform retries without
+                          creating duplicate jobs
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                region:
+                  type: string
+                scheduling:
+                  description: Optional. Job scheduling configuration.
+                  items:
+                    properties:
+                      maxFailuresPerHour:
+                        description: Maximum number of times per hour a driver may
+                          be restarted as a result of driver terminating with non-zero
+                          code before job is reported failed.
+                        format: int64
+                        type: integer
+                    type: object
+                  maxItems: 1
+                  type: array
+                sparkConfig:
+                  items:
+                    properties:
+                      archiveUris:
+                        items:
+                          type: string
+                        type: array
+                      args:
+                        items:
+                          type: string
+                        type: array
+                      fileUris:
+                        items:
+                          type: string
+                        type: array
+                      jarFileUris:
+                        items:
+                          type: string
+                        type: array
+                      loggingConfig:
+                        description: The runtime logging config of the job
+                        items:
+                          properties:
+                            driverLogLevels:
+                              additionalProperties:
+                                type: string
+                              description: 'Optional. The per-package log levels for
+                                the driver. This may include ''root'' package name
+                                to configure rootLogger. Examples: ''com.google =
+                                FATAL'', ''root = INFO'', ''org.apache = DEBUG''.'
+                              type: object
+                          type: object
+                        maxItems: 1
+                        type: array
+                      mainClass:
+                        type: string
+                      mainJarFileURI:
+                        type: string
+                      properties:
+                        additionalProperties:
+                          type: string
+                        type: object
+                    type: object
+                  maxItems: 1
+                  type: array
+                sparksqlConfig:
+                  items:
+                    properties:
+                      jarFileUris:
+                        items:
+                          type: string
+                        type: array
+                      loggingConfig:
+                        description: The runtime logging config of the job
+                        items:
+                          properties:
+                            driverLogLevels:
+                              additionalProperties:
+                                type: string
+                              description: 'Optional. The per-package log levels for
+                                the driver. This may include ''root'' package name
+                                to configure rootLogger. Examples: ''com.google =
+                                FATAL'', ''root = INFO'', ''org.apache = DEBUG''.'
+                              type: object
+                          type: object
+                        maxItems: 1
+                        type: array
+                      properties:
+                        additionalProperties:
+                          type: string
+                        type: object
+                      queryFileURI:
+                        type: string
+                      queryList:
+                        items:
+                          type: string
+                        type: array
+                      scriptVariables:
+                        additionalProperties:
+                          type: string
+                        type: object
+                    type: object
+                  maxItems: 1
+                  type: array
+                status:
+                  items:
+                    properties:
+                      details:
+                        description: Output-only. Optional job state details, such
+                          as an error description if the state is ERROR
+                        type: string
+                      state:
+                        description: Output-only. A state message specifying the overall
+                          job state
+                        type: string
+                      stateStartTime:
+                        description: Output-only. The time when this state was entered
+                        type: string
+                      substate:
+                        description: Output-only. Additional state information, which
+                          includes status reported by the agent
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+              required:
+              - placement
+              - providerRef
+              type: object
+            phase:
+              type: string
+            state:
+              properties:
+                lineage:
+                  type: string
+                serial:
+                  format: int64
+                  type: integer
+                terraform_version:
+                  type: string
+                version:
+                  format: int64
+                  type: integer
+              required:
+              - lineage
+              - serial
+              - terraform_version
+              - version
+              type: object
+          type: object
+      type: object
+  version: v1alpha1
+  versions:
+  - name: v1alpha1
+    served: true
+    storage: true

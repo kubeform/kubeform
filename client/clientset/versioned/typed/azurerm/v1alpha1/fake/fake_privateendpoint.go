@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var privateendpointsResource = schema.GroupVersionResource{Group: "azurerm.kubef
 var privateendpointsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "PrivateEndpoint"}
 
 // Get takes name of the privateEndpoint, and returns the corresponding privateEndpoint object, and an error if there is any.
-func (c *FakePrivateEndpoints) Get(name string, options v1.GetOptions) (result *v1alpha1.PrivateEndpoint, err error) {
+func (c *FakePrivateEndpoints) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PrivateEndpoint, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(privateendpointsResource, c.ns, name), &v1alpha1.PrivateEndpoint{})
 
@@ -51,7 +53,7 @@ func (c *FakePrivateEndpoints) Get(name string, options v1.GetOptions) (result *
 }
 
 // List takes label and field selectors, and returns the list of PrivateEndpoints that match those selectors.
-func (c *FakePrivateEndpoints) List(opts v1.ListOptions) (result *v1alpha1.PrivateEndpointList, err error) {
+func (c *FakePrivateEndpoints) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PrivateEndpointList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(privateendpointsResource, privateendpointsKind, c.ns, opts), &v1alpha1.PrivateEndpointList{})
 
@@ -73,14 +75,14 @@ func (c *FakePrivateEndpoints) List(opts v1.ListOptions) (result *v1alpha1.Priva
 }
 
 // Watch returns a watch.Interface that watches the requested privateEndpoints.
-func (c *FakePrivateEndpoints) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakePrivateEndpoints) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(privateendpointsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a privateEndpoint and creates it.  Returns the server's representation of the privateEndpoint, and an error, if there is any.
-func (c *FakePrivateEndpoints) Create(privateEndpoint *v1alpha1.PrivateEndpoint) (result *v1alpha1.PrivateEndpoint, err error) {
+func (c *FakePrivateEndpoints) Create(ctx context.Context, privateEndpoint *v1alpha1.PrivateEndpoint, opts v1.CreateOptions) (result *v1alpha1.PrivateEndpoint, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(privateendpointsResource, c.ns, privateEndpoint), &v1alpha1.PrivateEndpoint{})
 
@@ -91,7 +93,7 @@ func (c *FakePrivateEndpoints) Create(privateEndpoint *v1alpha1.PrivateEndpoint)
 }
 
 // Update takes the representation of a privateEndpoint and updates it. Returns the server's representation of the privateEndpoint, and an error, if there is any.
-func (c *FakePrivateEndpoints) Update(privateEndpoint *v1alpha1.PrivateEndpoint) (result *v1alpha1.PrivateEndpoint, err error) {
+func (c *FakePrivateEndpoints) Update(ctx context.Context, privateEndpoint *v1alpha1.PrivateEndpoint, opts v1.UpdateOptions) (result *v1alpha1.PrivateEndpoint, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(privateendpointsResource, c.ns, privateEndpoint), &v1alpha1.PrivateEndpoint{})
 
@@ -103,7 +105,7 @@ func (c *FakePrivateEndpoints) Update(privateEndpoint *v1alpha1.PrivateEndpoint)
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakePrivateEndpoints) UpdateStatus(privateEndpoint *v1alpha1.PrivateEndpoint) (*v1alpha1.PrivateEndpoint, error) {
+func (c *FakePrivateEndpoints) UpdateStatus(ctx context.Context, privateEndpoint *v1alpha1.PrivateEndpoint, opts v1.UpdateOptions) (*v1alpha1.PrivateEndpoint, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(privateendpointsResource, "status", c.ns, privateEndpoint), &v1alpha1.PrivateEndpoint{})
 
@@ -114,7 +116,7 @@ func (c *FakePrivateEndpoints) UpdateStatus(privateEndpoint *v1alpha1.PrivateEnd
 }
 
 // Delete takes name of the privateEndpoint and deletes it. Returns an error if one occurs.
-func (c *FakePrivateEndpoints) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakePrivateEndpoints) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(privateendpointsResource, c.ns, name), &v1alpha1.PrivateEndpoint{})
 
@@ -122,15 +124,15 @@ func (c *FakePrivateEndpoints) Delete(name string, options *v1.DeleteOptions) er
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakePrivateEndpoints) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(privateendpointsResource, c.ns, listOptions)
+func (c *FakePrivateEndpoints) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(privateendpointsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.PrivateEndpointList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched privateEndpoint.
-func (c *FakePrivateEndpoints) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PrivateEndpoint, err error) {
+func (c *FakePrivateEndpoints) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PrivateEndpoint, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(privateendpointsResource, c.ns, name, pt, data, subresources...), &v1alpha1.PrivateEndpoint{})
 

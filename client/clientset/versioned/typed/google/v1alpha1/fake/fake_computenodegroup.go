@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computenodegroupsResource = schema.GroupVersionResource{Group: "google.kubef
 var computenodegroupsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeNodeGroup"}
 
 // Get takes name of the computeNodeGroup, and returns the corresponding computeNodeGroup object, and an error if there is any.
-func (c *FakeComputeNodeGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeNodeGroup, err error) {
+func (c *FakeComputeNodeGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeNodeGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computenodegroupsResource, c.ns, name), &v1alpha1.ComputeNodeGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeNodeGroups) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of ComputeNodeGroups that match those selectors.
-func (c *FakeComputeNodeGroups) List(opts v1.ListOptions) (result *v1alpha1.ComputeNodeGroupList, err error) {
+func (c *FakeComputeNodeGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeNodeGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computenodegroupsResource, computenodegroupsKind, c.ns, opts), &v1alpha1.ComputeNodeGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeNodeGroups) List(opts v1.ListOptions) (result *v1alpha1.Comp
 }
 
 // Watch returns a watch.Interface that watches the requested computeNodeGroups.
-func (c *FakeComputeNodeGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeNodeGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computenodegroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeNodeGroup and creates it.  Returns the server's representation of the computeNodeGroup, and an error, if there is any.
-func (c *FakeComputeNodeGroups) Create(computeNodeGroup *v1alpha1.ComputeNodeGroup) (result *v1alpha1.ComputeNodeGroup, err error) {
+func (c *FakeComputeNodeGroups) Create(ctx context.Context, computeNodeGroup *v1alpha1.ComputeNodeGroup, opts v1.CreateOptions) (result *v1alpha1.ComputeNodeGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computenodegroupsResource, c.ns, computeNodeGroup), &v1alpha1.ComputeNodeGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeNodeGroups) Create(computeNodeGroup *v1alpha1.ComputeNodeGro
 }
 
 // Update takes the representation of a computeNodeGroup and updates it. Returns the server's representation of the computeNodeGroup, and an error, if there is any.
-func (c *FakeComputeNodeGroups) Update(computeNodeGroup *v1alpha1.ComputeNodeGroup) (result *v1alpha1.ComputeNodeGroup, err error) {
+func (c *FakeComputeNodeGroups) Update(ctx context.Context, computeNodeGroup *v1alpha1.ComputeNodeGroup, opts v1.UpdateOptions) (result *v1alpha1.ComputeNodeGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computenodegroupsResource, c.ns, computeNodeGroup), &v1alpha1.ComputeNodeGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeNodeGroups) Update(computeNodeGroup *v1alpha1.ComputeNodeGro
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeNodeGroups) UpdateStatus(computeNodeGroup *v1alpha1.ComputeNodeGroup) (*v1alpha1.ComputeNodeGroup, error) {
+func (c *FakeComputeNodeGroups) UpdateStatus(ctx context.Context, computeNodeGroup *v1alpha1.ComputeNodeGroup, opts v1.UpdateOptions) (*v1alpha1.ComputeNodeGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computenodegroupsResource, "status", c.ns, computeNodeGroup), &v1alpha1.ComputeNodeGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeNodeGroups) UpdateStatus(computeNodeGroup *v1alpha1.ComputeN
 }
 
 // Delete takes name of the computeNodeGroup and deletes it. Returns an error if one occurs.
-func (c *FakeComputeNodeGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeNodeGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computenodegroupsResource, c.ns, name), &v1alpha1.ComputeNodeGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeNodeGroups) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeNodeGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computenodegroupsResource, c.ns, listOptions)
+func (c *FakeComputeNodeGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computenodegroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeNodeGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeNodeGroup.
-func (c *FakeComputeNodeGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeNodeGroup, err error) {
+func (c *FakeComputeNodeGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeNodeGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computenodegroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeNodeGroup{})
 

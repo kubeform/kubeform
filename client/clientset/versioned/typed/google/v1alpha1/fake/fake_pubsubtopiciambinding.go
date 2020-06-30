@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var pubsubtopiciambindingsResource = schema.GroupVersionResource{Group: "google.
 var pubsubtopiciambindingsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "PubsubTopicIamBinding"}
 
 // Get takes name of the pubsubTopicIamBinding, and returns the corresponding pubsubTopicIamBinding object, and an error if there is any.
-func (c *FakePubsubTopicIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.PubsubTopicIamBinding, err error) {
+func (c *FakePubsubTopicIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PubsubTopicIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(pubsubtopiciambindingsResource, c.ns, name), &v1alpha1.PubsubTopicIamBinding{})
 
@@ -51,7 +53,7 @@ func (c *FakePubsubTopicIamBindings) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of PubsubTopicIamBindings that match those selectors.
-func (c *FakePubsubTopicIamBindings) List(opts v1.ListOptions) (result *v1alpha1.PubsubTopicIamBindingList, err error) {
+func (c *FakePubsubTopicIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PubsubTopicIamBindingList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(pubsubtopiciambindingsResource, pubsubtopiciambindingsKind, c.ns, opts), &v1alpha1.PubsubTopicIamBindingList{})
 
@@ -73,14 +75,14 @@ func (c *FakePubsubTopicIamBindings) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested pubsubTopicIamBindings.
-func (c *FakePubsubTopicIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakePubsubTopicIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(pubsubtopiciambindingsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a pubsubTopicIamBinding and creates it.  Returns the server's representation of the pubsubTopicIamBinding, and an error, if there is any.
-func (c *FakePubsubTopicIamBindings) Create(pubsubTopicIamBinding *v1alpha1.PubsubTopicIamBinding) (result *v1alpha1.PubsubTopicIamBinding, err error) {
+func (c *FakePubsubTopicIamBindings) Create(ctx context.Context, pubsubTopicIamBinding *v1alpha1.PubsubTopicIamBinding, opts v1.CreateOptions) (result *v1alpha1.PubsubTopicIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(pubsubtopiciambindingsResource, c.ns, pubsubTopicIamBinding), &v1alpha1.PubsubTopicIamBinding{})
 
@@ -91,7 +93,7 @@ func (c *FakePubsubTopicIamBindings) Create(pubsubTopicIamBinding *v1alpha1.Pubs
 }
 
 // Update takes the representation of a pubsubTopicIamBinding and updates it. Returns the server's representation of the pubsubTopicIamBinding, and an error, if there is any.
-func (c *FakePubsubTopicIamBindings) Update(pubsubTopicIamBinding *v1alpha1.PubsubTopicIamBinding) (result *v1alpha1.PubsubTopicIamBinding, err error) {
+func (c *FakePubsubTopicIamBindings) Update(ctx context.Context, pubsubTopicIamBinding *v1alpha1.PubsubTopicIamBinding, opts v1.UpdateOptions) (result *v1alpha1.PubsubTopicIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(pubsubtopiciambindingsResource, c.ns, pubsubTopicIamBinding), &v1alpha1.PubsubTopicIamBinding{})
 
@@ -103,7 +105,7 @@ func (c *FakePubsubTopicIamBindings) Update(pubsubTopicIamBinding *v1alpha1.Pubs
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakePubsubTopicIamBindings) UpdateStatus(pubsubTopicIamBinding *v1alpha1.PubsubTopicIamBinding) (*v1alpha1.PubsubTopicIamBinding, error) {
+func (c *FakePubsubTopicIamBindings) UpdateStatus(ctx context.Context, pubsubTopicIamBinding *v1alpha1.PubsubTopicIamBinding, opts v1.UpdateOptions) (*v1alpha1.PubsubTopicIamBinding, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(pubsubtopiciambindingsResource, "status", c.ns, pubsubTopicIamBinding), &v1alpha1.PubsubTopicIamBinding{})
 
@@ -114,7 +116,7 @@ func (c *FakePubsubTopicIamBindings) UpdateStatus(pubsubTopicIamBinding *v1alpha
 }
 
 // Delete takes name of the pubsubTopicIamBinding and deletes it. Returns an error if one occurs.
-func (c *FakePubsubTopicIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakePubsubTopicIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(pubsubtopiciambindingsResource, c.ns, name), &v1alpha1.PubsubTopicIamBinding{})
 
@@ -122,15 +124,15 @@ func (c *FakePubsubTopicIamBindings) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakePubsubTopicIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(pubsubtopiciambindingsResource, c.ns, listOptions)
+func (c *FakePubsubTopicIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(pubsubtopiciambindingsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.PubsubTopicIamBindingList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched pubsubTopicIamBinding.
-func (c *FakePubsubTopicIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PubsubTopicIamBinding, err error) {
+func (c *FakePubsubTopicIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PubsubTopicIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(pubsubtopiciambindingsResource, c.ns, name, pt, data, subresources...), &v1alpha1.PubsubTopicIamBinding{})
 

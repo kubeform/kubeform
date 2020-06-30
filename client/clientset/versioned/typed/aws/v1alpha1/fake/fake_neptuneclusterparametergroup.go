@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var neptuneclusterparametergroupsResource = schema.GroupVersionResource{Group: "
 var neptuneclusterparametergroupsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "NeptuneClusterParameterGroup"}
 
 // Get takes name of the neptuneClusterParameterGroup, and returns the corresponding neptuneClusterParameterGroup object, and an error if there is any.
-func (c *FakeNeptuneClusterParameterGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.NeptuneClusterParameterGroup, err error) {
+func (c *FakeNeptuneClusterParameterGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.NeptuneClusterParameterGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(neptuneclusterparametergroupsResource, c.ns, name), &v1alpha1.NeptuneClusterParameterGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeNeptuneClusterParameterGroups) Get(name string, options v1.GetOptio
 }
 
 // List takes label and field selectors, and returns the list of NeptuneClusterParameterGroups that match those selectors.
-func (c *FakeNeptuneClusterParameterGroups) List(opts v1.ListOptions) (result *v1alpha1.NeptuneClusterParameterGroupList, err error) {
+func (c *FakeNeptuneClusterParameterGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.NeptuneClusterParameterGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(neptuneclusterparametergroupsResource, neptuneclusterparametergroupsKind, c.ns, opts), &v1alpha1.NeptuneClusterParameterGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeNeptuneClusterParameterGroups) List(opts v1.ListOptions) (result *v
 }
 
 // Watch returns a watch.Interface that watches the requested neptuneClusterParameterGroups.
-func (c *FakeNeptuneClusterParameterGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeNeptuneClusterParameterGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(neptuneclusterparametergroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a neptuneClusterParameterGroup and creates it.  Returns the server's representation of the neptuneClusterParameterGroup, and an error, if there is any.
-func (c *FakeNeptuneClusterParameterGroups) Create(neptuneClusterParameterGroup *v1alpha1.NeptuneClusterParameterGroup) (result *v1alpha1.NeptuneClusterParameterGroup, err error) {
+func (c *FakeNeptuneClusterParameterGroups) Create(ctx context.Context, neptuneClusterParameterGroup *v1alpha1.NeptuneClusterParameterGroup, opts v1.CreateOptions) (result *v1alpha1.NeptuneClusterParameterGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(neptuneclusterparametergroupsResource, c.ns, neptuneClusterParameterGroup), &v1alpha1.NeptuneClusterParameterGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeNeptuneClusterParameterGroups) Create(neptuneClusterParameterGroup 
 }
 
 // Update takes the representation of a neptuneClusterParameterGroup and updates it. Returns the server's representation of the neptuneClusterParameterGroup, and an error, if there is any.
-func (c *FakeNeptuneClusterParameterGroups) Update(neptuneClusterParameterGroup *v1alpha1.NeptuneClusterParameterGroup) (result *v1alpha1.NeptuneClusterParameterGroup, err error) {
+func (c *FakeNeptuneClusterParameterGroups) Update(ctx context.Context, neptuneClusterParameterGroup *v1alpha1.NeptuneClusterParameterGroup, opts v1.UpdateOptions) (result *v1alpha1.NeptuneClusterParameterGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(neptuneclusterparametergroupsResource, c.ns, neptuneClusterParameterGroup), &v1alpha1.NeptuneClusterParameterGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeNeptuneClusterParameterGroups) Update(neptuneClusterParameterGroup 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeNeptuneClusterParameterGroups) UpdateStatus(neptuneClusterParameterGroup *v1alpha1.NeptuneClusterParameterGroup) (*v1alpha1.NeptuneClusterParameterGroup, error) {
+func (c *FakeNeptuneClusterParameterGroups) UpdateStatus(ctx context.Context, neptuneClusterParameterGroup *v1alpha1.NeptuneClusterParameterGroup, opts v1.UpdateOptions) (*v1alpha1.NeptuneClusterParameterGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(neptuneclusterparametergroupsResource, "status", c.ns, neptuneClusterParameterGroup), &v1alpha1.NeptuneClusterParameterGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeNeptuneClusterParameterGroups) UpdateStatus(neptuneClusterParameter
 }
 
 // Delete takes name of the neptuneClusterParameterGroup and deletes it. Returns an error if one occurs.
-func (c *FakeNeptuneClusterParameterGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeNeptuneClusterParameterGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(neptuneclusterparametergroupsResource, c.ns, name), &v1alpha1.NeptuneClusterParameterGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeNeptuneClusterParameterGroups) Delete(name string, options *v1.Dele
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeNeptuneClusterParameterGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(neptuneclusterparametergroupsResource, c.ns, listOptions)
+func (c *FakeNeptuneClusterParameterGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(neptuneclusterparametergroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.NeptuneClusterParameterGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched neptuneClusterParameterGroup.
-func (c *FakeNeptuneClusterParameterGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.NeptuneClusterParameterGroup, err error) {
+func (c *FakeNeptuneClusterParameterGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.NeptuneClusterParameterGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(neptuneclusterparametergroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.NeptuneClusterParameterGroup{})
 

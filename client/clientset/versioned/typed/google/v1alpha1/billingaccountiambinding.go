@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type BillingAccountIamBindingsGetter interface {
 
 // BillingAccountIamBindingInterface has methods to work with BillingAccountIamBinding resources.
 type BillingAccountIamBindingInterface interface {
-	Create(*v1alpha1.BillingAccountIamBinding) (*v1alpha1.BillingAccountIamBinding, error)
-	Update(*v1alpha1.BillingAccountIamBinding) (*v1alpha1.BillingAccountIamBinding, error)
-	UpdateStatus(*v1alpha1.BillingAccountIamBinding) (*v1alpha1.BillingAccountIamBinding, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.BillingAccountIamBinding, error)
-	List(opts v1.ListOptions) (*v1alpha1.BillingAccountIamBindingList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BillingAccountIamBinding, err error)
+	Create(ctx context.Context, billingAccountIamBinding *v1alpha1.BillingAccountIamBinding, opts v1.CreateOptions) (*v1alpha1.BillingAccountIamBinding, error)
+	Update(ctx context.Context, billingAccountIamBinding *v1alpha1.BillingAccountIamBinding, opts v1.UpdateOptions) (*v1alpha1.BillingAccountIamBinding, error)
+	UpdateStatus(ctx context.Context, billingAccountIamBinding *v1alpha1.BillingAccountIamBinding, opts v1.UpdateOptions) (*v1alpha1.BillingAccountIamBinding, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.BillingAccountIamBinding, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.BillingAccountIamBindingList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BillingAccountIamBinding, err error)
 	BillingAccountIamBindingExpansion
 }
 
@@ -65,20 +66,20 @@ func newBillingAccountIamBindings(c *GoogleV1alpha1Client, namespace string) *bi
 }
 
 // Get takes name of the billingAccountIamBinding, and returns the corresponding billingAccountIamBinding object, and an error if there is any.
-func (c *billingAccountIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.BillingAccountIamBinding, err error) {
+func (c *billingAccountIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BillingAccountIamBinding, err error) {
 	result = &v1alpha1.BillingAccountIamBinding{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("billingaccountiambindings").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of BillingAccountIamBindings that match those selectors.
-func (c *billingAccountIamBindings) List(opts v1.ListOptions) (result *v1alpha1.BillingAccountIamBindingList, err error) {
+func (c *billingAccountIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BillingAccountIamBindingList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *billingAccountIamBindings) List(opts v1.ListOptions) (result *v1alpha1.
 		Resource("billingaccountiambindings").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested billingAccountIamBindings.
-func (c *billingAccountIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *billingAccountIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *billingAccountIamBindings) Watch(opts v1.ListOptions) (watch.Interface,
 		Resource("billingaccountiambindings").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a billingAccountIamBinding and creates it.  Returns the server's representation of the billingAccountIamBinding, and an error, if there is any.
-func (c *billingAccountIamBindings) Create(billingAccountIamBinding *v1alpha1.BillingAccountIamBinding) (result *v1alpha1.BillingAccountIamBinding, err error) {
+func (c *billingAccountIamBindings) Create(ctx context.Context, billingAccountIamBinding *v1alpha1.BillingAccountIamBinding, opts v1.CreateOptions) (result *v1alpha1.BillingAccountIamBinding, err error) {
 	result = &v1alpha1.BillingAccountIamBinding{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("billingaccountiambindings").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(billingAccountIamBinding).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a billingAccountIamBinding and updates it. Returns the server's representation of the billingAccountIamBinding, and an error, if there is any.
-func (c *billingAccountIamBindings) Update(billingAccountIamBinding *v1alpha1.BillingAccountIamBinding) (result *v1alpha1.BillingAccountIamBinding, err error) {
+func (c *billingAccountIamBindings) Update(ctx context.Context, billingAccountIamBinding *v1alpha1.BillingAccountIamBinding, opts v1.UpdateOptions) (result *v1alpha1.BillingAccountIamBinding, err error) {
 	result = &v1alpha1.BillingAccountIamBinding{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("billingaccountiambindings").
 		Name(billingAccountIamBinding.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(billingAccountIamBinding).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *billingAccountIamBindings) UpdateStatus(billingAccountIamBinding *v1alpha1.BillingAccountIamBinding) (result *v1alpha1.BillingAccountIamBinding, err error) {
+func (c *billingAccountIamBindings) UpdateStatus(ctx context.Context, billingAccountIamBinding *v1alpha1.BillingAccountIamBinding, opts v1.UpdateOptions) (result *v1alpha1.BillingAccountIamBinding, err error) {
 	result = &v1alpha1.BillingAccountIamBinding{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("billingaccountiambindings").
 		Name(billingAccountIamBinding.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(billingAccountIamBinding).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the billingAccountIamBinding and deletes it. Returns an error if one occurs.
-func (c *billingAccountIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *billingAccountIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("billingaccountiambindings").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *billingAccountIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *billingAccountIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("billingaccountiambindings").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched billingAccountIamBinding.
-func (c *billingAccountIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.BillingAccountIamBinding, err error) {
+func (c *billingAccountIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BillingAccountIamBinding, err error) {
 	result = &v1alpha1.BillingAccountIamBinding{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("billingaccountiambindings").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

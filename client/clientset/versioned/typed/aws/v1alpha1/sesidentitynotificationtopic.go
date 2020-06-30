@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type SesIdentityNotificationTopicsGetter interface {
 
 // SesIdentityNotificationTopicInterface has methods to work with SesIdentityNotificationTopic resources.
 type SesIdentityNotificationTopicInterface interface {
-	Create(*v1alpha1.SesIdentityNotificationTopic) (*v1alpha1.SesIdentityNotificationTopic, error)
-	Update(*v1alpha1.SesIdentityNotificationTopic) (*v1alpha1.SesIdentityNotificationTopic, error)
-	UpdateStatus(*v1alpha1.SesIdentityNotificationTopic) (*v1alpha1.SesIdentityNotificationTopic, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SesIdentityNotificationTopic, error)
-	List(opts v1.ListOptions) (*v1alpha1.SesIdentityNotificationTopicList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SesIdentityNotificationTopic, err error)
+	Create(ctx context.Context, sesIdentityNotificationTopic *v1alpha1.SesIdentityNotificationTopic, opts v1.CreateOptions) (*v1alpha1.SesIdentityNotificationTopic, error)
+	Update(ctx context.Context, sesIdentityNotificationTopic *v1alpha1.SesIdentityNotificationTopic, opts v1.UpdateOptions) (*v1alpha1.SesIdentityNotificationTopic, error)
+	UpdateStatus(ctx context.Context, sesIdentityNotificationTopic *v1alpha1.SesIdentityNotificationTopic, opts v1.UpdateOptions) (*v1alpha1.SesIdentityNotificationTopic, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SesIdentityNotificationTopic, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SesIdentityNotificationTopicList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SesIdentityNotificationTopic, err error)
 	SesIdentityNotificationTopicExpansion
 }
 
@@ -65,20 +66,20 @@ func newSesIdentityNotificationTopics(c *AwsV1alpha1Client, namespace string) *s
 }
 
 // Get takes name of the sesIdentityNotificationTopic, and returns the corresponding sesIdentityNotificationTopic object, and an error if there is any.
-func (c *sesIdentityNotificationTopics) Get(name string, options v1.GetOptions) (result *v1alpha1.SesIdentityNotificationTopic, err error) {
+func (c *sesIdentityNotificationTopics) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SesIdentityNotificationTopic, err error) {
 	result = &v1alpha1.SesIdentityNotificationTopic{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("sesidentitynotificationtopics").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SesIdentityNotificationTopics that match those selectors.
-func (c *sesIdentityNotificationTopics) List(opts v1.ListOptions) (result *v1alpha1.SesIdentityNotificationTopicList, err error) {
+func (c *sesIdentityNotificationTopics) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SesIdentityNotificationTopicList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *sesIdentityNotificationTopics) List(opts v1.ListOptions) (result *v1alp
 		Resource("sesidentitynotificationtopics").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested sesIdentityNotificationTopics.
-func (c *sesIdentityNotificationTopics) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *sesIdentityNotificationTopics) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *sesIdentityNotificationTopics) Watch(opts v1.ListOptions) (watch.Interf
 		Resource("sesidentitynotificationtopics").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a sesIdentityNotificationTopic and creates it.  Returns the server's representation of the sesIdentityNotificationTopic, and an error, if there is any.
-func (c *sesIdentityNotificationTopics) Create(sesIdentityNotificationTopic *v1alpha1.SesIdentityNotificationTopic) (result *v1alpha1.SesIdentityNotificationTopic, err error) {
+func (c *sesIdentityNotificationTopics) Create(ctx context.Context, sesIdentityNotificationTopic *v1alpha1.SesIdentityNotificationTopic, opts v1.CreateOptions) (result *v1alpha1.SesIdentityNotificationTopic, err error) {
 	result = &v1alpha1.SesIdentityNotificationTopic{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("sesidentitynotificationtopics").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sesIdentityNotificationTopic).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a sesIdentityNotificationTopic and updates it. Returns the server's representation of the sesIdentityNotificationTopic, and an error, if there is any.
-func (c *sesIdentityNotificationTopics) Update(sesIdentityNotificationTopic *v1alpha1.SesIdentityNotificationTopic) (result *v1alpha1.SesIdentityNotificationTopic, err error) {
+func (c *sesIdentityNotificationTopics) Update(ctx context.Context, sesIdentityNotificationTopic *v1alpha1.SesIdentityNotificationTopic, opts v1.UpdateOptions) (result *v1alpha1.SesIdentityNotificationTopic, err error) {
 	result = &v1alpha1.SesIdentityNotificationTopic{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sesidentitynotificationtopics").
 		Name(sesIdentityNotificationTopic.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sesIdentityNotificationTopic).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *sesIdentityNotificationTopics) UpdateStatus(sesIdentityNotificationTopic *v1alpha1.SesIdentityNotificationTopic) (result *v1alpha1.SesIdentityNotificationTopic, err error) {
+func (c *sesIdentityNotificationTopics) UpdateStatus(ctx context.Context, sesIdentityNotificationTopic *v1alpha1.SesIdentityNotificationTopic, opts v1.UpdateOptions) (result *v1alpha1.SesIdentityNotificationTopic, err error) {
 	result = &v1alpha1.SesIdentityNotificationTopic{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sesidentitynotificationtopics").
 		Name(sesIdentityNotificationTopic.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sesIdentityNotificationTopic).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the sesIdentityNotificationTopic and deletes it. Returns an error if one occurs.
-func (c *sesIdentityNotificationTopics) Delete(name string, options *v1.DeleteOptions) error {
+func (c *sesIdentityNotificationTopics) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sesidentitynotificationtopics").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *sesIdentityNotificationTopics) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *sesIdentityNotificationTopics) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sesidentitynotificationtopics").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched sesIdentityNotificationTopic.
-func (c *sesIdentityNotificationTopics) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SesIdentityNotificationTopic, err error) {
+func (c *sesIdentityNotificationTopics) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SesIdentityNotificationTopic, err error) {
 	result = &v1alpha1.SesIdentityNotificationTopic{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("sesidentitynotificationtopics").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

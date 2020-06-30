@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var ec2transitgatewayroutetablepropagationsResource = schema.GroupVersionResourc
 var ec2transitgatewayroutetablepropagationsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "Ec2TransitGatewayRouteTablePropagation"}
 
 // Get takes name of the ec2TransitGatewayRouteTablePropagation, and returns the corresponding ec2TransitGatewayRouteTablePropagation object, and an error if there is any.
-func (c *FakeEc2TransitGatewayRouteTablePropagations) Get(name string, options v1.GetOptions) (result *v1alpha1.Ec2TransitGatewayRouteTablePropagation, err error) {
+func (c *FakeEc2TransitGatewayRouteTablePropagations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Ec2TransitGatewayRouteTablePropagation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(ec2transitgatewayroutetablepropagationsResource, c.ns, name), &v1alpha1.Ec2TransitGatewayRouteTablePropagation{})
 
@@ -51,7 +53,7 @@ func (c *FakeEc2TransitGatewayRouteTablePropagations) Get(name string, options v
 }
 
 // List takes label and field selectors, and returns the list of Ec2TransitGatewayRouteTablePropagations that match those selectors.
-func (c *FakeEc2TransitGatewayRouteTablePropagations) List(opts v1.ListOptions) (result *v1alpha1.Ec2TransitGatewayRouteTablePropagationList, err error) {
+func (c *FakeEc2TransitGatewayRouteTablePropagations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.Ec2TransitGatewayRouteTablePropagationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(ec2transitgatewayroutetablepropagationsResource, ec2transitgatewayroutetablepropagationsKind, c.ns, opts), &v1alpha1.Ec2TransitGatewayRouteTablePropagationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeEc2TransitGatewayRouteTablePropagations) List(opts v1.ListOptions) 
 }
 
 // Watch returns a watch.Interface that watches the requested ec2TransitGatewayRouteTablePropagations.
-func (c *FakeEc2TransitGatewayRouteTablePropagations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeEc2TransitGatewayRouteTablePropagations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(ec2transitgatewayroutetablepropagationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a ec2TransitGatewayRouteTablePropagation and creates it.  Returns the server's representation of the ec2TransitGatewayRouteTablePropagation, and an error, if there is any.
-func (c *FakeEc2TransitGatewayRouteTablePropagations) Create(ec2TransitGatewayRouteTablePropagation *v1alpha1.Ec2TransitGatewayRouteTablePropagation) (result *v1alpha1.Ec2TransitGatewayRouteTablePropagation, err error) {
+func (c *FakeEc2TransitGatewayRouteTablePropagations) Create(ctx context.Context, ec2TransitGatewayRouteTablePropagation *v1alpha1.Ec2TransitGatewayRouteTablePropagation, opts v1.CreateOptions) (result *v1alpha1.Ec2TransitGatewayRouteTablePropagation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(ec2transitgatewayroutetablepropagationsResource, c.ns, ec2TransitGatewayRouteTablePropagation), &v1alpha1.Ec2TransitGatewayRouteTablePropagation{})
 
@@ -91,7 +93,7 @@ func (c *FakeEc2TransitGatewayRouteTablePropagations) Create(ec2TransitGatewayRo
 }
 
 // Update takes the representation of a ec2TransitGatewayRouteTablePropagation and updates it. Returns the server's representation of the ec2TransitGatewayRouteTablePropagation, and an error, if there is any.
-func (c *FakeEc2TransitGatewayRouteTablePropagations) Update(ec2TransitGatewayRouteTablePropagation *v1alpha1.Ec2TransitGatewayRouteTablePropagation) (result *v1alpha1.Ec2TransitGatewayRouteTablePropagation, err error) {
+func (c *FakeEc2TransitGatewayRouteTablePropagations) Update(ctx context.Context, ec2TransitGatewayRouteTablePropagation *v1alpha1.Ec2TransitGatewayRouteTablePropagation, opts v1.UpdateOptions) (result *v1alpha1.Ec2TransitGatewayRouteTablePropagation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(ec2transitgatewayroutetablepropagationsResource, c.ns, ec2TransitGatewayRouteTablePropagation), &v1alpha1.Ec2TransitGatewayRouteTablePropagation{})
 
@@ -103,7 +105,7 @@ func (c *FakeEc2TransitGatewayRouteTablePropagations) Update(ec2TransitGatewayRo
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeEc2TransitGatewayRouteTablePropagations) UpdateStatus(ec2TransitGatewayRouteTablePropagation *v1alpha1.Ec2TransitGatewayRouteTablePropagation) (*v1alpha1.Ec2TransitGatewayRouteTablePropagation, error) {
+func (c *FakeEc2TransitGatewayRouteTablePropagations) UpdateStatus(ctx context.Context, ec2TransitGatewayRouteTablePropagation *v1alpha1.Ec2TransitGatewayRouteTablePropagation, opts v1.UpdateOptions) (*v1alpha1.Ec2TransitGatewayRouteTablePropagation, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(ec2transitgatewayroutetablepropagationsResource, "status", c.ns, ec2TransitGatewayRouteTablePropagation), &v1alpha1.Ec2TransitGatewayRouteTablePropagation{})
 
@@ -114,7 +116,7 @@ func (c *FakeEc2TransitGatewayRouteTablePropagations) UpdateStatus(ec2TransitGat
 }
 
 // Delete takes name of the ec2TransitGatewayRouteTablePropagation and deletes it. Returns an error if one occurs.
-func (c *FakeEc2TransitGatewayRouteTablePropagations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeEc2TransitGatewayRouteTablePropagations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(ec2transitgatewayroutetablepropagationsResource, c.ns, name), &v1alpha1.Ec2TransitGatewayRouteTablePropagation{})
 
@@ -122,15 +124,15 @@ func (c *FakeEc2TransitGatewayRouteTablePropagations) Delete(name string, option
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeEc2TransitGatewayRouteTablePropagations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(ec2transitgatewayroutetablepropagationsResource, c.ns, listOptions)
+func (c *FakeEc2TransitGatewayRouteTablePropagations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(ec2transitgatewayroutetablepropagationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.Ec2TransitGatewayRouteTablePropagationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched ec2TransitGatewayRouteTablePropagation.
-func (c *FakeEc2TransitGatewayRouteTablePropagations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Ec2TransitGatewayRouteTablePropagation, err error) {
+func (c *FakeEc2TransitGatewayRouteTablePropagations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Ec2TransitGatewayRouteTablePropagation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(ec2transitgatewayroutetablepropagationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.Ec2TransitGatewayRouteTablePropagation{})
 

@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type WafregionalRateBasedRulesGetter interface {
 
 // WafregionalRateBasedRuleInterface has methods to work with WafregionalRateBasedRule resources.
 type WafregionalRateBasedRuleInterface interface {
-	Create(*v1alpha1.WafregionalRateBasedRule) (*v1alpha1.WafregionalRateBasedRule, error)
-	Update(*v1alpha1.WafregionalRateBasedRule) (*v1alpha1.WafregionalRateBasedRule, error)
-	UpdateStatus(*v1alpha1.WafregionalRateBasedRule) (*v1alpha1.WafregionalRateBasedRule, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.WafregionalRateBasedRule, error)
-	List(opts v1.ListOptions) (*v1alpha1.WafregionalRateBasedRuleList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.WafregionalRateBasedRule, err error)
+	Create(ctx context.Context, wafregionalRateBasedRule *v1alpha1.WafregionalRateBasedRule, opts v1.CreateOptions) (*v1alpha1.WafregionalRateBasedRule, error)
+	Update(ctx context.Context, wafregionalRateBasedRule *v1alpha1.WafregionalRateBasedRule, opts v1.UpdateOptions) (*v1alpha1.WafregionalRateBasedRule, error)
+	UpdateStatus(ctx context.Context, wafregionalRateBasedRule *v1alpha1.WafregionalRateBasedRule, opts v1.UpdateOptions) (*v1alpha1.WafregionalRateBasedRule, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.WafregionalRateBasedRule, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.WafregionalRateBasedRuleList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.WafregionalRateBasedRule, err error)
 	WafregionalRateBasedRuleExpansion
 }
 
@@ -65,20 +66,20 @@ func newWafregionalRateBasedRules(c *AwsV1alpha1Client, namespace string) *wafre
 }
 
 // Get takes name of the wafregionalRateBasedRule, and returns the corresponding wafregionalRateBasedRule object, and an error if there is any.
-func (c *wafregionalRateBasedRules) Get(name string, options v1.GetOptions) (result *v1alpha1.WafregionalRateBasedRule, err error) {
+func (c *wafregionalRateBasedRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.WafregionalRateBasedRule, err error) {
 	result = &v1alpha1.WafregionalRateBasedRule{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("wafregionalratebasedrules").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of WafregionalRateBasedRules that match those selectors.
-func (c *wafregionalRateBasedRules) List(opts v1.ListOptions) (result *v1alpha1.WafregionalRateBasedRuleList, err error) {
+func (c *wafregionalRateBasedRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.WafregionalRateBasedRuleList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *wafregionalRateBasedRules) List(opts v1.ListOptions) (result *v1alpha1.
 		Resource("wafregionalratebasedrules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested wafregionalRateBasedRules.
-func (c *wafregionalRateBasedRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *wafregionalRateBasedRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *wafregionalRateBasedRules) Watch(opts v1.ListOptions) (watch.Interface,
 		Resource("wafregionalratebasedrules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a wafregionalRateBasedRule and creates it.  Returns the server's representation of the wafregionalRateBasedRule, and an error, if there is any.
-func (c *wafregionalRateBasedRules) Create(wafregionalRateBasedRule *v1alpha1.WafregionalRateBasedRule) (result *v1alpha1.WafregionalRateBasedRule, err error) {
+func (c *wafregionalRateBasedRules) Create(ctx context.Context, wafregionalRateBasedRule *v1alpha1.WafregionalRateBasedRule, opts v1.CreateOptions) (result *v1alpha1.WafregionalRateBasedRule, err error) {
 	result = &v1alpha1.WafregionalRateBasedRule{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("wafregionalratebasedrules").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(wafregionalRateBasedRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a wafregionalRateBasedRule and updates it. Returns the server's representation of the wafregionalRateBasedRule, and an error, if there is any.
-func (c *wafregionalRateBasedRules) Update(wafregionalRateBasedRule *v1alpha1.WafregionalRateBasedRule) (result *v1alpha1.WafregionalRateBasedRule, err error) {
+func (c *wafregionalRateBasedRules) Update(ctx context.Context, wafregionalRateBasedRule *v1alpha1.WafregionalRateBasedRule, opts v1.UpdateOptions) (result *v1alpha1.WafregionalRateBasedRule, err error) {
 	result = &v1alpha1.WafregionalRateBasedRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("wafregionalratebasedrules").
 		Name(wafregionalRateBasedRule.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(wafregionalRateBasedRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *wafregionalRateBasedRules) UpdateStatus(wafregionalRateBasedRule *v1alpha1.WafregionalRateBasedRule) (result *v1alpha1.WafregionalRateBasedRule, err error) {
+func (c *wafregionalRateBasedRules) UpdateStatus(ctx context.Context, wafregionalRateBasedRule *v1alpha1.WafregionalRateBasedRule, opts v1.UpdateOptions) (result *v1alpha1.WafregionalRateBasedRule, err error) {
 	result = &v1alpha1.WafregionalRateBasedRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("wafregionalratebasedrules").
 		Name(wafregionalRateBasedRule.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(wafregionalRateBasedRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the wafregionalRateBasedRule and deletes it. Returns an error if one occurs.
-func (c *wafregionalRateBasedRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *wafregionalRateBasedRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("wafregionalratebasedrules").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *wafregionalRateBasedRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *wafregionalRateBasedRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("wafregionalratebasedrules").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched wafregionalRateBasedRule.
-func (c *wafregionalRateBasedRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.WafregionalRateBasedRule, err error) {
+func (c *wafregionalRateBasedRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.WafregionalRateBasedRule, err error) {
 	result = &v1alpha1.WafregionalRateBasedRule{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("wafregionalratebasedrules").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

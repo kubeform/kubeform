@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type AppautoscalingScheduledActionsGetter interface {
 
 // AppautoscalingScheduledActionInterface has methods to work with AppautoscalingScheduledAction resources.
 type AppautoscalingScheduledActionInterface interface {
-	Create(*v1alpha1.AppautoscalingScheduledAction) (*v1alpha1.AppautoscalingScheduledAction, error)
-	Update(*v1alpha1.AppautoscalingScheduledAction) (*v1alpha1.AppautoscalingScheduledAction, error)
-	UpdateStatus(*v1alpha1.AppautoscalingScheduledAction) (*v1alpha1.AppautoscalingScheduledAction, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.AppautoscalingScheduledAction, error)
-	List(opts v1.ListOptions) (*v1alpha1.AppautoscalingScheduledActionList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppautoscalingScheduledAction, err error)
+	Create(ctx context.Context, appautoscalingScheduledAction *v1alpha1.AppautoscalingScheduledAction, opts v1.CreateOptions) (*v1alpha1.AppautoscalingScheduledAction, error)
+	Update(ctx context.Context, appautoscalingScheduledAction *v1alpha1.AppautoscalingScheduledAction, opts v1.UpdateOptions) (*v1alpha1.AppautoscalingScheduledAction, error)
+	UpdateStatus(ctx context.Context, appautoscalingScheduledAction *v1alpha1.AppautoscalingScheduledAction, opts v1.UpdateOptions) (*v1alpha1.AppautoscalingScheduledAction, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.AppautoscalingScheduledAction, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.AppautoscalingScheduledActionList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppautoscalingScheduledAction, err error)
 	AppautoscalingScheduledActionExpansion
 }
 
@@ -65,20 +66,20 @@ func newAppautoscalingScheduledActions(c *AwsV1alpha1Client, namespace string) *
 }
 
 // Get takes name of the appautoscalingScheduledAction, and returns the corresponding appautoscalingScheduledAction object, and an error if there is any.
-func (c *appautoscalingScheduledActions) Get(name string, options v1.GetOptions) (result *v1alpha1.AppautoscalingScheduledAction, err error) {
+func (c *appautoscalingScheduledActions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AppautoscalingScheduledAction, err error) {
 	result = &v1alpha1.AppautoscalingScheduledAction{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("appautoscalingscheduledactions").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of AppautoscalingScheduledActions that match those selectors.
-func (c *appautoscalingScheduledActions) List(opts v1.ListOptions) (result *v1alpha1.AppautoscalingScheduledActionList, err error) {
+func (c *appautoscalingScheduledActions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AppautoscalingScheduledActionList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *appautoscalingScheduledActions) List(opts v1.ListOptions) (result *v1al
 		Resource("appautoscalingscheduledactions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested appautoscalingScheduledActions.
-func (c *appautoscalingScheduledActions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *appautoscalingScheduledActions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *appautoscalingScheduledActions) Watch(opts v1.ListOptions) (watch.Inter
 		Resource("appautoscalingscheduledactions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a appautoscalingScheduledAction and creates it.  Returns the server's representation of the appautoscalingScheduledAction, and an error, if there is any.
-func (c *appautoscalingScheduledActions) Create(appautoscalingScheduledAction *v1alpha1.AppautoscalingScheduledAction) (result *v1alpha1.AppautoscalingScheduledAction, err error) {
+func (c *appautoscalingScheduledActions) Create(ctx context.Context, appautoscalingScheduledAction *v1alpha1.AppautoscalingScheduledAction, opts v1.CreateOptions) (result *v1alpha1.AppautoscalingScheduledAction, err error) {
 	result = &v1alpha1.AppautoscalingScheduledAction{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("appautoscalingscheduledactions").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appautoscalingScheduledAction).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a appautoscalingScheduledAction and updates it. Returns the server's representation of the appautoscalingScheduledAction, and an error, if there is any.
-func (c *appautoscalingScheduledActions) Update(appautoscalingScheduledAction *v1alpha1.AppautoscalingScheduledAction) (result *v1alpha1.AppautoscalingScheduledAction, err error) {
+func (c *appautoscalingScheduledActions) Update(ctx context.Context, appautoscalingScheduledAction *v1alpha1.AppautoscalingScheduledAction, opts v1.UpdateOptions) (result *v1alpha1.AppautoscalingScheduledAction, err error) {
 	result = &v1alpha1.AppautoscalingScheduledAction{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("appautoscalingscheduledactions").
 		Name(appautoscalingScheduledAction.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appautoscalingScheduledAction).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *appautoscalingScheduledActions) UpdateStatus(appautoscalingScheduledAction *v1alpha1.AppautoscalingScheduledAction) (result *v1alpha1.AppautoscalingScheduledAction, err error) {
+func (c *appautoscalingScheduledActions) UpdateStatus(ctx context.Context, appautoscalingScheduledAction *v1alpha1.AppautoscalingScheduledAction, opts v1.UpdateOptions) (result *v1alpha1.AppautoscalingScheduledAction, err error) {
 	result = &v1alpha1.AppautoscalingScheduledAction{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("appautoscalingscheduledactions").
 		Name(appautoscalingScheduledAction.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appautoscalingScheduledAction).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the appautoscalingScheduledAction and deletes it. Returns an error if one occurs.
-func (c *appautoscalingScheduledActions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *appautoscalingScheduledActions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("appautoscalingscheduledactions").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *appautoscalingScheduledActions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *appautoscalingScheduledActions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("appautoscalingscheduledactions").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched appautoscalingScheduledAction.
-func (c *appautoscalingScheduledActions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppautoscalingScheduledAction, err error) {
+func (c *appautoscalingScheduledActions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppautoscalingScheduledAction, err error) {
 	result = &v1alpha1.AppautoscalingScheduledAction{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("appautoscalingscheduledactions").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

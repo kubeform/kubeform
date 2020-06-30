@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var networkinterfacenatruleassociationsResource = schema.GroupVersionResource{Gr
 var networkinterfacenatruleassociationsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "NetworkInterfaceNATRuleAssociation"}
 
 // Get takes name of the networkInterfaceNATRuleAssociation, and returns the corresponding networkInterfaceNATRuleAssociation object, and an error if there is any.
-func (c *FakeNetworkInterfaceNATRuleAssociations) Get(name string, options v1.GetOptions) (result *v1alpha1.NetworkInterfaceNATRuleAssociation, err error) {
+func (c *FakeNetworkInterfaceNATRuleAssociations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.NetworkInterfaceNATRuleAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(networkinterfacenatruleassociationsResource, c.ns, name), &v1alpha1.NetworkInterfaceNATRuleAssociation{})
 
@@ -51,7 +53,7 @@ func (c *FakeNetworkInterfaceNATRuleAssociations) Get(name string, options v1.Ge
 }
 
 // List takes label and field selectors, and returns the list of NetworkInterfaceNATRuleAssociations that match those selectors.
-func (c *FakeNetworkInterfaceNATRuleAssociations) List(opts v1.ListOptions) (result *v1alpha1.NetworkInterfaceNATRuleAssociationList, err error) {
+func (c *FakeNetworkInterfaceNATRuleAssociations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.NetworkInterfaceNATRuleAssociationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(networkinterfacenatruleassociationsResource, networkinterfacenatruleassociationsKind, c.ns, opts), &v1alpha1.NetworkInterfaceNATRuleAssociationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeNetworkInterfaceNATRuleAssociations) List(opts v1.ListOptions) (res
 }
 
 // Watch returns a watch.Interface that watches the requested networkInterfaceNATRuleAssociations.
-func (c *FakeNetworkInterfaceNATRuleAssociations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeNetworkInterfaceNATRuleAssociations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(networkinterfacenatruleassociationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a networkInterfaceNATRuleAssociation and creates it.  Returns the server's representation of the networkInterfaceNATRuleAssociation, and an error, if there is any.
-func (c *FakeNetworkInterfaceNATRuleAssociations) Create(networkInterfaceNATRuleAssociation *v1alpha1.NetworkInterfaceNATRuleAssociation) (result *v1alpha1.NetworkInterfaceNATRuleAssociation, err error) {
+func (c *FakeNetworkInterfaceNATRuleAssociations) Create(ctx context.Context, networkInterfaceNATRuleAssociation *v1alpha1.NetworkInterfaceNATRuleAssociation, opts v1.CreateOptions) (result *v1alpha1.NetworkInterfaceNATRuleAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(networkinterfacenatruleassociationsResource, c.ns, networkInterfaceNATRuleAssociation), &v1alpha1.NetworkInterfaceNATRuleAssociation{})
 
@@ -91,7 +93,7 @@ func (c *FakeNetworkInterfaceNATRuleAssociations) Create(networkInterfaceNATRule
 }
 
 // Update takes the representation of a networkInterfaceNATRuleAssociation and updates it. Returns the server's representation of the networkInterfaceNATRuleAssociation, and an error, if there is any.
-func (c *FakeNetworkInterfaceNATRuleAssociations) Update(networkInterfaceNATRuleAssociation *v1alpha1.NetworkInterfaceNATRuleAssociation) (result *v1alpha1.NetworkInterfaceNATRuleAssociation, err error) {
+func (c *FakeNetworkInterfaceNATRuleAssociations) Update(ctx context.Context, networkInterfaceNATRuleAssociation *v1alpha1.NetworkInterfaceNATRuleAssociation, opts v1.UpdateOptions) (result *v1alpha1.NetworkInterfaceNATRuleAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(networkinterfacenatruleassociationsResource, c.ns, networkInterfaceNATRuleAssociation), &v1alpha1.NetworkInterfaceNATRuleAssociation{})
 
@@ -103,7 +105,7 @@ func (c *FakeNetworkInterfaceNATRuleAssociations) Update(networkInterfaceNATRule
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeNetworkInterfaceNATRuleAssociations) UpdateStatus(networkInterfaceNATRuleAssociation *v1alpha1.NetworkInterfaceNATRuleAssociation) (*v1alpha1.NetworkInterfaceNATRuleAssociation, error) {
+func (c *FakeNetworkInterfaceNATRuleAssociations) UpdateStatus(ctx context.Context, networkInterfaceNATRuleAssociation *v1alpha1.NetworkInterfaceNATRuleAssociation, opts v1.UpdateOptions) (*v1alpha1.NetworkInterfaceNATRuleAssociation, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(networkinterfacenatruleassociationsResource, "status", c.ns, networkInterfaceNATRuleAssociation), &v1alpha1.NetworkInterfaceNATRuleAssociation{})
 
@@ -114,7 +116,7 @@ func (c *FakeNetworkInterfaceNATRuleAssociations) UpdateStatus(networkInterfaceN
 }
 
 // Delete takes name of the networkInterfaceNATRuleAssociation and deletes it. Returns an error if one occurs.
-func (c *FakeNetworkInterfaceNATRuleAssociations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeNetworkInterfaceNATRuleAssociations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(networkinterfacenatruleassociationsResource, c.ns, name), &v1alpha1.NetworkInterfaceNATRuleAssociation{})
 
@@ -122,15 +124,15 @@ func (c *FakeNetworkInterfaceNATRuleAssociations) Delete(name string, options *v
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeNetworkInterfaceNATRuleAssociations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(networkinterfacenatruleassociationsResource, c.ns, listOptions)
+func (c *FakeNetworkInterfaceNATRuleAssociations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(networkinterfacenatruleassociationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.NetworkInterfaceNATRuleAssociationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched networkInterfaceNATRuleAssociation.
-func (c *FakeNetworkInterfaceNATRuleAssociations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.NetworkInterfaceNATRuleAssociation, err error) {
+func (c *FakeNetworkInterfaceNATRuleAssociations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.NetworkInterfaceNATRuleAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(networkinterfacenatruleassociationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.NetworkInterfaceNATRuleAssociation{})
 

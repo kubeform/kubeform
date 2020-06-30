@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type ApiManagementProductPoliciesGetter interface {
 
 // ApiManagementProductPolicyInterface has methods to work with ApiManagementProductPolicy resources.
 type ApiManagementProductPolicyInterface interface {
-	Create(*v1alpha1.ApiManagementProductPolicy) (*v1alpha1.ApiManagementProductPolicy, error)
-	Update(*v1alpha1.ApiManagementProductPolicy) (*v1alpha1.ApiManagementProductPolicy, error)
-	UpdateStatus(*v1alpha1.ApiManagementProductPolicy) (*v1alpha1.ApiManagementProductPolicy, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ApiManagementProductPolicy, error)
-	List(opts v1.ListOptions) (*v1alpha1.ApiManagementProductPolicyList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiManagementProductPolicy, err error)
+	Create(ctx context.Context, apiManagementProductPolicy *v1alpha1.ApiManagementProductPolicy, opts v1.CreateOptions) (*v1alpha1.ApiManagementProductPolicy, error)
+	Update(ctx context.Context, apiManagementProductPolicy *v1alpha1.ApiManagementProductPolicy, opts v1.UpdateOptions) (*v1alpha1.ApiManagementProductPolicy, error)
+	UpdateStatus(ctx context.Context, apiManagementProductPolicy *v1alpha1.ApiManagementProductPolicy, opts v1.UpdateOptions) (*v1alpha1.ApiManagementProductPolicy, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ApiManagementProductPolicy, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ApiManagementProductPolicyList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiManagementProductPolicy, err error)
 	ApiManagementProductPolicyExpansion
 }
 
@@ -65,20 +66,20 @@ func newApiManagementProductPolicies(c *AzurermV1alpha1Client, namespace string)
 }
 
 // Get takes name of the apiManagementProductPolicy, and returns the corresponding apiManagementProductPolicy object, and an error if there is any.
-func (c *apiManagementProductPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.ApiManagementProductPolicy, err error) {
+func (c *apiManagementProductPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApiManagementProductPolicy, err error) {
 	result = &v1alpha1.ApiManagementProductPolicy{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("apimanagementproductpolicies").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ApiManagementProductPolicies that match those selectors.
-func (c *apiManagementProductPolicies) List(opts v1.ListOptions) (result *v1alpha1.ApiManagementProductPolicyList, err error) {
+func (c *apiManagementProductPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApiManagementProductPolicyList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *apiManagementProductPolicies) List(opts v1.ListOptions) (result *v1alph
 		Resource("apimanagementproductpolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested apiManagementProductPolicies.
-func (c *apiManagementProductPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *apiManagementProductPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *apiManagementProductPolicies) Watch(opts v1.ListOptions) (watch.Interfa
 		Resource("apimanagementproductpolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a apiManagementProductPolicy and creates it.  Returns the server's representation of the apiManagementProductPolicy, and an error, if there is any.
-func (c *apiManagementProductPolicies) Create(apiManagementProductPolicy *v1alpha1.ApiManagementProductPolicy) (result *v1alpha1.ApiManagementProductPolicy, err error) {
+func (c *apiManagementProductPolicies) Create(ctx context.Context, apiManagementProductPolicy *v1alpha1.ApiManagementProductPolicy, opts v1.CreateOptions) (result *v1alpha1.ApiManagementProductPolicy, err error) {
 	result = &v1alpha1.ApiManagementProductPolicy{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("apimanagementproductpolicies").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(apiManagementProductPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a apiManagementProductPolicy and updates it. Returns the server's representation of the apiManagementProductPolicy, and an error, if there is any.
-func (c *apiManagementProductPolicies) Update(apiManagementProductPolicy *v1alpha1.ApiManagementProductPolicy) (result *v1alpha1.ApiManagementProductPolicy, err error) {
+func (c *apiManagementProductPolicies) Update(ctx context.Context, apiManagementProductPolicy *v1alpha1.ApiManagementProductPolicy, opts v1.UpdateOptions) (result *v1alpha1.ApiManagementProductPolicy, err error) {
 	result = &v1alpha1.ApiManagementProductPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("apimanagementproductpolicies").
 		Name(apiManagementProductPolicy.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(apiManagementProductPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *apiManagementProductPolicies) UpdateStatus(apiManagementProductPolicy *v1alpha1.ApiManagementProductPolicy) (result *v1alpha1.ApiManagementProductPolicy, err error) {
+func (c *apiManagementProductPolicies) UpdateStatus(ctx context.Context, apiManagementProductPolicy *v1alpha1.ApiManagementProductPolicy, opts v1.UpdateOptions) (result *v1alpha1.ApiManagementProductPolicy, err error) {
 	result = &v1alpha1.ApiManagementProductPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("apimanagementproductpolicies").
 		Name(apiManagementProductPolicy.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(apiManagementProductPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the apiManagementProductPolicy and deletes it. Returns an error if one occurs.
-func (c *apiManagementProductPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *apiManagementProductPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("apimanagementproductpolicies").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *apiManagementProductPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *apiManagementProductPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("apimanagementproductpolicies").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched apiManagementProductPolicy.
-func (c *apiManagementProductPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiManagementProductPolicy, err error) {
+func (c *apiManagementProductPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiManagementProductPolicy, err error) {
 	result = &v1alpha1.ApiManagementProductPolicy{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("apimanagementproductpolicies").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

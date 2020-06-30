@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type DaxSubnetGroupsGetter interface {
 
 // DaxSubnetGroupInterface has methods to work with DaxSubnetGroup resources.
 type DaxSubnetGroupInterface interface {
-	Create(*v1alpha1.DaxSubnetGroup) (*v1alpha1.DaxSubnetGroup, error)
-	Update(*v1alpha1.DaxSubnetGroup) (*v1alpha1.DaxSubnetGroup, error)
-	UpdateStatus(*v1alpha1.DaxSubnetGroup) (*v1alpha1.DaxSubnetGroup, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.DaxSubnetGroup, error)
-	List(opts v1.ListOptions) (*v1alpha1.DaxSubnetGroupList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DaxSubnetGroup, err error)
+	Create(ctx context.Context, daxSubnetGroup *v1alpha1.DaxSubnetGroup, opts v1.CreateOptions) (*v1alpha1.DaxSubnetGroup, error)
+	Update(ctx context.Context, daxSubnetGroup *v1alpha1.DaxSubnetGroup, opts v1.UpdateOptions) (*v1alpha1.DaxSubnetGroup, error)
+	UpdateStatus(ctx context.Context, daxSubnetGroup *v1alpha1.DaxSubnetGroup, opts v1.UpdateOptions) (*v1alpha1.DaxSubnetGroup, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.DaxSubnetGroup, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.DaxSubnetGroupList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DaxSubnetGroup, err error)
 	DaxSubnetGroupExpansion
 }
 
@@ -65,20 +66,20 @@ func newDaxSubnetGroups(c *AwsV1alpha1Client, namespace string) *daxSubnetGroups
 }
 
 // Get takes name of the daxSubnetGroup, and returns the corresponding daxSubnetGroup object, and an error if there is any.
-func (c *daxSubnetGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.DaxSubnetGroup, err error) {
+func (c *daxSubnetGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DaxSubnetGroup, err error) {
 	result = &v1alpha1.DaxSubnetGroup{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("daxsubnetgroups").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of DaxSubnetGroups that match those selectors.
-func (c *daxSubnetGroups) List(opts v1.ListOptions) (result *v1alpha1.DaxSubnetGroupList, err error) {
+func (c *daxSubnetGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DaxSubnetGroupList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *daxSubnetGroups) List(opts v1.ListOptions) (result *v1alpha1.DaxSubnetG
 		Resource("daxsubnetgroups").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested daxSubnetGroups.
-func (c *daxSubnetGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *daxSubnetGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *daxSubnetGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("daxsubnetgroups").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a daxSubnetGroup and creates it.  Returns the server's representation of the daxSubnetGroup, and an error, if there is any.
-func (c *daxSubnetGroups) Create(daxSubnetGroup *v1alpha1.DaxSubnetGroup) (result *v1alpha1.DaxSubnetGroup, err error) {
+func (c *daxSubnetGroups) Create(ctx context.Context, daxSubnetGroup *v1alpha1.DaxSubnetGroup, opts v1.CreateOptions) (result *v1alpha1.DaxSubnetGroup, err error) {
 	result = &v1alpha1.DaxSubnetGroup{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("daxsubnetgroups").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(daxSubnetGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a daxSubnetGroup and updates it. Returns the server's representation of the daxSubnetGroup, and an error, if there is any.
-func (c *daxSubnetGroups) Update(daxSubnetGroup *v1alpha1.DaxSubnetGroup) (result *v1alpha1.DaxSubnetGroup, err error) {
+func (c *daxSubnetGroups) Update(ctx context.Context, daxSubnetGroup *v1alpha1.DaxSubnetGroup, opts v1.UpdateOptions) (result *v1alpha1.DaxSubnetGroup, err error) {
 	result = &v1alpha1.DaxSubnetGroup{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("daxsubnetgroups").
 		Name(daxSubnetGroup.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(daxSubnetGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *daxSubnetGroups) UpdateStatus(daxSubnetGroup *v1alpha1.DaxSubnetGroup) (result *v1alpha1.DaxSubnetGroup, err error) {
+func (c *daxSubnetGroups) UpdateStatus(ctx context.Context, daxSubnetGroup *v1alpha1.DaxSubnetGroup, opts v1.UpdateOptions) (result *v1alpha1.DaxSubnetGroup, err error) {
 	result = &v1alpha1.DaxSubnetGroup{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("daxsubnetgroups").
 		Name(daxSubnetGroup.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(daxSubnetGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the daxSubnetGroup and deletes it. Returns an error if one occurs.
-func (c *daxSubnetGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *daxSubnetGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("daxsubnetgroups").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *daxSubnetGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *daxSubnetGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("daxsubnetgroups").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched daxSubnetGroup.
-func (c *daxSubnetGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DaxSubnetGroup, err error) {
+func (c *daxSubnetGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DaxSubnetGroup, err error) {
 	result = &v1alpha1.DaxSubnetGroup{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("daxsubnetgroups").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

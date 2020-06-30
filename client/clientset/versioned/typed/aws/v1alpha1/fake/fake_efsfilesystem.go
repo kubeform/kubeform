@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var efsfilesystemsResource = schema.GroupVersionResource{Group: "aws.kubeform.co
 var efsfilesystemsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "EfsFileSystem"}
 
 // Get takes name of the efsFileSystem, and returns the corresponding efsFileSystem object, and an error if there is any.
-func (c *FakeEfsFileSystems) Get(name string, options v1.GetOptions) (result *v1alpha1.EfsFileSystem, err error) {
+func (c *FakeEfsFileSystems) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.EfsFileSystem, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(efsfilesystemsResource, c.ns, name), &v1alpha1.EfsFileSystem{})
 
@@ -51,7 +53,7 @@ func (c *FakeEfsFileSystems) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of EfsFileSystems that match those selectors.
-func (c *FakeEfsFileSystems) List(opts v1.ListOptions) (result *v1alpha1.EfsFileSystemList, err error) {
+func (c *FakeEfsFileSystems) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.EfsFileSystemList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(efsfilesystemsResource, efsfilesystemsKind, c.ns, opts), &v1alpha1.EfsFileSystemList{})
 
@@ -73,14 +75,14 @@ func (c *FakeEfsFileSystems) List(opts v1.ListOptions) (result *v1alpha1.EfsFile
 }
 
 // Watch returns a watch.Interface that watches the requested efsFileSystems.
-func (c *FakeEfsFileSystems) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeEfsFileSystems) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(efsfilesystemsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a efsFileSystem and creates it.  Returns the server's representation of the efsFileSystem, and an error, if there is any.
-func (c *FakeEfsFileSystems) Create(efsFileSystem *v1alpha1.EfsFileSystem) (result *v1alpha1.EfsFileSystem, err error) {
+func (c *FakeEfsFileSystems) Create(ctx context.Context, efsFileSystem *v1alpha1.EfsFileSystem, opts v1.CreateOptions) (result *v1alpha1.EfsFileSystem, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(efsfilesystemsResource, c.ns, efsFileSystem), &v1alpha1.EfsFileSystem{})
 
@@ -91,7 +93,7 @@ func (c *FakeEfsFileSystems) Create(efsFileSystem *v1alpha1.EfsFileSystem) (resu
 }
 
 // Update takes the representation of a efsFileSystem and updates it. Returns the server's representation of the efsFileSystem, and an error, if there is any.
-func (c *FakeEfsFileSystems) Update(efsFileSystem *v1alpha1.EfsFileSystem) (result *v1alpha1.EfsFileSystem, err error) {
+func (c *FakeEfsFileSystems) Update(ctx context.Context, efsFileSystem *v1alpha1.EfsFileSystem, opts v1.UpdateOptions) (result *v1alpha1.EfsFileSystem, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(efsfilesystemsResource, c.ns, efsFileSystem), &v1alpha1.EfsFileSystem{})
 
@@ -103,7 +105,7 @@ func (c *FakeEfsFileSystems) Update(efsFileSystem *v1alpha1.EfsFileSystem) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeEfsFileSystems) UpdateStatus(efsFileSystem *v1alpha1.EfsFileSystem) (*v1alpha1.EfsFileSystem, error) {
+func (c *FakeEfsFileSystems) UpdateStatus(ctx context.Context, efsFileSystem *v1alpha1.EfsFileSystem, opts v1.UpdateOptions) (*v1alpha1.EfsFileSystem, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(efsfilesystemsResource, "status", c.ns, efsFileSystem), &v1alpha1.EfsFileSystem{})
 
@@ -114,7 +116,7 @@ func (c *FakeEfsFileSystems) UpdateStatus(efsFileSystem *v1alpha1.EfsFileSystem)
 }
 
 // Delete takes name of the efsFileSystem and deletes it. Returns an error if one occurs.
-func (c *FakeEfsFileSystems) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeEfsFileSystems) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(efsfilesystemsResource, c.ns, name), &v1alpha1.EfsFileSystem{})
 
@@ -122,15 +124,15 @@ func (c *FakeEfsFileSystems) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeEfsFileSystems) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(efsfilesystemsResource, c.ns, listOptions)
+func (c *FakeEfsFileSystems) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(efsfilesystemsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.EfsFileSystemList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched efsFileSystem.
-func (c *FakeEfsFileSystems) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EfsFileSystem, err error) {
+func (c *FakeEfsFileSystems) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EfsFileSystem, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(efsfilesystemsResource, c.ns, name, pt, data, subresources...), &v1alpha1.EfsFileSystem{})
 

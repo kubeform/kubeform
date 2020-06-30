@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type EbsSnapshotCopiesGetter interface {
 
 // EbsSnapshotCopyInterface has methods to work with EbsSnapshotCopy resources.
 type EbsSnapshotCopyInterface interface {
-	Create(*v1alpha1.EbsSnapshotCopy) (*v1alpha1.EbsSnapshotCopy, error)
-	Update(*v1alpha1.EbsSnapshotCopy) (*v1alpha1.EbsSnapshotCopy, error)
-	UpdateStatus(*v1alpha1.EbsSnapshotCopy) (*v1alpha1.EbsSnapshotCopy, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.EbsSnapshotCopy, error)
-	List(opts v1.ListOptions) (*v1alpha1.EbsSnapshotCopyList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EbsSnapshotCopy, err error)
+	Create(ctx context.Context, ebsSnapshotCopy *v1alpha1.EbsSnapshotCopy, opts v1.CreateOptions) (*v1alpha1.EbsSnapshotCopy, error)
+	Update(ctx context.Context, ebsSnapshotCopy *v1alpha1.EbsSnapshotCopy, opts v1.UpdateOptions) (*v1alpha1.EbsSnapshotCopy, error)
+	UpdateStatus(ctx context.Context, ebsSnapshotCopy *v1alpha1.EbsSnapshotCopy, opts v1.UpdateOptions) (*v1alpha1.EbsSnapshotCopy, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.EbsSnapshotCopy, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.EbsSnapshotCopyList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EbsSnapshotCopy, err error)
 	EbsSnapshotCopyExpansion
 }
 
@@ -65,20 +66,20 @@ func newEbsSnapshotCopies(c *AwsV1alpha1Client, namespace string) *ebsSnapshotCo
 }
 
 // Get takes name of the ebsSnapshotCopy, and returns the corresponding ebsSnapshotCopy object, and an error if there is any.
-func (c *ebsSnapshotCopies) Get(name string, options v1.GetOptions) (result *v1alpha1.EbsSnapshotCopy, err error) {
+func (c *ebsSnapshotCopies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.EbsSnapshotCopy, err error) {
 	result = &v1alpha1.EbsSnapshotCopy{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("ebssnapshotcopies").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of EbsSnapshotCopies that match those selectors.
-func (c *ebsSnapshotCopies) List(opts v1.ListOptions) (result *v1alpha1.EbsSnapshotCopyList, err error) {
+func (c *ebsSnapshotCopies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.EbsSnapshotCopyList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *ebsSnapshotCopies) List(opts v1.ListOptions) (result *v1alpha1.EbsSnaps
 		Resource("ebssnapshotcopies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested ebsSnapshotCopies.
-func (c *ebsSnapshotCopies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *ebsSnapshotCopies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *ebsSnapshotCopies) Watch(opts v1.ListOptions) (watch.Interface, error) 
 		Resource("ebssnapshotcopies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a ebsSnapshotCopy and creates it.  Returns the server's representation of the ebsSnapshotCopy, and an error, if there is any.
-func (c *ebsSnapshotCopies) Create(ebsSnapshotCopy *v1alpha1.EbsSnapshotCopy) (result *v1alpha1.EbsSnapshotCopy, err error) {
+func (c *ebsSnapshotCopies) Create(ctx context.Context, ebsSnapshotCopy *v1alpha1.EbsSnapshotCopy, opts v1.CreateOptions) (result *v1alpha1.EbsSnapshotCopy, err error) {
 	result = &v1alpha1.EbsSnapshotCopy{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("ebssnapshotcopies").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(ebsSnapshotCopy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a ebsSnapshotCopy and updates it. Returns the server's representation of the ebsSnapshotCopy, and an error, if there is any.
-func (c *ebsSnapshotCopies) Update(ebsSnapshotCopy *v1alpha1.EbsSnapshotCopy) (result *v1alpha1.EbsSnapshotCopy, err error) {
+func (c *ebsSnapshotCopies) Update(ctx context.Context, ebsSnapshotCopy *v1alpha1.EbsSnapshotCopy, opts v1.UpdateOptions) (result *v1alpha1.EbsSnapshotCopy, err error) {
 	result = &v1alpha1.EbsSnapshotCopy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("ebssnapshotcopies").
 		Name(ebsSnapshotCopy.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(ebsSnapshotCopy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *ebsSnapshotCopies) UpdateStatus(ebsSnapshotCopy *v1alpha1.EbsSnapshotCopy) (result *v1alpha1.EbsSnapshotCopy, err error) {
+func (c *ebsSnapshotCopies) UpdateStatus(ctx context.Context, ebsSnapshotCopy *v1alpha1.EbsSnapshotCopy, opts v1.UpdateOptions) (result *v1alpha1.EbsSnapshotCopy, err error) {
 	result = &v1alpha1.EbsSnapshotCopy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("ebssnapshotcopies").
 		Name(ebsSnapshotCopy.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(ebsSnapshotCopy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the ebsSnapshotCopy and deletes it. Returns an error if one occurs.
-func (c *ebsSnapshotCopies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *ebsSnapshotCopies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("ebssnapshotcopies").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *ebsSnapshotCopies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *ebsSnapshotCopies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("ebssnapshotcopies").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched ebsSnapshotCopy.
-func (c *ebsSnapshotCopies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EbsSnapshotCopy, err error) {
+func (c *ebsSnapshotCopies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EbsSnapshotCopy, err error) {
 	result = &v1alpha1.EbsSnapshotCopy{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("ebssnapshotcopies").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

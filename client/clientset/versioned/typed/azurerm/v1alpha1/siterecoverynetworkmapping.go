@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type SiteRecoveryNetworkMappingsGetter interface {
 
 // SiteRecoveryNetworkMappingInterface has methods to work with SiteRecoveryNetworkMapping resources.
 type SiteRecoveryNetworkMappingInterface interface {
-	Create(*v1alpha1.SiteRecoveryNetworkMapping) (*v1alpha1.SiteRecoveryNetworkMapping, error)
-	Update(*v1alpha1.SiteRecoveryNetworkMapping) (*v1alpha1.SiteRecoveryNetworkMapping, error)
-	UpdateStatus(*v1alpha1.SiteRecoveryNetworkMapping) (*v1alpha1.SiteRecoveryNetworkMapping, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SiteRecoveryNetworkMapping, error)
-	List(opts v1.ListOptions) (*v1alpha1.SiteRecoveryNetworkMappingList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SiteRecoveryNetworkMapping, err error)
+	Create(ctx context.Context, siteRecoveryNetworkMapping *v1alpha1.SiteRecoveryNetworkMapping, opts v1.CreateOptions) (*v1alpha1.SiteRecoveryNetworkMapping, error)
+	Update(ctx context.Context, siteRecoveryNetworkMapping *v1alpha1.SiteRecoveryNetworkMapping, opts v1.UpdateOptions) (*v1alpha1.SiteRecoveryNetworkMapping, error)
+	UpdateStatus(ctx context.Context, siteRecoveryNetworkMapping *v1alpha1.SiteRecoveryNetworkMapping, opts v1.UpdateOptions) (*v1alpha1.SiteRecoveryNetworkMapping, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SiteRecoveryNetworkMapping, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SiteRecoveryNetworkMappingList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SiteRecoveryNetworkMapping, err error)
 	SiteRecoveryNetworkMappingExpansion
 }
 
@@ -65,20 +66,20 @@ func newSiteRecoveryNetworkMappings(c *AzurermV1alpha1Client, namespace string) 
 }
 
 // Get takes name of the siteRecoveryNetworkMapping, and returns the corresponding siteRecoveryNetworkMapping object, and an error if there is any.
-func (c *siteRecoveryNetworkMappings) Get(name string, options v1.GetOptions) (result *v1alpha1.SiteRecoveryNetworkMapping, err error) {
+func (c *siteRecoveryNetworkMappings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SiteRecoveryNetworkMapping, err error) {
 	result = &v1alpha1.SiteRecoveryNetworkMapping{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("siterecoverynetworkmappings").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SiteRecoveryNetworkMappings that match those selectors.
-func (c *siteRecoveryNetworkMappings) List(opts v1.ListOptions) (result *v1alpha1.SiteRecoveryNetworkMappingList, err error) {
+func (c *siteRecoveryNetworkMappings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SiteRecoveryNetworkMappingList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *siteRecoveryNetworkMappings) List(opts v1.ListOptions) (result *v1alpha
 		Resource("siterecoverynetworkmappings").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested siteRecoveryNetworkMappings.
-func (c *siteRecoveryNetworkMappings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *siteRecoveryNetworkMappings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *siteRecoveryNetworkMappings) Watch(opts v1.ListOptions) (watch.Interfac
 		Resource("siterecoverynetworkmappings").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a siteRecoveryNetworkMapping and creates it.  Returns the server's representation of the siteRecoveryNetworkMapping, and an error, if there is any.
-func (c *siteRecoveryNetworkMappings) Create(siteRecoveryNetworkMapping *v1alpha1.SiteRecoveryNetworkMapping) (result *v1alpha1.SiteRecoveryNetworkMapping, err error) {
+func (c *siteRecoveryNetworkMappings) Create(ctx context.Context, siteRecoveryNetworkMapping *v1alpha1.SiteRecoveryNetworkMapping, opts v1.CreateOptions) (result *v1alpha1.SiteRecoveryNetworkMapping, err error) {
 	result = &v1alpha1.SiteRecoveryNetworkMapping{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("siterecoverynetworkmappings").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(siteRecoveryNetworkMapping).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a siteRecoveryNetworkMapping and updates it. Returns the server's representation of the siteRecoveryNetworkMapping, and an error, if there is any.
-func (c *siteRecoveryNetworkMappings) Update(siteRecoveryNetworkMapping *v1alpha1.SiteRecoveryNetworkMapping) (result *v1alpha1.SiteRecoveryNetworkMapping, err error) {
+func (c *siteRecoveryNetworkMappings) Update(ctx context.Context, siteRecoveryNetworkMapping *v1alpha1.SiteRecoveryNetworkMapping, opts v1.UpdateOptions) (result *v1alpha1.SiteRecoveryNetworkMapping, err error) {
 	result = &v1alpha1.SiteRecoveryNetworkMapping{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("siterecoverynetworkmappings").
 		Name(siteRecoveryNetworkMapping.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(siteRecoveryNetworkMapping).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *siteRecoveryNetworkMappings) UpdateStatus(siteRecoveryNetworkMapping *v1alpha1.SiteRecoveryNetworkMapping) (result *v1alpha1.SiteRecoveryNetworkMapping, err error) {
+func (c *siteRecoveryNetworkMappings) UpdateStatus(ctx context.Context, siteRecoveryNetworkMapping *v1alpha1.SiteRecoveryNetworkMapping, opts v1.UpdateOptions) (result *v1alpha1.SiteRecoveryNetworkMapping, err error) {
 	result = &v1alpha1.SiteRecoveryNetworkMapping{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("siterecoverynetworkmappings").
 		Name(siteRecoveryNetworkMapping.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(siteRecoveryNetworkMapping).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the siteRecoveryNetworkMapping and deletes it. Returns an error if one occurs.
-func (c *siteRecoveryNetworkMappings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *siteRecoveryNetworkMappings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("siterecoverynetworkmappings").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *siteRecoveryNetworkMappings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *siteRecoveryNetworkMappings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("siterecoverynetworkmappings").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched siteRecoveryNetworkMapping.
-func (c *siteRecoveryNetworkMappings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SiteRecoveryNetworkMapping, err error) {
+func (c *siteRecoveryNetworkMappings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SiteRecoveryNetworkMapping, err error) {
 	result = &v1alpha1.SiteRecoveryNetworkMapping{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("siterecoverynetworkmappings").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var daxclustersResource = schema.GroupVersionResource{Group: "aws.kubeform.com",
 var daxclustersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DaxCluster"}
 
 // Get takes name of the daxCluster, and returns the corresponding daxCluster object, and an error if there is any.
-func (c *FakeDaxClusters) Get(name string, options v1.GetOptions) (result *v1alpha1.DaxCluster, err error) {
+func (c *FakeDaxClusters) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DaxCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(daxclustersResource, c.ns, name), &v1alpha1.DaxCluster{})
 
@@ -51,7 +53,7 @@ func (c *FakeDaxClusters) Get(name string, options v1.GetOptions) (result *v1alp
 }
 
 // List takes label and field selectors, and returns the list of DaxClusters that match those selectors.
-func (c *FakeDaxClusters) List(opts v1.ListOptions) (result *v1alpha1.DaxClusterList, err error) {
+func (c *FakeDaxClusters) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DaxClusterList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(daxclustersResource, daxclustersKind, c.ns, opts), &v1alpha1.DaxClusterList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDaxClusters) List(opts v1.ListOptions) (result *v1alpha1.DaxCluster
 }
 
 // Watch returns a watch.Interface that watches the requested daxClusters.
-func (c *FakeDaxClusters) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDaxClusters) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(daxclustersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a daxCluster and creates it.  Returns the server's representation of the daxCluster, and an error, if there is any.
-func (c *FakeDaxClusters) Create(daxCluster *v1alpha1.DaxCluster) (result *v1alpha1.DaxCluster, err error) {
+func (c *FakeDaxClusters) Create(ctx context.Context, daxCluster *v1alpha1.DaxCluster, opts v1.CreateOptions) (result *v1alpha1.DaxCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(daxclustersResource, c.ns, daxCluster), &v1alpha1.DaxCluster{})
 
@@ -91,7 +93,7 @@ func (c *FakeDaxClusters) Create(daxCluster *v1alpha1.DaxCluster) (result *v1alp
 }
 
 // Update takes the representation of a daxCluster and updates it. Returns the server's representation of the daxCluster, and an error, if there is any.
-func (c *FakeDaxClusters) Update(daxCluster *v1alpha1.DaxCluster) (result *v1alpha1.DaxCluster, err error) {
+func (c *FakeDaxClusters) Update(ctx context.Context, daxCluster *v1alpha1.DaxCluster, opts v1.UpdateOptions) (result *v1alpha1.DaxCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(daxclustersResource, c.ns, daxCluster), &v1alpha1.DaxCluster{})
 
@@ -103,7 +105,7 @@ func (c *FakeDaxClusters) Update(daxCluster *v1alpha1.DaxCluster) (result *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDaxClusters) UpdateStatus(daxCluster *v1alpha1.DaxCluster) (*v1alpha1.DaxCluster, error) {
+func (c *FakeDaxClusters) UpdateStatus(ctx context.Context, daxCluster *v1alpha1.DaxCluster, opts v1.UpdateOptions) (*v1alpha1.DaxCluster, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(daxclustersResource, "status", c.ns, daxCluster), &v1alpha1.DaxCluster{})
 
@@ -114,7 +116,7 @@ func (c *FakeDaxClusters) UpdateStatus(daxCluster *v1alpha1.DaxCluster) (*v1alph
 }
 
 // Delete takes name of the daxCluster and deletes it. Returns an error if one occurs.
-func (c *FakeDaxClusters) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDaxClusters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(daxclustersResource, c.ns, name), &v1alpha1.DaxCluster{})
 
@@ -122,15 +124,15 @@ func (c *FakeDaxClusters) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDaxClusters) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(daxclustersResource, c.ns, listOptions)
+func (c *FakeDaxClusters) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(daxclustersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DaxClusterList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched daxCluster.
-func (c *FakeDaxClusters) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DaxCluster, err error) {
+func (c *FakeDaxClusters) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DaxCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(daxclustersResource, c.ns, name, pt, data, subresources...), &v1alpha1.DaxCluster{})
 

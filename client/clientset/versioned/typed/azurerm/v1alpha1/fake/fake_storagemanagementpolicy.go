@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var storagemanagementpoliciesResource = schema.GroupVersionResource{Group: "azur
 var storagemanagementpoliciesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "StorageManagementPolicy"}
 
 // Get takes name of the storageManagementPolicy, and returns the corresponding storageManagementPolicy object, and an error if there is any.
-func (c *FakeStorageManagementPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.StorageManagementPolicy, err error) {
+func (c *FakeStorageManagementPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.StorageManagementPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(storagemanagementpoliciesResource, c.ns, name), &v1alpha1.StorageManagementPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeStorageManagementPolicies) Get(name string, options v1.GetOptions) 
 }
 
 // List takes label and field selectors, and returns the list of StorageManagementPolicies that match those selectors.
-func (c *FakeStorageManagementPolicies) List(opts v1.ListOptions) (result *v1alpha1.StorageManagementPolicyList, err error) {
+func (c *FakeStorageManagementPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.StorageManagementPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(storagemanagementpoliciesResource, storagemanagementpoliciesKind, c.ns, opts), &v1alpha1.StorageManagementPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeStorageManagementPolicies) List(opts v1.ListOptions) (result *v1alp
 }
 
 // Watch returns a watch.Interface that watches the requested storageManagementPolicies.
-func (c *FakeStorageManagementPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeStorageManagementPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(storagemanagementpoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a storageManagementPolicy and creates it.  Returns the server's representation of the storageManagementPolicy, and an error, if there is any.
-func (c *FakeStorageManagementPolicies) Create(storageManagementPolicy *v1alpha1.StorageManagementPolicy) (result *v1alpha1.StorageManagementPolicy, err error) {
+func (c *FakeStorageManagementPolicies) Create(ctx context.Context, storageManagementPolicy *v1alpha1.StorageManagementPolicy, opts v1.CreateOptions) (result *v1alpha1.StorageManagementPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(storagemanagementpoliciesResource, c.ns, storageManagementPolicy), &v1alpha1.StorageManagementPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeStorageManagementPolicies) Create(storageManagementPolicy *v1alpha1
 }
 
 // Update takes the representation of a storageManagementPolicy and updates it. Returns the server's representation of the storageManagementPolicy, and an error, if there is any.
-func (c *FakeStorageManagementPolicies) Update(storageManagementPolicy *v1alpha1.StorageManagementPolicy) (result *v1alpha1.StorageManagementPolicy, err error) {
+func (c *FakeStorageManagementPolicies) Update(ctx context.Context, storageManagementPolicy *v1alpha1.StorageManagementPolicy, opts v1.UpdateOptions) (result *v1alpha1.StorageManagementPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(storagemanagementpoliciesResource, c.ns, storageManagementPolicy), &v1alpha1.StorageManagementPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeStorageManagementPolicies) Update(storageManagementPolicy *v1alpha1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeStorageManagementPolicies) UpdateStatus(storageManagementPolicy *v1alpha1.StorageManagementPolicy) (*v1alpha1.StorageManagementPolicy, error) {
+func (c *FakeStorageManagementPolicies) UpdateStatus(ctx context.Context, storageManagementPolicy *v1alpha1.StorageManagementPolicy, opts v1.UpdateOptions) (*v1alpha1.StorageManagementPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(storagemanagementpoliciesResource, "status", c.ns, storageManagementPolicy), &v1alpha1.StorageManagementPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeStorageManagementPolicies) UpdateStatus(storageManagementPolicy *v1
 }
 
 // Delete takes name of the storageManagementPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeStorageManagementPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeStorageManagementPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(storagemanagementpoliciesResource, c.ns, name), &v1alpha1.StorageManagementPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeStorageManagementPolicies) Delete(name string, options *v1.DeleteOp
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeStorageManagementPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(storagemanagementpoliciesResource, c.ns, listOptions)
+func (c *FakeStorageManagementPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(storagemanagementpoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.StorageManagementPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched storageManagementPolicy.
-func (c *FakeStorageManagementPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StorageManagementPolicy, err error) {
+func (c *FakeStorageManagementPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StorageManagementPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(storagemanagementpoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.StorageManagementPolicy{})
 

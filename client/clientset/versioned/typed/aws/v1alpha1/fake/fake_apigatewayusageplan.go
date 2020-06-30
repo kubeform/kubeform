@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var apigatewayusageplansResource = schema.GroupVersionResource{Group: "aws.kubef
 var apigatewayusageplansKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ApiGatewayUsagePlan"}
 
 // Get takes name of the apiGatewayUsagePlan, and returns the corresponding apiGatewayUsagePlan object, and an error if there is any.
-func (c *FakeApiGatewayUsagePlans) Get(name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayUsagePlan, err error) {
+func (c *FakeApiGatewayUsagePlans) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayUsagePlan, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(apigatewayusageplansResource, c.ns, name), &v1alpha1.ApiGatewayUsagePlan{})
 
@@ -51,7 +53,7 @@ func (c *FakeApiGatewayUsagePlans) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of ApiGatewayUsagePlans that match those selectors.
-func (c *FakeApiGatewayUsagePlans) List(opts v1.ListOptions) (result *v1alpha1.ApiGatewayUsagePlanList, err error) {
+func (c *FakeApiGatewayUsagePlans) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApiGatewayUsagePlanList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(apigatewayusageplansResource, apigatewayusageplansKind, c.ns, opts), &v1alpha1.ApiGatewayUsagePlanList{})
 
@@ -73,14 +75,14 @@ func (c *FakeApiGatewayUsagePlans) List(opts v1.ListOptions) (result *v1alpha1.A
 }
 
 // Watch returns a watch.Interface that watches the requested apiGatewayUsagePlans.
-func (c *FakeApiGatewayUsagePlans) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeApiGatewayUsagePlans) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(apigatewayusageplansResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a apiGatewayUsagePlan and creates it.  Returns the server's representation of the apiGatewayUsagePlan, and an error, if there is any.
-func (c *FakeApiGatewayUsagePlans) Create(apiGatewayUsagePlan *v1alpha1.ApiGatewayUsagePlan) (result *v1alpha1.ApiGatewayUsagePlan, err error) {
+func (c *FakeApiGatewayUsagePlans) Create(ctx context.Context, apiGatewayUsagePlan *v1alpha1.ApiGatewayUsagePlan, opts v1.CreateOptions) (result *v1alpha1.ApiGatewayUsagePlan, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(apigatewayusageplansResource, c.ns, apiGatewayUsagePlan), &v1alpha1.ApiGatewayUsagePlan{})
 
@@ -91,7 +93,7 @@ func (c *FakeApiGatewayUsagePlans) Create(apiGatewayUsagePlan *v1alpha1.ApiGatew
 }
 
 // Update takes the representation of a apiGatewayUsagePlan and updates it. Returns the server's representation of the apiGatewayUsagePlan, and an error, if there is any.
-func (c *FakeApiGatewayUsagePlans) Update(apiGatewayUsagePlan *v1alpha1.ApiGatewayUsagePlan) (result *v1alpha1.ApiGatewayUsagePlan, err error) {
+func (c *FakeApiGatewayUsagePlans) Update(ctx context.Context, apiGatewayUsagePlan *v1alpha1.ApiGatewayUsagePlan, opts v1.UpdateOptions) (result *v1alpha1.ApiGatewayUsagePlan, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(apigatewayusageplansResource, c.ns, apiGatewayUsagePlan), &v1alpha1.ApiGatewayUsagePlan{})
 
@@ -103,7 +105,7 @@ func (c *FakeApiGatewayUsagePlans) Update(apiGatewayUsagePlan *v1alpha1.ApiGatew
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeApiGatewayUsagePlans) UpdateStatus(apiGatewayUsagePlan *v1alpha1.ApiGatewayUsagePlan) (*v1alpha1.ApiGatewayUsagePlan, error) {
+func (c *FakeApiGatewayUsagePlans) UpdateStatus(ctx context.Context, apiGatewayUsagePlan *v1alpha1.ApiGatewayUsagePlan, opts v1.UpdateOptions) (*v1alpha1.ApiGatewayUsagePlan, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(apigatewayusageplansResource, "status", c.ns, apiGatewayUsagePlan), &v1alpha1.ApiGatewayUsagePlan{})
 
@@ -114,7 +116,7 @@ func (c *FakeApiGatewayUsagePlans) UpdateStatus(apiGatewayUsagePlan *v1alpha1.Ap
 }
 
 // Delete takes name of the apiGatewayUsagePlan and deletes it. Returns an error if one occurs.
-func (c *FakeApiGatewayUsagePlans) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeApiGatewayUsagePlans) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(apigatewayusageplansResource, c.ns, name), &v1alpha1.ApiGatewayUsagePlan{})
 
@@ -122,15 +124,15 @@ func (c *FakeApiGatewayUsagePlans) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeApiGatewayUsagePlans) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(apigatewayusageplansResource, c.ns, listOptions)
+func (c *FakeApiGatewayUsagePlans) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(apigatewayusageplansResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ApiGatewayUsagePlanList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched apiGatewayUsagePlan.
-func (c *FakeApiGatewayUsagePlans) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiGatewayUsagePlan, err error) {
+func (c *FakeApiGatewayUsagePlans) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiGatewayUsagePlan, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(apigatewayusageplansResource, c.ns, name, pt, data, subresources...), &v1alpha1.ApiGatewayUsagePlan{})
 

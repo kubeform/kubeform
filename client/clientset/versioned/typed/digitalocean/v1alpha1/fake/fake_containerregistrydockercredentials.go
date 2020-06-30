@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/digitalocean/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var containerregistrydockercredentialsesResource = schema.GroupVersionResource{G
 var containerregistrydockercredentialsesKind = schema.GroupVersionKind{Group: "digitalocean.kubeform.com", Version: "v1alpha1", Kind: "ContainerRegistryDockerCredentials"}
 
 // Get takes name of the containerRegistryDockerCredentials, and returns the corresponding containerRegistryDockerCredentials object, and an error if there is any.
-func (c *FakeContainerRegistryDockerCredentialses) Get(name string, options v1.GetOptions) (result *v1alpha1.ContainerRegistryDockerCredentials, err error) {
+func (c *FakeContainerRegistryDockerCredentialses) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ContainerRegistryDockerCredentials, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(containerregistrydockercredentialsesResource, c.ns, name), &v1alpha1.ContainerRegistryDockerCredentials{})
 
@@ -51,7 +53,7 @@ func (c *FakeContainerRegistryDockerCredentialses) Get(name string, options v1.G
 }
 
 // List takes label and field selectors, and returns the list of ContainerRegistryDockerCredentialses that match those selectors.
-func (c *FakeContainerRegistryDockerCredentialses) List(opts v1.ListOptions) (result *v1alpha1.ContainerRegistryDockerCredentialsList, err error) {
+func (c *FakeContainerRegistryDockerCredentialses) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ContainerRegistryDockerCredentialsList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(containerregistrydockercredentialsesResource, containerregistrydockercredentialsesKind, c.ns, opts), &v1alpha1.ContainerRegistryDockerCredentialsList{})
 
@@ -73,14 +75,14 @@ func (c *FakeContainerRegistryDockerCredentialses) List(opts v1.ListOptions) (re
 }
 
 // Watch returns a watch.Interface that watches the requested containerRegistryDockerCredentialses.
-func (c *FakeContainerRegistryDockerCredentialses) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeContainerRegistryDockerCredentialses) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(containerregistrydockercredentialsesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a containerRegistryDockerCredentials and creates it.  Returns the server's representation of the containerRegistryDockerCredentials, and an error, if there is any.
-func (c *FakeContainerRegistryDockerCredentialses) Create(containerRegistryDockerCredentials *v1alpha1.ContainerRegistryDockerCredentials) (result *v1alpha1.ContainerRegistryDockerCredentials, err error) {
+func (c *FakeContainerRegistryDockerCredentialses) Create(ctx context.Context, containerRegistryDockerCredentials *v1alpha1.ContainerRegistryDockerCredentials, opts v1.CreateOptions) (result *v1alpha1.ContainerRegistryDockerCredentials, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(containerregistrydockercredentialsesResource, c.ns, containerRegistryDockerCredentials), &v1alpha1.ContainerRegistryDockerCredentials{})
 
@@ -91,7 +93,7 @@ func (c *FakeContainerRegistryDockerCredentialses) Create(containerRegistryDocke
 }
 
 // Update takes the representation of a containerRegistryDockerCredentials and updates it. Returns the server's representation of the containerRegistryDockerCredentials, and an error, if there is any.
-func (c *FakeContainerRegistryDockerCredentialses) Update(containerRegistryDockerCredentials *v1alpha1.ContainerRegistryDockerCredentials) (result *v1alpha1.ContainerRegistryDockerCredentials, err error) {
+func (c *FakeContainerRegistryDockerCredentialses) Update(ctx context.Context, containerRegistryDockerCredentials *v1alpha1.ContainerRegistryDockerCredentials, opts v1.UpdateOptions) (result *v1alpha1.ContainerRegistryDockerCredentials, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(containerregistrydockercredentialsesResource, c.ns, containerRegistryDockerCredentials), &v1alpha1.ContainerRegistryDockerCredentials{})
 
@@ -103,7 +105,7 @@ func (c *FakeContainerRegistryDockerCredentialses) Update(containerRegistryDocke
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeContainerRegistryDockerCredentialses) UpdateStatus(containerRegistryDockerCredentials *v1alpha1.ContainerRegistryDockerCredentials) (*v1alpha1.ContainerRegistryDockerCredentials, error) {
+func (c *FakeContainerRegistryDockerCredentialses) UpdateStatus(ctx context.Context, containerRegistryDockerCredentials *v1alpha1.ContainerRegistryDockerCredentials, opts v1.UpdateOptions) (*v1alpha1.ContainerRegistryDockerCredentials, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(containerregistrydockercredentialsesResource, "status", c.ns, containerRegistryDockerCredentials), &v1alpha1.ContainerRegistryDockerCredentials{})
 
@@ -114,7 +116,7 @@ func (c *FakeContainerRegistryDockerCredentialses) UpdateStatus(containerRegistr
 }
 
 // Delete takes name of the containerRegistryDockerCredentials and deletes it. Returns an error if one occurs.
-func (c *FakeContainerRegistryDockerCredentialses) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeContainerRegistryDockerCredentialses) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(containerregistrydockercredentialsesResource, c.ns, name), &v1alpha1.ContainerRegistryDockerCredentials{})
 
@@ -122,15 +124,15 @@ func (c *FakeContainerRegistryDockerCredentialses) Delete(name string, options *
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeContainerRegistryDockerCredentialses) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(containerregistrydockercredentialsesResource, c.ns, listOptions)
+func (c *FakeContainerRegistryDockerCredentialses) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(containerregistrydockercredentialsesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ContainerRegistryDockerCredentialsList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched containerRegistryDockerCredentials.
-func (c *FakeContainerRegistryDockerCredentialses) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ContainerRegistryDockerCredentials, err error) {
+func (c *FakeContainerRegistryDockerCredentialses) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ContainerRegistryDockerCredentials, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(containerregistrydockercredentialsesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ContainerRegistryDockerCredentials{})
 

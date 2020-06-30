@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var ec2transitgatewayvpcattachmentacceptersResource = schema.GroupVersionResourc
 var ec2transitgatewayvpcattachmentacceptersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "Ec2TransitGatewayVpcAttachmentAccepter"}
 
 // Get takes name of the ec2TransitGatewayVpcAttachmentAccepter, and returns the corresponding ec2TransitGatewayVpcAttachmentAccepter object, and an error if there is any.
-func (c *FakeEc2TransitGatewayVpcAttachmentAccepters) Get(name string, options v1.GetOptions) (result *v1alpha1.Ec2TransitGatewayVpcAttachmentAccepter, err error) {
+func (c *FakeEc2TransitGatewayVpcAttachmentAccepters) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Ec2TransitGatewayVpcAttachmentAccepter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(ec2transitgatewayvpcattachmentacceptersResource, c.ns, name), &v1alpha1.Ec2TransitGatewayVpcAttachmentAccepter{})
 
@@ -51,7 +53,7 @@ func (c *FakeEc2TransitGatewayVpcAttachmentAccepters) Get(name string, options v
 }
 
 // List takes label and field selectors, and returns the list of Ec2TransitGatewayVpcAttachmentAccepters that match those selectors.
-func (c *FakeEc2TransitGatewayVpcAttachmentAccepters) List(opts v1.ListOptions) (result *v1alpha1.Ec2TransitGatewayVpcAttachmentAccepterList, err error) {
+func (c *FakeEc2TransitGatewayVpcAttachmentAccepters) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.Ec2TransitGatewayVpcAttachmentAccepterList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(ec2transitgatewayvpcattachmentacceptersResource, ec2transitgatewayvpcattachmentacceptersKind, c.ns, opts), &v1alpha1.Ec2TransitGatewayVpcAttachmentAccepterList{})
 
@@ -73,14 +75,14 @@ func (c *FakeEc2TransitGatewayVpcAttachmentAccepters) List(opts v1.ListOptions) 
 }
 
 // Watch returns a watch.Interface that watches the requested ec2TransitGatewayVpcAttachmentAccepters.
-func (c *FakeEc2TransitGatewayVpcAttachmentAccepters) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeEc2TransitGatewayVpcAttachmentAccepters) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(ec2transitgatewayvpcattachmentacceptersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a ec2TransitGatewayVpcAttachmentAccepter and creates it.  Returns the server's representation of the ec2TransitGatewayVpcAttachmentAccepter, and an error, if there is any.
-func (c *FakeEc2TransitGatewayVpcAttachmentAccepters) Create(ec2TransitGatewayVpcAttachmentAccepter *v1alpha1.Ec2TransitGatewayVpcAttachmentAccepter) (result *v1alpha1.Ec2TransitGatewayVpcAttachmentAccepter, err error) {
+func (c *FakeEc2TransitGatewayVpcAttachmentAccepters) Create(ctx context.Context, ec2TransitGatewayVpcAttachmentAccepter *v1alpha1.Ec2TransitGatewayVpcAttachmentAccepter, opts v1.CreateOptions) (result *v1alpha1.Ec2TransitGatewayVpcAttachmentAccepter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(ec2transitgatewayvpcattachmentacceptersResource, c.ns, ec2TransitGatewayVpcAttachmentAccepter), &v1alpha1.Ec2TransitGatewayVpcAttachmentAccepter{})
 
@@ -91,7 +93,7 @@ func (c *FakeEc2TransitGatewayVpcAttachmentAccepters) Create(ec2TransitGatewayVp
 }
 
 // Update takes the representation of a ec2TransitGatewayVpcAttachmentAccepter and updates it. Returns the server's representation of the ec2TransitGatewayVpcAttachmentAccepter, and an error, if there is any.
-func (c *FakeEc2TransitGatewayVpcAttachmentAccepters) Update(ec2TransitGatewayVpcAttachmentAccepter *v1alpha1.Ec2TransitGatewayVpcAttachmentAccepter) (result *v1alpha1.Ec2TransitGatewayVpcAttachmentAccepter, err error) {
+func (c *FakeEc2TransitGatewayVpcAttachmentAccepters) Update(ctx context.Context, ec2TransitGatewayVpcAttachmentAccepter *v1alpha1.Ec2TransitGatewayVpcAttachmentAccepter, opts v1.UpdateOptions) (result *v1alpha1.Ec2TransitGatewayVpcAttachmentAccepter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(ec2transitgatewayvpcattachmentacceptersResource, c.ns, ec2TransitGatewayVpcAttachmentAccepter), &v1alpha1.Ec2TransitGatewayVpcAttachmentAccepter{})
 
@@ -103,7 +105,7 @@ func (c *FakeEc2TransitGatewayVpcAttachmentAccepters) Update(ec2TransitGatewayVp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeEc2TransitGatewayVpcAttachmentAccepters) UpdateStatus(ec2TransitGatewayVpcAttachmentAccepter *v1alpha1.Ec2TransitGatewayVpcAttachmentAccepter) (*v1alpha1.Ec2TransitGatewayVpcAttachmentAccepter, error) {
+func (c *FakeEc2TransitGatewayVpcAttachmentAccepters) UpdateStatus(ctx context.Context, ec2TransitGatewayVpcAttachmentAccepter *v1alpha1.Ec2TransitGatewayVpcAttachmentAccepter, opts v1.UpdateOptions) (*v1alpha1.Ec2TransitGatewayVpcAttachmentAccepter, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(ec2transitgatewayvpcattachmentacceptersResource, "status", c.ns, ec2TransitGatewayVpcAttachmentAccepter), &v1alpha1.Ec2TransitGatewayVpcAttachmentAccepter{})
 
@@ -114,7 +116,7 @@ func (c *FakeEc2TransitGatewayVpcAttachmentAccepters) UpdateStatus(ec2TransitGat
 }
 
 // Delete takes name of the ec2TransitGatewayVpcAttachmentAccepter and deletes it. Returns an error if one occurs.
-func (c *FakeEc2TransitGatewayVpcAttachmentAccepters) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeEc2TransitGatewayVpcAttachmentAccepters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(ec2transitgatewayvpcattachmentacceptersResource, c.ns, name), &v1alpha1.Ec2TransitGatewayVpcAttachmentAccepter{})
 
@@ -122,15 +124,15 @@ func (c *FakeEc2TransitGatewayVpcAttachmentAccepters) Delete(name string, option
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeEc2TransitGatewayVpcAttachmentAccepters) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(ec2transitgatewayvpcattachmentacceptersResource, c.ns, listOptions)
+func (c *FakeEc2TransitGatewayVpcAttachmentAccepters) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(ec2transitgatewayvpcattachmentacceptersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.Ec2TransitGatewayVpcAttachmentAccepterList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched ec2TransitGatewayVpcAttachmentAccepter.
-func (c *FakeEc2TransitGatewayVpcAttachmentAccepters) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Ec2TransitGatewayVpcAttachmentAccepter, err error) {
+func (c *FakeEc2TransitGatewayVpcAttachmentAccepters) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Ec2TransitGatewayVpcAttachmentAccepter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(ec2transitgatewayvpcattachmentacceptersResource, c.ns, name, pt, data, subresources...), &v1alpha1.Ec2TransitGatewayVpcAttachmentAccepter{})
 

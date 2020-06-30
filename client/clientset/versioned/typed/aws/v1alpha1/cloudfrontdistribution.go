@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type CloudfrontDistributionsGetter interface {
 
 // CloudfrontDistributionInterface has methods to work with CloudfrontDistribution resources.
 type CloudfrontDistributionInterface interface {
-	Create(*v1alpha1.CloudfrontDistribution) (*v1alpha1.CloudfrontDistribution, error)
-	Update(*v1alpha1.CloudfrontDistribution) (*v1alpha1.CloudfrontDistribution, error)
-	UpdateStatus(*v1alpha1.CloudfrontDistribution) (*v1alpha1.CloudfrontDistribution, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.CloudfrontDistribution, error)
-	List(opts v1.ListOptions) (*v1alpha1.CloudfrontDistributionList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CloudfrontDistribution, err error)
+	Create(ctx context.Context, cloudfrontDistribution *v1alpha1.CloudfrontDistribution, opts v1.CreateOptions) (*v1alpha1.CloudfrontDistribution, error)
+	Update(ctx context.Context, cloudfrontDistribution *v1alpha1.CloudfrontDistribution, opts v1.UpdateOptions) (*v1alpha1.CloudfrontDistribution, error)
+	UpdateStatus(ctx context.Context, cloudfrontDistribution *v1alpha1.CloudfrontDistribution, opts v1.UpdateOptions) (*v1alpha1.CloudfrontDistribution, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.CloudfrontDistribution, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.CloudfrontDistributionList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CloudfrontDistribution, err error)
 	CloudfrontDistributionExpansion
 }
 
@@ -65,20 +66,20 @@ func newCloudfrontDistributions(c *AwsV1alpha1Client, namespace string) *cloudfr
 }
 
 // Get takes name of the cloudfrontDistribution, and returns the corresponding cloudfrontDistribution object, and an error if there is any.
-func (c *cloudfrontDistributions) Get(name string, options v1.GetOptions) (result *v1alpha1.CloudfrontDistribution, err error) {
+func (c *cloudfrontDistributions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CloudfrontDistribution, err error) {
 	result = &v1alpha1.CloudfrontDistribution{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("cloudfrontdistributions").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of CloudfrontDistributions that match those selectors.
-func (c *cloudfrontDistributions) List(opts v1.ListOptions) (result *v1alpha1.CloudfrontDistributionList, err error) {
+func (c *cloudfrontDistributions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CloudfrontDistributionList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *cloudfrontDistributions) List(opts v1.ListOptions) (result *v1alpha1.Cl
 		Resource("cloudfrontdistributions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested cloudfrontDistributions.
-func (c *cloudfrontDistributions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *cloudfrontDistributions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *cloudfrontDistributions) Watch(opts v1.ListOptions) (watch.Interface, e
 		Resource("cloudfrontdistributions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a cloudfrontDistribution and creates it.  Returns the server's representation of the cloudfrontDistribution, and an error, if there is any.
-func (c *cloudfrontDistributions) Create(cloudfrontDistribution *v1alpha1.CloudfrontDistribution) (result *v1alpha1.CloudfrontDistribution, err error) {
+func (c *cloudfrontDistributions) Create(ctx context.Context, cloudfrontDistribution *v1alpha1.CloudfrontDistribution, opts v1.CreateOptions) (result *v1alpha1.CloudfrontDistribution, err error) {
 	result = &v1alpha1.CloudfrontDistribution{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("cloudfrontdistributions").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cloudfrontDistribution).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a cloudfrontDistribution and updates it. Returns the server's representation of the cloudfrontDistribution, and an error, if there is any.
-func (c *cloudfrontDistributions) Update(cloudfrontDistribution *v1alpha1.CloudfrontDistribution) (result *v1alpha1.CloudfrontDistribution, err error) {
+func (c *cloudfrontDistributions) Update(ctx context.Context, cloudfrontDistribution *v1alpha1.CloudfrontDistribution, opts v1.UpdateOptions) (result *v1alpha1.CloudfrontDistribution, err error) {
 	result = &v1alpha1.CloudfrontDistribution{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("cloudfrontdistributions").
 		Name(cloudfrontDistribution.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cloudfrontDistribution).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *cloudfrontDistributions) UpdateStatus(cloudfrontDistribution *v1alpha1.CloudfrontDistribution) (result *v1alpha1.CloudfrontDistribution, err error) {
+func (c *cloudfrontDistributions) UpdateStatus(ctx context.Context, cloudfrontDistribution *v1alpha1.CloudfrontDistribution, opts v1.UpdateOptions) (result *v1alpha1.CloudfrontDistribution, err error) {
 	result = &v1alpha1.CloudfrontDistribution{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("cloudfrontdistributions").
 		Name(cloudfrontDistribution.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cloudfrontDistribution).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the cloudfrontDistribution and deletes it. Returns an error if one occurs.
-func (c *cloudfrontDistributions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *cloudfrontDistributions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("cloudfrontdistributions").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *cloudfrontDistributions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *cloudfrontDistributions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("cloudfrontdistributions").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched cloudfrontDistribution.
-func (c *cloudfrontDistributions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CloudfrontDistribution, err error) {
+func (c *cloudfrontDistributions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CloudfrontDistribution, err error) {
 	result = &v1alpha1.CloudfrontDistribution{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("cloudfrontdistributions").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

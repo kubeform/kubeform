@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/digitalocean/v1alpha1"
@@ -38,15 +39,15 @@ type DatabaseReplicasGetter interface {
 
 // DatabaseReplicaInterface has methods to work with DatabaseReplica resources.
 type DatabaseReplicaInterface interface {
-	Create(*v1alpha1.DatabaseReplica) (*v1alpha1.DatabaseReplica, error)
-	Update(*v1alpha1.DatabaseReplica) (*v1alpha1.DatabaseReplica, error)
-	UpdateStatus(*v1alpha1.DatabaseReplica) (*v1alpha1.DatabaseReplica, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.DatabaseReplica, error)
-	List(opts v1.ListOptions) (*v1alpha1.DatabaseReplicaList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DatabaseReplica, err error)
+	Create(ctx context.Context, databaseReplica *v1alpha1.DatabaseReplica, opts v1.CreateOptions) (*v1alpha1.DatabaseReplica, error)
+	Update(ctx context.Context, databaseReplica *v1alpha1.DatabaseReplica, opts v1.UpdateOptions) (*v1alpha1.DatabaseReplica, error)
+	UpdateStatus(ctx context.Context, databaseReplica *v1alpha1.DatabaseReplica, opts v1.UpdateOptions) (*v1alpha1.DatabaseReplica, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.DatabaseReplica, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.DatabaseReplicaList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DatabaseReplica, err error)
 	DatabaseReplicaExpansion
 }
 
@@ -65,20 +66,20 @@ func newDatabaseReplicas(c *DigitaloceanV1alpha1Client, namespace string) *datab
 }
 
 // Get takes name of the databaseReplica, and returns the corresponding databaseReplica object, and an error if there is any.
-func (c *databaseReplicas) Get(name string, options v1.GetOptions) (result *v1alpha1.DatabaseReplica, err error) {
+func (c *databaseReplicas) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DatabaseReplica, err error) {
 	result = &v1alpha1.DatabaseReplica{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("databasereplicas").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of DatabaseReplicas that match those selectors.
-func (c *databaseReplicas) List(opts v1.ListOptions) (result *v1alpha1.DatabaseReplicaList, err error) {
+func (c *databaseReplicas) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DatabaseReplicaList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *databaseReplicas) List(opts v1.ListOptions) (result *v1alpha1.DatabaseR
 		Resource("databasereplicas").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested databaseReplicas.
-func (c *databaseReplicas) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *databaseReplicas) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *databaseReplicas) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("databasereplicas").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a databaseReplica and creates it.  Returns the server's representation of the databaseReplica, and an error, if there is any.
-func (c *databaseReplicas) Create(databaseReplica *v1alpha1.DatabaseReplica) (result *v1alpha1.DatabaseReplica, err error) {
+func (c *databaseReplicas) Create(ctx context.Context, databaseReplica *v1alpha1.DatabaseReplica, opts v1.CreateOptions) (result *v1alpha1.DatabaseReplica, err error) {
 	result = &v1alpha1.DatabaseReplica{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("databasereplicas").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(databaseReplica).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a databaseReplica and updates it. Returns the server's representation of the databaseReplica, and an error, if there is any.
-func (c *databaseReplicas) Update(databaseReplica *v1alpha1.DatabaseReplica) (result *v1alpha1.DatabaseReplica, err error) {
+func (c *databaseReplicas) Update(ctx context.Context, databaseReplica *v1alpha1.DatabaseReplica, opts v1.UpdateOptions) (result *v1alpha1.DatabaseReplica, err error) {
 	result = &v1alpha1.DatabaseReplica{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("databasereplicas").
 		Name(databaseReplica.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(databaseReplica).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *databaseReplicas) UpdateStatus(databaseReplica *v1alpha1.DatabaseReplica) (result *v1alpha1.DatabaseReplica, err error) {
+func (c *databaseReplicas) UpdateStatus(ctx context.Context, databaseReplica *v1alpha1.DatabaseReplica, opts v1.UpdateOptions) (result *v1alpha1.DatabaseReplica, err error) {
 	result = &v1alpha1.DatabaseReplica{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("databasereplicas").
 		Name(databaseReplica.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(databaseReplica).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the databaseReplica and deletes it. Returns an error if one occurs.
-func (c *databaseReplicas) Delete(name string, options *v1.DeleteOptions) error {
+func (c *databaseReplicas) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("databasereplicas").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *databaseReplicas) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *databaseReplicas) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("databasereplicas").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched databaseReplica.
-func (c *databaseReplicas) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DatabaseReplica, err error) {
+func (c *databaseReplicas) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DatabaseReplica, err error) {
 	result = &v1alpha1.DatabaseReplica{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("databasereplicas").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

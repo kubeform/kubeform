@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var apigatewaydocumentationversionsResource = schema.GroupVersionResource{Group:
 var apigatewaydocumentationversionsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ApiGatewayDocumentationVersion"}
 
 // Get takes name of the apiGatewayDocumentationVersion, and returns the corresponding apiGatewayDocumentationVersion object, and an error if there is any.
-func (c *FakeApiGatewayDocumentationVersions) Get(name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayDocumentationVersion, err error) {
+func (c *FakeApiGatewayDocumentationVersions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApiGatewayDocumentationVersion, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(apigatewaydocumentationversionsResource, c.ns, name), &v1alpha1.ApiGatewayDocumentationVersion{})
 
@@ -51,7 +53,7 @@ func (c *FakeApiGatewayDocumentationVersions) Get(name string, options v1.GetOpt
 }
 
 // List takes label and field selectors, and returns the list of ApiGatewayDocumentationVersions that match those selectors.
-func (c *FakeApiGatewayDocumentationVersions) List(opts v1.ListOptions) (result *v1alpha1.ApiGatewayDocumentationVersionList, err error) {
+func (c *FakeApiGatewayDocumentationVersions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApiGatewayDocumentationVersionList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(apigatewaydocumentationversionsResource, apigatewaydocumentationversionsKind, c.ns, opts), &v1alpha1.ApiGatewayDocumentationVersionList{})
 
@@ -73,14 +75,14 @@ func (c *FakeApiGatewayDocumentationVersions) List(opts v1.ListOptions) (result 
 }
 
 // Watch returns a watch.Interface that watches the requested apiGatewayDocumentationVersions.
-func (c *FakeApiGatewayDocumentationVersions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeApiGatewayDocumentationVersions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(apigatewaydocumentationversionsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a apiGatewayDocumentationVersion and creates it.  Returns the server's representation of the apiGatewayDocumentationVersion, and an error, if there is any.
-func (c *FakeApiGatewayDocumentationVersions) Create(apiGatewayDocumentationVersion *v1alpha1.ApiGatewayDocumentationVersion) (result *v1alpha1.ApiGatewayDocumentationVersion, err error) {
+func (c *FakeApiGatewayDocumentationVersions) Create(ctx context.Context, apiGatewayDocumentationVersion *v1alpha1.ApiGatewayDocumentationVersion, opts v1.CreateOptions) (result *v1alpha1.ApiGatewayDocumentationVersion, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(apigatewaydocumentationversionsResource, c.ns, apiGatewayDocumentationVersion), &v1alpha1.ApiGatewayDocumentationVersion{})
 
@@ -91,7 +93,7 @@ func (c *FakeApiGatewayDocumentationVersions) Create(apiGatewayDocumentationVers
 }
 
 // Update takes the representation of a apiGatewayDocumentationVersion and updates it. Returns the server's representation of the apiGatewayDocumentationVersion, and an error, if there is any.
-func (c *FakeApiGatewayDocumentationVersions) Update(apiGatewayDocumentationVersion *v1alpha1.ApiGatewayDocumentationVersion) (result *v1alpha1.ApiGatewayDocumentationVersion, err error) {
+func (c *FakeApiGatewayDocumentationVersions) Update(ctx context.Context, apiGatewayDocumentationVersion *v1alpha1.ApiGatewayDocumentationVersion, opts v1.UpdateOptions) (result *v1alpha1.ApiGatewayDocumentationVersion, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(apigatewaydocumentationversionsResource, c.ns, apiGatewayDocumentationVersion), &v1alpha1.ApiGatewayDocumentationVersion{})
 
@@ -103,7 +105,7 @@ func (c *FakeApiGatewayDocumentationVersions) Update(apiGatewayDocumentationVers
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeApiGatewayDocumentationVersions) UpdateStatus(apiGatewayDocumentationVersion *v1alpha1.ApiGatewayDocumentationVersion) (*v1alpha1.ApiGatewayDocumentationVersion, error) {
+func (c *FakeApiGatewayDocumentationVersions) UpdateStatus(ctx context.Context, apiGatewayDocumentationVersion *v1alpha1.ApiGatewayDocumentationVersion, opts v1.UpdateOptions) (*v1alpha1.ApiGatewayDocumentationVersion, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(apigatewaydocumentationversionsResource, "status", c.ns, apiGatewayDocumentationVersion), &v1alpha1.ApiGatewayDocumentationVersion{})
 
@@ -114,7 +116,7 @@ func (c *FakeApiGatewayDocumentationVersions) UpdateStatus(apiGatewayDocumentati
 }
 
 // Delete takes name of the apiGatewayDocumentationVersion and deletes it. Returns an error if one occurs.
-func (c *FakeApiGatewayDocumentationVersions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeApiGatewayDocumentationVersions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(apigatewaydocumentationversionsResource, c.ns, name), &v1alpha1.ApiGatewayDocumentationVersion{})
 
@@ -122,15 +124,15 @@ func (c *FakeApiGatewayDocumentationVersions) Delete(name string, options *v1.De
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeApiGatewayDocumentationVersions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(apigatewaydocumentationversionsResource, c.ns, listOptions)
+func (c *FakeApiGatewayDocumentationVersions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(apigatewaydocumentationversionsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ApiGatewayDocumentationVersionList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched apiGatewayDocumentationVersion.
-func (c *FakeApiGatewayDocumentationVersions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiGatewayDocumentationVersion, err error) {
+func (c *FakeApiGatewayDocumentationVersions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiGatewayDocumentationVersion, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(apigatewaydocumentationversionsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ApiGatewayDocumentationVersion{})
 

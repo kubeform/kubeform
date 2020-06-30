@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type CognitoIdentityProvidersGetter interface {
 
 // CognitoIdentityProviderInterface has methods to work with CognitoIdentityProvider resources.
 type CognitoIdentityProviderInterface interface {
-	Create(*v1alpha1.CognitoIdentityProvider) (*v1alpha1.CognitoIdentityProvider, error)
-	Update(*v1alpha1.CognitoIdentityProvider) (*v1alpha1.CognitoIdentityProvider, error)
-	UpdateStatus(*v1alpha1.CognitoIdentityProvider) (*v1alpha1.CognitoIdentityProvider, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.CognitoIdentityProvider, error)
-	List(opts v1.ListOptions) (*v1alpha1.CognitoIdentityProviderList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CognitoIdentityProvider, err error)
+	Create(ctx context.Context, cognitoIdentityProvider *v1alpha1.CognitoIdentityProvider, opts v1.CreateOptions) (*v1alpha1.CognitoIdentityProvider, error)
+	Update(ctx context.Context, cognitoIdentityProvider *v1alpha1.CognitoIdentityProvider, opts v1.UpdateOptions) (*v1alpha1.CognitoIdentityProvider, error)
+	UpdateStatus(ctx context.Context, cognitoIdentityProvider *v1alpha1.CognitoIdentityProvider, opts v1.UpdateOptions) (*v1alpha1.CognitoIdentityProvider, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.CognitoIdentityProvider, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.CognitoIdentityProviderList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CognitoIdentityProvider, err error)
 	CognitoIdentityProviderExpansion
 }
 
@@ -65,20 +66,20 @@ func newCognitoIdentityProviders(c *AwsV1alpha1Client, namespace string) *cognit
 }
 
 // Get takes name of the cognitoIdentityProvider, and returns the corresponding cognitoIdentityProvider object, and an error if there is any.
-func (c *cognitoIdentityProviders) Get(name string, options v1.GetOptions) (result *v1alpha1.CognitoIdentityProvider, err error) {
+func (c *cognitoIdentityProviders) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CognitoIdentityProvider, err error) {
 	result = &v1alpha1.CognitoIdentityProvider{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("cognitoidentityproviders").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of CognitoIdentityProviders that match those selectors.
-func (c *cognitoIdentityProviders) List(opts v1.ListOptions) (result *v1alpha1.CognitoIdentityProviderList, err error) {
+func (c *cognitoIdentityProviders) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CognitoIdentityProviderList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *cognitoIdentityProviders) List(opts v1.ListOptions) (result *v1alpha1.C
 		Resource("cognitoidentityproviders").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested cognitoIdentityProviders.
-func (c *cognitoIdentityProviders) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *cognitoIdentityProviders) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *cognitoIdentityProviders) Watch(opts v1.ListOptions) (watch.Interface, 
 		Resource("cognitoidentityproviders").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a cognitoIdentityProvider and creates it.  Returns the server's representation of the cognitoIdentityProvider, and an error, if there is any.
-func (c *cognitoIdentityProviders) Create(cognitoIdentityProvider *v1alpha1.CognitoIdentityProvider) (result *v1alpha1.CognitoIdentityProvider, err error) {
+func (c *cognitoIdentityProviders) Create(ctx context.Context, cognitoIdentityProvider *v1alpha1.CognitoIdentityProvider, opts v1.CreateOptions) (result *v1alpha1.CognitoIdentityProvider, err error) {
 	result = &v1alpha1.CognitoIdentityProvider{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("cognitoidentityproviders").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cognitoIdentityProvider).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a cognitoIdentityProvider and updates it. Returns the server's representation of the cognitoIdentityProvider, and an error, if there is any.
-func (c *cognitoIdentityProviders) Update(cognitoIdentityProvider *v1alpha1.CognitoIdentityProvider) (result *v1alpha1.CognitoIdentityProvider, err error) {
+func (c *cognitoIdentityProviders) Update(ctx context.Context, cognitoIdentityProvider *v1alpha1.CognitoIdentityProvider, opts v1.UpdateOptions) (result *v1alpha1.CognitoIdentityProvider, err error) {
 	result = &v1alpha1.CognitoIdentityProvider{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("cognitoidentityproviders").
 		Name(cognitoIdentityProvider.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cognitoIdentityProvider).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *cognitoIdentityProviders) UpdateStatus(cognitoIdentityProvider *v1alpha1.CognitoIdentityProvider) (result *v1alpha1.CognitoIdentityProvider, err error) {
+func (c *cognitoIdentityProviders) UpdateStatus(ctx context.Context, cognitoIdentityProvider *v1alpha1.CognitoIdentityProvider, opts v1.UpdateOptions) (result *v1alpha1.CognitoIdentityProvider, err error) {
 	result = &v1alpha1.CognitoIdentityProvider{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("cognitoidentityproviders").
 		Name(cognitoIdentityProvider.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(cognitoIdentityProvider).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the cognitoIdentityProvider and deletes it. Returns an error if one occurs.
-func (c *cognitoIdentityProviders) Delete(name string, options *v1.DeleteOptions) error {
+func (c *cognitoIdentityProviders) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("cognitoidentityproviders").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *cognitoIdentityProviders) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *cognitoIdentityProviders) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("cognitoidentityproviders").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched cognitoIdentityProvider.
-func (c *cognitoIdentityProviders) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CognitoIdentityProvider, err error) {
+func (c *cognitoIdentityProviders) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CognitoIdentityProvider, err error) {
 	result = &v1alpha1.CognitoIdentityProvider{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("cognitoidentityproviders").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

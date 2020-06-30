@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type SesIdentityPoliciesGetter interface {
 
 // SesIdentityPolicyInterface has methods to work with SesIdentityPolicy resources.
 type SesIdentityPolicyInterface interface {
-	Create(*v1alpha1.SesIdentityPolicy) (*v1alpha1.SesIdentityPolicy, error)
-	Update(*v1alpha1.SesIdentityPolicy) (*v1alpha1.SesIdentityPolicy, error)
-	UpdateStatus(*v1alpha1.SesIdentityPolicy) (*v1alpha1.SesIdentityPolicy, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SesIdentityPolicy, error)
-	List(opts v1.ListOptions) (*v1alpha1.SesIdentityPolicyList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SesIdentityPolicy, err error)
+	Create(ctx context.Context, sesIdentityPolicy *v1alpha1.SesIdentityPolicy, opts v1.CreateOptions) (*v1alpha1.SesIdentityPolicy, error)
+	Update(ctx context.Context, sesIdentityPolicy *v1alpha1.SesIdentityPolicy, opts v1.UpdateOptions) (*v1alpha1.SesIdentityPolicy, error)
+	UpdateStatus(ctx context.Context, sesIdentityPolicy *v1alpha1.SesIdentityPolicy, opts v1.UpdateOptions) (*v1alpha1.SesIdentityPolicy, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SesIdentityPolicy, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SesIdentityPolicyList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SesIdentityPolicy, err error)
 	SesIdentityPolicyExpansion
 }
 
@@ -65,20 +66,20 @@ func newSesIdentityPolicies(c *AwsV1alpha1Client, namespace string) *sesIdentity
 }
 
 // Get takes name of the sesIdentityPolicy, and returns the corresponding sesIdentityPolicy object, and an error if there is any.
-func (c *sesIdentityPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.SesIdentityPolicy, err error) {
+func (c *sesIdentityPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SesIdentityPolicy, err error) {
 	result = &v1alpha1.SesIdentityPolicy{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("sesidentitypolicies").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SesIdentityPolicies that match those selectors.
-func (c *sesIdentityPolicies) List(opts v1.ListOptions) (result *v1alpha1.SesIdentityPolicyList, err error) {
+func (c *sesIdentityPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SesIdentityPolicyList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *sesIdentityPolicies) List(opts v1.ListOptions) (result *v1alpha1.SesIde
 		Resource("sesidentitypolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested sesIdentityPolicies.
-func (c *sesIdentityPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *sesIdentityPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *sesIdentityPolicies) Watch(opts v1.ListOptions) (watch.Interface, error
 		Resource("sesidentitypolicies").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a sesIdentityPolicy and creates it.  Returns the server's representation of the sesIdentityPolicy, and an error, if there is any.
-func (c *sesIdentityPolicies) Create(sesIdentityPolicy *v1alpha1.SesIdentityPolicy) (result *v1alpha1.SesIdentityPolicy, err error) {
+func (c *sesIdentityPolicies) Create(ctx context.Context, sesIdentityPolicy *v1alpha1.SesIdentityPolicy, opts v1.CreateOptions) (result *v1alpha1.SesIdentityPolicy, err error) {
 	result = &v1alpha1.SesIdentityPolicy{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("sesidentitypolicies").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sesIdentityPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a sesIdentityPolicy and updates it. Returns the server's representation of the sesIdentityPolicy, and an error, if there is any.
-func (c *sesIdentityPolicies) Update(sesIdentityPolicy *v1alpha1.SesIdentityPolicy) (result *v1alpha1.SesIdentityPolicy, err error) {
+func (c *sesIdentityPolicies) Update(ctx context.Context, sesIdentityPolicy *v1alpha1.SesIdentityPolicy, opts v1.UpdateOptions) (result *v1alpha1.SesIdentityPolicy, err error) {
 	result = &v1alpha1.SesIdentityPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sesidentitypolicies").
 		Name(sesIdentityPolicy.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sesIdentityPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *sesIdentityPolicies) UpdateStatus(sesIdentityPolicy *v1alpha1.SesIdentityPolicy) (result *v1alpha1.SesIdentityPolicy, err error) {
+func (c *sesIdentityPolicies) UpdateStatus(ctx context.Context, sesIdentityPolicy *v1alpha1.SesIdentityPolicy, opts v1.UpdateOptions) (result *v1alpha1.SesIdentityPolicy, err error) {
 	result = &v1alpha1.SesIdentityPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sesidentitypolicies").
 		Name(sesIdentityPolicy.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sesIdentityPolicy).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the sesIdentityPolicy and deletes it. Returns an error if one occurs.
-func (c *sesIdentityPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *sesIdentityPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sesidentitypolicies").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *sesIdentityPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *sesIdentityPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sesidentitypolicies").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched sesIdentityPolicy.
-func (c *sesIdentityPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SesIdentityPolicy, err error) {
+func (c *sesIdentityPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SesIdentityPolicy, err error) {
 	result = &v1alpha1.SesIdentityPolicy{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("sesidentitypolicies").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

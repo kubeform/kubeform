@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var virtualmachinedatadiskattachmentsResource = schema.GroupVersionResource{Grou
 var virtualmachinedatadiskattachmentsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "VirtualMachineDataDiskAttachment"}
 
 // Get takes name of the virtualMachineDataDiskAttachment, and returns the corresponding virtualMachineDataDiskAttachment object, and an error if there is any.
-func (c *FakeVirtualMachineDataDiskAttachments) Get(name string, options v1.GetOptions) (result *v1alpha1.VirtualMachineDataDiskAttachment, err error) {
+func (c *FakeVirtualMachineDataDiskAttachments) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.VirtualMachineDataDiskAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(virtualmachinedatadiskattachmentsResource, c.ns, name), &v1alpha1.VirtualMachineDataDiskAttachment{})
 
@@ -51,7 +53,7 @@ func (c *FakeVirtualMachineDataDiskAttachments) Get(name string, options v1.GetO
 }
 
 // List takes label and field selectors, and returns the list of VirtualMachineDataDiskAttachments that match those selectors.
-func (c *FakeVirtualMachineDataDiskAttachments) List(opts v1.ListOptions) (result *v1alpha1.VirtualMachineDataDiskAttachmentList, err error) {
+func (c *FakeVirtualMachineDataDiskAttachments) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.VirtualMachineDataDiskAttachmentList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(virtualmachinedatadiskattachmentsResource, virtualmachinedatadiskattachmentsKind, c.ns, opts), &v1alpha1.VirtualMachineDataDiskAttachmentList{})
 
@@ -73,14 +75,14 @@ func (c *FakeVirtualMachineDataDiskAttachments) List(opts v1.ListOptions) (resul
 }
 
 // Watch returns a watch.Interface that watches the requested virtualMachineDataDiskAttachments.
-func (c *FakeVirtualMachineDataDiskAttachments) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeVirtualMachineDataDiskAttachments) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(virtualmachinedatadiskattachmentsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a virtualMachineDataDiskAttachment and creates it.  Returns the server's representation of the virtualMachineDataDiskAttachment, and an error, if there is any.
-func (c *FakeVirtualMachineDataDiskAttachments) Create(virtualMachineDataDiskAttachment *v1alpha1.VirtualMachineDataDiskAttachment) (result *v1alpha1.VirtualMachineDataDiskAttachment, err error) {
+func (c *FakeVirtualMachineDataDiskAttachments) Create(ctx context.Context, virtualMachineDataDiskAttachment *v1alpha1.VirtualMachineDataDiskAttachment, opts v1.CreateOptions) (result *v1alpha1.VirtualMachineDataDiskAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(virtualmachinedatadiskattachmentsResource, c.ns, virtualMachineDataDiskAttachment), &v1alpha1.VirtualMachineDataDiskAttachment{})
 
@@ -91,7 +93,7 @@ func (c *FakeVirtualMachineDataDiskAttachments) Create(virtualMachineDataDiskAtt
 }
 
 // Update takes the representation of a virtualMachineDataDiskAttachment and updates it. Returns the server's representation of the virtualMachineDataDiskAttachment, and an error, if there is any.
-func (c *FakeVirtualMachineDataDiskAttachments) Update(virtualMachineDataDiskAttachment *v1alpha1.VirtualMachineDataDiskAttachment) (result *v1alpha1.VirtualMachineDataDiskAttachment, err error) {
+func (c *FakeVirtualMachineDataDiskAttachments) Update(ctx context.Context, virtualMachineDataDiskAttachment *v1alpha1.VirtualMachineDataDiskAttachment, opts v1.UpdateOptions) (result *v1alpha1.VirtualMachineDataDiskAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(virtualmachinedatadiskattachmentsResource, c.ns, virtualMachineDataDiskAttachment), &v1alpha1.VirtualMachineDataDiskAttachment{})
 
@@ -103,7 +105,7 @@ func (c *FakeVirtualMachineDataDiskAttachments) Update(virtualMachineDataDiskAtt
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeVirtualMachineDataDiskAttachments) UpdateStatus(virtualMachineDataDiskAttachment *v1alpha1.VirtualMachineDataDiskAttachment) (*v1alpha1.VirtualMachineDataDiskAttachment, error) {
+func (c *FakeVirtualMachineDataDiskAttachments) UpdateStatus(ctx context.Context, virtualMachineDataDiskAttachment *v1alpha1.VirtualMachineDataDiskAttachment, opts v1.UpdateOptions) (*v1alpha1.VirtualMachineDataDiskAttachment, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(virtualmachinedatadiskattachmentsResource, "status", c.ns, virtualMachineDataDiskAttachment), &v1alpha1.VirtualMachineDataDiskAttachment{})
 
@@ -114,7 +116,7 @@ func (c *FakeVirtualMachineDataDiskAttachments) UpdateStatus(virtualMachineDataD
 }
 
 // Delete takes name of the virtualMachineDataDiskAttachment and deletes it. Returns an error if one occurs.
-func (c *FakeVirtualMachineDataDiskAttachments) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeVirtualMachineDataDiskAttachments) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(virtualmachinedatadiskattachmentsResource, c.ns, name), &v1alpha1.VirtualMachineDataDiskAttachment{})
 
@@ -122,15 +124,15 @@ func (c *FakeVirtualMachineDataDiskAttachments) Delete(name string, options *v1.
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeVirtualMachineDataDiskAttachments) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(virtualmachinedatadiskattachmentsResource, c.ns, listOptions)
+func (c *FakeVirtualMachineDataDiskAttachments) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(virtualmachinedatadiskattachmentsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.VirtualMachineDataDiskAttachmentList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched virtualMachineDataDiskAttachment.
-func (c *FakeVirtualMachineDataDiskAttachments) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.VirtualMachineDataDiskAttachment, err error) {
+func (c *FakeVirtualMachineDataDiskAttachments) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.VirtualMachineDataDiskAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(virtualmachinedatadiskattachmentsResource, c.ns, name, pt, data, subresources...), &v1alpha1.VirtualMachineDataDiskAttachment{})
 

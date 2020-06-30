@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dynamodbtablesResource = schema.GroupVersionResource{Group: "aws.kubeform.co
 var dynamodbtablesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DynamodbTable"}
 
 // Get takes name of the dynamodbTable, and returns the corresponding dynamodbTable object, and an error if there is any.
-func (c *FakeDynamodbTables) Get(name string, options v1.GetOptions) (result *v1alpha1.DynamodbTable, err error) {
+func (c *FakeDynamodbTables) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DynamodbTable, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dynamodbtablesResource, c.ns, name), &v1alpha1.DynamodbTable{})
 
@@ -51,7 +53,7 @@ func (c *FakeDynamodbTables) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of DynamodbTables that match those selectors.
-func (c *FakeDynamodbTables) List(opts v1.ListOptions) (result *v1alpha1.DynamodbTableList, err error) {
+func (c *FakeDynamodbTables) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DynamodbTableList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dynamodbtablesResource, dynamodbtablesKind, c.ns, opts), &v1alpha1.DynamodbTableList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDynamodbTables) List(opts v1.ListOptions) (result *v1alpha1.Dynamod
 }
 
 // Watch returns a watch.Interface that watches the requested dynamodbTables.
-func (c *FakeDynamodbTables) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDynamodbTables) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dynamodbtablesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dynamodbTable and creates it.  Returns the server's representation of the dynamodbTable, and an error, if there is any.
-func (c *FakeDynamodbTables) Create(dynamodbTable *v1alpha1.DynamodbTable) (result *v1alpha1.DynamodbTable, err error) {
+func (c *FakeDynamodbTables) Create(ctx context.Context, dynamodbTable *v1alpha1.DynamodbTable, opts v1.CreateOptions) (result *v1alpha1.DynamodbTable, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dynamodbtablesResource, c.ns, dynamodbTable), &v1alpha1.DynamodbTable{})
 
@@ -91,7 +93,7 @@ func (c *FakeDynamodbTables) Create(dynamodbTable *v1alpha1.DynamodbTable) (resu
 }
 
 // Update takes the representation of a dynamodbTable and updates it. Returns the server's representation of the dynamodbTable, and an error, if there is any.
-func (c *FakeDynamodbTables) Update(dynamodbTable *v1alpha1.DynamodbTable) (result *v1alpha1.DynamodbTable, err error) {
+func (c *FakeDynamodbTables) Update(ctx context.Context, dynamodbTable *v1alpha1.DynamodbTable, opts v1.UpdateOptions) (result *v1alpha1.DynamodbTable, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dynamodbtablesResource, c.ns, dynamodbTable), &v1alpha1.DynamodbTable{})
 
@@ -103,7 +105,7 @@ func (c *FakeDynamodbTables) Update(dynamodbTable *v1alpha1.DynamodbTable) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDynamodbTables) UpdateStatus(dynamodbTable *v1alpha1.DynamodbTable) (*v1alpha1.DynamodbTable, error) {
+func (c *FakeDynamodbTables) UpdateStatus(ctx context.Context, dynamodbTable *v1alpha1.DynamodbTable, opts v1.UpdateOptions) (*v1alpha1.DynamodbTable, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dynamodbtablesResource, "status", c.ns, dynamodbTable), &v1alpha1.DynamodbTable{})
 
@@ -114,7 +116,7 @@ func (c *FakeDynamodbTables) UpdateStatus(dynamodbTable *v1alpha1.DynamodbTable)
 }
 
 // Delete takes name of the dynamodbTable and deletes it. Returns an error if one occurs.
-func (c *FakeDynamodbTables) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDynamodbTables) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dynamodbtablesResource, c.ns, name), &v1alpha1.DynamodbTable{})
 
@@ -122,15 +124,15 @@ func (c *FakeDynamodbTables) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDynamodbTables) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dynamodbtablesResource, c.ns, listOptions)
+func (c *FakeDynamodbTables) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dynamodbtablesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DynamodbTableList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dynamodbTable.
-func (c *FakeDynamodbTables) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DynamodbTable, err error) {
+func (c *FakeDynamodbTables) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DynamodbTable, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dynamodbtablesResource, c.ns, name, pt, data, subresources...), &v1alpha1.DynamodbTable{})
 

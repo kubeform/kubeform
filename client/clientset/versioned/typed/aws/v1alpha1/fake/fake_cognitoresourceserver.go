@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cognitoresourceserversResource = schema.GroupVersionResource{Group: "aws.kub
 var cognitoresourceserversKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "CognitoResourceServer"}
 
 // Get takes name of the cognitoResourceServer, and returns the corresponding cognitoResourceServer object, and an error if there is any.
-func (c *FakeCognitoResourceServers) Get(name string, options v1.GetOptions) (result *v1alpha1.CognitoResourceServer, err error) {
+func (c *FakeCognitoResourceServers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CognitoResourceServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cognitoresourceserversResource, c.ns, name), &v1alpha1.CognitoResourceServer{})
 
@@ -51,7 +53,7 @@ func (c *FakeCognitoResourceServers) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of CognitoResourceServers that match those selectors.
-func (c *FakeCognitoResourceServers) List(opts v1.ListOptions) (result *v1alpha1.CognitoResourceServerList, err error) {
+func (c *FakeCognitoResourceServers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CognitoResourceServerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cognitoresourceserversResource, cognitoresourceserversKind, c.ns, opts), &v1alpha1.CognitoResourceServerList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCognitoResourceServers) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested cognitoResourceServers.
-func (c *FakeCognitoResourceServers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCognitoResourceServers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cognitoresourceserversResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cognitoResourceServer and creates it.  Returns the server's representation of the cognitoResourceServer, and an error, if there is any.
-func (c *FakeCognitoResourceServers) Create(cognitoResourceServer *v1alpha1.CognitoResourceServer) (result *v1alpha1.CognitoResourceServer, err error) {
+func (c *FakeCognitoResourceServers) Create(ctx context.Context, cognitoResourceServer *v1alpha1.CognitoResourceServer, opts v1.CreateOptions) (result *v1alpha1.CognitoResourceServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cognitoresourceserversResource, c.ns, cognitoResourceServer), &v1alpha1.CognitoResourceServer{})
 
@@ -91,7 +93,7 @@ func (c *FakeCognitoResourceServers) Create(cognitoResourceServer *v1alpha1.Cogn
 }
 
 // Update takes the representation of a cognitoResourceServer and updates it. Returns the server's representation of the cognitoResourceServer, and an error, if there is any.
-func (c *FakeCognitoResourceServers) Update(cognitoResourceServer *v1alpha1.CognitoResourceServer) (result *v1alpha1.CognitoResourceServer, err error) {
+func (c *FakeCognitoResourceServers) Update(ctx context.Context, cognitoResourceServer *v1alpha1.CognitoResourceServer, opts v1.UpdateOptions) (result *v1alpha1.CognitoResourceServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cognitoresourceserversResource, c.ns, cognitoResourceServer), &v1alpha1.CognitoResourceServer{})
 
@@ -103,7 +105,7 @@ func (c *FakeCognitoResourceServers) Update(cognitoResourceServer *v1alpha1.Cogn
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCognitoResourceServers) UpdateStatus(cognitoResourceServer *v1alpha1.CognitoResourceServer) (*v1alpha1.CognitoResourceServer, error) {
+func (c *FakeCognitoResourceServers) UpdateStatus(ctx context.Context, cognitoResourceServer *v1alpha1.CognitoResourceServer, opts v1.UpdateOptions) (*v1alpha1.CognitoResourceServer, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cognitoresourceserversResource, "status", c.ns, cognitoResourceServer), &v1alpha1.CognitoResourceServer{})
 
@@ -114,7 +116,7 @@ func (c *FakeCognitoResourceServers) UpdateStatus(cognitoResourceServer *v1alpha
 }
 
 // Delete takes name of the cognitoResourceServer and deletes it. Returns an error if one occurs.
-func (c *FakeCognitoResourceServers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCognitoResourceServers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cognitoresourceserversResource, c.ns, name), &v1alpha1.CognitoResourceServer{})
 
@@ -122,15 +124,15 @@ func (c *FakeCognitoResourceServers) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCognitoResourceServers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cognitoresourceserversResource, c.ns, listOptions)
+func (c *FakeCognitoResourceServers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cognitoresourceserversResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CognitoResourceServerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cognitoResourceServer.
-func (c *FakeCognitoResourceServers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CognitoResourceServer, err error) {
+func (c *FakeCognitoResourceServers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CognitoResourceServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cognitoresourceserversResource, c.ns, name, pt, data, subresources...), &v1alpha1.CognitoResourceServer{})
 

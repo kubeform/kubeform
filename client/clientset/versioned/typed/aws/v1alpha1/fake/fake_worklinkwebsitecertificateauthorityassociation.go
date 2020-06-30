@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var worklinkwebsitecertificateauthorityassociationsResource = schema.GroupVersio
 var worklinkwebsitecertificateauthorityassociationsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "WorklinkWebsiteCertificateAuthorityAssociation"}
 
 // Get takes name of the worklinkWebsiteCertificateAuthorityAssociation, and returns the corresponding worklinkWebsiteCertificateAuthorityAssociation object, and an error if there is any.
-func (c *FakeWorklinkWebsiteCertificateAuthorityAssociations) Get(name string, options v1.GetOptions) (result *v1alpha1.WorklinkWebsiteCertificateAuthorityAssociation, err error) {
+func (c *FakeWorklinkWebsiteCertificateAuthorityAssociations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.WorklinkWebsiteCertificateAuthorityAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(worklinkwebsitecertificateauthorityassociationsResource, c.ns, name), &v1alpha1.WorklinkWebsiteCertificateAuthorityAssociation{})
 
@@ -51,7 +53,7 @@ func (c *FakeWorklinkWebsiteCertificateAuthorityAssociations) Get(name string, o
 }
 
 // List takes label and field selectors, and returns the list of WorklinkWebsiteCertificateAuthorityAssociations that match those selectors.
-func (c *FakeWorklinkWebsiteCertificateAuthorityAssociations) List(opts v1.ListOptions) (result *v1alpha1.WorklinkWebsiteCertificateAuthorityAssociationList, err error) {
+func (c *FakeWorklinkWebsiteCertificateAuthorityAssociations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.WorklinkWebsiteCertificateAuthorityAssociationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(worklinkwebsitecertificateauthorityassociationsResource, worklinkwebsitecertificateauthorityassociationsKind, c.ns, opts), &v1alpha1.WorklinkWebsiteCertificateAuthorityAssociationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeWorklinkWebsiteCertificateAuthorityAssociations) List(opts v1.ListO
 }
 
 // Watch returns a watch.Interface that watches the requested worklinkWebsiteCertificateAuthorityAssociations.
-func (c *FakeWorklinkWebsiteCertificateAuthorityAssociations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeWorklinkWebsiteCertificateAuthorityAssociations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(worklinkwebsitecertificateauthorityassociationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a worklinkWebsiteCertificateAuthorityAssociation and creates it.  Returns the server's representation of the worklinkWebsiteCertificateAuthorityAssociation, and an error, if there is any.
-func (c *FakeWorklinkWebsiteCertificateAuthorityAssociations) Create(worklinkWebsiteCertificateAuthorityAssociation *v1alpha1.WorklinkWebsiteCertificateAuthorityAssociation) (result *v1alpha1.WorklinkWebsiteCertificateAuthorityAssociation, err error) {
+func (c *FakeWorklinkWebsiteCertificateAuthorityAssociations) Create(ctx context.Context, worklinkWebsiteCertificateAuthorityAssociation *v1alpha1.WorklinkWebsiteCertificateAuthorityAssociation, opts v1.CreateOptions) (result *v1alpha1.WorklinkWebsiteCertificateAuthorityAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(worklinkwebsitecertificateauthorityassociationsResource, c.ns, worklinkWebsiteCertificateAuthorityAssociation), &v1alpha1.WorklinkWebsiteCertificateAuthorityAssociation{})
 
@@ -91,7 +93,7 @@ func (c *FakeWorklinkWebsiteCertificateAuthorityAssociations) Create(worklinkWeb
 }
 
 // Update takes the representation of a worklinkWebsiteCertificateAuthorityAssociation and updates it. Returns the server's representation of the worklinkWebsiteCertificateAuthorityAssociation, and an error, if there is any.
-func (c *FakeWorklinkWebsiteCertificateAuthorityAssociations) Update(worklinkWebsiteCertificateAuthorityAssociation *v1alpha1.WorklinkWebsiteCertificateAuthorityAssociation) (result *v1alpha1.WorklinkWebsiteCertificateAuthorityAssociation, err error) {
+func (c *FakeWorklinkWebsiteCertificateAuthorityAssociations) Update(ctx context.Context, worklinkWebsiteCertificateAuthorityAssociation *v1alpha1.WorklinkWebsiteCertificateAuthorityAssociation, opts v1.UpdateOptions) (result *v1alpha1.WorklinkWebsiteCertificateAuthorityAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(worklinkwebsitecertificateauthorityassociationsResource, c.ns, worklinkWebsiteCertificateAuthorityAssociation), &v1alpha1.WorklinkWebsiteCertificateAuthorityAssociation{})
 
@@ -103,7 +105,7 @@ func (c *FakeWorklinkWebsiteCertificateAuthorityAssociations) Update(worklinkWeb
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeWorklinkWebsiteCertificateAuthorityAssociations) UpdateStatus(worklinkWebsiteCertificateAuthorityAssociation *v1alpha1.WorklinkWebsiteCertificateAuthorityAssociation) (*v1alpha1.WorklinkWebsiteCertificateAuthorityAssociation, error) {
+func (c *FakeWorklinkWebsiteCertificateAuthorityAssociations) UpdateStatus(ctx context.Context, worklinkWebsiteCertificateAuthorityAssociation *v1alpha1.WorklinkWebsiteCertificateAuthorityAssociation, opts v1.UpdateOptions) (*v1alpha1.WorklinkWebsiteCertificateAuthorityAssociation, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(worklinkwebsitecertificateauthorityassociationsResource, "status", c.ns, worklinkWebsiteCertificateAuthorityAssociation), &v1alpha1.WorklinkWebsiteCertificateAuthorityAssociation{})
 
@@ -114,7 +116,7 @@ func (c *FakeWorklinkWebsiteCertificateAuthorityAssociations) UpdateStatus(workl
 }
 
 // Delete takes name of the worklinkWebsiteCertificateAuthorityAssociation and deletes it. Returns an error if one occurs.
-func (c *FakeWorklinkWebsiteCertificateAuthorityAssociations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeWorklinkWebsiteCertificateAuthorityAssociations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(worklinkwebsitecertificateauthorityassociationsResource, c.ns, name), &v1alpha1.WorklinkWebsiteCertificateAuthorityAssociation{})
 
@@ -122,15 +124,15 @@ func (c *FakeWorklinkWebsiteCertificateAuthorityAssociations) Delete(name string
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeWorklinkWebsiteCertificateAuthorityAssociations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(worklinkwebsitecertificateauthorityassociationsResource, c.ns, listOptions)
+func (c *FakeWorklinkWebsiteCertificateAuthorityAssociations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(worklinkwebsitecertificateauthorityassociationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.WorklinkWebsiteCertificateAuthorityAssociationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched worklinkWebsiteCertificateAuthorityAssociation.
-func (c *FakeWorklinkWebsiteCertificateAuthorityAssociations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.WorklinkWebsiteCertificateAuthorityAssociation, err error) {
+func (c *FakeWorklinkWebsiteCertificateAuthorityAssociations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.WorklinkWebsiteCertificateAuthorityAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(worklinkwebsitecertificateauthorityassociationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.WorklinkWebsiteCertificateAuthorityAssociation{})
 

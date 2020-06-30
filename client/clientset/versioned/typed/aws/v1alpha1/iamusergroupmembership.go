@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type IamUserGroupMembershipsGetter interface {
 
 // IamUserGroupMembershipInterface has methods to work with IamUserGroupMembership resources.
 type IamUserGroupMembershipInterface interface {
-	Create(*v1alpha1.IamUserGroupMembership) (*v1alpha1.IamUserGroupMembership, error)
-	Update(*v1alpha1.IamUserGroupMembership) (*v1alpha1.IamUserGroupMembership, error)
-	UpdateStatus(*v1alpha1.IamUserGroupMembership) (*v1alpha1.IamUserGroupMembership, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.IamUserGroupMembership, error)
-	List(opts v1.ListOptions) (*v1alpha1.IamUserGroupMembershipList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IamUserGroupMembership, err error)
+	Create(ctx context.Context, iamUserGroupMembership *v1alpha1.IamUserGroupMembership, opts v1.CreateOptions) (*v1alpha1.IamUserGroupMembership, error)
+	Update(ctx context.Context, iamUserGroupMembership *v1alpha1.IamUserGroupMembership, opts v1.UpdateOptions) (*v1alpha1.IamUserGroupMembership, error)
+	UpdateStatus(ctx context.Context, iamUserGroupMembership *v1alpha1.IamUserGroupMembership, opts v1.UpdateOptions) (*v1alpha1.IamUserGroupMembership, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.IamUserGroupMembership, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.IamUserGroupMembershipList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IamUserGroupMembership, err error)
 	IamUserGroupMembershipExpansion
 }
 
@@ -65,20 +66,20 @@ func newIamUserGroupMemberships(c *AwsV1alpha1Client, namespace string) *iamUser
 }
 
 // Get takes name of the iamUserGroupMembership, and returns the corresponding iamUserGroupMembership object, and an error if there is any.
-func (c *iamUserGroupMemberships) Get(name string, options v1.GetOptions) (result *v1alpha1.IamUserGroupMembership, err error) {
+func (c *iamUserGroupMemberships) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IamUserGroupMembership, err error) {
 	result = &v1alpha1.IamUserGroupMembership{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("iamusergroupmemberships").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of IamUserGroupMemberships that match those selectors.
-func (c *iamUserGroupMemberships) List(opts v1.ListOptions) (result *v1alpha1.IamUserGroupMembershipList, err error) {
+func (c *iamUserGroupMemberships) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IamUserGroupMembershipList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *iamUserGroupMemberships) List(opts v1.ListOptions) (result *v1alpha1.Ia
 		Resource("iamusergroupmemberships").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested iamUserGroupMemberships.
-func (c *iamUserGroupMemberships) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *iamUserGroupMemberships) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *iamUserGroupMemberships) Watch(opts v1.ListOptions) (watch.Interface, e
 		Resource("iamusergroupmemberships").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a iamUserGroupMembership and creates it.  Returns the server's representation of the iamUserGroupMembership, and an error, if there is any.
-func (c *iamUserGroupMemberships) Create(iamUserGroupMembership *v1alpha1.IamUserGroupMembership) (result *v1alpha1.IamUserGroupMembership, err error) {
+func (c *iamUserGroupMemberships) Create(ctx context.Context, iamUserGroupMembership *v1alpha1.IamUserGroupMembership, opts v1.CreateOptions) (result *v1alpha1.IamUserGroupMembership, err error) {
 	result = &v1alpha1.IamUserGroupMembership{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("iamusergroupmemberships").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iamUserGroupMembership).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a iamUserGroupMembership and updates it. Returns the server's representation of the iamUserGroupMembership, and an error, if there is any.
-func (c *iamUserGroupMemberships) Update(iamUserGroupMembership *v1alpha1.IamUserGroupMembership) (result *v1alpha1.IamUserGroupMembership, err error) {
+func (c *iamUserGroupMemberships) Update(ctx context.Context, iamUserGroupMembership *v1alpha1.IamUserGroupMembership, opts v1.UpdateOptions) (result *v1alpha1.IamUserGroupMembership, err error) {
 	result = &v1alpha1.IamUserGroupMembership{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iamusergroupmemberships").
 		Name(iamUserGroupMembership.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iamUserGroupMembership).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *iamUserGroupMemberships) UpdateStatus(iamUserGroupMembership *v1alpha1.IamUserGroupMembership) (result *v1alpha1.IamUserGroupMembership, err error) {
+func (c *iamUserGroupMemberships) UpdateStatus(ctx context.Context, iamUserGroupMembership *v1alpha1.IamUserGroupMembership, opts v1.UpdateOptions) (result *v1alpha1.IamUserGroupMembership, err error) {
 	result = &v1alpha1.IamUserGroupMembership{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iamusergroupmemberships").
 		Name(iamUserGroupMembership.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iamUserGroupMembership).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the iamUserGroupMembership and deletes it. Returns an error if one occurs.
-func (c *iamUserGroupMemberships) Delete(name string, options *v1.DeleteOptions) error {
+func (c *iamUserGroupMemberships) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iamusergroupmemberships").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *iamUserGroupMemberships) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *iamUserGroupMemberships) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iamusergroupmemberships").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched iamUserGroupMembership.
-func (c *iamUserGroupMemberships) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IamUserGroupMembership, err error) {
+func (c *iamUserGroupMemberships) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IamUserGroupMembership, err error) {
 	result = &v1alpha1.IamUserGroupMembership{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("iamusergroupmemberships").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

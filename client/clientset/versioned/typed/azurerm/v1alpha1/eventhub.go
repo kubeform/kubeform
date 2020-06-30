@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type EventhubsGetter interface {
 
 // EventhubInterface has methods to work with Eventhub resources.
 type EventhubInterface interface {
-	Create(*v1alpha1.Eventhub) (*v1alpha1.Eventhub, error)
-	Update(*v1alpha1.Eventhub) (*v1alpha1.Eventhub, error)
-	UpdateStatus(*v1alpha1.Eventhub) (*v1alpha1.Eventhub, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.Eventhub, error)
-	List(opts v1.ListOptions) (*v1alpha1.EventhubList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Eventhub, err error)
+	Create(ctx context.Context, eventhub *v1alpha1.Eventhub, opts v1.CreateOptions) (*v1alpha1.Eventhub, error)
+	Update(ctx context.Context, eventhub *v1alpha1.Eventhub, opts v1.UpdateOptions) (*v1alpha1.Eventhub, error)
+	UpdateStatus(ctx context.Context, eventhub *v1alpha1.Eventhub, opts v1.UpdateOptions) (*v1alpha1.Eventhub, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.Eventhub, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.EventhubList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Eventhub, err error)
 	EventhubExpansion
 }
 
@@ -65,20 +66,20 @@ func newEventhubs(c *AzurermV1alpha1Client, namespace string) *eventhubs {
 }
 
 // Get takes name of the eventhub, and returns the corresponding eventhub object, and an error if there is any.
-func (c *eventhubs) Get(name string, options v1.GetOptions) (result *v1alpha1.Eventhub, err error) {
+func (c *eventhubs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Eventhub, err error) {
 	result = &v1alpha1.Eventhub{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("eventhubs").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of Eventhubs that match those selectors.
-func (c *eventhubs) List(opts v1.ListOptions) (result *v1alpha1.EventhubList, err error) {
+func (c *eventhubs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.EventhubList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *eventhubs) List(opts v1.ListOptions) (result *v1alpha1.EventhubList, er
 		Resource("eventhubs").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested eventhubs.
-func (c *eventhubs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *eventhubs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *eventhubs) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("eventhubs").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a eventhub and creates it.  Returns the server's representation of the eventhub, and an error, if there is any.
-func (c *eventhubs) Create(eventhub *v1alpha1.Eventhub) (result *v1alpha1.Eventhub, err error) {
+func (c *eventhubs) Create(ctx context.Context, eventhub *v1alpha1.Eventhub, opts v1.CreateOptions) (result *v1alpha1.Eventhub, err error) {
 	result = &v1alpha1.Eventhub{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("eventhubs").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(eventhub).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a eventhub and updates it. Returns the server's representation of the eventhub, and an error, if there is any.
-func (c *eventhubs) Update(eventhub *v1alpha1.Eventhub) (result *v1alpha1.Eventhub, err error) {
+func (c *eventhubs) Update(ctx context.Context, eventhub *v1alpha1.Eventhub, opts v1.UpdateOptions) (result *v1alpha1.Eventhub, err error) {
 	result = &v1alpha1.Eventhub{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("eventhubs").
 		Name(eventhub.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(eventhub).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *eventhubs) UpdateStatus(eventhub *v1alpha1.Eventhub) (result *v1alpha1.Eventhub, err error) {
+func (c *eventhubs) UpdateStatus(ctx context.Context, eventhub *v1alpha1.Eventhub, opts v1.UpdateOptions) (result *v1alpha1.Eventhub, err error) {
 	result = &v1alpha1.Eventhub{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("eventhubs").
 		Name(eventhub.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(eventhub).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the eventhub and deletes it. Returns an error if one occurs.
-func (c *eventhubs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *eventhubs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("eventhubs").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *eventhubs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *eventhubs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("eventhubs").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched eventhub.
-func (c *eventhubs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Eventhub, err error) {
+func (c *eventhubs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Eventhub, err error) {
 	result = &v1alpha1.Eventhub{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("eventhubs").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

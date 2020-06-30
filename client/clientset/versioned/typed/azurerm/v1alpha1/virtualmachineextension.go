@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type VirtualMachineExtensionsGetter interface {
 
 // VirtualMachineExtensionInterface has methods to work with VirtualMachineExtension resources.
 type VirtualMachineExtensionInterface interface {
-	Create(*v1alpha1.VirtualMachineExtension) (*v1alpha1.VirtualMachineExtension, error)
-	Update(*v1alpha1.VirtualMachineExtension) (*v1alpha1.VirtualMachineExtension, error)
-	UpdateStatus(*v1alpha1.VirtualMachineExtension) (*v1alpha1.VirtualMachineExtension, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.VirtualMachineExtension, error)
-	List(opts v1.ListOptions) (*v1alpha1.VirtualMachineExtensionList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.VirtualMachineExtension, err error)
+	Create(ctx context.Context, virtualMachineExtension *v1alpha1.VirtualMachineExtension, opts v1.CreateOptions) (*v1alpha1.VirtualMachineExtension, error)
+	Update(ctx context.Context, virtualMachineExtension *v1alpha1.VirtualMachineExtension, opts v1.UpdateOptions) (*v1alpha1.VirtualMachineExtension, error)
+	UpdateStatus(ctx context.Context, virtualMachineExtension *v1alpha1.VirtualMachineExtension, opts v1.UpdateOptions) (*v1alpha1.VirtualMachineExtension, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.VirtualMachineExtension, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.VirtualMachineExtensionList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.VirtualMachineExtension, err error)
 	VirtualMachineExtensionExpansion
 }
 
@@ -65,20 +66,20 @@ func newVirtualMachineExtensions(c *AzurermV1alpha1Client, namespace string) *vi
 }
 
 // Get takes name of the virtualMachineExtension, and returns the corresponding virtualMachineExtension object, and an error if there is any.
-func (c *virtualMachineExtensions) Get(name string, options v1.GetOptions) (result *v1alpha1.VirtualMachineExtension, err error) {
+func (c *virtualMachineExtensions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.VirtualMachineExtension, err error) {
 	result = &v1alpha1.VirtualMachineExtension{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("virtualmachineextensions").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of VirtualMachineExtensions that match those selectors.
-func (c *virtualMachineExtensions) List(opts v1.ListOptions) (result *v1alpha1.VirtualMachineExtensionList, err error) {
+func (c *virtualMachineExtensions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.VirtualMachineExtensionList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *virtualMachineExtensions) List(opts v1.ListOptions) (result *v1alpha1.V
 		Resource("virtualmachineextensions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested virtualMachineExtensions.
-func (c *virtualMachineExtensions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *virtualMachineExtensions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *virtualMachineExtensions) Watch(opts v1.ListOptions) (watch.Interface, 
 		Resource("virtualmachineextensions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a virtualMachineExtension and creates it.  Returns the server's representation of the virtualMachineExtension, and an error, if there is any.
-func (c *virtualMachineExtensions) Create(virtualMachineExtension *v1alpha1.VirtualMachineExtension) (result *v1alpha1.VirtualMachineExtension, err error) {
+func (c *virtualMachineExtensions) Create(ctx context.Context, virtualMachineExtension *v1alpha1.VirtualMachineExtension, opts v1.CreateOptions) (result *v1alpha1.VirtualMachineExtension, err error) {
 	result = &v1alpha1.VirtualMachineExtension{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("virtualmachineextensions").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(virtualMachineExtension).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a virtualMachineExtension and updates it. Returns the server's representation of the virtualMachineExtension, and an error, if there is any.
-func (c *virtualMachineExtensions) Update(virtualMachineExtension *v1alpha1.VirtualMachineExtension) (result *v1alpha1.VirtualMachineExtension, err error) {
+func (c *virtualMachineExtensions) Update(ctx context.Context, virtualMachineExtension *v1alpha1.VirtualMachineExtension, opts v1.UpdateOptions) (result *v1alpha1.VirtualMachineExtension, err error) {
 	result = &v1alpha1.VirtualMachineExtension{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("virtualmachineextensions").
 		Name(virtualMachineExtension.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(virtualMachineExtension).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *virtualMachineExtensions) UpdateStatus(virtualMachineExtension *v1alpha1.VirtualMachineExtension) (result *v1alpha1.VirtualMachineExtension, err error) {
+func (c *virtualMachineExtensions) UpdateStatus(ctx context.Context, virtualMachineExtension *v1alpha1.VirtualMachineExtension, opts v1.UpdateOptions) (result *v1alpha1.VirtualMachineExtension, err error) {
 	result = &v1alpha1.VirtualMachineExtension{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("virtualmachineextensions").
 		Name(virtualMachineExtension.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(virtualMachineExtension).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the virtualMachineExtension and deletes it. Returns an error if one occurs.
-func (c *virtualMachineExtensions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *virtualMachineExtensions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("virtualmachineextensions").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *virtualMachineExtensions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *virtualMachineExtensions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("virtualmachineextensions").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched virtualMachineExtension.
-func (c *virtualMachineExtensions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.VirtualMachineExtension, err error) {
+func (c *virtualMachineExtensions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.VirtualMachineExtension, err error) {
 	result = &v1alpha1.VirtualMachineExtension{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("virtualmachineextensions").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

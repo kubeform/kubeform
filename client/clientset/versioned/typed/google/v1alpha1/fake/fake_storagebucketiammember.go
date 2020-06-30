@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var storagebucketiammembersResource = schema.GroupVersionResource{Group: "google
 var storagebucketiammembersKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "StorageBucketIamMember"}
 
 // Get takes name of the storageBucketIamMember, and returns the corresponding storageBucketIamMember object, and an error if there is any.
-func (c *FakeStorageBucketIamMembers) Get(name string, options v1.GetOptions) (result *v1alpha1.StorageBucketIamMember, err error) {
+func (c *FakeStorageBucketIamMembers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.StorageBucketIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(storagebucketiammembersResource, c.ns, name), &v1alpha1.StorageBucketIamMember{})
 
@@ -51,7 +53,7 @@ func (c *FakeStorageBucketIamMembers) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of StorageBucketIamMembers that match those selectors.
-func (c *FakeStorageBucketIamMembers) List(opts v1.ListOptions) (result *v1alpha1.StorageBucketIamMemberList, err error) {
+func (c *FakeStorageBucketIamMembers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.StorageBucketIamMemberList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(storagebucketiammembersResource, storagebucketiammembersKind, c.ns, opts), &v1alpha1.StorageBucketIamMemberList{})
 
@@ -73,14 +75,14 @@ func (c *FakeStorageBucketIamMembers) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested storageBucketIamMembers.
-func (c *FakeStorageBucketIamMembers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeStorageBucketIamMembers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(storagebucketiammembersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a storageBucketIamMember and creates it.  Returns the server's representation of the storageBucketIamMember, and an error, if there is any.
-func (c *FakeStorageBucketIamMembers) Create(storageBucketIamMember *v1alpha1.StorageBucketIamMember) (result *v1alpha1.StorageBucketIamMember, err error) {
+func (c *FakeStorageBucketIamMembers) Create(ctx context.Context, storageBucketIamMember *v1alpha1.StorageBucketIamMember, opts v1.CreateOptions) (result *v1alpha1.StorageBucketIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(storagebucketiammembersResource, c.ns, storageBucketIamMember), &v1alpha1.StorageBucketIamMember{})
 
@@ -91,7 +93,7 @@ func (c *FakeStorageBucketIamMembers) Create(storageBucketIamMember *v1alpha1.St
 }
 
 // Update takes the representation of a storageBucketIamMember and updates it. Returns the server's representation of the storageBucketIamMember, and an error, if there is any.
-func (c *FakeStorageBucketIamMembers) Update(storageBucketIamMember *v1alpha1.StorageBucketIamMember) (result *v1alpha1.StorageBucketIamMember, err error) {
+func (c *FakeStorageBucketIamMembers) Update(ctx context.Context, storageBucketIamMember *v1alpha1.StorageBucketIamMember, opts v1.UpdateOptions) (result *v1alpha1.StorageBucketIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(storagebucketiammembersResource, c.ns, storageBucketIamMember), &v1alpha1.StorageBucketIamMember{})
 
@@ -103,7 +105,7 @@ func (c *FakeStorageBucketIamMembers) Update(storageBucketIamMember *v1alpha1.St
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeStorageBucketIamMembers) UpdateStatus(storageBucketIamMember *v1alpha1.StorageBucketIamMember) (*v1alpha1.StorageBucketIamMember, error) {
+func (c *FakeStorageBucketIamMembers) UpdateStatus(ctx context.Context, storageBucketIamMember *v1alpha1.StorageBucketIamMember, opts v1.UpdateOptions) (*v1alpha1.StorageBucketIamMember, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(storagebucketiammembersResource, "status", c.ns, storageBucketIamMember), &v1alpha1.StorageBucketIamMember{})
 
@@ -114,7 +116,7 @@ func (c *FakeStorageBucketIamMembers) UpdateStatus(storageBucketIamMember *v1alp
 }
 
 // Delete takes name of the storageBucketIamMember and deletes it. Returns an error if one occurs.
-func (c *FakeStorageBucketIamMembers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeStorageBucketIamMembers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(storagebucketiammembersResource, c.ns, name), &v1alpha1.StorageBucketIamMember{})
 
@@ -122,15 +124,15 @@ func (c *FakeStorageBucketIamMembers) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeStorageBucketIamMembers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(storagebucketiammembersResource, c.ns, listOptions)
+func (c *FakeStorageBucketIamMembers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(storagebucketiammembersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.StorageBucketIamMemberList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched storageBucketIamMember.
-func (c *FakeStorageBucketIamMembers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StorageBucketIamMember, err error) {
+func (c *FakeStorageBucketIamMembers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StorageBucketIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(storagebucketiammembersResource, c.ns, name, pt, data, subresources...), &v1alpha1.StorageBucketIamMember{})
 

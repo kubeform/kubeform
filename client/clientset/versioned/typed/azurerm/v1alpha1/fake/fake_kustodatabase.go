@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var kustodatabasesResource = schema.GroupVersionResource{Group: "azurerm.kubefor
 var kustodatabasesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "KustoDatabase"}
 
 // Get takes name of the kustoDatabase, and returns the corresponding kustoDatabase object, and an error if there is any.
-func (c *FakeKustoDatabases) Get(name string, options v1.GetOptions) (result *v1alpha1.KustoDatabase, err error) {
+func (c *FakeKustoDatabases) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KustoDatabase, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(kustodatabasesResource, c.ns, name), &v1alpha1.KustoDatabase{})
 
@@ -51,7 +53,7 @@ func (c *FakeKustoDatabases) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of KustoDatabases that match those selectors.
-func (c *FakeKustoDatabases) List(opts v1.ListOptions) (result *v1alpha1.KustoDatabaseList, err error) {
+func (c *FakeKustoDatabases) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KustoDatabaseList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(kustodatabasesResource, kustodatabasesKind, c.ns, opts), &v1alpha1.KustoDatabaseList{})
 
@@ -73,14 +75,14 @@ func (c *FakeKustoDatabases) List(opts v1.ListOptions) (result *v1alpha1.KustoDa
 }
 
 // Watch returns a watch.Interface that watches the requested kustoDatabases.
-func (c *FakeKustoDatabases) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeKustoDatabases) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(kustodatabasesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a kustoDatabase and creates it.  Returns the server's representation of the kustoDatabase, and an error, if there is any.
-func (c *FakeKustoDatabases) Create(kustoDatabase *v1alpha1.KustoDatabase) (result *v1alpha1.KustoDatabase, err error) {
+func (c *FakeKustoDatabases) Create(ctx context.Context, kustoDatabase *v1alpha1.KustoDatabase, opts v1.CreateOptions) (result *v1alpha1.KustoDatabase, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(kustodatabasesResource, c.ns, kustoDatabase), &v1alpha1.KustoDatabase{})
 
@@ -91,7 +93,7 @@ func (c *FakeKustoDatabases) Create(kustoDatabase *v1alpha1.KustoDatabase) (resu
 }
 
 // Update takes the representation of a kustoDatabase and updates it. Returns the server's representation of the kustoDatabase, and an error, if there is any.
-func (c *FakeKustoDatabases) Update(kustoDatabase *v1alpha1.KustoDatabase) (result *v1alpha1.KustoDatabase, err error) {
+func (c *FakeKustoDatabases) Update(ctx context.Context, kustoDatabase *v1alpha1.KustoDatabase, opts v1.UpdateOptions) (result *v1alpha1.KustoDatabase, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(kustodatabasesResource, c.ns, kustoDatabase), &v1alpha1.KustoDatabase{})
 
@@ -103,7 +105,7 @@ func (c *FakeKustoDatabases) Update(kustoDatabase *v1alpha1.KustoDatabase) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeKustoDatabases) UpdateStatus(kustoDatabase *v1alpha1.KustoDatabase) (*v1alpha1.KustoDatabase, error) {
+func (c *FakeKustoDatabases) UpdateStatus(ctx context.Context, kustoDatabase *v1alpha1.KustoDatabase, opts v1.UpdateOptions) (*v1alpha1.KustoDatabase, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(kustodatabasesResource, "status", c.ns, kustoDatabase), &v1alpha1.KustoDatabase{})
 
@@ -114,7 +116,7 @@ func (c *FakeKustoDatabases) UpdateStatus(kustoDatabase *v1alpha1.KustoDatabase)
 }
 
 // Delete takes name of the kustoDatabase and deletes it. Returns an error if one occurs.
-func (c *FakeKustoDatabases) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeKustoDatabases) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(kustodatabasesResource, c.ns, name), &v1alpha1.KustoDatabase{})
 
@@ -122,15 +124,15 @@ func (c *FakeKustoDatabases) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeKustoDatabases) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(kustodatabasesResource, c.ns, listOptions)
+func (c *FakeKustoDatabases) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(kustodatabasesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.KustoDatabaseList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched kustoDatabase.
-func (c *FakeKustoDatabases) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KustoDatabase, err error) {
+func (c *FakeKustoDatabases) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KustoDatabase, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(kustodatabasesResource, c.ns, name, pt, data, subresources...), &v1alpha1.KustoDatabase{})
 

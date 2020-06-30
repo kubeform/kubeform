@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var apimanagementopenidconnectprovidersResource = schema.GroupVersionResource{Gr
 var apimanagementopenidconnectprovidersKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "ApiManagementOpenidConnectProvider"}
 
 // Get takes name of the apiManagementOpenidConnectProvider, and returns the corresponding apiManagementOpenidConnectProvider object, and an error if there is any.
-func (c *FakeApiManagementOpenidConnectProviders) Get(name string, options v1.GetOptions) (result *v1alpha1.ApiManagementOpenidConnectProvider, err error) {
+func (c *FakeApiManagementOpenidConnectProviders) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApiManagementOpenidConnectProvider, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(apimanagementopenidconnectprovidersResource, c.ns, name), &v1alpha1.ApiManagementOpenidConnectProvider{})
 
@@ -51,7 +53,7 @@ func (c *FakeApiManagementOpenidConnectProviders) Get(name string, options v1.Ge
 }
 
 // List takes label and field selectors, and returns the list of ApiManagementOpenidConnectProviders that match those selectors.
-func (c *FakeApiManagementOpenidConnectProviders) List(opts v1.ListOptions) (result *v1alpha1.ApiManagementOpenidConnectProviderList, err error) {
+func (c *FakeApiManagementOpenidConnectProviders) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApiManagementOpenidConnectProviderList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(apimanagementopenidconnectprovidersResource, apimanagementopenidconnectprovidersKind, c.ns, opts), &v1alpha1.ApiManagementOpenidConnectProviderList{})
 
@@ -73,14 +75,14 @@ func (c *FakeApiManagementOpenidConnectProviders) List(opts v1.ListOptions) (res
 }
 
 // Watch returns a watch.Interface that watches the requested apiManagementOpenidConnectProviders.
-func (c *FakeApiManagementOpenidConnectProviders) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeApiManagementOpenidConnectProviders) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(apimanagementopenidconnectprovidersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a apiManagementOpenidConnectProvider and creates it.  Returns the server's representation of the apiManagementOpenidConnectProvider, and an error, if there is any.
-func (c *FakeApiManagementOpenidConnectProviders) Create(apiManagementOpenidConnectProvider *v1alpha1.ApiManagementOpenidConnectProvider) (result *v1alpha1.ApiManagementOpenidConnectProvider, err error) {
+func (c *FakeApiManagementOpenidConnectProviders) Create(ctx context.Context, apiManagementOpenidConnectProvider *v1alpha1.ApiManagementOpenidConnectProvider, opts v1.CreateOptions) (result *v1alpha1.ApiManagementOpenidConnectProvider, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(apimanagementopenidconnectprovidersResource, c.ns, apiManagementOpenidConnectProvider), &v1alpha1.ApiManagementOpenidConnectProvider{})
 
@@ -91,7 +93,7 @@ func (c *FakeApiManagementOpenidConnectProviders) Create(apiManagementOpenidConn
 }
 
 // Update takes the representation of a apiManagementOpenidConnectProvider and updates it. Returns the server's representation of the apiManagementOpenidConnectProvider, and an error, if there is any.
-func (c *FakeApiManagementOpenidConnectProviders) Update(apiManagementOpenidConnectProvider *v1alpha1.ApiManagementOpenidConnectProvider) (result *v1alpha1.ApiManagementOpenidConnectProvider, err error) {
+func (c *FakeApiManagementOpenidConnectProviders) Update(ctx context.Context, apiManagementOpenidConnectProvider *v1alpha1.ApiManagementOpenidConnectProvider, opts v1.UpdateOptions) (result *v1alpha1.ApiManagementOpenidConnectProvider, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(apimanagementopenidconnectprovidersResource, c.ns, apiManagementOpenidConnectProvider), &v1alpha1.ApiManagementOpenidConnectProvider{})
 
@@ -103,7 +105,7 @@ func (c *FakeApiManagementOpenidConnectProviders) Update(apiManagementOpenidConn
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeApiManagementOpenidConnectProviders) UpdateStatus(apiManagementOpenidConnectProvider *v1alpha1.ApiManagementOpenidConnectProvider) (*v1alpha1.ApiManagementOpenidConnectProvider, error) {
+func (c *FakeApiManagementOpenidConnectProviders) UpdateStatus(ctx context.Context, apiManagementOpenidConnectProvider *v1alpha1.ApiManagementOpenidConnectProvider, opts v1.UpdateOptions) (*v1alpha1.ApiManagementOpenidConnectProvider, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(apimanagementopenidconnectprovidersResource, "status", c.ns, apiManagementOpenidConnectProvider), &v1alpha1.ApiManagementOpenidConnectProvider{})
 
@@ -114,7 +116,7 @@ func (c *FakeApiManagementOpenidConnectProviders) UpdateStatus(apiManagementOpen
 }
 
 // Delete takes name of the apiManagementOpenidConnectProvider and deletes it. Returns an error if one occurs.
-func (c *FakeApiManagementOpenidConnectProviders) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeApiManagementOpenidConnectProviders) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(apimanagementopenidconnectprovidersResource, c.ns, name), &v1alpha1.ApiManagementOpenidConnectProvider{})
 
@@ -122,15 +124,15 @@ func (c *FakeApiManagementOpenidConnectProviders) Delete(name string, options *v
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeApiManagementOpenidConnectProviders) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(apimanagementopenidconnectprovidersResource, c.ns, listOptions)
+func (c *FakeApiManagementOpenidConnectProviders) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(apimanagementopenidconnectprovidersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ApiManagementOpenidConnectProviderList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched apiManagementOpenidConnectProvider.
-func (c *FakeApiManagementOpenidConnectProviders) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApiManagementOpenidConnectProvider, err error) {
+func (c *FakeApiManagementOpenidConnectProviders) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApiManagementOpenidConnectProvider, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(apimanagementopenidconnectprovidersResource, c.ns, name, pt, data, subresources...), &v1alpha1.ApiManagementOpenidConnectProvider{})
 

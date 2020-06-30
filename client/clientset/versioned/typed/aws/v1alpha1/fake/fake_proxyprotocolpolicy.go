@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var proxyprotocolpoliciesResource = schema.GroupVersionResource{Group: "aws.kube
 var proxyprotocolpoliciesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ProxyProtocolPolicy"}
 
 // Get takes name of the proxyProtocolPolicy, and returns the corresponding proxyProtocolPolicy object, and an error if there is any.
-func (c *FakeProxyProtocolPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.ProxyProtocolPolicy, err error) {
+func (c *FakeProxyProtocolPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ProxyProtocolPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(proxyprotocolpoliciesResource, c.ns, name), &v1alpha1.ProxyProtocolPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeProxyProtocolPolicies) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of ProxyProtocolPolicies that match those selectors.
-func (c *FakeProxyProtocolPolicies) List(opts v1.ListOptions) (result *v1alpha1.ProxyProtocolPolicyList, err error) {
+func (c *FakeProxyProtocolPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ProxyProtocolPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(proxyprotocolpoliciesResource, proxyprotocolpoliciesKind, c.ns, opts), &v1alpha1.ProxyProtocolPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeProxyProtocolPolicies) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested proxyProtocolPolicies.
-func (c *FakeProxyProtocolPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeProxyProtocolPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(proxyprotocolpoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a proxyProtocolPolicy and creates it.  Returns the server's representation of the proxyProtocolPolicy, and an error, if there is any.
-func (c *FakeProxyProtocolPolicies) Create(proxyProtocolPolicy *v1alpha1.ProxyProtocolPolicy) (result *v1alpha1.ProxyProtocolPolicy, err error) {
+func (c *FakeProxyProtocolPolicies) Create(ctx context.Context, proxyProtocolPolicy *v1alpha1.ProxyProtocolPolicy, opts v1.CreateOptions) (result *v1alpha1.ProxyProtocolPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(proxyprotocolpoliciesResource, c.ns, proxyProtocolPolicy), &v1alpha1.ProxyProtocolPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeProxyProtocolPolicies) Create(proxyProtocolPolicy *v1alpha1.ProxyPr
 }
 
 // Update takes the representation of a proxyProtocolPolicy and updates it. Returns the server's representation of the proxyProtocolPolicy, and an error, if there is any.
-func (c *FakeProxyProtocolPolicies) Update(proxyProtocolPolicy *v1alpha1.ProxyProtocolPolicy) (result *v1alpha1.ProxyProtocolPolicy, err error) {
+func (c *FakeProxyProtocolPolicies) Update(ctx context.Context, proxyProtocolPolicy *v1alpha1.ProxyProtocolPolicy, opts v1.UpdateOptions) (result *v1alpha1.ProxyProtocolPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(proxyprotocolpoliciesResource, c.ns, proxyProtocolPolicy), &v1alpha1.ProxyProtocolPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeProxyProtocolPolicies) Update(proxyProtocolPolicy *v1alpha1.ProxyPr
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeProxyProtocolPolicies) UpdateStatus(proxyProtocolPolicy *v1alpha1.ProxyProtocolPolicy) (*v1alpha1.ProxyProtocolPolicy, error) {
+func (c *FakeProxyProtocolPolicies) UpdateStatus(ctx context.Context, proxyProtocolPolicy *v1alpha1.ProxyProtocolPolicy, opts v1.UpdateOptions) (*v1alpha1.ProxyProtocolPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(proxyprotocolpoliciesResource, "status", c.ns, proxyProtocolPolicy), &v1alpha1.ProxyProtocolPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeProxyProtocolPolicies) UpdateStatus(proxyProtocolPolicy *v1alpha1.P
 }
 
 // Delete takes name of the proxyProtocolPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeProxyProtocolPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeProxyProtocolPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(proxyprotocolpoliciesResource, c.ns, name), &v1alpha1.ProxyProtocolPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeProxyProtocolPolicies) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeProxyProtocolPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(proxyprotocolpoliciesResource, c.ns, listOptions)
+func (c *FakeProxyProtocolPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(proxyprotocolpoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ProxyProtocolPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched proxyProtocolPolicy.
-func (c *FakeProxyProtocolPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ProxyProtocolPolicy, err error) {
+func (c *FakeProxyProtocolPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ProxyProtocolPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(proxyprotocolpoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ProxyProtocolPolicy{})
 

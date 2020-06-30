@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var organizationsaccountsResource = schema.GroupVersionResource{Group: "aws.kube
 var organizationsaccountsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "OrganizationsAccount"}
 
 // Get takes name of the organizationsAccount, and returns the corresponding organizationsAccount object, and an error if there is any.
-func (c *FakeOrganizationsAccounts) Get(name string, options v1.GetOptions) (result *v1alpha1.OrganizationsAccount, err error) {
+func (c *FakeOrganizationsAccounts) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.OrganizationsAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(organizationsaccountsResource, c.ns, name), &v1alpha1.OrganizationsAccount{})
 
@@ -51,7 +53,7 @@ func (c *FakeOrganizationsAccounts) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of OrganizationsAccounts that match those selectors.
-func (c *FakeOrganizationsAccounts) List(opts v1.ListOptions) (result *v1alpha1.OrganizationsAccountList, err error) {
+func (c *FakeOrganizationsAccounts) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.OrganizationsAccountList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(organizationsaccountsResource, organizationsaccountsKind, c.ns, opts), &v1alpha1.OrganizationsAccountList{})
 
@@ -73,14 +75,14 @@ func (c *FakeOrganizationsAccounts) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested organizationsAccounts.
-func (c *FakeOrganizationsAccounts) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeOrganizationsAccounts) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(organizationsaccountsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a organizationsAccount and creates it.  Returns the server's representation of the organizationsAccount, and an error, if there is any.
-func (c *FakeOrganizationsAccounts) Create(organizationsAccount *v1alpha1.OrganizationsAccount) (result *v1alpha1.OrganizationsAccount, err error) {
+func (c *FakeOrganizationsAccounts) Create(ctx context.Context, organizationsAccount *v1alpha1.OrganizationsAccount, opts v1.CreateOptions) (result *v1alpha1.OrganizationsAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(organizationsaccountsResource, c.ns, organizationsAccount), &v1alpha1.OrganizationsAccount{})
 
@@ -91,7 +93,7 @@ func (c *FakeOrganizationsAccounts) Create(organizationsAccount *v1alpha1.Organi
 }
 
 // Update takes the representation of a organizationsAccount and updates it. Returns the server's representation of the organizationsAccount, and an error, if there is any.
-func (c *FakeOrganizationsAccounts) Update(organizationsAccount *v1alpha1.OrganizationsAccount) (result *v1alpha1.OrganizationsAccount, err error) {
+func (c *FakeOrganizationsAccounts) Update(ctx context.Context, organizationsAccount *v1alpha1.OrganizationsAccount, opts v1.UpdateOptions) (result *v1alpha1.OrganizationsAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(organizationsaccountsResource, c.ns, organizationsAccount), &v1alpha1.OrganizationsAccount{})
 
@@ -103,7 +105,7 @@ func (c *FakeOrganizationsAccounts) Update(organizationsAccount *v1alpha1.Organi
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeOrganizationsAccounts) UpdateStatus(organizationsAccount *v1alpha1.OrganizationsAccount) (*v1alpha1.OrganizationsAccount, error) {
+func (c *FakeOrganizationsAccounts) UpdateStatus(ctx context.Context, organizationsAccount *v1alpha1.OrganizationsAccount, opts v1.UpdateOptions) (*v1alpha1.OrganizationsAccount, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(organizationsaccountsResource, "status", c.ns, organizationsAccount), &v1alpha1.OrganizationsAccount{})
 
@@ -114,7 +116,7 @@ func (c *FakeOrganizationsAccounts) UpdateStatus(organizationsAccount *v1alpha1.
 }
 
 // Delete takes name of the organizationsAccount and deletes it. Returns an error if one occurs.
-func (c *FakeOrganizationsAccounts) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeOrganizationsAccounts) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(organizationsaccountsResource, c.ns, name), &v1alpha1.OrganizationsAccount{})
 
@@ -122,15 +124,15 @@ func (c *FakeOrganizationsAccounts) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeOrganizationsAccounts) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(organizationsaccountsResource, c.ns, listOptions)
+func (c *FakeOrganizationsAccounts) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(organizationsaccountsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.OrganizationsAccountList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched organizationsAccount.
-func (c *FakeOrganizationsAccounts) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.OrganizationsAccount, err error) {
+func (c *FakeOrganizationsAccounts) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.OrganizationsAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(organizationsaccountsResource, c.ns, name, pt, data, subresources...), &v1alpha1.OrganizationsAccount{})
 

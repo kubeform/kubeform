@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var loadbalancerpoliciesResource = schema.GroupVersionResource{Group: "aws.kubef
 var loadbalancerpoliciesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "LoadBalancerPolicy"}
 
 // Get takes name of the loadBalancerPolicy, and returns the corresponding loadBalancerPolicy object, and an error if there is any.
-func (c *FakeLoadBalancerPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.LoadBalancerPolicy, err error) {
+func (c *FakeLoadBalancerPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LoadBalancerPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(loadbalancerpoliciesResource, c.ns, name), &v1alpha1.LoadBalancerPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeLoadBalancerPolicies) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of LoadBalancerPolicies that match those selectors.
-func (c *FakeLoadBalancerPolicies) List(opts v1.ListOptions) (result *v1alpha1.LoadBalancerPolicyList, err error) {
+func (c *FakeLoadBalancerPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LoadBalancerPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(loadbalancerpoliciesResource, loadbalancerpoliciesKind, c.ns, opts), &v1alpha1.LoadBalancerPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLoadBalancerPolicies) List(opts v1.ListOptions) (result *v1alpha1.L
 }
 
 // Watch returns a watch.Interface that watches the requested loadBalancerPolicies.
-func (c *FakeLoadBalancerPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLoadBalancerPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(loadbalancerpoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a loadBalancerPolicy and creates it.  Returns the server's representation of the loadBalancerPolicy, and an error, if there is any.
-func (c *FakeLoadBalancerPolicies) Create(loadBalancerPolicy *v1alpha1.LoadBalancerPolicy) (result *v1alpha1.LoadBalancerPolicy, err error) {
+func (c *FakeLoadBalancerPolicies) Create(ctx context.Context, loadBalancerPolicy *v1alpha1.LoadBalancerPolicy, opts v1.CreateOptions) (result *v1alpha1.LoadBalancerPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(loadbalancerpoliciesResource, c.ns, loadBalancerPolicy), &v1alpha1.LoadBalancerPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeLoadBalancerPolicies) Create(loadBalancerPolicy *v1alpha1.LoadBalan
 }
 
 // Update takes the representation of a loadBalancerPolicy and updates it. Returns the server's representation of the loadBalancerPolicy, and an error, if there is any.
-func (c *FakeLoadBalancerPolicies) Update(loadBalancerPolicy *v1alpha1.LoadBalancerPolicy) (result *v1alpha1.LoadBalancerPolicy, err error) {
+func (c *FakeLoadBalancerPolicies) Update(ctx context.Context, loadBalancerPolicy *v1alpha1.LoadBalancerPolicy, opts v1.UpdateOptions) (result *v1alpha1.LoadBalancerPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(loadbalancerpoliciesResource, c.ns, loadBalancerPolicy), &v1alpha1.LoadBalancerPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeLoadBalancerPolicies) Update(loadBalancerPolicy *v1alpha1.LoadBalan
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLoadBalancerPolicies) UpdateStatus(loadBalancerPolicy *v1alpha1.LoadBalancerPolicy) (*v1alpha1.LoadBalancerPolicy, error) {
+func (c *FakeLoadBalancerPolicies) UpdateStatus(ctx context.Context, loadBalancerPolicy *v1alpha1.LoadBalancerPolicy, opts v1.UpdateOptions) (*v1alpha1.LoadBalancerPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(loadbalancerpoliciesResource, "status", c.ns, loadBalancerPolicy), &v1alpha1.LoadBalancerPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeLoadBalancerPolicies) UpdateStatus(loadBalancerPolicy *v1alpha1.Loa
 }
 
 // Delete takes name of the loadBalancerPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeLoadBalancerPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLoadBalancerPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(loadbalancerpoliciesResource, c.ns, name), &v1alpha1.LoadBalancerPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeLoadBalancerPolicies) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLoadBalancerPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(loadbalancerpoliciesResource, c.ns, listOptions)
+func (c *FakeLoadBalancerPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(loadbalancerpoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LoadBalancerPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched loadBalancerPolicy.
-func (c *FakeLoadBalancerPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LoadBalancerPolicy, err error) {
+func (c *FakeLoadBalancerPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LoadBalancerPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(loadbalancerpoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.LoadBalancerPolicy{})
 

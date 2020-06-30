@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var lbrulesResource = schema.GroupVersionResource{Group: "azurerm.kubeform.com",
 var lbrulesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "LbRule"}
 
 // Get takes name of the lbRule, and returns the corresponding lbRule object, and an error if there is any.
-func (c *FakeLbRules) Get(name string, options v1.GetOptions) (result *v1alpha1.LbRule, err error) {
+func (c *FakeLbRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LbRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(lbrulesResource, c.ns, name), &v1alpha1.LbRule{})
 
@@ -51,7 +53,7 @@ func (c *FakeLbRules) Get(name string, options v1.GetOptions) (result *v1alpha1.
 }
 
 // List takes label and field selectors, and returns the list of LbRules that match those selectors.
-func (c *FakeLbRules) List(opts v1.ListOptions) (result *v1alpha1.LbRuleList, err error) {
+func (c *FakeLbRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LbRuleList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(lbrulesResource, lbrulesKind, c.ns, opts), &v1alpha1.LbRuleList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLbRules) List(opts v1.ListOptions) (result *v1alpha1.LbRuleList, er
 }
 
 // Watch returns a watch.Interface that watches the requested lbRules.
-func (c *FakeLbRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLbRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(lbrulesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a lbRule and creates it.  Returns the server's representation of the lbRule, and an error, if there is any.
-func (c *FakeLbRules) Create(lbRule *v1alpha1.LbRule) (result *v1alpha1.LbRule, err error) {
+func (c *FakeLbRules) Create(ctx context.Context, lbRule *v1alpha1.LbRule, opts v1.CreateOptions) (result *v1alpha1.LbRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(lbrulesResource, c.ns, lbRule), &v1alpha1.LbRule{})
 
@@ -91,7 +93,7 @@ func (c *FakeLbRules) Create(lbRule *v1alpha1.LbRule) (result *v1alpha1.LbRule, 
 }
 
 // Update takes the representation of a lbRule and updates it. Returns the server's representation of the lbRule, and an error, if there is any.
-func (c *FakeLbRules) Update(lbRule *v1alpha1.LbRule) (result *v1alpha1.LbRule, err error) {
+func (c *FakeLbRules) Update(ctx context.Context, lbRule *v1alpha1.LbRule, opts v1.UpdateOptions) (result *v1alpha1.LbRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(lbrulesResource, c.ns, lbRule), &v1alpha1.LbRule{})
 
@@ -103,7 +105,7 @@ func (c *FakeLbRules) Update(lbRule *v1alpha1.LbRule) (result *v1alpha1.LbRule, 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLbRules) UpdateStatus(lbRule *v1alpha1.LbRule) (*v1alpha1.LbRule, error) {
+func (c *FakeLbRules) UpdateStatus(ctx context.Context, lbRule *v1alpha1.LbRule, opts v1.UpdateOptions) (*v1alpha1.LbRule, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(lbrulesResource, "status", c.ns, lbRule), &v1alpha1.LbRule{})
 
@@ -114,7 +116,7 @@ func (c *FakeLbRules) UpdateStatus(lbRule *v1alpha1.LbRule) (*v1alpha1.LbRule, e
 }
 
 // Delete takes name of the lbRule and deletes it. Returns an error if one occurs.
-func (c *FakeLbRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLbRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(lbrulesResource, c.ns, name), &v1alpha1.LbRule{})
 
@@ -122,15 +124,15 @@ func (c *FakeLbRules) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLbRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(lbrulesResource, c.ns, listOptions)
+func (c *FakeLbRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(lbrulesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LbRuleList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched lbRule.
-func (c *FakeLbRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LbRule, err error) {
+func (c *FakeLbRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LbRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(lbrulesResource, c.ns, name, pt, data, subresources...), &v1alpha1.LbRule{})
 

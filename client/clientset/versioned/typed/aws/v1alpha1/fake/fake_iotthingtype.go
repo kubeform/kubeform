@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iotthingtypesResource = schema.GroupVersionResource{Group: "aws.kubeform.com
 var iotthingtypesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "IotThingType"}
 
 // Get takes name of the iotThingType, and returns the corresponding iotThingType object, and an error if there is any.
-func (c *FakeIotThingTypes) Get(name string, options v1.GetOptions) (result *v1alpha1.IotThingType, err error) {
+func (c *FakeIotThingTypes) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IotThingType, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iotthingtypesResource, c.ns, name), &v1alpha1.IotThingType{})
 
@@ -51,7 +53,7 @@ func (c *FakeIotThingTypes) Get(name string, options v1.GetOptions) (result *v1a
 }
 
 // List takes label and field selectors, and returns the list of IotThingTypes that match those selectors.
-func (c *FakeIotThingTypes) List(opts v1.ListOptions) (result *v1alpha1.IotThingTypeList, err error) {
+func (c *FakeIotThingTypes) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IotThingTypeList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iotthingtypesResource, iotthingtypesKind, c.ns, opts), &v1alpha1.IotThingTypeList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIotThingTypes) List(opts v1.ListOptions) (result *v1alpha1.IotThing
 }
 
 // Watch returns a watch.Interface that watches the requested iotThingTypes.
-func (c *FakeIotThingTypes) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIotThingTypes) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iotthingtypesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iotThingType and creates it.  Returns the server's representation of the iotThingType, and an error, if there is any.
-func (c *FakeIotThingTypes) Create(iotThingType *v1alpha1.IotThingType) (result *v1alpha1.IotThingType, err error) {
+func (c *FakeIotThingTypes) Create(ctx context.Context, iotThingType *v1alpha1.IotThingType, opts v1.CreateOptions) (result *v1alpha1.IotThingType, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iotthingtypesResource, c.ns, iotThingType), &v1alpha1.IotThingType{})
 
@@ -91,7 +93,7 @@ func (c *FakeIotThingTypes) Create(iotThingType *v1alpha1.IotThingType) (result 
 }
 
 // Update takes the representation of a iotThingType and updates it. Returns the server's representation of the iotThingType, and an error, if there is any.
-func (c *FakeIotThingTypes) Update(iotThingType *v1alpha1.IotThingType) (result *v1alpha1.IotThingType, err error) {
+func (c *FakeIotThingTypes) Update(ctx context.Context, iotThingType *v1alpha1.IotThingType, opts v1.UpdateOptions) (result *v1alpha1.IotThingType, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iotthingtypesResource, c.ns, iotThingType), &v1alpha1.IotThingType{})
 
@@ -103,7 +105,7 @@ func (c *FakeIotThingTypes) Update(iotThingType *v1alpha1.IotThingType) (result 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIotThingTypes) UpdateStatus(iotThingType *v1alpha1.IotThingType) (*v1alpha1.IotThingType, error) {
+func (c *FakeIotThingTypes) UpdateStatus(ctx context.Context, iotThingType *v1alpha1.IotThingType, opts v1.UpdateOptions) (*v1alpha1.IotThingType, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iotthingtypesResource, "status", c.ns, iotThingType), &v1alpha1.IotThingType{})
 
@@ -114,7 +116,7 @@ func (c *FakeIotThingTypes) UpdateStatus(iotThingType *v1alpha1.IotThingType) (*
 }
 
 // Delete takes name of the iotThingType and deletes it. Returns an error if one occurs.
-func (c *FakeIotThingTypes) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIotThingTypes) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iotthingtypesResource, c.ns, name), &v1alpha1.IotThingType{})
 
@@ -122,15 +124,15 @@ func (c *FakeIotThingTypes) Delete(name string, options *v1.DeleteOptions) error
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIotThingTypes) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iotthingtypesResource, c.ns, listOptions)
+func (c *FakeIotThingTypes) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iotthingtypesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IotThingTypeList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iotThingType.
-func (c *FakeIotThingTypes) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IotThingType, err error) {
+func (c *FakeIotThingTypes) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IotThingType, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iotthingtypesResource, c.ns, name, pt, data, subresources...), &v1alpha1.IotThingType{})
 

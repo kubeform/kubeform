@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var healthcareservicesResource = schema.GroupVersionResource{Group: "azurerm.kub
 var healthcareservicesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "HealthcareService"}
 
 // Get takes name of the healthcareService, and returns the corresponding healthcareService object, and an error if there is any.
-func (c *FakeHealthcareServices) Get(name string, options v1.GetOptions) (result *v1alpha1.HealthcareService, err error) {
+func (c *FakeHealthcareServices) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.HealthcareService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(healthcareservicesResource, c.ns, name), &v1alpha1.HealthcareService{})
 
@@ -51,7 +53,7 @@ func (c *FakeHealthcareServices) Get(name string, options v1.GetOptions) (result
 }
 
 // List takes label and field selectors, and returns the list of HealthcareServices that match those selectors.
-func (c *FakeHealthcareServices) List(opts v1.ListOptions) (result *v1alpha1.HealthcareServiceList, err error) {
+func (c *FakeHealthcareServices) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.HealthcareServiceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(healthcareservicesResource, healthcareservicesKind, c.ns, opts), &v1alpha1.HealthcareServiceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeHealthcareServices) List(opts v1.ListOptions) (result *v1alpha1.Hea
 }
 
 // Watch returns a watch.Interface that watches the requested healthcareServices.
-func (c *FakeHealthcareServices) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeHealthcareServices) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(healthcareservicesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a healthcareService and creates it.  Returns the server's representation of the healthcareService, and an error, if there is any.
-func (c *FakeHealthcareServices) Create(healthcareService *v1alpha1.HealthcareService) (result *v1alpha1.HealthcareService, err error) {
+func (c *FakeHealthcareServices) Create(ctx context.Context, healthcareService *v1alpha1.HealthcareService, opts v1.CreateOptions) (result *v1alpha1.HealthcareService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(healthcareservicesResource, c.ns, healthcareService), &v1alpha1.HealthcareService{})
 
@@ -91,7 +93,7 @@ func (c *FakeHealthcareServices) Create(healthcareService *v1alpha1.HealthcareSe
 }
 
 // Update takes the representation of a healthcareService and updates it. Returns the server's representation of the healthcareService, and an error, if there is any.
-func (c *FakeHealthcareServices) Update(healthcareService *v1alpha1.HealthcareService) (result *v1alpha1.HealthcareService, err error) {
+func (c *FakeHealthcareServices) Update(ctx context.Context, healthcareService *v1alpha1.HealthcareService, opts v1.UpdateOptions) (result *v1alpha1.HealthcareService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(healthcareservicesResource, c.ns, healthcareService), &v1alpha1.HealthcareService{})
 
@@ -103,7 +105,7 @@ func (c *FakeHealthcareServices) Update(healthcareService *v1alpha1.HealthcareSe
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeHealthcareServices) UpdateStatus(healthcareService *v1alpha1.HealthcareService) (*v1alpha1.HealthcareService, error) {
+func (c *FakeHealthcareServices) UpdateStatus(ctx context.Context, healthcareService *v1alpha1.HealthcareService, opts v1.UpdateOptions) (*v1alpha1.HealthcareService, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(healthcareservicesResource, "status", c.ns, healthcareService), &v1alpha1.HealthcareService{})
 
@@ -114,7 +116,7 @@ func (c *FakeHealthcareServices) UpdateStatus(healthcareService *v1alpha1.Health
 }
 
 // Delete takes name of the healthcareService and deletes it. Returns an error if one occurs.
-func (c *FakeHealthcareServices) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeHealthcareServices) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(healthcareservicesResource, c.ns, name), &v1alpha1.HealthcareService{})
 
@@ -122,15 +124,15 @@ func (c *FakeHealthcareServices) Delete(name string, options *v1.DeleteOptions) 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeHealthcareServices) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(healthcareservicesResource, c.ns, listOptions)
+func (c *FakeHealthcareServices) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(healthcareservicesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.HealthcareServiceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched healthcareService.
-func (c *FakeHealthcareServices) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.HealthcareService, err error) {
+func (c *FakeHealthcareServices) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.HealthcareService, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(healthcareservicesResource, c.ns, name, pt, data, subresources...), &v1alpha1.HealthcareService{})
 

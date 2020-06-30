@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var databricksworkspacesResource = schema.GroupVersionResource{Group: "azurerm.k
 var databricksworkspacesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "DatabricksWorkspace"}
 
 // Get takes name of the databricksWorkspace, and returns the corresponding databricksWorkspace object, and an error if there is any.
-func (c *FakeDatabricksWorkspaces) Get(name string, options v1.GetOptions) (result *v1alpha1.DatabricksWorkspace, err error) {
+func (c *FakeDatabricksWorkspaces) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DatabricksWorkspace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(databricksworkspacesResource, c.ns, name), &v1alpha1.DatabricksWorkspace{})
 
@@ -51,7 +53,7 @@ func (c *FakeDatabricksWorkspaces) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of DatabricksWorkspaces that match those selectors.
-func (c *FakeDatabricksWorkspaces) List(opts v1.ListOptions) (result *v1alpha1.DatabricksWorkspaceList, err error) {
+func (c *FakeDatabricksWorkspaces) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DatabricksWorkspaceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(databricksworkspacesResource, databricksworkspacesKind, c.ns, opts), &v1alpha1.DatabricksWorkspaceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDatabricksWorkspaces) List(opts v1.ListOptions) (result *v1alpha1.D
 }
 
 // Watch returns a watch.Interface that watches the requested databricksWorkspaces.
-func (c *FakeDatabricksWorkspaces) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDatabricksWorkspaces) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(databricksworkspacesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a databricksWorkspace and creates it.  Returns the server's representation of the databricksWorkspace, and an error, if there is any.
-func (c *FakeDatabricksWorkspaces) Create(databricksWorkspace *v1alpha1.DatabricksWorkspace) (result *v1alpha1.DatabricksWorkspace, err error) {
+func (c *FakeDatabricksWorkspaces) Create(ctx context.Context, databricksWorkspace *v1alpha1.DatabricksWorkspace, opts v1.CreateOptions) (result *v1alpha1.DatabricksWorkspace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(databricksworkspacesResource, c.ns, databricksWorkspace), &v1alpha1.DatabricksWorkspace{})
 
@@ -91,7 +93,7 @@ func (c *FakeDatabricksWorkspaces) Create(databricksWorkspace *v1alpha1.Databric
 }
 
 // Update takes the representation of a databricksWorkspace and updates it. Returns the server's representation of the databricksWorkspace, and an error, if there is any.
-func (c *FakeDatabricksWorkspaces) Update(databricksWorkspace *v1alpha1.DatabricksWorkspace) (result *v1alpha1.DatabricksWorkspace, err error) {
+func (c *FakeDatabricksWorkspaces) Update(ctx context.Context, databricksWorkspace *v1alpha1.DatabricksWorkspace, opts v1.UpdateOptions) (result *v1alpha1.DatabricksWorkspace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(databricksworkspacesResource, c.ns, databricksWorkspace), &v1alpha1.DatabricksWorkspace{})
 
@@ -103,7 +105,7 @@ func (c *FakeDatabricksWorkspaces) Update(databricksWorkspace *v1alpha1.Databric
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDatabricksWorkspaces) UpdateStatus(databricksWorkspace *v1alpha1.DatabricksWorkspace) (*v1alpha1.DatabricksWorkspace, error) {
+func (c *FakeDatabricksWorkspaces) UpdateStatus(ctx context.Context, databricksWorkspace *v1alpha1.DatabricksWorkspace, opts v1.UpdateOptions) (*v1alpha1.DatabricksWorkspace, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(databricksworkspacesResource, "status", c.ns, databricksWorkspace), &v1alpha1.DatabricksWorkspace{})
 
@@ -114,7 +116,7 @@ func (c *FakeDatabricksWorkspaces) UpdateStatus(databricksWorkspace *v1alpha1.Da
 }
 
 // Delete takes name of the databricksWorkspace and deletes it. Returns an error if one occurs.
-func (c *FakeDatabricksWorkspaces) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDatabricksWorkspaces) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(databricksworkspacesResource, c.ns, name), &v1alpha1.DatabricksWorkspace{})
 
@@ -122,15 +124,15 @@ func (c *FakeDatabricksWorkspaces) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDatabricksWorkspaces) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(databricksworkspacesResource, c.ns, listOptions)
+func (c *FakeDatabricksWorkspaces) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(databricksworkspacesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DatabricksWorkspaceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched databricksWorkspace.
-func (c *FakeDatabricksWorkspaces) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DatabricksWorkspace, err error) {
+func (c *FakeDatabricksWorkspaces) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DatabricksWorkspace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(databricksworkspacesResource, c.ns, name, pt, data, subresources...), &v1alpha1.DatabricksWorkspace{})
 

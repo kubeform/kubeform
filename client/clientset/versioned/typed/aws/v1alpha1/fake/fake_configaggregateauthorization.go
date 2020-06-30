@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var configaggregateauthorizationsResource = schema.GroupVersionResource{Group: "
 var configaggregateauthorizationsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ConfigAggregateAuthorization"}
 
 // Get takes name of the configAggregateAuthorization, and returns the corresponding configAggregateAuthorization object, and an error if there is any.
-func (c *FakeConfigAggregateAuthorizations) Get(name string, options v1.GetOptions) (result *v1alpha1.ConfigAggregateAuthorization, err error) {
+func (c *FakeConfigAggregateAuthorizations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ConfigAggregateAuthorization, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(configaggregateauthorizationsResource, c.ns, name), &v1alpha1.ConfigAggregateAuthorization{})
 
@@ -51,7 +53,7 @@ func (c *FakeConfigAggregateAuthorizations) Get(name string, options v1.GetOptio
 }
 
 // List takes label and field selectors, and returns the list of ConfigAggregateAuthorizations that match those selectors.
-func (c *FakeConfigAggregateAuthorizations) List(opts v1.ListOptions) (result *v1alpha1.ConfigAggregateAuthorizationList, err error) {
+func (c *FakeConfigAggregateAuthorizations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ConfigAggregateAuthorizationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(configaggregateauthorizationsResource, configaggregateauthorizationsKind, c.ns, opts), &v1alpha1.ConfigAggregateAuthorizationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeConfigAggregateAuthorizations) List(opts v1.ListOptions) (result *v
 }
 
 // Watch returns a watch.Interface that watches the requested configAggregateAuthorizations.
-func (c *FakeConfigAggregateAuthorizations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeConfigAggregateAuthorizations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(configaggregateauthorizationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a configAggregateAuthorization and creates it.  Returns the server's representation of the configAggregateAuthorization, and an error, if there is any.
-func (c *FakeConfigAggregateAuthorizations) Create(configAggregateAuthorization *v1alpha1.ConfigAggregateAuthorization) (result *v1alpha1.ConfigAggregateAuthorization, err error) {
+func (c *FakeConfigAggregateAuthorizations) Create(ctx context.Context, configAggregateAuthorization *v1alpha1.ConfigAggregateAuthorization, opts v1.CreateOptions) (result *v1alpha1.ConfigAggregateAuthorization, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(configaggregateauthorizationsResource, c.ns, configAggregateAuthorization), &v1alpha1.ConfigAggregateAuthorization{})
 
@@ -91,7 +93,7 @@ func (c *FakeConfigAggregateAuthorizations) Create(configAggregateAuthorization 
 }
 
 // Update takes the representation of a configAggregateAuthorization and updates it. Returns the server's representation of the configAggregateAuthorization, and an error, if there is any.
-func (c *FakeConfigAggregateAuthorizations) Update(configAggregateAuthorization *v1alpha1.ConfigAggregateAuthorization) (result *v1alpha1.ConfigAggregateAuthorization, err error) {
+func (c *FakeConfigAggregateAuthorizations) Update(ctx context.Context, configAggregateAuthorization *v1alpha1.ConfigAggregateAuthorization, opts v1.UpdateOptions) (result *v1alpha1.ConfigAggregateAuthorization, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(configaggregateauthorizationsResource, c.ns, configAggregateAuthorization), &v1alpha1.ConfigAggregateAuthorization{})
 
@@ -103,7 +105,7 @@ func (c *FakeConfigAggregateAuthorizations) Update(configAggregateAuthorization 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeConfigAggregateAuthorizations) UpdateStatus(configAggregateAuthorization *v1alpha1.ConfigAggregateAuthorization) (*v1alpha1.ConfigAggregateAuthorization, error) {
+func (c *FakeConfigAggregateAuthorizations) UpdateStatus(ctx context.Context, configAggregateAuthorization *v1alpha1.ConfigAggregateAuthorization, opts v1.UpdateOptions) (*v1alpha1.ConfigAggregateAuthorization, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(configaggregateauthorizationsResource, "status", c.ns, configAggregateAuthorization), &v1alpha1.ConfigAggregateAuthorization{})
 
@@ -114,7 +116,7 @@ func (c *FakeConfigAggregateAuthorizations) UpdateStatus(configAggregateAuthoriz
 }
 
 // Delete takes name of the configAggregateAuthorization and deletes it. Returns an error if one occurs.
-func (c *FakeConfigAggregateAuthorizations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeConfigAggregateAuthorizations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(configaggregateauthorizationsResource, c.ns, name), &v1alpha1.ConfigAggregateAuthorization{})
 
@@ -122,15 +124,15 @@ func (c *FakeConfigAggregateAuthorizations) Delete(name string, options *v1.Dele
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeConfigAggregateAuthorizations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(configaggregateauthorizationsResource, c.ns, listOptions)
+func (c *FakeConfigAggregateAuthorizations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(configaggregateauthorizationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ConfigAggregateAuthorizationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched configAggregateAuthorization.
-func (c *FakeConfigAggregateAuthorizations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ConfigAggregateAuthorization, err error) {
+func (c *FakeConfigAggregateAuthorizations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ConfigAggregateAuthorization, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(configaggregateauthorizationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ConfigAggregateAuthorization{})
 

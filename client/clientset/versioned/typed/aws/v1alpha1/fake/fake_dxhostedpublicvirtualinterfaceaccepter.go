@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dxhostedpublicvirtualinterfaceacceptersResource = schema.GroupVersionResourc
 var dxhostedpublicvirtualinterfaceacceptersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DxHostedPublicVirtualInterfaceAccepter"}
 
 // Get takes name of the dxHostedPublicVirtualInterfaceAccepter, and returns the corresponding dxHostedPublicVirtualInterfaceAccepter object, and an error if there is any.
-func (c *FakeDxHostedPublicVirtualInterfaceAccepters) Get(name string, options v1.GetOptions) (result *v1alpha1.DxHostedPublicVirtualInterfaceAccepter, err error) {
+func (c *FakeDxHostedPublicVirtualInterfaceAccepters) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DxHostedPublicVirtualInterfaceAccepter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dxhostedpublicvirtualinterfaceacceptersResource, c.ns, name), &v1alpha1.DxHostedPublicVirtualInterfaceAccepter{})
 
@@ -51,7 +53,7 @@ func (c *FakeDxHostedPublicVirtualInterfaceAccepters) Get(name string, options v
 }
 
 // List takes label and field selectors, and returns the list of DxHostedPublicVirtualInterfaceAccepters that match those selectors.
-func (c *FakeDxHostedPublicVirtualInterfaceAccepters) List(opts v1.ListOptions) (result *v1alpha1.DxHostedPublicVirtualInterfaceAccepterList, err error) {
+func (c *FakeDxHostedPublicVirtualInterfaceAccepters) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DxHostedPublicVirtualInterfaceAccepterList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dxhostedpublicvirtualinterfaceacceptersResource, dxhostedpublicvirtualinterfaceacceptersKind, c.ns, opts), &v1alpha1.DxHostedPublicVirtualInterfaceAccepterList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDxHostedPublicVirtualInterfaceAccepters) List(opts v1.ListOptions) 
 }
 
 // Watch returns a watch.Interface that watches the requested dxHostedPublicVirtualInterfaceAccepters.
-func (c *FakeDxHostedPublicVirtualInterfaceAccepters) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDxHostedPublicVirtualInterfaceAccepters) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dxhostedpublicvirtualinterfaceacceptersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dxHostedPublicVirtualInterfaceAccepter and creates it.  Returns the server's representation of the dxHostedPublicVirtualInterfaceAccepter, and an error, if there is any.
-func (c *FakeDxHostedPublicVirtualInterfaceAccepters) Create(dxHostedPublicVirtualInterfaceAccepter *v1alpha1.DxHostedPublicVirtualInterfaceAccepter) (result *v1alpha1.DxHostedPublicVirtualInterfaceAccepter, err error) {
+func (c *FakeDxHostedPublicVirtualInterfaceAccepters) Create(ctx context.Context, dxHostedPublicVirtualInterfaceAccepter *v1alpha1.DxHostedPublicVirtualInterfaceAccepter, opts v1.CreateOptions) (result *v1alpha1.DxHostedPublicVirtualInterfaceAccepter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dxhostedpublicvirtualinterfaceacceptersResource, c.ns, dxHostedPublicVirtualInterfaceAccepter), &v1alpha1.DxHostedPublicVirtualInterfaceAccepter{})
 
@@ -91,7 +93,7 @@ func (c *FakeDxHostedPublicVirtualInterfaceAccepters) Create(dxHostedPublicVirtu
 }
 
 // Update takes the representation of a dxHostedPublicVirtualInterfaceAccepter and updates it. Returns the server's representation of the dxHostedPublicVirtualInterfaceAccepter, and an error, if there is any.
-func (c *FakeDxHostedPublicVirtualInterfaceAccepters) Update(dxHostedPublicVirtualInterfaceAccepter *v1alpha1.DxHostedPublicVirtualInterfaceAccepter) (result *v1alpha1.DxHostedPublicVirtualInterfaceAccepter, err error) {
+func (c *FakeDxHostedPublicVirtualInterfaceAccepters) Update(ctx context.Context, dxHostedPublicVirtualInterfaceAccepter *v1alpha1.DxHostedPublicVirtualInterfaceAccepter, opts v1.UpdateOptions) (result *v1alpha1.DxHostedPublicVirtualInterfaceAccepter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dxhostedpublicvirtualinterfaceacceptersResource, c.ns, dxHostedPublicVirtualInterfaceAccepter), &v1alpha1.DxHostedPublicVirtualInterfaceAccepter{})
 
@@ -103,7 +105,7 @@ func (c *FakeDxHostedPublicVirtualInterfaceAccepters) Update(dxHostedPublicVirtu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDxHostedPublicVirtualInterfaceAccepters) UpdateStatus(dxHostedPublicVirtualInterfaceAccepter *v1alpha1.DxHostedPublicVirtualInterfaceAccepter) (*v1alpha1.DxHostedPublicVirtualInterfaceAccepter, error) {
+func (c *FakeDxHostedPublicVirtualInterfaceAccepters) UpdateStatus(ctx context.Context, dxHostedPublicVirtualInterfaceAccepter *v1alpha1.DxHostedPublicVirtualInterfaceAccepter, opts v1.UpdateOptions) (*v1alpha1.DxHostedPublicVirtualInterfaceAccepter, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dxhostedpublicvirtualinterfaceacceptersResource, "status", c.ns, dxHostedPublicVirtualInterfaceAccepter), &v1alpha1.DxHostedPublicVirtualInterfaceAccepter{})
 
@@ -114,7 +116,7 @@ func (c *FakeDxHostedPublicVirtualInterfaceAccepters) UpdateStatus(dxHostedPubli
 }
 
 // Delete takes name of the dxHostedPublicVirtualInterfaceAccepter and deletes it. Returns an error if one occurs.
-func (c *FakeDxHostedPublicVirtualInterfaceAccepters) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDxHostedPublicVirtualInterfaceAccepters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dxhostedpublicvirtualinterfaceacceptersResource, c.ns, name), &v1alpha1.DxHostedPublicVirtualInterfaceAccepter{})
 
@@ -122,15 +124,15 @@ func (c *FakeDxHostedPublicVirtualInterfaceAccepters) Delete(name string, option
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDxHostedPublicVirtualInterfaceAccepters) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dxhostedpublicvirtualinterfaceacceptersResource, c.ns, listOptions)
+func (c *FakeDxHostedPublicVirtualInterfaceAccepters) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dxhostedpublicvirtualinterfaceacceptersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DxHostedPublicVirtualInterfaceAccepterList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dxHostedPublicVirtualInterfaceAccepter.
-func (c *FakeDxHostedPublicVirtualInterfaceAccepters) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DxHostedPublicVirtualInterfaceAccepter, err error) {
+func (c *FakeDxHostedPublicVirtualInterfaceAccepters) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DxHostedPublicVirtualInterfaceAccepter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dxhostedpublicvirtualinterfaceacceptersResource, c.ns, name, pt, data, subresources...), &v1alpha1.DxHostedPublicVirtualInterfaceAccepter{})
 

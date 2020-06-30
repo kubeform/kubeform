@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var appautoscalingtargetsResource = schema.GroupVersionResource{Group: "aws.kube
 var appautoscalingtargetsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "AppautoscalingTarget"}
 
 // Get takes name of the appautoscalingTarget, and returns the corresponding appautoscalingTarget object, and an error if there is any.
-func (c *FakeAppautoscalingTargets) Get(name string, options v1.GetOptions) (result *v1alpha1.AppautoscalingTarget, err error) {
+func (c *FakeAppautoscalingTargets) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AppautoscalingTarget, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(appautoscalingtargetsResource, c.ns, name), &v1alpha1.AppautoscalingTarget{})
 
@@ -51,7 +53,7 @@ func (c *FakeAppautoscalingTargets) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of AppautoscalingTargets that match those selectors.
-func (c *FakeAppautoscalingTargets) List(opts v1.ListOptions) (result *v1alpha1.AppautoscalingTargetList, err error) {
+func (c *FakeAppautoscalingTargets) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AppautoscalingTargetList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(appautoscalingtargetsResource, appautoscalingtargetsKind, c.ns, opts), &v1alpha1.AppautoscalingTargetList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAppautoscalingTargets) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested appautoscalingTargets.
-func (c *FakeAppautoscalingTargets) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAppautoscalingTargets) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(appautoscalingtargetsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a appautoscalingTarget and creates it.  Returns the server's representation of the appautoscalingTarget, and an error, if there is any.
-func (c *FakeAppautoscalingTargets) Create(appautoscalingTarget *v1alpha1.AppautoscalingTarget) (result *v1alpha1.AppautoscalingTarget, err error) {
+func (c *FakeAppautoscalingTargets) Create(ctx context.Context, appautoscalingTarget *v1alpha1.AppautoscalingTarget, opts v1.CreateOptions) (result *v1alpha1.AppautoscalingTarget, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(appautoscalingtargetsResource, c.ns, appautoscalingTarget), &v1alpha1.AppautoscalingTarget{})
 
@@ -91,7 +93,7 @@ func (c *FakeAppautoscalingTargets) Create(appautoscalingTarget *v1alpha1.Appaut
 }
 
 // Update takes the representation of a appautoscalingTarget and updates it. Returns the server's representation of the appautoscalingTarget, and an error, if there is any.
-func (c *FakeAppautoscalingTargets) Update(appautoscalingTarget *v1alpha1.AppautoscalingTarget) (result *v1alpha1.AppautoscalingTarget, err error) {
+func (c *FakeAppautoscalingTargets) Update(ctx context.Context, appautoscalingTarget *v1alpha1.AppautoscalingTarget, opts v1.UpdateOptions) (result *v1alpha1.AppautoscalingTarget, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(appautoscalingtargetsResource, c.ns, appautoscalingTarget), &v1alpha1.AppautoscalingTarget{})
 
@@ -103,7 +105,7 @@ func (c *FakeAppautoscalingTargets) Update(appautoscalingTarget *v1alpha1.Appaut
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAppautoscalingTargets) UpdateStatus(appautoscalingTarget *v1alpha1.AppautoscalingTarget) (*v1alpha1.AppautoscalingTarget, error) {
+func (c *FakeAppautoscalingTargets) UpdateStatus(ctx context.Context, appautoscalingTarget *v1alpha1.AppautoscalingTarget, opts v1.UpdateOptions) (*v1alpha1.AppautoscalingTarget, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(appautoscalingtargetsResource, "status", c.ns, appautoscalingTarget), &v1alpha1.AppautoscalingTarget{})
 
@@ -114,7 +116,7 @@ func (c *FakeAppautoscalingTargets) UpdateStatus(appautoscalingTarget *v1alpha1.
 }
 
 // Delete takes name of the appautoscalingTarget and deletes it. Returns an error if one occurs.
-func (c *FakeAppautoscalingTargets) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAppautoscalingTargets) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(appautoscalingtargetsResource, c.ns, name), &v1alpha1.AppautoscalingTarget{})
 
@@ -122,15 +124,15 @@ func (c *FakeAppautoscalingTargets) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAppautoscalingTargets) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(appautoscalingtargetsResource, c.ns, listOptions)
+func (c *FakeAppautoscalingTargets) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(appautoscalingtargetsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AppautoscalingTargetList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched appautoscalingTarget.
-func (c *FakeAppautoscalingTargets) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppautoscalingTarget, err error) {
+func (c *FakeAppautoscalingTargets) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppautoscalingTarget, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(appautoscalingtargetsResource, c.ns, name, pt, data, subresources...), &v1alpha1.AppautoscalingTarget{})
 

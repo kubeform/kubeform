@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type SecretsmanagerSecretVersionsGetter interface {
 
 // SecretsmanagerSecretVersionInterface has methods to work with SecretsmanagerSecretVersion resources.
 type SecretsmanagerSecretVersionInterface interface {
-	Create(*v1alpha1.SecretsmanagerSecretVersion) (*v1alpha1.SecretsmanagerSecretVersion, error)
-	Update(*v1alpha1.SecretsmanagerSecretVersion) (*v1alpha1.SecretsmanagerSecretVersion, error)
-	UpdateStatus(*v1alpha1.SecretsmanagerSecretVersion) (*v1alpha1.SecretsmanagerSecretVersion, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SecretsmanagerSecretVersion, error)
-	List(opts v1.ListOptions) (*v1alpha1.SecretsmanagerSecretVersionList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SecretsmanagerSecretVersion, err error)
+	Create(ctx context.Context, secretsmanagerSecretVersion *v1alpha1.SecretsmanagerSecretVersion, opts v1.CreateOptions) (*v1alpha1.SecretsmanagerSecretVersion, error)
+	Update(ctx context.Context, secretsmanagerSecretVersion *v1alpha1.SecretsmanagerSecretVersion, opts v1.UpdateOptions) (*v1alpha1.SecretsmanagerSecretVersion, error)
+	UpdateStatus(ctx context.Context, secretsmanagerSecretVersion *v1alpha1.SecretsmanagerSecretVersion, opts v1.UpdateOptions) (*v1alpha1.SecretsmanagerSecretVersion, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SecretsmanagerSecretVersion, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SecretsmanagerSecretVersionList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SecretsmanagerSecretVersion, err error)
 	SecretsmanagerSecretVersionExpansion
 }
 
@@ -65,20 +66,20 @@ func newSecretsmanagerSecretVersions(c *AwsV1alpha1Client, namespace string) *se
 }
 
 // Get takes name of the secretsmanagerSecretVersion, and returns the corresponding secretsmanagerSecretVersion object, and an error if there is any.
-func (c *secretsmanagerSecretVersions) Get(name string, options v1.GetOptions) (result *v1alpha1.SecretsmanagerSecretVersion, err error) {
+func (c *secretsmanagerSecretVersions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SecretsmanagerSecretVersion, err error) {
 	result = &v1alpha1.SecretsmanagerSecretVersion{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("secretsmanagersecretversions").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SecretsmanagerSecretVersions that match those selectors.
-func (c *secretsmanagerSecretVersions) List(opts v1.ListOptions) (result *v1alpha1.SecretsmanagerSecretVersionList, err error) {
+func (c *secretsmanagerSecretVersions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SecretsmanagerSecretVersionList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *secretsmanagerSecretVersions) List(opts v1.ListOptions) (result *v1alph
 		Resource("secretsmanagersecretversions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested secretsmanagerSecretVersions.
-func (c *secretsmanagerSecretVersions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *secretsmanagerSecretVersions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *secretsmanagerSecretVersions) Watch(opts v1.ListOptions) (watch.Interfa
 		Resource("secretsmanagersecretversions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a secretsmanagerSecretVersion and creates it.  Returns the server's representation of the secretsmanagerSecretVersion, and an error, if there is any.
-func (c *secretsmanagerSecretVersions) Create(secretsmanagerSecretVersion *v1alpha1.SecretsmanagerSecretVersion) (result *v1alpha1.SecretsmanagerSecretVersion, err error) {
+func (c *secretsmanagerSecretVersions) Create(ctx context.Context, secretsmanagerSecretVersion *v1alpha1.SecretsmanagerSecretVersion, opts v1.CreateOptions) (result *v1alpha1.SecretsmanagerSecretVersion, err error) {
 	result = &v1alpha1.SecretsmanagerSecretVersion{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("secretsmanagersecretversions").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(secretsmanagerSecretVersion).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a secretsmanagerSecretVersion and updates it. Returns the server's representation of the secretsmanagerSecretVersion, and an error, if there is any.
-func (c *secretsmanagerSecretVersions) Update(secretsmanagerSecretVersion *v1alpha1.SecretsmanagerSecretVersion) (result *v1alpha1.SecretsmanagerSecretVersion, err error) {
+func (c *secretsmanagerSecretVersions) Update(ctx context.Context, secretsmanagerSecretVersion *v1alpha1.SecretsmanagerSecretVersion, opts v1.UpdateOptions) (result *v1alpha1.SecretsmanagerSecretVersion, err error) {
 	result = &v1alpha1.SecretsmanagerSecretVersion{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("secretsmanagersecretversions").
 		Name(secretsmanagerSecretVersion.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(secretsmanagerSecretVersion).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *secretsmanagerSecretVersions) UpdateStatus(secretsmanagerSecretVersion *v1alpha1.SecretsmanagerSecretVersion) (result *v1alpha1.SecretsmanagerSecretVersion, err error) {
+func (c *secretsmanagerSecretVersions) UpdateStatus(ctx context.Context, secretsmanagerSecretVersion *v1alpha1.SecretsmanagerSecretVersion, opts v1.UpdateOptions) (result *v1alpha1.SecretsmanagerSecretVersion, err error) {
 	result = &v1alpha1.SecretsmanagerSecretVersion{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("secretsmanagersecretversions").
 		Name(secretsmanagerSecretVersion.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(secretsmanagerSecretVersion).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the secretsmanagerSecretVersion and deletes it. Returns an error if one occurs.
-func (c *secretsmanagerSecretVersions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *secretsmanagerSecretVersions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("secretsmanagersecretversions").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *secretsmanagerSecretVersions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *secretsmanagerSecretVersions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("secretsmanagersecretversions").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched secretsmanagerSecretVersion.
-func (c *secretsmanagerSecretVersions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SecretsmanagerSecretVersion, err error) {
+func (c *secretsmanagerSecretVersions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SecretsmanagerSecretVersion, err error) {
 	result = &v1alpha1.SecretsmanagerSecretVersion{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("secretsmanagersecretversions").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

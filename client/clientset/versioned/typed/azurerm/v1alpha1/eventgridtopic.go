@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type EventgridTopicsGetter interface {
 
 // EventgridTopicInterface has methods to work with EventgridTopic resources.
 type EventgridTopicInterface interface {
-	Create(*v1alpha1.EventgridTopic) (*v1alpha1.EventgridTopic, error)
-	Update(*v1alpha1.EventgridTopic) (*v1alpha1.EventgridTopic, error)
-	UpdateStatus(*v1alpha1.EventgridTopic) (*v1alpha1.EventgridTopic, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.EventgridTopic, error)
-	List(opts v1.ListOptions) (*v1alpha1.EventgridTopicList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EventgridTopic, err error)
+	Create(ctx context.Context, eventgridTopic *v1alpha1.EventgridTopic, opts v1.CreateOptions) (*v1alpha1.EventgridTopic, error)
+	Update(ctx context.Context, eventgridTopic *v1alpha1.EventgridTopic, opts v1.UpdateOptions) (*v1alpha1.EventgridTopic, error)
+	UpdateStatus(ctx context.Context, eventgridTopic *v1alpha1.EventgridTopic, opts v1.UpdateOptions) (*v1alpha1.EventgridTopic, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.EventgridTopic, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.EventgridTopicList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EventgridTopic, err error)
 	EventgridTopicExpansion
 }
 
@@ -65,20 +66,20 @@ func newEventgridTopics(c *AzurermV1alpha1Client, namespace string) *eventgridTo
 }
 
 // Get takes name of the eventgridTopic, and returns the corresponding eventgridTopic object, and an error if there is any.
-func (c *eventgridTopics) Get(name string, options v1.GetOptions) (result *v1alpha1.EventgridTopic, err error) {
+func (c *eventgridTopics) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.EventgridTopic, err error) {
 	result = &v1alpha1.EventgridTopic{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("eventgridtopics").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of EventgridTopics that match those selectors.
-func (c *eventgridTopics) List(opts v1.ListOptions) (result *v1alpha1.EventgridTopicList, err error) {
+func (c *eventgridTopics) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.EventgridTopicList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *eventgridTopics) List(opts v1.ListOptions) (result *v1alpha1.EventgridT
 		Resource("eventgridtopics").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested eventgridTopics.
-func (c *eventgridTopics) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *eventgridTopics) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *eventgridTopics) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("eventgridtopics").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a eventgridTopic and creates it.  Returns the server's representation of the eventgridTopic, and an error, if there is any.
-func (c *eventgridTopics) Create(eventgridTopic *v1alpha1.EventgridTopic) (result *v1alpha1.EventgridTopic, err error) {
+func (c *eventgridTopics) Create(ctx context.Context, eventgridTopic *v1alpha1.EventgridTopic, opts v1.CreateOptions) (result *v1alpha1.EventgridTopic, err error) {
 	result = &v1alpha1.EventgridTopic{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("eventgridtopics").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(eventgridTopic).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a eventgridTopic and updates it. Returns the server's representation of the eventgridTopic, and an error, if there is any.
-func (c *eventgridTopics) Update(eventgridTopic *v1alpha1.EventgridTopic) (result *v1alpha1.EventgridTopic, err error) {
+func (c *eventgridTopics) Update(ctx context.Context, eventgridTopic *v1alpha1.EventgridTopic, opts v1.UpdateOptions) (result *v1alpha1.EventgridTopic, err error) {
 	result = &v1alpha1.EventgridTopic{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("eventgridtopics").
 		Name(eventgridTopic.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(eventgridTopic).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *eventgridTopics) UpdateStatus(eventgridTopic *v1alpha1.EventgridTopic) (result *v1alpha1.EventgridTopic, err error) {
+func (c *eventgridTopics) UpdateStatus(ctx context.Context, eventgridTopic *v1alpha1.EventgridTopic, opts v1.UpdateOptions) (result *v1alpha1.EventgridTopic, err error) {
 	result = &v1alpha1.EventgridTopic{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("eventgridtopics").
 		Name(eventgridTopic.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(eventgridTopic).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the eventgridTopic and deletes it. Returns an error if one occurs.
-func (c *eventgridTopics) Delete(name string, options *v1.DeleteOptions) error {
+func (c *eventgridTopics) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("eventgridtopics").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *eventgridTopics) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *eventgridTopics) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("eventgridtopics").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched eventgridTopic.
-func (c *eventgridTopics) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EventgridTopic, err error) {
+func (c *eventgridTopics) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EventgridTopic, err error) {
 	result = &v1alpha1.EventgridTopic{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("eventgridtopics").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var functionappsResource = schema.GroupVersionResource{Group: "azurerm.kubeform.
 var functionappsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "FunctionApp"}
 
 // Get takes name of the functionApp, and returns the corresponding functionApp object, and an error if there is any.
-func (c *FakeFunctionApps) Get(name string, options v1.GetOptions) (result *v1alpha1.FunctionApp, err error) {
+func (c *FakeFunctionApps) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.FunctionApp, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(functionappsResource, c.ns, name), &v1alpha1.FunctionApp{})
 
@@ -51,7 +53,7 @@ func (c *FakeFunctionApps) Get(name string, options v1.GetOptions) (result *v1al
 }
 
 // List takes label and field selectors, and returns the list of FunctionApps that match those selectors.
-func (c *FakeFunctionApps) List(opts v1.ListOptions) (result *v1alpha1.FunctionAppList, err error) {
+func (c *FakeFunctionApps) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.FunctionAppList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(functionappsResource, functionappsKind, c.ns, opts), &v1alpha1.FunctionAppList{})
 
@@ -73,14 +75,14 @@ func (c *FakeFunctionApps) List(opts v1.ListOptions) (result *v1alpha1.FunctionA
 }
 
 // Watch returns a watch.Interface that watches the requested functionApps.
-func (c *FakeFunctionApps) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeFunctionApps) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(functionappsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a functionApp and creates it.  Returns the server's representation of the functionApp, and an error, if there is any.
-func (c *FakeFunctionApps) Create(functionApp *v1alpha1.FunctionApp) (result *v1alpha1.FunctionApp, err error) {
+func (c *FakeFunctionApps) Create(ctx context.Context, functionApp *v1alpha1.FunctionApp, opts v1.CreateOptions) (result *v1alpha1.FunctionApp, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(functionappsResource, c.ns, functionApp), &v1alpha1.FunctionApp{})
 
@@ -91,7 +93,7 @@ func (c *FakeFunctionApps) Create(functionApp *v1alpha1.FunctionApp) (result *v1
 }
 
 // Update takes the representation of a functionApp and updates it. Returns the server's representation of the functionApp, and an error, if there is any.
-func (c *FakeFunctionApps) Update(functionApp *v1alpha1.FunctionApp) (result *v1alpha1.FunctionApp, err error) {
+func (c *FakeFunctionApps) Update(ctx context.Context, functionApp *v1alpha1.FunctionApp, opts v1.UpdateOptions) (result *v1alpha1.FunctionApp, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(functionappsResource, c.ns, functionApp), &v1alpha1.FunctionApp{})
 
@@ -103,7 +105,7 @@ func (c *FakeFunctionApps) Update(functionApp *v1alpha1.FunctionApp) (result *v1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeFunctionApps) UpdateStatus(functionApp *v1alpha1.FunctionApp) (*v1alpha1.FunctionApp, error) {
+func (c *FakeFunctionApps) UpdateStatus(ctx context.Context, functionApp *v1alpha1.FunctionApp, opts v1.UpdateOptions) (*v1alpha1.FunctionApp, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(functionappsResource, "status", c.ns, functionApp), &v1alpha1.FunctionApp{})
 
@@ -114,7 +116,7 @@ func (c *FakeFunctionApps) UpdateStatus(functionApp *v1alpha1.FunctionApp) (*v1a
 }
 
 // Delete takes name of the functionApp and deletes it. Returns an error if one occurs.
-func (c *FakeFunctionApps) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeFunctionApps) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(functionappsResource, c.ns, name), &v1alpha1.FunctionApp{})
 
@@ -122,15 +124,15 @@ func (c *FakeFunctionApps) Delete(name string, options *v1.DeleteOptions) error 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeFunctionApps) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(functionappsResource, c.ns, listOptions)
+func (c *FakeFunctionApps) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(functionappsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.FunctionAppList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched functionApp.
-func (c *FakeFunctionApps) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.FunctionApp, err error) {
+func (c *FakeFunctionApps) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.FunctionApp, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(functionappsResource, c.ns, name, pt, data, subresources...), &v1alpha1.FunctionApp{})
 

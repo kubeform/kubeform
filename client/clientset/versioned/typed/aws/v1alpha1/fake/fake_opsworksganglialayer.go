@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var opsworksganglialayersResource = schema.GroupVersionResource{Group: "aws.kube
 var opsworksganglialayersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "OpsworksGangliaLayer"}
 
 // Get takes name of the opsworksGangliaLayer, and returns the corresponding opsworksGangliaLayer object, and an error if there is any.
-func (c *FakeOpsworksGangliaLayers) Get(name string, options v1.GetOptions) (result *v1alpha1.OpsworksGangliaLayer, err error) {
+func (c *FakeOpsworksGangliaLayers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.OpsworksGangliaLayer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(opsworksganglialayersResource, c.ns, name), &v1alpha1.OpsworksGangliaLayer{})
 
@@ -51,7 +53,7 @@ func (c *FakeOpsworksGangliaLayers) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of OpsworksGangliaLayers that match those selectors.
-func (c *FakeOpsworksGangliaLayers) List(opts v1.ListOptions) (result *v1alpha1.OpsworksGangliaLayerList, err error) {
+func (c *FakeOpsworksGangliaLayers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.OpsworksGangliaLayerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(opsworksganglialayersResource, opsworksganglialayersKind, c.ns, opts), &v1alpha1.OpsworksGangliaLayerList{})
 
@@ -73,14 +75,14 @@ func (c *FakeOpsworksGangliaLayers) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested opsworksGangliaLayers.
-func (c *FakeOpsworksGangliaLayers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeOpsworksGangliaLayers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(opsworksganglialayersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a opsworksGangliaLayer and creates it.  Returns the server's representation of the opsworksGangliaLayer, and an error, if there is any.
-func (c *FakeOpsworksGangliaLayers) Create(opsworksGangliaLayer *v1alpha1.OpsworksGangliaLayer) (result *v1alpha1.OpsworksGangliaLayer, err error) {
+func (c *FakeOpsworksGangliaLayers) Create(ctx context.Context, opsworksGangliaLayer *v1alpha1.OpsworksGangliaLayer, opts v1.CreateOptions) (result *v1alpha1.OpsworksGangliaLayer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(opsworksganglialayersResource, c.ns, opsworksGangliaLayer), &v1alpha1.OpsworksGangliaLayer{})
 
@@ -91,7 +93,7 @@ func (c *FakeOpsworksGangliaLayers) Create(opsworksGangliaLayer *v1alpha1.Opswor
 }
 
 // Update takes the representation of a opsworksGangliaLayer and updates it. Returns the server's representation of the opsworksGangliaLayer, and an error, if there is any.
-func (c *FakeOpsworksGangliaLayers) Update(opsworksGangliaLayer *v1alpha1.OpsworksGangliaLayer) (result *v1alpha1.OpsworksGangliaLayer, err error) {
+func (c *FakeOpsworksGangliaLayers) Update(ctx context.Context, opsworksGangliaLayer *v1alpha1.OpsworksGangliaLayer, opts v1.UpdateOptions) (result *v1alpha1.OpsworksGangliaLayer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(opsworksganglialayersResource, c.ns, opsworksGangliaLayer), &v1alpha1.OpsworksGangliaLayer{})
 
@@ -103,7 +105,7 @@ func (c *FakeOpsworksGangliaLayers) Update(opsworksGangliaLayer *v1alpha1.Opswor
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeOpsworksGangliaLayers) UpdateStatus(opsworksGangliaLayer *v1alpha1.OpsworksGangliaLayer) (*v1alpha1.OpsworksGangliaLayer, error) {
+func (c *FakeOpsworksGangliaLayers) UpdateStatus(ctx context.Context, opsworksGangliaLayer *v1alpha1.OpsworksGangliaLayer, opts v1.UpdateOptions) (*v1alpha1.OpsworksGangliaLayer, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(opsworksganglialayersResource, "status", c.ns, opsworksGangliaLayer), &v1alpha1.OpsworksGangliaLayer{})
 
@@ -114,7 +116,7 @@ func (c *FakeOpsworksGangliaLayers) UpdateStatus(opsworksGangliaLayer *v1alpha1.
 }
 
 // Delete takes name of the opsworksGangliaLayer and deletes it. Returns an error if one occurs.
-func (c *FakeOpsworksGangliaLayers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeOpsworksGangliaLayers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(opsworksganglialayersResource, c.ns, name), &v1alpha1.OpsworksGangliaLayer{})
 
@@ -122,15 +124,15 @@ func (c *FakeOpsworksGangliaLayers) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeOpsworksGangliaLayers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(opsworksganglialayersResource, c.ns, listOptions)
+func (c *FakeOpsworksGangliaLayers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(opsworksganglialayersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.OpsworksGangliaLayerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched opsworksGangliaLayer.
-func (c *FakeOpsworksGangliaLayers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.OpsworksGangliaLayer, err error) {
+func (c *FakeOpsworksGangliaLayers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.OpsworksGangliaLayer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(opsworksganglialayersResource, c.ns, name, pt, data, subresources...), &v1alpha1.OpsworksGangliaLayer{})
 

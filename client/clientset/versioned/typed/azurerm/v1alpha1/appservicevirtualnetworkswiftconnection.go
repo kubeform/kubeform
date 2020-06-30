@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type AppServiceVirtualNetworkSwiftConnectionsGetter interface {
 
 // AppServiceVirtualNetworkSwiftConnectionInterface has methods to work with AppServiceVirtualNetworkSwiftConnection resources.
 type AppServiceVirtualNetworkSwiftConnectionInterface interface {
-	Create(*v1alpha1.AppServiceVirtualNetworkSwiftConnection) (*v1alpha1.AppServiceVirtualNetworkSwiftConnection, error)
-	Update(*v1alpha1.AppServiceVirtualNetworkSwiftConnection) (*v1alpha1.AppServiceVirtualNetworkSwiftConnection, error)
-	UpdateStatus(*v1alpha1.AppServiceVirtualNetworkSwiftConnection) (*v1alpha1.AppServiceVirtualNetworkSwiftConnection, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.AppServiceVirtualNetworkSwiftConnection, error)
-	List(opts v1.ListOptions) (*v1alpha1.AppServiceVirtualNetworkSwiftConnectionList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppServiceVirtualNetworkSwiftConnection, err error)
+	Create(ctx context.Context, appServiceVirtualNetworkSwiftConnection *v1alpha1.AppServiceVirtualNetworkSwiftConnection, opts v1.CreateOptions) (*v1alpha1.AppServiceVirtualNetworkSwiftConnection, error)
+	Update(ctx context.Context, appServiceVirtualNetworkSwiftConnection *v1alpha1.AppServiceVirtualNetworkSwiftConnection, opts v1.UpdateOptions) (*v1alpha1.AppServiceVirtualNetworkSwiftConnection, error)
+	UpdateStatus(ctx context.Context, appServiceVirtualNetworkSwiftConnection *v1alpha1.AppServiceVirtualNetworkSwiftConnection, opts v1.UpdateOptions) (*v1alpha1.AppServiceVirtualNetworkSwiftConnection, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.AppServiceVirtualNetworkSwiftConnection, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.AppServiceVirtualNetworkSwiftConnectionList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppServiceVirtualNetworkSwiftConnection, err error)
 	AppServiceVirtualNetworkSwiftConnectionExpansion
 }
 
@@ -65,20 +66,20 @@ func newAppServiceVirtualNetworkSwiftConnections(c *AzurermV1alpha1Client, names
 }
 
 // Get takes name of the appServiceVirtualNetworkSwiftConnection, and returns the corresponding appServiceVirtualNetworkSwiftConnection object, and an error if there is any.
-func (c *appServiceVirtualNetworkSwiftConnections) Get(name string, options v1.GetOptions) (result *v1alpha1.AppServiceVirtualNetworkSwiftConnection, err error) {
+func (c *appServiceVirtualNetworkSwiftConnections) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AppServiceVirtualNetworkSwiftConnection, err error) {
 	result = &v1alpha1.AppServiceVirtualNetworkSwiftConnection{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("appservicevirtualnetworkswiftconnections").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of AppServiceVirtualNetworkSwiftConnections that match those selectors.
-func (c *appServiceVirtualNetworkSwiftConnections) List(opts v1.ListOptions) (result *v1alpha1.AppServiceVirtualNetworkSwiftConnectionList, err error) {
+func (c *appServiceVirtualNetworkSwiftConnections) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AppServiceVirtualNetworkSwiftConnectionList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *appServiceVirtualNetworkSwiftConnections) List(opts v1.ListOptions) (re
 		Resource("appservicevirtualnetworkswiftconnections").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested appServiceVirtualNetworkSwiftConnections.
-func (c *appServiceVirtualNetworkSwiftConnections) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *appServiceVirtualNetworkSwiftConnections) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *appServiceVirtualNetworkSwiftConnections) Watch(opts v1.ListOptions) (w
 		Resource("appservicevirtualnetworkswiftconnections").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a appServiceVirtualNetworkSwiftConnection and creates it.  Returns the server's representation of the appServiceVirtualNetworkSwiftConnection, and an error, if there is any.
-func (c *appServiceVirtualNetworkSwiftConnections) Create(appServiceVirtualNetworkSwiftConnection *v1alpha1.AppServiceVirtualNetworkSwiftConnection) (result *v1alpha1.AppServiceVirtualNetworkSwiftConnection, err error) {
+func (c *appServiceVirtualNetworkSwiftConnections) Create(ctx context.Context, appServiceVirtualNetworkSwiftConnection *v1alpha1.AppServiceVirtualNetworkSwiftConnection, opts v1.CreateOptions) (result *v1alpha1.AppServiceVirtualNetworkSwiftConnection, err error) {
 	result = &v1alpha1.AppServiceVirtualNetworkSwiftConnection{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("appservicevirtualnetworkswiftconnections").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appServiceVirtualNetworkSwiftConnection).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a appServiceVirtualNetworkSwiftConnection and updates it. Returns the server's representation of the appServiceVirtualNetworkSwiftConnection, and an error, if there is any.
-func (c *appServiceVirtualNetworkSwiftConnections) Update(appServiceVirtualNetworkSwiftConnection *v1alpha1.AppServiceVirtualNetworkSwiftConnection) (result *v1alpha1.AppServiceVirtualNetworkSwiftConnection, err error) {
+func (c *appServiceVirtualNetworkSwiftConnections) Update(ctx context.Context, appServiceVirtualNetworkSwiftConnection *v1alpha1.AppServiceVirtualNetworkSwiftConnection, opts v1.UpdateOptions) (result *v1alpha1.AppServiceVirtualNetworkSwiftConnection, err error) {
 	result = &v1alpha1.AppServiceVirtualNetworkSwiftConnection{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("appservicevirtualnetworkswiftconnections").
 		Name(appServiceVirtualNetworkSwiftConnection.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appServiceVirtualNetworkSwiftConnection).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *appServiceVirtualNetworkSwiftConnections) UpdateStatus(appServiceVirtualNetworkSwiftConnection *v1alpha1.AppServiceVirtualNetworkSwiftConnection) (result *v1alpha1.AppServiceVirtualNetworkSwiftConnection, err error) {
+func (c *appServiceVirtualNetworkSwiftConnections) UpdateStatus(ctx context.Context, appServiceVirtualNetworkSwiftConnection *v1alpha1.AppServiceVirtualNetworkSwiftConnection, opts v1.UpdateOptions) (result *v1alpha1.AppServiceVirtualNetworkSwiftConnection, err error) {
 	result = &v1alpha1.AppServiceVirtualNetworkSwiftConnection{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("appservicevirtualnetworkswiftconnections").
 		Name(appServiceVirtualNetworkSwiftConnection.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(appServiceVirtualNetworkSwiftConnection).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the appServiceVirtualNetworkSwiftConnection and deletes it. Returns an error if one occurs.
-func (c *appServiceVirtualNetworkSwiftConnections) Delete(name string, options *v1.DeleteOptions) error {
+func (c *appServiceVirtualNetworkSwiftConnections) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("appservicevirtualnetworkswiftconnections").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *appServiceVirtualNetworkSwiftConnections) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *appServiceVirtualNetworkSwiftConnections) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("appservicevirtualnetworkswiftconnections").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched appServiceVirtualNetworkSwiftConnection.
-func (c *appServiceVirtualNetworkSwiftConnections) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppServiceVirtualNetworkSwiftConnection, err error) {
+func (c *appServiceVirtualNetworkSwiftConnections) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppServiceVirtualNetworkSwiftConnection, err error) {
 	result = &v1alpha1.AppServiceVirtualNetworkSwiftConnection{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("appservicevirtualnetworkswiftconnections").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

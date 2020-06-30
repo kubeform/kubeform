@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type ComputeNetworkEndpointGroupsGetter interface {
 
 // ComputeNetworkEndpointGroupInterface has methods to work with ComputeNetworkEndpointGroup resources.
 type ComputeNetworkEndpointGroupInterface interface {
-	Create(*v1alpha1.ComputeNetworkEndpointGroup) (*v1alpha1.ComputeNetworkEndpointGroup, error)
-	Update(*v1alpha1.ComputeNetworkEndpointGroup) (*v1alpha1.ComputeNetworkEndpointGroup, error)
-	UpdateStatus(*v1alpha1.ComputeNetworkEndpointGroup) (*v1alpha1.ComputeNetworkEndpointGroup, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ComputeNetworkEndpointGroup, error)
-	List(opts v1.ListOptions) (*v1alpha1.ComputeNetworkEndpointGroupList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeNetworkEndpointGroup, err error)
+	Create(ctx context.Context, computeNetworkEndpointGroup *v1alpha1.ComputeNetworkEndpointGroup, opts v1.CreateOptions) (*v1alpha1.ComputeNetworkEndpointGroup, error)
+	Update(ctx context.Context, computeNetworkEndpointGroup *v1alpha1.ComputeNetworkEndpointGroup, opts v1.UpdateOptions) (*v1alpha1.ComputeNetworkEndpointGroup, error)
+	UpdateStatus(ctx context.Context, computeNetworkEndpointGroup *v1alpha1.ComputeNetworkEndpointGroup, opts v1.UpdateOptions) (*v1alpha1.ComputeNetworkEndpointGroup, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ComputeNetworkEndpointGroup, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ComputeNetworkEndpointGroupList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeNetworkEndpointGroup, err error)
 	ComputeNetworkEndpointGroupExpansion
 }
 
@@ -65,20 +66,20 @@ func newComputeNetworkEndpointGroups(c *GoogleV1alpha1Client, namespace string) 
 }
 
 // Get takes name of the computeNetworkEndpointGroup, and returns the corresponding computeNetworkEndpointGroup object, and an error if there is any.
-func (c *computeNetworkEndpointGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeNetworkEndpointGroup, err error) {
+func (c *computeNetworkEndpointGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeNetworkEndpointGroup, err error) {
 	result = &v1alpha1.ComputeNetworkEndpointGroup{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("computenetworkendpointgroups").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ComputeNetworkEndpointGroups that match those selectors.
-func (c *computeNetworkEndpointGroups) List(opts v1.ListOptions) (result *v1alpha1.ComputeNetworkEndpointGroupList, err error) {
+func (c *computeNetworkEndpointGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeNetworkEndpointGroupList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *computeNetworkEndpointGroups) List(opts v1.ListOptions) (result *v1alph
 		Resource("computenetworkendpointgroups").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested computeNetworkEndpointGroups.
-func (c *computeNetworkEndpointGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *computeNetworkEndpointGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *computeNetworkEndpointGroups) Watch(opts v1.ListOptions) (watch.Interfa
 		Resource("computenetworkendpointgroups").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a computeNetworkEndpointGroup and creates it.  Returns the server's representation of the computeNetworkEndpointGroup, and an error, if there is any.
-func (c *computeNetworkEndpointGroups) Create(computeNetworkEndpointGroup *v1alpha1.ComputeNetworkEndpointGroup) (result *v1alpha1.ComputeNetworkEndpointGroup, err error) {
+func (c *computeNetworkEndpointGroups) Create(ctx context.Context, computeNetworkEndpointGroup *v1alpha1.ComputeNetworkEndpointGroup, opts v1.CreateOptions) (result *v1alpha1.ComputeNetworkEndpointGroup, err error) {
 	result = &v1alpha1.ComputeNetworkEndpointGroup{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("computenetworkendpointgroups").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeNetworkEndpointGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a computeNetworkEndpointGroup and updates it. Returns the server's representation of the computeNetworkEndpointGroup, and an error, if there is any.
-func (c *computeNetworkEndpointGroups) Update(computeNetworkEndpointGroup *v1alpha1.ComputeNetworkEndpointGroup) (result *v1alpha1.ComputeNetworkEndpointGroup, err error) {
+func (c *computeNetworkEndpointGroups) Update(ctx context.Context, computeNetworkEndpointGroup *v1alpha1.ComputeNetworkEndpointGroup, opts v1.UpdateOptions) (result *v1alpha1.ComputeNetworkEndpointGroup, err error) {
 	result = &v1alpha1.ComputeNetworkEndpointGroup{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computenetworkendpointgroups").
 		Name(computeNetworkEndpointGroup.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeNetworkEndpointGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *computeNetworkEndpointGroups) UpdateStatus(computeNetworkEndpointGroup *v1alpha1.ComputeNetworkEndpointGroup) (result *v1alpha1.ComputeNetworkEndpointGroup, err error) {
+func (c *computeNetworkEndpointGroups) UpdateStatus(ctx context.Context, computeNetworkEndpointGroup *v1alpha1.ComputeNetworkEndpointGroup, opts v1.UpdateOptions) (result *v1alpha1.ComputeNetworkEndpointGroup, err error) {
 	result = &v1alpha1.ComputeNetworkEndpointGroup{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computenetworkendpointgroups").
 		Name(computeNetworkEndpointGroup.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeNetworkEndpointGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the computeNetworkEndpointGroup and deletes it. Returns an error if one occurs.
-func (c *computeNetworkEndpointGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *computeNetworkEndpointGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computenetworkendpointgroups").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *computeNetworkEndpointGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *computeNetworkEndpointGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computenetworkendpointgroups").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched computeNetworkEndpointGroup.
-func (c *computeNetworkEndpointGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeNetworkEndpointGroup, err error) {
+func (c *computeNetworkEndpointGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeNetworkEndpointGroup, err error) {
 	result = &v1alpha1.ComputeNetworkEndpointGroup{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("computenetworkendpointgroups").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

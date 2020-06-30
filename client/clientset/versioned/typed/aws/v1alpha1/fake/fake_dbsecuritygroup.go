@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dbsecuritygroupsResource = schema.GroupVersionResource{Group: "aws.kubeform.
 var dbsecuritygroupsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DbSecurityGroup"}
 
 // Get takes name of the dbSecurityGroup, and returns the corresponding dbSecurityGroup object, and an error if there is any.
-func (c *FakeDbSecurityGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.DbSecurityGroup, err error) {
+func (c *FakeDbSecurityGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DbSecurityGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dbsecuritygroupsResource, c.ns, name), &v1alpha1.DbSecurityGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeDbSecurityGroups) Get(name string, options v1.GetOptions) (result *
 }
 
 // List takes label and field selectors, and returns the list of DbSecurityGroups that match those selectors.
-func (c *FakeDbSecurityGroups) List(opts v1.ListOptions) (result *v1alpha1.DbSecurityGroupList, err error) {
+func (c *FakeDbSecurityGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DbSecurityGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dbsecuritygroupsResource, dbsecuritygroupsKind, c.ns, opts), &v1alpha1.DbSecurityGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDbSecurityGroups) List(opts v1.ListOptions) (result *v1alpha1.DbSec
 }
 
 // Watch returns a watch.Interface that watches the requested dbSecurityGroups.
-func (c *FakeDbSecurityGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDbSecurityGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dbsecuritygroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dbSecurityGroup and creates it.  Returns the server's representation of the dbSecurityGroup, and an error, if there is any.
-func (c *FakeDbSecurityGroups) Create(dbSecurityGroup *v1alpha1.DbSecurityGroup) (result *v1alpha1.DbSecurityGroup, err error) {
+func (c *FakeDbSecurityGroups) Create(ctx context.Context, dbSecurityGroup *v1alpha1.DbSecurityGroup, opts v1.CreateOptions) (result *v1alpha1.DbSecurityGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dbsecuritygroupsResource, c.ns, dbSecurityGroup), &v1alpha1.DbSecurityGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeDbSecurityGroups) Create(dbSecurityGroup *v1alpha1.DbSecurityGroup)
 }
 
 // Update takes the representation of a dbSecurityGroup and updates it. Returns the server's representation of the dbSecurityGroup, and an error, if there is any.
-func (c *FakeDbSecurityGroups) Update(dbSecurityGroup *v1alpha1.DbSecurityGroup) (result *v1alpha1.DbSecurityGroup, err error) {
+func (c *FakeDbSecurityGroups) Update(ctx context.Context, dbSecurityGroup *v1alpha1.DbSecurityGroup, opts v1.UpdateOptions) (result *v1alpha1.DbSecurityGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dbsecuritygroupsResource, c.ns, dbSecurityGroup), &v1alpha1.DbSecurityGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeDbSecurityGroups) Update(dbSecurityGroup *v1alpha1.DbSecurityGroup)
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDbSecurityGroups) UpdateStatus(dbSecurityGroup *v1alpha1.DbSecurityGroup) (*v1alpha1.DbSecurityGroup, error) {
+func (c *FakeDbSecurityGroups) UpdateStatus(ctx context.Context, dbSecurityGroup *v1alpha1.DbSecurityGroup, opts v1.UpdateOptions) (*v1alpha1.DbSecurityGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dbsecuritygroupsResource, "status", c.ns, dbSecurityGroup), &v1alpha1.DbSecurityGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeDbSecurityGroups) UpdateStatus(dbSecurityGroup *v1alpha1.DbSecurity
 }
 
 // Delete takes name of the dbSecurityGroup and deletes it. Returns an error if one occurs.
-func (c *FakeDbSecurityGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDbSecurityGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dbsecuritygroupsResource, c.ns, name), &v1alpha1.DbSecurityGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeDbSecurityGroups) Delete(name string, options *v1.DeleteOptions) er
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDbSecurityGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dbsecuritygroupsResource, c.ns, listOptions)
+func (c *FakeDbSecurityGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dbsecuritygroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DbSecurityGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dbSecurityGroup.
-func (c *FakeDbSecurityGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DbSecurityGroup, err error) {
+func (c *FakeDbSecurityGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DbSecurityGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dbsecuritygroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DbSecurityGroup{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var routetableassociationsResource = schema.GroupVersionResource{Group: "aws.kub
 var routetableassociationsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "RouteTableAssociation"}
 
 // Get takes name of the routeTableAssociation, and returns the corresponding routeTableAssociation object, and an error if there is any.
-func (c *FakeRouteTableAssociations) Get(name string, options v1.GetOptions) (result *v1alpha1.RouteTableAssociation, err error) {
+func (c *FakeRouteTableAssociations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.RouteTableAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(routetableassociationsResource, c.ns, name), &v1alpha1.RouteTableAssociation{})
 
@@ -51,7 +53,7 @@ func (c *FakeRouteTableAssociations) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of RouteTableAssociations that match those selectors.
-func (c *FakeRouteTableAssociations) List(opts v1.ListOptions) (result *v1alpha1.RouteTableAssociationList, err error) {
+func (c *FakeRouteTableAssociations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RouteTableAssociationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(routetableassociationsResource, routetableassociationsKind, c.ns, opts), &v1alpha1.RouteTableAssociationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeRouteTableAssociations) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested routeTableAssociations.
-func (c *FakeRouteTableAssociations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeRouteTableAssociations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(routetableassociationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a routeTableAssociation and creates it.  Returns the server's representation of the routeTableAssociation, and an error, if there is any.
-func (c *FakeRouteTableAssociations) Create(routeTableAssociation *v1alpha1.RouteTableAssociation) (result *v1alpha1.RouteTableAssociation, err error) {
+func (c *FakeRouteTableAssociations) Create(ctx context.Context, routeTableAssociation *v1alpha1.RouteTableAssociation, opts v1.CreateOptions) (result *v1alpha1.RouteTableAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(routetableassociationsResource, c.ns, routeTableAssociation), &v1alpha1.RouteTableAssociation{})
 
@@ -91,7 +93,7 @@ func (c *FakeRouteTableAssociations) Create(routeTableAssociation *v1alpha1.Rout
 }
 
 // Update takes the representation of a routeTableAssociation and updates it. Returns the server's representation of the routeTableAssociation, and an error, if there is any.
-func (c *FakeRouteTableAssociations) Update(routeTableAssociation *v1alpha1.RouteTableAssociation) (result *v1alpha1.RouteTableAssociation, err error) {
+func (c *FakeRouteTableAssociations) Update(ctx context.Context, routeTableAssociation *v1alpha1.RouteTableAssociation, opts v1.UpdateOptions) (result *v1alpha1.RouteTableAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(routetableassociationsResource, c.ns, routeTableAssociation), &v1alpha1.RouteTableAssociation{})
 
@@ -103,7 +105,7 @@ func (c *FakeRouteTableAssociations) Update(routeTableAssociation *v1alpha1.Rout
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeRouteTableAssociations) UpdateStatus(routeTableAssociation *v1alpha1.RouteTableAssociation) (*v1alpha1.RouteTableAssociation, error) {
+func (c *FakeRouteTableAssociations) UpdateStatus(ctx context.Context, routeTableAssociation *v1alpha1.RouteTableAssociation, opts v1.UpdateOptions) (*v1alpha1.RouteTableAssociation, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(routetableassociationsResource, "status", c.ns, routeTableAssociation), &v1alpha1.RouteTableAssociation{})
 
@@ -114,7 +116,7 @@ func (c *FakeRouteTableAssociations) UpdateStatus(routeTableAssociation *v1alpha
 }
 
 // Delete takes name of the routeTableAssociation and deletes it. Returns an error if one occurs.
-func (c *FakeRouteTableAssociations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeRouteTableAssociations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(routetableassociationsResource, c.ns, name), &v1alpha1.RouteTableAssociation{})
 
@@ -122,15 +124,15 @@ func (c *FakeRouteTableAssociations) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeRouteTableAssociations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(routetableassociationsResource, c.ns, listOptions)
+func (c *FakeRouteTableAssociations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(routetableassociationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.RouteTableAssociationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched routeTableAssociation.
-func (c *FakeRouteTableAssociations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RouteTableAssociation, err error) {
+func (c *FakeRouteTableAssociations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RouteTableAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(routetableassociationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.RouteTableAssociation{})
 

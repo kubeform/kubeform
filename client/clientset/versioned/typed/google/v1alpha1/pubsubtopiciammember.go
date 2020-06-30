@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type PubsubTopicIamMembersGetter interface {
 
 // PubsubTopicIamMemberInterface has methods to work with PubsubTopicIamMember resources.
 type PubsubTopicIamMemberInterface interface {
-	Create(*v1alpha1.PubsubTopicIamMember) (*v1alpha1.PubsubTopicIamMember, error)
-	Update(*v1alpha1.PubsubTopicIamMember) (*v1alpha1.PubsubTopicIamMember, error)
-	UpdateStatus(*v1alpha1.PubsubTopicIamMember) (*v1alpha1.PubsubTopicIamMember, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.PubsubTopicIamMember, error)
-	List(opts v1.ListOptions) (*v1alpha1.PubsubTopicIamMemberList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PubsubTopicIamMember, err error)
+	Create(ctx context.Context, pubsubTopicIamMember *v1alpha1.PubsubTopicIamMember, opts v1.CreateOptions) (*v1alpha1.PubsubTopicIamMember, error)
+	Update(ctx context.Context, pubsubTopicIamMember *v1alpha1.PubsubTopicIamMember, opts v1.UpdateOptions) (*v1alpha1.PubsubTopicIamMember, error)
+	UpdateStatus(ctx context.Context, pubsubTopicIamMember *v1alpha1.PubsubTopicIamMember, opts v1.UpdateOptions) (*v1alpha1.PubsubTopicIamMember, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.PubsubTopicIamMember, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.PubsubTopicIamMemberList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PubsubTopicIamMember, err error)
 	PubsubTopicIamMemberExpansion
 }
 
@@ -65,20 +66,20 @@ func newPubsubTopicIamMembers(c *GoogleV1alpha1Client, namespace string) *pubsub
 }
 
 // Get takes name of the pubsubTopicIamMember, and returns the corresponding pubsubTopicIamMember object, and an error if there is any.
-func (c *pubsubTopicIamMembers) Get(name string, options v1.GetOptions) (result *v1alpha1.PubsubTopicIamMember, err error) {
+func (c *pubsubTopicIamMembers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PubsubTopicIamMember, err error) {
 	result = &v1alpha1.PubsubTopicIamMember{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("pubsubtopiciammembers").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of PubsubTopicIamMembers that match those selectors.
-func (c *pubsubTopicIamMembers) List(opts v1.ListOptions) (result *v1alpha1.PubsubTopicIamMemberList, err error) {
+func (c *pubsubTopicIamMembers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PubsubTopicIamMemberList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *pubsubTopicIamMembers) List(opts v1.ListOptions) (result *v1alpha1.Pubs
 		Resource("pubsubtopiciammembers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested pubsubTopicIamMembers.
-func (c *pubsubTopicIamMembers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *pubsubTopicIamMembers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *pubsubTopicIamMembers) Watch(opts v1.ListOptions) (watch.Interface, err
 		Resource("pubsubtopiciammembers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a pubsubTopicIamMember and creates it.  Returns the server's representation of the pubsubTopicIamMember, and an error, if there is any.
-func (c *pubsubTopicIamMembers) Create(pubsubTopicIamMember *v1alpha1.PubsubTopicIamMember) (result *v1alpha1.PubsubTopicIamMember, err error) {
+func (c *pubsubTopicIamMembers) Create(ctx context.Context, pubsubTopicIamMember *v1alpha1.PubsubTopicIamMember, opts v1.CreateOptions) (result *v1alpha1.PubsubTopicIamMember, err error) {
 	result = &v1alpha1.PubsubTopicIamMember{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("pubsubtopiciammembers").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(pubsubTopicIamMember).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a pubsubTopicIamMember and updates it. Returns the server's representation of the pubsubTopicIamMember, and an error, if there is any.
-func (c *pubsubTopicIamMembers) Update(pubsubTopicIamMember *v1alpha1.PubsubTopicIamMember) (result *v1alpha1.PubsubTopicIamMember, err error) {
+func (c *pubsubTopicIamMembers) Update(ctx context.Context, pubsubTopicIamMember *v1alpha1.PubsubTopicIamMember, opts v1.UpdateOptions) (result *v1alpha1.PubsubTopicIamMember, err error) {
 	result = &v1alpha1.PubsubTopicIamMember{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("pubsubtopiciammembers").
 		Name(pubsubTopicIamMember.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(pubsubTopicIamMember).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *pubsubTopicIamMembers) UpdateStatus(pubsubTopicIamMember *v1alpha1.PubsubTopicIamMember) (result *v1alpha1.PubsubTopicIamMember, err error) {
+func (c *pubsubTopicIamMembers) UpdateStatus(ctx context.Context, pubsubTopicIamMember *v1alpha1.PubsubTopicIamMember, opts v1.UpdateOptions) (result *v1alpha1.PubsubTopicIamMember, err error) {
 	result = &v1alpha1.PubsubTopicIamMember{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("pubsubtopiciammembers").
 		Name(pubsubTopicIamMember.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(pubsubTopicIamMember).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the pubsubTopicIamMember and deletes it. Returns an error if one occurs.
-func (c *pubsubTopicIamMembers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *pubsubTopicIamMembers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("pubsubtopiciammembers").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *pubsubTopicIamMembers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *pubsubTopicIamMembers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("pubsubtopiciammembers").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched pubsubTopicIamMember.
-func (c *pubsubTopicIamMembers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PubsubTopicIamMember, err error) {
+func (c *pubsubTopicIamMembers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PubsubTopicIamMember, err error) {
 	result = &v1alpha1.PubsubTopicIamMember{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("pubsubtopiciammembers").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

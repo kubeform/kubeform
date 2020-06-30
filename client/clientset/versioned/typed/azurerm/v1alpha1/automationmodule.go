@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type AutomationModulesGetter interface {
 
 // AutomationModuleInterface has methods to work with AutomationModule resources.
 type AutomationModuleInterface interface {
-	Create(*v1alpha1.AutomationModule) (*v1alpha1.AutomationModule, error)
-	Update(*v1alpha1.AutomationModule) (*v1alpha1.AutomationModule, error)
-	UpdateStatus(*v1alpha1.AutomationModule) (*v1alpha1.AutomationModule, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.AutomationModule, error)
-	List(opts v1.ListOptions) (*v1alpha1.AutomationModuleList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AutomationModule, err error)
+	Create(ctx context.Context, automationModule *v1alpha1.AutomationModule, opts v1.CreateOptions) (*v1alpha1.AutomationModule, error)
+	Update(ctx context.Context, automationModule *v1alpha1.AutomationModule, opts v1.UpdateOptions) (*v1alpha1.AutomationModule, error)
+	UpdateStatus(ctx context.Context, automationModule *v1alpha1.AutomationModule, opts v1.UpdateOptions) (*v1alpha1.AutomationModule, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.AutomationModule, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.AutomationModuleList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AutomationModule, err error)
 	AutomationModuleExpansion
 }
 
@@ -65,20 +66,20 @@ func newAutomationModules(c *AzurermV1alpha1Client, namespace string) *automatio
 }
 
 // Get takes name of the automationModule, and returns the corresponding automationModule object, and an error if there is any.
-func (c *automationModules) Get(name string, options v1.GetOptions) (result *v1alpha1.AutomationModule, err error) {
+func (c *automationModules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AutomationModule, err error) {
 	result = &v1alpha1.AutomationModule{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("automationmodules").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of AutomationModules that match those selectors.
-func (c *automationModules) List(opts v1.ListOptions) (result *v1alpha1.AutomationModuleList, err error) {
+func (c *automationModules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AutomationModuleList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *automationModules) List(opts v1.ListOptions) (result *v1alpha1.Automati
 		Resource("automationmodules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested automationModules.
-func (c *automationModules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *automationModules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *automationModules) Watch(opts v1.ListOptions) (watch.Interface, error) 
 		Resource("automationmodules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a automationModule and creates it.  Returns the server's representation of the automationModule, and an error, if there is any.
-func (c *automationModules) Create(automationModule *v1alpha1.AutomationModule) (result *v1alpha1.AutomationModule, err error) {
+func (c *automationModules) Create(ctx context.Context, automationModule *v1alpha1.AutomationModule, opts v1.CreateOptions) (result *v1alpha1.AutomationModule, err error) {
 	result = &v1alpha1.AutomationModule{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("automationmodules").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(automationModule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a automationModule and updates it. Returns the server's representation of the automationModule, and an error, if there is any.
-func (c *automationModules) Update(automationModule *v1alpha1.AutomationModule) (result *v1alpha1.AutomationModule, err error) {
+func (c *automationModules) Update(ctx context.Context, automationModule *v1alpha1.AutomationModule, opts v1.UpdateOptions) (result *v1alpha1.AutomationModule, err error) {
 	result = &v1alpha1.AutomationModule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("automationmodules").
 		Name(automationModule.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(automationModule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *automationModules) UpdateStatus(automationModule *v1alpha1.AutomationModule) (result *v1alpha1.AutomationModule, err error) {
+func (c *automationModules) UpdateStatus(ctx context.Context, automationModule *v1alpha1.AutomationModule, opts v1.UpdateOptions) (result *v1alpha1.AutomationModule, err error) {
 	result = &v1alpha1.AutomationModule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("automationmodules").
 		Name(automationModule.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(automationModule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the automationModule and deletes it. Returns an error if one occurs.
-func (c *automationModules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *automationModules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("automationmodules").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *automationModules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *automationModules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("automationmodules").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched automationModule.
-func (c *automationModules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AutomationModule, err error) {
+func (c *automationModules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AutomationModule, err error) {
 	result = &v1alpha1.AutomationModule{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("automationmodules").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

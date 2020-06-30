@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type VpcDHCPOptionsesGetter interface {
 
 // VpcDHCPOptionsInterface has methods to work with VpcDHCPOptions resources.
 type VpcDHCPOptionsInterface interface {
-	Create(*v1alpha1.VpcDHCPOptions) (*v1alpha1.VpcDHCPOptions, error)
-	Update(*v1alpha1.VpcDHCPOptions) (*v1alpha1.VpcDHCPOptions, error)
-	UpdateStatus(*v1alpha1.VpcDHCPOptions) (*v1alpha1.VpcDHCPOptions, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.VpcDHCPOptions, error)
-	List(opts v1.ListOptions) (*v1alpha1.VpcDHCPOptionsList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.VpcDHCPOptions, err error)
+	Create(ctx context.Context, vpcDHCPOptions *v1alpha1.VpcDHCPOptions, opts v1.CreateOptions) (*v1alpha1.VpcDHCPOptions, error)
+	Update(ctx context.Context, vpcDHCPOptions *v1alpha1.VpcDHCPOptions, opts v1.UpdateOptions) (*v1alpha1.VpcDHCPOptions, error)
+	UpdateStatus(ctx context.Context, vpcDHCPOptions *v1alpha1.VpcDHCPOptions, opts v1.UpdateOptions) (*v1alpha1.VpcDHCPOptions, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.VpcDHCPOptions, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.VpcDHCPOptionsList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.VpcDHCPOptions, err error)
 	VpcDHCPOptionsExpansion
 }
 
@@ -65,20 +66,20 @@ func newVpcDHCPOptionses(c *AwsV1alpha1Client, namespace string) *vpcDHCPOptions
 }
 
 // Get takes name of the vpcDHCPOptions, and returns the corresponding vpcDHCPOptions object, and an error if there is any.
-func (c *vpcDHCPOptionses) Get(name string, options v1.GetOptions) (result *v1alpha1.VpcDHCPOptions, err error) {
+func (c *vpcDHCPOptionses) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.VpcDHCPOptions, err error) {
 	result = &v1alpha1.VpcDHCPOptions{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("vpcdhcpoptionses").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of VpcDHCPOptionses that match those selectors.
-func (c *vpcDHCPOptionses) List(opts v1.ListOptions) (result *v1alpha1.VpcDHCPOptionsList, err error) {
+func (c *vpcDHCPOptionses) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.VpcDHCPOptionsList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *vpcDHCPOptionses) List(opts v1.ListOptions) (result *v1alpha1.VpcDHCPOp
 		Resource("vpcdhcpoptionses").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested vpcDHCPOptionses.
-func (c *vpcDHCPOptionses) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *vpcDHCPOptionses) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *vpcDHCPOptionses) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("vpcdhcpoptionses").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a vpcDHCPOptions and creates it.  Returns the server's representation of the vpcDHCPOptions, and an error, if there is any.
-func (c *vpcDHCPOptionses) Create(vpcDHCPOptions *v1alpha1.VpcDHCPOptions) (result *v1alpha1.VpcDHCPOptions, err error) {
+func (c *vpcDHCPOptionses) Create(ctx context.Context, vpcDHCPOptions *v1alpha1.VpcDHCPOptions, opts v1.CreateOptions) (result *v1alpha1.VpcDHCPOptions, err error) {
 	result = &v1alpha1.VpcDHCPOptions{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("vpcdhcpoptionses").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(vpcDHCPOptions).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a vpcDHCPOptions and updates it. Returns the server's representation of the vpcDHCPOptions, and an error, if there is any.
-func (c *vpcDHCPOptionses) Update(vpcDHCPOptions *v1alpha1.VpcDHCPOptions) (result *v1alpha1.VpcDHCPOptions, err error) {
+func (c *vpcDHCPOptionses) Update(ctx context.Context, vpcDHCPOptions *v1alpha1.VpcDHCPOptions, opts v1.UpdateOptions) (result *v1alpha1.VpcDHCPOptions, err error) {
 	result = &v1alpha1.VpcDHCPOptions{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("vpcdhcpoptionses").
 		Name(vpcDHCPOptions.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(vpcDHCPOptions).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *vpcDHCPOptionses) UpdateStatus(vpcDHCPOptions *v1alpha1.VpcDHCPOptions) (result *v1alpha1.VpcDHCPOptions, err error) {
+func (c *vpcDHCPOptionses) UpdateStatus(ctx context.Context, vpcDHCPOptions *v1alpha1.VpcDHCPOptions, opts v1.UpdateOptions) (result *v1alpha1.VpcDHCPOptions, err error) {
 	result = &v1alpha1.VpcDHCPOptions{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("vpcdhcpoptionses").
 		Name(vpcDHCPOptions.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(vpcDHCPOptions).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the vpcDHCPOptions and deletes it. Returns an error if one occurs.
-func (c *vpcDHCPOptionses) Delete(name string, options *v1.DeleteOptions) error {
+func (c *vpcDHCPOptionses) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("vpcdhcpoptionses").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *vpcDHCPOptionses) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *vpcDHCPOptionses) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("vpcdhcpoptionses").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched vpcDHCPOptions.
-func (c *vpcDHCPOptionses) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.VpcDHCPOptions, err error) {
+func (c *vpcDHCPOptionses) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.VpcDHCPOptions, err error) {
 	result = &v1alpha1.VpcDHCPOptions{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("vpcdhcpoptionses").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

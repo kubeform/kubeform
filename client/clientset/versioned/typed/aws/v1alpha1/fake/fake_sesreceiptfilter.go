@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var sesreceiptfiltersResource = schema.GroupVersionResource{Group: "aws.kubeform
 var sesreceiptfiltersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "SesReceiptFilter"}
 
 // Get takes name of the sesReceiptFilter, and returns the corresponding sesReceiptFilter object, and an error if there is any.
-func (c *FakeSesReceiptFilters) Get(name string, options v1.GetOptions) (result *v1alpha1.SesReceiptFilter, err error) {
+func (c *FakeSesReceiptFilters) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SesReceiptFilter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(sesreceiptfiltersResource, c.ns, name), &v1alpha1.SesReceiptFilter{})
 
@@ -51,7 +53,7 @@ func (c *FakeSesReceiptFilters) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of SesReceiptFilters that match those selectors.
-func (c *FakeSesReceiptFilters) List(opts v1.ListOptions) (result *v1alpha1.SesReceiptFilterList, err error) {
+func (c *FakeSesReceiptFilters) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SesReceiptFilterList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(sesreceiptfiltersResource, sesreceiptfiltersKind, c.ns, opts), &v1alpha1.SesReceiptFilterList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSesReceiptFilters) List(opts v1.ListOptions) (result *v1alpha1.SesR
 }
 
 // Watch returns a watch.Interface that watches the requested sesReceiptFilters.
-func (c *FakeSesReceiptFilters) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSesReceiptFilters) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(sesreceiptfiltersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a sesReceiptFilter and creates it.  Returns the server's representation of the sesReceiptFilter, and an error, if there is any.
-func (c *FakeSesReceiptFilters) Create(sesReceiptFilter *v1alpha1.SesReceiptFilter) (result *v1alpha1.SesReceiptFilter, err error) {
+func (c *FakeSesReceiptFilters) Create(ctx context.Context, sesReceiptFilter *v1alpha1.SesReceiptFilter, opts v1.CreateOptions) (result *v1alpha1.SesReceiptFilter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(sesreceiptfiltersResource, c.ns, sesReceiptFilter), &v1alpha1.SesReceiptFilter{})
 
@@ -91,7 +93,7 @@ func (c *FakeSesReceiptFilters) Create(sesReceiptFilter *v1alpha1.SesReceiptFilt
 }
 
 // Update takes the representation of a sesReceiptFilter and updates it. Returns the server's representation of the sesReceiptFilter, and an error, if there is any.
-func (c *FakeSesReceiptFilters) Update(sesReceiptFilter *v1alpha1.SesReceiptFilter) (result *v1alpha1.SesReceiptFilter, err error) {
+func (c *FakeSesReceiptFilters) Update(ctx context.Context, sesReceiptFilter *v1alpha1.SesReceiptFilter, opts v1.UpdateOptions) (result *v1alpha1.SesReceiptFilter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(sesreceiptfiltersResource, c.ns, sesReceiptFilter), &v1alpha1.SesReceiptFilter{})
 
@@ -103,7 +105,7 @@ func (c *FakeSesReceiptFilters) Update(sesReceiptFilter *v1alpha1.SesReceiptFilt
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSesReceiptFilters) UpdateStatus(sesReceiptFilter *v1alpha1.SesReceiptFilter) (*v1alpha1.SesReceiptFilter, error) {
+func (c *FakeSesReceiptFilters) UpdateStatus(ctx context.Context, sesReceiptFilter *v1alpha1.SesReceiptFilter, opts v1.UpdateOptions) (*v1alpha1.SesReceiptFilter, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(sesreceiptfiltersResource, "status", c.ns, sesReceiptFilter), &v1alpha1.SesReceiptFilter{})
 
@@ -114,7 +116,7 @@ func (c *FakeSesReceiptFilters) UpdateStatus(sesReceiptFilter *v1alpha1.SesRecei
 }
 
 // Delete takes name of the sesReceiptFilter and deletes it. Returns an error if one occurs.
-func (c *FakeSesReceiptFilters) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSesReceiptFilters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(sesreceiptfiltersResource, c.ns, name), &v1alpha1.SesReceiptFilter{})
 
@@ -122,15 +124,15 @@ func (c *FakeSesReceiptFilters) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSesReceiptFilters) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(sesreceiptfiltersResource, c.ns, listOptions)
+func (c *FakeSesReceiptFilters) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(sesreceiptfiltersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SesReceiptFilterList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched sesReceiptFilter.
-func (c *FakeSesReceiptFilters) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SesReceiptFilter, err error) {
+func (c *FakeSesReceiptFilters) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SesReceiptFilter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(sesreceiptfiltersResource, c.ns, name, pt, data, subresources...), &v1alpha1.SesReceiptFilter{})
 

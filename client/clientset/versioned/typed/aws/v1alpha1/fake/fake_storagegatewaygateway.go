@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var storagegatewaygatewaysResource = schema.GroupVersionResource{Group: "aws.kub
 var storagegatewaygatewaysKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "StoragegatewayGateway"}
 
 // Get takes name of the storagegatewayGateway, and returns the corresponding storagegatewayGateway object, and an error if there is any.
-func (c *FakeStoragegatewayGateways) Get(name string, options v1.GetOptions) (result *v1alpha1.StoragegatewayGateway, err error) {
+func (c *FakeStoragegatewayGateways) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.StoragegatewayGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(storagegatewaygatewaysResource, c.ns, name), &v1alpha1.StoragegatewayGateway{})
 
@@ -51,7 +53,7 @@ func (c *FakeStoragegatewayGateways) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of StoragegatewayGateways that match those selectors.
-func (c *FakeStoragegatewayGateways) List(opts v1.ListOptions) (result *v1alpha1.StoragegatewayGatewayList, err error) {
+func (c *FakeStoragegatewayGateways) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.StoragegatewayGatewayList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(storagegatewaygatewaysResource, storagegatewaygatewaysKind, c.ns, opts), &v1alpha1.StoragegatewayGatewayList{})
 
@@ -73,14 +75,14 @@ func (c *FakeStoragegatewayGateways) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested storagegatewayGateways.
-func (c *FakeStoragegatewayGateways) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeStoragegatewayGateways) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(storagegatewaygatewaysResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a storagegatewayGateway and creates it.  Returns the server's representation of the storagegatewayGateway, and an error, if there is any.
-func (c *FakeStoragegatewayGateways) Create(storagegatewayGateway *v1alpha1.StoragegatewayGateway) (result *v1alpha1.StoragegatewayGateway, err error) {
+func (c *FakeStoragegatewayGateways) Create(ctx context.Context, storagegatewayGateway *v1alpha1.StoragegatewayGateway, opts v1.CreateOptions) (result *v1alpha1.StoragegatewayGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(storagegatewaygatewaysResource, c.ns, storagegatewayGateway), &v1alpha1.StoragegatewayGateway{})
 
@@ -91,7 +93,7 @@ func (c *FakeStoragegatewayGateways) Create(storagegatewayGateway *v1alpha1.Stor
 }
 
 // Update takes the representation of a storagegatewayGateway and updates it. Returns the server's representation of the storagegatewayGateway, and an error, if there is any.
-func (c *FakeStoragegatewayGateways) Update(storagegatewayGateway *v1alpha1.StoragegatewayGateway) (result *v1alpha1.StoragegatewayGateway, err error) {
+func (c *FakeStoragegatewayGateways) Update(ctx context.Context, storagegatewayGateway *v1alpha1.StoragegatewayGateway, opts v1.UpdateOptions) (result *v1alpha1.StoragegatewayGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(storagegatewaygatewaysResource, c.ns, storagegatewayGateway), &v1alpha1.StoragegatewayGateway{})
 
@@ -103,7 +105,7 @@ func (c *FakeStoragegatewayGateways) Update(storagegatewayGateway *v1alpha1.Stor
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeStoragegatewayGateways) UpdateStatus(storagegatewayGateway *v1alpha1.StoragegatewayGateway) (*v1alpha1.StoragegatewayGateway, error) {
+func (c *FakeStoragegatewayGateways) UpdateStatus(ctx context.Context, storagegatewayGateway *v1alpha1.StoragegatewayGateway, opts v1.UpdateOptions) (*v1alpha1.StoragegatewayGateway, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(storagegatewaygatewaysResource, "status", c.ns, storagegatewayGateway), &v1alpha1.StoragegatewayGateway{})
 
@@ -114,7 +116,7 @@ func (c *FakeStoragegatewayGateways) UpdateStatus(storagegatewayGateway *v1alpha
 }
 
 // Delete takes name of the storagegatewayGateway and deletes it. Returns an error if one occurs.
-func (c *FakeStoragegatewayGateways) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeStoragegatewayGateways) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(storagegatewaygatewaysResource, c.ns, name), &v1alpha1.StoragegatewayGateway{})
 
@@ -122,15 +124,15 @@ func (c *FakeStoragegatewayGateways) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeStoragegatewayGateways) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(storagegatewaygatewaysResource, c.ns, listOptions)
+func (c *FakeStoragegatewayGateways) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(storagegatewaygatewaysResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.StoragegatewayGatewayList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched storagegatewayGateway.
-func (c *FakeStoragegatewayGateways) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StoragegatewayGateway, err error) {
+func (c *FakeStoragegatewayGateways) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StoragegatewayGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(storagegatewaygatewaysResource, c.ns, name, pt, data, subresources...), &v1alpha1.StoragegatewayGateway{})
 

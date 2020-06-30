@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iothubendpointeventhubsResource = schema.GroupVersionResource{Group: "azurer
 var iothubendpointeventhubsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "IothubEndpointEventhub"}
 
 // Get takes name of the iothubEndpointEventhub, and returns the corresponding iothubEndpointEventhub object, and an error if there is any.
-func (c *FakeIothubEndpointEventhubs) Get(name string, options v1.GetOptions) (result *v1alpha1.IothubEndpointEventhub, err error) {
+func (c *FakeIothubEndpointEventhubs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IothubEndpointEventhub, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iothubendpointeventhubsResource, c.ns, name), &v1alpha1.IothubEndpointEventhub{})
 
@@ -51,7 +53,7 @@ func (c *FakeIothubEndpointEventhubs) Get(name string, options v1.GetOptions) (r
 }
 
 // List takes label and field selectors, and returns the list of IothubEndpointEventhubs that match those selectors.
-func (c *FakeIothubEndpointEventhubs) List(opts v1.ListOptions) (result *v1alpha1.IothubEndpointEventhubList, err error) {
+func (c *FakeIothubEndpointEventhubs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IothubEndpointEventhubList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iothubendpointeventhubsResource, iothubendpointeventhubsKind, c.ns, opts), &v1alpha1.IothubEndpointEventhubList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIothubEndpointEventhubs) List(opts v1.ListOptions) (result *v1alpha
 }
 
 // Watch returns a watch.Interface that watches the requested iothubEndpointEventhubs.
-func (c *FakeIothubEndpointEventhubs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIothubEndpointEventhubs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iothubendpointeventhubsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iothubEndpointEventhub and creates it.  Returns the server's representation of the iothubEndpointEventhub, and an error, if there is any.
-func (c *FakeIothubEndpointEventhubs) Create(iothubEndpointEventhub *v1alpha1.IothubEndpointEventhub) (result *v1alpha1.IothubEndpointEventhub, err error) {
+func (c *FakeIothubEndpointEventhubs) Create(ctx context.Context, iothubEndpointEventhub *v1alpha1.IothubEndpointEventhub, opts v1.CreateOptions) (result *v1alpha1.IothubEndpointEventhub, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iothubendpointeventhubsResource, c.ns, iothubEndpointEventhub), &v1alpha1.IothubEndpointEventhub{})
 
@@ -91,7 +93,7 @@ func (c *FakeIothubEndpointEventhubs) Create(iothubEndpointEventhub *v1alpha1.Io
 }
 
 // Update takes the representation of a iothubEndpointEventhub and updates it. Returns the server's representation of the iothubEndpointEventhub, and an error, if there is any.
-func (c *FakeIothubEndpointEventhubs) Update(iothubEndpointEventhub *v1alpha1.IothubEndpointEventhub) (result *v1alpha1.IothubEndpointEventhub, err error) {
+func (c *FakeIothubEndpointEventhubs) Update(ctx context.Context, iothubEndpointEventhub *v1alpha1.IothubEndpointEventhub, opts v1.UpdateOptions) (result *v1alpha1.IothubEndpointEventhub, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iothubendpointeventhubsResource, c.ns, iothubEndpointEventhub), &v1alpha1.IothubEndpointEventhub{})
 
@@ -103,7 +105,7 @@ func (c *FakeIothubEndpointEventhubs) Update(iothubEndpointEventhub *v1alpha1.Io
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIothubEndpointEventhubs) UpdateStatus(iothubEndpointEventhub *v1alpha1.IothubEndpointEventhub) (*v1alpha1.IothubEndpointEventhub, error) {
+func (c *FakeIothubEndpointEventhubs) UpdateStatus(ctx context.Context, iothubEndpointEventhub *v1alpha1.IothubEndpointEventhub, opts v1.UpdateOptions) (*v1alpha1.IothubEndpointEventhub, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iothubendpointeventhubsResource, "status", c.ns, iothubEndpointEventhub), &v1alpha1.IothubEndpointEventhub{})
 
@@ -114,7 +116,7 @@ func (c *FakeIothubEndpointEventhubs) UpdateStatus(iothubEndpointEventhub *v1alp
 }
 
 // Delete takes name of the iothubEndpointEventhub and deletes it. Returns an error if one occurs.
-func (c *FakeIothubEndpointEventhubs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIothubEndpointEventhubs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iothubendpointeventhubsResource, c.ns, name), &v1alpha1.IothubEndpointEventhub{})
 
@@ -122,15 +124,15 @@ func (c *FakeIothubEndpointEventhubs) Delete(name string, options *v1.DeleteOpti
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIothubEndpointEventhubs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iothubendpointeventhubsResource, c.ns, listOptions)
+func (c *FakeIothubEndpointEventhubs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iothubendpointeventhubsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IothubEndpointEventhubList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iothubEndpointEventhub.
-func (c *FakeIothubEndpointEventhubs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IothubEndpointEventhub, err error) {
+func (c *FakeIothubEndpointEventhubs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IothubEndpointEventhub, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iothubendpointeventhubsResource, c.ns, name, pt, data, subresources...), &v1alpha1.IothubEndpointEventhub{})
 

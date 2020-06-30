@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dbinstancesResource = schema.GroupVersionResource{Group: "aws.kubeform.com",
 var dbinstancesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DbInstance"}
 
 // Get takes name of the dbInstance, and returns the corresponding dbInstance object, and an error if there is any.
-func (c *FakeDbInstances) Get(name string, options v1.GetOptions) (result *v1alpha1.DbInstance, err error) {
+func (c *FakeDbInstances) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DbInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dbinstancesResource, c.ns, name), &v1alpha1.DbInstance{})
 
@@ -51,7 +53,7 @@ func (c *FakeDbInstances) Get(name string, options v1.GetOptions) (result *v1alp
 }
 
 // List takes label and field selectors, and returns the list of DbInstances that match those selectors.
-func (c *FakeDbInstances) List(opts v1.ListOptions) (result *v1alpha1.DbInstanceList, err error) {
+func (c *FakeDbInstances) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DbInstanceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dbinstancesResource, dbinstancesKind, c.ns, opts), &v1alpha1.DbInstanceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDbInstances) List(opts v1.ListOptions) (result *v1alpha1.DbInstance
 }
 
 // Watch returns a watch.Interface that watches the requested dbInstances.
-func (c *FakeDbInstances) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDbInstances) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dbinstancesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dbInstance and creates it.  Returns the server's representation of the dbInstance, and an error, if there is any.
-func (c *FakeDbInstances) Create(dbInstance *v1alpha1.DbInstance) (result *v1alpha1.DbInstance, err error) {
+func (c *FakeDbInstances) Create(ctx context.Context, dbInstance *v1alpha1.DbInstance, opts v1.CreateOptions) (result *v1alpha1.DbInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dbinstancesResource, c.ns, dbInstance), &v1alpha1.DbInstance{})
 
@@ -91,7 +93,7 @@ func (c *FakeDbInstances) Create(dbInstance *v1alpha1.DbInstance) (result *v1alp
 }
 
 // Update takes the representation of a dbInstance and updates it. Returns the server's representation of the dbInstance, and an error, if there is any.
-func (c *FakeDbInstances) Update(dbInstance *v1alpha1.DbInstance) (result *v1alpha1.DbInstance, err error) {
+func (c *FakeDbInstances) Update(ctx context.Context, dbInstance *v1alpha1.DbInstance, opts v1.UpdateOptions) (result *v1alpha1.DbInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dbinstancesResource, c.ns, dbInstance), &v1alpha1.DbInstance{})
 
@@ -103,7 +105,7 @@ func (c *FakeDbInstances) Update(dbInstance *v1alpha1.DbInstance) (result *v1alp
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDbInstances) UpdateStatus(dbInstance *v1alpha1.DbInstance) (*v1alpha1.DbInstance, error) {
+func (c *FakeDbInstances) UpdateStatus(ctx context.Context, dbInstance *v1alpha1.DbInstance, opts v1.UpdateOptions) (*v1alpha1.DbInstance, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dbinstancesResource, "status", c.ns, dbInstance), &v1alpha1.DbInstance{})
 
@@ -114,7 +116,7 @@ func (c *FakeDbInstances) UpdateStatus(dbInstance *v1alpha1.DbInstance) (*v1alph
 }
 
 // Delete takes name of the dbInstance and deletes it. Returns an error if one occurs.
-func (c *FakeDbInstances) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDbInstances) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dbinstancesResource, c.ns, name), &v1alpha1.DbInstance{})
 
@@ -122,15 +124,15 @@ func (c *FakeDbInstances) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDbInstances) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dbinstancesResource, c.ns, listOptions)
+func (c *FakeDbInstances) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dbinstancesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DbInstanceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dbInstance.
-func (c *FakeDbInstances) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DbInstance, err error) {
+func (c *FakeDbInstances) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DbInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dbinstancesResource, c.ns, name, pt, data, subresources...), &v1alpha1.DbInstance{})
 

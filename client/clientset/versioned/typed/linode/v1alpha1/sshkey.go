@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/linode/v1alpha1"
@@ -38,15 +39,15 @@ type SshkeysGetter interface {
 
 // SshkeyInterface has methods to work with Sshkey resources.
 type SshkeyInterface interface {
-	Create(*v1alpha1.Sshkey) (*v1alpha1.Sshkey, error)
-	Update(*v1alpha1.Sshkey) (*v1alpha1.Sshkey, error)
-	UpdateStatus(*v1alpha1.Sshkey) (*v1alpha1.Sshkey, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.Sshkey, error)
-	List(opts v1.ListOptions) (*v1alpha1.SshkeyList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Sshkey, err error)
+	Create(ctx context.Context, sshkey *v1alpha1.Sshkey, opts v1.CreateOptions) (*v1alpha1.Sshkey, error)
+	Update(ctx context.Context, sshkey *v1alpha1.Sshkey, opts v1.UpdateOptions) (*v1alpha1.Sshkey, error)
+	UpdateStatus(ctx context.Context, sshkey *v1alpha1.Sshkey, opts v1.UpdateOptions) (*v1alpha1.Sshkey, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.Sshkey, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SshkeyList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Sshkey, err error)
 	SshkeyExpansion
 }
 
@@ -65,20 +66,20 @@ func newSshkeys(c *LinodeV1alpha1Client, namespace string) *sshkeys {
 }
 
 // Get takes name of the sshkey, and returns the corresponding sshkey object, and an error if there is any.
-func (c *sshkeys) Get(name string, options v1.GetOptions) (result *v1alpha1.Sshkey, err error) {
+func (c *sshkeys) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Sshkey, err error) {
 	result = &v1alpha1.Sshkey{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("sshkeys").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of Sshkeys that match those selectors.
-func (c *sshkeys) List(opts v1.ListOptions) (result *v1alpha1.SshkeyList, err error) {
+func (c *sshkeys) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SshkeyList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *sshkeys) List(opts v1.ListOptions) (result *v1alpha1.SshkeyList, err er
 		Resource("sshkeys").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested sshkeys.
-func (c *sshkeys) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *sshkeys) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *sshkeys) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("sshkeys").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a sshkey and creates it.  Returns the server's representation of the sshkey, and an error, if there is any.
-func (c *sshkeys) Create(sshkey *v1alpha1.Sshkey) (result *v1alpha1.Sshkey, err error) {
+func (c *sshkeys) Create(ctx context.Context, sshkey *v1alpha1.Sshkey, opts v1.CreateOptions) (result *v1alpha1.Sshkey, err error) {
 	result = &v1alpha1.Sshkey{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("sshkeys").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sshkey).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a sshkey and updates it. Returns the server's representation of the sshkey, and an error, if there is any.
-func (c *sshkeys) Update(sshkey *v1alpha1.Sshkey) (result *v1alpha1.Sshkey, err error) {
+func (c *sshkeys) Update(ctx context.Context, sshkey *v1alpha1.Sshkey, opts v1.UpdateOptions) (result *v1alpha1.Sshkey, err error) {
 	result = &v1alpha1.Sshkey{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sshkeys").
 		Name(sshkey.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sshkey).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *sshkeys) UpdateStatus(sshkey *v1alpha1.Sshkey) (result *v1alpha1.Sshkey, err error) {
+func (c *sshkeys) UpdateStatus(ctx context.Context, sshkey *v1alpha1.Sshkey, opts v1.UpdateOptions) (result *v1alpha1.Sshkey, err error) {
 	result = &v1alpha1.Sshkey{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sshkeys").
 		Name(sshkey.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(sshkey).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the sshkey and deletes it. Returns an error if one occurs.
-func (c *sshkeys) Delete(name string, options *v1.DeleteOptions) error {
+func (c *sshkeys) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sshkeys").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *sshkeys) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *sshkeys) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sshkeys").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched sshkey.
-func (c *sshkeys) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Sshkey, err error) {
+func (c *sshkeys) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Sshkey, err error) {
 	result = &v1alpha1.Sshkey{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("sshkeys").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

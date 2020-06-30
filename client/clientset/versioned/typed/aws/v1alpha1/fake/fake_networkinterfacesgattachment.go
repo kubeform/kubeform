@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var networkinterfacesgattachmentsResource = schema.GroupVersionResource{Group: "
 var networkinterfacesgattachmentsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "NetworkInterfaceSgAttachment"}
 
 // Get takes name of the networkInterfaceSgAttachment, and returns the corresponding networkInterfaceSgAttachment object, and an error if there is any.
-func (c *FakeNetworkInterfaceSgAttachments) Get(name string, options v1.GetOptions) (result *v1alpha1.NetworkInterfaceSgAttachment, err error) {
+func (c *FakeNetworkInterfaceSgAttachments) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.NetworkInterfaceSgAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(networkinterfacesgattachmentsResource, c.ns, name), &v1alpha1.NetworkInterfaceSgAttachment{})
 
@@ -51,7 +53,7 @@ func (c *FakeNetworkInterfaceSgAttachments) Get(name string, options v1.GetOptio
 }
 
 // List takes label and field selectors, and returns the list of NetworkInterfaceSgAttachments that match those selectors.
-func (c *FakeNetworkInterfaceSgAttachments) List(opts v1.ListOptions) (result *v1alpha1.NetworkInterfaceSgAttachmentList, err error) {
+func (c *FakeNetworkInterfaceSgAttachments) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.NetworkInterfaceSgAttachmentList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(networkinterfacesgattachmentsResource, networkinterfacesgattachmentsKind, c.ns, opts), &v1alpha1.NetworkInterfaceSgAttachmentList{})
 
@@ -73,14 +75,14 @@ func (c *FakeNetworkInterfaceSgAttachments) List(opts v1.ListOptions) (result *v
 }
 
 // Watch returns a watch.Interface that watches the requested networkInterfaceSgAttachments.
-func (c *FakeNetworkInterfaceSgAttachments) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeNetworkInterfaceSgAttachments) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(networkinterfacesgattachmentsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a networkInterfaceSgAttachment and creates it.  Returns the server's representation of the networkInterfaceSgAttachment, and an error, if there is any.
-func (c *FakeNetworkInterfaceSgAttachments) Create(networkInterfaceSgAttachment *v1alpha1.NetworkInterfaceSgAttachment) (result *v1alpha1.NetworkInterfaceSgAttachment, err error) {
+func (c *FakeNetworkInterfaceSgAttachments) Create(ctx context.Context, networkInterfaceSgAttachment *v1alpha1.NetworkInterfaceSgAttachment, opts v1.CreateOptions) (result *v1alpha1.NetworkInterfaceSgAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(networkinterfacesgattachmentsResource, c.ns, networkInterfaceSgAttachment), &v1alpha1.NetworkInterfaceSgAttachment{})
 
@@ -91,7 +93,7 @@ func (c *FakeNetworkInterfaceSgAttachments) Create(networkInterfaceSgAttachment 
 }
 
 // Update takes the representation of a networkInterfaceSgAttachment and updates it. Returns the server's representation of the networkInterfaceSgAttachment, and an error, if there is any.
-func (c *FakeNetworkInterfaceSgAttachments) Update(networkInterfaceSgAttachment *v1alpha1.NetworkInterfaceSgAttachment) (result *v1alpha1.NetworkInterfaceSgAttachment, err error) {
+func (c *FakeNetworkInterfaceSgAttachments) Update(ctx context.Context, networkInterfaceSgAttachment *v1alpha1.NetworkInterfaceSgAttachment, opts v1.UpdateOptions) (result *v1alpha1.NetworkInterfaceSgAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(networkinterfacesgattachmentsResource, c.ns, networkInterfaceSgAttachment), &v1alpha1.NetworkInterfaceSgAttachment{})
 
@@ -103,7 +105,7 @@ func (c *FakeNetworkInterfaceSgAttachments) Update(networkInterfaceSgAttachment 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeNetworkInterfaceSgAttachments) UpdateStatus(networkInterfaceSgAttachment *v1alpha1.NetworkInterfaceSgAttachment) (*v1alpha1.NetworkInterfaceSgAttachment, error) {
+func (c *FakeNetworkInterfaceSgAttachments) UpdateStatus(ctx context.Context, networkInterfaceSgAttachment *v1alpha1.NetworkInterfaceSgAttachment, opts v1.UpdateOptions) (*v1alpha1.NetworkInterfaceSgAttachment, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(networkinterfacesgattachmentsResource, "status", c.ns, networkInterfaceSgAttachment), &v1alpha1.NetworkInterfaceSgAttachment{})
 
@@ -114,7 +116,7 @@ func (c *FakeNetworkInterfaceSgAttachments) UpdateStatus(networkInterfaceSgAttac
 }
 
 // Delete takes name of the networkInterfaceSgAttachment and deletes it. Returns an error if one occurs.
-func (c *FakeNetworkInterfaceSgAttachments) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeNetworkInterfaceSgAttachments) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(networkinterfacesgattachmentsResource, c.ns, name), &v1alpha1.NetworkInterfaceSgAttachment{})
 
@@ -122,15 +124,15 @@ func (c *FakeNetworkInterfaceSgAttachments) Delete(name string, options *v1.Dele
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeNetworkInterfaceSgAttachments) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(networkinterfacesgattachmentsResource, c.ns, listOptions)
+func (c *FakeNetworkInterfaceSgAttachments) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(networkinterfacesgattachmentsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.NetworkInterfaceSgAttachmentList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched networkInterfaceSgAttachment.
-func (c *FakeNetworkInterfaceSgAttachments) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.NetworkInterfaceSgAttachment, err error) {
+func (c *FakeNetworkInterfaceSgAttachments) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.NetworkInterfaceSgAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(networkinterfacesgattachmentsResource, c.ns, name, pt, data, subresources...), &v1alpha1.NetworkInterfaceSgAttachment{})
 

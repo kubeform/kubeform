@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var storagegatewaynfsfilesharesResource = schema.GroupVersionResource{Group: "aw
 var storagegatewaynfsfilesharesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "StoragegatewayNfsFileShare"}
 
 // Get takes name of the storagegatewayNfsFileShare, and returns the corresponding storagegatewayNfsFileShare object, and an error if there is any.
-func (c *FakeStoragegatewayNfsFileShares) Get(name string, options v1.GetOptions) (result *v1alpha1.StoragegatewayNfsFileShare, err error) {
+func (c *FakeStoragegatewayNfsFileShares) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.StoragegatewayNfsFileShare, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(storagegatewaynfsfilesharesResource, c.ns, name), &v1alpha1.StoragegatewayNfsFileShare{})
 
@@ -51,7 +53,7 @@ func (c *FakeStoragegatewayNfsFileShares) Get(name string, options v1.GetOptions
 }
 
 // List takes label and field selectors, and returns the list of StoragegatewayNfsFileShares that match those selectors.
-func (c *FakeStoragegatewayNfsFileShares) List(opts v1.ListOptions) (result *v1alpha1.StoragegatewayNfsFileShareList, err error) {
+func (c *FakeStoragegatewayNfsFileShares) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.StoragegatewayNfsFileShareList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(storagegatewaynfsfilesharesResource, storagegatewaynfsfilesharesKind, c.ns, opts), &v1alpha1.StoragegatewayNfsFileShareList{})
 
@@ -73,14 +75,14 @@ func (c *FakeStoragegatewayNfsFileShares) List(opts v1.ListOptions) (result *v1a
 }
 
 // Watch returns a watch.Interface that watches the requested storagegatewayNfsFileShares.
-func (c *FakeStoragegatewayNfsFileShares) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeStoragegatewayNfsFileShares) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(storagegatewaynfsfilesharesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a storagegatewayNfsFileShare and creates it.  Returns the server's representation of the storagegatewayNfsFileShare, and an error, if there is any.
-func (c *FakeStoragegatewayNfsFileShares) Create(storagegatewayNfsFileShare *v1alpha1.StoragegatewayNfsFileShare) (result *v1alpha1.StoragegatewayNfsFileShare, err error) {
+func (c *FakeStoragegatewayNfsFileShares) Create(ctx context.Context, storagegatewayNfsFileShare *v1alpha1.StoragegatewayNfsFileShare, opts v1.CreateOptions) (result *v1alpha1.StoragegatewayNfsFileShare, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(storagegatewaynfsfilesharesResource, c.ns, storagegatewayNfsFileShare), &v1alpha1.StoragegatewayNfsFileShare{})
 
@@ -91,7 +93,7 @@ func (c *FakeStoragegatewayNfsFileShares) Create(storagegatewayNfsFileShare *v1a
 }
 
 // Update takes the representation of a storagegatewayNfsFileShare and updates it. Returns the server's representation of the storagegatewayNfsFileShare, and an error, if there is any.
-func (c *FakeStoragegatewayNfsFileShares) Update(storagegatewayNfsFileShare *v1alpha1.StoragegatewayNfsFileShare) (result *v1alpha1.StoragegatewayNfsFileShare, err error) {
+func (c *FakeStoragegatewayNfsFileShares) Update(ctx context.Context, storagegatewayNfsFileShare *v1alpha1.StoragegatewayNfsFileShare, opts v1.UpdateOptions) (result *v1alpha1.StoragegatewayNfsFileShare, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(storagegatewaynfsfilesharesResource, c.ns, storagegatewayNfsFileShare), &v1alpha1.StoragegatewayNfsFileShare{})
 
@@ -103,7 +105,7 @@ func (c *FakeStoragegatewayNfsFileShares) Update(storagegatewayNfsFileShare *v1a
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeStoragegatewayNfsFileShares) UpdateStatus(storagegatewayNfsFileShare *v1alpha1.StoragegatewayNfsFileShare) (*v1alpha1.StoragegatewayNfsFileShare, error) {
+func (c *FakeStoragegatewayNfsFileShares) UpdateStatus(ctx context.Context, storagegatewayNfsFileShare *v1alpha1.StoragegatewayNfsFileShare, opts v1.UpdateOptions) (*v1alpha1.StoragegatewayNfsFileShare, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(storagegatewaynfsfilesharesResource, "status", c.ns, storagegatewayNfsFileShare), &v1alpha1.StoragegatewayNfsFileShare{})
 
@@ -114,7 +116,7 @@ func (c *FakeStoragegatewayNfsFileShares) UpdateStatus(storagegatewayNfsFileShar
 }
 
 // Delete takes name of the storagegatewayNfsFileShare and deletes it. Returns an error if one occurs.
-func (c *FakeStoragegatewayNfsFileShares) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeStoragegatewayNfsFileShares) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(storagegatewaynfsfilesharesResource, c.ns, name), &v1alpha1.StoragegatewayNfsFileShare{})
 
@@ -122,15 +124,15 @@ func (c *FakeStoragegatewayNfsFileShares) Delete(name string, options *v1.Delete
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeStoragegatewayNfsFileShares) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(storagegatewaynfsfilesharesResource, c.ns, listOptions)
+func (c *FakeStoragegatewayNfsFileShares) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(storagegatewaynfsfilesharesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.StoragegatewayNfsFileShareList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched storagegatewayNfsFileShare.
-func (c *FakeStoragegatewayNfsFileShares) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StoragegatewayNfsFileShare, err error) {
+func (c *FakeStoragegatewayNfsFileShares) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StoragegatewayNfsFileShare, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(storagegatewaynfsfilesharesResource, c.ns, name, pt, data, subresources...), &v1alpha1.StoragegatewayNfsFileShare{})
 

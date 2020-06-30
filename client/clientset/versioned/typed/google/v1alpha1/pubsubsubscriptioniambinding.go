@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type PubsubSubscriptionIamBindingsGetter interface {
 
 // PubsubSubscriptionIamBindingInterface has methods to work with PubsubSubscriptionIamBinding resources.
 type PubsubSubscriptionIamBindingInterface interface {
-	Create(*v1alpha1.PubsubSubscriptionIamBinding) (*v1alpha1.PubsubSubscriptionIamBinding, error)
-	Update(*v1alpha1.PubsubSubscriptionIamBinding) (*v1alpha1.PubsubSubscriptionIamBinding, error)
-	UpdateStatus(*v1alpha1.PubsubSubscriptionIamBinding) (*v1alpha1.PubsubSubscriptionIamBinding, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.PubsubSubscriptionIamBinding, error)
-	List(opts v1.ListOptions) (*v1alpha1.PubsubSubscriptionIamBindingList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PubsubSubscriptionIamBinding, err error)
+	Create(ctx context.Context, pubsubSubscriptionIamBinding *v1alpha1.PubsubSubscriptionIamBinding, opts v1.CreateOptions) (*v1alpha1.PubsubSubscriptionIamBinding, error)
+	Update(ctx context.Context, pubsubSubscriptionIamBinding *v1alpha1.PubsubSubscriptionIamBinding, opts v1.UpdateOptions) (*v1alpha1.PubsubSubscriptionIamBinding, error)
+	UpdateStatus(ctx context.Context, pubsubSubscriptionIamBinding *v1alpha1.PubsubSubscriptionIamBinding, opts v1.UpdateOptions) (*v1alpha1.PubsubSubscriptionIamBinding, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.PubsubSubscriptionIamBinding, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.PubsubSubscriptionIamBindingList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PubsubSubscriptionIamBinding, err error)
 	PubsubSubscriptionIamBindingExpansion
 }
 
@@ -65,20 +66,20 @@ func newPubsubSubscriptionIamBindings(c *GoogleV1alpha1Client, namespace string)
 }
 
 // Get takes name of the pubsubSubscriptionIamBinding, and returns the corresponding pubsubSubscriptionIamBinding object, and an error if there is any.
-func (c *pubsubSubscriptionIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.PubsubSubscriptionIamBinding, err error) {
+func (c *pubsubSubscriptionIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PubsubSubscriptionIamBinding, err error) {
 	result = &v1alpha1.PubsubSubscriptionIamBinding{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("pubsubsubscriptioniambindings").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of PubsubSubscriptionIamBindings that match those selectors.
-func (c *pubsubSubscriptionIamBindings) List(opts v1.ListOptions) (result *v1alpha1.PubsubSubscriptionIamBindingList, err error) {
+func (c *pubsubSubscriptionIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PubsubSubscriptionIamBindingList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *pubsubSubscriptionIamBindings) List(opts v1.ListOptions) (result *v1alp
 		Resource("pubsubsubscriptioniambindings").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested pubsubSubscriptionIamBindings.
-func (c *pubsubSubscriptionIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *pubsubSubscriptionIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *pubsubSubscriptionIamBindings) Watch(opts v1.ListOptions) (watch.Interf
 		Resource("pubsubsubscriptioniambindings").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a pubsubSubscriptionIamBinding and creates it.  Returns the server's representation of the pubsubSubscriptionIamBinding, and an error, if there is any.
-func (c *pubsubSubscriptionIamBindings) Create(pubsubSubscriptionIamBinding *v1alpha1.PubsubSubscriptionIamBinding) (result *v1alpha1.PubsubSubscriptionIamBinding, err error) {
+func (c *pubsubSubscriptionIamBindings) Create(ctx context.Context, pubsubSubscriptionIamBinding *v1alpha1.PubsubSubscriptionIamBinding, opts v1.CreateOptions) (result *v1alpha1.PubsubSubscriptionIamBinding, err error) {
 	result = &v1alpha1.PubsubSubscriptionIamBinding{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("pubsubsubscriptioniambindings").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(pubsubSubscriptionIamBinding).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a pubsubSubscriptionIamBinding and updates it. Returns the server's representation of the pubsubSubscriptionIamBinding, and an error, if there is any.
-func (c *pubsubSubscriptionIamBindings) Update(pubsubSubscriptionIamBinding *v1alpha1.PubsubSubscriptionIamBinding) (result *v1alpha1.PubsubSubscriptionIamBinding, err error) {
+func (c *pubsubSubscriptionIamBindings) Update(ctx context.Context, pubsubSubscriptionIamBinding *v1alpha1.PubsubSubscriptionIamBinding, opts v1.UpdateOptions) (result *v1alpha1.PubsubSubscriptionIamBinding, err error) {
 	result = &v1alpha1.PubsubSubscriptionIamBinding{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("pubsubsubscriptioniambindings").
 		Name(pubsubSubscriptionIamBinding.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(pubsubSubscriptionIamBinding).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *pubsubSubscriptionIamBindings) UpdateStatus(pubsubSubscriptionIamBinding *v1alpha1.PubsubSubscriptionIamBinding) (result *v1alpha1.PubsubSubscriptionIamBinding, err error) {
+func (c *pubsubSubscriptionIamBindings) UpdateStatus(ctx context.Context, pubsubSubscriptionIamBinding *v1alpha1.PubsubSubscriptionIamBinding, opts v1.UpdateOptions) (result *v1alpha1.PubsubSubscriptionIamBinding, err error) {
 	result = &v1alpha1.PubsubSubscriptionIamBinding{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("pubsubsubscriptioniambindings").
 		Name(pubsubSubscriptionIamBinding.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(pubsubSubscriptionIamBinding).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the pubsubSubscriptionIamBinding and deletes it. Returns an error if one occurs.
-func (c *pubsubSubscriptionIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *pubsubSubscriptionIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("pubsubsubscriptioniambindings").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *pubsubSubscriptionIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *pubsubSubscriptionIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("pubsubsubscriptioniambindings").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched pubsubSubscriptionIamBinding.
-func (c *pubsubSubscriptionIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PubsubSubscriptionIamBinding, err error) {
+func (c *pubsubSubscriptionIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PubsubSubscriptionIamBinding, err error) {
 	result = &v1alpha1.PubsubSubscriptionIamBinding{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("pubsubsubscriptioniambindings").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

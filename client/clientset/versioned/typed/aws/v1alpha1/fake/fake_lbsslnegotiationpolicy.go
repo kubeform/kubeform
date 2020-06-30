@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var lbsslnegotiationpoliciesResource = schema.GroupVersionResource{Group: "aws.k
 var lbsslnegotiationpoliciesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "LbSSLNegotiationPolicy"}
 
 // Get takes name of the lbSSLNegotiationPolicy, and returns the corresponding lbSSLNegotiationPolicy object, and an error if there is any.
-func (c *FakeLbSSLNegotiationPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.LbSSLNegotiationPolicy, err error) {
+func (c *FakeLbSSLNegotiationPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LbSSLNegotiationPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(lbsslnegotiationpoliciesResource, c.ns, name), &v1alpha1.LbSSLNegotiationPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeLbSSLNegotiationPolicies) Get(name string, options v1.GetOptions) (
 }
 
 // List takes label and field selectors, and returns the list of LbSSLNegotiationPolicies that match those selectors.
-func (c *FakeLbSSLNegotiationPolicies) List(opts v1.ListOptions) (result *v1alpha1.LbSSLNegotiationPolicyList, err error) {
+func (c *FakeLbSSLNegotiationPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LbSSLNegotiationPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(lbsslnegotiationpoliciesResource, lbsslnegotiationpoliciesKind, c.ns, opts), &v1alpha1.LbSSLNegotiationPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLbSSLNegotiationPolicies) List(opts v1.ListOptions) (result *v1alph
 }
 
 // Watch returns a watch.Interface that watches the requested lbSSLNegotiationPolicies.
-func (c *FakeLbSSLNegotiationPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLbSSLNegotiationPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(lbsslnegotiationpoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a lbSSLNegotiationPolicy and creates it.  Returns the server's representation of the lbSSLNegotiationPolicy, and an error, if there is any.
-func (c *FakeLbSSLNegotiationPolicies) Create(lbSSLNegotiationPolicy *v1alpha1.LbSSLNegotiationPolicy) (result *v1alpha1.LbSSLNegotiationPolicy, err error) {
+func (c *FakeLbSSLNegotiationPolicies) Create(ctx context.Context, lbSSLNegotiationPolicy *v1alpha1.LbSSLNegotiationPolicy, opts v1.CreateOptions) (result *v1alpha1.LbSSLNegotiationPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(lbsslnegotiationpoliciesResource, c.ns, lbSSLNegotiationPolicy), &v1alpha1.LbSSLNegotiationPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeLbSSLNegotiationPolicies) Create(lbSSLNegotiationPolicy *v1alpha1.L
 }
 
 // Update takes the representation of a lbSSLNegotiationPolicy and updates it. Returns the server's representation of the lbSSLNegotiationPolicy, and an error, if there is any.
-func (c *FakeLbSSLNegotiationPolicies) Update(lbSSLNegotiationPolicy *v1alpha1.LbSSLNegotiationPolicy) (result *v1alpha1.LbSSLNegotiationPolicy, err error) {
+func (c *FakeLbSSLNegotiationPolicies) Update(ctx context.Context, lbSSLNegotiationPolicy *v1alpha1.LbSSLNegotiationPolicy, opts v1.UpdateOptions) (result *v1alpha1.LbSSLNegotiationPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(lbsslnegotiationpoliciesResource, c.ns, lbSSLNegotiationPolicy), &v1alpha1.LbSSLNegotiationPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeLbSSLNegotiationPolicies) Update(lbSSLNegotiationPolicy *v1alpha1.L
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLbSSLNegotiationPolicies) UpdateStatus(lbSSLNegotiationPolicy *v1alpha1.LbSSLNegotiationPolicy) (*v1alpha1.LbSSLNegotiationPolicy, error) {
+func (c *FakeLbSSLNegotiationPolicies) UpdateStatus(ctx context.Context, lbSSLNegotiationPolicy *v1alpha1.LbSSLNegotiationPolicy, opts v1.UpdateOptions) (*v1alpha1.LbSSLNegotiationPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(lbsslnegotiationpoliciesResource, "status", c.ns, lbSSLNegotiationPolicy), &v1alpha1.LbSSLNegotiationPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeLbSSLNegotiationPolicies) UpdateStatus(lbSSLNegotiationPolicy *v1al
 }
 
 // Delete takes name of the lbSSLNegotiationPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeLbSSLNegotiationPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLbSSLNegotiationPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(lbsslnegotiationpoliciesResource, c.ns, name), &v1alpha1.LbSSLNegotiationPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeLbSSLNegotiationPolicies) Delete(name string, options *v1.DeleteOpt
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLbSSLNegotiationPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(lbsslnegotiationpoliciesResource, c.ns, listOptions)
+func (c *FakeLbSSLNegotiationPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(lbsslnegotiationpoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LbSSLNegotiationPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched lbSSLNegotiationPolicy.
-func (c *FakeLbSSLNegotiationPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LbSSLNegotiationPolicy, err error) {
+func (c *FakeLbSSLNegotiationPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LbSSLNegotiationPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(lbsslnegotiationpoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.LbSSLNegotiationPolicy{})
 

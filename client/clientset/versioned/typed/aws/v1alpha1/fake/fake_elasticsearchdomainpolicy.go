@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var elasticsearchdomainpoliciesResource = schema.GroupVersionResource{Group: "aw
 var elasticsearchdomainpoliciesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ElasticsearchDomainPolicy"}
 
 // Get takes name of the elasticsearchDomainPolicy, and returns the corresponding elasticsearchDomainPolicy object, and an error if there is any.
-func (c *FakeElasticsearchDomainPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.ElasticsearchDomainPolicy, err error) {
+func (c *FakeElasticsearchDomainPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ElasticsearchDomainPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(elasticsearchdomainpoliciesResource, c.ns, name), &v1alpha1.ElasticsearchDomainPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeElasticsearchDomainPolicies) Get(name string, options v1.GetOptions
 }
 
 // List takes label and field selectors, and returns the list of ElasticsearchDomainPolicies that match those selectors.
-func (c *FakeElasticsearchDomainPolicies) List(opts v1.ListOptions) (result *v1alpha1.ElasticsearchDomainPolicyList, err error) {
+func (c *FakeElasticsearchDomainPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ElasticsearchDomainPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(elasticsearchdomainpoliciesResource, elasticsearchdomainpoliciesKind, c.ns, opts), &v1alpha1.ElasticsearchDomainPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeElasticsearchDomainPolicies) List(opts v1.ListOptions) (result *v1a
 }
 
 // Watch returns a watch.Interface that watches the requested elasticsearchDomainPolicies.
-func (c *FakeElasticsearchDomainPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeElasticsearchDomainPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(elasticsearchdomainpoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a elasticsearchDomainPolicy and creates it.  Returns the server's representation of the elasticsearchDomainPolicy, and an error, if there is any.
-func (c *FakeElasticsearchDomainPolicies) Create(elasticsearchDomainPolicy *v1alpha1.ElasticsearchDomainPolicy) (result *v1alpha1.ElasticsearchDomainPolicy, err error) {
+func (c *FakeElasticsearchDomainPolicies) Create(ctx context.Context, elasticsearchDomainPolicy *v1alpha1.ElasticsearchDomainPolicy, opts v1.CreateOptions) (result *v1alpha1.ElasticsearchDomainPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(elasticsearchdomainpoliciesResource, c.ns, elasticsearchDomainPolicy), &v1alpha1.ElasticsearchDomainPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeElasticsearchDomainPolicies) Create(elasticsearchDomainPolicy *v1al
 }
 
 // Update takes the representation of a elasticsearchDomainPolicy and updates it. Returns the server's representation of the elasticsearchDomainPolicy, and an error, if there is any.
-func (c *FakeElasticsearchDomainPolicies) Update(elasticsearchDomainPolicy *v1alpha1.ElasticsearchDomainPolicy) (result *v1alpha1.ElasticsearchDomainPolicy, err error) {
+func (c *FakeElasticsearchDomainPolicies) Update(ctx context.Context, elasticsearchDomainPolicy *v1alpha1.ElasticsearchDomainPolicy, opts v1.UpdateOptions) (result *v1alpha1.ElasticsearchDomainPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(elasticsearchdomainpoliciesResource, c.ns, elasticsearchDomainPolicy), &v1alpha1.ElasticsearchDomainPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeElasticsearchDomainPolicies) Update(elasticsearchDomainPolicy *v1al
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeElasticsearchDomainPolicies) UpdateStatus(elasticsearchDomainPolicy *v1alpha1.ElasticsearchDomainPolicy) (*v1alpha1.ElasticsearchDomainPolicy, error) {
+func (c *FakeElasticsearchDomainPolicies) UpdateStatus(ctx context.Context, elasticsearchDomainPolicy *v1alpha1.ElasticsearchDomainPolicy, opts v1.UpdateOptions) (*v1alpha1.ElasticsearchDomainPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(elasticsearchdomainpoliciesResource, "status", c.ns, elasticsearchDomainPolicy), &v1alpha1.ElasticsearchDomainPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeElasticsearchDomainPolicies) UpdateStatus(elasticsearchDomainPolicy
 }
 
 // Delete takes name of the elasticsearchDomainPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeElasticsearchDomainPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeElasticsearchDomainPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(elasticsearchdomainpoliciesResource, c.ns, name), &v1alpha1.ElasticsearchDomainPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeElasticsearchDomainPolicies) Delete(name string, options *v1.Delete
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeElasticsearchDomainPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(elasticsearchdomainpoliciesResource, c.ns, listOptions)
+func (c *FakeElasticsearchDomainPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(elasticsearchdomainpoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ElasticsearchDomainPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched elasticsearchDomainPolicy.
-func (c *FakeElasticsearchDomainPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ElasticsearchDomainPolicy, err error) {
+func (c *FakeElasticsearchDomainPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ElasticsearchDomainPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(elasticsearchdomainpoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ElasticsearchDomainPolicy{})
 

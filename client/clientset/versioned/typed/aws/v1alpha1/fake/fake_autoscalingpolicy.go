@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var autoscalingpoliciesResource = schema.GroupVersionResource{Group: "aws.kubefo
 var autoscalingpoliciesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "AutoscalingPolicy"}
 
 // Get takes name of the autoscalingPolicy, and returns the corresponding autoscalingPolicy object, and an error if there is any.
-func (c *FakeAutoscalingPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.AutoscalingPolicy, err error) {
+func (c *FakeAutoscalingPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AutoscalingPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(autoscalingpoliciesResource, c.ns, name), &v1alpha1.AutoscalingPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeAutoscalingPolicies) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of AutoscalingPolicies that match those selectors.
-func (c *FakeAutoscalingPolicies) List(opts v1.ListOptions) (result *v1alpha1.AutoscalingPolicyList, err error) {
+func (c *FakeAutoscalingPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AutoscalingPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(autoscalingpoliciesResource, autoscalingpoliciesKind, c.ns, opts), &v1alpha1.AutoscalingPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAutoscalingPolicies) List(opts v1.ListOptions) (result *v1alpha1.Au
 }
 
 // Watch returns a watch.Interface that watches the requested autoscalingPolicies.
-func (c *FakeAutoscalingPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAutoscalingPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(autoscalingpoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a autoscalingPolicy and creates it.  Returns the server's representation of the autoscalingPolicy, and an error, if there is any.
-func (c *FakeAutoscalingPolicies) Create(autoscalingPolicy *v1alpha1.AutoscalingPolicy) (result *v1alpha1.AutoscalingPolicy, err error) {
+func (c *FakeAutoscalingPolicies) Create(ctx context.Context, autoscalingPolicy *v1alpha1.AutoscalingPolicy, opts v1.CreateOptions) (result *v1alpha1.AutoscalingPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(autoscalingpoliciesResource, c.ns, autoscalingPolicy), &v1alpha1.AutoscalingPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeAutoscalingPolicies) Create(autoscalingPolicy *v1alpha1.Autoscaling
 }
 
 // Update takes the representation of a autoscalingPolicy and updates it. Returns the server's representation of the autoscalingPolicy, and an error, if there is any.
-func (c *FakeAutoscalingPolicies) Update(autoscalingPolicy *v1alpha1.AutoscalingPolicy) (result *v1alpha1.AutoscalingPolicy, err error) {
+func (c *FakeAutoscalingPolicies) Update(ctx context.Context, autoscalingPolicy *v1alpha1.AutoscalingPolicy, opts v1.UpdateOptions) (result *v1alpha1.AutoscalingPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(autoscalingpoliciesResource, c.ns, autoscalingPolicy), &v1alpha1.AutoscalingPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeAutoscalingPolicies) Update(autoscalingPolicy *v1alpha1.Autoscaling
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAutoscalingPolicies) UpdateStatus(autoscalingPolicy *v1alpha1.AutoscalingPolicy) (*v1alpha1.AutoscalingPolicy, error) {
+func (c *FakeAutoscalingPolicies) UpdateStatus(ctx context.Context, autoscalingPolicy *v1alpha1.AutoscalingPolicy, opts v1.UpdateOptions) (*v1alpha1.AutoscalingPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(autoscalingpoliciesResource, "status", c.ns, autoscalingPolicy), &v1alpha1.AutoscalingPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeAutoscalingPolicies) UpdateStatus(autoscalingPolicy *v1alpha1.Autos
 }
 
 // Delete takes name of the autoscalingPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeAutoscalingPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAutoscalingPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(autoscalingpoliciesResource, c.ns, name), &v1alpha1.AutoscalingPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeAutoscalingPolicies) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAutoscalingPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(autoscalingpoliciesResource, c.ns, listOptions)
+func (c *FakeAutoscalingPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(autoscalingpoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AutoscalingPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched autoscalingPolicy.
-func (c *FakeAutoscalingPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AutoscalingPolicy, err error) {
+func (c *FakeAutoscalingPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AutoscalingPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(autoscalingpoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.AutoscalingPolicy{})
 

@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type KmsGrantsGetter interface {
 
 // KmsGrantInterface has methods to work with KmsGrant resources.
 type KmsGrantInterface interface {
-	Create(*v1alpha1.KmsGrant) (*v1alpha1.KmsGrant, error)
-	Update(*v1alpha1.KmsGrant) (*v1alpha1.KmsGrant, error)
-	UpdateStatus(*v1alpha1.KmsGrant) (*v1alpha1.KmsGrant, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.KmsGrant, error)
-	List(opts v1.ListOptions) (*v1alpha1.KmsGrantList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KmsGrant, err error)
+	Create(ctx context.Context, kmsGrant *v1alpha1.KmsGrant, opts v1.CreateOptions) (*v1alpha1.KmsGrant, error)
+	Update(ctx context.Context, kmsGrant *v1alpha1.KmsGrant, opts v1.UpdateOptions) (*v1alpha1.KmsGrant, error)
+	UpdateStatus(ctx context.Context, kmsGrant *v1alpha1.KmsGrant, opts v1.UpdateOptions) (*v1alpha1.KmsGrant, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.KmsGrant, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.KmsGrantList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KmsGrant, err error)
 	KmsGrantExpansion
 }
 
@@ -65,20 +66,20 @@ func newKmsGrants(c *AwsV1alpha1Client, namespace string) *kmsGrants {
 }
 
 // Get takes name of the kmsGrant, and returns the corresponding kmsGrant object, and an error if there is any.
-func (c *kmsGrants) Get(name string, options v1.GetOptions) (result *v1alpha1.KmsGrant, err error) {
+func (c *kmsGrants) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KmsGrant, err error) {
 	result = &v1alpha1.KmsGrant{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("kmsgrants").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of KmsGrants that match those selectors.
-func (c *kmsGrants) List(opts v1.ListOptions) (result *v1alpha1.KmsGrantList, err error) {
+func (c *kmsGrants) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KmsGrantList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *kmsGrants) List(opts v1.ListOptions) (result *v1alpha1.KmsGrantList, er
 		Resource("kmsgrants").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested kmsGrants.
-func (c *kmsGrants) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *kmsGrants) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *kmsGrants) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("kmsgrants").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a kmsGrant and creates it.  Returns the server's representation of the kmsGrant, and an error, if there is any.
-func (c *kmsGrants) Create(kmsGrant *v1alpha1.KmsGrant) (result *v1alpha1.KmsGrant, err error) {
+func (c *kmsGrants) Create(ctx context.Context, kmsGrant *v1alpha1.KmsGrant, opts v1.CreateOptions) (result *v1alpha1.KmsGrant, err error) {
 	result = &v1alpha1.KmsGrant{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("kmsgrants").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(kmsGrant).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a kmsGrant and updates it. Returns the server's representation of the kmsGrant, and an error, if there is any.
-func (c *kmsGrants) Update(kmsGrant *v1alpha1.KmsGrant) (result *v1alpha1.KmsGrant, err error) {
+func (c *kmsGrants) Update(ctx context.Context, kmsGrant *v1alpha1.KmsGrant, opts v1.UpdateOptions) (result *v1alpha1.KmsGrant, err error) {
 	result = &v1alpha1.KmsGrant{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("kmsgrants").
 		Name(kmsGrant.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(kmsGrant).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *kmsGrants) UpdateStatus(kmsGrant *v1alpha1.KmsGrant) (result *v1alpha1.KmsGrant, err error) {
+func (c *kmsGrants) UpdateStatus(ctx context.Context, kmsGrant *v1alpha1.KmsGrant, opts v1.UpdateOptions) (result *v1alpha1.KmsGrant, err error) {
 	result = &v1alpha1.KmsGrant{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("kmsgrants").
 		Name(kmsGrant.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(kmsGrant).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the kmsGrant and deletes it. Returns an error if one occurs.
-func (c *kmsGrants) Delete(name string, options *v1.DeleteOptions) error {
+func (c *kmsGrants) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("kmsgrants").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *kmsGrants) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *kmsGrants) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("kmsgrants").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched kmsGrant.
-func (c *kmsGrants) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KmsGrant, err error) {
+func (c *kmsGrants) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KmsGrant, err error) {
 	result = &v1alpha1.KmsGrant{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("kmsgrants").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

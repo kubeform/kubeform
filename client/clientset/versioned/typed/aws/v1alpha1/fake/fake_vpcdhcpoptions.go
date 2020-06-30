@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var vpcdhcpoptionsesResource = schema.GroupVersionResource{Group: "aws.kubeform.
 var vpcdhcpoptionsesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "VpcDHCPOptions"}
 
 // Get takes name of the vpcDHCPOptions, and returns the corresponding vpcDHCPOptions object, and an error if there is any.
-func (c *FakeVpcDHCPOptionses) Get(name string, options v1.GetOptions) (result *v1alpha1.VpcDHCPOptions, err error) {
+func (c *FakeVpcDHCPOptionses) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.VpcDHCPOptions, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(vpcdhcpoptionsesResource, c.ns, name), &v1alpha1.VpcDHCPOptions{})
 
@@ -51,7 +53,7 @@ func (c *FakeVpcDHCPOptionses) Get(name string, options v1.GetOptions) (result *
 }
 
 // List takes label and field selectors, and returns the list of VpcDHCPOptionses that match those selectors.
-func (c *FakeVpcDHCPOptionses) List(opts v1.ListOptions) (result *v1alpha1.VpcDHCPOptionsList, err error) {
+func (c *FakeVpcDHCPOptionses) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.VpcDHCPOptionsList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(vpcdhcpoptionsesResource, vpcdhcpoptionsesKind, c.ns, opts), &v1alpha1.VpcDHCPOptionsList{})
 
@@ -73,14 +75,14 @@ func (c *FakeVpcDHCPOptionses) List(opts v1.ListOptions) (result *v1alpha1.VpcDH
 }
 
 // Watch returns a watch.Interface that watches the requested vpcDHCPOptionses.
-func (c *FakeVpcDHCPOptionses) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeVpcDHCPOptionses) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(vpcdhcpoptionsesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a vpcDHCPOptions and creates it.  Returns the server's representation of the vpcDHCPOptions, and an error, if there is any.
-func (c *FakeVpcDHCPOptionses) Create(vpcDHCPOptions *v1alpha1.VpcDHCPOptions) (result *v1alpha1.VpcDHCPOptions, err error) {
+func (c *FakeVpcDHCPOptionses) Create(ctx context.Context, vpcDHCPOptions *v1alpha1.VpcDHCPOptions, opts v1.CreateOptions) (result *v1alpha1.VpcDHCPOptions, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(vpcdhcpoptionsesResource, c.ns, vpcDHCPOptions), &v1alpha1.VpcDHCPOptions{})
 
@@ -91,7 +93,7 @@ func (c *FakeVpcDHCPOptionses) Create(vpcDHCPOptions *v1alpha1.VpcDHCPOptions) (
 }
 
 // Update takes the representation of a vpcDHCPOptions and updates it. Returns the server's representation of the vpcDHCPOptions, and an error, if there is any.
-func (c *FakeVpcDHCPOptionses) Update(vpcDHCPOptions *v1alpha1.VpcDHCPOptions) (result *v1alpha1.VpcDHCPOptions, err error) {
+func (c *FakeVpcDHCPOptionses) Update(ctx context.Context, vpcDHCPOptions *v1alpha1.VpcDHCPOptions, opts v1.UpdateOptions) (result *v1alpha1.VpcDHCPOptions, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(vpcdhcpoptionsesResource, c.ns, vpcDHCPOptions), &v1alpha1.VpcDHCPOptions{})
 
@@ -103,7 +105,7 @@ func (c *FakeVpcDHCPOptionses) Update(vpcDHCPOptions *v1alpha1.VpcDHCPOptions) (
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeVpcDHCPOptionses) UpdateStatus(vpcDHCPOptions *v1alpha1.VpcDHCPOptions) (*v1alpha1.VpcDHCPOptions, error) {
+func (c *FakeVpcDHCPOptionses) UpdateStatus(ctx context.Context, vpcDHCPOptions *v1alpha1.VpcDHCPOptions, opts v1.UpdateOptions) (*v1alpha1.VpcDHCPOptions, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(vpcdhcpoptionsesResource, "status", c.ns, vpcDHCPOptions), &v1alpha1.VpcDHCPOptions{})
 
@@ -114,7 +116,7 @@ func (c *FakeVpcDHCPOptionses) UpdateStatus(vpcDHCPOptions *v1alpha1.VpcDHCPOpti
 }
 
 // Delete takes name of the vpcDHCPOptions and deletes it. Returns an error if one occurs.
-func (c *FakeVpcDHCPOptionses) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeVpcDHCPOptionses) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(vpcdhcpoptionsesResource, c.ns, name), &v1alpha1.VpcDHCPOptions{})
 
@@ -122,15 +124,15 @@ func (c *FakeVpcDHCPOptionses) Delete(name string, options *v1.DeleteOptions) er
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeVpcDHCPOptionses) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(vpcdhcpoptionsesResource, c.ns, listOptions)
+func (c *FakeVpcDHCPOptionses) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(vpcdhcpoptionsesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.VpcDHCPOptionsList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched vpcDHCPOptions.
-func (c *FakeVpcDHCPOptionses) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.VpcDHCPOptions, err error) {
+func (c *FakeVpcDHCPOptionses) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.VpcDHCPOptions, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(vpcdhcpoptionsesResource, c.ns, name, pt, data, subresources...), &v1alpha1.VpcDHCPOptions{})
 

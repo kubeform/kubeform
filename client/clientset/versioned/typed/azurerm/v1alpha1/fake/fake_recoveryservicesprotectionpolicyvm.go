@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var recoveryservicesprotectionpolicyvmsResource = schema.GroupVersionResource{Gr
 var recoveryservicesprotectionpolicyvmsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "RecoveryServicesProtectionPolicyVm"}
 
 // Get takes name of the recoveryServicesProtectionPolicyVm, and returns the corresponding recoveryServicesProtectionPolicyVm object, and an error if there is any.
-func (c *FakeRecoveryServicesProtectionPolicyVms) Get(name string, options v1.GetOptions) (result *v1alpha1.RecoveryServicesProtectionPolicyVm, err error) {
+func (c *FakeRecoveryServicesProtectionPolicyVms) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.RecoveryServicesProtectionPolicyVm, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(recoveryservicesprotectionpolicyvmsResource, c.ns, name), &v1alpha1.RecoveryServicesProtectionPolicyVm{})
 
@@ -51,7 +53,7 @@ func (c *FakeRecoveryServicesProtectionPolicyVms) Get(name string, options v1.Ge
 }
 
 // List takes label and field selectors, and returns the list of RecoveryServicesProtectionPolicyVms that match those selectors.
-func (c *FakeRecoveryServicesProtectionPolicyVms) List(opts v1.ListOptions) (result *v1alpha1.RecoveryServicesProtectionPolicyVmList, err error) {
+func (c *FakeRecoveryServicesProtectionPolicyVms) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RecoveryServicesProtectionPolicyVmList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(recoveryservicesprotectionpolicyvmsResource, recoveryservicesprotectionpolicyvmsKind, c.ns, opts), &v1alpha1.RecoveryServicesProtectionPolicyVmList{})
 
@@ -73,14 +75,14 @@ func (c *FakeRecoveryServicesProtectionPolicyVms) List(opts v1.ListOptions) (res
 }
 
 // Watch returns a watch.Interface that watches the requested recoveryServicesProtectionPolicyVms.
-func (c *FakeRecoveryServicesProtectionPolicyVms) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeRecoveryServicesProtectionPolicyVms) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(recoveryservicesprotectionpolicyvmsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a recoveryServicesProtectionPolicyVm and creates it.  Returns the server's representation of the recoveryServicesProtectionPolicyVm, and an error, if there is any.
-func (c *FakeRecoveryServicesProtectionPolicyVms) Create(recoveryServicesProtectionPolicyVm *v1alpha1.RecoveryServicesProtectionPolicyVm) (result *v1alpha1.RecoveryServicesProtectionPolicyVm, err error) {
+func (c *FakeRecoveryServicesProtectionPolicyVms) Create(ctx context.Context, recoveryServicesProtectionPolicyVm *v1alpha1.RecoveryServicesProtectionPolicyVm, opts v1.CreateOptions) (result *v1alpha1.RecoveryServicesProtectionPolicyVm, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(recoveryservicesprotectionpolicyvmsResource, c.ns, recoveryServicesProtectionPolicyVm), &v1alpha1.RecoveryServicesProtectionPolicyVm{})
 
@@ -91,7 +93,7 @@ func (c *FakeRecoveryServicesProtectionPolicyVms) Create(recoveryServicesProtect
 }
 
 // Update takes the representation of a recoveryServicesProtectionPolicyVm and updates it. Returns the server's representation of the recoveryServicesProtectionPolicyVm, and an error, if there is any.
-func (c *FakeRecoveryServicesProtectionPolicyVms) Update(recoveryServicesProtectionPolicyVm *v1alpha1.RecoveryServicesProtectionPolicyVm) (result *v1alpha1.RecoveryServicesProtectionPolicyVm, err error) {
+func (c *FakeRecoveryServicesProtectionPolicyVms) Update(ctx context.Context, recoveryServicesProtectionPolicyVm *v1alpha1.RecoveryServicesProtectionPolicyVm, opts v1.UpdateOptions) (result *v1alpha1.RecoveryServicesProtectionPolicyVm, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(recoveryservicesprotectionpolicyvmsResource, c.ns, recoveryServicesProtectionPolicyVm), &v1alpha1.RecoveryServicesProtectionPolicyVm{})
 
@@ -103,7 +105,7 @@ func (c *FakeRecoveryServicesProtectionPolicyVms) Update(recoveryServicesProtect
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeRecoveryServicesProtectionPolicyVms) UpdateStatus(recoveryServicesProtectionPolicyVm *v1alpha1.RecoveryServicesProtectionPolicyVm) (*v1alpha1.RecoveryServicesProtectionPolicyVm, error) {
+func (c *FakeRecoveryServicesProtectionPolicyVms) UpdateStatus(ctx context.Context, recoveryServicesProtectionPolicyVm *v1alpha1.RecoveryServicesProtectionPolicyVm, opts v1.UpdateOptions) (*v1alpha1.RecoveryServicesProtectionPolicyVm, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(recoveryservicesprotectionpolicyvmsResource, "status", c.ns, recoveryServicesProtectionPolicyVm), &v1alpha1.RecoveryServicesProtectionPolicyVm{})
 
@@ -114,7 +116,7 @@ func (c *FakeRecoveryServicesProtectionPolicyVms) UpdateStatus(recoveryServicesP
 }
 
 // Delete takes name of the recoveryServicesProtectionPolicyVm and deletes it. Returns an error if one occurs.
-func (c *FakeRecoveryServicesProtectionPolicyVms) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeRecoveryServicesProtectionPolicyVms) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(recoveryservicesprotectionpolicyvmsResource, c.ns, name), &v1alpha1.RecoveryServicesProtectionPolicyVm{})
 
@@ -122,15 +124,15 @@ func (c *FakeRecoveryServicesProtectionPolicyVms) Delete(name string, options *v
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeRecoveryServicesProtectionPolicyVms) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(recoveryservicesprotectionpolicyvmsResource, c.ns, listOptions)
+func (c *FakeRecoveryServicesProtectionPolicyVms) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(recoveryservicesprotectionpolicyvmsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.RecoveryServicesProtectionPolicyVmList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched recoveryServicesProtectionPolicyVm.
-func (c *FakeRecoveryServicesProtectionPolicyVms) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RecoveryServicesProtectionPolicyVm, err error) {
+func (c *FakeRecoveryServicesProtectionPolicyVms) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RecoveryServicesProtectionPolicyVm, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(recoveryservicesprotectionpolicyvmsResource, c.ns, name, pt, data, subresources...), &v1alpha1.RecoveryServicesProtectionPolicyVm{})
 

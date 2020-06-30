@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computeinterconnectattachmentsResource = schema.GroupVersionResource{Group: 
 var computeinterconnectattachmentsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeInterconnectAttachment"}
 
 // Get takes name of the computeInterconnectAttachment, and returns the corresponding computeInterconnectAttachment object, and an error if there is any.
-func (c *FakeComputeInterconnectAttachments) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeInterconnectAttachment, err error) {
+func (c *FakeComputeInterconnectAttachments) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeInterconnectAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computeinterconnectattachmentsResource, c.ns, name), &v1alpha1.ComputeInterconnectAttachment{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeInterconnectAttachments) Get(name string, options v1.GetOpti
 }
 
 // List takes label and field selectors, and returns the list of ComputeInterconnectAttachments that match those selectors.
-func (c *FakeComputeInterconnectAttachments) List(opts v1.ListOptions) (result *v1alpha1.ComputeInterconnectAttachmentList, err error) {
+func (c *FakeComputeInterconnectAttachments) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeInterconnectAttachmentList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computeinterconnectattachmentsResource, computeinterconnectattachmentsKind, c.ns, opts), &v1alpha1.ComputeInterconnectAttachmentList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeInterconnectAttachments) List(opts v1.ListOptions) (result *
 }
 
 // Watch returns a watch.Interface that watches the requested computeInterconnectAttachments.
-func (c *FakeComputeInterconnectAttachments) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeInterconnectAttachments) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computeinterconnectattachmentsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeInterconnectAttachment and creates it.  Returns the server's representation of the computeInterconnectAttachment, and an error, if there is any.
-func (c *FakeComputeInterconnectAttachments) Create(computeInterconnectAttachment *v1alpha1.ComputeInterconnectAttachment) (result *v1alpha1.ComputeInterconnectAttachment, err error) {
+func (c *FakeComputeInterconnectAttachments) Create(ctx context.Context, computeInterconnectAttachment *v1alpha1.ComputeInterconnectAttachment, opts v1.CreateOptions) (result *v1alpha1.ComputeInterconnectAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computeinterconnectattachmentsResource, c.ns, computeInterconnectAttachment), &v1alpha1.ComputeInterconnectAttachment{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeInterconnectAttachments) Create(computeInterconnectAttachmen
 }
 
 // Update takes the representation of a computeInterconnectAttachment and updates it. Returns the server's representation of the computeInterconnectAttachment, and an error, if there is any.
-func (c *FakeComputeInterconnectAttachments) Update(computeInterconnectAttachment *v1alpha1.ComputeInterconnectAttachment) (result *v1alpha1.ComputeInterconnectAttachment, err error) {
+func (c *FakeComputeInterconnectAttachments) Update(ctx context.Context, computeInterconnectAttachment *v1alpha1.ComputeInterconnectAttachment, opts v1.UpdateOptions) (result *v1alpha1.ComputeInterconnectAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computeinterconnectattachmentsResource, c.ns, computeInterconnectAttachment), &v1alpha1.ComputeInterconnectAttachment{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeInterconnectAttachments) Update(computeInterconnectAttachmen
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeInterconnectAttachments) UpdateStatus(computeInterconnectAttachment *v1alpha1.ComputeInterconnectAttachment) (*v1alpha1.ComputeInterconnectAttachment, error) {
+func (c *FakeComputeInterconnectAttachments) UpdateStatus(ctx context.Context, computeInterconnectAttachment *v1alpha1.ComputeInterconnectAttachment, opts v1.UpdateOptions) (*v1alpha1.ComputeInterconnectAttachment, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computeinterconnectattachmentsResource, "status", c.ns, computeInterconnectAttachment), &v1alpha1.ComputeInterconnectAttachment{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeInterconnectAttachments) UpdateStatus(computeInterconnectAtt
 }
 
 // Delete takes name of the computeInterconnectAttachment and deletes it. Returns an error if one occurs.
-func (c *FakeComputeInterconnectAttachments) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeInterconnectAttachments) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computeinterconnectattachmentsResource, c.ns, name), &v1alpha1.ComputeInterconnectAttachment{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeInterconnectAttachments) Delete(name string, options *v1.Del
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeInterconnectAttachments) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computeinterconnectattachmentsResource, c.ns, listOptions)
+func (c *FakeComputeInterconnectAttachments) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computeinterconnectattachmentsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeInterconnectAttachmentList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeInterconnectAttachment.
-func (c *FakeComputeInterconnectAttachments) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeInterconnectAttachment, err error) {
+func (c *FakeComputeInterconnectAttachments) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeInterconnectAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computeinterconnectattachmentsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeInterconnectAttachment{})
 

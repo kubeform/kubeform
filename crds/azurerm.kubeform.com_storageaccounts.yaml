@@ -1,0 +1,626 @@
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/name: kubeform
+  name: storageaccounts.azurerm.kubeform.com
+spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
+  group: azurerm.kubeform.com
+  names:
+    kind: StorageAccount
+    listKind: StorageAccountList
+    plural: storageaccounts
+    singular: storageaccount
+  scope: Namespaced
+  subresources:
+    status: {}
+  validation:
+    openAPIV3Schema:
+      properties:
+        apiVersion:
+          description: 'APIVersion defines the versioned schema of this representation
+            of an object. Servers should convert recognized schemas to the latest
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+          type: string
+        kind:
+          description: 'Kind is a string value representing the REST resource this
+            object represents. Servers may infer this from the endpoint the client
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+          type: string
+        metadata:
+          type: object
+        spec:
+          properties:
+            accessTier:
+              type: string
+            accountEncryptionSource:
+              type: string
+            accountKind:
+              type: string
+            accountReplicationType:
+              type: string
+            accountTier:
+              type: string
+            accountType:
+              description: Deprecated
+              type: string
+            blobProperties:
+              items:
+                properties:
+                  deleteRetentionPolicy:
+                    items:
+                      properties:
+                        days:
+                          format: int64
+                          type: integer
+                      type: object
+                    maxItems: 1
+                    type: array
+                type: object
+              maxItems: 1
+              type: array
+            customDomain:
+              items:
+                properties:
+                  name:
+                    type: string
+                  useSubdomain:
+                    type: boolean
+                required:
+                - name
+                type: object
+              maxItems: 1
+              type: array
+            enableAdvancedThreatProtection:
+              description: Deprecated
+              type: boolean
+            enableBlobEncryption:
+              type: boolean
+            enableFileEncryption:
+              type: boolean
+            enableHTTPSTrafficOnly:
+              type: boolean
+            id:
+              type: string
+            identity:
+              items:
+                properties:
+                  principalID:
+                    type: string
+                  tenantID:
+                    type: string
+                  type:
+                    type: string
+                required:
+                - type
+                type: object
+              maxItems: 1
+              type: array
+            isHnsEnabled:
+              type: boolean
+            location:
+              type: string
+            name:
+              type: string
+            networkRules:
+              items:
+                properties:
+                  bypass:
+                    items:
+                      type: string
+                    type: array
+                  defaultAction:
+                    type: string
+                  ipRules:
+                    items:
+                      type: string
+                    type: array
+                  virtualNetworkSubnetIDS:
+                    items:
+                      type: string
+                    type: array
+                required:
+                - defaultAction
+                type: object
+              maxItems: 1
+              type: array
+            primaryBlobEndpoint:
+              type: string
+            primaryBlobHost:
+              type: string
+            primaryDfsEndpoint:
+              type: string
+            primaryDfsHost:
+              type: string
+            primaryFileEndpoint:
+              type: string
+            primaryFileHost:
+              type: string
+            primaryLocation:
+              type: string
+            primaryQueueEndpoint:
+              type: string
+            primaryQueueHost:
+              type: string
+            primaryTableEndpoint:
+              type: string
+            primaryTableHost:
+              type: string
+            primaryWebEndpoint:
+              type: string
+            primaryWebHost:
+              type: string
+            providerRef:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
+            queueProperties:
+              items:
+                properties:
+                  corsRule:
+                    items:
+                      properties:
+                        allowedHeaders:
+                          items:
+                            type: string
+                          maxItems: 64
+                          type: array
+                        allowedMethods:
+                          items:
+                            type: string
+                          maxItems: 64
+                          type: array
+                        allowedOrigins:
+                          items:
+                            type: string
+                          maxItems: 64
+                          type: array
+                        exposedHeaders:
+                          items:
+                            type: string
+                          maxItems: 64
+                          type: array
+                        maxAgeInSeconds:
+                          format: int64
+                          type: integer
+                      required:
+                      - allowedHeaders
+                      - allowedMethods
+                      - allowedOrigins
+                      - exposedHeaders
+                      - maxAgeInSeconds
+                      type: object
+                    maxItems: 5
+                    type: array
+                  hourMetrics:
+                    items:
+                      properties:
+                        enabled:
+                          type: boolean
+                        includeApis:
+                          type: boolean
+                        retentionPolicyDays:
+                          format: int64
+                          type: integer
+                        version:
+                          type: string
+                      required:
+                      - enabled
+                      - version
+                      type: object
+                    maxItems: 1
+                    type: array
+                  logging:
+                    items:
+                      properties:
+                        delete:
+                          type: boolean
+                        read:
+                          type: boolean
+                        retentionPolicyDays:
+                          format: int64
+                          type: integer
+                        version:
+                          type: string
+                        write:
+                          type: boolean
+                      required:
+                      - delete
+                      - read
+                      - version
+                      - write
+                      type: object
+                    maxItems: 1
+                    type: array
+                  minuteMetrics:
+                    items:
+                      properties:
+                        enabled:
+                          type: boolean
+                        includeApis:
+                          type: boolean
+                        retentionPolicyDays:
+                          format: int64
+                          type: integer
+                        version:
+                          type: string
+                      required:
+                      - enabled
+                      - version
+                      type: object
+                    maxItems: 1
+                    type: array
+                type: object
+              maxItems: 1
+              type: array
+            resourceGroupName:
+              type: string
+            secondaryBlobEndpoint:
+              type: string
+            secondaryBlobHost:
+              type: string
+            secondaryDfsEndpoint:
+              type: string
+            secondaryDfsHost:
+              type: string
+            secondaryFileEndpoint:
+              type: string
+            secondaryFileHost:
+              type: string
+            secondaryLocation:
+              type: string
+            secondaryQueueEndpoint:
+              type: string
+            secondaryQueueHost:
+              type: string
+            secondaryTableEndpoint:
+              type: string
+            secondaryTableHost:
+              type: string
+            secondaryWebEndpoint:
+              type: string
+            secondaryWebHost:
+              type: string
+            secretRef:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
+            tags:
+              additionalProperties:
+                type: string
+              type: object
+          required:
+          - accountReplicationType
+          - accountTier
+          - location
+          - name
+          - providerRef
+          - resourceGroupName
+          type: object
+        status:
+          properties:
+            observedGeneration:
+              description: Resource generation, which is updated on mutation by the
+                API Server.
+              format: int64
+              type: integer
+            output:
+              properties:
+                accessTier:
+                  type: string
+                accountEncryptionSource:
+                  type: string
+                accountKind:
+                  type: string
+                accountReplicationType:
+                  type: string
+                accountTier:
+                  type: string
+                accountType:
+                  description: Deprecated
+                  type: string
+                blobProperties:
+                  items:
+                    properties:
+                      deleteRetentionPolicy:
+                        items:
+                          properties:
+                            days:
+                              format: int64
+                              type: integer
+                          type: object
+                        maxItems: 1
+                        type: array
+                    type: object
+                  maxItems: 1
+                  type: array
+                customDomain:
+                  items:
+                    properties:
+                      name:
+                        type: string
+                      useSubdomain:
+                        type: boolean
+                    required:
+                    - name
+                    type: object
+                  maxItems: 1
+                  type: array
+                enableAdvancedThreatProtection:
+                  description: Deprecated
+                  type: boolean
+                enableBlobEncryption:
+                  type: boolean
+                enableFileEncryption:
+                  type: boolean
+                enableHTTPSTrafficOnly:
+                  type: boolean
+                id:
+                  type: string
+                identity:
+                  items:
+                    properties:
+                      principalID:
+                        type: string
+                      tenantID:
+                        type: string
+                      type:
+                        type: string
+                    required:
+                    - type
+                    type: object
+                  maxItems: 1
+                  type: array
+                isHnsEnabled:
+                  type: boolean
+                location:
+                  type: string
+                name:
+                  type: string
+                networkRules:
+                  items:
+                    properties:
+                      bypass:
+                        items:
+                          type: string
+                        type: array
+                      defaultAction:
+                        type: string
+                      ipRules:
+                        items:
+                          type: string
+                        type: array
+                      virtualNetworkSubnetIDS:
+                        items:
+                          type: string
+                        type: array
+                    required:
+                    - defaultAction
+                    type: object
+                  maxItems: 1
+                  type: array
+                primaryBlobEndpoint:
+                  type: string
+                primaryBlobHost:
+                  type: string
+                primaryDfsEndpoint:
+                  type: string
+                primaryDfsHost:
+                  type: string
+                primaryFileEndpoint:
+                  type: string
+                primaryFileHost:
+                  type: string
+                primaryLocation:
+                  type: string
+                primaryQueueEndpoint:
+                  type: string
+                primaryQueueHost:
+                  type: string
+                primaryTableEndpoint:
+                  type: string
+                primaryTableHost:
+                  type: string
+                primaryWebEndpoint:
+                  type: string
+                primaryWebHost:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                queueProperties:
+                  items:
+                    properties:
+                      corsRule:
+                        items:
+                          properties:
+                            allowedHeaders:
+                              items:
+                                type: string
+                              maxItems: 64
+                              type: array
+                            allowedMethods:
+                              items:
+                                type: string
+                              maxItems: 64
+                              type: array
+                            allowedOrigins:
+                              items:
+                                type: string
+                              maxItems: 64
+                              type: array
+                            exposedHeaders:
+                              items:
+                                type: string
+                              maxItems: 64
+                              type: array
+                            maxAgeInSeconds:
+                              format: int64
+                              type: integer
+                          required:
+                          - allowedHeaders
+                          - allowedMethods
+                          - allowedOrigins
+                          - exposedHeaders
+                          - maxAgeInSeconds
+                          type: object
+                        maxItems: 5
+                        type: array
+                      hourMetrics:
+                        items:
+                          properties:
+                            enabled:
+                              type: boolean
+                            includeApis:
+                              type: boolean
+                            retentionPolicyDays:
+                              format: int64
+                              type: integer
+                            version:
+                              type: string
+                          required:
+                          - enabled
+                          - version
+                          type: object
+                        maxItems: 1
+                        type: array
+                      logging:
+                        items:
+                          properties:
+                            delete:
+                              type: boolean
+                            read:
+                              type: boolean
+                            retentionPolicyDays:
+                              format: int64
+                              type: integer
+                            version:
+                              type: string
+                            write:
+                              type: boolean
+                          required:
+                          - delete
+                          - read
+                          - version
+                          - write
+                          type: object
+                        maxItems: 1
+                        type: array
+                      minuteMetrics:
+                        items:
+                          properties:
+                            enabled:
+                              type: boolean
+                            includeApis:
+                              type: boolean
+                            retentionPolicyDays:
+                              format: int64
+                              type: integer
+                            version:
+                              type: string
+                          required:
+                          - enabled
+                          - version
+                          type: object
+                        maxItems: 1
+                        type: array
+                    type: object
+                  maxItems: 1
+                  type: array
+                resourceGroupName:
+                  type: string
+                secondaryBlobEndpoint:
+                  type: string
+                secondaryBlobHost:
+                  type: string
+                secondaryDfsEndpoint:
+                  type: string
+                secondaryDfsHost:
+                  type: string
+                secondaryFileEndpoint:
+                  type: string
+                secondaryFileHost:
+                  type: string
+                secondaryLocation:
+                  type: string
+                secondaryQueueEndpoint:
+                  type: string
+                secondaryQueueHost:
+                  type: string
+                secondaryTableEndpoint:
+                  type: string
+                secondaryTableHost:
+                  type: string
+                secondaryWebEndpoint:
+                  type: string
+                secondaryWebHost:
+                  type: string
+                secretRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+              required:
+              - accountReplicationType
+              - accountTier
+              - location
+              - name
+              - providerRef
+              - resourceGroupName
+              type: object
+            phase:
+              type: string
+            state:
+              properties:
+                lineage:
+                  type: string
+                serial:
+                  format: int64
+                  type: integer
+                terraform_version:
+                  type: string
+                version:
+                  format: int64
+                  type: integer
+              required:
+              - lineage
+              - serial
+              - terraform_version
+              - version
+              type: object
+          type: object
+      type: object
+  version: v1alpha1
+  versions:
+  - name: v1alpha1
+    served: true
+    storage: true

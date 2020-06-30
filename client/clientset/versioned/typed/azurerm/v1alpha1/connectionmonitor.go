@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type ConnectionMonitorsGetter interface {
 
 // ConnectionMonitorInterface has methods to work with ConnectionMonitor resources.
 type ConnectionMonitorInterface interface {
-	Create(*v1alpha1.ConnectionMonitor) (*v1alpha1.ConnectionMonitor, error)
-	Update(*v1alpha1.ConnectionMonitor) (*v1alpha1.ConnectionMonitor, error)
-	UpdateStatus(*v1alpha1.ConnectionMonitor) (*v1alpha1.ConnectionMonitor, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ConnectionMonitor, error)
-	List(opts v1.ListOptions) (*v1alpha1.ConnectionMonitorList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ConnectionMonitor, err error)
+	Create(ctx context.Context, connectionMonitor *v1alpha1.ConnectionMonitor, opts v1.CreateOptions) (*v1alpha1.ConnectionMonitor, error)
+	Update(ctx context.Context, connectionMonitor *v1alpha1.ConnectionMonitor, opts v1.UpdateOptions) (*v1alpha1.ConnectionMonitor, error)
+	UpdateStatus(ctx context.Context, connectionMonitor *v1alpha1.ConnectionMonitor, opts v1.UpdateOptions) (*v1alpha1.ConnectionMonitor, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ConnectionMonitor, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ConnectionMonitorList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ConnectionMonitor, err error)
 	ConnectionMonitorExpansion
 }
 
@@ -65,20 +66,20 @@ func newConnectionMonitors(c *AzurermV1alpha1Client, namespace string) *connecti
 }
 
 // Get takes name of the connectionMonitor, and returns the corresponding connectionMonitor object, and an error if there is any.
-func (c *connectionMonitors) Get(name string, options v1.GetOptions) (result *v1alpha1.ConnectionMonitor, err error) {
+func (c *connectionMonitors) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ConnectionMonitor, err error) {
 	result = &v1alpha1.ConnectionMonitor{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("connectionmonitors").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ConnectionMonitors that match those selectors.
-func (c *connectionMonitors) List(opts v1.ListOptions) (result *v1alpha1.ConnectionMonitorList, err error) {
+func (c *connectionMonitors) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ConnectionMonitorList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *connectionMonitors) List(opts v1.ListOptions) (result *v1alpha1.Connect
 		Resource("connectionmonitors").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested connectionMonitors.
-func (c *connectionMonitors) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *connectionMonitors) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *connectionMonitors) Watch(opts v1.ListOptions) (watch.Interface, error)
 		Resource("connectionmonitors").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a connectionMonitor and creates it.  Returns the server's representation of the connectionMonitor, and an error, if there is any.
-func (c *connectionMonitors) Create(connectionMonitor *v1alpha1.ConnectionMonitor) (result *v1alpha1.ConnectionMonitor, err error) {
+func (c *connectionMonitors) Create(ctx context.Context, connectionMonitor *v1alpha1.ConnectionMonitor, opts v1.CreateOptions) (result *v1alpha1.ConnectionMonitor, err error) {
 	result = &v1alpha1.ConnectionMonitor{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("connectionmonitors").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(connectionMonitor).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a connectionMonitor and updates it. Returns the server's representation of the connectionMonitor, and an error, if there is any.
-func (c *connectionMonitors) Update(connectionMonitor *v1alpha1.ConnectionMonitor) (result *v1alpha1.ConnectionMonitor, err error) {
+func (c *connectionMonitors) Update(ctx context.Context, connectionMonitor *v1alpha1.ConnectionMonitor, opts v1.UpdateOptions) (result *v1alpha1.ConnectionMonitor, err error) {
 	result = &v1alpha1.ConnectionMonitor{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("connectionmonitors").
 		Name(connectionMonitor.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(connectionMonitor).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *connectionMonitors) UpdateStatus(connectionMonitor *v1alpha1.ConnectionMonitor) (result *v1alpha1.ConnectionMonitor, err error) {
+func (c *connectionMonitors) UpdateStatus(ctx context.Context, connectionMonitor *v1alpha1.ConnectionMonitor, opts v1.UpdateOptions) (result *v1alpha1.ConnectionMonitor, err error) {
 	result = &v1alpha1.ConnectionMonitor{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("connectionmonitors").
 		Name(connectionMonitor.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(connectionMonitor).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the connectionMonitor and deletes it. Returns an error if one occurs.
-func (c *connectionMonitors) Delete(name string, options *v1.DeleteOptions) error {
+func (c *connectionMonitors) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("connectionmonitors").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *connectionMonitors) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *connectionMonitors) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("connectionmonitors").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched connectionMonitor.
-func (c *connectionMonitors) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ConnectionMonitor, err error) {
+func (c *connectionMonitors) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ConnectionMonitor, err error) {
 	result = &v1alpha1.ConnectionMonitor{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("connectionmonitors").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

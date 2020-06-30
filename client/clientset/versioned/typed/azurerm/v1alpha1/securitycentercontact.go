@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type SecurityCenterContactsGetter interface {
 
 // SecurityCenterContactInterface has methods to work with SecurityCenterContact resources.
 type SecurityCenterContactInterface interface {
-	Create(*v1alpha1.SecurityCenterContact) (*v1alpha1.SecurityCenterContact, error)
-	Update(*v1alpha1.SecurityCenterContact) (*v1alpha1.SecurityCenterContact, error)
-	UpdateStatus(*v1alpha1.SecurityCenterContact) (*v1alpha1.SecurityCenterContact, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SecurityCenterContact, error)
-	List(opts v1.ListOptions) (*v1alpha1.SecurityCenterContactList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SecurityCenterContact, err error)
+	Create(ctx context.Context, securityCenterContact *v1alpha1.SecurityCenterContact, opts v1.CreateOptions) (*v1alpha1.SecurityCenterContact, error)
+	Update(ctx context.Context, securityCenterContact *v1alpha1.SecurityCenterContact, opts v1.UpdateOptions) (*v1alpha1.SecurityCenterContact, error)
+	UpdateStatus(ctx context.Context, securityCenterContact *v1alpha1.SecurityCenterContact, opts v1.UpdateOptions) (*v1alpha1.SecurityCenterContact, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SecurityCenterContact, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SecurityCenterContactList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SecurityCenterContact, err error)
 	SecurityCenterContactExpansion
 }
 
@@ -65,20 +66,20 @@ func newSecurityCenterContacts(c *AzurermV1alpha1Client, namespace string) *secu
 }
 
 // Get takes name of the securityCenterContact, and returns the corresponding securityCenterContact object, and an error if there is any.
-func (c *securityCenterContacts) Get(name string, options v1.GetOptions) (result *v1alpha1.SecurityCenterContact, err error) {
+func (c *securityCenterContacts) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SecurityCenterContact, err error) {
 	result = &v1alpha1.SecurityCenterContact{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("securitycentercontacts").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SecurityCenterContacts that match those selectors.
-func (c *securityCenterContacts) List(opts v1.ListOptions) (result *v1alpha1.SecurityCenterContactList, err error) {
+func (c *securityCenterContacts) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SecurityCenterContactList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *securityCenterContacts) List(opts v1.ListOptions) (result *v1alpha1.Sec
 		Resource("securitycentercontacts").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested securityCenterContacts.
-func (c *securityCenterContacts) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *securityCenterContacts) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *securityCenterContacts) Watch(opts v1.ListOptions) (watch.Interface, er
 		Resource("securitycentercontacts").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a securityCenterContact and creates it.  Returns the server's representation of the securityCenterContact, and an error, if there is any.
-func (c *securityCenterContacts) Create(securityCenterContact *v1alpha1.SecurityCenterContact) (result *v1alpha1.SecurityCenterContact, err error) {
+func (c *securityCenterContacts) Create(ctx context.Context, securityCenterContact *v1alpha1.SecurityCenterContact, opts v1.CreateOptions) (result *v1alpha1.SecurityCenterContact, err error) {
 	result = &v1alpha1.SecurityCenterContact{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("securitycentercontacts").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(securityCenterContact).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a securityCenterContact and updates it. Returns the server's representation of the securityCenterContact, and an error, if there is any.
-func (c *securityCenterContacts) Update(securityCenterContact *v1alpha1.SecurityCenterContact) (result *v1alpha1.SecurityCenterContact, err error) {
+func (c *securityCenterContacts) Update(ctx context.Context, securityCenterContact *v1alpha1.SecurityCenterContact, opts v1.UpdateOptions) (result *v1alpha1.SecurityCenterContact, err error) {
 	result = &v1alpha1.SecurityCenterContact{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("securitycentercontacts").
 		Name(securityCenterContact.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(securityCenterContact).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *securityCenterContacts) UpdateStatus(securityCenterContact *v1alpha1.SecurityCenterContact) (result *v1alpha1.SecurityCenterContact, err error) {
+func (c *securityCenterContacts) UpdateStatus(ctx context.Context, securityCenterContact *v1alpha1.SecurityCenterContact, opts v1.UpdateOptions) (result *v1alpha1.SecurityCenterContact, err error) {
 	result = &v1alpha1.SecurityCenterContact{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("securitycentercontacts").
 		Name(securityCenterContact.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(securityCenterContact).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the securityCenterContact and deletes it. Returns an error if one occurs.
-func (c *securityCenterContacts) Delete(name string, options *v1.DeleteOptions) error {
+func (c *securityCenterContacts) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("securitycentercontacts").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *securityCenterContacts) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *securityCenterContacts) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("securitycentercontacts").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched securityCenterContact.
-func (c *securityCenterContacts) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SecurityCenterContact, err error) {
+func (c *securityCenterContacts) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SecurityCenterContact, err error) {
 	result = &v1alpha1.SecurityCenterContact{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("securitycentercontacts").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dataprocclusteriammembersResource = schema.GroupVersionResource{Group: "goog
 var dataprocclusteriammembersKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "DataprocClusterIamMember"}
 
 // Get takes name of the dataprocClusterIamMember, and returns the corresponding dataprocClusterIamMember object, and an error if there is any.
-func (c *FakeDataprocClusterIamMembers) Get(name string, options v1.GetOptions) (result *v1alpha1.DataprocClusterIamMember, err error) {
+func (c *FakeDataprocClusterIamMembers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DataprocClusterIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dataprocclusteriammembersResource, c.ns, name), &v1alpha1.DataprocClusterIamMember{})
 
@@ -51,7 +53,7 @@ func (c *FakeDataprocClusterIamMembers) Get(name string, options v1.GetOptions) 
 }
 
 // List takes label and field selectors, and returns the list of DataprocClusterIamMembers that match those selectors.
-func (c *FakeDataprocClusterIamMembers) List(opts v1.ListOptions) (result *v1alpha1.DataprocClusterIamMemberList, err error) {
+func (c *FakeDataprocClusterIamMembers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DataprocClusterIamMemberList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dataprocclusteriammembersResource, dataprocclusteriammembersKind, c.ns, opts), &v1alpha1.DataprocClusterIamMemberList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDataprocClusterIamMembers) List(opts v1.ListOptions) (result *v1alp
 }
 
 // Watch returns a watch.Interface that watches the requested dataprocClusterIamMembers.
-func (c *FakeDataprocClusterIamMembers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDataprocClusterIamMembers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dataprocclusteriammembersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dataprocClusterIamMember and creates it.  Returns the server's representation of the dataprocClusterIamMember, and an error, if there is any.
-func (c *FakeDataprocClusterIamMembers) Create(dataprocClusterIamMember *v1alpha1.DataprocClusterIamMember) (result *v1alpha1.DataprocClusterIamMember, err error) {
+func (c *FakeDataprocClusterIamMembers) Create(ctx context.Context, dataprocClusterIamMember *v1alpha1.DataprocClusterIamMember, opts v1.CreateOptions) (result *v1alpha1.DataprocClusterIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dataprocclusteriammembersResource, c.ns, dataprocClusterIamMember), &v1alpha1.DataprocClusterIamMember{})
 
@@ -91,7 +93,7 @@ func (c *FakeDataprocClusterIamMembers) Create(dataprocClusterIamMember *v1alpha
 }
 
 // Update takes the representation of a dataprocClusterIamMember and updates it. Returns the server's representation of the dataprocClusterIamMember, and an error, if there is any.
-func (c *FakeDataprocClusterIamMembers) Update(dataprocClusterIamMember *v1alpha1.DataprocClusterIamMember) (result *v1alpha1.DataprocClusterIamMember, err error) {
+func (c *FakeDataprocClusterIamMembers) Update(ctx context.Context, dataprocClusterIamMember *v1alpha1.DataprocClusterIamMember, opts v1.UpdateOptions) (result *v1alpha1.DataprocClusterIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dataprocclusteriammembersResource, c.ns, dataprocClusterIamMember), &v1alpha1.DataprocClusterIamMember{})
 
@@ -103,7 +105,7 @@ func (c *FakeDataprocClusterIamMembers) Update(dataprocClusterIamMember *v1alpha
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDataprocClusterIamMembers) UpdateStatus(dataprocClusterIamMember *v1alpha1.DataprocClusterIamMember) (*v1alpha1.DataprocClusterIamMember, error) {
+func (c *FakeDataprocClusterIamMembers) UpdateStatus(ctx context.Context, dataprocClusterIamMember *v1alpha1.DataprocClusterIamMember, opts v1.UpdateOptions) (*v1alpha1.DataprocClusterIamMember, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dataprocclusteriammembersResource, "status", c.ns, dataprocClusterIamMember), &v1alpha1.DataprocClusterIamMember{})
 
@@ -114,7 +116,7 @@ func (c *FakeDataprocClusterIamMembers) UpdateStatus(dataprocClusterIamMember *v
 }
 
 // Delete takes name of the dataprocClusterIamMember and deletes it. Returns an error if one occurs.
-func (c *FakeDataprocClusterIamMembers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDataprocClusterIamMembers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dataprocclusteriammembersResource, c.ns, name), &v1alpha1.DataprocClusterIamMember{})
 
@@ -122,15 +124,15 @@ func (c *FakeDataprocClusterIamMembers) Delete(name string, options *v1.DeleteOp
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDataprocClusterIamMembers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dataprocclusteriammembersResource, c.ns, listOptions)
+func (c *FakeDataprocClusterIamMembers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dataprocclusteriammembersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DataprocClusterIamMemberList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dataprocClusterIamMember.
-func (c *FakeDataprocClusterIamMembers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataprocClusterIamMember, err error) {
+func (c *FakeDataprocClusterIamMembers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataprocClusterIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dataprocclusteriammembersResource, c.ns, name, pt, data, subresources...), &v1alpha1.DataprocClusterIamMember{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var rdsglobalclustersResource = schema.GroupVersionResource{Group: "aws.kubeform
 var rdsglobalclustersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "RdsGlobalCluster"}
 
 // Get takes name of the rdsGlobalCluster, and returns the corresponding rdsGlobalCluster object, and an error if there is any.
-func (c *FakeRdsGlobalClusters) Get(name string, options v1.GetOptions) (result *v1alpha1.RdsGlobalCluster, err error) {
+func (c *FakeRdsGlobalClusters) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.RdsGlobalCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(rdsglobalclustersResource, c.ns, name), &v1alpha1.RdsGlobalCluster{})
 
@@ -51,7 +53,7 @@ func (c *FakeRdsGlobalClusters) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of RdsGlobalClusters that match those selectors.
-func (c *FakeRdsGlobalClusters) List(opts v1.ListOptions) (result *v1alpha1.RdsGlobalClusterList, err error) {
+func (c *FakeRdsGlobalClusters) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RdsGlobalClusterList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(rdsglobalclustersResource, rdsglobalclustersKind, c.ns, opts), &v1alpha1.RdsGlobalClusterList{})
 
@@ -73,14 +75,14 @@ func (c *FakeRdsGlobalClusters) List(opts v1.ListOptions) (result *v1alpha1.RdsG
 }
 
 // Watch returns a watch.Interface that watches the requested rdsGlobalClusters.
-func (c *FakeRdsGlobalClusters) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeRdsGlobalClusters) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(rdsglobalclustersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a rdsGlobalCluster and creates it.  Returns the server's representation of the rdsGlobalCluster, and an error, if there is any.
-func (c *FakeRdsGlobalClusters) Create(rdsGlobalCluster *v1alpha1.RdsGlobalCluster) (result *v1alpha1.RdsGlobalCluster, err error) {
+func (c *FakeRdsGlobalClusters) Create(ctx context.Context, rdsGlobalCluster *v1alpha1.RdsGlobalCluster, opts v1.CreateOptions) (result *v1alpha1.RdsGlobalCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(rdsglobalclustersResource, c.ns, rdsGlobalCluster), &v1alpha1.RdsGlobalCluster{})
 
@@ -91,7 +93,7 @@ func (c *FakeRdsGlobalClusters) Create(rdsGlobalCluster *v1alpha1.RdsGlobalClust
 }
 
 // Update takes the representation of a rdsGlobalCluster and updates it. Returns the server's representation of the rdsGlobalCluster, and an error, if there is any.
-func (c *FakeRdsGlobalClusters) Update(rdsGlobalCluster *v1alpha1.RdsGlobalCluster) (result *v1alpha1.RdsGlobalCluster, err error) {
+func (c *FakeRdsGlobalClusters) Update(ctx context.Context, rdsGlobalCluster *v1alpha1.RdsGlobalCluster, opts v1.UpdateOptions) (result *v1alpha1.RdsGlobalCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(rdsglobalclustersResource, c.ns, rdsGlobalCluster), &v1alpha1.RdsGlobalCluster{})
 
@@ -103,7 +105,7 @@ func (c *FakeRdsGlobalClusters) Update(rdsGlobalCluster *v1alpha1.RdsGlobalClust
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeRdsGlobalClusters) UpdateStatus(rdsGlobalCluster *v1alpha1.RdsGlobalCluster) (*v1alpha1.RdsGlobalCluster, error) {
+func (c *FakeRdsGlobalClusters) UpdateStatus(ctx context.Context, rdsGlobalCluster *v1alpha1.RdsGlobalCluster, opts v1.UpdateOptions) (*v1alpha1.RdsGlobalCluster, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(rdsglobalclustersResource, "status", c.ns, rdsGlobalCluster), &v1alpha1.RdsGlobalCluster{})
 
@@ -114,7 +116,7 @@ func (c *FakeRdsGlobalClusters) UpdateStatus(rdsGlobalCluster *v1alpha1.RdsGloba
 }
 
 // Delete takes name of the rdsGlobalCluster and deletes it. Returns an error if one occurs.
-func (c *FakeRdsGlobalClusters) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeRdsGlobalClusters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(rdsglobalclustersResource, c.ns, name), &v1alpha1.RdsGlobalCluster{})
 
@@ -122,15 +124,15 @@ func (c *FakeRdsGlobalClusters) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeRdsGlobalClusters) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(rdsglobalclustersResource, c.ns, listOptions)
+func (c *FakeRdsGlobalClusters) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(rdsglobalclustersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.RdsGlobalClusterList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched rdsGlobalCluster.
-func (c *FakeRdsGlobalClusters) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RdsGlobalCluster, err error) {
+func (c *FakeRdsGlobalClusters) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RdsGlobalCluster, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(rdsglobalclustersResource, c.ns, name, pt, data, subresources...), &v1alpha1.RdsGlobalCluster{})
 

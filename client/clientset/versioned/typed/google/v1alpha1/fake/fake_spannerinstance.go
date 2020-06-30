@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var spannerinstancesResource = schema.GroupVersionResource{Group: "google.kubefo
 var spannerinstancesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "SpannerInstance"}
 
 // Get takes name of the spannerInstance, and returns the corresponding spannerInstance object, and an error if there is any.
-func (c *FakeSpannerInstances) Get(name string, options v1.GetOptions) (result *v1alpha1.SpannerInstance, err error) {
+func (c *FakeSpannerInstances) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SpannerInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(spannerinstancesResource, c.ns, name), &v1alpha1.SpannerInstance{})
 
@@ -51,7 +53,7 @@ func (c *FakeSpannerInstances) Get(name string, options v1.GetOptions) (result *
 }
 
 // List takes label and field selectors, and returns the list of SpannerInstances that match those selectors.
-func (c *FakeSpannerInstances) List(opts v1.ListOptions) (result *v1alpha1.SpannerInstanceList, err error) {
+func (c *FakeSpannerInstances) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SpannerInstanceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(spannerinstancesResource, spannerinstancesKind, c.ns, opts), &v1alpha1.SpannerInstanceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSpannerInstances) List(opts v1.ListOptions) (result *v1alpha1.Spann
 }
 
 // Watch returns a watch.Interface that watches the requested spannerInstances.
-func (c *FakeSpannerInstances) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSpannerInstances) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(spannerinstancesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a spannerInstance and creates it.  Returns the server's representation of the spannerInstance, and an error, if there is any.
-func (c *FakeSpannerInstances) Create(spannerInstance *v1alpha1.SpannerInstance) (result *v1alpha1.SpannerInstance, err error) {
+func (c *FakeSpannerInstances) Create(ctx context.Context, spannerInstance *v1alpha1.SpannerInstance, opts v1.CreateOptions) (result *v1alpha1.SpannerInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(spannerinstancesResource, c.ns, spannerInstance), &v1alpha1.SpannerInstance{})
 
@@ -91,7 +93,7 @@ func (c *FakeSpannerInstances) Create(spannerInstance *v1alpha1.SpannerInstance)
 }
 
 // Update takes the representation of a spannerInstance and updates it. Returns the server's representation of the spannerInstance, and an error, if there is any.
-func (c *FakeSpannerInstances) Update(spannerInstance *v1alpha1.SpannerInstance) (result *v1alpha1.SpannerInstance, err error) {
+func (c *FakeSpannerInstances) Update(ctx context.Context, spannerInstance *v1alpha1.SpannerInstance, opts v1.UpdateOptions) (result *v1alpha1.SpannerInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(spannerinstancesResource, c.ns, spannerInstance), &v1alpha1.SpannerInstance{})
 
@@ -103,7 +105,7 @@ func (c *FakeSpannerInstances) Update(spannerInstance *v1alpha1.SpannerInstance)
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSpannerInstances) UpdateStatus(spannerInstance *v1alpha1.SpannerInstance) (*v1alpha1.SpannerInstance, error) {
+func (c *FakeSpannerInstances) UpdateStatus(ctx context.Context, spannerInstance *v1alpha1.SpannerInstance, opts v1.UpdateOptions) (*v1alpha1.SpannerInstance, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(spannerinstancesResource, "status", c.ns, spannerInstance), &v1alpha1.SpannerInstance{})
 
@@ -114,7 +116,7 @@ func (c *FakeSpannerInstances) UpdateStatus(spannerInstance *v1alpha1.SpannerIns
 }
 
 // Delete takes name of the spannerInstance and deletes it. Returns an error if one occurs.
-func (c *FakeSpannerInstances) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSpannerInstances) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(spannerinstancesResource, c.ns, name), &v1alpha1.SpannerInstance{})
 
@@ -122,15 +124,15 @@ func (c *FakeSpannerInstances) Delete(name string, options *v1.DeleteOptions) er
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSpannerInstances) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(spannerinstancesResource, c.ns, listOptions)
+func (c *FakeSpannerInstances) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(spannerinstancesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SpannerInstanceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched spannerInstance.
-func (c *FakeSpannerInstances) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SpannerInstance, err error) {
+func (c *FakeSpannerInstances) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SpannerInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(spannerinstancesResource, c.ns, name, pt, data, subresources...), &v1alpha1.SpannerInstance{})
 

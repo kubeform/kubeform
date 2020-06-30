@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iamsamlprovidersResource = schema.GroupVersionResource{Group: "aws.kubeform.
 var iamsamlprovidersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "IamSamlProvider"}
 
 // Get takes name of the iamSamlProvider, and returns the corresponding iamSamlProvider object, and an error if there is any.
-func (c *FakeIamSamlProviders) Get(name string, options v1.GetOptions) (result *v1alpha1.IamSamlProvider, err error) {
+func (c *FakeIamSamlProviders) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IamSamlProvider, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iamsamlprovidersResource, c.ns, name), &v1alpha1.IamSamlProvider{})
 
@@ -51,7 +53,7 @@ func (c *FakeIamSamlProviders) Get(name string, options v1.GetOptions) (result *
 }
 
 // List takes label and field selectors, and returns the list of IamSamlProviders that match those selectors.
-func (c *FakeIamSamlProviders) List(opts v1.ListOptions) (result *v1alpha1.IamSamlProviderList, err error) {
+func (c *FakeIamSamlProviders) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IamSamlProviderList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iamsamlprovidersResource, iamsamlprovidersKind, c.ns, opts), &v1alpha1.IamSamlProviderList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIamSamlProviders) List(opts v1.ListOptions) (result *v1alpha1.IamSa
 }
 
 // Watch returns a watch.Interface that watches the requested iamSamlProviders.
-func (c *FakeIamSamlProviders) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIamSamlProviders) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iamsamlprovidersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iamSamlProvider and creates it.  Returns the server's representation of the iamSamlProvider, and an error, if there is any.
-func (c *FakeIamSamlProviders) Create(iamSamlProvider *v1alpha1.IamSamlProvider) (result *v1alpha1.IamSamlProvider, err error) {
+func (c *FakeIamSamlProviders) Create(ctx context.Context, iamSamlProvider *v1alpha1.IamSamlProvider, opts v1.CreateOptions) (result *v1alpha1.IamSamlProvider, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iamsamlprovidersResource, c.ns, iamSamlProvider), &v1alpha1.IamSamlProvider{})
 
@@ -91,7 +93,7 @@ func (c *FakeIamSamlProviders) Create(iamSamlProvider *v1alpha1.IamSamlProvider)
 }
 
 // Update takes the representation of a iamSamlProvider and updates it. Returns the server's representation of the iamSamlProvider, and an error, if there is any.
-func (c *FakeIamSamlProviders) Update(iamSamlProvider *v1alpha1.IamSamlProvider) (result *v1alpha1.IamSamlProvider, err error) {
+func (c *FakeIamSamlProviders) Update(ctx context.Context, iamSamlProvider *v1alpha1.IamSamlProvider, opts v1.UpdateOptions) (result *v1alpha1.IamSamlProvider, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iamsamlprovidersResource, c.ns, iamSamlProvider), &v1alpha1.IamSamlProvider{})
 
@@ -103,7 +105,7 @@ func (c *FakeIamSamlProviders) Update(iamSamlProvider *v1alpha1.IamSamlProvider)
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIamSamlProviders) UpdateStatus(iamSamlProvider *v1alpha1.IamSamlProvider) (*v1alpha1.IamSamlProvider, error) {
+func (c *FakeIamSamlProviders) UpdateStatus(ctx context.Context, iamSamlProvider *v1alpha1.IamSamlProvider, opts v1.UpdateOptions) (*v1alpha1.IamSamlProvider, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iamsamlprovidersResource, "status", c.ns, iamSamlProvider), &v1alpha1.IamSamlProvider{})
 
@@ -114,7 +116,7 @@ func (c *FakeIamSamlProviders) UpdateStatus(iamSamlProvider *v1alpha1.IamSamlPro
 }
 
 // Delete takes name of the iamSamlProvider and deletes it. Returns an error if one occurs.
-func (c *FakeIamSamlProviders) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIamSamlProviders) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iamsamlprovidersResource, c.ns, name), &v1alpha1.IamSamlProvider{})
 
@@ -122,15 +124,15 @@ func (c *FakeIamSamlProviders) Delete(name string, options *v1.DeleteOptions) er
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIamSamlProviders) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iamsamlprovidersResource, c.ns, listOptions)
+func (c *FakeIamSamlProviders) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iamsamlprovidersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IamSamlProviderList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iamSamlProvider.
-func (c *FakeIamSamlProviders) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IamSamlProvider, err error) {
+func (c *FakeIamSamlProviders) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IamSamlProvider, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iamsamlprovidersResource, c.ns, name, pt, data, subresources...), &v1alpha1.IamSamlProvider{})
 

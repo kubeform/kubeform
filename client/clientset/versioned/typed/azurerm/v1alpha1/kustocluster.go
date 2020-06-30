@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type KustoClustersGetter interface {
 
 // KustoClusterInterface has methods to work with KustoCluster resources.
 type KustoClusterInterface interface {
-	Create(*v1alpha1.KustoCluster) (*v1alpha1.KustoCluster, error)
-	Update(*v1alpha1.KustoCluster) (*v1alpha1.KustoCluster, error)
-	UpdateStatus(*v1alpha1.KustoCluster) (*v1alpha1.KustoCluster, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.KustoCluster, error)
-	List(opts v1.ListOptions) (*v1alpha1.KustoClusterList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KustoCluster, err error)
+	Create(ctx context.Context, kustoCluster *v1alpha1.KustoCluster, opts v1.CreateOptions) (*v1alpha1.KustoCluster, error)
+	Update(ctx context.Context, kustoCluster *v1alpha1.KustoCluster, opts v1.UpdateOptions) (*v1alpha1.KustoCluster, error)
+	UpdateStatus(ctx context.Context, kustoCluster *v1alpha1.KustoCluster, opts v1.UpdateOptions) (*v1alpha1.KustoCluster, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.KustoCluster, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.KustoClusterList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KustoCluster, err error)
 	KustoClusterExpansion
 }
 
@@ -65,20 +66,20 @@ func newKustoClusters(c *AzurermV1alpha1Client, namespace string) *kustoClusters
 }
 
 // Get takes name of the kustoCluster, and returns the corresponding kustoCluster object, and an error if there is any.
-func (c *kustoClusters) Get(name string, options v1.GetOptions) (result *v1alpha1.KustoCluster, err error) {
+func (c *kustoClusters) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KustoCluster, err error) {
 	result = &v1alpha1.KustoCluster{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("kustoclusters").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of KustoClusters that match those selectors.
-func (c *kustoClusters) List(opts v1.ListOptions) (result *v1alpha1.KustoClusterList, err error) {
+func (c *kustoClusters) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KustoClusterList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *kustoClusters) List(opts v1.ListOptions) (result *v1alpha1.KustoCluster
 		Resource("kustoclusters").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested kustoClusters.
-func (c *kustoClusters) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *kustoClusters) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *kustoClusters) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("kustoclusters").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a kustoCluster and creates it.  Returns the server's representation of the kustoCluster, and an error, if there is any.
-func (c *kustoClusters) Create(kustoCluster *v1alpha1.KustoCluster) (result *v1alpha1.KustoCluster, err error) {
+func (c *kustoClusters) Create(ctx context.Context, kustoCluster *v1alpha1.KustoCluster, opts v1.CreateOptions) (result *v1alpha1.KustoCluster, err error) {
 	result = &v1alpha1.KustoCluster{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("kustoclusters").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(kustoCluster).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a kustoCluster and updates it. Returns the server's representation of the kustoCluster, and an error, if there is any.
-func (c *kustoClusters) Update(kustoCluster *v1alpha1.KustoCluster) (result *v1alpha1.KustoCluster, err error) {
+func (c *kustoClusters) Update(ctx context.Context, kustoCluster *v1alpha1.KustoCluster, opts v1.UpdateOptions) (result *v1alpha1.KustoCluster, err error) {
 	result = &v1alpha1.KustoCluster{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("kustoclusters").
 		Name(kustoCluster.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(kustoCluster).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *kustoClusters) UpdateStatus(kustoCluster *v1alpha1.KustoCluster) (result *v1alpha1.KustoCluster, err error) {
+func (c *kustoClusters) UpdateStatus(ctx context.Context, kustoCluster *v1alpha1.KustoCluster, opts v1.UpdateOptions) (result *v1alpha1.KustoCluster, err error) {
 	result = &v1alpha1.KustoCluster{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("kustoclusters").
 		Name(kustoCluster.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(kustoCluster).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the kustoCluster and deletes it. Returns an error if one occurs.
-func (c *kustoClusters) Delete(name string, options *v1.DeleteOptions) error {
+func (c *kustoClusters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("kustoclusters").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *kustoClusters) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *kustoClusters) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("kustoclusters").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched kustoCluster.
-func (c *kustoClusters) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KustoCluster, err error) {
+func (c *kustoClusters) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KustoCluster, err error) {
 	result = &v1alpha1.KustoCluster{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("kustoclusters").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

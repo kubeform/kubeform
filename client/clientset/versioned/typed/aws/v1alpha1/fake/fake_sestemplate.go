@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var sestemplatesResource = schema.GroupVersionResource{Group: "aws.kubeform.com"
 var sestemplatesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "SesTemplate"}
 
 // Get takes name of the sesTemplate, and returns the corresponding sesTemplate object, and an error if there is any.
-func (c *FakeSesTemplates) Get(name string, options v1.GetOptions) (result *v1alpha1.SesTemplate, err error) {
+func (c *FakeSesTemplates) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SesTemplate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(sestemplatesResource, c.ns, name), &v1alpha1.SesTemplate{})
 
@@ -51,7 +53,7 @@ func (c *FakeSesTemplates) Get(name string, options v1.GetOptions) (result *v1al
 }
 
 // List takes label and field selectors, and returns the list of SesTemplates that match those selectors.
-func (c *FakeSesTemplates) List(opts v1.ListOptions) (result *v1alpha1.SesTemplateList, err error) {
+func (c *FakeSesTemplates) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SesTemplateList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(sestemplatesResource, sestemplatesKind, c.ns, opts), &v1alpha1.SesTemplateList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSesTemplates) List(opts v1.ListOptions) (result *v1alpha1.SesTempla
 }
 
 // Watch returns a watch.Interface that watches the requested sesTemplates.
-func (c *FakeSesTemplates) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSesTemplates) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(sestemplatesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a sesTemplate and creates it.  Returns the server's representation of the sesTemplate, and an error, if there is any.
-func (c *FakeSesTemplates) Create(sesTemplate *v1alpha1.SesTemplate) (result *v1alpha1.SesTemplate, err error) {
+func (c *FakeSesTemplates) Create(ctx context.Context, sesTemplate *v1alpha1.SesTemplate, opts v1.CreateOptions) (result *v1alpha1.SesTemplate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(sestemplatesResource, c.ns, sesTemplate), &v1alpha1.SesTemplate{})
 
@@ -91,7 +93,7 @@ func (c *FakeSesTemplates) Create(sesTemplate *v1alpha1.SesTemplate) (result *v1
 }
 
 // Update takes the representation of a sesTemplate and updates it. Returns the server's representation of the sesTemplate, and an error, if there is any.
-func (c *FakeSesTemplates) Update(sesTemplate *v1alpha1.SesTemplate) (result *v1alpha1.SesTemplate, err error) {
+func (c *FakeSesTemplates) Update(ctx context.Context, sesTemplate *v1alpha1.SesTemplate, opts v1.UpdateOptions) (result *v1alpha1.SesTemplate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(sestemplatesResource, c.ns, sesTemplate), &v1alpha1.SesTemplate{})
 
@@ -103,7 +105,7 @@ func (c *FakeSesTemplates) Update(sesTemplate *v1alpha1.SesTemplate) (result *v1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSesTemplates) UpdateStatus(sesTemplate *v1alpha1.SesTemplate) (*v1alpha1.SesTemplate, error) {
+func (c *FakeSesTemplates) UpdateStatus(ctx context.Context, sesTemplate *v1alpha1.SesTemplate, opts v1.UpdateOptions) (*v1alpha1.SesTemplate, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(sestemplatesResource, "status", c.ns, sesTemplate), &v1alpha1.SesTemplate{})
 
@@ -114,7 +116,7 @@ func (c *FakeSesTemplates) UpdateStatus(sesTemplate *v1alpha1.SesTemplate) (*v1a
 }
 
 // Delete takes name of the sesTemplate and deletes it. Returns an error if one occurs.
-func (c *FakeSesTemplates) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSesTemplates) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(sestemplatesResource, c.ns, name), &v1alpha1.SesTemplate{})
 
@@ -122,15 +124,15 @@ func (c *FakeSesTemplates) Delete(name string, options *v1.DeleteOptions) error 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSesTemplates) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(sestemplatesResource, c.ns, listOptions)
+func (c *FakeSesTemplates) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(sestemplatesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SesTemplateList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched sesTemplate.
-func (c *FakeSesTemplates) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SesTemplate, err error) {
+func (c *FakeSesTemplates) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SesTemplate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(sestemplatesResource, c.ns, name, pt, data, subresources...), &v1alpha1.SesTemplate{})
 

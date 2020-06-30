@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var ddosprotectionplansResource = schema.GroupVersionResource{Group: "azurerm.ku
 var ddosprotectionplansKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "DdosProtectionPlan"}
 
 // Get takes name of the ddosProtectionPlan, and returns the corresponding ddosProtectionPlan object, and an error if there is any.
-func (c *FakeDdosProtectionPlans) Get(name string, options v1.GetOptions) (result *v1alpha1.DdosProtectionPlan, err error) {
+func (c *FakeDdosProtectionPlans) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DdosProtectionPlan, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(ddosprotectionplansResource, c.ns, name), &v1alpha1.DdosProtectionPlan{})
 
@@ -51,7 +53,7 @@ func (c *FakeDdosProtectionPlans) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of DdosProtectionPlans that match those selectors.
-func (c *FakeDdosProtectionPlans) List(opts v1.ListOptions) (result *v1alpha1.DdosProtectionPlanList, err error) {
+func (c *FakeDdosProtectionPlans) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DdosProtectionPlanList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(ddosprotectionplansResource, ddosprotectionplansKind, c.ns, opts), &v1alpha1.DdosProtectionPlanList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDdosProtectionPlans) List(opts v1.ListOptions) (result *v1alpha1.Dd
 }
 
 // Watch returns a watch.Interface that watches the requested ddosProtectionPlans.
-func (c *FakeDdosProtectionPlans) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDdosProtectionPlans) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(ddosprotectionplansResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a ddosProtectionPlan and creates it.  Returns the server's representation of the ddosProtectionPlan, and an error, if there is any.
-func (c *FakeDdosProtectionPlans) Create(ddosProtectionPlan *v1alpha1.DdosProtectionPlan) (result *v1alpha1.DdosProtectionPlan, err error) {
+func (c *FakeDdosProtectionPlans) Create(ctx context.Context, ddosProtectionPlan *v1alpha1.DdosProtectionPlan, opts v1.CreateOptions) (result *v1alpha1.DdosProtectionPlan, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(ddosprotectionplansResource, c.ns, ddosProtectionPlan), &v1alpha1.DdosProtectionPlan{})
 
@@ -91,7 +93,7 @@ func (c *FakeDdosProtectionPlans) Create(ddosProtectionPlan *v1alpha1.DdosProtec
 }
 
 // Update takes the representation of a ddosProtectionPlan and updates it. Returns the server's representation of the ddosProtectionPlan, and an error, if there is any.
-func (c *FakeDdosProtectionPlans) Update(ddosProtectionPlan *v1alpha1.DdosProtectionPlan) (result *v1alpha1.DdosProtectionPlan, err error) {
+func (c *FakeDdosProtectionPlans) Update(ctx context.Context, ddosProtectionPlan *v1alpha1.DdosProtectionPlan, opts v1.UpdateOptions) (result *v1alpha1.DdosProtectionPlan, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(ddosprotectionplansResource, c.ns, ddosProtectionPlan), &v1alpha1.DdosProtectionPlan{})
 
@@ -103,7 +105,7 @@ func (c *FakeDdosProtectionPlans) Update(ddosProtectionPlan *v1alpha1.DdosProtec
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDdosProtectionPlans) UpdateStatus(ddosProtectionPlan *v1alpha1.DdosProtectionPlan) (*v1alpha1.DdosProtectionPlan, error) {
+func (c *FakeDdosProtectionPlans) UpdateStatus(ctx context.Context, ddosProtectionPlan *v1alpha1.DdosProtectionPlan, opts v1.UpdateOptions) (*v1alpha1.DdosProtectionPlan, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(ddosprotectionplansResource, "status", c.ns, ddosProtectionPlan), &v1alpha1.DdosProtectionPlan{})
 
@@ -114,7 +116,7 @@ func (c *FakeDdosProtectionPlans) UpdateStatus(ddosProtectionPlan *v1alpha1.Ddos
 }
 
 // Delete takes name of the ddosProtectionPlan and deletes it. Returns an error if one occurs.
-func (c *FakeDdosProtectionPlans) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDdosProtectionPlans) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(ddosprotectionplansResource, c.ns, name), &v1alpha1.DdosProtectionPlan{})
 
@@ -122,15 +124,15 @@ func (c *FakeDdosProtectionPlans) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDdosProtectionPlans) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(ddosprotectionplansResource, c.ns, listOptions)
+func (c *FakeDdosProtectionPlans) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(ddosprotectionplansResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DdosProtectionPlanList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched ddosProtectionPlan.
-func (c *FakeDdosProtectionPlans) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DdosProtectionPlan, err error) {
+func (c *FakeDdosProtectionPlans) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DdosProtectionPlan, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(ddosprotectionplansResource, c.ns, name, pt, data, subresources...), &v1alpha1.DdosProtectionPlan{})
 

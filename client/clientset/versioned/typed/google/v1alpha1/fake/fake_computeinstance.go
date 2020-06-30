@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computeinstancesResource = schema.GroupVersionResource{Group: "google.kubefo
 var computeinstancesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeInstance"}
 
 // Get takes name of the computeInstance, and returns the corresponding computeInstance object, and an error if there is any.
-func (c *FakeComputeInstances) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeInstance, err error) {
+func (c *FakeComputeInstances) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computeinstancesResource, c.ns, name), &v1alpha1.ComputeInstance{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeInstances) Get(name string, options v1.GetOptions) (result *
 }
 
 // List takes label and field selectors, and returns the list of ComputeInstances that match those selectors.
-func (c *FakeComputeInstances) List(opts v1.ListOptions) (result *v1alpha1.ComputeInstanceList, err error) {
+func (c *FakeComputeInstances) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeInstanceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computeinstancesResource, computeinstancesKind, c.ns, opts), &v1alpha1.ComputeInstanceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeInstances) List(opts v1.ListOptions) (result *v1alpha1.Compu
 }
 
 // Watch returns a watch.Interface that watches the requested computeInstances.
-func (c *FakeComputeInstances) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeInstances) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computeinstancesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeInstance and creates it.  Returns the server's representation of the computeInstance, and an error, if there is any.
-func (c *FakeComputeInstances) Create(computeInstance *v1alpha1.ComputeInstance) (result *v1alpha1.ComputeInstance, err error) {
+func (c *FakeComputeInstances) Create(ctx context.Context, computeInstance *v1alpha1.ComputeInstance, opts v1.CreateOptions) (result *v1alpha1.ComputeInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computeinstancesResource, c.ns, computeInstance), &v1alpha1.ComputeInstance{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeInstances) Create(computeInstance *v1alpha1.ComputeInstance)
 }
 
 // Update takes the representation of a computeInstance and updates it. Returns the server's representation of the computeInstance, and an error, if there is any.
-func (c *FakeComputeInstances) Update(computeInstance *v1alpha1.ComputeInstance) (result *v1alpha1.ComputeInstance, err error) {
+func (c *FakeComputeInstances) Update(ctx context.Context, computeInstance *v1alpha1.ComputeInstance, opts v1.UpdateOptions) (result *v1alpha1.ComputeInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computeinstancesResource, c.ns, computeInstance), &v1alpha1.ComputeInstance{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeInstances) Update(computeInstance *v1alpha1.ComputeInstance)
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeInstances) UpdateStatus(computeInstance *v1alpha1.ComputeInstance) (*v1alpha1.ComputeInstance, error) {
+func (c *FakeComputeInstances) UpdateStatus(ctx context.Context, computeInstance *v1alpha1.ComputeInstance, opts v1.UpdateOptions) (*v1alpha1.ComputeInstance, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computeinstancesResource, "status", c.ns, computeInstance), &v1alpha1.ComputeInstance{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeInstances) UpdateStatus(computeInstance *v1alpha1.ComputeIns
 }
 
 // Delete takes name of the computeInstance and deletes it. Returns an error if one occurs.
-func (c *FakeComputeInstances) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeInstances) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computeinstancesResource, c.ns, name), &v1alpha1.ComputeInstance{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeInstances) Delete(name string, options *v1.DeleteOptions) er
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeInstances) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computeinstancesResource, c.ns, listOptions)
+func (c *FakeComputeInstances) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computeinstancesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeInstanceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeInstance.
-func (c *FakeComputeInstances) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeInstance, err error) {
+func (c *FakeComputeInstances) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computeinstancesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeInstance{})
 

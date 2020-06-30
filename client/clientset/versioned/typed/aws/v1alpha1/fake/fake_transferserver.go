@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var transferserversResource = schema.GroupVersionResource{Group: "aws.kubeform.c
 var transferserversKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "TransferServer"}
 
 // Get takes name of the transferServer, and returns the corresponding transferServer object, and an error if there is any.
-func (c *FakeTransferServers) Get(name string, options v1.GetOptions) (result *v1alpha1.TransferServer, err error) {
+func (c *FakeTransferServers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.TransferServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(transferserversResource, c.ns, name), &v1alpha1.TransferServer{})
 
@@ -51,7 +53,7 @@ func (c *FakeTransferServers) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of TransferServers that match those selectors.
-func (c *FakeTransferServers) List(opts v1.ListOptions) (result *v1alpha1.TransferServerList, err error) {
+func (c *FakeTransferServers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.TransferServerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(transferserversResource, transferserversKind, c.ns, opts), &v1alpha1.TransferServerList{})
 
@@ -73,14 +75,14 @@ func (c *FakeTransferServers) List(opts v1.ListOptions) (result *v1alpha1.Transf
 }
 
 // Watch returns a watch.Interface that watches the requested transferServers.
-func (c *FakeTransferServers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeTransferServers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(transferserversResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a transferServer and creates it.  Returns the server's representation of the transferServer, and an error, if there is any.
-func (c *FakeTransferServers) Create(transferServer *v1alpha1.TransferServer) (result *v1alpha1.TransferServer, err error) {
+func (c *FakeTransferServers) Create(ctx context.Context, transferServer *v1alpha1.TransferServer, opts v1.CreateOptions) (result *v1alpha1.TransferServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(transferserversResource, c.ns, transferServer), &v1alpha1.TransferServer{})
 
@@ -91,7 +93,7 @@ func (c *FakeTransferServers) Create(transferServer *v1alpha1.TransferServer) (r
 }
 
 // Update takes the representation of a transferServer and updates it. Returns the server's representation of the transferServer, and an error, if there is any.
-func (c *FakeTransferServers) Update(transferServer *v1alpha1.TransferServer) (result *v1alpha1.TransferServer, err error) {
+func (c *FakeTransferServers) Update(ctx context.Context, transferServer *v1alpha1.TransferServer, opts v1.UpdateOptions) (result *v1alpha1.TransferServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(transferserversResource, c.ns, transferServer), &v1alpha1.TransferServer{})
 
@@ -103,7 +105,7 @@ func (c *FakeTransferServers) Update(transferServer *v1alpha1.TransferServer) (r
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeTransferServers) UpdateStatus(transferServer *v1alpha1.TransferServer) (*v1alpha1.TransferServer, error) {
+func (c *FakeTransferServers) UpdateStatus(ctx context.Context, transferServer *v1alpha1.TransferServer, opts v1.UpdateOptions) (*v1alpha1.TransferServer, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(transferserversResource, "status", c.ns, transferServer), &v1alpha1.TransferServer{})
 
@@ -114,7 +116,7 @@ func (c *FakeTransferServers) UpdateStatus(transferServer *v1alpha1.TransferServ
 }
 
 // Delete takes name of the transferServer and deletes it. Returns an error if one occurs.
-func (c *FakeTransferServers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeTransferServers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(transferserversResource, c.ns, name), &v1alpha1.TransferServer{})
 
@@ -122,15 +124,15 @@ func (c *FakeTransferServers) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeTransferServers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(transferserversResource, c.ns, listOptions)
+func (c *FakeTransferServers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(transferserversResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.TransferServerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched transferServer.
-func (c *FakeTransferServers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.TransferServer, err error) {
+func (c *FakeTransferServers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.TransferServer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(transferserversResource, c.ns, name, pt, data, subresources...), &v1alpha1.TransferServer{})
 

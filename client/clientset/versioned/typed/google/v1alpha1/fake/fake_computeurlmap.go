@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computeurlmapsResource = schema.GroupVersionResource{Group: "google.kubeform
 var computeurlmapsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeURLMap"}
 
 // Get takes name of the computeURLMap, and returns the corresponding computeURLMap object, and an error if there is any.
-func (c *FakeComputeURLMaps) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeURLMap, err error) {
+func (c *FakeComputeURLMaps) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeURLMap, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computeurlmapsResource, c.ns, name), &v1alpha1.ComputeURLMap{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeURLMaps) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of ComputeURLMaps that match those selectors.
-func (c *FakeComputeURLMaps) List(opts v1.ListOptions) (result *v1alpha1.ComputeURLMapList, err error) {
+func (c *FakeComputeURLMaps) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeURLMapList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computeurlmapsResource, computeurlmapsKind, c.ns, opts), &v1alpha1.ComputeURLMapList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeURLMaps) List(opts v1.ListOptions) (result *v1alpha1.Compute
 }
 
 // Watch returns a watch.Interface that watches the requested computeURLMaps.
-func (c *FakeComputeURLMaps) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeURLMaps) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computeurlmapsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeURLMap and creates it.  Returns the server's representation of the computeURLMap, and an error, if there is any.
-func (c *FakeComputeURLMaps) Create(computeURLMap *v1alpha1.ComputeURLMap) (result *v1alpha1.ComputeURLMap, err error) {
+func (c *FakeComputeURLMaps) Create(ctx context.Context, computeURLMap *v1alpha1.ComputeURLMap, opts v1.CreateOptions) (result *v1alpha1.ComputeURLMap, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computeurlmapsResource, c.ns, computeURLMap), &v1alpha1.ComputeURLMap{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeURLMaps) Create(computeURLMap *v1alpha1.ComputeURLMap) (resu
 }
 
 // Update takes the representation of a computeURLMap and updates it. Returns the server's representation of the computeURLMap, and an error, if there is any.
-func (c *FakeComputeURLMaps) Update(computeURLMap *v1alpha1.ComputeURLMap) (result *v1alpha1.ComputeURLMap, err error) {
+func (c *FakeComputeURLMaps) Update(ctx context.Context, computeURLMap *v1alpha1.ComputeURLMap, opts v1.UpdateOptions) (result *v1alpha1.ComputeURLMap, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computeurlmapsResource, c.ns, computeURLMap), &v1alpha1.ComputeURLMap{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeURLMaps) Update(computeURLMap *v1alpha1.ComputeURLMap) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeURLMaps) UpdateStatus(computeURLMap *v1alpha1.ComputeURLMap) (*v1alpha1.ComputeURLMap, error) {
+func (c *FakeComputeURLMaps) UpdateStatus(ctx context.Context, computeURLMap *v1alpha1.ComputeURLMap, opts v1.UpdateOptions) (*v1alpha1.ComputeURLMap, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computeurlmapsResource, "status", c.ns, computeURLMap), &v1alpha1.ComputeURLMap{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeURLMaps) UpdateStatus(computeURLMap *v1alpha1.ComputeURLMap)
 }
 
 // Delete takes name of the computeURLMap and deletes it. Returns an error if one occurs.
-func (c *FakeComputeURLMaps) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeURLMaps) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computeurlmapsResource, c.ns, name), &v1alpha1.ComputeURLMap{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeURLMaps) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeURLMaps) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computeurlmapsResource, c.ns, listOptions)
+func (c *FakeComputeURLMaps) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computeurlmapsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeURLMapList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeURLMap.
-func (c *FakeComputeURLMaps) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeURLMap, err error) {
+func (c *FakeComputeURLMaps) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeURLMap, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computeurlmapsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeURLMap{})
 

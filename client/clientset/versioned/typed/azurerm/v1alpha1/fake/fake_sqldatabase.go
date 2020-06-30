@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var sqldatabasesResource = schema.GroupVersionResource{Group: "azurerm.kubeform.
 var sqldatabasesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "SqlDatabase"}
 
 // Get takes name of the sqlDatabase, and returns the corresponding sqlDatabase object, and an error if there is any.
-func (c *FakeSqlDatabases) Get(name string, options v1.GetOptions) (result *v1alpha1.SqlDatabase, err error) {
+func (c *FakeSqlDatabases) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SqlDatabase, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(sqldatabasesResource, c.ns, name), &v1alpha1.SqlDatabase{})
 
@@ -51,7 +53,7 @@ func (c *FakeSqlDatabases) Get(name string, options v1.GetOptions) (result *v1al
 }
 
 // List takes label and field selectors, and returns the list of SqlDatabases that match those selectors.
-func (c *FakeSqlDatabases) List(opts v1.ListOptions) (result *v1alpha1.SqlDatabaseList, err error) {
+func (c *FakeSqlDatabases) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SqlDatabaseList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(sqldatabasesResource, sqldatabasesKind, c.ns, opts), &v1alpha1.SqlDatabaseList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSqlDatabases) List(opts v1.ListOptions) (result *v1alpha1.SqlDataba
 }
 
 // Watch returns a watch.Interface that watches the requested sqlDatabases.
-func (c *FakeSqlDatabases) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSqlDatabases) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(sqldatabasesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a sqlDatabase and creates it.  Returns the server's representation of the sqlDatabase, and an error, if there is any.
-func (c *FakeSqlDatabases) Create(sqlDatabase *v1alpha1.SqlDatabase) (result *v1alpha1.SqlDatabase, err error) {
+func (c *FakeSqlDatabases) Create(ctx context.Context, sqlDatabase *v1alpha1.SqlDatabase, opts v1.CreateOptions) (result *v1alpha1.SqlDatabase, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(sqldatabasesResource, c.ns, sqlDatabase), &v1alpha1.SqlDatabase{})
 
@@ -91,7 +93,7 @@ func (c *FakeSqlDatabases) Create(sqlDatabase *v1alpha1.SqlDatabase) (result *v1
 }
 
 // Update takes the representation of a sqlDatabase and updates it. Returns the server's representation of the sqlDatabase, and an error, if there is any.
-func (c *FakeSqlDatabases) Update(sqlDatabase *v1alpha1.SqlDatabase) (result *v1alpha1.SqlDatabase, err error) {
+func (c *FakeSqlDatabases) Update(ctx context.Context, sqlDatabase *v1alpha1.SqlDatabase, opts v1.UpdateOptions) (result *v1alpha1.SqlDatabase, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(sqldatabasesResource, c.ns, sqlDatabase), &v1alpha1.SqlDatabase{})
 
@@ -103,7 +105,7 @@ func (c *FakeSqlDatabases) Update(sqlDatabase *v1alpha1.SqlDatabase) (result *v1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSqlDatabases) UpdateStatus(sqlDatabase *v1alpha1.SqlDatabase) (*v1alpha1.SqlDatabase, error) {
+func (c *FakeSqlDatabases) UpdateStatus(ctx context.Context, sqlDatabase *v1alpha1.SqlDatabase, opts v1.UpdateOptions) (*v1alpha1.SqlDatabase, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(sqldatabasesResource, "status", c.ns, sqlDatabase), &v1alpha1.SqlDatabase{})
 
@@ -114,7 +116,7 @@ func (c *FakeSqlDatabases) UpdateStatus(sqlDatabase *v1alpha1.SqlDatabase) (*v1a
 }
 
 // Delete takes name of the sqlDatabase and deletes it. Returns an error if one occurs.
-func (c *FakeSqlDatabases) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSqlDatabases) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(sqldatabasesResource, c.ns, name), &v1alpha1.SqlDatabase{})
 
@@ -122,15 +124,15 @@ func (c *FakeSqlDatabases) Delete(name string, options *v1.DeleteOptions) error 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSqlDatabases) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(sqldatabasesResource, c.ns, listOptions)
+func (c *FakeSqlDatabases) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(sqldatabasesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SqlDatabaseList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched sqlDatabase.
-func (c *FakeSqlDatabases) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SqlDatabase, err error) {
+func (c *FakeSqlDatabases) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SqlDatabase, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(sqldatabasesResource, c.ns, name, pt, data, subresources...), &v1alpha1.SqlDatabase{})
 

@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type PubsubTopicIamBindingsGetter interface {
 
 // PubsubTopicIamBindingInterface has methods to work with PubsubTopicIamBinding resources.
 type PubsubTopicIamBindingInterface interface {
-	Create(*v1alpha1.PubsubTopicIamBinding) (*v1alpha1.PubsubTopicIamBinding, error)
-	Update(*v1alpha1.PubsubTopicIamBinding) (*v1alpha1.PubsubTopicIamBinding, error)
-	UpdateStatus(*v1alpha1.PubsubTopicIamBinding) (*v1alpha1.PubsubTopicIamBinding, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.PubsubTopicIamBinding, error)
-	List(opts v1.ListOptions) (*v1alpha1.PubsubTopicIamBindingList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PubsubTopicIamBinding, err error)
+	Create(ctx context.Context, pubsubTopicIamBinding *v1alpha1.PubsubTopicIamBinding, opts v1.CreateOptions) (*v1alpha1.PubsubTopicIamBinding, error)
+	Update(ctx context.Context, pubsubTopicIamBinding *v1alpha1.PubsubTopicIamBinding, opts v1.UpdateOptions) (*v1alpha1.PubsubTopicIamBinding, error)
+	UpdateStatus(ctx context.Context, pubsubTopicIamBinding *v1alpha1.PubsubTopicIamBinding, opts v1.UpdateOptions) (*v1alpha1.PubsubTopicIamBinding, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.PubsubTopicIamBinding, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.PubsubTopicIamBindingList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PubsubTopicIamBinding, err error)
 	PubsubTopicIamBindingExpansion
 }
 
@@ -65,20 +66,20 @@ func newPubsubTopicIamBindings(c *GoogleV1alpha1Client, namespace string) *pubsu
 }
 
 // Get takes name of the pubsubTopicIamBinding, and returns the corresponding pubsubTopicIamBinding object, and an error if there is any.
-func (c *pubsubTopicIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.PubsubTopicIamBinding, err error) {
+func (c *pubsubTopicIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PubsubTopicIamBinding, err error) {
 	result = &v1alpha1.PubsubTopicIamBinding{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("pubsubtopiciambindings").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of PubsubTopicIamBindings that match those selectors.
-func (c *pubsubTopicIamBindings) List(opts v1.ListOptions) (result *v1alpha1.PubsubTopicIamBindingList, err error) {
+func (c *pubsubTopicIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.PubsubTopicIamBindingList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *pubsubTopicIamBindings) List(opts v1.ListOptions) (result *v1alpha1.Pub
 		Resource("pubsubtopiciambindings").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested pubsubTopicIamBindings.
-func (c *pubsubTopicIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *pubsubTopicIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *pubsubTopicIamBindings) Watch(opts v1.ListOptions) (watch.Interface, er
 		Resource("pubsubtopiciambindings").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a pubsubTopicIamBinding and creates it.  Returns the server's representation of the pubsubTopicIamBinding, and an error, if there is any.
-func (c *pubsubTopicIamBindings) Create(pubsubTopicIamBinding *v1alpha1.PubsubTopicIamBinding) (result *v1alpha1.PubsubTopicIamBinding, err error) {
+func (c *pubsubTopicIamBindings) Create(ctx context.Context, pubsubTopicIamBinding *v1alpha1.PubsubTopicIamBinding, opts v1.CreateOptions) (result *v1alpha1.PubsubTopicIamBinding, err error) {
 	result = &v1alpha1.PubsubTopicIamBinding{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("pubsubtopiciambindings").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(pubsubTopicIamBinding).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a pubsubTopicIamBinding and updates it. Returns the server's representation of the pubsubTopicIamBinding, and an error, if there is any.
-func (c *pubsubTopicIamBindings) Update(pubsubTopicIamBinding *v1alpha1.PubsubTopicIamBinding) (result *v1alpha1.PubsubTopicIamBinding, err error) {
+func (c *pubsubTopicIamBindings) Update(ctx context.Context, pubsubTopicIamBinding *v1alpha1.PubsubTopicIamBinding, opts v1.UpdateOptions) (result *v1alpha1.PubsubTopicIamBinding, err error) {
 	result = &v1alpha1.PubsubTopicIamBinding{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("pubsubtopiciambindings").
 		Name(pubsubTopicIamBinding.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(pubsubTopicIamBinding).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *pubsubTopicIamBindings) UpdateStatus(pubsubTopicIamBinding *v1alpha1.PubsubTopicIamBinding) (result *v1alpha1.PubsubTopicIamBinding, err error) {
+func (c *pubsubTopicIamBindings) UpdateStatus(ctx context.Context, pubsubTopicIamBinding *v1alpha1.PubsubTopicIamBinding, opts v1.UpdateOptions) (result *v1alpha1.PubsubTopicIamBinding, err error) {
 	result = &v1alpha1.PubsubTopicIamBinding{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("pubsubtopiciambindings").
 		Name(pubsubTopicIamBinding.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(pubsubTopicIamBinding).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the pubsubTopicIamBinding and deletes it. Returns an error if one occurs.
-func (c *pubsubTopicIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *pubsubTopicIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("pubsubtopiciambindings").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *pubsubTopicIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *pubsubTopicIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("pubsubtopiciambindings").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched pubsubTopicIamBinding.
-func (c *pubsubTopicIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.PubsubTopicIamBinding, err error) {
+func (c *pubsubTopicIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.PubsubTopicIamBinding, err error) {
 	result = &v1alpha1.PubsubTopicIamBinding{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("pubsubtopiciambindings").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

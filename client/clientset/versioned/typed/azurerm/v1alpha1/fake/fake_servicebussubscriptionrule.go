@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var servicebussubscriptionrulesResource = schema.GroupVersionResource{Group: "az
 var servicebussubscriptionrulesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "ServicebusSubscriptionRule"}
 
 // Get takes name of the servicebusSubscriptionRule, and returns the corresponding servicebusSubscriptionRule object, and an error if there is any.
-func (c *FakeServicebusSubscriptionRules) Get(name string, options v1.GetOptions) (result *v1alpha1.ServicebusSubscriptionRule, err error) {
+func (c *FakeServicebusSubscriptionRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ServicebusSubscriptionRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(servicebussubscriptionrulesResource, c.ns, name), &v1alpha1.ServicebusSubscriptionRule{})
 
@@ -51,7 +53,7 @@ func (c *FakeServicebusSubscriptionRules) Get(name string, options v1.GetOptions
 }
 
 // List takes label and field selectors, and returns the list of ServicebusSubscriptionRules that match those selectors.
-func (c *FakeServicebusSubscriptionRules) List(opts v1.ListOptions) (result *v1alpha1.ServicebusSubscriptionRuleList, err error) {
+func (c *FakeServicebusSubscriptionRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ServicebusSubscriptionRuleList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(servicebussubscriptionrulesResource, servicebussubscriptionrulesKind, c.ns, opts), &v1alpha1.ServicebusSubscriptionRuleList{})
 
@@ -73,14 +75,14 @@ func (c *FakeServicebusSubscriptionRules) List(opts v1.ListOptions) (result *v1a
 }
 
 // Watch returns a watch.Interface that watches the requested servicebusSubscriptionRules.
-func (c *FakeServicebusSubscriptionRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeServicebusSubscriptionRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(servicebussubscriptionrulesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a servicebusSubscriptionRule and creates it.  Returns the server's representation of the servicebusSubscriptionRule, and an error, if there is any.
-func (c *FakeServicebusSubscriptionRules) Create(servicebusSubscriptionRule *v1alpha1.ServicebusSubscriptionRule) (result *v1alpha1.ServicebusSubscriptionRule, err error) {
+func (c *FakeServicebusSubscriptionRules) Create(ctx context.Context, servicebusSubscriptionRule *v1alpha1.ServicebusSubscriptionRule, opts v1.CreateOptions) (result *v1alpha1.ServicebusSubscriptionRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(servicebussubscriptionrulesResource, c.ns, servicebusSubscriptionRule), &v1alpha1.ServicebusSubscriptionRule{})
 
@@ -91,7 +93,7 @@ func (c *FakeServicebusSubscriptionRules) Create(servicebusSubscriptionRule *v1a
 }
 
 // Update takes the representation of a servicebusSubscriptionRule and updates it. Returns the server's representation of the servicebusSubscriptionRule, and an error, if there is any.
-func (c *FakeServicebusSubscriptionRules) Update(servicebusSubscriptionRule *v1alpha1.ServicebusSubscriptionRule) (result *v1alpha1.ServicebusSubscriptionRule, err error) {
+func (c *FakeServicebusSubscriptionRules) Update(ctx context.Context, servicebusSubscriptionRule *v1alpha1.ServicebusSubscriptionRule, opts v1.UpdateOptions) (result *v1alpha1.ServicebusSubscriptionRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(servicebussubscriptionrulesResource, c.ns, servicebusSubscriptionRule), &v1alpha1.ServicebusSubscriptionRule{})
 
@@ -103,7 +105,7 @@ func (c *FakeServicebusSubscriptionRules) Update(servicebusSubscriptionRule *v1a
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeServicebusSubscriptionRules) UpdateStatus(servicebusSubscriptionRule *v1alpha1.ServicebusSubscriptionRule) (*v1alpha1.ServicebusSubscriptionRule, error) {
+func (c *FakeServicebusSubscriptionRules) UpdateStatus(ctx context.Context, servicebusSubscriptionRule *v1alpha1.ServicebusSubscriptionRule, opts v1.UpdateOptions) (*v1alpha1.ServicebusSubscriptionRule, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(servicebussubscriptionrulesResource, "status", c.ns, servicebusSubscriptionRule), &v1alpha1.ServicebusSubscriptionRule{})
 
@@ -114,7 +116,7 @@ func (c *FakeServicebusSubscriptionRules) UpdateStatus(servicebusSubscriptionRul
 }
 
 // Delete takes name of the servicebusSubscriptionRule and deletes it. Returns an error if one occurs.
-func (c *FakeServicebusSubscriptionRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeServicebusSubscriptionRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(servicebussubscriptionrulesResource, c.ns, name), &v1alpha1.ServicebusSubscriptionRule{})
 
@@ -122,15 +124,15 @@ func (c *FakeServicebusSubscriptionRules) Delete(name string, options *v1.Delete
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeServicebusSubscriptionRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(servicebussubscriptionrulesResource, c.ns, listOptions)
+func (c *FakeServicebusSubscriptionRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(servicebussubscriptionrulesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ServicebusSubscriptionRuleList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched servicebusSubscriptionRule.
-func (c *FakeServicebusSubscriptionRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ServicebusSubscriptionRule, err error) {
+func (c *FakeServicebusSubscriptionRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ServicebusSubscriptionRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(servicebussubscriptionrulesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ServicebusSubscriptionRule{})
 

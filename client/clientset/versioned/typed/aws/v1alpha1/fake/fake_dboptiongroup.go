@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dboptiongroupsResource = schema.GroupVersionResource{Group: "aws.kubeform.co
 var dboptiongroupsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DbOptionGroup"}
 
 // Get takes name of the dbOptionGroup, and returns the corresponding dbOptionGroup object, and an error if there is any.
-func (c *FakeDbOptionGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.DbOptionGroup, err error) {
+func (c *FakeDbOptionGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DbOptionGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dboptiongroupsResource, c.ns, name), &v1alpha1.DbOptionGroup{})
 
@@ -51,7 +53,7 @@ func (c *FakeDbOptionGroups) Get(name string, options v1.GetOptions) (result *v1
 }
 
 // List takes label and field selectors, and returns the list of DbOptionGroups that match those selectors.
-func (c *FakeDbOptionGroups) List(opts v1.ListOptions) (result *v1alpha1.DbOptionGroupList, err error) {
+func (c *FakeDbOptionGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DbOptionGroupList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dboptiongroupsResource, dboptiongroupsKind, c.ns, opts), &v1alpha1.DbOptionGroupList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDbOptionGroups) List(opts v1.ListOptions) (result *v1alpha1.DbOptio
 }
 
 // Watch returns a watch.Interface that watches the requested dbOptionGroups.
-func (c *FakeDbOptionGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDbOptionGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dboptiongroupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dbOptionGroup and creates it.  Returns the server's representation of the dbOptionGroup, and an error, if there is any.
-func (c *FakeDbOptionGroups) Create(dbOptionGroup *v1alpha1.DbOptionGroup) (result *v1alpha1.DbOptionGroup, err error) {
+func (c *FakeDbOptionGroups) Create(ctx context.Context, dbOptionGroup *v1alpha1.DbOptionGroup, opts v1.CreateOptions) (result *v1alpha1.DbOptionGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dboptiongroupsResource, c.ns, dbOptionGroup), &v1alpha1.DbOptionGroup{})
 
@@ -91,7 +93,7 @@ func (c *FakeDbOptionGroups) Create(dbOptionGroup *v1alpha1.DbOptionGroup) (resu
 }
 
 // Update takes the representation of a dbOptionGroup and updates it. Returns the server's representation of the dbOptionGroup, and an error, if there is any.
-func (c *FakeDbOptionGroups) Update(dbOptionGroup *v1alpha1.DbOptionGroup) (result *v1alpha1.DbOptionGroup, err error) {
+func (c *FakeDbOptionGroups) Update(ctx context.Context, dbOptionGroup *v1alpha1.DbOptionGroup, opts v1.UpdateOptions) (result *v1alpha1.DbOptionGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dboptiongroupsResource, c.ns, dbOptionGroup), &v1alpha1.DbOptionGroup{})
 
@@ -103,7 +105,7 @@ func (c *FakeDbOptionGroups) Update(dbOptionGroup *v1alpha1.DbOptionGroup) (resu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDbOptionGroups) UpdateStatus(dbOptionGroup *v1alpha1.DbOptionGroup) (*v1alpha1.DbOptionGroup, error) {
+func (c *FakeDbOptionGroups) UpdateStatus(ctx context.Context, dbOptionGroup *v1alpha1.DbOptionGroup, opts v1.UpdateOptions) (*v1alpha1.DbOptionGroup, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dboptiongroupsResource, "status", c.ns, dbOptionGroup), &v1alpha1.DbOptionGroup{})
 
@@ -114,7 +116,7 @@ func (c *FakeDbOptionGroups) UpdateStatus(dbOptionGroup *v1alpha1.DbOptionGroup)
 }
 
 // Delete takes name of the dbOptionGroup and deletes it. Returns an error if one occurs.
-func (c *FakeDbOptionGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDbOptionGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dboptiongroupsResource, c.ns, name), &v1alpha1.DbOptionGroup{})
 
@@ -122,15 +124,15 @@ func (c *FakeDbOptionGroups) Delete(name string, options *v1.DeleteOptions) erro
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDbOptionGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dboptiongroupsResource, c.ns, listOptions)
+func (c *FakeDbOptionGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dboptiongroupsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DbOptionGroupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dbOptionGroup.
-func (c *FakeDbOptionGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DbOptionGroup, err error) {
+func (c *FakeDbOptionGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DbOptionGroup, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dboptiongroupsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DbOptionGroup{})
 

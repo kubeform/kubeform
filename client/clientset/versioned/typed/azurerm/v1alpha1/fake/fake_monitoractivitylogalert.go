@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var monitoractivitylogalertsResource = schema.GroupVersionResource{Group: "azure
 var monitoractivitylogalertsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "MonitorActivityLogAlert"}
 
 // Get takes name of the monitorActivityLogAlert, and returns the corresponding monitorActivityLogAlert object, and an error if there is any.
-func (c *FakeMonitorActivityLogAlerts) Get(name string, options v1.GetOptions) (result *v1alpha1.MonitorActivityLogAlert, err error) {
+func (c *FakeMonitorActivityLogAlerts) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.MonitorActivityLogAlert, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(monitoractivitylogalertsResource, c.ns, name), &v1alpha1.MonitorActivityLogAlert{})
 
@@ -51,7 +53,7 @@ func (c *FakeMonitorActivityLogAlerts) Get(name string, options v1.GetOptions) (
 }
 
 // List takes label and field selectors, and returns the list of MonitorActivityLogAlerts that match those selectors.
-func (c *FakeMonitorActivityLogAlerts) List(opts v1.ListOptions) (result *v1alpha1.MonitorActivityLogAlertList, err error) {
+func (c *FakeMonitorActivityLogAlerts) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.MonitorActivityLogAlertList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(monitoractivitylogalertsResource, monitoractivitylogalertsKind, c.ns, opts), &v1alpha1.MonitorActivityLogAlertList{})
 
@@ -73,14 +75,14 @@ func (c *FakeMonitorActivityLogAlerts) List(opts v1.ListOptions) (result *v1alph
 }
 
 // Watch returns a watch.Interface that watches the requested monitorActivityLogAlerts.
-func (c *FakeMonitorActivityLogAlerts) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeMonitorActivityLogAlerts) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(monitoractivitylogalertsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a monitorActivityLogAlert and creates it.  Returns the server's representation of the monitorActivityLogAlert, and an error, if there is any.
-func (c *FakeMonitorActivityLogAlerts) Create(monitorActivityLogAlert *v1alpha1.MonitorActivityLogAlert) (result *v1alpha1.MonitorActivityLogAlert, err error) {
+func (c *FakeMonitorActivityLogAlerts) Create(ctx context.Context, monitorActivityLogAlert *v1alpha1.MonitorActivityLogAlert, opts v1.CreateOptions) (result *v1alpha1.MonitorActivityLogAlert, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(monitoractivitylogalertsResource, c.ns, monitorActivityLogAlert), &v1alpha1.MonitorActivityLogAlert{})
 
@@ -91,7 +93,7 @@ func (c *FakeMonitorActivityLogAlerts) Create(monitorActivityLogAlert *v1alpha1.
 }
 
 // Update takes the representation of a monitorActivityLogAlert and updates it. Returns the server's representation of the monitorActivityLogAlert, and an error, if there is any.
-func (c *FakeMonitorActivityLogAlerts) Update(monitorActivityLogAlert *v1alpha1.MonitorActivityLogAlert) (result *v1alpha1.MonitorActivityLogAlert, err error) {
+func (c *FakeMonitorActivityLogAlerts) Update(ctx context.Context, monitorActivityLogAlert *v1alpha1.MonitorActivityLogAlert, opts v1.UpdateOptions) (result *v1alpha1.MonitorActivityLogAlert, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(monitoractivitylogalertsResource, c.ns, monitorActivityLogAlert), &v1alpha1.MonitorActivityLogAlert{})
 
@@ -103,7 +105,7 @@ func (c *FakeMonitorActivityLogAlerts) Update(monitorActivityLogAlert *v1alpha1.
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeMonitorActivityLogAlerts) UpdateStatus(monitorActivityLogAlert *v1alpha1.MonitorActivityLogAlert) (*v1alpha1.MonitorActivityLogAlert, error) {
+func (c *FakeMonitorActivityLogAlerts) UpdateStatus(ctx context.Context, monitorActivityLogAlert *v1alpha1.MonitorActivityLogAlert, opts v1.UpdateOptions) (*v1alpha1.MonitorActivityLogAlert, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(monitoractivitylogalertsResource, "status", c.ns, monitorActivityLogAlert), &v1alpha1.MonitorActivityLogAlert{})
 
@@ -114,7 +116,7 @@ func (c *FakeMonitorActivityLogAlerts) UpdateStatus(monitorActivityLogAlert *v1a
 }
 
 // Delete takes name of the monitorActivityLogAlert and deletes it. Returns an error if one occurs.
-func (c *FakeMonitorActivityLogAlerts) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeMonitorActivityLogAlerts) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(monitoractivitylogalertsResource, c.ns, name), &v1alpha1.MonitorActivityLogAlert{})
 
@@ -122,15 +124,15 @@ func (c *FakeMonitorActivityLogAlerts) Delete(name string, options *v1.DeleteOpt
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeMonitorActivityLogAlerts) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(monitoractivitylogalertsResource, c.ns, listOptions)
+func (c *FakeMonitorActivityLogAlerts) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(monitoractivitylogalertsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.MonitorActivityLogAlertList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched monitorActivityLogAlert.
-func (c *FakeMonitorActivityLogAlerts) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MonitorActivityLogAlert, err error) {
+func (c *FakeMonitorActivityLogAlerts) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MonitorActivityLogAlert, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(monitoractivitylogalertsResource, c.ns, name, pt, data, subresources...), &v1alpha1.MonitorActivityLogAlert{})
 

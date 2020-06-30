@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var eipassociationsResource = schema.GroupVersionResource{Group: "aws.kubeform.c
 var eipassociationsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "EipAssociation"}
 
 // Get takes name of the eipAssociation, and returns the corresponding eipAssociation object, and an error if there is any.
-func (c *FakeEipAssociations) Get(name string, options v1.GetOptions) (result *v1alpha1.EipAssociation, err error) {
+func (c *FakeEipAssociations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.EipAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(eipassociationsResource, c.ns, name), &v1alpha1.EipAssociation{})
 
@@ -51,7 +53,7 @@ func (c *FakeEipAssociations) Get(name string, options v1.GetOptions) (result *v
 }
 
 // List takes label and field selectors, and returns the list of EipAssociations that match those selectors.
-func (c *FakeEipAssociations) List(opts v1.ListOptions) (result *v1alpha1.EipAssociationList, err error) {
+func (c *FakeEipAssociations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.EipAssociationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(eipassociationsResource, eipassociationsKind, c.ns, opts), &v1alpha1.EipAssociationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeEipAssociations) List(opts v1.ListOptions) (result *v1alpha1.EipAss
 }
 
 // Watch returns a watch.Interface that watches the requested eipAssociations.
-func (c *FakeEipAssociations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeEipAssociations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(eipassociationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a eipAssociation and creates it.  Returns the server's representation of the eipAssociation, and an error, if there is any.
-func (c *FakeEipAssociations) Create(eipAssociation *v1alpha1.EipAssociation) (result *v1alpha1.EipAssociation, err error) {
+func (c *FakeEipAssociations) Create(ctx context.Context, eipAssociation *v1alpha1.EipAssociation, opts v1.CreateOptions) (result *v1alpha1.EipAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(eipassociationsResource, c.ns, eipAssociation), &v1alpha1.EipAssociation{})
 
@@ -91,7 +93,7 @@ func (c *FakeEipAssociations) Create(eipAssociation *v1alpha1.EipAssociation) (r
 }
 
 // Update takes the representation of a eipAssociation and updates it. Returns the server's representation of the eipAssociation, and an error, if there is any.
-func (c *FakeEipAssociations) Update(eipAssociation *v1alpha1.EipAssociation) (result *v1alpha1.EipAssociation, err error) {
+func (c *FakeEipAssociations) Update(ctx context.Context, eipAssociation *v1alpha1.EipAssociation, opts v1.UpdateOptions) (result *v1alpha1.EipAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(eipassociationsResource, c.ns, eipAssociation), &v1alpha1.EipAssociation{})
 
@@ -103,7 +105,7 @@ func (c *FakeEipAssociations) Update(eipAssociation *v1alpha1.EipAssociation) (r
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeEipAssociations) UpdateStatus(eipAssociation *v1alpha1.EipAssociation) (*v1alpha1.EipAssociation, error) {
+func (c *FakeEipAssociations) UpdateStatus(ctx context.Context, eipAssociation *v1alpha1.EipAssociation, opts v1.UpdateOptions) (*v1alpha1.EipAssociation, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(eipassociationsResource, "status", c.ns, eipAssociation), &v1alpha1.EipAssociation{})
 
@@ -114,7 +116,7 @@ func (c *FakeEipAssociations) UpdateStatus(eipAssociation *v1alpha1.EipAssociati
 }
 
 // Delete takes name of the eipAssociation and deletes it. Returns an error if one occurs.
-func (c *FakeEipAssociations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeEipAssociations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(eipassociationsResource, c.ns, name), &v1alpha1.EipAssociation{})
 
@@ -122,15 +124,15 @@ func (c *FakeEipAssociations) Delete(name string, options *v1.DeleteOptions) err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeEipAssociations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(eipassociationsResource, c.ns, listOptions)
+func (c *FakeEipAssociations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(eipassociationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.EipAssociationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched eipAssociation.
-func (c *FakeEipAssociations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EipAssociation, err error) {
+func (c *FakeEipAssociations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EipAssociation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(eipassociationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.EipAssociation{})
 

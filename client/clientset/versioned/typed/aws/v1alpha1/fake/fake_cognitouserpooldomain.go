@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var cognitouserpooldomainsResource = schema.GroupVersionResource{Group: "aws.kub
 var cognitouserpooldomainsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "CognitoUserPoolDomain"}
 
 // Get takes name of the cognitoUserPoolDomain, and returns the corresponding cognitoUserPoolDomain object, and an error if there is any.
-func (c *FakeCognitoUserPoolDomains) Get(name string, options v1.GetOptions) (result *v1alpha1.CognitoUserPoolDomain, err error) {
+func (c *FakeCognitoUserPoolDomains) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CognitoUserPoolDomain, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cognitouserpooldomainsResource, c.ns, name), &v1alpha1.CognitoUserPoolDomain{})
 
@@ -51,7 +53,7 @@ func (c *FakeCognitoUserPoolDomains) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of CognitoUserPoolDomains that match those selectors.
-func (c *FakeCognitoUserPoolDomains) List(opts v1.ListOptions) (result *v1alpha1.CognitoUserPoolDomainList, err error) {
+func (c *FakeCognitoUserPoolDomains) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.CognitoUserPoolDomainList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cognitouserpooldomainsResource, cognitouserpooldomainsKind, c.ns, opts), &v1alpha1.CognitoUserPoolDomainList{})
 
@@ -73,14 +75,14 @@ func (c *FakeCognitoUserPoolDomains) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested cognitoUserPoolDomains.
-func (c *FakeCognitoUserPoolDomains) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCognitoUserPoolDomains) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cognitouserpooldomainsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cognitoUserPoolDomain and creates it.  Returns the server's representation of the cognitoUserPoolDomain, and an error, if there is any.
-func (c *FakeCognitoUserPoolDomains) Create(cognitoUserPoolDomain *v1alpha1.CognitoUserPoolDomain) (result *v1alpha1.CognitoUserPoolDomain, err error) {
+func (c *FakeCognitoUserPoolDomains) Create(ctx context.Context, cognitoUserPoolDomain *v1alpha1.CognitoUserPoolDomain, opts v1.CreateOptions) (result *v1alpha1.CognitoUserPoolDomain, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cognitouserpooldomainsResource, c.ns, cognitoUserPoolDomain), &v1alpha1.CognitoUserPoolDomain{})
 
@@ -91,7 +93,7 @@ func (c *FakeCognitoUserPoolDomains) Create(cognitoUserPoolDomain *v1alpha1.Cogn
 }
 
 // Update takes the representation of a cognitoUserPoolDomain and updates it. Returns the server's representation of the cognitoUserPoolDomain, and an error, if there is any.
-func (c *FakeCognitoUserPoolDomains) Update(cognitoUserPoolDomain *v1alpha1.CognitoUserPoolDomain) (result *v1alpha1.CognitoUserPoolDomain, err error) {
+func (c *FakeCognitoUserPoolDomains) Update(ctx context.Context, cognitoUserPoolDomain *v1alpha1.CognitoUserPoolDomain, opts v1.UpdateOptions) (result *v1alpha1.CognitoUserPoolDomain, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cognitouserpooldomainsResource, c.ns, cognitoUserPoolDomain), &v1alpha1.CognitoUserPoolDomain{})
 
@@ -103,7 +105,7 @@ func (c *FakeCognitoUserPoolDomains) Update(cognitoUserPoolDomain *v1alpha1.Cogn
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCognitoUserPoolDomains) UpdateStatus(cognitoUserPoolDomain *v1alpha1.CognitoUserPoolDomain) (*v1alpha1.CognitoUserPoolDomain, error) {
+func (c *FakeCognitoUserPoolDomains) UpdateStatus(ctx context.Context, cognitoUserPoolDomain *v1alpha1.CognitoUserPoolDomain, opts v1.UpdateOptions) (*v1alpha1.CognitoUserPoolDomain, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cognitouserpooldomainsResource, "status", c.ns, cognitoUserPoolDomain), &v1alpha1.CognitoUserPoolDomain{})
 
@@ -114,7 +116,7 @@ func (c *FakeCognitoUserPoolDomains) UpdateStatus(cognitoUserPoolDomain *v1alpha
 }
 
 // Delete takes name of the cognitoUserPoolDomain and deletes it. Returns an error if one occurs.
-func (c *FakeCognitoUserPoolDomains) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCognitoUserPoolDomains) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cognitouserpooldomainsResource, c.ns, name), &v1alpha1.CognitoUserPoolDomain{})
 
@@ -122,15 +124,15 @@ func (c *FakeCognitoUserPoolDomains) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCognitoUserPoolDomains) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cognitouserpooldomainsResource, c.ns, listOptions)
+func (c *FakeCognitoUserPoolDomains) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cognitouserpooldomainsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.CognitoUserPoolDomainList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cognitoUserPoolDomain.
-func (c *FakeCognitoUserPoolDomains) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.CognitoUserPoolDomain, err error) {
+func (c *FakeCognitoUserPoolDomains) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.CognitoUserPoolDomain, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cognitouserpooldomainsResource, c.ns, name, pt, data, subresources...), &v1alpha1.CognitoUserPoolDomain{})
 

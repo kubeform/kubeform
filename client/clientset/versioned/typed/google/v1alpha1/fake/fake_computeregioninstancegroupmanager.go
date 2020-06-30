@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computeregioninstancegroupmanagersResource = schema.GroupVersionResource{Gro
 var computeregioninstancegroupmanagersKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeRegionInstanceGroupManager"}
 
 // Get takes name of the computeRegionInstanceGroupManager, and returns the corresponding computeRegionInstanceGroupManager object, and an error if there is any.
-func (c *FakeComputeRegionInstanceGroupManagers) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeRegionInstanceGroupManager, err error) {
+func (c *FakeComputeRegionInstanceGroupManagers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeRegionInstanceGroupManager, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computeregioninstancegroupmanagersResource, c.ns, name), &v1alpha1.ComputeRegionInstanceGroupManager{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeRegionInstanceGroupManagers) Get(name string, options v1.Get
 }
 
 // List takes label and field selectors, and returns the list of ComputeRegionInstanceGroupManagers that match those selectors.
-func (c *FakeComputeRegionInstanceGroupManagers) List(opts v1.ListOptions) (result *v1alpha1.ComputeRegionInstanceGroupManagerList, err error) {
+func (c *FakeComputeRegionInstanceGroupManagers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeRegionInstanceGroupManagerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computeregioninstancegroupmanagersResource, computeregioninstancegroupmanagersKind, c.ns, opts), &v1alpha1.ComputeRegionInstanceGroupManagerList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeRegionInstanceGroupManagers) List(opts v1.ListOptions) (resu
 }
 
 // Watch returns a watch.Interface that watches the requested computeRegionInstanceGroupManagers.
-func (c *FakeComputeRegionInstanceGroupManagers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeRegionInstanceGroupManagers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computeregioninstancegroupmanagersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeRegionInstanceGroupManager and creates it.  Returns the server's representation of the computeRegionInstanceGroupManager, and an error, if there is any.
-func (c *FakeComputeRegionInstanceGroupManagers) Create(computeRegionInstanceGroupManager *v1alpha1.ComputeRegionInstanceGroupManager) (result *v1alpha1.ComputeRegionInstanceGroupManager, err error) {
+func (c *FakeComputeRegionInstanceGroupManagers) Create(ctx context.Context, computeRegionInstanceGroupManager *v1alpha1.ComputeRegionInstanceGroupManager, opts v1.CreateOptions) (result *v1alpha1.ComputeRegionInstanceGroupManager, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computeregioninstancegroupmanagersResource, c.ns, computeRegionInstanceGroupManager), &v1alpha1.ComputeRegionInstanceGroupManager{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeRegionInstanceGroupManagers) Create(computeRegionInstanceGro
 }
 
 // Update takes the representation of a computeRegionInstanceGroupManager and updates it. Returns the server's representation of the computeRegionInstanceGroupManager, and an error, if there is any.
-func (c *FakeComputeRegionInstanceGroupManagers) Update(computeRegionInstanceGroupManager *v1alpha1.ComputeRegionInstanceGroupManager) (result *v1alpha1.ComputeRegionInstanceGroupManager, err error) {
+func (c *FakeComputeRegionInstanceGroupManagers) Update(ctx context.Context, computeRegionInstanceGroupManager *v1alpha1.ComputeRegionInstanceGroupManager, opts v1.UpdateOptions) (result *v1alpha1.ComputeRegionInstanceGroupManager, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computeregioninstancegroupmanagersResource, c.ns, computeRegionInstanceGroupManager), &v1alpha1.ComputeRegionInstanceGroupManager{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeRegionInstanceGroupManagers) Update(computeRegionInstanceGro
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeRegionInstanceGroupManagers) UpdateStatus(computeRegionInstanceGroupManager *v1alpha1.ComputeRegionInstanceGroupManager) (*v1alpha1.ComputeRegionInstanceGroupManager, error) {
+func (c *FakeComputeRegionInstanceGroupManagers) UpdateStatus(ctx context.Context, computeRegionInstanceGroupManager *v1alpha1.ComputeRegionInstanceGroupManager, opts v1.UpdateOptions) (*v1alpha1.ComputeRegionInstanceGroupManager, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computeregioninstancegroupmanagersResource, "status", c.ns, computeRegionInstanceGroupManager), &v1alpha1.ComputeRegionInstanceGroupManager{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeRegionInstanceGroupManagers) UpdateStatus(computeRegionInsta
 }
 
 // Delete takes name of the computeRegionInstanceGroupManager and deletes it. Returns an error if one occurs.
-func (c *FakeComputeRegionInstanceGroupManagers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeRegionInstanceGroupManagers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computeregioninstancegroupmanagersResource, c.ns, name), &v1alpha1.ComputeRegionInstanceGroupManager{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeRegionInstanceGroupManagers) Delete(name string, options *v1
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeRegionInstanceGroupManagers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computeregioninstancegroupmanagersResource, c.ns, listOptions)
+func (c *FakeComputeRegionInstanceGroupManagers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computeregioninstancegroupmanagersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeRegionInstanceGroupManagerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeRegionInstanceGroupManager.
-func (c *FakeComputeRegionInstanceGroupManagers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeRegionInstanceGroupManager, err error) {
+func (c *FakeComputeRegionInstanceGroupManagers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeRegionInstanceGroupManager, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computeregioninstancegroupmanagersResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeRegionInstanceGroupManager{})
 

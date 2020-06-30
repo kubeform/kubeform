@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type ComputeRegionAutoscalersGetter interface {
 
 // ComputeRegionAutoscalerInterface has methods to work with ComputeRegionAutoscaler resources.
 type ComputeRegionAutoscalerInterface interface {
-	Create(*v1alpha1.ComputeRegionAutoscaler) (*v1alpha1.ComputeRegionAutoscaler, error)
-	Update(*v1alpha1.ComputeRegionAutoscaler) (*v1alpha1.ComputeRegionAutoscaler, error)
-	UpdateStatus(*v1alpha1.ComputeRegionAutoscaler) (*v1alpha1.ComputeRegionAutoscaler, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ComputeRegionAutoscaler, error)
-	List(opts v1.ListOptions) (*v1alpha1.ComputeRegionAutoscalerList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeRegionAutoscaler, err error)
+	Create(ctx context.Context, computeRegionAutoscaler *v1alpha1.ComputeRegionAutoscaler, opts v1.CreateOptions) (*v1alpha1.ComputeRegionAutoscaler, error)
+	Update(ctx context.Context, computeRegionAutoscaler *v1alpha1.ComputeRegionAutoscaler, opts v1.UpdateOptions) (*v1alpha1.ComputeRegionAutoscaler, error)
+	UpdateStatus(ctx context.Context, computeRegionAutoscaler *v1alpha1.ComputeRegionAutoscaler, opts v1.UpdateOptions) (*v1alpha1.ComputeRegionAutoscaler, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ComputeRegionAutoscaler, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ComputeRegionAutoscalerList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeRegionAutoscaler, err error)
 	ComputeRegionAutoscalerExpansion
 }
 
@@ -65,20 +66,20 @@ func newComputeRegionAutoscalers(c *GoogleV1alpha1Client, namespace string) *com
 }
 
 // Get takes name of the computeRegionAutoscaler, and returns the corresponding computeRegionAutoscaler object, and an error if there is any.
-func (c *computeRegionAutoscalers) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeRegionAutoscaler, err error) {
+func (c *computeRegionAutoscalers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeRegionAutoscaler, err error) {
 	result = &v1alpha1.ComputeRegionAutoscaler{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("computeregionautoscalers").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ComputeRegionAutoscalers that match those selectors.
-func (c *computeRegionAutoscalers) List(opts v1.ListOptions) (result *v1alpha1.ComputeRegionAutoscalerList, err error) {
+func (c *computeRegionAutoscalers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeRegionAutoscalerList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *computeRegionAutoscalers) List(opts v1.ListOptions) (result *v1alpha1.C
 		Resource("computeregionautoscalers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested computeRegionAutoscalers.
-func (c *computeRegionAutoscalers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *computeRegionAutoscalers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *computeRegionAutoscalers) Watch(opts v1.ListOptions) (watch.Interface, 
 		Resource("computeregionautoscalers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a computeRegionAutoscaler and creates it.  Returns the server's representation of the computeRegionAutoscaler, and an error, if there is any.
-func (c *computeRegionAutoscalers) Create(computeRegionAutoscaler *v1alpha1.ComputeRegionAutoscaler) (result *v1alpha1.ComputeRegionAutoscaler, err error) {
+func (c *computeRegionAutoscalers) Create(ctx context.Context, computeRegionAutoscaler *v1alpha1.ComputeRegionAutoscaler, opts v1.CreateOptions) (result *v1alpha1.ComputeRegionAutoscaler, err error) {
 	result = &v1alpha1.ComputeRegionAutoscaler{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("computeregionautoscalers").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeRegionAutoscaler).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a computeRegionAutoscaler and updates it. Returns the server's representation of the computeRegionAutoscaler, and an error, if there is any.
-func (c *computeRegionAutoscalers) Update(computeRegionAutoscaler *v1alpha1.ComputeRegionAutoscaler) (result *v1alpha1.ComputeRegionAutoscaler, err error) {
+func (c *computeRegionAutoscalers) Update(ctx context.Context, computeRegionAutoscaler *v1alpha1.ComputeRegionAutoscaler, opts v1.UpdateOptions) (result *v1alpha1.ComputeRegionAutoscaler, err error) {
 	result = &v1alpha1.ComputeRegionAutoscaler{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computeregionautoscalers").
 		Name(computeRegionAutoscaler.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeRegionAutoscaler).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *computeRegionAutoscalers) UpdateStatus(computeRegionAutoscaler *v1alpha1.ComputeRegionAutoscaler) (result *v1alpha1.ComputeRegionAutoscaler, err error) {
+func (c *computeRegionAutoscalers) UpdateStatus(ctx context.Context, computeRegionAutoscaler *v1alpha1.ComputeRegionAutoscaler, opts v1.UpdateOptions) (result *v1alpha1.ComputeRegionAutoscaler, err error) {
 	result = &v1alpha1.ComputeRegionAutoscaler{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computeregionautoscalers").
 		Name(computeRegionAutoscaler.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeRegionAutoscaler).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the computeRegionAutoscaler and deletes it. Returns an error if one occurs.
-func (c *computeRegionAutoscalers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *computeRegionAutoscalers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computeregionautoscalers").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *computeRegionAutoscalers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *computeRegionAutoscalers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computeregionautoscalers").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched computeRegionAutoscaler.
-func (c *computeRegionAutoscalers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeRegionAutoscaler, err error) {
+func (c *computeRegionAutoscalers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeRegionAutoscaler, err error) {
 	result = &v1alpha1.ComputeRegionAutoscaler{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("computeregionautoscalers").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var loganalyticsworkspacesResource = schema.GroupVersionResource{Group: "azurerm
 var loganalyticsworkspacesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "LogAnalyticsWorkspace"}
 
 // Get takes name of the logAnalyticsWorkspace, and returns the corresponding logAnalyticsWorkspace object, and an error if there is any.
-func (c *FakeLogAnalyticsWorkspaces) Get(name string, options v1.GetOptions) (result *v1alpha1.LogAnalyticsWorkspace, err error) {
+func (c *FakeLogAnalyticsWorkspaces) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LogAnalyticsWorkspace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(loganalyticsworkspacesResource, c.ns, name), &v1alpha1.LogAnalyticsWorkspace{})
 
@@ -51,7 +53,7 @@ func (c *FakeLogAnalyticsWorkspaces) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of LogAnalyticsWorkspaces that match those selectors.
-func (c *FakeLogAnalyticsWorkspaces) List(opts v1.ListOptions) (result *v1alpha1.LogAnalyticsWorkspaceList, err error) {
+func (c *FakeLogAnalyticsWorkspaces) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LogAnalyticsWorkspaceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(loganalyticsworkspacesResource, loganalyticsworkspacesKind, c.ns, opts), &v1alpha1.LogAnalyticsWorkspaceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLogAnalyticsWorkspaces) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested logAnalyticsWorkspaces.
-func (c *FakeLogAnalyticsWorkspaces) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLogAnalyticsWorkspaces) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(loganalyticsworkspacesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a logAnalyticsWorkspace and creates it.  Returns the server's representation of the logAnalyticsWorkspace, and an error, if there is any.
-func (c *FakeLogAnalyticsWorkspaces) Create(logAnalyticsWorkspace *v1alpha1.LogAnalyticsWorkspace) (result *v1alpha1.LogAnalyticsWorkspace, err error) {
+func (c *FakeLogAnalyticsWorkspaces) Create(ctx context.Context, logAnalyticsWorkspace *v1alpha1.LogAnalyticsWorkspace, opts v1.CreateOptions) (result *v1alpha1.LogAnalyticsWorkspace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(loganalyticsworkspacesResource, c.ns, logAnalyticsWorkspace), &v1alpha1.LogAnalyticsWorkspace{})
 
@@ -91,7 +93,7 @@ func (c *FakeLogAnalyticsWorkspaces) Create(logAnalyticsWorkspace *v1alpha1.LogA
 }
 
 // Update takes the representation of a logAnalyticsWorkspace and updates it. Returns the server's representation of the logAnalyticsWorkspace, and an error, if there is any.
-func (c *FakeLogAnalyticsWorkspaces) Update(logAnalyticsWorkspace *v1alpha1.LogAnalyticsWorkspace) (result *v1alpha1.LogAnalyticsWorkspace, err error) {
+func (c *FakeLogAnalyticsWorkspaces) Update(ctx context.Context, logAnalyticsWorkspace *v1alpha1.LogAnalyticsWorkspace, opts v1.UpdateOptions) (result *v1alpha1.LogAnalyticsWorkspace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(loganalyticsworkspacesResource, c.ns, logAnalyticsWorkspace), &v1alpha1.LogAnalyticsWorkspace{})
 
@@ -103,7 +105,7 @@ func (c *FakeLogAnalyticsWorkspaces) Update(logAnalyticsWorkspace *v1alpha1.LogA
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLogAnalyticsWorkspaces) UpdateStatus(logAnalyticsWorkspace *v1alpha1.LogAnalyticsWorkspace) (*v1alpha1.LogAnalyticsWorkspace, error) {
+func (c *FakeLogAnalyticsWorkspaces) UpdateStatus(ctx context.Context, logAnalyticsWorkspace *v1alpha1.LogAnalyticsWorkspace, opts v1.UpdateOptions) (*v1alpha1.LogAnalyticsWorkspace, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(loganalyticsworkspacesResource, "status", c.ns, logAnalyticsWorkspace), &v1alpha1.LogAnalyticsWorkspace{})
 
@@ -114,7 +116,7 @@ func (c *FakeLogAnalyticsWorkspaces) UpdateStatus(logAnalyticsWorkspace *v1alpha
 }
 
 // Delete takes name of the logAnalyticsWorkspace and deletes it. Returns an error if one occurs.
-func (c *FakeLogAnalyticsWorkspaces) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLogAnalyticsWorkspaces) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(loganalyticsworkspacesResource, c.ns, name), &v1alpha1.LogAnalyticsWorkspace{})
 
@@ -122,15 +124,15 @@ func (c *FakeLogAnalyticsWorkspaces) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLogAnalyticsWorkspaces) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(loganalyticsworkspacesResource, c.ns, listOptions)
+func (c *FakeLogAnalyticsWorkspaces) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(loganalyticsworkspacesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LogAnalyticsWorkspaceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched logAnalyticsWorkspace.
-func (c *FakeLogAnalyticsWorkspaces) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LogAnalyticsWorkspace, err error) {
+func (c *FakeLogAnalyticsWorkspaces) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LogAnalyticsWorkspace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(loganalyticsworkspacesResource, c.ns, name, pt, data, subresources...), &v1alpha1.LogAnalyticsWorkspace{})
 

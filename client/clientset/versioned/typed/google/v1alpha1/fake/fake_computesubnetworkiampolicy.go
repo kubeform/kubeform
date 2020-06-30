@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computesubnetworkiampoliciesResource = schema.GroupVersionResource{Group: "g
 var computesubnetworkiampoliciesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeSubnetworkIamPolicy"}
 
 // Get takes name of the computeSubnetworkIamPolicy, and returns the corresponding computeSubnetworkIamPolicy object, and an error if there is any.
-func (c *FakeComputeSubnetworkIamPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeSubnetworkIamPolicy, err error) {
+func (c *FakeComputeSubnetworkIamPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeSubnetworkIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computesubnetworkiampoliciesResource, c.ns, name), &v1alpha1.ComputeSubnetworkIamPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeSubnetworkIamPolicies) Get(name string, options v1.GetOption
 }
 
 // List takes label and field selectors, and returns the list of ComputeSubnetworkIamPolicies that match those selectors.
-func (c *FakeComputeSubnetworkIamPolicies) List(opts v1.ListOptions) (result *v1alpha1.ComputeSubnetworkIamPolicyList, err error) {
+func (c *FakeComputeSubnetworkIamPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeSubnetworkIamPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computesubnetworkiampoliciesResource, computesubnetworkiampoliciesKind, c.ns, opts), &v1alpha1.ComputeSubnetworkIamPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeSubnetworkIamPolicies) List(opts v1.ListOptions) (result *v1
 }
 
 // Watch returns a watch.Interface that watches the requested computeSubnetworkIamPolicies.
-func (c *FakeComputeSubnetworkIamPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeSubnetworkIamPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computesubnetworkiampoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeSubnetworkIamPolicy and creates it.  Returns the server's representation of the computeSubnetworkIamPolicy, and an error, if there is any.
-func (c *FakeComputeSubnetworkIamPolicies) Create(computeSubnetworkIamPolicy *v1alpha1.ComputeSubnetworkIamPolicy) (result *v1alpha1.ComputeSubnetworkIamPolicy, err error) {
+func (c *FakeComputeSubnetworkIamPolicies) Create(ctx context.Context, computeSubnetworkIamPolicy *v1alpha1.ComputeSubnetworkIamPolicy, opts v1.CreateOptions) (result *v1alpha1.ComputeSubnetworkIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computesubnetworkiampoliciesResource, c.ns, computeSubnetworkIamPolicy), &v1alpha1.ComputeSubnetworkIamPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeSubnetworkIamPolicies) Create(computeSubnetworkIamPolicy *v1
 }
 
 // Update takes the representation of a computeSubnetworkIamPolicy and updates it. Returns the server's representation of the computeSubnetworkIamPolicy, and an error, if there is any.
-func (c *FakeComputeSubnetworkIamPolicies) Update(computeSubnetworkIamPolicy *v1alpha1.ComputeSubnetworkIamPolicy) (result *v1alpha1.ComputeSubnetworkIamPolicy, err error) {
+func (c *FakeComputeSubnetworkIamPolicies) Update(ctx context.Context, computeSubnetworkIamPolicy *v1alpha1.ComputeSubnetworkIamPolicy, opts v1.UpdateOptions) (result *v1alpha1.ComputeSubnetworkIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computesubnetworkiampoliciesResource, c.ns, computeSubnetworkIamPolicy), &v1alpha1.ComputeSubnetworkIamPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeSubnetworkIamPolicies) Update(computeSubnetworkIamPolicy *v1
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeSubnetworkIamPolicies) UpdateStatus(computeSubnetworkIamPolicy *v1alpha1.ComputeSubnetworkIamPolicy) (*v1alpha1.ComputeSubnetworkIamPolicy, error) {
+func (c *FakeComputeSubnetworkIamPolicies) UpdateStatus(ctx context.Context, computeSubnetworkIamPolicy *v1alpha1.ComputeSubnetworkIamPolicy, opts v1.UpdateOptions) (*v1alpha1.ComputeSubnetworkIamPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computesubnetworkiampoliciesResource, "status", c.ns, computeSubnetworkIamPolicy), &v1alpha1.ComputeSubnetworkIamPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeSubnetworkIamPolicies) UpdateStatus(computeSubnetworkIamPoli
 }
 
 // Delete takes name of the computeSubnetworkIamPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeComputeSubnetworkIamPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeSubnetworkIamPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computesubnetworkiampoliciesResource, c.ns, name), &v1alpha1.ComputeSubnetworkIamPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeSubnetworkIamPolicies) Delete(name string, options *v1.Delet
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeSubnetworkIamPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computesubnetworkiampoliciesResource, c.ns, listOptions)
+func (c *FakeComputeSubnetworkIamPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computesubnetworkiampoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeSubnetworkIamPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeSubnetworkIamPolicy.
-func (c *FakeComputeSubnetworkIamPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeSubnetworkIamPolicy, err error) {
+func (c *FakeComputeSubnetworkIamPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeSubnetworkIamPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computesubnetworkiampoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeSubnetworkIamPolicy{})
 

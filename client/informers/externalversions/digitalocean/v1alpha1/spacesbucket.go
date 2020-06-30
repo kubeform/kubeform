@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	time "time"
 
 	digitaloceanv1alpha1 "kubeform.dev/kubeform/apis/digitalocean/v1alpha1"
@@ -62,13 +63,13 @@ func NewFilteredSpacesBucketInformer(client versioned.Interface, namespace strin
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.DigitaloceanV1alpha1().SpacesBuckets(namespace).List(options)
+				return client.DigitaloceanV1alpha1().SpacesBuckets(namespace).List(context.TODO(), options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.DigitaloceanV1alpha1().SpacesBuckets(namespace).Watch(options)
+				return client.DigitaloceanV1alpha1().SpacesBuckets(namespace).Watch(context.TODO(), options)
 			},
 		},
 		&digitaloceanv1alpha1.SpacesBucket{},

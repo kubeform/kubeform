@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type DynamodbTablesGetter interface {
 
 // DynamodbTableInterface has methods to work with DynamodbTable resources.
 type DynamodbTableInterface interface {
-	Create(*v1alpha1.DynamodbTable) (*v1alpha1.DynamodbTable, error)
-	Update(*v1alpha1.DynamodbTable) (*v1alpha1.DynamodbTable, error)
-	UpdateStatus(*v1alpha1.DynamodbTable) (*v1alpha1.DynamodbTable, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.DynamodbTable, error)
-	List(opts v1.ListOptions) (*v1alpha1.DynamodbTableList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DynamodbTable, err error)
+	Create(ctx context.Context, dynamodbTable *v1alpha1.DynamodbTable, opts v1.CreateOptions) (*v1alpha1.DynamodbTable, error)
+	Update(ctx context.Context, dynamodbTable *v1alpha1.DynamodbTable, opts v1.UpdateOptions) (*v1alpha1.DynamodbTable, error)
+	UpdateStatus(ctx context.Context, dynamodbTable *v1alpha1.DynamodbTable, opts v1.UpdateOptions) (*v1alpha1.DynamodbTable, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.DynamodbTable, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.DynamodbTableList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DynamodbTable, err error)
 	DynamodbTableExpansion
 }
 
@@ -65,20 +66,20 @@ func newDynamodbTables(c *AwsV1alpha1Client, namespace string) *dynamodbTables {
 }
 
 // Get takes name of the dynamodbTable, and returns the corresponding dynamodbTable object, and an error if there is any.
-func (c *dynamodbTables) Get(name string, options v1.GetOptions) (result *v1alpha1.DynamodbTable, err error) {
+func (c *dynamodbTables) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DynamodbTable, err error) {
 	result = &v1alpha1.DynamodbTable{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("dynamodbtables").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of DynamodbTables that match those selectors.
-func (c *dynamodbTables) List(opts v1.ListOptions) (result *v1alpha1.DynamodbTableList, err error) {
+func (c *dynamodbTables) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DynamodbTableList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *dynamodbTables) List(opts v1.ListOptions) (result *v1alpha1.DynamodbTab
 		Resource("dynamodbtables").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested dynamodbTables.
-func (c *dynamodbTables) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *dynamodbTables) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *dynamodbTables) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("dynamodbtables").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a dynamodbTable and creates it.  Returns the server's representation of the dynamodbTable, and an error, if there is any.
-func (c *dynamodbTables) Create(dynamodbTable *v1alpha1.DynamodbTable) (result *v1alpha1.DynamodbTable, err error) {
+func (c *dynamodbTables) Create(ctx context.Context, dynamodbTable *v1alpha1.DynamodbTable, opts v1.CreateOptions) (result *v1alpha1.DynamodbTable, err error) {
 	result = &v1alpha1.DynamodbTable{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("dynamodbtables").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dynamodbTable).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a dynamodbTable and updates it. Returns the server's representation of the dynamodbTable, and an error, if there is any.
-func (c *dynamodbTables) Update(dynamodbTable *v1alpha1.DynamodbTable) (result *v1alpha1.DynamodbTable, err error) {
+func (c *dynamodbTables) Update(ctx context.Context, dynamodbTable *v1alpha1.DynamodbTable, opts v1.UpdateOptions) (result *v1alpha1.DynamodbTable, err error) {
 	result = &v1alpha1.DynamodbTable{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("dynamodbtables").
 		Name(dynamodbTable.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dynamodbTable).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *dynamodbTables) UpdateStatus(dynamodbTable *v1alpha1.DynamodbTable) (result *v1alpha1.DynamodbTable, err error) {
+func (c *dynamodbTables) UpdateStatus(ctx context.Context, dynamodbTable *v1alpha1.DynamodbTable, opts v1.UpdateOptions) (result *v1alpha1.DynamodbTable, err error) {
 	result = &v1alpha1.DynamodbTable{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("dynamodbtables").
 		Name(dynamodbTable.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dynamodbTable).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the dynamodbTable and deletes it. Returns an error if one occurs.
-func (c *dynamodbTables) Delete(name string, options *v1.DeleteOptions) error {
+func (c *dynamodbTables) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("dynamodbtables").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *dynamodbTables) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *dynamodbTables) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("dynamodbtables").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched dynamodbTable.
-func (c *dynamodbTables) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DynamodbTable, err error) {
+func (c *dynamodbTables) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DynamodbTable, err error) {
 	result = &v1alpha1.DynamodbTable{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("dynamodbtables").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

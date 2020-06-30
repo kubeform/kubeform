@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type ProjectServiceBatchesGetter interface {
 
 // ProjectServiceBatchInterface has methods to work with ProjectServiceBatch resources.
 type ProjectServiceBatchInterface interface {
-	Create(*v1alpha1.ProjectServiceBatch) (*v1alpha1.ProjectServiceBatch, error)
-	Update(*v1alpha1.ProjectServiceBatch) (*v1alpha1.ProjectServiceBatch, error)
-	UpdateStatus(*v1alpha1.ProjectServiceBatch) (*v1alpha1.ProjectServiceBatch, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ProjectServiceBatch, error)
-	List(opts v1.ListOptions) (*v1alpha1.ProjectServiceBatchList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ProjectServiceBatch, err error)
+	Create(ctx context.Context, projectServiceBatch *v1alpha1.ProjectServiceBatch, opts v1.CreateOptions) (*v1alpha1.ProjectServiceBatch, error)
+	Update(ctx context.Context, projectServiceBatch *v1alpha1.ProjectServiceBatch, opts v1.UpdateOptions) (*v1alpha1.ProjectServiceBatch, error)
+	UpdateStatus(ctx context.Context, projectServiceBatch *v1alpha1.ProjectServiceBatch, opts v1.UpdateOptions) (*v1alpha1.ProjectServiceBatch, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ProjectServiceBatch, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ProjectServiceBatchList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ProjectServiceBatch, err error)
 	ProjectServiceBatchExpansion
 }
 
@@ -65,20 +66,20 @@ func newProjectServiceBatches(c *GoogleV1alpha1Client, namespace string) *projec
 }
 
 // Get takes name of the projectServiceBatch, and returns the corresponding projectServiceBatch object, and an error if there is any.
-func (c *projectServiceBatches) Get(name string, options v1.GetOptions) (result *v1alpha1.ProjectServiceBatch, err error) {
+func (c *projectServiceBatches) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ProjectServiceBatch, err error) {
 	result = &v1alpha1.ProjectServiceBatch{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("projectservicebatches").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ProjectServiceBatches that match those selectors.
-func (c *projectServiceBatches) List(opts v1.ListOptions) (result *v1alpha1.ProjectServiceBatchList, err error) {
+func (c *projectServiceBatches) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ProjectServiceBatchList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *projectServiceBatches) List(opts v1.ListOptions) (result *v1alpha1.Proj
 		Resource("projectservicebatches").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested projectServiceBatches.
-func (c *projectServiceBatches) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *projectServiceBatches) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *projectServiceBatches) Watch(opts v1.ListOptions) (watch.Interface, err
 		Resource("projectservicebatches").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a projectServiceBatch and creates it.  Returns the server's representation of the projectServiceBatch, and an error, if there is any.
-func (c *projectServiceBatches) Create(projectServiceBatch *v1alpha1.ProjectServiceBatch) (result *v1alpha1.ProjectServiceBatch, err error) {
+func (c *projectServiceBatches) Create(ctx context.Context, projectServiceBatch *v1alpha1.ProjectServiceBatch, opts v1.CreateOptions) (result *v1alpha1.ProjectServiceBatch, err error) {
 	result = &v1alpha1.ProjectServiceBatch{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("projectservicebatches").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(projectServiceBatch).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a projectServiceBatch and updates it. Returns the server's representation of the projectServiceBatch, and an error, if there is any.
-func (c *projectServiceBatches) Update(projectServiceBatch *v1alpha1.ProjectServiceBatch) (result *v1alpha1.ProjectServiceBatch, err error) {
+func (c *projectServiceBatches) Update(ctx context.Context, projectServiceBatch *v1alpha1.ProjectServiceBatch, opts v1.UpdateOptions) (result *v1alpha1.ProjectServiceBatch, err error) {
 	result = &v1alpha1.ProjectServiceBatch{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("projectservicebatches").
 		Name(projectServiceBatch.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(projectServiceBatch).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *projectServiceBatches) UpdateStatus(projectServiceBatch *v1alpha1.ProjectServiceBatch) (result *v1alpha1.ProjectServiceBatch, err error) {
+func (c *projectServiceBatches) UpdateStatus(ctx context.Context, projectServiceBatch *v1alpha1.ProjectServiceBatch, opts v1.UpdateOptions) (result *v1alpha1.ProjectServiceBatch, err error) {
 	result = &v1alpha1.ProjectServiceBatch{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("projectservicebatches").
 		Name(projectServiceBatch.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(projectServiceBatch).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the projectServiceBatch and deletes it. Returns an error if one occurs.
-func (c *projectServiceBatches) Delete(name string, options *v1.DeleteOptions) error {
+func (c *projectServiceBatches) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("projectservicebatches").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *projectServiceBatches) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *projectServiceBatches) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("projectservicebatches").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched projectServiceBatch.
-func (c *projectServiceBatches) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ProjectServiceBatch, err error) {
+func (c *projectServiceBatches) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ProjectServiceBatch, err error) {
 	result = &v1alpha1.ProjectServiceBatch{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("projectservicebatches").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

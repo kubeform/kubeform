@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var spannerdatabaseiammembersResource = schema.GroupVersionResource{Group: "goog
 var spannerdatabaseiammembersKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "SpannerDatabaseIamMember"}
 
 // Get takes name of the spannerDatabaseIamMember, and returns the corresponding spannerDatabaseIamMember object, and an error if there is any.
-func (c *FakeSpannerDatabaseIamMembers) Get(name string, options v1.GetOptions) (result *v1alpha1.SpannerDatabaseIamMember, err error) {
+func (c *FakeSpannerDatabaseIamMembers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SpannerDatabaseIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(spannerdatabaseiammembersResource, c.ns, name), &v1alpha1.SpannerDatabaseIamMember{})
 
@@ -51,7 +53,7 @@ func (c *FakeSpannerDatabaseIamMembers) Get(name string, options v1.GetOptions) 
 }
 
 // List takes label and field selectors, and returns the list of SpannerDatabaseIamMembers that match those selectors.
-func (c *FakeSpannerDatabaseIamMembers) List(opts v1.ListOptions) (result *v1alpha1.SpannerDatabaseIamMemberList, err error) {
+func (c *FakeSpannerDatabaseIamMembers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SpannerDatabaseIamMemberList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(spannerdatabaseiammembersResource, spannerdatabaseiammembersKind, c.ns, opts), &v1alpha1.SpannerDatabaseIamMemberList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSpannerDatabaseIamMembers) List(opts v1.ListOptions) (result *v1alp
 }
 
 // Watch returns a watch.Interface that watches the requested spannerDatabaseIamMembers.
-func (c *FakeSpannerDatabaseIamMembers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSpannerDatabaseIamMembers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(spannerdatabaseiammembersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a spannerDatabaseIamMember and creates it.  Returns the server's representation of the spannerDatabaseIamMember, and an error, if there is any.
-func (c *FakeSpannerDatabaseIamMembers) Create(spannerDatabaseIamMember *v1alpha1.SpannerDatabaseIamMember) (result *v1alpha1.SpannerDatabaseIamMember, err error) {
+func (c *FakeSpannerDatabaseIamMembers) Create(ctx context.Context, spannerDatabaseIamMember *v1alpha1.SpannerDatabaseIamMember, opts v1.CreateOptions) (result *v1alpha1.SpannerDatabaseIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(spannerdatabaseiammembersResource, c.ns, spannerDatabaseIamMember), &v1alpha1.SpannerDatabaseIamMember{})
 
@@ -91,7 +93,7 @@ func (c *FakeSpannerDatabaseIamMembers) Create(spannerDatabaseIamMember *v1alpha
 }
 
 // Update takes the representation of a spannerDatabaseIamMember and updates it. Returns the server's representation of the spannerDatabaseIamMember, and an error, if there is any.
-func (c *FakeSpannerDatabaseIamMembers) Update(spannerDatabaseIamMember *v1alpha1.SpannerDatabaseIamMember) (result *v1alpha1.SpannerDatabaseIamMember, err error) {
+func (c *FakeSpannerDatabaseIamMembers) Update(ctx context.Context, spannerDatabaseIamMember *v1alpha1.SpannerDatabaseIamMember, opts v1.UpdateOptions) (result *v1alpha1.SpannerDatabaseIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(spannerdatabaseiammembersResource, c.ns, spannerDatabaseIamMember), &v1alpha1.SpannerDatabaseIamMember{})
 
@@ -103,7 +105,7 @@ func (c *FakeSpannerDatabaseIamMembers) Update(spannerDatabaseIamMember *v1alpha
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSpannerDatabaseIamMembers) UpdateStatus(spannerDatabaseIamMember *v1alpha1.SpannerDatabaseIamMember) (*v1alpha1.SpannerDatabaseIamMember, error) {
+func (c *FakeSpannerDatabaseIamMembers) UpdateStatus(ctx context.Context, spannerDatabaseIamMember *v1alpha1.SpannerDatabaseIamMember, opts v1.UpdateOptions) (*v1alpha1.SpannerDatabaseIamMember, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(spannerdatabaseiammembersResource, "status", c.ns, spannerDatabaseIamMember), &v1alpha1.SpannerDatabaseIamMember{})
 
@@ -114,7 +116,7 @@ func (c *FakeSpannerDatabaseIamMembers) UpdateStatus(spannerDatabaseIamMember *v
 }
 
 // Delete takes name of the spannerDatabaseIamMember and deletes it. Returns an error if one occurs.
-func (c *FakeSpannerDatabaseIamMembers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSpannerDatabaseIamMembers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(spannerdatabaseiammembersResource, c.ns, name), &v1alpha1.SpannerDatabaseIamMember{})
 
@@ -122,15 +124,15 @@ func (c *FakeSpannerDatabaseIamMembers) Delete(name string, options *v1.DeleteOp
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSpannerDatabaseIamMembers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(spannerdatabaseiammembersResource, c.ns, listOptions)
+func (c *FakeSpannerDatabaseIamMembers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(spannerdatabaseiammembersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SpannerDatabaseIamMemberList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched spannerDatabaseIamMember.
-func (c *FakeSpannerDatabaseIamMembers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SpannerDatabaseIamMember, err error) {
+func (c *FakeSpannerDatabaseIamMembers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SpannerDatabaseIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(spannerdatabaseiammembersResource, c.ns, name, pt, data, subresources...), &v1alpha1.SpannerDatabaseIamMember{})
 

@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type DxLagsGetter interface {
 
 // DxLagInterface has methods to work with DxLag resources.
 type DxLagInterface interface {
-	Create(*v1alpha1.DxLag) (*v1alpha1.DxLag, error)
-	Update(*v1alpha1.DxLag) (*v1alpha1.DxLag, error)
-	UpdateStatus(*v1alpha1.DxLag) (*v1alpha1.DxLag, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.DxLag, error)
-	List(opts v1.ListOptions) (*v1alpha1.DxLagList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DxLag, err error)
+	Create(ctx context.Context, dxLag *v1alpha1.DxLag, opts v1.CreateOptions) (*v1alpha1.DxLag, error)
+	Update(ctx context.Context, dxLag *v1alpha1.DxLag, opts v1.UpdateOptions) (*v1alpha1.DxLag, error)
+	UpdateStatus(ctx context.Context, dxLag *v1alpha1.DxLag, opts v1.UpdateOptions) (*v1alpha1.DxLag, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.DxLag, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.DxLagList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DxLag, err error)
 	DxLagExpansion
 }
 
@@ -65,20 +66,20 @@ func newDxLags(c *AwsV1alpha1Client, namespace string) *dxLags {
 }
 
 // Get takes name of the dxLag, and returns the corresponding dxLag object, and an error if there is any.
-func (c *dxLags) Get(name string, options v1.GetOptions) (result *v1alpha1.DxLag, err error) {
+func (c *dxLags) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DxLag, err error) {
 	result = &v1alpha1.DxLag{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("dxlags").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of DxLags that match those selectors.
-func (c *dxLags) List(opts v1.ListOptions) (result *v1alpha1.DxLagList, err error) {
+func (c *dxLags) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DxLagList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *dxLags) List(opts v1.ListOptions) (result *v1alpha1.DxLagList, err erro
 		Resource("dxlags").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested dxLags.
-func (c *dxLags) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *dxLags) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *dxLags) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("dxlags").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a dxLag and creates it.  Returns the server's representation of the dxLag, and an error, if there is any.
-func (c *dxLags) Create(dxLag *v1alpha1.DxLag) (result *v1alpha1.DxLag, err error) {
+func (c *dxLags) Create(ctx context.Context, dxLag *v1alpha1.DxLag, opts v1.CreateOptions) (result *v1alpha1.DxLag, err error) {
 	result = &v1alpha1.DxLag{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("dxlags").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dxLag).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a dxLag and updates it. Returns the server's representation of the dxLag, and an error, if there is any.
-func (c *dxLags) Update(dxLag *v1alpha1.DxLag) (result *v1alpha1.DxLag, err error) {
+func (c *dxLags) Update(ctx context.Context, dxLag *v1alpha1.DxLag, opts v1.UpdateOptions) (result *v1alpha1.DxLag, err error) {
 	result = &v1alpha1.DxLag{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("dxlags").
 		Name(dxLag.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dxLag).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *dxLags) UpdateStatus(dxLag *v1alpha1.DxLag) (result *v1alpha1.DxLag, err error) {
+func (c *dxLags) UpdateStatus(ctx context.Context, dxLag *v1alpha1.DxLag, opts v1.UpdateOptions) (result *v1alpha1.DxLag, err error) {
 	result = &v1alpha1.DxLag{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("dxlags").
 		Name(dxLag.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(dxLag).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the dxLag and deletes it. Returns an error if one occurs.
-func (c *dxLags) Delete(name string, options *v1.DeleteOptions) error {
+func (c *dxLags) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("dxlags").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *dxLags) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *dxLags) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("dxlags").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched dxLag.
-func (c *dxLags) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DxLag, err error) {
+func (c *dxLags) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DxLag, err error) {
 	result = &v1alpha1.DxLag{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("dxlags").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

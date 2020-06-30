@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type LambdaPermissionsGetter interface {
 
 // LambdaPermissionInterface has methods to work with LambdaPermission resources.
 type LambdaPermissionInterface interface {
-	Create(*v1alpha1.LambdaPermission) (*v1alpha1.LambdaPermission, error)
-	Update(*v1alpha1.LambdaPermission) (*v1alpha1.LambdaPermission, error)
-	UpdateStatus(*v1alpha1.LambdaPermission) (*v1alpha1.LambdaPermission, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.LambdaPermission, error)
-	List(opts v1.ListOptions) (*v1alpha1.LambdaPermissionList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LambdaPermission, err error)
+	Create(ctx context.Context, lambdaPermission *v1alpha1.LambdaPermission, opts v1.CreateOptions) (*v1alpha1.LambdaPermission, error)
+	Update(ctx context.Context, lambdaPermission *v1alpha1.LambdaPermission, opts v1.UpdateOptions) (*v1alpha1.LambdaPermission, error)
+	UpdateStatus(ctx context.Context, lambdaPermission *v1alpha1.LambdaPermission, opts v1.UpdateOptions) (*v1alpha1.LambdaPermission, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.LambdaPermission, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.LambdaPermissionList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LambdaPermission, err error)
 	LambdaPermissionExpansion
 }
 
@@ -65,20 +66,20 @@ func newLambdaPermissions(c *AwsV1alpha1Client, namespace string) *lambdaPermiss
 }
 
 // Get takes name of the lambdaPermission, and returns the corresponding lambdaPermission object, and an error if there is any.
-func (c *lambdaPermissions) Get(name string, options v1.GetOptions) (result *v1alpha1.LambdaPermission, err error) {
+func (c *lambdaPermissions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LambdaPermission, err error) {
 	result = &v1alpha1.LambdaPermission{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("lambdapermissions").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of LambdaPermissions that match those selectors.
-func (c *lambdaPermissions) List(opts v1.ListOptions) (result *v1alpha1.LambdaPermissionList, err error) {
+func (c *lambdaPermissions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LambdaPermissionList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *lambdaPermissions) List(opts v1.ListOptions) (result *v1alpha1.LambdaPe
 		Resource("lambdapermissions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested lambdaPermissions.
-func (c *lambdaPermissions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *lambdaPermissions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *lambdaPermissions) Watch(opts v1.ListOptions) (watch.Interface, error) 
 		Resource("lambdapermissions").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a lambdaPermission and creates it.  Returns the server's representation of the lambdaPermission, and an error, if there is any.
-func (c *lambdaPermissions) Create(lambdaPermission *v1alpha1.LambdaPermission) (result *v1alpha1.LambdaPermission, err error) {
+func (c *lambdaPermissions) Create(ctx context.Context, lambdaPermission *v1alpha1.LambdaPermission, opts v1.CreateOptions) (result *v1alpha1.LambdaPermission, err error) {
 	result = &v1alpha1.LambdaPermission{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("lambdapermissions").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lambdaPermission).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a lambdaPermission and updates it. Returns the server's representation of the lambdaPermission, and an error, if there is any.
-func (c *lambdaPermissions) Update(lambdaPermission *v1alpha1.LambdaPermission) (result *v1alpha1.LambdaPermission, err error) {
+func (c *lambdaPermissions) Update(ctx context.Context, lambdaPermission *v1alpha1.LambdaPermission, opts v1.UpdateOptions) (result *v1alpha1.LambdaPermission, err error) {
 	result = &v1alpha1.LambdaPermission{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("lambdapermissions").
 		Name(lambdaPermission.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lambdaPermission).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *lambdaPermissions) UpdateStatus(lambdaPermission *v1alpha1.LambdaPermission) (result *v1alpha1.LambdaPermission, err error) {
+func (c *lambdaPermissions) UpdateStatus(ctx context.Context, lambdaPermission *v1alpha1.LambdaPermission, opts v1.UpdateOptions) (result *v1alpha1.LambdaPermission, err error) {
 	result = &v1alpha1.LambdaPermission{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("lambdapermissions").
 		Name(lambdaPermission.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(lambdaPermission).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the lambdaPermission and deletes it. Returns an error if one occurs.
-func (c *lambdaPermissions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *lambdaPermissions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("lambdapermissions").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *lambdaPermissions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *lambdaPermissions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("lambdapermissions").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched lambdaPermission.
-func (c *lambdaPermissions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LambdaPermission, err error) {
+func (c *lambdaPermissions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LambdaPermission, err error) {
 	result = &v1alpha1.LambdaPermission{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("lambdapermissions").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

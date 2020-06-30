@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type EventhubConsumerGroupsGetter interface {
 
 // EventhubConsumerGroupInterface has methods to work with EventhubConsumerGroup resources.
 type EventhubConsumerGroupInterface interface {
-	Create(*v1alpha1.EventhubConsumerGroup) (*v1alpha1.EventhubConsumerGroup, error)
-	Update(*v1alpha1.EventhubConsumerGroup) (*v1alpha1.EventhubConsumerGroup, error)
-	UpdateStatus(*v1alpha1.EventhubConsumerGroup) (*v1alpha1.EventhubConsumerGroup, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.EventhubConsumerGroup, error)
-	List(opts v1.ListOptions) (*v1alpha1.EventhubConsumerGroupList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EventhubConsumerGroup, err error)
+	Create(ctx context.Context, eventhubConsumerGroup *v1alpha1.EventhubConsumerGroup, opts v1.CreateOptions) (*v1alpha1.EventhubConsumerGroup, error)
+	Update(ctx context.Context, eventhubConsumerGroup *v1alpha1.EventhubConsumerGroup, opts v1.UpdateOptions) (*v1alpha1.EventhubConsumerGroup, error)
+	UpdateStatus(ctx context.Context, eventhubConsumerGroup *v1alpha1.EventhubConsumerGroup, opts v1.UpdateOptions) (*v1alpha1.EventhubConsumerGroup, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.EventhubConsumerGroup, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.EventhubConsumerGroupList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EventhubConsumerGroup, err error)
 	EventhubConsumerGroupExpansion
 }
 
@@ -65,20 +66,20 @@ func newEventhubConsumerGroups(c *AzurermV1alpha1Client, namespace string) *even
 }
 
 // Get takes name of the eventhubConsumerGroup, and returns the corresponding eventhubConsumerGroup object, and an error if there is any.
-func (c *eventhubConsumerGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.EventhubConsumerGroup, err error) {
+func (c *eventhubConsumerGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.EventhubConsumerGroup, err error) {
 	result = &v1alpha1.EventhubConsumerGroup{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("eventhubconsumergroups").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of EventhubConsumerGroups that match those selectors.
-func (c *eventhubConsumerGroups) List(opts v1.ListOptions) (result *v1alpha1.EventhubConsumerGroupList, err error) {
+func (c *eventhubConsumerGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.EventhubConsumerGroupList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *eventhubConsumerGroups) List(opts v1.ListOptions) (result *v1alpha1.Eve
 		Resource("eventhubconsumergroups").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested eventhubConsumerGroups.
-func (c *eventhubConsumerGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *eventhubConsumerGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *eventhubConsumerGroups) Watch(opts v1.ListOptions) (watch.Interface, er
 		Resource("eventhubconsumergroups").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a eventhubConsumerGroup and creates it.  Returns the server's representation of the eventhubConsumerGroup, and an error, if there is any.
-func (c *eventhubConsumerGroups) Create(eventhubConsumerGroup *v1alpha1.EventhubConsumerGroup) (result *v1alpha1.EventhubConsumerGroup, err error) {
+func (c *eventhubConsumerGroups) Create(ctx context.Context, eventhubConsumerGroup *v1alpha1.EventhubConsumerGroup, opts v1.CreateOptions) (result *v1alpha1.EventhubConsumerGroup, err error) {
 	result = &v1alpha1.EventhubConsumerGroup{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("eventhubconsumergroups").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(eventhubConsumerGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a eventhubConsumerGroup and updates it. Returns the server's representation of the eventhubConsumerGroup, and an error, if there is any.
-func (c *eventhubConsumerGroups) Update(eventhubConsumerGroup *v1alpha1.EventhubConsumerGroup) (result *v1alpha1.EventhubConsumerGroup, err error) {
+func (c *eventhubConsumerGroups) Update(ctx context.Context, eventhubConsumerGroup *v1alpha1.EventhubConsumerGroup, opts v1.UpdateOptions) (result *v1alpha1.EventhubConsumerGroup, err error) {
 	result = &v1alpha1.EventhubConsumerGroup{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("eventhubconsumergroups").
 		Name(eventhubConsumerGroup.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(eventhubConsumerGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *eventhubConsumerGroups) UpdateStatus(eventhubConsumerGroup *v1alpha1.EventhubConsumerGroup) (result *v1alpha1.EventhubConsumerGroup, err error) {
+func (c *eventhubConsumerGroups) UpdateStatus(ctx context.Context, eventhubConsumerGroup *v1alpha1.EventhubConsumerGroup, opts v1.UpdateOptions) (result *v1alpha1.EventhubConsumerGroup, err error) {
 	result = &v1alpha1.EventhubConsumerGroup{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("eventhubconsumergroups").
 		Name(eventhubConsumerGroup.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(eventhubConsumerGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the eventhubConsumerGroup and deletes it. Returns an error if one occurs.
-func (c *eventhubConsumerGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *eventhubConsumerGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("eventhubconsumergroups").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *eventhubConsumerGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *eventhubConsumerGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("eventhubconsumergroups").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched eventhubConsumerGroup.
-func (c *eventhubConsumerGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.EventhubConsumerGroup, err error) {
+func (c *eventhubConsumerGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.EventhubConsumerGroup, err error) {
 	result = &v1alpha1.EventhubConsumerGroup{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("eventhubconsumergroups").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

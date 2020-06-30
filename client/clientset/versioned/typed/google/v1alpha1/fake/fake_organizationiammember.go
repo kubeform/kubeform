@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var organizationiammembersResource = schema.GroupVersionResource{Group: "google.
 var organizationiammembersKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "OrganizationIamMember"}
 
 // Get takes name of the organizationIamMember, and returns the corresponding organizationIamMember object, and an error if there is any.
-func (c *FakeOrganizationIamMembers) Get(name string, options v1.GetOptions) (result *v1alpha1.OrganizationIamMember, err error) {
+func (c *FakeOrganizationIamMembers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.OrganizationIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(organizationiammembersResource, c.ns, name), &v1alpha1.OrganizationIamMember{})
 
@@ -51,7 +53,7 @@ func (c *FakeOrganizationIamMembers) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of OrganizationIamMembers that match those selectors.
-func (c *FakeOrganizationIamMembers) List(opts v1.ListOptions) (result *v1alpha1.OrganizationIamMemberList, err error) {
+func (c *FakeOrganizationIamMembers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.OrganizationIamMemberList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(organizationiammembersResource, organizationiammembersKind, c.ns, opts), &v1alpha1.OrganizationIamMemberList{})
 
@@ -73,14 +75,14 @@ func (c *FakeOrganizationIamMembers) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested organizationIamMembers.
-func (c *FakeOrganizationIamMembers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeOrganizationIamMembers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(organizationiammembersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a organizationIamMember and creates it.  Returns the server's representation of the organizationIamMember, and an error, if there is any.
-func (c *FakeOrganizationIamMembers) Create(organizationIamMember *v1alpha1.OrganizationIamMember) (result *v1alpha1.OrganizationIamMember, err error) {
+func (c *FakeOrganizationIamMembers) Create(ctx context.Context, organizationIamMember *v1alpha1.OrganizationIamMember, opts v1.CreateOptions) (result *v1alpha1.OrganizationIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(organizationiammembersResource, c.ns, organizationIamMember), &v1alpha1.OrganizationIamMember{})
 
@@ -91,7 +93,7 @@ func (c *FakeOrganizationIamMembers) Create(organizationIamMember *v1alpha1.Orga
 }
 
 // Update takes the representation of a organizationIamMember and updates it. Returns the server's representation of the organizationIamMember, and an error, if there is any.
-func (c *FakeOrganizationIamMembers) Update(organizationIamMember *v1alpha1.OrganizationIamMember) (result *v1alpha1.OrganizationIamMember, err error) {
+func (c *FakeOrganizationIamMembers) Update(ctx context.Context, organizationIamMember *v1alpha1.OrganizationIamMember, opts v1.UpdateOptions) (result *v1alpha1.OrganizationIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(organizationiammembersResource, c.ns, organizationIamMember), &v1alpha1.OrganizationIamMember{})
 
@@ -103,7 +105,7 @@ func (c *FakeOrganizationIamMembers) Update(organizationIamMember *v1alpha1.Orga
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeOrganizationIamMembers) UpdateStatus(organizationIamMember *v1alpha1.OrganizationIamMember) (*v1alpha1.OrganizationIamMember, error) {
+func (c *FakeOrganizationIamMembers) UpdateStatus(ctx context.Context, organizationIamMember *v1alpha1.OrganizationIamMember, opts v1.UpdateOptions) (*v1alpha1.OrganizationIamMember, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(organizationiammembersResource, "status", c.ns, organizationIamMember), &v1alpha1.OrganizationIamMember{})
 
@@ -114,7 +116,7 @@ func (c *FakeOrganizationIamMembers) UpdateStatus(organizationIamMember *v1alpha
 }
 
 // Delete takes name of the organizationIamMember and deletes it. Returns an error if one occurs.
-func (c *FakeOrganizationIamMembers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeOrganizationIamMembers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(organizationiammembersResource, c.ns, name), &v1alpha1.OrganizationIamMember{})
 
@@ -122,15 +124,15 @@ func (c *FakeOrganizationIamMembers) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeOrganizationIamMembers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(organizationiammembersResource, c.ns, listOptions)
+func (c *FakeOrganizationIamMembers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(organizationiammembersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.OrganizationIamMemberList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched organizationIamMember.
-func (c *FakeOrganizationIamMembers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.OrganizationIamMember, err error) {
+func (c *FakeOrganizationIamMembers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.OrganizationIamMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(organizationiammembersResource, c.ns, name, pt, data, subresources...), &v1alpha1.OrganizationIamMember{})
 

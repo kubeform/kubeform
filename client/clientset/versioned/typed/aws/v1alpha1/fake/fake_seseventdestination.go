@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var seseventdestinationsResource = schema.GroupVersionResource{Group: "aws.kubef
 var seseventdestinationsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "SesEventDestination"}
 
 // Get takes name of the sesEventDestination, and returns the corresponding sesEventDestination object, and an error if there is any.
-func (c *FakeSesEventDestinations) Get(name string, options v1.GetOptions) (result *v1alpha1.SesEventDestination, err error) {
+func (c *FakeSesEventDestinations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SesEventDestination, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(seseventdestinationsResource, c.ns, name), &v1alpha1.SesEventDestination{})
 
@@ -51,7 +53,7 @@ func (c *FakeSesEventDestinations) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of SesEventDestinations that match those selectors.
-func (c *FakeSesEventDestinations) List(opts v1.ListOptions) (result *v1alpha1.SesEventDestinationList, err error) {
+func (c *FakeSesEventDestinations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SesEventDestinationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(seseventdestinationsResource, seseventdestinationsKind, c.ns, opts), &v1alpha1.SesEventDestinationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSesEventDestinations) List(opts v1.ListOptions) (result *v1alpha1.S
 }
 
 // Watch returns a watch.Interface that watches the requested sesEventDestinations.
-func (c *FakeSesEventDestinations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSesEventDestinations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(seseventdestinationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a sesEventDestination and creates it.  Returns the server's representation of the sesEventDestination, and an error, if there is any.
-func (c *FakeSesEventDestinations) Create(sesEventDestination *v1alpha1.SesEventDestination) (result *v1alpha1.SesEventDestination, err error) {
+func (c *FakeSesEventDestinations) Create(ctx context.Context, sesEventDestination *v1alpha1.SesEventDestination, opts v1.CreateOptions) (result *v1alpha1.SesEventDestination, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(seseventdestinationsResource, c.ns, sesEventDestination), &v1alpha1.SesEventDestination{})
 
@@ -91,7 +93,7 @@ func (c *FakeSesEventDestinations) Create(sesEventDestination *v1alpha1.SesEvent
 }
 
 // Update takes the representation of a sesEventDestination and updates it. Returns the server's representation of the sesEventDestination, and an error, if there is any.
-func (c *FakeSesEventDestinations) Update(sesEventDestination *v1alpha1.SesEventDestination) (result *v1alpha1.SesEventDestination, err error) {
+func (c *FakeSesEventDestinations) Update(ctx context.Context, sesEventDestination *v1alpha1.SesEventDestination, opts v1.UpdateOptions) (result *v1alpha1.SesEventDestination, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(seseventdestinationsResource, c.ns, sesEventDestination), &v1alpha1.SesEventDestination{})
 
@@ -103,7 +105,7 @@ func (c *FakeSesEventDestinations) Update(sesEventDestination *v1alpha1.SesEvent
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSesEventDestinations) UpdateStatus(sesEventDestination *v1alpha1.SesEventDestination) (*v1alpha1.SesEventDestination, error) {
+func (c *FakeSesEventDestinations) UpdateStatus(ctx context.Context, sesEventDestination *v1alpha1.SesEventDestination, opts v1.UpdateOptions) (*v1alpha1.SesEventDestination, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(seseventdestinationsResource, "status", c.ns, sesEventDestination), &v1alpha1.SesEventDestination{})
 
@@ -114,7 +116,7 @@ func (c *FakeSesEventDestinations) UpdateStatus(sesEventDestination *v1alpha1.Se
 }
 
 // Delete takes name of the sesEventDestination and deletes it. Returns an error if one occurs.
-func (c *FakeSesEventDestinations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSesEventDestinations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(seseventdestinationsResource, c.ns, name), &v1alpha1.SesEventDestination{})
 
@@ -122,15 +124,15 @@ func (c *FakeSesEventDestinations) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSesEventDestinations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(seseventdestinationsResource, c.ns, listOptions)
+func (c *FakeSesEventDestinations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(seseventdestinationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SesEventDestinationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched sesEventDestination.
-func (c *FakeSesEventDestinations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SesEventDestination, err error) {
+func (c *FakeSesEventDestinations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SesEventDestination, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(seseventdestinationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SesEventDestination{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var recoveryservicesvaultsResource = schema.GroupVersionResource{Group: "azurerm
 var recoveryservicesvaultsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "RecoveryServicesVault"}
 
 // Get takes name of the recoveryServicesVault, and returns the corresponding recoveryServicesVault object, and an error if there is any.
-func (c *FakeRecoveryServicesVaults) Get(name string, options v1.GetOptions) (result *v1alpha1.RecoveryServicesVault, err error) {
+func (c *FakeRecoveryServicesVaults) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.RecoveryServicesVault, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(recoveryservicesvaultsResource, c.ns, name), &v1alpha1.RecoveryServicesVault{})
 
@@ -51,7 +53,7 @@ func (c *FakeRecoveryServicesVaults) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of RecoveryServicesVaults that match those selectors.
-func (c *FakeRecoveryServicesVaults) List(opts v1.ListOptions) (result *v1alpha1.RecoveryServicesVaultList, err error) {
+func (c *FakeRecoveryServicesVaults) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RecoveryServicesVaultList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(recoveryservicesvaultsResource, recoveryservicesvaultsKind, c.ns, opts), &v1alpha1.RecoveryServicesVaultList{})
 
@@ -73,14 +75,14 @@ func (c *FakeRecoveryServicesVaults) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested recoveryServicesVaults.
-func (c *FakeRecoveryServicesVaults) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeRecoveryServicesVaults) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(recoveryservicesvaultsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a recoveryServicesVault and creates it.  Returns the server's representation of the recoveryServicesVault, and an error, if there is any.
-func (c *FakeRecoveryServicesVaults) Create(recoveryServicesVault *v1alpha1.RecoveryServicesVault) (result *v1alpha1.RecoveryServicesVault, err error) {
+func (c *FakeRecoveryServicesVaults) Create(ctx context.Context, recoveryServicesVault *v1alpha1.RecoveryServicesVault, opts v1.CreateOptions) (result *v1alpha1.RecoveryServicesVault, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(recoveryservicesvaultsResource, c.ns, recoveryServicesVault), &v1alpha1.RecoveryServicesVault{})
 
@@ -91,7 +93,7 @@ func (c *FakeRecoveryServicesVaults) Create(recoveryServicesVault *v1alpha1.Reco
 }
 
 // Update takes the representation of a recoveryServicesVault and updates it. Returns the server's representation of the recoveryServicesVault, and an error, if there is any.
-func (c *FakeRecoveryServicesVaults) Update(recoveryServicesVault *v1alpha1.RecoveryServicesVault) (result *v1alpha1.RecoveryServicesVault, err error) {
+func (c *FakeRecoveryServicesVaults) Update(ctx context.Context, recoveryServicesVault *v1alpha1.RecoveryServicesVault, opts v1.UpdateOptions) (result *v1alpha1.RecoveryServicesVault, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(recoveryservicesvaultsResource, c.ns, recoveryServicesVault), &v1alpha1.RecoveryServicesVault{})
 
@@ -103,7 +105,7 @@ func (c *FakeRecoveryServicesVaults) Update(recoveryServicesVault *v1alpha1.Reco
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeRecoveryServicesVaults) UpdateStatus(recoveryServicesVault *v1alpha1.RecoveryServicesVault) (*v1alpha1.RecoveryServicesVault, error) {
+func (c *FakeRecoveryServicesVaults) UpdateStatus(ctx context.Context, recoveryServicesVault *v1alpha1.RecoveryServicesVault, opts v1.UpdateOptions) (*v1alpha1.RecoveryServicesVault, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(recoveryservicesvaultsResource, "status", c.ns, recoveryServicesVault), &v1alpha1.RecoveryServicesVault{})
 
@@ -114,7 +116,7 @@ func (c *FakeRecoveryServicesVaults) UpdateStatus(recoveryServicesVault *v1alpha
 }
 
 // Delete takes name of the recoveryServicesVault and deletes it. Returns an error if one occurs.
-func (c *FakeRecoveryServicesVaults) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeRecoveryServicesVaults) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(recoveryservicesvaultsResource, c.ns, name), &v1alpha1.RecoveryServicesVault{})
 
@@ -122,15 +124,15 @@ func (c *FakeRecoveryServicesVaults) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeRecoveryServicesVaults) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(recoveryservicesvaultsResource, c.ns, listOptions)
+func (c *FakeRecoveryServicesVaults) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(recoveryservicesvaultsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.RecoveryServicesVaultList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched recoveryServicesVault.
-func (c *FakeRecoveryServicesVaults) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RecoveryServicesVault, err error) {
+func (c *FakeRecoveryServicesVaults) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RecoveryServicesVault, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(recoveryservicesvaultsResource, c.ns, name, pt, data, subresources...), &v1alpha1.RecoveryServicesVault{})
 

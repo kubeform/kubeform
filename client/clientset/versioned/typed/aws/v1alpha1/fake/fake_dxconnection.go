@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dxconnectionsResource = schema.GroupVersionResource{Group: "aws.kubeform.com
 var dxconnectionsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "DxConnection"}
 
 // Get takes name of the dxConnection, and returns the corresponding dxConnection object, and an error if there is any.
-func (c *FakeDxConnections) Get(name string, options v1.GetOptions) (result *v1alpha1.DxConnection, err error) {
+func (c *FakeDxConnections) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DxConnection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dxconnectionsResource, c.ns, name), &v1alpha1.DxConnection{})
 
@@ -51,7 +53,7 @@ func (c *FakeDxConnections) Get(name string, options v1.GetOptions) (result *v1a
 }
 
 // List takes label and field selectors, and returns the list of DxConnections that match those selectors.
-func (c *FakeDxConnections) List(opts v1.ListOptions) (result *v1alpha1.DxConnectionList, err error) {
+func (c *FakeDxConnections) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DxConnectionList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dxconnectionsResource, dxconnectionsKind, c.ns, opts), &v1alpha1.DxConnectionList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDxConnections) List(opts v1.ListOptions) (result *v1alpha1.DxConnec
 }
 
 // Watch returns a watch.Interface that watches the requested dxConnections.
-func (c *FakeDxConnections) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDxConnections) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dxconnectionsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dxConnection and creates it.  Returns the server's representation of the dxConnection, and an error, if there is any.
-func (c *FakeDxConnections) Create(dxConnection *v1alpha1.DxConnection) (result *v1alpha1.DxConnection, err error) {
+func (c *FakeDxConnections) Create(ctx context.Context, dxConnection *v1alpha1.DxConnection, opts v1.CreateOptions) (result *v1alpha1.DxConnection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dxconnectionsResource, c.ns, dxConnection), &v1alpha1.DxConnection{})
 
@@ -91,7 +93,7 @@ func (c *FakeDxConnections) Create(dxConnection *v1alpha1.DxConnection) (result 
 }
 
 // Update takes the representation of a dxConnection and updates it. Returns the server's representation of the dxConnection, and an error, if there is any.
-func (c *FakeDxConnections) Update(dxConnection *v1alpha1.DxConnection) (result *v1alpha1.DxConnection, err error) {
+func (c *FakeDxConnections) Update(ctx context.Context, dxConnection *v1alpha1.DxConnection, opts v1.UpdateOptions) (result *v1alpha1.DxConnection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dxconnectionsResource, c.ns, dxConnection), &v1alpha1.DxConnection{})
 
@@ -103,7 +105,7 @@ func (c *FakeDxConnections) Update(dxConnection *v1alpha1.DxConnection) (result 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDxConnections) UpdateStatus(dxConnection *v1alpha1.DxConnection) (*v1alpha1.DxConnection, error) {
+func (c *FakeDxConnections) UpdateStatus(ctx context.Context, dxConnection *v1alpha1.DxConnection, opts v1.UpdateOptions) (*v1alpha1.DxConnection, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dxconnectionsResource, "status", c.ns, dxConnection), &v1alpha1.DxConnection{})
 
@@ -114,7 +116,7 @@ func (c *FakeDxConnections) UpdateStatus(dxConnection *v1alpha1.DxConnection) (*
 }
 
 // Delete takes name of the dxConnection and deletes it. Returns an error if one occurs.
-func (c *FakeDxConnections) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDxConnections) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dxconnectionsResource, c.ns, name), &v1alpha1.DxConnection{})
 
@@ -122,15 +124,15 @@ func (c *FakeDxConnections) Delete(name string, options *v1.DeleteOptions) error
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDxConnections) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dxconnectionsResource, c.ns, listOptions)
+func (c *FakeDxConnections) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dxconnectionsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DxConnectionList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dxConnection.
-func (c *FakeDxConnections) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DxConnection, err error) {
+func (c *FakeDxConnections) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DxConnection, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dxconnectionsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DxConnection{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var ramresourceshareacceptersResource = schema.GroupVersionResource{Group: "aws.
 var ramresourceshareacceptersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "RamResourceShareAccepter"}
 
 // Get takes name of the ramResourceShareAccepter, and returns the corresponding ramResourceShareAccepter object, and an error if there is any.
-func (c *FakeRamResourceShareAccepters) Get(name string, options v1.GetOptions) (result *v1alpha1.RamResourceShareAccepter, err error) {
+func (c *FakeRamResourceShareAccepters) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.RamResourceShareAccepter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(ramresourceshareacceptersResource, c.ns, name), &v1alpha1.RamResourceShareAccepter{})
 
@@ -51,7 +53,7 @@ func (c *FakeRamResourceShareAccepters) Get(name string, options v1.GetOptions) 
 }
 
 // List takes label and field selectors, and returns the list of RamResourceShareAccepters that match those selectors.
-func (c *FakeRamResourceShareAccepters) List(opts v1.ListOptions) (result *v1alpha1.RamResourceShareAccepterList, err error) {
+func (c *FakeRamResourceShareAccepters) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.RamResourceShareAccepterList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(ramresourceshareacceptersResource, ramresourceshareacceptersKind, c.ns, opts), &v1alpha1.RamResourceShareAccepterList{})
 
@@ -73,14 +75,14 @@ func (c *FakeRamResourceShareAccepters) List(opts v1.ListOptions) (result *v1alp
 }
 
 // Watch returns a watch.Interface that watches the requested ramResourceShareAccepters.
-func (c *FakeRamResourceShareAccepters) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeRamResourceShareAccepters) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(ramresourceshareacceptersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a ramResourceShareAccepter and creates it.  Returns the server's representation of the ramResourceShareAccepter, and an error, if there is any.
-func (c *FakeRamResourceShareAccepters) Create(ramResourceShareAccepter *v1alpha1.RamResourceShareAccepter) (result *v1alpha1.RamResourceShareAccepter, err error) {
+func (c *FakeRamResourceShareAccepters) Create(ctx context.Context, ramResourceShareAccepter *v1alpha1.RamResourceShareAccepter, opts v1.CreateOptions) (result *v1alpha1.RamResourceShareAccepter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(ramresourceshareacceptersResource, c.ns, ramResourceShareAccepter), &v1alpha1.RamResourceShareAccepter{})
 
@@ -91,7 +93,7 @@ func (c *FakeRamResourceShareAccepters) Create(ramResourceShareAccepter *v1alpha
 }
 
 // Update takes the representation of a ramResourceShareAccepter and updates it. Returns the server's representation of the ramResourceShareAccepter, and an error, if there is any.
-func (c *FakeRamResourceShareAccepters) Update(ramResourceShareAccepter *v1alpha1.RamResourceShareAccepter) (result *v1alpha1.RamResourceShareAccepter, err error) {
+func (c *FakeRamResourceShareAccepters) Update(ctx context.Context, ramResourceShareAccepter *v1alpha1.RamResourceShareAccepter, opts v1.UpdateOptions) (result *v1alpha1.RamResourceShareAccepter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(ramresourceshareacceptersResource, c.ns, ramResourceShareAccepter), &v1alpha1.RamResourceShareAccepter{})
 
@@ -103,7 +105,7 @@ func (c *FakeRamResourceShareAccepters) Update(ramResourceShareAccepter *v1alpha
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeRamResourceShareAccepters) UpdateStatus(ramResourceShareAccepter *v1alpha1.RamResourceShareAccepter) (*v1alpha1.RamResourceShareAccepter, error) {
+func (c *FakeRamResourceShareAccepters) UpdateStatus(ctx context.Context, ramResourceShareAccepter *v1alpha1.RamResourceShareAccepter, opts v1.UpdateOptions) (*v1alpha1.RamResourceShareAccepter, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(ramresourceshareacceptersResource, "status", c.ns, ramResourceShareAccepter), &v1alpha1.RamResourceShareAccepter{})
 
@@ -114,7 +116,7 @@ func (c *FakeRamResourceShareAccepters) UpdateStatus(ramResourceShareAccepter *v
 }
 
 // Delete takes name of the ramResourceShareAccepter and deletes it. Returns an error if one occurs.
-func (c *FakeRamResourceShareAccepters) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeRamResourceShareAccepters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(ramresourceshareacceptersResource, c.ns, name), &v1alpha1.RamResourceShareAccepter{})
 
@@ -122,15 +124,15 @@ func (c *FakeRamResourceShareAccepters) Delete(name string, options *v1.DeleteOp
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeRamResourceShareAccepters) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(ramresourceshareacceptersResource, c.ns, listOptions)
+func (c *FakeRamResourceShareAccepters) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(ramresourceshareacceptersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.RamResourceShareAccepterList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched ramResourceShareAccepter.
-func (c *FakeRamResourceShareAccepters) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.RamResourceShareAccepter, err error) {
+func (c *FakeRamResourceShareAccepters) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.RamResourceShareAccepter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(ramresourceshareacceptersResource, c.ns, name, pt, data, subresources...), &v1alpha1.RamResourceShareAccepter{})
 

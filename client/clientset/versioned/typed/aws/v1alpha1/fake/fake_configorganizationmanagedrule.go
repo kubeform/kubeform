@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var configorganizationmanagedrulesResource = schema.GroupVersionResource{Group: 
 var configorganizationmanagedrulesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ConfigOrganizationManagedRule"}
 
 // Get takes name of the configOrganizationManagedRule, and returns the corresponding configOrganizationManagedRule object, and an error if there is any.
-func (c *FakeConfigOrganizationManagedRules) Get(name string, options v1.GetOptions) (result *v1alpha1.ConfigOrganizationManagedRule, err error) {
+func (c *FakeConfigOrganizationManagedRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ConfigOrganizationManagedRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(configorganizationmanagedrulesResource, c.ns, name), &v1alpha1.ConfigOrganizationManagedRule{})
 
@@ -51,7 +53,7 @@ func (c *FakeConfigOrganizationManagedRules) Get(name string, options v1.GetOpti
 }
 
 // List takes label and field selectors, and returns the list of ConfigOrganizationManagedRules that match those selectors.
-func (c *FakeConfigOrganizationManagedRules) List(opts v1.ListOptions) (result *v1alpha1.ConfigOrganizationManagedRuleList, err error) {
+func (c *FakeConfigOrganizationManagedRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ConfigOrganizationManagedRuleList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(configorganizationmanagedrulesResource, configorganizationmanagedrulesKind, c.ns, opts), &v1alpha1.ConfigOrganizationManagedRuleList{})
 
@@ -73,14 +75,14 @@ func (c *FakeConfigOrganizationManagedRules) List(opts v1.ListOptions) (result *
 }
 
 // Watch returns a watch.Interface that watches the requested configOrganizationManagedRules.
-func (c *FakeConfigOrganizationManagedRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeConfigOrganizationManagedRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(configorganizationmanagedrulesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a configOrganizationManagedRule and creates it.  Returns the server's representation of the configOrganizationManagedRule, and an error, if there is any.
-func (c *FakeConfigOrganizationManagedRules) Create(configOrganizationManagedRule *v1alpha1.ConfigOrganizationManagedRule) (result *v1alpha1.ConfigOrganizationManagedRule, err error) {
+func (c *FakeConfigOrganizationManagedRules) Create(ctx context.Context, configOrganizationManagedRule *v1alpha1.ConfigOrganizationManagedRule, opts v1.CreateOptions) (result *v1alpha1.ConfigOrganizationManagedRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(configorganizationmanagedrulesResource, c.ns, configOrganizationManagedRule), &v1alpha1.ConfigOrganizationManagedRule{})
 
@@ -91,7 +93,7 @@ func (c *FakeConfigOrganizationManagedRules) Create(configOrganizationManagedRul
 }
 
 // Update takes the representation of a configOrganizationManagedRule and updates it. Returns the server's representation of the configOrganizationManagedRule, and an error, if there is any.
-func (c *FakeConfigOrganizationManagedRules) Update(configOrganizationManagedRule *v1alpha1.ConfigOrganizationManagedRule) (result *v1alpha1.ConfigOrganizationManagedRule, err error) {
+func (c *FakeConfigOrganizationManagedRules) Update(ctx context.Context, configOrganizationManagedRule *v1alpha1.ConfigOrganizationManagedRule, opts v1.UpdateOptions) (result *v1alpha1.ConfigOrganizationManagedRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(configorganizationmanagedrulesResource, c.ns, configOrganizationManagedRule), &v1alpha1.ConfigOrganizationManagedRule{})
 
@@ -103,7 +105,7 @@ func (c *FakeConfigOrganizationManagedRules) Update(configOrganizationManagedRul
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeConfigOrganizationManagedRules) UpdateStatus(configOrganizationManagedRule *v1alpha1.ConfigOrganizationManagedRule) (*v1alpha1.ConfigOrganizationManagedRule, error) {
+func (c *FakeConfigOrganizationManagedRules) UpdateStatus(ctx context.Context, configOrganizationManagedRule *v1alpha1.ConfigOrganizationManagedRule, opts v1.UpdateOptions) (*v1alpha1.ConfigOrganizationManagedRule, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(configorganizationmanagedrulesResource, "status", c.ns, configOrganizationManagedRule), &v1alpha1.ConfigOrganizationManagedRule{})
 
@@ -114,7 +116,7 @@ func (c *FakeConfigOrganizationManagedRules) UpdateStatus(configOrganizationMana
 }
 
 // Delete takes name of the configOrganizationManagedRule and deletes it. Returns an error if one occurs.
-func (c *FakeConfigOrganizationManagedRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeConfigOrganizationManagedRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(configorganizationmanagedrulesResource, c.ns, name), &v1alpha1.ConfigOrganizationManagedRule{})
 
@@ -122,15 +124,15 @@ func (c *FakeConfigOrganizationManagedRules) Delete(name string, options *v1.Del
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeConfigOrganizationManagedRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(configorganizationmanagedrulesResource, c.ns, listOptions)
+func (c *FakeConfigOrganizationManagedRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(configorganizationmanagedrulesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ConfigOrganizationManagedRuleList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched configOrganizationManagedRule.
-func (c *FakeConfigOrganizationManagedRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ConfigOrganizationManagedRule, err error) {
+func (c *FakeConfigOrganizationManagedRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ConfigOrganizationManagedRule, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(configorganizationmanagedrulesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ConfigOrganizationManagedRule{})
 

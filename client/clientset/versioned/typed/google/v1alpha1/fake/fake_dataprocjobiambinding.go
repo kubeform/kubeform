@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var dataprocjobiambindingsResource = schema.GroupVersionResource{Group: "google.
 var dataprocjobiambindingsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "DataprocJobIamBinding"}
 
 // Get takes name of the dataprocJobIamBinding, and returns the corresponding dataprocJobIamBinding object, and an error if there is any.
-func (c *FakeDataprocJobIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.DataprocJobIamBinding, err error) {
+func (c *FakeDataprocJobIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DataprocJobIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(dataprocjobiambindingsResource, c.ns, name), &v1alpha1.DataprocJobIamBinding{})
 
@@ -51,7 +53,7 @@ func (c *FakeDataprocJobIamBindings) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of DataprocJobIamBindings that match those selectors.
-func (c *FakeDataprocJobIamBindings) List(opts v1.ListOptions) (result *v1alpha1.DataprocJobIamBindingList, err error) {
+func (c *FakeDataprocJobIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DataprocJobIamBindingList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(dataprocjobiambindingsResource, dataprocjobiambindingsKind, c.ns, opts), &v1alpha1.DataprocJobIamBindingList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDataprocJobIamBindings) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested dataprocJobIamBindings.
-func (c *FakeDataprocJobIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDataprocJobIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(dataprocjobiambindingsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dataprocJobIamBinding and creates it.  Returns the server's representation of the dataprocJobIamBinding, and an error, if there is any.
-func (c *FakeDataprocJobIamBindings) Create(dataprocJobIamBinding *v1alpha1.DataprocJobIamBinding) (result *v1alpha1.DataprocJobIamBinding, err error) {
+func (c *FakeDataprocJobIamBindings) Create(ctx context.Context, dataprocJobIamBinding *v1alpha1.DataprocJobIamBinding, opts v1.CreateOptions) (result *v1alpha1.DataprocJobIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(dataprocjobiambindingsResource, c.ns, dataprocJobIamBinding), &v1alpha1.DataprocJobIamBinding{})
 
@@ -91,7 +93,7 @@ func (c *FakeDataprocJobIamBindings) Create(dataprocJobIamBinding *v1alpha1.Data
 }
 
 // Update takes the representation of a dataprocJobIamBinding and updates it. Returns the server's representation of the dataprocJobIamBinding, and an error, if there is any.
-func (c *FakeDataprocJobIamBindings) Update(dataprocJobIamBinding *v1alpha1.DataprocJobIamBinding) (result *v1alpha1.DataprocJobIamBinding, err error) {
+func (c *FakeDataprocJobIamBindings) Update(ctx context.Context, dataprocJobIamBinding *v1alpha1.DataprocJobIamBinding, opts v1.UpdateOptions) (result *v1alpha1.DataprocJobIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(dataprocjobiambindingsResource, c.ns, dataprocJobIamBinding), &v1alpha1.DataprocJobIamBinding{})
 
@@ -103,7 +105,7 @@ func (c *FakeDataprocJobIamBindings) Update(dataprocJobIamBinding *v1alpha1.Data
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDataprocJobIamBindings) UpdateStatus(dataprocJobIamBinding *v1alpha1.DataprocJobIamBinding) (*v1alpha1.DataprocJobIamBinding, error) {
+func (c *FakeDataprocJobIamBindings) UpdateStatus(ctx context.Context, dataprocJobIamBinding *v1alpha1.DataprocJobIamBinding, opts v1.UpdateOptions) (*v1alpha1.DataprocJobIamBinding, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(dataprocjobiambindingsResource, "status", c.ns, dataprocJobIamBinding), &v1alpha1.DataprocJobIamBinding{})
 
@@ -114,7 +116,7 @@ func (c *FakeDataprocJobIamBindings) UpdateStatus(dataprocJobIamBinding *v1alpha
 }
 
 // Delete takes name of the dataprocJobIamBinding and deletes it. Returns an error if one occurs.
-func (c *FakeDataprocJobIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDataprocJobIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(dataprocjobiambindingsResource, c.ns, name), &v1alpha1.DataprocJobIamBinding{})
 
@@ -122,15 +124,15 @@ func (c *FakeDataprocJobIamBindings) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDataprocJobIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(dataprocjobiambindingsResource, c.ns, listOptions)
+func (c *FakeDataprocJobIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(dataprocjobiambindingsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DataprocJobIamBindingList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dataprocJobIamBinding.
-func (c *FakeDataprocJobIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataprocJobIamBinding, err error) {
+func (c *FakeDataprocJobIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataprocJobIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(dataprocjobiambindingsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DataprocJobIamBinding{})
 

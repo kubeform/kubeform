@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type GlueTriggersGetter interface {
 
 // GlueTriggerInterface has methods to work with GlueTrigger resources.
 type GlueTriggerInterface interface {
-	Create(*v1alpha1.GlueTrigger) (*v1alpha1.GlueTrigger, error)
-	Update(*v1alpha1.GlueTrigger) (*v1alpha1.GlueTrigger, error)
-	UpdateStatus(*v1alpha1.GlueTrigger) (*v1alpha1.GlueTrigger, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.GlueTrigger, error)
-	List(opts v1.ListOptions) (*v1alpha1.GlueTriggerList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.GlueTrigger, err error)
+	Create(ctx context.Context, glueTrigger *v1alpha1.GlueTrigger, opts v1.CreateOptions) (*v1alpha1.GlueTrigger, error)
+	Update(ctx context.Context, glueTrigger *v1alpha1.GlueTrigger, opts v1.UpdateOptions) (*v1alpha1.GlueTrigger, error)
+	UpdateStatus(ctx context.Context, glueTrigger *v1alpha1.GlueTrigger, opts v1.UpdateOptions) (*v1alpha1.GlueTrigger, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.GlueTrigger, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.GlueTriggerList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.GlueTrigger, err error)
 	GlueTriggerExpansion
 }
 
@@ -65,20 +66,20 @@ func newGlueTriggers(c *AwsV1alpha1Client, namespace string) *glueTriggers {
 }
 
 // Get takes name of the glueTrigger, and returns the corresponding glueTrigger object, and an error if there is any.
-func (c *glueTriggers) Get(name string, options v1.GetOptions) (result *v1alpha1.GlueTrigger, err error) {
+func (c *glueTriggers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.GlueTrigger, err error) {
 	result = &v1alpha1.GlueTrigger{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("gluetriggers").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of GlueTriggers that match those selectors.
-func (c *glueTriggers) List(opts v1.ListOptions) (result *v1alpha1.GlueTriggerList, err error) {
+func (c *glueTriggers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.GlueTriggerList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *glueTriggers) List(opts v1.ListOptions) (result *v1alpha1.GlueTriggerLi
 		Resource("gluetriggers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested glueTriggers.
-func (c *glueTriggers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *glueTriggers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *glueTriggers) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("gluetriggers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a glueTrigger and creates it.  Returns the server's representation of the glueTrigger, and an error, if there is any.
-func (c *glueTriggers) Create(glueTrigger *v1alpha1.GlueTrigger) (result *v1alpha1.GlueTrigger, err error) {
+func (c *glueTriggers) Create(ctx context.Context, glueTrigger *v1alpha1.GlueTrigger, opts v1.CreateOptions) (result *v1alpha1.GlueTrigger, err error) {
 	result = &v1alpha1.GlueTrigger{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("gluetriggers").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(glueTrigger).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a glueTrigger and updates it. Returns the server's representation of the glueTrigger, and an error, if there is any.
-func (c *glueTriggers) Update(glueTrigger *v1alpha1.GlueTrigger) (result *v1alpha1.GlueTrigger, err error) {
+func (c *glueTriggers) Update(ctx context.Context, glueTrigger *v1alpha1.GlueTrigger, opts v1.UpdateOptions) (result *v1alpha1.GlueTrigger, err error) {
 	result = &v1alpha1.GlueTrigger{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("gluetriggers").
 		Name(glueTrigger.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(glueTrigger).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *glueTriggers) UpdateStatus(glueTrigger *v1alpha1.GlueTrigger) (result *v1alpha1.GlueTrigger, err error) {
+func (c *glueTriggers) UpdateStatus(ctx context.Context, glueTrigger *v1alpha1.GlueTrigger, opts v1.UpdateOptions) (result *v1alpha1.GlueTrigger, err error) {
 	result = &v1alpha1.GlueTrigger{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("gluetriggers").
 		Name(glueTrigger.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(glueTrigger).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the glueTrigger and deletes it. Returns an error if one occurs.
-func (c *glueTriggers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *glueTriggers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("gluetriggers").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *glueTriggers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *glueTriggers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("gluetriggers").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched glueTrigger.
-func (c *glueTriggers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.GlueTrigger, err error) {
+func (c *glueTriggers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.GlueTrigger, err error) {
 	result = &v1alpha1.GlueTrigger{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("gluetriggers").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

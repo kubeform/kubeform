@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type IotThingTypesGetter interface {
 
 // IotThingTypeInterface has methods to work with IotThingType resources.
 type IotThingTypeInterface interface {
-	Create(*v1alpha1.IotThingType) (*v1alpha1.IotThingType, error)
-	Update(*v1alpha1.IotThingType) (*v1alpha1.IotThingType, error)
-	UpdateStatus(*v1alpha1.IotThingType) (*v1alpha1.IotThingType, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.IotThingType, error)
-	List(opts v1.ListOptions) (*v1alpha1.IotThingTypeList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IotThingType, err error)
+	Create(ctx context.Context, iotThingType *v1alpha1.IotThingType, opts v1.CreateOptions) (*v1alpha1.IotThingType, error)
+	Update(ctx context.Context, iotThingType *v1alpha1.IotThingType, opts v1.UpdateOptions) (*v1alpha1.IotThingType, error)
+	UpdateStatus(ctx context.Context, iotThingType *v1alpha1.IotThingType, opts v1.UpdateOptions) (*v1alpha1.IotThingType, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.IotThingType, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.IotThingTypeList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IotThingType, err error)
 	IotThingTypeExpansion
 }
 
@@ -65,20 +66,20 @@ func newIotThingTypes(c *AwsV1alpha1Client, namespace string) *iotThingTypes {
 }
 
 // Get takes name of the iotThingType, and returns the corresponding iotThingType object, and an error if there is any.
-func (c *iotThingTypes) Get(name string, options v1.GetOptions) (result *v1alpha1.IotThingType, err error) {
+func (c *iotThingTypes) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IotThingType, err error) {
 	result = &v1alpha1.IotThingType{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("iotthingtypes").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of IotThingTypes that match those selectors.
-func (c *iotThingTypes) List(opts v1.ListOptions) (result *v1alpha1.IotThingTypeList, err error) {
+func (c *iotThingTypes) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IotThingTypeList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *iotThingTypes) List(opts v1.ListOptions) (result *v1alpha1.IotThingType
 		Resource("iotthingtypes").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested iotThingTypes.
-func (c *iotThingTypes) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *iotThingTypes) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *iotThingTypes) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("iotthingtypes").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a iotThingType and creates it.  Returns the server's representation of the iotThingType, and an error, if there is any.
-func (c *iotThingTypes) Create(iotThingType *v1alpha1.IotThingType) (result *v1alpha1.IotThingType, err error) {
+func (c *iotThingTypes) Create(ctx context.Context, iotThingType *v1alpha1.IotThingType, opts v1.CreateOptions) (result *v1alpha1.IotThingType, err error) {
 	result = &v1alpha1.IotThingType{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("iotthingtypes").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iotThingType).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a iotThingType and updates it. Returns the server's representation of the iotThingType, and an error, if there is any.
-func (c *iotThingTypes) Update(iotThingType *v1alpha1.IotThingType) (result *v1alpha1.IotThingType, err error) {
+func (c *iotThingTypes) Update(ctx context.Context, iotThingType *v1alpha1.IotThingType, opts v1.UpdateOptions) (result *v1alpha1.IotThingType, err error) {
 	result = &v1alpha1.IotThingType{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iotthingtypes").
 		Name(iotThingType.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iotThingType).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *iotThingTypes) UpdateStatus(iotThingType *v1alpha1.IotThingType) (result *v1alpha1.IotThingType, err error) {
+func (c *iotThingTypes) UpdateStatus(ctx context.Context, iotThingType *v1alpha1.IotThingType, opts v1.UpdateOptions) (result *v1alpha1.IotThingType, err error) {
 	result = &v1alpha1.IotThingType{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iotthingtypes").
 		Name(iotThingType.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iotThingType).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the iotThingType and deletes it. Returns an error if one occurs.
-func (c *iotThingTypes) Delete(name string, options *v1.DeleteOptions) error {
+func (c *iotThingTypes) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iotthingtypes").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *iotThingTypes) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *iotThingTypes) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iotthingtypes").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched iotThingType.
-func (c *iotThingTypes) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IotThingType, err error) {
+func (c *iotThingTypes) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IotThingType, err error) {
 	result = &v1alpha1.IotThingType{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("iotthingtypes").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

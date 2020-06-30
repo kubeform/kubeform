@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var servicebusnamespacesResource = schema.GroupVersionResource{Group: "azurerm.k
 var servicebusnamespacesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "ServicebusNamespace"}
 
 // Get takes name of the servicebusNamespace, and returns the corresponding servicebusNamespace object, and an error if there is any.
-func (c *FakeServicebusNamespaces) Get(name string, options v1.GetOptions) (result *v1alpha1.ServicebusNamespace, err error) {
+func (c *FakeServicebusNamespaces) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ServicebusNamespace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(servicebusnamespacesResource, c.ns, name), &v1alpha1.ServicebusNamespace{})
 
@@ -51,7 +53,7 @@ func (c *FakeServicebusNamespaces) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of ServicebusNamespaces that match those selectors.
-func (c *FakeServicebusNamespaces) List(opts v1.ListOptions) (result *v1alpha1.ServicebusNamespaceList, err error) {
+func (c *FakeServicebusNamespaces) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ServicebusNamespaceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(servicebusnamespacesResource, servicebusnamespacesKind, c.ns, opts), &v1alpha1.ServicebusNamespaceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeServicebusNamespaces) List(opts v1.ListOptions) (result *v1alpha1.S
 }
 
 // Watch returns a watch.Interface that watches the requested servicebusNamespaces.
-func (c *FakeServicebusNamespaces) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeServicebusNamespaces) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(servicebusnamespacesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a servicebusNamespace and creates it.  Returns the server's representation of the servicebusNamespace, and an error, if there is any.
-func (c *FakeServicebusNamespaces) Create(servicebusNamespace *v1alpha1.ServicebusNamespace) (result *v1alpha1.ServicebusNamespace, err error) {
+func (c *FakeServicebusNamespaces) Create(ctx context.Context, servicebusNamespace *v1alpha1.ServicebusNamespace, opts v1.CreateOptions) (result *v1alpha1.ServicebusNamespace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(servicebusnamespacesResource, c.ns, servicebusNamespace), &v1alpha1.ServicebusNamespace{})
 
@@ -91,7 +93,7 @@ func (c *FakeServicebusNamespaces) Create(servicebusNamespace *v1alpha1.Serviceb
 }
 
 // Update takes the representation of a servicebusNamespace and updates it. Returns the server's representation of the servicebusNamespace, and an error, if there is any.
-func (c *FakeServicebusNamespaces) Update(servicebusNamespace *v1alpha1.ServicebusNamespace) (result *v1alpha1.ServicebusNamespace, err error) {
+func (c *FakeServicebusNamespaces) Update(ctx context.Context, servicebusNamespace *v1alpha1.ServicebusNamespace, opts v1.UpdateOptions) (result *v1alpha1.ServicebusNamespace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(servicebusnamespacesResource, c.ns, servicebusNamespace), &v1alpha1.ServicebusNamespace{})
 
@@ -103,7 +105,7 @@ func (c *FakeServicebusNamespaces) Update(servicebusNamespace *v1alpha1.Serviceb
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeServicebusNamespaces) UpdateStatus(servicebusNamespace *v1alpha1.ServicebusNamespace) (*v1alpha1.ServicebusNamespace, error) {
+func (c *FakeServicebusNamespaces) UpdateStatus(ctx context.Context, servicebusNamespace *v1alpha1.ServicebusNamespace, opts v1.UpdateOptions) (*v1alpha1.ServicebusNamespace, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(servicebusnamespacesResource, "status", c.ns, servicebusNamespace), &v1alpha1.ServicebusNamespace{})
 
@@ -114,7 +116,7 @@ func (c *FakeServicebusNamespaces) UpdateStatus(servicebusNamespace *v1alpha1.Se
 }
 
 // Delete takes name of the servicebusNamespace and deletes it. Returns an error if one occurs.
-func (c *FakeServicebusNamespaces) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeServicebusNamespaces) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(servicebusnamespacesResource, c.ns, name), &v1alpha1.ServicebusNamespace{})
 
@@ -122,15 +124,15 @@ func (c *FakeServicebusNamespaces) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeServicebusNamespaces) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(servicebusnamespacesResource, c.ns, listOptions)
+func (c *FakeServicebusNamespaces) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(servicebusnamespacesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ServicebusNamespaceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched servicebusNamespace.
-func (c *FakeServicebusNamespaces) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ServicebusNamespace, err error) {
+func (c *FakeServicebusNamespaces) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ServicebusNamespace, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(servicebusnamespacesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ServicebusNamespace{})
 

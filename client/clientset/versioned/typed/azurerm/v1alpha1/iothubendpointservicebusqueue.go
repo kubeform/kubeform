@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type IothubEndpointServicebusQueuesGetter interface {
 
 // IothubEndpointServicebusQueueInterface has methods to work with IothubEndpointServicebusQueue resources.
 type IothubEndpointServicebusQueueInterface interface {
-	Create(*v1alpha1.IothubEndpointServicebusQueue) (*v1alpha1.IothubEndpointServicebusQueue, error)
-	Update(*v1alpha1.IothubEndpointServicebusQueue) (*v1alpha1.IothubEndpointServicebusQueue, error)
-	UpdateStatus(*v1alpha1.IothubEndpointServicebusQueue) (*v1alpha1.IothubEndpointServicebusQueue, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.IothubEndpointServicebusQueue, error)
-	List(opts v1.ListOptions) (*v1alpha1.IothubEndpointServicebusQueueList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IothubEndpointServicebusQueue, err error)
+	Create(ctx context.Context, iothubEndpointServicebusQueue *v1alpha1.IothubEndpointServicebusQueue, opts v1.CreateOptions) (*v1alpha1.IothubEndpointServicebusQueue, error)
+	Update(ctx context.Context, iothubEndpointServicebusQueue *v1alpha1.IothubEndpointServicebusQueue, opts v1.UpdateOptions) (*v1alpha1.IothubEndpointServicebusQueue, error)
+	UpdateStatus(ctx context.Context, iothubEndpointServicebusQueue *v1alpha1.IothubEndpointServicebusQueue, opts v1.UpdateOptions) (*v1alpha1.IothubEndpointServicebusQueue, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.IothubEndpointServicebusQueue, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.IothubEndpointServicebusQueueList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IothubEndpointServicebusQueue, err error)
 	IothubEndpointServicebusQueueExpansion
 }
 
@@ -65,20 +66,20 @@ func newIothubEndpointServicebusQueues(c *AzurermV1alpha1Client, namespace strin
 }
 
 // Get takes name of the iothubEndpointServicebusQueue, and returns the corresponding iothubEndpointServicebusQueue object, and an error if there is any.
-func (c *iothubEndpointServicebusQueues) Get(name string, options v1.GetOptions) (result *v1alpha1.IothubEndpointServicebusQueue, err error) {
+func (c *iothubEndpointServicebusQueues) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IothubEndpointServicebusQueue, err error) {
 	result = &v1alpha1.IothubEndpointServicebusQueue{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("iothubendpointservicebusqueues").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of IothubEndpointServicebusQueues that match those selectors.
-func (c *iothubEndpointServicebusQueues) List(opts v1.ListOptions) (result *v1alpha1.IothubEndpointServicebusQueueList, err error) {
+func (c *iothubEndpointServicebusQueues) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IothubEndpointServicebusQueueList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *iothubEndpointServicebusQueues) List(opts v1.ListOptions) (result *v1al
 		Resource("iothubendpointservicebusqueues").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested iothubEndpointServicebusQueues.
-func (c *iothubEndpointServicebusQueues) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *iothubEndpointServicebusQueues) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *iothubEndpointServicebusQueues) Watch(opts v1.ListOptions) (watch.Inter
 		Resource("iothubendpointservicebusqueues").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a iothubEndpointServicebusQueue and creates it.  Returns the server's representation of the iothubEndpointServicebusQueue, and an error, if there is any.
-func (c *iothubEndpointServicebusQueues) Create(iothubEndpointServicebusQueue *v1alpha1.IothubEndpointServicebusQueue) (result *v1alpha1.IothubEndpointServicebusQueue, err error) {
+func (c *iothubEndpointServicebusQueues) Create(ctx context.Context, iothubEndpointServicebusQueue *v1alpha1.IothubEndpointServicebusQueue, opts v1.CreateOptions) (result *v1alpha1.IothubEndpointServicebusQueue, err error) {
 	result = &v1alpha1.IothubEndpointServicebusQueue{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("iothubendpointservicebusqueues").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iothubEndpointServicebusQueue).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a iothubEndpointServicebusQueue and updates it. Returns the server's representation of the iothubEndpointServicebusQueue, and an error, if there is any.
-func (c *iothubEndpointServicebusQueues) Update(iothubEndpointServicebusQueue *v1alpha1.IothubEndpointServicebusQueue) (result *v1alpha1.IothubEndpointServicebusQueue, err error) {
+func (c *iothubEndpointServicebusQueues) Update(ctx context.Context, iothubEndpointServicebusQueue *v1alpha1.IothubEndpointServicebusQueue, opts v1.UpdateOptions) (result *v1alpha1.IothubEndpointServicebusQueue, err error) {
 	result = &v1alpha1.IothubEndpointServicebusQueue{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iothubendpointservicebusqueues").
 		Name(iothubEndpointServicebusQueue.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iothubEndpointServicebusQueue).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *iothubEndpointServicebusQueues) UpdateStatus(iothubEndpointServicebusQueue *v1alpha1.IothubEndpointServicebusQueue) (result *v1alpha1.IothubEndpointServicebusQueue, err error) {
+func (c *iothubEndpointServicebusQueues) UpdateStatus(ctx context.Context, iothubEndpointServicebusQueue *v1alpha1.IothubEndpointServicebusQueue, opts v1.UpdateOptions) (result *v1alpha1.IothubEndpointServicebusQueue, err error) {
 	result = &v1alpha1.IothubEndpointServicebusQueue{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("iothubendpointservicebusqueues").
 		Name(iothubEndpointServicebusQueue.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(iothubEndpointServicebusQueue).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the iothubEndpointServicebusQueue and deletes it. Returns an error if one occurs.
-func (c *iothubEndpointServicebusQueues) Delete(name string, options *v1.DeleteOptions) error {
+func (c *iothubEndpointServicebusQueues) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iothubendpointservicebusqueues").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *iothubEndpointServicebusQueues) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *iothubEndpointServicebusQueues) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("iothubendpointservicebusqueues").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched iothubEndpointServicebusQueue.
-func (c *iothubEndpointServicebusQueues) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IothubEndpointServicebusQueue, err error) {
+func (c *iothubEndpointServicebusQueues) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IothubEndpointServicebusQueue, err error) {
 	result = &v1alpha1.IothubEndpointServicebusQueue{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("iothubendpointservicebusqueues").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

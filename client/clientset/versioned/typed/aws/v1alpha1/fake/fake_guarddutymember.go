@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var guarddutymembersResource = schema.GroupVersionResource{Group: "aws.kubeform.
 var guarddutymembersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "GuarddutyMember"}
 
 // Get takes name of the guarddutyMember, and returns the corresponding guarddutyMember object, and an error if there is any.
-func (c *FakeGuarddutyMembers) Get(name string, options v1.GetOptions) (result *v1alpha1.GuarddutyMember, err error) {
+func (c *FakeGuarddutyMembers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.GuarddutyMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(guarddutymembersResource, c.ns, name), &v1alpha1.GuarddutyMember{})
 
@@ -51,7 +53,7 @@ func (c *FakeGuarddutyMembers) Get(name string, options v1.GetOptions) (result *
 }
 
 // List takes label and field selectors, and returns the list of GuarddutyMembers that match those selectors.
-func (c *FakeGuarddutyMembers) List(opts v1.ListOptions) (result *v1alpha1.GuarddutyMemberList, err error) {
+func (c *FakeGuarddutyMembers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.GuarddutyMemberList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(guarddutymembersResource, guarddutymembersKind, c.ns, opts), &v1alpha1.GuarddutyMemberList{})
 
@@ -73,14 +75,14 @@ func (c *FakeGuarddutyMembers) List(opts v1.ListOptions) (result *v1alpha1.Guard
 }
 
 // Watch returns a watch.Interface that watches the requested guarddutyMembers.
-func (c *FakeGuarddutyMembers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeGuarddutyMembers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(guarddutymembersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a guarddutyMember and creates it.  Returns the server's representation of the guarddutyMember, and an error, if there is any.
-func (c *FakeGuarddutyMembers) Create(guarddutyMember *v1alpha1.GuarddutyMember) (result *v1alpha1.GuarddutyMember, err error) {
+func (c *FakeGuarddutyMembers) Create(ctx context.Context, guarddutyMember *v1alpha1.GuarddutyMember, opts v1.CreateOptions) (result *v1alpha1.GuarddutyMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(guarddutymembersResource, c.ns, guarddutyMember), &v1alpha1.GuarddutyMember{})
 
@@ -91,7 +93,7 @@ func (c *FakeGuarddutyMembers) Create(guarddutyMember *v1alpha1.GuarddutyMember)
 }
 
 // Update takes the representation of a guarddutyMember and updates it. Returns the server's representation of the guarddutyMember, and an error, if there is any.
-func (c *FakeGuarddutyMembers) Update(guarddutyMember *v1alpha1.GuarddutyMember) (result *v1alpha1.GuarddutyMember, err error) {
+func (c *FakeGuarddutyMembers) Update(ctx context.Context, guarddutyMember *v1alpha1.GuarddutyMember, opts v1.UpdateOptions) (result *v1alpha1.GuarddutyMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(guarddutymembersResource, c.ns, guarddutyMember), &v1alpha1.GuarddutyMember{})
 
@@ -103,7 +105,7 @@ func (c *FakeGuarddutyMembers) Update(guarddutyMember *v1alpha1.GuarddutyMember)
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeGuarddutyMembers) UpdateStatus(guarddutyMember *v1alpha1.GuarddutyMember) (*v1alpha1.GuarddutyMember, error) {
+func (c *FakeGuarddutyMembers) UpdateStatus(ctx context.Context, guarddutyMember *v1alpha1.GuarddutyMember, opts v1.UpdateOptions) (*v1alpha1.GuarddutyMember, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(guarddutymembersResource, "status", c.ns, guarddutyMember), &v1alpha1.GuarddutyMember{})
 
@@ -114,7 +116,7 @@ func (c *FakeGuarddutyMembers) UpdateStatus(guarddutyMember *v1alpha1.GuarddutyM
 }
 
 // Delete takes name of the guarddutyMember and deletes it. Returns an error if one occurs.
-func (c *FakeGuarddutyMembers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeGuarddutyMembers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(guarddutymembersResource, c.ns, name), &v1alpha1.GuarddutyMember{})
 
@@ -122,15 +124,15 @@ func (c *FakeGuarddutyMembers) Delete(name string, options *v1.DeleteOptions) er
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeGuarddutyMembers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(guarddutymembersResource, c.ns, listOptions)
+func (c *FakeGuarddutyMembers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(guarddutymembersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.GuarddutyMemberList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched guarddutyMember.
-func (c *FakeGuarddutyMembers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.GuarddutyMember, err error) {
+func (c *FakeGuarddutyMembers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.GuarddutyMember, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(guarddutymembersResource, c.ns, name, pt, data, subresources...), &v1alpha1.GuarddutyMember{})
 

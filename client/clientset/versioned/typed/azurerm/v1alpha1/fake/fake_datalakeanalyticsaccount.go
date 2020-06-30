@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var datalakeanalyticsaccountsResource = schema.GroupVersionResource{Group: "azur
 var datalakeanalyticsaccountsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "DataLakeAnalyticsAccount"}
 
 // Get takes name of the dataLakeAnalyticsAccount, and returns the corresponding dataLakeAnalyticsAccount object, and an error if there is any.
-func (c *FakeDataLakeAnalyticsAccounts) Get(name string, options v1.GetOptions) (result *v1alpha1.DataLakeAnalyticsAccount, err error) {
+func (c *FakeDataLakeAnalyticsAccounts) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DataLakeAnalyticsAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(datalakeanalyticsaccountsResource, c.ns, name), &v1alpha1.DataLakeAnalyticsAccount{})
 
@@ -51,7 +53,7 @@ func (c *FakeDataLakeAnalyticsAccounts) Get(name string, options v1.GetOptions) 
 }
 
 // List takes label and field selectors, and returns the list of DataLakeAnalyticsAccounts that match those selectors.
-func (c *FakeDataLakeAnalyticsAccounts) List(opts v1.ListOptions) (result *v1alpha1.DataLakeAnalyticsAccountList, err error) {
+func (c *FakeDataLakeAnalyticsAccounts) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DataLakeAnalyticsAccountList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(datalakeanalyticsaccountsResource, datalakeanalyticsaccountsKind, c.ns, opts), &v1alpha1.DataLakeAnalyticsAccountList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDataLakeAnalyticsAccounts) List(opts v1.ListOptions) (result *v1alp
 }
 
 // Watch returns a watch.Interface that watches the requested dataLakeAnalyticsAccounts.
-func (c *FakeDataLakeAnalyticsAccounts) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDataLakeAnalyticsAccounts) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(datalakeanalyticsaccountsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dataLakeAnalyticsAccount and creates it.  Returns the server's representation of the dataLakeAnalyticsAccount, and an error, if there is any.
-func (c *FakeDataLakeAnalyticsAccounts) Create(dataLakeAnalyticsAccount *v1alpha1.DataLakeAnalyticsAccount) (result *v1alpha1.DataLakeAnalyticsAccount, err error) {
+func (c *FakeDataLakeAnalyticsAccounts) Create(ctx context.Context, dataLakeAnalyticsAccount *v1alpha1.DataLakeAnalyticsAccount, opts v1.CreateOptions) (result *v1alpha1.DataLakeAnalyticsAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(datalakeanalyticsaccountsResource, c.ns, dataLakeAnalyticsAccount), &v1alpha1.DataLakeAnalyticsAccount{})
 
@@ -91,7 +93,7 @@ func (c *FakeDataLakeAnalyticsAccounts) Create(dataLakeAnalyticsAccount *v1alpha
 }
 
 // Update takes the representation of a dataLakeAnalyticsAccount and updates it. Returns the server's representation of the dataLakeAnalyticsAccount, and an error, if there is any.
-func (c *FakeDataLakeAnalyticsAccounts) Update(dataLakeAnalyticsAccount *v1alpha1.DataLakeAnalyticsAccount) (result *v1alpha1.DataLakeAnalyticsAccount, err error) {
+func (c *FakeDataLakeAnalyticsAccounts) Update(ctx context.Context, dataLakeAnalyticsAccount *v1alpha1.DataLakeAnalyticsAccount, opts v1.UpdateOptions) (result *v1alpha1.DataLakeAnalyticsAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(datalakeanalyticsaccountsResource, c.ns, dataLakeAnalyticsAccount), &v1alpha1.DataLakeAnalyticsAccount{})
 
@@ -103,7 +105,7 @@ func (c *FakeDataLakeAnalyticsAccounts) Update(dataLakeAnalyticsAccount *v1alpha
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDataLakeAnalyticsAccounts) UpdateStatus(dataLakeAnalyticsAccount *v1alpha1.DataLakeAnalyticsAccount) (*v1alpha1.DataLakeAnalyticsAccount, error) {
+func (c *FakeDataLakeAnalyticsAccounts) UpdateStatus(ctx context.Context, dataLakeAnalyticsAccount *v1alpha1.DataLakeAnalyticsAccount, opts v1.UpdateOptions) (*v1alpha1.DataLakeAnalyticsAccount, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(datalakeanalyticsaccountsResource, "status", c.ns, dataLakeAnalyticsAccount), &v1alpha1.DataLakeAnalyticsAccount{})
 
@@ -114,7 +116,7 @@ func (c *FakeDataLakeAnalyticsAccounts) UpdateStatus(dataLakeAnalyticsAccount *v
 }
 
 // Delete takes name of the dataLakeAnalyticsAccount and deletes it. Returns an error if one occurs.
-func (c *FakeDataLakeAnalyticsAccounts) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDataLakeAnalyticsAccounts) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(datalakeanalyticsaccountsResource, c.ns, name), &v1alpha1.DataLakeAnalyticsAccount{})
 
@@ -122,15 +124,15 @@ func (c *FakeDataLakeAnalyticsAccounts) Delete(name string, options *v1.DeleteOp
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDataLakeAnalyticsAccounts) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(datalakeanalyticsaccountsResource, c.ns, listOptions)
+func (c *FakeDataLakeAnalyticsAccounts) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(datalakeanalyticsaccountsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DataLakeAnalyticsAccountList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dataLakeAnalyticsAccount.
-func (c *FakeDataLakeAnalyticsAccounts) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataLakeAnalyticsAccount, err error) {
+func (c *FakeDataLakeAnalyticsAccounts) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataLakeAnalyticsAccount, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(datalakeanalyticsaccountsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DataLakeAnalyticsAccount{})
 

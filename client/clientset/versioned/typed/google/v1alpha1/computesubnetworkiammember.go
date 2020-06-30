@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type ComputeSubnetworkIamMembersGetter interface {
 
 // ComputeSubnetworkIamMemberInterface has methods to work with ComputeSubnetworkIamMember resources.
 type ComputeSubnetworkIamMemberInterface interface {
-	Create(*v1alpha1.ComputeSubnetworkIamMember) (*v1alpha1.ComputeSubnetworkIamMember, error)
-	Update(*v1alpha1.ComputeSubnetworkIamMember) (*v1alpha1.ComputeSubnetworkIamMember, error)
-	UpdateStatus(*v1alpha1.ComputeSubnetworkIamMember) (*v1alpha1.ComputeSubnetworkIamMember, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ComputeSubnetworkIamMember, error)
-	List(opts v1.ListOptions) (*v1alpha1.ComputeSubnetworkIamMemberList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeSubnetworkIamMember, err error)
+	Create(ctx context.Context, computeSubnetworkIamMember *v1alpha1.ComputeSubnetworkIamMember, opts v1.CreateOptions) (*v1alpha1.ComputeSubnetworkIamMember, error)
+	Update(ctx context.Context, computeSubnetworkIamMember *v1alpha1.ComputeSubnetworkIamMember, opts v1.UpdateOptions) (*v1alpha1.ComputeSubnetworkIamMember, error)
+	UpdateStatus(ctx context.Context, computeSubnetworkIamMember *v1alpha1.ComputeSubnetworkIamMember, opts v1.UpdateOptions) (*v1alpha1.ComputeSubnetworkIamMember, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ComputeSubnetworkIamMember, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ComputeSubnetworkIamMemberList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeSubnetworkIamMember, err error)
 	ComputeSubnetworkIamMemberExpansion
 }
 
@@ -65,20 +66,20 @@ func newComputeSubnetworkIamMembers(c *GoogleV1alpha1Client, namespace string) *
 }
 
 // Get takes name of the computeSubnetworkIamMember, and returns the corresponding computeSubnetworkIamMember object, and an error if there is any.
-func (c *computeSubnetworkIamMembers) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeSubnetworkIamMember, err error) {
+func (c *computeSubnetworkIamMembers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeSubnetworkIamMember, err error) {
 	result = &v1alpha1.ComputeSubnetworkIamMember{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("computesubnetworkiammembers").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ComputeSubnetworkIamMembers that match those selectors.
-func (c *computeSubnetworkIamMembers) List(opts v1.ListOptions) (result *v1alpha1.ComputeSubnetworkIamMemberList, err error) {
+func (c *computeSubnetworkIamMembers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeSubnetworkIamMemberList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *computeSubnetworkIamMembers) List(opts v1.ListOptions) (result *v1alpha
 		Resource("computesubnetworkiammembers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested computeSubnetworkIamMembers.
-func (c *computeSubnetworkIamMembers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *computeSubnetworkIamMembers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *computeSubnetworkIamMembers) Watch(opts v1.ListOptions) (watch.Interfac
 		Resource("computesubnetworkiammembers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a computeSubnetworkIamMember and creates it.  Returns the server's representation of the computeSubnetworkIamMember, and an error, if there is any.
-func (c *computeSubnetworkIamMembers) Create(computeSubnetworkIamMember *v1alpha1.ComputeSubnetworkIamMember) (result *v1alpha1.ComputeSubnetworkIamMember, err error) {
+func (c *computeSubnetworkIamMembers) Create(ctx context.Context, computeSubnetworkIamMember *v1alpha1.ComputeSubnetworkIamMember, opts v1.CreateOptions) (result *v1alpha1.ComputeSubnetworkIamMember, err error) {
 	result = &v1alpha1.ComputeSubnetworkIamMember{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("computesubnetworkiammembers").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeSubnetworkIamMember).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a computeSubnetworkIamMember and updates it. Returns the server's representation of the computeSubnetworkIamMember, and an error, if there is any.
-func (c *computeSubnetworkIamMembers) Update(computeSubnetworkIamMember *v1alpha1.ComputeSubnetworkIamMember) (result *v1alpha1.ComputeSubnetworkIamMember, err error) {
+func (c *computeSubnetworkIamMembers) Update(ctx context.Context, computeSubnetworkIamMember *v1alpha1.ComputeSubnetworkIamMember, opts v1.UpdateOptions) (result *v1alpha1.ComputeSubnetworkIamMember, err error) {
 	result = &v1alpha1.ComputeSubnetworkIamMember{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computesubnetworkiammembers").
 		Name(computeSubnetworkIamMember.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeSubnetworkIamMember).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *computeSubnetworkIamMembers) UpdateStatus(computeSubnetworkIamMember *v1alpha1.ComputeSubnetworkIamMember) (result *v1alpha1.ComputeSubnetworkIamMember, err error) {
+func (c *computeSubnetworkIamMembers) UpdateStatus(ctx context.Context, computeSubnetworkIamMember *v1alpha1.ComputeSubnetworkIamMember, opts v1.UpdateOptions) (result *v1alpha1.ComputeSubnetworkIamMember, err error) {
 	result = &v1alpha1.ComputeSubnetworkIamMember{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computesubnetworkiammembers").
 		Name(computeSubnetworkIamMember.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(computeSubnetworkIamMember).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the computeSubnetworkIamMember and deletes it. Returns an error if one occurs.
-func (c *computeSubnetworkIamMembers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *computeSubnetworkIamMembers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computesubnetworkiammembers").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *computeSubnetworkIamMembers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *computeSubnetworkIamMembers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computesubnetworkiammembers").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched computeSubnetworkIamMember.
-func (c *computeSubnetworkIamMembers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeSubnetworkIamMember, err error) {
+func (c *computeSubnetworkIamMembers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeSubnetworkIamMember, err error) {
 	result = &v1alpha1.ComputeSubnetworkIamMember{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("computesubnetworkiammembers").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

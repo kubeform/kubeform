@@ -1,0 +1,1109 @@
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/name: kubeform
+  name: instances.linode.kubeform.com
+spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
+  group: linode.kubeform.com
+  names:
+    kind: Instance
+    listKind: InstanceList
+    plural: instances
+    singular: instance
+  scope: Namespaced
+  subresources:
+    status: {}
+  validation:
+    openAPIV3Schema:
+      properties:
+        apiVersion:
+          description: 'APIVersion defines the versioned schema of this representation
+            of an object. Servers should convert recognized schemas to the latest
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+          type: string
+        kind:
+          description: 'Kind is a string value representing the REST resource this
+            object represents. Servers may infer this from the endpoint the client
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+          type: string
+        metadata:
+          type: object
+        spec:
+          properties:
+            alerts:
+              items:
+                properties:
+                  cpu:
+                    description: The percentage of CPU usage required to trigger an
+                      alert. If the average CPU usage over two hours exceeds this
+                      value, we'll send you an alert. If this is set to 0, the alert
+                      is disabled.
+                    format: int64
+                    type: integer
+                  io:
+                    description: The amount of disk IO operation per second required
+                      to trigger an alert. If the average disk IO over two hours exceeds
+                      this value, we'll send you an alert. If set to 0, this alert
+                      is disabled.
+                    format: int64
+                    type: integer
+                  networkIn:
+                    description: The amount of incoming traffic, in Mbit/s, required
+                      to trigger an alert. If the average incoming traffic over two
+                      hours exceeds this value, we'll send you an alert. If this is
+                      set to 0 (zero), the alert is disabled.
+                    format: int64
+                    type: integer
+                  networkOut:
+                    description: The amount of outbound traffic, in Mbit/s, required
+                      to trigger an alert. If the average outbound traffic over two
+                      hours exceeds this value, we'll send you an alert. If this is
+                      set to 0 (zero), the alert is disabled.
+                    format: int64
+                    type: integer
+                  transferQuota:
+                    description: The percentage of network transfer that may be used
+                      before an alert is triggered. When this value is exceeded, we'll
+                      alert you. If this is set to 0 (zero), the alert is disabled.
+                    format: int64
+                    type: integer
+                type: object
+              maxItems: 1
+              type: array
+            authorizedKeys:
+              description: A list of SSH public keys to deploy for the root user on
+                the newly created Linode. Only accepted if 'image' is provided.
+              items:
+                type: string
+              type: array
+            authorizedUsers:
+              description: A list of Linode usernames. If the usernames have associated
+                SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys`
+                file automatically. Only accepted if 'image' is provided.
+              items:
+                type: string
+              type: array
+            backupID:
+              description: A Backup ID from another Linode's available backups. Your
+                User must have read_write access to that Linode, the Backup must have
+                a status of successful, and the Linode must be deployed to the same
+                region as the Backup. See /linode/instances/{linodeId}/backups for
+                a Linode's available backups. This field and the image field are mutually
+                exclusive.
+              format: int64
+              type: integer
+            backups:
+              description: Information about this Linode's backups status.
+              items:
+                properties:
+                  enabled:
+                    description: If this Linode has the Backup service enabled.
+                    type: boolean
+                  schedule:
+                    items:
+                      properties:
+                        day:
+                          description: The day ('Sunday'-'Saturday') of the week that
+                            your Linode's weekly Backup is taken. If not set manually,
+                            a day will be chosen for you. Backups are taken every
+                            day, but backups taken on this day are preferred when
+                            selecting backups to retain for a longer period.  If not
+                            set manually, then when backups are initially enabled,
+                            this may come back as 'Scheduling' until the day is automatically
+                            selected.
+                          type: string
+                        window:
+                          description: The window ('W0'-'W22') in which your backups
+                            will be taken, in UTC. A backups window is a two-hour
+                            span of time in which the backup may occur. For example,
+                            'W10' indicates that your backups should be taken between
+                            10:00 and 12:00. If you do not choose a backup window,
+                            one will be selected for you automatically.  If not set
+                            manually, when backups are initially enabled this may
+                            come back as Scheduling until the window is automatically
+                            selected.
+                          type: string
+                      type: object
+                    type: array
+                type: object
+              type: array
+            backupsEnabled:
+              description: If this field is set to true, the created Linode will automatically
+                be enrolled in the Linode Backup service. This will incur an additional
+                charge. The cost for the Backup service is dependent on the Type of
+                Linode deployed.
+              type: boolean
+            bootConfigLabel:
+              description: The Label of the Instance Config that should be used to
+                boot the Linode instance.
+              type: string
+            config:
+              description: Configuration profiles define the VM settings and boot
+                behavior of the Linode Instance.
+              items:
+                properties:
+                  comments:
+                    description: Optional field for arbitrary User comments on this
+                      Config.
+                    type: string
+                  devices:
+                    description: Device sda-sdh can be either a Disk or Volume identified
+                      by disk_label or volume_id. Only one type per slot allowed.
+                    items:
+                      properties:
+                        sda:
+                          items:
+                            properties:
+                              diskID:
+                                description: The Disk ID to map to this disk slot
+                                format: int64
+                                type: integer
+                              diskLabel:
+                                description: The `label` of the `disk` to map to this
+                                  `device` slot.
+                                type: string
+                              volumeID:
+                                description: The Block Storage volume ID to map to
+                                  this disk slot
+                                format: int64
+                                type: integer
+                            type: object
+                          maxItems: 1
+                          type: array
+                        sdb:
+                          items:
+                            properties:
+                              diskID:
+                                description: The Disk ID to map to this disk slot
+                                format: int64
+                                type: integer
+                              diskLabel:
+                                description: The `label` of the `disk` to map to this
+                                  `device` slot.
+                                type: string
+                              volumeID:
+                                description: The Block Storage volume ID to map to
+                                  this disk slot
+                                format: int64
+                                type: integer
+                            type: object
+                          maxItems: 1
+                          type: array
+                        sdc:
+                          items:
+                            properties:
+                              diskID:
+                                description: The Disk ID to map to this disk slot
+                                format: int64
+                                type: integer
+                              diskLabel:
+                                description: The `label` of the `disk` to map to this
+                                  `device` slot.
+                                type: string
+                              volumeID:
+                                description: The Block Storage volume ID to map to
+                                  this disk slot
+                                format: int64
+                                type: integer
+                            type: object
+                          maxItems: 1
+                          type: array
+                        sdd:
+                          items:
+                            properties:
+                              diskID:
+                                description: The Disk ID to map to this disk slot
+                                format: int64
+                                type: integer
+                              diskLabel:
+                                description: The `label` of the `disk` to map to this
+                                  `device` slot.
+                                type: string
+                              volumeID:
+                                description: The Block Storage volume ID to map to
+                                  this disk slot
+                                format: int64
+                                type: integer
+                            type: object
+                          maxItems: 1
+                          type: array
+                        sde:
+                          items:
+                            properties:
+                              diskID:
+                                description: The Disk ID to map to this disk slot
+                                format: int64
+                                type: integer
+                              diskLabel:
+                                description: The `label` of the `disk` to map to this
+                                  `device` slot.
+                                type: string
+                              volumeID:
+                                description: The Block Storage volume ID to map to
+                                  this disk slot
+                                format: int64
+                                type: integer
+                            type: object
+                          maxItems: 1
+                          type: array
+                        sdf:
+                          items:
+                            properties:
+                              diskID:
+                                description: The Disk ID to map to this disk slot
+                                format: int64
+                                type: integer
+                              diskLabel:
+                                description: The `label` of the `disk` to map to this
+                                  `device` slot.
+                                type: string
+                              volumeID:
+                                description: The Block Storage volume ID to map to
+                                  this disk slot
+                                format: int64
+                                type: integer
+                            type: object
+                          maxItems: 1
+                          type: array
+                        sdg:
+                          items:
+                            properties:
+                              diskID:
+                                description: The Disk ID to map to this disk slot
+                                format: int64
+                                type: integer
+                              diskLabel:
+                                description: The `label` of the `disk` to map to this
+                                  `device` slot.
+                                type: string
+                              volumeID:
+                                description: The Block Storage volume ID to map to
+                                  this disk slot
+                                format: int64
+                                type: integer
+                            type: object
+                          maxItems: 1
+                          type: array
+                        sdh:
+                          items:
+                            properties:
+                              diskID:
+                                description: The Disk ID to map to this disk slot
+                                format: int64
+                                type: integer
+                              diskLabel:
+                                description: The `label` of the `disk` to map to this
+                                  `device` slot.
+                                type: string
+                              volumeID:
+                                description: The Block Storage volume ID to map to
+                                  this disk slot
+                                format: int64
+                                type: integer
+                            type: object
+                          maxItems: 1
+                          type: array
+                      type: object
+                    maxItems: 1
+                    type: array
+                  helpers:
+                    description: Helpers enabled when booting to this Linode Config.
+                    items:
+                      properties:
+                        devtmpfsAutomount:
+                          description: Populates the /dev directory early during boot
+                            without udev. Defaults to false.
+                          type: boolean
+                        distro:
+                          description: Controls the behavior of the Linode Config's
+                            Distribution Helper setting.
+                          type: boolean
+                        modulesDep:
+                          description: Creates a modules dependency file for the Kernel
+                            you run.
+                          type: boolean
+                        network:
+                          description: Controls the behavior of the Linode Config's
+                            Network Helper setting, used to automatically configure
+                            additional IP addresses assigned to this instance.
+                          type: boolean
+                        updatedbDisabled:
+                          description: Disables updatedb cron job to avoid disk thrashing.
+                          type: boolean
+                      type: object
+                    maxItems: 1
+                    type: array
+                  kernel:
+                    description: 'A Kernel ID to boot a Linode with. Default is based
+                      on image choice. (examples: linode/latest-64bit, linode/grub2,
+                      linode/direct-disk)'
+                    type: string
+                  label:
+                    description: The Config's label for display purposes.  Also used
+                      by `boot_config_label`.
+                    type: string
+                  memoryLimit:
+                    description: Defaults to the total RAM of the Linode
+                    format: int64
+                    type: integer
+                  rootDevice:
+                    description: The root device to boot. The corresponding disk must
+                      be attached.
+                    type: string
+                  runLevel:
+                    description: Defines the state of your Linode after booting. Defaults
+                      to default.
+                    type: string
+                  virtMode:
+                    description: Controls the virtualization mode. Defaults to paravirt.
+                    type: string
+                required:
+                - label
+                type: object
+              type: array
+            disk:
+              items:
+                properties:
+                  ID:
+                    description: The ID of the Disk (for use in Linode Image resources
+                      and Linode Instance Config Devices)
+                    format: int64
+                    type: integer
+                  authorizedKeys:
+                    description: A list of SSH public keys to deploy for the root
+                      user on the newly created Linode. Only accepted if 'image' is
+                      provided.
+                    items:
+                      type: string
+                    type: array
+                  authorizedUsers:
+                    description: A list of Linode usernames. If the usernames have
+                      associated SSH keys, the keys will be appended to the `root`
+                      user's `~/.ssh/authorized_keys` file automatically. Only accepted
+                      if 'image' is provided.
+                    items:
+                      type: string
+                    type: array
+                  filesystem:
+                    description: 'The Disk filesystem can be one of: raw, swap, ext3,
+                      ext4, initrd (max 32mb)'
+                    type: string
+                  image:
+                    description: An Image ID to deploy the Disk from. Official Linode
+                      Images start with linode/, while your Images start with private/.
+                    type: string
+                  label:
+                    description: The disks label, which acts as an identifier in Terraform.
+                    type: string
+                  readOnly:
+                    description: If true, this Disk is read-only.
+                    type: boolean
+                  size:
+                    description: The size of the Disk in MB.
+                    format: int64
+                    type: integer
+                  stackscriptID:
+                    description: The StackScript to deploy to the newly created Linode.
+                      If provided, 'image' must also be provided, and must be an Image
+                      that is compatible with this StackScript.
+                    format: int64
+                    type: integer
+                required:
+                - label
+                - size
+                type: object
+              type: array
+            group:
+              description: The display group of the Linode instance.
+              type: string
+            id:
+              type: string
+            image:
+              description: An Image ID to deploy the Disk from. Official Linode Images
+                start with linode/, while your Images start with private/. See /images
+                for more information on the Images available for you to use.
+              type: string
+            ipAddress:
+              description: This Linode's Public IPv4 Address. If there are multiple
+                public IPv4 addresses on this Instance, an arbitrary address will
+                be used for this field.
+              type: string
+            ipv4:
+              description: This Linode's IPv4 Addresses. Each Linode is assigned a
+                single public IPv4 address upon creation, and may get a single private
+                IPv4 address if needed. You may need to open a support ticket to get
+                additional IPv4 addresses.
+              items:
+                type: string
+              type: array
+            ipv6:
+              description: This Linode's IPv6 SLAAC addresses. This address is specific
+                to a Linode, and may not be shared.
+              type: string
+            label:
+              description: The Linode's label is for display purposes only. If no
+                label is provided for a Linode, a default will be assigned
+              type: string
+            privateIP:
+              description: If true, the created Linode will have private networking
+                enabled, allowing use of the 192.168.128.0/17 network within the Linode's
+                region.
+              type: boolean
+            privateIPAddress:
+              description: This Linode's Private IPv4 Address.  The regional private
+                IP address range is 192.168.128/17 address shared by all Linode Instances
+                in a region.
+              type: string
+            providerRef:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
+            region:
+              description: This is the location where the Linode was deployed. This
+                cannot be changed without opening a support ticket.
+              type: string
+            secretRef:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
+            specs:
+              items:
+                properties:
+                  disk:
+                    description: The amount of storage space, in GB. this Linode has
+                      access to. A typical Linode will divide this space between a
+                      primary disk with an image deployed to it, and a swap disk,
+                      usually 512 MB. This is the default configuration created when
+                      deploying a Linode with an image without specifying disks.
+                    format: int64
+                    type: integer
+                  memory:
+                    description: The amount of RAM, in MB, this Linode has access
+                      to. Typically a Linode will choose to boot with all of its available
+                      RAM, but this can be configured in a Config profile.
+                    format: int64
+                    type: integer
+                  transfer:
+                    description: The amount of network transfer this Linode is allotted
+                      each month.
+                    format: int64
+                    type: integer
+                  vcpus:
+                    description: The number of vcpus this Linode has access to. Typically
+                      a Linode will choose to boot with all of its available vcpus,
+                      but this can be configured in a Config Profile.
+                    format: int64
+                    type: integer
+                type: object
+              type: array
+            stackscriptID:
+              description: The StackScript to deploy to the newly created Linode.
+                If provided, 'image' must also be provided, and must be an Image that
+                is compatible with this StackScript.
+              format: int64
+              type: integer
+            status:
+              description: The status of the instance, indicating the current readiness
+                state.
+              type: string
+            swapSize:
+              description: When deploying from an Image, this field is optional with
+                a Linode API default of 512mb, otherwise it is ignored. This is used
+                to set the swap disk size for the newly-created Linode.
+              format: int64
+              type: integer
+            tags:
+              description: An array of tags applied to this object. Tags are for organizational
+                purposes only.
+              items:
+                type: string
+              type: array
+            type:
+              description: The type of instance to be deployed, determining the price
+                and size.
+              type: string
+            watchdogEnabled:
+              description: The watchdog, named Lassie, is a Shutdown Watchdog that
+                monitors your Linode and will reboot it if it powers off unexpectedly.
+                It works by issuing a boot job when your Linode powers off without
+                a shutdown job being responsible. To prevent a loop, Lassie will give
+                up if there have been more than 5 boot jobs issued within 15 minutes.
+              type: boolean
+          required:
+          - providerRef
+          - region
+          type: object
+        status:
+          properties:
+            observedGeneration:
+              description: Resource generation, which is updated on mutation by the
+                API Server.
+              format: int64
+              type: integer
+            output:
+              properties:
+                alerts:
+                  items:
+                    properties:
+                      cpu:
+                        description: The percentage of CPU usage required to trigger
+                          an alert. If the average CPU usage over two hours exceeds
+                          this value, we'll send you an alert. If this is set to 0,
+                          the alert is disabled.
+                        format: int64
+                        type: integer
+                      io:
+                        description: The amount of disk IO operation per second required
+                          to trigger an alert. If the average disk IO over two hours
+                          exceeds this value, we'll send you an alert. If set to 0,
+                          this alert is disabled.
+                        format: int64
+                        type: integer
+                      networkIn:
+                        description: The amount of incoming traffic, in Mbit/s, required
+                          to trigger an alert. If the average incoming traffic over
+                          two hours exceeds this value, we'll send you an alert. If
+                          this is set to 0 (zero), the alert is disabled.
+                        format: int64
+                        type: integer
+                      networkOut:
+                        description: The amount of outbound traffic, in Mbit/s, required
+                          to trigger an alert. If the average outbound traffic over
+                          two hours exceeds this value, we'll send you an alert. If
+                          this is set to 0 (zero), the alert is disabled.
+                        format: int64
+                        type: integer
+                      transferQuota:
+                        description: The percentage of network transfer that may be
+                          used before an alert is triggered. When this value is exceeded,
+                          we'll alert you. If this is set to 0 (zero), the alert is
+                          disabled.
+                        format: int64
+                        type: integer
+                    type: object
+                  maxItems: 1
+                  type: array
+                authorizedKeys:
+                  description: A list of SSH public keys to deploy for the root user
+                    on the newly created Linode. Only accepted if 'image' is provided.
+                  items:
+                    type: string
+                  type: array
+                authorizedUsers:
+                  description: A list of Linode usernames. If the usernames have associated
+                    SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys`
+                    file automatically. Only accepted if 'image' is provided.
+                  items:
+                    type: string
+                  type: array
+                backupID:
+                  description: A Backup ID from another Linode's available backups.
+                    Your User must have read_write access to that Linode, the Backup
+                    must have a status of successful, and the Linode must be deployed
+                    to the same region as the Backup. See /linode/instances/{linodeId}/backups
+                    for a Linode's available backups. This field and the image field
+                    are mutually exclusive.
+                  format: int64
+                  type: integer
+                backups:
+                  description: Information about this Linode's backups status.
+                  items:
+                    properties:
+                      enabled:
+                        description: If this Linode has the Backup service enabled.
+                        type: boolean
+                      schedule:
+                        items:
+                          properties:
+                            day:
+                              description: The day ('Sunday'-'Saturday') of the week
+                                that your Linode's weekly Backup is taken. If not
+                                set manually, a day will be chosen for you. Backups
+                                are taken every day, but backups taken on this day
+                                are preferred when selecting backups to retain for
+                                a longer period.  If not set manually, then when backups
+                                are initially enabled, this may come back as 'Scheduling'
+                                until the day is automatically selected.
+                              type: string
+                            window:
+                              description: The window ('W0'-'W22') in which your backups
+                                will be taken, in UTC. A backups window is a two-hour
+                                span of time in which the backup may occur. For example,
+                                'W10' indicates that your backups should be taken
+                                between 10:00 and 12:00. If you do not choose a backup
+                                window, one will be selected for you automatically.  If
+                                not set manually, when backups are initially enabled
+                                this may come back as Scheduling until the window
+                                is automatically selected.
+                              type: string
+                          type: object
+                        type: array
+                    type: object
+                  type: array
+                backupsEnabled:
+                  description: If this field is set to true, the created Linode will
+                    automatically be enrolled in the Linode Backup service. This will
+                    incur an additional charge. The cost for the Backup service is
+                    dependent on the Type of Linode deployed.
+                  type: boolean
+                bootConfigLabel:
+                  description: The Label of the Instance Config that should be used
+                    to boot the Linode instance.
+                  type: string
+                config:
+                  description: Configuration profiles define the VM settings and boot
+                    behavior of the Linode Instance.
+                  items:
+                    properties:
+                      comments:
+                        description: Optional field for arbitrary User comments on
+                          this Config.
+                        type: string
+                      devices:
+                        description: Device sda-sdh can be either a Disk or Volume
+                          identified by disk_label or volume_id. Only one type per
+                          slot allowed.
+                        items:
+                          properties:
+                            sda:
+                              items:
+                                properties:
+                                  diskID:
+                                    description: The Disk ID to map to this disk slot
+                                    format: int64
+                                    type: integer
+                                  diskLabel:
+                                    description: The `label` of the `disk` to map
+                                      to this `device` slot.
+                                    type: string
+                                  volumeID:
+                                    description: The Block Storage volume ID to map
+                                      to this disk slot
+                                    format: int64
+                                    type: integer
+                                type: object
+                              maxItems: 1
+                              type: array
+                            sdb:
+                              items:
+                                properties:
+                                  diskID:
+                                    description: The Disk ID to map to this disk slot
+                                    format: int64
+                                    type: integer
+                                  diskLabel:
+                                    description: The `label` of the `disk` to map
+                                      to this `device` slot.
+                                    type: string
+                                  volumeID:
+                                    description: The Block Storage volume ID to map
+                                      to this disk slot
+                                    format: int64
+                                    type: integer
+                                type: object
+                              maxItems: 1
+                              type: array
+                            sdc:
+                              items:
+                                properties:
+                                  diskID:
+                                    description: The Disk ID to map to this disk slot
+                                    format: int64
+                                    type: integer
+                                  diskLabel:
+                                    description: The `label` of the `disk` to map
+                                      to this `device` slot.
+                                    type: string
+                                  volumeID:
+                                    description: The Block Storage volume ID to map
+                                      to this disk slot
+                                    format: int64
+                                    type: integer
+                                type: object
+                              maxItems: 1
+                              type: array
+                            sdd:
+                              items:
+                                properties:
+                                  diskID:
+                                    description: The Disk ID to map to this disk slot
+                                    format: int64
+                                    type: integer
+                                  diskLabel:
+                                    description: The `label` of the `disk` to map
+                                      to this `device` slot.
+                                    type: string
+                                  volumeID:
+                                    description: The Block Storage volume ID to map
+                                      to this disk slot
+                                    format: int64
+                                    type: integer
+                                type: object
+                              maxItems: 1
+                              type: array
+                            sde:
+                              items:
+                                properties:
+                                  diskID:
+                                    description: The Disk ID to map to this disk slot
+                                    format: int64
+                                    type: integer
+                                  diskLabel:
+                                    description: The `label` of the `disk` to map
+                                      to this `device` slot.
+                                    type: string
+                                  volumeID:
+                                    description: The Block Storage volume ID to map
+                                      to this disk slot
+                                    format: int64
+                                    type: integer
+                                type: object
+                              maxItems: 1
+                              type: array
+                            sdf:
+                              items:
+                                properties:
+                                  diskID:
+                                    description: The Disk ID to map to this disk slot
+                                    format: int64
+                                    type: integer
+                                  diskLabel:
+                                    description: The `label` of the `disk` to map
+                                      to this `device` slot.
+                                    type: string
+                                  volumeID:
+                                    description: The Block Storage volume ID to map
+                                      to this disk slot
+                                    format: int64
+                                    type: integer
+                                type: object
+                              maxItems: 1
+                              type: array
+                            sdg:
+                              items:
+                                properties:
+                                  diskID:
+                                    description: The Disk ID to map to this disk slot
+                                    format: int64
+                                    type: integer
+                                  diskLabel:
+                                    description: The `label` of the `disk` to map
+                                      to this `device` slot.
+                                    type: string
+                                  volumeID:
+                                    description: The Block Storage volume ID to map
+                                      to this disk slot
+                                    format: int64
+                                    type: integer
+                                type: object
+                              maxItems: 1
+                              type: array
+                            sdh:
+                              items:
+                                properties:
+                                  diskID:
+                                    description: The Disk ID to map to this disk slot
+                                    format: int64
+                                    type: integer
+                                  diskLabel:
+                                    description: The `label` of the `disk` to map
+                                      to this `device` slot.
+                                    type: string
+                                  volumeID:
+                                    description: The Block Storage volume ID to map
+                                      to this disk slot
+                                    format: int64
+                                    type: integer
+                                type: object
+                              maxItems: 1
+                              type: array
+                          type: object
+                        maxItems: 1
+                        type: array
+                      helpers:
+                        description: Helpers enabled when booting to this Linode Config.
+                        items:
+                          properties:
+                            devtmpfsAutomount:
+                              description: Populates the /dev directory early during
+                                boot without udev. Defaults to false.
+                              type: boolean
+                            distro:
+                              description: Controls the behavior of the Linode Config's
+                                Distribution Helper setting.
+                              type: boolean
+                            modulesDep:
+                              description: Creates a modules dependency file for the
+                                Kernel you run.
+                              type: boolean
+                            network:
+                              description: Controls the behavior of the Linode Config's
+                                Network Helper setting, used to automatically configure
+                                additional IP addresses assigned to this instance.
+                              type: boolean
+                            updatedbDisabled:
+                              description: Disables updatedb cron job to avoid disk
+                                thrashing.
+                              type: boolean
+                          type: object
+                        maxItems: 1
+                        type: array
+                      kernel:
+                        description: 'A Kernel ID to boot a Linode with. Default is
+                          based on image choice. (examples: linode/latest-64bit, linode/grub2,
+                          linode/direct-disk)'
+                        type: string
+                      label:
+                        description: The Config's label for display purposes.  Also
+                          used by `boot_config_label`.
+                        type: string
+                      memoryLimit:
+                        description: Defaults to the total RAM of the Linode
+                        format: int64
+                        type: integer
+                      rootDevice:
+                        description: The root device to boot. The corresponding disk
+                          must be attached.
+                        type: string
+                      runLevel:
+                        description: Defines the state of your Linode after booting.
+                          Defaults to default.
+                        type: string
+                      virtMode:
+                        description: Controls the virtualization mode. Defaults to
+                          paravirt.
+                        type: string
+                    required:
+                    - label
+                    type: object
+                  type: array
+                disk:
+                  items:
+                    properties:
+                      ID:
+                        description: The ID of the Disk (for use in Linode Image resources
+                          and Linode Instance Config Devices)
+                        format: int64
+                        type: integer
+                      authorizedKeys:
+                        description: A list of SSH public keys to deploy for the root
+                          user on the newly created Linode. Only accepted if 'image'
+                          is provided.
+                        items:
+                          type: string
+                        type: array
+                      authorizedUsers:
+                        description: A list of Linode usernames. If the usernames
+                          have associated SSH keys, the keys will be appended to the
+                          `root` user's `~/.ssh/authorized_keys` file automatically.
+                          Only accepted if 'image' is provided.
+                        items:
+                          type: string
+                        type: array
+                      filesystem:
+                        description: 'The Disk filesystem can be one of: raw, swap,
+                          ext3, ext4, initrd (max 32mb)'
+                        type: string
+                      image:
+                        description: An Image ID to deploy the Disk from. Official
+                          Linode Images start with linode/, while your Images start
+                          with private/.
+                        type: string
+                      label:
+                        description: The disks label, which acts as an identifier
+                          in Terraform.
+                        type: string
+                      readOnly:
+                        description: If true, this Disk is read-only.
+                        type: boolean
+                      size:
+                        description: The size of the Disk in MB.
+                        format: int64
+                        type: integer
+                      stackscriptID:
+                        description: The StackScript to deploy to the newly created
+                          Linode. If provided, 'image' must also be provided, and
+                          must be an Image that is compatible with this StackScript.
+                        format: int64
+                        type: integer
+                    required:
+                    - label
+                    - size
+                    type: object
+                  type: array
+                group:
+                  description: The display group of the Linode instance.
+                  type: string
+                id:
+                  type: string
+                image:
+                  description: An Image ID to deploy the Disk from. Official Linode
+                    Images start with linode/, while your Images start with private/.
+                    See /images for more information on the Images available for you
+                    to use.
+                  type: string
+                ipAddress:
+                  description: This Linode's Public IPv4 Address. If there are multiple
+                    public IPv4 addresses on this Instance, an arbitrary address will
+                    be used for this field.
+                  type: string
+                ipv4:
+                  description: This Linode's IPv4 Addresses. Each Linode is assigned
+                    a single public IPv4 address upon creation, and may get a single
+                    private IPv4 address if needed. You may need to open a support
+                    ticket to get additional IPv4 addresses.
+                  items:
+                    type: string
+                  type: array
+                ipv6:
+                  description: This Linode's IPv6 SLAAC addresses. This address is
+                    specific to a Linode, and may not be shared.
+                  type: string
+                label:
+                  description: The Linode's label is for display purposes only. If
+                    no label is provided for a Linode, a default will be assigned
+                  type: string
+                privateIP:
+                  description: If true, the created Linode will have private networking
+                    enabled, allowing use of the 192.168.128.0/17 network within the
+                    Linode's region.
+                  type: boolean
+                privateIPAddress:
+                  description: This Linode's Private IPv4 Address.  The regional private
+                    IP address range is 192.168.128/17 address shared by all Linode
+                    Instances in a region.
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                region:
+                  description: This is the location where the Linode was deployed.
+                    This cannot be changed without opening a support ticket.
+                  type: string
+                secretRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                specs:
+                  items:
+                    properties:
+                      disk:
+                        description: The amount of storage space, in GB. this Linode
+                          has access to. A typical Linode will divide this space between
+                          a primary disk with an image deployed to it, and a swap
+                          disk, usually 512 MB. This is the default configuration
+                          created when deploying a Linode with an image without specifying
+                          disks.
+                        format: int64
+                        type: integer
+                      memory:
+                        description: The amount of RAM, in MB, this Linode has access
+                          to. Typically a Linode will choose to boot with all of its
+                          available RAM, but this can be configured in a Config profile.
+                        format: int64
+                        type: integer
+                      transfer:
+                        description: The amount of network transfer this Linode is
+                          allotted each month.
+                        format: int64
+                        type: integer
+                      vcpus:
+                        description: The number of vcpus this Linode has access to.
+                          Typically a Linode will choose to boot with all of its available
+                          vcpus, but this can be configured in a Config Profile.
+                        format: int64
+                        type: integer
+                    type: object
+                  type: array
+                stackscriptID:
+                  description: The StackScript to deploy to the newly created Linode.
+                    If provided, 'image' must also be provided, and must be an Image
+                    that is compatible with this StackScript.
+                  format: int64
+                  type: integer
+                status:
+                  description: The status of the instance, indicating the current
+                    readiness state.
+                  type: string
+                swapSize:
+                  description: When deploying from an Image, this field is optional
+                    with a Linode API default of 512mb, otherwise it is ignored. This
+                    is used to set the swap disk size for the newly-created Linode.
+                  format: int64
+                  type: integer
+                tags:
+                  description: An array of tags applied to this object. Tags are for
+                    organizational purposes only.
+                  items:
+                    type: string
+                  type: array
+                type:
+                  description: The type of instance to be deployed, determining the
+                    price and size.
+                  type: string
+                watchdogEnabled:
+                  description: The watchdog, named Lassie, is a Shutdown Watchdog
+                    that monitors your Linode and will reboot it if it powers off
+                    unexpectedly. It works by issuing a boot job when your Linode
+                    powers off without a shutdown job being responsible. To prevent
+                    a loop, Lassie will give up if there have been more than 5 boot
+                    jobs issued within 15 minutes.
+                  type: boolean
+              required:
+              - providerRef
+              - region
+              type: object
+            phase:
+              type: string
+            state:
+              properties:
+                lineage:
+                  type: string
+                serial:
+                  format: int64
+                  type: integer
+                terraform_version:
+                  type: string
+                version:
+                  format: int64
+                  type: integer
+              required:
+              - lineage
+              - serial
+              - terraform_version
+              - version
+              type: object
+          type: object
+      type: object
+  version: v1alpha1
+  versions:
+  - name: v1alpha1
+    served: true
+    storage: true

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var loggingprojectexclusionsResource = schema.GroupVersionResource{Group: "googl
 var loggingprojectexclusionsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "LoggingProjectExclusion"}
 
 // Get takes name of the loggingProjectExclusion, and returns the corresponding loggingProjectExclusion object, and an error if there is any.
-func (c *FakeLoggingProjectExclusions) Get(name string, options v1.GetOptions) (result *v1alpha1.LoggingProjectExclusion, err error) {
+func (c *FakeLoggingProjectExclusions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LoggingProjectExclusion, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(loggingprojectexclusionsResource, c.ns, name), &v1alpha1.LoggingProjectExclusion{})
 
@@ -51,7 +53,7 @@ func (c *FakeLoggingProjectExclusions) Get(name string, options v1.GetOptions) (
 }
 
 // List takes label and field selectors, and returns the list of LoggingProjectExclusions that match those selectors.
-func (c *FakeLoggingProjectExclusions) List(opts v1.ListOptions) (result *v1alpha1.LoggingProjectExclusionList, err error) {
+func (c *FakeLoggingProjectExclusions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LoggingProjectExclusionList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(loggingprojectexclusionsResource, loggingprojectexclusionsKind, c.ns, opts), &v1alpha1.LoggingProjectExclusionList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLoggingProjectExclusions) List(opts v1.ListOptions) (result *v1alph
 }
 
 // Watch returns a watch.Interface that watches the requested loggingProjectExclusions.
-func (c *FakeLoggingProjectExclusions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLoggingProjectExclusions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(loggingprojectexclusionsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a loggingProjectExclusion and creates it.  Returns the server's representation of the loggingProjectExclusion, and an error, if there is any.
-func (c *FakeLoggingProjectExclusions) Create(loggingProjectExclusion *v1alpha1.LoggingProjectExclusion) (result *v1alpha1.LoggingProjectExclusion, err error) {
+func (c *FakeLoggingProjectExclusions) Create(ctx context.Context, loggingProjectExclusion *v1alpha1.LoggingProjectExclusion, opts v1.CreateOptions) (result *v1alpha1.LoggingProjectExclusion, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(loggingprojectexclusionsResource, c.ns, loggingProjectExclusion), &v1alpha1.LoggingProjectExclusion{})
 
@@ -91,7 +93,7 @@ func (c *FakeLoggingProjectExclusions) Create(loggingProjectExclusion *v1alpha1.
 }
 
 // Update takes the representation of a loggingProjectExclusion and updates it. Returns the server's representation of the loggingProjectExclusion, and an error, if there is any.
-func (c *FakeLoggingProjectExclusions) Update(loggingProjectExclusion *v1alpha1.LoggingProjectExclusion) (result *v1alpha1.LoggingProjectExclusion, err error) {
+func (c *FakeLoggingProjectExclusions) Update(ctx context.Context, loggingProjectExclusion *v1alpha1.LoggingProjectExclusion, opts v1.UpdateOptions) (result *v1alpha1.LoggingProjectExclusion, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(loggingprojectexclusionsResource, c.ns, loggingProjectExclusion), &v1alpha1.LoggingProjectExclusion{})
 
@@ -103,7 +105,7 @@ func (c *FakeLoggingProjectExclusions) Update(loggingProjectExclusion *v1alpha1.
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLoggingProjectExclusions) UpdateStatus(loggingProjectExclusion *v1alpha1.LoggingProjectExclusion) (*v1alpha1.LoggingProjectExclusion, error) {
+func (c *FakeLoggingProjectExclusions) UpdateStatus(ctx context.Context, loggingProjectExclusion *v1alpha1.LoggingProjectExclusion, opts v1.UpdateOptions) (*v1alpha1.LoggingProjectExclusion, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(loggingprojectexclusionsResource, "status", c.ns, loggingProjectExclusion), &v1alpha1.LoggingProjectExclusion{})
 
@@ -114,7 +116,7 @@ func (c *FakeLoggingProjectExclusions) UpdateStatus(loggingProjectExclusion *v1a
 }
 
 // Delete takes name of the loggingProjectExclusion and deletes it. Returns an error if one occurs.
-func (c *FakeLoggingProjectExclusions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLoggingProjectExclusions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(loggingprojectexclusionsResource, c.ns, name), &v1alpha1.LoggingProjectExclusion{})
 
@@ -122,15 +124,15 @@ func (c *FakeLoggingProjectExclusions) Delete(name string, options *v1.DeleteOpt
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLoggingProjectExclusions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(loggingprojectexclusionsResource, c.ns, listOptions)
+func (c *FakeLoggingProjectExclusions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(loggingprojectexclusionsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LoggingProjectExclusionList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched loggingProjectExclusion.
-func (c *FakeLoggingProjectExclusions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LoggingProjectExclusion, err error) {
+func (c *FakeLoggingProjectExclusions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LoggingProjectExclusion, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(loggingprojectexclusionsResource, c.ns, name, pt, data, subresources...), &v1alpha1.LoggingProjectExclusion{})
 

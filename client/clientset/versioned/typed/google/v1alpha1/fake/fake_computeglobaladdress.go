@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var computeglobaladdressesResource = schema.GroupVersionResource{Group: "google.
 var computeglobaladdressesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeGlobalAddress"}
 
 // Get takes name of the computeGlobalAddress, and returns the corresponding computeGlobalAddress object, and an error if there is any.
-func (c *FakeComputeGlobalAddresses) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeGlobalAddress, err error) {
+func (c *FakeComputeGlobalAddresses) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ComputeGlobalAddress, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(computeglobaladdressesResource, c.ns, name), &v1alpha1.ComputeGlobalAddress{})
 
@@ -51,7 +53,7 @@ func (c *FakeComputeGlobalAddresses) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of ComputeGlobalAddresses that match those selectors.
-func (c *FakeComputeGlobalAddresses) List(opts v1.ListOptions) (result *v1alpha1.ComputeGlobalAddressList, err error) {
+func (c *FakeComputeGlobalAddresses) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ComputeGlobalAddressList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(computeglobaladdressesResource, computeglobaladdressesKind, c.ns, opts), &v1alpha1.ComputeGlobalAddressList{})
 
@@ -73,14 +75,14 @@ func (c *FakeComputeGlobalAddresses) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested computeGlobalAddresses.
-func (c *FakeComputeGlobalAddresses) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeComputeGlobalAddresses) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computeglobaladdressesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a computeGlobalAddress and creates it.  Returns the server's representation of the computeGlobalAddress, and an error, if there is any.
-func (c *FakeComputeGlobalAddresses) Create(computeGlobalAddress *v1alpha1.ComputeGlobalAddress) (result *v1alpha1.ComputeGlobalAddress, err error) {
+func (c *FakeComputeGlobalAddresses) Create(ctx context.Context, computeGlobalAddress *v1alpha1.ComputeGlobalAddress, opts v1.CreateOptions) (result *v1alpha1.ComputeGlobalAddress, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(computeglobaladdressesResource, c.ns, computeGlobalAddress), &v1alpha1.ComputeGlobalAddress{})
 
@@ -91,7 +93,7 @@ func (c *FakeComputeGlobalAddresses) Create(computeGlobalAddress *v1alpha1.Compu
 }
 
 // Update takes the representation of a computeGlobalAddress and updates it. Returns the server's representation of the computeGlobalAddress, and an error, if there is any.
-func (c *FakeComputeGlobalAddresses) Update(computeGlobalAddress *v1alpha1.ComputeGlobalAddress) (result *v1alpha1.ComputeGlobalAddress, err error) {
+func (c *FakeComputeGlobalAddresses) Update(ctx context.Context, computeGlobalAddress *v1alpha1.ComputeGlobalAddress, opts v1.UpdateOptions) (result *v1alpha1.ComputeGlobalAddress, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(computeglobaladdressesResource, c.ns, computeGlobalAddress), &v1alpha1.ComputeGlobalAddress{})
 
@@ -103,7 +105,7 @@ func (c *FakeComputeGlobalAddresses) Update(computeGlobalAddress *v1alpha1.Compu
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeGlobalAddresses) UpdateStatus(computeGlobalAddress *v1alpha1.ComputeGlobalAddress) (*v1alpha1.ComputeGlobalAddress, error) {
+func (c *FakeComputeGlobalAddresses) UpdateStatus(ctx context.Context, computeGlobalAddress *v1alpha1.ComputeGlobalAddress, opts v1.UpdateOptions) (*v1alpha1.ComputeGlobalAddress, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(computeglobaladdressesResource, "status", c.ns, computeGlobalAddress), &v1alpha1.ComputeGlobalAddress{})
 
@@ -114,7 +116,7 @@ func (c *FakeComputeGlobalAddresses) UpdateStatus(computeGlobalAddress *v1alpha1
 }
 
 // Delete takes name of the computeGlobalAddress and deletes it. Returns an error if one occurs.
-func (c *FakeComputeGlobalAddresses) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeComputeGlobalAddresses) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(computeglobaladdressesResource, c.ns, name), &v1alpha1.ComputeGlobalAddress{})
 
@@ -122,15 +124,15 @@ func (c *FakeComputeGlobalAddresses) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeGlobalAddresses) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(computeglobaladdressesResource, c.ns, listOptions)
+func (c *FakeComputeGlobalAddresses) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(computeglobaladdressesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeGlobalAddressList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched computeGlobalAddress.
-func (c *FakeComputeGlobalAddresses) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeGlobalAddress, err error) {
+func (c *FakeComputeGlobalAddresses) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ComputeGlobalAddress, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(computeglobaladdressesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeGlobalAddress{})
 

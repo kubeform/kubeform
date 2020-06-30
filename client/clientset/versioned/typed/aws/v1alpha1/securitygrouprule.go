@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type SecurityGroupRulesGetter interface {
 
 // SecurityGroupRuleInterface has methods to work with SecurityGroupRule resources.
 type SecurityGroupRuleInterface interface {
-	Create(*v1alpha1.SecurityGroupRule) (*v1alpha1.SecurityGroupRule, error)
-	Update(*v1alpha1.SecurityGroupRule) (*v1alpha1.SecurityGroupRule, error)
-	UpdateStatus(*v1alpha1.SecurityGroupRule) (*v1alpha1.SecurityGroupRule, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SecurityGroupRule, error)
-	List(opts v1.ListOptions) (*v1alpha1.SecurityGroupRuleList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SecurityGroupRule, err error)
+	Create(ctx context.Context, securityGroupRule *v1alpha1.SecurityGroupRule, opts v1.CreateOptions) (*v1alpha1.SecurityGroupRule, error)
+	Update(ctx context.Context, securityGroupRule *v1alpha1.SecurityGroupRule, opts v1.UpdateOptions) (*v1alpha1.SecurityGroupRule, error)
+	UpdateStatus(ctx context.Context, securityGroupRule *v1alpha1.SecurityGroupRule, opts v1.UpdateOptions) (*v1alpha1.SecurityGroupRule, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.SecurityGroupRule, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.SecurityGroupRuleList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SecurityGroupRule, err error)
 	SecurityGroupRuleExpansion
 }
 
@@ -65,20 +66,20 @@ func newSecurityGroupRules(c *AwsV1alpha1Client, namespace string) *securityGrou
 }
 
 // Get takes name of the securityGroupRule, and returns the corresponding securityGroupRule object, and an error if there is any.
-func (c *securityGroupRules) Get(name string, options v1.GetOptions) (result *v1alpha1.SecurityGroupRule, err error) {
+func (c *securityGroupRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SecurityGroupRule, err error) {
 	result = &v1alpha1.SecurityGroupRule{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("securitygrouprules").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of SecurityGroupRules that match those selectors.
-func (c *securityGroupRules) List(opts v1.ListOptions) (result *v1alpha1.SecurityGroupRuleList, err error) {
+func (c *securityGroupRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SecurityGroupRuleList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *securityGroupRules) List(opts v1.ListOptions) (result *v1alpha1.Securit
 		Resource("securitygrouprules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested securityGroupRules.
-func (c *securityGroupRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *securityGroupRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *securityGroupRules) Watch(opts v1.ListOptions) (watch.Interface, error)
 		Resource("securitygrouprules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a securityGroupRule and creates it.  Returns the server's representation of the securityGroupRule, and an error, if there is any.
-func (c *securityGroupRules) Create(securityGroupRule *v1alpha1.SecurityGroupRule) (result *v1alpha1.SecurityGroupRule, err error) {
+func (c *securityGroupRules) Create(ctx context.Context, securityGroupRule *v1alpha1.SecurityGroupRule, opts v1.CreateOptions) (result *v1alpha1.SecurityGroupRule, err error) {
 	result = &v1alpha1.SecurityGroupRule{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("securitygrouprules").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(securityGroupRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a securityGroupRule and updates it. Returns the server's representation of the securityGroupRule, and an error, if there is any.
-func (c *securityGroupRules) Update(securityGroupRule *v1alpha1.SecurityGroupRule) (result *v1alpha1.SecurityGroupRule, err error) {
+func (c *securityGroupRules) Update(ctx context.Context, securityGroupRule *v1alpha1.SecurityGroupRule, opts v1.UpdateOptions) (result *v1alpha1.SecurityGroupRule, err error) {
 	result = &v1alpha1.SecurityGroupRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("securitygrouprules").
 		Name(securityGroupRule.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(securityGroupRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *securityGroupRules) UpdateStatus(securityGroupRule *v1alpha1.SecurityGroupRule) (result *v1alpha1.SecurityGroupRule, err error) {
+func (c *securityGroupRules) UpdateStatus(ctx context.Context, securityGroupRule *v1alpha1.SecurityGroupRule, opts v1.UpdateOptions) (result *v1alpha1.SecurityGroupRule, err error) {
 	result = &v1alpha1.SecurityGroupRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("securitygrouprules").
 		Name(securityGroupRule.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(securityGroupRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the securityGroupRule and deletes it. Returns an error if one occurs.
-func (c *securityGroupRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *securityGroupRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("securitygrouprules").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *securityGroupRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *securityGroupRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("securitygrouprules").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched securityGroupRule.
-func (c *securityGroupRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SecurityGroupRule, err error) {
+func (c *securityGroupRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SecurityGroupRule, err error) {
 	result = &v1alpha1.SecurityGroupRule{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("securitygrouprules").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

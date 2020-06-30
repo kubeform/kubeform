@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type ElasticacheParameterGroupsGetter interface {
 
 // ElasticacheParameterGroupInterface has methods to work with ElasticacheParameterGroup resources.
 type ElasticacheParameterGroupInterface interface {
-	Create(*v1alpha1.ElasticacheParameterGroup) (*v1alpha1.ElasticacheParameterGroup, error)
-	Update(*v1alpha1.ElasticacheParameterGroup) (*v1alpha1.ElasticacheParameterGroup, error)
-	UpdateStatus(*v1alpha1.ElasticacheParameterGroup) (*v1alpha1.ElasticacheParameterGroup, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ElasticacheParameterGroup, error)
-	List(opts v1.ListOptions) (*v1alpha1.ElasticacheParameterGroupList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ElasticacheParameterGroup, err error)
+	Create(ctx context.Context, elasticacheParameterGroup *v1alpha1.ElasticacheParameterGroup, opts v1.CreateOptions) (*v1alpha1.ElasticacheParameterGroup, error)
+	Update(ctx context.Context, elasticacheParameterGroup *v1alpha1.ElasticacheParameterGroup, opts v1.UpdateOptions) (*v1alpha1.ElasticacheParameterGroup, error)
+	UpdateStatus(ctx context.Context, elasticacheParameterGroup *v1alpha1.ElasticacheParameterGroup, opts v1.UpdateOptions) (*v1alpha1.ElasticacheParameterGroup, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ElasticacheParameterGroup, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ElasticacheParameterGroupList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ElasticacheParameterGroup, err error)
 	ElasticacheParameterGroupExpansion
 }
 
@@ -65,20 +66,20 @@ func newElasticacheParameterGroups(c *AwsV1alpha1Client, namespace string) *elas
 }
 
 // Get takes name of the elasticacheParameterGroup, and returns the corresponding elasticacheParameterGroup object, and an error if there is any.
-func (c *elasticacheParameterGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.ElasticacheParameterGroup, err error) {
+func (c *elasticacheParameterGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ElasticacheParameterGroup, err error) {
 	result = &v1alpha1.ElasticacheParameterGroup{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("elasticacheparametergroups").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of ElasticacheParameterGroups that match those selectors.
-func (c *elasticacheParameterGroups) List(opts v1.ListOptions) (result *v1alpha1.ElasticacheParameterGroupList, err error) {
+func (c *elasticacheParameterGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ElasticacheParameterGroupList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *elasticacheParameterGroups) List(opts v1.ListOptions) (result *v1alpha1
 		Resource("elasticacheparametergroups").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested elasticacheParameterGroups.
-func (c *elasticacheParameterGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *elasticacheParameterGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *elasticacheParameterGroups) Watch(opts v1.ListOptions) (watch.Interface
 		Resource("elasticacheparametergroups").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a elasticacheParameterGroup and creates it.  Returns the server's representation of the elasticacheParameterGroup, and an error, if there is any.
-func (c *elasticacheParameterGroups) Create(elasticacheParameterGroup *v1alpha1.ElasticacheParameterGroup) (result *v1alpha1.ElasticacheParameterGroup, err error) {
+func (c *elasticacheParameterGroups) Create(ctx context.Context, elasticacheParameterGroup *v1alpha1.ElasticacheParameterGroup, opts v1.CreateOptions) (result *v1alpha1.ElasticacheParameterGroup, err error) {
 	result = &v1alpha1.ElasticacheParameterGroup{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("elasticacheparametergroups").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(elasticacheParameterGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a elasticacheParameterGroup and updates it. Returns the server's representation of the elasticacheParameterGroup, and an error, if there is any.
-func (c *elasticacheParameterGroups) Update(elasticacheParameterGroup *v1alpha1.ElasticacheParameterGroup) (result *v1alpha1.ElasticacheParameterGroup, err error) {
+func (c *elasticacheParameterGroups) Update(ctx context.Context, elasticacheParameterGroup *v1alpha1.ElasticacheParameterGroup, opts v1.UpdateOptions) (result *v1alpha1.ElasticacheParameterGroup, err error) {
 	result = &v1alpha1.ElasticacheParameterGroup{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("elasticacheparametergroups").
 		Name(elasticacheParameterGroup.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(elasticacheParameterGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *elasticacheParameterGroups) UpdateStatus(elasticacheParameterGroup *v1alpha1.ElasticacheParameterGroup) (result *v1alpha1.ElasticacheParameterGroup, err error) {
+func (c *elasticacheParameterGroups) UpdateStatus(ctx context.Context, elasticacheParameterGroup *v1alpha1.ElasticacheParameterGroup, opts v1.UpdateOptions) (result *v1alpha1.ElasticacheParameterGroup, err error) {
 	result = &v1alpha1.ElasticacheParameterGroup{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("elasticacheparametergroups").
 		Name(elasticacheParameterGroup.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(elasticacheParameterGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the elasticacheParameterGroup and deletes it. Returns an error if one occurs.
-func (c *elasticacheParameterGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *elasticacheParameterGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("elasticacheparametergroups").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *elasticacheParameterGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *elasticacheParameterGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("elasticacheparametergroups").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched elasticacheParameterGroup.
-func (c *elasticacheParameterGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ElasticacheParameterGroup, err error) {
+func (c *elasticacheParameterGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ElasticacheParameterGroup, err error) {
 	result = &v1alpha1.ElasticacheParameterGroup{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("elasticacheparametergroups").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

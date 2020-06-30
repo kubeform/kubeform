@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var appsyncresolversResource = schema.GroupVersionResource{Group: "aws.kubeform.
 var appsyncresolversKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "AppsyncResolver"}
 
 // Get takes name of the appsyncResolver, and returns the corresponding appsyncResolver object, and an error if there is any.
-func (c *FakeAppsyncResolvers) Get(name string, options v1.GetOptions) (result *v1alpha1.AppsyncResolver, err error) {
+func (c *FakeAppsyncResolvers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AppsyncResolver, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(appsyncresolversResource, c.ns, name), &v1alpha1.AppsyncResolver{})
 
@@ -51,7 +53,7 @@ func (c *FakeAppsyncResolvers) Get(name string, options v1.GetOptions) (result *
 }
 
 // List takes label and field selectors, and returns the list of AppsyncResolvers that match those selectors.
-func (c *FakeAppsyncResolvers) List(opts v1.ListOptions) (result *v1alpha1.AppsyncResolverList, err error) {
+func (c *FakeAppsyncResolvers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AppsyncResolverList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(appsyncresolversResource, appsyncresolversKind, c.ns, opts), &v1alpha1.AppsyncResolverList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAppsyncResolvers) List(opts v1.ListOptions) (result *v1alpha1.Appsy
 }
 
 // Watch returns a watch.Interface that watches the requested appsyncResolvers.
-func (c *FakeAppsyncResolvers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAppsyncResolvers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(appsyncresolversResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a appsyncResolver and creates it.  Returns the server's representation of the appsyncResolver, and an error, if there is any.
-func (c *FakeAppsyncResolvers) Create(appsyncResolver *v1alpha1.AppsyncResolver) (result *v1alpha1.AppsyncResolver, err error) {
+func (c *FakeAppsyncResolvers) Create(ctx context.Context, appsyncResolver *v1alpha1.AppsyncResolver, opts v1.CreateOptions) (result *v1alpha1.AppsyncResolver, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(appsyncresolversResource, c.ns, appsyncResolver), &v1alpha1.AppsyncResolver{})
 
@@ -91,7 +93,7 @@ func (c *FakeAppsyncResolvers) Create(appsyncResolver *v1alpha1.AppsyncResolver)
 }
 
 // Update takes the representation of a appsyncResolver and updates it. Returns the server's representation of the appsyncResolver, and an error, if there is any.
-func (c *FakeAppsyncResolvers) Update(appsyncResolver *v1alpha1.AppsyncResolver) (result *v1alpha1.AppsyncResolver, err error) {
+func (c *FakeAppsyncResolvers) Update(ctx context.Context, appsyncResolver *v1alpha1.AppsyncResolver, opts v1.UpdateOptions) (result *v1alpha1.AppsyncResolver, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(appsyncresolversResource, c.ns, appsyncResolver), &v1alpha1.AppsyncResolver{})
 
@@ -103,7 +105,7 @@ func (c *FakeAppsyncResolvers) Update(appsyncResolver *v1alpha1.AppsyncResolver)
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAppsyncResolvers) UpdateStatus(appsyncResolver *v1alpha1.AppsyncResolver) (*v1alpha1.AppsyncResolver, error) {
+func (c *FakeAppsyncResolvers) UpdateStatus(ctx context.Context, appsyncResolver *v1alpha1.AppsyncResolver, opts v1.UpdateOptions) (*v1alpha1.AppsyncResolver, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(appsyncresolversResource, "status", c.ns, appsyncResolver), &v1alpha1.AppsyncResolver{})
 
@@ -114,7 +116,7 @@ func (c *FakeAppsyncResolvers) UpdateStatus(appsyncResolver *v1alpha1.AppsyncRes
 }
 
 // Delete takes name of the appsyncResolver and deletes it. Returns an error if one occurs.
-func (c *FakeAppsyncResolvers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAppsyncResolvers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(appsyncresolversResource, c.ns, name), &v1alpha1.AppsyncResolver{})
 
@@ -122,15 +124,15 @@ func (c *FakeAppsyncResolvers) Delete(name string, options *v1.DeleteOptions) er
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAppsyncResolvers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(appsyncresolversResource, c.ns, listOptions)
+func (c *FakeAppsyncResolvers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(appsyncresolversResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AppsyncResolverList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched appsyncResolver.
-func (c *FakeAppsyncResolvers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppsyncResolver, err error) {
+func (c *FakeAppsyncResolvers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppsyncResolver, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(appsyncresolversResource, c.ns, name, pt, data, subresources...), &v1alpha1.AppsyncResolver{})
 

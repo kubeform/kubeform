@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var tpunodesResource = schema.GroupVersionResource{Group: "google.kubeform.com",
 var tpunodesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "TpuNode"}
 
 // Get takes name of the tpuNode, and returns the corresponding tpuNode object, and an error if there is any.
-func (c *FakeTpuNodes) Get(name string, options v1.GetOptions) (result *v1alpha1.TpuNode, err error) {
+func (c *FakeTpuNodes) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.TpuNode, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(tpunodesResource, c.ns, name), &v1alpha1.TpuNode{})
 
@@ -51,7 +53,7 @@ func (c *FakeTpuNodes) Get(name string, options v1.GetOptions) (result *v1alpha1
 }
 
 // List takes label and field selectors, and returns the list of TpuNodes that match those selectors.
-func (c *FakeTpuNodes) List(opts v1.ListOptions) (result *v1alpha1.TpuNodeList, err error) {
+func (c *FakeTpuNodes) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.TpuNodeList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(tpunodesResource, tpunodesKind, c.ns, opts), &v1alpha1.TpuNodeList{})
 
@@ -73,14 +75,14 @@ func (c *FakeTpuNodes) List(opts v1.ListOptions) (result *v1alpha1.TpuNodeList, 
 }
 
 // Watch returns a watch.Interface that watches the requested tpuNodes.
-func (c *FakeTpuNodes) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeTpuNodes) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(tpunodesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a tpuNode and creates it.  Returns the server's representation of the tpuNode, and an error, if there is any.
-func (c *FakeTpuNodes) Create(tpuNode *v1alpha1.TpuNode) (result *v1alpha1.TpuNode, err error) {
+func (c *FakeTpuNodes) Create(ctx context.Context, tpuNode *v1alpha1.TpuNode, opts v1.CreateOptions) (result *v1alpha1.TpuNode, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(tpunodesResource, c.ns, tpuNode), &v1alpha1.TpuNode{})
 
@@ -91,7 +93,7 @@ func (c *FakeTpuNodes) Create(tpuNode *v1alpha1.TpuNode) (result *v1alpha1.TpuNo
 }
 
 // Update takes the representation of a tpuNode and updates it. Returns the server's representation of the tpuNode, and an error, if there is any.
-func (c *FakeTpuNodes) Update(tpuNode *v1alpha1.TpuNode) (result *v1alpha1.TpuNode, err error) {
+func (c *FakeTpuNodes) Update(ctx context.Context, tpuNode *v1alpha1.TpuNode, opts v1.UpdateOptions) (result *v1alpha1.TpuNode, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(tpunodesResource, c.ns, tpuNode), &v1alpha1.TpuNode{})
 
@@ -103,7 +105,7 @@ func (c *FakeTpuNodes) Update(tpuNode *v1alpha1.TpuNode) (result *v1alpha1.TpuNo
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeTpuNodes) UpdateStatus(tpuNode *v1alpha1.TpuNode) (*v1alpha1.TpuNode, error) {
+func (c *FakeTpuNodes) UpdateStatus(ctx context.Context, tpuNode *v1alpha1.TpuNode, opts v1.UpdateOptions) (*v1alpha1.TpuNode, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(tpunodesResource, "status", c.ns, tpuNode), &v1alpha1.TpuNode{})
 
@@ -114,7 +116,7 @@ func (c *FakeTpuNodes) UpdateStatus(tpuNode *v1alpha1.TpuNode) (*v1alpha1.TpuNod
 }
 
 // Delete takes name of the tpuNode and deletes it. Returns an error if one occurs.
-func (c *FakeTpuNodes) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeTpuNodes) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(tpunodesResource, c.ns, name), &v1alpha1.TpuNode{})
 
@@ -122,15 +124,15 @@ func (c *FakeTpuNodes) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeTpuNodes) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(tpunodesResource, c.ns, listOptions)
+func (c *FakeTpuNodes) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(tpunodesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.TpuNodeList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched tpuNode.
-func (c *FakeTpuNodes) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.TpuNode, err error) {
+func (c *FakeTpuNodes) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.TpuNode, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(tpunodesResource, c.ns, name, pt, data, subresources...), &v1alpha1.TpuNode{})
 

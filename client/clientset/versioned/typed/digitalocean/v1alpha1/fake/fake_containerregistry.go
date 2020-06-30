@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/digitalocean/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var containerregistriesResource = schema.GroupVersionResource{Group: "digitaloce
 var containerregistriesKind = schema.GroupVersionKind{Group: "digitalocean.kubeform.com", Version: "v1alpha1", Kind: "ContainerRegistry"}
 
 // Get takes name of the containerRegistry, and returns the corresponding containerRegistry object, and an error if there is any.
-func (c *FakeContainerRegistries) Get(name string, options v1.GetOptions) (result *v1alpha1.ContainerRegistry, err error) {
+func (c *FakeContainerRegistries) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ContainerRegistry, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(containerregistriesResource, c.ns, name), &v1alpha1.ContainerRegistry{})
 
@@ -51,7 +53,7 @@ func (c *FakeContainerRegistries) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of ContainerRegistries that match those selectors.
-func (c *FakeContainerRegistries) List(opts v1.ListOptions) (result *v1alpha1.ContainerRegistryList, err error) {
+func (c *FakeContainerRegistries) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ContainerRegistryList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(containerregistriesResource, containerregistriesKind, c.ns, opts), &v1alpha1.ContainerRegistryList{})
 
@@ -73,14 +75,14 @@ func (c *FakeContainerRegistries) List(opts v1.ListOptions) (result *v1alpha1.Co
 }
 
 // Watch returns a watch.Interface that watches the requested containerRegistries.
-func (c *FakeContainerRegistries) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeContainerRegistries) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(containerregistriesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a containerRegistry and creates it.  Returns the server's representation of the containerRegistry, and an error, if there is any.
-func (c *FakeContainerRegistries) Create(containerRegistry *v1alpha1.ContainerRegistry) (result *v1alpha1.ContainerRegistry, err error) {
+func (c *FakeContainerRegistries) Create(ctx context.Context, containerRegistry *v1alpha1.ContainerRegistry, opts v1.CreateOptions) (result *v1alpha1.ContainerRegistry, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(containerregistriesResource, c.ns, containerRegistry), &v1alpha1.ContainerRegistry{})
 
@@ -91,7 +93,7 @@ func (c *FakeContainerRegistries) Create(containerRegistry *v1alpha1.ContainerRe
 }
 
 // Update takes the representation of a containerRegistry and updates it. Returns the server's representation of the containerRegistry, and an error, if there is any.
-func (c *FakeContainerRegistries) Update(containerRegistry *v1alpha1.ContainerRegistry) (result *v1alpha1.ContainerRegistry, err error) {
+func (c *FakeContainerRegistries) Update(ctx context.Context, containerRegistry *v1alpha1.ContainerRegistry, opts v1.UpdateOptions) (result *v1alpha1.ContainerRegistry, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(containerregistriesResource, c.ns, containerRegistry), &v1alpha1.ContainerRegistry{})
 
@@ -103,7 +105,7 @@ func (c *FakeContainerRegistries) Update(containerRegistry *v1alpha1.ContainerRe
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeContainerRegistries) UpdateStatus(containerRegistry *v1alpha1.ContainerRegistry) (*v1alpha1.ContainerRegistry, error) {
+func (c *FakeContainerRegistries) UpdateStatus(ctx context.Context, containerRegistry *v1alpha1.ContainerRegistry, opts v1.UpdateOptions) (*v1alpha1.ContainerRegistry, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(containerregistriesResource, "status", c.ns, containerRegistry), &v1alpha1.ContainerRegistry{})
 
@@ -114,7 +116,7 @@ func (c *FakeContainerRegistries) UpdateStatus(containerRegistry *v1alpha1.Conta
 }
 
 // Delete takes name of the containerRegistry and deletes it. Returns an error if one occurs.
-func (c *FakeContainerRegistries) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeContainerRegistries) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(containerregistriesResource, c.ns, name), &v1alpha1.ContainerRegistry{})
 
@@ -122,15 +124,15 @@ func (c *FakeContainerRegistries) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeContainerRegistries) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(containerregistriesResource, c.ns, listOptions)
+func (c *FakeContainerRegistries) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(containerregistriesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ContainerRegistryList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched containerRegistry.
-func (c *FakeContainerRegistries) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ContainerRegistry, err error) {
+func (c *FakeContainerRegistries) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ContainerRegistry, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(containerregistriesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ContainerRegistry{})
 

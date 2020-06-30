@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var opsworksmysqllayersResource = schema.GroupVersionResource{Group: "aws.kubefo
 var opsworksmysqllayersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "OpsworksMysqlLayer"}
 
 // Get takes name of the opsworksMysqlLayer, and returns the corresponding opsworksMysqlLayer object, and an error if there is any.
-func (c *FakeOpsworksMysqlLayers) Get(name string, options v1.GetOptions) (result *v1alpha1.OpsworksMysqlLayer, err error) {
+func (c *FakeOpsworksMysqlLayers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.OpsworksMysqlLayer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(opsworksmysqllayersResource, c.ns, name), &v1alpha1.OpsworksMysqlLayer{})
 
@@ -51,7 +53,7 @@ func (c *FakeOpsworksMysqlLayers) Get(name string, options v1.GetOptions) (resul
 }
 
 // List takes label and field selectors, and returns the list of OpsworksMysqlLayers that match those selectors.
-func (c *FakeOpsworksMysqlLayers) List(opts v1.ListOptions) (result *v1alpha1.OpsworksMysqlLayerList, err error) {
+func (c *FakeOpsworksMysqlLayers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.OpsworksMysqlLayerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(opsworksmysqllayersResource, opsworksmysqllayersKind, c.ns, opts), &v1alpha1.OpsworksMysqlLayerList{})
 
@@ -73,14 +75,14 @@ func (c *FakeOpsworksMysqlLayers) List(opts v1.ListOptions) (result *v1alpha1.Op
 }
 
 // Watch returns a watch.Interface that watches the requested opsworksMysqlLayers.
-func (c *FakeOpsworksMysqlLayers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeOpsworksMysqlLayers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(opsworksmysqllayersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a opsworksMysqlLayer and creates it.  Returns the server's representation of the opsworksMysqlLayer, and an error, if there is any.
-func (c *FakeOpsworksMysqlLayers) Create(opsworksMysqlLayer *v1alpha1.OpsworksMysqlLayer) (result *v1alpha1.OpsworksMysqlLayer, err error) {
+func (c *FakeOpsworksMysqlLayers) Create(ctx context.Context, opsworksMysqlLayer *v1alpha1.OpsworksMysqlLayer, opts v1.CreateOptions) (result *v1alpha1.OpsworksMysqlLayer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(opsworksmysqllayersResource, c.ns, opsworksMysqlLayer), &v1alpha1.OpsworksMysqlLayer{})
 
@@ -91,7 +93,7 @@ func (c *FakeOpsworksMysqlLayers) Create(opsworksMysqlLayer *v1alpha1.OpsworksMy
 }
 
 // Update takes the representation of a opsworksMysqlLayer and updates it. Returns the server's representation of the opsworksMysqlLayer, and an error, if there is any.
-func (c *FakeOpsworksMysqlLayers) Update(opsworksMysqlLayer *v1alpha1.OpsworksMysqlLayer) (result *v1alpha1.OpsworksMysqlLayer, err error) {
+func (c *FakeOpsworksMysqlLayers) Update(ctx context.Context, opsworksMysqlLayer *v1alpha1.OpsworksMysqlLayer, opts v1.UpdateOptions) (result *v1alpha1.OpsworksMysqlLayer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(opsworksmysqllayersResource, c.ns, opsworksMysqlLayer), &v1alpha1.OpsworksMysqlLayer{})
 
@@ -103,7 +105,7 @@ func (c *FakeOpsworksMysqlLayers) Update(opsworksMysqlLayer *v1alpha1.OpsworksMy
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeOpsworksMysqlLayers) UpdateStatus(opsworksMysqlLayer *v1alpha1.OpsworksMysqlLayer) (*v1alpha1.OpsworksMysqlLayer, error) {
+func (c *FakeOpsworksMysqlLayers) UpdateStatus(ctx context.Context, opsworksMysqlLayer *v1alpha1.OpsworksMysqlLayer, opts v1.UpdateOptions) (*v1alpha1.OpsworksMysqlLayer, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(opsworksmysqllayersResource, "status", c.ns, opsworksMysqlLayer), &v1alpha1.OpsworksMysqlLayer{})
 
@@ -114,7 +116,7 @@ func (c *FakeOpsworksMysqlLayers) UpdateStatus(opsworksMysqlLayer *v1alpha1.Opsw
 }
 
 // Delete takes name of the opsworksMysqlLayer and deletes it. Returns an error if one occurs.
-func (c *FakeOpsworksMysqlLayers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeOpsworksMysqlLayers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(opsworksmysqllayersResource, c.ns, name), &v1alpha1.OpsworksMysqlLayer{})
 
@@ -122,15 +124,15 @@ func (c *FakeOpsworksMysqlLayers) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeOpsworksMysqlLayers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(opsworksmysqllayersResource, c.ns, listOptions)
+func (c *FakeOpsworksMysqlLayers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(opsworksmysqllayersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.OpsworksMysqlLayerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched opsworksMysqlLayer.
-func (c *FakeOpsworksMysqlLayers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.OpsworksMysqlLayer, err error) {
+func (c *FakeOpsworksMysqlLayers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.OpsworksMysqlLayer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(opsworksmysqllayersResource, c.ns, name, pt, data, subresources...), &v1alpha1.OpsworksMysqlLayer{})
 

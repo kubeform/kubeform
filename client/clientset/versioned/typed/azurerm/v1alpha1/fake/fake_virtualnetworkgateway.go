@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var virtualnetworkgatewaysResource = schema.GroupVersionResource{Group: "azurerm
 var virtualnetworkgatewaysKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "VirtualNetworkGateway"}
 
 // Get takes name of the virtualNetworkGateway, and returns the corresponding virtualNetworkGateway object, and an error if there is any.
-func (c *FakeVirtualNetworkGateways) Get(name string, options v1.GetOptions) (result *v1alpha1.VirtualNetworkGateway, err error) {
+func (c *FakeVirtualNetworkGateways) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.VirtualNetworkGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(virtualnetworkgatewaysResource, c.ns, name), &v1alpha1.VirtualNetworkGateway{})
 
@@ -51,7 +53,7 @@ func (c *FakeVirtualNetworkGateways) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of VirtualNetworkGateways that match those selectors.
-func (c *FakeVirtualNetworkGateways) List(opts v1.ListOptions) (result *v1alpha1.VirtualNetworkGatewayList, err error) {
+func (c *FakeVirtualNetworkGateways) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.VirtualNetworkGatewayList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(virtualnetworkgatewaysResource, virtualnetworkgatewaysKind, c.ns, opts), &v1alpha1.VirtualNetworkGatewayList{})
 
@@ -73,14 +75,14 @@ func (c *FakeVirtualNetworkGateways) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested virtualNetworkGateways.
-func (c *FakeVirtualNetworkGateways) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeVirtualNetworkGateways) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(virtualnetworkgatewaysResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a virtualNetworkGateway and creates it.  Returns the server's representation of the virtualNetworkGateway, and an error, if there is any.
-func (c *FakeVirtualNetworkGateways) Create(virtualNetworkGateway *v1alpha1.VirtualNetworkGateway) (result *v1alpha1.VirtualNetworkGateway, err error) {
+func (c *FakeVirtualNetworkGateways) Create(ctx context.Context, virtualNetworkGateway *v1alpha1.VirtualNetworkGateway, opts v1.CreateOptions) (result *v1alpha1.VirtualNetworkGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(virtualnetworkgatewaysResource, c.ns, virtualNetworkGateway), &v1alpha1.VirtualNetworkGateway{})
 
@@ -91,7 +93,7 @@ func (c *FakeVirtualNetworkGateways) Create(virtualNetworkGateway *v1alpha1.Virt
 }
 
 // Update takes the representation of a virtualNetworkGateway and updates it. Returns the server's representation of the virtualNetworkGateway, and an error, if there is any.
-func (c *FakeVirtualNetworkGateways) Update(virtualNetworkGateway *v1alpha1.VirtualNetworkGateway) (result *v1alpha1.VirtualNetworkGateway, err error) {
+func (c *FakeVirtualNetworkGateways) Update(ctx context.Context, virtualNetworkGateway *v1alpha1.VirtualNetworkGateway, opts v1.UpdateOptions) (result *v1alpha1.VirtualNetworkGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(virtualnetworkgatewaysResource, c.ns, virtualNetworkGateway), &v1alpha1.VirtualNetworkGateway{})
 
@@ -103,7 +105,7 @@ func (c *FakeVirtualNetworkGateways) Update(virtualNetworkGateway *v1alpha1.Virt
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeVirtualNetworkGateways) UpdateStatus(virtualNetworkGateway *v1alpha1.VirtualNetworkGateway) (*v1alpha1.VirtualNetworkGateway, error) {
+func (c *FakeVirtualNetworkGateways) UpdateStatus(ctx context.Context, virtualNetworkGateway *v1alpha1.VirtualNetworkGateway, opts v1.UpdateOptions) (*v1alpha1.VirtualNetworkGateway, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(virtualnetworkgatewaysResource, "status", c.ns, virtualNetworkGateway), &v1alpha1.VirtualNetworkGateway{})
 
@@ -114,7 +116,7 @@ func (c *FakeVirtualNetworkGateways) UpdateStatus(virtualNetworkGateway *v1alpha
 }
 
 // Delete takes name of the virtualNetworkGateway and deletes it. Returns an error if one occurs.
-func (c *FakeVirtualNetworkGateways) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeVirtualNetworkGateways) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(virtualnetworkgatewaysResource, c.ns, name), &v1alpha1.VirtualNetworkGateway{})
 
@@ -122,15 +124,15 @@ func (c *FakeVirtualNetworkGateways) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeVirtualNetworkGateways) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(virtualnetworkgatewaysResource, c.ns, listOptions)
+func (c *FakeVirtualNetworkGateways) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(virtualnetworkgatewaysResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.VirtualNetworkGatewayList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched virtualNetworkGateway.
-func (c *FakeVirtualNetworkGateways) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.VirtualNetworkGateway, err error) {
+func (c *FakeVirtualNetworkGateways) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.VirtualNetworkGateway, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(virtualnetworkgatewaysResource, c.ns, name, pt, data, subresources...), &v1alpha1.VirtualNetworkGateway{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var siterecoveryprotectioncontainersResource = schema.GroupVersionResource{Group
 var siterecoveryprotectioncontainersKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "SiteRecoveryProtectionContainer"}
 
 // Get takes name of the siteRecoveryProtectionContainer, and returns the corresponding siteRecoveryProtectionContainer object, and an error if there is any.
-func (c *FakeSiteRecoveryProtectionContainers) Get(name string, options v1.GetOptions) (result *v1alpha1.SiteRecoveryProtectionContainer, err error) {
+func (c *FakeSiteRecoveryProtectionContainers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SiteRecoveryProtectionContainer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(siterecoveryprotectioncontainersResource, c.ns, name), &v1alpha1.SiteRecoveryProtectionContainer{})
 
@@ -51,7 +53,7 @@ func (c *FakeSiteRecoveryProtectionContainers) Get(name string, options v1.GetOp
 }
 
 // List takes label and field selectors, and returns the list of SiteRecoveryProtectionContainers that match those selectors.
-func (c *FakeSiteRecoveryProtectionContainers) List(opts v1.ListOptions) (result *v1alpha1.SiteRecoveryProtectionContainerList, err error) {
+func (c *FakeSiteRecoveryProtectionContainers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SiteRecoveryProtectionContainerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(siterecoveryprotectioncontainersResource, siterecoveryprotectioncontainersKind, c.ns, opts), &v1alpha1.SiteRecoveryProtectionContainerList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSiteRecoveryProtectionContainers) List(opts v1.ListOptions) (result
 }
 
 // Watch returns a watch.Interface that watches the requested siteRecoveryProtectionContainers.
-func (c *FakeSiteRecoveryProtectionContainers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSiteRecoveryProtectionContainers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(siterecoveryprotectioncontainersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a siteRecoveryProtectionContainer and creates it.  Returns the server's representation of the siteRecoveryProtectionContainer, and an error, if there is any.
-func (c *FakeSiteRecoveryProtectionContainers) Create(siteRecoveryProtectionContainer *v1alpha1.SiteRecoveryProtectionContainer) (result *v1alpha1.SiteRecoveryProtectionContainer, err error) {
+func (c *FakeSiteRecoveryProtectionContainers) Create(ctx context.Context, siteRecoveryProtectionContainer *v1alpha1.SiteRecoveryProtectionContainer, opts v1.CreateOptions) (result *v1alpha1.SiteRecoveryProtectionContainer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(siterecoveryprotectioncontainersResource, c.ns, siteRecoveryProtectionContainer), &v1alpha1.SiteRecoveryProtectionContainer{})
 
@@ -91,7 +93,7 @@ func (c *FakeSiteRecoveryProtectionContainers) Create(siteRecoveryProtectionCont
 }
 
 // Update takes the representation of a siteRecoveryProtectionContainer and updates it. Returns the server's representation of the siteRecoveryProtectionContainer, and an error, if there is any.
-func (c *FakeSiteRecoveryProtectionContainers) Update(siteRecoveryProtectionContainer *v1alpha1.SiteRecoveryProtectionContainer) (result *v1alpha1.SiteRecoveryProtectionContainer, err error) {
+func (c *FakeSiteRecoveryProtectionContainers) Update(ctx context.Context, siteRecoveryProtectionContainer *v1alpha1.SiteRecoveryProtectionContainer, opts v1.UpdateOptions) (result *v1alpha1.SiteRecoveryProtectionContainer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(siterecoveryprotectioncontainersResource, c.ns, siteRecoveryProtectionContainer), &v1alpha1.SiteRecoveryProtectionContainer{})
 
@@ -103,7 +105,7 @@ func (c *FakeSiteRecoveryProtectionContainers) Update(siteRecoveryProtectionCont
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSiteRecoveryProtectionContainers) UpdateStatus(siteRecoveryProtectionContainer *v1alpha1.SiteRecoveryProtectionContainer) (*v1alpha1.SiteRecoveryProtectionContainer, error) {
+func (c *FakeSiteRecoveryProtectionContainers) UpdateStatus(ctx context.Context, siteRecoveryProtectionContainer *v1alpha1.SiteRecoveryProtectionContainer, opts v1.UpdateOptions) (*v1alpha1.SiteRecoveryProtectionContainer, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(siterecoveryprotectioncontainersResource, "status", c.ns, siteRecoveryProtectionContainer), &v1alpha1.SiteRecoveryProtectionContainer{})
 
@@ -114,7 +116,7 @@ func (c *FakeSiteRecoveryProtectionContainers) UpdateStatus(siteRecoveryProtecti
 }
 
 // Delete takes name of the siteRecoveryProtectionContainer and deletes it. Returns an error if one occurs.
-func (c *FakeSiteRecoveryProtectionContainers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSiteRecoveryProtectionContainers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(siterecoveryprotectioncontainersResource, c.ns, name), &v1alpha1.SiteRecoveryProtectionContainer{})
 
@@ -122,15 +124,15 @@ func (c *FakeSiteRecoveryProtectionContainers) Delete(name string, options *v1.D
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSiteRecoveryProtectionContainers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(siterecoveryprotectioncontainersResource, c.ns, listOptions)
+func (c *FakeSiteRecoveryProtectionContainers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(siterecoveryprotectioncontainersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SiteRecoveryProtectionContainerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched siteRecoveryProtectionContainer.
-func (c *FakeSiteRecoveryProtectionContainers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SiteRecoveryProtectionContainer, err error) {
+func (c *FakeSiteRecoveryProtectionContainers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SiteRecoveryProtectionContainer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(siterecoveryprotectioncontainersResource, c.ns, name, pt, data, subresources...), &v1alpha1.SiteRecoveryProtectionContainer{})
 

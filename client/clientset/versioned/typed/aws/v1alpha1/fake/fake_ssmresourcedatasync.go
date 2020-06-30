@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var ssmresourcedatasyncsResource = schema.GroupVersionResource{Group: "aws.kubef
 var ssmresourcedatasyncsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "SsmResourceDataSync"}
 
 // Get takes name of the ssmResourceDataSync, and returns the corresponding ssmResourceDataSync object, and an error if there is any.
-func (c *FakeSsmResourceDataSyncs) Get(name string, options v1.GetOptions) (result *v1alpha1.SsmResourceDataSync, err error) {
+func (c *FakeSsmResourceDataSyncs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SsmResourceDataSync, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(ssmresourcedatasyncsResource, c.ns, name), &v1alpha1.SsmResourceDataSync{})
 
@@ -51,7 +53,7 @@ func (c *FakeSsmResourceDataSyncs) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of SsmResourceDataSyncs that match those selectors.
-func (c *FakeSsmResourceDataSyncs) List(opts v1.ListOptions) (result *v1alpha1.SsmResourceDataSyncList, err error) {
+func (c *FakeSsmResourceDataSyncs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SsmResourceDataSyncList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(ssmresourcedatasyncsResource, ssmresourcedatasyncsKind, c.ns, opts), &v1alpha1.SsmResourceDataSyncList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSsmResourceDataSyncs) List(opts v1.ListOptions) (result *v1alpha1.S
 }
 
 // Watch returns a watch.Interface that watches the requested ssmResourceDataSyncs.
-func (c *FakeSsmResourceDataSyncs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSsmResourceDataSyncs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(ssmresourcedatasyncsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a ssmResourceDataSync and creates it.  Returns the server's representation of the ssmResourceDataSync, and an error, if there is any.
-func (c *FakeSsmResourceDataSyncs) Create(ssmResourceDataSync *v1alpha1.SsmResourceDataSync) (result *v1alpha1.SsmResourceDataSync, err error) {
+func (c *FakeSsmResourceDataSyncs) Create(ctx context.Context, ssmResourceDataSync *v1alpha1.SsmResourceDataSync, opts v1.CreateOptions) (result *v1alpha1.SsmResourceDataSync, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(ssmresourcedatasyncsResource, c.ns, ssmResourceDataSync), &v1alpha1.SsmResourceDataSync{})
 
@@ -91,7 +93,7 @@ func (c *FakeSsmResourceDataSyncs) Create(ssmResourceDataSync *v1alpha1.SsmResou
 }
 
 // Update takes the representation of a ssmResourceDataSync and updates it. Returns the server's representation of the ssmResourceDataSync, and an error, if there is any.
-func (c *FakeSsmResourceDataSyncs) Update(ssmResourceDataSync *v1alpha1.SsmResourceDataSync) (result *v1alpha1.SsmResourceDataSync, err error) {
+func (c *FakeSsmResourceDataSyncs) Update(ctx context.Context, ssmResourceDataSync *v1alpha1.SsmResourceDataSync, opts v1.UpdateOptions) (result *v1alpha1.SsmResourceDataSync, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(ssmresourcedatasyncsResource, c.ns, ssmResourceDataSync), &v1alpha1.SsmResourceDataSync{})
 
@@ -103,7 +105,7 @@ func (c *FakeSsmResourceDataSyncs) Update(ssmResourceDataSync *v1alpha1.SsmResou
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSsmResourceDataSyncs) UpdateStatus(ssmResourceDataSync *v1alpha1.SsmResourceDataSync) (*v1alpha1.SsmResourceDataSync, error) {
+func (c *FakeSsmResourceDataSyncs) UpdateStatus(ctx context.Context, ssmResourceDataSync *v1alpha1.SsmResourceDataSync, opts v1.UpdateOptions) (*v1alpha1.SsmResourceDataSync, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(ssmresourcedatasyncsResource, "status", c.ns, ssmResourceDataSync), &v1alpha1.SsmResourceDataSync{})
 
@@ -114,7 +116,7 @@ func (c *FakeSsmResourceDataSyncs) UpdateStatus(ssmResourceDataSync *v1alpha1.Ss
 }
 
 // Delete takes name of the ssmResourceDataSync and deletes it. Returns an error if one occurs.
-func (c *FakeSsmResourceDataSyncs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSsmResourceDataSyncs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(ssmresourcedatasyncsResource, c.ns, name), &v1alpha1.SsmResourceDataSync{})
 
@@ -122,15 +124,15 @@ func (c *FakeSsmResourceDataSyncs) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSsmResourceDataSyncs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(ssmresourcedatasyncsResource, c.ns, listOptions)
+func (c *FakeSsmResourceDataSyncs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(ssmresourcedatasyncsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SsmResourceDataSyncList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched ssmResourceDataSync.
-func (c *FakeSsmResourceDataSyncs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SsmResourceDataSync, err error) {
+func (c *FakeSsmResourceDataSyncs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SsmResourceDataSync, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(ssmresourcedatasyncsResource, c.ns, name, pt, data, subresources...), &v1alpha1.SsmResourceDataSync{})
 

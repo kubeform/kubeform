@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var containeranalysisnotesResource = schema.GroupVersionResource{Group: "google.
 var containeranalysisnotesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ContainerAnalysisNote"}
 
 // Get takes name of the containerAnalysisNote, and returns the corresponding containerAnalysisNote object, and an error if there is any.
-func (c *FakeContainerAnalysisNotes) Get(name string, options v1.GetOptions) (result *v1alpha1.ContainerAnalysisNote, err error) {
+func (c *FakeContainerAnalysisNotes) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ContainerAnalysisNote, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(containeranalysisnotesResource, c.ns, name), &v1alpha1.ContainerAnalysisNote{})
 
@@ -51,7 +53,7 @@ func (c *FakeContainerAnalysisNotes) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of ContainerAnalysisNotes that match those selectors.
-func (c *FakeContainerAnalysisNotes) List(opts v1.ListOptions) (result *v1alpha1.ContainerAnalysisNoteList, err error) {
+func (c *FakeContainerAnalysisNotes) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ContainerAnalysisNoteList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(containeranalysisnotesResource, containeranalysisnotesKind, c.ns, opts), &v1alpha1.ContainerAnalysisNoteList{})
 
@@ -73,14 +75,14 @@ func (c *FakeContainerAnalysisNotes) List(opts v1.ListOptions) (result *v1alpha1
 }
 
 // Watch returns a watch.Interface that watches the requested containerAnalysisNotes.
-func (c *FakeContainerAnalysisNotes) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeContainerAnalysisNotes) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(containeranalysisnotesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a containerAnalysisNote and creates it.  Returns the server's representation of the containerAnalysisNote, and an error, if there is any.
-func (c *FakeContainerAnalysisNotes) Create(containerAnalysisNote *v1alpha1.ContainerAnalysisNote) (result *v1alpha1.ContainerAnalysisNote, err error) {
+func (c *FakeContainerAnalysisNotes) Create(ctx context.Context, containerAnalysisNote *v1alpha1.ContainerAnalysisNote, opts v1.CreateOptions) (result *v1alpha1.ContainerAnalysisNote, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(containeranalysisnotesResource, c.ns, containerAnalysisNote), &v1alpha1.ContainerAnalysisNote{})
 
@@ -91,7 +93,7 @@ func (c *FakeContainerAnalysisNotes) Create(containerAnalysisNote *v1alpha1.Cont
 }
 
 // Update takes the representation of a containerAnalysisNote and updates it. Returns the server's representation of the containerAnalysisNote, and an error, if there is any.
-func (c *FakeContainerAnalysisNotes) Update(containerAnalysisNote *v1alpha1.ContainerAnalysisNote) (result *v1alpha1.ContainerAnalysisNote, err error) {
+func (c *FakeContainerAnalysisNotes) Update(ctx context.Context, containerAnalysisNote *v1alpha1.ContainerAnalysisNote, opts v1.UpdateOptions) (result *v1alpha1.ContainerAnalysisNote, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(containeranalysisnotesResource, c.ns, containerAnalysisNote), &v1alpha1.ContainerAnalysisNote{})
 
@@ -103,7 +105,7 @@ func (c *FakeContainerAnalysisNotes) Update(containerAnalysisNote *v1alpha1.Cont
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeContainerAnalysisNotes) UpdateStatus(containerAnalysisNote *v1alpha1.ContainerAnalysisNote) (*v1alpha1.ContainerAnalysisNote, error) {
+func (c *FakeContainerAnalysisNotes) UpdateStatus(ctx context.Context, containerAnalysisNote *v1alpha1.ContainerAnalysisNote, opts v1.UpdateOptions) (*v1alpha1.ContainerAnalysisNote, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(containeranalysisnotesResource, "status", c.ns, containerAnalysisNote), &v1alpha1.ContainerAnalysisNote{})
 
@@ -114,7 +116,7 @@ func (c *FakeContainerAnalysisNotes) UpdateStatus(containerAnalysisNote *v1alpha
 }
 
 // Delete takes name of the containerAnalysisNote and deletes it. Returns an error if one occurs.
-func (c *FakeContainerAnalysisNotes) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeContainerAnalysisNotes) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(containeranalysisnotesResource, c.ns, name), &v1alpha1.ContainerAnalysisNote{})
 
@@ -122,15 +124,15 @@ func (c *FakeContainerAnalysisNotes) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeContainerAnalysisNotes) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(containeranalysisnotesResource, c.ns, listOptions)
+func (c *FakeContainerAnalysisNotes) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(containeranalysisnotesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ContainerAnalysisNoteList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched containerAnalysisNote.
-func (c *FakeContainerAnalysisNotes) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ContainerAnalysisNote, err error) {
+func (c *FakeContainerAnalysisNotes) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ContainerAnalysisNote, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(containeranalysisnotesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ContainerAnalysisNote{})
 

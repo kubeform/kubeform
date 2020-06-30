@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var configconfigurationaggregatorsResource = schema.GroupVersionResource{Group: 
 var configconfigurationaggregatorsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ConfigConfigurationAggregator"}
 
 // Get takes name of the configConfigurationAggregator, and returns the corresponding configConfigurationAggregator object, and an error if there is any.
-func (c *FakeConfigConfigurationAggregators) Get(name string, options v1.GetOptions) (result *v1alpha1.ConfigConfigurationAggregator, err error) {
+func (c *FakeConfigConfigurationAggregators) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ConfigConfigurationAggregator, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(configconfigurationaggregatorsResource, c.ns, name), &v1alpha1.ConfigConfigurationAggregator{})
 
@@ -51,7 +53,7 @@ func (c *FakeConfigConfigurationAggregators) Get(name string, options v1.GetOpti
 }
 
 // List takes label and field selectors, and returns the list of ConfigConfigurationAggregators that match those selectors.
-func (c *FakeConfigConfigurationAggregators) List(opts v1.ListOptions) (result *v1alpha1.ConfigConfigurationAggregatorList, err error) {
+func (c *FakeConfigConfigurationAggregators) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ConfigConfigurationAggregatorList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(configconfigurationaggregatorsResource, configconfigurationaggregatorsKind, c.ns, opts), &v1alpha1.ConfigConfigurationAggregatorList{})
 
@@ -73,14 +75,14 @@ func (c *FakeConfigConfigurationAggregators) List(opts v1.ListOptions) (result *
 }
 
 // Watch returns a watch.Interface that watches the requested configConfigurationAggregators.
-func (c *FakeConfigConfigurationAggregators) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeConfigConfigurationAggregators) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(configconfigurationaggregatorsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a configConfigurationAggregator and creates it.  Returns the server's representation of the configConfigurationAggregator, and an error, if there is any.
-func (c *FakeConfigConfigurationAggregators) Create(configConfigurationAggregator *v1alpha1.ConfigConfigurationAggregator) (result *v1alpha1.ConfigConfigurationAggregator, err error) {
+func (c *FakeConfigConfigurationAggregators) Create(ctx context.Context, configConfigurationAggregator *v1alpha1.ConfigConfigurationAggregator, opts v1.CreateOptions) (result *v1alpha1.ConfigConfigurationAggregator, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(configconfigurationaggregatorsResource, c.ns, configConfigurationAggregator), &v1alpha1.ConfigConfigurationAggregator{})
 
@@ -91,7 +93,7 @@ func (c *FakeConfigConfigurationAggregators) Create(configConfigurationAggregato
 }
 
 // Update takes the representation of a configConfigurationAggregator and updates it. Returns the server's representation of the configConfigurationAggregator, and an error, if there is any.
-func (c *FakeConfigConfigurationAggregators) Update(configConfigurationAggregator *v1alpha1.ConfigConfigurationAggregator) (result *v1alpha1.ConfigConfigurationAggregator, err error) {
+func (c *FakeConfigConfigurationAggregators) Update(ctx context.Context, configConfigurationAggregator *v1alpha1.ConfigConfigurationAggregator, opts v1.UpdateOptions) (result *v1alpha1.ConfigConfigurationAggregator, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(configconfigurationaggregatorsResource, c.ns, configConfigurationAggregator), &v1alpha1.ConfigConfigurationAggregator{})
 
@@ -103,7 +105,7 @@ func (c *FakeConfigConfigurationAggregators) Update(configConfigurationAggregato
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeConfigConfigurationAggregators) UpdateStatus(configConfigurationAggregator *v1alpha1.ConfigConfigurationAggregator) (*v1alpha1.ConfigConfigurationAggregator, error) {
+func (c *FakeConfigConfigurationAggregators) UpdateStatus(ctx context.Context, configConfigurationAggregator *v1alpha1.ConfigConfigurationAggregator, opts v1.UpdateOptions) (*v1alpha1.ConfigConfigurationAggregator, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(configconfigurationaggregatorsResource, "status", c.ns, configConfigurationAggregator), &v1alpha1.ConfigConfigurationAggregator{})
 
@@ -114,7 +116,7 @@ func (c *FakeConfigConfigurationAggregators) UpdateStatus(configConfigurationAgg
 }
 
 // Delete takes name of the configConfigurationAggregator and deletes it. Returns an error if one occurs.
-func (c *FakeConfigConfigurationAggregators) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeConfigConfigurationAggregators) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(configconfigurationaggregatorsResource, c.ns, name), &v1alpha1.ConfigConfigurationAggregator{})
 
@@ -122,15 +124,15 @@ func (c *FakeConfigConfigurationAggregators) Delete(name string, options *v1.Del
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeConfigConfigurationAggregators) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(configconfigurationaggregatorsResource, c.ns, listOptions)
+func (c *FakeConfigConfigurationAggregators) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(configconfigurationaggregatorsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ConfigConfigurationAggregatorList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched configConfigurationAggregator.
-func (c *FakeConfigConfigurationAggregators) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ConfigConfigurationAggregator, err error) {
+func (c *FakeConfigConfigurationAggregators) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ConfigConfigurationAggregator, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(configconfigurationaggregatorsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ConfigConfigurationAggregator{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var appmeshvirtualroutersResource = schema.GroupVersionResource{Group: "aws.kube
 var appmeshvirtualroutersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "AppmeshVirtualRouter"}
 
 // Get takes name of the appmeshVirtualRouter, and returns the corresponding appmeshVirtualRouter object, and an error if there is any.
-func (c *FakeAppmeshVirtualRouters) Get(name string, options v1.GetOptions) (result *v1alpha1.AppmeshVirtualRouter, err error) {
+func (c *FakeAppmeshVirtualRouters) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AppmeshVirtualRouter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(appmeshvirtualroutersResource, c.ns, name), &v1alpha1.AppmeshVirtualRouter{})
 
@@ -51,7 +53,7 @@ func (c *FakeAppmeshVirtualRouters) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of AppmeshVirtualRouters that match those selectors.
-func (c *FakeAppmeshVirtualRouters) List(opts v1.ListOptions) (result *v1alpha1.AppmeshVirtualRouterList, err error) {
+func (c *FakeAppmeshVirtualRouters) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AppmeshVirtualRouterList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(appmeshvirtualroutersResource, appmeshvirtualroutersKind, c.ns, opts), &v1alpha1.AppmeshVirtualRouterList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAppmeshVirtualRouters) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested appmeshVirtualRouters.
-func (c *FakeAppmeshVirtualRouters) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAppmeshVirtualRouters) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(appmeshvirtualroutersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a appmeshVirtualRouter and creates it.  Returns the server's representation of the appmeshVirtualRouter, and an error, if there is any.
-func (c *FakeAppmeshVirtualRouters) Create(appmeshVirtualRouter *v1alpha1.AppmeshVirtualRouter) (result *v1alpha1.AppmeshVirtualRouter, err error) {
+func (c *FakeAppmeshVirtualRouters) Create(ctx context.Context, appmeshVirtualRouter *v1alpha1.AppmeshVirtualRouter, opts v1.CreateOptions) (result *v1alpha1.AppmeshVirtualRouter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(appmeshvirtualroutersResource, c.ns, appmeshVirtualRouter), &v1alpha1.AppmeshVirtualRouter{})
 
@@ -91,7 +93,7 @@ func (c *FakeAppmeshVirtualRouters) Create(appmeshVirtualRouter *v1alpha1.Appmes
 }
 
 // Update takes the representation of a appmeshVirtualRouter and updates it. Returns the server's representation of the appmeshVirtualRouter, and an error, if there is any.
-func (c *FakeAppmeshVirtualRouters) Update(appmeshVirtualRouter *v1alpha1.AppmeshVirtualRouter) (result *v1alpha1.AppmeshVirtualRouter, err error) {
+func (c *FakeAppmeshVirtualRouters) Update(ctx context.Context, appmeshVirtualRouter *v1alpha1.AppmeshVirtualRouter, opts v1.UpdateOptions) (result *v1alpha1.AppmeshVirtualRouter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(appmeshvirtualroutersResource, c.ns, appmeshVirtualRouter), &v1alpha1.AppmeshVirtualRouter{})
 
@@ -103,7 +105,7 @@ func (c *FakeAppmeshVirtualRouters) Update(appmeshVirtualRouter *v1alpha1.Appmes
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAppmeshVirtualRouters) UpdateStatus(appmeshVirtualRouter *v1alpha1.AppmeshVirtualRouter) (*v1alpha1.AppmeshVirtualRouter, error) {
+func (c *FakeAppmeshVirtualRouters) UpdateStatus(ctx context.Context, appmeshVirtualRouter *v1alpha1.AppmeshVirtualRouter, opts v1.UpdateOptions) (*v1alpha1.AppmeshVirtualRouter, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(appmeshvirtualroutersResource, "status", c.ns, appmeshVirtualRouter), &v1alpha1.AppmeshVirtualRouter{})
 
@@ -114,7 +116,7 @@ func (c *FakeAppmeshVirtualRouters) UpdateStatus(appmeshVirtualRouter *v1alpha1.
 }
 
 // Delete takes name of the appmeshVirtualRouter and deletes it. Returns an error if one occurs.
-func (c *FakeAppmeshVirtualRouters) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAppmeshVirtualRouters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(appmeshvirtualroutersResource, c.ns, name), &v1alpha1.AppmeshVirtualRouter{})
 
@@ -122,15 +124,15 @@ func (c *FakeAppmeshVirtualRouters) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAppmeshVirtualRouters) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(appmeshvirtualroutersResource, c.ns, listOptions)
+func (c *FakeAppmeshVirtualRouters) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(appmeshvirtualroutersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AppmeshVirtualRouterList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched appmeshVirtualRouter.
-func (c *FakeAppmeshVirtualRouters) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AppmeshVirtualRouter, err error) {
+func (c *FakeAppmeshVirtualRouters) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AppmeshVirtualRouter, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(appmeshvirtualroutersResource, c.ns, name, pt, data, subresources...), &v1alpha1.AppmeshVirtualRouter{})
 

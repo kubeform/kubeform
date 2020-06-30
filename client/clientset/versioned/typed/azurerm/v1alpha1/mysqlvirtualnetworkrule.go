@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
@@ -38,15 +39,15 @@ type MysqlVirtualNetworkRulesGetter interface {
 
 // MysqlVirtualNetworkRuleInterface has methods to work with MysqlVirtualNetworkRule resources.
 type MysqlVirtualNetworkRuleInterface interface {
-	Create(*v1alpha1.MysqlVirtualNetworkRule) (*v1alpha1.MysqlVirtualNetworkRule, error)
-	Update(*v1alpha1.MysqlVirtualNetworkRule) (*v1alpha1.MysqlVirtualNetworkRule, error)
-	UpdateStatus(*v1alpha1.MysqlVirtualNetworkRule) (*v1alpha1.MysqlVirtualNetworkRule, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.MysqlVirtualNetworkRule, error)
-	List(opts v1.ListOptions) (*v1alpha1.MysqlVirtualNetworkRuleList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MysqlVirtualNetworkRule, err error)
+	Create(ctx context.Context, mysqlVirtualNetworkRule *v1alpha1.MysqlVirtualNetworkRule, opts v1.CreateOptions) (*v1alpha1.MysqlVirtualNetworkRule, error)
+	Update(ctx context.Context, mysqlVirtualNetworkRule *v1alpha1.MysqlVirtualNetworkRule, opts v1.UpdateOptions) (*v1alpha1.MysqlVirtualNetworkRule, error)
+	UpdateStatus(ctx context.Context, mysqlVirtualNetworkRule *v1alpha1.MysqlVirtualNetworkRule, opts v1.UpdateOptions) (*v1alpha1.MysqlVirtualNetworkRule, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.MysqlVirtualNetworkRule, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.MysqlVirtualNetworkRuleList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MysqlVirtualNetworkRule, err error)
 	MysqlVirtualNetworkRuleExpansion
 }
 
@@ -65,20 +66,20 @@ func newMysqlVirtualNetworkRules(c *AzurermV1alpha1Client, namespace string) *my
 }
 
 // Get takes name of the mysqlVirtualNetworkRule, and returns the corresponding mysqlVirtualNetworkRule object, and an error if there is any.
-func (c *mysqlVirtualNetworkRules) Get(name string, options v1.GetOptions) (result *v1alpha1.MysqlVirtualNetworkRule, err error) {
+func (c *mysqlVirtualNetworkRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.MysqlVirtualNetworkRule, err error) {
 	result = &v1alpha1.MysqlVirtualNetworkRule{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("mysqlvirtualnetworkrules").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of MysqlVirtualNetworkRules that match those selectors.
-func (c *mysqlVirtualNetworkRules) List(opts v1.ListOptions) (result *v1alpha1.MysqlVirtualNetworkRuleList, err error) {
+func (c *mysqlVirtualNetworkRules) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.MysqlVirtualNetworkRuleList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *mysqlVirtualNetworkRules) List(opts v1.ListOptions) (result *v1alpha1.M
 		Resource("mysqlvirtualnetworkrules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested mysqlVirtualNetworkRules.
-func (c *mysqlVirtualNetworkRules) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *mysqlVirtualNetworkRules) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *mysqlVirtualNetworkRules) Watch(opts v1.ListOptions) (watch.Interface, 
 		Resource("mysqlvirtualnetworkrules").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a mysqlVirtualNetworkRule and creates it.  Returns the server's representation of the mysqlVirtualNetworkRule, and an error, if there is any.
-func (c *mysqlVirtualNetworkRules) Create(mysqlVirtualNetworkRule *v1alpha1.MysqlVirtualNetworkRule) (result *v1alpha1.MysqlVirtualNetworkRule, err error) {
+func (c *mysqlVirtualNetworkRules) Create(ctx context.Context, mysqlVirtualNetworkRule *v1alpha1.MysqlVirtualNetworkRule, opts v1.CreateOptions) (result *v1alpha1.MysqlVirtualNetworkRule, err error) {
 	result = &v1alpha1.MysqlVirtualNetworkRule{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("mysqlvirtualnetworkrules").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(mysqlVirtualNetworkRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a mysqlVirtualNetworkRule and updates it. Returns the server's representation of the mysqlVirtualNetworkRule, and an error, if there is any.
-func (c *mysqlVirtualNetworkRules) Update(mysqlVirtualNetworkRule *v1alpha1.MysqlVirtualNetworkRule) (result *v1alpha1.MysqlVirtualNetworkRule, err error) {
+func (c *mysqlVirtualNetworkRules) Update(ctx context.Context, mysqlVirtualNetworkRule *v1alpha1.MysqlVirtualNetworkRule, opts v1.UpdateOptions) (result *v1alpha1.MysqlVirtualNetworkRule, err error) {
 	result = &v1alpha1.MysqlVirtualNetworkRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("mysqlvirtualnetworkrules").
 		Name(mysqlVirtualNetworkRule.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(mysqlVirtualNetworkRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *mysqlVirtualNetworkRules) UpdateStatus(mysqlVirtualNetworkRule *v1alpha1.MysqlVirtualNetworkRule) (result *v1alpha1.MysqlVirtualNetworkRule, err error) {
+func (c *mysqlVirtualNetworkRules) UpdateStatus(ctx context.Context, mysqlVirtualNetworkRule *v1alpha1.MysqlVirtualNetworkRule, opts v1.UpdateOptions) (result *v1alpha1.MysqlVirtualNetworkRule, err error) {
 	result = &v1alpha1.MysqlVirtualNetworkRule{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("mysqlvirtualnetworkrules").
 		Name(mysqlVirtualNetworkRule.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(mysqlVirtualNetworkRule).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the mysqlVirtualNetworkRule and deletes it. Returns an error if one occurs.
-func (c *mysqlVirtualNetworkRules) Delete(name string, options *v1.DeleteOptions) error {
+func (c *mysqlVirtualNetworkRules) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("mysqlvirtualnetworkrules").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *mysqlVirtualNetworkRules) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *mysqlVirtualNetworkRules) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("mysqlvirtualnetworkrules").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched mysqlVirtualNetworkRule.
-func (c *mysqlVirtualNetworkRules) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MysqlVirtualNetworkRule, err error) {
+func (c *mysqlVirtualNetworkRules) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MysqlVirtualNetworkRule, err error) {
 	result = &v1alpha1.MysqlVirtualNetworkRule{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("mysqlvirtualnetworkrules").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

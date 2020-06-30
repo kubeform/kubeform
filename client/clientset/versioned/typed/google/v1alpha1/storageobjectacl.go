@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type StorageObjectACLsGetter interface {
 
 // StorageObjectACLInterface has methods to work with StorageObjectACL resources.
 type StorageObjectACLInterface interface {
-	Create(*v1alpha1.StorageObjectACL) (*v1alpha1.StorageObjectACL, error)
-	Update(*v1alpha1.StorageObjectACL) (*v1alpha1.StorageObjectACL, error)
-	UpdateStatus(*v1alpha1.StorageObjectACL) (*v1alpha1.StorageObjectACL, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.StorageObjectACL, error)
-	List(opts v1.ListOptions) (*v1alpha1.StorageObjectACLList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StorageObjectACL, err error)
+	Create(ctx context.Context, storageObjectACL *v1alpha1.StorageObjectACL, opts v1.CreateOptions) (*v1alpha1.StorageObjectACL, error)
+	Update(ctx context.Context, storageObjectACL *v1alpha1.StorageObjectACL, opts v1.UpdateOptions) (*v1alpha1.StorageObjectACL, error)
+	UpdateStatus(ctx context.Context, storageObjectACL *v1alpha1.StorageObjectACL, opts v1.UpdateOptions) (*v1alpha1.StorageObjectACL, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.StorageObjectACL, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.StorageObjectACLList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StorageObjectACL, err error)
 	StorageObjectACLExpansion
 }
 
@@ -65,20 +66,20 @@ func newStorageObjectACLs(c *GoogleV1alpha1Client, namespace string) *storageObj
 }
 
 // Get takes name of the storageObjectACL, and returns the corresponding storageObjectACL object, and an error if there is any.
-func (c *storageObjectACLs) Get(name string, options v1.GetOptions) (result *v1alpha1.StorageObjectACL, err error) {
+func (c *storageObjectACLs) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.StorageObjectACL, err error) {
 	result = &v1alpha1.StorageObjectACL{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("storageobjectacls").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of StorageObjectACLs that match those selectors.
-func (c *storageObjectACLs) List(opts v1.ListOptions) (result *v1alpha1.StorageObjectACLList, err error) {
+func (c *storageObjectACLs) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.StorageObjectACLList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *storageObjectACLs) List(opts v1.ListOptions) (result *v1alpha1.StorageO
 		Resource("storageobjectacls").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested storageObjectACLs.
-func (c *storageObjectACLs) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *storageObjectACLs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *storageObjectACLs) Watch(opts v1.ListOptions) (watch.Interface, error) 
 		Resource("storageobjectacls").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a storageObjectACL and creates it.  Returns the server's representation of the storageObjectACL, and an error, if there is any.
-func (c *storageObjectACLs) Create(storageObjectACL *v1alpha1.StorageObjectACL) (result *v1alpha1.StorageObjectACL, err error) {
+func (c *storageObjectACLs) Create(ctx context.Context, storageObjectACL *v1alpha1.StorageObjectACL, opts v1.CreateOptions) (result *v1alpha1.StorageObjectACL, err error) {
 	result = &v1alpha1.StorageObjectACL{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("storageobjectacls").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(storageObjectACL).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a storageObjectACL and updates it. Returns the server's representation of the storageObjectACL, and an error, if there is any.
-func (c *storageObjectACLs) Update(storageObjectACL *v1alpha1.StorageObjectACL) (result *v1alpha1.StorageObjectACL, err error) {
+func (c *storageObjectACLs) Update(ctx context.Context, storageObjectACL *v1alpha1.StorageObjectACL, opts v1.UpdateOptions) (result *v1alpha1.StorageObjectACL, err error) {
 	result = &v1alpha1.StorageObjectACL{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("storageobjectacls").
 		Name(storageObjectACL.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(storageObjectACL).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *storageObjectACLs) UpdateStatus(storageObjectACL *v1alpha1.StorageObjectACL) (result *v1alpha1.StorageObjectACL, err error) {
+func (c *storageObjectACLs) UpdateStatus(ctx context.Context, storageObjectACL *v1alpha1.StorageObjectACL, opts v1.UpdateOptions) (result *v1alpha1.StorageObjectACL, err error) {
 	result = &v1alpha1.StorageObjectACL{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("storageobjectacls").
 		Name(storageObjectACL.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(storageObjectACL).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the storageObjectACL and deletes it. Returns an error if one occurs.
-func (c *storageObjectACLs) Delete(name string, options *v1.DeleteOptions) error {
+func (c *storageObjectACLs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("storageobjectacls").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *storageObjectACLs) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *storageObjectACLs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("storageobjectacls").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched storageObjectACL.
-func (c *storageObjectACLs) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StorageObjectACL, err error) {
+func (c *storageObjectACLs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StorageObjectACL, err error) {
 	result = &v1alpha1.StorageObjectACL{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("storageobjectacls").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

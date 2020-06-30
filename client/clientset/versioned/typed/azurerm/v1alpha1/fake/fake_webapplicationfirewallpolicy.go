@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var webapplicationfirewallpoliciesResource = schema.GroupVersionResource{Group: 
 var webapplicationfirewallpoliciesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "WebApplicationFirewallPolicy"}
 
 // Get takes name of the webApplicationFirewallPolicy, and returns the corresponding webApplicationFirewallPolicy object, and an error if there is any.
-func (c *FakeWebApplicationFirewallPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.WebApplicationFirewallPolicy, err error) {
+func (c *FakeWebApplicationFirewallPolicies) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.WebApplicationFirewallPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(webapplicationfirewallpoliciesResource, c.ns, name), &v1alpha1.WebApplicationFirewallPolicy{})
 
@@ -51,7 +53,7 @@ func (c *FakeWebApplicationFirewallPolicies) Get(name string, options v1.GetOpti
 }
 
 // List takes label and field selectors, and returns the list of WebApplicationFirewallPolicies that match those selectors.
-func (c *FakeWebApplicationFirewallPolicies) List(opts v1.ListOptions) (result *v1alpha1.WebApplicationFirewallPolicyList, err error) {
+func (c *FakeWebApplicationFirewallPolicies) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.WebApplicationFirewallPolicyList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(webapplicationfirewallpoliciesResource, webapplicationfirewallpoliciesKind, c.ns, opts), &v1alpha1.WebApplicationFirewallPolicyList{})
 
@@ -73,14 +75,14 @@ func (c *FakeWebApplicationFirewallPolicies) List(opts v1.ListOptions) (result *
 }
 
 // Watch returns a watch.Interface that watches the requested webApplicationFirewallPolicies.
-func (c *FakeWebApplicationFirewallPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeWebApplicationFirewallPolicies) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(webapplicationfirewallpoliciesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a webApplicationFirewallPolicy and creates it.  Returns the server's representation of the webApplicationFirewallPolicy, and an error, if there is any.
-func (c *FakeWebApplicationFirewallPolicies) Create(webApplicationFirewallPolicy *v1alpha1.WebApplicationFirewallPolicy) (result *v1alpha1.WebApplicationFirewallPolicy, err error) {
+func (c *FakeWebApplicationFirewallPolicies) Create(ctx context.Context, webApplicationFirewallPolicy *v1alpha1.WebApplicationFirewallPolicy, opts v1.CreateOptions) (result *v1alpha1.WebApplicationFirewallPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(webapplicationfirewallpoliciesResource, c.ns, webApplicationFirewallPolicy), &v1alpha1.WebApplicationFirewallPolicy{})
 
@@ -91,7 +93,7 @@ func (c *FakeWebApplicationFirewallPolicies) Create(webApplicationFirewallPolicy
 }
 
 // Update takes the representation of a webApplicationFirewallPolicy and updates it. Returns the server's representation of the webApplicationFirewallPolicy, and an error, if there is any.
-func (c *FakeWebApplicationFirewallPolicies) Update(webApplicationFirewallPolicy *v1alpha1.WebApplicationFirewallPolicy) (result *v1alpha1.WebApplicationFirewallPolicy, err error) {
+func (c *FakeWebApplicationFirewallPolicies) Update(ctx context.Context, webApplicationFirewallPolicy *v1alpha1.WebApplicationFirewallPolicy, opts v1.UpdateOptions) (result *v1alpha1.WebApplicationFirewallPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(webapplicationfirewallpoliciesResource, c.ns, webApplicationFirewallPolicy), &v1alpha1.WebApplicationFirewallPolicy{})
 
@@ -103,7 +105,7 @@ func (c *FakeWebApplicationFirewallPolicies) Update(webApplicationFirewallPolicy
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeWebApplicationFirewallPolicies) UpdateStatus(webApplicationFirewallPolicy *v1alpha1.WebApplicationFirewallPolicy) (*v1alpha1.WebApplicationFirewallPolicy, error) {
+func (c *FakeWebApplicationFirewallPolicies) UpdateStatus(ctx context.Context, webApplicationFirewallPolicy *v1alpha1.WebApplicationFirewallPolicy, opts v1.UpdateOptions) (*v1alpha1.WebApplicationFirewallPolicy, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(webapplicationfirewallpoliciesResource, "status", c.ns, webApplicationFirewallPolicy), &v1alpha1.WebApplicationFirewallPolicy{})
 
@@ -114,7 +116,7 @@ func (c *FakeWebApplicationFirewallPolicies) UpdateStatus(webApplicationFirewall
 }
 
 // Delete takes name of the webApplicationFirewallPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeWebApplicationFirewallPolicies) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeWebApplicationFirewallPolicies) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(webapplicationfirewallpoliciesResource, c.ns, name), &v1alpha1.WebApplicationFirewallPolicy{})
 
@@ -122,15 +124,15 @@ func (c *FakeWebApplicationFirewallPolicies) Delete(name string, options *v1.Del
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeWebApplicationFirewallPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(webapplicationfirewallpoliciesResource, c.ns, listOptions)
+func (c *FakeWebApplicationFirewallPolicies) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(webapplicationfirewallpoliciesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.WebApplicationFirewallPolicyList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched webApplicationFirewallPolicy.
-func (c *FakeWebApplicationFirewallPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.WebApplicationFirewallPolicy, err error) {
+func (c *FakeWebApplicationFirewallPolicies) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.WebApplicationFirewallPolicy, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(webapplicationfirewallpoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.WebApplicationFirewallPolicy{})
 

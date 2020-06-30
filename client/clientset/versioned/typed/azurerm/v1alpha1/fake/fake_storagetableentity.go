@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var storagetableentitiesResource = schema.GroupVersionResource{Group: "azurerm.k
 var storagetableentitiesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "StorageTableEntity"}
 
 // Get takes name of the storageTableEntity, and returns the corresponding storageTableEntity object, and an error if there is any.
-func (c *FakeStorageTableEntities) Get(name string, options v1.GetOptions) (result *v1alpha1.StorageTableEntity, err error) {
+func (c *FakeStorageTableEntities) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.StorageTableEntity, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(storagetableentitiesResource, c.ns, name), &v1alpha1.StorageTableEntity{})
 
@@ -51,7 +53,7 @@ func (c *FakeStorageTableEntities) Get(name string, options v1.GetOptions) (resu
 }
 
 // List takes label and field selectors, and returns the list of StorageTableEntities that match those selectors.
-func (c *FakeStorageTableEntities) List(opts v1.ListOptions) (result *v1alpha1.StorageTableEntityList, err error) {
+func (c *FakeStorageTableEntities) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.StorageTableEntityList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(storagetableentitiesResource, storagetableentitiesKind, c.ns, opts), &v1alpha1.StorageTableEntityList{})
 
@@ -73,14 +75,14 @@ func (c *FakeStorageTableEntities) List(opts v1.ListOptions) (result *v1alpha1.S
 }
 
 // Watch returns a watch.Interface that watches the requested storageTableEntities.
-func (c *FakeStorageTableEntities) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeStorageTableEntities) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(storagetableentitiesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a storageTableEntity and creates it.  Returns the server's representation of the storageTableEntity, and an error, if there is any.
-func (c *FakeStorageTableEntities) Create(storageTableEntity *v1alpha1.StorageTableEntity) (result *v1alpha1.StorageTableEntity, err error) {
+func (c *FakeStorageTableEntities) Create(ctx context.Context, storageTableEntity *v1alpha1.StorageTableEntity, opts v1.CreateOptions) (result *v1alpha1.StorageTableEntity, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(storagetableentitiesResource, c.ns, storageTableEntity), &v1alpha1.StorageTableEntity{})
 
@@ -91,7 +93,7 @@ func (c *FakeStorageTableEntities) Create(storageTableEntity *v1alpha1.StorageTa
 }
 
 // Update takes the representation of a storageTableEntity and updates it. Returns the server's representation of the storageTableEntity, and an error, if there is any.
-func (c *FakeStorageTableEntities) Update(storageTableEntity *v1alpha1.StorageTableEntity) (result *v1alpha1.StorageTableEntity, err error) {
+func (c *FakeStorageTableEntities) Update(ctx context.Context, storageTableEntity *v1alpha1.StorageTableEntity, opts v1.UpdateOptions) (result *v1alpha1.StorageTableEntity, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(storagetableentitiesResource, c.ns, storageTableEntity), &v1alpha1.StorageTableEntity{})
 
@@ -103,7 +105,7 @@ func (c *FakeStorageTableEntities) Update(storageTableEntity *v1alpha1.StorageTa
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeStorageTableEntities) UpdateStatus(storageTableEntity *v1alpha1.StorageTableEntity) (*v1alpha1.StorageTableEntity, error) {
+func (c *FakeStorageTableEntities) UpdateStatus(ctx context.Context, storageTableEntity *v1alpha1.StorageTableEntity, opts v1.UpdateOptions) (*v1alpha1.StorageTableEntity, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(storagetableentitiesResource, "status", c.ns, storageTableEntity), &v1alpha1.StorageTableEntity{})
 
@@ -114,7 +116,7 @@ func (c *FakeStorageTableEntities) UpdateStatus(storageTableEntity *v1alpha1.Sto
 }
 
 // Delete takes name of the storageTableEntity and deletes it. Returns an error if one occurs.
-func (c *FakeStorageTableEntities) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeStorageTableEntities) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(storagetableentitiesResource, c.ns, name), &v1alpha1.StorageTableEntity{})
 
@@ -122,15 +124,15 @@ func (c *FakeStorageTableEntities) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeStorageTableEntities) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(storagetableentitiesResource, c.ns, listOptions)
+func (c *FakeStorageTableEntities) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(storagetableentitiesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.StorageTableEntityList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched storageTableEntity.
-func (c *FakeStorageTableEntities) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StorageTableEntity, err error) {
+func (c *FakeStorageTableEntities) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StorageTableEntity, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(storagetableentitiesResource, c.ns, name, pt, data, subresources...), &v1alpha1.StorageTableEntity{})
 

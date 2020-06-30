@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/digitalocean/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var databaseusersResource = schema.GroupVersionResource{Group: "digitalocean.kub
 var databaseusersKind = schema.GroupVersionKind{Group: "digitalocean.kubeform.com", Version: "v1alpha1", Kind: "DatabaseUser"}
 
 // Get takes name of the databaseUser, and returns the corresponding databaseUser object, and an error if there is any.
-func (c *FakeDatabaseUsers) Get(name string, options v1.GetOptions) (result *v1alpha1.DatabaseUser, err error) {
+func (c *FakeDatabaseUsers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DatabaseUser, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(databaseusersResource, c.ns, name), &v1alpha1.DatabaseUser{})
 
@@ -51,7 +53,7 @@ func (c *FakeDatabaseUsers) Get(name string, options v1.GetOptions) (result *v1a
 }
 
 // List takes label and field selectors, and returns the list of DatabaseUsers that match those selectors.
-func (c *FakeDatabaseUsers) List(opts v1.ListOptions) (result *v1alpha1.DatabaseUserList, err error) {
+func (c *FakeDatabaseUsers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DatabaseUserList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(databaseusersResource, databaseusersKind, c.ns, opts), &v1alpha1.DatabaseUserList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDatabaseUsers) List(opts v1.ListOptions) (result *v1alpha1.Database
 }
 
 // Watch returns a watch.Interface that watches the requested databaseUsers.
-func (c *FakeDatabaseUsers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDatabaseUsers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(databaseusersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a databaseUser and creates it.  Returns the server's representation of the databaseUser, and an error, if there is any.
-func (c *FakeDatabaseUsers) Create(databaseUser *v1alpha1.DatabaseUser) (result *v1alpha1.DatabaseUser, err error) {
+func (c *FakeDatabaseUsers) Create(ctx context.Context, databaseUser *v1alpha1.DatabaseUser, opts v1.CreateOptions) (result *v1alpha1.DatabaseUser, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(databaseusersResource, c.ns, databaseUser), &v1alpha1.DatabaseUser{})
 
@@ -91,7 +93,7 @@ func (c *FakeDatabaseUsers) Create(databaseUser *v1alpha1.DatabaseUser) (result 
 }
 
 // Update takes the representation of a databaseUser and updates it. Returns the server's representation of the databaseUser, and an error, if there is any.
-func (c *FakeDatabaseUsers) Update(databaseUser *v1alpha1.DatabaseUser) (result *v1alpha1.DatabaseUser, err error) {
+func (c *FakeDatabaseUsers) Update(ctx context.Context, databaseUser *v1alpha1.DatabaseUser, opts v1.UpdateOptions) (result *v1alpha1.DatabaseUser, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(databaseusersResource, c.ns, databaseUser), &v1alpha1.DatabaseUser{})
 
@@ -103,7 +105,7 @@ func (c *FakeDatabaseUsers) Update(databaseUser *v1alpha1.DatabaseUser) (result 
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDatabaseUsers) UpdateStatus(databaseUser *v1alpha1.DatabaseUser) (*v1alpha1.DatabaseUser, error) {
+func (c *FakeDatabaseUsers) UpdateStatus(ctx context.Context, databaseUser *v1alpha1.DatabaseUser, opts v1.UpdateOptions) (*v1alpha1.DatabaseUser, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(databaseusersResource, "status", c.ns, databaseUser), &v1alpha1.DatabaseUser{})
 
@@ -114,7 +116,7 @@ func (c *FakeDatabaseUsers) UpdateStatus(databaseUser *v1alpha1.DatabaseUser) (*
 }
 
 // Delete takes name of the databaseUser and deletes it. Returns an error if one occurs.
-func (c *FakeDatabaseUsers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDatabaseUsers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(databaseusersResource, c.ns, name), &v1alpha1.DatabaseUser{})
 
@@ -122,15 +124,15 @@ func (c *FakeDatabaseUsers) Delete(name string, options *v1.DeleteOptions) error
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDatabaseUsers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(databaseusersResource, c.ns, listOptions)
+func (c *FakeDatabaseUsers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(databaseusersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DatabaseUserList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched databaseUser.
-func (c *FakeDatabaseUsers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DatabaseUser, err error) {
+func (c *FakeDatabaseUsers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DatabaseUser, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(databaseusersResource, c.ns, name, pt, data, subresources...), &v1alpha1.DatabaseUser{})
 

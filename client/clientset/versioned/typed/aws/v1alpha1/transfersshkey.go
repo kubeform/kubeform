@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
@@ -38,15 +39,15 @@ type TransferSSHKeysGetter interface {
 
 // TransferSSHKeyInterface has methods to work with TransferSSHKey resources.
 type TransferSSHKeyInterface interface {
-	Create(*v1alpha1.TransferSSHKey) (*v1alpha1.TransferSSHKey, error)
-	Update(*v1alpha1.TransferSSHKey) (*v1alpha1.TransferSSHKey, error)
-	UpdateStatus(*v1alpha1.TransferSSHKey) (*v1alpha1.TransferSSHKey, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.TransferSSHKey, error)
-	List(opts v1.ListOptions) (*v1alpha1.TransferSSHKeyList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.TransferSSHKey, err error)
+	Create(ctx context.Context, transferSSHKey *v1alpha1.TransferSSHKey, opts v1.CreateOptions) (*v1alpha1.TransferSSHKey, error)
+	Update(ctx context.Context, transferSSHKey *v1alpha1.TransferSSHKey, opts v1.UpdateOptions) (*v1alpha1.TransferSSHKey, error)
+	UpdateStatus(ctx context.Context, transferSSHKey *v1alpha1.TransferSSHKey, opts v1.UpdateOptions) (*v1alpha1.TransferSSHKey, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.TransferSSHKey, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.TransferSSHKeyList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.TransferSSHKey, err error)
 	TransferSSHKeyExpansion
 }
 
@@ -65,20 +66,20 @@ func newTransferSSHKeys(c *AwsV1alpha1Client, namespace string) *transferSSHKeys
 }
 
 // Get takes name of the transferSSHKey, and returns the corresponding transferSSHKey object, and an error if there is any.
-func (c *transferSSHKeys) Get(name string, options v1.GetOptions) (result *v1alpha1.TransferSSHKey, err error) {
+func (c *transferSSHKeys) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.TransferSSHKey, err error) {
 	result = &v1alpha1.TransferSSHKey{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("transfersshkeys").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of TransferSSHKeys that match those selectors.
-func (c *transferSSHKeys) List(opts v1.ListOptions) (result *v1alpha1.TransferSSHKeyList, err error) {
+func (c *transferSSHKeys) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.TransferSSHKeyList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *transferSSHKeys) List(opts v1.ListOptions) (result *v1alpha1.TransferSS
 		Resource("transfersshkeys").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested transferSSHKeys.
-func (c *transferSSHKeys) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *transferSSHKeys) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *transferSSHKeys) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("transfersshkeys").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a transferSSHKey and creates it.  Returns the server's representation of the transferSSHKey, and an error, if there is any.
-func (c *transferSSHKeys) Create(transferSSHKey *v1alpha1.TransferSSHKey) (result *v1alpha1.TransferSSHKey, err error) {
+func (c *transferSSHKeys) Create(ctx context.Context, transferSSHKey *v1alpha1.TransferSSHKey, opts v1.CreateOptions) (result *v1alpha1.TransferSSHKey, err error) {
 	result = &v1alpha1.TransferSSHKey{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("transfersshkeys").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(transferSSHKey).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a transferSSHKey and updates it. Returns the server's representation of the transferSSHKey, and an error, if there is any.
-func (c *transferSSHKeys) Update(transferSSHKey *v1alpha1.TransferSSHKey) (result *v1alpha1.TransferSSHKey, err error) {
+func (c *transferSSHKeys) Update(ctx context.Context, transferSSHKey *v1alpha1.TransferSSHKey, opts v1.UpdateOptions) (result *v1alpha1.TransferSSHKey, err error) {
 	result = &v1alpha1.TransferSSHKey{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("transfersshkeys").
 		Name(transferSSHKey.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(transferSSHKey).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *transferSSHKeys) UpdateStatus(transferSSHKey *v1alpha1.TransferSSHKey) (result *v1alpha1.TransferSSHKey, err error) {
+func (c *transferSSHKeys) UpdateStatus(ctx context.Context, transferSSHKey *v1alpha1.TransferSSHKey, opts v1.UpdateOptions) (result *v1alpha1.TransferSSHKey, err error) {
 	result = &v1alpha1.TransferSSHKey{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("transfersshkeys").
 		Name(transferSSHKey.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(transferSSHKey).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the transferSSHKey and deletes it. Returns an error if one occurs.
-func (c *transferSSHKeys) Delete(name string, options *v1.DeleteOptions) error {
+func (c *transferSSHKeys) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("transfersshkeys").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *transferSSHKeys) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *transferSSHKeys) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("transfersshkeys").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched transferSSHKey.
-func (c *transferSSHKeys) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.TransferSSHKey, err error) {
+func (c *transferSSHKeys) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.TransferSSHKey, err error) {
 	result = &v1alpha1.TransferSSHKey{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("transfersshkeys").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

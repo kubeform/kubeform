@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var kmskeyringiambindingsResource = schema.GroupVersionResource{Group: "google.k
 var kmskeyringiambindingsKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "KmsKeyRingIamBinding"}
 
 // Get takes name of the kmsKeyRingIamBinding, and returns the corresponding kmsKeyRingIamBinding object, and an error if there is any.
-func (c *FakeKmsKeyRingIamBindings) Get(name string, options v1.GetOptions) (result *v1alpha1.KmsKeyRingIamBinding, err error) {
+func (c *FakeKmsKeyRingIamBindings) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.KmsKeyRingIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(kmskeyringiambindingsResource, c.ns, name), &v1alpha1.KmsKeyRingIamBinding{})
 
@@ -51,7 +53,7 @@ func (c *FakeKmsKeyRingIamBindings) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of KmsKeyRingIamBindings that match those selectors.
-func (c *FakeKmsKeyRingIamBindings) List(opts v1.ListOptions) (result *v1alpha1.KmsKeyRingIamBindingList, err error) {
+func (c *FakeKmsKeyRingIamBindings) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.KmsKeyRingIamBindingList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(kmskeyringiambindingsResource, kmskeyringiambindingsKind, c.ns, opts), &v1alpha1.KmsKeyRingIamBindingList{})
 
@@ -73,14 +75,14 @@ func (c *FakeKmsKeyRingIamBindings) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested kmsKeyRingIamBindings.
-func (c *FakeKmsKeyRingIamBindings) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeKmsKeyRingIamBindings) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(kmskeyringiambindingsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a kmsKeyRingIamBinding and creates it.  Returns the server's representation of the kmsKeyRingIamBinding, and an error, if there is any.
-func (c *FakeKmsKeyRingIamBindings) Create(kmsKeyRingIamBinding *v1alpha1.KmsKeyRingIamBinding) (result *v1alpha1.KmsKeyRingIamBinding, err error) {
+func (c *FakeKmsKeyRingIamBindings) Create(ctx context.Context, kmsKeyRingIamBinding *v1alpha1.KmsKeyRingIamBinding, opts v1.CreateOptions) (result *v1alpha1.KmsKeyRingIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(kmskeyringiambindingsResource, c.ns, kmsKeyRingIamBinding), &v1alpha1.KmsKeyRingIamBinding{})
 
@@ -91,7 +93,7 @@ func (c *FakeKmsKeyRingIamBindings) Create(kmsKeyRingIamBinding *v1alpha1.KmsKey
 }
 
 // Update takes the representation of a kmsKeyRingIamBinding and updates it. Returns the server's representation of the kmsKeyRingIamBinding, and an error, if there is any.
-func (c *FakeKmsKeyRingIamBindings) Update(kmsKeyRingIamBinding *v1alpha1.KmsKeyRingIamBinding) (result *v1alpha1.KmsKeyRingIamBinding, err error) {
+func (c *FakeKmsKeyRingIamBindings) Update(ctx context.Context, kmsKeyRingIamBinding *v1alpha1.KmsKeyRingIamBinding, opts v1.UpdateOptions) (result *v1alpha1.KmsKeyRingIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(kmskeyringiambindingsResource, c.ns, kmsKeyRingIamBinding), &v1alpha1.KmsKeyRingIamBinding{})
 
@@ -103,7 +105,7 @@ func (c *FakeKmsKeyRingIamBindings) Update(kmsKeyRingIamBinding *v1alpha1.KmsKey
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeKmsKeyRingIamBindings) UpdateStatus(kmsKeyRingIamBinding *v1alpha1.KmsKeyRingIamBinding) (*v1alpha1.KmsKeyRingIamBinding, error) {
+func (c *FakeKmsKeyRingIamBindings) UpdateStatus(ctx context.Context, kmsKeyRingIamBinding *v1alpha1.KmsKeyRingIamBinding, opts v1.UpdateOptions) (*v1alpha1.KmsKeyRingIamBinding, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(kmskeyringiambindingsResource, "status", c.ns, kmsKeyRingIamBinding), &v1alpha1.KmsKeyRingIamBinding{})
 
@@ -114,7 +116,7 @@ func (c *FakeKmsKeyRingIamBindings) UpdateStatus(kmsKeyRingIamBinding *v1alpha1.
 }
 
 // Delete takes name of the kmsKeyRingIamBinding and deletes it. Returns an error if one occurs.
-func (c *FakeKmsKeyRingIamBindings) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeKmsKeyRingIamBindings) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(kmskeyringiambindingsResource, c.ns, name), &v1alpha1.KmsKeyRingIamBinding{})
 
@@ -122,15 +124,15 @@ func (c *FakeKmsKeyRingIamBindings) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeKmsKeyRingIamBindings) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(kmskeyringiambindingsResource, c.ns, listOptions)
+func (c *FakeKmsKeyRingIamBindings) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(kmskeyringiambindingsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.KmsKeyRingIamBindingList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched kmsKeyRingIamBinding.
-func (c *FakeKmsKeyRingIamBindings) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.KmsKeyRingIamBinding, err error) {
+func (c *FakeKmsKeyRingIamBindings) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.KmsKeyRingIamBinding, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(kmskeyringiambindingsResource, c.ns, name, pt, data, subresources...), &v1alpha1.KmsKeyRingIamBinding{})
 

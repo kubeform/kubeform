@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var sqlusersResource = schema.GroupVersionResource{Group: "google.kubeform.com",
 var sqlusersKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "SqlUser"}
 
 // Get takes name of the sqlUser, and returns the corresponding sqlUser object, and an error if there is any.
-func (c *FakeSqlUsers) Get(name string, options v1.GetOptions) (result *v1alpha1.SqlUser, err error) {
+func (c *FakeSqlUsers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.SqlUser, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(sqlusersResource, c.ns, name), &v1alpha1.SqlUser{})
 
@@ -51,7 +53,7 @@ func (c *FakeSqlUsers) Get(name string, options v1.GetOptions) (result *v1alpha1
 }
 
 // List takes label and field selectors, and returns the list of SqlUsers that match those selectors.
-func (c *FakeSqlUsers) List(opts v1.ListOptions) (result *v1alpha1.SqlUserList, err error) {
+func (c *FakeSqlUsers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.SqlUserList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(sqlusersResource, sqlusersKind, c.ns, opts), &v1alpha1.SqlUserList{})
 
@@ -73,14 +75,14 @@ func (c *FakeSqlUsers) List(opts v1.ListOptions) (result *v1alpha1.SqlUserList, 
 }
 
 // Watch returns a watch.Interface that watches the requested sqlUsers.
-func (c *FakeSqlUsers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeSqlUsers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(sqlusersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a sqlUser and creates it.  Returns the server's representation of the sqlUser, and an error, if there is any.
-func (c *FakeSqlUsers) Create(sqlUser *v1alpha1.SqlUser) (result *v1alpha1.SqlUser, err error) {
+func (c *FakeSqlUsers) Create(ctx context.Context, sqlUser *v1alpha1.SqlUser, opts v1.CreateOptions) (result *v1alpha1.SqlUser, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(sqlusersResource, c.ns, sqlUser), &v1alpha1.SqlUser{})
 
@@ -91,7 +93,7 @@ func (c *FakeSqlUsers) Create(sqlUser *v1alpha1.SqlUser) (result *v1alpha1.SqlUs
 }
 
 // Update takes the representation of a sqlUser and updates it. Returns the server's representation of the sqlUser, and an error, if there is any.
-func (c *FakeSqlUsers) Update(sqlUser *v1alpha1.SqlUser) (result *v1alpha1.SqlUser, err error) {
+func (c *FakeSqlUsers) Update(ctx context.Context, sqlUser *v1alpha1.SqlUser, opts v1.UpdateOptions) (result *v1alpha1.SqlUser, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(sqlusersResource, c.ns, sqlUser), &v1alpha1.SqlUser{})
 
@@ -103,7 +105,7 @@ func (c *FakeSqlUsers) Update(sqlUser *v1alpha1.SqlUser) (result *v1alpha1.SqlUs
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeSqlUsers) UpdateStatus(sqlUser *v1alpha1.SqlUser) (*v1alpha1.SqlUser, error) {
+func (c *FakeSqlUsers) UpdateStatus(ctx context.Context, sqlUser *v1alpha1.SqlUser, opts v1.UpdateOptions) (*v1alpha1.SqlUser, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(sqlusersResource, "status", c.ns, sqlUser), &v1alpha1.SqlUser{})
 
@@ -114,7 +116,7 @@ func (c *FakeSqlUsers) UpdateStatus(sqlUser *v1alpha1.SqlUser) (*v1alpha1.SqlUse
 }
 
 // Delete takes name of the sqlUser and deletes it. Returns an error if one occurs.
-func (c *FakeSqlUsers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeSqlUsers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(sqlusersResource, c.ns, name), &v1alpha1.SqlUser{})
 
@@ -122,15 +124,15 @@ func (c *FakeSqlUsers) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeSqlUsers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(sqlusersResource, c.ns, listOptions)
+func (c *FakeSqlUsers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(sqlusersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.SqlUserList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched sqlUser.
-func (c *FakeSqlUsers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SqlUser, err error) {
+func (c *FakeSqlUsers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.SqlUser, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(sqlusersResource, c.ns, name, pt, data, subresources...), &v1alpha1.SqlUser{})
 

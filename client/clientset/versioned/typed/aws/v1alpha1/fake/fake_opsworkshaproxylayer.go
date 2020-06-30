@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var opsworkshaproxylayersResource = schema.GroupVersionResource{Group: "aws.kube
 var opsworkshaproxylayersKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "OpsworksHaproxyLayer"}
 
 // Get takes name of the opsworksHaproxyLayer, and returns the corresponding opsworksHaproxyLayer object, and an error if there is any.
-func (c *FakeOpsworksHaproxyLayers) Get(name string, options v1.GetOptions) (result *v1alpha1.OpsworksHaproxyLayer, err error) {
+func (c *FakeOpsworksHaproxyLayers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.OpsworksHaproxyLayer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(opsworkshaproxylayersResource, c.ns, name), &v1alpha1.OpsworksHaproxyLayer{})
 
@@ -51,7 +53,7 @@ func (c *FakeOpsworksHaproxyLayers) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of OpsworksHaproxyLayers that match those selectors.
-func (c *FakeOpsworksHaproxyLayers) List(opts v1.ListOptions) (result *v1alpha1.OpsworksHaproxyLayerList, err error) {
+func (c *FakeOpsworksHaproxyLayers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.OpsworksHaproxyLayerList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(opsworkshaproxylayersResource, opsworkshaproxylayersKind, c.ns, opts), &v1alpha1.OpsworksHaproxyLayerList{})
 
@@ -73,14 +75,14 @@ func (c *FakeOpsworksHaproxyLayers) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested opsworksHaproxyLayers.
-func (c *FakeOpsworksHaproxyLayers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeOpsworksHaproxyLayers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(opsworkshaproxylayersResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a opsworksHaproxyLayer and creates it.  Returns the server's representation of the opsworksHaproxyLayer, and an error, if there is any.
-func (c *FakeOpsworksHaproxyLayers) Create(opsworksHaproxyLayer *v1alpha1.OpsworksHaproxyLayer) (result *v1alpha1.OpsworksHaproxyLayer, err error) {
+func (c *FakeOpsworksHaproxyLayers) Create(ctx context.Context, opsworksHaproxyLayer *v1alpha1.OpsworksHaproxyLayer, opts v1.CreateOptions) (result *v1alpha1.OpsworksHaproxyLayer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(opsworkshaproxylayersResource, c.ns, opsworksHaproxyLayer), &v1alpha1.OpsworksHaproxyLayer{})
 
@@ -91,7 +93,7 @@ func (c *FakeOpsworksHaproxyLayers) Create(opsworksHaproxyLayer *v1alpha1.Opswor
 }
 
 // Update takes the representation of a opsworksHaproxyLayer and updates it. Returns the server's representation of the opsworksHaproxyLayer, and an error, if there is any.
-func (c *FakeOpsworksHaproxyLayers) Update(opsworksHaproxyLayer *v1alpha1.OpsworksHaproxyLayer) (result *v1alpha1.OpsworksHaproxyLayer, err error) {
+func (c *FakeOpsworksHaproxyLayers) Update(ctx context.Context, opsworksHaproxyLayer *v1alpha1.OpsworksHaproxyLayer, opts v1.UpdateOptions) (result *v1alpha1.OpsworksHaproxyLayer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(opsworkshaproxylayersResource, c.ns, opsworksHaproxyLayer), &v1alpha1.OpsworksHaproxyLayer{})
 
@@ -103,7 +105,7 @@ func (c *FakeOpsworksHaproxyLayers) Update(opsworksHaproxyLayer *v1alpha1.Opswor
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeOpsworksHaproxyLayers) UpdateStatus(opsworksHaproxyLayer *v1alpha1.OpsworksHaproxyLayer) (*v1alpha1.OpsworksHaproxyLayer, error) {
+func (c *FakeOpsworksHaproxyLayers) UpdateStatus(ctx context.Context, opsworksHaproxyLayer *v1alpha1.OpsworksHaproxyLayer, opts v1.UpdateOptions) (*v1alpha1.OpsworksHaproxyLayer, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(opsworkshaproxylayersResource, "status", c.ns, opsworksHaproxyLayer), &v1alpha1.OpsworksHaproxyLayer{})
 
@@ -114,7 +116,7 @@ func (c *FakeOpsworksHaproxyLayers) UpdateStatus(opsworksHaproxyLayer *v1alpha1.
 }
 
 // Delete takes name of the opsworksHaproxyLayer and deletes it. Returns an error if one occurs.
-func (c *FakeOpsworksHaproxyLayers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeOpsworksHaproxyLayers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(opsworkshaproxylayersResource, c.ns, name), &v1alpha1.OpsworksHaproxyLayer{})
 
@@ -122,15 +124,15 @@ func (c *FakeOpsworksHaproxyLayers) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeOpsworksHaproxyLayers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(opsworkshaproxylayersResource, c.ns, listOptions)
+func (c *FakeOpsworksHaproxyLayers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(opsworkshaproxylayersResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.OpsworksHaproxyLayerList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched opsworksHaproxyLayer.
-func (c *FakeOpsworksHaproxyLayers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.OpsworksHaproxyLayer, err error) {
+func (c *FakeOpsworksHaproxyLayers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.OpsworksHaproxyLayer, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(opsworkshaproxylayersResource, c.ns, name, pt, data, subresources...), &v1alpha1.OpsworksHaproxyLayer{})
 

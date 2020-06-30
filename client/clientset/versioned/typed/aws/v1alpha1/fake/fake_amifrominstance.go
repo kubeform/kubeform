@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var amifrominstancesResource = schema.GroupVersionResource{Group: "aws.kubeform.
 var amifrominstancesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "AmiFromInstance"}
 
 // Get takes name of the amiFromInstance, and returns the corresponding amiFromInstance object, and an error if there is any.
-func (c *FakeAmiFromInstances) Get(name string, options v1.GetOptions) (result *v1alpha1.AmiFromInstance, err error) {
+func (c *FakeAmiFromInstances) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.AmiFromInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(amifrominstancesResource, c.ns, name), &v1alpha1.AmiFromInstance{})
 
@@ -51,7 +53,7 @@ func (c *FakeAmiFromInstances) Get(name string, options v1.GetOptions) (result *
 }
 
 // List takes label and field selectors, and returns the list of AmiFromInstances that match those selectors.
-func (c *FakeAmiFromInstances) List(opts v1.ListOptions) (result *v1alpha1.AmiFromInstanceList, err error) {
+func (c *FakeAmiFromInstances) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.AmiFromInstanceList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(amifrominstancesResource, amifrominstancesKind, c.ns, opts), &v1alpha1.AmiFromInstanceList{})
 
@@ -73,14 +75,14 @@ func (c *FakeAmiFromInstances) List(opts v1.ListOptions) (result *v1alpha1.AmiFr
 }
 
 // Watch returns a watch.Interface that watches the requested amiFromInstances.
-func (c *FakeAmiFromInstances) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeAmiFromInstances) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(amifrominstancesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a amiFromInstance and creates it.  Returns the server's representation of the amiFromInstance, and an error, if there is any.
-func (c *FakeAmiFromInstances) Create(amiFromInstance *v1alpha1.AmiFromInstance) (result *v1alpha1.AmiFromInstance, err error) {
+func (c *FakeAmiFromInstances) Create(ctx context.Context, amiFromInstance *v1alpha1.AmiFromInstance, opts v1.CreateOptions) (result *v1alpha1.AmiFromInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(amifrominstancesResource, c.ns, amiFromInstance), &v1alpha1.AmiFromInstance{})
 
@@ -91,7 +93,7 @@ func (c *FakeAmiFromInstances) Create(amiFromInstance *v1alpha1.AmiFromInstance)
 }
 
 // Update takes the representation of a amiFromInstance and updates it. Returns the server's representation of the amiFromInstance, and an error, if there is any.
-func (c *FakeAmiFromInstances) Update(amiFromInstance *v1alpha1.AmiFromInstance) (result *v1alpha1.AmiFromInstance, err error) {
+func (c *FakeAmiFromInstances) Update(ctx context.Context, amiFromInstance *v1alpha1.AmiFromInstance, opts v1.UpdateOptions) (result *v1alpha1.AmiFromInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(amifrominstancesResource, c.ns, amiFromInstance), &v1alpha1.AmiFromInstance{})
 
@@ -103,7 +105,7 @@ func (c *FakeAmiFromInstances) Update(amiFromInstance *v1alpha1.AmiFromInstance)
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeAmiFromInstances) UpdateStatus(amiFromInstance *v1alpha1.AmiFromInstance) (*v1alpha1.AmiFromInstance, error) {
+func (c *FakeAmiFromInstances) UpdateStatus(ctx context.Context, amiFromInstance *v1alpha1.AmiFromInstance, opts v1.UpdateOptions) (*v1alpha1.AmiFromInstance, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(amifrominstancesResource, "status", c.ns, amiFromInstance), &v1alpha1.AmiFromInstance{})
 
@@ -114,7 +116,7 @@ func (c *FakeAmiFromInstances) UpdateStatus(amiFromInstance *v1alpha1.AmiFromIns
 }
 
 // Delete takes name of the amiFromInstance and deletes it. Returns an error if one occurs.
-func (c *FakeAmiFromInstances) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeAmiFromInstances) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(amifrominstancesResource, c.ns, name), &v1alpha1.AmiFromInstance{})
 
@@ -122,15 +124,15 @@ func (c *FakeAmiFromInstances) Delete(name string, options *v1.DeleteOptions) er
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeAmiFromInstances) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(amifrominstancesResource, c.ns, listOptions)
+func (c *FakeAmiFromInstances) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(amifrominstancesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.AmiFromInstanceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched amiFromInstance.
-func (c *FakeAmiFromInstances) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.AmiFromInstance, err error) {
+func (c *FakeAmiFromInstances) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.AmiFromInstance, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(amifrominstancesResource, c.ns, name, pt, data, subresources...), &v1alpha1.AmiFromInstance{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var datafactorydatasetmysqlsResource = schema.GroupVersionResource{Group: "azure
 var datafactorydatasetmysqlsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "DataFactoryDatasetMysql"}
 
 // Get takes name of the dataFactoryDatasetMysql, and returns the corresponding dataFactoryDatasetMysql object, and an error if there is any.
-func (c *FakeDataFactoryDatasetMysqls) Get(name string, options v1.GetOptions) (result *v1alpha1.DataFactoryDatasetMysql, err error) {
+func (c *FakeDataFactoryDatasetMysqls) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.DataFactoryDatasetMysql, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(datafactorydatasetmysqlsResource, c.ns, name), &v1alpha1.DataFactoryDatasetMysql{})
 
@@ -51,7 +53,7 @@ func (c *FakeDataFactoryDatasetMysqls) Get(name string, options v1.GetOptions) (
 }
 
 // List takes label and field selectors, and returns the list of DataFactoryDatasetMysqls that match those selectors.
-func (c *FakeDataFactoryDatasetMysqls) List(opts v1.ListOptions) (result *v1alpha1.DataFactoryDatasetMysqlList, err error) {
+func (c *FakeDataFactoryDatasetMysqls) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.DataFactoryDatasetMysqlList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(datafactorydatasetmysqlsResource, datafactorydatasetmysqlsKind, c.ns, opts), &v1alpha1.DataFactoryDatasetMysqlList{})
 
@@ -73,14 +75,14 @@ func (c *FakeDataFactoryDatasetMysqls) List(opts v1.ListOptions) (result *v1alph
 }
 
 // Watch returns a watch.Interface that watches the requested dataFactoryDatasetMysqls.
-func (c *FakeDataFactoryDatasetMysqls) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeDataFactoryDatasetMysqls) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(datafactorydatasetmysqlsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a dataFactoryDatasetMysql and creates it.  Returns the server's representation of the dataFactoryDatasetMysql, and an error, if there is any.
-func (c *FakeDataFactoryDatasetMysqls) Create(dataFactoryDatasetMysql *v1alpha1.DataFactoryDatasetMysql) (result *v1alpha1.DataFactoryDatasetMysql, err error) {
+func (c *FakeDataFactoryDatasetMysqls) Create(ctx context.Context, dataFactoryDatasetMysql *v1alpha1.DataFactoryDatasetMysql, opts v1.CreateOptions) (result *v1alpha1.DataFactoryDatasetMysql, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(datafactorydatasetmysqlsResource, c.ns, dataFactoryDatasetMysql), &v1alpha1.DataFactoryDatasetMysql{})
 
@@ -91,7 +93,7 @@ func (c *FakeDataFactoryDatasetMysqls) Create(dataFactoryDatasetMysql *v1alpha1.
 }
 
 // Update takes the representation of a dataFactoryDatasetMysql and updates it. Returns the server's representation of the dataFactoryDatasetMysql, and an error, if there is any.
-func (c *FakeDataFactoryDatasetMysqls) Update(dataFactoryDatasetMysql *v1alpha1.DataFactoryDatasetMysql) (result *v1alpha1.DataFactoryDatasetMysql, err error) {
+func (c *FakeDataFactoryDatasetMysqls) Update(ctx context.Context, dataFactoryDatasetMysql *v1alpha1.DataFactoryDatasetMysql, opts v1.UpdateOptions) (result *v1alpha1.DataFactoryDatasetMysql, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(datafactorydatasetmysqlsResource, c.ns, dataFactoryDatasetMysql), &v1alpha1.DataFactoryDatasetMysql{})
 
@@ -103,7 +105,7 @@ func (c *FakeDataFactoryDatasetMysqls) Update(dataFactoryDatasetMysql *v1alpha1.
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeDataFactoryDatasetMysqls) UpdateStatus(dataFactoryDatasetMysql *v1alpha1.DataFactoryDatasetMysql) (*v1alpha1.DataFactoryDatasetMysql, error) {
+func (c *FakeDataFactoryDatasetMysqls) UpdateStatus(ctx context.Context, dataFactoryDatasetMysql *v1alpha1.DataFactoryDatasetMysql, opts v1.UpdateOptions) (*v1alpha1.DataFactoryDatasetMysql, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(datafactorydatasetmysqlsResource, "status", c.ns, dataFactoryDatasetMysql), &v1alpha1.DataFactoryDatasetMysql{})
 
@@ -114,7 +116,7 @@ func (c *FakeDataFactoryDatasetMysqls) UpdateStatus(dataFactoryDatasetMysql *v1a
 }
 
 // Delete takes name of the dataFactoryDatasetMysql and deletes it. Returns an error if one occurs.
-func (c *FakeDataFactoryDatasetMysqls) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeDataFactoryDatasetMysqls) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(datafactorydatasetmysqlsResource, c.ns, name), &v1alpha1.DataFactoryDatasetMysql{})
 
@@ -122,15 +124,15 @@ func (c *FakeDataFactoryDatasetMysqls) Delete(name string, options *v1.DeleteOpt
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeDataFactoryDatasetMysqls) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(datafactorydatasetmysqlsResource, c.ns, listOptions)
+func (c *FakeDataFactoryDatasetMysqls) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(datafactorydatasetmysqlsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.DataFactoryDatasetMysqlList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched dataFactoryDatasetMysql.
-func (c *FakeDataFactoryDatasetMysqls) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.DataFactoryDatasetMysql, err error) {
+func (c *FakeDataFactoryDatasetMysqls) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.DataFactoryDatasetMysql, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(datafactorydatasetmysqlsResource, c.ns, name, pt, data, subresources...), &v1alpha1.DataFactoryDatasetMysql{})
 

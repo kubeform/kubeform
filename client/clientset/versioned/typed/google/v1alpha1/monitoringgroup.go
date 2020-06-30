@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
@@ -38,15 +39,15 @@ type MonitoringGroupsGetter interface {
 
 // MonitoringGroupInterface has methods to work with MonitoringGroup resources.
 type MonitoringGroupInterface interface {
-	Create(*v1alpha1.MonitoringGroup) (*v1alpha1.MonitoringGroup, error)
-	Update(*v1alpha1.MonitoringGroup) (*v1alpha1.MonitoringGroup, error)
-	UpdateStatus(*v1alpha1.MonitoringGroup) (*v1alpha1.MonitoringGroup, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.MonitoringGroup, error)
-	List(opts v1.ListOptions) (*v1alpha1.MonitoringGroupList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MonitoringGroup, err error)
+	Create(ctx context.Context, monitoringGroup *v1alpha1.MonitoringGroup, opts v1.CreateOptions) (*v1alpha1.MonitoringGroup, error)
+	Update(ctx context.Context, monitoringGroup *v1alpha1.MonitoringGroup, opts v1.UpdateOptions) (*v1alpha1.MonitoringGroup, error)
+	UpdateStatus(ctx context.Context, monitoringGroup *v1alpha1.MonitoringGroup, opts v1.UpdateOptions) (*v1alpha1.MonitoringGroup, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.MonitoringGroup, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.MonitoringGroupList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MonitoringGroup, err error)
 	MonitoringGroupExpansion
 }
 
@@ -65,20 +66,20 @@ func newMonitoringGroups(c *GoogleV1alpha1Client, namespace string) *monitoringG
 }
 
 // Get takes name of the monitoringGroup, and returns the corresponding monitoringGroup object, and an error if there is any.
-func (c *monitoringGroups) Get(name string, options v1.GetOptions) (result *v1alpha1.MonitoringGroup, err error) {
+func (c *monitoringGroups) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.MonitoringGroup, err error) {
 	result = &v1alpha1.MonitoringGroup{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("monitoringgroups").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of MonitoringGroups that match those selectors.
-func (c *monitoringGroups) List(opts v1.ListOptions) (result *v1alpha1.MonitoringGroupList, err error) {
+func (c *monitoringGroups) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.MonitoringGroupList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *monitoringGroups) List(opts v1.ListOptions) (result *v1alpha1.Monitorin
 		Resource("monitoringgroups").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested monitoringGroups.
-func (c *monitoringGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *monitoringGroups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *monitoringGroups) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("monitoringgroups").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a monitoringGroup and creates it.  Returns the server's representation of the monitoringGroup, and an error, if there is any.
-func (c *monitoringGroups) Create(monitoringGroup *v1alpha1.MonitoringGroup) (result *v1alpha1.MonitoringGroup, err error) {
+func (c *monitoringGroups) Create(ctx context.Context, monitoringGroup *v1alpha1.MonitoringGroup, opts v1.CreateOptions) (result *v1alpha1.MonitoringGroup, err error) {
 	result = &v1alpha1.MonitoringGroup{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("monitoringgroups").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(monitoringGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a monitoringGroup and updates it. Returns the server's representation of the monitoringGroup, and an error, if there is any.
-func (c *monitoringGroups) Update(monitoringGroup *v1alpha1.MonitoringGroup) (result *v1alpha1.MonitoringGroup, err error) {
+func (c *monitoringGroups) Update(ctx context.Context, monitoringGroup *v1alpha1.MonitoringGroup, opts v1.UpdateOptions) (result *v1alpha1.MonitoringGroup, err error) {
 	result = &v1alpha1.MonitoringGroup{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("monitoringgroups").
 		Name(monitoringGroup.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(monitoringGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *monitoringGroups) UpdateStatus(monitoringGroup *v1alpha1.MonitoringGroup) (result *v1alpha1.MonitoringGroup, err error) {
+func (c *monitoringGroups) UpdateStatus(ctx context.Context, monitoringGroup *v1alpha1.MonitoringGroup, opts v1.UpdateOptions) (result *v1alpha1.MonitoringGroup, err error) {
 	result = &v1alpha1.MonitoringGroup{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("monitoringgroups").
 		Name(monitoringGroup.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(monitoringGroup).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the monitoringGroup and deletes it. Returns an error if one occurs.
-func (c *monitoringGroups) Delete(name string, options *v1.DeleteOptions) error {
+func (c *monitoringGroups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("monitoringgroups").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *monitoringGroups) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *monitoringGroups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("monitoringgroups").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched monitoringGroup.
-func (c *monitoringGroups) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MonitoringGroup, err error) {
+func (c *monitoringGroups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MonitoringGroup, err error) {
 	result = &v1alpha1.MonitoringGroup{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("monitoringgroups").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }

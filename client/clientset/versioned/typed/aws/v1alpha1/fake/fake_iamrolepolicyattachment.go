@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var iamrolepolicyattachmentsResource = schema.GroupVersionResource{Group: "aws.k
 var iamrolepolicyattachmentsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "IamRolePolicyAttachment"}
 
 // Get takes name of the iamRolePolicyAttachment, and returns the corresponding iamRolePolicyAttachment object, and an error if there is any.
-func (c *FakeIamRolePolicyAttachments) Get(name string, options v1.GetOptions) (result *v1alpha1.IamRolePolicyAttachment, err error) {
+func (c *FakeIamRolePolicyAttachments) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.IamRolePolicyAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(iamrolepolicyattachmentsResource, c.ns, name), &v1alpha1.IamRolePolicyAttachment{})
 
@@ -51,7 +53,7 @@ func (c *FakeIamRolePolicyAttachments) Get(name string, options v1.GetOptions) (
 }
 
 // List takes label and field selectors, and returns the list of IamRolePolicyAttachments that match those selectors.
-func (c *FakeIamRolePolicyAttachments) List(opts v1.ListOptions) (result *v1alpha1.IamRolePolicyAttachmentList, err error) {
+func (c *FakeIamRolePolicyAttachments) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.IamRolePolicyAttachmentList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(iamrolepolicyattachmentsResource, iamrolepolicyattachmentsKind, c.ns, opts), &v1alpha1.IamRolePolicyAttachmentList{})
 
@@ -73,14 +75,14 @@ func (c *FakeIamRolePolicyAttachments) List(opts v1.ListOptions) (result *v1alph
 }
 
 // Watch returns a watch.Interface that watches the requested iamRolePolicyAttachments.
-func (c *FakeIamRolePolicyAttachments) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeIamRolePolicyAttachments) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(iamrolepolicyattachmentsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a iamRolePolicyAttachment and creates it.  Returns the server's representation of the iamRolePolicyAttachment, and an error, if there is any.
-func (c *FakeIamRolePolicyAttachments) Create(iamRolePolicyAttachment *v1alpha1.IamRolePolicyAttachment) (result *v1alpha1.IamRolePolicyAttachment, err error) {
+func (c *FakeIamRolePolicyAttachments) Create(ctx context.Context, iamRolePolicyAttachment *v1alpha1.IamRolePolicyAttachment, opts v1.CreateOptions) (result *v1alpha1.IamRolePolicyAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(iamrolepolicyattachmentsResource, c.ns, iamRolePolicyAttachment), &v1alpha1.IamRolePolicyAttachment{})
 
@@ -91,7 +93,7 @@ func (c *FakeIamRolePolicyAttachments) Create(iamRolePolicyAttachment *v1alpha1.
 }
 
 // Update takes the representation of a iamRolePolicyAttachment and updates it. Returns the server's representation of the iamRolePolicyAttachment, and an error, if there is any.
-func (c *FakeIamRolePolicyAttachments) Update(iamRolePolicyAttachment *v1alpha1.IamRolePolicyAttachment) (result *v1alpha1.IamRolePolicyAttachment, err error) {
+func (c *FakeIamRolePolicyAttachments) Update(ctx context.Context, iamRolePolicyAttachment *v1alpha1.IamRolePolicyAttachment, opts v1.UpdateOptions) (result *v1alpha1.IamRolePolicyAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(iamrolepolicyattachmentsResource, c.ns, iamRolePolicyAttachment), &v1alpha1.IamRolePolicyAttachment{})
 
@@ -103,7 +105,7 @@ func (c *FakeIamRolePolicyAttachments) Update(iamRolePolicyAttachment *v1alpha1.
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeIamRolePolicyAttachments) UpdateStatus(iamRolePolicyAttachment *v1alpha1.IamRolePolicyAttachment) (*v1alpha1.IamRolePolicyAttachment, error) {
+func (c *FakeIamRolePolicyAttachments) UpdateStatus(ctx context.Context, iamRolePolicyAttachment *v1alpha1.IamRolePolicyAttachment, opts v1.UpdateOptions) (*v1alpha1.IamRolePolicyAttachment, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(iamrolepolicyattachmentsResource, "status", c.ns, iamRolePolicyAttachment), &v1alpha1.IamRolePolicyAttachment{})
 
@@ -114,7 +116,7 @@ func (c *FakeIamRolePolicyAttachments) UpdateStatus(iamRolePolicyAttachment *v1a
 }
 
 // Delete takes name of the iamRolePolicyAttachment and deletes it. Returns an error if one occurs.
-func (c *FakeIamRolePolicyAttachments) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeIamRolePolicyAttachments) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(iamrolepolicyattachmentsResource, c.ns, name), &v1alpha1.IamRolePolicyAttachment{})
 
@@ -122,15 +124,15 @@ func (c *FakeIamRolePolicyAttachments) Delete(name string, options *v1.DeleteOpt
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeIamRolePolicyAttachments) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(iamrolepolicyattachmentsResource, c.ns, listOptions)
+func (c *FakeIamRolePolicyAttachments) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(iamrolepolicyattachmentsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.IamRolePolicyAttachmentList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched iamRolePolicyAttachment.
-func (c *FakeIamRolePolicyAttachments) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.IamRolePolicyAttachment, err error) {
+func (c *FakeIamRolePolicyAttachments) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.IamRolePolicyAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(iamrolepolicyattachmentsResource, c.ns, name, pt, data, subresources...), &v1alpha1.IamRolePolicyAttachment{})
 

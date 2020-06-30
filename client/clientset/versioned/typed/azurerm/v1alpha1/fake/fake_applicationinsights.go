@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var applicationinsightsesResource = schema.GroupVersionResource{Group: "azurerm.
 var applicationinsightsesKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "ApplicationInsights"}
 
 // Get takes name of the applicationInsights, and returns the corresponding applicationInsights object, and an error if there is any.
-func (c *FakeApplicationInsightses) Get(name string, options v1.GetOptions) (result *v1alpha1.ApplicationInsights, err error) {
+func (c *FakeApplicationInsightses) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ApplicationInsights, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(applicationinsightsesResource, c.ns, name), &v1alpha1.ApplicationInsights{})
 
@@ -51,7 +53,7 @@ func (c *FakeApplicationInsightses) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of ApplicationInsightses that match those selectors.
-func (c *FakeApplicationInsightses) List(opts v1.ListOptions) (result *v1alpha1.ApplicationInsightsList, err error) {
+func (c *FakeApplicationInsightses) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ApplicationInsightsList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(applicationinsightsesResource, applicationinsightsesKind, c.ns, opts), &v1alpha1.ApplicationInsightsList{})
 
@@ -73,14 +75,14 @@ func (c *FakeApplicationInsightses) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested applicationInsightses.
-func (c *FakeApplicationInsightses) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeApplicationInsightses) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(applicationinsightsesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a applicationInsights and creates it.  Returns the server's representation of the applicationInsights, and an error, if there is any.
-func (c *FakeApplicationInsightses) Create(applicationInsights *v1alpha1.ApplicationInsights) (result *v1alpha1.ApplicationInsights, err error) {
+func (c *FakeApplicationInsightses) Create(ctx context.Context, applicationInsights *v1alpha1.ApplicationInsights, opts v1.CreateOptions) (result *v1alpha1.ApplicationInsights, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(applicationinsightsesResource, c.ns, applicationInsights), &v1alpha1.ApplicationInsights{})
 
@@ -91,7 +93,7 @@ func (c *FakeApplicationInsightses) Create(applicationInsights *v1alpha1.Applica
 }
 
 // Update takes the representation of a applicationInsights and updates it. Returns the server's representation of the applicationInsights, and an error, if there is any.
-func (c *FakeApplicationInsightses) Update(applicationInsights *v1alpha1.ApplicationInsights) (result *v1alpha1.ApplicationInsights, err error) {
+func (c *FakeApplicationInsightses) Update(ctx context.Context, applicationInsights *v1alpha1.ApplicationInsights, opts v1.UpdateOptions) (result *v1alpha1.ApplicationInsights, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(applicationinsightsesResource, c.ns, applicationInsights), &v1alpha1.ApplicationInsights{})
 
@@ -103,7 +105,7 @@ func (c *FakeApplicationInsightses) Update(applicationInsights *v1alpha1.Applica
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeApplicationInsightses) UpdateStatus(applicationInsights *v1alpha1.ApplicationInsights) (*v1alpha1.ApplicationInsights, error) {
+func (c *FakeApplicationInsightses) UpdateStatus(ctx context.Context, applicationInsights *v1alpha1.ApplicationInsights, opts v1.UpdateOptions) (*v1alpha1.ApplicationInsights, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(applicationinsightsesResource, "status", c.ns, applicationInsights), &v1alpha1.ApplicationInsights{})
 
@@ -114,7 +116,7 @@ func (c *FakeApplicationInsightses) UpdateStatus(applicationInsights *v1alpha1.A
 }
 
 // Delete takes name of the applicationInsights and deletes it. Returns an error if one occurs.
-func (c *FakeApplicationInsightses) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeApplicationInsightses) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(applicationinsightsesResource, c.ns, name), &v1alpha1.ApplicationInsights{})
 
@@ -122,15 +124,15 @@ func (c *FakeApplicationInsightses) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeApplicationInsightses) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(applicationinsightsesResource, c.ns, listOptions)
+func (c *FakeApplicationInsightses) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(applicationinsightsesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ApplicationInsightsList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched applicationInsights.
-func (c *FakeApplicationInsightses) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ApplicationInsights, err error) {
+func (c *FakeApplicationInsightses) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ApplicationInsights, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(applicationinsightsesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ApplicationInsights{})
 

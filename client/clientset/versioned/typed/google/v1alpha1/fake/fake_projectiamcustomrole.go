@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var projectiamcustomrolesResource = schema.GroupVersionResource{Group: "google.k
 var projectiamcustomrolesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ProjectIamCustomRole"}
 
 // Get takes name of the projectIamCustomRole, and returns the corresponding projectIamCustomRole object, and an error if there is any.
-func (c *FakeProjectIamCustomRoles) Get(name string, options v1.GetOptions) (result *v1alpha1.ProjectIamCustomRole, err error) {
+func (c *FakeProjectIamCustomRoles) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ProjectIamCustomRole, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(projectiamcustomrolesResource, c.ns, name), &v1alpha1.ProjectIamCustomRole{})
 
@@ -51,7 +53,7 @@ func (c *FakeProjectIamCustomRoles) Get(name string, options v1.GetOptions) (res
 }
 
 // List takes label and field selectors, and returns the list of ProjectIamCustomRoles that match those selectors.
-func (c *FakeProjectIamCustomRoles) List(opts v1.ListOptions) (result *v1alpha1.ProjectIamCustomRoleList, err error) {
+func (c *FakeProjectIamCustomRoles) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ProjectIamCustomRoleList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(projectiamcustomrolesResource, projectiamcustomrolesKind, c.ns, opts), &v1alpha1.ProjectIamCustomRoleList{})
 
@@ -73,14 +75,14 @@ func (c *FakeProjectIamCustomRoles) List(opts v1.ListOptions) (result *v1alpha1.
 }
 
 // Watch returns a watch.Interface that watches the requested projectIamCustomRoles.
-func (c *FakeProjectIamCustomRoles) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeProjectIamCustomRoles) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(projectiamcustomrolesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a projectIamCustomRole and creates it.  Returns the server's representation of the projectIamCustomRole, and an error, if there is any.
-func (c *FakeProjectIamCustomRoles) Create(projectIamCustomRole *v1alpha1.ProjectIamCustomRole) (result *v1alpha1.ProjectIamCustomRole, err error) {
+func (c *FakeProjectIamCustomRoles) Create(ctx context.Context, projectIamCustomRole *v1alpha1.ProjectIamCustomRole, opts v1.CreateOptions) (result *v1alpha1.ProjectIamCustomRole, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(projectiamcustomrolesResource, c.ns, projectIamCustomRole), &v1alpha1.ProjectIamCustomRole{})
 
@@ -91,7 +93,7 @@ func (c *FakeProjectIamCustomRoles) Create(projectIamCustomRole *v1alpha1.Projec
 }
 
 // Update takes the representation of a projectIamCustomRole and updates it. Returns the server's representation of the projectIamCustomRole, and an error, if there is any.
-func (c *FakeProjectIamCustomRoles) Update(projectIamCustomRole *v1alpha1.ProjectIamCustomRole) (result *v1alpha1.ProjectIamCustomRole, err error) {
+func (c *FakeProjectIamCustomRoles) Update(ctx context.Context, projectIamCustomRole *v1alpha1.ProjectIamCustomRole, opts v1.UpdateOptions) (result *v1alpha1.ProjectIamCustomRole, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(projectiamcustomrolesResource, c.ns, projectIamCustomRole), &v1alpha1.ProjectIamCustomRole{})
 
@@ -103,7 +105,7 @@ func (c *FakeProjectIamCustomRoles) Update(projectIamCustomRole *v1alpha1.Projec
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeProjectIamCustomRoles) UpdateStatus(projectIamCustomRole *v1alpha1.ProjectIamCustomRole) (*v1alpha1.ProjectIamCustomRole, error) {
+func (c *FakeProjectIamCustomRoles) UpdateStatus(ctx context.Context, projectIamCustomRole *v1alpha1.ProjectIamCustomRole, opts v1.UpdateOptions) (*v1alpha1.ProjectIamCustomRole, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(projectiamcustomrolesResource, "status", c.ns, projectIamCustomRole), &v1alpha1.ProjectIamCustomRole{})
 
@@ -114,7 +116,7 @@ func (c *FakeProjectIamCustomRoles) UpdateStatus(projectIamCustomRole *v1alpha1.
 }
 
 // Delete takes name of the projectIamCustomRole and deletes it. Returns an error if one occurs.
-func (c *FakeProjectIamCustomRoles) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeProjectIamCustomRoles) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(projectiamcustomrolesResource, c.ns, name), &v1alpha1.ProjectIamCustomRole{})
 
@@ -122,15 +124,15 @@ func (c *FakeProjectIamCustomRoles) Delete(name string, options *v1.DeleteOption
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeProjectIamCustomRoles) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(projectiamcustomrolesResource, c.ns, listOptions)
+func (c *FakeProjectIamCustomRoles) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(projectiamcustomrolesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ProjectIamCustomRoleList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched projectIamCustomRole.
-func (c *FakeProjectIamCustomRoles) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ProjectIamCustomRole, err error) {
+func (c *FakeProjectIamCustomRoles) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ProjectIamCustomRole, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(projectiamcustomrolesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ProjectIamCustomRole{})
 

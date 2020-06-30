@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var elasticbeanstalkconfigurationtemplatesResource = schema.GroupVersionResource
 var elasticbeanstalkconfigurationtemplatesKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "ElasticBeanstalkConfigurationTemplate"}
 
 // Get takes name of the elasticBeanstalkConfigurationTemplate, and returns the corresponding elasticBeanstalkConfigurationTemplate object, and an error if there is any.
-func (c *FakeElasticBeanstalkConfigurationTemplates) Get(name string, options v1.GetOptions) (result *v1alpha1.ElasticBeanstalkConfigurationTemplate, err error) {
+func (c *FakeElasticBeanstalkConfigurationTemplates) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ElasticBeanstalkConfigurationTemplate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(elasticbeanstalkconfigurationtemplatesResource, c.ns, name), &v1alpha1.ElasticBeanstalkConfigurationTemplate{})
 
@@ -51,7 +53,7 @@ func (c *FakeElasticBeanstalkConfigurationTemplates) Get(name string, options v1
 }
 
 // List takes label and field selectors, and returns the list of ElasticBeanstalkConfigurationTemplates that match those selectors.
-func (c *FakeElasticBeanstalkConfigurationTemplates) List(opts v1.ListOptions) (result *v1alpha1.ElasticBeanstalkConfigurationTemplateList, err error) {
+func (c *FakeElasticBeanstalkConfigurationTemplates) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ElasticBeanstalkConfigurationTemplateList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(elasticbeanstalkconfigurationtemplatesResource, elasticbeanstalkconfigurationtemplatesKind, c.ns, opts), &v1alpha1.ElasticBeanstalkConfigurationTemplateList{})
 
@@ -73,14 +75,14 @@ func (c *FakeElasticBeanstalkConfigurationTemplates) List(opts v1.ListOptions) (
 }
 
 // Watch returns a watch.Interface that watches the requested elasticBeanstalkConfigurationTemplates.
-func (c *FakeElasticBeanstalkConfigurationTemplates) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeElasticBeanstalkConfigurationTemplates) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(elasticbeanstalkconfigurationtemplatesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a elasticBeanstalkConfigurationTemplate and creates it.  Returns the server's representation of the elasticBeanstalkConfigurationTemplate, and an error, if there is any.
-func (c *FakeElasticBeanstalkConfigurationTemplates) Create(elasticBeanstalkConfigurationTemplate *v1alpha1.ElasticBeanstalkConfigurationTemplate) (result *v1alpha1.ElasticBeanstalkConfigurationTemplate, err error) {
+func (c *FakeElasticBeanstalkConfigurationTemplates) Create(ctx context.Context, elasticBeanstalkConfigurationTemplate *v1alpha1.ElasticBeanstalkConfigurationTemplate, opts v1.CreateOptions) (result *v1alpha1.ElasticBeanstalkConfigurationTemplate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(elasticbeanstalkconfigurationtemplatesResource, c.ns, elasticBeanstalkConfigurationTemplate), &v1alpha1.ElasticBeanstalkConfigurationTemplate{})
 
@@ -91,7 +93,7 @@ func (c *FakeElasticBeanstalkConfigurationTemplates) Create(elasticBeanstalkConf
 }
 
 // Update takes the representation of a elasticBeanstalkConfigurationTemplate and updates it. Returns the server's representation of the elasticBeanstalkConfigurationTemplate, and an error, if there is any.
-func (c *FakeElasticBeanstalkConfigurationTemplates) Update(elasticBeanstalkConfigurationTemplate *v1alpha1.ElasticBeanstalkConfigurationTemplate) (result *v1alpha1.ElasticBeanstalkConfigurationTemplate, err error) {
+func (c *FakeElasticBeanstalkConfigurationTemplates) Update(ctx context.Context, elasticBeanstalkConfigurationTemplate *v1alpha1.ElasticBeanstalkConfigurationTemplate, opts v1.UpdateOptions) (result *v1alpha1.ElasticBeanstalkConfigurationTemplate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(elasticbeanstalkconfigurationtemplatesResource, c.ns, elasticBeanstalkConfigurationTemplate), &v1alpha1.ElasticBeanstalkConfigurationTemplate{})
 
@@ -103,7 +105,7 @@ func (c *FakeElasticBeanstalkConfigurationTemplates) Update(elasticBeanstalkConf
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeElasticBeanstalkConfigurationTemplates) UpdateStatus(elasticBeanstalkConfigurationTemplate *v1alpha1.ElasticBeanstalkConfigurationTemplate) (*v1alpha1.ElasticBeanstalkConfigurationTemplate, error) {
+func (c *FakeElasticBeanstalkConfigurationTemplates) UpdateStatus(ctx context.Context, elasticBeanstalkConfigurationTemplate *v1alpha1.ElasticBeanstalkConfigurationTemplate, opts v1.UpdateOptions) (*v1alpha1.ElasticBeanstalkConfigurationTemplate, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(elasticbeanstalkconfigurationtemplatesResource, "status", c.ns, elasticBeanstalkConfigurationTemplate), &v1alpha1.ElasticBeanstalkConfigurationTemplate{})
 
@@ -114,7 +116,7 @@ func (c *FakeElasticBeanstalkConfigurationTemplates) UpdateStatus(elasticBeansta
 }
 
 // Delete takes name of the elasticBeanstalkConfigurationTemplate and deletes it. Returns an error if one occurs.
-func (c *FakeElasticBeanstalkConfigurationTemplates) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeElasticBeanstalkConfigurationTemplates) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(elasticbeanstalkconfigurationtemplatesResource, c.ns, name), &v1alpha1.ElasticBeanstalkConfigurationTemplate{})
 
@@ -122,15 +124,15 @@ func (c *FakeElasticBeanstalkConfigurationTemplates) Delete(name string, options
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeElasticBeanstalkConfigurationTemplates) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(elasticbeanstalkconfigurationtemplatesResource, c.ns, listOptions)
+func (c *FakeElasticBeanstalkConfigurationTemplates) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(elasticbeanstalkconfigurationtemplatesResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.ElasticBeanstalkConfigurationTemplateList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched elasticBeanstalkConfigurationTemplate.
-func (c *FakeElasticBeanstalkConfigurationTemplates) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ElasticBeanstalkConfigurationTemplate, err error) {
+func (c *FakeElasticBeanstalkConfigurationTemplates) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ElasticBeanstalkConfigurationTemplate, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(elasticbeanstalkconfigurationtemplatesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ElasticBeanstalkConfigurationTemplate{})
 

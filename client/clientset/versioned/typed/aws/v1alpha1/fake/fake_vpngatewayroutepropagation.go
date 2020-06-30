@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var vpngatewayroutepropagationsResource = schema.GroupVersionResource{Group: "aw
 var vpngatewayroutepropagationsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "VpnGatewayRoutePropagation"}
 
 // Get takes name of the vpnGatewayRoutePropagation, and returns the corresponding vpnGatewayRoutePropagation object, and an error if there is any.
-func (c *FakeVpnGatewayRoutePropagations) Get(name string, options v1.GetOptions) (result *v1alpha1.VpnGatewayRoutePropagation, err error) {
+func (c *FakeVpnGatewayRoutePropagations) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.VpnGatewayRoutePropagation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(vpngatewayroutepropagationsResource, c.ns, name), &v1alpha1.VpnGatewayRoutePropagation{})
 
@@ -51,7 +53,7 @@ func (c *FakeVpnGatewayRoutePropagations) Get(name string, options v1.GetOptions
 }
 
 // List takes label and field selectors, and returns the list of VpnGatewayRoutePropagations that match those selectors.
-func (c *FakeVpnGatewayRoutePropagations) List(opts v1.ListOptions) (result *v1alpha1.VpnGatewayRoutePropagationList, err error) {
+func (c *FakeVpnGatewayRoutePropagations) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.VpnGatewayRoutePropagationList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(vpngatewayroutepropagationsResource, vpngatewayroutepropagationsKind, c.ns, opts), &v1alpha1.VpnGatewayRoutePropagationList{})
 
@@ -73,14 +75,14 @@ func (c *FakeVpnGatewayRoutePropagations) List(opts v1.ListOptions) (result *v1a
 }
 
 // Watch returns a watch.Interface that watches the requested vpnGatewayRoutePropagations.
-func (c *FakeVpnGatewayRoutePropagations) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeVpnGatewayRoutePropagations) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(vpngatewayroutepropagationsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a vpnGatewayRoutePropagation and creates it.  Returns the server's representation of the vpnGatewayRoutePropagation, and an error, if there is any.
-func (c *FakeVpnGatewayRoutePropagations) Create(vpnGatewayRoutePropagation *v1alpha1.VpnGatewayRoutePropagation) (result *v1alpha1.VpnGatewayRoutePropagation, err error) {
+func (c *FakeVpnGatewayRoutePropagations) Create(ctx context.Context, vpnGatewayRoutePropagation *v1alpha1.VpnGatewayRoutePropagation, opts v1.CreateOptions) (result *v1alpha1.VpnGatewayRoutePropagation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(vpngatewayroutepropagationsResource, c.ns, vpnGatewayRoutePropagation), &v1alpha1.VpnGatewayRoutePropagation{})
 
@@ -91,7 +93,7 @@ func (c *FakeVpnGatewayRoutePropagations) Create(vpnGatewayRoutePropagation *v1a
 }
 
 // Update takes the representation of a vpnGatewayRoutePropagation and updates it. Returns the server's representation of the vpnGatewayRoutePropagation, and an error, if there is any.
-func (c *FakeVpnGatewayRoutePropagations) Update(vpnGatewayRoutePropagation *v1alpha1.VpnGatewayRoutePropagation) (result *v1alpha1.VpnGatewayRoutePropagation, err error) {
+func (c *FakeVpnGatewayRoutePropagations) Update(ctx context.Context, vpnGatewayRoutePropagation *v1alpha1.VpnGatewayRoutePropagation, opts v1.UpdateOptions) (result *v1alpha1.VpnGatewayRoutePropagation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(vpngatewayroutepropagationsResource, c.ns, vpnGatewayRoutePropagation), &v1alpha1.VpnGatewayRoutePropagation{})
 
@@ -103,7 +105,7 @@ func (c *FakeVpnGatewayRoutePropagations) Update(vpnGatewayRoutePropagation *v1a
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeVpnGatewayRoutePropagations) UpdateStatus(vpnGatewayRoutePropagation *v1alpha1.VpnGatewayRoutePropagation) (*v1alpha1.VpnGatewayRoutePropagation, error) {
+func (c *FakeVpnGatewayRoutePropagations) UpdateStatus(ctx context.Context, vpnGatewayRoutePropagation *v1alpha1.VpnGatewayRoutePropagation, opts v1.UpdateOptions) (*v1alpha1.VpnGatewayRoutePropagation, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(vpngatewayroutepropagationsResource, "status", c.ns, vpnGatewayRoutePropagation), &v1alpha1.VpnGatewayRoutePropagation{})
 
@@ -114,7 +116,7 @@ func (c *FakeVpnGatewayRoutePropagations) UpdateStatus(vpnGatewayRoutePropagatio
 }
 
 // Delete takes name of the vpnGatewayRoutePropagation and deletes it. Returns an error if one occurs.
-func (c *FakeVpnGatewayRoutePropagations) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeVpnGatewayRoutePropagations) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(vpngatewayroutepropagationsResource, c.ns, name), &v1alpha1.VpnGatewayRoutePropagation{})
 
@@ -122,15 +124,15 @@ func (c *FakeVpnGatewayRoutePropagations) Delete(name string, options *v1.Delete
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeVpnGatewayRoutePropagations) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(vpngatewayroutepropagationsResource, c.ns, listOptions)
+func (c *FakeVpnGatewayRoutePropagations) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(vpngatewayroutepropagationsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.VpnGatewayRoutePropagationList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched vpnGatewayRoutePropagation.
-func (c *FakeVpnGatewayRoutePropagations) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.VpnGatewayRoutePropagation, err error) {
+func (c *FakeVpnGatewayRoutePropagations) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.VpnGatewayRoutePropagation, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(vpngatewayroutepropagationsResource, c.ns, name, pt, data, subresources...), &v1alpha1.VpnGatewayRoutePropagation{})
 

@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var storagedatalakegen2filesystemsResource = schema.GroupVersionResource{Group: 
 var storagedatalakegen2filesystemsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "StorageDataLakeGen2Filesystem"}
 
 // Get takes name of the storageDataLakeGen2Filesystem, and returns the corresponding storageDataLakeGen2Filesystem object, and an error if there is any.
-func (c *FakeStorageDataLakeGen2Filesystems) Get(name string, options v1.GetOptions) (result *v1alpha1.StorageDataLakeGen2Filesystem, err error) {
+func (c *FakeStorageDataLakeGen2Filesystems) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.StorageDataLakeGen2Filesystem, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(storagedatalakegen2filesystemsResource, c.ns, name), &v1alpha1.StorageDataLakeGen2Filesystem{})
 
@@ -51,7 +53,7 @@ func (c *FakeStorageDataLakeGen2Filesystems) Get(name string, options v1.GetOpti
 }
 
 // List takes label and field selectors, and returns the list of StorageDataLakeGen2Filesystems that match those selectors.
-func (c *FakeStorageDataLakeGen2Filesystems) List(opts v1.ListOptions) (result *v1alpha1.StorageDataLakeGen2FilesystemList, err error) {
+func (c *FakeStorageDataLakeGen2Filesystems) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.StorageDataLakeGen2FilesystemList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(storagedatalakegen2filesystemsResource, storagedatalakegen2filesystemsKind, c.ns, opts), &v1alpha1.StorageDataLakeGen2FilesystemList{})
 
@@ -73,14 +75,14 @@ func (c *FakeStorageDataLakeGen2Filesystems) List(opts v1.ListOptions) (result *
 }
 
 // Watch returns a watch.Interface that watches the requested storageDataLakeGen2Filesystems.
-func (c *FakeStorageDataLakeGen2Filesystems) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeStorageDataLakeGen2Filesystems) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(storagedatalakegen2filesystemsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a storageDataLakeGen2Filesystem and creates it.  Returns the server's representation of the storageDataLakeGen2Filesystem, and an error, if there is any.
-func (c *FakeStorageDataLakeGen2Filesystems) Create(storageDataLakeGen2Filesystem *v1alpha1.StorageDataLakeGen2Filesystem) (result *v1alpha1.StorageDataLakeGen2Filesystem, err error) {
+func (c *FakeStorageDataLakeGen2Filesystems) Create(ctx context.Context, storageDataLakeGen2Filesystem *v1alpha1.StorageDataLakeGen2Filesystem, opts v1.CreateOptions) (result *v1alpha1.StorageDataLakeGen2Filesystem, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(storagedatalakegen2filesystemsResource, c.ns, storageDataLakeGen2Filesystem), &v1alpha1.StorageDataLakeGen2Filesystem{})
 
@@ -91,7 +93,7 @@ func (c *FakeStorageDataLakeGen2Filesystems) Create(storageDataLakeGen2Filesyste
 }
 
 // Update takes the representation of a storageDataLakeGen2Filesystem and updates it. Returns the server's representation of the storageDataLakeGen2Filesystem, and an error, if there is any.
-func (c *FakeStorageDataLakeGen2Filesystems) Update(storageDataLakeGen2Filesystem *v1alpha1.StorageDataLakeGen2Filesystem) (result *v1alpha1.StorageDataLakeGen2Filesystem, err error) {
+func (c *FakeStorageDataLakeGen2Filesystems) Update(ctx context.Context, storageDataLakeGen2Filesystem *v1alpha1.StorageDataLakeGen2Filesystem, opts v1.UpdateOptions) (result *v1alpha1.StorageDataLakeGen2Filesystem, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(storagedatalakegen2filesystemsResource, c.ns, storageDataLakeGen2Filesystem), &v1alpha1.StorageDataLakeGen2Filesystem{})
 
@@ -103,7 +105,7 @@ func (c *FakeStorageDataLakeGen2Filesystems) Update(storageDataLakeGen2Filesyste
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeStorageDataLakeGen2Filesystems) UpdateStatus(storageDataLakeGen2Filesystem *v1alpha1.StorageDataLakeGen2Filesystem) (*v1alpha1.StorageDataLakeGen2Filesystem, error) {
+func (c *FakeStorageDataLakeGen2Filesystems) UpdateStatus(ctx context.Context, storageDataLakeGen2Filesystem *v1alpha1.StorageDataLakeGen2Filesystem, opts v1.UpdateOptions) (*v1alpha1.StorageDataLakeGen2Filesystem, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(storagedatalakegen2filesystemsResource, "status", c.ns, storageDataLakeGen2Filesystem), &v1alpha1.StorageDataLakeGen2Filesystem{})
 
@@ -114,7 +116,7 @@ func (c *FakeStorageDataLakeGen2Filesystems) UpdateStatus(storageDataLakeGen2Fil
 }
 
 // Delete takes name of the storageDataLakeGen2Filesystem and deletes it. Returns an error if one occurs.
-func (c *FakeStorageDataLakeGen2Filesystems) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeStorageDataLakeGen2Filesystems) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(storagedatalakegen2filesystemsResource, c.ns, name), &v1alpha1.StorageDataLakeGen2Filesystem{})
 
@@ -122,15 +124,15 @@ func (c *FakeStorageDataLakeGen2Filesystems) Delete(name string, options *v1.Del
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeStorageDataLakeGen2Filesystems) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(storagedatalakegen2filesystemsResource, c.ns, listOptions)
+func (c *FakeStorageDataLakeGen2Filesystems) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(storagedatalakegen2filesystemsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.StorageDataLakeGen2FilesystemList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched storageDataLakeGen2Filesystem.
-func (c *FakeStorageDataLakeGen2Filesystems) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.StorageDataLakeGen2Filesystem, err error) {
+func (c *FakeStorageDataLakeGen2Filesystems) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.StorageDataLakeGen2Filesystem, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(storagedatalakegen2filesystemsResource, c.ns, name, pt, data, subresources...), &v1alpha1.StorageDataLakeGen2Filesystem{})
 

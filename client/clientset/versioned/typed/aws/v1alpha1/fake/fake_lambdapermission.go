@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var lambdapermissionsResource = schema.GroupVersionResource{Group: "aws.kubeform
 var lambdapermissionsKind = schema.GroupVersionKind{Group: "aws.kubeform.com", Version: "v1alpha1", Kind: "LambdaPermission"}
 
 // Get takes name of the lambdaPermission, and returns the corresponding lambdaPermission object, and an error if there is any.
-func (c *FakeLambdaPermissions) Get(name string, options v1.GetOptions) (result *v1alpha1.LambdaPermission, err error) {
+func (c *FakeLambdaPermissions) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.LambdaPermission, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(lambdapermissionsResource, c.ns, name), &v1alpha1.LambdaPermission{})
 
@@ -51,7 +53,7 @@ func (c *FakeLambdaPermissions) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of LambdaPermissions that match those selectors.
-func (c *FakeLambdaPermissions) List(opts v1.ListOptions) (result *v1alpha1.LambdaPermissionList, err error) {
+func (c *FakeLambdaPermissions) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LambdaPermissionList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(lambdapermissionsResource, lambdapermissionsKind, c.ns, opts), &v1alpha1.LambdaPermissionList{})
 
@@ -73,14 +75,14 @@ func (c *FakeLambdaPermissions) List(opts v1.ListOptions) (result *v1alpha1.Lamb
 }
 
 // Watch returns a watch.Interface that watches the requested lambdaPermissions.
-func (c *FakeLambdaPermissions) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeLambdaPermissions) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(lambdapermissionsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a lambdaPermission and creates it.  Returns the server's representation of the lambdaPermission, and an error, if there is any.
-func (c *FakeLambdaPermissions) Create(lambdaPermission *v1alpha1.LambdaPermission) (result *v1alpha1.LambdaPermission, err error) {
+func (c *FakeLambdaPermissions) Create(ctx context.Context, lambdaPermission *v1alpha1.LambdaPermission, opts v1.CreateOptions) (result *v1alpha1.LambdaPermission, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(lambdapermissionsResource, c.ns, lambdaPermission), &v1alpha1.LambdaPermission{})
 
@@ -91,7 +93,7 @@ func (c *FakeLambdaPermissions) Create(lambdaPermission *v1alpha1.LambdaPermissi
 }
 
 // Update takes the representation of a lambdaPermission and updates it. Returns the server's representation of the lambdaPermission, and an error, if there is any.
-func (c *FakeLambdaPermissions) Update(lambdaPermission *v1alpha1.LambdaPermission) (result *v1alpha1.LambdaPermission, err error) {
+func (c *FakeLambdaPermissions) Update(ctx context.Context, lambdaPermission *v1alpha1.LambdaPermission, opts v1.UpdateOptions) (result *v1alpha1.LambdaPermission, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(lambdapermissionsResource, c.ns, lambdaPermission), &v1alpha1.LambdaPermission{})
 
@@ -103,7 +105,7 @@ func (c *FakeLambdaPermissions) Update(lambdaPermission *v1alpha1.LambdaPermissi
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeLambdaPermissions) UpdateStatus(lambdaPermission *v1alpha1.LambdaPermission) (*v1alpha1.LambdaPermission, error) {
+func (c *FakeLambdaPermissions) UpdateStatus(ctx context.Context, lambdaPermission *v1alpha1.LambdaPermission, opts v1.UpdateOptions) (*v1alpha1.LambdaPermission, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(lambdapermissionsResource, "status", c.ns, lambdaPermission), &v1alpha1.LambdaPermission{})
 
@@ -114,7 +116,7 @@ func (c *FakeLambdaPermissions) UpdateStatus(lambdaPermission *v1alpha1.LambdaPe
 }
 
 // Delete takes name of the lambdaPermission and deletes it. Returns an error if one occurs.
-func (c *FakeLambdaPermissions) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeLambdaPermissions) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(lambdapermissionsResource, c.ns, name), &v1alpha1.LambdaPermission{})
 
@@ -122,15 +124,15 @@ func (c *FakeLambdaPermissions) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeLambdaPermissions) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(lambdapermissionsResource, c.ns, listOptions)
+func (c *FakeLambdaPermissions) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(lambdapermissionsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.LambdaPermissionList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched lambdaPermission.
-func (c *FakeLambdaPermissions) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LambdaPermission, err error) {
+func (c *FakeLambdaPermissions) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.LambdaPermission, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(lambdapermissionsResource, c.ns, name, pt, data, subresources...), &v1alpha1.LambdaPermission{})
 

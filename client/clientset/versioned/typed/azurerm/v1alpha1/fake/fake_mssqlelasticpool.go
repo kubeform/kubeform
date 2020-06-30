@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	v1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +42,7 @@ var mssqlelasticpoolsResource = schema.GroupVersionResource{Group: "azurerm.kube
 var mssqlelasticpoolsKind = schema.GroupVersionKind{Group: "azurerm.kubeform.com", Version: "v1alpha1", Kind: "MssqlElasticpool"}
 
 // Get takes name of the mssqlElasticpool, and returns the corresponding mssqlElasticpool object, and an error if there is any.
-func (c *FakeMssqlElasticpools) Get(name string, options v1.GetOptions) (result *v1alpha1.MssqlElasticpool, err error) {
+func (c *FakeMssqlElasticpools) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.MssqlElasticpool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(mssqlelasticpoolsResource, c.ns, name), &v1alpha1.MssqlElasticpool{})
 
@@ -51,7 +53,7 @@ func (c *FakeMssqlElasticpools) Get(name string, options v1.GetOptions) (result 
 }
 
 // List takes label and field selectors, and returns the list of MssqlElasticpools that match those selectors.
-func (c *FakeMssqlElasticpools) List(opts v1.ListOptions) (result *v1alpha1.MssqlElasticpoolList, err error) {
+func (c *FakeMssqlElasticpools) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.MssqlElasticpoolList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(mssqlelasticpoolsResource, mssqlelasticpoolsKind, c.ns, opts), &v1alpha1.MssqlElasticpoolList{})
 
@@ -73,14 +75,14 @@ func (c *FakeMssqlElasticpools) List(opts v1.ListOptions) (result *v1alpha1.Mssq
 }
 
 // Watch returns a watch.Interface that watches the requested mssqlElasticpools.
-func (c *FakeMssqlElasticpools) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeMssqlElasticpools) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(mssqlelasticpoolsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a mssqlElasticpool and creates it.  Returns the server's representation of the mssqlElasticpool, and an error, if there is any.
-func (c *FakeMssqlElasticpools) Create(mssqlElasticpool *v1alpha1.MssqlElasticpool) (result *v1alpha1.MssqlElasticpool, err error) {
+func (c *FakeMssqlElasticpools) Create(ctx context.Context, mssqlElasticpool *v1alpha1.MssqlElasticpool, opts v1.CreateOptions) (result *v1alpha1.MssqlElasticpool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(mssqlelasticpoolsResource, c.ns, mssqlElasticpool), &v1alpha1.MssqlElasticpool{})
 
@@ -91,7 +93,7 @@ func (c *FakeMssqlElasticpools) Create(mssqlElasticpool *v1alpha1.MssqlElasticpo
 }
 
 // Update takes the representation of a mssqlElasticpool and updates it. Returns the server's representation of the mssqlElasticpool, and an error, if there is any.
-func (c *FakeMssqlElasticpools) Update(mssqlElasticpool *v1alpha1.MssqlElasticpool) (result *v1alpha1.MssqlElasticpool, err error) {
+func (c *FakeMssqlElasticpools) Update(ctx context.Context, mssqlElasticpool *v1alpha1.MssqlElasticpool, opts v1.UpdateOptions) (result *v1alpha1.MssqlElasticpool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(mssqlelasticpoolsResource, c.ns, mssqlElasticpool), &v1alpha1.MssqlElasticpool{})
 
@@ -103,7 +105,7 @@ func (c *FakeMssqlElasticpools) Update(mssqlElasticpool *v1alpha1.MssqlElasticpo
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeMssqlElasticpools) UpdateStatus(mssqlElasticpool *v1alpha1.MssqlElasticpool) (*v1alpha1.MssqlElasticpool, error) {
+func (c *FakeMssqlElasticpools) UpdateStatus(ctx context.Context, mssqlElasticpool *v1alpha1.MssqlElasticpool, opts v1.UpdateOptions) (*v1alpha1.MssqlElasticpool, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(mssqlelasticpoolsResource, "status", c.ns, mssqlElasticpool), &v1alpha1.MssqlElasticpool{})
 
@@ -114,7 +116,7 @@ func (c *FakeMssqlElasticpools) UpdateStatus(mssqlElasticpool *v1alpha1.MssqlEla
 }
 
 // Delete takes name of the mssqlElasticpool and deletes it. Returns an error if one occurs.
-func (c *FakeMssqlElasticpools) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeMssqlElasticpools) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(mssqlelasticpoolsResource, c.ns, name), &v1alpha1.MssqlElasticpool{})
 
@@ -122,15 +124,15 @@ func (c *FakeMssqlElasticpools) Delete(name string, options *v1.DeleteOptions) e
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeMssqlElasticpools) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(mssqlelasticpoolsResource, c.ns, listOptions)
+func (c *FakeMssqlElasticpools) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(mssqlelasticpoolsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1alpha1.MssqlElasticpoolList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched mssqlElasticpool.
-func (c *FakeMssqlElasticpools) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.MssqlElasticpool, err error) {
+func (c *FakeMssqlElasticpools) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.MssqlElasticpool, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(mssqlelasticpoolsResource, c.ns, name, pt, data, subresources...), &v1alpha1.MssqlElasticpool{})
 

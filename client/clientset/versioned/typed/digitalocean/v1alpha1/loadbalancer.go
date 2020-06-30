@@ -19,6 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"context"
 	"time"
 
 	v1alpha1 "kubeform.dev/kubeform/apis/digitalocean/v1alpha1"
@@ -38,15 +39,15 @@ type LoadbalancersGetter interface {
 
 // LoadbalancerInterface has methods to work with Loadbalancer resources.
 type LoadbalancerInterface interface {
-	Create(*v1alpha1.Loadbalancer) (*v1alpha1.Loadbalancer, error)
-	Update(*v1alpha1.Loadbalancer) (*v1alpha1.Loadbalancer, error)
-	UpdateStatus(*v1alpha1.Loadbalancer) (*v1alpha1.Loadbalancer, error)
-	Delete(name string, options *v1.DeleteOptions) error
-	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.Loadbalancer, error)
-	List(opts v1.ListOptions) (*v1alpha1.LoadbalancerList, error)
-	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Loadbalancer, err error)
+	Create(ctx context.Context, loadbalancer *v1alpha1.Loadbalancer, opts v1.CreateOptions) (*v1alpha1.Loadbalancer, error)
+	Update(ctx context.Context, loadbalancer *v1alpha1.Loadbalancer, opts v1.UpdateOptions) (*v1alpha1.Loadbalancer, error)
+	UpdateStatus(ctx context.Context, loadbalancer *v1alpha1.Loadbalancer, opts v1.UpdateOptions) (*v1alpha1.Loadbalancer, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.Loadbalancer, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.LoadbalancerList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Loadbalancer, err error)
 	LoadbalancerExpansion
 }
 
@@ -65,20 +66,20 @@ func newLoadbalancers(c *DigitaloceanV1alpha1Client, namespace string) *loadbala
 }
 
 // Get takes name of the loadbalancer, and returns the corresponding loadbalancer object, and an error if there is any.
-func (c *loadbalancers) Get(name string, options v1.GetOptions) (result *v1alpha1.Loadbalancer, err error) {
+func (c *loadbalancers) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Loadbalancer, err error) {
 	result = &v1alpha1.Loadbalancer{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("loadbalancers").
 		Name(name).
 		VersionedParams(&options, scheme.ParameterCodec).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // List takes label and field selectors, and returns the list of Loadbalancers that match those selectors.
-func (c *loadbalancers) List(opts v1.ListOptions) (result *v1alpha1.LoadbalancerList, err error) {
+func (c *loadbalancers) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.LoadbalancerList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -89,13 +90,13 @@ func (c *loadbalancers) List(opts v1.ListOptions) (result *v1alpha1.Loadbalancer
 		Resource("loadbalancers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Watch returns a watch.Interface that watches the requested loadbalancers.
-func (c *loadbalancers) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *loadbalancers) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -106,87 +107,90 @@ func (c *loadbalancers) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Resource("loadbalancers").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Watch()
+		Watch(ctx)
 }
 
 // Create takes the representation of a loadbalancer and creates it.  Returns the server's representation of the loadbalancer, and an error, if there is any.
-func (c *loadbalancers) Create(loadbalancer *v1alpha1.Loadbalancer) (result *v1alpha1.Loadbalancer, err error) {
+func (c *loadbalancers) Create(ctx context.Context, loadbalancer *v1alpha1.Loadbalancer, opts v1.CreateOptions) (result *v1alpha1.Loadbalancer, err error) {
 	result = &v1alpha1.Loadbalancer{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("loadbalancers").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(loadbalancer).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Update takes the representation of a loadbalancer and updates it. Returns the server's representation of the loadbalancer, and an error, if there is any.
-func (c *loadbalancers) Update(loadbalancer *v1alpha1.Loadbalancer) (result *v1alpha1.Loadbalancer, err error) {
+func (c *loadbalancers) Update(ctx context.Context, loadbalancer *v1alpha1.Loadbalancer, opts v1.UpdateOptions) (result *v1alpha1.Loadbalancer, err error) {
 	result = &v1alpha1.Loadbalancer{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("loadbalancers").
 		Name(loadbalancer.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(loadbalancer).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-
-func (c *loadbalancers) UpdateStatus(loadbalancer *v1alpha1.Loadbalancer) (result *v1alpha1.Loadbalancer, err error) {
+func (c *loadbalancers) UpdateStatus(ctx context.Context, loadbalancer *v1alpha1.Loadbalancer, opts v1.UpdateOptions) (result *v1alpha1.Loadbalancer, err error) {
 	result = &v1alpha1.Loadbalancer{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("loadbalancers").
 		Name(loadbalancer.Name).
 		SubResource("status").
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(loadbalancer).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
 
 // Delete takes name of the loadbalancer and deletes it. Returns an error if one occurs.
-func (c *loadbalancers) Delete(name string, options *v1.DeleteOptions) error {
+func (c *loadbalancers) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("loadbalancers").
 		Name(name).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *loadbalancers) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *loadbalancers) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
-	if listOptions.TimeoutSeconds != nil {
-		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
+	if listOpts.TimeoutSeconds != nil {
+		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
 	}
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("loadbalancers").
-		VersionedParams(&listOptions, scheme.ParameterCodec).
+		VersionedParams(&listOpts, scheme.ParameterCodec).
 		Timeout(timeout).
-		Body(options).
-		Do().
+		Body(&opts).
+		Do(ctx).
 		Error()
 }
 
 // Patch applies the patch and returns the patched loadbalancer.
-func (c *loadbalancers) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.Loadbalancer, err error) {
+func (c *loadbalancers) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Loadbalancer, err error) {
 	result = &v1alpha1.Loadbalancer{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("loadbalancers").
-		SubResource(subresources...).
 		Name(name).
+		SubResource(subresources...).
+		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(data).
-		Do().
+		Do(ctx).
 		Into(result)
 	return
 }
