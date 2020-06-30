@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/linode/linodego"
 )
 
@@ -35,7 +35,6 @@ func dataSourceLinodeInstanceType() *schema.Resource {
 			},
 			"price": {
 				Type:        schema.TypeList,
-				MaxItems:    1,
 				Description: "Cost in US dollars, broken down into hourly and monthly charges.",
 				Computed:    true,
 				Elem: &schema.Resource{
@@ -55,21 +54,18 @@ func dataSourceLinodeInstanceType() *schema.Resource {
 			},
 			"addons": {
 				Type:        schema.TypeList,
-				MaxItems:    1,
 				Description: "",
 				Computed:    true,
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"backups": {
 							Type:        schema.TypeList,
-							MaxItems:    1,
 							Description: "Information about the optional Backup service offered for Linodes.",
 							Computed:    true,
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"price": {
 										Type:        schema.TypeList,
-										MaxItems:    1,
 										Description: "Cost of enabling Backups for this Linode Type.",
 										Computed:    true,
 										Elem: &schema.Resource{

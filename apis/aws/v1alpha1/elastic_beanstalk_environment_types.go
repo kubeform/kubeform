@@ -74,6 +74,8 @@ type ElasticBeanstalkEnvironmentSpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
+	EndpointURL string `json:"endpointURL,omitempty" tf:"endpoint_url,omitempty"`
+	// +optional
 	Instances []string `json:"instances,omitempty" tf:"instances,omitempty"`
 	// +optional
 	LaunchConfigurations []string `json:"launchConfigurations,omitempty" tf:"launch_configurations,omitempty"`

@@ -39,6 +39,11 @@ type PubsubSubscription struct {
 	Status            PubsubSubscriptionStatus `json:"status,omitempty"`
 }
 
+type PubsubSubscriptionSpecExpirationPolicy struct {
+	// +optional
+	Ttl string `json:"ttl,omitempty" tf:"ttl,omitempty"`
+}
+
 type PubsubSubscriptionSpecPushConfig struct {
 	// +optional
 	Attributes   map[string]string `json:"attributes,omitempty" tf:"attributes,omitempty"`
@@ -51,8 +56,15 @@ type PubsubSubscriptionSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	AckDeadlineSeconds int64  `json:"ackDeadlineSeconds,omitempty" tf:"ack_deadline_seconds,omitempty"`
-	Name               string `json:"name" tf:"name"`
+	AckDeadlineSeconds int64 `json:"ackDeadlineSeconds,omitempty" tf:"ack_deadline_seconds,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	ExpirationPolicy []PubsubSubscriptionSpecExpirationPolicy `json:"expirationPolicy,omitempty" tf:"expiration_policy,omitempty"`
+	// +optional
+	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
+	// +optional
+	MessageRetentionDuration string `json:"messageRetentionDuration,omitempty" tf:"message_retention_duration,omitempty"`
+	Name                     string `json:"name" tf:"name"`
 	// +optional
 	Path string `json:"path,omitempty" tf:"path,omitempty"`
 	// +optional
@@ -60,7 +72,9 @@ type PubsubSubscriptionSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	PushConfig []PubsubSubscriptionSpecPushConfig `json:"pushConfig,omitempty" tf:"push_config,omitempty"`
-	Topic      string                             `json:"topic" tf:"topic"`
+	// +optional
+	RetainAckedMessages bool   `json:"retainAckedMessages,omitempty" tf:"retain_acked_messages,omitempty"`
+	Topic               string `json:"topic" tf:"topic"`
 }
 
 type PubsubSubscriptionStatus struct {

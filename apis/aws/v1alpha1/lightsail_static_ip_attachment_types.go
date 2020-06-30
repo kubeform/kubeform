@@ -45,6 +45,8 @@ type LightsailStaticIPAttachmentSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	InstanceName string `json:"instanceName" tf:"instance_name"`
+	// +optional
+	IpAddress    string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
 	StaticIPName string `json:"staticIPName" tf:"static_ip_name"`
 }
 

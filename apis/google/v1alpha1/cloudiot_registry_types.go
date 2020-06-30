@@ -53,6 +53,12 @@ type CloudiotRegistrySpecEventNotificationConfig struct {
 	PubsubTopicName string `json:"pubsubTopicName" tf:"pubsub_topic_name"`
 }
 
+type CloudiotRegistrySpecEventNotificationConfigs struct {
+	PubsubTopicName string `json:"pubsubTopicName" tf:"pubsub_topic_name"`
+	// +optional
+	SubfolderMatches string `json:"subfolderMatches,omitempty" tf:"subfolder_matches,omitempty"`
+}
+
 type CloudiotRegistrySpecHttpConfig struct {
 	HttpEnabledState string `json:"httpEnabledState" tf:"http_enabled_state"`
 }
@@ -74,9 +80,15 @@ type CloudiotRegistrySpec struct {
 	// +kubebuilder:validation:MaxItems=10
 	Credentials []CloudiotRegistrySpecCredentials `json:"credentials,omitempty" tf:"credentials,omitempty"`
 	// +optional
+	// Deprecated
 	EventNotificationConfig map[string]CloudiotRegistrySpecEventNotificationConfig `json:"eventNotificationConfig,omitempty" tf:"event_notification_config,omitempty"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=10
+	EventNotificationConfigs []CloudiotRegistrySpecEventNotificationConfigs `json:"eventNotificationConfigs,omitempty" tf:"event_notification_configs,omitempty"`
+	// +optional
 	HttpConfig map[string]CloudiotRegistrySpecHttpConfig `json:"httpConfig,omitempty" tf:"http_config,omitempty"`
+	// +optional
+	LogLevel string `json:"logLevel,omitempty" tf:"log_level,omitempty"`
 	// +optional
 	MqttConfig map[string]CloudiotRegistrySpecMqttConfig `json:"mqttConfig,omitempty" tf:"mqtt_config,omitempty"`
 	Name       string                                    `json:"name" tf:"name"`

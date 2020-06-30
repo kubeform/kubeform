@@ -48,7 +48,8 @@ type FirewallSpecIpConfiguration struct {
 	PrivateIPAddress string `json:"privateIPAddress,omitempty" tf:"private_ip_address,omitempty"`
 	// +optional
 	PublicIPAddressID string `json:"publicIPAddressID,omitempty" tf:"public_ip_address_id,omitempty"`
-	SubnetID          string `json:"subnetID" tf:"subnet_id"`
+	// +optional
+	SubnetID string `json:"subnetID,omitempty" tf:"subnet_id,omitempty"`
 }
 
 type FirewallSpec struct {
@@ -56,13 +57,15 @@ type FirewallSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	// +kubebuilder:validation:MaxItems=1
 	IpConfiguration   []FirewallSpecIpConfiguration `json:"ipConfiguration" tf:"ip_configuration"`
 	Location          string                        `json:"location" tf:"location"`
 	Name              string                        `json:"name" tf:"name"`
 	ResourceGroupName string                        `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MinItems=1
+	Zones []string `json:"zones,omitempty" tf:"zones,omitempty"`
 }
 
 type FirewallStatus struct {

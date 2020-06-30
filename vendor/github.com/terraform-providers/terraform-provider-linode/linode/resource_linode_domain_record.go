@@ -2,14 +2,19 @@ package linode
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"log"
 	"strconv"
 	"strings"
 
-	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/hashicorp/terraform/helper/validation"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/validation"
 	"github.com/linode/linodego"
+)
+
+const (
+	errLinodeDomainRecordSRVNameComputed = "name is computed for SRV records"
 )
 
 func resourceLinodeDomainRecord() *schema.Resource {
@@ -20,7 +25,6 @@ func resourceLinodeDomainRecord() *schema.Resource {
 		Read:   resourceLinodeDomainRecordRead,
 		Update: resourceLinodeDomainRecordUpdate,
 		Delete: resourceLinodeDomainRecordDelete,
-		Exists: resourceLinodeDomainRecordExists,
 		Importer: &schema.ResourceImporter{
 			State: resourceLinodeDomainRecordImport,
 		},
@@ -33,8 +37,9 @@ func resourceLinodeDomainRecord() *schema.Resource {
 			},
 			"name": {
 				Type:         schema.TypeString,
-				Description:  "The name of this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the subdomain being associated with an IP address.",
-				Required:     true,
+				Description:  "The name of this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the subdomain being associated with an IP address. Generated for SRV records.",
+				Optional:     true,
+				Computed:     true, // This is true for SRV records
 				ValidateFunc: validation.StringLenBetween(0, 100),
 			},
 			"record_type": {
@@ -88,28 +93,6 @@ func resourceLinodeDomainRecord() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceLinodeDomainRecordExists(d *schema.ResourceData, meta interface{}) (bool, error) {
-	client := meta.(linodego.Client)
-	id, err := strconv.ParseInt(d.Id(), 10, 64)
-	if err != nil {
-		return false, fmt.Errorf("Error parsing Linode DomainRecord ID %s as int: %s", d.Id(), err)
-	}
-	if domainID, ok := d.GetOkExists("domain_id"); ok {
-		_, err = client.GetDomainRecord(context.Background(), domainID.(int), int(id))
-	} else {
-		return false, fmt.Errorf("Error parsing Linode Domain ID")
-	}
-
-	if err != nil {
-		if lerr, ok := err.(*linodego.Error); ok && lerr.Code == 404 {
-			return false, nil
-		}
-
-		return false, fmt.Errorf("Error getting Linode DomainRecord ID %s: %s", d.Id(), err)
-	}
-	return true, nil
 }
 
 func resourceLinodeDomainRecordImport(d *schema.ResourceData, meta interface{}) ([]*schema.ResourceData, error) {
@@ -192,23 +175,64 @@ func resourceDataIntOrNil(d *schema.ResourceData, name string) *int {
 	return nil
 }
 
+func domainRecordFromResourceData(d *schema.ResourceData) *linodego.DomainRecord {
+	return &linodego.DomainRecord{
+		Name:     d.Get("name").(string),
+		Type:     linodego.DomainRecordType(d.Get("record_type").(string)),
+		Target:   d.Get("target").(string),
+		Priority: d.Get("priority").(int),
+		Weight:   d.Get("weight").(int),
+		Port:     d.Get("port").(int),
+		Service:  resourceDataStringOrNil(d, "service"),
+		Protocol: resourceDataStringOrNil(d, "protocol"),
+		TTLSec:   d.Get("ttl_sec").(int),
+		Tag:      resourceDataStringOrNil(d, "tag"),
+	}
+}
+
+func validateDomainRecord(c *linodego.Client, rec *linodego.DomainRecord, domainID int) error {
+	if rec.Type == linodego.RecordTypeSRV {
+		return validateSRVDomainRecord(c, rec, domainID)
+	}
+	return nil
+}
+
+func validateSRVDomainRecord(c *linodego.Client, rec *linodego.DomainRecord, domainID int) error {
+	domain, err := c.GetDomain(context.Background(), domainID)
+	if err != nil {
+		return err
+	}
+
+	if rec.Name != "" {
+		return errors.New(errLinodeDomainRecordSRVNameComputed)
+	}
+	if rec.Target != domain.Domain && !strings.HasSuffix(rec.Target, "."+domain.Domain) {
+		return fmt.Errorf(`Target for SRV records must be the associated domain or a related FQDN. Did you mean "%s.%s"?`, rec.Target, domain.Domain)
+	}
+	return nil
+}
+
 func resourceLinodeDomainRecordCreate(d *schema.ResourceData, meta interface{}) error {
 	client, ok := meta.(linodego.Client)
 	if !ok {
 		return fmt.Errorf("Invalid Client when creating Linode DomainRecord")
 	}
 	domainID := d.Get("domain_id").(int)
+	rec := domainRecordFromResourceData(d)
+	if err := validateDomainRecord(&client, rec, domainID); err != nil {
+		return err
+	}
 
 	createOpts := linodego.DomainRecordCreateOptions{
-		Type:     linodego.DomainRecordType(d.Get("record_type").(string)),
-		Name:     d.Get("name").(string),
+		Type:     rec.Type,
+		Name:     rec.Name,
+		Target:   rec.Target,
 		Priority: resourceDataIntOrNil(d, "priority"),
-		Target:   d.Get("target").(string),
 		Weight:   resourceDataIntOrNil(d, "weight"),
 		Port:     resourceDataIntOrNil(d, "port"),
 		Service:  resourceDataStringOrNil(d, "service"),
 		Protocol: resourceDataStringOrNil(d, "protocol"),
-		TTLSec:   d.Get("ttl_sec").(int),
+		TTLSec:   rec.TTLSec,
 		Tag:      resourceDataStringOrNil(d, "tag"),
 	}
 
@@ -225,21 +249,25 @@ func resourceLinodeDomainRecordCreate(d *schema.ResourceData, meta interface{}) 
 func resourceLinodeDomainRecordUpdate(d *schema.ResourceData, meta interface{}) error {
 	client := meta.(linodego.Client)
 	domainID := d.Get("domain_id").(int)
+	rec := domainRecordFromResourceData(d)
+	if err := validateDomainRecord(&client, rec, domainID); err != nil {
+		return err
+	}
 
 	id, err := strconv.ParseInt(d.Id(), 10, 64)
 	if err != nil {
 		return fmt.Errorf("Error parsing Linode DomainRecord id %s as int: %s", d.Id(), err)
 	}
 	updateOpts := linodego.DomainRecordUpdateOptions{
-		Type:     linodego.DomainRecordType(d.Get("record_type").(string)),
-		Name:     d.Get("name").(string),
+		Type:     rec.Type,
+		Name:     rec.Name,
+		Target:   rec.Target,
 		Priority: resourceDataIntOrNil(d, "priority"),
-		Target:   d.Get("target").(string),
 		Weight:   resourceDataIntOrNil(d, "weight"),
 		Port:     resourceDataIntOrNil(d, "port"),
 		Service:  resourceDataStringOrNil(d, "service"),
 		Protocol: resourceDataStringOrNil(d, "protocol"),
-		TTLSec:   d.Get("ttl_sec").(int),
+		TTLSec:   rec.TTLSec,
 		Tag:      resourceDataStringOrNil(d, "tag"),
 	}
 

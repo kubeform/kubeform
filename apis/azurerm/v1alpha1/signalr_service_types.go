@@ -39,6 +39,15 @@ type SignalrService struct {
 	Status            SignalrServiceStatus `json:"status,omitempty"`
 }
 
+type SignalrServiceSpecCors struct {
+	AllowedOrigins []string `json:"allowedOrigins" tf:"allowed_origins"`
+}
+
+type SignalrServiceSpecFeatures struct {
+	Flag  string `json:"flag" tf:"flag"`
+	Value string `json:"value" tf:"value"`
+}
+
 type SignalrServiceSpecSku struct {
 	Capacity int64  `json:"capacity" tf:"capacity"`
 	Name     string `json:"name" tf:"name"`
@@ -51,6 +60,10 @@ type SignalrServiceSpec struct {
 
 	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
+	// +optional
+	Cors []SignalrServiceSpecCors `json:"cors,omitempty" tf:"cors,omitempty"`
+	// +optional
+	Features []SignalrServiceSpecFeatures `json:"features,omitempty" tf:"features,omitempty"`
 	// +optional
 	Hostname string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 	// +optional

@@ -25,12 +25,12 @@ spec:
         apiVersion:
           description: 'APIVersion defines the versioned schema of this representation
             of an object. Servers should convert recognized schemas to the latest
-            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
           type: string
         kind:
           description: 'Kind is a string value representing the REST resource this
             object represents. Servers may infer this from the endpoint the client
-            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
           type: string
         metadata:
           type: object
@@ -43,6 +43,8 @@ spec:
             diskEncryptionKey:
               items:
                 properties:
+                  kmsKeySelfLink:
+                    type: string
                   rawKey:
                     type: string
                   sha256:
@@ -50,9 +52,6 @@ spec:
                 type: object
               maxItems: 1
               type: array
-            diskEncryptionKeySha256:
-              description: Deprecated
-              type: string
             id:
               type: string
             image:
@@ -69,18 +68,12 @@ spec:
               type: string
             name:
               type: string
+            physicalBlockSizeBytes:
+              format: int64
+              type: integer
             project:
               type: string
             providerRef:
-              description: LocalObjectReference contains enough information to let
-                you locate the referenced object inside the same namespace.
-              properties:
-                name:
-                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                    TODO: Add other useful fields. apiVersion, kind, uid?'
-                  type: string
-              type: object
-            secretRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
               properties:
@@ -99,6 +92,8 @@ spec:
             sourceImageEncryptionKey:
               items:
                 properties:
+                  kmsKeySelfLink:
+                    type: string
                   rawKey:
                     type: string
                   sha256:
@@ -111,6 +106,8 @@ spec:
             sourceSnapshotEncryptionKey:
               items:
                 properties:
+                  kmsKeySelfLink:
+                    type: string
                   rawKey:
                     type: string
                   sha256:
@@ -148,6 +145,8 @@ spec:
                 diskEncryptionKey:
                   items:
                     properties:
+                      kmsKeySelfLink:
+                        type: string
                       rawKey:
                         type: string
                       sha256:
@@ -155,9 +154,6 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
-                diskEncryptionKeySha256:
-                  description: Deprecated
-                  type: string
                 id:
                   type: string
                 image:
@@ -174,18 +170,12 @@ spec:
                   type: string
                 name:
                   type: string
+                physicalBlockSizeBytes:
+                  format: int64
+                  type: integer
                 project:
                   type: string
                 providerRef:
-                  description: LocalObjectReference contains enough information to
-                    let you locate the referenced object inside the same namespace.
-                  properties:
-                    name:
-                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                        TODO: Add other useful fields. apiVersion, kind, uid?'
-                      type: string
-                  type: object
-                secretRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
                   properties:
@@ -204,6 +194,8 @@ spec:
                 sourceImageEncryptionKey:
                   items:
                     properties:
+                      kmsKeySelfLink:
+                        type: string
                       rawKey:
                         type: string
                       sha256:
@@ -216,6 +208,8 @@ spec:
                 sourceSnapshotEncryptionKey:
                   items:
                     properties:
+                      kmsKeySelfLink:
+                        type: string
                       rawKey:
                         type: string
                       sha256:

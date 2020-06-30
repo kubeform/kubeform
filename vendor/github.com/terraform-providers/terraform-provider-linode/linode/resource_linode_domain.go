@@ -6,8 +6,8 @@ import (
 	"log"
 	"strconv"
 
-	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/hashicorp/terraform/helper/validation"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/validation"
 	"github.com/linode/linodego"
 )
 
@@ -19,7 +19,6 @@ func resourceLinodeDomain() *schema.Resource {
 		Read:   resourceLinodeDomainRead,
 		Update: resourceLinodeDomainUpdate,
 		Delete: resourceLinodeDomainDelete,
-		Exists: resourceLinodeDomainExists,
 		Importer: &schema.ResourceImporter{
 			State: schema.ImportStatePassthrough,
 		},
@@ -137,24 +136,6 @@ func domainSecondsValidator() schema.SchemaValidateFunc {
 	return intInSlice(validSeconds)
 }
 
-func resourceLinodeDomainExists(d *schema.ResourceData, meta interface{}) (bool, error) {
-	client := meta.(linodego.Client)
-	id, err := strconv.ParseInt(d.Id(), 10, 64)
-	if err != nil {
-		return false, fmt.Errorf("Error parsing Linode Domain ID %s as int: %s", d.Id(), err)
-	}
-
-	_, err = client.GetDomain(context.Background(), int(id))
-	if err != nil {
-		if lerr, ok := err.(*linodego.Error); ok && lerr.Code == 404 {
-			return false, nil
-		}
-
-		return false, fmt.Errorf("Error getting Linode Domain ID %s: %s", d.Id(), err)
-	}
-	return true, nil
-}
-
 func resourceLinodeDomainRead(d *schema.ResourceData, meta interface{}) error {
 	client := meta.(linodego.Client)
 	id, err := strconv.ParseInt(d.Id(), 10, 64)
@@ -163,7 +144,6 @@ func resourceLinodeDomainRead(d *schema.ResourceData, meta interface{}) error {
 	}
 
 	domain, err := client.GetDomain(context.Background(), int(id))
-
 	if err != nil {
 		if lerr, ok := err.(*linodego.Error); ok && lerr.Code == 404 {
 			log.Printf("[WARN] removing Linode Domain ID %q from state because it no longer exists", d.Id())
@@ -178,13 +158,9 @@ func resourceLinodeDomainRead(d *schema.ResourceData, meta interface{}) error {
 	d.Set("group", domain.Group)
 	d.Set("status", domain.Status)
 	d.Set("description", domain.Description)
-	if err = d.Set("master_ips", domain.MasterIPs); err != nil {
-		return fmt.Errorf("Error setting master_ips: %s", err)
-	}
+	d.Set("master_ips", domain.MasterIPs)
 	if len(domain.AXfrIPs) > 0 {
-		if err = d.Set("afxr_ips", domain.AXfrIPs); err != nil {
-			return fmt.Errorf("Error setting axfr_ips: %s", err)
-		}
+		d.Set("afxr_ips", domain.AXfrIPs)
 	}
 	d.Set("ttl_sec", domain.TTLSec)
 	d.Set("retry_sec", domain.RetrySec)

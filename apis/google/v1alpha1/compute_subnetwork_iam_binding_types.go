@@ -48,13 +48,10 @@ type ComputeSubnetworkIamBindingSpec struct {
 	Etag    string   `json:"etag,omitempty" tf:"etag,omitempty"`
 	Members []string `json:"members" tf:"members"`
 	// +optional
-	// Deprecated
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	// Deprecated
-	Region string `json:"region,omitempty" tf:"region,omitempty"`
-	Role   string `json:"role" tf:"role"`
-	// Deprecated
+	Region     string `json:"region,omitempty" tf:"region,omitempty"`
+	Role       string `json:"role" tf:"role"`
 	Subnetwork string `json:"subnetwork" tf:"subnetwork"`
 }
 

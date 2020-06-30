@@ -39,6 +39,10 @@ type DataprocCluster struct {
 	Status            DataprocClusterStatus `json:"status,omitempty"`
 }
 
+type DataprocClusterSpecClusterConfigEncryptionConfig struct {
+	KmsKeyName string `json:"kmsKeyName" tf:"kms_key_name"`
+}
+
 type DataprocClusterSpecClusterConfigGceClusterConfig struct {
 	// +optional
 	InternalIPOnly bool `json:"internalIPOnly,omitempty" tf:"internal_ip_only,omitempty"`
@@ -64,6 +68,11 @@ type DataprocClusterSpecClusterConfigInitializationAction struct {
 	TimeoutSec int64 `json:"timeoutSec,omitempty" tf:"timeout_sec,omitempty"`
 }
 
+type DataprocClusterSpecClusterConfigMasterConfigAccelerators struct {
+	AcceleratorCount int64  `json:"acceleratorCount" tf:"accelerator_count"`
+	AcceleratorType  string `json:"acceleratorType" tf:"accelerator_type"`
+}
+
 type DataprocClusterSpecClusterConfigMasterConfigDiskConfig struct {
 	// +optional
 	BootDiskSizeGb int64 `json:"bootDiskSizeGb,omitempty" tf:"boot_disk_size_gb,omitempty"`
@@ -75,8 +84,12 @@ type DataprocClusterSpecClusterConfigMasterConfigDiskConfig struct {
 
 type DataprocClusterSpecClusterConfigMasterConfig struct {
 	// +optional
+	Accelerators []DataprocClusterSpecClusterConfigMasterConfigAccelerators `json:"accelerators,omitempty" tf:"accelerators,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	DiskConfig []DataprocClusterSpecClusterConfigMasterConfigDiskConfig `json:"diskConfig,omitempty" tf:"disk_config,omitempty"`
+	// +optional
+	ImageURI string `json:"imageURI,omitempty" tf:"image_uri,omitempty"`
 	// +optional
 	InstanceNames []string `json:"instanceNames,omitempty" tf:"instance_names,omitempty"`
 	// +optional
@@ -88,6 +101,10 @@ type DataprocClusterSpecClusterConfigMasterConfig struct {
 type DataprocClusterSpecClusterConfigPreemptibleWorkerConfigDiskConfig struct {
 	// +optional
 	BootDiskSizeGb int64 `json:"bootDiskSizeGb,omitempty" tf:"boot_disk_size_gb,omitempty"`
+	// +optional
+	BootDiskType string `json:"bootDiskType,omitempty" tf:"boot_disk_type,omitempty"`
+	// +optional
+	NumLocalSsds int64 `json:"numLocalSsds,omitempty" tf:"num_local_ssds,omitempty"`
 }
 
 type DataprocClusterSpecClusterConfigPreemptibleWorkerConfig struct {
@@ -104,9 +121,16 @@ type DataprocClusterSpecClusterConfigSoftwareConfig struct {
 	// +optional
 	ImageVersion string `json:"imageVersion,omitempty" tf:"image_version,omitempty"`
 	// +optional
+	OptionalComponents []string `json:"optionalComponents,omitempty" tf:"optional_components,omitempty"`
+	// +optional
 	OverrideProperties map[string]string `json:"overrideProperties,omitempty" tf:"override_properties,omitempty"`
 	// +optional
 	Properties map[string]string `json:"properties,omitempty" tf:"properties,omitempty"`
+}
+
+type DataprocClusterSpecClusterConfigWorkerConfigAccelerators struct {
+	AcceleratorCount int64  `json:"acceleratorCount" tf:"accelerator_count"`
+	AcceleratorType  string `json:"acceleratorType" tf:"accelerator_type"`
 }
 
 type DataprocClusterSpecClusterConfigWorkerConfigDiskConfig struct {
@@ -120,8 +144,12 @@ type DataprocClusterSpecClusterConfigWorkerConfigDiskConfig struct {
 
 type DataprocClusterSpecClusterConfigWorkerConfig struct {
 	// +optional
+	Accelerators []DataprocClusterSpecClusterConfigWorkerConfigAccelerators `json:"accelerators,omitempty" tf:"accelerators,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	DiskConfig []DataprocClusterSpecClusterConfigWorkerConfigDiskConfig `json:"diskConfig,omitempty" tf:"disk_config,omitempty"`
+	// +optional
+	ImageURI string `json:"imageURI,omitempty" tf:"image_uri,omitempty"`
 	// +optional
 	InstanceNames []string `json:"instanceNames,omitempty" tf:"instance_names,omitempty"`
 	// +optional
@@ -134,8 +162,8 @@ type DataprocClusterSpecClusterConfig struct {
 	// +optional
 	Bucket string `json:"bucket,omitempty" tf:"bucket,omitempty"`
 	// +optional
-	// Deprecated
-	DeleteAutogenBucket bool `json:"deleteAutogenBucket,omitempty" tf:"delete_autogen_bucket,omitempty"`
+	// +kubebuilder:validation:MaxItems=1
+	EncryptionConfig []DataprocClusterSpecClusterConfigEncryptionConfig `json:"encryptionConfig,omitempty" tf:"encryption_config,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	GceClusterConfig []DataprocClusterSpecClusterConfigGceClusterConfig `json:"gceClusterConfig,omitempty" tf:"gce_cluster_config,omitempty"`

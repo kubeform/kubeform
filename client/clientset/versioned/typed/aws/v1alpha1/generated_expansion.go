@@ -112,6 +112,8 @@ type AppsyncAPIKeyExpansion interface{}
 
 type AppsyncDatasourceExpansion interface{}
 
+type AppsyncFunctionExpansion interface{}
+
 type AppsyncGraphqlAPIExpansion interface{}
 
 type AppsyncResolverExpansion interface{}
@@ -119,6 +121,8 @@ type AppsyncResolverExpansion interface{}
 type AthenaDatabaseExpansion interface{}
 
 type AthenaNamedQueryExpansion interface{}
+
+type AthenaWorkgroupExpansion interface{}
 
 type AutoscalingAttachmentExpansion interface{}
 
@@ -192,6 +196,8 @@ type CloudwatchMetricAlarmExpansion interface{}
 
 type CodebuildProjectExpansion interface{}
 
+type CodebuildSourceCredentialExpansion interface{}
+
 type CodebuildWebhookExpansion interface{}
 
 type CodecommitRepositoryExpansion interface{}
@@ -236,9 +242,15 @@ type ConfigConfigurationRecorderStatus_Expansion interface{}
 
 type ConfigDeliveryChannelExpansion interface{}
 
+type ConfigOrganizationCustomRuleExpansion interface{}
+
+type ConfigOrganizationManagedRuleExpansion interface{}
+
 type CurReportDefinitionExpansion interface{}
 
 type CustomerGatewayExpansion interface{}
+
+type DatapipelinePipelineExpansion interface{}
 
 type DatasyncAgentExpansion interface{}
 
@@ -292,6 +304,8 @@ type DirectoryServiceConditionalForwarderExpansion interface{}
 
 type DirectoryServiceDirectoryExpansion interface{}
 
+type DirectoryServiceLogSubscriptionExpansion interface{}
+
 type DlmLifecyclePolicyExpansion interface{}
 
 type DmsCertificateExpansion interface{}
@@ -340,11 +354,17 @@ type DxPrivateVirtualInterfaceExpansion interface{}
 
 type DxPublicVirtualInterfaceExpansion interface{}
 
+type DxTransitVirtualInterfaceExpansion interface{}
+
 type DynamodbGlobalTableExpansion interface{}
 
 type DynamodbTableExpansion interface{}
 
 type DynamodbTableItemExpansion interface{}
+
+type EbsDefaultKmsKeyExpansion interface{}
+
+type EbsEncryptionByDefaultExpansion interface{}
 
 type EbsSnapshotExpansion interface{}
 
@@ -371,6 +391,8 @@ type Ec2TransitGatewayRouteTableAssociationExpansion interface{}
 type Ec2TransitGatewayRouteTablePropagationExpansion interface{}
 
 type Ec2TransitGatewayVpcAttachmentExpansion interface{}
+
+type Ec2TransitGatewayVpcAttachmentAccepterExpansion interface{}
 
 type EcrLifecyclePolicyExpansion interface{}
 
@@ -434,6 +456,12 @@ type EmrSecurityConfigurationExpansion interface{}
 
 type FlowLogExpansion interface{}
 
+type FmsAdminAccountExpansion interface{}
+
+type FsxLustreFileSystemExpansion interface{}
+
+type FsxWindowsFileSystemExpansion interface{}
+
 type GameliftAliasExpansion interface{}
 
 type GameliftBuildExpansion interface{}
@@ -447,6 +475,8 @@ type GlacierVaultExpansion interface{}
 type GlacierVaultLockExpansion interface{}
 
 type GlobalacceleratorAcceleratorExpansion interface{}
+
+type GlobalacceleratorEndpointGroupExpansion interface{}
 
 type GlobalacceleratorListenerExpansion interface{}
 
@@ -632,6 +662,10 @@ type MqBrokerExpansion interface{}
 
 type MqConfigurationExpansion interface{}
 
+type MskClusterExpansion interface{}
+
+type MskConfigurationExpansion interface{}
+
 type NatGatewayExpansion interface{}
 
 type NeptuneClusterExpansion interface{}
@@ -726,11 +760,15 @@ type PlacementGroupExpansion interface{}
 
 type ProxyProtocolPolicyExpansion interface{}
 
+type QuicksightGroupExpansion interface{}
+
 type RamPrincipalAssociationExpansion interface{}
 
 type RamResourceAssociationExpansion interface{}
 
 type RamResourceShareExpansion interface{}
+
+type RamResourceShareAccepterExpansion interface{}
 
 type RdsClusterExpansion interface{}
 
@@ -751,6 +789,10 @@ type RedshiftParameterGroupExpansion interface{}
 type RedshiftSecurityGroupExpansion interface{}
 
 type RedshiftSnapshotCopyGrantExpansion interface{}
+
+type RedshiftSnapshotScheduleExpansion interface{}
+
+type RedshiftSnapshotScheduleAssociationExpansion interface{}
 
 type RedshiftSubnetGroupExpansion interface{}
 
@@ -830,6 +872,8 @@ type ServiceDiscoveryServiceExpansion interface{}
 
 type ServicecatalogPortfolioExpansion interface{}
 
+type ServicequotasServiceQuotaExpansion interface{}
+
 type SesActiveReceiptRuleSetExpansion interface{}
 
 type SesConfigurationSetExpansion interface{}
@@ -842,9 +886,13 @@ type SesDomainIdentityVerificationExpansion interface{}
 
 type SesDomainMailFromExpansion interface{}
 
+type SesEmailIdentityExpansion interface{}
+
 type SesEventDestinationExpansion interface{}
 
 type SesIdentityNotificationTopicExpansion interface{}
+
+type SesIdentityPolicyExpansion interface{}
 
 type SesReceiptFilterExpansion interface{}
 
@@ -857,6 +905,8 @@ type SesTemplateExpansion interface{}
 type SfnActivityExpansion interface{}
 
 type SfnStateMachineExpansion interface{}
+
+type ShieldProtectionExpansion interface{}
 
 type SimpledbDomainExpansion interface{}
 

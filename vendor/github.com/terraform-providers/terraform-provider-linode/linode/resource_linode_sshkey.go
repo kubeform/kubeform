@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/linode/linodego"
 )
 
@@ -16,7 +16,6 @@ func resourceLinodeSSHKey() *schema.Resource {
 		Read:   resourceLinodeSSHKeyRead,
 		Update: resourceLinodeSSHKeyUpdate,
 		Delete: resourceLinodeSSHKeyDelete,
-		Exists: resourceLinodeSSHKeyExists,
 		Importer: &schema.ResourceImporter{
 			State: schema.ImportStatePassthrough,
 		},
@@ -39,25 +38,6 @@ func resourceLinodeSSHKey() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceLinodeSSHKeyExists(d *schema.ResourceData, meta interface{}) (bool, error) {
-	client := meta.(linodego.Client)
-	id, err := strconv.ParseInt(d.Id(), 10, 64)
-	if err != nil {
-		return false, fmt.Errorf("Error parsing Linode SSH Key ID %s as int: %s", d.Id(), err)
-	}
-
-	_, err = client.GetSSHKey(context.Background(), int(id))
-	if err != nil {
-		if lerr, ok := err.(*linodego.Error); ok && lerr.Code == 404 {
-			d.SetId("")
-			return false, nil
-		}
-
-		return false, fmt.Errorf("Error getting Linode SSH Key ID %s: %s", d.Id(), err)
-	}
-	return true, nil
 }
 
 func resourceLinodeSSHKeyRead(d *schema.ResourceData, meta interface{}) error {

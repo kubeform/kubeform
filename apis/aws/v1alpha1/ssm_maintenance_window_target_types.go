@@ -50,6 +50,10 @@ type SsmMaintenanceWindowTargetSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
 	OwnerInformation string `json:"ownerInformation,omitempty" tf:"owner_information,omitempty"`
 	ResourceType     string `json:"resourceType" tf:"resource_type"`
 	// +kubebuilder:validation:MaxItems=5

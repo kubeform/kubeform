@@ -47,6 +47,8 @@ type CosmosdbTableSpec struct {
 	AccountName       string `json:"accountName" tf:"account_name"`
 	Name              string `json:"name" tf:"name"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	Throughput int64 `json:"throughput,omitempty" tf:"throughput,omitempty"`
 }
 
 type CosmosdbTableStatus struct {

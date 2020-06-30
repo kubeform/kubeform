@@ -45,7 +45,6 @@ type OrganizationIamCustomRoleSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	// Deprecated
 	Deleted bool `json:"deleted,omitempty" tf:"deleted,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`

@@ -46,8 +46,9 @@ type DomainRecordSpec struct {
 
 	// The ID of the Domain to access.
 	DomainID int64 `json:"domainID" tf:"domain_id"`
-	// The name of this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the subdomain being associated with an IP address.
-	Name string `json:"name" tf:"name"`
+	// The name of this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the subdomain being associated with an IP address. Generated for SRV records.
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// The port this Record points to.
 	// +optional
 	Port int64 `json:"port,omitempty" tf:"port,omitempty"`

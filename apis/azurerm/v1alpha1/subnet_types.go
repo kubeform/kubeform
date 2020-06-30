@@ -60,6 +60,10 @@ type SubnetSpec struct {
 	// +optional
 	Delegation []SubnetSpecDelegation `json:"delegation,omitempty" tf:"delegation,omitempty"`
 	// +optional
+	EnforcePrivateLinkEndpointNetworkPolicies bool `json:"enforcePrivateLinkEndpointNetworkPolicies,omitempty" tf:"enforce_private_link_endpoint_network_policies,omitempty"`
+	// +optional
+	EnforcePrivateLinkServiceNetworkPolicies bool `json:"enforcePrivateLinkServiceNetworkPolicies,omitempty" tf:"enforce_private_link_service_network_policies,omitempty"`
+	// +optional
 	IpConfigurations []string `json:"ipConfigurations,omitempty" tf:"ip_configurations,omitempty"`
 	Name             string   `json:"name" tf:"name"`
 	// +optional

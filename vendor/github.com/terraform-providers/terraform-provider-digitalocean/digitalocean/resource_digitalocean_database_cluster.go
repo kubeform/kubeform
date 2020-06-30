@@ -8,8 +8,9 @@ import (
 	"time"
 
 	"github.com/digitalocean/godo"
-	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/hashicorp/terraform/helper/validation"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/customdiff"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/validation"
 )
 
 func resourceDigitalOceanDatabaseCluster() *schema.Resource {
@@ -38,10 +39,13 @@ func resourceDigitalOceanDatabaseCluster() *schema.Resource {
 			},
 
 			"version": {
-				Type:         schema.TypeString,
-				Required:     true,
-				ForceNew:     true,
-				ValidateFunc: validation.NoZeroValues,
+				Type: schema.TypeString,
+				// TODO: Finalize transition to being required.
+				// In practice, this is already required. The transitionVersionToRequired
+				// CustomizeDiffFunc is used to provide users with a better hint in the error message.
+				// Required: true,
+				Optional: true,
+				ForceNew: true,
 			},
 
 			"size": {
@@ -84,7 +88,31 @@ func resourceDigitalOceanDatabaseCluster() *schema.Resource {
 				},
 			},
 
+			"eviction_policy": {
+				Type:         schema.TypeString,
+				Optional:     true,
+				ValidateFunc: validation.NoZeroValues,
+			},
+
+			"sql_mode": {
+				Type:     schema.TypeString,
+				Optional: true,
+			},
+
+			"private_network_uuid": {
+				Type:         schema.TypeString,
+				Optional:     true,
+				ForceNew:     true,
+				Computed:     true,
+				ValidateFunc: validation.NoZeroValues,
+			},
+
 			"host": {
+				Type:     schema.TypeString,
+				Computed: true,
+			},
+
+			"private_host": {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
@@ -95,8 +123,15 @@ func resourceDigitalOceanDatabaseCluster() *schema.Resource {
 			},
 
 			"uri": {
-				Type:     schema.TypeString,
-				Computed: true,
+				Type:      schema.TypeString,
+				Computed:  true,
+				Sensitive: true,
+			},
+
+			"private_uri": {
+				Type:      schema.TypeString,
+				Computed:  true,
+				Sensitive: true,
 			},
 
 			"database": {
@@ -110,11 +145,60 @@ func resourceDigitalOceanDatabaseCluster() *schema.Resource {
 			},
 
 			"password": {
+				Type:      schema.TypeString,
+				Computed:  true,
+				Sensitive: true,
+			},
+
+			"urn": {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
+
+			"tags": tagsSchema(),
 		},
+
+		CustomizeDiff: customdiff.All(
+			transitionVersionToRequired(),
+			validateExclusiveAttributes(),
+		),
 	}
+}
+
+func transitionVersionToRequired() schema.CustomizeDiffFunc {
+	return schema.CustomizeDiffFunc(func(diff *schema.ResourceDiff, v interface{}) error {
+		engine := diff.Get("engine")
+		_, hasVersion := diff.GetOk("version")
+		old, _ := diff.GetChange("version")
+
+		if !hasVersion {
+			if old != "" {
+				return fmt.Errorf(`The argument "version" is now required. Set the %v version to the value saved to state: %v`, engine, old)
+			}
+
+			return fmt.Errorf(`The argument "version" is required, but no definition was found.`)
+		}
+
+		return nil
+	})
+}
+
+func validateExclusiveAttributes() schema.CustomizeDiffFunc {
+	return schema.CustomizeDiffFunc(func(diff *schema.ResourceDiff, v interface{}) error {
+		engine := diff.Get("engine")
+		_, hasEvictionPolicy := diff.GetOk("eviction_policy")
+		_, hasSqlMode := diff.GetOk("sql_mode")
+
+		if hasSqlMode && engine != "mysql" {
+			return fmt.Errorf("sql_mode is only supported for MySQL Database Clusters")
+		}
+
+		if hasEvictionPolicy && engine != "redis" {
+			return fmt.Errorf("eviction_policy is only supported for Redis Database Clusters")
+		}
+
+		return nil
+	})
 }
 
 func resourceDigitalOceanDatabaseClusterCreate(d *schema.ResourceData, meta interface{}) error {
@@ -127,6 +211,11 @@ func resourceDigitalOceanDatabaseClusterCreate(d *schema.ResourceData, meta inte
 		SizeSlug:   d.Get("size").(string),
 		Region:     d.Get("region").(string),
 		NumNodes:   d.Get("node_count").(int),
+		Tags:       expandTags(d.Get("tags").(*schema.Set).List()),
+	}
+
+	if v, ok := d.GetOk("private_network_uuid"); ok {
+		opts.PrivateNetworkUUID = v.(string)
 	}
 
 	log.Printf("[DEBUG] DatabaseCluster create configuration: %#v", opts)
@@ -150,12 +239,26 @@ func resourceDigitalOceanDatabaseClusterCreate(d *schema.ResourceData, meta inte
 		if err != nil {
 			// If the database is somehow already destroyed, mark as
 			// successfully gone
-			if resp.StatusCode == 404 {
+			if resp != nil && resp.StatusCode == 404 {
 				d.SetId("")
 				return nil
 			}
 
 			return fmt.Errorf("Error adding maintenance window for DatabaseCluster: %s", err)
+		}
+	}
+
+	if policy, ok := d.GetOk("eviction_policy"); ok {
+		_, err := client.Databases.SetEvictionPolicy(context.Background(), d.Id(), policy.(string))
+		if err != nil {
+			return fmt.Errorf("Error adding eviction policy for DatabaseCluster: %s", err)
+		}
+	}
+
+	if mode, ok := d.GetOk("sql_mode"); ok {
+		_, err := client.Databases.SetSQLMode(context.Background(), d.Id(), mode.(string))
+		if err != nil {
+			return fmt.Errorf("Error adding SQL mode for DatabaseCluster: %s", err)
 		}
 	}
 
@@ -175,7 +278,7 @@ func resourceDigitalOceanDatabaseClusterUpdate(d *schema.ResourceData, meta inte
 		if err != nil {
 			// If the database is somehow already destroyed, mark as
 			// successfully gone
-			if resp.StatusCode == 404 {
+			if resp != nil && resp.StatusCode == 404 {
 				d.SetId("")
 				return nil
 			}
@@ -198,7 +301,7 @@ func resourceDigitalOceanDatabaseClusterUpdate(d *schema.ResourceData, meta inte
 		if err != nil {
 			// If the database is somehow already destroyed, mark as
 			// successfully gone
-			if resp.StatusCode == 404 {
+			if resp != nil && resp.StatusCode == 404 {
 				d.SetId("")
 				return nil
 			}
@@ -219,12 +322,41 @@ func resourceDigitalOceanDatabaseClusterUpdate(d *schema.ResourceData, meta inte
 		if err != nil {
 			// If the database is somehow already destroyed, mark as
 			// successfully gone
-			if resp.StatusCode == 404 {
+			if resp != nil && resp.StatusCode == 404 {
 				d.SetId("")
 				return nil
 			}
 
 			return fmt.Errorf("Error updating maintenance window for DatabaseCluster: %s", err)
+		}
+	}
+
+	if d.HasChange("eviction_policy") {
+		if policy, ok := d.GetOk("eviction_policy"); ok {
+			_, err := client.Databases.SetEvictionPolicy(context.Background(), d.Id(), policy.(string))
+			if err != nil {
+				return fmt.Errorf("Error updating eviction policy for DatabaseCluster: %s", err)
+			}
+		} else {
+			// If the eviction policy is completely removed from the config, set to noeviction
+			_, err := client.Databases.SetEvictionPolicy(context.Background(), d.Id(), godo.EvictionPolicyNoEviction)
+			if err != nil {
+				return fmt.Errorf("Error updating eviction policy for DatabaseCluster: %s", err)
+			}
+		}
+	}
+
+	if d.HasChange("sql_mode") {
+		_, err := client.Databases.SetSQLMode(context.Background(), d.Id(), d.Get("sql_mode").(string))
+		if err != nil {
+			return fmt.Errorf("Error updating SQL mode for DatabaseCluster: %s", err)
+		}
+	}
+
+	if d.HasChange("tags") {
+		err := setTags(client, d, godo.DatabaseResourceType)
+		if err != nil {
+			return fmt.Errorf("Error updating tags: %s", err)
 		}
 	}
 
@@ -238,7 +370,7 @@ func resourceDigitalOceanDatabaseClusterRead(d *schema.ResourceData, meta interf
 	if err != nil {
 		// If the database is somehow already destroyed, mark as
 		// successfully gone
-		if resp.StatusCode == 404 {
+		if resp != nil && resp.StatusCode == 404 {
 			d.SetId("")
 			return nil
 		}
@@ -252,6 +384,7 @@ func resourceDigitalOceanDatabaseClusterRead(d *schema.ResourceData, meta interf
 	d.Set("size", database.SizeSlug)
 	d.Set("region", database.RegionSlug)
 	d.Set("node_count", database.NumNodes)
+	d.Set("tags", database.Tags)
 
 	if _, ok := d.GetOk("maintenance_window"); ok {
 		if err := d.Set("maintenance_window", flattenMaintWindowOpts(*database.MaintenanceWindow)); err != nil {
@@ -259,13 +392,35 @@ func resourceDigitalOceanDatabaseClusterRead(d *schema.ResourceData, meta interf
 		}
 	}
 
+	if _, ok := d.GetOk("eviction_policy"); ok {
+		policy, _, err := client.Databases.GetEvictionPolicy(context.Background(), d.Id())
+		if err != nil {
+			return fmt.Errorf("Error retrieving eviction policy for DatabaseCluster: %s", err)
+		}
+
+		d.Set("eviction_policy", policy)
+	}
+
+	if _, ok := d.GetOk("sql_mode"); ok {
+		mode, _, err := client.Databases.GetSQLMode(context.Background(), d.Id())
+		if err != nil {
+			return fmt.Errorf("Error retrieving SQL mode for DatabaseCluster: %s", err)
+		}
+
+		d.Set("sql_mode", mode)
+	}
+
 	// Computed values
 	d.Set("host", database.Connection.Host)
+	d.Set("private_host", database.PrivateConnection.Host)
 	d.Set("port", database.Connection.Port)
 	d.Set("uri", database.Connection.URI)
+	d.Set("private_uri", database.PrivateConnection.URI)
 	d.Set("database", database.Connection.Database)
 	d.Set("user", database.Connection.User)
 	d.Set("password", database.Connection.Password)
+	d.Set("urn", database.URN())
+	d.Set("private_network_uuid", database.PrivateNetworkUUID)
 
 	return nil
 }

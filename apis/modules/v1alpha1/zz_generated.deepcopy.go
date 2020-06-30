@@ -59,7 +59,7 @@ func (in *GoogleServiceAccount) DeepCopyObject() runtime.Object {
 func (in *GoogleServiceAccountList) DeepCopyInto(out *GoogleServiceAccountList) {
 	*out = *in
 	out.TypeMeta = in.TypeMeta
-	out.ListMeta = in.ListMeta
+	in.ListMeta.DeepCopyInto(&out.ListMeta)
 	if in.Items != nil {
 		in, out := &in.Items, &out.Items
 		*out = make([]GoogleServiceAccount, len(*in))
@@ -189,7 +189,7 @@ func (in *RDS) DeepCopyObject() runtime.Object {
 func (in *RDSList) DeepCopyInto(out *RDSList) {
 	*out = *in
 	out.TypeMeta = in.TypeMeta
-	out.ListMeta = in.ListMeta
+	in.ListMeta.DeepCopyInto(&out.ListMeta)
 	if in.Items != nil {
 		in, out := &in.Items, &out.Items
 		*out = make([]RDS, len(*in))
@@ -247,6 +247,13 @@ func (in *RDSSpec) DeepCopyInto(out *RDSSpec) {
 		in, out := &in.EnabledCloudwatchLogsExports, &out.EnabledCloudwatchLogsExports
 		*out = make([]string, len(*in))
 		copy(*out, *in)
+	}
+	if in.OptionGroupTimeouts != nil {
+		in, out := &in.OptionGroupTimeouts, &out.OptionGroupTimeouts
+		*out = make(map[string]string, len(*in))
+		for key, val := range *in {
+			(*out)[key] = val
+		}
 	}
 	if in.Options != nil {
 		in, out := &in.Options, &out.Options

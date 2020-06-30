@@ -39,6 +39,13 @@ type SearchService struct {
 	Status            SearchServiceStatus `json:"status,omitempty"`
 }
 
+type SearchServiceSpecQueryKeys struct {
+	// +optional
+	Key string `json:"key,omitempty" tf:"key,omitempty"`
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+}
+
 type SearchServiceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
@@ -50,6 +57,8 @@ type SearchServiceSpec struct {
 	PartitionCount int64 `json:"partitionCount,omitempty" tf:"partition_count,omitempty"`
 	// +optional
 	PrimaryKey string `json:"primaryKey,omitempty" tf:"primary_key,omitempty"`
+	// +optional
+	QueryKeys []SearchServiceSpecQueryKeys `json:"queryKeys,omitempty" tf:"query_keys,omitempty"`
 	// +optional
 	ReplicaCount      int64  `json:"replicaCount,omitempty" tf:"replica_count,omitempty"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`

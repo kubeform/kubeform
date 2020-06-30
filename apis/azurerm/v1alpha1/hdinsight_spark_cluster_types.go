@@ -106,6 +106,13 @@ type HdinsightSparkClusterSpecStorageAccount struct {
 	StorageContainerID string `json:"storageContainerID" tf:"storage_container_id"`
 }
 
+type HdinsightSparkClusterSpecStorageAccountGen2 struct {
+	FilesystemID              string `json:"filesystemID" tf:"filesystem_id"`
+	IsDefault                 bool   `json:"isDefault" tf:"is_default"`
+	ManagedIdentityResourceID string `json:"managedIdentityResourceID" tf:"managed_identity_resource_id"`
+	StorageResourceID         string `json:"storageResourceID" tf:"storage_resource_id"`
+}
+
 type HdinsightSparkClusterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
@@ -126,8 +133,12 @@ type HdinsightSparkClusterSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Roles []HdinsightSparkClusterSpecRoles `json:"roles" tf:"roles"`
 	// +optional
-	SshEndpoint    string                                    `json:"sshEndpoint,omitempty" tf:"ssh_endpoint,omitempty"`
-	StorageAccount []HdinsightSparkClusterSpecStorageAccount `json:"storageAccount" tf:"storage_account"`
+	SshEndpoint string `json:"sshEndpoint,omitempty" tf:"ssh_endpoint,omitempty"`
+	// +optional
+	StorageAccount []HdinsightSparkClusterSpecStorageAccount `json:"storageAccount,omitempty" tf:"storage_account,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	StorageAccountGen2 []HdinsightSparkClusterSpecStorageAccountGen2 `json:"storageAccountGen2,omitempty" tf:"storage_account_gen2,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	Tier string            `json:"tier" tf:"tier"`

@@ -47,6 +47,8 @@ type ComputeInstanceSpecAttachedDisk struct {
 	// +optional
 	DiskEncryptionKeySha256 string `json:"diskEncryptionKeySha256,omitempty" tf:"disk_encryption_key_sha256,omitempty"`
 	// +optional
+	KmsKeySelfLink string `json:"kmsKeySelfLink,omitempty" tf:"kms_key_self_link,omitempty"`
+	// +optional
 	Mode   string `json:"mode,omitempty" tf:"mode,omitempty"`
 	Source string `json:"source" tf:"source"`
 }
@@ -54,6 +56,8 @@ type ComputeInstanceSpecAttachedDisk struct {
 type ComputeInstanceSpecBootDiskInitializeParams struct {
 	// +optional
 	Image string `json:"image,omitempty" tf:"image,omitempty"`
+	// +optional
+	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
 	// +optional
 	Size int64 `json:"size,omitempty" tf:"size,omitempty"`
 	// +optional
@@ -73,6 +77,10 @@ type ComputeInstanceSpecBootDisk struct {
 	// +kubebuilder:validation:MaxItems=1
 	InitializeParams []ComputeInstanceSpecBootDiskInitializeParams `json:"initializeParams,omitempty" tf:"initialize_params,omitempty"`
 	// +optional
+	KmsKeySelfLink string `json:"kmsKeySelfLink,omitempty" tf:"kms_key_self_link,omitempty"`
+	// +optional
+	Mode string `json:"mode,omitempty" tf:"mode,omitempty"`
+	// +optional
 	Source string `json:"source,omitempty" tf:"source,omitempty"`
 }
 
@@ -82,9 +90,6 @@ type ComputeInstanceSpecGuestAccelerator struct {
 }
 
 type ComputeInstanceSpecNetworkInterfaceAccessConfig struct {
-	// +optional
-	// Deprecated
-	AssignedNATIP string `json:"assignedNATIP,omitempty" tf:"assigned_nat_ip,omitempty"`
 	// +optional
 	NatIP string `json:"natIP,omitempty" tf:"nat_ip,omitempty"`
 	// +optional
@@ -103,9 +108,6 @@ type ComputeInstanceSpecNetworkInterface struct {
 	// +optional
 	AccessConfig []ComputeInstanceSpecNetworkInterfaceAccessConfig `json:"accessConfig,omitempty" tf:"access_config,omitempty"`
 	// +optional
-	// Deprecated
-	Address string `json:"address,omitempty" tf:"address,omitempty"`
-	// +optional
 	AliasIPRange []ComputeInstanceSpecNetworkInterfaceAliasIPRange `json:"aliasIPRange,omitempty" tf:"alias_ip_range,omitempty"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
@@ -119,9 +121,17 @@ type ComputeInstanceSpecNetworkInterface struct {
 	SubnetworkProject string `json:"subnetworkProject,omitempty" tf:"subnetwork_project,omitempty"`
 }
 
+type ComputeInstanceSpecSchedulingNodeAffinities struct {
+	Key      string   `json:"key" tf:"key"`
+	Operator string   `json:"operator" tf:"operator"`
+	Values   []string `json:"values" tf:"values"`
+}
+
 type ComputeInstanceSpecScheduling struct {
 	// +optional
 	AutomaticRestart bool `json:"automaticRestart,omitempty" tf:"automatic_restart,omitempty"`
+	// +optional
+	NodeAffinities []ComputeInstanceSpecSchedulingNodeAffinities `json:"nodeAffinities,omitempty" tf:"node_affinities,omitempty"`
 	// +optional
 	OnHostMaintenance string `json:"onHostMaintenance,omitempty" tf:"on_host_maintenance,omitempty"`
 	// +optional
@@ -137,6 +147,15 @@ type ComputeInstanceSpecServiceAccount struct {
 	// +optional
 	Email  string   `json:"email,omitempty" tf:"email,omitempty"`
 	Scopes []string `json:"scopes" tf:"scopes"`
+}
+
+type ComputeInstanceSpecShieldedInstanceConfig struct {
+	// +optional
+	EnableIntegrityMonitoring bool `json:"enableIntegrityMonitoring,omitempty" tf:"enable_integrity_monitoring,omitempty"`
+	// +optional
+	EnableSecureBoot bool `json:"enableSecureBoot,omitempty" tf:"enable_secure_boot,omitempty"`
+	// +optional
+	EnableVtpm bool `json:"enableVtpm,omitempty" tf:"enable_vtpm,omitempty"`
 }
 
 type ComputeInstanceSpec struct {
@@ -157,14 +176,13 @@ type ComputeInstanceSpec struct {
 	// +optional
 	CpuPlatform string `json:"cpuPlatform,omitempty" tf:"cpu_platform,omitempty"`
 	// +optional
-	// Deprecated
-	CreateTimeout int64 `json:"createTimeout,omitempty" tf:"create_timeout,omitempty"`
-	// +optional
 	DeletionProtection bool `json:"deletionProtection,omitempty" tf:"deletion_protection,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
 	GuestAccelerator []ComputeInstanceSpecGuestAccelerator `json:"guestAccelerator,omitempty" tf:"guest_accelerator,omitempty"`
+	// +optional
+	Hostname string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 	// +optional
 	InstanceID string `json:"instanceID,omitempty" tf:"instance_id,omitempty"`
 	// +optional
@@ -194,6 +212,9 @@ type ComputeInstanceSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ServiceAccount []ComputeInstanceSpecServiceAccount `json:"serviceAccount,omitempty" tf:"service_account,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	ShieldedInstanceConfig []ComputeInstanceSpecShieldedInstanceConfig `json:"shieldedInstanceConfig,omitempty" tf:"shielded_instance_config,omitempty"`
 	// +optional
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional

@@ -79,21 +79,11 @@ type ComputeSnapshotSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	SnapshotEncryptionKey []ComputeSnapshotSpecSnapshotEncryptionKey `json:"snapshotEncryptionKey,omitempty" tf:"snapshot_encryption_key,omitempty"`
 	// +optional
-	SnapshotEncryptionKeyRaw string `json:"-" sensitive:"true" tf:"snapshot_encryption_key_raw,omitempty"`
-	// +optional
-	// Deprecated
-	SnapshotEncryptionKeySha256 string `json:"snapshotEncryptionKeySha256,omitempty" tf:"snapshot_encryption_key_sha256,omitempty"`
-	// +optional
 	SnapshotID int64  `json:"snapshotID,omitempty" tf:"snapshot_id,omitempty"`
 	SourceDisk string `json:"sourceDisk" tf:"source_disk"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SourceDiskEncryptionKey []ComputeSnapshotSpecSourceDiskEncryptionKey `json:"sourceDiskEncryptionKey,omitempty" tf:"source_disk_encryption_key,omitempty"`
-	// +optional
-	SourceDiskEncryptionKeyRaw string `json:"-" sensitive:"true" tf:"source_disk_encryption_key_raw,omitempty"`
-	// +optional
-	// Deprecated
-	SourceDiskEncryptionKeySha256 string `json:"sourceDiskEncryptionKeySha256,omitempty" tf:"source_disk_encryption_key_sha256,omitempty"`
 	// +optional
 	SourceDiskLink string `json:"sourceDiskLink,omitempty" tf:"source_disk_link,omitempty"`
 	// +optional

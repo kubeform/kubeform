@@ -39,6 +39,34 @@ type AppsyncGraphqlAPI struct {
 	Status            AppsyncGraphqlAPIStatus `json:"status,omitempty"`
 }
 
+type AppsyncGraphqlAPISpecAdditionalAuthenticationProviderOpenidConnectConfig struct {
+	// +optional
+	AuthTtl int64 `json:"authTtl,omitempty" tf:"auth_ttl,omitempty"`
+	// +optional
+	ClientID string `json:"clientID,omitempty" tf:"client_id,omitempty"`
+	// +optional
+	IatTtl int64  `json:"iatTtl,omitempty" tf:"iat_ttl,omitempty"`
+	Issuer string `json:"issuer" tf:"issuer"`
+}
+
+type AppsyncGraphqlAPISpecAdditionalAuthenticationProviderUserPoolConfig struct {
+	// +optional
+	AppIDClientRegex string `json:"appIDClientRegex,omitempty" tf:"app_id_client_regex,omitempty"`
+	// +optional
+	AwsRegion  string `json:"awsRegion,omitempty" tf:"aws_region,omitempty"`
+	UserPoolID string `json:"userPoolID" tf:"user_pool_id"`
+}
+
+type AppsyncGraphqlAPISpecAdditionalAuthenticationProvider struct {
+	AuthenticationType string `json:"authenticationType" tf:"authentication_type"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	OpenidConnectConfig []AppsyncGraphqlAPISpecAdditionalAuthenticationProviderOpenidConnectConfig `json:"openidConnectConfig,omitempty" tf:"openid_connect_config,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	UserPoolConfig []AppsyncGraphqlAPISpecAdditionalAuthenticationProviderUserPoolConfig `json:"userPoolConfig,omitempty" tf:"user_pool_config,omitempty"`
+}
+
 type AppsyncGraphqlAPISpecLogConfig struct {
 	CloudwatchLogsRoleArn string `json:"cloudwatchLogsRoleArn" tf:"cloudwatch_logs_role_arn"`
 	FieldLogLevel         string `json:"fieldLogLevel" tf:"field_log_level"`
@@ -68,6 +96,8 @@ type AppsyncGraphqlAPISpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// +optional
+	AdditionalAuthenticationProvider []AppsyncGraphqlAPISpecAdditionalAuthenticationProvider `json:"additionalAuthenticationProvider,omitempty" tf:"additional_authentication_provider,omitempty"`
 	// +optional
 	Arn                string `json:"arn,omitempty" tf:"arn,omitempty"`
 	AuthenticationType string `json:"authenticationType" tf:"authentication_type"`

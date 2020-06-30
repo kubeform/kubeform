@@ -44,6 +44,8 @@ type DnsPtrRecordSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// +optional
+	Fqdn              string   `json:"fqdn,omitempty" tf:"fqdn,omitempty"`
 	Name              string   `json:"name" tf:"name"`
 	Records           []string `json:"records" tf:"records"`
 	ResourceGroupName string   `json:"resourceGroupName" tf:"resource_group_name"`

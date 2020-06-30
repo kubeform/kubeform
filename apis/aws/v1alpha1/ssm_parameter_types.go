@@ -63,6 +63,8 @@ type SsmParameterSpec struct {
 	Tier  string `json:"tier,omitempty" tf:"tier,omitempty"`
 	Type  string `json:"type" tf:"type"`
 	Value string `json:"-" sensitive:"true" tf:"value"`
+	// +optional
+	Version int64 `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type SsmParameterStatus struct {

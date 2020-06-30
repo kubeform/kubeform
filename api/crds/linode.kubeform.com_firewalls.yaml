@@ -1,0 +1,314 @@
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/name: kubeform
+  name: firewalls.linode.kubeform.com
+spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
+  group: linode.kubeform.com
+  names:
+    kind: Firewall
+    listKind: FirewallList
+    plural: firewalls
+    singular: firewall
+  scope: ""
+  subresources:
+    status: {}
+  validation:
+    openAPIV3Schema:
+      properties:
+        apiVersion:
+          description: 'APIVersion defines the versioned schema of this representation
+            of an object. Servers should convert recognized schemas to the latest
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+          type: string
+        kind:
+          description: 'Kind is a string value representing the REST resource this
+            object represents. Servers may infer this from the endpoint the client
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+          type: string
+        metadata:
+          type: object
+        spec:
+          properties:
+            devices:
+              description: The devices associated with this firewall.
+              items:
+                properties:
+                  ID:
+                    description: The ID of the firewall device.
+                    format: int64
+                    type: integer
+                  entityID:
+                    description: The ID of the underlying entity for the firewall
+                      device (e.g. the Linode's ID).
+                    format: int64
+                    type: integer
+                  label:
+                    description: The label of the underlying entity for the firewall
+                      device.
+                    type: string
+                  type:
+                    description: The type of firewall device.
+                    type: string
+                  url:
+                    description: The URL of the underlying entity for the firewall
+                      device.
+                    type: string
+                type: object
+              type: array
+            disabled:
+              description: If true, the Firewall is inactive.
+              type: boolean
+            id:
+              type: string
+            inbound:
+              description: A firewall rule that specifies what inbound network traffic
+                is allowed.
+              items:
+                properties:
+                  addresses:
+                    description: A list of IP addresses, CIDR blocks, or 0.0.0.0/0
+                      (to whitelist all) this rule applies to.
+                    items:
+                      type: string
+                    minItems: 1
+                    type: array
+                  ports:
+                    description: A list of ports and/or port ranges (i.e. "443" or
+                      "80-90").
+                    items:
+                      type: string
+                    minItems: 1
+                    type: array
+                  protocol:
+                    description: The network protocol this rule controls.
+                    type: string
+                required:
+                - addresses
+                - ports
+                - protocol
+                type: object
+              type: array
+            label:
+              description: The label for the Firewall. For display purposes only.
+                If no label is provided, a default will be assigned.
+              type: string
+            linodes:
+              description: The IDs of Linodes to apply this firewall to.
+              items:
+                format: int64
+                type: integer
+              minItems: 1
+              type: array
+            outbound:
+              description: A firewall rule that specifies what outbound network traffic
+                is allowed.
+              items:
+                properties:
+                  addresses:
+                    description: A list of IP addresses, CIDR blocks, or 0.0.0.0/0
+                      (to whitelist all) this rule applies to.
+                    items:
+                      type: string
+                    minItems: 1
+                    type: array
+                  ports:
+                    description: A list of ports and/or port ranges (i.e. "443" or
+                      "80-90").
+                    items:
+                      type: string
+                    minItems: 1
+                    type: array
+                  protocol:
+                    description: The network protocol this rule controls.
+                    type: string
+                required:
+                - addresses
+                - ports
+                - protocol
+                type: object
+              type: array
+            providerRef:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
+            status:
+              description: The status of the firewall.
+              type: string
+            tags:
+              description: An array of tags applied to this object. Tags are for organizational
+                purposes only.
+              items:
+                type: string
+              type: array
+          required:
+          - linodes
+          - providerRef
+          type: object
+        status:
+          properties:
+            observedGeneration:
+              description: Resource generation, which is updated on mutation by the
+                API Server.
+              format: int64
+              type: integer
+            output:
+              properties:
+                devices:
+                  description: The devices associated with this firewall.
+                  items:
+                    properties:
+                      ID:
+                        description: The ID of the firewall device.
+                        format: int64
+                        type: integer
+                      entityID:
+                        description: The ID of the underlying entity for the firewall
+                          device (e.g. the Linode's ID).
+                        format: int64
+                        type: integer
+                      label:
+                        description: The label of the underlying entity for the firewall
+                          device.
+                        type: string
+                      type:
+                        description: The type of firewall device.
+                        type: string
+                      url:
+                        description: The URL of the underlying entity for the firewall
+                          device.
+                        type: string
+                    type: object
+                  type: array
+                disabled:
+                  description: If true, the Firewall is inactive.
+                  type: boolean
+                id:
+                  type: string
+                inbound:
+                  description: A firewall rule that specifies what inbound network
+                    traffic is allowed.
+                  items:
+                    properties:
+                      addresses:
+                        description: A list of IP addresses, CIDR blocks, or 0.0.0.0/0
+                          (to whitelist all) this rule applies to.
+                        items:
+                          type: string
+                        minItems: 1
+                        type: array
+                      ports:
+                        description: A list of ports and/or port ranges (i.e. "443"
+                          or "80-90").
+                        items:
+                          type: string
+                        minItems: 1
+                        type: array
+                      protocol:
+                        description: The network protocol this rule controls.
+                        type: string
+                    required:
+                    - addresses
+                    - ports
+                    - protocol
+                    type: object
+                  type: array
+                label:
+                  description: The label for the Firewall. For display purposes only.
+                    If no label is provided, a default will be assigned.
+                  type: string
+                linodes:
+                  description: The IDs of Linodes to apply this firewall to.
+                  items:
+                    format: int64
+                    type: integer
+                  minItems: 1
+                  type: array
+                outbound:
+                  description: A firewall rule that specifies what outbound network
+                    traffic is allowed.
+                  items:
+                    properties:
+                      addresses:
+                        description: A list of IP addresses, CIDR blocks, or 0.0.0.0/0
+                          (to whitelist all) this rule applies to.
+                        items:
+                          type: string
+                        minItems: 1
+                        type: array
+                      ports:
+                        description: A list of ports and/or port ranges (i.e. "443"
+                          or "80-90").
+                        items:
+                          type: string
+                        minItems: 1
+                        type: array
+                      protocol:
+                        description: The network protocol this rule controls.
+                        type: string
+                    required:
+                    - addresses
+                    - ports
+                    - protocol
+                    type: object
+                  type: array
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                status:
+                  description: The status of the firewall.
+                  type: string
+                tags:
+                  description: An array of tags applied to this object. Tags are for
+                    organizational purposes only.
+                  items:
+                    type: string
+                  type: array
+              required:
+              - linodes
+              - providerRef
+              type: object
+            phase:
+              type: string
+            state:
+              properties:
+                lineage:
+                  type: string
+                serial:
+                  format: int64
+                  type: integer
+                terraform_version:
+                  type: string
+                version:
+                  format: int64
+                  type: integer
+              required:
+              - lineage
+              - serial
+              - terraform_version
+              - version
+              type: object
+          type: object
+      type: object
+  version: v1alpha1
+  versions:
+  - name: v1alpha1
+    served: true
+    storage: true

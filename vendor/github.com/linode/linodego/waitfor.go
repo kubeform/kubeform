@@ -2,12 +2,17 @@ package linodego
 
 import (
 	"context"
+	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"log"
+	"net/http"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/linode/linodego/internal/kubernetes"
+	"github.com/linode/linodego/pkg/condition"
 )
 
 // WaitForInstanceStatus waits for the Linode instance to reach the desired state
@@ -18,6 +23,7 @@ func (client Client) WaitForInstanceStatus(ctx context.Context, instanceID int, 
 
 	ticker := time.NewTicker(client.millisecondsPerPoll * time.Millisecond)
 	defer ticker.Stop()
+
 	for {
 		select {
 		case <-ticker.C:
@@ -44,6 +50,7 @@ func (client Client) WaitForInstanceDiskStatus(ctx context.Context, instanceID i
 
 	ticker := time.NewTicker(client.millisecondsPerPoll * time.Millisecond)
 	defer ticker.Stop()
+
 	for {
 		select {
 		case <-ticker.C:
@@ -53,6 +60,7 @@ func (client Client) WaitForInstanceDiskStatus(ctx context.Context, instanceID i
 			if err != nil {
 				return nil, err
 			}
+
 			for _, disk := range disks {
 				disk := disk
 				if disk.ID == diskID {
@@ -60,10 +68,10 @@ func (client Client) WaitForInstanceDiskStatus(ctx context.Context, instanceID i
 					if complete {
 						return &disk, nil
 					}
+
 					break
 				}
 			}
-
 		case <-ctx.Done():
 			return nil, fmt.Errorf("Error waiting for Instance %d Disk %d status %s: %s", instanceID, diskID, status, ctx.Err())
 		}
@@ -78,6 +86,7 @@ func (client Client) WaitForVolumeStatus(ctx context.Context, volumeID int, stat
 
 	ticker := time.NewTicker(client.millisecondsPerPoll * time.Millisecond)
 	defer ticker.Stop()
+
 	for {
 		select {
 		case <-ticker.C:
@@ -104,6 +113,7 @@ func (client Client) WaitForSnapshotStatus(ctx context.Context, instanceID int, 
 
 	ticker := time.NewTicker(client.millisecondsPerPoll * time.Millisecond)
 	defer ticker.Stop()
+
 	for {
 		select {
 		case <-ticker.C:
@@ -132,6 +142,7 @@ func (client Client) WaitForVolumeLinodeID(ctx context.Context, volumeID int, li
 
 	ticker := time.NewTicker(client.millisecondsPerPoll * time.Millisecond)
 	defer ticker.Stop()
+
 	for {
 		select {
 		case <-ticker.C:
@@ -148,16 +159,133 @@ func (client Client) WaitForVolumeLinodeID(ctx context.Context, volumeID int, li
 			case *volume.LinodeID == *linodeID:
 				return volume, nil
 			}
-
 		case <-ctx.Done():
 			return nil, fmt.Errorf("Error waiting for Volume %d to have Instance %v: %s", volumeID, linodeID, ctx.Err())
 		}
 	}
 }
 
+// WaitForLKEClusterStatus waits for the LKECluster to reach the desired state
+// before returning. It will timeout with an error after timeoutSeconds.
+func (client Client) WaitForLKEClusterStatus(ctx context.Context, clusterID int, status LKEClusterStatus, timeoutSeconds int) (*LKECluster, error) {
+	ctx, cancel := context.WithTimeout(ctx, time.Duration(timeoutSeconds)*time.Second)
+	defer cancel()
+
+	ticker := time.NewTicker(client.millisecondsPerPoll * time.Millisecond)
+	defer ticker.Stop()
+
+	for {
+		select {
+		case <-ticker.C:
+			cluster, err := client.GetLKECluster(ctx, clusterID)
+			if err != nil {
+				return cluster, err
+			}
+			complete := (cluster.Status == status)
+
+			if complete {
+				return cluster, nil
+			}
+		case <-ctx.Done():
+			return nil, fmt.Errorf("Error waiting for Cluster %d status %s: %s", clusterID, status, ctx.Err())
+		}
+	}
+}
+
+// LKEClusterPollOptions configures polls against LKE Clusters.
+type LKEClusterPollOptions struct {
+	// TimeoutSeconds is the number of Seconds to wait for the poll to succeed
+	// before exiting.
+	TimeoutSeconds int
+
+	// TansportWrapper allows adding a transport middleware function that will
+	// wrap the LKE Cluster client's undelying http.RoundTripper.
+	TransportWrapper func(http.RoundTripper) http.RoundTripper
+}
+
+func getLKEClusterClientset(
+	ctx context.Context,
+	client *Client,
+	clusterID int,
+	transportWrapper func(http.RoundTripper) http.RoundTripper,
+) (kubernetes.Clientset, error) {
+	resp, err := client.GetLKEClusterKubeconfig(ctx, clusterID)
+	if err != nil {
+		return nil, fmt.Errorf("failed to get Kubeconfig for LKE cluster %d: %s", clusterID, err)
+	}
+
+	kubeConfigBytes, err := base64.StdEncoding.DecodeString(resp.KubeConfig)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode kubeconfig: %s", err)
+	}
+
+	clientset, err := kubernetes.BuildClientsetFromConfig(kubeConfigBytes, transportWrapper)
+	if err != nil {
+		return nil, fmt.Errorf("failed to build client for LKE cluster %d: %s", clusterID, err)
+	}
+	return clientset, nil
+}
+
+// WaitForLKEClusterConditions waits for the given LKE conditions to be true
+func (client Client) WaitForLKEClusterConditions(
+	ctx context.Context,
+	clusterID int,
+	options LKEClusterPollOptions,
+	conditions ...condition.ClusterConditionFunc,
+) error {
+	ctx, cancel := context.WithCancel(ctx)
+	if options.TimeoutSeconds != 0 {
+		ctx, cancel = context.WithTimeout(ctx, time.Duration(options.TimeoutSeconds)*time.Second)
+	}
+	defer cancel()
+
+	var prevLog string
+	var clientset kubernetes.Clientset
+
+	clientset, err := getLKEClusterClientset(ctx, &client, clusterID, options.TransportWrapper)
+	if err != nil {
+		return err
+	}
+
+	ticker := time.NewTicker(client.millisecondsPerPoll * time.Millisecond)
+	defer ticker.Stop()
+
+	for _, condition := range conditions {
+	ConditionSucceeded:
+		for {
+			select {
+			case <-ticker.C:
+				result, err := condition(ctx, clientset)
+				if err != nil {
+					if err.Error() != prevLog {
+						prevLog = err.Error()
+						log.Printf("[ERROR] %s\n", err)
+					}
+				}
+
+				if result {
+					break ConditionSucceeded
+				}
+
+			case <-ctx.Done():
+				return fmt.Errorf("Error waiting for cluster %d conditions: %s", clusterID, ctx.Err())
+			}
+		}
+	}
+	return nil
+}
+
+// WaitForLKEClusterReady polls with a given timeout for the LKE Cluster's api-server
+// to be healthy and for the cluster to have at least one node with the NodeReady
+// condition true.
+func (client Client) WaitForLKEClusterReady(ctx context.Context, clusterID int, options LKEClusterPollOptions) error {
+	return client.WaitForLKEClusterConditions(ctx, clusterID, options, condition.ClusterHasReadyNode)
+}
+
 // WaitForEventFinished waits for an entity action to reach the 'finished' state
 // before returning. It will timeout with an error after timeoutSeconds.
 // If the event indicates a failure both the failed event and the error will be returned.
+// nolint
 func (client Client) WaitForEventFinished(ctx context.Context, id interface{}, entityType EntityType, action EventAction, minStart time.Time, timeoutSeconds int) (*Event, error) {
 	titledEntityType := strings.Title(string(entityType))
 	filterStruct := map[string]interface{}{
@@ -277,7 +405,7 @@ func (client Client) WaitForEventFinished(ctx context.Context, id interface{}, e
 				// @TODO(displague) This event.Created check shouldn't be needed, but it appears
 				// that the ListEvents method is not populating it correctly
 				if event.Created == nil {
-					log.Printf("[WARN] event.Created is nil when API returned: %#+v", event.CreatedStr)
+					log.Printf("[WARN] event.Created is nil when API returned: %#+v", event.Created)
 				} else if *event.Created != minStart && !event.Created.After(minStart) {
 					// Not the event we were looking for
 					// log.Println(event.Created, "is not >=", minStart)

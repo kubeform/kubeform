@@ -45,8 +45,14 @@ type DataflowJobSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
+	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
+	// +optional
+	MachineType string `json:"machineType,omitempty" tf:"machine_type,omitempty"`
+	// +optional
 	MaxWorkers int64  `json:"maxWorkers,omitempty" tf:"max_workers,omitempty"`
 	Name       string `json:"name" tf:"name"`
+	// +optional
+	Network string `json:"network,omitempty" tf:"network,omitempty"`
 	// +optional
 	OnDelete string `json:"onDelete,omitempty" tf:"on_delete,omitempty"`
 	// +optional
@@ -56,7 +62,11 @@ type DataflowJobSpec struct {
 	// +optional
 	Region string `json:"region,omitempty" tf:"region,omitempty"`
 	// +optional
-	State           string `json:"state,omitempty" tf:"state,omitempty"`
+	ServiceAccountEmail string `json:"serviceAccountEmail,omitempty" tf:"service_account_email,omitempty"`
+	// +optional
+	State string `json:"state,omitempty" tf:"state,omitempty"`
+	// +optional
+	Subnetwork      string `json:"subnetwork,omitempty" tf:"subnetwork,omitempty"`
 	TempGcsLocation string `json:"tempGcsLocation" tf:"temp_gcs_location"`
 	TemplateGcsPath string `json:"templateGcsPath" tf:"template_gcs_path"`
 	// +optional

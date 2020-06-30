@@ -89,6 +89,8 @@ type ConfigConfigRuleSpec struct {
 	Scope []ConfigConfigRuleSpecScope `json:"scope,omitempty" tf:"scope,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	Source []ConfigConfigRuleSpecSource `json:"source" tf:"source"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type ConfigConfigRuleStatus struct {

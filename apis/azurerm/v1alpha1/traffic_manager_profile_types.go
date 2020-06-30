@@ -46,9 +46,17 @@ type TrafficManagerProfileSpecDnsConfig struct {
 
 type TrafficManagerProfileSpecMonitorConfig struct {
 	// +optional
+	ExpectedStatusCodeRanges []string `json:"expectedStatusCodeRanges,omitempty" tf:"expected_status_code_ranges,omitempty"`
+	// +optional
+	IntervalInSeconds int64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
+	// +optional
 	Path     string `json:"path,omitempty" tf:"path,omitempty"`
 	Port     int64  `json:"port" tf:"port"`
 	Protocol string `json:"protocol" tf:"protocol"`
+	// +optional
+	TimeoutInSeconds int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	// +optional
+	ToleratedNumberOfFailures int64 `json:"toleratedNumberOfFailures,omitempty" tf:"tolerated_number_of_failures,omitempty"`
 }
 
 type TrafficManagerProfileSpec struct {
@@ -56,9 +64,11 @@ type TrafficManagerProfileSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// +kubebuilder:validation:MaxItems=1
 	DnsConfig []TrafficManagerProfileSpecDnsConfig `json:"dnsConfig" tf:"dns_config"`
 	// +optional
-	Fqdn          string                                   `json:"fqdn,omitempty" tf:"fqdn,omitempty"`
+	Fqdn string `json:"fqdn,omitempty" tf:"fqdn,omitempty"`
+	// +kubebuilder:validation:MaxItems=1
 	MonitorConfig []TrafficManagerProfileSpecMonitorConfig `json:"monitorConfig" tf:"monitor_config"`
 	Name          string                                   `json:"name" tf:"name"`
 	// +optional

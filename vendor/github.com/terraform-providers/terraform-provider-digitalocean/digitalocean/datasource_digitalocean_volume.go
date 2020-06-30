@@ -6,8 +6,8 @@ import (
 	"strings"
 
 	"github.com/digitalocean/godo"
-	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/hashicorp/terraform/helper/validation"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/validation"
 )
 
 func dataSourceDigitalOceanVolume() *schema.Resource {
@@ -63,6 +63,7 @@ func dataSourceDigitalOceanVolume() *schema.Resource {
 				Computed:    true,
 				Description: "list of droplet ids the volume is attached to",
 			},
+			"tags": tagsDataSourceSchema(),
 		},
 	}
 }
@@ -120,6 +121,7 @@ func dataSourceDigitalOceanVolumeRead(d *schema.ResourceData, meta interface{}) 
 	d.Set("urn", volume.URN())
 	d.Set("region", volume.Region.Slug)
 	d.Set("size", int(volume.SizeGigaBytes))
+	d.Set("tags", flattenTags(volume.Tags))
 
 	if v := volume.Description; v != "" {
 		d.Set("description", v)

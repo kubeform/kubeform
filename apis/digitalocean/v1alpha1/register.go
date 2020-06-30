@@ -63,8 +63,29 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&Certificate{},
 		&CertificateList{},
 
+		&ContainerRegistry{},
+		&ContainerRegistryList{},
+
+		&ContainerRegistryDockerCredentials{},
+		&ContainerRegistryDockerCredentialsList{},
+
 		&DatabaseCluster{},
 		&DatabaseClusterList{},
+
+		&DatabaseConnectionPool{},
+		&DatabaseConnectionPoolList{},
+
+		&DatabaseDb{},
+		&DatabaseDbList{},
+
+		&DatabaseFirewall{},
+		&DatabaseFirewallList{},
+
+		&DatabaseReplica{},
+		&DatabaseReplicaList{},
+
+		&DatabaseUser{},
+		&DatabaseUserList{},
 
 		&Domain{},
 		&DomainList{},
@@ -96,11 +117,17 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&Project{},
 		&ProjectList{},
 
+		&ProjectResources{},
+		&ProjectResourcesList{},
+
 		&Record{},
 		&RecordList{},
 
 		&SpacesBucket{},
 		&SpacesBucketList{},
+
+		&SpacesBucketObject{},
+		&SpacesBucketObjectList{},
 
 		&SshKey{},
 		&SshKeyList{},
@@ -116,6 +143,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&VolumeSnapshot{},
 		&VolumeSnapshotList{},
+
+		&Vpc{},
+		&VpcList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

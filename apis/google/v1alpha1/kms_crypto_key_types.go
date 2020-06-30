@@ -39,17 +39,30 @@ type KmsCryptoKey struct {
 	Status            KmsCryptoKeyStatus `json:"status,omitempty"`
 }
 
+type KmsCryptoKeySpecVersionTemplate struct {
+	Algorithm string `json:"algorithm" tf:"algorithm"`
+	// +optional
+	ProtectionLevel string `json:"protectionLevel,omitempty" tf:"protection_level,omitempty"`
+}
+
 type KmsCryptoKeySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	KeyRing string `json:"keyRing" tf:"key_ring"`
-	Name    string `json:"name" tf:"name"`
+	// +optional
+	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
+	Name   string            `json:"name" tf:"name"`
+	// +optional
+	Purpose string `json:"purpose,omitempty" tf:"purpose,omitempty"`
 	// +optional
 	RotationPeriod string `json:"rotationPeriod,omitempty" tf:"rotation_period,omitempty"`
 	// +optional
 	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	VersionTemplate []KmsCryptoKeySpecVersionTemplate `json:"versionTemplate,omitempty" tf:"version_template,omitempty"`
 }
 
 type KmsCryptoKeyStatus struct {

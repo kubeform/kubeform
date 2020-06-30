@@ -45,6 +45,9 @@ type StorageBlobSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
+	AccessTier string `json:"accessTier,omitempty" tf:"access_tier,omitempty"`
+	// +optional
+	// Deprecated
 	Attempts int64 `json:"attempts,omitempty" tf:"attempts,omitempty"`
 	// +optional
 	ContentType string `json:"contentType,omitempty" tf:"content_type,omitempty"`
@@ -52,18 +55,21 @@ type StorageBlobSpec struct {
 	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 	Name     string            `json:"name" tf:"name"`
 	// +optional
-	Parallelism       int64  `json:"parallelism,omitempty" tf:"parallelism,omitempty"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	Parallelism int64 `json:"parallelism,omitempty" tf:"parallelism,omitempty"`
+	// +optional
+	// Deprecated
+	ResourceGroupName string `json:"resourceGroupName,omitempty" tf:"resource_group_name,omitempty"`
 	// +optional
 	Size int64 `json:"size,omitempty" tf:"size,omitempty"`
 	// +optional
 	Source string `json:"source,omitempty" tf:"source,omitempty"`
 	// +optional
+	SourceContent string `json:"sourceContent,omitempty" tf:"source_content,omitempty"`
+	// +optional
 	SourceURI            string `json:"sourceURI,omitempty" tf:"source_uri,omitempty"`
 	StorageAccountName   string `json:"storageAccountName" tf:"storage_account_name"`
 	StorageContainerName string `json:"storageContainerName" tf:"storage_container_name"`
-	// +optional
-	Type string `json:"type,omitempty" tf:"type,omitempty"`
+	Type                 string `json:"type" tf:"type"`
 	// +optional
 	Url string `json:"url,omitempty" tf:"url,omitempty"`
 }

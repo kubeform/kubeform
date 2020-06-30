@@ -22,15 +22,23 @@ type DomainExpansion interface{}
 
 type DomainRecordExpansion interface{}
 
+type FirewallExpansion interface{}
+
 type ImageExpansion interface{}
 
 type InstanceExpansion interface{}
+
+type LkeClusterExpansion interface{}
 
 type NodebalancerExpansion interface{}
 
 type NodebalancerConfigExpansion interface{}
 
 type NodebalancerNodeExpansion interface{}
+
+type ObjectStorageBucketExpansion interface{}
+
+type ObjectStorageKeyExpansion interface{}
 
 type RdnsExpansion interface{}
 

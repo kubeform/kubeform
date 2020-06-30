@@ -52,17 +52,13 @@ type ComputeAddressSpec struct {
 	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
-	// +optional
-	// Deprecated
-	LabelFingerprint string `json:"labelFingerprint,omitempty" tf:"label_fingerprint,omitempty"`
-	// +optional
-	// Deprecated
-	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
-	Name   string            `json:"name" tf:"name"`
+	Name        string `json:"name" tf:"name"`
 	// +optional
 	NetworkTier string `json:"networkTier,omitempty" tf:"network_tier,omitempty"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	Purpose string `json:"purpose,omitempty" tf:"purpose,omitempty"`
 	// +optional
 	Region string `json:"region,omitempty" tf:"region,omitempty"`
 	// +optional

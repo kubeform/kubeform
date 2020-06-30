@@ -25,12 +25,12 @@ spec:
         apiVersion:
           description: 'APIVersion defines the versioned schema of this representation
             of an object. Servers should convert recognized schemas to the latest
-            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
           type: string
         kind:
           description: 'Kind is a string value representing the REST resource this
             object represents. Servers may infer this from the endpoint the client
-            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
           type: string
         metadata:
           type: object
@@ -48,7 +48,16 @@ spec:
                           type: string
                       required:
                       - enabled
-                      - subnetName
+                      type: object
+                    maxItems: 1
+                    type: array
+                  azurePolicy:
+                    items:
+                      properties:
+                        enabled:
+                          type: boolean
+                      required:
+                      - enabled
                       type: object
                     maxItems: 1
                     type: array
@@ -64,6 +73,16 @@ spec:
                       type: object
                     maxItems: 1
                     type: array
+                  kubeDashboard:
+                    items:
+                      properties:
+                        enabled:
+                          type: boolean
+                      required:
+                      - enabled
+                      type: object
+                    maxItems: 1
+                    type: array
                   omsAgent:
                     items:
                       properties:
@@ -73,7 +92,6 @@ spec:
                           type: string
                       required:
                       - enabled
-                      - logAnalyticsWorkspaceID
                       type: object
                     maxItems: 1
                     type: array
@@ -81,6 +99,7 @@ spec:
               maxItems: 1
               type: array
             agentPoolProfile:
+              description: Deprecated
               items:
                 properties:
                   availabilityZones:
@@ -94,6 +113,8 @@ spec:
                     description: Deprecated
                     type: string
                   enableAutoScaling:
+                    type: boolean
+                  enableNodePublicIP:
                     type: boolean
                   fqdn:
                     description: Deprecated
@@ -133,12 +154,72 @@ spec:
               items:
                 type: string
               type: array
+            defaultNodePool:
+              items:
+                properties:
+                  availabilityZones:
+                    items:
+                      type: string
+                    type: array
+                  enableAutoScaling:
+                    type: boolean
+                  enableNodePublicIP:
+                    type: boolean
+                  maxCount:
+                    format: int64
+                    type: integer
+                  maxPods:
+                    format: int64
+                    type: integer
+                  minCount:
+                    format: int64
+                    type: integer
+                  name:
+                    type: string
+                  nodeCount:
+                    format: int64
+                    type: integer
+                  nodeTaints:
+                    items:
+                      type: string
+                    type: array
+                  osDiskSizeGb:
+                    format: int64
+                    type: integer
+                  type:
+                    type: string
+                  vmSize:
+                    type: string
+                  vnetSubnetID:
+                    type: string
+                required:
+                - name
+                - vmSize
+                type: object
+              maxItems: 1
+              type: array
             dnsPrefix:
               type: string
+            enablePodSecurityPolicy:
+              type: boolean
             fqdn:
               type: string
             id:
               type: string
+            identity:
+              items:
+                properties:
+                  principalID:
+                    type: string
+                  tenantID:
+                    type: string
+                  type:
+                    type: string
+                required:
+                - type
+                type: object
+              maxItems: 1
+              type: array
             kubeAdminConfig:
               items:
                 properties:
@@ -151,7 +232,6 @@ spec:
                   username:
                     type: string
                 type: object
-              maxItems: 1
               type: array
             kubeConfig:
               items:
@@ -165,7 +245,6 @@ spec:
                   username:
                     type: string
                 type: object
-              maxItems: 1
               type: array
             kubernetesVersion:
               type: string
@@ -201,6 +280,27 @@ spec:
                     type: string
                   dockerBridgeCIDR:
                     type: string
+                  loadBalancerProfile:
+                    items:
+                      properties:
+                        effectiveOutboundIPS:
+                          items:
+                            type: string
+                          type: array
+                        managedOutboundIPCount:
+                          format: int64
+                          type: integer
+                        outboundIPAddressIDS:
+                          items:
+                            type: string
+                          type: array
+                        outboundIPPrefixIDS:
+                          items:
+                            type: string
+                          type: array
+                      type: object
+                    maxItems: 1
+                    type: array
                   loadBalancerSku:
                     type: string
                   networkPlugin:
@@ -218,6 +318,10 @@ spec:
               type: array
             nodeResourceGroup:
               type: string
+            privateFqdn:
+              type: string
+            privateLinkEnabled:
+              type: boolean
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -288,7 +392,6 @@ spec:
               maxItems: 1
               type: array
           required:
-          - agentPoolProfile
           - dnsPrefix
           - location
           - name
@@ -317,7 +420,16 @@ spec:
                               type: string
                           required:
                           - enabled
-                          - subnetName
+                          type: object
+                        maxItems: 1
+                        type: array
+                      azurePolicy:
+                        items:
+                          properties:
+                            enabled:
+                              type: boolean
+                          required:
+                          - enabled
                           type: object
                         maxItems: 1
                         type: array
@@ -333,6 +445,16 @@ spec:
                           type: object
                         maxItems: 1
                         type: array
+                      kubeDashboard:
+                        items:
+                          properties:
+                            enabled:
+                              type: boolean
+                          required:
+                          - enabled
+                          type: object
+                        maxItems: 1
+                        type: array
                       omsAgent:
                         items:
                           properties:
@@ -342,7 +464,6 @@ spec:
                               type: string
                           required:
                           - enabled
-                          - logAnalyticsWorkspaceID
                           type: object
                         maxItems: 1
                         type: array
@@ -350,6 +471,7 @@ spec:
                   maxItems: 1
                   type: array
                 agentPoolProfile:
+                  description: Deprecated
                   items:
                     properties:
                       availabilityZones:
@@ -363,6 +485,8 @@ spec:
                         description: Deprecated
                         type: string
                       enableAutoScaling:
+                        type: boolean
+                      enableNodePublicIP:
                         type: boolean
                       fqdn:
                         description: Deprecated
@@ -402,12 +526,72 @@ spec:
                   items:
                     type: string
                   type: array
+                defaultNodePool:
+                  items:
+                    properties:
+                      availabilityZones:
+                        items:
+                          type: string
+                        type: array
+                      enableAutoScaling:
+                        type: boolean
+                      enableNodePublicIP:
+                        type: boolean
+                      maxCount:
+                        format: int64
+                        type: integer
+                      maxPods:
+                        format: int64
+                        type: integer
+                      minCount:
+                        format: int64
+                        type: integer
+                      name:
+                        type: string
+                      nodeCount:
+                        format: int64
+                        type: integer
+                      nodeTaints:
+                        items:
+                          type: string
+                        type: array
+                      osDiskSizeGb:
+                        format: int64
+                        type: integer
+                      type:
+                        type: string
+                      vmSize:
+                        type: string
+                      vnetSubnetID:
+                        type: string
+                    required:
+                    - name
+                    - vmSize
+                    type: object
+                  maxItems: 1
+                  type: array
                 dnsPrefix:
                   type: string
+                enablePodSecurityPolicy:
+                  type: boolean
                 fqdn:
                   type: string
                 id:
                   type: string
+                identity:
+                  items:
+                    properties:
+                      principalID:
+                        type: string
+                      tenantID:
+                        type: string
+                      type:
+                        type: string
+                    required:
+                    - type
+                    type: object
+                  maxItems: 1
+                  type: array
                 kubeAdminConfig:
                   items:
                     properties:
@@ -420,7 +604,6 @@ spec:
                       username:
                         type: string
                     type: object
-                  maxItems: 1
                   type: array
                 kubeConfig:
                   items:
@@ -434,7 +617,6 @@ spec:
                       username:
                         type: string
                     type: object
-                  maxItems: 1
                   type: array
                 kubernetesVersion:
                   type: string
@@ -470,6 +652,27 @@ spec:
                         type: string
                       dockerBridgeCIDR:
                         type: string
+                      loadBalancerProfile:
+                        items:
+                          properties:
+                            effectiveOutboundIPS:
+                              items:
+                                type: string
+                              type: array
+                            managedOutboundIPCount:
+                              format: int64
+                              type: integer
+                            outboundIPAddressIDS:
+                              items:
+                                type: string
+                              type: array
+                            outboundIPPrefixIDS:
+                              items:
+                                type: string
+                              type: array
+                          type: object
+                        maxItems: 1
+                        type: array
                       loadBalancerSku:
                         type: string
                       networkPlugin:
@@ -487,6 +690,10 @@ spec:
                   type: array
                 nodeResourceGroup:
                   type: string
+                privateFqdn:
+                  type: string
+                privateLinkEnabled:
+                  type: boolean
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -557,7 +764,6 @@ spec:
                   maxItems: 1
                   type: array
               required:
-              - agentPoolProfile
               - dnsPrefix
               - location
               - name

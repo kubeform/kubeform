@@ -78,6 +78,8 @@ type AppmeshVirtualServiceSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1
 	Spec []AppmeshVirtualServiceSpecSpec `json:"spec" tf:"spec"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type AppmeshVirtualServiceStatus struct {

@@ -125,6 +125,46 @@ type AppServiceSlotSpecIdentity struct {
 	Type     string `json:"type" tf:"type"`
 }
 
+type AppServiceSlotSpecLogsApplicationLogsAzureBlobStorage struct {
+	Level           string `json:"level" tf:"level"`
+	RetentionInDays int64  `json:"retentionInDays" tf:"retention_in_days"`
+	SasURL          string `json:"-" sensitive:"true" tf:"sas_url"`
+}
+
+type AppServiceSlotSpecLogsApplicationLogs struct {
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	AzureBlobStorage []AppServiceSlotSpecLogsApplicationLogsAzureBlobStorage `json:"azureBlobStorage,omitempty" tf:"azure_blob_storage,omitempty"`
+}
+
+type AppServiceSlotSpecLogsHttpLogsAzureBlobStorage struct {
+	RetentionInDays int64  `json:"retentionInDays" tf:"retention_in_days"`
+	SasURL          string `json:"-" sensitive:"true" tf:"sas_url"`
+}
+
+type AppServiceSlotSpecLogsHttpLogsFileSystem struct {
+	RetentionInDays int64 `json:"retentionInDays" tf:"retention_in_days"`
+	RetentionInMb   int64 `json:"retentionInMb" tf:"retention_in_mb"`
+}
+
+type AppServiceSlotSpecLogsHttpLogs struct {
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	AzureBlobStorage []AppServiceSlotSpecLogsHttpLogsAzureBlobStorage `json:"azureBlobStorage,omitempty" tf:"azure_blob_storage,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	FileSystem []AppServiceSlotSpecLogsHttpLogsFileSystem `json:"fileSystem,omitempty" tf:"file_system,omitempty"`
+}
+
+type AppServiceSlotSpecLogs struct {
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	ApplicationLogs []AppServiceSlotSpecLogsApplicationLogs `json:"applicationLogs,omitempty" tf:"application_logs,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	HttpLogs []AppServiceSlotSpecLogsHttpLogs `json:"httpLogs,omitempty" tf:"http_logs,omitempty"`
+}
+
 type AppServiceSlotSpecSiteConfigCors struct {
 	AllowedOrigins []string `json:"allowedOrigins" tf:"allowed_origins"`
 	// +optional
@@ -132,9 +172,12 @@ type AppServiceSlotSpecSiteConfigCors struct {
 }
 
 type AppServiceSlotSpecSiteConfigIpRestriction struct {
-	IpAddress string `json:"ipAddress" tf:"ip_address"`
+	// +optional
+	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
 	// +optional
 	SubnetMask string `json:"subnetMask,omitempty" tf:"subnet_mask,omitempty"`
+	// +optional
+	VirtualNetworkSubnetID string `json:"virtualNetworkSubnetID,omitempty" tf:"virtual_network_subnet_id,omitempty"`
 }
 
 type AppServiceSlotSpecSiteConfig struct {
@@ -142,6 +185,8 @@ type AppServiceSlotSpecSiteConfig struct {
 	AlwaysOn bool `json:"alwaysOn,omitempty" tf:"always_on,omitempty"`
 	// +optional
 	AppCommandLine string `json:"appCommandLine,omitempty" tf:"app_command_line,omitempty"`
+	// +optional
+	AutoSwapSlotName string `json:"autoSwapSlotName,omitempty" tf:"auto_swap_slot_name,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Cors []AppServiceSlotSpecSiteConfigCors `json:"cors,omitempty" tf:"cors,omitempty"`
@@ -222,15 +267,17 @@ type AppServiceSlotSpec struct {
 	HttpsOnly bool `json:"httpsOnly,omitempty" tf:"https_only,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	Identity          []AppServiceSlotSpecIdentity `json:"identity,omitempty" tf:"identity,omitempty"`
-	Location          string                       `json:"location" tf:"location"`
-	Name              string                       `json:"name" tf:"name"`
-	ResourceGroupName string                       `json:"resourceGroupName" tf:"resource_group_name"`
+	Identity []AppServiceSlotSpecIdentity `json:"identity,omitempty" tf:"identity,omitempty"`
+	Location string                       `json:"location" tf:"location"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Logs              []AppServiceSlotSpecLogs `json:"logs,omitempty" tf:"logs,omitempty"`
+	Name              string                   `json:"name" tf:"name"`
+	ResourceGroupName string                   `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SiteConfig []AppServiceSlotSpecSiteConfig `json:"siteConfig,omitempty" tf:"site_config,omitempty"`
 	// +optional
-	// +kubebuilder:validation:MaxItems=1
 	SiteCredential []AppServiceSlotSpecSiteCredential `json:"siteCredential,omitempty" tf:"site_credential,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

@@ -39,9 +39,25 @@ type ComposerEnvironment struct {
 	Status            ComposerEnvironmentStatus `json:"status,omitempty"`
 }
 
+type ComposerEnvironmentSpecConfigNodeConfigIpAllocationPolicy struct {
+	// +optional
+	ClusterIpv4CIDRBlock string `json:"clusterIpv4CIDRBlock,omitempty" tf:"cluster_ipv4_cidr_block,omitempty"`
+	// +optional
+	ClusterSecondaryRangeName string `json:"clusterSecondaryRangeName,omitempty" tf:"cluster_secondary_range_name,omitempty"`
+	// +optional
+	ServicesIpv4CIDRBlock string `json:"servicesIpv4CIDRBlock,omitempty" tf:"services_ipv4_cidr_block,omitempty"`
+	// +optional
+	ServicesSecondaryRangeName string `json:"servicesSecondaryRangeName,omitempty" tf:"services_secondary_range_name,omitempty"`
+	// +optional
+	UseIPAliases bool `json:"useIPAliases,omitempty" tf:"use_ip_aliases,omitempty"`
+}
+
 type ComposerEnvironmentSpecConfigNodeConfig struct {
 	// +optional
 	DiskSizeGb int64 `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	IpAllocationPolicy []ComposerEnvironmentSpecConfigNodeConfigIpAllocationPolicy `json:"ipAllocationPolicy,omitempty" tf:"ip_allocation_policy,omitempty"`
 	// +optional
 	MachineType string `json:"machineType,omitempty" tf:"machine_type,omitempty"`
 	// +optional
@@ -54,8 +70,14 @@ type ComposerEnvironmentSpecConfigNodeConfig struct {
 	Subnetwork string `json:"subnetwork,omitempty" tf:"subnetwork,omitempty"`
 	// +optional
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Zone string   `json:"zone" tf:"zone"`
+}
+
+type ComposerEnvironmentSpecConfigPrivateEnvironmentConfig struct {
 	// +optional
-	Zone string `json:"zone,omitempty" tf:"zone,omitempty"`
+	EnablePrivateEndpoint bool `json:"enablePrivateEndpoint,omitempty" tf:"enable_private_endpoint,omitempty"`
+	// +optional
+	MasterIpv4CIDRBlock string `json:"masterIpv4CIDRBlock,omitempty" tf:"master_ipv4_cidr_block,omitempty"`
 }
 
 type ComposerEnvironmentSpecConfigSoftwareConfig struct {
@@ -67,6 +89,8 @@ type ComposerEnvironmentSpecConfigSoftwareConfig struct {
 	ImageVersion string `json:"imageVersion,omitempty" tf:"image_version,omitempty"`
 	// +optional
 	PypiPackages map[string]string `json:"pypiPackages,omitempty" tf:"pypi_packages,omitempty"`
+	// +optional
+	PythonVersion string `json:"pythonVersion,omitempty" tf:"python_version,omitempty"`
 }
 
 type ComposerEnvironmentSpecConfig struct {
@@ -81,6 +105,9 @@ type ComposerEnvironmentSpecConfig struct {
 	NodeConfig []ComposerEnvironmentSpecConfigNodeConfig `json:"nodeConfig,omitempty" tf:"node_config,omitempty"`
 	// +optional
 	NodeCount int64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	PrivateEnvironmentConfig []ComposerEnvironmentSpecConfigPrivateEnvironmentConfig `json:"privateEnvironmentConfig,omitempty" tf:"private_environment_config,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SoftwareConfig []ComposerEnvironmentSpecConfigSoftwareConfig `json:"softwareConfig,omitempty" tf:"software_config,omitempty"`

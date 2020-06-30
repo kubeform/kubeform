@@ -129,24 +129,50 @@ type ApiManagementSpecPolicy struct {
 	XmlLink string `json:"xmlLink,omitempty" tf:"xml_link,omitempty"`
 }
 
+type ApiManagementSpecProtocols struct {
+	// +optional
+	EnableHttp2 bool `json:"enableHttp2,omitempty" tf:"enable_http2,omitempty"`
+}
+
 type ApiManagementSpecSecurity struct {
 	// +optional
+	// Deprecated
 	DisableBackendSSL30 bool `json:"disableBackendSSL30,omitempty" tf:"disable_backend_ssl30,omitempty"`
 	// +optional
+	// Deprecated
 	DisableBackendTLS10 bool `json:"disableBackendTLS10,omitempty" tf:"disable_backend_tls10,omitempty"`
 	// +optional
+	// Deprecated
 	DisableBackendTLS11 bool `json:"disableBackendTLS11,omitempty" tf:"disable_backend_tls11,omitempty"`
 	// +optional
+	// Deprecated
 	DisableFrontendSSL30 bool `json:"disableFrontendSSL30,omitempty" tf:"disable_frontend_ssl30,omitempty"`
 	// +optional
+	// Deprecated
 	DisableFrontendTLS10 bool `json:"disableFrontendTLS10,omitempty" tf:"disable_frontend_tls10,omitempty"`
 	// +optional
+	// Deprecated
 	DisableFrontendTLS11 bool `json:"disableFrontendTLS11,omitempty" tf:"disable_frontend_tls11,omitempty"`
 	// +optional
 	// Deprecated
 	DisableTripleDESChipers bool `json:"disableTripleDESChipers,omitempty" tf:"disable_triple_des_chipers,omitempty"`
 	// +optional
+	// Deprecated
 	DisableTripleDESCiphers bool `json:"disableTripleDESCiphers,omitempty" tf:"disable_triple_des_ciphers,omitempty"`
+	// +optional
+	EnableBackendSSL30 bool `json:"enableBackendSSL30,omitempty" tf:"enable_backend_ssl30,omitempty"`
+	// +optional
+	EnableBackendTLS10 bool `json:"enableBackendTLS10,omitempty" tf:"enable_backend_tls10,omitempty"`
+	// +optional
+	EnableBackendTLS11 bool `json:"enableBackendTLS11,omitempty" tf:"enable_backend_tls11,omitempty"`
+	// +optional
+	EnableFrontendSSL30 bool `json:"enableFrontendSSL30,omitempty" tf:"enable_frontend_ssl30,omitempty"`
+	// +optional
+	EnableFrontendTLS10 bool `json:"enableFrontendTLS10,omitempty" tf:"enable_frontend_tls10,omitempty"`
+	// +optional
+	EnableFrontendTLS11 bool `json:"enableFrontendTLS11,omitempty" tf:"enable_frontend_tls11,omitempty"`
+	// +optional
+	EnableTripleDESCiphers bool `json:"enableTripleDESCiphers,omitempty" tf:"enable_triple_des_ciphers,omitempty"`
 }
 
 type ApiManagementSpecSignIn struct {
@@ -167,7 +193,8 @@ type ApiManagementSpecSignUp struct {
 }
 
 type ApiManagementSpecSku struct {
-	Capacity int64  `json:"capacity" tf:"capacity"`
+	// +optional
+	Capacity int64  `json:"capacity,omitempty" tf:"capacity,omitempty"`
 	Name     string `json:"name" tf:"name"`
 }
 
@@ -179,7 +206,6 @@ type ApiManagementSpec struct {
 	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	// +optional
-	// +kubebuilder:validation:MaxItems=1
 	AdditionalLocation []ApiManagementSpecAdditionalLocation `json:"additionalLocation,omitempty" tf:"additional_location,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=10
@@ -206,6 +232,9 @@ type ApiManagementSpec struct {
 	// +optional
 	PortalURL string `json:"portalURL,omitempty" tf:"portal_url,omitempty"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Protocols []ApiManagementSpecProtocols `json:"protocols,omitempty" tf:"protocols,omitempty"`
+	// +optional
 	PublicIPAddresses []string `json:"publicIPAddresses,omitempty" tf:"public_ip_addresses,omitempty"`
 	PublisherEmail    string   `json:"publisherEmail" tf:"publisher_email"`
 	PublisherName     string   `json:"publisherName" tf:"publisher_name"`
@@ -221,8 +250,12 @@ type ApiManagementSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SignUp []ApiManagementSpecSignUp `json:"signUp,omitempty" tf:"sign_up,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	Sku []ApiManagementSpecSku `json:"sku" tf:"sku"`
+	// Deprecated
+	Sku []ApiManagementSpecSku `json:"sku,omitempty" tf:"sku,omitempty"`
+	// +optional
+	SkuName string `json:"skuName,omitempty" tf:"sku_name,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

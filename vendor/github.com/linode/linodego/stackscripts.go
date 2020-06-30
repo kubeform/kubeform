@@ -5,13 +5,12 @@ import (
 	"encoding/json"
 	"fmt"
 	"time"
+
+	"github.com/linode/linodego/internal/parseabletime"
 )
 
 // Stackscript represents a Linode StackScript
 type Stackscript struct {
-	CreatedStr string `json:"created"`
-	UpdatedStr string `json:"updated"`
-
 	ID                int               `json:"id"`
 	Username          string            `json:"username"`
 	Label             string            `json:"label"`
@@ -64,6 +63,28 @@ type StackscriptCreateOptions struct {
 // StackscriptUpdateOptions fields are those accepted by UpdateStackscript
 type StackscriptUpdateOptions StackscriptCreateOptions
 
+// UnmarshalJSON implements the json.Unmarshaler interface
+func (i *Stackscript) UnmarshalJSON(b []byte) error {
+	type Mask Stackscript
+
+	p := struct {
+		*Mask
+		Created *parseabletime.ParseableTime `json:"created"`
+		Updated *parseabletime.ParseableTime `json:"updated"`
+	}{
+		Mask: (*Mask)(i),
+	}
+
+	if err := json.Unmarshal(b, &p); err != nil {
+		return err
+	}
+
+	i.Created = (*time.Time)(p.Created)
+	i.Updated = (*time.Time)(p.Updated)
+
+	return nil
+}
+
 // GetCreateOptions converts a Stackscript to StackscriptCreateOptions for use in CreateStackscript
 func (i Stackscript) GetCreateOptions() StackscriptCreateOptions {
 	return StackscriptCreateOptions{
@@ -112,20 +133,11 @@ func (resp *StackscriptsPagedResponse) appendData(r *StackscriptsPagedResponse) 
 func (c *Client) ListStackscripts(ctx context.Context, opts *ListOptions) ([]Stackscript, error) {
 	response := StackscriptsPagedResponse{}
 	err := c.listHelper(ctx, &response, opts)
-	for i := range response.Data {
-		response.Data[i].fixDates()
-	}
+
 	if err != nil {
 		return nil, err
 	}
 	return response.Data, nil
-}
-
-// fixDates converts JSON timestamps to Go time.Time values
-func (i *Stackscript) fixDates() *Stackscript {
-	i.Created, _ = parseDates(i.CreatedStr)
-	i.Updated, _ = parseDates(i.UpdatedStr)
-	return i
 }
 
 // GetStackscript gets the Stackscript with the provided ID
@@ -141,7 +153,7 @@ func (c *Client) GetStackscript(ctx context.Context, id int) (*Stackscript, erro
 	if err != nil {
 		return nil, err
 	}
-	return r.Result().(*Stackscript).fixDates(), nil
+	return r.Result().(*Stackscript), nil
 }
 
 // CreateStackscript creates a StackScript
@@ -167,7 +179,7 @@ func (c *Client) CreateStackscript(ctx context.Context, createOpts StackscriptCr
 	if err != nil {
 		return nil, err
 	}
-	return r.Result().(*Stackscript).fixDates(), nil
+	return r.Result().(*Stackscript), nil
 }
 
 // UpdateStackscript updates the StackScript with the specified id
@@ -194,7 +206,7 @@ func (c *Client) UpdateStackscript(ctx context.Context, id int, updateOpts Stack
 	if err != nil {
 		return nil, err
 	}
-	return r.Result().(*Stackscript).fixDates(), nil
+	return r.Result().(*Stackscript), nil
 }
 
 // DeleteStackscript deletes the StackScript with the specified id

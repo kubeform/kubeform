@@ -37,12 +37,20 @@ func (c *FakeLinodeV1alpha1) DomainRecords(namespace string) v1alpha1.DomainReco
 	return &FakeDomainRecords{c, namespace}
 }
 
+func (c *FakeLinodeV1alpha1) Firewalls(namespace string) v1alpha1.FirewallInterface {
+	return &FakeFirewalls{c, namespace}
+}
+
 func (c *FakeLinodeV1alpha1) Images(namespace string) v1alpha1.ImageInterface {
 	return &FakeImages{c, namespace}
 }
 
 func (c *FakeLinodeV1alpha1) Instances(namespace string) v1alpha1.InstanceInterface {
 	return &FakeInstances{c, namespace}
+}
+
+func (c *FakeLinodeV1alpha1) LkeClusters(namespace string) v1alpha1.LkeClusterInterface {
+	return &FakeLkeClusters{c, namespace}
 }
 
 func (c *FakeLinodeV1alpha1) Nodebalancers(namespace string) v1alpha1.NodebalancerInterface {
@@ -55,6 +63,14 @@ func (c *FakeLinodeV1alpha1) NodebalancerConfigs(namespace string) v1alpha1.Node
 
 func (c *FakeLinodeV1alpha1) NodebalancerNodes(namespace string) v1alpha1.NodebalancerNodeInterface {
 	return &FakeNodebalancerNodes{c, namespace}
+}
+
+func (c *FakeLinodeV1alpha1) ObjectStorageBuckets(namespace string) v1alpha1.ObjectStorageBucketInterface {
+	return &FakeObjectStorageBuckets{c, namespace}
+}
+
+func (c *FakeLinodeV1alpha1) ObjectStorageKeys(namespace string) v1alpha1.ObjectStorageKeyInterface {
+	return &FakeObjectStorageKeys{c, namespace}
 }
 
 func (c *FakeLinodeV1alpha1) Rdnses(namespace string) v1alpha1.RdnsInterface {

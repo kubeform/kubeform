@@ -66,6 +66,8 @@ type LaunchConfigurationSpecRootBlockDevice struct {
 	// +optional
 	DeleteOnTermination bool `json:"deleteOnTermination,omitempty" tf:"delete_on_termination,omitempty"`
 	// +optional
+	Encrypted bool `json:"encrypted,omitempty" tf:"encrypted,omitempty"`
+	// +optional
 	Iops int64 `json:"iops,omitempty" tf:"iops,omitempty"`
 	// +optional
 	VolumeSize int64 `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`

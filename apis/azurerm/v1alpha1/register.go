@@ -57,6 +57,9 @@ func Resource(resource string) schema.GroupResource {
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
 
+		&AdvancedThreatProtection{},
+		&AdvancedThreatProtectionList{},
+
 		&AnalysisServicesServer{},
 		&AnalysisServicesServerList{},
 
@@ -90,11 +93,29 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ApiManagementCertificate{},
 		&ApiManagementCertificateList{},
 
+		&ApiManagementDiagnostic{},
+		&ApiManagementDiagnosticList{},
+
 		&ApiManagementGroup{},
 		&ApiManagementGroupList{},
 
 		&ApiManagementGroupUser{},
 		&ApiManagementGroupUserList{},
+
+		&ApiManagementIdentityProviderAad{},
+		&ApiManagementIdentityProviderAadList{},
+
+		&ApiManagementIdentityProviderFacebook{},
+		&ApiManagementIdentityProviderFacebookList{},
+
+		&ApiManagementIdentityProviderGoogle{},
+		&ApiManagementIdentityProviderGoogleList{},
+
+		&ApiManagementIdentityProviderMicrosoft{},
+		&ApiManagementIdentityProviderMicrosoftList{},
+
+		&ApiManagementIdentityProviderTwitter{},
+		&ApiManagementIdentityProviderTwitterList{},
 
 		&ApiManagementLogger{},
 		&ApiManagementLoggerList{},
@@ -123,11 +144,20 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ApiManagementUser{},
 		&ApiManagementUserList{},
 
+		&AppConfiguration{},
+		&AppConfigurationList{},
+
 		&AppService{},
 		&AppServiceList{},
 
 		&AppServiceActiveSlot{},
 		&AppServiceActiveSlotList{},
+
+		&AppServiceCertificate{},
+		&AppServiceCertificateList{},
+
+		&AppServiceCertificateOrder{},
+		&AppServiceCertificateOrderList{},
 
 		&AppServiceCustomHostnameBinding{},
 		&AppServiceCustomHostnameBindingList{},
@@ -138,6 +168,12 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&AppServiceSlot{},
 		&AppServiceSlotList{},
 
+		&AppServiceSourceControlToken{},
+		&AppServiceSourceControlTokenList{},
+
+		&AppServiceVirtualNetworkSwiftConnection{},
+		&AppServiceVirtualNetworkSwiftConnectionList{},
+
 		&ApplicationGateway{},
 		&ApplicationGatewayList{},
 
@@ -146,6 +182,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&ApplicationInsightsAPIKey{},
 		&ApplicationInsightsAPIKeyList{},
+
+		&ApplicationInsightsAnalyticsItem{},
+		&ApplicationInsightsAnalyticsItemList{},
 
 		&ApplicationInsightsWebTest{},
 		&ApplicationInsightsWebTestList{},
@@ -156,6 +195,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&AutomationAccount{},
 		&AutomationAccountList{},
 
+		&AutomationCertificate{},
+		&AutomationCertificateList{},
+
 		&AutomationCredential{},
 		&AutomationCredentialList{},
 
@@ -164,6 +206,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&AutomationDscNodeconfiguration{},
 		&AutomationDscNodeconfigurationList{},
+
+		&AutomationJobSchedule{},
+		&AutomationJobScheduleList{},
 
 		&AutomationModule{},
 		&AutomationModuleList{},
@@ -201,6 +246,24 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&AzureadServicePrincipalPassword{},
 		&AzureadServicePrincipalPasswordList{},
 
+		&BackupContainerStorageAccount{},
+		&BackupContainerStorageAccountList{},
+
+		&BackupPolicyFileShare{},
+		&BackupPolicyFileShareList{},
+
+		&BackupPolicyVm{},
+		&BackupPolicyVmList{},
+
+		&BackupProtectedFileShare{},
+		&BackupProtectedFileShareList{},
+
+		&BackupProtectedVm{},
+		&BackupProtectedVmList{},
+
+		&BastionHost{},
+		&BastionHostList{},
+
 		&BatchAccount{},
 		&BatchAccountList{},
 
@@ -212,6 +275,24 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&BatchPool{},
 		&BatchPoolList{},
+
+		&BotChannelEmail{},
+		&BotChannelEmailList{},
+
+		&BotChannelMsTeams{},
+		&BotChannelMsTeamsList{},
+
+		&BotChannelSlack{},
+		&BotChannelSlackList{},
+
+		&BotChannelsRegistration{},
+		&BotChannelsRegistrationList{},
+
+		&BotConnection{},
+		&BotConnectionList{},
+
+		&BotWebApp{},
+		&BotWebAppList{},
 
 		&CdnEndpoint{},
 		&CdnEndpointList{},
@@ -231,6 +312,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ContainerRegistry{},
 		&ContainerRegistryList{},
 
+		&ContainerRegistryWebhook{},
+		&ContainerRegistryWebhookList{},
+
 		&ContainerService{},
 		&ContainerServiceList{},
 
@@ -240,17 +324,29 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&CosmosdbCassandraKeyspace{},
 		&CosmosdbCassandraKeyspaceList{},
 
+		&CosmosdbGremlinDatabase{},
+		&CosmosdbGremlinDatabaseList{},
+
+		&CosmosdbGremlinGraph{},
+		&CosmosdbGremlinGraphList{},
+
 		&CosmosdbMongoCollection{},
 		&CosmosdbMongoCollectionList{},
 
 		&CosmosdbMongoDatabase{},
 		&CosmosdbMongoDatabaseList{},
 
+		&CosmosdbSQLContainer{},
+		&CosmosdbSQLContainerList{},
+
 		&CosmosdbSQLDatabase{},
 		&CosmosdbSQLDatabaseList{},
 
 		&CosmosdbTable{},
 		&CosmosdbTableList{},
+
+		&Dashboard{},
+		&DashboardList{},
 
 		&DataFactory{},
 		&DataFactoryList{},
@@ -263,6 +359,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&DataFactoryDatasetSQLServerTable{},
 		&DataFactoryDatasetSQLServerTableList{},
+
+		&DataFactoryIntegrationRuntimeManaged{},
+		&DataFactoryIntegrationRuntimeManagedList{},
 
 		&DataFactoryLinkedServiceDataLakeStorageGen2{},
 		&DataFactoryLinkedServiceDataLakeStorageGen2List{},
@@ -278,6 +377,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&DataFactoryPipeline{},
 		&DataFactoryPipelineList{},
+
+		&DataFactoryTriggerSchedule{},
+		&DataFactoryTriggerScheduleList{},
 
 		&DataLakeAnalyticsAccount{},
 		&DataLakeAnalyticsAccountList{},
@@ -300,6 +402,12 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&DdosProtectionPlan{},
 		&DdosProtectionPlanList{},
 
+		&DedicatedHost{},
+		&DedicatedHostList{},
+
+		&DedicatedHostGroup{},
+		&DedicatedHostGroupList{},
+
 		&DevTestLab{},
 		&DevTestLabList{},
 
@@ -309,6 +417,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&DevTestPolicy{},
 		&DevTestPolicyList{},
 
+		&DevTestSchedule{},
+		&DevTestScheduleList{},
+
 		&DevTestVirtualNetwork{},
 		&DevTestVirtualNetworkList{},
 
@@ -317,6 +428,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&DevspaceController{},
 		&DevspaceControllerList{},
+
+		&DiskEncryptionSet{},
+		&DiskEncryptionSetList{},
 
 		&DnsARecord{},
 		&DnsARecordList{},
@@ -369,6 +483,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&EventhubNamespaceAuthorizationRule{},
 		&EventhubNamespaceAuthorizationRuleList{},
 
+		&EventhubNamespaceDisasterRecoveryConfig{},
+		&EventhubNamespaceDisasterRecoveryConfigList{},
+
 		&EventhubNamespace_{},
 		&EventhubNamespace_List{},
 
@@ -392,6 +509,12 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&FirewallNetworkRuleCollection{},
 		&FirewallNetworkRuleCollectionList{},
+
+		&Frontdoor{},
+		&FrontdoorList{},
+
+		&FrontdoorFirewallPolicy{},
+		&FrontdoorFirewallPolicyList{},
 
 		&FunctionApp{},
 		&FunctionAppList{},
@@ -420,6 +543,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&HdinsightStormCluster{},
 		&HdinsightStormClusterList{},
 
+		&HealthcareService{},
+		&HealthcareServiceList{},
+
 		&Image{},
 		&ImageList{},
 
@@ -434,6 +560,33 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&IothubConsumerGroup{},
 		&IothubConsumerGroupList{},
+
+		&IothubDps{},
+		&IothubDpsList{},
+
+		&IothubDpsCertificate{},
+		&IothubDpsCertificateList{},
+
+		&IothubDpsSharedAccessPolicy{},
+		&IothubDpsSharedAccessPolicyList{},
+
+		&IothubEndpointEventhub{},
+		&IothubEndpointEventhubList{},
+
+		&IothubEndpointServicebusQueue{},
+		&IothubEndpointServicebusQueueList{},
+
+		&IothubEndpointServicebusTopic{},
+		&IothubEndpointServicebusTopicList{},
+
+		&IothubEndpointStorageContainer{},
+		&IothubEndpointStorageContainerList{},
+
+		&IothubFallbackRoute{},
+		&IothubFallbackRouteList{},
+
+		&IothubRoute{},
+		&IothubRouteList{},
 
 		&IothubSharedAccessPolicy{},
 		&IothubSharedAccessPolicyList{},
@@ -455,6 +608,21 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&KubernetesCluster{},
 		&KubernetesClusterList{},
+
+		&KubernetesClusterNodePool{},
+		&KubernetesClusterNodePoolList{},
+
+		&KustoCluster{},
+		&KustoClusterList{},
+
+		&KustoDatabase{},
+		&KustoDatabaseList{},
+
+		&KustoDatabasePrincipal{},
+		&KustoDatabasePrincipalList{},
+
+		&KustoEventhubDataConnection{},
+		&KustoEventhubDataConnectionList{},
 
 		&Lb{},
 		&LbList{},
@@ -522,6 +690,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&MapsAccount{},
 		&MapsAccountList{},
 
+		&MariadbConfiguration{},
+		&MariadbConfigurationList{},
+
 		&MariadbDatabase{},
 		&MariadbDatabaseList{},
 
@@ -530,6 +701,12 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&MariadbServer{},
 		&MariadbServerList{},
+
+		&MariadbVirtualNetworkRule{},
+		&MariadbVirtualNetworkRuleList{},
+
+		&MarketplaceAgreement{},
+		&MarketplaceAgreementList{},
 
 		&MediaServicesAccount{},
 		&MediaServicesAccountList{},
@@ -558,8 +735,17 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&MonitorMetricAlertrule{},
 		&MonitorMetricAlertruleList{},
 
+		&MssqlDatabaseVulnerabilityAssessmentRuleBaseline{},
+		&MssqlDatabaseVulnerabilityAssessmentRuleBaselineList{},
+
 		&MssqlElasticpool{},
 		&MssqlElasticpoolList{},
+
+		&MssqlServerSecurityAlertPolicy{},
+		&MssqlServerSecurityAlertPolicyList{},
+
+		&MssqlServerVulnerabilityAssessment{},
+		&MssqlServerVulnerabilityAssessmentList{},
 
 		&MysqlConfiguration{},
 		&MysqlConfigurationList{},
@@ -575,6 +761,21 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&MysqlVirtualNetworkRule{},
 		&MysqlVirtualNetworkRuleList{},
+
+		&NatGateway{},
+		&NatGatewayList{},
+
+		&NetappAccount{},
+		&NetappAccountList{},
+
+		&NetappPool{},
+		&NetappPoolList{},
+
+		&NetappSnapshot{},
+		&NetappSnapshotList{},
+
+		&NetappVolume{},
+		&NetappVolumeList{},
 
 		&NetworkConnectionMonitor{},
 		&NetworkConnectionMonitorList{},
@@ -612,6 +813,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&NetworkWatcher{},
 		&NetworkWatcherList{},
 
+		&NetworkWatcherFlowLog{},
+		&NetworkWatcherFlowLogList{},
+
 		&NotificationHub{},
 		&NotificationHubList{},
 
@@ -623,6 +827,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&PacketCapture{},
 		&PacketCaptureList{},
+
+		&PointToSiteVPNGateway{},
+		&PointToSiteVPNGatewayList{},
 
 		&PolicyAssignment{},
 		&PolicyAssignmentList{},
@@ -651,8 +858,38 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&PrivateDNSARecord{},
 		&PrivateDNSARecordList{},
 
+		&PrivateDNSAaaaRecord{},
+		&PrivateDNSAaaaRecordList{},
+
+		&PrivateDNSCnameRecord{},
+		&PrivateDNSCnameRecordList{},
+
+		&PrivateDNSMxRecord{},
+		&PrivateDNSMxRecordList{},
+
+		&PrivateDNSPtrRecord{},
+		&PrivateDNSPtrRecordList{},
+
+		&PrivateDNSSrvRecord{},
+		&PrivateDNSSrvRecordList{},
+
 		&PrivateDNSZone{},
 		&PrivateDNSZoneList{},
+
+		&PrivateDNSZoneVirtualNetworkLink{},
+		&PrivateDNSZoneVirtualNetworkLinkList{},
+
+		&PrivateEndpoint{},
+		&PrivateEndpointList{},
+
+		&PrivateLinkEndpoint{},
+		&PrivateLinkEndpointList{},
+
+		&PrivateLinkService{},
+		&PrivateLinkServiceList{},
+
+		&ProximityPlacementGroup{},
+		&ProximityPlacementGroupList{},
 
 		&PublicIP{},
 		&PublicIPList{},
@@ -660,11 +897,29 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&PublicIPPrefix{},
 		&PublicIPPrefixList{},
 
+		&RecoveryNetworkMapping{},
+		&RecoveryNetworkMappingList{},
+
+		&RecoveryReplicatedVm{},
+		&RecoveryReplicatedVmList{},
+
+		&RecoveryServicesFabric{},
+		&RecoveryServicesFabricList{},
+
 		&RecoveryServicesProtectedVm{},
 		&RecoveryServicesProtectedVmList{},
 
+		&RecoveryServicesProtectionContainer{},
+		&RecoveryServicesProtectionContainerList{},
+
+		&RecoveryServicesProtectionContainerMapping{},
+		&RecoveryServicesProtectionContainerMappingList{},
+
 		&RecoveryServicesProtectionPolicyVm{},
 		&RecoveryServicesProtectionPolicyVmList{},
+
+		&RecoveryServicesReplicationPolicy{},
+		&RecoveryServicesReplicationPolicyList{},
 
 		&RecoveryServicesVault{},
 		&RecoveryServicesVaultList{},
@@ -674,6 +929,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&RedisFirewallRule{},
 		&RedisFirewallRuleList{},
+
+		&RelayHybridConnection{},
+		&RelayHybridConnectionList{},
 
 		&RelayNamespace{},
 		&RelayNamespaceList{},
@@ -750,6 +1008,24 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&SignalrService{},
 		&SignalrServiceList{},
 
+		&SiteRecoveryFabric{},
+		&SiteRecoveryFabricList{},
+
+		&SiteRecoveryNetworkMapping{},
+		&SiteRecoveryNetworkMappingList{},
+
+		&SiteRecoveryProtectionContainer{},
+		&SiteRecoveryProtectionContainerList{},
+
+		&SiteRecoveryProtectionContainerMapping{},
+		&SiteRecoveryProtectionContainerMappingList{},
+
+		&SiteRecoveryReplicatedVm{},
+		&SiteRecoveryReplicatedVmList{},
+
+		&SiteRecoveryReplicationPolicy{},
+		&SiteRecoveryReplicationPolicyList{},
+
 		&Snapshot{},
 		&SnapshotList{},
 
@@ -761,6 +1037,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&SqlElasticpool{},
 		&SqlElasticpoolList{},
+
+		&SqlFailoverGroup{},
+		&SqlFailoverGroupList{},
 
 		&SqlFirewallRule{},
 		&SqlFirewallRuleList{},
@@ -774,11 +1053,20 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&StorageAccount{},
 		&StorageAccountList{},
 
+		&StorageAccountNetworkRules{},
+		&StorageAccountNetworkRulesList{},
+
 		&StorageBlob{},
 		&StorageBlobList{},
 
 		&StorageContainer{},
 		&StorageContainerList{},
+
+		&StorageDataLakeGen2Filesystem{},
+		&StorageDataLakeGen2FilesystemList{},
+
+		&StorageManagementPolicy{},
+		&StorageManagementPolicyList{},
 
 		&StorageQueue{},
 		&StorageQueueList{},
@@ -813,6 +1101,12 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&StreamAnalyticsOutputServicebusQueue{},
 		&StreamAnalyticsOutputServicebusQueueList{},
 
+		&StreamAnalyticsOutputServicebusTopic{},
+		&StreamAnalyticsOutputServicebusTopicList{},
+
+		&StreamAnalyticsReferenceInputBlob{},
+		&StreamAnalyticsReferenceInputBlobList{},
+
 		&StreamAnalyticsStreamInputBlob{},
 		&StreamAnalyticsStreamInputBlobList{},
 
@@ -824,6 +1118,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&Subnet{},
 		&SubnetList{},
+
+		&SubnetNATGatewayAssociation{},
+		&SubnetNATGatewayAssociationList{},
 
 		&SubnetNetworkSecurityGroupAssociation{},
 		&SubnetNetworkSecurityGroupAssociationList{},
@@ -842,6 +1139,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&UserAssignedIdentity{},
 		&UserAssignedIdentityList{},
+
+		&VirtualHub{},
+		&VirtualHubList{},
 
 		&VirtualMachine{},
 		&VirtualMachineList{},
@@ -866,6 +1166,18 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&VirtualNetworkPeering{},
 		&VirtualNetworkPeeringList{},
+
+		&VirtualWAN{},
+		&VirtualWANList{},
+
+		&VpnGateway{},
+		&VpnGatewayList{},
+
+		&VpnServerConfiguration{},
+		&VpnServerConfigurationList{},
+
+		&WebApplicationFirewallPolicy{},
+		&WebApplicationFirewallPolicyList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

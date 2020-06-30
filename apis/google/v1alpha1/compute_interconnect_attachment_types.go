@@ -50,6 +50,12 @@ type ComputeInterconnectAttachmentSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
+	AdminEnabled bool `json:"adminEnabled,omitempty" tf:"admin_enabled,omitempty"`
+	// +optional
+	Bandwidth string `json:"bandwidth,omitempty" tf:"bandwidth,omitempty"`
+	// +optional
+	CandidateSubnets []string `json:"candidateSubnets,omitempty" tf:"candidate_subnets,omitempty"`
+	// +optional
 	CloudRouterIPAddress string `json:"cloudRouterIPAddress,omitempty" tf:"cloud_router_ip_address,omitempty"`
 	// +optional
 	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
@@ -58,9 +64,16 @@ type ComputeInterconnectAttachmentSpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
+	EdgeAvailabilityDomain string `json:"edgeAvailabilityDomain,omitempty" tf:"edge_availability_domain,omitempty"`
+	// +optional
 	GoogleReferenceID string `json:"googleReferenceID,omitempty" tf:"google_reference_id,omitempty"`
-	Interconnect      string `json:"interconnect" tf:"interconnect"`
-	Name              string `json:"name" tf:"name"`
+	// +optional
+	Interconnect string `json:"interconnect,omitempty" tf:"interconnect,omitempty"`
+	Name         string `json:"name" tf:"name"`
+	// +optional
+	PairingKey string `json:"pairingKey,omitempty" tf:"pairing_key,omitempty"`
+	// +optional
+	PartnerAsn string `json:"partnerAsn,omitempty" tf:"partner_asn,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	PrivateInterconnectInfo []ComputeInterconnectAttachmentSpecPrivateInterconnectInfo `json:"privateInterconnectInfo,omitempty" tf:"private_interconnect_info,omitempty"`
@@ -71,6 +84,12 @@ type ComputeInterconnectAttachmentSpec struct {
 	Router string `json:"router" tf:"router"`
 	// +optional
 	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
+	// +optional
+	State string `json:"state,omitempty" tf:"state,omitempty"`
+	// +optional
+	Type string `json:"type,omitempty" tf:"type,omitempty"`
+	// +optional
+	VlanTag8021q int64 `json:"vlanTag8021q,omitempty" tf:"vlan_tag8021q,omitempty"`
 }
 
 type ComputeInterconnectAttachmentStatus struct {

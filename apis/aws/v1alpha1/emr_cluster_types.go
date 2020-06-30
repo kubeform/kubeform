@@ -46,6 +46,31 @@ type EmrClusterSpecBootstrapAction struct {
 	Path string   `json:"path" tf:"path"`
 }
 
+type EmrClusterSpecCoreInstanceGroupEbsConfig struct {
+	// +optional
+	Iops int64  `json:"iops,omitempty" tf:"iops,omitempty"`
+	Size int64  `json:"size" tf:"size"`
+	Type string `json:"type" tf:"type"`
+	// +optional
+	VolumesPerInstance int64 `json:"volumesPerInstance,omitempty" tf:"volumes_per_instance,omitempty"`
+}
+
+type EmrClusterSpecCoreInstanceGroup struct {
+	// +optional
+	AutoscalingPolicy string `json:"autoscalingPolicy,omitempty" tf:"autoscaling_policy,omitempty"`
+	// +optional
+	BidPrice string `json:"bidPrice,omitempty" tf:"bid_price,omitempty"`
+	// +optional
+	EbsConfig []EmrClusterSpecCoreInstanceGroupEbsConfig `json:"ebsConfig,omitempty" tf:"ebs_config,omitempty"`
+	// +optional
+	ID string `json:"ID,omitempty" tf:"id,omitempty"`
+	// +optional
+	InstanceCount int64  `json:"instanceCount,omitempty" tf:"instance_count,omitempty"`
+	InstanceType  string `json:"instanceType" tf:"instance_type"`
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+}
+
 type EmrClusterSpecEc2Attributes struct {
 	// +optional
 	AdditionalMasterSecurityGroups string `json:"additionalMasterSecurityGroups,omitempty" tf:"additional_master_security_groups,omitempty"`
@@ -101,6 +126,29 @@ type EmrClusterSpecKerberosAttributes struct {
 	Realm                            string `json:"realm" tf:"realm"`
 }
 
+type EmrClusterSpecMasterInstanceGroupEbsConfig struct {
+	// +optional
+	Iops int64  `json:"iops,omitempty" tf:"iops,omitempty"`
+	Size int64  `json:"size" tf:"size"`
+	Type string `json:"type" tf:"type"`
+	// +optional
+	VolumesPerInstance int64 `json:"volumesPerInstance,omitempty" tf:"volumes_per_instance,omitempty"`
+}
+
+type EmrClusterSpecMasterInstanceGroup struct {
+	// +optional
+	BidPrice string `json:"bidPrice,omitempty" tf:"bid_price,omitempty"`
+	// +optional
+	EbsConfig []EmrClusterSpecMasterInstanceGroupEbsConfig `json:"ebsConfig,omitempty" tf:"ebs_config,omitempty"`
+	// +optional
+	ID string `json:"ID,omitempty" tf:"id,omitempty"`
+	// +optional
+	InstanceCount int64  `json:"instanceCount,omitempty" tf:"instance_count,omitempty"`
+	InstanceType  string `json:"instanceType" tf:"instance_type"`
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+}
+
 type EmrClusterSpecStepHadoopJarStep struct {
 	// +optional
 	Args []string `json:"args,omitempty" tf:"args,omitempty"`
@@ -140,8 +188,13 @@ type EmrClusterSpec struct {
 	// +optional
 	ConfigurationsJSON string `json:"configurationsJSON,omitempty" tf:"configurations_json,omitempty"`
 	// +optional
+	// Deprecated
 	CoreInstanceCount int64 `json:"coreInstanceCount,omitempty" tf:"core_instance_count,omitempty"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	CoreInstanceGroup []EmrClusterSpecCoreInstanceGroup `json:"coreInstanceGroup,omitempty" tf:"core_instance_group,omitempty"`
+	// +optional
+	// Deprecated
 	CoreInstanceType string `json:"coreInstanceType,omitempty" tf:"core_instance_type,omitempty"`
 	// +optional
 	CustomAmiID string `json:"customAmiID,omitempty" tf:"custom_ami_id,omitempty"`
@@ -151,6 +204,7 @@ type EmrClusterSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Ec2Attributes []EmrClusterSpecEc2Attributes `json:"ec2Attributes,omitempty" tf:"ec2_attributes,omitempty"`
 	// +optional
+	// Deprecated
 	InstanceGroup []EmrClusterSpecInstanceGroup `json:"instanceGroup,omitempty" tf:"instance_group,omitempty"`
 	// +optional
 	KeepJobFlowAliveWhenNoSteps bool `json:"keepJobFlowAliveWhenNoSteps,omitempty" tf:"keep_job_flow_alive_when_no_steps,omitempty"`
@@ -160,6 +214,10 @@ type EmrClusterSpec struct {
 	// +optional
 	LogURI string `json:"logURI,omitempty" tf:"log_uri,omitempty"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	MasterInstanceGroup []EmrClusterSpecMasterInstanceGroup `json:"masterInstanceGroup,omitempty" tf:"master_instance_group,omitempty"`
+	// +optional
+	// Deprecated
 	MasterInstanceType string `json:"masterInstanceType,omitempty" tf:"master_instance_type,omitempty"`
 	// +optional
 	MasterPublicDNS string `json:"masterPublicDNS,omitempty" tf:"master_public_dns,omitempty"`

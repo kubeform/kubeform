@@ -34,6 +34,14 @@ type DomainRecordListerExpansion interface{}
 // DomainRecordNamespaceLister.
 type DomainRecordNamespaceListerExpansion interface{}
 
+// FirewallListerExpansion allows custom methods to be added to
+// FirewallLister.
+type FirewallListerExpansion interface{}
+
+// FirewallNamespaceListerExpansion allows custom methods to be added to
+// FirewallNamespaceLister.
+type FirewallNamespaceListerExpansion interface{}
+
 // ImageListerExpansion allows custom methods to be added to
 // ImageLister.
 type ImageListerExpansion interface{}
@@ -49,6 +57,14 @@ type InstanceListerExpansion interface{}
 // InstanceNamespaceListerExpansion allows custom methods to be added to
 // InstanceNamespaceLister.
 type InstanceNamespaceListerExpansion interface{}
+
+// LkeClusterListerExpansion allows custom methods to be added to
+// LkeClusterLister.
+type LkeClusterListerExpansion interface{}
+
+// LkeClusterNamespaceListerExpansion allows custom methods to be added to
+// LkeClusterNamespaceLister.
+type LkeClusterNamespaceListerExpansion interface{}
 
 // NodebalancerListerExpansion allows custom methods to be added to
 // NodebalancerLister.
@@ -73,6 +89,22 @@ type NodebalancerNodeListerExpansion interface{}
 // NodebalancerNodeNamespaceListerExpansion allows custom methods to be added to
 // NodebalancerNodeNamespaceLister.
 type NodebalancerNodeNamespaceListerExpansion interface{}
+
+// ObjectStorageBucketListerExpansion allows custom methods to be added to
+// ObjectStorageBucketLister.
+type ObjectStorageBucketListerExpansion interface{}
+
+// ObjectStorageBucketNamespaceListerExpansion allows custom methods to be added to
+// ObjectStorageBucketNamespaceLister.
+type ObjectStorageBucketNamespaceListerExpansion interface{}
+
+// ObjectStorageKeyListerExpansion allows custom methods to be added to
+// ObjectStorageKeyLister.
+type ObjectStorageKeyListerExpansion interface{}
+
+// ObjectStorageKeyNamespaceListerExpansion allows custom methods to be added to
+// ObjectStorageKeyNamespaceLister.
+type ObjectStorageKeyNamespaceListerExpansion interface{}
 
 // RdnsListerExpansion allows custom methods to be added to
 // RdnsLister.

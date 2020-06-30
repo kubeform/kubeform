@@ -25,12 +25,12 @@ spec:
         apiVersion:
           description: 'APIVersion defines the versioned schema of this representation
             of an object. Servers should convert recognized schemas to the latest
-            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
           type: string
         kind:
           description: 'Kind is a string value representing the REST resource this
             object represents. Servers may infer this from the endpoint the client
-            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
           type: string
         metadata:
           type: object
@@ -44,6 +44,7 @@ spec:
             id:
               type: string
             kafkaEnabled:
+              description: Deprecated
               type: boolean
             location:
               type: string
@@ -52,6 +53,39 @@ spec:
               type: integer
             name:
               type: string
+            networkRulesets:
+              items:
+                properties:
+                  defaultAction:
+                    type: string
+                  ipRule:
+                    items:
+                      properties:
+                        action:
+                          type: string
+                        ipMask:
+                          type: string
+                      required:
+                      - ipMask
+                      type: object
+                    maxItems: 1
+                    type: array
+                  virtualNetworkRule:
+                    items:
+                      properties:
+                        ignoreMissingVirtualNetworkServiceEndpoint:
+                          type: boolean
+                        subnetID:
+                          type: string
+                      required:
+                      - subnetID
+                      type: object
+                    type: array
+                required:
+                - defaultAction
+                type: object
+              maxItems: 1
+              type: array
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -102,6 +136,7 @@ spec:
                 id:
                   type: string
                 kafkaEnabled:
+                  description: Deprecated
                   type: boolean
                 location:
                   type: string
@@ -110,6 +145,39 @@ spec:
                   type: integer
                 name:
                   type: string
+                networkRulesets:
+                  items:
+                    properties:
+                      defaultAction:
+                        type: string
+                      ipRule:
+                        items:
+                          properties:
+                            action:
+                              type: string
+                            ipMask:
+                              type: string
+                          required:
+                          - ipMask
+                          type: object
+                        maxItems: 1
+                        type: array
+                      virtualNetworkRule:
+                        items:
+                          properties:
+                            ignoreMissingVirtualNetworkServiceEndpoint:
+                              type: boolean
+                            subnetID:
+                              type: string
+                          required:
+                          - subnetID
+                          type: object
+                        type: array
+                    required:
+                    - defaultAction
+                    type: object
+                  maxItems: 1
+                  type: array
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.

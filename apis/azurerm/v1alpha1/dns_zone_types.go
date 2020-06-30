@@ -59,6 +59,7 @@ type DnsZoneSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
+	// Deprecated
 	ZoneType string `json:"zoneType,omitempty" tf:"zone_type,omitempty"`
 }
 

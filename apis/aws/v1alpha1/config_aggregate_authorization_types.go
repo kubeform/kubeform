@@ -48,6 +48,8 @@ type ConfigAggregateAuthorizationSpec struct {
 	// +optional
 	Arn    string `json:"arn,omitempty" tf:"arn,omitempty"`
 	Region string `json:"region" tf:"region"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type ConfigAggregateAuthorizationStatus struct {

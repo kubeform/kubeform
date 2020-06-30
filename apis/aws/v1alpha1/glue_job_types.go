@@ -41,7 +41,9 @@ type GlueJob struct {
 
 type GlueJobSpecCommand struct {
 	// +optional
-	Name           string `json:"name,omitempty" tf:"name,omitempty"`
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
+	PythonVersion  string `json:"pythonVersion,omitempty" tf:"python_version,omitempty"`
 	ScriptLocation string `json:"scriptLocation" tf:"script_location"`
 }
 

@@ -22,7 +22,21 @@ type CdnExpansion interface{}
 
 type CertificateExpansion interface{}
 
+type ContainerRegistryExpansion interface{}
+
+type ContainerRegistryDockerCredentialsExpansion interface{}
+
 type DatabaseClusterExpansion interface{}
+
+type DatabaseConnectionPoolExpansion interface{}
+
+type DatabaseDbExpansion interface{}
+
+type DatabaseFirewallExpansion interface{}
+
+type DatabaseReplicaExpansion interface{}
+
+type DatabaseUserExpansion interface{}
 
 type DomainExpansion interface{}
 
@@ -44,9 +58,13 @@ type LoadbalancerExpansion interface{}
 
 type ProjectExpansion interface{}
 
+type ProjectResourcesExpansion interface{}
+
 type RecordExpansion interface{}
 
 type SpacesBucketExpansion interface{}
+
+type SpacesBucketObjectExpansion interface{}
 
 type SshKeyExpansion interface{}
 
@@ -57,3 +75,5 @@ type VolumeExpansion interface{}
 type VolumeAttachmentExpansion interface{}
 
 type VolumeSnapshotExpansion interface{}
+
+type VpcExpansion interface{}

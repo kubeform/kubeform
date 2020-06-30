@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/hashicorp/terraform/helper/validation"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/validation"
 	"github.com/linode/linodego"
 )
 
@@ -14,7 +14,6 @@ func resourceLinodeRDNS() *schema.Resource {
 		Create: resourceLinodeRDNSCreate,
 		Read:   resourceLinodeRDNSRead,
 		Delete: resourceLinodeRDNSDelete,
-		Exists: resourceLinodeRDNSExists,
 		Update: resourceLinodeRDNSUpdate,
 		Importer: &schema.ResourceImporter{
 			State: schema.ImportStatePassthrough,
@@ -25,7 +24,7 @@ func resourceLinodeRDNS() *schema.Resource {
 				Description:  "The public Linode IPv4 or IPv6 address to operate on.",
 				Required:     true,
 				ForceNew:     true,
-				ValidateFunc: validation.SingleIP(),
+				ValidateFunc: validation.IsIPAddress,
 			},
 			"rdns": {
 				Type:         schema.TypeString,
@@ -35,28 +34,6 @@ func resourceLinodeRDNS() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceLinodeRDNSExists(d *schema.ResourceData, meta interface{}) (bool, error) {
-	client := meta.(linodego.Client)
-
-	ipStr := d.Id()
-
-	if len(ipStr) == 0 {
-		return false, fmt.Errorf("Error parsing Linode RDNS ID as IP string")
-	}
-
-	_, err := client.GetIPAddress(context.Background(), ipStr)
-
-	if err != nil {
-		if lerr, ok := err.(*linodego.Error); ok && lerr.Code == 404 {
-			d.SetId("")
-			return false, nil
-		}
-
-		return false, fmt.Errorf("Error getting Linode RDNS for %s: %s", ipStr, err)
-	}
-	return true, nil
 }
 
 func resourceLinodeRDNSRead(d *schema.ResourceData, meta interface{}) error {

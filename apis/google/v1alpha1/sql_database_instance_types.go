@@ -44,6 +44,8 @@ type SqlDatabaseInstanceSpecIpAddress struct {
 	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
 	// +optional
 	TimeToRetire string `json:"timeToRetire,omitempty" tf:"time_to_retire,omitempty"`
+	// +optional
+	Type string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type SqlDatabaseInstanceSpecReplicaConfiguration struct {
@@ -196,7 +198,11 @@ type SqlDatabaseInstanceSpec struct {
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
+	PrivateIPAddress string `json:"privateIPAddress,omitempty" tf:"private_ip_address,omitempty"`
+	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	PublicIPAddress string `json:"publicIPAddress,omitempty" tf:"public_ip_address,omitempty"`
 	// +optional
 	Region string `json:"region,omitempty" tf:"region,omitempty"`
 	// +optional

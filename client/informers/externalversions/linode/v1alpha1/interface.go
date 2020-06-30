@@ -28,16 +28,24 @@ type Interface interface {
 	Domains() DomainInformer
 	// DomainRecords returns a DomainRecordInformer.
 	DomainRecords() DomainRecordInformer
+	// Firewalls returns a FirewallInformer.
+	Firewalls() FirewallInformer
 	// Images returns a ImageInformer.
 	Images() ImageInformer
 	// Instances returns a InstanceInformer.
 	Instances() InstanceInformer
+	// LkeClusters returns a LkeClusterInformer.
+	LkeClusters() LkeClusterInformer
 	// Nodebalancers returns a NodebalancerInformer.
 	Nodebalancers() NodebalancerInformer
 	// NodebalancerConfigs returns a NodebalancerConfigInformer.
 	NodebalancerConfigs() NodebalancerConfigInformer
 	// NodebalancerNodes returns a NodebalancerNodeInformer.
 	NodebalancerNodes() NodebalancerNodeInformer
+	// ObjectStorageBuckets returns a ObjectStorageBucketInformer.
+	ObjectStorageBuckets() ObjectStorageBucketInformer
+	// ObjectStorageKeys returns a ObjectStorageKeyInformer.
+	ObjectStorageKeys() ObjectStorageKeyInformer
 	// Rdnses returns a RdnsInformer.
 	Rdnses() RdnsInformer
 	// Sshkeys returns a SshkeyInformer.
@@ -71,6 +79,11 @@ func (v *version) DomainRecords() DomainRecordInformer {
 	return &domainRecordInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// Firewalls returns a FirewallInformer.
+func (v *version) Firewalls() FirewallInformer {
+	return &firewallInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // Images returns a ImageInformer.
 func (v *version) Images() ImageInformer {
 	return &imageInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -79,6 +92,11 @@ func (v *version) Images() ImageInformer {
 // Instances returns a InstanceInformer.
 func (v *version) Instances() InstanceInformer {
 	return &instanceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// LkeClusters returns a LkeClusterInformer.
+func (v *version) LkeClusters() LkeClusterInformer {
+	return &lkeClusterInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // Nodebalancers returns a NodebalancerInformer.
@@ -94,6 +112,16 @@ func (v *version) NodebalancerConfigs() NodebalancerConfigInformer {
 // NodebalancerNodes returns a NodebalancerNodeInformer.
 func (v *version) NodebalancerNodes() NodebalancerNodeInformer {
 	return &nodebalancerNodeInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ObjectStorageBuckets returns a ObjectStorageBucketInformer.
+func (v *version) ObjectStorageBuckets() ObjectStorageBucketInformer {
+	return &objectStorageBucketInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ObjectStorageKeys returns a ObjectStorageKeyInformer.
+func (v *version) ObjectStorageKeys() ObjectStorageKeyInformer {
+	return &objectStorageKeyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // Rdnses returns a RdnsInformer.

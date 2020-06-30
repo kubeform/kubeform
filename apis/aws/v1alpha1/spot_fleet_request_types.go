@@ -48,6 +48,8 @@ type SpotFleetRequestSpecLaunchSpecificationEbsBlockDevice struct {
 	// +optional
 	Iops int64 `json:"iops,omitempty" tf:"iops,omitempty"`
 	// +optional
+	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
+	// +optional
 	SnapshotID string `json:"snapshotID,omitempty" tf:"snapshot_id,omitempty"`
 	// +optional
 	VolumeSize int64 `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
@@ -64,7 +66,11 @@ type SpotFleetRequestSpecLaunchSpecificationRootBlockDevice struct {
 	// +optional
 	DeleteOnTermination bool `json:"deleteOnTermination,omitempty" tf:"delete_on_termination,omitempty"`
 	// +optional
+	Encrypted bool `json:"encrypted,omitempty" tf:"encrypted,omitempty"`
+	// +optional
 	Iops int64 `json:"iops,omitempty" tf:"iops,omitempty"`
+	// +optional
+	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
 	// +optional
 	VolumeSize int64 `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
 	// +optional

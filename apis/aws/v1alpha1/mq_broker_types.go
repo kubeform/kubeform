@@ -46,6 +46,13 @@ type MqBrokerSpecConfiguration struct {
 	Revision int64 `json:"revision,omitempty" tf:"revision,omitempty"`
 }
 
+type MqBrokerSpecEncryptionOptions struct {
+	// +optional
+	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
+	// +optional
+	UseAwsOwnedKey bool `json:"useAwsOwnedKey,omitempty" tf:"use_aws_owned_key,omitempty"`
+}
+
 type MqBrokerSpecInstances struct {
 	// +optional
 	ConsoleURL string `json:"consoleURL,omitempty" tf:"console_url,omitempty"`
@@ -95,10 +102,13 @@ type MqBrokerSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Configuration []MqBrokerSpecConfiguration `json:"configuration,omitempty" tf:"configuration,omitempty"`
 	// +optional
-	DeploymentMode   string `json:"deploymentMode,omitempty" tf:"deployment_mode,omitempty"`
-	EngineType       string `json:"engineType" tf:"engine_type"`
-	EngineVersion    string `json:"engineVersion" tf:"engine_version"`
-	HostInstanceType string `json:"hostInstanceType" tf:"host_instance_type"`
+	DeploymentMode string `json:"deploymentMode,omitempty" tf:"deployment_mode,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	EncryptionOptions []MqBrokerSpecEncryptionOptions `json:"encryptionOptions,omitempty" tf:"encryption_options,omitempty"`
+	EngineType        string                          `json:"engineType" tf:"engine_type"`
+	EngineVersion     string                          `json:"engineVersion" tf:"engine_version"`
+	HostInstanceType  string                          `json:"hostInstanceType" tf:"host_instance_type"`
 	// +optional
 	Instances []MqBrokerSpecInstances `json:"instances,omitempty" tf:"instances,omitempty"`
 	// +optional

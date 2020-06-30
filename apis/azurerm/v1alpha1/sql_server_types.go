@@ -39,6 +39,14 @@ type SqlServer struct {
 	Status            SqlServerStatus `json:"status,omitempty"`
 }
 
+type SqlServerSpecIdentity struct {
+	// +optional
+	PrincipalID string `json:"principalID,omitempty" tf:"principal_id,omitempty"`
+	// +optional
+	TenantID string `json:"tenantID,omitempty" tf:"tenant_id,omitempty"`
+	Type     string `json:"type" tf:"type"`
+}
+
 type SqlServerSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
@@ -50,9 +58,12 @@ type SqlServerSpec struct {
 	AdministratorLoginPassword string `json:"-" sensitive:"true" tf:"administrator_login_password"`
 	// +optional
 	FullyQualifiedDomainName string `json:"fullyQualifiedDomainName,omitempty" tf:"fully_qualified_domain_name,omitempty"`
-	Location                 string `json:"location" tf:"location"`
-	Name                     string `json:"name" tf:"name"`
-	ResourceGroupName        string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Identity          []SqlServerSpecIdentity `json:"identity,omitempty" tf:"identity,omitempty"`
+	Location          string                  `json:"location" tf:"location"`
+	Name              string                  `json:"name" tf:"name"`
+	ResourceGroupName string                  `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	Tags    map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	Version string            `json:"version" tf:"version"`

@@ -39,6 +39,11 @@ type EcsCluster struct {
 	Status            EcsClusterStatus `json:"status,omitempty"`
 }
 
+type EcsClusterSpecSetting struct {
+	Name  string `json:"name" tf:"name"`
+	Value string `json:"value" tf:"value"`
+}
+
 type EcsClusterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
@@ -47,6 +52,8 @@ type EcsClusterSpec struct {
 	// +optional
 	Arn  string `json:"arn,omitempty" tf:"arn,omitempty"`
 	Name string `json:"name" tf:"name"`
+	// +optional
+	Setting []EcsClusterSpecSetting `json:"setting,omitempty" tf:"setting,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

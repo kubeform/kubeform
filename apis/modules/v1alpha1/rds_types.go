@@ -70,6 +70,9 @@ type RDSSpec struct {
 	// The daily time range (in UTC) during which automated backups are created if they are enabled. Example: '09:46-10:16'. Must not overlap with maintenance_window
 	BackupWindow string `json:"backupWindow,omitempty" tf:"backup_window,omitempty"`
 	// +optional
+	// Specifies the identifier of the CA certificate for the DB instance
+	CaCertIdentifier string `json:"caCertIdentifier,omitempty" tf:"ca_cert_identifier,omitempty"`
+	// +optional
 	// (Optional) The character set name to use for DB encoding in Oracle instances. This can't be changed. See Oracle Character Sets Supported in Amazon RDS for more information
 	CharacterSetName string `json:"characterSetName,omitempty" tf:"character_set_name,omitempty"`
 	// +optional
@@ -79,7 +82,7 @@ type RDSSpec struct {
 	// Whether to create a database instance
 	CreateDbInstance bool `json:"createDbInstance,omitempty" tf:"create_db_instance,omitempty"`
 	// +optional
-	// Whether to create a database option group
+	// (Optional) Create a database option group
 	CreateDbOptionGroup bool `json:"createDbOptionGroup,omitempty" tf:"create_db_option_group,omitempty"`
 	// +optional
 	// Whether to create a database parameter group
@@ -93,6 +96,9 @@ type RDSSpec struct {
 	// +optional
 	// Name of DB subnet group. DB instance will be created in the VPC associated with the DB subnet group. If unspecified, will be created in the default VPC
 	DbSubnetGroupName string `json:"dbSubnetGroupName,omitempty" tf:"db_subnet_group_name,omitempty"`
+	// +optional
+	// Specifies whether to remove automated backups immediately after the DB instance is deleted
+	DeleteAutomatedBackups bool `json:"deleteAutomatedBackups,omitempty" tf:"delete_automated_backups,omitempty"`
 	// +optional
 	// The database can't be deleted when this value is set to true.
 	DeletionProtection bool `json:"deletionProtection,omitempty" tf:"deletion_protection,omitempty"`
@@ -157,8 +163,11 @@ type RDSSpec struct {
 	// The description of the option group
 	OptionGroupDescription string `json:"optionGroupDescription,omitempty" tf:"option_group_description,omitempty"`
 	// +optional
-	// Name of the DB option group to associate. Setting this automatically disables option_group creation
+	// Name of the DB option group to associate
 	OptionGroupName string `json:"optionGroupName,omitempty" tf:"option_group_name,omitempty"`
+	// +optional
+	// Define maximum timeout for deletion of `aws_db_option_group` resource
+	OptionGroupTimeouts map[string]string `json:"optionGroupTimeouts,omitempty" tf:"option_group_timeouts,omitempty"`
 	// +optional
 	// A list of Options to apply.
 	Options json.RawMessage `json:"options,omitempty" tf:"options,omitempty"`
@@ -225,6 +234,12 @@ type RDSSpec struct {
 }
 
 type RDSOutput struct {
+	// The Amazon Resource Name (ARN) specifying the monitoring role
+	// +optional
+	EnhancedMonitoringIamRoleArn string `json:"enhancedMonitoringIamRoleArn" tf:"enhanced_monitoring_iam_role_arn"`
+	// The name of the monitoring role
+	// +optional
+	EnhancedMonitoringIamRoleName string `json:"enhancedMonitoringIamRoleName" tf:"enhanced_monitoring_iam_role_name"`
 	// The address of the RDS instance
 	// +optional
 	ThisDbInstanceAddress string `json:"thisDbInstanceAddress" tf:"this_db_instance_address"`
@@ -234,6 +249,9 @@ type RDSOutput struct {
 	// The availability zone of the RDS instance
 	// +optional
 	ThisDbInstanceAvailabilityZone string `json:"thisDbInstanceAvailabilityZone" tf:"this_db_instance_availability_zone"`
+	// Specifies the identifier of the CA certificate for the DB instance
+	// +optional
+	ThisDbInstanceCaCertIdentifier string `json:"thisDbInstanceCaCertIdentifier" tf:"this_db_instance_ca_cert_identifier"`
 	// The connection endpoint
 	// +optional
 	ThisDbInstanceEndpoint string `json:"thisDbInstanceEndpoint" tf:"this_db_instance_endpoint"`

@@ -25,17 +25,58 @@ spec:
         apiVersion:
           description: 'APIVersion defines the versioned schema of this representation
             of an object. Servers should convert recognized schemas to the latest
-            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
           type: string
         kind:
           description: 'Kind is a string value representing the REST resource this
             object represents. Servers may infer this from the endpoint the client
-            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
           type: string
         metadata:
           type: object
         spec:
           properties:
+            additionalAuthenticationProvider:
+              items:
+                properties:
+                  authenticationType:
+                    type: string
+                  openidConnectConfig:
+                    items:
+                      properties:
+                        authTtl:
+                          format: int64
+                          type: integer
+                        clientID:
+                          type: string
+                        iatTtl:
+                          format: int64
+                          type: integer
+                        issuer:
+                          type: string
+                      required:
+                      - issuer
+                      type: object
+                    maxItems: 1
+                    type: array
+                  userPoolConfig:
+                    items:
+                      properties:
+                        appIDClientRegex:
+                          type: string
+                        awsRegion:
+                          type: string
+                        userPoolID:
+                          type: string
+                      required:
+                      - userPoolID
+                      type: object
+                    maxItems: 1
+                    type: array
+                required:
+                - authenticationType
+                type: object
+              type: array
             arn:
               type: string
             authenticationType:
@@ -125,6 +166,47 @@ spec:
               type: integer
             output:
               properties:
+                additionalAuthenticationProvider:
+                  items:
+                    properties:
+                      authenticationType:
+                        type: string
+                      openidConnectConfig:
+                        items:
+                          properties:
+                            authTtl:
+                              format: int64
+                              type: integer
+                            clientID:
+                              type: string
+                            iatTtl:
+                              format: int64
+                              type: integer
+                            issuer:
+                              type: string
+                          required:
+                          - issuer
+                          type: object
+                        maxItems: 1
+                        type: array
+                      userPoolConfig:
+                        items:
+                          properties:
+                            appIDClientRegex:
+                              type: string
+                            awsRegion:
+                              type: string
+                            userPoolID:
+                              type: string
+                          required:
+                          - userPoolID
+                          type: object
+                        maxItems: 1
+                        type: array
+                    required:
+                    - authenticationType
+                    type: object
+                  type: array
                 arn:
                   type: string
                 authenticationType:

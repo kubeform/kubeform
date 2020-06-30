@@ -39,6 +39,11 @@ type ElasticsearchDomain struct {
 	Status            ElasticsearchDomainStatus `json:"status,omitempty"`
 }
 
+type ElasticsearchDomainSpecClusterConfigZoneAwarenessConfig struct {
+	// +optional
+	AvailabilityZoneCount int64 `json:"availabilityZoneCount,omitempty" tf:"availability_zone_count,omitempty"`
+}
+
 type ElasticsearchDomainSpecClusterConfig struct {
 	// +optional
 	DedicatedMasterCount int64 `json:"dedicatedMasterCount,omitempty" tf:"dedicated_master_count,omitempty"`
@@ -50,6 +55,9 @@ type ElasticsearchDomainSpecClusterConfig struct {
 	InstanceCount int64 `json:"instanceCount,omitempty" tf:"instance_count,omitempty"`
 	// +optional
 	InstanceType string `json:"instanceType,omitempty" tf:"instance_type,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	ZoneAwarenessConfig []ElasticsearchDomainSpecClusterConfigZoneAwarenessConfig `json:"zoneAwarenessConfig,omitempty" tf:"zone_awareness_config,omitempty"`
 	// +optional
 	ZoneAwarenessEnabled bool `json:"zoneAwarenessEnabled,omitempty" tf:"zone_awareness_enabled,omitempty"`
 }

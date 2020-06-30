@@ -57,8 +57,29 @@ func Resource(resource string) schema.GroupResource {
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
 
+		&AccessContextManagerAccessLevel{},
+		&AccessContextManagerAccessLevelList{},
+
+		&AccessContextManagerAccessPolicy{},
+		&AccessContextManagerAccessPolicyList{},
+
+		&AccessContextManagerServicePerimeter{},
+		&AccessContextManagerServicePerimeterList{},
+
 		&AppEngineApplication{},
 		&AppEngineApplicationList{},
+
+		&AppEngineDomainMapping{},
+		&AppEngineDomainMappingList{},
+
+		&AppEngineFirewallRule{},
+		&AppEngineFirewallRuleList{},
+
+		&AppEngineStandardAppVersion{},
+		&AppEngineStandardAppVersionList{},
+
+		&BigqueryDataTransferConfig{},
+		&BigqueryDataTransferConfigList{},
 
 		&BigqueryDataset{},
 		&BigqueryDatasetList{},
@@ -66,8 +87,23 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&BigqueryTable{},
 		&BigqueryTableList{},
 
+		&BigtableAppProfile{},
+		&BigtableAppProfileList{},
+
+		&BigtableGcPolicy{},
+		&BigtableGcPolicyList{},
+
 		&BigtableInstance{},
 		&BigtableInstanceList{},
+
+		&BigtableInstanceIamBinding{},
+		&BigtableInstanceIamBindingList{},
+
+		&BigtableInstanceIamMember{},
+		&BigtableInstanceIamMemberList{},
+
+		&BigtableInstanceIamPolicy{},
+		&BigtableInstanceIamPolicyList{},
 
 		&BigtableTable{},
 		&BigtableTableList{},
@@ -84,14 +120,35 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&BinaryAuthorizationAttestor{},
 		&BinaryAuthorizationAttestorList{},
 
+		&BinaryAuthorizationAttestorIamBinding{},
+		&BinaryAuthorizationAttestorIamBindingList{},
+
+		&BinaryAuthorizationAttestorIamMember{},
+		&BinaryAuthorizationAttestorIamMemberList{},
+
+		&BinaryAuthorizationAttestorIamPolicy{},
+		&BinaryAuthorizationAttestorIamPolicyList{},
+
 		&BinaryAuthorizationPolicy{},
 		&BinaryAuthorizationPolicyList{},
+
+		&CloudSchedulerJob{},
+		&CloudSchedulerJobList{},
 
 		&CloudbuildTrigger{},
 		&CloudbuildTriggerList{},
 
 		&CloudfunctionsFunction{},
 		&CloudfunctionsFunctionList{},
+
+		&CloudfunctionsFunctionIamBinding{},
+		&CloudfunctionsFunctionIamBindingList{},
+
+		&CloudfunctionsFunctionIamMember{},
+		&CloudfunctionsFunctionIamMemberList{},
+
+		&CloudfunctionsFunctionIamPolicy{},
+		&CloudfunctionsFunctionIamPolicyList{},
 
 		&CloudiotRegistry{},
 		&CloudiotRegistryList{},
@@ -111,11 +168,20 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ComputeBackendBucket{},
 		&ComputeBackendBucketList{},
 
+		&ComputeBackendBucketSignedURLKey{},
+		&ComputeBackendBucketSignedURLKeyList{},
+
 		&ComputeBackendService{},
 		&ComputeBackendServiceList{},
 
+		&ComputeBackendServiceSignedURLKey{},
+		&ComputeBackendServiceSignedURLKeyList{},
+
 		&ComputeDisk{},
 		&ComputeDiskList{},
+
+		&ComputeDiskResourcePolicyAttachment{},
+		&ComputeDiskResourcePolicyAttachmentList{},
 
 		&ComputeFirewall{},
 		&ComputeFirewallList{},
@@ -153,6 +219,15 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ComputeInstanceGroupManager{},
 		&ComputeInstanceGroupManagerList{},
 
+		&ComputeInstanceIamBinding{},
+		&ComputeInstanceIamBindingList{},
+
+		&ComputeInstanceIamMember{},
+		&ComputeInstanceIamMemberList{},
+
+		&ComputeInstanceIamPolicy{},
+		&ComputeInstanceIamPolicyList{},
+
 		&ComputeInstanceTemplate{},
 		&ComputeInstanceTemplateList{},
 
@@ -162,8 +237,23 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ComputeNetwork{},
 		&ComputeNetworkList{},
 
+		&ComputeNetworkEndpoint{},
+		&ComputeNetworkEndpointList{},
+
+		&ComputeNetworkEndpointGroup{},
+		&ComputeNetworkEndpointGroupList{},
+
 		&ComputeNetworkPeering{},
 		&ComputeNetworkPeeringList{},
+
+		&ComputeNodeGroup{},
+		&ComputeNodeGroupList{},
+
+		&ComputeNodeTemplate{},
+		&ComputeNodeTemplateList{},
+
+		&ComputeProjectDefaultNetworkTier{},
+		&ComputeProjectDefaultNetworkTierList{},
 
 		&ComputeProjectMetadata{},
 		&ComputeProjectMetadataList{},
@@ -182,6 +272,12 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&ComputeRegionInstanceGroupManager{},
 		&ComputeRegionInstanceGroupManagerList{},
+
+		&ComputeReservation{},
+		&ComputeReservationList{},
+
+		&ComputeResourcePolicy{},
+		&ComputeResourcePolicyList{},
 
 		&ComputeRoute{},
 		&ComputeRouteList{},
@@ -234,6 +330,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ComputeTargetHTTPSProxy{},
 		&ComputeTargetHTTPSProxyList{},
 
+		&ComputeTargetInstance{},
+		&ComputeTargetInstanceList{},
+
 		&ComputeTargetPool{},
 		&ComputeTargetPoolList{},
 
@@ -267,8 +366,26 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&DataprocCluster{},
 		&DataprocClusterList{},
 
+		&DataprocClusterIamBinding{},
+		&DataprocClusterIamBindingList{},
+
+		&DataprocClusterIamMember{},
+		&DataprocClusterIamMemberList{},
+
+		&DataprocClusterIamPolicy{},
+		&DataprocClusterIamPolicyList{},
+
 		&DataprocJob{},
 		&DataprocJobList{},
+
+		&DataprocJobIamBinding{},
+		&DataprocJobIamBindingList{},
+
+		&DataprocJobIamMember{},
+		&DataprocJobIamMemberList{},
+
+		&DataprocJobIamPolicy{},
+		&DataprocJobIamPolicyList{},
 
 		&DnsManagedZone{},
 		&DnsManagedZoneList{},
@@ -281,6 +398,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&FilestoreInstance{},
 		&FilestoreInstanceList{},
+
+		&FirestoreIndex{},
+		&FirestoreIndexList{},
 
 		&Folder{},
 		&FolderList{},
@@ -296,6 +416,60 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&FolderOrganizationPolicy{},
 		&FolderOrganizationPolicyList{},
+
+		&IapAppEngineServiceIamBinding{},
+		&IapAppEngineServiceIamBindingList{},
+
+		&IapAppEngineServiceIamMember{},
+		&IapAppEngineServiceIamMemberList{},
+
+		&IapAppEngineServiceIamPolicy{},
+		&IapAppEngineServiceIamPolicyList{},
+
+		&IapAppEngineVersionIamBinding{},
+		&IapAppEngineVersionIamBindingList{},
+
+		&IapAppEngineVersionIamMember{},
+		&IapAppEngineVersionIamMemberList{},
+
+		&IapAppEngineVersionIamPolicy{},
+		&IapAppEngineVersionIamPolicyList{},
+
+		&IapWebBackendServiceIamBinding{},
+		&IapWebBackendServiceIamBindingList{},
+
+		&IapWebBackendServiceIamMember{},
+		&IapWebBackendServiceIamMemberList{},
+
+		&IapWebBackendServiceIamPolicy{},
+		&IapWebBackendServiceIamPolicyList{},
+
+		&IapWebIamBinding{},
+		&IapWebIamBindingList{},
+
+		&IapWebIamMember{},
+		&IapWebIamMemberList{},
+
+		&IapWebIamPolicy{},
+		&IapWebIamPolicyList{},
+
+		&IapWebTypeAppEngineIamBinding{},
+		&IapWebTypeAppEngineIamBindingList{},
+
+		&IapWebTypeAppEngineIamMember{},
+		&IapWebTypeAppEngineIamMemberList{},
+
+		&IapWebTypeAppEngineIamPolicy{},
+		&IapWebTypeAppEngineIamPolicyList{},
+
+		&IapWebTypeComputeIamBinding{},
+		&IapWebTypeComputeIamBindingList{},
+
+		&IapWebTypeComputeIamMember{},
+		&IapWebTypeComputeIamMemberList{},
+
+		&IapWebTypeComputeIamPolicy{},
+		&IapWebTypeComputeIamPolicyList{},
 
 		&KmsCryptoKey{},
 		&KmsCryptoKeyList{},
@@ -330,6 +504,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&LoggingFolderSink{},
 		&LoggingFolderSinkList{},
 
+		&LoggingMetric{},
+		&LoggingMetricList{},
+
 		&LoggingOrganizationExclusion{},
 		&LoggingOrganizationExclusionList{},
 
@@ -341,6 +518,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&LoggingProjectSink{},
 		&LoggingProjectSinkList{},
+
+		&MlEngineModel{},
+		&MlEngineModelList{},
 
 		&MonitoringAlertPolicy{},
 		&MonitoringAlertPolicyList{},
@@ -371,6 +551,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&Project{},
 		&ProjectList{},
+
+		&ProjectIamAuditConfig{},
+		&ProjectIamAuditConfigList{},
 
 		&ProjectIamBinding{},
 		&ProjectIamBindingList{},
@@ -429,8 +612,20 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&RuntimeconfigConfig{},
 		&RuntimeconfigConfigList{},
 
+		&RuntimeconfigConfigIamBinding{},
+		&RuntimeconfigConfigIamBindingList{},
+
+		&RuntimeconfigConfigIamMember{},
+		&RuntimeconfigConfigIamMemberList{},
+
+		&RuntimeconfigConfigIamPolicy{},
+		&RuntimeconfigConfigIamPolicyList{},
+
 		&RuntimeconfigVariable{},
 		&RuntimeconfigVariableList{},
+
+		&SccSource{},
+		&SccSourceList{},
 
 		&ServiceAccount{},
 		&ServiceAccountList{},
@@ -447,8 +642,20 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ServiceAccountKey{},
 		&ServiceAccountKeyList{},
 
+		&ServiceNetworkingConnection{},
+		&ServiceNetworkingConnectionList{},
+
 		&SourcerepoRepository{},
 		&SourcerepoRepositoryList{},
+
+		&SourcerepoRepositoryIamBinding{},
+		&SourcerepoRepositoryIamBindingList{},
+
+		&SourcerepoRepositoryIamMember{},
+		&SourcerepoRepositoryIamMemberList{},
+
+		&SourcerepoRepositoryIamPolicy{},
+		&SourcerepoRepositoryIamPolicyList{},
 
 		&SpannerDatabase{},
 		&SpannerDatabaseList{},
@@ -492,6 +699,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&StorageBucketACL{},
 		&StorageBucketACLList{},
 
+		&StorageBucketAccessControl{},
+		&StorageBucketAccessControlList{},
+
 		&StorageBucketIamBinding{},
 		&StorageBucketIamBindingList{},
 
@@ -518,6 +728,12 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&StorageObjectAccessControl{},
 		&StorageObjectAccessControlList{},
+
+		&StorageTransferJob{},
+		&StorageTransferJobList{},
+
+		&TpuNode{},
+		&TpuNodeList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

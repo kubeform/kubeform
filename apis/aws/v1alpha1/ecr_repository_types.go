@@ -45,8 +45,10 @@ type EcrRepositorySpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	Arn  string `json:"arn,omitempty" tf:"arn,omitempty"`
-	Name string `json:"name" tf:"name"`
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// +optional
+	ImageTagMutability string `json:"imageTagMutability,omitempty" tf:"image_tag_mutability,omitempty"`
+	Name               string `json:"name" tf:"name"`
 	// +optional
 	RegistryID string `json:"registryID,omitempty" tf:"registry_id,omitempty"`
 	// +optional

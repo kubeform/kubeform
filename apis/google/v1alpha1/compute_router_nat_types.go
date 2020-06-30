@@ -39,12 +39,17 @@ type ComputeRouterNAT struct {
 	Status            ComputeRouterNATStatus `json:"status,omitempty"`
 }
 
+type ComputeRouterNATSpecLogConfig struct {
+	Enable bool   `json:"enable" tf:"enable"`
+	Filter string `json:"filter" tf:"filter"`
+}
+
 type ComputeRouterNATSpecSubnetwork struct {
 	Name string `json:"name" tf:"name"`
 	// +optional
 	SecondaryIPRangeNames []string `json:"secondaryIPRangeNames,omitempty" tf:"secondary_ip_range_names,omitempty"`
-	// +optional
-	SourceIPRangesToNAT []string `json:"sourceIPRangesToNAT,omitempty" tf:"source_ip_ranges_to_nat,omitempty"`
+	// +kubebuilder:validation:MinItems=1
+	SourceIPRangesToNAT []string `json:"sourceIPRangesToNAT" tf:"source_ip_ranges_to_nat"`
 }
 
 type ComputeRouterNATSpec struct {
@@ -55,6 +60,9 @@ type ComputeRouterNATSpec struct {
 	// +optional
 	IcmpIdleTimeoutSec int64 `json:"icmpIdleTimeoutSec,omitempty" tf:"icmp_idle_timeout_sec,omitempty"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	LogConfig []ComputeRouterNATSpecLogConfig `json:"logConfig,omitempty" tf:"log_config,omitempty"`
+	// +optional
 	MinPortsPerVm       int64  `json:"minPortsPerVm,omitempty" tf:"min_ports_per_vm,omitempty"`
 	Name                string `json:"name" tf:"name"`
 	NatIPAllocateOption string `json:"natIPAllocateOption" tf:"nat_ip_allocate_option"`
@@ -63,10 +71,9 @@ type ComputeRouterNATSpec struct {
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	Region string `json:"region,omitempty" tf:"region,omitempty"`
-	Router string `json:"router" tf:"router"`
-	// +optional
-	SourceSubnetworkIPRangesToNAT string `json:"sourceSubnetworkIPRangesToNAT,omitempty" tf:"source_subnetwork_ip_ranges_to_nat,omitempty"`
+	Region                        string `json:"region,omitempty" tf:"region,omitempty"`
+	Router                        string `json:"router" tf:"router"`
+	SourceSubnetworkIPRangesToNAT string `json:"sourceSubnetworkIPRangesToNAT" tf:"source_subnetwork_ip_ranges_to_nat"`
 	// +optional
 	Subnetwork []ComputeRouterNATSpecSubnetwork `json:"subnetwork,omitempty" tf:"subnetwork,omitempty"`
 	// +optional

@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/linode/linodego"
 )
 
@@ -17,7 +17,6 @@ func resourceLinodeToken() *schema.Resource {
 		Read:   resourceLinodeTokenRead,
 		Update: resourceLinodeTokenUpdate,
 		Delete: resourceLinodeTokenDelete,
-		Exists: resourceLinodeTokenExists,
 		Importer: &schema.ResourceImporter{
 			State: schema.ImportStatePassthrough,
 		},
@@ -48,6 +47,7 @@ func resourceLinodeToken() *schema.Resource {
 			},
 			"token": {
 				Type:        schema.TypeString,
+				Sensitive:   true,
 				Description: "The token used to access the API.",
 				Computed:    true,
 			},
@@ -78,25 +78,6 @@ func validDateTime(i interface{}, k string) (s []string, es []error) {
 	}
 
 	return
-}
-
-func resourceLinodeTokenExists(d *schema.ResourceData, meta interface{}) (bool, error) {
-	client := meta.(linodego.Client)
-	id, err := strconv.ParseInt(d.Id(), 10, 64)
-	if err != nil {
-		return false, fmt.Errorf("Error parsing Linode Token ID %s as int: %s", d.Id(), err)
-	}
-
-	_, err = client.GetToken(context.Background(), int(id))
-	if err != nil {
-		if lerr, ok := err.(*linodego.Error); ok && lerr.Code == 404 {
-			d.SetId("")
-			return false, nil
-		}
-
-		return false, fmt.Errorf("Error getting Linode Token ID %s: %s", d.Id(), err)
-	}
-	return true, nil
 }
 
 func resourceLinodeTokenRead(d *schema.ResourceData, meta interface{}) error {

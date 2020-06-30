@@ -68,6 +68,8 @@ type CognitoIdentityPoolSpec struct {
 	SamlProviderArns []string `json:"samlProviderArns,omitempty" tf:"saml_provider_arns,omitempty"`
 	// +optional
 	SupportedLoginProviders map[string]string `json:"supportedLoginProviders,omitempty" tf:"supported_login_providers,omitempty"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type CognitoIdentityPoolStatus struct {

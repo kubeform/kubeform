@@ -389,6 +389,11 @@ type KinesisFirehoseDeliveryStreamSpecS3Configuration struct {
 	RoleArn string `json:"roleArn" tf:"role_arn"`
 }
 
+type KinesisFirehoseDeliveryStreamSpecServerSideEncryption struct {
+	// +optional
+	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+}
+
 type KinesisFirehoseDeliveryStreamSpecSplunkConfigurationCloudwatchLoggingOptions struct {
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
@@ -463,6 +468,9 @@ type KinesisFirehoseDeliveryStreamSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	S3Configuration []KinesisFirehoseDeliveryStreamSpecS3Configuration `json:"s3Configuration,omitempty" tf:"s3_configuration,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	ServerSideEncryption []KinesisFirehoseDeliveryStreamSpecServerSideEncryption `json:"serverSideEncryption,omitempty" tf:"server_side_encryption,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SplunkConfiguration []KinesisFirehoseDeliveryStreamSpecSplunkConfiguration `json:"splunkConfiguration,omitempty" tf:"splunk_configuration,omitempty"`

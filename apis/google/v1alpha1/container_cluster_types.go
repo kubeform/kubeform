@@ -82,11 +82,15 @@ type ContainerClusterSpecIpAllocationPolicy struct {
 	// +optional
 	CreateSubnetwork bool `json:"createSubnetwork,omitempty" tf:"create_subnetwork,omitempty"`
 	// +optional
+	NodeIpv4CIDRBlock string `json:"nodeIpv4CIDRBlock,omitempty" tf:"node_ipv4_cidr_block,omitempty"`
+	// +optional
 	ServicesIpv4CIDRBlock string `json:"servicesIpv4CIDRBlock,omitempty" tf:"services_ipv4_cidr_block,omitempty"`
 	// +optional
 	ServicesSecondaryRangeName string `json:"servicesSecondaryRangeName,omitempty" tf:"services_secondary_range_name,omitempty"`
 	// +optional
 	SubnetworkName string `json:"subnetworkName,omitempty" tf:"subnetwork_name,omitempty"`
+	// +optional
+	UseIPAliases bool `json:"useIPAliases,omitempty" tf:"use_ip_aliases,omitempty"`
 }
 
 type ContainerClusterSpecMaintenancePolicyDailyMaintenanceWindow struct {
@@ -114,8 +118,10 @@ type ContainerClusterSpecMasterAuth struct {
 	ClientKey string `json:"-" sensitive:"true" tf:"client_key,omitempty"`
 	// +optional
 	ClusterCaCertificate string `json:"clusterCaCertificate,omitempty" tf:"cluster_ca_certificate,omitempty"`
-	Password             string `json:"-" sensitive:"true" tf:"password"`
-	Username             string `json:"username" tf:"username"`
+	// +optional
+	Password string `json:"-" sensitive:"true" tf:"password,omitempty"`
+	// +optional
+	Username string `json:"username,omitempty" tf:"username,omitempty"`
 }
 
 type ContainerClusterSpecMasterAuthorizedNetworksConfigCidrBlocks struct {
@@ -126,7 +132,6 @@ type ContainerClusterSpecMasterAuthorizedNetworksConfigCidrBlocks struct {
 
 type ContainerClusterSpecMasterAuthorizedNetworksConfig struct {
 	// +optional
-	// +kubebuilder:validation:MaxItems=20
 	CidrBlocks []ContainerClusterSpecMasterAuthorizedNetworksConfigCidrBlocks `json:"cidrBlocks,omitempty" tf:"cidr_blocks,omitempty"`
 }
 
@@ -140,16 +145,6 @@ type ContainerClusterSpecNetworkPolicy struct {
 type ContainerClusterSpecNodeConfigGuestAccelerator struct {
 	Count int64  `json:"count" tf:"count"`
 	Type  string `json:"type" tf:"type"`
-}
-
-type ContainerClusterSpecNodeConfigTaint struct {
-	Effect string `json:"effect" tf:"effect"`
-	Key    string `json:"key" tf:"key"`
-	Value  string `json:"value" tf:"value"`
-}
-
-type ContainerClusterSpecNodeConfigWorkloadMetadataConfig struct {
-	NodeMetadata string `json:"nodeMetadata" tf:"node_metadata"`
 }
 
 type ContainerClusterSpecNodeConfig struct {
@@ -179,13 +174,6 @@ type ContainerClusterSpecNodeConfig struct {
 	ServiceAccount string `json:"serviceAccount,omitempty" tf:"service_account,omitempty"`
 	// +optional
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
-	// +optional
-	// Deprecated
-	Taint []ContainerClusterSpecNodeConfigTaint `json:"taint,omitempty" tf:"taint,omitempty"`
-	// +optional
-	// +kubebuilder:validation:MaxItems=1
-	// Deprecated
-	WorkloadMetadataConfig []ContainerClusterSpecNodeConfigWorkloadMetadataConfig `json:"workloadMetadataConfig,omitempty" tf:"workload_metadata_config,omitempty"`
 }
 
 type ContainerClusterSpecNodePoolAutoscaling struct {
@@ -203,16 +191,6 @@ type ContainerClusterSpecNodePoolManagement struct {
 type ContainerClusterSpecNodePoolNodeConfigGuestAccelerator struct {
 	Count int64  `json:"count" tf:"count"`
 	Type  string `json:"type" tf:"type"`
-}
-
-type ContainerClusterSpecNodePoolNodeConfigTaint struct {
-	Effect string `json:"effect" tf:"effect"`
-	Key    string `json:"key" tf:"key"`
-	Value  string `json:"value" tf:"value"`
-}
-
-type ContainerClusterSpecNodePoolNodeConfigWorkloadMetadataConfig struct {
-	NodeMetadata string `json:"nodeMetadata" tf:"node_metadata"`
 }
 
 type ContainerClusterSpecNodePoolNodeConfig struct {
@@ -242,13 +220,6 @@ type ContainerClusterSpecNodePoolNodeConfig struct {
 	ServiceAccount string `json:"serviceAccount,omitempty" tf:"service_account,omitempty"`
 	// +optional
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
-	// +optional
-	// Deprecated
-	Taint []ContainerClusterSpecNodePoolNodeConfigTaint `json:"taint,omitempty" tf:"taint,omitempty"`
-	// +optional
-	// +kubebuilder:validation:MaxItems=1
-	// Deprecated
-	WorkloadMetadataConfig []ContainerClusterSpecNodePoolNodeConfigWorkloadMetadataConfig `json:"workloadMetadataConfig,omitempty" tf:"workload_metadata_config,omitempty"`
 }
 
 type ContainerClusterSpecNodePool struct {
@@ -263,12 +234,10 @@ type ContainerClusterSpecNodePool struct {
 	// +kubebuilder:validation:MaxItems=1
 	Management []ContainerClusterSpecNodePoolManagement `json:"management,omitempty" tf:"management,omitempty"`
 	// +optional
-	// Deprecated
 	MaxPodsPerNode int64 `json:"maxPodsPerNode,omitempty" tf:"max_pods_per_node,omitempty"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
-	// Deprecated
 	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -277,10 +246,6 @@ type ContainerClusterSpecNodePool struct {
 	NodeCount int64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
 	// +optional
 	Version string `json:"version,omitempty" tf:"version,omitempty"`
-}
-
-type ContainerClusterSpecPodSecurityPolicyConfig struct {
-	Enabled bool `json:"enabled" tf:"enabled"`
 }
 
 type ContainerClusterSpecPrivateClusterConfig struct {
@@ -304,6 +269,7 @@ type ContainerClusterSpec struct {
 	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	// +optional
+	// Deprecated
 	AdditionalZones []string `json:"additionalZones,omitempty" tf:"additional_zones,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -311,17 +277,13 @@ type ContainerClusterSpec struct {
 	// +optional
 	ClusterIpv4CIDR string `json:"clusterIpv4CIDR,omitempty" tf:"cluster_ipv4_cidr,omitempty"`
 	// +optional
-	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	DefaultMaxPodsPerNode int64 `json:"defaultMaxPodsPerNode,omitempty" tf:"default_max_pods_per_node,omitempty"`
 	// +optional
-	// Deprecated
-	EnableBinaryAuthorization bool `json:"enableBinaryAuthorization,omitempty" tf:"enable_binary_authorization,omitempty"`
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
 	EnableKubernetesAlpha bool `json:"enableKubernetesAlpha,omitempty" tf:"enable_kubernetes_alpha,omitempty"`
 	// +optional
 	EnableLegacyAbac bool `json:"enableLegacyAbac,omitempty" tf:"enable_legacy_abac,omitempty"`
-	// +optional
-	// Deprecated
-	EnableTpu bool `json:"enableTpu,omitempty" tf:"enable_tpu,omitempty"`
 	// +optional
 	Endpoint string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
 	// +optional
@@ -331,6 +293,8 @@ type ContainerClusterSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	IpAllocationPolicy []ContainerClusterSpecIpAllocationPolicy `json:"ipAllocationPolicy,omitempty" tf:"ip_allocation_policy,omitempty"`
+	// +optional
+	Location string `json:"location,omitempty" tf:"location,omitempty"`
 	// +optional
 	LoggingService string `json:"loggingService,omitempty" tf:"logging_service,omitempty"`
 	// +optional
@@ -342,9 +306,6 @@ type ContainerClusterSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	MasterAuthorizedNetworksConfig []ContainerClusterSpecMasterAuthorizedNetworksConfig `json:"masterAuthorizedNetworksConfig,omitempty" tf:"master_authorized_networks_config,omitempty"`
-	// +optional
-	// Deprecated
-	MasterIpv4CIDRBlock string `json:"masterIpv4CIDRBlock,omitempty" tf:"master_ipv4_cidr_block,omitempty"`
 	// +optional
 	MasterVersion string `json:"masterVersion,omitempty" tf:"master_version,omitempty"`
 	// +optional
@@ -361,30 +322,29 @@ type ContainerClusterSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	NodeConfig []ContainerClusterSpecNodeConfig `json:"nodeConfig,omitempty" tf:"node_config,omitempty"`
 	// +optional
+	NodeLocations []string `json:"nodeLocations,omitempty" tf:"node_locations,omitempty"`
+	// +optional
 	NodePool []ContainerClusterSpecNodePool `json:"nodePool,omitempty" tf:"node_pool,omitempty"`
 	// +optional
 	NodeVersion string `json:"nodeVersion,omitempty" tf:"node_version,omitempty"`
-	// +optional
-	// +kubebuilder:validation:MaxItems=1
-	// Deprecated
-	PodSecurityPolicyConfig []ContainerClusterSpecPodSecurityPolicyConfig `json:"podSecurityPolicyConfig,omitempty" tf:"pod_security_policy_config,omitempty"`
-	// +optional
-	// Deprecated
-	PrivateCluster bool `json:"privateCluster,omitempty" tf:"private_cluster,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	PrivateClusterConfig []ContainerClusterSpecPrivateClusterConfig `json:"privateClusterConfig,omitempty" tf:"private_cluster_config,omitempty"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
+	// Deprecated
 	Region string `json:"region,omitempty" tf:"region,omitempty"`
 	// +optional
 	RemoveDefaultNodePool bool `json:"removeDefaultNodePool,omitempty" tf:"remove_default_node_pool,omitempty"`
 	// +optional
 	ResourceLabels map[string]string `json:"resourceLabels,omitempty" tf:"resource_labels,omitempty"`
 	// +optional
+	ServicesIpv4CIDR string `json:"servicesIpv4CIDR,omitempty" tf:"services_ipv4_cidr,omitempty"`
+	// +optional
 	Subnetwork string `json:"subnetwork,omitempty" tf:"subnetwork,omitempty"`
 	// +optional
+	// Deprecated
 	Zone string `json:"zone,omitempty" tf:"zone,omitempty"`
 }
 

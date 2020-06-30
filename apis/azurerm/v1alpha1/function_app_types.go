@@ -116,19 +116,48 @@ type FunctionAppSpecConnectionString struct {
 
 type FunctionAppSpecIdentity struct {
 	// +optional
+	// +kubebuilder:validation:MinItems=1
+	IdentityIDS []string `json:"identityIDS,omitempty" tf:"identity_ids,omitempty"`
+	// +optional
 	PrincipalID string `json:"principalID,omitempty" tf:"principal_id,omitempty"`
 	// +optional
 	TenantID string `json:"tenantID,omitempty" tf:"tenant_id,omitempty"`
 	Type     string `json:"type" tf:"type"`
 }
 
+type FunctionAppSpecSiteConfigCors struct {
+	AllowedOrigins []string `json:"allowedOrigins" tf:"allowed_origins"`
+	// +optional
+	SupportCredentials bool `json:"supportCredentials,omitempty" tf:"support_credentials,omitempty"`
+}
+
+type FunctionAppSpecSiteConfigIpRestriction struct {
+	// +optional
+	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
+	// +optional
+	SubnetID string `json:"subnetID,omitempty" tf:"subnet_id,omitempty"`
+}
+
 type FunctionAppSpecSiteConfig struct {
 	// +optional
 	AlwaysOn bool `json:"alwaysOn,omitempty" tf:"always_on,omitempty"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Cors []FunctionAppSpecSiteConfigCors `json:"cors,omitempty" tf:"cors,omitempty"`
+	// +optional
+	FtpsState string `json:"ftpsState,omitempty" tf:"ftps_state,omitempty"`
+	// +optional
+	Http2Enabled bool `json:"http2Enabled,omitempty" tf:"http2_enabled,omitempty"`
+	// +optional
+	IpRestriction []FunctionAppSpecSiteConfigIpRestriction `json:"ipRestriction,omitempty" tf:"ip_restriction,omitempty"`
+	// +optional
 	LinuxFxVersion string `json:"linuxFxVersion,omitempty" tf:"linux_fx_version,omitempty"`
 	// +optional
+	MinTLSVersion string `json:"minTLSVersion,omitempty" tf:"min_tls_version,omitempty"`
+	// +optional
 	Use32BitWorkerProcess bool `json:"use32BitWorkerProcess,omitempty" tf:"use_32_bit_worker_process,omitempty"`
+	// +optional
+	VirtualNetworkName string `json:"virtualNetworkName,omitempty" tf:"virtual_network_name,omitempty"`
 	// +optional
 	WebsocketsEnabled bool `json:"websocketsEnabled,omitempty" tf:"websockets_enabled,omitempty"`
 }
@@ -181,7 +210,6 @@ type FunctionAppSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	SiteConfig []FunctionAppSpecSiteConfig `json:"siteConfig,omitempty" tf:"site_config,omitempty"`
 	// +optional
-	// +kubebuilder:validation:MaxItems=1
 	SiteCredential          []FunctionAppSpecSiteCredential `json:"siteCredential,omitempty" tf:"site_credential,omitempty"`
 	StorageConnectionString string                          `json:"-" sensitive:"true" tf:"storage_connection_string"`
 	// +optional

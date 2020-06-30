@@ -39,6 +39,53 @@ type SpacesBucket struct {
 	Status            SpacesBucketStatus `json:"status,omitempty"`
 }
 
+type SpacesBucketSpecCorsRule struct {
+	// A list of headers that will be included in the CORS preflight request's Access-Control-Request-Headers. A header may contain one wildcard (e.g. x-amz-*).
+	// +optional
+	AllowedHeaders []string `json:"allowedHeaders,omitempty" tf:"allowed_headers,omitempty"`
+	// A list of HTTP methods (e.g. GET) which are allowed from the specified origin.
+	AllowedMethods []string `json:"allowedMethods" tf:"allowed_methods"`
+	// A list of hosts from which requests using the specified methods are allowed. A host may contain one wildcard (e.g. http://*.example.com).
+	AllowedOrigins []string `json:"allowedOrigins" tf:"allowed_origins"`
+	// +optional
+	MaxAgeSeconds int64 `json:"maxAgeSeconds,omitempty" tf:"max_age_seconds,omitempty"`
+}
+
+type SpacesBucketSpecLifecycleRuleExpiration struct {
+	// +optional
+	Date string `json:"date,omitempty" tf:"date,omitempty"`
+	// +optional
+	Days int64 `json:"days,omitempty" tf:"days,omitempty"`
+	// +optional
+	ExpiredObjectDeleteMarker bool `json:"expiredObjectDeleteMarker,omitempty" tf:"expired_object_delete_marker,omitempty"`
+}
+
+type SpacesBucketSpecLifecycleRuleNoncurrentVersionExpiration struct {
+	// +optional
+	Days int64 `json:"days,omitempty" tf:"days,omitempty"`
+}
+
+type SpacesBucketSpecLifecycleRule struct {
+	// +optional
+	AbortIncompleteMultipartUploadDays int64 `json:"abortIncompleteMultipartUploadDays,omitempty" tf:"abort_incomplete_multipart_upload_days,omitempty"`
+	Enabled                            bool  `json:"enabled" tf:"enabled"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Expiration []SpacesBucketSpecLifecycleRuleExpiration `json:"expiration,omitempty" tf:"expiration,omitempty"`
+	// +optional
+	ID string `json:"ID,omitempty" tf:"id,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	NoncurrentVersionExpiration []SpacesBucketSpecLifecycleRuleNoncurrentVersionExpiration `json:"noncurrentVersionExpiration,omitempty" tf:"noncurrent_version_expiration,omitempty"`
+	// +optional
+	Prefix string `json:"prefix,omitempty" tf:"prefix,omitempty"`
+}
+
+type SpacesBucketSpecVersioning struct {
+	// +optional
+	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+}
+
 type SpacesBucketSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
@@ -50,9 +97,14 @@ type SpacesBucketSpec struct {
 	// The FQDN of the bucket
 	// +optional
 	BucketDomainName string `json:"bucketDomainName,omitempty" tf:"bucket_domain_name,omitempty"`
+	// A container holding a list of elements describing allowed methods for a specific origin.
+	// +optional
+	CorsRule []SpacesBucketSpecCorsRule `json:"corsRule,omitempty" tf:"cors_rule,omitempty"`
 	// Unless true, the bucket will only be destroyed if empty
 	// +optional
 	ForceDestroy bool `json:"forceDestroy,omitempty" tf:"force_destroy,omitempty"`
+	// +optional
+	LifecycleRule []SpacesBucketSpecLifecycleRule `json:"lifecycleRule,omitempty" tf:"lifecycle_rule,omitempty"`
 	// Bucket name
 	Name string `json:"name" tf:"name"`
 	// Bucket region
@@ -61,6 +113,9 @@ type SpacesBucketSpec struct {
 	// the uniform resource name for the bucket
 	// +optional
 	Urn string `json:"urn,omitempty" tf:"urn,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Versioning []SpacesBucketSpecVersioning `json:"versioning,omitempty" tf:"versioning,omitempty"`
 }
 
 type SpacesBucketStatus struct {

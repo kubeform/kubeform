@@ -45,19 +45,9 @@ type ProjectIamPolicySpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	// Deprecated
-	Authoritative bool `json:"authoritative,omitempty" tf:"authoritative,omitempty"`
-	// +optional
-	// Deprecated
-	DisableProject bool `json:"disableProject,omitempty" tf:"disable_project,omitempty"`
-	// +optional
 	Etag       string `json:"etag,omitempty" tf:"etag,omitempty"`
 	PolicyData string `json:"policyData" tf:"policy_data"`
-	// +optional
-	Project string `json:"project,omitempty" tf:"project,omitempty"`
-	// +optional
-	// Deprecated
-	RestorePolicy string `json:"restorePolicy,omitempty" tf:"restore_policy,omitempty"`
+	Project    string `json:"project" tf:"project"`
 }
 
 type ProjectIamPolicyStatus struct {

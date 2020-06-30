@@ -49,9 +49,13 @@ type DatabaseClusterSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
+
 	// +optional
 	Database string `json:"database,omitempty" tf:"database,omitempty"`
 	Engine   string `json:"engine" tf:"engine"`
+	// +optional
+	EvictionPolicy string `json:"evictionPolicy,omitempty" tf:"eviction_policy,omitempty"`
 	// +optional
 	Host string `json:"host,omitempty" tf:"host,omitempty"`
 	// +optional
@@ -60,16 +64,29 @@ type DatabaseClusterSpec struct {
 	Name              string                                 `json:"name" tf:"name"`
 	NodeCount         int64                                  `json:"nodeCount" tf:"node_count"`
 	// +optional
-	Password string `json:"password,omitempty" tf:"password,omitempty"`
+	Password string `json:"-" sensitive:"true" tf:"password,omitempty"`
 	// +optional
-	Port   int64  `json:"port,omitempty" tf:"port,omitempty"`
-	Region string `json:"region" tf:"region"`
-	Size   string `json:"size" tf:"size"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
-	Uri string `json:"uri,omitempty" tf:"uri,omitempty"`
+	PrivateHost string `json:"privateHost,omitempty" tf:"private_host,omitempty"`
 	// +optional
-	User    string `json:"user,omitempty" tf:"user,omitempty"`
-	Version string `json:"version" tf:"version"`
+	PrivateNetworkUUID string `json:"privateNetworkUUID,omitempty" tf:"private_network_uuid,omitempty"`
+	// +optional
+	PrivateURI string `json:"-" sensitive:"true" tf:"private_uri,omitempty"`
+	Region     string `json:"region" tf:"region"`
+	Size       string `json:"size" tf:"size"`
+	// +optional
+	SqlMode string `json:"sqlMode,omitempty" tf:"sql_mode,omitempty"`
+	// +optional
+	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	Uri string `json:"-" sensitive:"true" tf:"uri,omitempty"`
+	// +optional
+	Urn string `json:"urn,omitempty" tf:"urn,omitempty"`
+	// +optional
+	User string `json:"user,omitempty" tf:"user,omitempty"`
+	// +optional
+	Version string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type DatabaseClusterStatus struct {

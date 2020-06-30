@@ -47,20 +47,28 @@ type VirtualMachineExtensionSpec struct {
 	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	// +optional
-	AutoUpgradeMinorVersion bool   `json:"autoUpgradeMinorVersion,omitempty" tf:"auto_upgrade_minor_version,omitempty"`
-	Location                string `json:"location" tf:"location"`
-	Name                    string `json:"name" tf:"name"`
+	AutoUpgradeMinorVersion bool `json:"autoUpgradeMinorVersion,omitempty" tf:"auto_upgrade_minor_version,omitempty"`
+	// +optional
+	// Deprecated
+	Location string `json:"location,omitempty" tf:"location,omitempty"`
+	Name     string `json:"name" tf:"name"`
 	// +optional
 	ProtectedSettings string `json:"-" sensitive:"true" tf:"protected_settings,omitempty"`
 	Publisher         string `json:"publisher" tf:"publisher"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	// Deprecated
+	ResourceGroupName string `json:"resourceGroupName,omitempty" tf:"resource_group_name,omitempty"`
 	// +optional
 	Settings string `json:"settings,omitempty" tf:"settings,omitempty"`
 	// +optional
 	Tags               map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	Type               string            `json:"type" tf:"type"`
 	TypeHandlerVersion string            `json:"typeHandlerVersion" tf:"type_handler_version"`
-	VirtualMachineName string            `json:"virtualMachineName" tf:"virtual_machine_name"`
+	// +optional
+	VirtualMachineID string `json:"virtualMachineID,omitempty" tf:"virtual_machine_id,omitempty"`
+	// +optional
+	// Deprecated
+	VirtualMachineName string `json:"virtualMachineName,omitempty" tf:"virtual_machine_name,omitempty"`
 }
 
 type VirtualMachineExtensionStatus struct {

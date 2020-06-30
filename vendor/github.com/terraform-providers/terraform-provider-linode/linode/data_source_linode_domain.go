@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/linode/linodego"
 )
 
@@ -149,9 +149,7 @@ func dataSourceLinodeDomainRead(d *schema.ResourceData, meta interface{}) error 
 		d.Set("expire_sec", domain.ExpireSec)
 		d.Set("refresh_sec", domain.RefreshSec)
 		d.Set("soa_email", domain.SOAEmail)
-		if err := d.Set("tags", domain.Tags); err != nil {
-			return fmt.Errorf("Error setting tags: %s", err)
-		}
+		d.Set("tags", domain.Tags)
 		return nil
 	}
 

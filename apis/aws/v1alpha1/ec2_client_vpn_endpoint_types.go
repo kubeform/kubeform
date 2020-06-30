@@ -73,6 +73,8 @@ type Ec2ClientVPNEndpointSpec struct {
 	DnsServers           []string `json:"dnsServers,omitempty" tf:"dns_servers,omitempty"`
 	ServerCertificateArn string   `json:"serverCertificateArn" tf:"server_certificate_arn"`
 	// +optional
+	SplitTunnel bool `json:"splitTunnel,omitempty" tf:"split_tunnel,omitempty"`
+	// +optional
 	Status string `json:"status,omitempty" tf:"status,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

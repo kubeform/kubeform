@@ -51,6 +51,8 @@ type DnsSrvRecordSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// +optional
+	Fqdn              string                   `json:"fqdn,omitempty" tf:"fqdn,omitempty"`
 	Name              string                   `json:"name" tf:"name"`
 	Record            []DnsSrvRecordSpecRecord `json:"record" tf:"record"`
 	ResourceGroupName string                   `json:"resourceGroupName" tf:"resource_group_name"`

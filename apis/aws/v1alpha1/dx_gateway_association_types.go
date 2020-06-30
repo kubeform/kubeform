@@ -47,9 +47,21 @@ type DxGatewayAssociationSpec struct {
 	// +optional
 	AllowedPrefixes []string `json:"allowedPrefixes,omitempty" tf:"allowed_prefixes,omitempty"`
 	// +optional
+	AssociatedGatewayID string `json:"associatedGatewayID,omitempty" tf:"associated_gateway_id,omitempty"`
+	// +optional
+	AssociatedGatewayOwnerAccountID string `json:"associatedGatewayOwnerAccountID,omitempty" tf:"associated_gateway_owner_account_id,omitempty"`
+	// +optional
+	AssociatedGatewayType string `json:"associatedGatewayType,omitempty" tf:"associated_gateway_type,omitempty"`
+	// +optional
 	DxGatewayAssociationID string `json:"dxGatewayAssociationID,omitempty" tf:"dx_gateway_association_id,omitempty"`
 	DxGatewayID            string `json:"dxGatewayID" tf:"dx_gateway_id"`
-	VpnGatewayID           string `json:"vpnGatewayID" tf:"vpn_gateway_id"`
+	// +optional
+	DxGatewayOwnerAccountID string `json:"dxGatewayOwnerAccountID,omitempty" tf:"dx_gateway_owner_account_id,omitempty"`
+	// +optional
+	ProposalID string `json:"proposalID,omitempty" tf:"proposal_id,omitempty"`
+	// +optional
+	// Deprecated
+	VpnGatewayID string `json:"vpnGatewayID,omitempty" tf:"vpn_gateway_id,omitempty"`
 }
 
 type DxGatewayAssociationStatus struct {

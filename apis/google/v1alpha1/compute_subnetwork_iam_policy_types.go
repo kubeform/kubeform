@@ -48,12 +48,9 @@ type ComputeSubnetworkIamPolicySpec struct {
 	Etag       string `json:"etag,omitempty" tf:"etag,omitempty"`
 	PolicyData string `json:"policyData" tf:"policy_data"`
 	// +optional
-	// Deprecated
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	// Deprecated
-	Region string `json:"region,omitempty" tf:"region,omitempty"`
-	// Deprecated
+	Region     string `json:"region,omitempty" tf:"region,omitempty"`
 	Subnetwork string `json:"subnetwork" tf:"subnetwork"`
 }
 

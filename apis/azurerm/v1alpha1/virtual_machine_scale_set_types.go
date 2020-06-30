@@ -275,8 +275,10 @@ type VirtualMachineScaleSetSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Plan []VirtualMachineScaleSetSpecPlan `json:"plan,omitempty" tf:"plan,omitempty"`
 	// +optional
-	Priority          string `json:"priority,omitempty" tf:"priority,omitempty"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	Priority string `json:"priority,omitempty" tf:"priority,omitempty"`
+	// +optional
+	ProximityPlacementGroupID string `json:"proximityPlacementGroupID,omitempty" tf:"proximity_placement_group_id,omitempty"`
+	ResourceGroupName         string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	RollingUpgradePolicy []VirtualMachineScaleSetSpecRollingUpgradePolicy `json:"rollingUpgradePolicy,omitempty" tf:"rolling_upgrade_policy,omitempty"`

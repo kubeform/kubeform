@@ -25,12 +25,12 @@ spec:
         apiVersion:
           description: 'APIVersion defines the versioned schema of this representation
             of an object. Servers should convert recognized schemas to the latest
-            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
           type: string
         kind:
           description: 'Kind is a string value representing the REST resource this
             object represents. Servers may infer this from the endpoint the client
-            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
           type: string
         metadata:
           type: object
@@ -83,6 +83,34 @@ spec:
             roles:
               items:
                 properties:
+                  edgeNode:
+                    items:
+                      properties:
+                        installScriptAction:
+                          items:
+                            properties:
+                              name:
+                                type: string
+                              uri:
+                                type: string
+                            required:
+                            - name
+                            - uri
+                            type: object
+                          minItems: 1
+                          type: array
+                        targetInstanceCount:
+                          format: int64
+                          type: integer
+                        vmSize:
+                          type: string
+                      required:
+                      - installScriptAction
+                      - targetInstanceCount
+                      - vmSize
+                      type: object
+                    maxItems: 1
+                    type: array
                   headNode:
                     items:
                       properties:
@@ -183,6 +211,25 @@ spec:
                 - storageContainerID
                 type: object
               type: array
+            storageAccountGen2:
+              items:
+                properties:
+                  filesystemID:
+                    type: string
+                  isDefault:
+                    type: boolean
+                  managedIdentityResourceID:
+                    type: string
+                  storageResourceID:
+                    type: string
+                required:
+                - filesystemID
+                - isDefault
+                - managedIdentityResourceID
+                - storageResourceID
+                type: object
+              maxItems: 1
+              type: array
             tags:
               additionalProperties:
                 type: string
@@ -198,7 +245,6 @@ spec:
           - providerRef
           - resourceGroupName
           - roles
-          - storageAccount
           - tier
           type: object
         status:
@@ -257,6 +303,34 @@ spec:
                 roles:
                   items:
                     properties:
+                      edgeNode:
+                        items:
+                          properties:
+                            installScriptAction:
+                              items:
+                                properties:
+                                  name:
+                                    type: string
+                                  uri:
+                                    type: string
+                                required:
+                                - name
+                                - uri
+                                type: object
+                              minItems: 1
+                              type: array
+                            targetInstanceCount:
+                              format: int64
+                              type: integer
+                            vmSize:
+                              type: string
+                          required:
+                          - installScriptAction
+                          - targetInstanceCount
+                          - vmSize
+                          type: object
+                        maxItems: 1
+                        type: array
                       headNode:
                         items:
                           properties:
@@ -357,6 +431,25 @@ spec:
                     - storageContainerID
                     type: object
                   type: array
+                storageAccountGen2:
+                  items:
+                    properties:
+                      filesystemID:
+                        type: string
+                      isDefault:
+                        type: boolean
+                      managedIdentityResourceID:
+                        type: string
+                      storageResourceID:
+                        type: string
+                    required:
+                    - filesystemID
+                    - isDefault
+                    - managedIdentityResourceID
+                    - storageResourceID
+                    type: object
+                  maxItems: 1
+                  type: array
                 tags:
                   additionalProperties:
                     type: string
@@ -372,7 +465,6 @@ spec:
               - providerRef
               - resourceGroupName
               - roles
-              - storageAccount
               - tier
               type: object
             phase:

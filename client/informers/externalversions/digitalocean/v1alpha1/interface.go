@@ -28,8 +28,22 @@ type Interface interface {
 	Cdns() CdnInformer
 	// Certificates returns a CertificateInformer.
 	Certificates() CertificateInformer
+	// ContainerRegistries returns a ContainerRegistryInformer.
+	ContainerRegistries() ContainerRegistryInformer
+	// ContainerRegistryDockerCredentialses returns a ContainerRegistryDockerCredentialsInformer.
+	ContainerRegistryDockerCredentialses() ContainerRegistryDockerCredentialsInformer
 	// DatabaseClusters returns a DatabaseClusterInformer.
 	DatabaseClusters() DatabaseClusterInformer
+	// DatabaseConnectionPools returns a DatabaseConnectionPoolInformer.
+	DatabaseConnectionPools() DatabaseConnectionPoolInformer
+	// DatabaseDbs returns a DatabaseDbInformer.
+	DatabaseDbs() DatabaseDbInformer
+	// DatabaseFirewalls returns a DatabaseFirewallInformer.
+	DatabaseFirewalls() DatabaseFirewallInformer
+	// DatabaseReplicas returns a DatabaseReplicaInformer.
+	DatabaseReplicas() DatabaseReplicaInformer
+	// DatabaseUsers returns a DatabaseUserInformer.
+	DatabaseUsers() DatabaseUserInformer
 	// Domains returns a DomainInformer.
 	Domains() DomainInformer
 	// Droplets returns a DropletInformer.
@@ -50,10 +64,14 @@ type Interface interface {
 	Loadbalancers() LoadbalancerInformer
 	// Projects returns a ProjectInformer.
 	Projects() ProjectInformer
+	// ProjectResourceses returns a ProjectResourcesInformer.
+	ProjectResourceses() ProjectResourcesInformer
 	// Records returns a RecordInformer.
 	Records() RecordInformer
 	// SpacesBuckets returns a SpacesBucketInformer.
 	SpacesBuckets() SpacesBucketInformer
+	// SpacesBucketObjects returns a SpacesBucketObjectInformer.
+	SpacesBucketObjects() SpacesBucketObjectInformer
 	// SshKeys returns a SshKeyInformer.
 	SshKeys() SshKeyInformer
 	// Tags returns a TagInformer.
@@ -64,6 +82,8 @@ type Interface interface {
 	VolumeAttachments() VolumeAttachmentInformer
 	// VolumeSnapshots returns a VolumeSnapshotInformer.
 	VolumeSnapshots() VolumeSnapshotInformer
+	// Vpcs returns a VpcInformer.
+	Vpcs() VpcInformer
 }
 
 type version struct {
@@ -87,9 +107,44 @@ func (v *version) Certificates() CertificateInformer {
 	return &certificateInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// ContainerRegistries returns a ContainerRegistryInformer.
+func (v *version) ContainerRegistries() ContainerRegistryInformer {
+	return &containerRegistryInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ContainerRegistryDockerCredentialses returns a ContainerRegistryDockerCredentialsInformer.
+func (v *version) ContainerRegistryDockerCredentialses() ContainerRegistryDockerCredentialsInformer {
+	return &containerRegistryDockerCredentialsInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // DatabaseClusters returns a DatabaseClusterInformer.
 func (v *version) DatabaseClusters() DatabaseClusterInformer {
 	return &databaseClusterInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// DatabaseConnectionPools returns a DatabaseConnectionPoolInformer.
+func (v *version) DatabaseConnectionPools() DatabaseConnectionPoolInformer {
+	return &databaseConnectionPoolInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// DatabaseDbs returns a DatabaseDbInformer.
+func (v *version) DatabaseDbs() DatabaseDbInformer {
+	return &databaseDbInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// DatabaseFirewalls returns a DatabaseFirewallInformer.
+func (v *version) DatabaseFirewalls() DatabaseFirewallInformer {
+	return &databaseFirewallInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// DatabaseReplicas returns a DatabaseReplicaInformer.
+func (v *version) DatabaseReplicas() DatabaseReplicaInformer {
+	return &databaseReplicaInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// DatabaseUsers returns a DatabaseUserInformer.
+func (v *version) DatabaseUsers() DatabaseUserInformer {
+	return &databaseUserInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // Domains returns a DomainInformer.
@@ -142,6 +197,11 @@ func (v *version) Projects() ProjectInformer {
 	return &projectInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// ProjectResourceses returns a ProjectResourcesInformer.
+func (v *version) ProjectResourceses() ProjectResourcesInformer {
+	return &projectResourcesInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // Records returns a RecordInformer.
 func (v *version) Records() RecordInformer {
 	return &recordInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -150,6 +210,11 @@ func (v *version) Records() RecordInformer {
 // SpacesBuckets returns a SpacesBucketInformer.
 func (v *version) SpacesBuckets() SpacesBucketInformer {
 	return &spacesBucketInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// SpacesBucketObjects returns a SpacesBucketObjectInformer.
+func (v *version) SpacesBucketObjects() SpacesBucketObjectInformer {
+	return &spacesBucketObjectInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // SshKeys returns a SshKeyInformer.
@@ -175,4 +240,9 @@ func (v *version) VolumeAttachments() VolumeAttachmentInformer {
 // VolumeSnapshots returns a VolumeSnapshotInformer.
 func (v *version) VolumeSnapshots() VolumeSnapshotInformer {
 	return &volumeSnapshotInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// Vpcs returns a VpcInformer.
+func (v *version) Vpcs() VpcInformer {
+	return &vpcInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

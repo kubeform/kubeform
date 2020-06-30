@@ -138,8 +138,9 @@ type HdinsightMlServicesClusterSpec struct {
 	Roles   []HdinsightMlServicesClusterSpecRoles `json:"roles" tf:"roles"`
 	Rstudio bool                                  `json:"rstudio" tf:"rstudio"`
 	// +optional
-	SshEndpoint    string                                         `json:"sshEndpoint,omitempty" tf:"ssh_endpoint,omitempty"`
-	StorageAccount []HdinsightMlServicesClusterSpecStorageAccount `json:"storageAccount" tf:"storage_account"`
+	SshEndpoint string `json:"sshEndpoint,omitempty" tf:"ssh_endpoint,omitempty"`
+	// +optional
+	StorageAccount []HdinsightMlServicesClusterSpecStorageAccount `json:"storageAccount,omitempty" tf:"storage_account,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	Tier string            `json:"tier" tf:"tier"`

@@ -55,13 +55,10 @@ type ComputeVPNTunnelSpec struct {
 	// +optional
 	IkeVersion int64 `json:"ikeVersion,omitempty" tf:"ike_version,omitempty"`
 	// +optional
-	LabelFingerprint string `json:"labelFingerprint,omitempty" tf:"label_fingerprint,omitempty"`
-	// +optional
-	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
-	// +optional
 	LocalTrafficSelector []string `json:"localTrafficSelector,omitempty" tf:"local_traffic_selector,omitempty"`
 	Name                 string   `json:"name" tf:"name"`
-	PeerIP               string   `json:"peerIP" tf:"peer_ip"`
+	// +optional
+	PeerIP string `json:"peerIP,omitempty" tf:"peer_ip,omitempty"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
@@ -75,7 +72,10 @@ type ComputeVPNTunnelSpec struct {
 	SharedSecret string `json:"-" sensitive:"true" tf:"shared_secret"`
 	// +optional
 	SharedSecretHash string `json:"sharedSecretHash,omitempty" tf:"shared_secret_hash,omitempty"`
-	TargetVPNGateway string `json:"targetVPNGateway" tf:"target_vpn_gateway"`
+	// +optional
+	TargetVPNGateway string `json:"targetVPNGateway,omitempty" tf:"target_vpn_gateway,omitempty"`
+	// +optional
+	TunnelID string `json:"tunnelID,omitempty" tf:"tunnel_id,omitempty"`
 }
 
 type ComputeVPNTunnelStatus struct {

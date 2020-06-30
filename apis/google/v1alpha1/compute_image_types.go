@@ -39,6 +39,11 @@ type ComputeImage struct {
 	Status            ComputeImageStatus `json:"status,omitempty"`
 }
 
+type ComputeImageSpecGuestOsFeatures struct {
+	// +optional
+	Type string `json:"type,omitempty" tf:"type,omitempty"`
+}
+
 type ComputeImageSpecRawDisk struct {
 	// +optional
 	ContainerType string `json:"containerType,omitempty" tf:"container_type,omitempty"`
@@ -53,12 +58,17 @@ type ComputeImageSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	// Deprecated
-	CreateTimeout int64 `json:"createTimeout,omitempty" tf:"create_timeout,omitempty"`
+	ArchiveSizeBytes int64 `json:"archiveSizeBytes,omitempty" tf:"archive_size_bytes,omitempty"`
+	// +optional
+	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
+	DiskSizeGb int64 `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
+	// +optional
 	Family string `json:"family,omitempty" tf:"family,omitempty"`
+	// +optional
+	GuestOsFeatures []ComputeImageSpecGuestOsFeatures `json:"guestOsFeatures,omitempty" tf:"guest_os_features,omitempty"`
 	// +optional
 	LabelFingerprint string `json:"labelFingerprint,omitempty" tf:"label_fingerprint,omitempty"`
 	// +optional

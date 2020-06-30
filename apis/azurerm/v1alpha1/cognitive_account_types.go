@@ -61,8 +61,12 @@ type CognitiveAccountSpec struct {
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	SecondaryAccessKey string `json:"-" sensitive:"true" tf:"secondary_access_key,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	Sku []CognitiveAccountSpecSku `json:"sku" tf:"sku"`
+	// Deprecated
+	Sku []CognitiveAccountSpecSku `json:"sku,omitempty" tf:"sku,omitempty"`
+	// +optional
+	SkuName string `json:"skuName,omitempty" tf:"sku_name,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

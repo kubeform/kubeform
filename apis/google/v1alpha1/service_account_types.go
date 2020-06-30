@@ -52,9 +52,6 @@ type ServiceAccountSpec struct {
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
-	// Deprecated
-	PolicyData string `json:"policyData,omitempty" tf:"policy_data,omitempty"`
-	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
 	UniqueID string `json:"uniqueID,omitempty" tf:"unique_id,omitempty"`

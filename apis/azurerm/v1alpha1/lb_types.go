@@ -41,6 +41,8 @@ type Lb struct {
 
 type LbSpecFrontendIPConfiguration struct {
 	// +optional
+	ID string `json:"ID,omitempty" tf:"id,omitempty"`
+	// +optional
 	InboundNATRules []string `json:"inboundNATRules,omitempty" tf:"inbound_nat_rules,omitempty"`
 	// +optional
 	LoadBalancerRules []string `json:"loadBalancerRules,omitempty" tf:"load_balancer_rules,omitempty"`

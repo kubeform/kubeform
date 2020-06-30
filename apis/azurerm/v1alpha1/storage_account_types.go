@@ -39,6 +39,17 @@ type StorageAccount struct {
 	Status            StorageAccountStatus `json:"status,omitempty"`
 }
 
+type StorageAccountSpecBlobPropertiesDeleteRetentionPolicy struct {
+	// +optional
+	Days int64 `json:"days,omitempty" tf:"days,omitempty"`
+}
+
+type StorageAccountSpecBlobProperties struct {
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	DeleteRetentionPolicy []StorageAccountSpecBlobPropertiesDeleteRetentionPolicy `json:"deleteRetentionPolicy,omitempty" tf:"delete_retention_policy,omitempty"`
+}
+
 type StorageAccountSpecCustomDomain struct {
 	Name string `json:"name" tf:"name"`
 	// +optional
@@ -55,9 +66,8 @@ type StorageAccountSpecIdentity struct {
 
 type StorageAccountSpecNetworkRules struct {
 	// +optional
-	Bypass []string `json:"bypass,omitempty" tf:"bypass,omitempty"`
-	// +optional
-	DefaultAction string `json:"defaultAction,omitempty" tf:"default_action,omitempty"`
+	Bypass        []string `json:"bypass,omitempty" tf:"bypass,omitempty"`
+	DefaultAction string   `json:"defaultAction" tf:"default_action"`
 	// +optional
 	IpRules []string `json:"ipRules,omitempty" tf:"ip_rules,omitempty"`
 	// +optional
@@ -138,8 +148,12 @@ type StorageAccountSpec struct {
 	AccountType string `json:"accountType,omitempty" tf:"account_type,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
+	BlobProperties []StorageAccountSpecBlobProperties `json:"blobProperties,omitempty" tf:"blob_properties,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
 	CustomDomain []StorageAccountSpecCustomDomain `json:"customDomain,omitempty" tf:"custom_domain,omitempty"`
 	// +optional
+	// Deprecated
 	EnableAdvancedThreatProtection bool `json:"enableAdvancedThreatProtection,omitempty" tf:"enable_advanced_threat_protection,omitempty"`
 	// +optional
 	EnableBlobEncryption bool `json:"enableBlobEncryption,omitempty" tf:"enable_blob_encryption,omitempty"`

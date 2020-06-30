@@ -134,6 +134,13 @@ type MonitoringAlertPolicySpecCreationRecord struct {
 	MutatedBy string `json:"mutatedBy,omitempty" tf:"mutated_by,omitempty"`
 }
 
+type MonitoringAlertPolicySpecDocumentation struct {
+	// +optional
+	Content string `json:"content,omitempty" tf:"content,omitempty"`
+	// +optional
+	MimeType string `json:"mimeType,omitempty" tf:"mime_type,omitempty"`
+}
+
 type MonitoringAlertPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
@@ -145,8 +152,13 @@ type MonitoringAlertPolicySpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	CreationRecord []MonitoringAlertPolicySpecCreationRecord `json:"creationRecord,omitempty" tf:"creation_record,omitempty"`
 	DisplayName    string                                    `json:"displayName" tf:"display_name"`
-	Enabled        bool                                      `json:"enabled" tf:"enabled"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Documentation []MonitoringAlertPolicySpecDocumentation `json:"documentation,omitempty" tf:"documentation,omitempty"`
+	// +optional
+	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	// +optional
+	// Deprecated
 	Labels []string `json:"labels,omitempty" tf:"labels,omitempty"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
@@ -154,6 +166,8 @@ type MonitoringAlertPolicySpec struct {
 	NotificationChannels []string `json:"notificationChannels,omitempty" tf:"notification_channels,omitempty"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	UserLabels map[string]string `json:"userLabels,omitempty" tf:"user_labels,omitempty"`
 }
 
 type MonitoringAlertPolicyStatus struct {

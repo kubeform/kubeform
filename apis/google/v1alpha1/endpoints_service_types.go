@@ -88,9 +88,6 @@ type EndpointsServiceSpec struct {
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	// Deprecated
-	ProtocOutput string `json:"protocOutput,omitempty" tf:"protoc_output,omitempty"`
-	// +optional
 	ProtocOutputBase64 string `json:"protocOutputBase64,omitempty" tf:"protoc_output_base64,omitempty"`
 	ServiceName        string `json:"serviceName" tf:"service_name"`
 }

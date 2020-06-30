@@ -39,44 +39,9 @@ type ComputeInstanceGroupManager struct {
 	Status            ComputeInstanceGroupManagerStatus `json:"status,omitempty"`
 }
 
-type ComputeInstanceGroupManagerSpecAutoHealingPolicies struct {
-	HealthCheck     string `json:"healthCheck" tf:"health_check"`
-	InitialDelaySec int64  `json:"initialDelaySec" tf:"initial_delay_sec"`
-}
-
 type ComputeInstanceGroupManagerSpecNamedPort struct {
 	Name string `json:"name" tf:"name"`
 	Port int64  `json:"port" tf:"port"`
-}
-
-type ComputeInstanceGroupManagerSpecRollingUpdatePolicy struct {
-	// +optional
-	MaxSurgeFixed int64 `json:"maxSurgeFixed,omitempty" tf:"max_surge_fixed,omitempty"`
-	// +optional
-	MaxSurgePercent int64 `json:"maxSurgePercent,omitempty" tf:"max_surge_percent,omitempty"`
-	// +optional
-	MaxUnavailableFixed int64 `json:"maxUnavailableFixed,omitempty" tf:"max_unavailable_fixed,omitempty"`
-	// +optional
-	MaxUnavailablePercent int64 `json:"maxUnavailablePercent,omitempty" tf:"max_unavailable_percent,omitempty"`
-	// +optional
-	MinReadySec   int64  `json:"minReadySec,omitempty" tf:"min_ready_sec,omitempty"`
-	MinimalAction string `json:"minimalAction" tf:"minimal_action"`
-	Type          string `json:"type" tf:"type"`
-}
-
-type ComputeInstanceGroupManagerSpecVersionTargetSize struct {
-	// +optional
-	Fixed int64 `json:"fixed,omitempty" tf:"fixed,omitempty"`
-	// +optional
-	Percent int64 `json:"percent,omitempty" tf:"percent,omitempty"`
-}
-
-type ComputeInstanceGroupManagerSpecVersion struct {
-	InstanceTemplate string `json:"instanceTemplate" tf:"instance_template"`
-	Name             string `json:"name" tf:"name"`
-	// +optional
-	// +kubebuilder:validation:MaxItems=1
-	TargetSize []ComputeInstanceGroupManagerSpecVersionTargetSize `json:"targetSize,omitempty" tf:"target_size,omitempty"`
 }
 
 type ComputeInstanceGroupManagerSpec struct {
@@ -84,28 +49,19 @@ type ComputeInstanceGroupManagerSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	// +optional
-	// +kubebuilder:validation:MaxItems=1
-	// Deprecated
-	AutoHealingPolicies []ComputeInstanceGroupManagerSpecAutoHealingPolicies `json:"autoHealingPolicies,omitempty" tf:"auto_healing_policies,omitempty"`
-	BaseInstanceName    string                                               `json:"baseInstanceName" tf:"base_instance_name"`
+	BaseInstanceName string `json:"baseInstanceName" tf:"base_instance_name"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
 	Fingerprint string `json:"fingerprint,omitempty" tf:"fingerprint,omitempty"`
 	// +optional
-	InstanceGroup string `json:"instanceGroup,omitempty" tf:"instance_group,omitempty"`
-	// +optional
-	InstanceTemplate string `json:"instanceTemplate,omitempty" tf:"instance_template,omitempty"`
+	InstanceGroup    string `json:"instanceGroup,omitempty" tf:"instance_group,omitempty"`
+	InstanceTemplate string `json:"instanceTemplate" tf:"instance_template"`
 	Name             string `json:"name" tf:"name"`
 	// +optional
 	NamedPort []ComputeInstanceGroupManagerSpecNamedPort `json:"namedPort,omitempty" tf:"named_port,omitempty"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
-	// +optional
-	// +kubebuilder:validation:MaxItems=1
-	// Deprecated
-	RollingUpdatePolicy []ComputeInstanceGroupManagerSpecRollingUpdatePolicy `json:"rollingUpdatePolicy,omitempty" tf:"rolling_update_policy,omitempty"`
 	// +optional
 	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 	// +optional
@@ -114,9 +70,6 @@ type ComputeInstanceGroupManagerSpec struct {
 	TargetSize int64 `json:"targetSize,omitempty" tf:"target_size,omitempty"`
 	// +optional
 	UpdateStrategy string `json:"updateStrategy,omitempty" tf:"update_strategy,omitempty"`
-	// +optional
-	// Deprecated
-	Version []ComputeInstanceGroupManagerSpecVersion `json:"version,omitempty" tf:"version,omitempty"`
 	// +optional
 	WaitForInstances bool `json:"waitForInstances,omitempty" tf:"wait_for_instances,omitempty"`
 	// +optional

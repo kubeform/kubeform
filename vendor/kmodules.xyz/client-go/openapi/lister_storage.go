@@ -13,6 +13,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+
 package openapi
 
 import (
@@ -62,4 +63,8 @@ func (r *ListerStorage) NewList() runtime.Object {
 
 func (r *ListerStorage) List(ctx context.Context, options *metainternalversion.ListOptions) (runtime.Object, error) {
 	return r.NewList(), nil
+}
+
+func (r *ListerStorage) ConvertToTable(ctx context.Context, object runtime.Object, tableOptions runtime.Object) (*metav1.Table, error) {
+	return new(metav1.Table), nil
 }

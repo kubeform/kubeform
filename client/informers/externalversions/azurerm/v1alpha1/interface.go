@@ -24,6 +24,8 @@ import (
 
 // Interface provides access to all the informers in this group version.
 type Interface interface {
+	// AdvancedThreatProtections returns a AdvancedThreatProtectionInformer.
+	AdvancedThreatProtections() AdvancedThreatProtectionInformer
 	// AnalysisServicesServers returns a AnalysisServicesServerInformer.
 	AnalysisServicesServers() AnalysisServicesServerInformer
 	// ApiManagements returns a ApiManagementInformer.
@@ -46,10 +48,22 @@ type Interface interface {
 	ApiManagementBackends() ApiManagementBackendInformer
 	// ApiManagementCertificates returns a ApiManagementCertificateInformer.
 	ApiManagementCertificates() ApiManagementCertificateInformer
+	// ApiManagementDiagnostics returns a ApiManagementDiagnosticInformer.
+	ApiManagementDiagnostics() ApiManagementDiagnosticInformer
 	// ApiManagementGroups returns a ApiManagementGroupInformer.
 	ApiManagementGroups() ApiManagementGroupInformer
 	// ApiManagementGroupUsers returns a ApiManagementGroupUserInformer.
 	ApiManagementGroupUsers() ApiManagementGroupUserInformer
+	// ApiManagementIdentityProviderAads returns a ApiManagementIdentityProviderAadInformer.
+	ApiManagementIdentityProviderAads() ApiManagementIdentityProviderAadInformer
+	// ApiManagementIdentityProviderFacebooks returns a ApiManagementIdentityProviderFacebookInformer.
+	ApiManagementIdentityProviderFacebooks() ApiManagementIdentityProviderFacebookInformer
+	// ApiManagementIdentityProviderGoogles returns a ApiManagementIdentityProviderGoogleInformer.
+	ApiManagementIdentityProviderGoogles() ApiManagementIdentityProviderGoogleInformer
+	// ApiManagementIdentityProviderMicrosofts returns a ApiManagementIdentityProviderMicrosoftInformer.
+	ApiManagementIdentityProviderMicrosofts() ApiManagementIdentityProviderMicrosoftInformer
+	// ApiManagementIdentityProviderTwitters returns a ApiManagementIdentityProviderTwitterInformer.
+	ApiManagementIdentityProviderTwitters() ApiManagementIdentityProviderTwitterInformer
 	// ApiManagementLoggers returns a ApiManagementLoggerInformer.
 	ApiManagementLoggers() ApiManagementLoggerInformer
 	// ApiManagementOpenidConnectProviders returns a ApiManagementOpenidConnectProviderInformer.
@@ -68,34 +82,50 @@ type Interface interface {
 	ApiManagementSubscriptions() ApiManagementSubscriptionInformer
 	// ApiManagementUsers returns a ApiManagementUserInformer.
 	ApiManagementUsers() ApiManagementUserInformer
+	// AppConfigurations returns a AppConfigurationInformer.
+	AppConfigurations() AppConfigurationInformer
 	// AppServices returns a AppServiceInformer.
 	AppServices() AppServiceInformer
 	// AppServiceActiveSlots returns a AppServiceActiveSlotInformer.
 	AppServiceActiveSlots() AppServiceActiveSlotInformer
+	// AppServiceCertificates returns a AppServiceCertificateInformer.
+	AppServiceCertificates() AppServiceCertificateInformer
+	// AppServiceCertificateOrders returns a AppServiceCertificateOrderInformer.
+	AppServiceCertificateOrders() AppServiceCertificateOrderInformer
 	// AppServiceCustomHostnameBindings returns a AppServiceCustomHostnameBindingInformer.
 	AppServiceCustomHostnameBindings() AppServiceCustomHostnameBindingInformer
 	// AppServicePlans returns a AppServicePlanInformer.
 	AppServicePlans() AppServicePlanInformer
 	// AppServiceSlots returns a AppServiceSlotInformer.
 	AppServiceSlots() AppServiceSlotInformer
+	// AppServiceSourceControlTokens returns a AppServiceSourceControlTokenInformer.
+	AppServiceSourceControlTokens() AppServiceSourceControlTokenInformer
+	// AppServiceVirtualNetworkSwiftConnections returns a AppServiceVirtualNetworkSwiftConnectionInformer.
+	AppServiceVirtualNetworkSwiftConnections() AppServiceVirtualNetworkSwiftConnectionInformer
 	// ApplicationGateways returns a ApplicationGatewayInformer.
 	ApplicationGateways() ApplicationGatewayInformer
 	// ApplicationInsightses returns a ApplicationInsightsInformer.
 	ApplicationInsightses() ApplicationInsightsInformer
 	// ApplicationInsightsAPIKeys returns a ApplicationInsightsAPIKeyInformer.
 	ApplicationInsightsAPIKeys() ApplicationInsightsAPIKeyInformer
+	// ApplicationInsightsAnalyticsItems returns a ApplicationInsightsAnalyticsItemInformer.
+	ApplicationInsightsAnalyticsItems() ApplicationInsightsAnalyticsItemInformer
 	// ApplicationInsightsWebTests returns a ApplicationInsightsWebTestInformer.
 	ApplicationInsightsWebTests() ApplicationInsightsWebTestInformer
 	// ApplicationSecurityGroups returns a ApplicationSecurityGroupInformer.
 	ApplicationSecurityGroups() ApplicationSecurityGroupInformer
 	// AutomationAccounts returns a AutomationAccountInformer.
 	AutomationAccounts() AutomationAccountInformer
+	// AutomationCertificates returns a AutomationCertificateInformer.
+	AutomationCertificates() AutomationCertificateInformer
 	// AutomationCredentials returns a AutomationCredentialInformer.
 	AutomationCredentials() AutomationCredentialInformer
 	// AutomationDscConfigurations returns a AutomationDscConfigurationInformer.
 	AutomationDscConfigurations() AutomationDscConfigurationInformer
 	// AutomationDscNodeconfigurations returns a AutomationDscNodeconfigurationInformer.
 	AutomationDscNodeconfigurations() AutomationDscNodeconfigurationInformer
+	// AutomationJobSchedules returns a AutomationJobScheduleInformer.
+	AutomationJobSchedules() AutomationJobScheduleInformer
 	// AutomationModules returns a AutomationModuleInformer.
 	AutomationModules() AutomationModuleInformer
 	// AutomationRunbooks returns a AutomationRunbookInformer.
@@ -120,6 +150,18 @@ type Interface interface {
 	AzureadServicePrincipals() AzureadServicePrincipalInformer
 	// AzureadServicePrincipalPasswords returns a AzureadServicePrincipalPasswordInformer.
 	AzureadServicePrincipalPasswords() AzureadServicePrincipalPasswordInformer
+	// BackupContainerStorageAccounts returns a BackupContainerStorageAccountInformer.
+	BackupContainerStorageAccounts() BackupContainerStorageAccountInformer
+	// BackupPolicyFileShares returns a BackupPolicyFileShareInformer.
+	BackupPolicyFileShares() BackupPolicyFileShareInformer
+	// BackupPolicyVms returns a BackupPolicyVmInformer.
+	BackupPolicyVms() BackupPolicyVmInformer
+	// BackupProtectedFileShares returns a BackupProtectedFileShareInformer.
+	BackupProtectedFileShares() BackupProtectedFileShareInformer
+	// BackupProtectedVms returns a BackupProtectedVmInformer.
+	BackupProtectedVms() BackupProtectedVmInformer
+	// BastionHosts returns a BastionHostInformer.
+	BastionHosts() BastionHostInformer
 	// BatchAccounts returns a BatchAccountInformer.
 	BatchAccounts() BatchAccountInformer
 	// BatchApplications returns a BatchApplicationInformer.
@@ -128,6 +170,18 @@ type Interface interface {
 	BatchCertificates() BatchCertificateInformer
 	// BatchPools returns a BatchPoolInformer.
 	BatchPools() BatchPoolInformer
+	// BotChannelEmails returns a BotChannelEmailInformer.
+	BotChannelEmails() BotChannelEmailInformer
+	// BotChannelMsTeamses returns a BotChannelMsTeamsInformer.
+	BotChannelMsTeamses() BotChannelMsTeamsInformer
+	// BotChannelSlacks returns a BotChannelSlackInformer.
+	BotChannelSlacks() BotChannelSlackInformer
+	// BotChannelsRegistrations returns a BotChannelsRegistrationInformer.
+	BotChannelsRegistrations() BotChannelsRegistrationInformer
+	// BotConnections returns a BotConnectionInformer.
+	BotConnections() BotConnectionInformer
+	// BotWebApps returns a BotWebAppInformer.
+	BotWebApps() BotWebAppInformer
 	// CdnEndpoints returns a CdnEndpointInformer.
 	CdnEndpoints() CdnEndpointInformer
 	// CdnProfiles returns a CdnProfileInformer.
@@ -140,20 +194,30 @@ type Interface interface {
 	ContainerGroups() ContainerGroupInformer
 	// ContainerRegistries returns a ContainerRegistryInformer.
 	ContainerRegistries() ContainerRegistryInformer
+	// ContainerRegistryWebhooks returns a ContainerRegistryWebhookInformer.
+	ContainerRegistryWebhooks() ContainerRegistryWebhookInformer
 	// ContainerServices returns a ContainerServiceInformer.
 	ContainerServices() ContainerServiceInformer
 	// CosmosdbAccounts returns a CosmosdbAccountInformer.
 	CosmosdbAccounts() CosmosdbAccountInformer
 	// CosmosdbCassandraKeyspaces returns a CosmosdbCassandraKeyspaceInformer.
 	CosmosdbCassandraKeyspaces() CosmosdbCassandraKeyspaceInformer
+	// CosmosdbGremlinDatabases returns a CosmosdbGremlinDatabaseInformer.
+	CosmosdbGremlinDatabases() CosmosdbGremlinDatabaseInformer
+	// CosmosdbGremlinGraphs returns a CosmosdbGremlinGraphInformer.
+	CosmosdbGremlinGraphs() CosmosdbGremlinGraphInformer
 	// CosmosdbMongoCollections returns a CosmosdbMongoCollectionInformer.
 	CosmosdbMongoCollections() CosmosdbMongoCollectionInformer
 	// CosmosdbMongoDatabases returns a CosmosdbMongoDatabaseInformer.
 	CosmosdbMongoDatabases() CosmosdbMongoDatabaseInformer
+	// CosmosdbSQLContainers returns a CosmosdbSQLContainerInformer.
+	CosmosdbSQLContainers() CosmosdbSQLContainerInformer
 	// CosmosdbSQLDatabases returns a CosmosdbSQLDatabaseInformer.
 	CosmosdbSQLDatabases() CosmosdbSQLDatabaseInformer
 	// CosmosdbTables returns a CosmosdbTableInformer.
 	CosmosdbTables() CosmosdbTableInformer
+	// Dashboards returns a DashboardInformer.
+	Dashboards() DashboardInformer
 	// DataFactories returns a DataFactoryInformer.
 	DataFactories() DataFactoryInformer
 	// DataFactoryDatasetMysqls returns a DataFactoryDatasetMysqlInformer.
@@ -162,6 +226,8 @@ type Interface interface {
 	DataFactoryDatasetPostgresqls() DataFactoryDatasetPostgresqlInformer
 	// DataFactoryDatasetSQLServerTables returns a DataFactoryDatasetSQLServerTableInformer.
 	DataFactoryDatasetSQLServerTables() DataFactoryDatasetSQLServerTableInformer
+	// DataFactoryIntegrationRuntimeManageds returns a DataFactoryIntegrationRuntimeManagedInformer.
+	DataFactoryIntegrationRuntimeManageds() DataFactoryIntegrationRuntimeManagedInformer
 	// DataFactoryLinkedServiceDataLakeStorageGen2s returns a DataFactoryLinkedServiceDataLakeStorageGen2Informer.
 	DataFactoryLinkedServiceDataLakeStorageGen2s() DataFactoryLinkedServiceDataLakeStorageGen2Informer
 	// DataFactoryLinkedServiceMysqls returns a DataFactoryLinkedServiceMysqlInformer.
@@ -172,6 +238,8 @@ type Interface interface {
 	DataFactoryLinkedServiceSQLServers() DataFactoryLinkedServiceSQLServerInformer
 	// DataFactoryPipelines returns a DataFactoryPipelineInformer.
 	DataFactoryPipelines() DataFactoryPipelineInformer
+	// DataFactoryTriggerSchedules returns a DataFactoryTriggerScheduleInformer.
+	DataFactoryTriggerSchedules() DataFactoryTriggerScheduleInformer
 	// DataLakeAnalyticsAccounts returns a DataLakeAnalyticsAccountInformer.
 	DataLakeAnalyticsAccounts() DataLakeAnalyticsAccountInformer
 	// DataLakeAnalyticsFirewallRules returns a DataLakeAnalyticsFirewallRuleInformer.
@@ -186,18 +254,26 @@ type Interface interface {
 	DatabricksWorkspaces() DatabricksWorkspaceInformer
 	// DdosProtectionPlans returns a DdosProtectionPlanInformer.
 	DdosProtectionPlans() DdosProtectionPlanInformer
+	// DedicatedHosts returns a DedicatedHostInformer.
+	DedicatedHosts() DedicatedHostInformer
+	// DedicatedHostGroups returns a DedicatedHostGroupInformer.
+	DedicatedHostGroups() DedicatedHostGroupInformer
 	// DevTestLabs returns a DevTestLabInformer.
 	DevTestLabs() DevTestLabInformer
 	// DevTestLinuxVirtualMachines returns a DevTestLinuxVirtualMachineInformer.
 	DevTestLinuxVirtualMachines() DevTestLinuxVirtualMachineInformer
 	// DevTestPolicies returns a DevTestPolicyInformer.
 	DevTestPolicies() DevTestPolicyInformer
+	// DevTestSchedules returns a DevTestScheduleInformer.
+	DevTestSchedules() DevTestScheduleInformer
 	// DevTestVirtualNetworks returns a DevTestVirtualNetworkInformer.
 	DevTestVirtualNetworks() DevTestVirtualNetworkInformer
 	// DevTestWindowsVirtualMachines returns a DevTestWindowsVirtualMachineInformer.
 	DevTestWindowsVirtualMachines() DevTestWindowsVirtualMachineInformer
 	// DevspaceControllers returns a DevspaceControllerInformer.
 	DevspaceControllers() DevspaceControllerInformer
+	// DiskEncryptionSets returns a DiskEncryptionSetInformer.
+	DiskEncryptionSets() DiskEncryptionSetInformer
 	// DnsARecords returns a DnsARecordInformer.
 	DnsARecords() DnsARecordInformer
 	// DnsAaaaRecords returns a DnsAaaaRecordInformer.
@@ -232,6 +308,8 @@ type Interface interface {
 	EventhubConsumerGroups() EventhubConsumerGroupInformer
 	// EventhubNamespaceAuthorizationRules returns a EventhubNamespaceAuthorizationRuleInformer.
 	EventhubNamespaceAuthorizationRules() EventhubNamespaceAuthorizationRuleInformer
+	// EventhubNamespaceDisasterRecoveryConfigs returns a EventhubNamespaceDisasterRecoveryConfigInformer.
+	EventhubNamespaceDisasterRecoveryConfigs() EventhubNamespaceDisasterRecoveryConfigInformer
 	// EventhubNamespace_s returns a EventhubNamespace_Informer.
 	EventhubNamespace_s() EventhubNamespace_Informer
 	// ExpressRouteCircuits returns a ExpressRouteCircuitInformer.
@@ -248,6 +326,10 @@ type Interface interface {
 	FirewallNATRuleCollections() FirewallNATRuleCollectionInformer
 	// FirewallNetworkRuleCollections returns a FirewallNetworkRuleCollectionInformer.
 	FirewallNetworkRuleCollections() FirewallNetworkRuleCollectionInformer
+	// Frontdoors returns a FrontdoorInformer.
+	Frontdoors() FrontdoorInformer
+	// FrontdoorFirewallPolicies returns a FrontdoorFirewallPolicyInformer.
+	FrontdoorFirewallPolicies() FrontdoorFirewallPolicyInformer
 	// FunctionApps returns a FunctionAppInformer.
 	FunctionApps() FunctionAppInformer
 	// HdinsightHadoopClusters returns a HdinsightHadoopClusterInformer.
@@ -266,6 +348,8 @@ type Interface interface {
 	HdinsightSparkClusters() HdinsightSparkClusterInformer
 	// HdinsightStormClusters returns a HdinsightStormClusterInformer.
 	HdinsightStormClusters() HdinsightStormClusterInformer
+	// HealthcareServices returns a HealthcareServiceInformer.
+	HealthcareServices() HealthcareServiceInformer
 	// Images returns a ImageInformer.
 	Images() ImageInformer
 	// IotDpses returns a IotDpsInformer.
@@ -276,6 +360,24 @@ type Interface interface {
 	Iothubs() IothubInformer
 	// IothubConsumerGroups returns a IothubConsumerGroupInformer.
 	IothubConsumerGroups() IothubConsumerGroupInformer
+	// IothubDpses returns a IothubDpsInformer.
+	IothubDpses() IothubDpsInformer
+	// IothubDpsCertificates returns a IothubDpsCertificateInformer.
+	IothubDpsCertificates() IothubDpsCertificateInformer
+	// IothubDpsSharedAccessPolicies returns a IothubDpsSharedAccessPolicyInformer.
+	IothubDpsSharedAccessPolicies() IothubDpsSharedAccessPolicyInformer
+	// IothubEndpointEventhubs returns a IothubEndpointEventhubInformer.
+	IothubEndpointEventhubs() IothubEndpointEventhubInformer
+	// IothubEndpointServicebusQueues returns a IothubEndpointServicebusQueueInformer.
+	IothubEndpointServicebusQueues() IothubEndpointServicebusQueueInformer
+	// IothubEndpointServicebusTopics returns a IothubEndpointServicebusTopicInformer.
+	IothubEndpointServicebusTopics() IothubEndpointServicebusTopicInformer
+	// IothubEndpointStorageContainers returns a IothubEndpointStorageContainerInformer.
+	IothubEndpointStorageContainers() IothubEndpointStorageContainerInformer
+	// IothubFallbackRoutes returns a IothubFallbackRouteInformer.
+	IothubFallbackRoutes() IothubFallbackRouteInformer
+	// IothubRoutes returns a IothubRouteInformer.
+	IothubRoutes() IothubRouteInformer
 	// IothubSharedAccessPolicies returns a IothubSharedAccessPolicyInformer.
 	IothubSharedAccessPolicies() IothubSharedAccessPolicyInformer
 	// KeyVaults returns a KeyVaultInformer.
@@ -290,6 +392,16 @@ type Interface interface {
 	KeyVaultSecrets() KeyVaultSecretInformer
 	// KubernetesClusters returns a KubernetesClusterInformer.
 	KubernetesClusters() KubernetesClusterInformer
+	// KubernetesClusterNodePools returns a KubernetesClusterNodePoolInformer.
+	KubernetesClusterNodePools() KubernetesClusterNodePoolInformer
+	// KustoClusters returns a KustoClusterInformer.
+	KustoClusters() KustoClusterInformer
+	// KustoDatabases returns a KustoDatabaseInformer.
+	KustoDatabases() KustoDatabaseInformer
+	// KustoDatabasePrincipals returns a KustoDatabasePrincipalInformer.
+	KustoDatabasePrincipals() KustoDatabasePrincipalInformer
+	// KustoEventhubDataConnections returns a KustoEventhubDataConnectionInformer.
+	KustoEventhubDataConnections() KustoEventhubDataConnectionInformer
 	// Lbs returns a LbInformer.
 	Lbs() LbInformer
 	// LbBackendAddressPools returns a LbBackendAddressPoolInformer.
@@ -334,12 +446,18 @@ type Interface interface {
 	ManagementLocks() ManagementLockInformer
 	// MapsAccounts returns a MapsAccountInformer.
 	MapsAccounts() MapsAccountInformer
+	// MariadbConfigurations returns a MariadbConfigurationInformer.
+	MariadbConfigurations() MariadbConfigurationInformer
 	// MariadbDatabases returns a MariadbDatabaseInformer.
 	MariadbDatabases() MariadbDatabaseInformer
 	// MariadbFirewallRules returns a MariadbFirewallRuleInformer.
 	MariadbFirewallRules() MariadbFirewallRuleInformer
 	// MariadbServers returns a MariadbServerInformer.
 	MariadbServers() MariadbServerInformer
+	// MariadbVirtualNetworkRules returns a MariadbVirtualNetworkRuleInformer.
+	MariadbVirtualNetworkRules() MariadbVirtualNetworkRuleInformer
+	// MarketplaceAgreements returns a MarketplaceAgreementInformer.
+	MarketplaceAgreements() MarketplaceAgreementInformer
 	// MediaServicesAccounts returns a MediaServicesAccountInformer.
 	MediaServicesAccounts() MediaServicesAccountInformer
 	// MetricAlertrules returns a MetricAlertruleInformer.
@@ -358,8 +476,14 @@ type Interface interface {
 	MonitorMetricAlerts() MonitorMetricAlertInformer
 	// MonitorMetricAlertrules returns a MonitorMetricAlertruleInformer.
 	MonitorMetricAlertrules() MonitorMetricAlertruleInformer
+	// MssqlDatabaseVulnerabilityAssessmentRuleBaselines returns a MssqlDatabaseVulnerabilityAssessmentRuleBaselineInformer.
+	MssqlDatabaseVulnerabilityAssessmentRuleBaselines() MssqlDatabaseVulnerabilityAssessmentRuleBaselineInformer
 	// MssqlElasticpools returns a MssqlElasticpoolInformer.
 	MssqlElasticpools() MssqlElasticpoolInformer
+	// MssqlServerSecurityAlertPolicies returns a MssqlServerSecurityAlertPolicyInformer.
+	MssqlServerSecurityAlertPolicies() MssqlServerSecurityAlertPolicyInformer
+	// MssqlServerVulnerabilityAssessments returns a MssqlServerVulnerabilityAssessmentInformer.
+	MssqlServerVulnerabilityAssessments() MssqlServerVulnerabilityAssessmentInformer
 	// MysqlConfigurations returns a MysqlConfigurationInformer.
 	MysqlConfigurations() MysqlConfigurationInformer
 	// MysqlDatabases returns a MysqlDatabaseInformer.
@@ -370,6 +494,16 @@ type Interface interface {
 	MysqlServers() MysqlServerInformer
 	// MysqlVirtualNetworkRules returns a MysqlVirtualNetworkRuleInformer.
 	MysqlVirtualNetworkRules() MysqlVirtualNetworkRuleInformer
+	// NatGateways returns a NatGatewayInformer.
+	NatGateways() NatGatewayInformer
+	// NetappAccounts returns a NetappAccountInformer.
+	NetappAccounts() NetappAccountInformer
+	// NetappPools returns a NetappPoolInformer.
+	NetappPools() NetappPoolInformer
+	// NetappSnapshots returns a NetappSnapshotInformer.
+	NetappSnapshots() NetappSnapshotInformer
+	// NetappVolumes returns a NetappVolumeInformer.
+	NetappVolumes() NetappVolumeInformer
 	// NetworkConnectionMonitors returns a NetworkConnectionMonitorInformer.
 	NetworkConnectionMonitors() NetworkConnectionMonitorInformer
 	// NetworkDdosProtectionPlans returns a NetworkDdosProtectionPlanInformer.
@@ -394,6 +528,8 @@ type Interface interface {
 	NetworkSecurityRules() NetworkSecurityRuleInformer
 	// NetworkWatchers returns a NetworkWatcherInformer.
 	NetworkWatchers() NetworkWatcherInformer
+	// NetworkWatcherFlowLogs returns a NetworkWatcherFlowLogInformer.
+	NetworkWatcherFlowLogs() NetworkWatcherFlowLogInformer
 	// NotificationHubs returns a NotificationHubInformer.
 	NotificationHubs() NotificationHubInformer
 	// NotificationHubAuthorizationRules returns a NotificationHubAuthorizationRuleInformer.
@@ -402,6 +538,8 @@ type Interface interface {
 	NotificationHubNamespace_s() NotificationHubNamespace_Informer
 	// PacketCaptures returns a PacketCaptureInformer.
 	PacketCaptures() PacketCaptureInformer
+	// PointToSiteVPNGateways returns a PointToSiteVPNGatewayInformer.
+	PointToSiteVPNGateways() PointToSiteVPNGatewayInformer
 	// PolicyAssignments returns a PolicyAssignmentInformer.
 	PolicyAssignments() PolicyAssignmentInformer
 	// PolicyDefinitions returns a PolicyDefinitionInformer.
@@ -420,22 +558,56 @@ type Interface interface {
 	PostgresqlVirtualNetworkRules() PostgresqlVirtualNetworkRuleInformer
 	// PrivateDNSARecords returns a PrivateDNSARecordInformer.
 	PrivateDNSARecords() PrivateDNSARecordInformer
+	// PrivateDNSAaaaRecords returns a PrivateDNSAaaaRecordInformer.
+	PrivateDNSAaaaRecords() PrivateDNSAaaaRecordInformer
+	// PrivateDNSCnameRecords returns a PrivateDNSCnameRecordInformer.
+	PrivateDNSCnameRecords() PrivateDNSCnameRecordInformer
+	// PrivateDNSMxRecords returns a PrivateDNSMxRecordInformer.
+	PrivateDNSMxRecords() PrivateDNSMxRecordInformer
+	// PrivateDNSPtrRecords returns a PrivateDNSPtrRecordInformer.
+	PrivateDNSPtrRecords() PrivateDNSPtrRecordInformer
+	// PrivateDNSSrvRecords returns a PrivateDNSSrvRecordInformer.
+	PrivateDNSSrvRecords() PrivateDNSSrvRecordInformer
 	// PrivateDNSZones returns a PrivateDNSZoneInformer.
 	PrivateDNSZones() PrivateDNSZoneInformer
+	// PrivateDNSZoneVirtualNetworkLinks returns a PrivateDNSZoneVirtualNetworkLinkInformer.
+	PrivateDNSZoneVirtualNetworkLinks() PrivateDNSZoneVirtualNetworkLinkInformer
+	// PrivateEndpoints returns a PrivateEndpointInformer.
+	PrivateEndpoints() PrivateEndpointInformer
+	// PrivateLinkEndpoints returns a PrivateLinkEndpointInformer.
+	PrivateLinkEndpoints() PrivateLinkEndpointInformer
+	// PrivateLinkServices returns a PrivateLinkServiceInformer.
+	PrivateLinkServices() PrivateLinkServiceInformer
+	// ProximityPlacementGroups returns a ProximityPlacementGroupInformer.
+	ProximityPlacementGroups() ProximityPlacementGroupInformer
 	// PublicIPs returns a PublicIPInformer.
 	PublicIPs() PublicIPInformer
 	// PublicIPPrefixes returns a PublicIPPrefixInformer.
 	PublicIPPrefixes() PublicIPPrefixInformer
+	// RecoveryNetworkMappings returns a RecoveryNetworkMappingInformer.
+	RecoveryNetworkMappings() RecoveryNetworkMappingInformer
+	// RecoveryReplicatedVms returns a RecoveryReplicatedVmInformer.
+	RecoveryReplicatedVms() RecoveryReplicatedVmInformer
+	// RecoveryServicesFabrics returns a RecoveryServicesFabricInformer.
+	RecoveryServicesFabrics() RecoveryServicesFabricInformer
 	// RecoveryServicesProtectedVms returns a RecoveryServicesProtectedVmInformer.
 	RecoveryServicesProtectedVms() RecoveryServicesProtectedVmInformer
+	// RecoveryServicesProtectionContainers returns a RecoveryServicesProtectionContainerInformer.
+	RecoveryServicesProtectionContainers() RecoveryServicesProtectionContainerInformer
+	// RecoveryServicesProtectionContainerMappings returns a RecoveryServicesProtectionContainerMappingInformer.
+	RecoveryServicesProtectionContainerMappings() RecoveryServicesProtectionContainerMappingInformer
 	// RecoveryServicesProtectionPolicyVms returns a RecoveryServicesProtectionPolicyVmInformer.
 	RecoveryServicesProtectionPolicyVms() RecoveryServicesProtectionPolicyVmInformer
+	// RecoveryServicesReplicationPolicies returns a RecoveryServicesReplicationPolicyInformer.
+	RecoveryServicesReplicationPolicies() RecoveryServicesReplicationPolicyInformer
 	// RecoveryServicesVaults returns a RecoveryServicesVaultInformer.
 	RecoveryServicesVaults() RecoveryServicesVaultInformer
 	// RedisCaches returns a RedisCacheInformer.
 	RedisCaches() RedisCacheInformer
 	// RedisFirewallRules returns a RedisFirewallRuleInformer.
 	RedisFirewallRules() RedisFirewallRuleInformer
+	// RelayHybridConnections returns a RelayHybridConnectionInformer.
+	RelayHybridConnections() RelayHybridConnectionInformer
 	// RelayNamespaces returns a RelayNamespaceInformer.
 	RelayNamespaces() RelayNamespaceInformer
 	// ResourceGroups returns a ResourceGroupInformer.
@@ -486,6 +658,18 @@ type Interface interface {
 	SharedImageVersions() SharedImageVersionInformer
 	// SignalrServices returns a SignalrServiceInformer.
 	SignalrServices() SignalrServiceInformer
+	// SiteRecoveryFabrics returns a SiteRecoveryFabricInformer.
+	SiteRecoveryFabrics() SiteRecoveryFabricInformer
+	// SiteRecoveryNetworkMappings returns a SiteRecoveryNetworkMappingInformer.
+	SiteRecoveryNetworkMappings() SiteRecoveryNetworkMappingInformer
+	// SiteRecoveryProtectionContainers returns a SiteRecoveryProtectionContainerInformer.
+	SiteRecoveryProtectionContainers() SiteRecoveryProtectionContainerInformer
+	// SiteRecoveryProtectionContainerMappings returns a SiteRecoveryProtectionContainerMappingInformer.
+	SiteRecoveryProtectionContainerMappings() SiteRecoveryProtectionContainerMappingInformer
+	// SiteRecoveryReplicatedVms returns a SiteRecoveryReplicatedVmInformer.
+	SiteRecoveryReplicatedVms() SiteRecoveryReplicatedVmInformer
+	// SiteRecoveryReplicationPolicies returns a SiteRecoveryReplicationPolicyInformer.
+	SiteRecoveryReplicationPolicies() SiteRecoveryReplicationPolicyInformer
 	// Snapshots returns a SnapshotInformer.
 	Snapshots() SnapshotInformer
 	// SqlActiveDirectoryAdministrators returns a SqlActiveDirectoryAdministratorInformer.
@@ -494,6 +678,8 @@ type Interface interface {
 	SqlDatabases() SqlDatabaseInformer
 	// SqlElasticpools returns a SqlElasticpoolInformer.
 	SqlElasticpools() SqlElasticpoolInformer
+	// SqlFailoverGroups returns a SqlFailoverGroupInformer.
+	SqlFailoverGroups() SqlFailoverGroupInformer
 	// SqlFirewallRules returns a SqlFirewallRuleInformer.
 	SqlFirewallRules() SqlFirewallRuleInformer
 	// SqlServers returns a SqlServerInformer.
@@ -502,10 +688,16 @@ type Interface interface {
 	SqlVirtualNetworkRules() SqlVirtualNetworkRuleInformer
 	// StorageAccounts returns a StorageAccountInformer.
 	StorageAccounts() StorageAccountInformer
+	// StorageAccountNetworkRuleses returns a StorageAccountNetworkRulesInformer.
+	StorageAccountNetworkRuleses() StorageAccountNetworkRulesInformer
 	// StorageBlobs returns a StorageBlobInformer.
 	StorageBlobs() StorageBlobInformer
 	// StorageContainers returns a StorageContainerInformer.
 	StorageContainers() StorageContainerInformer
+	// StorageDataLakeGen2Filesystems returns a StorageDataLakeGen2FilesystemInformer.
+	StorageDataLakeGen2Filesystems() StorageDataLakeGen2FilesystemInformer
+	// StorageManagementPolicies returns a StorageManagementPolicyInformer.
+	StorageManagementPolicies() StorageManagementPolicyInformer
 	// StorageQueues returns a StorageQueueInformer.
 	StorageQueues() StorageQueueInformer
 	// StorageShares returns a StorageShareInformer.
@@ -528,6 +720,10 @@ type Interface interface {
 	StreamAnalyticsOutputMssqls() StreamAnalyticsOutputMssqlInformer
 	// StreamAnalyticsOutputServicebusQueues returns a StreamAnalyticsOutputServicebusQueueInformer.
 	StreamAnalyticsOutputServicebusQueues() StreamAnalyticsOutputServicebusQueueInformer
+	// StreamAnalyticsOutputServicebusTopics returns a StreamAnalyticsOutputServicebusTopicInformer.
+	StreamAnalyticsOutputServicebusTopics() StreamAnalyticsOutputServicebusTopicInformer
+	// StreamAnalyticsReferenceInputBlobs returns a StreamAnalyticsReferenceInputBlobInformer.
+	StreamAnalyticsReferenceInputBlobs() StreamAnalyticsReferenceInputBlobInformer
 	// StreamAnalyticsStreamInputBlobs returns a StreamAnalyticsStreamInputBlobInformer.
 	StreamAnalyticsStreamInputBlobs() StreamAnalyticsStreamInputBlobInformer
 	// StreamAnalyticsStreamInputEventhubs returns a StreamAnalyticsStreamInputEventhubInformer.
@@ -536,6 +732,8 @@ type Interface interface {
 	StreamAnalyticsStreamInputIothubs() StreamAnalyticsStreamInputIothubInformer
 	// Subnets returns a SubnetInformer.
 	Subnets() SubnetInformer
+	// SubnetNATGatewayAssociations returns a SubnetNATGatewayAssociationInformer.
+	SubnetNATGatewayAssociations() SubnetNATGatewayAssociationInformer
 	// SubnetNetworkSecurityGroupAssociations returns a SubnetNetworkSecurityGroupAssociationInformer.
 	SubnetNetworkSecurityGroupAssociations() SubnetNetworkSecurityGroupAssociationInformer
 	// SubnetRouteTableAssociations returns a SubnetRouteTableAssociationInformer.
@@ -548,6 +746,8 @@ type Interface interface {
 	TrafficManagerProfiles() TrafficManagerProfileInformer
 	// UserAssignedIdentities returns a UserAssignedIdentityInformer.
 	UserAssignedIdentities() UserAssignedIdentityInformer
+	// VirtualHubs returns a VirtualHubInformer.
+	VirtualHubs() VirtualHubInformer
 	// VirtualMachines returns a VirtualMachineInformer.
 	VirtualMachines() VirtualMachineInformer
 	// VirtualMachineDataDiskAttachments returns a VirtualMachineDataDiskAttachmentInformer.
@@ -564,6 +764,14 @@ type Interface interface {
 	VirtualNetworkGatewayConnections() VirtualNetworkGatewayConnectionInformer
 	// VirtualNetworkPeerings returns a VirtualNetworkPeeringInformer.
 	VirtualNetworkPeerings() VirtualNetworkPeeringInformer
+	// VirtualWANs returns a VirtualWANInformer.
+	VirtualWANs() VirtualWANInformer
+	// VpnGateways returns a VpnGatewayInformer.
+	VpnGateways() VpnGatewayInformer
+	// VpnServerConfigurations returns a VpnServerConfigurationInformer.
+	VpnServerConfigurations() VpnServerConfigurationInformer
+	// WebApplicationFirewallPolicies returns a WebApplicationFirewallPolicyInformer.
+	WebApplicationFirewallPolicies() WebApplicationFirewallPolicyInformer
 }
 
 type version struct {
@@ -575,6 +783,11 @@ type version struct {
 // New returns a new Interface.
 func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakListOptions internalinterfaces.TweakListOptionsFunc) Interface {
 	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
+}
+
+// AdvancedThreatProtections returns a AdvancedThreatProtectionInformer.
+func (v *version) AdvancedThreatProtections() AdvancedThreatProtectionInformer {
+	return &advancedThreatProtectionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // AnalysisServicesServers returns a AnalysisServicesServerInformer.
@@ -632,6 +845,11 @@ func (v *version) ApiManagementCertificates() ApiManagementCertificateInformer {
 	return &apiManagementCertificateInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// ApiManagementDiagnostics returns a ApiManagementDiagnosticInformer.
+func (v *version) ApiManagementDiagnostics() ApiManagementDiagnosticInformer {
+	return &apiManagementDiagnosticInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // ApiManagementGroups returns a ApiManagementGroupInformer.
 func (v *version) ApiManagementGroups() ApiManagementGroupInformer {
 	return &apiManagementGroupInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -640,6 +858,31 @@ func (v *version) ApiManagementGroups() ApiManagementGroupInformer {
 // ApiManagementGroupUsers returns a ApiManagementGroupUserInformer.
 func (v *version) ApiManagementGroupUsers() ApiManagementGroupUserInformer {
 	return &apiManagementGroupUserInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ApiManagementIdentityProviderAads returns a ApiManagementIdentityProviderAadInformer.
+func (v *version) ApiManagementIdentityProviderAads() ApiManagementIdentityProviderAadInformer {
+	return &apiManagementIdentityProviderAadInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ApiManagementIdentityProviderFacebooks returns a ApiManagementIdentityProviderFacebookInformer.
+func (v *version) ApiManagementIdentityProviderFacebooks() ApiManagementIdentityProviderFacebookInformer {
+	return &apiManagementIdentityProviderFacebookInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ApiManagementIdentityProviderGoogles returns a ApiManagementIdentityProviderGoogleInformer.
+func (v *version) ApiManagementIdentityProviderGoogles() ApiManagementIdentityProviderGoogleInformer {
+	return &apiManagementIdentityProviderGoogleInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ApiManagementIdentityProviderMicrosofts returns a ApiManagementIdentityProviderMicrosoftInformer.
+func (v *version) ApiManagementIdentityProviderMicrosofts() ApiManagementIdentityProviderMicrosoftInformer {
+	return &apiManagementIdentityProviderMicrosoftInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ApiManagementIdentityProviderTwitters returns a ApiManagementIdentityProviderTwitterInformer.
+func (v *version) ApiManagementIdentityProviderTwitters() ApiManagementIdentityProviderTwitterInformer {
+	return &apiManagementIdentityProviderTwitterInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // ApiManagementLoggers returns a ApiManagementLoggerInformer.
@@ -687,6 +930,11 @@ func (v *version) ApiManagementUsers() ApiManagementUserInformer {
 	return &apiManagementUserInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// AppConfigurations returns a AppConfigurationInformer.
+func (v *version) AppConfigurations() AppConfigurationInformer {
+	return &appConfigurationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // AppServices returns a AppServiceInformer.
 func (v *version) AppServices() AppServiceInformer {
 	return &appServiceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -695,6 +943,16 @@ func (v *version) AppServices() AppServiceInformer {
 // AppServiceActiveSlots returns a AppServiceActiveSlotInformer.
 func (v *version) AppServiceActiveSlots() AppServiceActiveSlotInformer {
 	return &appServiceActiveSlotInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// AppServiceCertificates returns a AppServiceCertificateInformer.
+func (v *version) AppServiceCertificates() AppServiceCertificateInformer {
+	return &appServiceCertificateInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// AppServiceCertificateOrders returns a AppServiceCertificateOrderInformer.
+func (v *version) AppServiceCertificateOrders() AppServiceCertificateOrderInformer {
+	return &appServiceCertificateOrderInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // AppServiceCustomHostnameBindings returns a AppServiceCustomHostnameBindingInformer.
@@ -712,6 +970,16 @@ func (v *version) AppServiceSlots() AppServiceSlotInformer {
 	return &appServiceSlotInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// AppServiceSourceControlTokens returns a AppServiceSourceControlTokenInformer.
+func (v *version) AppServiceSourceControlTokens() AppServiceSourceControlTokenInformer {
+	return &appServiceSourceControlTokenInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// AppServiceVirtualNetworkSwiftConnections returns a AppServiceVirtualNetworkSwiftConnectionInformer.
+func (v *version) AppServiceVirtualNetworkSwiftConnections() AppServiceVirtualNetworkSwiftConnectionInformer {
+	return &appServiceVirtualNetworkSwiftConnectionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // ApplicationGateways returns a ApplicationGatewayInformer.
 func (v *version) ApplicationGateways() ApplicationGatewayInformer {
 	return &applicationGatewayInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -725,6 +993,11 @@ func (v *version) ApplicationInsightses() ApplicationInsightsInformer {
 // ApplicationInsightsAPIKeys returns a ApplicationInsightsAPIKeyInformer.
 func (v *version) ApplicationInsightsAPIKeys() ApplicationInsightsAPIKeyInformer {
 	return &applicationInsightsAPIKeyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ApplicationInsightsAnalyticsItems returns a ApplicationInsightsAnalyticsItemInformer.
+func (v *version) ApplicationInsightsAnalyticsItems() ApplicationInsightsAnalyticsItemInformer {
+	return &applicationInsightsAnalyticsItemInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // ApplicationInsightsWebTests returns a ApplicationInsightsWebTestInformer.
@@ -742,6 +1015,11 @@ func (v *version) AutomationAccounts() AutomationAccountInformer {
 	return &automationAccountInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// AutomationCertificates returns a AutomationCertificateInformer.
+func (v *version) AutomationCertificates() AutomationCertificateInformer {
+	return &automationCertificateInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // AutomationCredentials returns a AutomationCredentialInformer.
 func (v *version) AutomationCredentials() AutomationCredentialInformer {
 	return &automationCredentialInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -755,6 +1033,11 @@ func (v *version) AutomationDscConfigurations() AutomationDscConfigurationInform
 // AutomationDscNodeconfigurations returns a AutomationDscNodeconfigurationInformer.
 func (v *version) AutomationDscNodeconfigurations() AutomationDscNodeconfigurationInformer {
 	return &automationDscNodeconfigurationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// AutomationJobSchedules returns a AutomationJobScheduleInformer.
+func (v *version) AutomationJobSchedules() AutomationJobScheduleInformer {
+	return &automationJobScheduleInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // AutomationModules returns a AutomationModuleInformer.
@@ -817,6 +1100,36 @@ func (v *version) AzureadServicePrincipalPasswords() AzureadServicePrincipalPass
 	return &azureadServicePrincipalPasswordInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// BackupContainerStorageAccounts returns a BackupContainerStorageAccountInformer.
+func (v *version) BackupContainerStorageAccounts() BackupContainerStorageAccountInformer {
+	return &backupContainerStorageAccountInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BackupPolicyFileShares returns a BackupPolicyFileShareInformer.
+func (v *version) BackupPolicyFileShares() BackupPolicyFileShareInformer {
+	return &backupPolicyFileShareInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BackupPolicyVms returns a BackupPolicyVmInformer.
+func (v *version) BackupPolicyVms() BackupPolicyVmInformer {
+	return &backupPolicyVmInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BackupProtectedFileShares returns a BackupProtectedFileShareInformer.
+func (v *version) BackupProtectedFileShares() BackupProtectedFileShareInformer {
+	return &backupProtectedFileShareInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BackupProtectedVms returns a BackupProtectedVmInformer.
+func (v *version) BackupProtectedVms() BackupProtectedVmInformer {
+	return &backupProtectedVmInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BastionHosts returns a BastionHostInformer.
+func (v *version) BastionHosts() BastionHostInformer {
+	return &bastionHostInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // BatchAccounts returns a BatchAccountInformer.
 func (v *version) BatchAccounts() BatchAccountInformer {
 	return &batchAccountInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -835,6 +1148,36 @@ func (v *version) BatchCertificates() BatchCertificateInformer {
 // BatchPools returns a BatchPoolInformer.
 func (v *version) BatchPools() BatchPoolInformer {
 	return &batchPoolInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BotChannelEmails returns a BotChannelEmailInformer.
+func (v *version) BotChannelEmails() BotChannelEmailInformer {
+	return &botChannelEmailInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BotChannelMsTeamses returns a BotChannelMsTeamsInformer.
+func (v *version) BotChannelMsTeamses() BotChannelMsTeamsInformer {
+	return &botChannelMsTeamsInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BotChannelSlacks returns a BotChannelSlackInformer.
+func (v *version) BotChannelSlacks() BotChannelSlackInformer {
+	return &botChannelSlackInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BotChannelsRegistrations returns a BotChannelsRegistrationInformer.
+func (v *version) BotChannelsRegistrations() BotChannelsRegistrationInformer {
+	return &botChannelsRegistrationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BotConnections returns a BotConnectionInformer.
+func (v *version) BotConnections() BotConnectionInformer {
+	return &botConnectionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BotWebApps returns a BotWebAppInformer.
+func (v *version) BotWebApps() BotWebAppInformer {
+	return &botWebAppInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // CdnEndpoints returns a CdnEndpointInformer.
@@ -867,6 +1210,11 @@ func (v *version) ContainerRegistries() ContainerRegistryInformer {
 	return &containerRegistryInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// ContainerRegistryWebhooks returns a ContainerRegistryWebhookInformer.
+func (v *version) ContainerRegistryWebhooks() ContainerRegistryWebhookInformer {
+	return &containerRegistryWebhookInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // ContainerServices returns a ContainerServiceInformer.
 func (v *version) ContainerServices() ContainerServiceInformer {
 	return &containerServiceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -882,6 +1230,16 @@ func (v *version) CosmosdbCassandraKeyspaces() CosmosdbCassandraKeyspaceInformer
 	return &cosmosdbCassandraKeyspaceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// CosmosdbGremlinDatabases returns a CosmosdbGremlinDatabaseInformer.
+func (v *version) CosmosdbGremlinDatabases() CosmosdbGremlinDatabaseInformer {
+	return &cosmosdbGremlinDatabaseInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// CosmosdbGremlinGraphs returns a CosmosdbGremlinGraphInformer.
+func (v *version) CosmosdbGremlinGraphs() CosmosdbGremlinGraphInformer {
+	return &cosmosdbGremlinGraphInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // CosmosdbMongoCollections returns a CosmosdbMongoCollectionInformer.
 func (v *version) CosmosdbMongoCollections() CosmosdbMongoCollectionInformer {
 	return &cosmosdbMongoCollectionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -892,6 +1250,11 @@ func (v *version) CosmosdbMongoDatabases() CosmosdbMongoDatabaseInformer {
 	return &cosmosdbMongoDatabaseInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// CosmosdbSQLContainers returns a CosmosdbSQLContainerInformer.
+func (v *version) CosmosdbSQLContainers() CosmosdbSQLContainerInformer {
+	return &cosmosdbSQLContainerInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // CosmosdbSQLDatabases returns a CosmosdbSQLDatabaseInformer.
 func (v *version) CosmosdbSQLDatabases() CosmosdbSQLDatabaseInformer {
 	return &cosmosdbSQLDatabaseInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -900,6 +1263,11 @@ func (v *version) CosmosdbSQLDatabases() CosmosdbSQLDatabaseInformer {
 // CosmosdbTables returns a CosmosdbTableInformer.
 func (v *version) CosmosdbTables() CosmosdbTableInformer {
 	return &cosmosdbTableInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// Dashboards returns a DashboardInformer.
+func (v *version) Dashboards() DashboardInformer {
+	return &dashboardInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // DataFactories returns a DataFactoryInformer.
@@ -920,6 +1288,11 @@ func (v *version) DataFactoryDatasetPostgresqls() DataFactoryDatasetPostgresqlIn
 // DataFactoryDatasetSQLServerTables returns a DataFactoryDatasetSQLServerTableInformer.
 func (v *version) DataFactoryDatasetSQLServerTables() DataFactoryDatasetSQLServerTableInformer {
 	return &dataFactoryDatasetSQLServerTableInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// DataFactoryIntegrationRuntimeManageds returns a DataFactoryIntegrationRuntimeManagedInformer.
+func (v *version) DataFactoryIntegrationRuntimeManageds() DataFactoryIntegrationRuntimeManagedInformer {
+	return &dataFactoryIntegrationRuntimeManagedInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // DataFactoryLinkedServiceDataLakeStorageGen2s returns a DataFactoryLinkedServiceDataLakeStorageGen2Informer.
@@ -945,6 +1318,11 @@ func (v *version) DataFactoryLinkedServiceSQLServers() DataFactoryLinkedServiceS
 // DataFactoryPipelines returns a DataFactoryPipelineInformer.
 func (v *version) DataFactoryPipelines() DataFactoryPipelineInformer {
 	return &dataFactoryPipelineInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// DataFactoryTriggerSchedules returns a DataFactoryTriggerScheduleInformer.
+func (v *version) DataFactoryTriggerSchedules() DataFactoryTriggerScheduleInformer {
+	return &dataFactoryTriggerScheduleInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // DataLakeAnalyticsAccounts returns a DataLakeAnalyticsAccountInformer.
@@ -982,6 +1360,16 @@ func (v *version) DdosProtectionPlans() DdosProtectionPlanInformer {
 	return &ddosProtectionPlanInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// DedicatedHosts returns a DedicatedHostInformer.
+func (v *version) DedicatedHosts() DedicatedHostInformer {
+	return &dedicatedHostInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// DedicatedHostGroups returns a DedicatedHostGroupInformer.
+func (v *version) DedicatedHostGroups() DedicatedHostGroupInformer {
+	return &dedicatedHostGroupInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // DevTestLabs returns a DevTestLabInformer.
 func (v *version) DevTestLabs() DevTestLabInformer {
 	return &devTestLabInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -997,6 +1385,11 @@ func (v *version) DevTestPolicies() DevTestPolicyInformer {
 	return &devTestPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// DevTestSchedules returns a DevTestScheduleInformer.
+func (v *version) DevTestSchedules() DevTestScheduleInformer {
+	return &devTestScheduleInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // DevTestVirtualNetworks returns a DevTestVirtualNetworkInformer.
 func (v *version) DevTestVirtualNetworks() DevTestVirtualNetworkInformer {
 	return &devTestVirtualNetworkInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -1010,6 +1403,11 @@ func (v *version) DevTestWindowsVirtualMachines() DevTestWindowsVirtualMachineIn
 // DevspaceControllers returns a DevspaceControllerInformer.
 func (v *version) DevspaceControllers() DevspaceControllerInformer {
 	return &devspaceControllerInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// DiskEncryptionSets returns a DiskEncryptionSetInformer.
+func (v *version) DiskEncryptionSets() DiskEncryptionSetInformer {
+	return &diskEncryptionSetInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // DnsARecords returns a DnsARecordInformer.
@@ -1097,6 +1495,11 @@ func (v *version) EventhubNamespaceAuthorizationRules() EventhubNamespaceAuthori
 	return &eventhubNamespaceAuthorizationRuleInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// EventhubNamespaceDisasterRecoveryConfigs returns a EventhubNamespaceDisasterRecoveryConfigInformer.
+func (v *version) EventhubNamespaceDisasterRecoveryConfigs() EventhubNamespaceDisasterRecoveryConfigInformer {
+	return &eventhubNamespaceDisasterRecoveryConfigInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // EventhubNamespace_s returns a EventhubNamespace_Informer.
 func (v *version) EventhubNamespace_s() EventhubNamespace_Informer {
 	return &eventhubNamespace_Informer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -1135,6 +1538,16 @@ func (v *version) FirewallNATRuleCollections() FirewallNATRuleCollectionInformer
 // FirewallNetworkRuleCollections returns a FirewallNetworkRuleCollectionInformer.
 func (v *version) FirewallNetworkRuleCollections() FirewallNetworkRuleCollectionInformer {
 	return &firewallNetworkRuleCollectionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// Frontdoors returns a FrontdoorInformer.
+func (v *version) Frontdoors() FrontdoorInformer {
+	return &frontdoorInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// FrontdoorFirewallPolicies returns a FrontdoorFirewallPolicyInformer.
+func (v *version) FrontdoorFirewallPolicies() FrontdoorFirewallPolicyInformer {
+	return &frontdoorFirewallPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // FunctionApps returns a FunctionAppInformer.
@@ -1182,6 +1595,11 @@ func (v *version) HdinsightStormClusters() HdinsightStormClusterInformer {
 	return &hdinsightStormClusterInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// HealthcareServices returns a HealthcareServiceInformer.
+func (v *version) HealthcareServices() HealthcareServiceInformer {
+	return &healthcareServiceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // Images returns a ImageInformer.
 func (v *version) Images() ImageInformer {
 	return &imageInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -1205,6 +1623,51 @@ func (v *version) Iothubs() IothubInformer {
 // IothubConsumerGroups returns a IothubConsumerGroupInformer.
 func (v *version) IothubConsumerGroups() IothubConsumerGroupInformer {
 	return &iothubConsumerGroupInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IothubDpses returns a IothubDpsInformer.
+func (v *version) IothubDpses() IothubDpsInformer {
+	return &iothubDpsInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IothubDpsCertificates returns a IothubDpsCertificateInformer.
+func (v *version) IothubDpsCertificates() IothubDpsCertificateInformer {
+	return &iothubDpsCertificateInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IothubDpsSharedAccessPolicies returns a IothubDpsSharedAccessPolicyInformer.
+func (v *version) IothubDpsSharedAccessPolicies() IothubDpsSharedAccessPolicyInformer {
+	return &iothubDpsSharedAccessPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IothubEndpointEventhubs returns a IothubEndpointEventhubInformer.
+func (v *version) IothubEndpointEventhubs() IothubEndpointEventhubInformer {
+	return &iothubEndpointEventhubInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IothubEndpointServicebusQueues returns a IothubEndpointServicebusQueueInformer.
+func (v *version) IothubEndpointServicebusQueues() IothubEndpointServicebusQueueInformer {
+	return &iothubEndpointServicebusQueueInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IothubEndpointServicebusTopics returns a IothubEndpointServicebusTopicInformer.
+func (v *version) IothubEndpointServicebusTopics() IothubEndpointServicebusTopicInformer {
+	return &iothubEndpointServicebusTopicInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IothubEndpointStorageContainers returns a IothubEndpointStorageContainerInformer.
+func (v *version) IothubEndpointStorageContainers() IothubEndpointStorageContainerInformer {
+	return &iothubEndpointStorageContainerInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IothubFallbackRoutes returns a IothubFallbackRouteInformer.
+func (v *version) IothubFallbackRoutes() IothubFallbackRouteInformer {
+	return &iothubFallbackRouteInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IothubRoutes returns a IothubRouteInformer.
+func (v *version) IothubRoutes() IothubRouteInformer {
+	return &iothubRouteInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // IothubSharedAccessPolicies returns a IothubSharedAccessPolicyInformer.
@@ -1240,6 +1703,31 @@ func (v *version) KeyVaultSecrets() KeyVaultSecretInformer {
 // KubernetesClusters returns a KubernetesClusterInformer.
 func (v *version) KubernetesClusters() KubernetesClusterInformer {
 	return &kubernetesClusterInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// KubernetesClusterNodePools returns a KubernetesClusterNodePoolInformer.
+func (v *version) KubernetesClusterNodePools() KubernetesClusterNodePoolInformer {
+	return &kubernetesClusterNodePoolInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// KustoClusters returns a KustoClusterInformer.
+func (v *version) KustoClusters() KustoClusterInformer {
+	return &kustoClusterInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// KustoDatabases returns a KustoDatabaseInformer.
+func (v *version) KustoDatabases() KustoDatabaseInformer {
+	return &kustoDatabaseInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// KustoDatabasePrincipals returns a KustoDatabasePrincipalInformer.
+func (v *version) KustoDatabasePrincipals() KustoDatabasePrincipalInformer {
+	return &kustoDatabasePrincipalInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// KustoEventhubDataConnections returns a KustoEventhubDataConnectionInformer.
+func (v *version) KustoEventhubDataConnections() KustoEventhubDataConnectionInformer {
+	return &kustoEventhubDataConnectionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // Lbs returns a LbInformer.
@@ -1352,6 +1840,11 @@ func (v *version) MapsAccounts() MapsAccountInformer {
 	return &mapsAccountInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// MariadbConfigurations returns a MariadbConfigurationInformer.
+func (v *version) MariadbConfigurations() MariadbConfigurationInformer {
+	return &mariadbConfigurationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // MariadbDatabases returns a MariadbDatabaseInformer.
 func (v *version) MariadbDatabases() MariadbDatabaseInformer {
 	return &mariadbDatabaseInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -1365,6 +1858,16 @@ func (v *version) MariadbFirewallRules() MariadbFirewallRuleInformer {
 // MariadbServers returns a MariadbServerInformer.
 func (v *version) MariadbServers() MariadbServerInformer {
 	return &mariadbServerInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// MariadbVirtualNetworkRules returns a MariadbVirtualNetworkRuleInformer.
+func (v *version) MariadbVirtualNetworkRules() MariadbVirtualNetworkRuleInformer {
+	return &mariadbVirtualNetworkRuleInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// MarketplaceAgreements returns a MarketplaceAgreementInformer.
+func (v *version) MarketplaceAgreements() MarketplaceAgreementInformer {
+	return &marketplaceAgreementInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // MediaServicesAccounts returns a MediaServicesAccountInformer.
@@ -1412,9 +1915,24 @@ func (v *version) MonitorMetricAlertrules() MonitorMetricAlertruleInformer {
 	return &monitorMetricAlertruleInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// MssqlDatabaseVulnerabilityAssessmentRuleBaselines returns a MssqlDatabaseVulnerabilityAssessmentRuleBaselineInformer.
+func (v *version) MssqlDatabaseVulnerabilityAssessmentRuleBaselines() MssqlDatabaseVulnerabilityAssessmentRuleBaselineInformer {
+	return &mssqlDatabaseVulnerabilityAssessmentRuleBaselineInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // MssqlElasticpools returns a MssqlElasticpoolInformer.
 func (v *version) MssqlElasticpools() MssqlElasticpoolInformer {
 	return &mssqlElasticpoolInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// MssqlServerSecurityAlertPolicies returns a MssqlServerSecurityAlertPolicyInformer.
+func (v *version) MssqlServerSecurityAlertPolicies() MssqlServerSecurityAlertPolicyInformer {
+	return &mssqlServerSecurityAlertPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// MssqlServerVulnerabilityAssessments returns a MssqlServerVulnerabilityAssessmentInformer.
+func (v *version) MssqlServerVulnerabilityAssessments() MssqlServerVulnerabilityAssessmentInformer {
+	return &mssqlServerVulnerabilityAssessmentInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // MysqlConfigurations returns a MysqlConfigurationInformer.
@@ -1440,6 +1958,31 @@ func (v *version) MysqlServers() MysqlServerInformer {
 // MysqlVirtualNetworkRules returns a MysqlVirtualNetworkRuleInformer.
 func (v *version) MysqlVirtualNetworkRules() MysqlVirtualNetworkRuleInformer {
 	return &mysqlVirtualNetworkRuleInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// NatGateways returns a NatGatewayInformer.
+func (v *version) NatGateways() NatGatewayInformer {
+	return &natGatewayInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// NetappAccounts returns a NetappAccountInformer.
+func (v *version) NetappAccounts() NetappAccountInformer {
+	return &netappAccountInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// NetappPools returns a NetappPoolInformer.
+func (v *version) NetappPools() NetappPoolInformer {
+	return &netappPoolInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// NetappSnapshots returns a NetappSnapshotInformer.
+func (v *version) NetappSnapshots() NetappSnapshotInformer {
+	return &netappSnapshotInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// NetappVolumes returns a NetappVolumeInformer.
+func (v *version) NetappVolumes() NetappVolumeInformer {
+	return &netappVolumeInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // NetworkConnectionMonitors returns a NetworkConnectionMonitorInformer.
@@ -1502,6 +2045,11 @@ func (v *version) NetworkWatchers() NetworkWatcherInformer {
 	return &networkWatcherInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// NetworkWatcherFlowLogs returns a NetworkWatcherFlowLogInformer.
+func (v *version) NetworkWatcherFlowLogs() NetworkWatcherFlowLogInformer {
+	return &networkWatcherFlowLogInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // NotificationHubs returns a NotificationHubInformer.
 func (v *version) NotificationHubs() NotificationHubInformer {
 	return &notificationHubInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -1520,6 +2068,11 @@ func (v *version) NotificationHubNamespace_s() NotificationHubNamespace_Informer
 // PacketCaptures returns a PacketCaptureInformer.
 func (v *version) PacketCaptures() PacketCaptureInformer {
 	return &packetCaptureInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// PointToSiteVPNGateways returns a PointToSiteVPNGatewayInformer.
+func (v *version) PointToSiteVPNGateways() PointToSiteVPNGatewayInformer {
+	return &pointToSiteVPNGatewayInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // PolicyAssignments returns a PolicyAssignmentInformer.
@@ -1567,9 +2120,59 @@ func (v *version) PrivateDNSARecords() PrivateDNSARecordInformer {
 	return &privateDNSARecordInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// PrivateDNSAaaaRecords returns a PrivateDNSAaaaRecordInformer.
+func (v *version) PrivateDNSAaaaRecords() PrivateDNSAaaaRecordInformer {
+	return &privateDNSAaaaRecordInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// PrivateDNSCnameRecords returns a PrivateDNSCnameRecordInformer.
+func (v *version) PrivateDNSCnameRecords() PrivateDNSCnameRecordInformer {
+	return &privateDNSCnameRecordInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// PrivateDNSMxRecords returns a PrivateDNSMxRecordInformer.
+func (v *version) PrivateDNSMxRecords() PrivateDNSMxRecordInformer {
+	return &privateDNSMxRecordInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// PrivateDNSPtrRecords returns a PrivateDNSPtrRecordInformer.
+func (v *version) PrivateDNSPtrRecords() PrivateDNSPtrRecordInformer {
+	return &privateDNSPtrRecordInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// PrivateDNSSrvRecords returns a PrivateDNSSrvRecordInformer.
+func (v *version) PrivateDNSSrvRecords() PrivateDNSSrvRecordInformer {
+	return &privateDNSSrvRecordInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // PrivateDNSZones returns a PrivateDNSZoneInformer.
 func (v *version) PrivateDNSZones() PrivateDNSZoneInformer {
 	return &privateDNSZoneInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// PrivateDNSZoneVirtualNetworkLinks returns a PrivateDNSZoneVirtualNetworkLinkInformer.
+func (v *version) PrivateDNSZoneVirtualNetworkLinks() PrivateDNSZoneVirtualNetworkLinkInformer {
+	return &privateDNSZoneVirtualNetworkLinkInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// PrivateEndpoints returns a PrivateEndpointInformer.
+func (v *version) PrivateEndpoints() PrivateEndpointInformer {
+	return &privateEndpointInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// PrivateLinkEndpoints returns a PrivateLinkEndpointInformer.
+func (v *version) PrivateLinkEndpoints() PrivateLinkEndpointInformer {
+	return &privateLinkEndpointInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// PrivateLinkServices returns a PrivateLinkServiceInformer.
+func (v *version) PrivateLinkServices() PrivateLinkServiceInformer {
+	return &privateLinkServiceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ProximityPlacementGroups returns a ProximityPlacementGroupInformer.
+func (v *version) ProximityPlacementGroups() ProximityPlacementGroupInformer {
+	return &proximityPlacementGroupInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // PublicIPs returns a PublicIPInformer.
@@ -1582,14 +2185,44 @@ func (v *version) PublicIPPrefixes() PublicIPPrefixInformer {
 	return &publicIPPrefixInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// RecoveryNetworkMappings returns a RecoveryNetworkMappingInformer.
+func (v *version) RecoveryNetworkMappings() RecoveryNetworkMappingInformer {
+	return &recoveryNetworkMappingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// RecoveryReplicatedVms returns a RecoveryReplicatedVmInformer.
+func (v *version) RecoveryReplicatedVms() RecoveryReplicatedVmInformer {
+	return &recoveryReplicatedVmInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// RecoveryServicesFabrics returns a RecoveryServicesFabricInformer.
+func (v *version) RecoveryServicesFabrics() RecoveryServicesFabricInformer {
+	return &recoveryServicesFabricInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // RecoveryServicesProtectedVms returns a RecoveryServicesProtectedVmInformer.
 func (v *version) RecoveryServicesProtectedVms() RecoveryServicesProtectedVmInformer {
 	return &recoveryServicesProtectedVmInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// RecoveryServicesProtectionContainers returns a RecoveryServicesProtectionContainerInformer.
+func (v *version) RecoveryServicesProtectionContainers() RecoveryServicesProtectionContainerInformer {
+	return &recoveryServicesProtectionContainerInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// RecoveryServicesProtectionContainerMappings returns a RecoveryServicesProtectionContainerMappingInformer.
+func (v *version) RecoveryServicesProtectionContainerMappings() RecoveryServicesProtectionContainerMappingInformer {
+	return &recoveryServicesProtectionContainerMappingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // RecoveryServicesProtectionPolicyVms returns a RecoveryServicesProtectionPolicyVmInformer.
 func (v *version) RecoveryServicesProtectionPolicyVms() RecoveryServicesProtectionPolicyVmInformer {
 	return &recoveryServicesProtectionPolicyVmInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// RecoveryServicesReplicationPolicies returns a RecoveryServicesReplicationPolicyInformer.
+func (v *version) RecoveryServicesReplicationPolicies() RecoveryServicesReplicationPolicyInformer {
+	return &recoveryServicesReplicationPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // RecoveryServicesVaults returns a RecoveryServicesVaultInformer.
@@ -1605,6 +2238,11 @@ func (v *version) RedisCaches() RedisCacheInformer {
 // RedisFirewallRules returns a RedisFirewallRuleInformer.
 func (v *version) RedisFirewallRules() RedisFirewallRuleInformer {
 	return &redisFirewallRuleInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// RelayHybridConnections returns a RelayHybridConnectionInformer.
+func (v *version) RelayHybridConnections() RelayHybridConnectionInformer {
+	return &relayHybridConnectionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // RelayNamespaces returns a RelayNamespaceInformer.
@@ -1732,6 +2370,36 @@ func (v *version) SignalrServices() SignalrServiceInformer {
 	return &signalrServiceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// SiteRecoveryFabrics returns a SiteRecoveryFabricInformer.
+func (v *version) SiteRecoveryFabrics() SiteRecoveryFabricInformer {
+	return &siteRecoveryFabricInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// SiteRecoveryNetworkMappings returns a SiteRecoveryNetworkMappingInformer.
+func (v *version) SiteRecoveryNetworkMappings() SiteRecoveryNetworkMappingInformer {
+	return &siteRecoveryNetworkMappingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// SiteRecoveryProtectionContainers returns a SiteRecoveryProtectionContainerInformer.
+func (v *version) SiteRecoveryProtectionContainers() SiteRecoveryProtectionContainerInformer {
+	return &siteRecoveryProtectionContainerInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// SiteRecoveryProtectionContainerMappings returns a SiteRecoveryProtectionContainerMappingInformer.
+func (v *version) SiteRecoveryProtectionContainerMappings() SiteRecoveryProtectionContainerMappingInformer {
+	return &siteRecoveryProtectionContainerMappingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// SiteRecoveryReplicatedVms returns a SiteRecoveryReplicatedVmInformer.
+func (v *version) SiteRecoveryReplicatedVms() SiteRecoveryReplicatedVmInformer {
+	return &siteRecoveryReplicatedVmInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// SiteRecoveryReplicationPolicies returns a SiteRecoveryReplicationPolicyInformer.
+func (v *version) SiteRecoveryReplicationPolicies() SiteRecoveryReplicationPolicyInformer {
+	return &siteRecoveryReplicationPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // Snapshots returns a SnapshotInformer.
 func (v *version) Snapshots() SnapshotInformer {
 	return &snapshotInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -1750,6 +2418,11 @@ func (v *version) SqlDatabases() SqlDatabaseInformer {
 // SqlElasticpools returns a SqlElasticpoolInformer.
 func (v *version) SqlElasticpools() SqlElasticpoolInformer {
 	return &sqlElasticpoolInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// SqlFailoverGroups returns a SqlFailoverGroupInformer.
+func (v *version) SqlFailoverGroups() SqlFailoverGroupInformer {
+	return &sqlFailoverGroupInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // SqlFirewallRules returns a SqlFirewallRuleInformer.
@@ -1772,6 +2445,11 @@ func (v *version) StorageAccounts() StorageAccountInformer {
 	return &storageAccountInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// StorageAccountNetworkRuleses returns a StorageAccountNetworkRulesInformer.
+func (v *version) StorageAccountNetworkRuleses() StorageAccountNetworkRulesInformer {
+	return &storageAccountNetworkRulesInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // StorageBlobs returns a StorageBlobInformer.
 func (v *version) StorageBlobs() StorageBlobInformer {
 	return &storageBlobInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -1780,6 +2458,16 @@ func (v *version) StorageBlobs() StorageBlobInformer {
 // StorageContainers returns a StorageContainerInformer.
 func (v *version) StorageContainers() StorageContainerInformer {
 	return &storageContainerInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// StorageDataLakeGen2Filesystems returns a StorageDataLakeGen2FilesystemInformer.
+func (v *version) StorageDataLakeGen2Filesystems() StorageDataLakeGen2FilesystemInformer {
+	return &storageDataLakeGen2FilesystemInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// StorageManagementPolicies returns a StorageManagementPolicyInformer.
+func (v *version) StorageManagementPolicies() StorageManagementPolicyInformer {
+	return &storageManagementPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // StorageQueues returns a StorageQueueInformer.
@@ -1837,6 +2525,16 @@ func (v *version) StreamAnalyticsOutputServicebusQueues() StreamAnalyticsOutputS
 	return &streamAnalyticsOutputServicebusQueueInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// StreamAnalyticsOutputServicebusTopics returns a StreamAnalyticsOutputServicebusTopicInformer.
+func (v *version) StreamAnalyticsOutputServicebusTopics() StreamAnalyticsOutputServicebusTopicInformer {
+	return &streamAnalyticsOutputServicebusTopicInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// StreamAnalyticsReferenceInputBlobs returns a StreamAnalyticsReferenceInputBlobInformer.
+func (v *version) StreamAnalyticsReferenceInputBlobs() StreamAnalyticsReferenceInputBlobInformer {
+	return &streamAnalyticsReferenceInputBlobInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // StreamAnalyticsStreamInputBlobs returns a StreamAnalyticsStreamInputBlobInformer.
 func (v *version) StreamAnalyticsStreamInputBlobs() StreamAnalyticsStreamInputBlobInformer {
 	return &streamAnalyticsStreamInputBlobInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -1855,6 +2553,11 @@ func (v *version) StreamAnalyticsStreamInputIothubs() StreamAnalyticsStreamInput
 // Subnets returns a SubnetInformer.
 func (v *version) Subnets() SubnetInformer {
 	return &subnetInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// SubnetNATGatewayAssociations returns a SubnetNATGatewayAssociationInformer.
+func (v *version) SubnetNATGatewayAssociations() SubnetNATGatewayAssociationInformer {
+	return &subnetNATGatewayAssociationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // SubnetNetworkSecurityGroupAssociations returns a SubnetNetworkSecurityGroupAssociationInformer.
@@ -1885,6 +2588,11 @@ func (v *version) TrafficManagerProfiles() TrafficManagerProfileInformer {
 // UserAssignedIdentities returns a UserAssignedIdentityInformer.
 func (v *version) UserAssignedIdentities() UserAssignedIdentityInformer {
 	return &userAssignedIdentityInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// VirtualHubs returns a VirtualHubInformer.
+func (v *version) VirtualHubs() VirtualHubInformer {
+	return &virtualHubInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // VirtualMachines returns a VirtualMachineInformer.
@@ -1925,4 +2633,24 @@ func (v *version) VirtualNetworkGatewayConnections() VirtualNetworkGatewayConnec
 // VirtualNetworkPeerings returns a VirtualNetworkPeeringInformer.
 func (v *version) VirtualNetworkPeerings() VirtualNetworkPeeringInformer {
 	return &virtualNetworkPeeringInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// VirtualWANs returns a VirtualWANInformer.
+func (v *version) VirtualWANs() VirtualWANInformer {
+	return &virtualWANInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// VpnGateways returns a VpnGatewayInformer.
+func (v *version) VpnGateways() VpnGatewayInformer {
+	return &vpnGatewayInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// VpnServerConfigurations returns a VpnServerConfigurationInformer.
+func (v *version) VpnServerConfigurations() VpnServerConfigurationInformer {
+	return &vpnServerConfigurationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// WebApplicationFirewallPolicies returns a WebApplicationFirewallPolicyInformer.
+func (v *version) WebApplicationFirewallPolicies() WebApplicationFirewallPolicyInformer {
+	return &webApplicationFirewallPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

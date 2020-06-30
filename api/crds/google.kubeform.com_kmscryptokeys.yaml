@@ -25,12 +25,12 @@ spec:
         apiVersion:
           description: 'APIVersion defines the versioned schema of this representation
             of an object. Servers should convert recognized schemas to the latest
-            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
           type: string
         kind:
           description: 'Kind is a string value representing the REST resource this
             object represents. Servers may infer this from the endpoint the client
-            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
           type: string
         metadata:
           type: object
@@ -40,6 +40,10 @@ spec:
               type: string
             keyRing:
               type: string
+            labels:
+              additionalProperties:
+                type: string
+              type: object
             name:
               type: string
             providerRef:
@@ -51,10 +55,24 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            purpose:
+              type: string
             rotationPeriod:
               type: string
             selfLink:
               type: string
+            versionTemplate:
+              items:
+                properties:
+                  algorithm:
+                    type: string
+                  protectionLevel:
+                    type: string
+                required:
+                - algorithm
+                type: object
+              maxItems: 1
+              type: array
           required:
           - keyRing
           - name
@@ -73,6 +91,10 @@ spec:
                   type: string
                 keyRing:
                   type: string
+                labels:
+                  additionalProperties:
+                    type: string
+                  type: object
                 name:
                   type: string
                 providerRef:
@@ -84,10 +106,24 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                purpose:
+                  type: string
                 rotationPeriod:
                   type: string
                 selfLink:
                   type: string
+                versionTemplate:
+                  items:
+                    properties:
+                      algorithm:
+                        type: string
+                      protectionLevel:
+                        type: string
+                    required:
+                    - algorithm
+                    type: object
+                  maxItems: 1
+                  type: array
               required:
               - keyRing
               - name

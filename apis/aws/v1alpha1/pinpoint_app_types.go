@@ -74,6 +74,8 @@ type PinpointAppSpec struct {
 	// +optional
 	ApplicationID string `json:"applicationID,omitempty" tf:"application_id,omitempty"`
 	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	CampaignHook []PinpointAppSpecCampaignHook `json:"campaignHook,omitempty" tf:"campaign_hook,omitempty"`
 	// +optional
@@ -86,6 +88,8 @@ type PinpointAppSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	QuietTime []PinpointAppSpecQuietTime `json:"quietTime,omitempty" tf:"quiet_time,omitempty"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type PinpointAppStatus struct {

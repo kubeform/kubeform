@@ -72,6 +72,8 @@ type ConfigConfigurationAggregatorSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	OrganizationAggregationSource []ConfigConfigurationAggregatorSpecOrganizationAggregationSource `json:"organizationAggregationSource,omitempty" tf:"organization_aggregation_source,omitempty"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type ConfigConfigurationAggregatorStatus struct {

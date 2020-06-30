@@ -91,14 +91,24 @@ type AppmeshVirtualNodeSpecSpecLogging struct {
 	AccessLog []AppmeshVirtualNodeSpecSpecLoggingAccessLog `json:"accessLog,omitempty" tf:"access_log,omitempty"`
 }
 
+type AppmeshVirtualNodeSpecSpecServiceDiscoveryAwsCloudMap struct {
+	// +optional
+	Attributes    map[string]string `json:"attributes,omitempty" tf:"attributes,omitempty"`
+	NamespaceName string            `json:"namespaceName" tf:"namespace_name"`
+	ServiceName   string            `json:"serviceName" tf:"service_name"`
+}
+
 type AppmeshVirtualNodeSpecSpecServiceDiscoveryDns struct {
 	Hostname string `json:"hostname" tf:"hostname"`
 }
 
 type AppmeshVirtualNodeSpecSpecServiceDiscovery struct {
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:MinItems=1
-	Dns []AppmeshVirtualNodeSpecSpecServiceDiscoveryDns `json:"dns" tf:"dns"`
+	AwsCloudMap []AppmeshVirtualNodeSpecSpecServiceDiscoveryAwsCloudMap `json:"awsCloudMap,omitempty" tf:"aws_cloud_map,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Dns []AppmeshVirtualNodeSpecSpecServiceDiscoveryDns `json:"dns,omitempty" tf:"dns,omitempty"`
 }
 
 type AppmeshVirtualNodeSpecSpec struct {
@@ -132,6 +142,8 @@ type AppmeshVirtualNodeSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1
 	Spec []AppmeshVirtualNodeSpecSpec `json:"spec" tf:"spec"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type AppmeshVirtualNodeStatus struct {

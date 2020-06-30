@@ -25,12 +25,12 @@ spec:
         apiVersion:
           description: 'APIVersion defines the versioned schema of this representation
             of an object. Servers should convert recognized schemas to the latest
-            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
           type: string
         kind:
           description: 'Kind is a string value representing the REST resource this
             object represents. Servers may infer this from the endpoint the client
-            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
           type: string
         metadata:
           type: object
@@ -162,11 +162,22 @@ spec:
               type: array
             displayName:
               type: string
+            documentation:
+              items:
+                properties:
+                  content:
+                    type: string
+                  mimeType:
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
             enabled:
               type: boolean
             id:
               type: string
             labels:
+              description: Deprecated
               items:
                 type: string
               type: array
@@ -187,11 +198,14 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            userLabels:
+              additionalProperties:
+                type: string
+              type: object
           required:
           - combiner
           - conditions
           - displayName
-          - enabled
           - providerRef
           type: object
         status:
@@ -329,11 +343,22 @@ spec:
                   type: array
                 displayName:
                   type: string
+                documentation:
+                  items:
+                    properties:
+                      content:
+                        type: string
+                      mimeType:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
                 enabled:
                   type: boolean
                 id:
                   type: string
                 labels:
+                  description: Deprecated
                   items:
                     type: string
                   type: array
@@ -354,11 +379,14 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                userLabels:
+                  additionalProperties:
+                    type: string
+                  type: object
               required:
               - combiner
               - conditions
               - displayName
-              - enabled
               - providerRef
               type: object
             phase:

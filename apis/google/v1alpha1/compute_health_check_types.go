@@ -39,11 +39,32 @@ type ComputeHealthCheck struct {
 	Status            ComputeHealthCheckStatus `json:"status,omitempty"`
 }
 
+type ComputeHealthCheckSpecHttp2HealthCheck struct {
+	// +optional
+	Host string `json:"host,omitempty" tf:"host,omitempty"`
+	// +optional
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
+	// +optional
+	PortName string `json:"portName,omitempty" tf:"port_name,omitempty"`
+	// +optional
+	PortSpecification string `json:"portSpecification,omitempty" tf:"port_specification,omitempty"`
+	// +optional
+	ProxyHeader string `json:"proxyHeader,omitempty" tf:"proxy_header,omitempty"`
+	// +optional
+	RequestPath string `json:"requestPath,omitempty" tf:"request_path,omitempty"`
+	// +optional
+	Response string `json:"response,omitempty" tf:"response,omitempty"`
+}
+
 type ComputeHealthCheckSpecHttpHealthCheck struct {
 	// +optional
 	Host string `json:"host,omitempty" tf:"host,omitempty"`
 	// +optional
 	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
+	// +optional
+	PortName string `json:"portName,omitempty" tf:"port_name,omitempty"`
+	// +optional
+	PortSpecification string `json:"portSpecification,omitempty" tf:"port_specification,omitempty"`
 	// +optional
 	ProxyHeader string `json:"proxyHeader,omitempty" tf:"proxy_header,omitempty"`
 	// +optional
@@ -58,6 +79,10 @@ type ComputeHealthCheckSpecHttpsHealthCheck struct {
 	// +optional
 	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
+	PortName string `json:"portName,omitempty" tf:"port_name,omitempty"`
+	// +optional
+	PortSpecification string `json:"portSpecification,omitempty" tf:"port_specification,omitempty"`
+	// +optional
 	ProxyHeader string `json:"proxyHeader,omitempty" tf:"proxy_header,omitempty"`
 	// +optional
 	RequestPath string `json:"requestPath,omitempty" tf:"request_path,omitempty"`
@@ -69,6 +94,10 @@ type ComputeHealthCheckSpecSslHealthCheck struct {
 	// +optional
 	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
+	PortName string `json:"portName,omitempty" tf:"port_name,omitempty"`
+	// +optional
+	PortSpecification string `json:"portSpecification,omitempty" tf:"port_specification,omitempty"`
+	// +optional
 	ProxyHeader string `json:"proxyHeader,omitempty" tf:"proxy_header,omitempty"`
 	// +optional
 	Request string `json:"request,omitempty" tf:"request,omitempty"`
@@ -79,6 +108,10 @@ type ComputeHealthCheckSpecSslHealthCheck struct {
 type ComputeHealthCheckSpecTcpHealthCheck struct {
 	// +optional
 	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
+	// +optional
+	PortName string `json:"portName,omitempty" tf:"port_name,omitempty"`
+	// +optional
+	PortSpecification string `json:"portSpecification,omitempty" tf:"port_specification,omitempty"`
 	// +optional
 	ProxyHeader string `json:"proxyHeader,omitempty" tf:"proxy_header,omitempty"`
 	// +optional
@@ -100,6 +133,9 @@ type ComputeHealthCheckSpec struct {
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
 	HealthyThreshold int64 `json:"healthyThreshold,omitempty" tf:"healthy_threshold,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Http2HealthCheck []ComputeHealthCheckSpecHttp2HealthCheck `json:"http2HealthCheck,omitempty" tf:"http2_health_check,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	HttpHealthCheck []ComputeHealthCheckSpecHttpHealthCheck `json:"httpHealthCheck,omitempty" tf:"http_health_check,omitempty"`

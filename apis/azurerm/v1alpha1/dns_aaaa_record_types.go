@@ -44,13 +44,18 @@ type DnsAaaaRecordSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	Name              string   `json:"name" tf:"name"`
-	Records           []string `json:"records" tf:"records"`
+	// +optional
+	Fqdn string `json:"fqdn,omitempty" tf:"fqdn,omitempty"`
+	Name string `json:"name" tf:"name"`
+	// +optional
+	Records           []string `json:"records,omitempty" tf:"records,omitempty"`
 	ResourceGroupName string   `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	Tags     map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	Ttl      int64             `json:"ttl" tf:"ttl"`
-	ZoneName string            `json:"zoneName" tf:"zone_name"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	TargetResourceID string `json:"targetResourceID,omitempty" tf:"target_resource_id,omitempty"`
+	Ttl              int64  `json:"ttl" tf:"ttl"`
+	ZoneName         string `json:"zoneName" tf:"zone_name"`
 }
 
 type DnsAaaaRecordStatus struct {

@@ -65,6 +65,8 @@ type FolderOrganizationPolicySpecListPolicy struct {
 	// +kubebuilder:validation:MaxItems=1
 	Deny []FolderOrganizationPolicySpecListPolicyDeny `json:"deny,omitempty" tf:"deny,omitempty"`
 	// +optional
+	InheritFromParent bool `json:"inheritFromParent,omitempty" tf:"inherit_from_parent,omitempty"`
+	// +optional
 	SuggestedValue string `json:"suggestedValue,omitempty" tf:"suggested_value,omitempty"`
 }
 

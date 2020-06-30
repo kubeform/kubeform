@@ -39,12 +39,51 @@ type BigqueryTable struct {
 	Status            BigqueryTableStatus `json:"status,omitempty"`
 }
 
+type BigqueryTableSpecExternalDataConfigurationCsvOptions struct {
+	// +optional
+	AllowJaggedRows bool `json:"allowJaggedRows,omitempty" tf:"allow_jagged_rows,omitempty"`
+	// +optional
+	AllowQuotedNewlines bool `json:"allowQuotedNewlines,omitempty" tf:"allow_quoted_newlines,omitempty"`
+	// +optional
+	Encoding string `json:"encoding,omitempty" tf:"encoding,omitempty"`
+	// +optional
+	FieldDelimiter string `json:"fieldDelimiter,omitempty" tf:"field_delimiter,omitempty"`
+	Quote          string `json:"quote" tf:"quote"`
+	// +optional
+	SkipLeadingRows int64 `json:"skipLeadingRows,omitempty" tf:"skip_leading_rows,omitempty"`
+}
+
+type BigqueryTableSpecExternalDataConfigurationGoogleSheetsOptions struct {
+	// +optional
+	SkipLeadingRows int64 `json:"skipLeadingRows,omitempty" tf:"skip_leading_rows,omitempty"`
+}
+
+type BigqueryTableSpecExternalDataConfiguration struct {
+	Autodetect bool `json:"autodetect" tf:"autodetect"`
+	// +optional
+	Compression string `json:"compression,omitempty" tf:"compression,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	CsvOptions []BigqueryTableSpecExternalDataConfigurationCsvOptions `json:"csvOptions,omitempty" tf:"csv_options,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	GoogleSheetsOptions []BigqueryTableSpecExternalDataConfigurationGoogleSheetsOptions `json:"googleSheetsOptions,omitempty" tf:"google_sheets_options,omitempty"`
+	// +optional
+	IgnoreUnknownValues bool `json:"ignoreUnknownValues,omitempty" tf:"ignore_unknown_values,omitempty"`
+	// +optional
+	MaxBadRecords int64    `json:"maxBadRecords,omitempty" tf:"max_bad_records,omitempty"`
+	SourceFormat  string   `json:"sourceFormat" tf:"source_format"`
+	SourceUris    []string `json:"sourceUris" tf:"source_uris"`
+}
+
 type BigqueryTableSpecTimePartitioning struct {
 	// +optional
 	ExpirationMs int64 `json:"expirationMs,omitempty" tf:"expiration_ms,omitempty"`
 	// +optional
 	Field string `json:"field,omitempty" tf:"field,omitempty"`
-	Type  string `json:"type" tf:"type"`
+	// +optional
+	RequirePartitionFilter bool   `json:"requirePartitionFilter,omitempty" tf:"require_partition_filter,omitempty"`
+	Type                   string `json:"type" tf:"type"`
 }
 
 type BigqueryTableSpecView struct {
@@ -59,6 +98,9 @@ type BigqueryTableSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
+	// +kubebuilder:validation:MaxItems=4
+	Clustering []string `json:"clustering,omitempty" tf:"clustering,omitempty"`
+	// +optional
 	CreationTime int64  `json:"creationTime,omitempty" tf:"creation_time,omitempty"`
 	DatasetID    string `json:"datasetID" tf:"dataset_id"`
 	// +optional
@@ -67,6 +109,9 @@ type BigqueryTableSpec struct {
 	Etag string `json:"etag,omitempty" tf:"etag,omitempty"`
 	// +optional
 	ExpirationTime int64 `json:"expirationTime,omitempty" tf:"expiration_time,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	ExternalDataConfiguration []BigqueryTableSpecExternalDataConfiguration `json:"externalDataConfiguration,omitempty" tf:"external_data_configuration,omitempty"`
 	// +optional
 	FriendlyName string `json:"friendlyName,omitempty" tf:"friendly_name,omitempty"`
 	// +optional

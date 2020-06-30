@@ -25,18 +25,19 @@ spec:
         apiVersion:
           description: 'APIVersion defines the versioned schema of this representation
             of an object. Servers should convert recognized schemas to the latest
-            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
           type: string
         kind:
           description: 'Kind is a string value representing the REST resource this
             object represents. Servers may infer this from the endpoint the client
-            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
           type: string
         metadata:
           type: object
         spec:
           properties:
             additionalZones:
+              description: Deprecated
               items:
                 type: string
               type: array
@@ -80,17 +81,14 @@ spec:
               type: array
             clusterIpv4CIDR:
               type: string
+            defaultMaxPodsPerNode:
+              format: int64
+              type: integer
             description:
               type: string
-            enableBinaryAuthorization:
-              description: Deprecated
-              type: boolean
             enableKubernetesAlpha:
               type: boolean
             enableLegacyAbac:
-              type: boolean
-            enableTpu:
-              description: Deprecated
               type: boolean
             endpoint:
               type: string
@@ -112,15 +110,21 @@ spec:
                     type: string
                   createSubnetwork:
                     type: boolean
+                  nodeIpv4CIDRBlock:
+                    type: string
                   servicesIpv4CIDRBlock:
                     type: string
                   servicesSecondaryRangeName:
                     type: string
                   subnetworkName:
                     type: string
+                  useIPAliases:
+                    type: boolean
                 type: object
               maxItems: 1
               type: array
+            location:
+              type: string
             loggingService:
               type: string
             maintenancePolicy:
@@ -162,8 +166,6 @@ spec:
                     type: string
                   username:
                     type: string
-                required:
-                - username
                 type: object
               maxItems: 1
               type: array
@@ -180,14 +182,10 @@ spec:
                       required:
                       - cidrBlock
                       type: object
-                    maxItems: 20
                     type: array
                 type: object
               maxItems: 1
               type: array
-            masterIpv4CIDRBlock:
-              description: Deprecated
-              type: string
             masterVersion:
               type: string
             minMasterVersion:
@@ -258,35 +256,12 @@ spec:
                     items:
                       type: string
                     type: array
-                  taint:
-                    description: Deprecated
-                    items:
-                      properties:
-                        effect:
-                          type: string
-                        key:
-                          type: string
-                        value:
-                          type: string
-                      required:
-                      - effect
-                      - key
-                      - value
-                      type: object
-                    type: array
-                  workloadMetadataConfig:
-                    description: Deprecated
-                    items:
-                      properties:
-                        nodeMetadata:
-                          type: string
-                      required:
-                      - nodeMetadata
-                      type: object
-                    maxItems: 1
-                    type: array
                 type: object
               maxItems: 1
+              type: array
+            nodeLocations:
+              items:
+                type: string
               type: array
             nodePool:
               items:
@@ -324,13 +299,11 @@ spec:
                     maxItems: 1
                     type: array
                   maxPodsPerNode:
-                    description: Deprecated
                     format: int64
                     type: integer
                   name:
                     type: string
                   namePrefix:
-                    description: Deprecated
                     type: string
                   nodeConfig:
                     items:
@@ -382,33 +355,6 @@ spec:
                           items:
                             type: string
                           type: array
-                        taint:
-                          description: Deprecated
-                          items:
-                            properties:
-                              effect:
-                                type: string
-                              key:
-                                type: string
-                              value:
-                                type: string
-                            required:
-                            - effect
-                            - key
-                            - value
-                            type: object
-                          type: array
-                        workloadMetadataConfig:
-                          description: Deprecated
-                          items:
-                            properties:
-                              nodeMetadata:
-                                type: string
-                            required:
-                            - nodeMetadata
-                            type: object
-                          maxItems: 1
-                          type: array
                       type: object
                     maxItems: 1
                     type: array
@@ -421,20 +367,6 @@ spec:
               type: array
             nodeVersion:
               type: string
-            podSecurityPolicyConfig:
-              description: Deprecated
-              items:
-                properties:
-                  enabled:
-                    type: boolean
-                required:
-                - enabled
-                type: object
-              maxItems: 1
-              type: array
-            privateCluster:
-              description: Deprecated
-              type: boolean
             privateClusterConfig:
               items:
                 properties:
@@ -463,6 +395,7 @@ spec:
                   type: string
               type: object
             region:
+              description: Deprecated
               type: string
             removeDefaultNodePool:
               type: boolean
@@ -479,9 +412,12 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            servicesIpv4CIDR:
+              type: string
             subnetwork:
               type: string
             zone:
+              description: Deprecated
               type: string
           required:
           - name
@@ -497,6 +433,7 @@ spec:
             output:
               properties:
                 additionalZones:
+                  description: Deprecated
                   items:
                     type: string
                   type: array
@@ -540,17 +477,14 @@ spec:
                   type: array
                 clusterIpv4CIDR:
                   type: string
+                defaultMaxPodsPerNode:
+                  format: int64
+                  type: integer
                 description:
                   type: string
-                enableBinaryAuthorization:
-                  description: Deprecated
-                  type: boolean
                 enableKubernetesAlpha:
                   type: boolean
                 enableLegacyAbac:
-                  type: boolean
-                enableTpu:
-                  description: Deprecated
                   type: boolean
                 endpoint:
                   type: string
@@ -572,15 +506,21 @@ spec:
                         type: string
                       createSubnetwork:
                         type: boolean
+                      nodeIpv4CIDRBlock:
+                        type: string
                       servicesIpv4CIDRBlock:
                         type: string
                       servicesSecondaryRangeName:
                         type: string
                       subnetworkName:
                         type: string
+                      useIPAliases:
+                        type: boolean
                     type: object
                   maxItems: 1
                   type: array
+                location:
+                  type: string
                 loggingService:
                   type: string
                 maintenancePolicy:
@@ -622,8 +562,6 @@ spec:
                         type: string
                       username:
                         type: string
-                    required:
-                    - username
                     type: object
                   maxItems: 1
                   type: array
@@ -640,14 +578,10 @@ spec:
                           required:
                           - cidrBlock
                           type: object
-                        maxItems: 20
                         type: array
                     type: object
                   maxItems: 1
                   type: array
-                masterIpv4CIDRBlock:
-                  description: Deprecated
-                  type: string
                 masterVersion:
                   type: string
                 minMasterVersion:
@@ -718,35 +652,12 @@ spec:
                         items:
                           type: string
                         type: array
-                      taint:
-                        description: Deprecated
-                        items:
-                          properties:
-                            effect:
-                              type: string
-                            key:
-                              type: string
-                            value:
-                              type: string
-                          required:
-                          - effect
-                          - key
-                          - value
-                          type: object
-                        type: array
-                      workloadMetadataConfig:
-                        description: Deprecated
-                        items:
-                          properties:
-                            nodeMetadata:
-                              type: string
-                          required:
-                          - nodeMetadata
-                          type: object
-                        maxItems: 1
-                        type: array
                     type: object
                   maxItems: 1
+                  type: array
+                nodeLocations:
+                  items:
+                    type: string
                   type: array
                 nodePool:
                   items:
@@ -784,13 +695,11 @@ spec:
                         maxItems: 1
                         type: array
                       maxPodsPerNode:
-                        description: Deprecated
                         format: int64
                         type: integer
                       name:
                         type: string
                       namePrefix:
-                        description: Deprecated
                         type: string
                       nodeConfig:
                         items:
@@ -842,33 +751,6 @@ spec:
                               items:
                                 type: string
                               type: array
-                            taint:
-                              description: Deprecated
-                              items:
-                                properties:
-                                  effect:
-                                    type: string
-                                  key:
-                                    type: string
-                                  value:
-                                    type: string
-                                required:
-                                - effect
-                                - key
-                                - value
-                                type: object
-                              type: array
-                            workloadMetadataConfig:
-                              description: Deprecated
-                              items:
-                                properties:
-                                  nodeMetadata:
-                                    type: string
-                                required:
-                                - nodeMetadata
-                                type: object
-                              maxItems: 1
-                              type: array
                           type: object
                         maxItems: 1
                         type: array
@@ -881,20 +763,6 @@ spec:
                   type: array
                 nodeVersion:
                   type: string
-                podSecurityPolicyConfig:
-                  description: Deprecated
-                  items:
-                    properties:
-                      enabled:
-                        type: boolean
-                    required:
-                    - enabled
-                    type: object
-                  maxItems: 1
-                  type: array
-                privateCluster:
-                  description: Deprecated
-                  type: boolean
                 privateClusterConfig:
                   items:
                     properties:
@@ -923,6 +791,7 @@ spec:
                       type: string
                   type: object
                 region:
+                  description: Deprecated
                   type: string
                 removeDefaultNodePool:
                   type: boolean
@@ -939,9 +808,12 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                servicesIpv4CIDR:
+                  type: string
                 subnetwork:
                   type: string
                 zone:
+                  description: Deprecated
                   type: string
               required:
               - name

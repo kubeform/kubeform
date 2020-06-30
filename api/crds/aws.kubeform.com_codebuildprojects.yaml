@@ -25,12 +25,12 @@ spec:
         apiVersion:
           description: 'APIVersion defines the versioned schema of this representation
             of an object. Servers should convert recognized schemas to the latest
-            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
           type: string
         kind:
           description: 'Kind is a string value representing the REST resource this
             object represents. Servers may infer this from the endpoint the client
-            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
           type: string
         metadata:
           type: object
@@ -41,6 +41,8 @@ spec:
             artifacts:
               items:
                 properties:
+                  artifactIdentifier:
+                    type: string
                   encryptionDisabled:
                     type: boolean
                   location:
@@ -49,6 +51,8 @@ spec:
                     type: string
                   namespaceType:
                     type: string
+                  overrideArtifactName:
+                    type: boolean
                   packaging:
                     type: string
                   path:
@@ -72,6 +76,10 @@ spec:
                 properties:
                   location:
                     type: string
+                  modes:
+                    items:
+                      type: string
+                    type: array
                   type:
                     type: string
                 type: object
@@ -108,6 +116,19 @@ spec:
                     type: string
                   privilegedMode:
                     type: boolean
+                  registryCredential:
+                    items:
+                      properties:
+                        credential:
+                          type: string
+                        credentialProvider:
+                          type: string
+                      required:
+                      - credential
+                      - credentialProvider
+                      type: object
+                    maxItems: 1
+                    type: array
                   type:
                     type: string
                 required:
@@ -119,6 +140,36 @@ spec:
               type: array
             id:
               type: string
+            logsConfig:
+              items:
+                properties:
+                  cloudwatchLogs:
+                    items:
+                      properties:
+                        groupName:
+                          type: string
+                        status:
+                          type: string
+                        streamName:
+                          type: string
+                      type: object
+                    maxItems: 1
+                    type: array
+                  s3Logs:
+                    items:
+                      properties:
+                        encryptionDisabled:
+                          type: boolean
+                        location:
+                          type: string
+                        status:
+                          type: string
+                      type: object
+                    maxItems: 1
+                    type: array
+                type: object
+              maxItems: 1
+              type: array
             name:
               type: string
             providerRef:
@@ -143,6 +194,8 @@ spec:
                     type: string
                   namespaceType:
                     type: string
+                  overrideArtifactName:
+                    type: boolean
                   packaging:
                     type: string
                   path:
@@ -275,6 +328,8 @@ spec:
                 artifacts:
                   items:
                     properties:
+                      artifactIdentifier:
+                        type: string
                       encryptionDisabled:
                         type: boolean
                       location:
@@ -283,6 +338,8 @@ spec:
                         type: string
                       namespaceType:
                         type: string
+                      overrideArtifactName:
+                        type: boolean
                       packaging:
                         type: string
                       path:
@@ -306,6 +363,10 @@ spec:
                     properties:
                       location:
                         type: string
+                      modes:
+                        items:
+                          type: string
+                        type: array
                       type:
                         type: string
                     type: object
@@ -342,6 +403,19 @@ spec:
                         type: string
                       privilegedMode:
                         type: boolean
+                      registryCredential:
+                        items:
+                          properties:
+                            credential:
+                              type: string
+                            credentialProvider:
+                              type: string
+                          required:
+                          - credential
+                          - credentialProvider
+                          type: object
+                        maxItems: 1
+                        type: array
                       type:
                         type: string
                     required:
@@ -353,6 +427,36 @@ spec:
                   type: array
                 id:
                   type: string
+                logsConfig:
+                  items:
+                    properties:
+                      cloudwatchLogs:
+                        items:
+                          properties:
+                            groupName:
+                              type: string
+                            status:
+                              type: string
+                            streamName:
+                              type: string
+                          type: object
+                        maxItems: 1
+                        type: array
+                      s3Logs:
+                        items:
+                          properties:
+                            encryptionDisabled:
+                              type: boolean
+                            location:
+                              type: string
+                            status:
+                              type: string
+                          type: object
+                        maxItems: 1
+                        type: array
+                    type: object
+                  maxItems: 1
+                  type: array
                 name:
                   type: string
                 providerRef:
@@ -377,6 +481,8 @@ spec:
                         type: string
                       namespaceType:
                         type: string
+                      overrideArtifactName:
+                        type: boolean
                       packaging:
                         type: string
                       path:

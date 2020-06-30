@@ -69,14 +69,19 @@ type MonitoringUptimeCheckConfigSpecHttpCheck struct {
 
 type MonitoringUptimeCheckConfigSpecInternalCheckers struct {
 	// +optional
+	// Deprecated
 	DisplayName string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 	// +optional
+	// Deprecated
 	GcpZone string `json:"gcpZone,omitempty" tf:"gcp_zone,omitempty"`
 	// +optional
+	// Deprecated
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
+	// Deprecated
 	Network string `json:"network,omitempty" tf:"network,omitempty"`
 	// +optional
+	// Deprecated
 	PeerProjectID string `json:"peerProjectID,omitempty" tf:"peer_project_id,omitempty"`
 }
 
@@ -110,8 +115,10 @@ type MonitoringUptimeCheckConfigSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	HttpCheck []MonitoringUptimeCheckConfigSpecHttpCheck `json:"httpCheck,omitempty" tf:"http_check,omitempty"`
 	// +optional
+	// Deprecated
 	InternalCheckers []MonitoringUptimeCheckConfigSpecInternalCheckers `json:"internalCheckers,omitempty" tf:"internal_checkers,omitempty"`
 	// +optional
+	// Deprecated
 	IsInternal bool `json:"isInternal,omitempty" tf:"is_internal,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -131,6 +138,8 @@ type MonitoringUptimeCheckConfigSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	TcpCheck []MonitoringUptimeCheckConfigSpecTcpCheck `json:"tcpCheck,omitempty" tf:"tcp_check,omitempty"`
 	Timeout  string                                    `json:"timeout" tf:"timeout"`
+	// +optional
+	UptimeCheckID string `json:"uptimeCheckID,omitempty" tf:"uptime_check_id,omitempty"`
 }
 
 type MonitoringUptimeCheckConfigStatus struct {

@@ -37,7 +37,7 @@ import (
 	. "github.com/dave/jennifer/jen"
 	"github.com/gobuffalo/flect"
 	"github.com/hashicorp/terraform-config-inspect/tfconfig"
-	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
 type TypeData struct {

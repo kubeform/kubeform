@@ -74,8 +74,10 @@ type ImageSpec struct {
 
 	// +optional
 	DataDisk []ImageSpecDataDisk `json:"dataDisk,omitempty" tf:"data_disk,omitempty"`
-	Location string              `json:"location" tf:"location"`
-	Name     string              `json:"name" tf:"name"`
+	// +optional
+	HyperVGeneration string `json:"hyperVGeneration,omitempty" tf:"hyper_v_generation,omitempty"`
+	Location         string `json:"location" tf:"location"`
+	Name             string `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	OsDisk            []ImageSpecOsDisk `json:"osDisk,omitempty" tf:"os_disk,omitempty"`

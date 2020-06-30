@@ -54,7 +54,15 @@ type BatchPoolSpecCertificate struct {
 	Visibility []string `json:"visibility,omitempty" tf:"visibility,omitempty"`
 }
 
+type BatchPoolSpecContainerConfigurationContainerRegistries struct {
+	Password       string `json:"-" sensitive:"true" tf:"password"`
+	RegistryServer string `json:"registryServer" tf:"registry_server"`
+	UserName       string `json:"userName" tf:"user_name"`
+}
+
 type BatchPoolSpecContainerConfiguration struct {
+	// +optional
+	ContainerRegistries []BatchPoolSpecContainerConfigurationContainerRegistries `json:"containerRegistries,omitempty" tf:"container_registries,omitempty"`
 	// +optional
 	Type string `json:"type,omitempty" tf:"type,omitempty"`
 }
@@ -66,6 +74,27 @@ type BatchPoolSpecFixedScale struct {
 	TargetDedicatedNodes int64 `json:"targetDedicatedNodes,omitempty" tf:"target_dedicated_nodes,omitempty"`
 	// +optional
 	TargetLowPriorityNodes int64 `json:"targetLowPriorityNodes,omitempty" tf:"target_low_priority_nodes,omitempty"`
+}
+
+type BatchPoolSpecNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRules struct {
+	Access              string `json:"access" tf:"access"`
+	Priority            int64  `json:"priority" tf:"priority"`
+	SourceAddressPrefix string `json:"sourceAddressPrefix" tf:"source_address_prefix"`
+}
+
+type BatchPoolSpecNetworkConfigurationEndpointConfiguration struct {
+	BackendPort       int64  `json:"backendPort" tf:"backend_port"`
+	FrontendPortRange string `json:"frontendPortRange" tf:"frontend_port_range"`
+	Name              string `json:"name" tf:"name"`
+	// +optional
+	NetworkSecurityGroupRules []BatchPoolSpecNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRules `json:"networkSecurityGroupRules,omitempty" tf:"network_security_group_rules,omitempty"`
+	Protocol                  string                                                                            `json:"protocol" tf:"protocol"`
+}
+
+type BatchPoolSpecNetworkConfiguration struct {
+	// +optional
+	EndpointConfiguration []BatchPoolSpecNetworkConfigurationEndpointConfiguration `json:"endpointConfiguration,omitempty" tf:"endpoint_configuration,omitempty"`
+	SubnetID              string                                                   `json:"subnetID" tf:"subnet_id"`
 }
 
 type BatchPoolSpecStartTaskResourceFile struct {
@@ -130,6 +159,8 @@ type BatchPoolSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
+
 	AccountName string `json:"accountName" tf:"account_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -138,6 +169,7 @@ type BatchPoolSpec struct {
 	Certificate []BatchPoolSpecCertificate `json:"certificate,omitempty" tf:"certificate,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
+	// +kubebuilder:validation:MinItems=1
 	ContainerConfiguration []BatchPoolSpecContainerConfiguration `json:"containerConfiguration,omitempty" tf:"container_configuration,omitempty"`
 	// +optional
 	DisplayName string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -145,10 +177,15 @@ type BatchPoolSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	FixedScale []BatchPoolSpecFixedScale `json:"fixedScale,omitempty" tf:"fixed_scale,omitempty"`
 	// +optional
-	MaxTasksPerNode   int64  `json:"maxTasksPerNode,omitempty" tf:"max_tasks_per_node,omitempty"`
-	Name              string `json:"name" tf:"name"`
-	NodeAgentSkuID    string `json:"nodeAgentSkuID" tf:"node_agent_sku_id"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	MaxTasksPerNode int64 `json:"maxTasksPerNode,omitempty" tf:"max_tasks_per_node,omitempty"`
+	// +optional
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Name     string            `json:"name" tf:"name"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	NetworkConfiguration []BatchPoolSpecNetworkConfiguration `json:"networkConfiguration,omitempty" tf:"network_configuration,omitempty"`
+	NodeAgentSkuID       string                              `json:"nodeAgentSkuID" tf:"node_agent_sku_id"`
+	ResourceGroupName    string                              `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	StartTask []BatchPoolSpecStartTask `json:"startTask,omitempty" tf:"start_task,omitempty"`

@@ -157,10 +157,32 @@ type AppServiceSpecLogsApplicationLogs struct {
 	AzureBlobStorage []AppServiceSpecLogsApplicationLogsAzureBlobStorage `json:"azureBlobStorage,omitempty" tf:"azure_blob_storage,omitempty"`
 }
 
+type AppServiceSpecLogsHttpLogsAzureBlobStorage struct {
+	RetentionInDays int64  `json:"retentionInDays" tf:"retention_in_days"`
+	SasURL          string `json:"-" sensitive:"true" tf:"sas_url"`
+}
+
+type AppServiceSpecLogsHttpLogsFileSystem struct {
+	RetentionInDays int64 `json:"retentionInDays" tf:"retention_in_days"`
+	RetentionInMb   int64 `json:"retentionInMb" tf:"retention_in_mb"`
+}
+
+type AppServiceSpecLogsHttpLogs struct {
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	AzureBlobStorage []AppServiceSpecLogsHttpLogsAzureBlobStorage `json:"azureBlobStorage,omitempty" tf:"azure_blob_storage,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	FileSystem []AppServiceSpecLogsHttpLogsFileSystem `json:"fileSystem,omitempty" tf:"file_system,omitempty"`
+}
+
 type AppServiceSpecLogs struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ApplicationLogs []AppServiceSpecLogsApplicationLogs `json:"applicationLogs,omitempty" tf:"application_logs,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	HttpLogs []AppServiceSpecLogsHttpLogs `json:"httpLogs,omitempty" tf:"http_logs,omitempty"`
 }
 
 type AppServiceSpecSiteConfigCors struct {
@@ -170,9 +192,12 @@ type AppServiceSpecSiteConfigCors struct {
 }
 
 type AppServiceSpecSiteConfigIpRestriction struct {
-	IpAddress string `json:"ipAddress" tf:"ip_address"`
+	// +optional
+	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
 	// +optional
 	SubnetMask string `json:"subnetMask,omitempty" tf:"subnet_mask,omitempty"`
+	// +optional
+	VirtualNetworkSubnetID string `json:"virtualNetworkSubnetID,omitempty" tf:"virtual_network_subnet_id,omitempty"`
 }
 
 type AppServiceSpecSiteConfig struct {
@@ -180,6 +205,8 @@ type AppServiceSpecSiteConfig struct {
 	AlwaysOn bool `json:"alwaysOn,omitempty" tf:"always_on,omitempty"`
 	// +optional
 	AppCommandLine string `json:"appCommandLine,omitempty" tf:"app_command_line,omitempty"`
+	// +optional
+	AutoSwapSlotName string `json:"autoSwapSlotName,omitempty" tf:"auto_swap_slot_name,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Cors []AppServiceSpecSiteConfigCors `json:"cors,omitempty" tf:"cors,omitempty"`
@@ -296,10 +323,8 @@ type AppServiceSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	SiteConfig []AppServiceSpecSiteConfig `json:"siteConfig,omitempty" tf:"site_config,omitempty"`
 	// +optional
-	// +kubebuilder:validation:MaxItems=1
 	SiteCredential []AppServiceSpecSiteCredential `json:"siteCredential,omitempty" tf:"site_credential,omitempty"`
 	// +optional
-	// +kubebuilder:validation:MaxItems=1
 	SourceControl []AppServiceSpecSourceControl `json:"sourceControl,omitempty" tf:"source_control,omitempty"`
 	// +optional
 	StorageAccount []AppServiceSpecStorageAccount `json:"storageAccount,omitempty" tf:"storage_account,omitempty"`

@@ -57,6 +57,8 @@ type RdsClusterSpecScalingConfiguration struct {
 	MinCapacity int64 `json:"minCapacity,omitempty" tf:"min_capacity,omitempty"`
 	// +optional
 	SecondsUntilAutoPause int64 `json:"secondsUntilAutoPause,omitempty" tf:"seconds_until_auto_pause,omitempty"`
+	// +optional
+	TimeoutAction string `json:"timeoutAction,omitempty" tf:"timeout_action,omitempty"`
 }
 
 type RdsClusterSpec struct {

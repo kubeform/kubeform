@@ -45,13 +45,17 @@ type ElasticBeanstalkApplicationVersionSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	Application string `json:"application" tf:"application"`
-	Bucket      string `json:"bucket" tf:"bucket"`
+	// +optional
+	Arn    string `json:"arn,omitempty" tf:"arn,omitempty"`
+	Bucket string `json:"bucket" tf:"bucket"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
 	ForceDelete bool   `json:"forceDelete,omitempty" tf:"force_delete,omitempty"`
 	Key         string `json:"key" tf:"key"`
 	Name        string `json:"name" tf:"name"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type ElasticBeanstalkApplicationVersionStatus struct {

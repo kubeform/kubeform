@@ -63,11 +63,17 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&DomainRecord{},
 		&DomainRecordList{},
 
+		&Firewall{},
+		&FirewallList{},
+
 		&Image{},
 		&ImageList{},
 
 		&Instance{},
 		&InstanceList{},
+
+		&LkeCluster{},
+		&LkeClusterList{},
 
 		&Nodebalancer{},
 		&NodebalancerList{},
@@ -77,6 +83,12 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&NodebalancerNode{},
 		&NodebalancerNodeList{},
+
+		&ObjectStorageBucket{},
+		&ObjectStorageBucketList{},
+
+		&ObjectStorageKey{},
+		&ObjectStorageKeyList{},
 
 		&Rdns{},
 		&RdnsList{},

@@ -25,18 +25,58 @@ spec:
         apiVersion:
           description: 'APIVersion defines the versioned schema of this representation
             of an object. Servers should convert recognized schemas to the latest
-            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
           type: string
         kind:
           description: 'Kind is a string value representing the REST resource this
             object represents. Servers may infer this from the endpoint the client
-            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
           type: string
         metadata:
           type: object
         spec:
           properties:
-            emailReceiver:
+            armRoleReceiver:
+              items:
+                properties:
+                  name:
+                    type: string
+                  roleID:
+                    type: string
+                  useCommonAlertSchema:
+                    type: boolean
+                required:
+                - name
+                - roleID
+                type: object
+              type: array
+            automationRunbookReceiver:
+              items:
+                properties:
+                  automationAccountID:
+                    type: string
+                  isGlobalRunbook:
+                    type: boolean
+                  name:
+                    type: string
+                  runbookName:
+                    type: string
+                  serviceURI:
+                    type: string
+                  useCommonAlertSchema:
+                    type: boolean
+                  webhookResourceID:
+                    type: string
+                required:
+                - automationAccountID
+                - isGlobalRunbook
+                - name
+                - runbookName
+                - serviceURI
+                - webhookResourceID
+                type: object
+              type: array
+            azureAppPushReceiver:
               items:
                 properties:
                   emailAddress:
@@ -48,10 +88,82 @@ spec:
                 - name
                 type: object
               type: array
+            azureFunctionReceiver:
+              items:
+                properties:
+                  functionAppResourceID:
+                    type: string
+                  functionName:
+                    type: string
+                  httpTriggerURL:
+                    type: string
+                  name:
+                    type: string
+                  useCommonAlertSchema:
+                    type: boolean
+                required:
+                - functionAppResourceID
+                - functionName
+                - httpTriggerURL
+                - name
+                type: object
+              type: array
+            emailReceiver:
+              items:
+                properties:
+                  emailAddress:
+                    type: string
+                  name:
+                    type: string
+                  useCommonAlertSchema:
+                    type: boolean
+                required:
+                - emailAddress
+                - name
+                type: object
+              type: array
             enabled:
               type: boolean
             id:
               type: string
+            itsmReceiver:
+              items:
+                properties:
+                  connectionID:
+                    type: string
+                  name:
+                    type: string
+                  region:
+                    type: string
+                  ticketConfiguration:
+                    type: string
+                  workspaceID:
+                    type: string
+                required:
+                - connectionID
+                - name
+                - region
+                - ticketConfiguration
+                - workspaceID
+                type: object
+              type: array
+            logicAppReceiver:
+              items:
+                properties:
+                  callbackURL:
+                    type: string
+                  name:
+                    type: string
+                  resourceID:
+                    type: string
+                  useCommonAlertSchema:
+                    type: boolean
+                required:
+                - callbackURL
+                - name
+                - resourceID
+                type: object
+              type: array
             name:
               type: string
             providerRef:
@@ -86,6 +198,21 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            voiceReceiver:
+              items:
+                properties:
+                  countryCode:
+                    type: string
+                  name:
+                    type: string
+                  phoneNumber:
+                    type: string
+                required:
+                - countryCode
+                - name
+                - phoneNumber
+                type: object
+              type: array
             webhookReceiver:
               items:
                 properties:
@@ -93,6 +220,8 @@ spec:
                     type: string
                   serviceURI:
                     type: string
+                  useCommonAlertSchema:
+                    type: boolean
                 required:
                 - name
                 - serviceURI
@@ -113,7 +242,47 @@ spec:
               type: integer
             output:
               properties:
-                emailReceiver:
+                armRoleReceiver:
+                  items:
+                    properties:
+                      name:
+                        type: string
+                      roleID:
+                        type: string
+                      useCommonAlertSchema:
+                        type: boolean
+                    required:
+                    - name
+                    - roleID
+                    type: object
+                  type: array
+                automationRunbookReceiver:
+                  items:
+                    properties:
+                      automationAccountID:
+                        type: string
+                      isGlobalRunbook:
+                        type: boolean
+                      name:
+                        type: string
+                      runbookName:
+                        type: string
+                      serviceURI:
+                        type: string
+                      useCommonAlertSchema:
+                        type: boolean
+                      webhookResourceID:
+                        type: string
+                    required:
+                    - automationAccountID
+                    - isGlobalRunbook
+                    - name
+                    - runbookName
+                    - serviceURI
+                    - webhookResourceID
+                    type: object
+                  type: array
+                azureAppPushReceiver:
                   items:
                     properties:
                       emailAddress:
@@ -125,10 +294,82 @@ spec:
                     - name
                     type: object
                   type: array
+                azureFunctionReceiver:
+                  items:
+                    properties:
+                      functionAppResourceID:
+                        type: string
+                      functionName:
+                        type: string
+                      httpTriggerURL:
+                        type: string
+                      name:
+                        type: string
+                      useCommonAlertSchema:
+                        type: boolean
+                    required:
+                    - functionAppResourceID
+                    - functionName
+                    - httpTriggerURL
+                    - name
+                    type: object
+                  type: array
+                emailReceiver:
+                  items:
+                    properties:
+                      emailAddress:
+                        type: string
+                      name:
+                        type: string
+                      useCommonAlertSchema:
+                        type: boolean
+                    required:
+                    - emailAddress
+                    - name
+                    type: object
+                  type: array
                 enabled:
                   type: boolean
                 id:
                   type: string
+                itsmReceiver:
+                  items:
+                    properties:
+                      connectionID:
+                        type: string
+                      name:
+                        type: string
+                      region:
+                        type: string
+                      ticketConfiguration:
+                        type: string
+                      workspaceID:
+                        type: string
+                    required:
+                    - connectionID
+                    - name
+                    - region
+                    - ticketConfiguration
+                    - workspaceID
+                    type: object
+                  type: array
+                logicAppReceiver:
+                  items:
+                    properties:
+                      callbackURL:
+                        type: string
+                      name:
+                        type: string
+                      resourceID:
+                        type: string
+                      useCommonAlertSchema:
+                        type: boolean
+                    required:
+                    - callbackURL
+                    - name
+                    - resourceID
+                    type: object
+                  type: array
                 name:
                   type: string
                 providerRef:
@@ -163,6 +404,21 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                voiceReceiver:
+                  items:
+                    properties:
+                      countryCode:
+                        type: string
+                      name:
+                        type: string
+                      phoneNumber:
+                        type: string
+                    required:
+                    - countryCode
+                    - name
+                    - phoneNumber
+                    type: object
+                  type: array
                 webhookReceiver:
                   items:
                     properties:
@@ -170,6 +426,8 @@ spec:
                         type: string
                       serviceURI:
                         type: string
+                      useCommonAlertSchema:
+                        type: boolean
                     required:
                     - name
                     - serviceURI

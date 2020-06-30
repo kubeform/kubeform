@@ -48,10 +48,14 @@ type RoleAssignmentSpec struct {
 	Name        string `json:"name,omitempty" tf:"name,omitempty"`
 	PrincipalID string `json:"principalID" tf:"principal_id"`
 	// +optional
+	PrincipalType string `json:"principalType,omitempty" tf:"principal_type,omitempty"`
+	// +optional
 	RoleDefinitionID string `json:"roleDefinitionID,omitempty" tf:"role_definition_id,omitempty"`
 	// +optional
 	RoleDefinitionName string `json:"roleDefinitionName,omitempty" tf:"role_definition_name,omitempty"`
 	Scope              string `json:"scope" tf:"scope"`
+	// +optional
+	SkipServicePrincipalAadCheck bool `json:"skipServicePrincipalAadCheck,omitempty" tf:"skip_service_principal_aad_check,omitempty"`
 }
 
 type RoleAssignmentStatus struct {

@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/linode/linodego"
 )
 
@@ -60,7 +60,6 @@ func dataSourceLinodeProfile() *schema.Resource {
 			},
 			"referrals": {
 				Type:        schema.TypeList,
-				MaxItems:    1,
 				Description: "Credit Card information associated with this Account.",
 				Computed:    true,
 				Elem: &schema.Resource{
@@ -111,19 +110,14 @@ func dataSourceLinodeProfileRead(d *schema.ResourceData, meta interface{}) error
 	}
 
 	d.SetId(fmt.Sprintf("%d", profile.UID))
-	if err := d.Set("referrals", flattenProfileReferrals(profile.Referrals)); err != nil {
-		return fmt.Errorf("Error parsing profile referrals: %s", err)
-	}
-
+	d.Set("referrals", flattenProfileReferrals(profile.Referrals))
 	d.Set("email", profile.Email)
 	d.Set("timezone", profile.Timezone)
 	d.Set("email_notifications", profile.EmailNotifications)
 	d.Set("username", profile.Username)
 	d.Set("ip_whitelist_enabled", profile.IPWhitelistEnabled)
 	d.Set("lish_auth_method", profile.LishAuthMethod)
-	if err := d.Set("authorized_keys", profile.AuthorizedKeys); err != nil {
-		return fmt.Errorf("Error parsing authorized_keys: %s", err)
-	}
+	d.Set("authorized_keys", profile.AuthorizedKeys)
 	d.Set("two_factor_auth", profile.TwoFactorAuth)
 	d.Set("restricted", profile.Restricted)
 

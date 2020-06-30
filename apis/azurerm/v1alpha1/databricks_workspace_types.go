@@ -39,12 +39,26 @@ type DatabricksWorkspace struct {
 	Status            DatabricksWorkspaceStatus `json:"status,omitempty"`
 }
 
+type DatabricksWorkspaceSpecCustomParameters struct {
+	// +optional
+	NoPublicIP bool `json:"noPublicIP,omitempty" tf:"no_public_ip,omitempty"`
+	// +optional
+	PrivateSubnetName string `json:"privateSubnetName,omitempty" tf:"private_subnet_name,omitempty"`
+	// +optional
+	PublicSubnetName string `json:"publicSubnetName,omitempty" tf:"public_subnet_name,omitempty"`
+	// +optional
+	VirtualNetworkID string `json:"virtualNetworkID,omitempty" tf:"virtual_network_id,omitempty"`
+}
+
 type DatabricksWorkspaceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	Location string `json:"location" tf:"location"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	CustomParameters []DatabricksWorkspaceSpecCustomParameters `json:"customParameters,omitempty" tf:"custom_parameters,omitempty"`
+	Location         string                                    `json:"location" tf:"location"`
 	// +optional
 	ManagedResourceGroupID string `json:"managedResourceGroupID,omitempty" tf:"managed_resource_group_id,omitempty"`
 	// +optional

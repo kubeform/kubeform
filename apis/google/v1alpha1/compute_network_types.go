@@ -47,6 +47,8 @@ type ComputeNetworkSpec struct {
 	// +optional
 	AutoCreateSubnetworks bool `json:"autoCreateSubnetworks,omitempty" tf:"auto_create_subnetworks,omitempty"`
 	// +optional
+	DeleteDefaultRoutesOnCreate bool `json:"deleteDefaultRoutesOnCreate,omitempty" tf:"delete_default_routes_on_create,omitempty"`
+	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
 	GatewayIpv4 string `json:"gatewayIpv4,omitempty" tf:"gateway_ipv4,omitempty"`

@@ -76,7 +76,6 @@ type MssqlElasticpoolSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	// +kubebuilder:validation:MaxItems=1
 	// Deprecated
 	ElasticPoolProperties []MssqlElasticpoolSpecElasticPoolProperties `json:"elasticPoolProperties,omitempty" tf:"elastic_pool_properties,omitempty"`
 	Location              string                                      `json:"location" tf:"location"`

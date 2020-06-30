@@ -25,12 +25,12 @@ spec:
         apiVersion:
           description: 'APIVersion defines the versioned schema of this representation
             of an object. Servers should convert recognized schemas to the latest
-            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
           type: string
         kind:
           description: 'Kind is a string value representing the REST resource this
             object represents. Servers may infer this from the endpoint the client
-            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
           type: string
         metadata:
           type: object
@@ -78,6 +78,9 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            maxInstances:
+              format: int64
+              type: integer
             name:
               type: string
             project:
@@ -93,31 +96,36 @@ spec:
               type: object
             region:
               type: string
-            retryOnFailure:
-              description: Deprecated
-              type: boolean
             runtime:
+              type: string
+            serviceAccountEmail:
               type: string
             sourceArchiveBucket:
               type: string
             sourceArchiveObject:
               type: string
+            sourceRepository:
+              items:
+                properties:
+                  deployedURL:
+                    type: string
+                  url:
+                    type: string
+                required:
+                - url
+                type: object
+              maxItems: 1
+              type: array
             timeout:
               format: int64
               type: integer
-            triggerBucket:
-              description: Deprecated
-              type: string
             triggerHTTP:
               type: boolean
-            triggerTopic:
-              description: Deprecated
+            vpcConnector:
               type: string
           required:
           - name
           - providerRef
-          - sourceArchiveBucket
-          - sourceArchiveObject
           type: object
         status:
           properties:
@@ -170,6 +178,9 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                maxInstances:
+                  format: int64
+                  type: integer
                 name:
                   type: string
                 project:
@@ -185,31 +196,36 @@ spec:
                   type: object
                 region:
                   type: string
-                retryOnFailure:
-                  description: Deprecated
-                  type: boolean
                 runtime:
+                  type: string
+                serviceAccountEmail:
                   type: string
                 sourceArchiveBucket:
                   type: string
                 sourceArchiveObject:
                   type: string
+                sourceRepository:
+                  items:
+                    properties:
+                      deployedURL:
+                        type: string
+                      url:
+                        type: string
+                    required:
+                    - url
+                    type: object
+                  maxItems: 1
+                  type: array
                 timeout:
                   format: int64
                   type: integer
-                triggerBucket:
-                  description: Deprecated
-                  type: string
                 triggerHTTP:
                   type: boolean
-                triggerTopic:
-                  description: Deprecated
+                vpcConnector:
                   type: string
               required:
               - name
               - providerRef
-              - sourceArchiveBucket
-              - sourceArchiveObject
               type: object
             phase:
               type: string

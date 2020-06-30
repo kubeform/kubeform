@@ -25,12 +25,12 @@ spec:
         apiVersion:
           description: 'APIVersion defines the versioned schema of this representation
             of an object. Servers should convert recognized schemas to the latest
-            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
           type: string
         kind:
           description: 'Kind is a string value representing the REST resource this
             object represents. Servers may infer this from the endpoint the client
-            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
           type: string
         metadata:
           type: object
@@ -41,6 +41,7 @@ spec:
             id:
               type: string
             loggingInfo:
+              description: Deprecated
               items:
                 properties:
                   s3BucketName:
@@ -73,6 +74,15 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            secretRef:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             serviceRoleArn:
               type: string
             targets:
@@ -91,7 +101,103 @@ spec:
               type: array
             taskArn:
               type: string
+            taskInvocationParameters:
+              items:
+                properties:
+                  automationParameters:
+                    items:
+                      properties:
+                        documentVersion:
+                          type: string
+                        parameter:
+                          items:
+                            properties:
+                              name:
+                                type: string
+                              values:
+                                items:
+                                  type: string
+                                type: array
+                            required:
+                            - name
+                            - values
+                            type: object
+                          type: array
+                      type: object
+                    maxItems: 1
+                    type: array
+                  lambdaParameters:
+                    items:
+                      properties:
+                        clientContext:
+                          type: string
+                        qualifier:
+                          type: string
+                      type: object
+                    maxItems: 1
+                    type: array
+                  runCommandParameters:
+                    items:
+                      properties:
+                        comment:
+                          type: string
+                        documentHash:
+                          type: string
+                        documentHashType:
+                          type: string
+                        notificationConfig:
+                          items:
+                            properties:
+                              notificationArn:
+                                type: string
+                              notificationEvents:
+                                items:
+                                  type: string
+                                type: array
+                              notificationType:
+                                type: string
+                            type: object
+                          maxItems: 1
+                          type: array
+                        outputS3Bucket:
+                          type: string
+                        outputS3KeyPrefix:
+                          type: string
+                        parameter:
+                          items:
+                            properties:
+                              name:
+                                type: string
+                              values:
+                                items:
+                                  type: string
+                                type: array
+                            required:
+                            - name
+                            - values
+                            type: object
+                          type: array
+                        serviceRoleArn:
+                          type: string
+                        timeoutSeconds:
+                          format: int64
+                          type: integer
+                      type: object
+                    maxItems: 1
+                    type: array
+                  stepFunctionsParameters:
+                    items:
+                      properties:
+                        name:
+                          type: string
+                      type: object
+                    maxItems: 1
+                    type: array
+                type: object
+              maxItems: 1
+              type: array
             taskParameters:
+              description: Deprecated
               items:
                 properties:
                   name:
@@ -133,6 +239,7 @@ spec:
                 id:
                   type: string
                 loggingInfo:
+                  description: Deprecated
                   items:
                     properties:
                       s3BucketName:
@@ -165,6 +272,15 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                secretRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
                 serviceRoleArn:
                   type: string
                 targets:
@@ -183,7 +299,103 @@ spec:
                   type: array
                 taskArn:
                   type: string
+                taskInvocationParameters:
+                  items:
+                    properties:
+                      automationParameters:
+                        items:
+                          properties:
+                            documentVersion:
+                              type: string
+                            parameter:
+                              items:
+                                properties:
+                                  name:
+                                    type: string
+                                  values:
+                                    items:
+                                      type: string
+                                    type: array
+                                required:
+                                - name
+                                - values
+                                type: object
+                              type: array
+                          type: object
+                        maxItems: 1
+                        type: array
+                      lambdaParameters:
+                        items:
+                          properties:
+                            clientContext:
+                              type: string
+                            qualifier:
+                              type: string
+                          type: object
+                        maxItems: 1
+                        type: array
+                      runCommandParameters:
+                        items:
+                          properties:
+                            comment:
+                              type: string
+                            documentHash:
+                              type: string
+                            documentHashType:
+                              type: string
+                            notificationConfig:
+                              items:
+                                properties:
+                                  notificationArn:
+                                    type: string
+                                  notificationEvents:
+                                    items:
+                                      type: string
+                                    type: array
+                                  notificationType:
+                                    type: string
+                                type: object
+                              maxItems: 1
+                              type: array
+                            outputS3Bucket:
+                              type: string
+                            outputS3KeyPrefix:
+                              type: string
+                            parameter:
+                              items:
+                                properties:
+                                  name:
+                                    type: string
+                                  values:
+                                    items:
+                                      type: string
+                                    type: array
+                                required:
+                                - name
+                                - values
+                                type: object
+                              type: array
+                            serviceRoleArn:
+                              type: string
+                            timeoutSeconds:
+                              format: int64
+                              type: integer
+                          type: object
+                        maxItems: 1
+                        type: array
+                      stepFunctionsParameters:
+                        items:
+                          properties:
+                            name:
+                              type: string
+                          type: object
+                        maxItems: 1
+                        type: array
+                    type: object
+                  maxItems: 1
+                  type: array
                 taskParameters:
+                  description: Deprecated
                   items:
                     properties:
                       name:

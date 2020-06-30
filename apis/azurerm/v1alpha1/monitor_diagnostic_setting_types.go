@@ -79,6 +79,8 @@ type MonitorDiagnosticSettingSpec struct {
 	// +optional
 	Log []MonitorDiagnosticSettingSpecLog `json:"log,omitempty" tf:"log,omitempty"`
 	// +optional
+	LogAnalyticsDestinationType string `json:"logAnalyticsDestinationType,omitempty" tf:"log_analytics_destination_type,omitempty"`
+	// +optional
 	LogAnalyticsWorkspaceID string `json:"logAnalyticsWorkspaceID,omitempty" tf:"log_analytics_workspace_id,omitempty"`
 	// +optional
 	Metric []MonitorDiagnosticSettingSpecMetric `json:"metric,omitempty" tf:"metric,omitempty"`

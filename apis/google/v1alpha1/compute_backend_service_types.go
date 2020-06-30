@@ -51,9 +51,13 @@ type ComputeBackendServiceSpecBackend struct {
 	// +optional
 	MaxConnections int64 `json:"maxConnections,omitempty" tf:"max_connections,omitempty"`
 	// +optional
+	MaxConnectionsPerEndpoint int64 `json:"maxConnectionsPerEndpoint,omitempty" tf:"max_connections_per_endpoint,omitempty"`
+	// +optional
 	MaxConnectionsPerInstance int64 `json:"maxConnectionsPerInstance,omitempty" tf:"max_connections_per_instance,omitempty"`
 	// +optional
 	MaxRate int64 `json:"maxRate,omitempty" tf:"max_rate,omitempty"`
+	// +optional
+	MaxRatePerEndpoint float64 `json:"maxRatePerEndpoint,omitempty" tf:"max_rate_per_endpoint,omitempty"`
 	// +optional
 	MaxRatePerInstance float64 `json:"maxRatePerInstance,omitempty" tf:"max_rate_per_instance,omitempty"`
 	// +optional
@@ -77,11 +81,15 @@ type ComputeBackendServiceSpecCdnPolicy struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	CacheKeyPolicy []ComputeBackendServiceSpecCdnPolicyCacheKeyPolicy `json:"cacheKeyPolicy,omitempty" tf:"cache_key_policy,omitempty"`
+	// +optional
+	SignedURLCacheMaxAgeSec int64 `json:"signedURLCacheMaxAgeSec,omitempty" tf:"signed_url_cache_max_age_sec,omitempty"`
 }
 
 type ComputeBackendServiceSpecIap struct {
 	Oauth2ClientID     string `json:"oauth2ClientID" tf:"oauth2_client_id"`
 	Oauth2ClientSecret string `json:"-" sensitive:"true" tf:"oauth2_client_secret"`
+	// +optional
+	Oauth2ClientSecretSha256 string `json:"-" sensitive:"true" tf:"oauth2_client_secret_sha256,omitempty"`
 }
 
 type ComputeBackendServiceSpec struct {
@@ -92,6 +100,8 @@ type ComputeBackendServiceSpec struct {
 	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	// +optional
+	AffinityCookieTtlSec int64 `json:"affinityCookieTtlSec,omitempty" tf:"affinity_cookie_ttl_sec,omitempty"`
+	// +optional
 	Backend []ComputeBackendServiceSpecBackend `json:"backend,omitempty" tf:"backend,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -99,8 +109,7 @@ type ComputeBackendServiceSpec struct {
 	// +optional
 	ConnectionDrainingTimeoutSec int64 `json:"connectionDrainingTimeoutSec,omitempty" tf:"connection_draining_timeout_sec,omitempty"`
 	// +optional
-	// Deprecated
-	CustomRequestHeaders []string `json:"customRequestHeaders,omitempty" tf:"custom_request_headers,omitempty"`
+	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -112,8 +121,10 @@ type ComputeBackendServiceSpec struct {
 	HealthChecks []string `json:"healthChecks" tf:"health_checks"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	Iap  []ComputeBackendServiceSpecIap `json:"iap,omitempty" tf:"iap,omitempty"`
-	Name string                         `json:"name" tf:"name"`
+	Iap []ComputeBackendServiceSpecIap `json:"iap,omitempty" tf:"iap,omitempty"`
+	// +optional
+	LoadBalancingScheme string `json:"loadBalancingScheme,omitempty" tf:"load_balancing_scheme,omitempty"`
+	Name                string `json:"name" tf:"name"`
 	// +optional
 	PortName string `json:"portName,omitempty" tf:"port_name,omitempty"`
 	// +optional

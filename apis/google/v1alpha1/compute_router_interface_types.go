@@ -45,14 +45,17 @@ type ComputeRouterInterfaceSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
+	InterconnectAttachment string `json:"interconnectAttachment,omitempty" tf:"interconnect_attachment,omitempty"`
+	// +optional
 	IpRange string `json:"ipRange,omitempty" tf:"ip_range,omitempty"`
 	Name    string `json:"name" tf:"name"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	Region    string `json:"region,omitempty" tf:"region,omitempty"`
-	Router    string `json:"router" tf:"router"`
-	VpnTunnel string `json:"vpnTunnel" tf:"vpn_tunnel"`
+	Region string `json:"region,omitempty" tf:"region,omitempty"`
+	Router string `json:"router" tf:"router"`
+	// +optional
+	VpnTunnel string `json:"vpnTunnel,omitempty" tf:"vpn_tunnel,omitempty"`
 }
 
 type ComputeRouterInterfaceStatus struct {

@@ -46,7 +46,11 @@ type AutomationCredentialSpec struct {
 
 	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
-	AccountName string `json:"accountName" tf:"account_name"`
+	// +optional
+	// Deprecated
+	AccountName string `json:"accountName,omitempty" tf:"account_name,omitempty"`
+	// +optional
+	AutomationAccountName string `json:"automationAccountName,omitempty" tf:"automation_account_name,omitempty"`
 	// +optional
 	Description       string `json:"description,omitempty" tf:"description,omitempty"`
 	Name              string `json:"name" tf:"name"`

@@ -18,13 +18,37 @@ limitations under the License.
 
 package v1alpha1
 
+type AccessContextManagerAccessLevelExpansion interface{}
+
+type AccessContextManagerAccessPolicyExpansion interface{}
+
+type AccessContextManagerServicePerimeterExpansion interface{}
+
 type AppEngineApplicationExpansion interface{}
+
+type AppEngineDomainMappingExpansion interface{}
+
+type AppEngineFirewallRuleExpansion interface{}
+
+type AppEngineStandardAppVersionExpansion interface{}
+
+type BigqueryDataTransferConfigExpansion interface{}
 
 type BigqueryDatasetExpansion interface{}
 
 type BigqueryTableExpansion interface{}
 
+type BigtableAppProfileExpansion interface{}
+
+type BigtableGcPolicyExpansion interface{}
+
 type BigtableInstanceExpansion interface{}
+
+type BigtableInstanceIamBindingExpansion interface{}
+
+type BigtableInstanceIamMemberExpansion interface{}
+
+type BigtableInstanceIamPolicyExpansion interface{}
 
 type BigtableTableExpansion interface{}
 
@@ -36,11 +60,25 @@ type BillingAccountIamPolicyExpansion interface{}
 
 type BinaryAuthorizationAttestorExpansion interface{}
 
+type BinaryAuthorizationAttestorIamBindingExpansion interface{}
+
+type BinaryAuthorizationAttestorIamMemberExpansion interface{}
+
+type BinaryAuthorizationAttestorIamPolicyExpansion interface{}
+
 type BinaryAuthorizationPolicyExpansion interface{}
+
+type CloudSchedulerJobExpansion interface{}
 
 type CloudbuildTriggerExpansion interface{}
 
 type CloudfunctionsFunctionExpansion interface{}
+
+type CloudfunctionsFunctionIamBindingExpansion interface{}
+
+type CloudfunctionsFunctionIamMemberExpansion interface{}
+
+type CloudfunctionsFunctionIamPolicyExpansion interface{}
 
 type CloudiotRegistryExpansion interface{}
 
@@ -54,9 +92,15 @@ type ComputeAutoscalerExpansion interface{}
 
 type ComputeBackendBucketExpansion interface{}
 
+type ComputeBackendBucketSignedURLKeyExpansion interface{}
+
 type ComputeBackendServiceExpansion interface{}
 
+type ComputeBackendServiceSignedURLKeyExpansion interface{}
+
 type ComputeDiskExpansion interface{}
+
+type ComputeDiskResourcePolicyAttachmentExpansion interface{}
 
 type ComputeFirewallExpansion interface{}
 
@@ -82,13 +126,29 @@ type ComputeInstanceGroupExpansion interface{}
 
 type ComputeInstanceGroupManagerExpansion interface{}
 
+type ComputeInstanceIamBindingExpansion interface{}
+
+type ComputeInstanceIamMemberExpansion interface{}
+
+type ComputeInstanceIamPolicyExpansion interface{}
+
 type ComputeInstanceTemplateExpansion interface{}
 
 type ComputeInterconnectAttachmentExpansion interface{}
 
 type ComputeNetworkExpansion interface{}
 
+type ComputeNetworkEndpointExpansion interface{}
+
+type ComputeNetworkEndpointGroupExpansion interface{}
+
 type ComputeNetworkPeeringExpansion interface{}
+
+type ComputeNodeGroupExpansion interface{}
+
+type ComputeNodeTemplateExpansion interface{}
+
+type ComputeProjectDefaultNetworkTierExpansion interface{}
 
 type ComputeProjectMetadataExpansion interface{}
 
@@ -101,6 +161,10 @@ type ComputeRegionBackendServiceExpansion interface{}
 type ComputeRegionDiskExpansion interface{}
 
 type ComputeRegionInstanceGroupManagerExpansion interface{}
+
+type ComputeReservationExpansion interface{}
+
+type ComputeResourcePolicyExpansion interface{}
 
 type ComputeRouteExpansion interface{}
 
@@ -136,6 +200,8 @@ type ComputeTargetHTTPProxyExpansion interface{}
 
 type ComputeTargetHTTPSProxyExpansion interface{}
 
+type ComputeTargetInstanceExpansion interface{}
+
 type ComputeTargetPoolExpansion interface{}
 
 type ComputeTargetSSLProxyExpansion interface{}
@@ -158,7 +224,19 @@ type DataflowJobExpansion interface{}
 
 type DataprocClusterExpansion interface{}
 
+type DataprocClusterIamBindingExpansion interface{}
+
+type DataprocClusterIamMemberExpansion interface{}
+
+type DataprocClusterIamPolicyExpansion interface{}
+
 type DataprocJobExpansion interface{}
+
+type DataprocJobIamBindingExpansion interface{}
+
+type DataprocJobIamMemberExpansion interface{}
+
+type DataprocJobIamPolicyExpansion interface{}
 
 type DnsManagedZoneExpansion interface{}
 
@@ -167,6 +245,8 @@ type DnsRecordSetExpansion interface{}
 type EndpointsServiceExpansion interface{}
 
 type FilestoreInstanceExpansion interface{}
+
+type FirestoreIndexExpansion interface{}
 
 type FolderExpansion interface{}
 
@@ -177,6 +257,42 @@ type FolderIamMemberExpansion interface{}
 type FolderIamPolicyExpansion interface{}
 
 type FolderOrganizationPolicyExpansion interface{}
+
+type IapAppEngineServiceIamBindingExpansion interface{}
+
+type IapAppEngineServiceIamMemberExpansion interface{}
+
+type IapAppEngineServiceIamPolicyExpansion interface{}
+
+type IapAppEngineVersionIamBindingExpansion interface{}
+
+type IapAppEngineVersionIamMemberExpansion interface{}
+
+type IapAppEngineVersionIamPolicyExpansion interface{}
+
+type IapWebBackendServiceIamBindingExpansion interface{}
+
+type IapWebBackendServiceIamMemberExpansion interface{}
+
+type IapWebBackendServiceIamPolicyExpansion interface{}
+
+type IapWebIamBindingExpansion interface{}
+
+type IapWebIamMemberExpansion interface{}
+
+type IapWebIamPolicyExpansion interface{}
+
+type IapWebTypeAppEngineIamBindingExpansion interface{}
+
+type IapWebTypeAppEngineIamMemberExpansion interface{}
+
+type IapWebTypeAppEngineIamPolicyExpansion interface{}
+
+type IapWebTypeComputeIamBindingExpansion interface{}
+
+type IapWebTypeComputeIamMemberExpansion interface{}
+
+type IapWebTypeComputeIamPolicyExpansion interface{}
 
 type KmsCryptoKeyExpansion interface{}
 
@@ -200,6 +316,8 @@ type LoggingFolderExclusionExpansion interface{}
 
 type LoggingFolderSinkExpansion interface{}
 
+type LoggingMetricExpansion interface{}
+
 type LoggingOrganizationExclusionExpansion interface{}
 
 type LoggingOrganizationSinkExpansion interface{}
@@ -207,6 +325,8 @@ type LoggingOrganizationSinkExpansion interface{}
 type LoggingProjectExclusionExpansion interface{}
 
 type LoggingProjectSinkExpansion interface{}
+
+type MlEngineModelExpansion interface{}
 
 type MonitoringAlertPolicyExpansion interface{}
 
@@ -227,6 +347,8 @@ type OrganizationIamPolicyExpansion interface{}
 type OrganizationPolicyExpansion interface{}
 
 type ProjectExpansion interface{}
+
+type ProjectIamAuditConfigExpansion interface{}
 
 type ProjectIamBindingExpansion interface{}
 
@@ -266,7 +388,15 @@ type ResourceManagerLienExpansion interface{}
 
 type RuntimeconfigConfigExpansion interface{}
 
+type RuntimeconfigConfigIamBindingExpansion interface{}
+
+type RuntimeconfigConfigIamMemberExpansion interface{}
+
+type RuntimeconfigConfigIamPolicyExpansion interface{}
+
 type RuntimeconfigVariableExpansion interface{}
+
+type SccSourceExpansion interface{}
 
 type ServiceAccountExpansion interface{}
 
@@ -278,7 +408,15 @@ type ServiceAccountIamPolicyExpansion interface{}
 
 type ServiceAccountKeyExpansion interface{}
 
+type ServiceNetworkingConnectionExpansion interface{}
+
 type SourcerepoRepositoryExpansion interface{}
+
+type SourcerepoRepositoryIamBindingExpansion interface{}
+
+type SourcerepoRepositoryIamMemberExpansion interface{}
+
+type SourcerepoRepositoryIamPolicyExpansion interface{}
 
 type SpannerDatabaseExpansion interface{}
 
@@ -308,6 +446,8 @@ type StorageBucketExpansion interface{}
 
 type StorageBucketACLExpansion interface{}
 
+type StorageBucketAccessControlExpansion interface{}
+
 type StorageBucketIamBindingExpansion interface{}
 
 type StorageBucketIamMemberExpansion interface{}
@@ -325,3 +465,7 @@ type StorageNotificationExpansion interface{}
 type StorageObjectACLExpansion interface{}
 
 type StorageObjectAccessControlExpansion interface{}
+
+type StorageTransferJobExpansion interface{}
+
+type TpuNodeExpansion interface{}

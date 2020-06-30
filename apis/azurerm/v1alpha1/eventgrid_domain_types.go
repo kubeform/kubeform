@@ -68,6 +68,8 @@ type EventgridDomainSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
+
 	// +optional
 	Endpoint string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
 	// +optional
@@ -77,10 +79,14 @@ type EventgridDomainSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	InputMappingFields []EventgridDomainSpecInputMappingFields `json:"inputMappingFields,omitempty" tf:"input_mapping_fields,omitempty"`
 	// +optional
-	InputSchema       string `json:"inputSchema,omitempty" tf:"input_schema,omitempty"`
-	Location          string `json:"location" tf:"location"`
-	Name              string `json:"name" tf:"name"`
+	InputSchema string `json:"inputSchema,omitempty" tf:"input_schema,omitempty"`
+	Location    string `json:"location" tf:"location"`
+	Name        string `json:"name" tf:"name"`
+	// +optional
+	PrimaryAccessKey  string `json:"-" sensitive:"true" tf:"primary_access_key,omitempty"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	SecondaryAccessKey string `json:"-" sensitive:"true" tf:"secondary_access_key,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

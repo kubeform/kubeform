@@ -51,6 +51,12 @@ type CloudfunctionsFunctionSpecEventTrigger struct {
 	Resource      string                                                `json:"resource" tf:"resource"`
 }
 
+type CloudfunctionsFunctionSpecSourceRepository struct {
+	// +optional
+	DeployedURL string `json:"deployedURL,omitempty" tf:"deployed_url,omitempty"`
+	Url         string `json:"url" tf:"url"`
+}
+
 type CloudfunctionsFunctionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
@@ -71,28 +77,30 @@ type CloudfunctionsFunctionSpec struct {
 	HttpsTriggerURL string `json:"httpsTriggerURL,omitempty" tf:"https_trigger_url,omitempty"`
 	// +optional
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
-	Name   string            `json:"name" tf:"name"`
+	// +optional
+	MaxInstances int64  `json:"maxInstances,omitempty" tf:"max_instances,omitempty"`
+	Name         string `json:"name" tf:"name"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
 	Region string `json:"region,omitempty" tf:"region,omitempty"`
 	// +optional
-	// Deprecated
-	RetryOnFailure bool `json:"retryOnFailure,omitempty" tf:"retry_on_failure,omitempty"`
+	Runtime string `json:"runtime,omitempty" tf:"runtime,omitempty"`
 	// +optional
-	Runtime             string `json:"runtime,omitempty" tf:"runtime,omitempty"`
-	SourceArchiveBucket string `json:"sourceArchiveBucket" tf:"source_archive_bucket"`
-	SourceArchiveObject string `json:"sourceArchiveObject" tf:"source_archive_object"`
+	ServiceAccountEmail string `json:"serviceAccountEmail,omitempty" tf:"service_account_email,omitempty"`
+	// +optional
+	SourceArchiveBucket string `json:"sourceArchiveBucket,omitempty" tf:"source_archive_bucket,omitempty"`
+	// +optional
+	SourceArchiveObject string `json:"sourceArchiveObject,omitempty" tf:"source_archive_object,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	SourceRepository []CloudfunctionsFunctionSpecSourceRepository `json:"sourceRepository,omitempty" tf:"source_repository,omitempty"`
 	// +optional
 	Timeout int64 `json:"timeout,omitempty" tf:"timeout,omitempty"`
 	// +optional
-	// Deprecated
-	TriggerBucket string `json:"triggerBucket,omitempty" tf:"trigger_bucket,omitempty"`
-	// +optional
 	TriggerHTTP bool `json:"triggerHTTP,omitempty" tf:"trigger_http,omitempty"`
 	// +optional
-	// Deprecated
-	TriggerTopic string `json:"triggerTopic,omitempty" tf:"trigger_topic,omitempty"`
+	VpcConnector string `json:"vpcConnector,omitempty" tf:"vpc_connector,omitempty"`
 }
 
 type CloudfunctionsFunctionStatus struct {

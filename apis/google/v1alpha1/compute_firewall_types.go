@@ -69,12 +69,9 @@ type ComputeFirewallSpec struct {
 	// +optional
 	Direction string `json:"direction,omitempty" tf:"direction,omitempty"`
 	// +optional
-	Disabled bool `json:"disabled,omitempty" tf:"disabled,omitempty"`
-	// +optional
-	// Deprecated
-	EnableLogging bool   `json:"enableLogging,omitempty" tf:"enable_logging,omitempty"`
-	Name          string `json:"name" tf:"name"`
-	Network       string `json:"network" tf:"network"`
+	Disabled bool   `json:"disabled,omitempty" tf:"disabled,omitempty"`
+	Name     string `json:"name" tf:"name"`
+	Network  string `json:"network" tf:"network"`
 	// +optional
 	Priority int64 `json:"priority,omitempty" tf:"priority,omitempty"`
 	// +optional
@@ -84,12 +81,12 @@ type ComputeFirewallSpec struct {
 	// +optional
 	SourceRanges []string `json:"sourceRanges,omitempty" tf:"source_ranges,omitempty"`
 	// +optional
-	// +kubebuilder:validation:MaxItems=1
+	// +kubebuilder:validation:MaxItems=10
 	SourceServiceAccounts []string `json:"sourceServiceAccounts,omitempty" tf:"source_service_accounts,omitempty"`
 	// +optional
 	SourceTags []string `json:"sourceTags,omitempty" tf:"source_tags,omitempty"`
 	// +optional
-	// +kubebuilder:validation:MaxItems=1
+	// +kubebuilder:validation:MaxItems=10
 	TargetServiceAccounts []string `json:"targetServiceAccounts,omitempty" tf:"target_service_accounts,omitempty"`
 	// +optional
 	TargetTags []string `json:"targetTags,omitempty" tf:"target_tags,omitempty"`

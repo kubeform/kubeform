@@ -25,12 +25,12 @@ spec:
         apiVersion:
           description: 'APIVersion defines the versioned schema of this representation
             of an object. Servers should convert recognized schemas to the latest
-            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
           type: string
         kind:
           description: 'Kind is a string value representing the REST resource this
             object represents. Servers may infer this from the endpoint the client
-            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
           type: string
         metadata:
           type: object
@@ -166,6 +166,11 @@ spec:
             identity:
               items:
                 properties:
+                  identityIDS:
+                    items:
+                      type: string
+                    minItems: 1
+                    type: array
                   principalID:
                     type: string
                   tenantID:
@@ -212,10 +217,41 @@ spec:
                 properties:
                   alwaysOn:
                     type: boolean
+                  cors:
+                    items:
+                      properties:
+                        allowedOrigins:
+                          items:
+                            type: string
+                          type: array
+                        supportCredentials:
+                          type: boolean
+                      required:
+                      - allowedOrigins
+                      type: object
+                    maxItems: 1
+                    type: array
+                  ftpsState:
+                    type: string
+                  http2Enabled:
+                    type: boolean
+                  ipRestriction:
+                    items:
+                      properties:
+                        ipAddress:
+                          type: string
+                        subnetID:
+                          type: string
+                      type: object
+                    type: array
                   linuxFxVersion:
+                    type: string
+                  minTLSVersion:
                     type: string
                   use32BitWorkerProcess:
                     type: boolean
+                  virtualNetworkName:
+                    type: string
                   websocketsEnabled:
                     type: boolean
                 type: object
@@ -227,7 +263,6 @@ spec:
                   username:
                     type: string
                 type: object
-              maxItems: 1
               type: array
             tags:
               additionalProperties:
@@ -381,6 +416,11 @@ spec:
                 identity:
                   items:
                     properties:
+                      identityIDS:
+                        items:
+                          type: string
+                        minItems: 1
+                        type: array
                       principalID:
                         type: string
                       tenantID:
@@ -427,10 +467,41 @@ spec:
                     properties:
                       alwaysOn:
                         type: boolean
+                      cors:
+                        items:
+                          properties:
+                            allowedOrigins:
+                              items:
+                                type: string
+                              type: array
+                            supportCredentials:
+                              type: boolean
+                          required:
+                          - allowedOrigins
+                          type: object
+                        maxItems: 1
+                        type: array
+                      ftpsState:
+                        type: string
+                      http2Enabled:
+                        type: boolean
+                      ipRestriction:
+                        items:
+                          properties:
+                            ipAddress:
+                              type: string
+                            subnetID:
+                              type: string
+                          type: object
+                        type: array
                       linuxFxVersion:
+                        type: string
+                      minTLSVersion:
                         type: string
                       use32BitWorkerProcess:
                         type: boolean
+                      virtualNetworkName:
+                        type: string
                       websocketsEnabled:
                         type: boolean
                     type: object
@@ -442,7 +513,6 @@ spec:
                       username:
                         type: string
                     type: object
-                  maxItems: 1
                   type: array
                 tags:
                   additionalProperties:

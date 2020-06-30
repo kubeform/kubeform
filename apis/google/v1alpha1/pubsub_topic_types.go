@@ -39,12 +39,23 @@ type PubsubTopic struct {
 	Status            PubsubTopicStatus `json:"status,omitempty"`
 }
 
+type PubsubTopicSpecMessageStoragePolicy struct {
+	AllowedPersistenceRegions []string `json:"allowedPersistenceRegions" tf:"allowed_persistence_regions"`
+}
+
 type PubsubTopicSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	Name string `json:"name" tf:"name"`
+	// +optional
+	KmsKeyName string `json:"kmsKeyName,omitempty" tf:"kms_key_name,omitempty"`
+	// +optional
+	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	MessageStoragePolicy []PubsubTopicSpecMessageStoragePolicy `json:"messageStoragePolicy,omitempty" tf:"message_storage_policy,omitempty"`
+	Name                 string                                `json:"name" tf:"name"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 }

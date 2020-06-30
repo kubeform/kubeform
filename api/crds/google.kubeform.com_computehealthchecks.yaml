@@ -25,12 +25,12 @@ spec:
         apiVersion:
           description: 'APIVersion defines the versioned schema of this representation
             of an object. Servers should convert recognized schemas to the latest
-            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
           type: string
         kind:
           description: 'Kind is a string value representing the REST resource this
             object represents. Servers may infer this from the endpoint the client
-            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
           type: string
         metadata:
           type: object
@@ -46,6 +46,27 @@ spec:
             healthyThreshold:
               format: int64
               type: integer
+            http2HealthCheck:
+              items:
+                properties:
+                  host:
+                    type: string
+                  port:
+                    format: int64
+                    type: integer
+                  portName:
+                    type: string
+                  portSpecification:
+                    type: string
+                  proxyHeader:
+                    type: string
+                  requestPath:
+                    type: string
+                  response:
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
             httpHealthCheck:
               items:
                 properties:
@@ -54,6 +75,10 @@ spec:
                   port:
                     format: int64
                     type: integer
+                  portName:
+                    type: string
+                  portSpecification:
+                    type: string
                   proxyHeader:
                     type: string
                   requestPath:
@@ -71,6 +96,10 @@ spec:
                   port:
                     format: int64
                     type: integer
+                  portName:
+                    type: string
+                  portSpecification:
+                    type: string
                   proxyHeader:
                     type: string
                   requestPath:
@@ -103,6 +132,10 @@ spec:
                   port:
                     format: int64
                     type: integer
+                  portName:
+                    type: string
+                  portSpecification:
+                    type: string
                   proxyHeader:
                     type: string
                   request:
@@ -118,6 +151,10 @@ spec:
                   port:
                     format: int64
                     type: integer
+                  portName:
+                    type: string
+                  portSpecification:
+                    type: string
                   proxyHeader:
                     type: string
                   request:
@@ -158,6 +195,27 @@ spec:
                 healthyThreshold:
                   format: int64
                   type: integer
+                http2HealthCheck:
+                  items:
+                    properties:
+                      host:
+                        type: string
+                      port:
+                        format: int64
+                        type: integer
+                      portName:
+                        type: string
+                      portSpecification:
+                        type: string
+                      proxyHeader:
+                        type: string
+                      requestPath:
+                        type: string
+                      response:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
                 httpHealthCheck:
                   items:
                     properties:
@@ -166,6 +224,10 @@ spec:
                       port:
                         format: int64
                         type: integer
+                      portName:
+                        type: string
+                      portSpecification:
+                        type: string
                       proxyHeader:
                         type: string
                       requestPath:
@@ -183,6 +245,10 @@ spec:
                       port:
                         format: int64
                         type: integer
+                      portName:
+                        type: string
+                      portSpecification:
+                        type: string
                       proxyHeader:
                         type: string
                       requestPath:
@@ -215,6 +281,10 @@ spec:
                       port:
                         format: int64
                         type: integer
+                      portName:
+                        type: string
+                      portSpecification:
+                        type: string
                       proxyHeader:
                         type: string
                       request:
@@ -230,6 +300,10 @@ spec:
                       port:
                         format: int64
                         type: integer
+                      portName:
+                        type: string
+                      portSpecification:
+                        type: string
                       proxyHeader:
                         type: string
                       request:

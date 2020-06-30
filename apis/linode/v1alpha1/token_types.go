@@ -44,6 +44,8 @@ type TokenSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
+
 	// The date and time this token was created.
 	// +optional
 	Created string `json:"created,omitempty" tf:"created,omitempty"`
@@ -57,7 +59,7 @@ type TokenSpec struct {
 	Scopes string `json:"scopes" tf:"scopes"`
 	// The token used to access the API.
 	// +optional
-	Token string `json:"token,omitempty" tf:"token,omitempty"`
+	Token string `json:"-" sensitive:"true" tf:"token,omitempty"`
 }
 
 type TokenStatus struct {

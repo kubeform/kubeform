@@ -25,12 +25,12 @@ spec:
         apiVersion:
           description: 'APIVersion defines the versioned schema of this representation
             of an object. Servers should convert recognized schemas to the latest
-            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
           type: string
         kind:
           description: 'Kind is a string value representing the REST resource this
             object represents. Servers may infer this from the endpoint the client
-            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
           type: string
         metadata:
           type: object
@@ -72,9 +72,24 @@ spec:
               type: integer
             datasetID:
               type: string
+            defaultEncryptionConfiguration:
+              items:
+                properties:
+                  kmsKeyName:
+                    type: string
+                required:
+                - kmsKeyName
+                type: object
+              maxItems: 1
+              type: array
+            defaultPartitionExpirationMs:
+              format: int64
+              type: integer
             defaultTableExpirationMs:
               format: int64
               type: integer
+            deleteContentsOnDestroy:
+              type: boolean
             description:
               type: string
             etag:
@@ -154,9 +169,24 @@ spec:
                   type: integer
                 datasetID:
                   type: string
+                defaultEncryptionConfiguration:
+                  items:
+                    properties:
+                      kmsKeyName:
+                        type: string
+                    required:
+                    - kmsKeyName
+                    type: object
+                  maxItems: 1
+                  type: array
+                defaultPartitionExpirationMs:
+                  format: int64
+                  type: integer
                 defaultTableExpirationMs:
                   format: int64
                   type: integer
+                deleteContentsOnDestroy:
+                  type: boolean
                 description:
                   type: string
                 etag:

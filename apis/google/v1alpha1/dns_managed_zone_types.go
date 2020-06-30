@@ -39,6 +39,38 @@ type DnsManagedZone struct {
 	Status            DnsManagedZoneStatus `json:"status,omitempty"`
 }
 
+type DnsManagedZoneSpecDnssecConfigDefaultKeySpecs struct {
+	// +optional
+	Algorithm string `json:"algorithm,omitempty" tf:"algorithm,omitempty"`
+	// +optional
+	KeyLength int64 `json:"keyLength,omitempty" tf:"key_length,omitempty"`
+	// +optional
+	KeyType string `json:"keyType,omitempty" tf:"key_type,omitempty"`
+	// +optional
+	Kind string `json:"kind,omitempty" tf:"kind,omitempty"`
+}
+
+type DnsManagedZoneSpecDnssecConfig struct {
+	// +optional
+	DefaultKeySpecs []DnsManagedZoneSpecDnssecConfigDefaultKeySpecs `json:"defaultKeySpecs,omitempty" tf:"default_key_specs,omitempty"`
+	// +optional
+	Kind string `json:"kind,omitempty" tf:"kind,omitempty"`
+	// +optional
+	NonExistence string `json:"nonExistence,omitempty" tf:"non_existence,omitempty"`
+	// +optional
+	State string `json:"state,omitempty" tf:"state,omitempty"`
+}
+
+type DnsManagedZoneSpecPrivateVisibilityConfigNetworks struct {
+	// +optional
+	NetworkURL string `json:"networkURL,omitempty" tf:"network_url,omitempty"`
+}
+
+type DnsManagedZoneSpecPrivateVisibilityConfig struct {
+	// +optional
+	Networks []DnsManagedZoneSpecPrivateVisibilityConfigNetworks `json:"networks,omitempty" tf:"networks,omitempty"`
+}
+
 type DnsManagedZoneSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
@@ -48,12 +80,20 @@ type DnsManagedZoneSpec struct {
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	DnsName     string `json:"dnsName" tf:"dns_name"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	DnssecConfig []DnsManagedZoneSpecDnssecConfig `json:"dnssecConfig,omitempty" tf:"dnssec_config,omitempty"`
+	// +optional
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
 	Name   string            `json:"name" tf:"name"`
 	// +optional
 	NameServers []string `json:"nameServers,omitempty" tf:"name_servers,omitempty"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	PrivateVisibilityConfig []DnsManagedZoneSpecPrivateVisibilityConfig `json:"privateVisibilityConfig,omitempty" tf:"private_visibility_config,omitempty"`
+	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	Visibility string `json:"visibility,omitempty" tf:"visibility,omitempty"`
 }
 
 type DnsManagedZoneStatus struct {

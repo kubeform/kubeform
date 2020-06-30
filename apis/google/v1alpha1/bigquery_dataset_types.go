@@ -61,6 +61,10 @@ type BigqueryDatasetSpecAccess struct {
 	View []BigqueryDatasetSpecAccessView `json:"view,omitempty" tf:"view,omitempty"`
 }
 
+type BigqueryDatasetSpecDefaultEncryptionConfiguration struct {
+	KmsKeyName string `json:"kmsKeyName" tf:"kms_key_name"`
+}
+
 type BigqueryDatasetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
@@ -72,7 +76,14 @@ type BigqueryDatasetSpec struct {
 	CreationTime int64  `json:"creationTime,omitempty" tf:"creation_time,omitempty"`
 	DatasetID    string `json:"datasetID" tf:"dataset_id"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	DefaultEncryptionConfiguration []BigqueryDatasetSpecDefaultEncryptionConfiguration `json:"defaultEncryptionConfiguration,omitempty" tf:"default_encryption_configuration,omitempty"`
+	// +optional
+	DefaultPartitionExpirationMs int64 `json:"defaultPartitionExpirationMs,omitempty" tf:"default_partition_expiration_ms,omitempty"`
+	// +optional
 	DefaultTableExpirationMs int64 `json:"defaultTableExpirationMs,omitempty" tf:"default_table_expiration_ms,omitempty"`
+	// +optional
+	DeleteContentsOnDestroy bool `json:"deleteContentsOnDestroy,omitempty" tf:"delete_contents_on_destroy,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional

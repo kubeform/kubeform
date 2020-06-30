@@ -39,6 +39,11 @@ type EfsFileSystem struct {
 	Status            EfsFileSystemStatus `json:"status,omitempty"`
 }
 
+type EfsFileSystemSpecLifecyclePolicy struct {
+	// +optional
+	TransitionToIa string `json:"transitionToIa,omitempty" tf:"transition_to_ia,omitempty"`
+}
+
 type EfsFileSystemSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
@@ -54,6 +59,9 @@ type EfsFileSystemSpec struct {
 	Encrypted bool `json:"encrypted,omitempty" tf:"encrypted,omitempty"`
 	// +optional
 	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	LifecyclePolicy []EfsFileSystemSpecLifecyclePolicy `json:"lifecyclePolicy,omitempty" tf:"lifecycle_policy,omitempty"`
 	// +optional
 	PerformanceMode string `json:"performanceMode,omitempty" tf:"performance_mode,omitempty"`
 	// +optional

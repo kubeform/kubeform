@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/hashicorp/terraform/helper/validation"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/validation"
 	"github.com/linode/linodego"
 )
 
@@ -18,7 +18,6 @@ func resourceLinodeNodeBalancer() *schema.Resource {
 		Read:   resourceLinodeNodeBalancerRead,
 		Update: resourceLinodeNodeBalancerUpdate,
 		Delete: resourceLinodeNodeBalancerDelete,
-		Exists: resourceLinodeNodeBalancerExists,
 		Importer: &schema.ResourceImporter{
 			State: schema.ImportStatePassthrough,
 		},
@@ -98,24 +97,6 @@ func resourceLinodeNodeBalancer() *schema.Resource {
 	}
 }
 
-func resourceLinodeNodeBalancerExists(d *schema.ResourceData, meta interface{}) (bool, error) {
-	client := meta.(linodego.Client)
-	id, err := strconv.ParseInt(d.Id(), 10, 64)
-	if err != nil {
-		return false, fmt.Errorf("Error parsing Linode NodeBalancer ID %s as int: %s", d.Id(), err)
-	}
-
-	_, err = client.GetNodeBalancer(context.Background(), int(id))
-	if err != nil {
-		if _, ok := err.(*linodego.Error); ok {
-			return false, nil
-		}
-
-		return false, fmt.Errorf("Error getting sdd marty Linode NodeBalancer ID %s: %s", d.Id(), err)
-	}
-	return true, nil
-}
-
 // floatString returns nil or the string representation of the supplied *float64
 //   this is needed because ResourceData.Set will not accept *float64 and expects a string
 func floatString(f *float64) string {
@@ -159,9 +140,7 @@ func resourceLinodeNodeBalancerRead(d *schema.ResourceData, meta interface{}) er
 		"total": floatString(nodebalancer.Transfer.Total),
 	}
 
-	if err := d.Set("transfer", transfer); err != nil {
-		return fmt.Errorf("Error setting transfer: %s", err)
-	}
+	d.Set("transfer", transfer)
 
 	return nil
 }

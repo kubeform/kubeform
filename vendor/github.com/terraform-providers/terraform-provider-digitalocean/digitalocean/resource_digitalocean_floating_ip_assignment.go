@@ -6,9 +6,9 @@ import (
 	"log"
 	"time"
 
-	"github.com/hashicorp/terraform/helper/resource"
-	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/hashicorp/terraform/helper/validation"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/resource"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/validation"
 )
 
 func resourceDigitalOceanFloatingIpAssignment() *schema.Resource {
@@ -25,7 +25,7 @@ func resourceDigitalOceanFloatingIpAssignment() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ForceNew:     true,
-				ValidateFunc: validation.SingleIP(),
+				ValidateFunc: validation.IsIPv4Address,
 			},
 
 			"droplet_id": {

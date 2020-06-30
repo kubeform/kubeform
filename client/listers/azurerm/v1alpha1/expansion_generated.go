@@ -18,6 +18,14 @@ limitations under the License.
 
 package v1alpha1
 
+// AdvancedThreatProtectionListerExpansion allows custom methods to be added to
+// AdvancedThreatProtectionLister.
+type AdvancedThreatProtectionListerExpansion interface{}
+
+// AdvancedThreatProtectionNamespaceListerExpansion allows custom methods to be added to
+// AdvancedThreatProtectionNamespaceLister.
+type AdvancedThreatProtectionNamespaceListerExpansion interface{}
+
 // AnalysisServicesServerListerExpansion allows custom methods to be added to
 // AnalysisServicesServerLister.
 type AnalysisServicesServerListerExpansion interface{}
@@ -106,6 +114,14 @@ type ApiManagementCertificateListerExpansion interface{}
 // ApiManagementCertificateNamespaceLister.
 type ApiManagementCertificateNamespaceListerExpansion interface{}
 
+// ApiManagementDiagnosticListerExpansion allows custom methods to be added to
+// ApiManagementDiagnosticLister.
+type ApiManagementDiagnosticListerExpansion interface{}
+
+// ApiManagementDiagnosticNamespaceListerExpansion allows custom methods to be added to
+// ApiManagementDiagnosticNamespaceLister.
+type ApiManagementDiagnosticNamespaceListerExpansion interface{}
+
 // ApiManagementGroupListerExpansion allows custom methods to be added to
 // ApiManagementGroupLister.
 type ApiManagementGroupListerExpansion interface{}
@@ -121,6 +137,46 @@ type ApiManagementGroupUserListerExpansion interface{}
 // ApiManagementGroupUserNamespaceListerExpansion allows custom methods to be added to
 // ApiManagementGroupUserNamespaceLister.
 type ApiManagementGroupUserNamespaceListerExpansion interface{}
+
+// ApiManagementIdentityProviderAadListerExpansion allows custom methods to be added to
+// ApiManagementIdentityProviderAadLister.
+type ApiManagementIdentityProviderAadListerExpansion interface{}
+
+// ApiManagementIdentityProviderAadNamespaceListerExpansion allows custom methods to be added to
+// ApiManagementIdentityProviderAadNamespaceLister.
+type ApiManagementIdentityProviderAadNamespaceListerExpansion interface{}
+
+// ApiManagementIdentityProviderFacebookListerExpansion allows custom methods to be added to
+// ApiManagementIdentityProviderFacebookLister.
+type ApiManagementIdentityProviderFacebookListerExpansion interface{}
+
+// ApiManagementIdentityProviderFacebookNamespaceListerExpansion allows custom methods to be added to
+// ApiManagementIdentityProviderFacebookNamespaceLister.
+type ApiManagementIdentityProviderFacebookNamespaceListerExpansion interface{}
+
+// ApiManagementIdentityProviderGoogleListerExpansion allows custom methods to be added to
+// ApiManagementIdentityProviderGoogleLister.
+type ApiManagementIdentityProviderGoogleListerExpansion interface{}
+
+// ApiManagementIdentityProviderGoogleNamespaceListerExpansion allows custom methods to be added to
+// ApiManagementIdentityProviderGoogleNamespaceLister.
+type ApiManagementIdentityProviderGoogleNamespaceListerExpansion interface{}
+
+// ApiManagementIdentityProviderMicrosoftListerExpansion allows custom methods to be added to
+// ApiManagementIdentityProviderMicrosoftLister.
+type ApiManagementIdentityProviderMicrosoftListerExpansion interface{}
+
+// ApiManagementIdentityProviderMicrosoftNamespaceListerExpansion allows custom methods to be added to
+// ApiManagementIdentityProviderMicrosoftNamespaceLister.
+type ApiManagementIdentityProviderMicrosoftNamespaceListerExpansion interface{}
+
+// ApiManagementIdentityProviderTwitterListerExpansion allows custom methods to be added to
+// ApiManagementIdentityProviderTwitterLister.
+type ApiManagementIdentityProviderTwitterListerExpansion interface{}
+
+// ApiManagementIdentityProviderTwitterNamespaceListerExpansion allows custom methods to be added to
+// ApiManagementIdentityProviderTwitterNamespaceLister.
+type ApiManagementIdentityProviderTwitterNamespaceListerExpansion interface{}
 
 // ApiManagementLoggerListerExpansion allows custom methods to be added to
 // ApiManagementLoggerLister.
@@ -194,6 +250,14 @@ type ApiManagementUserListerExpansion interface{}
 // ApiManagementUserNamespaceLister.
 type ApiManagementUserNamespaceListerExpansion interface{}
 
+// AppConfigurationListerExpansion allows custom methods to be added to
+// AppConfigurationLister.
+type AppConfigurationListerExpansion interface{}
+
+// AppConfigurationNamespaceListerExpansion allows custom methods to be added to
+// AppConfigurationNamespaceLister.
+type AppConfigurationNamespaceListerExpansion interface{}
+
 // AppServiceListerExpansion allows custom methods to be added to
 // AppServiceLister.
 type AppServiceListerExpansion interface{}
@@ -209,6 +273,22 @@ type AppServiceActiveSlotListerExpansion interface{}
 // AppServiceActiveSlotNamespaceListerExpansion allows custom methods to be added to
 // AppServiceActiveSlotNamespaceLister.
 type AppServiceActiveSlotNamespaceListerExpansion interface{}
+
+// AppServiceCertificateListerExpansion allows custom methods to be added to
+// AppServiceCertificateLister.
+type AppServiceCertificateListerExpansion interface{}
+
+// AppServiceCertificateNamespaceListerExpansion allows custom methods to be added to
+// AppServiceCertificateNamespaceLister.
+type AppServiceCertificateNamespaceListerExpansion interface{}
+
+// AppServiceCertificateOrderListerExpansion allows custom methods to be added to
+// AppServiceCertificateOrderLister.
+type AppServiceCertificateOrderListerExpansion interface{}
+
+// AppServiceCertificateOrderNamespaceListerExpansion allows custom methods to be added to
+// AppServiceCertificateOrderNamespaceLister.
+type AppServiceCertificateOrderNamespaceListerExpansion interface{}
 
 // AppServiceCustomHostnameBindingListerExpansion allows custom methods to be added to
 // AppServiceCustomHostnameBindingLister.
@@ -234,6 +314,22 @@ type AppServiceSlotListerExpansion interface{}
 // AppServiceSlotNamespaceLister.
 type AppServiceSlotNamespaceListerExpansion interface{}
 
+// AppServiceSourceControlTokenListerExpansion allows custom methods to be added to
+// AppServiceSourceControlTokenLister.
+type AppServiceSourceControlTokenListerExpansion interface{}
+
+// AppServiceSourceControlTokenNamespaceListerExpansion allows custom methods to be added to
+// AppServiceSourceControlTokenNamespaceLister.
+type AppServiceSourceControlTokenNamespaceListerExpansion interface{}
+
+// AppServiceVirtualNetworkSwiftConnectionListerExpansion allows custom methods to be added to
+// AppServiceVirtualNetworkSwiftConnectionLister.
+type AppServiceVirtualNetworkSwiftConnectionListerExpansion interface{}
+
+// AppServiceVirtualNetworkSwiftConnectionNamespaceListerExpansion allows custom methods to be added to
+// AppServiceVirtualNetworkSwiftConnectionNamespaceLister.
+type AppServiceVirtualNetworkSwiftConnectionNamespaceListerExpansion interface{}
+
 // ApplicationGatewayListerExpansion allows custom methods to be added to
 // ApplicationGatewayLister.
 type ApplicationGatewayListerExpansion interface{}
@@ -257,6 +353,14 @@ type ApplicationInsightsAPIKeyListerExpansion interface{}
 // ApplicationInsightsAPIKeyNamespaceListerExpansion allows custom methods to be added to
 // ApplicationInsightsAPIKeyNamespaceLister.
 type ApplicationInsightsAPIKeyNamespaceListerExpansion interface{}
+
+// ApplicationInsightsAnalyticsItemListerExpansion allows custom methods to be added to
+// ApplicationInsightsAnalyticsItemLister.
+type ApplicationInsightsAnalyticsItemListerExpansion interface{}
+
+// ApplicationInsightsAnalyticsItemNamespaceListerExpansion allows custom methods to be added to
+// ApplicationInsightsAnalyticsItemNamespaceLister.
+type ApplicationInsightsAnalyticsItemNamespaceListerExpansion interface{}
 
 // ApplicationInsightsWebTestListerExpansion allows custom methods to be added to
 // ApplicationInsightsWebTestLister.
@@ -282,6 +386,14 @@ type AutomationAccountListerExpansion interface{}
 // AutomationAccountNamespaceLister.
 type AutomationAccountNamespaceListerExpansion interface{}
 
+// AutomationCertificateListerExpansion allows custom methods to be added to
+// AutomationCertificateLister.
+type AutomationCertificateListerExpansion interface{}
+
+// AutomationCertificateNamespaceListerExpansion allows custom methods to be added to
+// AutomationCertificateNamespaceLister.
+type AutomationCertificateNamespaceListerExpansion interface{}
+
 // AutomationCredentialListerExpansion allows custom methods to be added to
 // AutomationCredentialLister.
 type AutomationCredentialListerExpansion interface{}
@@ -305,6 +417,14 @@ type AutomationDscNodeconfigurationListerExpansion interface{}
 // AutomationDscNodeconfigurationNamespaceListerExpansion allows custom methods to be added to
 // AutomationDscNodeconfigurationNamespaceLister.
 type AutomationDscNodeconfigurationNamespaceListerExpansion interface{}
+
+// AutomationJobScheduleListerExpansion allows custom methods to be added to
+// AutomationJobScheduleLister.
+type AutomationJobScheduleListerExpansion interface{}
+
+// AutomationJobScheduleNamespaceListerExpansion allows custom methods to be added to
+// AutomationJobScheduleNamespaceLister.
+type AutomationJobScheduleNamespaceListerExpansion interface{}
 
 // AutomationModuleListerExpansion allows custom methods to be added to
 // AutomationModuleLister.
@@ -402,6 +522,54 @@ type AzureadServicePrincipalPasswordListerExpansion interface{}
 // AzureadServicePrincipalPasswordNamespaceLister.
 type AzureadServicePrincipalPasswordNamespaceListerExpansion interface{}
 
+// BackupContainerStorageAccountListerExpansion allows custom methods to be added to
+// BackupContainerStorageAccountLister.
+type BackupContainerStorageAccountListerExpansion interface{}
+
+// BackupContainerStorageAccountNamespaceListerExpansion allows custom methods to be added to
+// BackupContainerStorageAccountNamespaceLister.
+type BackupContainerStorageAccountNamespaceListerExpansion interface{}
+
+// BackupPolicyFileShareListerExpansion allows custom methods to be added to
+// BackupPolicyFileShareLister.
+type BackupPolicyFileShareListerExpansion interface{}
+
+// BackupPolicyFileShareNamespaceListerExpansion allows custom methods to be added to
+// BackupPolicyFileShareNamespaceLister.
+type BackupPolicyFileShareNamespaceListerExpansion interface{}
+
+// BackupPolicyVmListerExpansion allows custom methods to be added to
+// BackupPolicyVmLister.
+type BackupPolicyVmListerExpansion interface{}
+
+// BackupPolicyVmNamespaceListerExpansion allows custom methods to be added to
+// BackupPolicyVmNamespaceLister.
+type BackupPolicyVmNamespaceListerExpansion interface{}
+
+// BackupProtectedFileShareListerExpansion allows custom methods to be added to
+// BackupProtectedFileShareLister.
+type BackupProtectedFileShareListerExpansion interface{}
+
+// BackupProtectedFileShareNamespaceListerExpansion allows custom methods to be added to
+// BackupProtectedFileShareNamespaceLister.
+type BackupProtectedFileShareNamespaceListerExpansion interface{}
+
+// BackupProtectedVmListerExpansion allows custom methods to be added to
+// BackupProtectedVmLister.
+type BackupProtectedVmListerExpansion interface{}
+
+// BackupProtectedVmNamespaceListerExpansion allows custom methods to be added to
+// BackupProtectedVmNamespaceLister.
+type BackupProtectedVmNamespaceListerExpansion interface{}
+
+// BastionHostListerExpansion allows custom methods to be added to
+// BastionHostLister.
+type BastionHostListerExpansion interface{}
+
+// BastionHostNamespaceListerExpansion allows custom methods to be added to
+// BastionHostNamespaceLister.
+type BastionHostNamespaceListerExpansion interface{}
+
 // BatchAccountListerExpansion allows custom methods to be added to
 // BatchAccountLister.
 type BatchAccountListerExpansion interface{}
@@ -433,6 +601,54 @@ type BatchPoolListerExpansion interface{}
 // BatchPoolNamespaceListerExpansion allows custom methods to be added to
 // BatchPoolNamespaceLister.
 type BatchPoolNamespaceListerExpansion interface{}
+
+// BotChannelEmailListerExpansion allows custom methods to be added to
+// BotChannelEmailLister.
+type BotChannelEmailListerExpansion interface{}
+
+// BotChannelEmailNamespaceListerExpansion allows custom methods to be added to
+// BotChannelEmailNamespaceLister.
+type BotChannelEmailNamespaceListerExpansion interface{}
+
+// BotChannelMsTeamsListerExpansion allows custom methods to be added to
+// BotChannelMsTeamsLister.
+type BotChannelMsTeamsListerExpansion interface{}
+
+// BotChannelMsTeamsNamespaceListerExpansion allows custom methods to be added to
+// BotChannelMsTeamsNamespaceLister.
+type BotChannelMsTeamsNamespaceListerExpansion interface{}
+
+// BotChannelSlackListerExpansion allows custom methods to be added to
+// BotChannelSlackLister.
+type BotChannelSlackListerExpansion interface{}
+
+// BotChannelSlackNamespaceListerExpansion allows custom methods to be added to
+// BotChannelSlackNamespaceLister.
+type BotChannelSlackNamespaceListerExpansion interface{}
+
+// BotChannelsRegistrationListerExpansion allows custom methods to be added to
+// BotChannelsRegistrationLister.
+type BotChannelsRegistrationListerExpansion interface{}
+
+// BotChannelsRegistrationNamespaceListerExpansion allows custom methods to be added to
+// BotChannelsRegistrationNamespaceLister.
+type BotChannelsRegistrationNamespaceListerExpansion interface{}
+
+// BotConnectionListerExpansion allows custom methods to be added to
+// BotConnectionLister.
+type BotConnectionListerExpansion interface{}
+
+// BotConnectionNamespaceListerExpansion allows custom methods to be added to
+// BotConnectionNamespaceLister.
+type BotConnectionNamespaceListerExpansion interface{}
+
+// BotWebAppListerExpansion allows custom methods to be added to
+// BotWebAppLister.
+type BotWebAppListerExpansion interface{}
+
+// BotWebAppNamespaceListerExpansion allows custom methods to be added to
+// BotWebAppNamespaceLister.
+type BotWebAppNamespaceListerExpansion interface{}
 
 // CdnEndpointListerExpansion allows custom methods to be added to
 // CdnEndpointLister.
@@ -482,6 +698,14 @@ type ContainerRegistryListerExpansion interface{}
 // ContainerRegistryNamespaceLister.
 type ContainerRegistryNamespaceListerExpansion interface{}
 
+// ContainerRegistryWebhookListerExpansion allows custom methods to be added to
+// ContainerRegistryWebhookLister.
+type ContainerRegistryWebhookListerExpansion interface{}
+
+// ContainerRegistryWebhookNamespaceListerExpansion allows custom methods to be added to
+// ContainerRegistryWebhookNamespaceLister.
+type ContainerRegistryWebhookNamespaceListerExpansion interface{}
+
 // ContainerServiceListerExpansion allows custom methods to be added to
 // ContainerServiceLister.
 type ContainerServiceListerExpansion interface{}
@@ -506,6 +730,22 @@ type CosmosdbCassandraKeyspaceListerExpansion interface{}
 // CosmosdbCassandraKeyspaceNamespaceLister.
 type CosmosdbCassandraKeyspaceNamespaceListerExpansion interface{}
 
+// CosmosdbGremlinDatabaseListerExpansion allows custom methods to be added to
+// CosmosdbGremlinDatabaseLister.
+type CosmosdbGremlinDatabaseListerExpansion interface{}
+
+// CosmosdbGremlinDatabaseNamespaceListerExpansion allows custom methods to be added to
+// CosmosdbGremlinDatabaseNamespaceLister.
+type CosmosdbGremlinDatabaseNamespaceListerExpansion interface{}
+
+// CosmosdbGremlinGraphListerExpansion allows custom methods to be added to
+// CosmosdbGremlinGraphLister.
+type CosmosdbGremlinGraphListerExpansion interface{}
+
+// CosmosdbGremlinGraphNamespaceListerExpansion allows custom methods to be added to
+// CosmosdbGremlinGraphNamespaceLister.
+type CosmosdbGremlinGraphNamespaceListerExpansion interface{}
+
 // CosmosdbMongoCollectionListerExpansion allows custom methods to be added to
 // CosmosdbMongoCollectionLister.
 type CosmosdbMongoCollectionListerExpansion interface{}
@@ -522,6 +762,14 @@ type CosmosdbMongoDatabaseListerExpansion interface{}
 // CosmosdbMongoDatabaseNamespaceLister.
 type CosmosdbMongoDatabaseNamespaceListerExpansion interface{}
 
+// CosmosdbSQLContainerListerExpansion allows custom methods to be added to
+// CosmosdbSQLContainerLister.
+type CosmosdbSQLContainerListerExpansion interface{}
+
+// CosmosdbSQLContainerNamespaceListerExpansion allows custom methods to be added to
+// CosmosdbSQLContainerNamespaceLister.
+type CosmosdbSQLContainerNamespaceListerExpansion interface{}
+
 // CosmosdbSQLDatabaseListerExpansion allows custom methods to be added to
 // CosmosdbSQLDatabaseLister.
 type CosmosdbSQLDatabaseListerExpansion interface{}
@@ -537,6 +785,14 @@ type CosmosdbTableListerExpansion interface{}
 // CosmosdbTableNamespaceListerExpansion allows custom methods to be added to
 // CosmosdbTableNamespaceLister.
 type CosmosdbTableNamespaceListerExpansion interface{}
+
+// DashboardListerExpansion allows custom methods to be added to
+// DashboardLister.
+type DashboardListerExpansion interface{}
+
+// DashboardNamespaceListerExpansion allows custom methods to be added to
+// DashboardNamespaceLister.
+type DashboardNamespaceListerExpansion interface{}
 
 // DataFactoryListerExpansion allows custom methods to be added to
 // DataFactoryLister.
@@ -569,6 +825,14 @@ type DataFactoryDatasetSQLServerTableListerExpansion interface{}
 // DataFactoryDatasetSQLServerTableNamespaceListerExpansion allows custom methods to be added to
 // DataFactoryDatasetSQLServerTableNamespaceLister.
 type DataFactoryDatasetSQLServerTableNamespaceListerExpansion interface{}
+
+// DataFactoryIntegrationRuntimeManagedListerExpansion allows custom methods to be added to
+// DataFactoryIntegrationRuntimeManagedLister.
+type DataFactoryIntegrationRuntimeManagedListerExpansion interface{}
+
+// DataFactoryIntegrationRuntimeManagedNamespaceListerExpansion allows custom methods to be added to
+// DataFactoryIntegrationRuntimeManagedNamespaceLister.
+type DataFactoryIntegrationRuntimeManagedNamespaceListerExpansion interface{}
 
 // DataFactoryLinkedServiceDataLakeStorageGen2ListerExpansion allows custom methods to be added to
 // DataFactoryLinkedServiceDataLakeStorageGen2Lister.
@@ -609,6 +873,14 @@ type DataFactoryPipelineListerExpansion interface{}
 // DataFactoryPipelineNamespaceListerExpansion allows custom methods to be added to
 // DataFactoryPipelineNamespaceLister.
 type DataFactoryPipelineNamespaceListerExpansion interface{}
+
+// DataFactoryTriggerScheduleListerExpansion allows custom methods to be added to
+// DataFactoryTriggerScheduleLister.
+type DataFactoryTriggerScheduleListerExpansion interface{}
+
+// DataFactoryTriggerScheduleNamespaceListerExpansion allows custom methods to be added to
+// DataFactoryTriggerScheduleNamespaceLister.
+type DataFactoryTriggerScheduleNamespaceListerExpansion interface{}
 
 // DataLakeAnalyticsAccountListerExpansion allows custom methods to be added to
 // DataLakeAnalyticsAccountLister.
@@ -666,6 +938,22 @@ type DdosProtectionPlanListerExpansion interface{}
 // DdosProtectionPlanNamespaceLister.
 type DdosProtectionPlanNamespaceListerExpansion interface{}
 
+// DedicatedHostListerExpansion allows custom methods to be added to
+// DedicatedHostLister.
+type DedicatedHostListerExpansion interface{}
+
+// DedicatedHostNamespaceListerExpansion allows custom methods to be added to
+// DedicatedHostNamespaceLister.
+type DedicatedHostNamespaceListerExpansion interface{}
+
+// DedicatedHostGroupListerExpansion allows custom methods to be added to
+// DedicatedHostGroupLister.
+type DedicatedHostGroupListerExpansion interface{}
+
+// DedicatedHostGroupNamespaceListerExpansion allows custom methods to be added to
+// DedicatedHostGroupNamespaceLister.
+type DedicatedHostGroupNamespaceListerExpansion interface{}
+
 // DevTestLabListerExpansion allows custom methods to be added to
 // DevTestLabLister.
 type DevTestLabListerExpansion interface{}
@@ -690,6 +978,14 @@ type DevTestPolicyListerExpansion interface{}
 // DevTestPolicyNamespaceLister.
 type DevTestPolicyNamespaceListerExpansion interface{}
 
+// DevTestScheduleListerExpansion allows custom methods to be added to
+// DevTestScheduleLister.
+type DevTestScheduleListerExpansion interface{}
+
+// DevTestScheduleNamespaceListerExpansion allows custom methods to be added to
+// DevTestScheduleNamespaceLister.
+type DevTestScheduleNamespaceListerExpansion interface{}
+
 // DevTestVirtualNetworkListerExpansion allows custom methods to be added to
 // DevTestVirtualNetworkLister.
 type DevTestVirtualNetworkListerExpansion interface{}
@@ -713,6 +1009,14 @@ type DevspaceControllerListerExpansion interface{}
 // DevspaceControllerNamespaceListerExpansion allows custom methods to be added to
 // DevspaceControllerNamespaceLister.
 type DevspaceControllerNamespaceListerExpansion interface{}
+
+// DiskEncryptionSetListerExpansion allows custom methods to be added to
+// DiskEncryptionSetLister.
+type DiskEncryptionSetListerExpansion interface{}
+
+// DiskEncryptionSetNamespaceListerExpansion allows custom methods to be added to
+// DiskEncryptionSetNamespaceLister.
+type DiskEncryptionSetNamespaceListerExpansion interface{}
 
 // DnsARecordListerExpansion allows custom methods to be added to
 // DnsARecordLister.
@@ -850,6 +1154,14 @@ type EventhubNamespaceAuthorizationRuleListerExpansion interface{}
 // EventhubNamespaceAuthorizationRuleNamespaceLister.
 type EventhubNamespaceAuthorizationRuleNamespaceListerExpansion interface{}
 
+// EventhubNamespaceDisasterRecoveryConfigListerExpansion allows custom methods to be added to
+// EventhubNamespaceDisasterRecoveryConfigLister.
+type EventhubNamespaceDisasterRecoveryConfigListerExpansion interface{}
+
+// EventhubNamespaceDisasterRecoveryConfigNamespaceListerExpansion allows custom methods to be added to
+// EventhubNamespaceDisasterRecoveryConfigNamespaceLister.
+type EventhubNamespaceDisasterRecoveryConfigNamespaceListerExpansion interface{}
+
 // EventhubNamespace_ListerExpansion allows custom methods to be added to
 // EventhubNamespace_Lister.
 type EventhubNamespace_ListerExpansion interface{}
@@ -913,6 +1225,22 @@ type FirewallNetworkRuleCollectionListerExpansion interface{}
 // FirewallNetworkRuleCollectionNamespaceListerExpansion allows custom methods to be added to
 // FirewallNetworkRuleCollectionNamespaceLister.
 type FirewallNetworkRuleCollectionNamespaceListerExpansion interface{}
+
+// FrontdoorListerExpansion allows custom methods to be added to
+// FrontdoorLister.
+type FrontdoorListerExpansion interface{}
+
+// FrontdoorNamespaceListerExpansion allows custom methods to be added to
+// FrontdoorNamespaceLister.
+type FrontdoorNamespaceListerExpansion interface{}
+
+// FrontdoorFirewallPolicyListerExpansion allows custom methods to be added to
+// FrontdoorFirewallPolicyLister.
+type FrontdoorFirewallPolicyListerExpansion interface{}
+
+// FrontdoorFirewallPolicyNamespaceListerExpansion allows custom methods to be added to
+// FrontdoorFirewallPolicyNamespaceLister.
+type FrontdoorFirewallPolicyNamespaceListerExpansion interface{}
 
 // FunctionAppListerExpansion allows custom methods to be added to
 // FunctionAppLister.
@@ -986,6 +1314,14 @@ type HdinsightStormClusterListerExpansion interface{}
 // HdinsightStormClusterNamespaceLister.
 type HdinsightStormClusterNamespaceListerExpansion interface{}
 
+// HealthcareServiceListerExpansion allows custom methods to be added to
+// HealthcareServiceLister.
+type HealthcareServiceListerExpansion interface{}
+
+// HealthcareServiceNamespaceListerExpansion allows custom methods to be added to
+// HealthcareServiceNamespaceLister.
+type HealthcareServiceNamespaceListerExpansion interface{}
+
 // ImageListerExpansion allows custom methods to be added to
 // ImageLister.
 type ImageListerExpansion interface{}
@@ -1025,6 +1361,78 @@ type IothubConsumerGroupListerExpansion interface{}
 // IothubConsumerGroupNamespaceListerExpansion allows custom methods to be added to
 // IothubConsumerGroupNamespaceLister.
 type IothubConsumerGroupNamespaceListerExpansion interface{}
+
+// IothubDpsListerExpansion allows custom methods to be added to
+// IothubDpsLister.
+type IothubDpsListerExpansion interface{}
+
+// IothubDpsNamespaceListerExpansion allows custom methods to be added to
+// IothubDpsNamespaceLister.
+type IothubDpsNamespaceListerExpansion interface{}
+
+// IothubDpsCertificateListerExpansion allows custom methods to be added to
+// IothubDpsCertificateLister.
+type IothubDpsCertificateListerExpansion interface{}
+
+// IothubDpsCertificateNamespaceListerExpansion allows custom methods to be added to
+// IothubDpsCertificateNamespaceLister.
+type IothubDpsCertificateNamespaceListerExpansion interface{}
+
+// IothubDpsSharedAccessPolicyListerExpansion allows custom methods to be added to
+// IothubDpsSharedAccessPolicyLister.
+type IothubDpsSharedAccessPolicyListerExpansion interface{}
+
+// IothubDpsSharedAccessPolicyNamespaceListerExpansion allows custom methods to be added to
+// IothubDpsSharedAccessPolicyNamespaceLister.
+type IothubDpsSharedAccessPolicyNamespaceListerExpansion interface{}
+
+// IothubEndpointEventhubListerExpansion allows custom methods to be added to
+// IothubEndpointEventhubLister.
+type IothubEndpointEventhubListerExpansion interface{}
+
+// IothubEndpointEventhubNamespaceListerExpansion allows custom methods to be added to
+// IothubEndpointEventhubNamespaceLister.
+type IothubEndpointEventhubNamespaceListerExpansion interface{}
+
+// IothubEndpointServicebusQueueListerExpansion allows custom methods to be added to
+// IothubEndpointServicebusQueueLister.
+type IothubEndpointServicebusQueueListerExpansion interface{}
+
+// IothubEndpointServicebusQueueNamespaceListerExpansion allows custom methods to be added to
+// IothubEndpointServicebusQueueNamespaceLister.
+type IothubEndpointServicebusQueueNamespaceListerExpansion interface{}
+
+// IothubEndpointServicebusTopicListerExpansion allows custom methods to be added to
+// IothubEndpointServicebusTopicLister.
+type IothubEndpointServicebusTopicListerExpansion interface{}
+
+// IothubEndpointServicebusTopicNamespaceListerExpansion allows custom methods to be added to
+// IothubEndpointServicebusTopicNamespaceLister.
+type IothubEndpointServicebusTopicNamespaceListerExpansion interface{}
+
+// IothubEndpointStorageContainerListerExpansion allows custom methods to be added to
+// IothubEndpointStorageContainerLister.
+type IothubEndpointStorageContainerListerExpansion interface{}
+
+// IothubEndpointStorageContainerNamespaceListerExpansion allows custom methods to be added to
+// IothubEndpointStorageContainerNamespaceLister.
+type IothubEndpointStorageContainerNamespaceListerExpansion interface{}
+
+// IothubFallbackRouteListerExpansion allows custom methods to be added to
+// IothubFallbackRouteLister.
+type IothubFallbackRouteListerExpansion interface{}
+
+// IothubFallbackRouteNamespaceListerExpansion allows custom methods to be added to
+// IothubFallbackRouteNamespaceLister.
+type IothubFallbackRouteNamespaceListerExpansion interface{}
+
+// IothubRouteListerExpansion allows custom methods to be added to
+// IothubRouteLister.
+type IothubRouteListerExpansion interface{}
+
+// IothubRouteNamespaceListerExpansion allows custom methods to be added to
+// IothubRouteNamespaceLister.
+type IothubRouteNamespaceListerExpansion interface{}
 
 // IothubSharedAccessPolicyListerExpansion allows custom methods to be added to
 // IothubSharedAccessPolicyLister.
@@ -1081,6 +1489,46 @@ type KubernetesClusterListerExpansion interface{}
 // KubernetesClusterNamespaceListerExpansion allows custom methods to be added to
 // KubernetesClusterNamespaceLister.
 type KubernetesClusterNamespaceListerExpansion interface{}
+
+// KubernetesClusterNodePoolListerExpansion allows custom methods to be added to
+// KubernetesClusterNodePoolLister.
+type KubernetesClusterNodePoolListerExpansion interface{}
+
+// KubernetesClusterNodePoolNamespaceListerExpansion allows custom methods to be added to
+// KubernetesClusterNodePoolNamespaceLister.
+type KubernetesClusterNodePoolNamespaceListerExpansion interface{}
+
+// KustoClusterListerExpansion allows custom methods to be added to
+// KustoClusterLister.
+type KustoClusterListerExpansion interface{}
+
+// KustoClusterNamespaceListerExpansion allows custom methods to be added to
+// KustoClusterNamespaceLister.
+type KustoClusterNamespaceListerExpansion interface{}
+
+// KustoDatabaseListerExpansion allows custom methods to be added to
+// KustoDatabaseLister.
+type KustoDatabaseListerExpansion interface{}
+
+// KustoDatabaseNamespaceListerExpansion allows custom methods to be added to
+// KustoDatabaseNamespaceLister.
+type KustoDatabaseNamespaceListerExpansion interface{}
+
+// KustoDatabasePrincipalListerExpansion allows custom methods to be added to
+// KustoDatabasePrincipalLister.
+type KustoDatabasePrincipalListerExpansion interface{}
+
+// KustoDatabasePrincipalNamespaceListerExpansion allows custom methods to be added to
+// KustoDatabasePrincipalNamespaceLister.
+type KustoDatabasePrincipalNamespaceListerExpansion interface{}
+
+// KustoEventhubDataConnectionListerExpansion allows custom methods to be added to
+// KustoEventhubDataConnectionLister.
+type KustoEventhubDataConnectionListerExpansion interface{}
+
+// KustoEventhubDataConnectionNamespaceListerExpansion allows custom methods to be added to
+// KustoEventhubDataConnectionNamespaceLister.
+type KustoEventhubDataConnectionNamespaceListerExpansion interface{}
 
 // LbListerExpansion allows custom methods to be added to
 // LbLister.
@@ -1258,6 +1706,14 @@ type MapsAccountListerExpansion interface{}
 // MapsAccountNamespaceLister.
 type MapsAccountNamespaceListerExpansion interface{}
 
+// MariadbConfigurationListerExpansion allows custom methods to be added to
+// MariadbConfigurationLister.
+type MariadbConfigurationListerExpansion interface{}
+
+// MariadbConfigurationNamespaceListerExpansion allows custom methods to be added to
+// MariadbConfigurationNamespaceLister.
+type MariadbConfigurationNamespaceListerExpansion interface{}
+
 // MariadbDatabaseListerExpansion allows custom methods to be added to
 // MariadbDatabaseLister.
 type MariadbDatabaseListerExpansion interface{}
@@ -1281,6 +1737,22 @@ type MariadbServerListerExpansion interface{}
 // MariadbServerNamespaceListerExpansion allows custom methods to be added to
 // MariadbServerNamespaceLister.
 type MariadbServerNamespaceListerExpansion interface{}
+
+// MariadbVirtualNetworkRuleListerExpansion allows custom methods to be added to
+// MariadbVirtualNetworkRuleLister.
+type MariadbVirtualNetworkRuleListerExpansion interface{}
+
+// MariadbVirtualNetworkRuleNamespaceListerExpansion allows custom methods to be added to
+// MariadbVirtualNetworkRuleNamespaceLister.
+type MariadbVirtualNetworkRuleNamespaceListerExpansion interface{}
+
+// MarketplaceAgreementListerExpansion allows custom methods to be added to
+// MarketplaceAgreementLister.
+type MarketplaceAgreementListerExpansion interface{}
+
+// MarketplaceAgreementNamespaceListerExpansion allows custom methods to be added to
+// MarketplaceAgreementNamespaceLister.
+type MarketplaceAgreementNamespaceListerExpansion interface{}
 
 // MediaServicesAccountListerExpansion allows custom methods to be added to
 // MediaServicesAccountLister.
@@ -1354,6 +1826,14 @@ type MonitorMetricAlertruleListerExpansion interface{}
 // MonitorMetricAlertruleNamespaceLister.
 type MonitorMetricAlertruleNamespaceListerExpansion interface{}
 
+// MssqlDatabaseVulnerabilityAssessmentRuleBaselineListerExpansion allows custom methods to be added to
+// MssqlDatabaseVulnerabilityAssessmentRuleBaselineLister.
+type MssqlDatabaseVulnerabilityAssessmentRuleBaselineListerExpansion interface{}
+
+// MssqlDatabaseVulnerabilityAssessmentRuleBaselineNamespaceListerExpansion allows custom methods to be added to
+// MssqlDatabaseVulnerabilityAssessmentRuleBaselineNamespaceLister.
+type MssqlDatabaseVulnerabilityAssessmentRuleBaselineNamespaceListerExpansion interface{}
+
 // MssqlElasticpoolListerExpansion allows custom methods to be added to
 // MssqlElasticpoolLister.
 type MssqlElasticpoolListerExpansion interface{}
@@ -1361,6 +1841,22 @@ type MssqlElasticpoolListerExpansion interface{}
 // MssqlElasticpoolNamespaceListerExpansion allows custom methods to be added to
 // MssqlElasticpoolNamespaceLister.
 type MssqlElasticpoolNamespaceListerExpansion interface{}
+
+// MssqlServerSecurityAlertPolicyListerExpansion allows custom methods to be added to
+// MssqlServerSecurityAlertPolicyLister.
+type MssqlServerSecurityAlertPolicyListerExpansion interface{}
+
+// MssqlServerSecurityAlertPolicyNamespaceListerExpansion allows custom methods to be added to
+// MssqlServerSecurityAlertPolicyNamespaceLister.
+type MssqlServerSecurityAlertPolicyNamespaceListerExpansion interface{}
+
+// MssqlServerVulnerabilityAssessmentListerExpansion allows custom methods to be added to
+// MssqlServerVulnerabilityAssessmentLister.
+type MssqlServerVulnerabilityAssessmentListerExpansion interface{}
+
+// MssqlServerVulnerabilityAssessmentNamespaceListerExpansion allows custom methods to be added to
+// MssqlServerVulnerabilityAssessmentNamespaceLister.
+type MssqlServerVulnerabilityAssessmentNamespaceListerExpansion interface{}
 
 // MysqlConfigurationListerExpansion allows custom methods to be added to
 // MysqlConfigurationLister.
@@ -1401,6 +1897,46 @@ type MysqlVirtualNetworkRuleListerExpansion interface{}
 // MysqlVirtualNetworkRuleNamespaceListerExpansion allows custom methods to be added to
 // MysqlVirtualNetworkRuleNamespaceLister.
 type MysqlVirtualNetworkRuleNamespaceListerExpansion interface{}
+
+// NatGatewayListerExpansion allows custom methods to be added to
+// NatGatewayLister.
+type NatGatewayListerExpansion interface{}
+
+// NatGatewayNamespaceListerExpansion allows custom methods to be added to
+// NatGatewayNamespaceLister.
+type NatGatewayNamespaceListerExpansion interface{}
+
+// NetappAccountListerExpansion allows custom methods to be added to
+// NetappAccountLister.
+type NetappAccountListerExpansion interface{}
+
+// NetappAccountNamespaceListerExpansion allows custom methods to be added to
+// NetappAccountNamespaceLister.
+type NetappAccountNamespaceListerExpansion interface{}
+
+// NetappPoolListerExpansion allows custom methods to be added to
+// NetappPoolLister.
+type NetappPoolListerExpansion interface{}
+
+// NetappPoolNamespaceListerExpansion allows custom methods to be added to
+// NetappPoolNamespaceLister.
+type NetappPoolNamespaceListerExpansion interface{}
+
+// NetappSnapshotListerExpansion allows custom methods to be added to
+// NetappSnapshotLister.
+type NetappSnapshotListerExpansion interface{}
+
+// NetappSnapshotNamespaceListerExpansion allows custom methods to be added to
+// NetappSnapshotNamespaceLister.
+type NetappSnapshotNamespaceListerExpansion interface{}
+
+// NetappVolumeListerExpansion allows custom methods to be added to
+// NetappVolumeLister.
+type NetappVolumeListerExpansion interface{}
+
+// NetappVolumeNamespaceListerExpansion allows custom methods to be added to
+// NetappVolumeNamespaceLister.
+type NetappVolumeNamespaceListerExpansion interface{}
 
 // NetworkConnectionMonitorListerExpansion allows custom methods to be added to
 // NetworkConnectionMonitorLister.
@@ -1498,6 +2034,14 @@ type NetworkWatcherListerExpansion interface{}
 // NetworkWatcherNamespaceLister.
 type NetworkWatcherNamespaceListerExpansion interface{}
 
+// NetworkWatcherFlowLogListerExpansion allows custom methods to be added to
+// NetworkWatcherFlowLogLister.
+type NetworkWatcherFlowLogListerExpansion interface{}
+
+// NetworkWatcherFlowLogNamespaceListerExpansion allows custom methods to be added to
+// NetworkWatcherFlowLogNamespaceLister.
+type NetworkWatcherFlowLogNamespaceListerExpansion interface{}
+
 // NotificationHubListerExpansion allows custom methods to be added to
 // NotificationHubLister.
 type NotificationHubListerExpansion interface{}
@@ -1529,6 +2073,14 @@ type PacketCaptureListerExpansion interface{}
 // PacketCaptureNamespaceListerExpansion allows custom methods to be added to
 // PacketCaptureNamespaceLister.
 type PacketCaptureNamespaceListerExpansion interface{}
+
+// PointToSiteVPNGatewayListerExpansion allows custom methods to be added to
+// PointToSiteVPNGatewayLister.
+type PointToSiteVPNGatewayListerExpansion interface{}
+
+// PointToSiteVPNGatewayNamespaceListerExpansion allows custom methods to be added to
+// PointToSiteVPNGatewayNamespaceLister.
+type PointToSiteVPNGatewayNamespaceListerExpansion interface{}
 
 // PolicyAssignmentListerExpansion allows custom methods to be added to
 // PolicyAssignmentLister.
@@ -1602,6 +2154,46 @@ type PrivateDNSARecordListerExpansion interface{}
 // PrivateDNSARecordNamespaceLister.
 type PrivateDNSARecordNamespaceListerExpansion interface{}
 
+// PrivateDNSAaaaRecordListerExpansion allows custom methods to be added to
+// PrivateDNSAaaaRecordLister.
+type PrivateDNSAaaaRecordListerExpansion interface{}
+
+// PrivateDNSAaaaRecordNamespaceListerExpansion allows custom methods to be added to
+// PrivateDNSAaaaRecordNamespaceLister.
+type PrivateDNSAaaaRecordNamespaceListerExpansion interface{}
+
+// PrivateDNSCnameRecordListerExpansion allows custom methods to be added to
+// PrivateDNSCnameRecordLister.
+type PrivateDNSCnameRecordListerExpansion interface{}
+
+// PrivateDNSCnameRecordNamespaceListerExpansion allows custom methods to be added to
+// PrivateDNSCnameRecordNamespaceLister.
+type PrivateDNSCnameRecordNamespaceListerExpansion interface{}
+
+// PrivateDNSMxRecordListerExpansion allows custom methods to be added to
+// PrivateDNSMxRecordLister.
+type PrivateDNSMxRecordListerExpansion interface{}
+
+// PrivateDNSMxRecordNamespaceListerExpansion allows custom methods to be added to
+// PrivateDNSMxRecordNamespaceLister.
+type PrivateDNSMxRecordNamespaceListerExpansion interface{}
+
+// PrivateDNSPtrRecordListerExpansion allows custom methods to be added to
+// PrivateDNSPtrRecordLister.
+type PrivateDNSPtrRecordListerExpansion interface{}
+
+// PrivateDNSPtrRecordNamespaceListerExpansion allows custom methods to be added to
+// PrivateDNSPtrRecordNamespaceLister.
+type PrivateDNSPtrRecordNamespaceListerExpansion interface{}
+
+// PrivateDNSSrvRecordListerExpansion allows custom methods to be added to
+// PrivateDNSSrvRecordLister.
+type PrivateDNSSrvRecordListerExpansion interface{}
+
+// PrivateDNSSrvRecordNamespaceListerExpansion allows custom methods to be added to
+// PrivateDNSSrvRecordNamespaceLister.
+type PrivateDNSSrvRecordNamespaceListerExpansion interface{}
+
 // PrivateDNSZoneListerExpansion allows custom methods to be added to
 // PrivateDNSZoneLister.
 type PrivateDNSZoneListerExpansion interface{}
@@ -1609,6 +2201,46 @@ type PrivateDNSZoneListerExpansion interface{}
 // PrivateDNSZoneNamespaceListerExpansion allows custom methods to be added to
 // PrivateDNSZoneNamespaceLister.
 type PrivateDNSZoneNamespaceListerExpansion interface{}
+
+// PrivateDNSZoneVirtualNetworkLinkListerExpansion allows custom methods to be added to
+// PrivateDNSZoneVirtualNetworkLinkLister.
+type PrivateDNSZoneVirtualNetworkLinkListerExpansion interface{}
+
+// PrivateDNSZoneVirtualNetworkLinkNamespaceListerExpansion allows custom methods to be added to
+// PrivateDNSZoneVirtualNetworkLinkNamespaceLister.
+type PrivateDNSZoneVirtualNetworkLinkNamespaceListerExpansion interface{}
+
+// PrivateEndpointListerExpansion allows custom methods to be added to
+// PrivateEndpointLister.
+type PrivateEndpointListerExpansion interface{}
+
+// PrivateEndpointNamespaceListerExpansion allows custom methods to be added to
+// PrivateEndpointNamespaceLister.
+type PrivateEndpointNamespaceListerExpansion interface{}
+
+// PrivateLinkEndpointListerExpansion allows custom methods to be added to
+// PrivateLinkEndpointLister.
+type PrivateLinkEndpointListerExpansion interface{}
+
+// PrivateLinkEndpointNamespaceListerExpansion allows custom methods to be added to
+// PrivateLinkEndpointNamespaceLister.
+type PrivateLinkEndpointNamespaceListerExpansion interface{}
+
+// PrivateLinkServiceListerExpansion allows custom methods to be added to
+// PrivateLinkServiceLister.
+type PrivateLinkServiceListerExpansion interface{}
+
+// PrivateLinkServiceNamespaceListerExpansion allows custom methods to be added to
+// PrivateLinkServiceNamespaceLister.
+type PrivateLinkServiceNamespaceListerExpansion interface{}
+
+// ProximityPlacementGroupListerExpansion allows custom methods to be added to
+// ProximityPlacementGroupLister.
+type ProximityPlacementGroupListerExpansion interface{}
+
+// ProximityPlacementGroupNamespaceListerExpansion allows custom methods to be added to
+// ProximityPlacementGroupNamespaceLister.
+type ProximityPlacementGroupNamespaceListerExpansion interface{}
 
 // PublicIPListerExpansion allows custom methods to be added to
 // PublicIPLister.
@@ -1626,6 +2258,30 @@ type PublicIPPrefixListerExpansion interface{}
 // PublicIPPrefixNamespaceLister.
 type PublicIPPrefixNamespaceListerExpansion interface{}
 
+// RecoveryNetworkMappingListerExpansion allows custom methods to be added to
+// RecoveryNetworkMappingLister.
+type RecoveryNetworkMappingListerExpansion interface{}
+
+// RecoveryNetworkMappingNamespaceListerExpansion allows custom methods to be added to
+// RecoveryNetworkMappingNamespaceLister.
+type RecoveryNetworkMappingNamespaceListerExpansion interface{}
+
+// RecoveryReplicatedVmListerExpansion allows custom methods to be added to
+// RecoveryReplicatedVmLister.
+type RecoveryReplicatedVmListerExpansion interface{}
+
+// RecoveryReplicatedVmNamespaceListerExpansion allows custom methods to be added to
+// RecoveryReplicatedVmNamespaceLister.
+type RecoveryReplicatedVmNamespaceListerExpansion interface{}
+
+// RecoveryServicesFabricListerExpansion allows custom methods to be added to
+// RecoveryServicesFabricLister.
+type RecoveryServicesFabricListerExpansion interface{}
+
+// RecoveryServicesFabricNamespaceListerExpansion allows custom methods to be added to
+// RecoveryServicesFabricNamespaceLister.
+type RecoveryServicesFabricNamespaceListerExpansion interface{}
+
 // RecoveryServicesProtectedVmListerExpansion allows custom methods to be added to
 // RecoveryServicesProtectedVmLister.
 type RecoveryServicesProtectedVmListerExpansion interface{}
@@ -1634,6 +2290,22 @@ type RecoveryServicesProtectedVmListerExpansion interface{}
 // RecoveryServicesProtectedVmNamespaceLister.
 type RecoveryServicesProtectedVmNamespaceListerExpansion interface{}
 
+// RecoveryServicesProtectionContainerListerExpansion allows custom methods to be added to
+// RecoveryServicesProtectionContainerLister.
+type RecoveryServicesProtectionContainerListerExpansion interface{}
+
+// RecoveryServicesProtectionContainerNamespaceListerExpansion allows custom methods to be added to
+// RecoveryServicesProtectionContainerNamespaceLister.
+type RecoveryServicesProtectionContainerNamespaceListerExpansion interface{}
+
+// RecoveryServicesProtectionContainerMappingListerExpansion allows custom methods to be added to
+// RecoveryServicesProtectionContainerMappingLister.
+type RecoveryServicesProtectionContainerMappingListerExpansion interface{}
+
+// RecoveryServicesProtectionContainerMappingNamespaceListerExpansion allows custom methods to be added to
+// RecoveryServicesProtectionContainerMappingNamespaceLister.
+type RecoveryServicesProtectionContainerMappingNamespaceListerExpansion interface{}
+
 // RecoveryServicesProtectionPolicyVmListerExpansion allows custom methods to be added to
 // RecoveryServicesProtectionPolicyVmLister.
 type RecoveryServicesProtectionPolicyVmListerExpansion interface{}
@@ -1641,6 +2313,14 @@ type RecoveryServicesProtectionPolicyVmListerExpansion interface{}
 // RecoveryServicesProtectionPolicyVmNamespaceListerExpansion allows custom methods to be added to
 // RecoveryServicesProtectionPolicyVmNamespaceLister.
 type RecoveryServicesProtectionPolicyVmNamespaceListerExpansion interface{}
+
+// RecoveryServicesReplicationPolicyListerExpansion allows custom methods to be added to
+// RecoveryServicesReplicationPolicyLister.
+type RecoveryServicesReplicationPolicyListerExpansion interface{}
+
+// RecoveryServicesReplicationPolicyNamespaceListerExpansion allows custom methods to be added to
+// RecoveryServicesReplicationPolicyNamespaceLister.
+type RecoveryServicesReplicationPolicyNamespaceListerExpansion interface{}
 
 // RecoveryServicesVaultListerExpansion allows custom methods to be added to
 // RecoveryServicesVaultLister.
@@ -1665,6 +2345,14 @@ type RedisFirewallRuleListerExpansion interface{}
 // RedisFirewallRuleNamespaceListerExpansion allows custom methods to be added to
 // RedisFirewallRuleNamespaceLister.
 type RedisFirewallRuleNamespaceListerExpansion interface{}
+
+// RelayHybridConnectionListerExpansion allows custom methods to be added to
+// RelayHybridConnectionLister.
+type RelayHybridConnectionListerExpansion interface{}
+
+// RelayHybridConnectionNamespaceListerExpansion allows custom methods to be added to
+// RelayHybridConnectionNamespaceLister.
+type RelayHybridConnectionNamespaceListerExpansion interface{}
 
 // RelayNamespaceListerExpansion allows custom methods to be added to
 // RelayNamespaceLister.
@@ -1866,6 +2554,54 @@ type SignalrServiceListerExpansion interface{}
 // SignalrServiceNamespaceLister.
 type SignalrServiceNamespaceListerExpansion interface{}
 
+// SiteRecoveryFabricListerExpansion allows custom methods to be added to
+// SiteRecoveryFabricLister.
+type SiteRecoveryFabricListerExpansion interface{}
+
+// SiteRecoveryFabricNamespaceListerExpansion allows custom methods to be added to
+// SiteRecoveryFabricNamespaceLister.
+type SiteRecoveryFabricNamespaceListerExpansion interface{}
+
+// SiteRecoveryNetworkMappingListerExpansion allows custom methods to be added to
+// SiteRecoveryNetworkMappingLister.
+type SiteRecoveryNetworkMappingListerExpansion interface{}
+
+// SiteRecoveryNetworkMappingNamespaceListerExpansion allows custom methods to be added to
+// SiteRecoveryNetworkMappingNamespaceLister.
+type SiteRecoveryNetworkMappingNamespaceListerExpansion interface{}
+
+// SiteRecoveryProtectionContainerListerExpansion allows custom methods to be added to
+// SiteRecoveryProtectionContainerLister.
+type SiteRecoveryProtectionContainerListerExpansion interface{}
+
+// SiteRecoveryProtectionContainerNamespaceListerExpansion allows custom methods to be added to
+// SiteRecoveryProtectionContainerNamespaceLister.
+type SiteRecoveryProtectionContainerNamespaceListerExpansion interface{}
+
+// SiteRecoveryProtectionContainerMappingListerExpansion allows custom methods to be added to
+// SiteRecoveryProtectionContainerMappingLister.
+type SiteRecoveryProtectionContainerMappingListerExpansion interface{}
+
+// SiteRecoveryProtectionContainerMappingNamespaceListerExpansion allows custom methods to be added to
+// SiteRecoveryProtectionContainerMappingNamespaceLister.
+type SiteRecoveryProtectionContainerMappingNamespaceListerExpansion interface{}
+
+// SiteRecoveryReplicatedVmListerExpansion allows custom methods to be added to
+// SiteRecoveryReplicatedVmLister.
+type SiteRecoveryReplicatedVmListerExpansion interface{}
+
+// SiteRecoveryReplicatedVmNamespaceListerExpansion allows custom methods to be added to
+// SiteRecoveryReplicatedVmNamespaceLister.
+type SiteRecoveryReplicatedVmNamespaceListerExpansion interface{}
+
+// SiteRecoveryReplicationPolicyListerExpansion allows custom methods to be added to
+// SiteRecoveryReplicationPolicyLister.
+type SiteRecoveryReplicationPolicyListerExpansion interface{}
+
+// SiteRecoveryReplicationPolicyNamespaceListerExpansion allows custom methods to be added to
+// SiteRecoveryReplicationPolicyNamespaceLister.
+type SiteRecoveryReplicationPolicyNamespaceListerExpansion interface{}
+
 // SnapshotListerExpansion allows custom methods to be added to
 // SnapshotLister.
 type SnapshotListerExpansion interface{}
@@ -1897,6 +2633,14 @@ type SqlElasticpoolListerExpansion interface{}
 // SqlElasticpoolNamespaceListerExpansion allows custom methods to be added to
 // SqlElasticpoolNamespaceLister.
 type SqlElasticpoolNamespaceListerExpansion interface{}
+
+// SqlFailoverGroupListerExpansion allows custom methods to be added to
+// SqlFailoverGroupLister.
+type SqlFailoverGroupListerExpansion interface{}
+
+// SqlFailoverGroupNamespaceListerExpansion allows custom methods to be added to
+// SqlFailoverGroupNamespaceLister.
+type SqlFailoverGroupNamespaceListerExpansion interface{}
 
 // SqlFirewallRuleListerExpansion allows custom methods to be added to
 // SqlFirewallRuleLister.
@@ -1930,6 +2674,14 @@ type StorageAccountListerExpansion interface{}
 // StorageAccountNamespaceLister.
 type StorageAccountNamespaceListerExpansion interface{}
 
+// StorageAccountNetworkRulesListerExpansion allows custom methods to be added to
+// StorageAccountNetworkRulesLister.
+type StorageAccountNetworkRulesListerExpansion interface{}
+
+// StorageAccountNetworkRulesNamespaceListerExpansion allows custom methods to be added to
+// StorageAccountNetworkRulesNamespaceLister.
+type StorageAccountNetworkRulesNamespaceListerExpansion interface{}
+
 // StorageBlobListerExpansion allows custom methods to be added to
 // StorageBlobLister.
 type StorageBlobListerExpansion interface{}
@@ -1945,6 +2697,22 @@ type StorageContainerListerExpansion interface{}
 // StorageContainerNamespaceListerExpansion allows custom methods to be added to
 // StorageContainerNamespaceLister.
 type StorageContainerNamespaceListerExpansion interface{}
+
+// StorageDataLakeGen2FilesystemListerExpansion allows custom methods to be added to
+// StorageDataLakeGen2FilesystemLister.
+type StorageDataLakeGen2FilesystemListerExpansion interface{}
+
+// StorageDataLakeGen2FilesystemNamespaceListerExpansion allows custom methods to be added to
+// StorageDataLakeGen2FilesystemNamespaceLister.
+type StorageDataLakeGen2FilesystemNamespaceListerExpansion interface{}
+
+// StorageManagementPolicyListerExpansion allows custom methods to be added to
+// StorageManagementPolicyLister.
+type StorageManagementPolicyListerExpansion interface{}
+
+// StorageManagementPolicyNamespaceListerExpansion allows custom methods to be added to
+// StorageManagementPolicyNamespaceLister.
+type StorageManagementPolicyNamespaceListerExpansion interface{}
 
 // StorageQueueListerExpansion allows custom methods to be added to
 // StorageQueueLister.
@@ -2034,6 +2802,22 @@ type StreamAnalyticsOutputServicebusQueueListerExpansion interface{}
 // StreamAnalyticsOutputServicebusQueueNamespaceLister.
 type StreamAnalyticsOutputServicebusQueueNamespaceListerExpansion interface{}
 
+// StreamAnalyticsOutputServicebusTopicListerExpansion allows custom methods to be added to
+// StreamAnalyticsOutputServicebusTopicLister.
+type StreamAnalyticsOutputServicebusTopicListerExpansion interface{}
+
+// StreamAnalyticsOutputServicebusTopicNamespaceListerExpansion allows custom methods to be added to
+// StreamAnalyticsOutputServicebusTopicNamespaceLister.
+type StreamAnalyticsOutputServicebusTopicNamespaceListerExpansion interface{}
+
+// StreamAnalyticsReferenceInputBlobListerExpansion allows custom methods to be added to
+// StreamAnalyticsReferenceInputBlobLister.
+type StreamAnalyticsReferenceInputBlobListerExpansion interface{}
+
+// StreamAnalyticsReferenceInputBlobNamespaceListerExpansion allows custom methods to be added to
+// StreamAnalyticsReferenceInputBlobNamespaceLister.
+type StreamAnalyticsReferenceInputBlobNamespaceListerExpansion interface{}
+
 // StreamAnalyticsStreamInputBlobListerExpansion allows custom methods to be added to
 // StreamAnalyticsStreamInputBlobLister.
 type StreamAnalyticsStreamInputBlobListerExpansion interface{}
@@ -2065,6 +2849,14 @@ type SubnetListerExpansion interface{}
 // SubnetNamespaceListerExpansion allows custom methods to be added to
 // SubnetNamespaceLister.
 type SubnetNamespaceListerExpansion interface{}
+
+// SubnetNATGatewayAssociationListerExpansion allows custom methods to be added to
+// SubnetNATGatewayAssociationLister.
+type SubnetNATGatewayAssociationListerExpansion interface{}
+
+// SubnetNATGatewayAssociationNamespaceListerExpansion allows custom methods to be added to
+// SubnetNATGatewayAssociationNamespaceLister.
+type SubnetNATGatewayAssociationNamespaceListerExpansion interface{}
 
 // SubnetNetworkSecurityGroupAssociationListerExpansion allows custom methods to be added to
 // SubnetNetworkSecurityGroupAssociationLister.
@@ -2113,6 +2905,14 @@ type UserAssignedIdentityListerExpansion interface{}
 // UserAssignedIdentityNamespaceListerExpansion allows custom methods to be added to
 // UserAssignedIdentityNamespaceLister.
 type UserAssignedIdentityNamespaceListerExpansion interface{}
+
+// VirtualHubListerExpansion allows custom methods to be added to
+// VirtualHubLister.
+type VirtualHubListerExpansion interface{}
+
+// VirtualHubNamespaceListerExpansion allows custom methods to be added to
+// VirtualHubNamespaceLister.
+type VirtualHubNamespaceListerExpansion interface{}
 
 // VirtualMachineListerExpansion allows custom methods to be added to
 // VirtualMachineLister.
@@ -2177,3 +2977,35 @@ type VirtualNetworkPeeringListerExpansion interface{}
 // VirtualNetworkPeeringNamespaceListerExpansion allows custom methods to be added to
 // VirtualNetworkPeeringNamespaceLister.
 type VirtualNetworkPeeringNamespaceListerExpansion interface{}
+
+// VirtualWANListerExpansion allows custom methods to be added to
+// VirtualWANLister.
+type VirtualWANListerExpansion interface{}
+
+// VirtualWANNamespaceListerExpansion allows custom methods to be added to
+// VirtualWANNamespaceLister.
+type VirtualWANNamespaceListerExpansion interface{}
+
+// VpnGatewayListerExpansion allows custom methods to be added to
+// VpnGatewayLister.
+type VpnGatewayListerExpansion interface{}
+
+// VpnGatewayNamespaceListerExpansion allows custom methods to be added to
+// VpnGatewayNamespaceLister.
+type VpnGatewayNamespaceListerExpansion interface{}
+
+// VpnServerConfigurationListerExpansion allows custom methods to be added to
+// VpnServerConfigurationLister.
+type VpnServerConfigurationListerExpansion interface{}
+
+// VpnServerConfigurationNamespaceListerExpansion allows custom methods to be added to
+// VpnServerConfigurationNamespaceLister.
+type VpnServerConfigurationNamespaceListerExpansion interface{}
+
+// WebApplicationFirewallPolicyListerExpansion allows custom methods to be added to
+// WebApplicationFirewallPolicyLister.
+type WebApplicationFirewallPolicyListerExpansion interface{}
+
+// WebApplicationFirewallPolicyNamespaceListerExpansion allows custom methods to be added to
+// WebApplicationFirewallPolicyNamespaceLister.
+type WebApplicationFirewallPolicyNamespaceListerExpansion interface{}

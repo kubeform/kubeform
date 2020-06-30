@@ -40,8 +40,13 @@ type KubernetesCluster struct {
 }
 
 type KubernetesClusterSpecAddonProfileAciConnectorLinux struct {
-	Enabled    bool   `json:"enabled" tf:"enabled"`
-	SubnetName string `json:"subnetName" tf:"subnet_name"`
+	Enabled bool `json:"enabled" tf:"enabled"`
+	// +optional
+	SubnetName string `json:"subnetName,omitempty" tf:"subnet_name,omitempty"`
+}
+
+type KubernetesClusterSpecAddonProfileAzurePolicy struct {
+	Enabled bool `json:"enabled" tf:"enabled"`
 }
 
 type KubernetesClusterSpecAddonProfileHttpApplicationRouting struct {
@@ -50,9 +55,14 @@ type KubernetesClusterSpecAddonProfileHttpApplicationRouting struct {
 	HttpApplicationRoutingZoneName string `json:"httpApplicationRoutingZoneName,omitempty" tf:"http_application_routing_zone_name,omitempty"`
 }
 
+type KubernetesClusterSpecAddonProfileKubeDashboard struct {
+	Enabled bool `json:"enabled" tf:"enabled"`
+}
+
 type KubernetesClusterSpecAddonProfileOmsAgent struct {
-	Enabled                 bool   `json:"enabled" tf:"enabled"`
-	LogAnalyticsWorkspaceID string `json:"logAnalyticsWorkspaceID" tf:"log_analytics_workspace_id"`
+	Enabled bool `json:"enabled" tf:"enabled"`
+	// +optional
+	LogAnalyticsWorkspaceID string `json:"logAnalyticsWorkspaceID,omitempty" tf:"log_analytics_workspace_id,omitempty"`
 }
 
 type KubernetesClusterSpecAddonProfile struct {
@@ -61,7 +71,13 @@ type KubernetesClusterSpecAddonProfile struct {
 	AciConnectorLinux []KubernetesClusterSpecAddonProfileAciConnectorLinux `json:"aciConnectorLinux,omitempty" tf:"aci_connector_linux,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
+	AzurePolicy []KubernetesClusterSpecAddonProfileAzurePolicy `json:"azurePolicy,omitempty" tf:"azure_policy,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
 	HttpApplicationRouting []KubernetesClusterSpecAddonProfileHttpApplicationRouting `json:"httpApplicationRouting,omitempty" tf:"http_application_routing,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	KubeDashboard []KubernetesClusterSpecAddonProfileKubeDashboard `json:"kubeDashboard,omitempty" tf:"kube_dashboard,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	OmsAgent []KubernetesClusterSpecAddonProfileOmsAgent `json:"omsAgent,omitempty" tf:"oms_agent,omitempty"`
@@ -77,6 +93,8 @@ type KubernetesClusterSpecAgentPoolProfile struct {
 	DnsPrefix string `json:"dnsPrefix,omitempty" tf:"dns_prefix,omitempty"`
 	// +optional
 	EnableAutoScaling bool `json:"enableAutoScaling,omitempty" tf:"enable_auto_scaling,omitempty"`
+	// +optional
+	EnableNodePublicIP bool `json:"enableNodePublicIP,omitempty" tf:"enable_node_public_ip,omitempty"`
 	// +optional
 	// Deprecated
 	Fqdn string `json:"fqdn,omitempty" tf:"fqdn,omitempty"`
@@ -98,6 +116,41 @@ type KubernetesClusterSpecAgentPoolProfile struct {
 	VmSize string `json:"vmSize" tf:"vm_size"`
 	// +optional
 	VnetSubnetID string `json:"vnetSubnetID,omitempty" tf:"vnet_subnet_id,omitempty"`
+}
+
+type KubernetesClusterSpecDefaultNodePool struct {
+	// +optional
+	AvailabilityZones []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
+	// +optional
+	EnableAutoScaling bool `json:"enableAutoScaling,omitempty" tf:"enable_auto_scaling,omitempty"`
+	// +optional
+	EnableNodePublicIP bool `json:"enableNodePublicIP,omitempty" tf:"enable_node_public_ip,omitempty"`
+	// +optional
+	MaxCount int64 `json:"maxCount,omitempty" tf:"max_count,omitempty"`
+	// +optional
+	MaxPods int64 `json:"maxPods,omitempty" tf:"max_pods,omitempty"`
+	// +optional
+	MinCount int64  `json:"minCount,omitempty" tf:"min_count,omitempty"`
+	Name     string `json:"name" tf:"name"`
+	// +optional
+	NodeCount int64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
+	// +optional
+	NodeTaints []string `json:"nodeTaints,omitempty" tf:"node_taints,omitempty"`
+	// +optional
+	OsDiskSizeGb int64 `json:"osDiskSizeGb,omitempty" tf:"os_disk_size_gb,omitempty"`
+	// +optional
+	Type   string `json:"type,omitempty" tf:"type,omitempty"`
+	VmSize string `json:"vmSize" tf:"vm_size"`
+	// +optional
+	VnetSubnetID string `json:"vnetSubnetID,omitempty" tf:"vnet_subnet_id,omitempty"`
+}
+
+type KubernetesClusterSpecIdentity struct {
+	// +optional
+	PrincipalID string `json:"principalID,omitempty" tf:"principal_id,omitempty"`
+	// +optional
+	TenantID string `json:"tenantID,omitempty" tf:"tenant_id,omitempty"`
+	Type     string `json:"type" tf:"type"`
 }
 
 type KubernetesClusterSpecKubeAdminConfig struct {
@@ -140,11 +193,25 @@ type KubernetesClusterSpecLinuxProfile struct {
 	SshKey []KubernetesClusterSpecLinuxProfileSshKey `json:"sshKey" tf:"ssh_key"`
 }
 
+type KubernetesClusterSpecNetworkProfileLoadBalancerProfile struct {
+	// +optional
+	EffectiveOutboundIPS []string `json:"effectiveOutboundIPS,omitempty" tf:"effective_outbound_ips,omitempty"`
+	// +optional
+	ManagedOutboundIPCount int64 `json:"managedOutboundIPCount,omitempty" tf:"managed_outbound_ip_count,omitempty"`
+	// +optional
+	OutboundIPAddressIDS []string `json:"outboundIPAddressIDS,omitempty" tf:"outbound_ip_address_ids,omitempty"`
+	// +optional
+	OutboundIPPrefixIDS []string `json:"outboundIPPrefixIDS,omitempty" tf:"outbound_ip_prefix_ids,omitempty"`
+}
+
 type KubernetesClusterSpecNetworkProfile struct {
 	// +optional
 	DnsServiceIP string `json:"dnsServiceIP,omitempty" tf:"dns_service_ip,omitempty"`
 	// +optional
 	DockerBridgeCIDR string `json:"dockerBridgeCIDR,omitempty" tf:"docker_bridge_cidr,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	LoadBalancerProfile []KubernetesClusterSpecNetworkProfileLoadBalancerProfile `json:"loadBalancerProfile,omitempty" tf:"load_balancer_profile,omitempty"`
 	// +optional
 	LoadBalancerSku string `json:"loadBalancerSku,omitempty" tf:"load_balancer_sku,omitempty"`
 	NetworkPlugin   string `json:"networkPlugin" tf:"network_plugin"`
@@ -191,20 +258,28 @@ type KubernetesClusterSpec struct {
 
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	AddonProfile     []KubernetesClusterSpecAddonProfile     `json:"addonProfile,omitempty" tf:"addon_profile,omitempty"`
-	AgentPoolProfile []KubernetesClusterSpecAgentPoolProfile `json:"agentPoolProfile" tf:"agent_pool_profile"`
+	AddonProfile []KubernetesClusterSpecAddonProfile `json:"addonProfile,omitempty" tf:"addon_profile,omitempty"`
+	// +optional
+	// Deprecated
+	AgentPoolProfile []KubernetesClusterSpecAgentPoolProfile `json:"agentPoolProfile,omitempty" tf:"agent_pool_profile,omitempty"`
 	// +optional
 	ApiServerAuthorizedIPRanges []string `json:"apiServerAuthorizedIPRanges,omitempty" tf:"api_server_authorized_ip_ranges,omitempty"`
-	DnsPrefix                   string   `json:"dnsPrefix" tf:"dns_prefix"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	DefaultNodePool []KubernetesClusterSpecDefaultNodePool `json:"defaultNodePool,omitempty" tf:"default_node_pool,omitempty"`
+	DnsPrefix       string                                 `json:"dnsPrefix" tf:"dns_prefix"`
+	// +optional
+	EnablePodSecurityPolicy bool `json:"enablePodSecurityPolicy,omitempty" tf:"enable_pod_security_policy,omitempty"`
 	// +optional
 	Fqdn string `json:"fqdn,omitempty" tf:"fqdn,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
+	Identity []KubernetesClusterSpecIdentity `json:"identity,omitempty" tf:"identity,omitempty"`
+	// +optional
 	KubeAdminConfig []KubernetesClusterSpecKubeAdminConfig `json:"kubeAdminConfig,omitempty" tf:"kube_admin_config,omitempty"`
 	// +optional
 	KubeAdminConfigRaw string `json:"-" sensitive:"true" tf:"kube_admin_config_raw,omitempty"`
 	// +optional
-	// +kubebuilder:validation:MaxItems=1
 	KubeConfig []KubernetesClusterSpecKubeConfig `json:"kubeConfig,omitempty" tf:"kube_config,omitempty"`
 	// +optional
 	KubeConfigRaw string `json:"-" sensitive:"true" tf:"kube_config_raw,omitempty"`
@@ -220,7 +295,11 @@ type KubernetesClusterSpec struct {
 	NetworkProfile []KubernetesClusterSpecNetworkProfile `json:"networkProfile,omitempty" tf:"network_profile,omitempty"`
 	// +optional
 	NodeResourceGroup string `json:"nodeResourceGroup,omitempty" tf:"node_resource_group,omitempty"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	PrivateFqdn string `json:"privateFqdn,omitempty" tf:"private_fqdn,omitempty"`
+	// +optional
+	PrivateLinkEnabled bool   `json:"privateLinkEnabled,omitempty" tf:"private_link_enabled,omitempty"`
+	ResourceGroupName  string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	RoleBasedAccessControl []KubernetesClusterSpecRoleBasedAccessControl `json:"roleBasedAccessControl,omitempty" tf:"role_based_access_control,omitempty"`

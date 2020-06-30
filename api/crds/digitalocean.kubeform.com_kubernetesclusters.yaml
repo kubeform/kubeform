@@ -25,12 +25,12 @@ spec:
         apiVersion:
           description: 'APIVersion defines the versioned schema of this representation
             of an object. Servers should convert recognized schemas to the latest
-            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
           type: string
         kind:
           description: 'Kind is a string value representing the REST resource this
             object represents. Servers may infer this from the endpoint the client
-            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
           type: string
         metadata:
           type: object
@@ -46,21 +46,6 @@ spec:
               type: string
             ipv4Address:
               type: string
-            kubeConfig:
-              items:
-                properties:
-                  clientCertificate:
-                    type: string
-                  clientKey:
-                    type: string
-                  clusterCaCertificate:
-                    type: string
-                  host:
-                    type: string
-                  rawConfig:
-                    type: string
-                type: object
-              type: array
             name:
               type: string
             nodePool:
@@ -68,6 +53,21 @@ spec:
                 properties:
                   ID:
                     type: string
+                  actualNodeCount:
+                    format: int64
+                    type: integer
+                  autoScale:
+                    type: boolean
+                  labels:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  maxNodes:
+                    format: int64
+                    type: integer
+                  minNodes:
+                    format: int64
+                    type: integer
                   name:
                     type: string
                   nodeCount:
@@ -79,6 +79,8 @@ spec:
                         ID:
                           type: string
                         createdAt:
+                          type: string
+                        dropletID:
                           type: string
                         name:
                           type: string
@@ -96,7 +98,6 @@ spec:
                     type: array
                 required:
                 - name
-                - nodeCount
                 - size
                 type: object
               maxItems: 1
@@ -113,6 +114,15 @@ spec:
               type: object
             region:
               type: string
+            secretRef:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             serviceSubnet:
               type: string
             status:
@@ -125,8 +135,9 @@ spec:
               type: string
             version:
               type: string
+            vpcUUID:
+              type: string
           required:
-          - name
           - nodePool
           - providerRef
           - region
@@ -151,21 +162,6 @@ spec:
                   type: string
                 ipv4Address:
                   type: string
-                kubeConfig:
-                  items:
-                    properties:
-                      clientCertificate:
-                        type: string
-                      clientKey:
-                        type: string
-                      clusterCaCertificate:
-                        type: string
-                      host:
-                        type: string
-                      rawConfig:
-                        type: string
-                    type: object
-                  type: array
                 name:
                   type: string
                 nodePool:
@@ -173,6 +169,21 @@ spec:
                     properties:
                       ID:
                         type: string
+                      actualNodeCount:
+                        format: int64
+                        type: integer
+                      autoScale:
+                        type: boolean
+                      labels:
+                        additionalProperties:
+                          type: string
+                        type: object
+                      maxNodes:
+                        format: int64
+                        type: integer
+                      minNodes:
+                        format: int64
+                        type: integer
                       name:
                         type: string
                       nodeCount:
@@ -184,6 +195,8 @@ spec:
                             ID:
                               type: string
                             createdAt:
+                              type: string
+                            dropletID:
                               type: string
                             name:
                               type: string
@@ -201,7 +214,6 @@ spec:
                         type: array
                     required:
                     - name
-                    - nodeCount
                     - size
                     type: object
                   maxItems: 1
@@ -218,6 +230,15 @@ spec:
                   type: object
                 region:
                   type: string
+                secretRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
                 serviceSubnet:
                   type: string
                 status:
@@ -230,8 +251,9 @@ spec:
                   type: string
                 version:
                   type: string
+                vpcUUID:
+                  type: string
               required:
-              - name
               - nodePool
               - providerRef
               - region

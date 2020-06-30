@@ -50,6 +50,11 @@ type AcmCertificateSpecDomainValidationOptions struct {
 	ResourceRecordValue string `json:"resourceRecordValue,omitempty" tf:"resource_record_value,omitempty"`
 }
 
+type AcmCertificateSpecOptions struct {
+	// +optional
+	CertificateTransparencyLoggingPreference string `json:"certificateTransparencyLoggingPreference,omitempty" tf:"certificate_transparency_logging_preference,omitempty"`
+}
+
 type AcmCertificateSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
@@ -60,6 +65,8 @@ type AcmCertificateSpec struct {
 	// +optional
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
+	CertificateAuthorityArn string `json:"certificateAuthorityArn,omitempty" tf:"certificate_authority_arn,omitempty"`
+	// +optional
 	CertificateBody string `json:"certificateBody,omitempty" tf:"certificate_body,omitempty"`
 	// +optional
 	CertificateChain string `json:"certificateChain,omitempty" tf:"certificate_chain,omitempty"`
@@ -67,6 +74,9 @@ type AcmCertificateSpec struct {
 	DomainName string `json:"domainName,omitempty" tf:"domain_name,omitempty"`
 	// +optional
 	DomainValidationOptions []AcmCertificateSpecDomainValidationOptions `json:"domainValidationOptions,omitempty" tf:"domain_validation_options,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Options []AcmCertificateSpecOptions `json:"options,omitempty" tf:"options,omitempty"`
 	// +optional
 	PrivateKey string `json:"-" sensitive:"true" tf:"private_key,omitempty"`
 	// +optional

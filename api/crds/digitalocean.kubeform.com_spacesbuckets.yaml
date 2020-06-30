@@ -25,12 +25,12 @@ spec:
         apiVersion:
           description: 'APIVersion defines the versioned schema of this representation
             of an object. Servers should convert recognized schemas to the latest
-            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
           type: string
         kind:
           description: 'Kind is a string value representing the REST resource this
             object represents. Servers may infer this from the endpoint the client
-            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
           type: string
         metadata:
           type: object
@@ -42,11 +42,81 @@ spec:
             bucketDomainName:
               description: The FQDN of the bucket
               type: string
+            corsRule:
+              description: A container holding a list of elements describing allowed
+                methods for a specific origin.
+              items:
+                properties:
+                  allowedHeaders:
+                    description: A list of headers that will be included in the CORS
+                      preflight request's Access-Control-Request-Headers. A header
+                      may contain one wildcard (e.g. x-amz-*).
+                    items:
+                      type: string
+                    type: array
+                  allowedMethods:
+                    description: A list of HTTP methods (e.g. GET) which are allowed
+                      from the specified origin.
+                    items:
+                      type: string
+                    type: array
+                  allowedOrigins:
+                    description: A list of hosts from which requests using the specified
+                      methods are allowed. A host may contain one wildcard (e.g. http://*.example.com).
+                    items:
+                      type: string
+                    type: array
+                  maxAgeSeconds:
+                    format: int64
+                    type: integer
+                required:
+                - allowedMethods
+                - allowedOrigins
+                type: object
+              type: array
             forceDestroy:
               description: Unless true, the bucket will only be destroyed if empty
               type: boolean
             id:
               type: string
+            lifecycleRule:
+              items:
+                properties:
+                  ID:
+                    type: string
+                  abortIncompleteMultipartUploadDays:
+                    format: int64
+                    type: integer
+                  enabled:
+                    type: boolean
+                  expiration:
+                    items:
+                      properties:
+                        date:
+                          type: string
+                        days:
+                          format: int64
+                          type: integer
+                        expiredObjectDeleteMarker:
+                          type: boolean
+                      type: object
+                    maxItems: 1
+                    type: array
+                  noncurrentVersionExpiration:
+                    items:
+                      properties:
+                        days:
+                          format: int64
+                          type: integer
+                      type: object
+                    maxItems: 1
+                    type: array
+                  prefix:
+                    type: string
+                required:
+                - enabled
+                type: object
+              type: array
             name:
               description: Bucket name
               type: string
@@ -65,6 +135,14 @@ spec:
             urn:
               description: the uniform resource name for the bucket
               type: string
+            versioning:
+              items:
+                properties:
+                  enabled:
+                    type: boolean
+                type: object
+              maxItems: 1
+              type: array
           required:
           - name
           - providerRef
@@ -84,11 +162,82 @@ spec:
                 bucketDomainName:
                   description: The FQDN of the bucket
                   type: string
+                corsRule:
+                  description: A container holding a list of elements describing allowed
+                    methods for a specific origin.
+                  items:
+                    properties:
+                      allowedHeaders:
+                        description: A list of headers that will be included in the
+                          CORS preflight request's Access-Control-Request-Headers.
+                          A header may contain one wildcard (e.g. x-amz-*).
+                        items:
+                          type: string
+                        type: array
+                      allowedMethods:
+                        description: A list of HTTP methods (e.g. GET) which are allowed
+                          from the specified origin.
+                        items:
+                          type: string
+                        type: array
+                      allowedOrigins:
+                        description: A list of hosts from which requests using the
+                          specified methods are allowed. A host may contain one wildcard
+                          (e.g. http://*.example.com).
+                        items:
+                          type: string
+                        type: array
+                      maxAgeSeconds:
+                        format: int64
+                        type: integer
+                    required:
+                    - allowedMethods
+                    - allowedOrigins
+                    type: object
+                  type: array
                 forceDestroy:
                   description: Unless true, the bucket will only be destroyed if empty
                   type: boolean
                 id:
                   type: string
+                lifecycleRule:
+                  items:
+                    properties:
+                      ID:
+                        type: string
+                      abortIncompleteMultipartUploadDays:
+                        format: int64
+                        type: integer
+                      enabled:
+                        type: boolean
+                      expiration:
+                        items:
+                          properties:
+                            date:
+                              type: string
+                            days:
+                              format: int64
+                              type: integer
+                            expiredObjectDeleteMarker:
+                              type: boolean
+                          type: object
+                        maxItems: 1
+                        type: array
+                      noncurrentVersionExpiration:
+                        items:
+                          properties:
+                            days:
+                              format: int64
+                              type: integer
+                          type: object
+                        maxItems: 1
+                        type: array
+                      prefix:
+                        type: string
+                    required:
+                    - enabled
+                    type: object
+                  type: array
                 name:
                   description: Bucket name
                   type: string
@@ -107,6 +256,14 @@ spec:
                 urn:
                   description: the uniform resource name for the bucket
                   type: string
+                versioning:
+                  items:
+                    properties:
+                      enabled:
+                        type: boolean
+                    type: object
+                  maxItems: 1
+                  type: array
               required:
               - name
               - providerRef

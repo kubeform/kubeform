@@ -43,6 +43,8 @@ type KubernetesNodePoolSpecNodes struct {
 	// +optional
 	CreatedAt string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 	// +optional
+	DropletID string `json:"dropletID,omitempty" tf:"droplet_id,omitempty"`
+	// +optional
 	ID string `json:"ID,omitempty" tf:"id,omitempty"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
@@ -57,9 +59,20 @@ type KubernetesNodePoolSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// +optional
+	ActualNodeCount int64 `json:"actualNodeCount,omitempty" tf:"actual_node_count,omitempty"`
+	// +optional
+	AutoScale bool   `json:"autoScale,omitempty" tf:"auto_scale,omitempty"`
 	ClusterID string `json:"clusterID" tf:"cluster_id"`
-	Name      string `json:"name" tf:"name"`
-	NodeCount int64  `json:"nodeCount" tf:"node_count"`
+	// +optional
+	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
+	// +optional
+	MaxNodes int64 `json:"maxNodes,omitempty" tf:"max_nodes,omitempty"`
+	// +optional
+	MinNodes int64  `json:"minNodes,omitempty" tf:"min_nodes,omitempty"`
+	Name     string `json:"name" tf:"name"`
+	// +optional
+	NodeCount int64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
 	// +optional
 	Nodes []KubernetesNodePoolSpecNodes `json:"nodes,omitempty" tf:"nodes,omitempty"`
 	Size  string                        `json:"size" tf:"size"`

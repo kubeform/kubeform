@@ -265,6 +265,8 @@ type KinesisAnalyticsApplicationSpec struct {
 	// +optional
 	Status string `json:"status,omitempty" tf:"status,omitempty"`
 	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
 	Version int64 `json:"version,omitempty" tf:"version,omitempty"`
 }
 

@@ -109,6 +109,8 @@ type ApplicationGatewaySpecBackendHTTPSettings struct {
 	Protocol  string `json:"protocol" tf:"protocol"`
 	// +optional
 	RequestTimeout int64 `json:"requestTimeout,omitempty" tf:"request_timeout,omitempty"`
+	// +optional
+	TrustedRootCertificateNames []string `json:"trustedRootCertificateNames,omitempty" tf:"trusted_root_certificate_names,omitempty"`
 }
 
 type ApplicationGatewaySpecCustomErrorConfiguration struct {
@@ -326,6 +328,13 @@ type ApplicationGatewaySpecSslPolicy struct {
 	PolicyType string `json:"policyType,omitempty" tf:"policy_type,omitempty"`
 }
 
+type ApplicationGatewaySpecTrustedRootCertificate struct {
+	Data string `json:"-" sensitive:"true" tf:"data"`
+	// +optional
+	ID   string `json:"ID,omitempty" tf:"id,omitempty"`
+	Name string `json:"name" tf:"name"`
+}
+
 type ApplicationGatewaySpecUrlPathMapPathRule struct {
 	// +optional
 	BackendAddressPoolID string `json:"backendAddressPoolID,omitempty" tf:"backend_address_pool_id,omitempty"`
@@ -454,6 +463,8 @@ type ApplicationGatewaySpec struct {
 	SslPolicy []ApplicationGatewaySpecSslPolicy `json:"sslPolicy,omitempty" tf:"ssl_policy,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	TrustedRootCertificate []ApplicationGatewaySpecTrustedRootCertificate `json:"trustedRootCertificate,omitempty" tf:"trusted_root_certificate,omitempty"`
 	// +optional
 	UrlPathMap []ApplicationGatewaySpecUrlPathMap `json:"urlPathMap,omitempty" tf:"url_path_map,omitempty"`
 	// +optional

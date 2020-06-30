@@ -8,8 +8,8 @@ import (
 	"time"
 
 	"github.com/digitalocean/godo"
-	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/hashicorp/terraform/helper/validation"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/validation"
 )
 
 func resourceDigitalOceanDropletSnapshot() *schema.Resource {
@@ -92,7 +92,7 @@ func resourceDigitalOceanDropletSnapshotRead(d *schema.ResourceData, meta interf
 	if err != nil {
 		// If the snapshot is somehow already destroyed, mark as
 		// successfully gone
-		if resp.StatusCode == 404 {
+		if resp != nil && resp.StatusCode == 404 {
 			d.SetId("")
 			return nil
 		}

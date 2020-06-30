@@ -47,8 +47,10 @@ type KeyVaultKeySpec struct {
 	// +optional
 	Curve string `json:"curve,omitempty" tf:"curve,omitempty"`
 	// +optional
-	E       string   `json:"e,omitempty" tf:"e,omitempty"`
-	KeyOpts []string `json:"keyOpts" tf:"key_opts"`
+	E string `json:"e,omitempty" tf:"e,omitempty"`
+	// +optional
+	ExpirationDate string   `json:"expirationDate,omitempty" tf:"expiration_date,omitempty"`
+	KeyOpts        []string `json:"keyOpts" tf:"key_opts"`
 	// +optional
 	KeySize int64  `json:"keySize,omitempty" tf:"key_size,omitempty"`
 	KeyType string `json:"keyType" tf:"key_type"`
@@ -57,6 +59,8 @@ type KeyVaultKeySpec struct {
 	// +optional
 	N    string `json:"n,omitempty" tf:"n,omitempty"`
 	Name string `json:"name" tf:"name"`
+	// +optional
+	NotBeforeDate string `json:"notBeforeDate,omitempty" tf:"not_before_date,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional

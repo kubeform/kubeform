@@ -50,6 +50,12 @@ type GoogleServiceAccountSpec struct {
 	// If assigning billing role, specificy a billing account (default is to assign at the organizational level).
 	BillingAccountID string `json:"billingAccountID,omitempty" tf:"billing_account_id,omitempty"`
 	// +optional
+	// Descriptions of the created service accounts (defaults to no description)
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// +optional
+	// Display names of the created service accounts (defaults to 'Terraform-managed service account')
+	DisplayName string `json:"displayName,omitempty" tf:"display_name,omitempty"`
+	// +optional
 	// Generate keys for service accounts.
 	GenerateKeys bool `json:"generateKeys,omitempty" tf:"generate_keys,omitempty"`
 	// +optional
@@ -79,19 +85,19 @@ type GoogleServiceAccountOutput struct {
 	// Service account email (for single use).
 	// +optional
 	Email string `json:"email" tf:"email"`
-	// Service account emails.
+	// Service account emails by name.
 	// +optional
 	Emails string `json:"emails" tf:"emails"`
-	// Service account emails.
+	// Service account emails as list.
 	// +optional
 	EmailsList string `json:"emailsList" tf:"emails_list"`
 	// IAM-format service account email (for single use).
 	// +optional
 	IamEmail string `json:"iamEmail" tf:"iam_email"`
-	// IAM-format service account emails.
+	// IAM-format service account emails by name.
 	// +optional
 	IamEmails string `json:"iamEmails" tf:"iam_emails"`
-	// IAM-format service account emails.
+	// IAM-format service account emails as list.
 	// +optional
 	IamEmailsList string `json:"iamEmailsList" tf:"iam_emails_list"`
 	// Service account key (for single use).
@@ -103,9 +109,12 @@ type GoogleServiceAccountOutput struct {
 	// Service account resource (for single use).
 	// +optional
 	ServiceAccount string `json:"serviceAccount" tf:"service_account"`
-	// Service account resources.
+	// Service account resources as list.
 	// +optional
 	ServiceAccounts string `json:"serviceAccounts" tf:"service_accounts"`
+	// Service account resources by name.
+	// +optional
+	ServiceAccountsMap string `json:"serviceAccountsMap" tf:"service_accounts_map"`
 }
 
 type GoogleServiceAccountStatus struct {

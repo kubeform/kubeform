@@ -24,14 +24,38 @@ import (
 
 // Interface provides access to all the informers in this group version.
 type Interface interface {
+	// AccessContextManagerAccessLevels returns a AccessContextManagerAccessLevelInformer.
+	AccessContextManagerAccessLevels() AccessContextManagerAccessLevelInformer
+	// AccessContextManagerAccessPolicies returns a AccessContextManagerAccessPolicyInformer.
+	AccessContextManagerAccessPolicies() AccessContextManagerAccessPolicyInformer
+	// AccessContextManagerServicePerimeters returns a AccessContextManagerServicePerimeterInformer.
+	AccessContextManagerServicePerimeters() AccessContextManagerServicePerimeterInformer
 	// AppEngineApplications returns a AppEngineApplicationInformer.
 	AppEngineApplications() AppEngineApplicationInformer
+	// AppEngineDomainMappings returns a AppEngineDomainMappingInformer.
+	AppEngineDomainMappings() AppEngineDomainMappingInformer
+	// AppEngineFirewallRules returns a AppEngineFirewallRuleInformer.
+	AppEngineFirewallRules() AppEngineFirewallRuleInformer
+	// AppEngineStandardAppVersions returns a AppEngineStandardAppVersionInformer.
+	AppEngineStandardAppVersions() AppEngineStandardAppVersionInformer
+	// BigqueryDataTransferConfigs returns a BigqueryDataTransferConfigInformer.
+	BigqueryDataTransferConfigs() BigqueryDataTransferConfigInformer
 	// BigqueryDatasets returns a BigqueryDatasetInformer.
 	BigqueryDatasets() BigqueryDatasetInformer
 	// BigqueryTables returns a BigqueryTableInformer.
 	BigqueryTables() BigqueryTableInformer
+	// BigtableAppProfiles returns a BigtableAppProfileInformer.
+	BigtableAppProfiles() BigtableAppProfileInformer
+	// BigtableGcPolicies returns a BigtableGcPolicyInformer.
+	BigtableGcPolicies() BigtableGcPolicyInformer
 	// BigtableInstances returns a BigtableInstanceInformer.
 	BigtableInstances() BigtableInstanceInformer
+	// BigtableInstanceIamBindings returns a BigtableInstanceIamBindingInformer.
+	BigtableInstanceIamBindings() BigtableInstanceIamBindingInformer
+	// BigtableInstanceIamMembers returns a BigtableInstanceIamMemberInformer.
+	BigtableInstanceIamMembers() BigtableInstanceIamMemberInformer
+	// BigtableInstanceIamPolicies returns a BigtableInstanceIamPolicyInformer.
+	BigtableInstanceIamPolicies() BigtableInstanceIamPolicyInformer
 	// BigtableTables returns a BigtableTableInformer.
 	BigtableTables() BigtableTableInformer
 	// BillingAccountIamBindings returns a BillingAccountIamBindingInformer.
@@ -42,12 +66,26 @@ type Interface interface {
 	BillingAccountIamPolicies() BillingAccountIamPolicyInformer
 	// BinaryAuthorizationAttestors returns a BinaryAuthorizationAttestorInformer.
 	BinaryAuthorizationAttestors() BinaryAuthorizationAttestorInformer
+	// BinaryAuthorizationAttestorIamBindings returns a BinaryAuthorizationAttestorIamBindingInformer.
+	BinaryAuthorizationAttestorIamBindings() BinaryAuthorizationAttestorIamBindingInformer
+	// BinaryAuthorizationAttestorIamMembers returns a BinaryAuthorizationAttestorIamMemberInformer.
+	BinaryAuthorizationAttestorIamMembers() BinaryAuthorizationAttestorIamMemberInformer
+	// BinaryAuthorizationAttestorIamPolicies returns a BinaryAuthorizationAttestorIamPolicyInformer.
+	BinaryAuthorizationAttestorIamPolicies() BinaryAuthorizationAttestorIamPolicyInformer
 	// BinaryAuthorizationPolicies returns a BinaryAuthorizationPolicyInformer.
 	BinaryAuthorizationPolicies() BinaryAuthorizationPolicyInformer
+	// CloudSchedulerJobs returns a CloudSchedulerJobInformer.
+	CloudSchedulerJobs() CloudSchedulerJobInformer
 	// CloudbuildTriggers returns a CloudbuildTriggerInformer.
 	CloudbuildTriggers() CloudbuildTriggerInformer
 	// CloudfunctionsFunctions returns a CloudfunctionsFunctionInformer.
 	CloudfunctionsFunctions() CloudfunctionsFunctionInformer
+	// CloudfunctionsFunctionIamBindings returns a CloudfunctionsFunctionIamBindingInformer.
+	CloudfunctionsFunctionIamBindings() CloudfunctionsFunctionIamBindingInformer
+	// CloudfunctionsFunctionIamMembers returns a CloudfunctionsFunctionIamMemberInformer.
+	CloudfunctionsFunctionIamMembers() CloudfunctionsFunctionIamMemberInformer
+	// CloudfunctionsFunctionIamPolicies returns a CloudfunctionsFunctionIamPolicyInformer.
+	CloudfunctionsFunctionIamPolicies() CloudfunctionsFunctionIamPolicyInformer
 	// CloudiotRegistries returns a CloudiotRegistryInformer.
 	CloudiotRegistries() CloudiotRegistryInformer
 	// ComposerEnvironments returns a ComposerEnvironmentInformer.
@@ -60,10 +98,16 @@ type Interface interface {
 	ComputeAutoscalers() ComputeAutoscalerInformer
 	// ComputeBackendBuckets returns a ComputeBackendBucketInformer.
 	ComputeBackendBuckets() ComputeBackendBucketInformer
+	// ComputeBackendBucketSignedURLKeys returns a ComputeBackendBucketSignedURLKeyInformer.
+	ComputeBackendBucketSignedURLKeys() ComputeBackendBucketSignedURLKeyInformer
 	// ComputeBackendServices returns a ComputeBackendServiceInformer.
 	ComputeBackendServices() ComputeBackendServiceInformer
+	// ComputeBackendServiceSignedURLKeys returns a ComputeBackendServiceSignedURLKeyInformer.
+	ComputeBackendServiceSignedURLKeys() ComputeBackendServiceSignedURLKeyInformer
 	// ComputeDisks returns a ComputeDiskInformer.
 	ComputeDisks() ComputeDiskInformer
+	// ComputeDiskResourcePolicyAttachments returns a ComputeDiskResourcePolicyAttachmentInformer.
+	ComputeDiskResourcePolicyAttachments() ComputeDiskResourcePolicyAttachmentInformer
 	// ComputeFirewalls returns a ComputeFirewallInformer.
 	ComputeFirewalls() ComputeFirewallInformer
 	// ComputeForwardingRules returns a ComputeForwardingRuleInformer.
@@ -88,14 +132,30 @@ type Interface interface {
 	ComputeInstanceGroups() ComputeInstanceGroupInformer
 	// ComputeInstanceGroupManagers returns a ComputeInstanceGroupManagerInformer.
 	ComputeInstanceGroupManagers() ComputeInstanceGroupManagerInformer
+	// ComputeInstanceIamBindings returns a ComputeInstanceIamBindingInformer.
+	ComputeInstanceIamBindings() ComputeInstanceIamBindingInformer
+	// ComputeInstanceIamMembers returns a ComputeInstanceIamMemberInformer.
+	ComputeInstanceIamMembers() ComputeInstanceIamMemberInformer
+	// ComputeInstanceIamPolicies returns a ComputeInstanceIamPolicyInformer.
+	ComputeInstanceIamPolicies() ComputeInstanceIamPolicyInformer
 	// ComputeInstanceTemplates returns a ComputeInstanceTemplateInformer.
 	ComputeInstanceTemplates() ComputeInstanceTemplateInformer
 	// ComputeInterconnectAttachments returns a ComputeInterconnectAttachmentInformer.
 	ComputeInterconnectAttachments() ComputeInterconnectAttachmentInformer
 	// ComputeNetworks returns a ComputeNetworkInformer.
 	ComputeNetworks() ComputeNetworkInformer
+	// ComputeNetworkEndpoints returns a ComputeNetworkEndpointInformer.
+	ComputeNetworkEndpoints() ComputeNetworkEndpointInformer
+	// ComputeNetworkEndpointGroups returns a ComputeNetworkEndpointGroupInformer.
+	ComputeNetworkEndpointGroups() ComputeNetworkEndpointGroupInformer
 	// ComputeNetworkPeerings returns a ComputeNetworkPeeringInformer.
 	ComputeNetworkPeerings() ComputeNetworkPeeringInformer
+	// ComputeNodeGroups returns a ComputeNodeGroupInformer.
+	ComputeNodeGroups() ComputeNodeGroupInformer
+	// ComputeNodeTemplates returns a ComputeNodeTemplateInformer.
+	ComputeNodeTemplates() ComputeNodeTemplateInformer
+	// ComputeProjectDefaultNetworkTiers returns a ComputeProjectDefaultNetworkTierInformer.
+	ComputeProjectDefaultNetworkTiers() ComputeProjectDefaultNetworkTierInformer
 	// ComputeProjectMetadatas returns a ComputeProjectMetadataInformer.
 	ComputeProjectMetadatas() ComputeProjectMetadataInformer
 	// ComputeProjectMetadataItems returns a ComputeProjectMetadataItemInformer.
@@ -108,6 +168,10 @@ type Interface interface {
 	ComputeRegionDisks() ComputeRegionDiskInformer
 	// ComputeRegionInstanceGroupManagers returns a ComputeRegionInstanceGroupManagerInformer.
 	ComputeRegionInstanceGroupManagers() ComputeRegionInstanceGroupManagerInformer
+	// ComputeReservations returns a ComputeReservationInformer.
+	ComputeReservations() ComputeReservationInformer
+	// ComputeResourcePolicies returns a ComputeResourcePolicyInformer.
+	ComputeResourcePolicies() ComputeResourcePolicyInformer
 	// ComputeRoutes returns a ComputeRouteInformer.
 	ComputeRoutes() ComputeRouteInformer
 	// ComputeRouters returns a ComputeRouterInformer.
@@ -142,6 +206,8 @@ type Interface interface {
 	ComputeTargetHTTPProxies() ComputeTargetHTTPProxyInformer
 	// ComputeTargetHTTPSProxies returns a ComputeTargetHTTPSProxyInformer.
 	ComputeTargetHTTPSProxies() ComputeTargetHTTPSProxyInformer
+	// ComputeTargetInstances returns a ComputeTargetInstanceInformer.
+	ComputeTargetInstances() ComputeTargetInstanceInformer
 	// ComputeTargetPools returns a ComputeTargetPoolInformer.
 	ComputeTargetPools() ComputeTargetPoolInformer
 	// ComputeTargetSSLProxies returns a ComputeTargetSSLProxyInformer.
@@ -164,8 +230,20 @@ type Interface interface {
 	DataflowJobs() DataflowJobInformer
 	// DataprocClusters returns a DataprocClusterInformer.
 	DataprocClusters() DataprocClusterInformer
+	// DataprocClusterIamBindings returns a DataprocClusterIamBindingInformer.
+	DataprocClusterIamBindings() DataprocClusterIamBindingInformer
+	// DataprocClusterIamMembers returns a DataprocClusterIamMemberInformer.
+	DataprocClusterIamMembers() DataprocClusterIamMemberInformer
+	// DataprocClusterIamPolicies returns a DataprocClusterIamPolicyInformer.
+	DataprocClusterIamPolicies() DataprocClusterIamPolicyInformer
 	// DataprocJobs returns a DataprocJobInformer.
 	DataprocJobs() DataprocJobInformer
+	// DataprocJobIamBindings returns a DataprocJobIamBindingInformer.
+	DataprocJobIamBindings() DataprocJobIamBindingInformer
+	// DataprocJobIamMembers returns a DataprocJobIamMemberInformer.
+	DataprocJobIamMembers() DataprocJobIamMemberInformer
+	// DataprocJobIamPolicies returns a DataprocJobIamPolicyInformer.
+	DataprocJobIamPolicies() DataprocJobIamPolicyInformer
 	// DnsManagedZones returns a DnsManagedZoneInformer.
 	DnsManagedZones() DnsManagedZoneInformer
 	// DnsRecordSets returns a DnsRecordSetInformer.
@@ -174,6 +252,8 @@ type Interface interface {
 	EndpointsServices() EndpointsServiceInformer
 	// FilestoreInstances returns a FilestoreInstanceInformer.
 	FilestoreInstances() FilestoreInstanceInformer
+	// FirestoreIndexes returns a FirestoreIndexInformer.
+	FirestoreIndexes() FirestoreIndexInformer
 	// Folders returns a FolderInformer.
 	Folders() FolderInformer
 	// FolderIamBindings returns a FolderIamBindingInformer.
@@ -184,6 +264,42 @@ type Interface interface {
 	FolderIamPolicies() FolderIamPolicyInformer
 	// FolderOrganizationPolicies returns a FolderOrganizationPolicyInformer.
 	FolderOrganizationPolicies() FolderOrganizationPolicyInformer
+	// IapAppEngineServiceIamBindings returns a IapAppEngineServiceIamBindingInformer.
+	IapAppEngineServiceIamBindings() IapAppEngineServiceIamBindingInformer
+	// IapAppEngineServiceIamMembers returns a IapAppEngineServiceIamMemberInformer.
+	IapAppEngineServiceIamMembers() IapAppEngineServiceIamMemberInformer
+	// IapAppEngineServiceIamPolicies returns a IapAppEngineServiceIamPolicyInformer.
+	IapAppEngineServiceIamPolicies() IapAppEngineServiceIamPolicyInformer
+	// IapAppEngineVersionIamBindings returns a IapAppEngineVersionIamBindingInformer.
+	IapAppEngineVersionIamBindings() IapAppEngineVersionIamBindingInformer
+	// IapAppEngineVersionIamMembers returns a IapAppEngineVersionIamMemberInformer.
+	IapAppEngineVersionIamMembers() IapAppEngineVersionIamMemberInformer
+	// IapAppEngineVersionIamPolicies returns a IapAppEngineVersionIamPolicyInformer.
+	IapAppEngineVersionIamPolicies() IapAppEngineVersionIamPolicyInformer
+	// IapWebBackendServiceIamBindings returns a IapWebBackendServiceIamBindingInformer.
+	IapWebBackendServiceIamBindings() IapWebBackendServiceIamBindingInformer
+	// IapWebBackendServiceIamMembers returns a IapWebBackendServiceIamMemberInformer.
+	IapWebBackendServiceIamMembers() IapWebBackendServiceIamMemberInformer
+	// IapWebBackendServiceIamPolicies returns a IapWebBackendServiceIamPolicyInformer.
+	IapWebBackendServiceIamPolicies() IapWebBackendServiceIamPolicyInformer
+	// IapWebIamBindings returns a IapWebIamBindingInformer.
+	IapWebIamBindings() IapWebIamBindingInformer
+	// IapWebIamMembers returns a IapWebIamMemberInformer.
+	IapWebIamMembers() IapWebIamMemberInformer
+	// IapWebIamPolicies returns a IapWebIamPolicyInformer.
+	IapWebIamPolicies() IapWebIamPolicyInformer
+	// IapWebTypeAppEngineIamBindings returns a IapWebTypeAppEngineIamBindingInformer.
+	IapWebTypeAppEngineIamBindings() IapWebTypeAppEngineIamBindingInformer
+	// IapWebTypeAppEngineIamMembers returns a IapWebTypeAppEngineIamMemberInformer.
+	IapWebTypeAppEngineIamMembers() IapWebTypeAppEngineIamMemberInformer
+	// IapWebTypeAppEngineIamPolicies returns a IapWebTypeAppEngineIamPolicyInformer.
+	IapWebTypeAppEngineIamPolicies() IapWebTypeAppEngineIamPolicyInformer
+	// IapWebTypeComputeIamBindings returns a IapWebTypeComputeIamBindingInformer.
+	IapWebTypeComputeIamBindings() IapWebTypeComputeIamBindingInformer
+	// IapWebTypeComputeIamMembers returns a IapWebTypeComputeIamMemberInformer.
+	IapWebTypeComputeIamMembers() IapWebTypeComputeIamMemberInformer
+	// IapWebTypeComputeIamPolicies returns a IapWebTypeComputeIamPolicyInformer.
+	IapWebTypeComputeIamPolicies() IapWebTypeComputeIamPolicyInformer
 	// KmsCryptoKeys returns a KmsCryptoKeyInformer.
 	KmsCryptoKeys() KmsCryptoKeyInformer
 	// KmsCryptoKeyIamBindings returns a KmsCryptoKeyIamBindingInformer.
@@ -206,6 +322,8 @@ type Interface interface {
 	LoggingFolderExclusions() LoggingFolderExclusionInformer
 	// LoggingFolderSinks returns a LoggingFolderSinkInformer.
 	LoggingFolderSinks() LoggingFolderSinkInformer
+	// LoggingMetrics returns a LoggingMetricInformer.
+	LoggingMetrics() LoggingMetricInformer
 	// LoggingOrganizationExclusions returns a LoggingOrganizationExclusionInformer.
 	LoggingOrganizationExclusions() LoggingOrganizationExclusionInformer
 	// LoggingOrganizationSinks returns a LoggingOrganizationSinkInformer.
@@ -214,6 +332,8 @@ type Interface interface {
 	LoggingProjectExclusions() LoggingProjectExclusionInformer
 	// LoggingProjectSinks returns a LoggingProjectSinkInformer.
 	LoggingProjectSinks() LoggingProjectSinkInformer
+	// MlEngineModels returns a MlEngineModelInformer.
+	MlEngineModels() MlEngineModelInformer
 	// MonitoringAlertPolicies returns a MonitoringAlertPolicyInformer.
 	MonitoringAlertPolicies() MonitoringAlertPolicyInformer
 	// MonitoringGroups returns a MonitoringGroupInformer.
@@ -234,6 +354,8 @@ type Interface interface {
 	OrganizationPolicies() OrganizationPolicyInformer
 	// Projects returns a ProjectInformer.
 	Projects() ProjectInformer
+	// ProjectIamAuditConfigs returns a ProjectIamAuditConfigInformer.
+	ProjectIamAuditConfigs() ProjectIamAuditConfigInformer
 	// ProjectIamBindings returns a ProjectIamBindingInformer.
 	ProjectIamBindings() ProjectIamBindingInformer
 	// ProjectIamCustomRoles returns a ProjectIamCustomRoleInformer.
@@ -272,8 +394,16 @@ type Interface interface {
 	ResourceManagerLiens() ResourceManagerLienInformer
 	// RuntimeconfigConfigs returns a RuntimeconfigConfigInformer.
 	RuntimeconfigConfigs() RuntimeconfigConfigInformer
+	// RuntimeconfigConfigIamBindings returns a RuntimeconfigConfigIamBindingInformer.
+	RuntimeconfigConfigIamBindings() RuntimeconfigConfigIamBindingInformer
+	// RuntimeconfigConfigIamMembers returns a RuntimeconfigConfigIamMemberInformer.
+	RuntimeconfigConfigIamMembers() RuntimeconfigConfigIamMemberInformer
+	// RuntimeconfigConfigIamPolicies returns a RuntimeconfigConfigIamPolicyInformer.
+	RuntimeconfigConfigIamPolicies() RuntimeconfigConfigIamPolicyInformer
 	// RuntimeconfigVariables returns a RuntimeconfigVariableInformer.
 	RuntimeconfigVariables() RuntimeconfigVariableInformer
+	// SccSources returns a SccSourceInformer.
+	SccSources() SccSourceInformer
 	// ServiceAccounts returns a ServiceAccountInformer.
 	ServiceAccounts() ServiceAccountInformer
 	// ServiceAccountIamBindings returns a ServiceAccountIamBindingInformer.
@@ -284,8 +414,16 @@ type Interface interface {
 	ServiceAccountIamPolicies() ServiceAccountIamPolicyInformer
 	// ServiceAccountKeys returns a ServiceAccountKeyInformer.
 	ServiceAccountKeys() ServiceAccountKeyInformer
+	// ServiceNetworkingConnections returns a ServiceNetworkingConnectionInformer.
+	ServiceNetworkingConnections() ServiceNetworkingConnectionInformer
 	// SourcerepoRepositories returns a SourcerepoRepositoryInformer.
 	SourcerepoRepositories() SourcerepoRepositoryInformer
+	// SourcerepoRepositoryIamBindings returns a SourcerepoRepositoryIamBindingInformer.
+	SourcerepoRepositoryIamBindings() SourcerepoRepositoryIamBindingInformer
+	// SourcerepoRepositoryIamMembers returns a SourcerepoRepositoryIamMemberInformer.
+	SourcerepoRepositoryIamMembers() SourcerepoRepositoryIamMemberInformer
+	// SourcerepoRepositoryIamPolicies returns a SourcerepoRepositoryIamPolicyInformer.
+	SourcerepoRepositoryIamPolicies() SourcerepoRepositoryIamPolicyInformer
 	// SpannerDatabases returns a SpannerDatabaseInformer.
 	SpannerDatabases() SpannerDatabaseInformer
 	// SpannerDatabaseIamBindings returns a SpannerDatabaseIamBindingInformer.
@@ -314,6 +452,8 @@ type Interface interface {
 	StorageBuckets() StorageBucketInformer
 	// StorageBucketACLs returns a StorageBucketACLInformer.
 	StorageBucketACLs() StorageBucketACLInformer
+	// StorageBucketAccessControls returns a StorageBucketAccessControlInformer.
+	StorageBucketAccessControls() StorageBucketAccessControlInformer
 	// StorageBucketIamBindings returns a StorageBucketIamBindingInformer.
 	StorageBucketIamBindings() StorageBucketIamBindingInformer
 	// StorageBucketIamMembers returns a StorageBucketIamMemberInformer.
@@ -332,6 +472,10 @@ type Interface interface {
 	StorageObjectACLs() StorageObjectACLInformer
 	// StorageObjectAccessControls returns a StorageObjectAccessControlInformer.
 	StorageObjectAccessControls() StorageObjectAccessControlInformer
+	// StorageTransferJobs returns a StorageTransferJobInformer.
+	StorageTransferJobs() StorageTransferJobInformer
+	// TpuNodes returns a TpuNodeInformer.
+	TpuNodes() TpuNodeInformer
 }
 
 type version struct {
@@ -345,9 +489,44 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
 }
 
+// AccessContextManagerAccessLevels returns a AccessContextManagerAccessLevelInformer.
+func (v *version) AccessContextManagerAccessLevels() AccessContextManagerAccessLevelInformer {
+	return &accessContextManagerAccessLevelInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// AccessContextManagerAccessPolicies returns a AccessContextManagerAccessPolicyInformer.
+func (v *version) AccessContextManagerAccessPolicies() AccessContextManagerAccessPolicyInformer {
+	return &accessContextManagerAccessPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// AccessContextManagerServicePerimeters returns a AccessContextManagerServicePerimeterInformer.
+func (v *version) AccessContextManagerServicePerimeters() AccessContextManagerServicePerimeterInformer {
+	return &accessContextManagerServicePerimeterInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // AppEngineApplications returns a AppEngineApplicationInformer.
 func (v *version) AppEngineApplications() AppEngineApplicationInformer {
 	return &appEngineApplicationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// AppEngineDomainMappings returns a AppEngineDomainMappingInformer.
+func (v *version) AppEngineDomainMappings() AppEngineDomainMappingInformer {
+	return &appEngineDomainMappingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// AppEngineFirewallRules returns a AppEngineFirewallRuleInformer.
+func (v *version) AppEngineFirewallRules() AppEngineFirewallRuleInformer {
+	return &appEngineFirewallRuleInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// AppEngineStandardAppVersions returns a AppEngineStandardAppVersionInformer.
+func (v *version) AppEngineStandardAppVersions() AppEngineStandardAppVersionInformer {
+	return &appEngineStandardAppVersionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BigqueryDataTransferConfigs returns a BigqueryDataTransferConfigInformer.
+func (v *version) BigqueryDataTransferConfigs() BigqueryDataTransferConfigInformer {
+	return &bigqueryDataTransferConfigInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // BigqueryDatasets returns a BigqueryDatasetInformer.
@@ -360,9 +539,34 @@ func (v *version) BigqueryTables() BigqueryTableInformer {
 	return &bigqueryTableInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// BigtableAppProfiles returns a BigtableAppProfileInformer.
+func (v *version) BigtableAppProfiles() BigtableAppProfileInformer {
+	return &bigtableAppProfileInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BigtableGcPolicies returns a BigtableGcPolicyInformer.
+func (v *version) BigtableGcPolicies() BigtableGcPolicyInformer {
+	return &bigtableGcPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // BigtableInstances returns a BigtableInstanceInformer.
 func (v *version) BigtableInstances() BigtableInstanceInformer {
 	return &bigtableInstanceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BigtableInstanceIamBindings returns a BigtableInstanceIamBindingInformer.
+func (v *version) BigtableInstanceIamBindings() BigtableInstanceIamBindingInformer {
+	return &bigtableInstanceIamBindingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BigtableInstanceIamMembers returns a BigtableInstanceIamMemberInformer.
+func (v *version) BigtableInstanceIamMembers() BigtableInstanceIamMemberInformer {
+	return &bigtableInstanceIamMemberInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BigtableInstanceIamPolicies returns a BigtableInstanceIamPolicyInformer.
+func (v *version) BigtableInstanceIamPolicies() BigtableInstanceIamPolicyInformer {
+	return &bigtableInstanceIamPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // BigtableTables returns a BigtableTableInformer.
@@ -390,9 +594,29 @@ func (v *version) BinaryAuthorizationAttestors() BinaryAuthorizationAttestorInfo
 	return &binaryAuthorizationAttestorInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// BinaryAuthorizationAttestorIamBindings returns a BinaryAuthorizationAttestorIamBindingInformer.
+func (v *version) BinaryAuthorizationAttestorIamBindings() BinaryAuthorizationAttestorIamBindingInformer {
+	return &binaryAuthorizationAttestorIamBindingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BinaryAuthorizationAttestorIamMembers returns a BinaryAuthorizationAttestorIamMemberInformer.
+func (v *version) BinaryAuthorizationAttestorIamMembers() BinaryAuthorizationAttestorIamMemberInformer {
+	return &binaryAuthorizationAttestorIamMemberInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BinaryAuthorizationAttestorIamPolicies returns a BinaryAuthorizationAttestorIamPolicyInformer.
+func (v *version) BinaryAuthorizationAttestorIamPolicies() BinaryAuthorizationAttestorIamPolicyInformer {
+	return &binaryAuthorizationAttestorIamPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // BinaryAuthorizationPolicies returns a BinaryAuthorizationPolicyInformer.
 func (v *version) BinaryAuthorizationPolicies() BinaryAuthorizationPolicyInformer {
 	return &binaryAuthorizationPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// CloudSchedulerJobs returns a CloudSchedulerJobInformer.
+func (v *version) CloudSchedulerJobs() CloudSchedulerJobInformer {
+	return &cloudSchedulerJobInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // CloudbuildTriggers returns a CloudbuildTriggerInformer.
@@ -403,6 +627,21 @@ func (v *version) CloudbuildTriggers() CloudbuildTriggerInformer {
 // CloudfunctionsFunctions returns a CloudfunctionsFunctionInformer.
 func (v *version) CloudfunctionsFunctions() CloudfunctionsFunctionInformer {
 	return &cloudfunctionsFunctionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// CloudfunctionsFunctionIamBindings returns a CloudfunctionsFunctionIamBindingInformer.
+func (v *version) CloudfunctionsFunctionIamBindings() CloudfunctionsFunctionIamBindingInformer {
+	return &cloudfunctionsFunctionIamBindingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// CloudfunctionsFunctionIamMembers returns a CloudfunctionsFunctionIamMemberInformer.
+func (v *version) CloudfunctionsFunctionIamMembers() CloudfunctionsFunctionIamMemberInformer {
+	return &cloudfunctionsFunctionIamMemberInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// CloudfunctionsFunctionIamPolicies returns a CloudfunctionsFunctionIamPolicyInformer.
+func (v *version) CloudfunctionsFunctionIamPolicies() CloudfunctionsFunctionIamPolicyInformer {
+	return &cloudfunctionsFunctionIamPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // CloudiotRegistries returns a CloudiotRegistryInformer.
@@ -435,14 +674,29 @@ func (v *version) ComputeBackendBuckets() ComputeBackendBucketInformer {
 	return &computeBackendBucketInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// ComputeBackendBucketSignedURLKeys returns a ComputeBackendBucketSignedURLKeyInformer.
+func (v *version) ComputeBackendBucketSignedURLKeys() ComputeBackendBucketSignedURLKeyInformer {
+	return &computeBackendBucketSignedURLKeyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // ComputeBackendServices returns a ComputeBackendServiceInformer.
 func (v *version) ComputeBackendServices() ComputeBackendServiceInformer {
 	return &computeBackendServiceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// ComputeBackendServiceSignedURLKeys returns a ComputeBackendServiceSignedURLKeyInformer.
+func (v *version) ComputeBackendServiceSignedURLKeys() ComputeBackendServiceSignedURLKeyInformer {
+	return &computeBackendServiceSignedURLKeyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // ComputeDisks returns a ComputeDiskInformer.
 func (v *version) ComputeDisks() ComputeDiskInformer {
 	return &computeDiskInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ComputeDiskResourcePolicyAttachments returns a ComputeDiskResourcePolicyAttachmentInformer.
+func (v *version) ComputeDiskResourcePolicyAttachments() ComputeDiskResourcePolicyAttachmentInformer {
+	return &computeDiskResourcePolicyAttachmentInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // ComputeFirewalls returns a ComputeFirewallInformer.
@@ -505,6 +759,21 @@ func (v *version) ComputeInstanceGroupManagers() ComputeInstanceGroupManagerInfo
 	return &computeInstanceGroupManagerInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// ComputeInstanceIamBindings returns a ComputeInstanceIamBindingInformer.
+func (v *version) ComputeInstanceIamBindings() ComputeInstanceIamBindingInformer {
+	return &computeInstanceIamBindingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ComputeInstanceIamMembers returns a ComputeInstanceIamMemberInformer.
+func (v *version) ComputeInstanceIamMembers() ComputeInstanceIamMemberInformer {
+	return &computeInstanceIamMemberInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ComputeInstanceIamPolicies returns a ComputeInstanceIamPolicyInformer.
+func (v *version) ComputeInstanceIamPolicies() ComputeInstanceIamPolicyInformer {
+	return &computeInstanceIamPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // ComputeInstanceTemplates returns a ComputeInstanceTemplateInformer.
 func (v *version) ComputeInstanceTemplates() ComputeInstanceTemplateInformer {
 	return &computeInstanceTemplateInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -520,9 +789,34 @@ func (v *version) ComputeNetworks() ComputeNetworkInformer {
 	return &computeNetworkInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// ComputeNetworkEndpoints returns a ComputeNetworkEndpointInformer.
+func (v *version) ComputeNetworkEndpoints() ComputeNetworkEndpointInformer {
+	return &computeNetworkEndpointInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ComputeNetworkEndpointGroups returns a ComputeNetworkEndpointGroupInformer.
+func (v *version) ComputeNetworkEndpointGroups() ComputeNetworkEndpointGroupInformer {
+	return &computeNetworkEndpointGroupInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // ComputeNetworkPeerings returns a ComputeNetworkPeeringInformer.
 func (v *version) ComputeNetworkPeerings() ComputeNetworkPeeringInformer {
 	return &computeNetworkPeeringInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ComputeNodeGroups returns a ComputeNodeGroupInformer.
+func (v *version) ComputeNodeGroups() ComputeNodeGroupInformer {
+	return &computeNodeGroupInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ComputeNodeTemplates returns a ComputeNodeTemplateInformer.
+func (v *version) ComputeNodeTemplates() ComputeNodeTemplateInformer {
+	return &computeNodeTemplateInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ComputeProjectDefaultNetworkTiers returns a ComputeProjectDefaultNetworkTierInformer.
+func (v *version) ComputeProjectDefaultNetworkTiers() ComputeProjectDefaultNetworkTierInformer {
+	return &computeProjectDefaultNetworkTierInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // ComputeProjectMetadatas returns a ComputeProjectMetadataInformer.
@@ -553,6 +847,16 @@ func (v *version) ComputeRegionDisks() ComputeRegionDiskInformer {
 // ComputeRegionInstanceGroupManagers returns a ComputeRegionInstanceGroupManagerInformer.
 func (v *version) ComputeRegionInstanceGroupManagers() ComputeRegionInstanceGroupManagerInformer {
 	return &computeRegionInstanceGroupManagerInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ComputeReservations returns a ComputeReservationInformer.
+func (v *version) ComputeReservations() ComputeReservationInformer {
+	return &computeReservationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ComputeResourcePolicies returns a ComputeResourcePolicyInformer.
+func (v *version) ComputeResourcePolicies() ComputeResourcePolicyInformer {
+	return &computeResourcePolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // ComputeRoutes returns a ComputeRouteInformer.
@@ -640,6 +944,11 @@ func (v *version) ComputeTargetHTTPSProxies() ComputeTargetHTTPSProxyInformer {
 	return &computeTargetHTTPSProxyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// ComputeTargetInstances returns a ComputeTargetInstanceInformer.
+func (v *version) ComputeTargetInstances() ComputeTargetInstanceInformer {
+	return &computeTargetInstanceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // ComputeTargetPools returns a ComputeTargetPoolInformer.
 func (v *version) ComputeTargetPools() ComputeTargetPoolInformer {
 	return &computeTargetPoolInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -695,9 +1004,39 @@ func (v *version) DataprocClusters() DataprocClusterInformer {
 	return &dataprocClusterInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// DataprocClusterIamBindings returns a DataprocClusterIamBindingInformer.
+func (v *version) DataprocClusterIamBindings() DataprocClusterIamBindingInformer {
+	return &dataprocClusterIamBindingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// DataprocClusterIamMembers returns a DataprocClusterIamMemberInformer.
+func (v *version) DataprocClusterIamMembers() DataprocClusterIamMemberInformer {
+	return &dataprocClusterIamMemberInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// DataprocClusterIamPolicies returns a DataprocClusterIamPolicyInformer.
+func (v *version) DataprocClusterIamPolicies() DataprocClusterIamPolicyInformer {
+	return &dataprocClusterIamPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // DataprocJobs returns a DataprocJobInformer.
 func (v *version) DataprocJobs() DataprocJobInformer {
 	return &dataprocJobInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// DataprocJobIamBindings returns a DataprocJobIamBindingInformer.
+func (v *version) DataprocJobIamBindings() DataprocJobIamBindingInformer {
+	return &dataprocJobIamBindingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// DataprocJobIamMembers returns a DataprocJobIamMemberInformer.
+func (v *version) DataprocJobIamMembers() DataprocJobIamMemberInformer {
+	return &dataprocJobIamMemberInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// DataprocJobIamPolicies returns a DataprocJobIamPolicyInformer.
+func (v *version) DataprocJobIamPolicies() DataprocJobIamPolicyInformer {
+	return &dataprocJobIamPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // DnsManagedZones returns a DnsManagedZoneInformer.
@@ -718,6 +1057,11 @@ func (v *version) EndpointsServices() EndpointsServiceInformer {
 // FilestoreInstances returns a FilestoreInstanceInformer.
 func (v *version) FilestoreInstances() FilestoreInstanceInformer {
 	return &filestoreInstanceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// FirestoreIndexes returns a FirestoreIndexInformer.
+func (v *version) FirestoreIndexes() FirestoreIndexInformer {
+	return &firestoreIndexInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // Folders returns a FolderInformer.
@@ -743,6 +1087,96 @@ func (v *version) FolderIamPolicies() FolderIamPolicyInformer {
 // FolderOrganizationPolicies returns a FolderOrganizationPolicyInformer.
 func (v *version) FolderOrganizationPolicies() FolderOrganizationPolicyInformer {
 	return &folderOrganizationPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IapAppEngineServiceIamBindings returns a IapAppEngineServiceIamBindingInformer.
+func (v *version) IapAppEngineServiceIamBindings() IapAppEngineServiceIamBindingInformer {
+	return &iapAppEngineServiceIamBindingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IapAppEngineServiceIamMembers returns a IapAppEngineServiceIamMemberInformer.
+func (v *version) IapAppEngineServiceIamMembers() IapAppEngineServiceIamMemberInformer {
+	return &iapAppEngineServiceIamMemberInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IapAppEngineServiceIamPolicies returns a IapAppEngineServiceIamPolicyInformer.
+func (v *version) IapAppEngineServiceIamPolicies() IapAppEngineServiceIamPolicyInformer {
+	return &iapAppEngineServiceIamPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IapAppEngineVersionIamBindings returns a IapAppEngineVersionIamBindingInformer.
+func (v *version) IapAppEngineVersionIamBindings() IapAppEngineVersionIamBindingInformer {
+	return &iapAppEngineVersionIamBindingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IapAppEngineVersionIamMembers returns a IapAppEngineVersionIamMemberInformer.
+func (v *version) IapAppEngineVersionIamMembers() IapAppEngineVersionIamMemberInformer {
+	return &iapAppEngineVersionIamMemberInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IapAppEngineVersionIamPolicies returns a IapAppEngineVersionIamPolicyInformer.
+func (v *version) IapAppEngineVersionIamPolicies() IapAppEngineVersionIamPolicyInformer {
+	return &iapAppEngineVersionIamPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IapWebBackendServiceIamBindings returns a IapWebBackendServiceIamBindingInformer.
+func (v *version) IapWebBackendServiceIamBindings() IapWebBackendServiceIamBindingInformer {
+	return &iapWebBackendServiceIamBindingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IapWebBackendServiceIamMembers returns a IapWebBackendServiceIamMemberInformer.
+func (v *version) IapWebBackendServiceIamMembers() IapWebBackendServiceIamMemberInformer {
+	return &iapWebBackendServiceIamMemberInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IapWebBackendServiceIamPolicies returns a IapWebBackendServiceIamPolicyInformer.
+func (v *version) IapWebBackendServiceIamPolicies() IapWebBackendServiceIamPolicyInformer {
+	return &iapWebBackendServiceIamPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IapWebIamBindings returns a IapWebIamBindingInformer.
+func (v *version) IapWebIamBindings() IapWebIamBindingInformer {
+	return &iapWebIamBindingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IapWebIamMembers returns a IapWebIamMemberInformer.
+func (v *version) IapWebIamMembers() IapWebIamMemberInformer {
+	return &iapWebIamMemberInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IapWebIamPolicies returns a IapWebIamPolicyInformer.
+func (v *version) IapWebIamPolicies() IapWebIamPolicyInformer {
+	return &iapWebIamPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IapWebTypeAppEngineIamBindings returns a IapWebTypeAppEngineIamBindingInformer.
+func (v *version) IapWebTypeAppEngineIamBindings() IapWebTypeAppEngineIamBindingInformer {
+	return &iapWebTypeAppEngineIamBindingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IapWebTypeAppEngineIamMembers returns a IapWebTypeAppEngineIamMemberInformer.
+func (v *version) IapWebTypeAppEngineIamMembers() IapWebTypeAppEngineIamMemberInformer {
+	return &iapWebTypeAppEngineIamMemberInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IapWebTypeAppEngineIamPolicies returns a IapWebTypeAppEngineIamPolicyInformer.
+func (v *version) IapWebTypeAppEngineIamPolicies() IapWebTypeAppEngineIamPolicyInformer {
+	return &iapWebTypeAppEngineIamPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IapWebTypeComputeIamBindings returns a IapWebTypeComputeIamBindingInformer.
+func (v *version) IapWebTypeComputeIamBindings() IapWebTypeComputeIamBindingInformer {
+	return &iapWebTypeComputeIamBindingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IapWebTypeComputeIamMembers returns a IapWebTypeComputeIamMemberInformer.
+func (v *version) IapWebTypeComputeIamMembers() IapWebTypeComputeIamMemberInformer {
+	return &iapWebTypeComputeIamMemberInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IapWebTypeComputeIamPolicies returns a IapWebTypeComputeIamPolicyInformer.
+func (v *version) IapWebTypeComputeIamPolicies() IapWebTypeComputeIamPolicyInformer {
+	return &iapWebTypeComputeIamPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // KmsCryptoKeys returns a KmsCryptoKeyInformer.
@@ -800,6 +1234,11 @@ func (v *version) LoggingFolderSinks() LoggingFolderSinkInformer {
 	return &loggingFolderSinkInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// LoggingMetrics returns a LoggingMetricInformer.
+func (v *version) LoggingMetrics() LoggingMetricInformer {
+	return &loggingMetricInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // LoggingOrganizationExclusions returns a LoggingOrganizationExclusionInformer.
 func (v *version) LoggingOrganizationExclusions() LoggingOrganizationExclusionInformer {
 	return &loggingOrganizationExclusionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -818,6 +1257,11 @@ func (v *version) LoggingProjectExclusions() LoggingProjectExclusionInformer {
 // LoggingProjectSinks returns a LoggingProjectSinkInformer.
 func (v *version) LoggingProjectSinks() LoggingProjectSinkInformer {
 	return &loggingProjectSinkInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// MlEngineModels returns a MlEngineModelInformer.
+func (v *version) MlEngineModels() MlEngineModelInformer {
+	return &mlEngineModelInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // MonitoringAlertPolicies returns a MonitoringAlertPolicyInformer.
@@ -868,6 +1312,11 @@ func (v *version) OrganizationPolicies() OrganizationPolicyInformer {
 // Projects returns a ProjectInformer.
 func (v *version) Projects() ProjectInformer {
 	return &projectInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ProjectIamAuditConfigs returns a ProjectIamAuditConfigInformer.
+func (v *version) ProjectIamAuditConfigs() ProjectIamAuditConfigInformer {
+	return &projectIamAuditConfigInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // ProjectIamBindings returns a ProjectIamBindingInformer.
@@ -965,9 +1414,29 @@ func (v *version) RuntimeconfigConfigs() RuntimeconfigConfigInformer {
 	return &runtimeconfigConfigInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// RuntimeconfigConfigIamBindings returns a RuntimeconfigConfigIamBindingInformer.
+func (v *version) RuntimeconfigConfigIamBindings() RuntimeconfigConfigIamBindingInformer {
+	return &runtimeconfigConfigIamBindingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// RuntimeconfigConfigIamMembers returns a RuntimeconfigConfigIamMemberInformer.
+func (v *version) RuntimeconfigConfigIamMembers() RuntimeconfigConfigIamMemberInformer {
+	return &runtimeconfigConfigIamMemberInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// RuntimeconfigConfigIamPolicies returns a RuntimeconfigConfigIamPolicyInformer.
+func (v *version) RuntimeconfigConfigIamPolicies() RuntimeconfigConfigIamPolicyInformer {
+	return &runtimeconfigConfigIamPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // RuntimeconfigVariables returns a RuntimeconfigVariableInformer.
 func (v *version) RuntimeconfigVariables() RuntimeconfigVariableInformer {
 	return &runtimeconfigVariableInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// SccSources returns a SccSourceInformer.
+func (v *version) SccSources() SccSourceInformer {
+	return &sccSourceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // ServiceAccounts returns a ServiceAccountInformer.
@@ -995,9 +1464,29 @@ func (v *version) ServiceAccountKeys() ServiceAccountKeyInformer {
 	return &serviceAccountKeyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// ServiceNetworkingConnections returns a ServiceNetworkingConnectionInformer.
+func (v *version) ServiceNetworkingConnections() ServiceNetworkingConnectionInformer {
+	return &serviceNetworkingConnectionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // SourcerepoRepositories returns a SourcerepoRepositoryInformer.
 func (v *version) SourcerepoRepositories() SourcerepoRepositoryInformer {
 	return &sourcerepoRepositoryInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// SourcerepoRepositoryIamBindings returns a SourcerepoRepositoryIamBindingInformer.
+func (v *version) SourcerepoRepositoryIamBindings() SourcerepoRepositoryIamBindingInformer {
+	return &sourcerepoRepositoryIamBindingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// SourcerepoRepositoryIamMembers returns a SourcerepoRepositoryIamMemberInformer.
+func (v *version) SourcerepoRepositoryIamMembers() SourcerepoRepositoryIamMemberInformer {
+	return &sourcerepoRepositoryIamMemberInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// SourcerepoRepositoryIamPolicies returns a SourcerepoRepositoryIamPolicyInformer.
+func (v *version) SourcerepoRepositoryIamPolicies() SourcerepoRepositoryIamPolicyInformer {
+	return &sourcerepoRepositoryIamPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // SpannerDatabases returns a SpannerDatabaseInformer.
@@ -1070,6 +1559,11 @@ func (v *version) StorageBucketACLs() StorageBucketACLInformer {
 	return &storageBucketACLInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// StorageBucketAccessControls returns a StorageBucketAccessControlInformer.
+func (v *version) StorageBucketAccessControls() StorageBucketAccessControlInformer {
+	return &storageBucketAccessControlInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // StorageBucketIamBindings returns a StorageBucketIamBindingInformer.
 func (v *version) StorageBucketIamBindings() StorageBucketIamBindingInformer {
 	return &storageBucketIamBindingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -1113,4 +1607,14 @@ func (v *version) StorageObjectACLs() StorageObjectACLInformer {
 // StorageObjectAccessControls returns a StorageObjectAccessControlInformer.
 func (v *version) StorageObjectAccessControls() StorageObjectAccessControlInformer {
 	return &storageObjectAccessControlInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// StorageTransferJobs returns a StorageTransferJobInformer.
+func (v *version) StorageTransferJobs() StorageTransferJobInformer {
+	return &storageTransferJobInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// TpuNodes returns a TpuNodeInformer.
+func (v *version) TpuNodes() TpuNodeInformer {
+	return &tpuNodeInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

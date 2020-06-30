@@ -7,9 +7,9 @@ import (
 	"time"
 
 	"github.com/digitalocean/godo"
-	"github.com/hashicorp/terraform/helper/resource"
-	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/hashicorp/terraform/helper/validation"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/resource"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/validation"
 )
 
 func resourceDigitalOceanCertificate() *schema.Resource {
@@ -35,6 +35,11 @@ func resourceDigitalOceanCertificate() *schema.Resource {
 				Sensitive:    true,
 				ForceNew:     true,
 				ValidateFunc: validation.NoZeroValues,
+				StateFunc:    HashStringStateFunc(),
+				// In order to support older statefiles with fully saved private_key
+				DiffSuppressFunc: func(k, old, new string, d *schema.ResourceData) bool {
+					return new != "" && old == d.Get("private_key")
+				},
 			},
 
 			"leaf_certificate": {
@@ -42,6 +47,11 @@ func resourceDigitalOceanCertificate() *schema.Resource {
 				Optional:     true,
 				ForceNew:     true,
 				ValidateFunc: validation.NoZeroValues,
+				StateFunc:    HashStringStateFunc(),
+				// In order to support older statefiles with fully saved leaf_certificate
+				DiffSuppressFunc: func(k, old, new string, d *schema.ResourceData) bool {
+					return new != "" && old == d.Get("leaf_certificate")
+				},
 			},
 
 			"certificate_chain": {
@@ -49,6 +59,11 @@ func resourceDigitalOceanCertificate() *schema.Resource {
 				Optional:     true,
 				ForceNew:     true,
 				ValidateFunc: validation.NoZeroValues,
+				StateFunc:    HashStringStateFunc(),
+				// In order to support older statefiles with fully saved certificate_chain
+				DiffSuppressFunc: func(k, old, new string, d *schema.ResourceData) bool {
+					return new != "" && old == d.Get("certificate_chain")
+				},
 			},
 
 			"domains": {

@@ -28,26 +28,48 @@ import (
 
 type GoogleV1alpha1Interface interface {
 	RESTClient() rest.Interface
+	AccessContextManagerAccessLevelsGetter
+	AccessContextManagerAccessPoliciesGetter
+	AccessContextManagerServicePerimetersGetter
 	AppEngineApplicationsGetter
+	AppEngineDomainMappingsGetter
+	AppEngineFirewallRulesGetter
+	AppEngineStandardAppVersionsGetter
+	BigqueryDataTransferConfigsGetter
 	BigqueryDatasetsGetter
 	BigqueryTablesGetter
+	BigtableAppProfilesGetter
+	BigtableGcPoliciesGetter
 	BigtableInstancesGetter
+	BigtableInstanceIamBindingsGetter
+	BigtableInstanceIamMembersGetter
+	BigtableInstanceIamPoliciesGetter
 	BigtableTablesGetter
 	BillingAccountIamBindingsGetter
 	BillingAccountIamMembersGetter
 	BillingAccountIamPoliciesGetter
 	BinaryAuthorizationAttestorsGetter
+	BinaryAuthorizationAttestorIamBindingsGetter
+	BinaryAuthorizationAttestorIamMembersGetter
+	BinaryAuthorizationAttestorIamPoliciesGetter
 	BinaryAuthorizationPoliciesGetter
+	CloudSchedulerJobsGetter
 	CloudbuildTriggersGetter
 	CloudfunctionsFunctionsGetter
+	CloudfunctionsFunctionIamBindingsGetter
+	CloudfunctionsFunctionIamMembersGetter
+	CloudfunctionsFunctionIamPoliciesGetter
 	CloudiotRegistriesGetter
 	ComposerEnvironmentsGetter
 	ComputeAddressesGetter
 	ComputeAttachedDisksGetter
 	ComputeAutoscalersGetter
 	ComputeBackendBucketsGetter
+	ComputeBackendBucketSignedURLKeysGetter
 	ComputeBackendServicesGetter
+	ComputeBackendServiceSignedURLKeysGetter
 	ComputeDisksGetter
+	ComputeDiskResourcePolicyAttachmentsGetter
 	ComputeFirewallsGetter
 	ComputeForwardingRulesGetter
 	ComputeGlobalAddressesGetter
@@ -60,16 +82,26 @@ type GoogleV1alpha1Interface interface {
 	ComputeInstanceFromTemplatesGetter
 	ComputeInstanceGroupsGetter
 	ComputeInstanceGroupManagersGetter
+	ComputeInstanceIamBindingsGetter
+	ComputeInstanceIamMembersGetter
+	ComputeInstanceIamPoliciesGetter
 	ComputeInstanceTemplatesGetter
 	ComputeInterconnectAttachmentsGetter
 	ComputeNetworksGetter
+	ComputeNetworkEndpointsGetter
+	ComputeNetworkEndpointGroupsGetter
 	ComputeNetworkPeeringsGetter
+	ComputeNodeGroupsGetter
+	ComputeNodeTemplatesGetter
+	ComputeProjectDefaultNetworkTiersGetter
 	ComputeProjectMetadatasGetter
 	ComputeProjectMetadataItemsGetter
 	ComputeRegionAutoscalersGetter
 	ComputeRegionBackendServicesGetter
 	ComputeRegionDisksGetter
 	ComputeRegionInstanceGroupManagersGetter
+	ComputeReservationsGetter
+	ComputeResourcePoliciesGetter
 	ComputeRoutesGetter
 	ComputeRoutersGetter
 	ComputeRouterInterfacesGetter
@@ -87,6 +119,7 @@ type GoogleV1alpha1Interface interface {
 	ComputeSubnetworkIamPoliciesGetter
 	ComputeTargetHTTPProxiesGetter
 	ComputeTargetHTTPSProxiesGetter
+	ComputeTargetInstancesGetter
 	ComputeTargetPoolsGetter
 	ComputeTargetSSLProxiesGetter
 	ComputeTargetTcpProxiesGetter
@@ -98,16 +131,41 @@ type GoogleV1alpha1Interface interface {
 	ContainerNodePoolsGetter
 	DataflowJobsGetter
 	DataprocClustersGetter
+	DataprocClusterIamBindingsGetter
+	DataprocClusterIamMembersGetter
+	DataprocClusterIamPoliciesGetter
 	DataprocJobsGetter
+	DataprocJobIamBindingsGetter
+	DataprocJobIamMembersGetter
+	DataprocJobIamPoliciesGetter
 	DnsManagedZonesGetter
 	DnsRecordSetsGetter
 	EndpointsServicesGetter
 	FilestoreInstancesGetter
+	FirestoreIndexesGetter
 	FoldersGetter
 	FolderIamBindingsGetter
 	FolderIamMembersGetter
 	FolderIamPoliciesGetter
 	FolderOrganizationPoliciesGetter
+	IapAppEngineServiceIamBindingsGetter
+	IapAppEngineServiceIamMembersGetter
+	IapAppEngineServiceIamPoliciesGetter
+	IapAppEngineVersionIamBindingsGetter
+	IapAppEngineVersionIamMembersGetter
+	IapAppEngineVersionIamPoliciesGetter
+	IapWebBackendServiceIamBindingsGetter
+	IapWebBackendServiceIamMembersGetter
+	IapWebBackendServiceIamPoliciesGetter
+	IapWebIamBindingsGetter
+	IapWebIamMembersGetter
+	IapWebIamPoliciesGetter
+	IapWebTypeAppEngineIamBindingsGetter
+	IapWebTypeAppEngineIamMembersGetter
+	IapWebTypeAppEngineIamPoliciesGetter
+	IapWebTypeComputeIamBindingsGetter
+	IapWebTypeComputeIamMembersGetter
+	IapWebTypeComputeIamPoliciesGetter
 	KmsCryptoKeysGetter
 	KmsCryptoKeyIamBindingsGetter
 	KmsCryptoKeyIamMembersGetter
@@ -119,10 +177,12 @@ type GoogleV1alpha1Interface interface {
 	LoggingBillingAccountSinksGetter
 	LoggingFolderExclusionsGetter
 	LoggingFolderSinksGetter
+	LoggingMetricsGetter
 	LoggingOrganizationExclusionsGetter
 	LoggingOrganizationSinksGetter
 	LoggingProjectExclusionsGetter
 	LoggingProjectSinksGetter
+	MlEngineModelsGetter
 	MonitoringAlertPoliciesGetter
 	MonitoringGroupsGetter
 	MonitoringNotificationChannelsGetter
@@ -133,6 +193,7 @@ type GoogleV1alpha1Interface interface {
 	OrganizationIamPoliciesGetter
 	OrganizationPoliciesGetter
 	ProjectsGetter
+	ProjectIamAuditConfigsGetter
 	ProjectIamBindingsGetter
 	ProjectIamCustomRolesGetter
 	ProjectIamMembersGetter
@@ -152,13 +213,21 @@ type GoogleV1alpha1Interface interface {
 	RedisInstancesGetter
 	ResourceManagerLiensGetter
 	RuntimeconfigConfigsGetter
+	RuntimeconfigConfigIamBindingsGetter
+	RuntimeconfigConfigIamMembersGetter
+	RuntimeconfigConfigIamPoliciesGetter
 	RuntimeconfigVariablesGetter
+	SccSourcesGetter
 	ServiceAccountsGetter
 	ServiceAccountIamBindingsGetter
 	ServiceAccountIamMembersGetter
 	ServiceAccountIamPoliciesGetter
 	ServiceAccountKeysGetter
+	ServiceNetworkingConnectionsGetter
 	SourcerepoRepositoriesGetter
+	SourcerepoRepositoryIamBindingsGetter
+	SourcerepoRepositoryIamMembersGetter
+	SourcerepoRepositoryIamPoliciesGetter
 	SpannerDatabasesGetter
 	SpannerDatabaseIamBindingsGetter
 	SpannerDatabaseIamMembersGetter
@@ -173,6 +242,7 @@ type GoogleV1alpha1Interface interface {
 	SqlUsersGetter
 	StorageBucketsGetter
 	StorageBucketACLsGetter
+	StorageBucketAccessControlsGetter
 	StorageBucketIamBindingsGetter
 	StorageBucketIamMembersGetter
 	StorageBucketIamPoliciesGetter
@@ -182,6 +252,8 @@ type GoogleV1alpha1Interface interface {
 	StorageNotificationsGetter
 	StorageObjectACLsGetter
 	StorageObjectAccessControlsGetter
+	StorageTransferJobsGetter
+	TpuNodesGetter
 }
 
 // GoogleV1alpha1Client is used to interact with features provided by the google.kubeform.com group.
@@ -189,8 +261,36 @@ type GoogleV1alpha1Client struct {
 	restClient rest.Interface
 }
 
+func (c *GoogleV1alpha1Client) AccessContextManagerAccessLevels(namespace string) AccessContextManagerAccessLevelInterface {
+	return newAccessContextManagerAccessLevels(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) AccessContextManagerAccessPolicies(namespace string) AccessContextManagerAccessPolicyInterface {
+	return newAccessContextManagerAccessPolicies(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) AccessContextManagerServicePerimeters(namespace string) AccessContextManagerServicePerimeterInterface {
+	return newAccessContextManagerServicePerimeters(c, namespace)
+}
+
 func (c *GoogleV1alpha1Client) AppEngineApplications(namespace string) AppEngineApplicationInterface {
 	return newAppEngineApplications(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) AppEngineDomainMappings(namespace string) AppEngineDomainMappingInterface {
+	return newAppEngineDomainMappings(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) AppEngineFirewallRules(namespace string) AppEngineFirewallRuleInterface {
+	return newAppEngineFirewallRules(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) AppEngineStandardAppVersions(namespace string) AppEngineStandardAppVersionInterface {
+	return newAppEngineStandardAppVersions(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) BigqueryDataTransferConfigs(namespace string) BigqueryDataTransferConfigInterface {
+	return newBigqueryDataTransferConfigs(c, namespace)
 }
 
 func (c *GoogleV1alpha1Client) BigqueryDatasets(namespace string) BigqueryDatasetInterface {
@@ -201,8 +301,28 @@ func (c *GoogleV1alpha1Client) BigqueryTables(namespace string) BigqueryTableInt
 	return newBigqueryTables(c, namespace)
 }
 
+func (c *GoogleV1alpha1Client) BigtableAppProfiles(namespace string) BigtableAppProfileInterface {
+	return newBigtableAppProfiles(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) BigtableGcPolicies(namespace string) BigtableGcPolicyInterface {
+	return newBigtableGcPolicies(c, namespace)
+}
+
 func (c *GoogleV1alpha1Client) BigtableInstances(namespace string) BigtableInstanceInterface {
 	return newBigtableInstances(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) BigtableInstanceIamBindings(namespace string) BigtableInstanceIamBindingInterface {
+	return newBigtableInstanceIamBindings(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) BigtableInstanceIamMembers(namespace string) BigtableInstanceIamMemberInterface {
+	return newBigtableInstanceIamMembers(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) BigtableInstanceIamPolicies(namespace string) BigtableInstanceIamPolicyInterface {
+	return newBigtableInstanceIamPolicies(c, namespace)
 }
 
 func (c *GoogleV1alpha1Client) BigtableTables(namespace string) BigtableTableInterface {
@@ -225,8 +345,24 @@ func (c *GoogleV1alpha1Client) BinaryAuthorizationAttestors(namespace string) Bi
 	return newBinaryAuthorizationAttestors(c, namespace)
 }
 
+func (c *GoogleV1alpha1Client) BinaryAuthorizationAttestorIamBindings(namespace string) BinaryAuthorizationAttestorIamBindingInterface {
+	return newBinaryAuthorizationAttestorIamBindings(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) BinaryAuthorizationAttestorIamMembers(namespace string) BinaryAuthorizationAttestorIamMemberInterface {
+	return newBinaryAuthorizationAttestorIamMembers(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) BinaryAuthorizationAttestorIamPolicies(namespace string) BinaryAuthorizationAttestorIamPolicyInterface {
+	return newBinaryAuthorizationAttestorIamPolicies(c, namespace)
+}
+
 func (c *GoogleV1alpha1Client) BinaryAuthorizationPolicies(namespace string) BinaryAuthorizationPolicyInterface {
 	return newBinaryAuthorizationPolicies(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) CloudSchedulerJobs(namespace string) CloudSchedulerJobInterface {
+	return newCloudSchedulerJobs(c, namespace)
 }
 
 func (c *GoogleV1alpha1Client) CloudbuildTriggers(namespace string) CloudbuildTriggerInterface {
@@ -235,6 +371,18 @@ func (c *GoogleV1alpha1Client) CloudbuildTriggers(namespace string) CloudbuildTr
 
 func (c *GoogleV1alpha1Client) CloudfunctionsFunctions(namespace string) CloudfunctionsFunctionInterface {
 	return newCloudfunctionsFunctions(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) CloudfunctionsFunctionIamBindings(namespace string) CloudfunctionsFunctionIamBindingInterface {
+	return newCloudfunctionsFunctionIamBindings(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) CloudfunctionsFunctionIamMembers(namespace string) CloudfunctionsFunctionIamMemberInterface {
+	return newCloudfunctionsFunctionIamMembers(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) CloudfunctionsFunctionIamPolicies(namespace string) CloudfunctionsFunctionIamPolicyInterface {
+	return newCloudfunctionsFunctionIamPolicies(c, namespace)
 }
 
 func (c *GoogleV1alpha1Client) CloudiotRegistries(namespace string) CloudiotRegistryInterface {
@@ -261,12 +409,24 @@ func (c *GoogleV1alpha1Client) ComputeBackendBuckets(namespace string) ComputeBa
 	return newComputeBackendBuckets(c, namespace)
 }
 
+func (c *GoogleV1alpha1Client) ComputeBackendBucketSignedURLKeys(namespace string) ComputeBackendBucketSignedURLKeyInterface {
+	return newComputeBackendBucketSignedURLKeys(c, namespace)
+}
+
 func (c *GoogleV1alpha1Client) ComputeBackendServices(namespace string) ComputeBackendServiceInterface {
 	return newComputeBackendServices(c, namespace)
 }
 
+func (c *GoogleV1alpha1Client) ComputeBackendServiceSignedURLKeys(namespace string) ComputeBackendServiceSignedURLKeyInterface {
+	return newComputeBackendServiceSignedURLKeys(c, namespace)
+}
+
 func (c *GoogleV1alpha1Client) ComputeDisks(namespace string) ComputeDiskInterface {
 	return newComputeDisks(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) ComputeDiskResourcePolicyAttachments(namespace string) ComputeDiskResourcePolicyAttachmentInterface {
+	return newComputeDiskResourcePolicyAttachments(c, namespace)
 }
 
 func (c *GoogleV1alpha1Client) ComputeFirewalls(namespace string) ComputeFirewallInterface {
@@ -317,6 +477,18 @@ func (c *GoogleV1alpha1Client) ComputeInstanceGroupManagers(namespace string) Co
 	return newComputeInstanceGroupManagers(c, namespace)
 }
 
+func (c *GoogleV1alpha1Client) ComputeInstanceIamBindings(namespace string) ComputeInstanceIamBindingInterface {
+	return newComputeInstanceIamBindings(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) ComputeInstanceIamMembers(namespace string) ComputeInstanceIamMemberInterface {
+	return newComputeInstanceIamMembers(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) ComputeInstanceIamPolicies(namespace string) ComputeInstanceIamPolicyInterface {
+	return newComputeInstanceIamPolicies(c, namespace)
+}
+
 func (c *GoogleV1alpha1Client) ComputeInstanceTemplates(namespace string) ComputeInstanceTemplateInterface {
 	return newComputeInstanceTemplates(c, namespace)
 }
@@ -329,8 +501,28 @@ func (c *GoogleV1alpha1Client) ComputeNetworks(namespace string) ComputeNetworkI
 	return newComputeNetworks(c, namespace)
 }
 
+func (c *GoogleV1alpha1Client) ComputeNetworkEndpoints(namespace string) ComputeNetworkEndpointInterface {
+	return newComputeNetworkEndpoints(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) ComputeNetworkEndpointGroups(namespace string) ComputeNetworkEndpointGroupInterface {
+	return newComputeNetworkEndpointGroups(c, namespace)
+}
+
 func (c *GoogleV1alpha1Client) ComputeNetworkPeerings(namespace string) ComputeNetworkPeeringInterface {
 	return newComputeNetworkPeerings(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) ComputeNodeGroups(namespace string) ComputeNodeGroupInterface {
+	return newComputeNodeGroups(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) ComputeNodeTemplates(namespace string) ComputeNodeTemplateInterface {
+	return newComputeNodeTemplates(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) ComputeProjectDefaultNetworkTiers(namespace string) ComputeProjectDefaultNetworkTierInterface {
+	return newComputeProjectDefaultNetworkTiers(c, namespace)
 }
 
 func (c *GoogleV1alpha1Client) ComputeProjectMetadatas(namespace string) ComputeProjectMetadataInterface {
@@ -355,6 +547,14 @@ func (c *GoogleV1alpha1Client) ComputeRegionDisks(namespace string) ComputeRegio
 
 func (c *GoogleV1alpha1Client) ComputeRegionInstanceGroupManagers(namespace string) ComputeRegionInstanceGroupManagerInterface {
 	return newComputeRegionInstanceGroupManagers(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) ComputeReservations(namespace string) ComputeReservationInterface {
+	return newComputeReservations(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) ComputeResourcePolicies(namespace string) ComputeResourcePolicyInterface {
+	return newComputeResourcePolicies(c, namespace)
 }
 
 func (c *GoogleV1alpha1Client) ComputeRoutes(namespace string) ComputeRouteInterface {
@@ -425,6 +625,10 @@ func (c *GoogleV1alpha1Client) ComputeTargetHTTPSProxies(namespace string) Compu
 	return newComputeTargetHTTPSProxies(c, namespace)
 }
 
+func (c *GoogleV1alpha1Client) ComputeTargetInstances(namespace string) ComputeTargetInstanceInterface {
+	return newComputeTargetInstances(c, namespace)
+}
+
 func (c *GoogleV1alpha1Client) ComputeTargetPools(namespace string) ComputeTargetPoolInterface {
 	return newComputeTargetPools(c, namespace)
 }
@@ -469,8 +673,32 @@ func (c *GoogleV1alpha1Client) DataprocClusters(namespace string) DataprocCluste
 	return newDataprocClusters(c, namespace)
 }
 
+func (c *GoogleV1alpha1Client) DataprocClusterIamBindings(namespace string) DataprocClusterIamBindingInterface {
+	return newDataprocClusterIamBindings(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) DataprocClusterIamMembers(namespace string) DataprocClusterIamMemberInterface {
+	return newDataprocClusterIamMembers(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) DataprocClusterIamPolicies(namespace string) DataprocClusterIamPolicyInterface {
+	return newDataprocClusterIamPolicies(c, namespace)
+}
+
 func (c *GoogleV1alpha1Client) DataprocJobs(namespace string) DataprocJobInterface {
 	return newDataprocJobs(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) DataprocJobIamBindings(namespace string) DataprocJobIamBindingInterface {
+	return newDataprocJobIamBindings(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) DataprocJobIamMembers(namespace string) DataprocJobIamMemberInterface {
+	return newDataprocJobIamMembers(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) DataprocJobIamPolicies(namespace string) DataprocJobIamPolicyInterface {
+	return newDataprocJobIamPolicies(c, namespace)
 }
 
 func (c *GoogleV1alpha1Client) DnsManagedZones(namespace string) DnsManagedZoneInterface {
@@ -487,6 +715,10 @@ func (c *GoogleV1alpha1Client) EndpointsServices(namespace string) EndpointsServ
 
 func (c *GoogleV1alpha1Client) FilestoreInstances(namespace string) FilestoreInstanceInterface {
 	return newFilestoreInstances(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) FirestoreIndexes(namespace string) FirestoreIndexInterface {
+	return newFirestoreIndexes(c, namespace)
 }
 
 func (c *GoogleV1alpha1Client) Folders(namespace string) FolderInterface {
@@ -507,6 +739,78 @@ func (c *GoogleV1alpha1Client) FolderIamPolicies(namespace string) FolderIamPoli
 
 func (c *GoogleV1alpha1Client) FolderOrganizationPolicies(namespace string) FolderOrganizationPolicyInterface {
 	return newFolderOrganizationPolicies(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) IapAppEngineServiceIamBindings(namespace string) IapAppEngineServiceIamBindingInterface {
+	return newIapAppEngineServiceIamBindings(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) IapAppEngineServiceIamMembers(namespace string) IapAppEngineServiceIamMemberInterface {
+	return newIapAppEngineServiceIamMembers(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) IapAppEngineServiceIamPolicies(namespace string) IapAppEngineServiceIamPolicyInterface {
+	return newIapAppEngineServiceIamPolicies(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) IapAppEngineVersionIamBindings(namespace string) IapAppEngineVersionIamBindingInterface {
+	return newIapAppEngineVersionIamBindings(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) IapAppEngineVersionIamMembers(namespace string) IapAppEngineVersionIamMemberInterface {
+	return newIapAppEngineVersionIamMembers(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) IapAppEngineVersionIamPolicies(namespace string) IapAppEngineVersionIamPolicyInterface {
+	return newIapAppEngineVersionIamPolicies(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) IapWebBackendServiceIamBindings(namespace string) IapWebBackendServiceIamBindingInterface {
+	return newIapWebBackendServiceIamBindings(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) IapWebBackendServiceIamMembers(namespace string) IapWebBackendServiceIamMemberInterface {
+	return newIapWebBackendServiceIamMembers(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) IapWebBackendServiceIamPolicies(namespace string) IapWebBackendServiceIamPolicyInterface {
+	return newIapWebBackendServiceIamPolicies(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) IapWebIamBindings(namespace string) IapWebIamBindingInterface {
+	return newIapWebIamBindings(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) IapWebIamMembers(namespace string) IapWebIamMemberInterface {
+	return newIapWebIamMembers(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) IapWebIamPolicies(namespace string) IapWebIamPolicyInterface {
+	return newIapWebIamPolicies(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) IapWebTypeAppEngineIamBindings(namespace string) IapWebTypeAppEngineIamBindingInterface {
+	return newIapWebTypeAppEngineIamBindings(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) IapWebTypeAppEngineIamMembers(namespace string) IapWebTypeAppEngineIamMemberInterface {
+	return newIapWebTypeAppEngineIamMembers(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) IapWebTypeAppEngineIamPolicies(namespace string) IapWebTypeAppEngineIamPolicyInterface {
+	return newIapWebTypeAppEngineIamPolicies(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) IapWebTypeComputeIamBindings(namespace string) IapWebTypeComputeIamBindingInterface {
+	return newIapWebTypeComputeIamBindings(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) IapWebTypeComputeIamMembers(namespace string) IapWebTypeComputeIamMemberInterface {
+	return newIapWebTypeComputeIamMembers(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) IapWebTypeComputeIamPolicies(namespace string) IapWebTypeComputeIamPolicyInterface {
+	return newIapWebTypeComputeIamPolicies(c, namespace)
 }
 
 func (c *GoogleV1alpha1Client) KmsCryptoKeys(namespace string) KmsCryptoKeyInterface {
@@ -553,6 +857,10 @@ func (c *GoogleV1alpha1Client) LoggingFolderSinks(namespace string) LoggingFolde
 	return newLoggingFolderSinks(c, namespace)
 }
 
+func (c *GoogleV1alpha1Client) LoggingMetrics(namespace string) LoggingMetricInterface {
+	return newLoggingMetrics(c, namespace)
+}
+
 func (c *GoogleV1alpha1Client) LoggingOrganizationExclusions(namespace string) LoggingOrganizationExclusionInterface {
 	return newLoggingOrganizationExclusions(c, namespace)
 }
@@ -567,6 +875,10 @@ func (c *GoogleV1alpha1Client) LoggingProjectExclusions(namespace string) Loggin
 
 func (c *GoogleV1alpha1Client) LoggingProjectSinks(namespace string) LoggingProjectSinkInterface {
 	return newLoggingProjectSinks(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) MlEngineModels(namespace string) MlEngineModelInterface {
+	return newMlEngineModels(c, namespace)
 }
 
 func (c *GoogleV1alpha1Client) MonitoringAlertPolicies(namespace string) MonitoringAlertPolicyInterface {
@@ -607,6 +919,10 @@ func (c *GoogleV1alpha1Client) OrganizationPolicies(namespace string) Organizati
 
 func (c *GoogleV1alpha1Client) Projects(namespace string) ProjectInterface {
 	return newProjects(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) ProjectIamAuditConfigs(namespace string) ProjectIamAuditConfigInterface {
+	return newProjectIamAuditConfigs(c, namespace)
 }
 
 func (c *GoogleV1alpha1Client) ProjectIamBindings(namespace string) ProjectIamBindingInterface {
@@ -685,8 +1001,24 @@ func (c *GoogleV1alpha1Client) RuntimeconfigConfigs(namespace string) Runtimecon
 	return newRuntimeconfigConfigs(c, namespace)
 }
 
+func (c *GoogleV1alpha1Client) RuntimeconfigConfigIamBindings(namespace string) RuntimeconfigConfigIamBindingInterface {
+	return newRuntimeconfigConfigIamBindings(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) RuntimeconfigConfigIamMembers(namespace string) RuntimeconfigConfigIamMemberInterface {
+	return newRuntimeconfigConfigIamMembers(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) RuntimeconfigConfigIamPolicies(namespace string) RuntimeconfigConfigIamPolicyInterface {
+	return newRuntimeconfigConfigIamPolicies(c, namespace)
+}
+
 func (c *GoogleV1alpha1Client) RuntimeconfigVariables(namespace string) RuntimeconfigVariableInterface {
 	return newRuntimeconfigVariables(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) SccSources(namespace string) SccSourceInterface {
+	return newSccSources(c, namespace)
 }
 
 func (c *GoogleV1alpha1Client) ServiceAccounts(namespace string) ServiceAccountInterface {
@@ -709,8 +1041,24 @@ func (c *GoogleV1alpha1Client) ServiceAccountKeys(namespace string) ServiceAccou
 	return newServiceAccountKeys(c, namespace)
 }
 
+func (c *GoogleV1alpha1Client) ServiceNetworkingConnections(namespace string) ServiceNetworkingConnectionInterface {
+	return newServiceNetworkingConnections(c, namespace)
+}
+
 func (c *GoogleV1alpha1Client) SourcerepoRepositories(namespace string) SourcerepoRepositoryInterface {
 	return newSourcerepoRepositories(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) SourcerepoRepositoryIamBindings(namespace string) SourcerepoRepositoryIamBindingInterface {
+	return newSourcerepoRepositoryIamBindings(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) SourcerepoRepositoryIamMembers(namespace string) SourcerepoRepositoryIamMemberInterface {
+	return newSourcerepoRepositoryIamMembers(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) SourcerepoRepositoryIamPolicies(namespace string) SourcerepoRepositoryIamPolicyInterface {
+	return newSourcerepoRepositoryIamPolicies(c, namespace)
 }
 
 func (c *GoogleV1alpha1Client) SpannerDatabases(namespace string) SpannerDatabaseInterface {
@@ -769,6 +1117,10 @@ func (c *GoogleV1alpha1Client) StorageBucketACLs(namespace string) StorageBucket
 	return newStorageBucketACLs(c, namespace)
 }
 
+func (c *GoogleV1alpha1Client) StorageBucketAccessControls(namespace string) StorageBucketAccessControlInterface {
+	return newStorageBucketAccessControls(c, namespace)
+}
+
 func (c *GoogleV1alpha1Client) StorageBucketIamBindings(namespace string) StorageBucketIamBindingInterface {
 	return newStorageBucketIamBindings(c, namespace)
 }
@@ -803,6 +1155,14 @@ func (c *GoogleV1alpha1Client) StorageObjectACLs(namespace string) StorageObject
 
 func (c *GoogleV1alpha1Client) StorageObjectAccessControls(namespace string) StorageObjectAccessControlInterface {
 	return newStorageObjectAccessControls(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) StorageTransferJobs(namespace string) StorageTransferJobInterface {
+	return newStorageTransferJobs(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) TpuNodes(namespace string) TpuNodeInterface {
+	return newTpuNodes(c, namespace)
 }
 
 // NewForConfig creates a new GoogleV1alpha1Client for the given config.

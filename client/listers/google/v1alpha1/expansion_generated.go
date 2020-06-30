@@ -18,6 +18,30 @@ limitations under the License.
 
 package v1alpha1
 
+// AccessContextManagerAccessLevelListerExpansion allows custom methods to be added to
+// AccessContextManagerAccessLevelLister.
+type AccessContextManagerAccessLevelListerExpansion interface{}
+
+// AccessContextManagerAccessLevelNamespaceListerExpansion allows custom methods to be added to
+// AccessContextManagerAccessLevelNamespaceLister.
+type AccessContextManagerAccessLevelNamespaceListerExpansion interface{}
+
+// AccessContextManagerAccessPolicyListerExpansion allows custom methods to be added to
+// AccessContextManagerAccessPolicyLister.
+type AccessContextManagerAccessPolicyListerExpansion interface{}
+
+// AccessContextManagerAccessPolicyNamespaceListerExpansion allows custom methods to be added to
+// AccessContextManagerAccessPolicyNamespaceLister.
+type AccessContextManagerAccessPolicyNamespaceListerExpansion interface{}
+
+// AccessContextManagerServicePerimeterListerExpansion allows custom methods to be added to
+// AccessContextManagerServicePerimeterLister.
+type AccessContextManagerServicePerimeterListerExpansion interface{}
+
+// AccessContextManagerServicePerimeterNamespaceListerExpansion allows custom methods to be added to
+// AccessContextManagerServicePerimeterNamespaceLister.
+type AccessContextManagerServicePerimeterNamespaceListerExpansion interface{}
+
 // AppEngineApplicationListerExpansion allows custom methods to be added to
 // AppEngineApplicationLister.
 type AppEngineApplicationListerExpansion interface{}
@@ -25,6 +49,38 @@ type AppEngineApplicationListerExpansion interface{}
 // AppEngineApplicationNamespaceListerExpansion allows custom methods to be added to
 // AppEngineApplicationNamespaceLister.
 type AppEngineApplicationNamespaceListerExpansion interface{}
+
+// AppEngineDomainMappingListerExpansion allows custom methods to be added to
+// AppEngineDomainMappingLister.
+type AppEngineDomainMappingListerExpansion interface{}
+
+// AppEngineDomainMappingNamespaceListerExpansion allows custom methods to be added to
+// AppEngineDomainMappingNamespaceLister.
+type AppEngineDomainMappingNamespaceListerExpansion interface{}
+
+// AppEngineFirewallRuleListerExpansion allows custom methods to be added to
+// AppEngineFirewallRuleLister.
+type AppEngineFirewallRuleListerExpansion interface{}
+
+// AppEngineFirewallRuleNamespaceListerExpansion allows custom methods to be added to
+// AppEngineFirewallRuleNamespaceLister.
+type AppEngineFirewallRuleNamespaceListerExpansion interface{}
+
+// AppEngineStandardAppVersionListerExpansion allows custom methods to be added to
+// AppEngineStandardAppVersionLister.
+type AppEngineStandardAppVersionListerExpansion interface{}
+
+// AppEngineStandardAppVersionNamespaceListerExpansion allows custom methods to be added to
+// AppEngineStandardAppVersionNamespaceLister.
+type AppEngineStandardAppVersionNamespaceListerExpansion interface{}
+
+// BigqueryDataTransferConfigListerExpansion allows custom methods to be added to
+// BigqueryDataTransferConfigLister.
+type BigqueryDataTransferConfigListerExpansion interface{}
+
+// BigqueryDataTransferConfigNamespaceListerExpansion allows custom methods to be added to
+// BigqueryDataTransferConfigNamespaceLister.
+type BigqueryDataTransferConfigNamespaceListerExpansion interface{}
 
 // BigqueryDatasetListerExpansion allows custom methods to be added to
 // BigqueryDatasetLister.
@@ -42,6 +98,22 @@ type BigqueryTableListerExpansion interface{}
 // BigqueryTableNamespaceLister.
 type BigqueryTableNamespaceListerExpansion interface{}
 
+// BigtableAppProfileListerExpansion allows custom methods to be added to
+// BigtableAppProfileLister.
+type BigtableAppProfileListerExpansion interface{}
+
+// BigtableAppProfileNamespaceListerExpansion allows custom methods to be added to
+// BigtableAppProfileNamespaceLister.
+type BigtableAppProfileNamespaceListerExpansion interface{}
+
+// BigtableGcPolicyListerExpansion allows custom methods to be added to
+// BigtableGcPolicyLister.
+type BigtableGcPolicyListerExpansion interface{}
+
+// BigtableGcPolicyNamespaceListerExpansion allows custom methods to be added to
+// BigtableGcPolicyNamespaceLister.
+type BigtableGcPolicyNamespaceListerExpansion interface{}
+
 // BigtableInstanceListerExpansion allows custom methods to be added to
 // BigtableInstanceLister.
 type BigtableInstanceListerExpansion interface{}
@@ -49,6 +121,30 @@ type BigtableInstanceListerExpansion interface{}
 // BigtableInstanceNamespaceListerExpansion allows custom methods to be added to
 // BigtableInstanceNamespaceLister.
 type BigtableInstanceNamespaceListerExpansion interface{}
+
+// BigtableInstanceIamBindingListerExpansion allows custom methods to be added to
+// BigtableInstanceIamBindingLister.
+type BigtableInstanceIamBindingListerExpansion interface{}
+
+// BigtableInstanceIamBindingNamespaceListerExpansion allows custom methods to be added to
+// BigtableInstanceIamBindingNamespaceLister.
+type BigtableInstanceIamBindingNamespaceListerExpansion interface{}
+
+// BigtableInstanceIamMemberListerExpansion allows custom methods to be added to
+// BigtableInstanceIamMemberLister.
+type BigtableInstanceIamMemberListerExpansion interface{}
+
+// BigtableInstanceIamMemberNamespaceListerExpansion allows custom methods to be added to
+// BigtableInstanceIamMemberNamespaceLister.
+type BigtableInstanceIamMemberNamespaceListerExpansion interface{}
+
+// BigtableInstanceIamPolicyListerExpansion allows custom methods to be added to
+// BigtableInstanceIamPolicyLister.
+type BigtableInstanceIamPolicyListerExpansion interface{}
+
+// BigtableInstanceIamPolicyNamespaceListerExpansion allows custom methods to be added to
+// BigtableInstanceIamPolicyNamespaceLister.
+type BigtableInstanceIamPolicyNamespaceListerExpansion interface{}
 
 // BigtableTableListerExpansion allows custom methods to be added to
 // BigtableTableLister.
@@ -90,6 +186,30 @@ type BinaryAuthorizationAttestorListerExpansion interface{}
 // BinaryAuthorizationAttestorNamespaceLister.
 type BinaryAuthorizationAttestorNamespaceListerExpansion interface{}
 
+// BinaryAuthorizationAttestorIamBindingListerExpansion allows custom methods to be added to
+// BinaryAuthorizationAttestorIamBindingLister.
+type BinaryAuthorizationAttestorIamBindingListerExpansion interface{}
+
+// BinaryAuthorizationAttestorIamBindingNamespaceListerExpansion allows custom methods to be added to
+// BinaryAuthorizationAttestorIamBindingNamespaceLister.
+type BinaryAuthorizationAttestorIamBindingNamespaceListerExpansion interface{}
+
+// BinaryAuthorizationAttestorIamMemberListerExpansion allows custom methods to be added to
+// BinaryAuthorizationAttestorIamMemberLister.
+type BinaryAuthorizationAttestorIamMemberListerExpansion interface{}
+
+// BinaryAuthorizationAttestorIamMemberNamespaceListerExpansion allows custom methods to be added to
+// BinaryAuthorizationAttestorIamMemberNamespaceLister.
+type BinaryAuthorizationAttestorIamMemberNamespaceListerExpansion interface{}
+
+// BinaryAuthorizationAttestorIamPolicyListerExpansion allows custom methods to be added to
+// BinaryAuthorizationAttestorIamPolicyLister.
+type BinaryAuthorizationAttestorIamPolicyListerExpansion interface{}
+
+// BinaryAuthorizationAttestorIamPolicyNamespaceListerExpansion allows custom methods to be added to
+// BinaryAuthorizationAttestorIamPolicyNamespaceLister.
+type BinaryAuthorizationAttestorIamPolicyNamespaceListerExpansion interface{}
+
 // BinaryAuthorizationPolicyListerExpansion allows custom methods to be added to
 // BinaryAuthorizationPolicyLister.
 type BinaryAuthorizationPolicyListerExpansion interface{}
@@ -97,6 +217,14 @@ type BinaryAuthorizationPolicyListerExpansion interface{}
 // BinaryAuthorizationPolicyNamespaceListerExpansion allows custom methods to be added to
 // BinaryAuthorizationPolicyNamespaceLister.
 type BinaryAuthorizationPolicyNamespaceListerExpansion interface{}
+
+// CloudSchedulerJobListerExpansion allows custom methods to be added to
+// CloudSchedulerJobLister.
+type CloudSchedulerJobListerExpansion interface{}
+
+// CloudSchedulerJobNamespaceListerExpansion allows custom methods to be added to
+// CloudSchedulerJobNamespaceLister.
+type CloudSchedulerJobNamespaceListerExpansion interface{}
 
 // CloudbuildTriggerListerExpansion allows custom methods to be added to
 // CloudbuildTriggerLister.
@@ -113,6 +241,30 @@ type CloudfunctionsFunctionListerExpansion interface{}
 // CloudfunctionsFunctionNamespaceListerExpansion allows custom methods to be added to
 // CloudfunctionsFunctionNamespaceLister.
 type CloudfunctionsFunctionNamespaceListerExpansion interface{}
+
+// CloudfunctionsFunctionIamBindingListerExpansion allows custom methods to be added to
+// CloudfunctionsFunctionIamBindingLister.
+type CloudfunctionsFunctionIamBindingListerExpansion interface{}
+
+// CloudfunctionsFunctionIamBindingNamespaceListerExpansion allows custom methods to be added to
+// CloudfunctionsFunctionIamBindingNamespaceLister.
+type CloudfunctionsFunctionIamBindingNamespaceListerExpansion interface{}
+
+// CloudfunctionsFunctionIamMemberListerExpansion allows custom methods to be added to
+// CloudfunctionsFunctionIamMemberLister.
+type CloudfunctionsFunctionIamMemberListerExpansion interface{}
+
+// CloudfunctionsFunctionIamMemberNamespaceListerExpansion allows custom methods to be added to
+// CloudfunctionsFunctionIamMemberNamespaceLister.
+type CloudfunctionsFunctionIamMemberNamespaceListerExpansion interface{}
+
+// CloudfunctionsFunctionIamPolicyListerExpansion allows custom methods to be added to
+// CloudfunctionsFunctionIamPolicyLister.
+type CloudfunctionsFunctionIamPolicyListerExpansion interface{}
+
+// CloudfunctionsFunctionIamPolicyNamespaceListerExpansion allows custom methods to be added to
+// CloudfunctionsFunctionIamPolicyNamespaceLister.
+type CloudfunctionsFunctionIamPolicyNamespaceListerExpansion interface{}
 
 // CloudiotRegistryListerExpansion allows custom methods to be added to
 // CloudiotRegistryLister.
@@ -162,6 +314,14 @@ type ComputeBackendBucketListerExpansion interface{}
 // ComputeBackendBucketNamespaceLister.
 type ComputeBackendBucketNamespaceListerExpansion interface{}
 
+// ComputeBackendBucketSignedURLKeyListerExpansion allows custom methods to be added to
+// ComputeBackendBucketSignedURLKeyLister.
+type ComputeBackendBucketSignedURLKeyListerExpansion interface{}
+
+// ComputeBackendBucketSignedURLKeyNamespaceListerExpansion allows custom methods to be added to
+// ComputeBackendBucketSignedURLKeyNamespaceLister.
+type ComputeBackendBucketSignedURLKeyNamespaceListerExpansion interface{}
+
 // ComputeBackendServiceListerExpansion allows custom methods to be added to
 // ComputeBackendServiceLister.
 type ComputeBackendServiceListerExpansion interface{}
@@ -170,6 +330,14 @@ type ComputeBackendServiceListerExpansion interface{}
 // ComputeBackendServiceNamespaceLister.
 type ComputeBackendServiceNamespaceListerExpansion interface{}
 
+// ComputeBackendServiceSignedURLKeyListerExpansion allows custom methods to be added to
+// ComputeBackendServiceSignedURLKeyLister.
+type ComputeBackendServiceSignedURLKeyListerExpansion interface{}
+
+// ComputeBackendServiceSignedURLKeyNamespaceListerExpansion allows custom methods to be added to
+// ComputeBackendServiceSignedURLKeyNamespaceLister.
+type ComputeBackendServiceSignedURLKeyNamespaceListerExpansion interface{}
+
 // ComputeDiskListerExpansion allows custom methods to be added to
 // ComputeDiskLister.
 type ComputeDiskListerExpansion interface{}
@@ -177,6 +345,14 @@ type ComputeDiskListerExpansion interface{}
 // ComputeDiskNamespaceListerExpansion allows custom methods to be added to
 // ComputeDiskNamespaceLister.
 type ComputeDiskNamespaceListerExpansion interface{}
+
+// ComputeDiskResourcePolicyAttachmentListerExpansion allows custom methods to be added to
+// ComputeDiskResourcePolicyAttachmentLister.
+type ComputeDiskResourcePolicyAttachmentListerExpansion interface{}
+
+// ComputeDiskResourcePolicyAttachmentNamespaceListerExpansion allows custom methods to be added to
+// ComputeDiskResourcePolicyAttachmentNamespaceLister.
+type ComputeDiskResourcePolicyAttachmentNamespaceListerExpansion interface{}
 
 // ComputeFirewallListerExpansion allows custom methods to be added to
 // ComputeFirewallLister.
@@ -274,6 +450,30 @@ type ComputeInstanceGroupManagerListerExpansion interface{}
 // ComputeInstanceGroupManagerNamespaceLister.
 type ComputeInstanceGroupManagerNamespaceListerExpansion interface{}
 
+// ComputeInstanceIamBindingListerExpansion allows custom methods to be added to
+// ComputeInstanceIamBindingLister.
+type ComputeInstanceIamBindingListerExpansion interface{}
+
+// ComputeInstanceIamBindingNamespaceListerExpansion allows custom methods to be added to
+// ComputeInstanceIamBindingNamespaceLister.
+type ComputeInstanceIamBindingNamespaceListerExpansion interface{}
+
+// ComputeInstanceIamMemberListerExpansion allows custom methods to be added to
+// ComputeInstanceIamMemberLister.
+type ComputeInstanceIamMemberListerExpansion interface{}
+
+// ComputeInstanceIamMemberNamespaceListerExpansion allows custom methods to be added to
+// ComputeInstanceIamMemberNamespaceLister.
+type ComputeInstanceIamMemberNamespaceListerExpansion interface{}
+
+// ComputeInstanceIamPolicyListerExpansion allows custom methods to be added to
+// ComputeInstanceIamPolicyLister.
+type ComputeInstanceIamPolicyListerExpansion interface{}
+
+// ComputeInstanceIamPolicyNamespaceListerExpansion allows custom methods to be added to
+// ComputeInstanceIamPolicyNamespaceLister.
+type ComputeInstanceIamPolicyNamespaceListerExpansion interface{}
+
 // ComputeInstanceTemplateListerExpansion allows custom methods to be added to
 // ComputeInstanceTemplateLister.
 type ComputeInstanceTemplateListerExpansion interface{}
@@ -298,6 +498,22 @@ type ComputeNetworkListerExpansion interface{}
 // ComputeNetworkNamespaceLister.
 type ComputeNetworkNamespaceListerExpansion interface{}
 
+// ComputeNetworkEndpointListerExpansion allows custom methods to be added to
+// ComputeNetworkEndpointLister.
+type ComputeNetworkEndpointListerExpansion interface{}
+
+// ComputeNetworkEndpointNamespaceListerExpansion allows custom methods to be added to
+// ComputeNetworkEndpointNamespaceLister.
+type ComputeNetworkEndpointNamespaceListerExpansion interface{}
+
+// ComputeNetworkEndpointGroupListerExpansion allows custom methods to be added to
+// ComputeNetworkEndpointGroupLister.
+type ComputeNetworkEndpointGroupListerExpansion interface{}
+
+// ComputeNetworkEndpointGroupNamespaceListerExpansion allows custom methods to be added to
+// ComputeNetworkEndpointGroupNamespaceLister.
+type ComputeNetworkEndpointGroupNamespaceListerExpansion interface{}
+
 // ComputeNetworkPeeringListerExpansion allows custom methods to be added to
 // ComputeNetworkPeeringLister.
 type ComputeNetworkPeeringListerExpansion interface{}
@@ -305,6 +521,30 @@ type ComputeNetworkPeeringListerExpansion interface{}
 // ComputeNetworkPeeringNamespaceListerExpansion allows custom methods to be added to
 // ComputeNetworkPeeringNamespaceLister.
 type ComputeNetworkPeeringNamespaceListerExpansion interface{}
+
+// ComputeNodeGroupListerExpansion allows custom methods to be added to
+// ComputeNodeGroupLister.
+type ComputeNodeGroupListerExpansion interface{}
+
+// ComputeNodeGroupNamespaceListerExpansion allows custom methods to be added to
+// ComputeNodeGroupNamespaceLister.
+type ComputeNodeGroupNamespaceListerExpansion interface{}
+
+// ComputeNodeTemplateListerExpansion allows custom methods to be added to
+// ComputeNodeTemplateLister.
+type ComputeNodeTemplateListerExpansion interface{}
+
+// ComputeNodeTemplateNamespaceListerExpansion allows custom methods to be added to
+// ComputeNodeTemplateNamespaceLister.
+type ComputeNodeTemplateNamespaceListerExpansion interface{}
+
+// ComputeProjectDefaultNetworkTierListerExpansion allows custom methods to be added to
+// ComputeProjectDefaultNetworkTierLister.
+type ComputeProjectDefaultNetworkTierListerExpansion interface{}
+
+// ComputeProjectDefaultNetworkTierNamespaceListerExpansion allows custom methods to be added to
+// ComputeProjectDefaultNetworkTierNamespaceLister.
+type ComputeProjectDefaultNetworkTierNamespaceListerExpansion interface{}
 
 // ComputeProjectMetadataListerExpansion allows custom methods to be added to
 // ComputeProjectMetadataLister.
@@ -353,6 +593,22 @@ type ComputeRegionInstanceGroupManagerListerExpansion interface{}
 // ComputeRegionInstanceGroupManagerNamespaceListerExpansion allows custom methods to be added to
 // ComputeRegionInstanceGroupManagerNamespaceLister.
 type ComputeRegionInstanceGroupManagerNamespaceListerExpansion interface{}
+
+// ComputeReservationListerExpansion allows custom methods to be added to
+// ComputeReservationLister.
+type ComputeReservationListerExpansion interface{}
+
+// ComputeReservationNamespaceListerExpansion allows custom methods to be added to
+// ComputeReservationNamespaceLister.
+type ComputeReservationNamespaceListerExpansion interface{}
+
+// ComputeResourcePolicyListerExpansion allows custom methods to be added to
+// ComputeResourcePolicyLister.
+type ComputeResourcePolicyListerExpansion interface{}
+
+// ComputeResourcePolicyNamespaceListerExpansion allows custom methods to be added to
+// ComputeResourcePolicyNamespaceLister.
+type ComputeResourcePolicyNamespaceListerExpansion interface{}
 
 // ComputeRouteListerExpansion allows custom methods to be added to
 // ComputeRouteLister.
@@ -490,6 +746,14 @@ type ComputeTargetHTTPSProxyListerExpansion interface{}
 // ComputeTargetHTTPSProxyNamespaceLister.
 type ComputeTargetHTTPSProxyNamespaceListerExpansion interface{}
 
+// ComputeTargetInstanceListerExpansion allows custom methods to be added to
+// ComputeTargetInstanceLister.
+type ComputeTargetInstanceListerExpansion interface{}
+
+// ComputeTargetInstanceNamespaceListerExpansion allows custom methods to be added to
+// ComputeTargetInstanceNamespaceLister.
+type ComputeTargetInstanceNamespaceListerExpansion interface{}
+
 // ComputeTargetPoolListerExpansion allows custom methods to be added to
 // ComputeTargetPoolLister.
 type ComputeTargetPoolListerExpansion interface{}
@@ -578,6 +842,30 @@ type DataprocClusterListerExpansion interface{}
 // DataprocClusterNamespaceLister.
 type DataprocClusterNamespaceListerExpansion interface{}
 
+// DataprocClusterIamBindingListerExpansion allows custom methods to be added to
+// DataprocClusterIamBindingLister.
+type DataprocClusterIamBindingListerExpansion interface{}
+
+// DataprocClusterIamBindingNamespaceListerExpansion allows custom methods to be added to
+// DataprocClusterIamBindingNamespaceLister.
+type DataprocClusterIamBindingNamespaceListerExpansion interface{}
+
+// DataprocClusterIamMemberListerExpansion allows custom methods to be added to
+// DataprocClusterIamMemberLister.
+type DataprocClusterIamMemberListerExpansion interface{}
+
+// DataprocClusterIamMemberNamespaceListerExpansion allows custom methods to be added to
+// DataprocClusterIamMemberNamespaceLister.
+type DataprocClusterIamMemberNamespaceListerExpansion interface{}
+
+// DataprocClusterIamPolicyListerExpansion allows custom methods to be added to
+// DataprocClusterIamPolicyLister.
+type DataprocClusterIamPolicyListerExpansion interface{}
+
+// DataprocClusterIamPolicyNamespaceListerExpansion allows custom methods to be added to
+// DataprocClusterIamPolicyNamespaceLister.
+type DataprocClusterIamPolicyNamespaceListerExpansion interface{}
+
 // DataprocJobListerExpansion allows custom methods to be added to
 // DataprocJobLister.
 type DataprocJobListerExpansion interface{}
@@ -585,6 +873,30 @@ type DataprocJobListerExpansion interface{}
 // DataprocJobNamespaceListerExpansion allows custom methods to be added to
 // DataprocJobNamespaceLister.
 type DataprocJobNamespaceListerExpansion interface{}
+
+// DataprocJobIamBindingListerExpansion allows custom methods to be added to
+// DataprocJobIamBindingLister.
+type DataprocJobIamBindingListerExpansion interface{}
+
+// DataprocJobIamBindingNamespaceListerExpansion allows custom methods to be added to
+// DataprocJobIamBindingNamespaceLister.
+type DataprocJobIamBindingNamespaceListerExpansion interface{}
+
+// DataprocJobIamMemberListerExpansion allows custom methods to be added to
+// DataprocJobIamMemberLister.
+type DataprocJobIamMemberListerExpansion interface{}
+
+// DataprocJobIamMemberNamespaceListerExpansion allows custom methods to be added to
+// DataprocJobIamMemberNamespaceLister.
+type DataprocJobIamMemberNamespaceListerExpansion interface{}
+
+// DataprocJobIamPolicyListerExpansion allows custom methods to be added to
+// DataprocJobIamPolicyLister.
+type DataprocJobIamPolicyListerExpansion interface{}
+
+// DataprocJobIamPolicyNamespaceListerExpansion allows custom methods to be added to
+// DataprocJobIamPolicyNamespaceLister.
+type DataprocJobIamPolicyNamespaceListerExpansion interface{}
 
 // DnsManagedZoneListerExpansion allows custom methods to be added to
 // DnsManagedZoneLister.
@@ -617,6 +929,14 @@ type FilestoreInstanceListerExpansion interface{}
 // FilestoreInstanceNamespaceListerExpansion allows custom methods to be added to
 // FilestoreInstanceNamespaceLister.
 type FilestoreInstanceNamespaceListerExpansion interface{}
+
+// FirestoreIndexListerExpansion allows custom methods to be added to
+// FirestoreIndexLister.
+type FirestoreIndexListerExpansion interface{}
+
+// FirestoreIndexNamespaceListerExpansion allows custom methods to be added to
+// FirestoreIndexNamespaceLister.
+type FirestoreIndexNamespaceListerExpansion interface{}
 
 // FolderListerExpansion allows custom methods to be added to
 // FolderLister.
@@ -657,6 +977,150 @@ type FolderOrganizationPolicyListerExpansion interface{}
 // FolderOrganizationPolicyNamespaceListerExpansion allows custom methods to be added to
 // FolderOrganizationPolicyNamespaceLister.
 type FolderOrganizationPolicyNamespaceListerExpansion interface{}
+
+// IapAppEngineServiceIamBindingListerExpansion allows custom methods to be added to
+// IapAppEngineServiceIamBindingLister.
+type IapAppEngineServiceIamBindingListerExpansion interface{}
+
+// IapAppEngineServiceIamBindingNamespaceListerExpansion allows custom methods to be added to
+// IapAppEngineServiceIamBindingNamespaceLister.
+type IapAppEngineServiceIamBindingNamespaceListerExpansion interface{}
+
+// IapAppEngineServiceIamMemberListerExpansion allows custom methods to be added to
+// IapAppEngineServiceIamMemberLister.
+type IapAppEngineServiceIamMemberListerExpansion interface{}
+
+// IapAppEngineServiceIamMemberNamespaceListerExpansion allows custom methods to be added to
+// IapAppEngineServiceIamMemberNamespaceLister.
+type IapAppEngineServiceIamMemberNamespaceListerExpansion interface{}
+
+// IapAppEngineServiceIamPolicyListerExpansion allows custom methods to be added to
+// IapAppEngineServiceIamPolicyLister.
+type IapAppEngineServiceIamPolicyListerExpansion interface{}
+
+// IapAppEngineServiceIamPolicyNamespaceListerExpansion allows custom methods to be added to
+// IapAppEngineServiceIamPolicyNamespaceLister.
+type IapAppEngineServiceIamPolicyNamespaceListerExpansion interface{}
+
+// IapAppEngineVersionIamBindingListerExpansion allows custom methods to be added to
+// IapAppEngineVersionIamBindingLister.
+type IapAppEngineVersionIamBindingListerExpansion interface{}
+
+// IapAppEngineVersionIamBindingNamespaceListerExpansion allows custom methods to be added to
+// IapAppEngineVersionIamBindingNamespaceLister.
+type IapAppEngineVersionIamBindingNamespaceListerExpansion interface{}
+
+// IapAppEngineVersionIamMemberListerExpansion allows custom methods to be added to
+// IapAppEngineVersionIamMemberLister.
+type IapAppEngineVersionIamMemberListerExpansion interface{}
+
+// IapAppEngineVersionIamMemberNamespaceListerExpansion allows custom methods to be added to
+// IapAppEngineVersionIamMemberNamespaceLister.
+type IapAppEngineVersionIamMemberNamespaceListerExpansion interface{}
+
+// IapAppEngineVersionIamPolicyListerExpansion allows custom methods to be added to
+// IapAppEngineVersionIamPolicyLister.
+type IapAppEngineVersionIamPolicyListerExpansion interface{}
+
+// IapAppEngineVersionIamPolicyNamespaceListerExpansion allows custom methods to be added to
+// IapAppEngineVersionIamPolicyNamespaceLister.
+type IapAppEngineVersionIamPolicyNamespaceListerExpansion interface{}
+
+// IapWebBackendServiceIamBindingListerExpansion allows custom methods to be added to
+// IapWebBackendServiceIamBindingLister.
+type IapWebBackendServiceIamBindingListerExpansion interface{}
+
+// IapWebBackendServiceIamBindingNamespaceListerExpansion allows custom methods to be added to
+// IapWebBackendServiceIamBindingNamespaceLister.
+type IapWebBackendServiceIamBindingNamespaceListerExpansion interface{}
+
+// IapWebBackendServiceIamMemberListerExpansion allows custom methods to be added to
+// IapWebBackendServiceIamMemberLister.
+type IapWebBackendServiceIamMemberListerExpansion interface{}
+
+// IapWebBackendServiceIamMemberNamespaceListerExpansion allows custom methods to be added to
+// IapWebBackendServiceIamMemberNamespaceLister.
+type IapWebBackendServiceIamMemberNamespaceListerExpansion interface{}
+
+// IapWebBackendServiceIamPolicyListerExpansion allows custom methods to be added to
+// IapWebBackendServiceIamPolicyLister.
+type IapWebBackendServiceIamPolicyListerExpansion interface{}
+
+// IapWebBackendServiceIamPolicyNamespaceListerExpansion allows custom methods to be added to
+// IapWebBackendServiceIamPolicyNamespaceLister.
+type IapWebBackendServiceIamPolicyNamespaceListerExpansion interface{}
+
+// IapWebIamBindingListerExpansion allows custom methods to be added to
+// IapWebIamBindingLister.
+type IapWebIamBindingListerExpansion interface{}
+
+// IapWebIamBindingNamespaceListerExpansion allows custom methods to be added to
+// IapWebIamBindingNamespaceLister.
+type IapWebIamBindingNamespaceListerExpansion interface{}
+
+// IapWebIamMemberListerExpansion allows custom methods to be added to
+// IapWebIamMemberLister.
+type IapWebIamMemberListerExpansion interface{}
+
+// IapWebIamMemberNamespaceListerExpansion allows custom methods to be added to
+// IapWebIamMemberNamespaceLister.
+type IapWebIamMemberNamespaceListerExpansion interface{}
+
+// IapWebIamPolicyListerExpansion allows custom methods to be added to
+// IapWebIamPolicyLister.
+type IapWebIamPolicyListerExpansion interface{}
+
+// IapWebIamPolicyNamespaceListerExpansion allows custom methods to be added to
+// IapWebIamPolicyNamespaceLister.
+type IapWebIamPolicyNamespaceListerExpansion interface{}
+
+// IapWebTypeAppEngineIamBindingListerExpansion allows custom methods to be added to
+// IapWebTypeAppEngineIamBindingLister.
+type IapWebTypeAppEngineIamBindingListerExpansion interface{}
+
+// IapWebTypeAppEngineIamBindingNamespaceListerExpansion allows custom methods to be added to
+// IapWebTypeAppEngineIamBindingNamespaceLister.
+type IapWebTypeAppEngineIamBindingNamespaceListerExpansion interface{}
+
+// IapWebTypeAppEngineIamMemberListerExpansion allows custom methods to be added to
+// IapWebTypeAppEngineIamMemberLister.
+type IapWebTypeAppEngineIamMemberListerExpansion interface{}
+
+// IapWebTypeAppEngineIamMemberNamespaceListerExpansion allows custom methods to be added to
+// IapWebTypeAppEngineIamMemberNamespaceLister.
+type IapWebTypeAppEngineIamMemberNamespaceListerExpansion interface{}
+
+// IapWebTypeAppEngineIamPolicyListerExpansion allows custom methods to be added to
+// IapWebTypeAppEngineIamPolicyLister.
+type IapWebTypeAppEngineIamPolicyListerExpansion interface{}
+
+// IapWebTypeAppEngineIamPolicyNamespaceListerExpansion allows custom methods to be added to
+// IapWebTypeAppEngineIamPolicyNamespaceLister.
+type IapWebTypeAppEngineIamPolicyNamespaceListerExpansion interface{}
+
+// IapWebTypeComputeIamBindingListerExpansion allows custom methods to be added to
+// IapWebTypeComputeIamBindingLister.
+type IapWebTypeComputeIamBindingListerExpansion interface{}
+
+// IapWebTypeComputeIamBindingNamespaceListerExpansion allows custom methods to be added to
+// IapWebTypeComputeIamBindingNamespaceLister.
+type IapWebTypeComputeIamBindingNamespaceListerExpansion interface{}
+
+// IapWebTypeComputeIamMemberListerExpansion allows custom methods to be added to
+// IapWebTypeComputeIamMemberLister.
+type IapWebTypeComputeIamMemberListerExpansion interface{}
+
+// IapWebTypeComputeIamMemberNamespaceListerExpansion allows custom methods to be added to
+// IapWebTypeComputeIamMemberNamespaceLister.
+type IapWebTypeComputeIamMemberNamespaceListerExpansion interface{}
+
+// IapWebTypeComputeIamPolicyListerExpansion allows custom methods to be added to
+// IapWebTypeComputeIamPolicyLister.
+type IapWebTypeComputeIamPolicyListerExpansion interface{}
+
+// IapWebTypeComputeIamPolicyNamespaceListerExpansion allows custom methods to be added to
+// IapWebTypeComputeIamPolicyNamespaceLister.
+type IapWebTypeComputeIamPolicyNamespaceListerExpansion interface{}
 
 // KmsCryptoKeyListerExpansion allows custom methods to be added to
 // KmsCryptoKeyLister.
@@ -746,6 +1210,14 @@ type LoggingFolderSinkListerExpansion interface{}
 // LoggingFolderSinkNamespaceLister.
 type LoggingFolderSinkNamespaceListerExpansion interface{}
 
+// LoggingMetricListerExpansion allows custom methods to be added to
+// LoggingMetricLister.
+type LoggingMetricListerExpansion interface{}
+
+// LoggingMetricNamespaceListerExpansion allows custom methods to be added to
+// LoggingMetricNamespaceLister.
+type LoggingMetricNamespaceListerExpansion interface{}
+
 // LoggingOrganizationExclusionListerExpansion allows custom methods to be added to
 // LoggingOrganizationExclusionLister.
 type LoggingOrganizationExclusionListerExpansion interface{}
@@ -777,6 +1249,14 @@ type LoggingProjectSinkListerExpansion interface{}
 // LoggingProjectSinkNamespaceListerExpansion allows custom methods to be added to
 // LoggingProjectSinkNamespaceLister.
 type LoggingProjectSinkNamespaceListerExpansion interface{}
+
+// MlEngineModelListerExpansion allows custom methods to be added to
+// MlEngineModelLister.
+type MlEngineModelListerExpansion interface{}
+
+// MlEngineModelNamespaceListerExpansion allows custom methods to be added to
+// MlEngineModelNamespaceLister.
+type MlEngineModelNamespaceListerExpansion interface{}
 
 // MonitoringAlertPolicyListerExpansion allows custom methods to be added to
 // MonitoringAlertPolicyLister.
@@ -857,6 +1337,14 @@ type ProjectListerExpansion interface{}
 // ProjectNamespaceListerExpansion allows custom methods to be added to
 // ProjectNamespaceLister.
 type ProjectNamespaceListerExpansion interface{}
+
+// ProjectIamAuditConfigListerExpansion allows custom methods to be added to
+// ProjectIamAuditConfigLister.
+type ProjectIamAuditConfigListerExpansion interface{}
+
+// ProjectIamAuditConfigNamespaceListerExpansion allows custom methods to be added to
+// ProjectIamAuditConfigNamespaceLister.
+type ProjectIamAuditConfigNamespaceListerExpansion interface{}
 
 // ProjectIamBindingListerExpansion allows custom methods to be added to
 // ProjectIamBindingLister.
@@ -1010,6 +1498,30 @@ type RuntimeconfigConfigListerExpansion interface{}
 // RuntimeconfigConfigNamespaceLister.
 type RuntimeconfigConfigNamespaceListerExpansion interface{}
 
+// RuntimeconfigConfigIamBindingListerExpansion allows custom methods to be added to
+// RuntimeconfigConfigIamBindingLister.
+type RuntimeconfigConfigIamBindingListerExpansion interface{}
+
+// RuntimeconfigConfigIamBindingNamespaceListerExpansion allows custom methods to be added to
+// RuntimeconfigConfigIamBindingNamespaceLister.
+type RuntimeconfigConfigIamBindingNamespaceListerExpansion interface{}
+
+// RuntimeconfigConfigIamMemberListerExpansion allows custom methods to be added to
+// RuntimeconfigConfigIamMemberLister.
+type RuntimeconfigConfigIamMemberListerExpansion interface{}
+
+// RuntimeconfigConfigIamMemberNamespaceListerExpansion allows custom methods to be added to
+// RuntimeconfigConfigIamMemberNamespaceLister.
+type RuntimeconfigConfigIamMemberNamespaceListerExpansion interface{}
+
+// RuntimeconfigConfigIamPolicyListerExpansion allows custom methods to be added to
+// RuntimeconfigConfigIamPolicyLister.
+type RuntimeconfigConfigIamPolicyListerExpansion interface{}
+
+// RuntimeconfigConfigIamPolicyNamespaceListerExpansion allows custom methods to be added to
+// RuntimeconfigConfigIamPolicyNamespaceLister.
+type RuntimeconfigConfigIamPolicyNamespaceListerExpansion interface{}
+
 // RuntimeconfigVariableListerExpansion allows custom methods to be added to
 // RuntimeconfigVariableLister.
 type RuntimeconfigVariableListerExpansion interface{}
@@ -1017,6 +1529,14 @@ type RuntimeconfigVariableListerExpansion interface{}
 // RuntimeconfigVariableNamespaceListerExpansion allows custom methods to be added to
 // RuntimeconfigVariableNamespaceLister.
 type RuntimeconfigVariableNamespaceListerExpansion interface{}
+
+// SccSourceListerExpansion allows custom methods to be added to
+// SccSourceLister.
+type SccSourceListerExpansion interface{}
+
+// SccSourceNamespaceListerExpansion allows custom methods to be added to
+// SccSourceNamespaceLister.
+type SccSourceNamespaceListerExpansion interface{}
 
 // ServiceAccountListerExpansion allows custom methods to be added to
 // ServiceAccountLister.
@@ -1058,6 +1578,14 @@ type ServiceAccountKeyListerExpansion interface{}
 // ServiceAccountKeyNamespaceLister.
 type ServiceAccountKeyNamespaceListerExpansion interface{}
 
+// ServiceNetworkingConnectionListerExpansion allows custom methods to be added to
+// ServiceNetworkingConnectionLister.
+type ServiceNetworkingConnectionListerExpansion interface{}
+
+// ServiceNetworkingConnectionNamespaceListerExpansion allows custom methods to be added to
+// ServiceNetworkingConnectionNamespaceLister.
+type ServiceNetworkingConnectionNamespaceListerExpansion interface{}
+
 // SourcerepoRepositoryListerExpansion allows custom methods to be added to
 // SourcerepoRepositoryLister.
 type SourcerepoRepositoryListerExpansion interface{}
@@ -1065,6 +1593,30 @@ type SourcerepoRepositoryListerExpansion interface{}
 // SourcerepoRepositoryNamespaceListerExpansion allows custom methods to be added to
 // SourcerepoRepositoryNamespaceLister.
 type SourcerepoRepositoryNamespaceListerExpansion interface{}
+
+// SourcerepoRepositoryIamBindingListerExpansion allows custom methods to be added to
+// SourcerepoRepositoryIamBindingLister.
+type SourcerepoRepositoryIamBindingListerExpansion interface{}
+
+// SourcerepoRepositoryIamBindingNamespaceListerExpansion allows custom methods to be added to
+// SourcerepoRepositoryIamBindingNamespaceLister.
+type SourcerepoRepositoryIamBindingNamespaceListerExpansion interface{}
+
+// SourcerepoRepositoryIamMemberListerExpansion allows custom methods to be added to
+// SourcerepoRepositoryIamMemberLister.
+type SourcerepoRepositoryIamMemberListerExpansion interface{}
+
+// SourcerepoRepositoryIamMemberNamespaceListerExpansion allows custom methods to be added to
+// SourcerepoRepositoryIamMemberNamespaceLister.
+type SourcerepoRepositoryIamMemberNamespaceListerExpansion interface{}
+
+// SourcerepoRepositoryIamPolicyListerExpansion allows custom methods to be added to
+// SourcerepoRepositoryIamPolicyLister.
+type SourcerepoRepositoryIamPolicyListerExpansion interface{}
+
+// SourcerepoRepositoryIamPolicyNamespaceListerExpansion allows custom methods to be added to
+// SourcerepoRepositoryIamPolicyNamespaceLister.
+type SourcerepoRepositoryIamPolicyNamespaceListerExpansion interface{}
 
 // SpannerDatabaseListerExpansion allows custom methods to be added to
 // SpannerDatabaseLister.
@@ -1178,6 +1730,14 @@ type StorageBucketACLListerExpansion interface{}
 // StorageBucketACLNamespaceLister.
 type StorageBucketACLNamespaceListerExpansion interface{}
 
+// StorageBucketAccessControlListerExpansion allows custom methods to be added to
+// StorageBucketAccessControlLister.
+type StorageBucketAccessControlListerExpansion interface{}
+
+// StorageBucketAccessControlNamespaceListerExpansion allows custom methods to be added to
+// StorageBucketAccessControlNamespaceLister.
+type StorageBucketAccessControlNamespaceListerExpansion interface{}
+
 // StorageBucketIamBindingListerExpansion allows custom methods to be added to
 // StorageBucketIamBindingLister.
 type StorageBucketIamBindingListerExpansion interface{}
@@ -1249,3 +1809,19 @@ type StorageObjectAccessControlListerExpansion interface{}
 // StorageObjectAccessControlNamespaceListerExpansion allows custom methods to be added to
 // StorageObjectAccessControlNamespaceLister.
 type StorageObjectAccessControlNamespaceListerExpansion interface{}
+
+// StorageTransferJobListerExpansion allows custom methods to be added to
+// StorageTransferJobLister.
+type StorageTransferJobListerExpansion interface{}
+
+// StorageTransferJobNamespaceListerExpansion allows custom methods to be added to
+// StorageTransferJobNamespaceLister.
+type StorageTransferJobNamespaceListerExpansion interface{}
+
+// TpuNodeListerExpansion allows custom methods to be added to
+// TpuNodeLister.
+type TpuNodeListerExpansion interface{}
+
+// TpuNodeNamespaceListerExpansion allows custom methods to be added to
+// TpuNodeNamespaceLister.
+type TpuNodeNamespaceListerExpansion interface{}

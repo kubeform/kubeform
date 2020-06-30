@@ -10,7 +10,7 @@ import (
 	"log"
 	"strconv"
 
-	"gopkg.in/resty.v1"
+	"github.com/go-resty/resty/v2"
 )
 
 // PageOptions are the pagination parameters for List endpoints
@@ -30,7 +30,6 @@ type ListOptions struct {
 // the two writable properties, Page and Filter
 func NewListOptions(page int, filter string) *ListOptions {
 	return &ListOptions{PageOptions: &PageOptions{Page: page}, Filter: filter}
-
 }
 
 // listHelper abstracts fetching and pagination for GET endpoints that
@@ -38,6 +37,7 @@ func NewListOptions(page int, filter string) *ListOptions {
 // When opts (or opts.Page) is nil, all pages will be fetched and
 // returned in a single (endpoint-specific)PagedResponse
 // opts.results and opts.pages will be updated from the API response
+// nolint
 func (c *Client) listHelper(ctx context.Context, i interface{}, opts *ListOptions) error {
 	req := c.R(ctx)
 	if opts != nil && opts.PageOptions != nil && opts.Page > 0 {
@@ -113,6 +113,24 @@ func (c *Client) listHelper(ctx context.Context, i interface{}, opts *ListOption
 			pages = r.Result().(*EventsPagedResponse).Pages
 			results = r.Result().(*EventsPagedResponse).Results
 			v.appendData(r.Result().(*EventsPagedResponse))
+		}
+	case *FirewallsPagedResponse:
+		if r, err = coupleAPIErrors(req.SetResult(FirewallsPagedResponse{}).Get(v.endpoint(c))); err == nil {
+			pages = r.Result().(*FirewallsPagedResponse).Pages
+			results = r.Result().(*FirewallsPagedResponse).Results
+			v.appendData(r.Result().(*FirewallsPagedResponse))
+		}
+	case *LKEClustersPagedResponse:
+		if r, err = coupleAPIErrors(req.SetResult(LKEClustersPagedResponse{}).Get(v.endpoint(c))); err == nil {
+			pages = r.Result().(*LKEClustersPagedResponse).Pages
+			results = r.Result().(*LKEClustersPagedResponse).Results
+			v.appendData(r.Result().(*LKEClustersPagedResponse))
+		}
+	case *LKEVersionsPagedResponse:
+		if r, err = coupleAPIErrors(req.SetResult(LKEVersionsPagedResponse{}).Get(v.endpoint(c))); err == nil {
+			pages = r.Result().(*LKEVersionsPagedResponse).Pages
+			results = r.Result().(*LKEVersionsPagedResponse).Results
+			v.appendData(r.Result().(*LKEVersionsPagedResponse))
 		}
 	case *LongviewSubscriptionsPagedResponse:
 		if r, err = coupleAPIErrors(req.SetResult(LongviewSubscriptionsPagedResponse{}).Get(v.endpoint(c))); err == nil {
@@ -209,6 +227,24 @@ func (c *Client) listHelper(ctx context.Context, i interface{}, opts *ListOption
 			results = r.Result().(*UsersPagedResponse).Results
 			v.appendData(r.Result().(*UsersPagedResponse))
 		}
+	case *ObjectStorageBucketsPagedResponse:
+		if r, err = coupleAPIErrors(req.SetResult(ObjectStorageBucketsPagedResponse{}).Get(v.endpoint(c))); err == nil {
+			pages = r.Result().(*ObjectStorageBucketsPagedResponse).Pages
+			results = r.Result().(*ObjectStorageBucketsPagedResponse).Results
+			v.appendData(r.Result().(*ObjectStorageBucketsPagedResponse))
+		}
+	case *ObjectStorageClustersPagedResponse:
+		if r, err = coupleAPIErrors(req.SetResult(ObjectStorageClustersPagedResponse{}).Get(v.endpoint(c))); err == nil {
+			pages = r.Result().(*ObjectStorageClustersPagedResponse).Pages
+			results = r.Result().(*ObjectStorageClustersPagedResponse).Results
+			v.appendData(r.Result().(*ObjectStorageClustersPagedResponse))
+		}
+	case *ObjectStorageKeysPagedResponse:
+		if r, err = coupleAPIErrors(req.SetResult(ObjectStorageKeysPagedResponse{}).Get(v.endpoint(c))); err == nil {
+			pages = r.Result().(*ObjectStorageKeysPagedResponse).Pages
+			results = r.Result().(*ObjectStorageKeysPagedResponse).Results
+			v.appendData(r.Result().(*ObjectStorageKeysPagedResponse))
+		}
 	/**
 	case ProfileAppsPagedResponse:
 	case ProfileWhitelistPagedResponse:
@@ -257,6 +293,7 @@ func (c *Client) listHelper(ctx context.Context, i interface{}, opts *ListOption
 // When opts (or opts.Page) is nil, all pages will be fetched and
 // returned in a single (endpoint-specific)PagedResponse
 // opts.results and opts.pages will be updated from the API response
+// nolint
 func (c *Client) listHelperWithID(ctx context.Context, i interface{}, idRaw interface{}, opts *ListOptions) error {
 	req := c.R(ctx)
 	if opts != nil && opts.Page > 0 {
@@ -277,12 +314,6 @@ func (c *Client) listHelperWithID(ctx context.Context, i interface{}, idRaw inte
 	}
 
 	switch v := i.(type) {
-	case *InvoiceItemsPagedResponse:
-		if r, err = coupleAPIErrors(req.SetResult(InvoiceItemsPagedResponse{}).Get(v.endpointWithID(c, id))); err == nil {
-			pages = r.Result().(*InvoiceItemsPagedResponse).Pages
-			results = r.Result().(*InvoiceItemsPagedResponse).Results
-			v.appendData(r.Result().(*InvoiceItemsPagedResponse))
-		}
 	case *DomainRecordsPagedResponse:
 		if r, err = coupleAPIErrors(req.SetResult(DomainRecordsPagedResponse{}).Get(v.endpointWithID(c, id))); err == nil {
 			response, ok := r.Result().(*DomainRecordsPagedResponse)
@@ -292,6 +323,12 @@ func (c *Client) listHelperWithID(ctx context.Context, i interface{}, idRaw inte
 			pages = response.Pages
 			results = response.Results
 			v.appendData(response)
+		}
+	case *FirewallDevicesPagedResponse:
+		if r, err = coupleAPIErrors(req.SetResult(FirewallDevicesPagedResponse{}).Get(v.endpointWithID(c, id))); err == nil {
+			pages = r.Result().(*FirewallDevicesPagedResponse).Pages
+			results = r.Result().(*FirewallDevicesPagedResponse).Results
+			v.appendData(r.Result().(*FirewallDevicesPagedResponse))
 		}
 	case *InstanceConfigsPagedResponse:
 		if r, err = coupleAPIErrors(req.SetResult(InstanceConfigsPagedResponse{}).Get(v.endpointWithID(c, id))); err == nil {
@@ -305,17 +342,35 @@ func (c *Client) listHelperWithID(ctx context.Context, i interface{}, idRaw inte
 			results = r.Result().(*InstanceDisksPagedResponse).Results
 			v.appendData(r.Result().(*InstanceDisksPagedResponse))
 		}
-	case *NodeBalancerConfigsPagedResponse:
-		if r, err = coupleAPIErrors(req.SetResult(NodeBalancerConfigsPagedResponse{}).Get(v.endpointWithID(c, id))); err == nil {
-			pages = r.Result().(*NodeBalancerConfigsPagedResponse).Pages
-			results = r.Result().(*NodeBalancerConfigsPagedResponse).Results
-			v.appendData(r.Result().(*NodeBalancerConfigsPagedResponse))
-		}
 	case *InstanceVolumesPagedResponse:
 		if r, err = coupleAPIErrors(req.SetResult(InstanceVolumesPagedResponse{}).Get(v.endpointWithID(c, id))); err == nil {
 			pages = r.Result().(*InstanceVolumesPagedResponse).Pages
 			results = r.Result().(*InstanceVolumesPagedResponse).Results
 			v.appendData(r.Result().(*InstanceVolumesPagedResponse))
+		}
+	case *InvoiceItemsPagedResponse:
+		if r, err = coupleAPIErrors(req.SetResult(InvoiceItemsPagedResponse{}).Get(v.endpointWithID(c, id))); err == nil {
+			pages = r.Result().(*InvoiceItemsPagedResponse).Pages
+			results = r.Result().(*InvoiceItemsPagedResponse).Results
+			v.appendData(r.Result().(*InvoiceItemsPagedResponse))
+		}
+	case *LKEClusterAPIEndpointsPagedResponse:
+		if r, err = coupleAPIErrors(req.SetResult(LKEClusterAPIEndpointsPagedResponse{}).Get(v.endpointWithID(c, id))); err == nil {
+			pages = r.Result().(*LKEClusterAPIEndpointsPagedResponse).Pages
+			results = r.Result().(*LKEClusterAPIEndpointsPagedResponse).Results
+			v.appendData(r.Result().(*LKEClusterAPIEndpointsPagedResponse))
+		}
+	case *LKEClusterPoolsPagedResponse:
+		if r, err = coupleAPIErrors(req.SetResult(LKEClusterPoolsPagedResponse{}).Get(v.endpointWithID(c, id))); err == nil {
+			pages = r.Result().(*LKEClusterPoolsPagedResponse).Pages
+			results = r.Result().(*LKEClusterPoolsPagedResponse).Results
+			v.appendData(r.Result().(*LKEClusterPoolsPagedResponse))
+		}
+	case *NodeBalancerConfigsPagedResponse:
+		if r, err = coupleAPIErrors(req.SetResult(NodeBalancerConfigsPagedResponse{}).Get(v.endpointWithID(c, id))); err == nil {
+			pages = r.Result().(*NodeBalancerConfigsPagedResponse).Pages
+			results = r.Result().(*NodeBalancerConfigsPagedResponse).Results
+			v.appendData(r.Result().(*NodeBalancerConfigsPagedResponse))
 		}
 	case *TaggedObjectsPagedResponse:
 		idStr := idRaw.(string)
@@ -383,6 +438,7 @@ func (c *Client) listHelperWithID(ctx context.Context, i interface{}, idRaw inte
 // opts.results and opts.pages will be updated from the API response
 func (c *Client) listHelperWithTwoIDs(ctx context.Context, i interface{}, firstID, secondID int, opts *ListOptions) error {
 	req := c.R(ctx)
+
 	if opts != nil && opts.Page > 0 {
 		req.SetQueryParam("page", strconv.Itoa(opts.Page))
 	}
@@ -405,7 +461,6 @@ func (c *Client) listHelperWithTwoIDs(ctx context.Context, i interface{}, firstI
 			results = r.Result().(*NodeBalancerNodesPagedResponse).Results
 			v.appendData(r.Result().(*NodeBalancerNodesPagedResponse))
 		}
-
 	default:
 		log.Fatalf("Unknown listHelperWithTwoIDs interface{} %T used", i)
 	}

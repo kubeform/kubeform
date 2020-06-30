@@ -198,6 +198,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&AppsyncDatasource{},
 		&AppsyncDatasourceList{},
 
+		&AppsyncFunction{},
+		&AppsyncFunctionList{},
+
 		&AppsyncGraphqlAPI{},
 		&AppsyncGraphqlAPIList{},
 
@@ -209,6 +212,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&AthenaNamedQuery{},
 		&AthenaNamedQueryList{},
+
+		&AthenaWorkgroup{},
+		&AthenaWorkgroupList{},
 
 		&AutoscalingAttachment{},
 		&AutoscalingAttachmentList{},
@@ -318,6 +324,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&CodebuildProject{},
 		&CodebuildProjectList{},
 
+		&CodebuildSourceCredential{},
+		&CodebuildSourceCredentialList{},
+
 		&CodebuildWebhook{},
 		&CodebuildWebhookList{},
 
@@ -384,11 +393,20 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ConfigDeliveryChannel{},
 		&ConfigDeliveryChannelList{},
 
+		&ConfigOrganizationCustomRule{},
+		&ConfigOrganizationCustomRuleList{},
+
+		&ConfigOrganizationManagedRule{},
+		&ConfigOrganizationManagedRuleList{},
+
 		&CurReportDefinition{},
 		&CurReportDefinitionList{},
 
 		&CustomerGateway{},
 		&CustomerGatewayList{},
+
+		&DatapipelinePipeline{},
+		&DatapipelinePipelineList{},
 
 		&DatasyncAgent{},
 		&DatasyncAgentList{},
@@ -468,6 +486,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&DirectoryServiceDirectory{},
 		&DirectoryServiceDirectoryList{},
 
+		&DirectoryServiceLogSubscription{},
+		&DirectoryServiceLogSubscriptionList{},
+
 		&DlmLifecyclePolicy{},
 		&DlmLifecyclePolicyList{},
 
@@ -540,6 +561,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&DxPublicVirtualInterface{},
 		&DxPublicVirtualInterfaceList{},
 
+		&DxTransitVirtualInterface{},
+		&DxTransitVirtualInterfaceList{},
+
 		&DynamodbGlobalTable{},
 		&DynamodbGlobalTableList{},
 
@@ -548,6 +572,12 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&DynamodbTableItem{},
 		&DynamodbTableItemList{},
+
+		&EbsDefaultKmsKey{},
+		&EbsDefaultKmsKeyList{},
+
+		&EbsEncryptionByDefault{},
+		&EbsEncryptionByDefaultList{},
 
 		&EbsSnapshot{},
 		&EbsSnapshotList{},
@@ -587,6 +617,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&Ec2TransitGatewayVpcAttachment{},
 		&Ec2TransitGatewayVpcAttachmentList{},
+
+		&Ec2TransitGatewayVpcAttachmentAccepter{},
+		&Ec2TransitGatewayVpcAttachmentAccepterList{},
 
 		&EcrLifecyclePolicy{},
 		&EcrLifecyclePolicyList{},
@@ -681,6 +714,15 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&FlowLog{},
 		&FlowLogList{},
 
+		&FmsAdminAccount{},
+		&FmsAdminAccountList{},
+
+		&FsxLustreFileSystem{},
+		&FsxLustreFileSystemList{},
+
+		&FsxWindowsFileSystem{},
+		&FsxWindowsFileSystemList{},
+
 		&GameliftAlias{},
 		&GameliftAliasList{},
 
@@ -701,6 +743,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&GlobalacceleratorAccelerator{},
 		&GlobalacceleratorAcceleratorList{},
+
+		&GlobalacceleratorEndpointGroup{},
+		&GlobalacceleratorEndpointGroupList{},
 
 		&GlobalacceleratorListener{},
 		&GlobalacceleratorListenerList{},
@@ -978,6 +1023,12 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&MqConfiguration{},
 		&MqConfigurationList{},
 
+		&MskCluster{},
+		&MskClusterList{},
+
+		&MskConfiguration{},
+		&MskConfigurationList{},
+
 		&NatGateway{},
 		&NatGatewayList{},
 
@@ -1119,6 +1170,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ProxyProtocolPolicy{},
 		&ProxyProtocolPolicyList{},
 
+		&QuicksightGroup{},
+		&QuicksightGroupList{},
+
 		&RamPrincipalAssociation{},
 		&RamPrincipalAssociationList{},
 
@@ -1127,6 +1181,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&RamResourceShare{},
 		&RamResourceShareList{},
+
+		&RamResourceShareAccepter{},
+		&RamResourceShareAccepterList{},
 
 		&RdsCluster{},
 		&RdsClusterList{},
@@ -1157,6 +1214,12 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&RedshiftSnapshotCopyGrant{},
 		&RedshiftSnapshotCopyGrantList{},
+
+		&RedshiftSnapshotSchedule{},
+		&RedshiftSnapshotScheduleList{},
+
+		&RedshiftSnapshotScheduleAssociation{},
+		&RedshiftSnapshotScheduleAssociationList{},
 
 		&RedshiftSubnetGroup{},
 		&RedshiftSubnetGroupList{},
@@ -1275,6 +1338,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ServicecatalogPortfolio{},
 		&ServicecatalogPortfolioList{},
 
+		&ServicequotasServiceQuota{},
+		&ServicequotasServiceQuotaList{},
+
 		&SesActiveReceiptRuleSet{},
 		&SesActiveReceiptRuleSetList{},
 
@@ -1293,11 +1359,17 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&SesDomainMailFrom{},
 		&SesDomainMailFromList{},
 
+		&SesEmailIdentity{},
+		&SesEmailIdentityList{},
+
 		&SesEventDestination{},
 		&SesEventDestinationList{},
 
 		&SesIdentityNotificationTopic{},
 		&SesIdentityNotificationTopicList{},
+
+		&SesIdentityPolicy{},
+		&SesIdentityPolicyList{},
 
 		&SesReceiptFilter{},
 		&SesReceiptFilterList{},
@@ -1316,6 +1388,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 
 		&SfnStateMachine{},
 		&SfnStateMachineList{},
+
+		&ShieldProtection{},
+		&ShieldProtectionList{},
 
 		&SimpledbDomain{},
 		&SimpledbDomainList{},

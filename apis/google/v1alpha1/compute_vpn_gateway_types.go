@@ -48,8 +48,10 @@ type ComputeVPNGatewaySpec struct {
 	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
-	Name        string `json:"name" tf:"name"`
-	Network     string `json:"network" tf:"network"`
+	// +optional
+	GatewayID int64  `json:"gatewayID,omitempty" tf:"gateway_id,omitempty"`
+	Name      string `json:"name" tf:"name"`
+	Network   string `json:"network" tf:"network"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional

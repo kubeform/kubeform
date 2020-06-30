@@ -63,6 +63,8 @@ type ComputeInstanceTemplateSpecDisk struct {
 	// +optional
 	Interface string `json:"interface,omitempty" tf:"interface,omitempty"`
 	// +optional
+	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
+	// +optional
 	Mode string `json:"mode,omitempty" tf:"mode,omitempty"`
 	// +optional
 	Source string `json:"source,omitempty" tf:"source,omitempty"`
@@ -79,9 +81,6 @@ type ComputeInstanceTemplateSpecGuestAccelerator struct {
 
 type ComputeInstanceTemplateSpecNetworkInterfaceAccessConfig struct {
 	// +optional
-	// Deprecated
-	AssignedNATIP string `json:"assignedNATIP,omitempty" tf:"assigned_nat_ip,omitempty"`
-	// +optional
 	NatIP string `json:"natIP,omitempty" tf:"nat_ip,omitempty"`
 	// +optional
 	NetworkTier string `json:"networkTier,omitempty" tf:"network_tier,omitempty"`
@@ -97,9 +96,6 @@ type ComputeInstanceTemplateSpecNetworkInterface struct {
 	// +optional
 	AccessConfig []ComputeInstanceTemplateSpecNetworkInterfaceAccessConfig `json:"accessConfig,omitempty" tf:"access_config,omitempty"`
 	// +optional
-	// Deprecated
-	Address string `json:"address,omitempty" tf:"address,omitempty"`
-	// +optional
 	AliasIPRange []ComputeInstanceTemplateSpecNetworkInterfaceAliasIPRange `json:"aliasIPRange,omitempty" tf:"alias_ip_range,omitempty"`
 	// +optional
 	Network string `json:"network,omitempty" tf:"network,omitempty"`
@@ -111,9 +107,17 @@ type ComputeInstanceTemplateSpecNetworkInterface struct {
 	SubnetworkProject string `json:"subnetworkProject,omitempty" tf:"subnetwork_project,omitempty"`
 }
 
+type ComputeInstanceTemplateSpecSchedulingNodeAffinities struct {
+	Key      string   `json:"key" tf:"key"`
+	Operator string   `json:"operator" tf:"operator"`
+	Values   []string `json:"values" tf:"values"`
+}
+
 type ComputeInstanceTemplateSpecScheduling struct {
 	// +optional
 	AutomaticRestart bool `json:"automaticRestart,omitempty" tf:"automatic_restart,omitempty"`
+	// +optional
+	NodeAffinities []ComputeInstanceTemplateSpecSchedulingNodeAffinities `json:"nodeAffinities,omitempty" tf:"node_affinities,omitempty"`
 	// +optional
 	OnHostMaintenance string `json:"onHostMaintenance,omitempty" tf:"on_host_maintenance,omitempty"`
 	// +optional
@@ -124,6 +128,15 @@ type ComputeInstanceTemplateSpecServiceAccount struct {
 	// +optional
 	Email  string   `json:"email,omitempty" tf:"email,omitempty"`
 	Scopes []string `json:"scopes" tf:"scopes"`
+}
+
+type ComputeInstanceTemplateSpecShieldedInstanceConfig struct {
+	// +optional
+	EnableIntegrityMonitoring bool `json:"enableIntegrityMonitoring,omitempty" tf:"enable_integrity_monitoring,omitempty"`
+	// +optional
+	EnableSecureBoot bool `json:"enableSecureBoot,omitempty" tf:"enable_secure_boot,omitempty"`
+	// +optional
+	EnableVtpm bool `json:"enableVtpm,omitempty" tf:"enable_vtpm,omitempty"`
 }
 
 type ComputeInstanceTemplateSpec struct {
@@ -162,12 +175,16 @@ type ComputeInstanceTemplateSpec struct {
 	// +optional
 	Region string `json:"region,omitempty" tf:"region,omitempty"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
 	Scheduling []ComputeInstanceTemplateSpecScheduling `json:"scheduling,omitempty" tf:"scheduling,omitempty"`
 	// +optional
 	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ServiceAccount []ComputeInstanceTemplateSpecServiceAccount `json:"serviceAccount,omitempty" tf:"service_account,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	ShieldedInstanceConfig []ComputeInstanceTemplateSpecShieldedInstanceConfig `json:"shieldedInstanceConfig,omitempty" tf:"shielded_instance_config,omitempty"`
 	// +optional
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional

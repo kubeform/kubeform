@@ -6,8 +6,8 @@ import (
 	"log"
 
 	"github.com/digitalocean/godo"
-	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/hashicorp/terraform/helper/validation"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/validation"
 )
 
 func resourceDigitalOceanDomain() *schema.Resource {
@@ -72,7 +72,7 @@ func resourceDigitalOceanDomainRead(d *schema.ResourceData, meta interface{}) er
 	if err != nil {
 		// If the domain is somehow already destroyed, mark as
 		// successfully gone
-		if resp.StatusCode == 404 {
+		if resp != nil && resp.StatusCode == 404 {
 			d.SetId("")
 			return nil
 		}

@@ -239,7 +239,7 @@ type ApplicationGetHTTPSEndpoint struct {
 	DestinationPort *int32 `json:"destinationPort,omitempty"`
 	// PublicPort - The public port to connect to.
 	PublicPort *int32 `json:"publicPort,omitempty"`
-	// SubDomainSuffix - The subDomainSuffix of the application.
+	// SubDomainSuffix - The subdomain suffix of the application.
 	SubDomainSuffix *string `json:"subDomainSuffix,omitempty"`
 	// DisableGatewayAuth - The value indicates whether to disable GatewayAuth.
 	DisableGatewayAuth *bool `json:"disableGatewayAuth,omitempty"`
@@ -545,6 +545,55 @@ type BillingResponseListResult struct {
 	BillingResources *[]BillingResources `json:"billingResources,omitempty"`
 }
 
+// CapabilitiesResult the Get Capabilities operation response.
+type CapabilitiesResult struct {
+	autorest.Response `json:"-"`
+	// Versions - The version capability.
+	Versions map[string]*VersionsCapability `json:"versions"`
+	// Regions - The virtual machine size compatibility features.
+	Regions map[string]*RegionsCapability `json:"regions"`
+	// VMSizes - The virtual machine sizes.
+	VMSizes map[string]*VMSizesCapability `json:"vmSizes"`
+	// VMSizeFilters - The virtual machine size compatibility filters.
+	VMSizeFilters *[]VMSizeCompatibilityFilter `json:"vmSize_filters,omitempty"`
+	// Features - The capability features.
+	Features *[]string `json:"features,omitempty"`
+	// Quota - The quota capability.
+	Quota *QuotaCapability `json:"quota,omitempty"`
+}
+
+// MarshalJSON is the custom marshaler for CapabilitiesResult.
+func (cr CapabilitiesResult) MarshalJSON() ([]byte, error) {
+	objectMap := make(map[string]interface{})
+	if cr.Versions != nil {
+		objectMap["versions"] = cr.Versions
+	}
+	if cr.Regions != nil {
+		objectMap["regions"] = cr.Regions
+	}
+	if cr.VMSizes != nil {
+		objectMap["vmSizes"] = cr.VMSizes
+	}
+	if cr.VMSizeFilters != nil {
+		objectMap["vmSize_filters"] = cr.VMSizeFilters
+	}
+	if cr.Features != nil {
+		objectMap["features"] = cr.Features
+	}
+	if cr.Quota != nil {
+		objectMap["quota"] = cr.Quota
+	}
+	return json.Marshal(objectMap)
+}
+
+// ClientGroupInfo the information of AAD security group.
+type ClientGroupInfo struct {
+	// GroupName - The AAD security group name.
+	GroupName *string `json:"groupName,omitempty"`
+	// GroupID - The AAD security group id.
+	GroupID *string `json:"groupId,omitempty"`
+}
+
 // Cluster the HDInsight cluster.
 type Cluster struct {
 	autorest.Response `json:"-"`
@@ -643,6 +692,8 @@ type ClusterCreateProperties struct {
 	Tier Tier `json:"tier,omitempty"`
 	// ClusterDefinition - The cluster definition.
 	ClusterDefinition *ClusterDefinition `json:"clusterDefinition,omitempty"`
+	// KafkaRestProperties - The cluster kafka rest proxy configuration.
+	KafkaRestProperties *KafkaRestProperties `json:"kafkaRestProperties,omitempty"`
 	// SecurityProfile - The security profile.
 	SecurityProfile *SecurityProfile `json:"securityProfile,omitempty"`
 	// ComputeProfile - The compute profile.
@@ -703,6 +754,8 @@ type ClusterGetProperties struct {
 	Tier Tier `json:"tier,omitempty"`
 	// ClusterDefinition - The cluster definition.
 	ClusterDefinition *ClusterDefinition `json:"clusterDefinition,omitempty"`
+	// KafkaRestProperties - The cluster kafka rest proxy configuration.
+	KafkaRestProperties *KafkaRestProperties `json:"kafkaRestProperties,omitempty"`
 	// SecurityProfile - The security profile.
 	SecurityProfile *SecurityProfile `json:"securityProfile,omitempty"`
 	// ComputeProfile - The compute profile.
@@ -1316,6 +1369,12 @@ type HardwareProfile struct {
 	VMSize *string `json:"vmSize,omitempty"`
 }
 
+// KafkaRestProperties the kafka rest proxy configuration which contains AAD security group information.
+type KafkaRestProperties struct {
+	// ClientGroupInfo - The information of AAD security group.
+	ClientGroupInfo *ClientGroupInfo `json:"clientGroupInfo,omitempty"`
+}
+
 // LinuxOperatingSystemProfile the ssh username, password, and ssh public key.
 type LinuxOperatingSystemProfile struct {
 	// Username - The username.
@@ -1524,10 +1583,36 @@ type ProxyResource struct {
 	Type *string `json:"type,omitempty"`
 }
 
+// QuotaCapability the regional quota capability.
+type QuotaCapability struct {
+	// CoresUsed - The number of cores used in the subscription.
+	CoresUsed *int64 `json:"cores_used,omitempty"`
+	// MaxCoresAllowed - The number of cores that the subscription allowed.
+	MaxCoresAllowed *int64 `json:"max_cores_allowed,omitempty"`
+	// RegionalQuotas - The list of region quota capabilities.
+	RegionalQuotas *[]RegionalQuotaCapability `json:"regionalQuotas,omitempty"`
+}
+
 // QuotaInfo the quota properties for the cluster.
 type QuotaInfo struct {
 	// CoresUsed - The cores used by the cluster.
 	CoresUsed *int32 `json:"coresUsed,omitempty"`
+}
+
+// RegionalQuotaCapability the regional quota capacity.
+type RegionalQuotaCapability struct {
+	// RegionName - The region name.
+	RegionName *string `json:"region_name,omitempty"`
+	// CoresUsed - The number of cores used in the region.
+	CoresUsed *int64 `json:"cores_used,omitempty"`
+	// CoresAvailable - The number of cores available in the region.
+	CoresAvailable *int64 `json:"cores_available,omitempty"`
+}
+
+// RegionsCapability the regions capability.
+type RegionsCapability struct {
+	// Available - The list of region capabilities.
+	Available *[]string `json:"available,omitempty"`
 }
 
 // Resource the core properties of ARM resources
@@ -1987,7 +2072,7 @@ type StorageAccount struct {
 	IsDefault *bool `json:"isDefault,omitempty"`
 	// Container - The container in the storage account, only to be specified for WASB storage accounts.
 	Container *string `json:"container,omitempty"`
-	// FileSystem - The filesystem, only to be specified for Azure Data Lake Storage type Gen 2.
+	// FileSystem - The filesystem, only to be specified for Azure Data Lake Storage Gen 2.
 	FileSystem *string `json:"fileSystem,omitempty"`
 	// Key - The storage account access key.
 	Key *string `json:"key,omitempty"`
@@ -2058,12 +2143,64 @@ type UsagesListResult struct {
 	Value *[]Usage `json:"value,omitempty"`
 }
 
+// VersionsCapability the version capability.
+type VersionsCapability struct {
+	// Available - The list of version capabilities.
+	Available *[]VersionSpec `json:"available,omitempty"`
+}
+
+// VersionSpec the version properties.
+type VersionSpec struct {
+	// FriendlyName - The friendly name
+	FriendlyName *string `json:"friendlyName,omitempty"`
+	// DisplayName - The display name
+	DisplayName *string `json:"displayName,omitempty"`
+	// IsDefault - Whether or not the version is the default version.
+	IsDefault *string `json:"isDefault,omitempty"`
+	// ComponentVersions - The component version property.
+	ComponentVersions map[string]*string `json:"componentVersions"`
+}
+
+// MarshalJSON is the custom marshaler for VersionSpec.
+func (vs VersionSpec) MarshalJSON() ([]byte, error) {
+	objectMap := make(map[string]interface{})
+	if vs.FriendlyName != nil {
+		objectMap["friendlyName"] = vs.FriendlyName
+	}
+	if vs.DisplayName != nil {
+		objectMap["displayName"] = vs.DisplayName
+	}
+	if vs.IsDefault != nil {
+		objectMap["isDefault"] = vs.IsDefault
+	}
+	if vs.ComponentVersions != nil {
+		objectMap["componentVersions"] = vs.ComponentVersions
+	}
+	return json.Marshal(objectMap)
+}
+
 // VirtualNetworkProfile the virtual network properties.
 type VirtualNetworkProfile struct {
 	// ID - The ID of the virtual network.
 	ID *string `json:"id,omitempty"`
 	// Subnet - The name of the subnet.
 	Subnet *string `json:"subnet,omitempty"`
+}
+
+// VMSizeCompatibilityFilter the virtual machine type compatibility filter.
+type VMSizeCompatibilityFilter struct {
+	// FilterMode - The mode for the filter.
+	FilterMode *string `json:"FilterMode,omitempty"`
+	// Regions - The list of regions.
+	Regions *[]string `json:"Regions,omitempty"`
+	// ClusterFlavors - The list of cluster types available.
+	ClusterFlavors *[]string `json:"ClusterFlavors,omitempty"`
+	// NodeTypes - The list of node types.
+	NodeTypes *[]string `json:"NodeTypes,omitempty"`
+	// ClusterVersions - The list of cluster versions.
+	ClusterVersions *[]string `json:"ClusterVersions,omitempty"`
+	// Vmsizes - The list of virtual machine sizes.
+	Vmsizes *[]string `json:"vmsizes,omitempty"`
 }
 
 // VMSizeCompatibilityFilterV2 this class represent a single filter object that defines a multidimensional
@@ -2086,4 +2223,10 @@ type VMSizeCompatibilityFilterV2 struct {
 	OsType *[]OSType `json:"osType,omitempty"`
 	// VMSizes - The list of virtual machine sizes to include or exclude.
 	VMSizes *[]string `json:"vmSizes,omitempty"`
+}
+
+// VMSizesCapability the virtual machine sizes capability.
+type VMSizesCapability struct {
+	// Available - The list of virtual machine size capabilities.
+	Available *[]string `json:"available,omitempty"`
 }

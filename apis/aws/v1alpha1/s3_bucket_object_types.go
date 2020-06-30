@@ -63,9 +63,19 @@ type S3BucketObjectSpec struct {
 	ContentType string `json:"contentType,omitempty" tf:"content_type,omitempty"`
 	// +optional
 	Etag string `json:"etag,omitempty" tf:"etag,omitempty"`
-	Key  string `json:"key" tf:"key"`
+	// +optional
+	ForceDestroy bool   `json:"forceDestroy,omitempty" tf:"force_destroy,omitempty"`
+	Key          string `json:"key" tf:"key"`
 	// +optional
 	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
+	// +optional
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	// +optional
+	ObjectLockLegalHoldStatus string `json:"objectLockLegalHoldStatus,omitempty" tf:"object_lock_legal_hold_status,omitempty"`
+	// +optional
+	ObjectLockMode string `json:"objectLockMode,omitempty" tf:"object_lock_mode,omitempty"`
+	// +optional
+	ObjectLockRetainUntilDate string `json:"objectLockRetainUntilDate,omitempty" tf:"object_lock_retain_until_date,omitempty"`
 	// +optional
 	ServerSideEncryption string `json:"serverSideEncryption,omitempty" tf:"server_side_encryption,omitempty"`
 	// +optional

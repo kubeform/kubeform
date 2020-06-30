@@ -48,6 +48,8 @@ type DnsNsRecordSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// +optional
+	Fqdn string `json:"fqdn,omitempty" tf:"fqdn,omitempty"`
 	Name string `json:"name" tf:"name"`
 	// +optional
 	// Deprecated

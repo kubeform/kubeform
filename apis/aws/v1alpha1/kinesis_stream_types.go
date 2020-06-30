@@ -49,6 +49,8 @@ type KinesisStreamSpec struct {
 	// +optional
 	EncryptionType string `json:"encryptionType,omitempty" tf:"encryption_type,omitempty"`
 	// +optional
+	EnforceConsumerDeletion bool `json:"enforceConsumerDeletion,omitempty" tf:"enforce_consumer_deletion,omitempty"`
+	// +optional
 	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
 	Name     string `json:"name" tf:"name"`
 	// +optional

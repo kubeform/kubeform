@@ -55,11 +55,14 @@ type CosmosdbMongoCollectionSpec struct {
 	// +optional
 	DefaultTtlSeconds int64 `json:"defaultTtlSeconds,omitempty" tf:"default_ttl_seconds,omitempty"`
 	// +optional
+	// Deprecated
 	Indexes           []CosmosdbMongoCollectionSpecIndexes `json:"indexes,omitempty" tf:"indexes,omitempty"`
 	Name              string                               `json:"name" tf:"name"`
 	ResourceGroupName string                               `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	ShardKey string `json:"shardKey,omitempty" tf:"shard_key,omitempty"`
+	// +optional
+	Throughput int64 `json:"throughput,omitempty" tf:"throughput,omitempty"`
 }
 
 type CosmosdbMongoCollectionStatus struct {

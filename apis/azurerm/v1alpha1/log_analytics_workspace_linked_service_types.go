@@ -51,6 +51,8 @@ type LogAnalyticsWorkspaceLinkedServiceSpec struct {
 	// +optional
 	LinkedServiceName string `json:"linkedServiceName,omitempty" tf:"linked_service_name,omitempty"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	// Deprecated
 	LinkedServiceProperties []LogAnalyticsWorkspaceLinkedServiceSpecLinkedServiceProperties `json:"linkedServiceProperties,omitempty" tf:"linked_service_properties,omitempty"`
 	// +optional
 	Name              string `json:"name,omitempty" tf:"name,omitempty"`

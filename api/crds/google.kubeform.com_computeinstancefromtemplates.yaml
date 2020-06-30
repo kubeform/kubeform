@@ -25,12 +25,12 @@ spec:
         apiVersion:
           description: 'APIVersion defines the versioned schema of this representation
             of an object. Servers should convert recognized schemas to the latest
-            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
           type: string
         kind:
           description: 'Kind is a string value representing the REST resource this
             object represents. Servers may infer this from the endpoint the client
-            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
           type: string
         metadata:
           type: object
@@ -44,6 +44,8 @@ spec:
                   deviceName:
                     type: string
                   diskEncryptionKeySha256:
+                    type: string
+                  kmsKeySelfLink:
                     type: string
                   mode:
                     type: string
@@ -67,6 +69,10 @@ spec:
                       properties:
                         image:
                           type: string
+                        labels:
+                          additionalProperties:
+                            type: string
+                          type: object
                         size:
                           format: int64
                           type: integer
@@ -75,6 +81,10 @@ spec:
                       type: object
                     maxItems: 1
                     type: array
+                  kmsKeySelfLink:
+                    type: string
+                  mode:
+                    type: string
                   source:
                     type: string
                 type: object
@@ -101,6 +111,8 @@ spec:
                 - type
                 type: object
               type: array
+            hostname:
+              type: string
             id:
               type: string
             instanceID:
@@ -131,9 +143,6 @@ spec:
                   accessConfig:
                     items:
                       properties:
-                        assignedNATIP:
-                          description: Deprecated
-                          type: string
                         natIP:
                           type: string
                         networkTier:
@@ -142,9 +151,6 @@ spec:
                           type: string
                       type: object
                     type: array
-                  address:
-                    description: Deprecated
-                    type: string
                   aliasIPRange:
                     items:
                       properties:
@@ -184,6 +190,23 @@ spec:
                 properties:
                   automaticRestart:
                     type: boolean
+                  nodeAffinities:
+                    items:
+                      properties:
+                        key:
+                          type: string
+                        operator:
+                          type: string
+                        values:
+                          items:
+                            type: string
+                          type: array
+                      required:
+                      - key
+                      - operator
+                      - values
+                      type: object
+                    type: array
                   onHostMaintenance:
                     type: string
                   preemptible:
@@ -223,6 +246,18 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            shieldedInstanceConfig:
+              items:
+                properties:
+                  enableIntegrityMonitoring:
+                    type: boolean
+                  enableSecureBoot:
+                    type: boolean
+                  enableVtpm:
+                    type: boolean
+                type: object
+              maxItems: 1
+              type: array
             sourceInstanceTemplate:
               type: string
             tags:
@@ -256,6 +291,8 @@ spec:
                         type: string
                       diskEncryptionKeySha256:
                         type: string
+                      kmsKeySelfLink:
+                        type: string
                       mode:
                         type: string
                       source:
@@ -278,6 +315,10 @@ spec:
                           properties:
                             image:
                               type: string
+                            labels:
+                              additionalProperties:
+                                type: string
+                              type: object
                             size:
                               format: int64
                               type: integer
@@ -286,6 +327,10 @@ spec:
                           type: object
                         maxItems: 1
                         type: array
+                      kmsKeySelfLink:
+                        type: string
+                      mode:
+                        type: string
                       source:
                         type: string
                     type: object
@@ -312,6 +357,8 @@ spec:
                     - type
                     type: object
                   type: array
+                hostname:
+                  type: string
                 id:
                   type: string
                 instanceID:
@@ -342,9 +389,6 @@ spec:
                       accessConfig:
                         items:
                           properties:
-                            assignedNATIP:
-                              description: Deprecated
-                              type: string
                             natIP:
                               type: string
                             networkTier:
@@ -353,9 +397,6 @@ spec:
                               type: string
                           type: object
                         type: array
-                      address:
-                        description: Deprecated
-                        type: string
                       aliasIPRange:
                         items:
                           properties:
@@ -395,6 +436,23 @@ spec:
                     properties:
                       automaticRestart:
                         type: boolean
+                      nodeAffinities:
+                        items:
+                          properties:
+                            key:
+                              type: string
+                            operator:
+                              type: string
+                            values:
+                              items:
+                                type: string
+                              type: array
+                          required:
+                          - key
+                          - operator
+                          - values
+                          type: object
+                        type: array
                       onHostMaintenance:
                         type: string
                       preemptible:
@@ -431,6 +489,18 @@ spec:
                         type: array
                     required:
                     - scopes
+                    type: object
+                  maxItems: 1
+                  type: array
+                shieldedInstanceConfig:
+                  items:
+                    properties:
+                      enableIntegrityMonitoring:
+                        type: boolean
+                      enableSecureBoot:
+                        type: boolean
+                      enableVtpm:
+                        type: boolean
                     type: object
                   maxItems: 1
                   type: array

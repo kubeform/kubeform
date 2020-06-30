@@ -62,6 +62,8 @@ type ServicebusNamespaceSpec struct {
 	Sku                 string `json:"sku" tf:"sku"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	ZoneRedundant bool `json:"zoneRedundant,omitempty" tf:"zone_redundant,omitempty"`
 }
 
 type ServicebusNamespaceStatus struct {

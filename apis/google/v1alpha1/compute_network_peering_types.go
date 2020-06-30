@@ -45,6 +45,7 @@ type ComputeNetworkPeeringSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
+	// Deprecated
 	AutoCreateRoutes bool   `json:"autoCreateRoutes,omitempty" tf:"auto_create_routes,omitempty"`
 	Name             string `json:"name" tf:"name"`
 	Network          string `json:"network" tf:"network"`

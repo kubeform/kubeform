@@ -34,6 +34,22 @@ type CertificateListerExpansion interface{}
 // CertificateNamespaceLister.
 type CertificateNamespaceListerExpansion interface{}
 
+// ContainerRegistryListerExpansion allows custom methods to be added to
+// ContainerRegistryLister.
+type ContainerRegistryListerExpansion interface{}
+
+// ContainerRegistryNamespaceListerExpansion allows custom methods to be added to
+// ContainerRegistryNamespaceLister.
+type ContainerRegistryNamespaceListerExpansion interface{}
+
+// ContainerRegistryDockerCredentialsListerExpansion allows custom methods to be added to
+// ContainerRegistryDockerCredentialsLister.
+type ContainerRegistryDockerCredentialsListerExpansion interface{}
+
+// ContainerRegistryDockerCredentialsNamespaceListerExpansion allows custom methods to be added to
+// ContainerRegistryDockerCredentialsNamespaceLister.
+type ContainerRegistryDockerCredentialsNamespaceListerExpansion interface{}
+
 // DatabaseClusterListerExpansion allows custom methods to be added to
 // DatabaseClusterLister.
 type DatabaseClusterListerExpansion interface{}
@@ -41,6 +57,46 @@ type DatabaseClusterListerExpansion interface{}
 // DatabaseClusterNamespaceListerExpansion allows custom methods to be added to
 // DatabaseClusterNamespaceLister.
 type DatabaseClusterNamespaceListerExpansion interface{}
+
+// DatabaseConnectionPoolListerExpansion allows custom methods to be added to
+// DatabaseConnectionPoolLister.
+type DatabaseConnectionPoolListerExpansion interface{}
+
+// DatabaseConnectionPoolNamespaceListerExpansion allows custom methods to be added to
+// DatabaseConnectionPoolNamespaceLister.
+type DatabaseConnectionPoolNamespaceListerExpansion interface{}
+
+// DatabaseDbListerExpansion allows custom methods to be added to
+// DatabaseDbLister.
+type DatabaseDbListerExpansion interface{}
+
+// DatabaseDbNamespaceListerExpansion allows custom methods to be added to
+// DatabaseDbNamespaceLister.
+type DatabaseDbNamespaceListerExpansion interface{}
+
+// DatabaseFirewallListerExpansion allows custom methods to be added to
+// DatabaseFirewallLister.
+type DatabaseFirewallListerExpansion interface{}
+
+// DatabaseFirewallNamespaceListerExpansion allows custom methods to be added to
+// DatabaseFirewallNamespaceLister.
+type DatabaseFirewallNamespaceListerExpansion interface{}
+
+// DatabaseReplicaListerExpansion allows custom methods to be added to
+// DatabaseReplicaLister.
+type DatabaseReplicaListerExpansion interface{}
+
+// DatabaseReplicaNamespaceListerExpansion allows custom methods to be added to
+// DatabaseReplicaNamespaceLister.
+type DatabaseReplicaNamespaceListerExpansion interface{}
+
+// DatabaseUserListerExpansion allows custom methods to be added to
+// DatabaseUserLister.
+type DatabaseUserListerExpansion interface{}
+
+// DatabaseUserNamespaceListerExpansion allows custom methods to be added to
+// DatabaseUserNamespaceLister.
+type DatabaseUserNamespaceListerExpansion interface{}
 
 // DomainListerExpansion allows custom methods to be added to
 // DomainLister.
@@ -122,6 +178,14 @@ type ProjectListerExpansion interface{}
 // ProjectNamespaceLister.
 type ProjectNamespaceListerExpansion interface{}
 
+// ProjectResourcesListerExpansion allows custom methods to be added to
+// ProjectResourcesLister.
+type ProjectResourcesListerExpansion interface{}
+
+// ProjectResourcesNamespaceListerExpansion allows custom methods to be added to
+// ProjectResourcesNamespaceLister.
+type ProjectResourcesNamespaceListerExpansion interface{}
+
 // RecordListerExpansion allows custom methods to be added to
 // RecordLister.
 type RecordListerExpansion interface{}
@@ -137,6 +201,14 @@ type SpacesBucketListerExpansion interface{}
 // SpacesBucketNamespaceListerExpansion allows custom methods to be added to
 // SpacesBucketNamespaceLister.
 type SpacesBucketNamespaceListerExpansion interface{}
+
+// SpacesBucketObjectListerExpansion allows custom methods to be added to
+// SpacesBucketObjectLister.
+type SpacesBucketObjectListerExpansion interface{}
+
+// SpacesBucketObjectNamespaceListerExpansion allows custom methods to be added to
+// SpacesBucketObjectNamespaceLister.
+type SpacesBucketObjectNamespaceListerExpansion interface{}
 
 // SshKeyListerExpansion allows custom methods to be added to
 // SshKeyLister.
@@ -177,3 +249,11 @@ type VolumeSnapshotListerExpansion interface{}
 // VolumeSnapshotNamespaceListerExpansion allows custom methods to be added to
 // VolumeSnapshotNamespaceLister.
 type VolumeSnapshotNamespaceListerExpansion interface{}
+
+// VpcListerExpansion allows custom methods to be added to
+// VpcLister.
+type VpcListerExpansion interface{}
+
+// VpcNamespaceListerExpansion allows custom methods to be added to
+// VpcNamespaceLister.
+type VpcNamespaceListerExpansion interface{}

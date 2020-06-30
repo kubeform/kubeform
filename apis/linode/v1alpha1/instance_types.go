@@ -71,7 +71,6 @@ type InstanceSpecBackups struct {
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
-	// +kubebuilder:validation:MaxItems=1
 	Schedule []InstanceSpecBackupsSchedule `json:"schedule,omitempty" tf:"schedule,omitempty"`
 }
 
@@ -88,64 +87,85 @@ type InstanceSpecConfigDevicesSda struct {
 }
 
 type InstanceSpecConfigDevicesSdb struct {
+	// The Disk ID to map to this disk slot
 	// +optional
 	DiskID int64 `json:"diskID,omitempty" tf:"disk_id,omitempty"`
+	// The `label` of the `disk` to map to this `device` slot.
 	// +optional
 	DiskLabel string `json:"diskLabel,omitempty" tf:"disk_label,omitempty"`
+	// The Block Storage volume ID to map to this disk slot
 	// +optional
 	VolumeID int64 `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
 }
 
 type InstanceSpecConfigDevicesSdc struct {
+	// The Disk ID to map to this disk slot
 	// +optional
 	DiskID int64 `json:"diskID,omitempty" tf:"disk_id,omitempty"`
+	// The `label` of the `disk` to map to this `device` slot.
 	// +optional
 	DiskLabel string `json:"diskLabel,omitempty" tf:"disk_label,omitempty"`
+	// The Block Storage volume ID to map to this disk slot
 	// +optional
 	VolumeID int64 `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
 }
 
 type InstanceSpecConfigDevicesSdd struct {
+	// The Disk ID to map to this disk slot
 	// +optional
 	DiskID int64 `json:"diskID,omitempty" tf:"disk_id,omitempty"`
+	// The `label` of the `disk` to map to this `device` slot.
 	// +optional
 	DiskLabel string `json:"diskLabel,omitempty" tf:"disk_label,omitempty"`
+	// The Block Storage volume ID to map to this disk slot
 	// +optional
 	VolumeID int64 `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
 }
 
 type InstanceSpecConfigDevicesSde struct {
+	// The Disk ID to map to this disk slot
 	// +optional
 	DiskID int64 `json:"diskID,omitempty" tf:"disk_id,omitempty"`
+	// The `label` of the `disk` to map to this `device` slot.
 	// +optional
 	DiskLabel string `json:"diskLabel,omitempty" tf:"disk_label,omitempty"`
+	// The Block Storage volume ID to map to this disk slot
 	// +optional
 	VolumeID int64 `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
 }
 
 type InstanceSpecConfigDevicesSdf struct {
+	// The Disk ID to map to this disk slot
 	// +optional
 	DiskID int64 `json:"diskID,omitempty" tf:"disk_id,omitempty"`
+	// The `label` of the `disk` to map to this `device` slot.
 	// +optional
 	DiskLabel string `json:"diskLabel,omitempty" tf:"disk_label,omitempty"`
+	// The Block Storage volume ID to map to this disk slot
 	// +optional
 	VolumeID int64 `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
 }
 
 type InstanceSpecConfigDevicesSdg struct {
+	// The Disk ID to map to this disk slot
 	// +optional
 	DiskID int64 `json:"diskID,omitempty" tf:"disk_id,omitempty"`
+	// The `label` of the `disk` to map to this `device` slot.
 	// +optional
 	DiskLabel string `json:"diskLabel,omitempty" tf:"disk_label,omitempty"`
+	// The Block Storage volume ID to map to this disk slot
 	// +optional
 	VolumeID int64 `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
 }
 
 type InstanceSpecConfigDevicesSdh struct {
+	// The Disk ID to map to this disk slot
 	// +optional
 	DiskID int64 `json:"diskID,omitempty" tf:"disk_id,omitempty"`
+	// The `label` of the `disk` to map to this `device` slot.
 	// +optional
 	DiskLabel string `json:"diskLabel,omitempty" tf:"disk_label,omitempty"`
+	// The Block Storage volume ID to map to this disk slot
 	// +optional
 	VolumeID int64 `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
 }
@@ -296,7 +316,6 @@ type InstanceSpec struct {
 	BackupID int64 `json:"backupID,omitempty" tf:"backup_id,omitempty"`
 	// Information about this Linode's backups status.
 	// +optional
-	// +kubebuilder:validation:MaxItems=1
 	Backups []InstanceSpecBackups `json:"backups,omitempty" tf:"backups,omitempty"`
 	// If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
 	// +optional
@@ -339,7 +358,6 @@ type InstanceSpec struct {
 	// +optional
 	RootPass string `json:"-" sensitive:"true" tf:"root_pass,omitempty"`
 	// +optional
-	// +kubebuilder:validation:MaxItems=1
 	Specs []InstanceSpecSpecs `json:"specs,omitempty" tf:"specs,omitempty"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
 	// +optional

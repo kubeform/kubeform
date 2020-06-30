@@ -44,11 +44,18 @@ type ContainerRegistrySpecNetworkRuleSetIpRule struct {
 	IpRange string `json:"ipRange" tf:"ip_range"`
 }
 
+type ContainerRegistrySpecNetworkRuleSetVirtualNetwork struct {
+	Action   string `json:"action" tf:"action"`
+	SubnetID string `json:"subnetID" tf:"subnet_id"`
+}
+
 type ContainerRegistrySpecNetworkRuleSet struct {
 	// +optional
 	DefaultAction string `json:"defaultAction,omitempty" tf:"default_action,omitempty"`
 	// +optional
 	IpRule []ContainerRegistrySpecNetworkRuleSetIpRule `json:"ipRule,omitempty" tf:"ip_rule,omitempty"`
+	// +optional
+	VirtualNetwork []ContainerRegistrySpecNetworkRuleSetVirtualNetwork `json:"virtualNetwork,omitempty" tf:"virtual_network,omitempty"`
 }
 
 type ContainerRegistrySpecStorageAccount struct {

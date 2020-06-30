@@ -51,7 +51,9 @@ type AvailabilitySetSpec struct {
 	// +optional
 	PlatformFaultDomainCount int64 `json:"platformFaultDomainCount,omitempty" tf:"platform_fault_domain_count,omitempty"`
 	// +optional
-	PlatformUpdateDomainCount int64  `json:"platformUpdateDomainCount,omitempty" tf:"platform_update_domain_count,omitempty"`
+	PlatformUpdateDomainCount int64 `json:"platformUpdateDomainCount,omitempty" tf:"platform_update_domain_count,omitempty"`
+	// +optional
+	ProximityPlacementGroupID string `json:"proximityPlacementGroupID,omitempty" tf:"proximity_placement_group_id,omitempty"`
 	ResourceGroupName         string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

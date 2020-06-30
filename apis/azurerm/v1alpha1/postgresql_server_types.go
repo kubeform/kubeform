@@ -48,6 +48,8 @@ type PostgresqlServerSpecSku struct {
 
 type PostgresqlServerSpecStorageProfile struct {
 	// +optional
+	AutoGrow string `json:"autoGrow,omitempty" tf:"auto_grow,omitempty"`
+	// +optional
 	BackupRetentionDays int64 `json:"backupRetentionDays,omitempty" tf:"backup_retention_days,omitempty"`
 	// +optional
 	GeoRedundantBackup string `json:"geoRedundantBackup,omitempty" tf:"geo_redundant_backup,omitempty"`
@@ -68,9 +70,13 @@ type PostgresqlServerSpec struct {
 	Location          string `json:"location" tf:"location"`
 	Name              string `json:"name" tf:"name"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	Sku            []PostgresqlServerSpecSku `json:"sku" tf:"sku"`
-	SslEnforcement string                    `json:"sslEnforcement" tf:"ssl_enforcement"`
+	// Deprecated
+	Sku []PostgresqlServerSpecSku `json:"sku,omitempty" tf:"sku,omitempty"`
+	// +optional
+	SkuName        string `json:"skuName,omitempty" tf:"sku_name,omitempty"`
+	SslEnforcement string `json:"sslEnforcement" tf:"ssl_enforcement"`
 	// +kubebuilder:validation:MaxItems=1
 	StorageProfile []PostgresqlServerSpecStorageProfile `json:"storageProfile" tf:"storage_profile"`
 	// +optional

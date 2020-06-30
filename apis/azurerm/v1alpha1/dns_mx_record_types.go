@@ -49,7 +49,10 @@ type DnsMxRecordSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	Name              string                  `json:"name" tf:"name"`
+	// +optional
+	Fqdn string `json:"fqdn,omitempty" tf:"fqdn,omitempty"`
+	// +optional
+	Name              string                  `json:"name,omitempty" tf:"name,omitempty"`
 	Record            []DnsMxRecordSpecRecord `json:"record" tf:"record"`
 	ResourceGroupName string                  `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional

@@ -49,6 +49,18 @@ type HdinsightHadoopClusterSpecGateway struct {
 	Username string `json:"username" tf:"username"`
 }
 
+type HdinsightHadoopClusterSpecRolesEdgeNodeInstallScriptAction struct {
+	Name string `json:"name" tf:"name"`
+	Uri  string `json:"uri" tf:"uri"`
+}
+
+type HdinsightHadoopClusterSpecRolesEdgeNode struct {
+	// +kubebuilder:validation:MinItems=1
+	InstallScriptAction []HdinsightHadoopClusterSpecRolesEdgeNodeInstallScriptAction `json:"installScriptAction" tf:"install_script_action"`
+	TargetInstanceCount int64                                                        `json:"targetInstanceCount" tf:"target_instance_count"`
+	VmSize              string                                                       `json:"vmSize" tf:"vm_size"`
+}
+
 type HdinsightHadoopClusterSpecRolesHeadNode struct {
 	// +optional
 	Password string `json:"-" sensitive:"true" tf:"password,omitempty"`
@@ -92,6 +104,9 @@ type HdinsightHadoopClusterSpecRolesZookeeperNode struct {
 }
 
 type HdinsightHadoopClusterSpecRoles struct {
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	EdgeNode []HdinsightHadoopClusterSpecRolesEdgeNode `json:"edgeNode,omitempty" tf:"edge_node,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	HeadNode []HdinsightHadoopClusterSpecRolesHeadNode `json:"headNode" tf:"head_node"`
 	// +kubebuilder:validation:MaxItems=1
@@ -104,6 +119,13 @@ type HdinsightHadoopClusterSpecStorageAccount struct {
 	IsDefault          bool   `json:"isDefault" tf:"is_default"`
 	StorageAccountKey  string `json:"-" sensitive:"true" tf:"storage_account_key"`
 	StorageContainerID string `json:"storageContainerID" tf:"storage_container_id"`
+}
+
+type HdinsightHadoopClusterSpecStorageAccountGen2 struct {
+	FilesystemID              string `json:"filesystemID" tf:"filesystem_id"`
+	IsDefault                 bool   `json:"isDefault" tf:"is_default"`
+	ManagedIdentityResourceID string `json:"managedIdentityResourceID" tf:"managed_identity_resource_id"`
+	StorageResourceID         string `json:"storageResourceID" tf:"storage_resource_id"`
 }
 
 type HdinsightHadoopClusterSpec struct {
@@ -126,8 +148,12 @@ type HdinsightHadoopClusterSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Roles []HdinsightHadoopClusterSpecRoles `json:"roles" tf:"roles"`
 	// +optional
-	SshEndpoint    string                                     `json:"sshEndpoint,omitempty" tf:"ssh_endpoint,omitempty"`
-	StorageAccount []HdinsightHadoopClusterSpecStorageAccount `json:"storageAccount" tf:"storage_account"`
+	SshEndpoint string `json:"sshEndpoint,omitempty" tf:"ssh_endpoint,omitempty"`
+	// +optional
+	StorageAccount []HdinsightHadoopClusterSpecStorageAccount `json:"storageAccount,omitempty" tf:"storage_account,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	StorageAccountGen2 []HdinsightHadoopClusterSpecStorageAccountGen2 `json:"storageAccountGen2,omitempty" tf:"storage_account_gen2,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	Tier string            `json:"tier" tf:"tier"`

@@ -25,12 +25,12 @@ spec:
         apiVersion:
           description: 'APIVersion defines the versioned schema of this representation
             of an object. Servers should convert recognized schemas to the latest
-            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
           type: string
         kind:
           description: 'Kind is a string value representing the REST resource this
             object represents. Servers may infer this from the endpoint the client
-            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
           type: string
         metadata:
           type: object
@@ -173,15 +173,12 @@ spec:
                           type: boolean
                         shareName:
                           type: string
-                        storageAccountKey:
-                          type: string
                         storageAccountName:
                           type: string
                       required:
                       - mountPath
                       - name
                       - shareName
-                      - storageAccountKey
                       - storageAccountName
                       type: object
                     type: array
@@ -207,7 +204,6 @@ spec:
                         workspaceID:
                           type: string
                       required:
-                      - logType
                       - workspaceID
                       type: object
                     maxItems: 1
@@ -259,6 +255,8 @@ spec:
             location:
               type: string
             name:
+              type: string
+            networkProfileID:
               type: string
             osType:
               type: string
@@ -442,15 +440,12 @@ spec:
                               type: boolean
                             shareName:
                               type: string
-                            storageAccountKey:
-                              type: string
                             storageAccountName:
                               type: string
                           required:
                           - mountPath
                           - name
                           - shareName
-                          - storageAccountKey
                           - storageAccountName
                           type: object
                         type: array
@@ -476,7 +471,6 @@ spec:
                             workspaceID:
                               type: string
                           required:
-                          - logType
                           - workspaceID
                           type: object
                         maxItems: 1
@@ -528,6 +522,8 @@ spec:
                 location:
                   type: string
                 name:
+                  type: string
+                networkProfileID:
                   type: string
                 osType:
                   type: string

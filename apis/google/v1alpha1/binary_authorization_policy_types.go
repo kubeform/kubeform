@@ -75,6 +75,8 @@ type BinaryAuthorizationPolicySpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
+	GlobalPolicyEvaluationMode string `json:"globalPolicyEvaluationMode,omitempty" tf:"global_policy_evaluation_mode,omitempty"`
+	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 }
 

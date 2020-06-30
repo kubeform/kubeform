@@ -45,6 +45,8 @@ type ProjectServiceSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
+	DisableDependentServices bool `json:"disableDependentServices,omitempty" tf:"disable_dependent_services,omitempty"`
+	// +optional
 	DisableOnDestroy bool `json:"disableOnDestroy,omitempty" tf:"disable_on_destroy,omitempty"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`

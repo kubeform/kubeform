@@ -39,6 +39,18 @@ type ComputeGlobalForwardingRule struct {
 	Status            ComputeGlobalForwardingRuleStatus `json:"status,omitempty"`
 }
 
+type ComputeGlobalForwardingRuleSpecMetadataFiltersFilterLabels struct {
+	Name  string `json:"name" tf:"name"`
+	Value string `json:"value" tf:"value"`
+}
+
+type ComputeGlobalForwardingRuleSpecMetadataFilters struct {
+	// +kubebuilder:validation:MaxItems=64
+	// +kubebuilder:validation:MinItems=1
+	FilterLabels        []ComputeGlobalForwardingRuleSpecMetadataFiltersFilterLabels `json:"filterLabels" tf:"filter_labels"`
+	FilterMatchCriteria string                                                       `json:"filterMatchCriteria" tf:"filter_match_criteria"`
+}
+
 type ComputeGlobalForwardingRuleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
@@ -53,11 +65,10 @@ type ComputeGlobalForwardingRuleSpec struct {
 	// +optional
 	IpVersion string `json:"ipVersion,omitempty" tf:"ip_version,omitempty"`
 	// +optional
-	LabelFingerprint string `json:"labelFingerprint,omitempty" tf:"label_fingerprint,omitempty"`
+	LoadBalancingScheme string `json:"loadBalancingScheme,omitempty" tf:"load_balancing_scheme,omitempty"`
 	// +optional
-	// Deprecated
-	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
-	Name   string            `json:"name" tf:"name"`
+	MetadataFilters []ComputeGlobalForwardingRuleSpecMetadataFilters `json:"metadataFilters,omitempty" tf:"metadata_filters,omitempty"`
+	Name            string                                           `json:"name" tf:"name"`
 	// +optional
 	PortRange string `json:"portRange,omitempty" tf:"port_range,omitempty"`
 	// +optional

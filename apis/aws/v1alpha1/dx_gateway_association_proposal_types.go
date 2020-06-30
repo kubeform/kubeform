@@ -45,10 +45,18 @@ type DxGatewayAssociationProposalSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	AllowedPrefixes         []string `json:"allowedPrefixes,omitempty" tf:"allowed_prefixes,omitempty"`
-	DxGatewayID             string   `json:"dxGatewayID" tf:"dx_gateway_id"`
-	DxGatewayOwnerAccountID string   `json:"dxGatewayOwnerAccountID" tf:"dx_gateway_owner_account_id"`
-	VpnGatewayID            string   `json:"vpnGatewayID" tf:"vpn_gateway_id"`
+	AllowedPrefixes []string `json:"allowedPrefixes,omitempty" tf:"allowed_prefixes,omitempty"`
+	// +optional
+	AssociatedGatewayID string `json:"associatedGatewayID,omitempty" tf:"associated_gateway_id,omitempty"`
+	// +optional
+	AssociatedGatewayOwnerAccountID string `json:"associatedGatewayOwnerAccountID,omitempty" tf:"associated_gateway_owner_account_id,omitempty"`
+	// +optional
+	AssociatedGatewayType   string `json:"associatedGatewayType,omitempty" tf:"associated_gateway_type,omitempty"`
+	DxGatewayID             string `json:"dxGatewayID" tf:"dx_gateway_id"`
+	DxGatewayOwnerAccountID string `json:"dxGatewayOwnerAccountID" tf:"dx_gateway_owner_account_id"`
+	// +optional
+	// Deprecated
+	VpnGatewayID string `json:"vpnGatewayID,omitempty" tf:"vpn_gateway_id,omitempty"`
 }
 
 type DxGatewayAssociationProposalStatus struct {

@@ -25,12 +25,12 @@ spec:
         apiVersion:
           description: 'APIVersion defines the versioned schema of this representation
             of an object. Servers should convert recognized schemas to the latest
-            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
           type: string
         kind:
           description: 'Kind is a string value representing the REST resource this
             object represents. Servers may infer this from the endpoint the client
-            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
           type: string
         metadata:
           type: object
@@ -48,12 +48,11 @@ spec:
                     type: string
                   zone:
                     type: string
+                required:
+                - clusterID
+                - zone
                 type: object
-              maxItems: 1
               type: array
-            clusterID:
-              description: Deprecated
-              type: string
             displayName:
               type: string
             id:
@@ -62,10 +61,6 @@ spec:
               type: string
             name:
               type: string
-            numNodes:
-              description: Deprecated
-              format: int64
-              type: integer
             project:
               type: string
             providerRef:
@@ -77,12 +72,6 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
-            storageType:
-              description: Deprecated
-              type: string
-            zone:
-              description: Deprecated
-              type: string
           required:
           - name
           - providerRef
@@ -108,12 +97,11 @@ spec:
                         type: string
                       zone:
                         type: string
+                    required:
+                    - clusterID
+                    - zone
                     type: object
-                  maxItems: 1
                   type: array
-                clusterID:
-                  description: Deprecated
-                  type: string
                 displayName:
                   type: string
                 id:
@@ -122,10 +110,6 @@ spec:
                   type: string
                 name:
                   type: string
-                numNodes:
-                  description: Deprecated
-                  format: int64
-                  type: integer
                 project:
                   type: string
                 providerRef:
@@ -137,12 +121,6 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
-                storageType:
-                  description: Deprecated
-                  type: string
-                zone:
-                  description: Deprecated
-                  type: string
               required:
               - name
               - providerRef

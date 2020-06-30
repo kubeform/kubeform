@@ -39,13 +39,19 @@ type BigtableTable struct {
 	Status            BigtableTableStatus `json:"status,omitempty"`
 }
 
+type BigtableTableSpecColumnFamily struct {
+	Family string `json:"family" tf:"family"`
+}
+
 type BigtableTableSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	InstanceName string `json:"instanceName" tf:"instance_name"`
-	Name         string `json:"name" tf:"name"`
+	// +optional
+	ColumnFamily []BigtableTableSpecColumnFamily `json:"columnFamily,omitempty" tf:"column_family,omitempty"`
+	InstanceName string                          `json:"instanceName" tf:"instance_name"`
+	Name         string                          `json:"name" tf:"name"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional

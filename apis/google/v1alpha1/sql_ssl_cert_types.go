@@ -59,6 +59,8 @@ type SqlSSLCertSpec struct {
 	// +optional
 	PrivateKey string `json:"-" sensitive:"true" tf:"private_key,omitempty"`
 	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
 	ServerCaCert string `json:"serverCaCert,omitempty" tf:"server_ca_cert,omitempty"`
 	// +optional
 	Sha1Fingerprint string `json:"sha1Fingerprint,omitempty" tf:"sha1_fingerprint,omitempty"`

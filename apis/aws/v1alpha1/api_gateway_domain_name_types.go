@@ -81,6 +81,8 @@ type ApiGatewayDomainNameSpec struct {
 	RegionalDomainName string `json:"regionalDomainName,omitempty" tf:"regional_domain_name,omitempty"`
 	// +optional
 	RegionalZoneID string `json:"regionalZoneID,omitempty" tf:"regional_zone_id,omitempty"`
+	// +optional
+	SecurityPolicy string `json:"securityPolicy,omitempty" tf:"security_policy,omitempty"`
 }
 
 type ApiGatewayDomainNameStatus struct {

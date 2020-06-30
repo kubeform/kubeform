@@ -217,6 +217,10 @@ func (c *FakeAwsV1alpha1) AppsyncDatasources(namespace string) v1alpha1.AppsyncD
 	return &FakeAppsyncDatasources{c, namespace}
 }
 
+func (c *FakeAwsV1alpha1) AppsyncFunctions(namespace string) v1alpha1.AppsyncFunctionInterface {
+	return &FakeAppsyncFunctions{c, namespace}
+}
+
 func (c *FakeAwsV1alpha1) AppsyncGraphqlAPIs(namespace string) v1alpha1.AppsyncGraphqlAPIInterface {
 	return &FakeAppsyncGraphqlAPIs{c, namespace}
 }
@@ -231,6 +235,10 @@ func (c *FakeAwsV1alpha1) AthenaDatabases(namespace string) v1alpha1.AthenaDatab
 
 func (c *FakeAwsV1alpha1) AthenaNamedQueries(namespace string) v1alpha1.AthenaNamedQueryInterface {
 	return &FakeAthenaNamedQueries{c, namespace}
+}
+
+func (c *FakeAwsV1alpha1) AthenaWorkgroups(namespace string) v1alpha1.AthenaWorkgroupInterface {
+	return &FakeAthenaWorkgroups{c, namespace}
 }
 
 func (c *FakeAwsV1alpha1) AutoscalingAttachments(namespace string) v1alpha1.AutoscalingAttachmentInterface {
@@ -377,6 +385,10 @@ func (c *FakeAwsV1alpha1) CodebuildProjects(namespace string) v1alpha1.Codebuild
 	return &FakeCodebuildProjects{c, namespace}
 }
 
+func (c *FakeAwsV1alpha1) CodebuildSourceCredentials(namespace string) v1alpha1.CodebuildSourceCredentialInterface {
+	return &FakeCodebuildSourceCredentials{c, namespace}
+}
+
 func (c *FakeAwsV1alpha1) CodebuildWebhooks(namespace string) v1alpha1.CodebuildWebhookInterface {
 	return &FakeCodebuildWebhooks{c, namespace}
 }
@@ -465,12 +477,24 @@ func (c *FakeAwsV1alpha1) ConfigDeliveryChannels(namespace string) v1alpha1.Conf
 	return &FakeConfigDeliveryChannels{c, namespace}
 }
 
+func (c *FakeAwsV1alpha1) ConfigOrganizationCustomRules(namespace string) v1alpha1.ConfigOrganizationCustomRuleInterface {
+	return &FakeConfigOrganizationCustomRules{c, namespace}
+}
+
+func (c *FakeAwsV1alpha1) ConfigOrganizationManagedRules(namespace string) v1alpha1.ConfigOrganizationManagedRuleInterface {
+	return &FakeConfigOrganizationManagedRules{c, namespace}
+}
+
 func (c *FakeAwsV1alpha1) CurReportDefinitions(namespace string) v1alpha1.CurReportDefinitionInterface {
 	return &FakeCurReportDefinitions{c, namespace}
 }
 
 func (c *FakeAwsV1alpha1) CustomerGateways(namespace string) v1alpha1.CustomerGatewayInterface {
 	return &FakeCustomerGateways{c, namespace}
+}
+
+func (c *FakeAwsV1alpha1) DatapipelinePipelines(namespace string) v1alpha1.DatapipelinePipelineInterface {
+	return &FakeDatapipelinePipelines{c, namespace}
 }
 
 func (c *FakeAwsV1alpha1) DatasyncAgents(namespace string) v1alpha1.DatasyncAgentInterface {
@@ -577,6 +601,10 @@ func (c *FakeAwsV1alpha1) DirectoryServiceDirectories(namespace string) v1alpha1
 	return &FakeDirectoryServiceDirectories{c, namespace}
 }
 
+func (c *FakeAwsV1alpha1) DirectoryServiceLogSubscriptions(namespace string) v1alpha1.DirectoryServiceLogSubscriptionInterface {
+	return &FakeDirectoryServiceLogSubscriptions{c, namespace}
+}
+
 func (c *FakeAwsV1alpha1) DlmLifecyclePolicies(namespace string) v1alpha1.DlmLifecyclePolicyInterface {
 	return &FakeDlmLifecyclePolicies{c, namespace}
 }
@@ -673,6 +701,10 @@ func (c *FakeAwsV1alpha1) DxPublicVirtualInterfaces(namespace string) v1alpha1.D
 	return &FakeDxPublicVirtualInterfaces{c, namespace}
 }
 
+func (c *FakeAwsV1alpha1) DxTransitVirtualInterfaces(namespace string) v1alpha1.DxTransitVirtualInterfaceInterface {
+	return &FakeDxTransitVirtualInterfaces{c, namespace}
+}
+
 func (c *FakeAwsV1alpha1) DynamodbGlobalTables(namespace string) v1alpha1.DynamodbGlobalTableInterface {
 	return &FakeDynamodbGlobalTables{c, namespace}
 }
@@ -683,6 +715,14 @@ func (c *FakeAwsV1alpha1) DynamodbTables(namespace string) v1alpha1.DynamodbTabl
 
 func (c *FakeAwsV1alpha1) DynamodbTableItems(namespace string) v1alpha1.DynamodbTableItemInterface {
 	return &FakeDynamodbTableItems{c, namespace}
+}
+
+func (c *FakeAwsV1alpha1) EbsDefaultKmsKeys(namespace string) v1alpha1.EbsDefaultKmsKeyInterface {
+	return &FakeEbsDefaultKmsKeys{c, namespace}
+}
+
+func (c *FakeAwsV1alpha1) EbsEncryptionByDefaults(namespace string) v1alpha1.EbsEncryptionByDefaultInterface {
+	return &FakeEbsEncryptionByDefaults{c, namespace}
 }
 
 func (c *FakeAwsV1alpha1) EbsSnapshots(namespace string) v1alpha1.EbsSnapshotInterface {
@@ -735,6 +775,10 @@ func (c *FakeAwsV1alpha1) Ec2TransitGatewayRouteTablePropagations(namespace stri
 
 func (c *FakeAwsV1alpha1) Ec2TransitGatewayVpcAttachments(namespace string) v1alpha1.Ec2TransitGatewayVpcAttachmentInterface {
 	return &FakeEc2TransitGatewayVpcAttachments{c, namespace}
+}
+
+func (c *FakeAwsV1alpha1) Ec2TransitGatewayVpcAttachmentAccepters(namespace string) v1alpha1.Ec2TransitGatewayVpcAttachmentAccepterInterface {
+	return &FakeEc2TransitGatewayVpcAttachmentAccepters{c, namespace}
 }
 
 func (c *FakeAwsV1alpha1) EcrLifecyclePolicies(namespace string) v1alpha1.EcrLifecyclePolicyInterface {
@@ -861,6 +905,18 @@ func (c *FakeAwsV1alpha1) FlowLogs(namespace string) v1alpha1.FlowLogInterface {
 	return &FakeFlowLogs{c, namespace}
 }
 
+func (c *FakeAwsV1alpha1) FmsAdminAccounts(namespace string) v1alpha1.FmsAdminAccountInterface {
+	return &FakeFmsAdminAccounts{c, namespace}
+}
+
+func (c *FakeAwsV1alpha1) FsxLustreFileSystems(namespace string) v1alpha1.FsxLustreFileSystemInterface {
+	return &FakeFsxLustreFileSystems{c, namespace}
+}
+
+func (c *FakeAwsV1alpha1) FsxWindowsFileSystems(namespace string) v1alpha1.FsxWindowsFileSystemInterface {
+	return &FakeFsxWindowsFileSystems{c, namespace}
+}
+
 func (c *FakeAwsV1alpha1) GameliftAliases(namespace string) v1alpha1.GameliftAliasInterface {
 	return &FakeGameliftAliases{c, namespace}
 }
@@ -887,6 +943,10 @@ func (c *FakeAwsV1alpha1) GlacierVaultLocks(namespace string) v1alpha1.GlacierVa
 
 func (c *FakeAwsV1alpha1) GlobalacceleratorAccelerators(namespace string) v1alpha1.GlobalacceleratorAcceleratorInterface {
 	return &FakeGlobalacceleratorAccelerators{c, namespace}
+}
+
+func (c *FakeAwsV1alpha1) GlobalacceleratorEndpointGroups(namespace string) v1alpha1.GlobalacceleratorEndpointGroupInterface {
+	return &FakeGlobalacceleratorEndpointGroups{c, namespace}
 }
 
 func (c *FakeAwsV1alpha1) GlobalacceleratorListeners(namespace string) v1alpha1.GlobalacceleratorListenerInterface {
@@ -1257,6 +1317,14 @@ func (c *FakeAwsV1alpha1) MqConfigurations(namespace string) v1alpha1.MqConfigur
 	return &FakeMqConfigurations{c, namespace}
 }
 
+func (c *FakeAwsV1alpha1) MskClusters(namespace string) v1alpha1.MskClusterInterface {
+	return &FakeMskClusters{c, namespace}
+}
+
+func (c *FakeAwsV1alpha1) MskConfigurations(namespace string) v1alpha1.MskConfigurationInterface {
+	return &FakeMskConfigurations{c, namespace}
+}
+
 func (c *FakeAwsV1alpha1) NatGateways(namespace string) v1alpha1.NatGatewayInterface {
 	return &FakeNatGateways{c, namespace}
 }
@@ -1445,6 +1513,10 @@ func (c *FakeAwsV1alpha1) ProxyProtocolPolicies(namespace string) v1alpha1.Proxy
 	return &FakeProxyProtocolPolicies{c, namespace}
 }
 
+func (c *FakeAwsV1alpha1) QuicksightGroups(namespace string) v1alpha1.QuicksightGroupInterface {
+	return &FakeQuicksightGroups{c, namespace}
+}
+
 func (c *FakeAwsV1alpha1) RamPrincipalAssociations(namespace string) v1alpha1.RamPrincipalAssociationInterface {
 	return &FakeRamPrincipalAssociations{c, namespace}
 }
@@ -1455,6 +1527,10 @@ func (c *FakeAwsV1alpha1) RamResourceAssociations(namespace string) v1alpha1.Ram
 
 func (c *FakeAwsV1alpha1) RamResourceShares(namespace string) v1alpha1.RamResourceShareInterface {
 	return &FakeRamResourceShares{c, namespace}
+}
+
+func (c *FakeAwsV1alpha1) RamResourceShareAccepters(namespace string) v1alpha1.RamResourceShareAccepterInterface {
+	return &FakeRamResourceShareAccepters{c, namespace}
 }
 
 func (c *FakeAwsV1alpha1) RdsClusters(namespace string) v1alpha1.RdsClusterInterface {
@@ -1495,6 +1571,14 @@ func (c *FakeAwsV1alpha1) RedshiftSecurityGroups(namespace string) v1alpha1.Reds
 
 func (c *FakeAwsV1alpha1) RedshiftSnapshotCopyGrants(namespace string) v1alpha1.RedshiftSnapshotCopyGrantInterface {
 	return &FakeRedshiftSnapshotCopyGrants{c, namespace}
+}
+
+func (c *FakeAwsV1alpha1) RedshiftSnapshotSchedules(namespace string) v1alpha1.RedshiftSnapshotScheduleInterface {
+	return &FakeRedshiftSnapshotSchedules{c, namespace}
+}
+
+func (c *FakeAwsV1alpha1) RedshiftSnapshotScheduleAssociations(namespace string) v1alpha1.RedshiftSnapshotScheduleAssociationInterface {
+	return &FakeRedshiftSnapshotScheduleAssociations{c, namespace}
 }
 
 func (c *FakeAwsV1alpha1) RedshiftSubnetGroups(namespace string) v1alpha1.RedshiftSubnetGroupInterface {
@@ -1653,6 +1737,10 @@ func (c *FakeAwsV1alpha1) ServicecatalogPortfolios(namespace string) v1alpha1.Se
 	return &FakeServicecatalogPortfolios{c, namespace}
 }
 
+func (c *FakeAwsV1alpha1) ServicequotasServiceQuotas(namespace string) v1alpha1.ServicequotasServiceQuotaInterface {
+	return &FakeServicequotasServiceQuotas{c, namespace}
+}
+
 func (c *FakeAwsV1alpha1) SesActiveReceiptRuleSets(namespace string) v1alpha1.SesActiveReceiptRuleSetInterface {
 	return &FakeSesActiveReceiptRuleSets{c, namespace}
 }
@@ -1677,12 +1765,20 @@ func (c *FakeAwsV1alpha1) SesDomainMailFroms(namespace string) v1alpha1.SesDomai
 	return &FakeSesDomainMailFroms{c, namespace}
 }
 
+func (c *FakeAwsV1alpha1) SesEmailIdentities(namespace string) v1alpha1.SesEmailIdentityInterface {
+	return &FakeSesEmailIdentities{c, namespace}
+}
+
 func (c *FakeAwsV1alpha1) SesEventDestinations(namespace string) v1alpha1.SesEventDestinationInterface {
 	return &FakeSesEventDestinations{c, namespace}
 }
 
 func (c *FakeAwsV1alpha1) SesIdentityNotificationTopics(namespace string) v1alpha1.SesIdentityNotificationTopicInterface {
 	return &FakeSesIdentityNotificationTopics{c, namespace}
+}
+
+func (c *FakeAwsV1alpha1) SesIdentityPolicies(namespace string) v1alpha1.SesIdentityPolicyInterface {
+	return &FakeSesIdentityPolicies{c, namespace}
 }
 
 func (c *FakeAwsV1alpha1) SesReceiptFilters(namespace string) v1alpha1.SesReceiptFilterInterface {
@@ -1707,6 +1803,10 @@ func (c *FakeAwsV1alpha1) SfnActivities(namespace string) v1alpha1.SfnActivityIn
 
 func (c *FakeAwsV1alpha1) SfnStateMachines(namespace string) v1alpha1.SfnStateMachineInterface {
 	return &FakeSfnStateMachines{c, namespace}
+}
+
+func (c *FakeAwsV1alpha1) ShieldProtections(namespace string) v1alpha1.ShieldProtectionInterface {
+	return &FakeShieldProtections{c, namespace}
 }
 
 func (c *FakeAwsV1alpha1) SimpledbDomains(namespace string) v1alpha1.SimpledbDomainInterface {

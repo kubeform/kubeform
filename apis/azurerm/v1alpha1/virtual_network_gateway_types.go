@@ -96,6 +96,8 @@ type VirtualNetworkGatewaySpec struct {
 	DefaultLocalNetworkGatewayID string `json:"defaultLocalNetworkGatewayID,omitempty" tf:"default_local_network_gateway_id,omitempty"`
 	// +optional
 	EnableBGP bool `json:"enableBGP,omitempty" tf:"enable_bgp,omitempty"`
+	// +optional
+	Generation string `json:"generation,omitempty" tf:"generation,omitempty"`
 	// +kubebuilder:validation:MaxItems=2
 	IpConfiguration   []VirtualNetworkGatewaySpecIpConfiguration `json:"ipConfiguration" tf:"ip_configuration"`
 	Location          string                                     `json:"location" tf:"location"`

@@ -108,7 +108,6 @@ type EcsServiceSpec struct {
 	// +optional
 	LaunchType string `json:"launchType,omitempty" tf:"launch_type,omitempty"`
 	// +optional
-	// +kubebuilder:validation:MaxItems=1
 	LoadBalancer []EcsServiceSpecLoadBalancer `json:"loadBalancer,omitempty" tf:"load_balancer,omitempty"`
 	Name         string                       `json:"name" tf:"name"`
 	// +optional

@@ -10,9 +10,9 @@ import (
 	"time"
 
 	"github.com/digitalocean/godo"
-	"github.com/hashicorp/terraform/helper/resource"
-	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/hashicorp/terraform/helper/validation"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/resource"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/validation"
 )
 
 func resourceDigitalOceanDroplet() *schema.Resource {
@@ -60,6 +60,11 @@ func resourceDigitalOceanDroplet() *schema.Resource {
 					return strings.ToLower(val.(string))
 				},
 				ValidateFunc: validation.NoZeroValues,
+			},
+
+			"created_at": {
+				Type:     schema.TypeString,
+				Computed: true,
 			},
 
 			"urn": {
@@ -137,7 +142,7 @@ func resourceDigitalOceanDroplet() *schema.Resource {
 			"private_networking": {
 				Type:     schema.TypeBool,
 				Optional: true,
-				Default:  false,
+				Computed: true,
 			},
 
 			"ipv4_address": {
@@ -164,14 +169,7 @@ func resourceDigitalOceanDroplet() *schema.Resource {
 				Optional:     true,
 				ForceNew:     true,
 				ValidateFunc: validation.NoZeroValues,
-				StateFunc: func(v interface{}) string {
-					switch v.(type) {
-					case string:
-						return HashString(v.(string))
-					default:
-						return ""
-					}
-				},
+				StateFunc:    HashStringStateFunc(),
 				// In order to support older statefiles with fully saved user data
 				DiffSuppressFunc: func(k, old, new string, d *schema.ResourceData) bool {
 					return new != "" && old == d.Get("user_data")
@@ -193,6 +191,14 @@ func resourceDigitalOceanDroplet() *schema.Resource {
 			},
 
 			"tags": tagsSchema(),
+
+			"vpc_uuid": {
+				Type:         schema.TypeString,
+				Optional:     true,
+				ForceNew:     true,
+				Computed:     true,
+				ValidateFunc: validation.NoZeroValues,
+			},
 		},
 	}
 }
@@ -253,6 +259,10 @@ func resourceDigitalOceanDropletCreate(d *schema.ResourceData, meta interface{})
 
 	if attr, ok := d.GetOk("monitoring"); ok {
 		opts.Monitoring = attr.(bool)
+	}
+
+	if attr, ok := d.GetOk("vpc_uuid"); ok {
+		opts.VPCUUID = attr.(string)
 	}
 
 	// Get configured ssh_keys
@@ -321,6 +331,8 @@ func resourceDigitalOceanDropletRead(d *schema.ResourceData, meta interface{}) e
 	d.Set("memory", droplet.Memory)
 	d.Set("status", droplet.Status)
 	d.Set("locked", droplet.Locked)
+	d.Set("created_at", droplet.Created)
+	d.Set("vpc_uuid", droplet.VPCUUID)
 
 	d.Set("ipv4_address", findIPv4AddrByType(droplet, "public"))
 	d.Set("ipv4_address_private", findIPv4AddrByType(droplet, "private"))
@@ -483,6 +495,32 @@ func resourceDigitalOceanDropletUpdate(d *schema.ResourceData, meta interface{})
 		}
 	}
 
+	if d.HasChange("backups") {
+		if d.Get("backups").(bool) {
+			// Enable backups on droplet
+			action, _, err := client.DropletActions.EnableBackups(context.Background(), id)
+			if err != nil {
+				return fmt.Errorf(
+					"Error enabling backups on droplet (%s): %s", d.Id(), err)
+			}
+
+			if err := waitForAction(client, action); err != nil {
+				return fmt.Errorf("Error waiting for backups to be enabled for droplet (%s): %s", d.Id(), err)
+			}
+		} else {
+			// Disable backups on droplet
+			action, _, err := client.DropletActions.DisableBackups(context.Background(), id)
+			if err != nil {
+				return fmt.Errorf(
+					"Error disabling backups on droplet (%s): %s", d.Id(), err)
+			}
+
+			if err := waitForAction(client, action); err != nil {
+				return fmt.Errorf("Error waiting for backups to be disabled for droplet (%s): %s", d.Id(), err)
+			}
+		}
+	}
+
 	// As there is no way to disable private networking,
 	// we only check if it needs to be enabled
 	if d.HasChange("private_networking") && d.Get("private_networking").(bool) {
@@ -523,7 +561,7 @@ func resourceDigitalOceanDropletUpdate(d *schema.ResourceData, meta interface{})
 	}
 
 	if d.HasChange("tags") {
-		err = setTags(client, d)
+		err = setTags(client, d, godo.DropletResourceType)
 		if err != nil {
 			return fmt.Errorf("Error updating tags: %s", err)
 		}
@@ -594,18 +632,36 @@ func resourceDigitalOceanDropletDelete(d *schema.ResourceData, meta interface{})
 	log.Printf("[INFO] Deleting droplet: %s", d.Id())
 
 	// Destroy the droplet
-	_, err = client.Droplets.Delete(context.Background(), id)
+	resp, err := client.Droplets.Delete(context.Background(), id)
 
-	// Handle remotely destroyed droplets
-	if err != nil && strings.Contains(err.Error(), "404 Not Found") {
+	// Handle already destroyed droplets
+	if err != nil && resp.StatusCode == 404 {
 		return nil
 	}
 
-	if err != nil {
+	_, err = waitForDropletDestroy(d, meta)
+	if err != nil && strings.Contains(err.Error(), "404") {
+		return nil
+	} else if err != nil {
 		return fmt.Errorf("Error deleting droplet: %s", err)
 	}
 
 	return nil
+}
+
+func waitForDropletDestroy(d *schema.ResourceData, meta interface{}) (interface{}, error) {
+	log.Printf("[INFO] Waiting for droplet (%s) to be destroyed", d.Id())
+
+	stateConf := &resource.StateChangeConf{
+		Pending:    []string{"active", "off"},
+		Target:     []string{"archived"},
+		Refresh:    newDropletStateRefreshFunc(d, "status", meta),
+		Timeout:    60 * time.Second,
+		Delay:      10 * time.Second,
+		MinTimeout: 3 * time.Second,
+	}
+
+	return stateConf.WaitForState()
 }
 
 func waitForDropletAttribute(

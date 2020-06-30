@@ -53,7 +53,13 @@ type EmrInstanceGroupSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// +optional
+	AutoscalingPolicy string `json:"autoscalingPolicy,omitempty" tf:"autoscaling_policy,omitempty"`
+	// +optional
+	BidPrice  string `json:"bidPrice,omitempty" tf:"bid_price,omitempty"`
 	ClusterID string `json:"clusterID" tf:"cluster_id"`
+	// +optional
+	ConfigurationsJSON string `json:"configurationsJSON,omitempty" tf:"configurations_json,omitempty"`
 	// +optional
 	EbsConfig []EmrInstanceGroupSpecEbsConfig `json:"ebsConfig,omitempty" tf:"ebs_config,omitempty"`
 	// +optional

@@ -44,10 +44,19 @@ type IotCertificateSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
+
 	Active bool `json:"active" tf:"active"`
 	// +optional
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
-	Csr string `json:"csr" tf:"csr"`
+	// +optional
+	CertificatePem string `json:"-" sensitive:"true" tf:"certificate_pem,omitempty"`
+	// +optional
+	Csr string `json:"csr,omitempty" tf:"csr,omitempty"`
+	// +optional
+	PrivateKey string `json:"-" sensitive:"true" tf:"private_key,omitempty"`
+	// +optional
+	PublicKey string `json:"-" sensitive:"true" tf:"public_key,omitempty"`
 }
 
 type IotCertificateStatus struct {

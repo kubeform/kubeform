@@ -25,12 +25,12 @@ spec:
         apiVersion:
           description: 'APIVersion defines the versioned schema of this representation
             of an object. Servers should convert recognized schemas to the latest
-            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
           type: string
         kind:
           description: 'Kind is a string value representing the REST resource this
             object represents. Servers may infer this from the endpoint the client
-            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
           type: string
         metadata:
           type: object
@@ -63,6 +63,10 @@ spec:
                 are created if they are enabled. Example: ''09:46-10:16''. Must not
                 overlap with maintenance_window'
               type: string
+            caCertIdentifier:
+              description: Specifies the identifier of the CA certificate for the
+                DB instance
+              type: string
             characterSetName:
               description: (Optional) The character set name to use for DB encoding
                 in Oracle instances. This can't be changed. See Oracle Character Sets
@@ -76,7 +80,7 @@ spec:
               description: Whether to create a database instance
               type: boolean
             createDbOptionGroup:
-              description: Whether to create a database option group
+              description: (Optional) Create a database option group
               type: boolean
             createDbParameterGroup:
               description: Whether to create a database parameter group
@@ -93,6 +97,10 @@ spec:
                 the VPC associated with the DB subnet group. If unspecified, will
                 be created in the default VPC
               type: string
+            deleteAutomatedBackups:
+              description: Specifies whether to remove automated backups immediately
+                after the DB instance is deleted
+              type: boolean
             deletionProtection:
               description: The database can't be deleted when this value is set to
                 true.
@@ -180,9 +188,14 @@ spec:
               description: The description of the option group
               type: string
             optionGroupName:
-              description: Name of the DB option group to associate. Setting this
-                automatically disables option_group creation
+              description: Name of the DB option group to associate
               type: string
+            optionGroupTimeouts:
+              additionalProperties:
+                type: string
+              description: Define maximum timeout for deletion of `aws_db_option_group`
+                resource
+              type: object
             options:
               description: A list of Options to apply.
               format: byte
@@ -304,6 +317,13 @@ spec:
               type: integer
             output:
               properties:
+                enhancedMonitoringIamRoleArn:
+                  description: The Amazon Resource Name (ARN) specifying the monitoring
+                    role
+                  type: string
+                enhancedMonitoringIamRoleName:
+                  description: The name of the monitoring role
+                  type: string
                 thisDbInstanceAddress:
                   description: The address of the RDS instance
                   type: string
@@ -312,6 +332,10 @@ spec:
                   type: string
                 thisDbInstanceAvailabilityZone:
                   description: The availability zone of the RDS instance
+                  type: string
+                thisDbInstanceCaCertIdentifier:
+                  description: Specifies the identifier of the CA certificate for
+                    the DB instance
                   type: string
                 thisDbInstanceEndpoint:
                   description: The connection endpoint

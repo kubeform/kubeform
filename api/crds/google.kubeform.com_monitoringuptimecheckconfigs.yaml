@@ -25,12 +25,12 @@ spec:
         apiVersion:
           description: 'APIVersion defines the versioned schema of this representation
             of an object. Servers should convert recognized schemas to the latest
-            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
           type: string
         kind:
           description: 'Kind is a string value representing the REST resource this
             object represents. Servers may infer this from the endpoint the client
-            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
           type: string
         metadata:
           type: object
@@ -75,21 +75,28 @@ spec:
             id:
               type: string
             internalCheckers:
+              description: Deprecated
               items:
                 properties:
                   displayName:
+                    description: Deprecated
                     type: string
                   gcpZone:
+                    description: Deprecated
                     type: string
                   name:
+                    description: Deprecated
                     type: string
                   network:
+                    description: Deprecated
                     type: string
                   peerProjectID:
+                    description: Deprecated
                     type: string
                 type: object
               type: array
             isInternal:
+              description: Deprecated
               type: boolean
             monitoredResource:
               items:
@@ -157,6 +164,8 @@ spec:
               type: array
             timeout:
               type: string
+            uptimeCheckID:
+              type: string
           required:
           - displayName
           - providerRef
@@ -210,21 +219,28 @@ spec:
                 id:
                   type: string
                 internalCheckers:
+                  description: Deprecated
                   items:
                     properties:
                       displayName:
+                        description: Deprecated
                         type: string
                       gcpZone:
+                        description: Deprecated
                         type: string
                       name:
+                        description: Deprecated
                         type: string
                       network:
+                        description: Deprecated
                         type: string
                       peerProjectID:
+                        description: Deprecated
                         type: string
                     type: object
                   type: array
                 isInternal:
+                  description: Deprecated
                   type: boolean
                 monitoredResource:
                   items:
@@ -291,6 +307,8 @@ spec:
                   maxItems: 1
                   type: array
                 timeout:
+                  type: string
+                uptimeCheckID:
                   type: string
               required:
               - displayName

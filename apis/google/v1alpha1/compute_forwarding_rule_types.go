@@ -45,6 +45,8 @@ type ComputeForwardingRuleSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
+	AllPorts bool `json:"allPorts,omitempty" tf:"all_ports,omitempty"`
+	// +optional
 	BackendService string `json:"backendService,omitempty" tf:"backend_service,omitempty"`
 	// +optional
 	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
@@ -55,12 +57,8 @@ type ComputeForwardingRuleSpec struct {
 	// +optional
 	IpProtocol string `json:"ipProtocol,omitempty" tf:"ip_protocol,omitempty"`
 	// +optional
-	IpVersion string `json:"ipVersion,omitempty" tf:"ip_version,omitempty"`
-	// +optional
-	LabelFingerprint string `json:"labelFingerprint,omitempty" tf:"label_fingerprint,omitempty"`
-	// +optional
 	// Deprecated
-	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
+	IpVersion string `json:"ipVersion,omitempty" tf:"ip_version,omitempty"`
 	// +optional
 	LoadBalancingScheme string `json:"loadBalancingScheme,omitempty" tf:"load_balancing_scheme,omitempty"`
 	Name                string `json:"name" tf:"name"`
@@ -80,10 +78,8 @@ type ComputeForwardingRuleSpec struct {
 	// +optional
 	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 	// +optional
-	// Deprecated
 	ServiceLabel string `json:"serviceLabel,omitempty" tf:"service_label,omitempty"`
 	// +optional
-	// Deprecated
 	ServiceName string `json:"serviceName,omitempty" tf:"service_name,omitempty"`
 	// +optional
 	Subnetwork string `json:"subnetwork,omitempty" tf:"subnetwork,omitempty"`

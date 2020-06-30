@@ -52,13 +52,18 @@ type DevspaceControllerSpec struct {
 	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	// +optional
-	DataPlaneFqdn     string `json:"dataPlaneFqdn,omitempty" tf:"data_plane_fqdn,omitempty"`
-	HostSuffix        string `json:"hostSuffix" tf:"host_suffix"`
+	DataPlaneFqdn string `json:"dataPlaneFqdn,omitempty" tf:"data_plane_fqdn,omitempty"`
+	// +optional
+	HostSuffix        string `json:"hostSuffix,omitempty" tf:"host_suffix,omitempty"`
 	Location          string `json:"location" tf:"location"`
 	Name              string `json:"name" tf:"name"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	Sku []DevspaceControllerSpecSku `json:"sku" tf:"sku"`
+	// Deprecated
+	Sku []DevspaceControllerSpecSku `json:"sku,omitempty" tf:"sku,omitempty"`
+	// +optional
+	SkuName string `json:"skuName,omitempty" tf:"sku_name,omitempty"`
 	// +optional
 	Tags                                 map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	TargetContainerHostCredentialsBase64 string            `json:"-" sensitive:"true" tf:"target_container_host_credentials_base64"`

@@ -62,6 +62,8 @@ type VirtualNetworkGatewayConnectionSpec struct {
 	// +optional
 	AuthorizationKey string `json:"-" sensitive:"true" tf:"authorization_key,omitempty"`
 	// +optional
+	ConnectionProtocol string `json:"connectionProtocol,omitempty" tf:"connection_protocol,omitempty"`
+	// +optional
 	EnableBGP bool `json:"enableBGP,omitempty" tf:"enable_bgp,omitempty"`
 	// +optional
 	ExpressRouteCircuitID string `json:"expressRouteCircuitID,omitempty" tf:"express_route_circuit_id,omitempty"`

@@ -50,10 +50,14 @@ type LbNATRuleSpec struct {
 	// +optional
 	EnableFloatingIP bool `json:"enableFloatingIP,omitempty" tf:"enable_floating_ip,omitempty"`
 	// +optional
+	EnableTcpReset bool `json:"enableTcpReset,omitempty" tf:"enable_tcp_reset,omitempty"`
+	// +optional
 	FrontendIPConfigurationID   string `json:"frontendIPConfigurationID,omitempty" tf:"frontend_ip_configuration_id,omitempty"`
 	FrontendIPConfigurationName string `json:"frontendIPConfigurationName" tf:"frontend_ip_configuration_name"`
 	FrontendPort                int64  `json:"frontendPort" tf:"frontend_port"`
-	LoadbalancerID              string `json:"loadbalancerID" tf:"loadbalancer_id"`
+	// +optional
+	IdleTimeoutInMinutes int64  `json:"idleTimeoutInMinutes,omitempty" tf:"idle_timeout_in_minutes,omitempty"`
+	LoadbalancerID       string `json:"loadbalancerID" tf:"loadbalancer_id"`
 	// +optional
 	// Deprecated
 	Location          string `json:"location,omitempty" tf:"location,omitempty"`

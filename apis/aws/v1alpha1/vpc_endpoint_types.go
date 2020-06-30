@@ -60,11 +60,15 @@ type VpcEndpointSpec struct {
 	// +optional
 	NetworkInterfaceIDS []string `json:"networkInterfaceIDS,omitempty" tf:"network_interface_ids,omitempty"`
 	// +optional
+	OwnerID string `json:"ownerID,omitempty" tf:"owner_id,omitempty"`
+	// +optional
 	Policy string `json:"policy,omitempty" tf:"policy,omitempty"`
 	// +optional
 	PrefixListID string `json:"prefixListID,omitempty" tf:"prefix_list_id,omitempty"`
 	// +optional
 	PrivateDNSEnabled bool `json:"privateDNSEnabled,omitempty" tf:"private_dns_enabled,omitempty"`
+	// +optional
+	RequesterManaged bool `json:"requesterManaged,omitempty" tf:"requester_managed,omitempty"`
 	// +optional
 	RouteTableIDS []string `json:"routeTableIDS,omitempty" tf:"route_table_ids,omitempty"`
 	// +optional
@@ -74,6 +78,8 @@ type VpcEndpointSpec struct {
 	State string `json:"state,omitempty" tf:"state,omitempty"`
 	// +optional
 	SubnetIDS []string `json:"subnetIDS,omitempty" tf:"subnet_ids,omitempty"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	VpcEndpointType string `json:"vpcEndpointType,omitempty" tf:"vpc_endpoint_type,omitempty"`
 	VpcID           string `json:"vpcID" tf:"vpc_id"`

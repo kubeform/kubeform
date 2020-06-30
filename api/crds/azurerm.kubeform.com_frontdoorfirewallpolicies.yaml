@@ -1,0 +1,438 @@
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/name: kubeform
+  name: frontdoorfirewallpolicies.azurerm.kubeform.com
+spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
+  group: azurerm.kubeform.com
+  names:
+    kind: FrontdoorFirewallPolicy
+    listKind: FrontdoorFirewallPolicyList
+    plural: frontdoorfirewallpolicies
+    singular: frontdoorfirewallpolicy
+  scope: ""
+  subresources:
+    status: {}
+  validation:
+    openAPIV3Schema:
+      properties:
+        apiVersion:
+          description: 'APIVersion defines the versioned schema of this representation
+            of an object. Servers should convert recognized schemas to the latest
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+          type: string
+        kind:
+          description: 'Kind is a string value representing the REST resource this
+            object represents. Servers may infer this from the endpoint the client
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+          type: string
+        metadata:
+          type: object
+        spec:
+          properties:
+            customBlockResponseBody:
+              type: string
+            customBlockResponseStatusCode:
+              format: int64
+              type: integer
+            customRule:
+              items:
+                properties:
+                  action:
+                    type: string
+                  enabled:
+                    type: boolean
+                  matchCondition:
+                    items:
+                      properties:
+                        matchValues:
+                          items:
+                            type: string
+                          maxItems: 100
+                          type: array
+                        matchVariable:
+                          type: string
+                        negationCondition:
+                          type: boolean
+                        operator:
+                          type: string
+                        selector:
+                          type: string
+                        transforms:
+                          items:
+                            type: string
+                          maxItems: 5
+                          type: array
+                      required:
+                      - matchValues
+                      - matchVariable
+                      - operator
+                      type: object
+                    maxItems: 100
+                    type: array
+                  name:
+                    type: string
+                  priority:
+                    format: int64
+                    type: integer
+                  rateLimitDurationInMinutes:
+                    format: int64
+                    type: integer
+                  rateLimitThreshold:
+                    format: int64
+                    type: integer
+                  type:
+                    type: string
+                required:
+                - action
+                - name
+                - type
+                type: object
+              maxItems: 100
+              type: array
+            enabled:
+              type: boolean
+            frontendEndpointIDS:
+              items:
+                type: string
+              type: array
+            id:
+              type: string
+            location:
+              type: string
+            managedRule:
+              items:
+                properties:
+                  exclusion:
+                    items:
+                      properties:
+                        matchVariable:
+                          type: string
+                        operator:
+                          type: string
+                        selector:
+                          type: string
+                      required:
+                      - matchVariable
+                      - operator
+                      - selector
+                      type: object
+                    maxItems: 100
+                    type: array
+                  override:
+                    items:
+                      properties:
+                        exclusion:
+                          items:
+                            properties:
+                              matchVariable:
+                                type: string
+                              operator:
+                                type: string
+                              selector:
+                                type: string
+                            required:
+                            - matchVariable
+                            - operator
+                            - selector
+                            type: object
+                          maxItems: 100
+                          type: array
+                        rule:
+                          items:
+                            properties:
+                              action:
+                                type: string
+                              enabled:
+                                type: boolean
+                              exclusion:
+                                items:
+                                  properties:
+                                    matchVariable:
+                                      type: string
+                                    operator:
+                                      type: string
+                                    selector:
+                                      type: string
+                                  required:
+                                  - matchVariable
+                                  - operator
+                                  - selector
+                                  type: object
+                                maxItems: 100
+                                type: array
+                              ruleID:
+                                type: string
+                            required:
+                            - action
+                            - ruleID
+                            type: object
+                          maxItems: 1000
+                          type: array
+                        ruleGroupName:
+                          type: string
+                      required:
+                      - ruleGroupName
+                      type: object
+                    maxItems: 100
+                    type: array
+                  type:
+                    type: string
+                  version:
+                    type: string
+                required:
+                - type
+                - version
+                type: object
+              maxItems: 100
+              type: array
+            mode:
+              type: string
+            name:
+              type: string
+            providerRef:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
+            redirectURL:
+              type: string
+            resourceGroupName:
+              type: string
+            tags:
+              additionalProperties:
+                type: string
+              type: object
+          required:
+          - name
+          - providerRef
+          - resourceGroupName
+          type: object
+        status:
+          properties:
+            observedGeneration:
+              description: Resource generation, which is updated on mutation by the
+                API Server.
+              format: int64
+              type: integer
+            output:
+              properties:
+                customBlockResponseBody:
+                  type: string
+                customBlockResponseStatusCode:
+                  format: int64
+                  type: integer
+                customRule:
+                  items:
+                    properties:
+                      action:
+                        type: string
+                      enabled:
+                        type: boolean
+                      matchCondition:
+                        items:
+                          properties:
+                            matchValues:
+                              items:
+                                type: string
+                              maxItems: 100
+                              type: array
+                            matchVariable:
+                              type: string
+                            negationCondition:
+                              type: boolean
+                            operator:
+                              type: string
+                            selector:
+                              type: string
+                            transforms:
+                              items:
+                                type: string
+                              maxItems: 5
+                              type: array
+                          required:
+                          - matchValues
+                          - matchVariable
+                          - operator
+                          type: object
+                        maxItems: 100
+                        type: array
+                      name:
+                        type: string
+                      priority:
+                        format: int64
+                        type: integer
+                      rateLimitDurationInMinutes:
+                        format: int64
+                        type: integer
+                      rateLimitThreshold:
+                        format: int64
+                        type: integer
+                      type:
+                        type: string
+                    required:
+                    - action
+                    - name
+                    - type
+                    type: object
+                  maxItems: 100
+                  type: array
+                enabled:
+                  type: boolean
+                frontendEndpointIDS:
+                  items:
+                    type: string
+                  type: array
+                id:
+                  type: string
+                location:
+                  type: string
+                managedRule:
+                  items:
+                    properties:
+                      exclusion:
+                        items:
+                          properties:
+                            matchVariable:
+                              type: string
+                            operator:
+                              type: string
+                            selector:
+                              type: string
+                          required:
+                          - matchVariable
+                          - operator
+                          - selector
+                          type: object
+                        maxItems: 100
+                        type: array
+                      override:
+                        items:
+                          properties:
+                            exclusion:
+                              items:
+                                properties:
+                                  matchVariable:
+                                    type: string
+                                  operator:
+                                    type: string
+                                  selector:
+                                    type: string
+                                required:
+                                - matchVariable
+                                - operator
+                                - selector
+                                type: object
+                              maxItems: 100
+                              type: array
+                            rule:
+                              items:
+                                properties:
+                                  action:
+                                    type: string
+                                  enabled:
+                                    type: boolean
+                                  exclusion:
+                                    items:
+                                      properties:
+                                        matchVariable:
+                                          type: string
+                                        operator:
+                                          type: string
+                                        selector:
+                                          type: string
+                                      required:
+                                      - matchVariable
+                                      - operator
+                                      - selector
+                                      type: object
+                                    maxItems: 100
+                                    type: array
+                                  ruleID:
+                                    type: string
+                                required:
+                                - action
+                                - ruleID
+                                type: object
+                              maxItems: 1000
+                              type: array
+                            ruleGroupName:
+                              type: string
+                          required:
+                          - ruleGroupName
+                          type: object
+                        maxItems: 100
+                        type: array
+                      type:
+                        type: string
+                      version:
+                        type: string
+                    required:
+                    - type
+                    - version
+                    type: object
+                  maxItems: 100
+                  type: array
+                mode:
+                  type: string
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                redirectURL:
+                  type: string
+                resourceGroupName:
+                  type: string
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+              required:
+              - name
+              - providerRef
+              - resourceGroupName
+              type: object
+            phase:
+              type: string
+            state:
+              properties:
+                lineage:
+                  type: string
+                serial:
+                  format: int64
+                  type: integer
+                terraform_version:
+                  type: string
+                version:
+                  format: int64
+                  type: integer
+              required:
+              - lineage
+              - serial
+              - terraform_version
+              - version
+              type: object
+          type: object
+      type: object
+  version: v1alpha1
+  versions:
+  - name: v1alpha1
+    served: true
+    storage: true

@@ -47,12 +47,14 @@ type ProjectSpec struct {
 	// the date and time when the project was created, (ISO8601)
 	// +optional
 	CreatedAt string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
-	// the descirption of the project
+	// the description of the project
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// the environment of the project's resources
 	// +optional
 	Environment string `json:"environment,omitempty" tf:"environment,omitempty"`
+	// +optional
+	IsDefault bool `json:"isDefault,omitempty" tf:"is_default,omitempty"`
 	// the human-readable name for the project
 	Name string `json:"name" tf:"name"`
 	// the id of the project owner.

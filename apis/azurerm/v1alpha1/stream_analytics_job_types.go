@@ -44,16 +44,22 @@ type StreamAnalyticsJobSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	CompatibilityLevel                 string `json:"compatibilityLevel" tf:"compatibility_level"`
-	DataLocale                         string `json:"dataLocale" tf:"data_locale"`
-	EventsLateArrivalMaxDelayInSeconds int64  `json:"eventsLateArrivalMaxDelayInSeconds" tf:"events_late_arrival_max_delay_in_seconds"`
-	EventsOutOfOrderMaxDelayInSeconds  int64  `json:"eventsOutOfOrderMaxDelayInSeconds" tf:"events_out_of_order_max_delay_in_seconds"`
-	EventsOutOfOrderPolicy             string `json:"eventsOutOfOrderPolicy" tf:"events_out_of_order_policy"`
 	// +optional
-	JobID             string `json:"jobID,omitempty" tf:"job_id,omitempty"`
-	Location          string `json:"location" tf:"location"`
-	Name              string `json:"name" tf:"name"`
-	OutputErrorPolicy string `json:"outputErrorPolicy" tf:"output_error_policy"`
+	CompatibilityLevel string `json:"compatibilityLevel,omitempty" tf:"compatibility_level,omitempty"`
+	// +optional
+	DataLocale string `json:"dataLocale,omitempty" tf:"data_locale,omitempty"`
+	// +optional
+	EventsLateArrivalMaxDelayInSeconds int64 `json:"eventsLateArrivalMaxDelayInSeconds,omitempty" tf:"events_late_arrival_max_delay_in_seconds,omitempty"`
+	// +optional
+	EventsOutOfOrderMaxDelayInSeconds int64 `json:"eventsOutOfOrderMaxDelayInSeconds,omitempty" tf:"events_out_of_order_max_delay_in_seconds,omitempty"`
+	// +optional
+	EventsOutOfOrderPolicy string `json:"eventsOutOfOrderPolicy,omitempty" tf:"events_out_of_order_policy,omitempty"`
+	// +optional
+	JobID    string `json:"jobID,omitempty" tf:"job_id,omitempty"`
+	Location string `json:"location" tf:"location"`
+	Name     string `json:"name" tf:"name"`
+	// +optional
+	OutputErrorPolicy string `json:"outputErrorPolicy,omitempty" tf:"output_error_policy,omitempty"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	StreamingUnits    int64  `json:"streamingUnits" tf:"streaming_units"`
 	// +optional

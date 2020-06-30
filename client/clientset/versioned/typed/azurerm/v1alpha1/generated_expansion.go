@@ -18,6 +18,8 @@ limitations under the License.
 
 package v1alpha1
 
+type AdvancedThreatProtectionExpansion interface{}
+
 type AnalysisServicesServerExpansion interface{}
 
 type ApiManagementExpansion interface{}
@@ -40,9 +42,21 @@ type ApiManagementBackendExpansion interface{}
 
 type ApiManagementCertificateExpansion interface{}
 
+type ApiManagementDiagnosticExpansion interface{}
+
 type ApiManagementGroupExpansion interface{}
 
 type ApiManagementGroupUserExpansion interface{}
+
+type ApiManagementIdentityProviderAadExpansion interface{}
+
+type ApiManagementIdentityProviderFacebookExpansion interface{}
+
+type ApiManagementIdentityProviderGoogleExpansion interface{}
+
+type ApiManagementIdentityProviderMicrosoftExpansion interface{}
+
+type ApiManagementIdentityProviderTwitterExpansion interface{}
 
 type ApiManagementLoggerExpansion interface{}
 
@@ -62,9 +76,15 @@ type ApiManagementSubscriptionExpansion interface{}
 
 type ApiManagementUserExpansion interface{}
 
+type AppConfigurationExpansion interface{}
+
 type AppServiceExpansion interface{}
 
 type AppServiceActiveSlotExpansion interface{}
+
+type AppServiceCertificateExpansion interface{}
+
+type AppServiceCertificateOrderExpansion interface{}
 
 type AppServiceCustomHostnameBindingExpansion interface{}
 
@@ -72,11 +92,17 @@ type AppServicePlanExpansion interface{}
 
 type AppServiceSlotExpansion interface{}
 
+type AppServiceSourceControlTokenExpansion interface{}
+
+type AppServiceVirtualNetworkSwiftConnectionExpansion interface{}
+
 type ApplicationGatewayExpansion interface{}
 
 type ApplicationInsightsExpansion interface{}
 
 type ApplicationInsightsAPIKeyExpansion interface{}
+
+type ApplicationInsightsAnalyticsItemExpansion interface{}
 
 type ApplicationInsightsWebTestExpansion interface{}
 
@@ -84,11 +110,15 @@ type ApplicationSecurityGroupExpansion interface{}
 
 type AutomationAccountExpansion interface{}
 
+type AutomationCertificateExpansion interface{}
+
 type AutomationCredentialExpansion interface{}
 
 type AutomationDscConfigurationExpansion interface{}
 
 type AutomationDscNodeconfigurationExpansion interface{}
+
+type AutomationJobScheduleExpansion interface{}
 
 type AutomationModuleExpansion interface{}
 
@@ -114,6 +144,18 @@ type AzureadServicePrincipalExpansion interface{}
 
 type AzureadServicePrincipalPasswordExpansion interface{}
 
+type BackupContainerStorageAccountExpansion interface{}
+
+type BackupPolicyFileShareExpansion interface{}
+
+type BackupPolicyVmExpansion interface{}
+
+type BackupProtectedFileShareExpansion interface{}
+
+type BackupProtectedVmExpansion interface{}
+
+type BastionHostExpansion interface{}
+
 type BatchAccountExpansion interface{}
 
 type BatchApplicationExpansion interface{}
@@ -121,6 +163,18 @@ type BatchApplicationExpansion interface{}
 type BatchCertificateExpansion interface{}
 
 type BatchPoolExpansion interface{}
+
+type BotChannelEmailExpansion interface{}
+
+type BotChannelMsTeamsExpansion interface{}
+
+type BotChannelSlackExpansion interface{}
+
+type BotChannelsRegistrationExpansion interface{}
+
+type BotConnectionExpansion interface{}
+
+type BotWebAppExpansion interface{}
 
 type CdnEndpointExpansion interface{}
 
@@ -134,19 +188,29 @@ type ContainerGroupExpansion interface{}
 
 type ContainerRegistryExpansion interface{}
 
+type ContainerRegistryWebhookExpansion interface{}
+
 type ContainerServiceExpansion interface{}
 
 type CosmosdbAccountExpansion interface{}
 
 type CosmosdbCassandraKeyspaceExpansion interface{}
 
+type CosmosdbGremlinDatabaseExpansion interface{}
+
+type CosmosdbGremlinGraphExpansion interface{}
+
 type CosmosdbMongoCollectionExpansion interface{}
 
 type CosmosdbMongoDatabaseExpansion interface{}
 
+type CosmosdbSQLContainerExpansion interface{}
+
 type CosmosdbSQLDatabaseExpansion interface{}
 
 type CosmosdbTableExpansion interface{}
+
+type DashboardExpansion interface{}
 
 type DataFactoryExpansion interface{}
 
@@ -155,6 +219,8 @@ type DataFactoryDatasetMysqlExpansion interface{}
 type DataFactoryDatasetPostgresqlExpansion interface{}
 
 type DataFactoryDatasetSQLServerTableExpansion interface{}
+
+type DataFactoryIntegrationRuntimeManagedExpansion interface{}
 
 type DataFactoryLinkedServiceDataLakeStorageGen2Expansion interface{}
 
@@ -165,6 +231,8 @@ type DataFactoryLinkedServicePostgresqlExpansion interface{}
 type DataFactoryLinkedServiceSQLServerExpansion interface{}
 
 type DataFactoryPipelineExpansion interface{}
+
+type DataFactoryTriggerScheduleExpansion interface{}
 
 type DataLakeAnalyticsAccountExpansion interface{}
 
@@ -180,17 +248,25 @@ type DatabricksWorkspaceExpansion interface{}
 
 type DdosProtectionPlanExpansion interface{}
 
+type DedicatedHostExpansion interface{}
+
+type DedicatedHostGroupExpansion interface{}
+
 type DevTestLabExpansion interface{}
 
 type DevTestLinuxVirtualMachineExpansion interface{}
 
 type DevTestPolicyExpansion interface{}
 
+type DevTestScheduleExpansion interface{}
+
 type DevTestVirtualNetworkExpansion interface{}
 
 type DevTestWindowsVirtualMachineExpansion interface{}
 
 type DevspaceControllerExpansion interface{}
+
+type DiskEncryptionSetExpansion interface{}
 
 type DnsARecordExpansion interface{}
 
@@ -226,6 +302,8 @@ type EventhubConsumerGroupExpansion interface{}
 
 type EventhubNamespaceAuthorizationRuleExpansion interface{}
 
+type EventhubNamespaceDisasterRecoveryConfigExpansion interface{}
+
 type EventhubNamespace_Expansion interface{}
 
 type ExpressRouteCircuitExpansion interface{}
@@ -241,6 +319,10 @@ type FirewallApplicationRuleCollectionExpansion interface{}
 type FirewallNATRuleCollectionExpansion interface{}
 
 type FirewallNetworkRuleCollectionExpansion interface{}
+
+type FrontdoorExpansion interface{}
+
+type FrontdoorFirewallPolicyExpansion interface{}
 
 type FunctionAppExpansion interface{}
 
@@ -260,6 +342,8 @@ type HdinsightSparkClusterExpansion interface{}
 
 type HdinsightStormClusterExpansion interface{}
 
+type HealthcareServiceExpansion interface{}
+
 type ImageExpansion interface{}
 
 type IotDpsExpansion interface{}
@@ -269,6 +353,24 @@ type IotDpsCertificateExpansion interface{}
 type IothubExpansion interface{}
 
 type IothubConsumerGroupExpansion interface{}
+
+type IothubDpsExpansion interface{}
+
+type IothubDpsCertificateExpansion interface{}
+
+type IothubDpsSharedAccessPolicyExpansion interface{}
+
+type IothubEndpointEventhubExpansion interface{}
+
+type IothubEndpointServicebusQueueExpansion interface{}
+
+type IothubEndpointServicebusTopicExpansion interface{}
+
+type IothubEndpointStorageContainerExpansion interface{}
+
+type IothubFallbackRouteExpansion interface{}
+
+type IothubRouteExpansion interface{}
 
 type IothubSharedAccessPolicyExpansion interface{}
 
@@ -283,6 +385,16 @@ type KeyVaultKeyExpansion interface{}
 type KeyVaultSecretExpansion interface{}
 
 type KubernetesClusterExpansion interface{}
+
+type KubernetesClusterNodePoolExpansion interface{}
+
+type KustoClusterExpansion interface{}
+
+type KustoDatabaseExpansion interface{}
+
+type KustoDatabasePrincipalExpansion interface{}
+
+type KustoEventhubDataConnectionExpansion interface{}
 
 type LbExpansion interface{}
 
@@ -328,11 +440,17 @@ type ManagementLockExpansion interface{}
 
 type MapsAccountExpansion interface{}
 
+type MariadbConfigurationExpansion interface{}
+
 type MariadbDatabaseExpansion interface{}
 
 type MariadbFirewallRuleExpansion interface{}
 
 type MariadbServerExpansion interface{}
+
+type MariadbVirtualNetworkRuleExpansion interface{}
+
+type MarketplaceAgreementExpansion interface{}
 
 type MediaServicesAccountExpansion interface{}
 
@@ -352,7 +470,13 @@ type MonitorMetricAlertExpansion interface{}
 
 type MonitorMetricAlertruleExpansion interface{}
 
+type MssqlDatabaseVulnerabilityAssessmentRuleBaselineExpansion interface{}
+
 type MssqlElasticpoolExpansion interface{}
+
+type MssqlServerSecurityAlertPolicyExpansion interface{}
+
+type MssqlServerVulnerabilityAssessmentExpansion interface{}
 
 type MysqlConfigurationExpansion interface{}
 
@@ -363,6 +487,16 @@ type MysqlFirewallRuleExpansion interface{}
 type MysqlServerExpansion interface{}
 
 type MysqlVirtualNetworkRuleExpansion interface{}
+
+type NatGatewayExpansion interface{}
+
+type NetappAccountExpansion interface{}
+
+type NetappPoolExpansion interface{}
+
+type NetappSnapshotExpansion interface{}
+
+type NetappVolumeExpansion interface{}
 
 type NetworkConnectionMonitorExpansion interface{}
 
@@ -388,6 +522,8 @@ type NetworkSecurityRuleExpansion interface{}
 
 type NetworkWatcherExpansion interface{}
 
+type NetworkWatcherFlowLogExpansion interface{}
+
 type NotificationHubExpansion interface{}
 
 type NotificationHubAuthorizationRuleExpansion interface{}
@@ -395,6 +531,8 @@ type NotificationHubAuthorizationRuleExpansion interface{}
 type NotificationHubNamespace_Expansion interface{}
 
 type PacketCaptureExpansion interface{}
+
+type PointToSiteVPNGatewayExpansion interface{}
 
 type PolicyAssignmentExpansion interface{}
 
@@ -414,21 +552,55 @@ type PostgresqlVirtualNetworkRuleExpansion interface{}
 
 type PrivateDNSARecordExpansion interface{}
 
+type PrivateDNSAaaaRecordExpansion interface{}
+
+type PrivateDNSCnameRecordExpansion interface{}
+
+type PrivateDNSMxRecordExpansion interface{}
+
+type PrivateDNSPtrRecordExpansion interface{}
+
+type PrivateDNSSrvRecordExpansion interface{}
+
 type PrivateDNSZoneExpansion interface{}
+
+type PrivateDNSZoneVirtualNetworkLinkExpansion interface{}
+
+type PrivateEndpointExpansion interface{}
+
+type PrivateLinkEndpointExpansion interface{}
+
+type PrivateLinkServiceExpansion interface{}
+
+type ProximityPlacementGroupExpansion interface{}
 
 type PublicIPExpansion interface{}
 
 type PublicIPPrefixExpansion interface{}
 
+type RecoveryNetworkMappingExpansion interface{}
+
+type RecoveryReplicatedVmExpansion interface{}
+
+type RecoveryServicesFabricExpansion interface{}
+
 type RecoveryServicesProtectedVmExpansion interface{}
 
+type RecoveryServicesProtectionContainerExpansion interface{}
+
+type RecoveryServicesProtectionContainerMappingExpansion interface{}
+
 type RecoveryServicesProtectionPolicyVmExpansion interface{}
+
+type RecoveryServicesReplicationPolicyExpansion interface{}
 
 type RecoveryServicesVaultExpansion interface{}
 
 type RedisCacheExpansion interface{}
 
 type RedisFirewallRuleExpansion interface{}
+
+type RelayHybridConnectionExpansion interface{}
 
 type RelayNamespaceExpansion interface{}
 
@@ -480,6 +652,18 @@ type SharedImageVersionExpansion interface{}
 
 type SignalrServiceExpansion interface{}
 
+type SiteRecoveryFabricExpansion interface{}
+
+type SiteRecoveryNetworkMappingExpansion interface{}
+
+type SiteRecoveryProtectionContainerExpansion interface{}
+
+type SiteRecoveryProtectionContainerMappingExpansion interface{}
+
+type SiteRecoveryReplicatedVmExpansion interface{}
+
+type SiteRecoveryReplicationPolicyExpansion interface{}
+
 type SnapshotExpansion interface{}
 
 type SqlActiveDirectoryAdministratorExpansion interface{}
@@ -487,6 +671,8 @@ type SqlActiveDirectoryAdministratorExpansion interface{}
 type SqlDatabaseExpansion interface{}
 
 type SqlElasticpoolExpansion interface{}
+
+type SqlFailoverGroupExpansion interface{}
 
 type SqlFirewallRuleExpansion interface{}
 
@@ -496,9 +682,15 @@ type SqlVirtualNetworkRuleExpansion interface{}
 
 type StorageAccountExpansion interface{}
 
+type StorageAccountNetworkRulesExpansion interface{}
+
 type StorageBlobExpansion interface{}
 
 type StorageContainerExpansion interface{}
+
+type StorageDataLakeGen2FilesystemExpansion interface{}
+
+type StorageManagementPolicyExpansion interface{}
 
 type StorageQueueExpansion interface{}
 
@@ -522,6 +714,10 @@ type StreamAnalyticsOutputMssqlExpansion interface{}
 
 type StreamAnalyticsOutputServicebusQueueExpansion interface{}
 
+type StreamAnalyticsOutputServicebusTopicExpansion interface{}
+
+type StreamAnalyticsReferenceInputBlobExpansion interface{}
+
 type StreamAnalyticsStreamInputBlobExpansion interface{}
 
 type StreamAnalyticsStreamInputEventhubExpansion interface{}
@@ -529,6 +725,8 @@ type StreamAnalyticsStreamInputEventhubExpansion interface{}
 type StreamAnalyticsStreamInputIothubExpansion interface{}
 
 type SubnetExpansion interface{}
+
+type SubnetNATGatewayAssociationExpansion interface{}
 
 type SubnetNetworkSecurityGroupAssociationExpansion interface{}
 
@@ -541,6 +739,8 @@ type TrafficManagerEndpointExpansion interface{}
 type TrafficManagerProfileExpansion interface{}
 
 type UserAssignedIdentityExpansion interface{}
+
+type VirtualHubExpansion interface{}
 
 type VirtualMachineExpansion interface{}
 
@@ -557,3 +757,11 @@ type VirtualNetworkGatewayExpansion interface{}
 type VirtualNetworkGatewayConnectionExpansion interface{}
 
 type VirtualNetworkPeeringExpansion interface{}
+
+type VirtualWANExpansion interface{}
+
+type VpnGatewayExpansion interface{}
+
+type VpnServerConfigurationExpansion interface{}
+
+type WebApplicationFirewallPolicyExpansion interface{}

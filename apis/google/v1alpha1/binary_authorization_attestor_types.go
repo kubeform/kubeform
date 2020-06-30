@@ -39,12 +39,23 @@ type BinaryAuthorizationAttestor struct {
 	Status            BinaryAuthorizationAttestorStatus `json:"status,omitempty"`
 }
 
+type BinaryAuthorizationAttestorSpecAttestationAuthorityNotePublicKeysPkixPublicKey struct {
+	// +optional
+	PublicKeyPem string `json:"publicKeyPem,omitempty" tf:"public_key_pem,omitempty"`
+	// +optional
+	SignatureAlgorithm string `json:"signatureAlgorithm,omitempty" tf:"signature_algorithm,omitempty"`
+}
+
 type BinaryAuthorizationAttestorSpecAttestationAuthorityNotePublicKeys struct {
-	AsciiArmoredPgpPublicKey string `json:"asciiArmoredPgpPublicKey" tf:"ascii_armored_pgp_public_key"`
+	// +optional
+	AsciiArmoredPgpPublicKey string `json:"asciiArmoredPgpPublicKey,omitempty" tf:"ascii_armored_pgp_public_key,omitempty"`
 	// +optional
 	Comment string `json:"comment,omitempty" tf:"comment,omitempty"`
 	// +optional
 	ID string `json:"ID,omitempty" tf:"id,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	PkixPublicKey []BinaryAuthorizationAttestorSpecAttestationAuthorityNotePublicKeysPkixPublicKey `json:"pkixPublicKey,omitempty" tf:"pkix_public_key,omitempty"`
 }
 
 type BinaryAuthorizationAttestorSpecAttestationAuthorityNote struct {

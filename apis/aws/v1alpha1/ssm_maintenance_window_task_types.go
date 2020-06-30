@@ -51,6 +51,85 @@ type SsmMaintenanceWindowTaskSpecTargets struct {
 	Values []string `json:"values" tf:"values"`
 }
 
+type SsmMaintenanceWindowTaskSpecTaskInvocationParametersAutomationParametersParameter struct {
+	Name   string   `json:"name" tf:"name"`
+	Values []string `json:"values" tf:"values"`
+}
+
+type SsmMaintenanceWindowTaskSpecTaskInvocationParametersAutomationParameters struct {
+	// +optional
+	DocumentVersion string `json:"documentVersion,omitempty" tf:"document_version,omitempty"`
+	// +optional
+	Parameter []SsmMaintenanceWindowTaskSpecTaskInvocationParametersAutomationParametersParameter `json:"parameter,omitempty" tf:"parameter,omitempty"`
+}
+
+type SsmMaintenanceWindowTaskSpecTaskInvocationParametersLambdaParameters struct {
+	// +optional
+	ClientContext string `json:"clientContext,omitempty" tf:"client_context,omitempty"`
+	// +optional
+	Payload string `json:"-" sensitive:"true" tf:"payload,omitempty"`
+	// +optional
+	Qualifier string `json:"qualifier,omitempty" tf:"qualifier,omitempty"`
+}
+
+type SsmMaintenanceWindowTaskSpecTaskInvocationParametersRunCommandParametersNotificationConfig struct {
+	// +optional
+	NotificationArn string `json:"notificationArn,omitempty" tf:"notification_arn,omitempty"`
+	// +optional
+	NotificationEvents []string `json:"notificationEvents,omitempty" tf:"notification_events,omitempty"`
+	// +optional
+	NotificationType string `json:"notificationType,omitempty" tf:"notification_type,omitempty"`
+}
+
+type SsmMaintenanceWindowTaskSpecTaskInvocationParametersRunCommandParametersParameter struct {
+	Name   string   `json:"name" tf:"name"`
+	Values []string `json:"values" tf:"values"`
+}
+
+type SsmMaintenanceWindowTaskSpecTaskInvocationParametersRunCommandParameters struct {
+	// +optional
+	Comment string `json:"comment,omitempty" tf:"comment,omitempty"`
+	// +optional
+	DocumentHash string `json:"documentHash,omitempty" tf:"document_hash,omitempty"`
+	// +optional
+	DocumentHashType string `json:"documentHashType,omitempty" tf:"document_hash_type,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	NotificationConfig []SsmMaintenanceWindowTaskSpecTaskInvocationParametersRunCommandParametersNotificationConfig `json:"notificationConfig,omitempty" tf:"notification_config,omitempty"`
+	// +optional
+	OutputS3Bucket string `json:"outputS3Bucket,omitempty" tf:"output_s3_bucket,omitempty"`
+	// +optional
+	OutputS3KeyPrefix string `json:"outputS3KeyPrefix,omitempty" tf:"output_s3_key_prefix,omitempty"`
+	// +optional
+	Parameter []SsmMaintenanceWindowTaskSpecTaskInvocationParametersRunCommandParametersParameter `json:"parameter,omitempty" tf:"parameter,omitempty"`
+	// +optional
+	ServiceRoleArn string `json:"serviceRoleArn,omitempty" tf:"service_role_arn,omitempty"`
+	// +optional
+	TimeoutSeconds int64 `json:"timeoutSeconds,omitempty" tf:"timeout_seconds,omitempty"`
+}
+
+type SsmMaintenanceWindowTaskSpecTaskInvocationParametersStepFunctionsParameters struct {
+	// +optional
+	Input string `json:"-" sensitive:"true" tf:"input,omitempty"`
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+}
+
+type SsmMaintenanceWindowTaskSpecTaskInvocationParameters struct {
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	AutomationParameters []SsmMaintenanceWindowTaskSpecTaskInvocationParametersAutomationParameters `json:"automationParameters,omitempty" tf:"automation_parameters,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	LambdaParameters []SsmMaintenanceWindowTaskSpecTaskInvocationParametersLambdaParameters `json:"lambdaParameters,omitempty" tf:"lambda_parameters,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	RunCommandParameters []SsmMaintenanceWindowTaskSpecTaskInvocationParametersRunCommandParameters `json:"runCommandParameters,omitempty" tf:"run_command_parameters,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	StepFunctionsParameters []SsmMaintenanceWindowTaskSpecTaskInvocationParametersStepFunctionsParameters `json:"stepFunctionsParameters,omitempty" tf:"step_functions_parameters,omitempty"`
+}
+
 type SsmMaintenanceWindowTaskSpecTaskParameters struct {
 	Name   string   `json:"name" tf:"name"`
 	Values []string `json:"values" tf:"values"`
@@ -61,10 +140,13 @@ type SsmMaintenanceWindowTaskSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
+
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
+	// Deprecated
 	LoggingInfo    []SsmMaintenanceWindowTaskSpecLoggingInfo `json:"loggingInfo,omitempty" tf:"logging_info,omitempty"`
 	MaxConcurrency string                                    `json:"maxConcurrency" tf:"max_concurrency"`
 	MaxErrors      string                                    `json:"maxErrors" tf:"max_errors"`
@@ -76,6 +158,10 @@ type SsmMaintenanceWindowTaskSpec struct {
 	Targets        []SsmMaintenanceWindowTaskSpecTargets `json:"targets" tf:"targets"`
 	TaskArn        string                                `json:"taskArn" tf:"task_arn"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	TaskInvocationParameters []SsmMaintenanceWindowTaskSpecTaskInvocationParameters `json:"taskInvocationParameters,omitempty" tf:"task_invocation_parameters,omitempty"`
+	// +optional
+	// Deprecated
 	TaskParameters []SsmMaintenanceWindowTaskSpecTaskParameters `json:"taskParameters,omitempty" tf:"task_parameters,omitempty"`
 	TaskType       string                                       `json:"taskType" tf:"task_type"`
 	WindowID       string                                       `json:"windowID" tf:"window_id"`

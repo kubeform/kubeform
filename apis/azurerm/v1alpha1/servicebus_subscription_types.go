@@ -56,6 +56,8 @@ type ServicebusSubscriptionSpec struct {
 	// +optional
 	EnableBatchedOperations bool `json:"enableBatchedOperations,omitempty" tf:"enable_batched_operations,omitempty"`
 	// +optional
+	ForwardDeadLetteredMessagesTo string `json:"forwardDeadLetteredMessagesTo,omitempty" tf:"forward_dead_lettered_messages_to,omitempty"`
+	// +optional
 	ForwardTo string `json:"forwardTo,omitempty" tf:"forward_to,omitempty"`
 	// +optional
 	// Deprecated

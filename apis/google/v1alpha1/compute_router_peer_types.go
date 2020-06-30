@@ -39,11 +39,24 @@ type ComputeRouterPeer struct {
 	Status            ComputeRouterPeerStatus `json:"status,omitempty"`
 }
 
+type ComputeRouterPeerSpecAdvertisedIPRanges struct {
+	// +optional
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// +optional
+	Range string `json:"range,omitempty" tf:"range,omitempty"`
+}
+
 type ComputeRouterPeerSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// +optional
+	AdvertiseMode string `json:"advertiseMode,omitempty" tf:"advertise_mode,omitempty"`
+	// +optional
+	AdvertisedGroups []string `json:"advertisedGroups,omitempty" tf:"advertised_groups,omitempty"`
+	// +optional
+	AdvertisedIPRanges []ComputeRouterPeerSpecAdvertisedIPRanges `json:"advertisedIPRanges,omitempty" tf:"advertised_ip_ranges,omitempty"`
 	// +optional
 	AdvertisedRoutePriority int64  `json:"advertisedRoutePriority,omitempty" tf:"advertised_route_priority,omitempty"`
 	Interface               string `json:"interface" tf:"interface"`

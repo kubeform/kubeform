@@ -73,7 +73,9 @@ type ComputeURLMapSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	DefaultService string `json:"defaultService" tf:"default_service"`
+	// +optional
+	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
+	DefaultService    string `json:"defaultService" tf:"default_service"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -81,7 +83,7 @@ type ComputeURLMapSpec struct {
 	// +optional
 	HostRule []ComputeURLMapSpecHostRule `json:"hostRule,omitempty" tf:"host_rule,omitempty"`
 	// +optional
-	MapID string `json:"mapID,omitempty" tf:"map_id,omitempty"`
+	MapID int64  `json:"mapID,omitempty" tf:"map_id,omitempty"`
 	Name  string `json:"name" tf:"name"`
 	// +optional
 	PathMatcher []ComputeURLMapSpecPathMatcher `json:"pathMatcher,omitempty" tf:"path_matcher,omitempty"`

@@ -49,6 +49,8 @@ type RecoveryServicesVaultSpec struct {
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	Sku               string `json:"sku" tf:"sku"`
 	// +optional
+	SoftDeleteEnabled bool `json:"softDeleteEnabled,omitempty" tf:"soft_delete_enabled,omitempty"`
+	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 

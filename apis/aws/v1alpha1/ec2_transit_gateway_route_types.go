@@ -44,8 +44,11 @@ type Ec2TransitGatewayRouteSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	DestinationCIDRBlock       string `json:"destinationCIDRBlock" tf:"destination_cidr_block"`
-	TransitGatewayAttachmentID string `json:"transitGatewayAttachmentID" tf:"transit_gateway_attachment_id"`
+	// +optional
+	Blackhole            bool   `json:"blackhole,omitempty" tf:"blackhole,omitempty"`
+	DestinationCIDRBlock string `json:"destinationCIDRBlock" tf:"destination_cidr_block"`
+	// +optional
+	TransitGatewayAttachmentID string `json:"transitGatewayAttachmentID,omitempty" tf:"transit_gateway_attachment_id,omitempty"`
 	TransitGatewayRouteTableID string `json:"transitGatewayRouteTableID" tf:"transit_gateway_route_table_id"`
 }
 

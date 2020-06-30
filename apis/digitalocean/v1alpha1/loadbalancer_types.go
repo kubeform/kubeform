@@ -86,6 +86,8 @@ type LoadbalancerSpec struct {
 	// +optional
 	DropletTag string `json:"dropletTag,omitempty" tf:"droplet_tag,omitempty"`
 	// +optional
+	EnableBackendKeepalive bool `json:"enableBackendKeepalive,omitempty" tf:"enable_backend_keepalive,omitempty"`
+	// +optional
 	EnableProxyProtocol bool `json:"enableProxyProtocol,omitempty" tf:"enable_proxy_protocol,omitempty"`
 	// +kubebuilder:validation:MinItems=1
 	ForwardingRule []LoadbalancerSpecForwardingRule `json:"forwardingRule" tf:"forwarding_rule"`
@@ -106,6 +108,8 @@ type LoadbalancerSpec struct {
 	// the uniform resource name for the load balancer
 	// +optional
 	Urn string `json:"urn,omitempty" tf:"urn,omitempty"`
+	// +optional
+	VpcUUID string `json:"vpcUUID,omitempty" tf:"vpc_uuid,omitempty"`
 }
 
 type LoadbalancerStatus struct {

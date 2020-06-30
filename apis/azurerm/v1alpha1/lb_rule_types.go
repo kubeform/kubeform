@@ -52,6 +52,8 @@ type LbRuleSpec struct {
 	// +optional
 	EnableFloatingIP bool `json:"enableFloatingIP,omitempty" tf:"enable_floating_ip,omitempty"`
 	// +optional
+	EnableTcpReset bool `json:"enableTcpReset,omitempty" tf:"enable_tcp_reset,omitempty"`
+	// +optional
 	FrontendIPConfigurationID   string `json:"frontendIPConfigurationID,omitempty" tf:"frontend_ip_configuration_id,omitempty"`
 	FrontendIPConfigurationName string `json:"frontendIPConfigurationName" tf:"frontend_ip_configuration_name"`
 	FrontendPort                int64  `json:"frontendPort" tf:"frontend_port"`

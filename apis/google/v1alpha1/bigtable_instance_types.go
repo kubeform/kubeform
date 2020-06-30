@@ -40,14 +40,12 @@ type BigtableInstance struct {
 }
 
 type BigtableInstanceSpecCluster struct {
-	// +optional
-	ClusterID string `json:"clusterID,omitempty" tf:"cluster_id,omitempty"`
+	ClusterID string `json:"clusterID" tf:"cluster_id"`
 	// +optional
 	NumNodes int64 `json:"numNodes,omitempty" tf:"num_nodes,omitempty"`
 	// +optional
 	StorageType string `json:"storageType,omitempty" tf:"storage_type,omitempty"`
-	// +optional
-	Zone string `json:"zone,omitempty" tf:"zone,omitempty"`
+	Zone        string `json:"zone" tf:"zone"`
 }
 
 type BigtableInstanceSpec struct {
@@ -56,27 +54,14 @@ type BigtableInstanceSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	// +kubebuilder:validation:MaxItems=1
 	Cluster []BigtableInstanceSpecCluster `json:"cluster,omitempty" tf:"cluster,omitempty"`
-	// +optional
-	// Deprecated
-	ClusterID string `json:"clusterID,omitempty" tf:"cluster_id,omitempty"`
 	// +optional
 	DisplayName string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 	// +optional
 	InstanceType string `json:"instanceType,omitempty" tf:"instance_type,omitempty"`
 	Name         string `json:"name" tf:"name"`
 	// +optional
-	// Deprecated
-	NumNodes int64 `json:"numNodes,omitempty" tf:"num_nodes,omitempty"`
-	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
-	// +optional
-	// Deprecated
-	StorageType string `json:"storageType,omitempty" tf:"storage_type,omitempty"`
-	// +optional
-	// Deprecated
-	Zone string `json:"zone,omitempty" tf:"zone,omitempty"`
 }
 
 type BigtableInstanceStatus struct {

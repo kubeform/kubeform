@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/hashicorp/terraform/helper/validation"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/validation"
 	"github.com/linode/linodego"
 )
 
@@ -18,7 +18,6 @@ func resourceLinodeNodeBalancerNode() *schema.Resource {
 		Read:   resourceLinodeNodeBalancerNodeRead,
 		Update: resourceLinodeNodeBalancerNodeUpdate,
 		Delete: resourceLinodeNodeBalancerNodeDelete,
-		Exists: resourceLinodeNodeBalancerNodeExists,
 		Importer: &schema.ResourceImporter{
 			State: resourceLinodeNodeBalancerNodeImport,
 		},
@@ -49,8 +48,8 @@ func resourceLinodeNodeBalancerNode() *schema.Resource {
 			},
 			"mode": {
 				Type:         schema.TypeString,
-				Description:  "The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it.",
-				ValidateFunc: validation.StringInSlice([]string{"accept", "reject", "drain"}, false),
+				Description:  "The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. If set to `backup` this backend will only accept traffic if all other nodes are down.",
+				ValidateFunc: validation.StringInSlice([]string{"accept", "reject", "drain", "backup"}, false),
 				Optional:     true,
 				Computed:     true,
 			},
@@ -66,32 +65,6 @@ func resourceLinodeNodeBalancerNode() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceLinodeNodeBalancerNodeExists(d *schema.ResourceData, meta interface{}) (bool, error) {
-	client := meta.(linodego.Client)
-	id, err := strconv.ParseInt(d.Id(), 10, 64)
-	if err != nil {
-		return false, fmt.Errorf("Error parsing Linode NodeBalancerNode ID %s as int: %s", d.Id(), err)
-	}
-
-	nodebalancerID, ok := d.Get("nodebalancer_id").(int)
-	if !ok {
-		return false, fmt.Errorf("Error parsing Linode NodeBalancer ID %v as int", d.Get("nodebalancer_id"))
-	}
-	configID, ok := d.Get("config_id").(int)
-	if !ok {
-		return false, fmt.Errorf("Error parsing Linode NodeBalancer ID %v as int", d.Get("config_id"))
-	}
-
-	_, err = client.GetNodeBalancerNode(context.Background(), nodebalancerID, configID, int(id))
-	if err != nil {
-		if lerr, ok := err.(*linodego.Error); ok && lerr.Code == 404 {
-			return false, nil
-		}
-		return false, fmt.Errorf("Error getting Linode NodeBalancerNode ID %s: %s", d.Id(), err)
-	}
-	return true, nil
 }
 
 func resourceLinodeNodeBalancerNodeRead(d *schema.ResourceData, meta interface{}) error {

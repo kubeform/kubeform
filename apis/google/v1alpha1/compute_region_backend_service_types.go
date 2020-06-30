@@ -62,7 +62,9 @@ type ComputeRegionBackendServiceSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1
 	HealthChecks []string `json:"healthChecks" tf:"health_checks"`
-	Name         string   `json:"name" tf:"name"`
+	// +optional
+	LoadBalancingScheme string `json:"loadBalancingScheme,omitempty" tf:"load_balancing_scheme,omitempty"`
+	Name                string `json:"name" tf:"name"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional

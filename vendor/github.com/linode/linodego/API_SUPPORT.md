@@ -141,6 +141,27 @@ See `template.go` and `template_test.go` for tips on adding new endpoints.
   - [X] `PUT`
   - [X] `DELETE`
 
+## LKE
+
+- `/lke/clusters`
+  - [X] `POST`
+  - [X] `GET`
+  - [X] `PUT`
+  - [X] `DELETE`
+- `/lke/clusters/$id/pools`
+  - [X] `POST`
+  - [X] `GET`
+  - [X] `PUT`
+  - [X] `DELETE`
+- `/lke/clusters/$id/api-endpoint`
+  - [X] `GET`
+- `/lke/clusters/$id/kubeconfig`
+  - [X] `GET`
+- `/lke/clusters/$id/versions`
+  - [X] `GET`
+- `/lke/clusters/$id/versions/$id`
+  - [X] `GET`
+
 ## Longview
 
 - `/longview/clients`
@@ -167,6 +188,8 @@ See `template.go` and `template_test.go` for tips on adding new endpoints.
   - [X] `GET`
   - [X] `PUT`
   - [X] `DELETE`
+- `/nodebalancers/$id/stats`
+  - [X] `GET`
 
 ### NodeBalancer Configs
 
@@ -280,6 +303,31 @@ See `template.go` and `template_test.go` for tips on adding new endpoints.
 - `/account/oauth-clients/$id/thumbnail`
   - [ ] `GET`
   - [ ] `PUT`
+
+### Object Storage Keys
+
+- `/object-storage/keys`
+  - [X] `GET`
+  - [X] `POST`
+- `/object-storage/keys/$id`
+  - [X] `GET`
+  - [X] `PUT`
+  - [X] `DELETE`
+
+### Object Storage Clusters
+- `/object-storage/clusters`
+  - [X] `GET`
+- `/object-storage/clusters/$id`
+  - [X] `GET`
+
+### Object Storage Buckets
+
+- `/object-storage/buckets`
+  - [X] `GET`
+  - [X] `POST`
+- `/object-storage/buckets/$id/$id`
+  - [X] `GET`
+  - [X] `DELETE`
 
 ### Payments
 

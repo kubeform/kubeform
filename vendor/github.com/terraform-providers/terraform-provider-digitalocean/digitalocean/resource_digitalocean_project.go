@@ -3,11 +3,12 @@ package digitalocean
 import (
 	"context"
 	"fmt"
-	"github.com/digitalocean/godo"
-	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/hashicorp/terraform/helper/validation"
 	"log"
 	"strings"
+
+	"github.com/digitalocean/godo"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/validation"
 )
 
 func resourceDigitalOceanProject() *schema.Resource {
@@ -34,7 +35,7 @@ func resourceDigitalOceanProject() *schema.Resource {
 				Type:         schema.TypeString,
 				Optional:     true,
 				Default:      "",
-				Description:  "the descirption of the project",
+				Description:  "the description of the project",
 				ValidateFunc: validation.StringLenBetween(0, 255),
 			},
 			"purpose": {
@@ -64,6 +65,10 @@ func resourceDigitalOceanProject() *schema.Resource {
 				Computed:    true,
 				Description: "the id of the project owner.",
 			},
+			"is_default": {
+				Type:     schema.TypeBool,
+				Computed: true,
+			},
 			"created_at": {
 				Type:        schema.TypeString,
 				Computed:    true,
@@ -77,6 +82,7 @@ func resourceDigitalOceanProject() *schema.Resource {
 			"resources": {
 				Type:        schema.TypeSet,
 				Optional:    true,
+				Computed:    true,
 				Description: "the resources associated with the project",
 				Elem:        &schema.Schema{Type: schema.TypeString},
 			},
@@ -269,16 +275,37 @@ func assignResourcesToProject(client *godo.Client, projectId string, resources *
 	return &urns, nil
 }
 
-func loadResourceURNs(client *godo.Client, projectId string) (*[]interface{}, error) {
-
-	resources, _, err := client.Projects.ListResources(context.Background(), projectId, nil)
-
-	if err != nil {
-		return nil, fmt.Errorf("Error loading resources %s", err)
+func loadResourceURNs(client *godo.Client, projectId string) (*[]string, error) {
+	opts := &godo.ListOptions{
+		Page:    1,
+		PerPage: 200,
 	}
 
-	var urns []interface{}
-	for _, rsrc := range resources {
+	resourceList := []godo.ProjectResource{}
+	for {
+		resources, resp, err := client.Projects.ListResources(context.Background(), projectId, opts)
+		if err != nil {
+			return nil, fmt.Errorf("Error loading project resources: %s", err)
+		}
+
+		for _, r := range resources {
+			resourceList = append(resourceList, r)
+		}
+
+		if resp.Links == nil || resp.Links.IsLastPage() {
+			break
+		}
+
+		page, err := resp.Links.CurrentPage()
+		if err != nil {
+			return nil, fmt.Errorf("Error loading project resources: %s", err)
+		}
+
+		opts.Page = page + 1
+	}
+
+	var urns []string
+	for _, rsrc := range resourceList {
 		urns = append(urns, rsrc.URN)
 	}
 

@@ -49,6 +49,8 @@ type MediaStoreContainerSpec struct {
 	// +optional
 	Endpoint string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
 	Name     string `json:"name" tf:"name"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type MediaStoreContainerStatus struct {

@@ -22,6 +22,7 @@ type TaggedObject struct {
 // SortedObjects currently only includes Instances
 type SortedObjects struct {
 	Instances     []Instance
+	LKEClusters   []LKECluster
 	Domains       []Domain
 	Volumes       []Volume
 	NodeBalancers []NodeBalancer
@@ -35,11 +36,13 @@ type TaggedObjectList []TaggedObject
 
 // TagCreateOptions fields are those accepted by CreateTag
 type TagCreateOptions struct {
-	Label         string `json:"label"`
-	Linodes       []int  `json:"linodes,omitempty"`
-	Domains       []int  `json:"domains,omitempty"`
-	Volumes       []int  `json:"volumes,omitempty"`
-	NodeBalancers []int  `json:"nodebalancers,omitempty"`
+	Label   string `json:"label"`
+	Linodes []int  `json:"linodes,omitempty"`
+	// @TODO is this implemented?
+	LKEClusters   []int `json:"lke_clusters,omitempty"`
+	Domains       []int `json:"domains,omitempty"`
+	Volumes       []int `json:"volumes,omitempty"`
+	NodeBalancers []int `json:"nodebalancers,omitempty"`
 }
 
 // GetCreateOptions converts a Tag to TagCreateOptions for use in CreateTag
@@ -108,6 +111,12 @@ func (i *TaggedObject) fixData() (*TaggedObject, error) {
 			return nil, err
 		}
 		i.Data = obj
+	case "lke_cluster":
+		obj := LKECluster{}
+		if err := json.Unmarshal(i.RawData, &obj); err != nil {
+			return nil, err
+		}
+		i.Data = obj
 	case "nodebalancer":
 		obj := NodeBalancer{}
 		if err := json.Unmarshal(i.RawData, &obj); err != nil {
@@ -135,9 +144,11 @@ func (i *TaggedObject) fixData() (*TaggedObject, error) {
 func (c *Client) ListTaggedObjects(ctx context.Context, label string, opts *ListOptions) (TaggedObjectList, error) {
 	response := TaggedObjectsPagedResponse{}
 	err := c.listHelperWithID(ctx, &response, label, opts)
+
 	if err != nil {
 		return nil, err
 	}
+
 	for i := range response.Data {
 		if _, err := response.Data[i].fixData(); err != nil {
 			return nil, err
@@ -149,6 +160,7 @@ func (c *Client) ListTaggedObjects(ctx context.Context, label string, opts *List
 // SortedObjects converts a list of TaggedObjects into a Sorted Objects struct, for easier access
 func (t TaggedObjectList) SortedObjects() (SortedObjects, error) {
 	so := SortedObjects{}
+
 	for _, o := range t {
 		switch o.Type {
 		case "linode":
@@ -156,6 +168,12 @@ func (t TaggedObjectList) SortedObjects() (SortedObjects, error) {
 				so.Instances = append(so.Instances, instance)
 			} else {
 				return so, errors.New("expected an Instance when Type was \"linode\"")
+			}
+		case "lke_cluster":
+			if lkeCluster, ok := o.Data.(LKECluster); ok {
+				so.LKEClusters = append(so.LKEClusters, lkeCluster)
+			} else {
+				return so, errors.New("expected an LKECluster when Type was \"lke_cluster\"")
 			}
 		case "domain":
 			if domain, ok := o.Data.(Domain); ok {

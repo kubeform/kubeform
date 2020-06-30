@@ -47,6 +47,12 @@ type AppServiceCustomHostnameBindingSpec struct {
 	AppServiceName    string `json:"appServiceName" tf:"app_service_name"`
 	Hostname          string `json:"hostname" tf:"hostname"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	SslState string `json:"sslState,omitempty" tf:"ssl_state,omitempty"`
+	// +optional
+	Thumbprint string `json:"thumbprint,omitempty" tf:"thumbprint,omitempty"`
+	// +optional
+	VirtualIP string `json:"virtualIP,omitempty" tf:"virtual_ip,omitempty"`
 }
 
 type AppServiceCustomHostnameBindingStatus struct {

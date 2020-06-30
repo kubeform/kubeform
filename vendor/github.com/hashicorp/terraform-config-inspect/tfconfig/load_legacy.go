@@ -49,12 +49,20 @@ func loadModuleLegacyHCL(dir string) (*Module, Diagnostics) {
 			}
 
 			type TerraformBlock struct {
-				RequiredVersion string `hcl:"required_version"`
+				RequiredVersion   string      `hcl:"required_version"`
+				RequiredProviders interface{} `hcl:"required_providers"`
+				Fields            []string    `hcl:",decodedFields"`
 			}
 			var block TerraformBlock
 			err = legacyhcl.DecodeObject(&block, item.Val)
 			if err != nil {
 				return nil, diagnosticsErrorf("terraform block: %s", err)
+			}
+
+			for _, field := range block.Fields {
+				if field == "RequiredProviders" {
+					return nil, diagnosticsErrorf("terraform.required_providers must not exist")
+				}
 			}
 
 			if block.RequiredVersion != "" {
@@ -102,6 +110,7 @@ func loadModuleLegacyHCL(dir string) (*Module, Diagnostics) {
 					Type:        block.Type,
 					Description: block.Description,
 					Default:     block.Default,
+					Required:    block.Default == nil,
 					Pos:         sourcePosLegacyHCL(item.Pos(), filename),
 				}
 				if _, exists := mod.Variables[name]; exists {
@@ -267,17 +276,15 @@ func loadModuleLegacyHCL(dir string) (*Module, Diagnostics) {
 				if err != nil {
 					return nil, diagnosticsErrorf("invalid provider block at %s: %s", item.Pos(), err)
 				}
-
-				if block.Version != "" {
-					mod.RequiredProviders[name] = append(mod.RequiredProviders[name], block.Version)
-				}
-
 				// Even if there wasn't an explicit version required, we still
 				// need an entry in our map to signal the unversioned dependency.
 				if _, exists := mod.RequiredProviders[name]; !exists {
-					mod.RequiredProviders[name] = []string{}
+					mod.RequiredProviders[name] = &ProviderRequirement{}
 				}
 
+				if block.Version != "" {
+					mod.RequiredProviders[name].VersionConstraints = append(mod.RequiredProviders[name].VersionConstraints, block.Version)
+				}
 			}
 		}
 	}

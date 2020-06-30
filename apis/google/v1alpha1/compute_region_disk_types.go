@@ -75,6 +75,8 @@ type ComputeRegionDiskSpec struct {
 	LastDetachTimestamp string `json:"lastDetachTimestamp,omitempty" tf:"last_detach_timestamp,omitempty"`
 	Name                string `json:"name" tf:"name"`
 	// +optional
+	PhysicalBlockSizeBytes int64 `json:"physicalBlockSizeBytes,omitempty" tf:"physical_block_size_bytes,omitempty"`
+	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
 	Region string `json:"region,omitempty" tf:"region,omitempty"`

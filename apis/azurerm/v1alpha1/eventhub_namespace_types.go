@@ -39,6 +39,27 @@ type EventhubNamespace_ struct {
 	Status            EventhubNamespace_Status `json:"status,omitempty"`
 }
 
+type EventhubNamespace_SpecNetworkRulesetsIpRule struct {
+	// +optional
+	Action string `json:"action,omitempty" tf:"action,omitempty"`
+	IpMask string `json:"ipMask" tf:"ip_mask"`
+}
+
+type EventhubNamespace_SpecNetworkRulesetsVirtualNetworkRule struct {
+	// +optional
+	IgnoreMissingVirtualNetworkServiceEndpoint bool   `json:"ignoreMissingVirtualNetworkServiceEndpoint,omitempty" tf:"ignore_missing_virtual_network_service_endpoint,omitempty"`
+	SubnetID                                   string `json:"subnetID" tf:"subnet_id"`
+}
+
+type EventhubNamespace_SpecNetworkRulesets struct {
+	DefaultAction string `json:"defaultAction" tf:"default_action"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	IpRule []EventhubNamespace_SpecNetworkRulesetsIpRule `json:"ipRule,omitempty" tf:"ip_rule,omitempty"`
+	// +optional
+	VirtualNetworkRule []EventhubNamespace_SpecNetworkRulesetsVirtualNetworkRule `json:"virtualNetworkRule,omitempty" tf:"virtual_network_rule,omitempty"`
+}
+
 type EventhubNamespace_Spec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
@@ -59,13 +80,17 @@ type EventhubNamespace_Spec struct {
 	// +optional
 	DefaultSecondaryKey string `json:"-" sensitive:"true" tf:"default_secondary_key,omitempty"`
 	// +optional
+	// Deprecated
 	KafkaEnabled bool   `json:"kafkaEnabled,omitempty" tf:"kafka_enabled,omitempty"`
 	Location     string `json:"location" tf:"location"`
 	// +optional
 	MaximumThroughputUnits int64  `json:"maximumThroughputUnits,omitempty" tf:"maximum_throughput_units,omitempty"`
 	Name                   string `json:"name" tf:"name"`
-	ResourceGroupName      string `json:"resourceGroupName" tf:"resource_group_name"`
-	Sku                    string `json:"sku" tf:"sku"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	NetworkRulesets   []EventhubNamespace_SpecNetworkRulesets `json:"networkRulesets,omitempty" tf:"network_rulesets,omitempty"`
+	ResourceGroupName string                                  `json:"resourceGroupName" tf:"resource_group_name"`
+	Sku               string                                  `json:"sku" tf:"sku"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

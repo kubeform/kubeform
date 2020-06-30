@@ -110,7 +110,9 @@ type IothubSpecSharedAccessPolicy struct {
 type IothubSpecSku struct {
 	Capacity int64  `json:"capacity" tf:"capacity"`
 	Name     string `json:"name" tf:"name"`
-	Tier     string `json:"tier" tf:"tier"`
+	// +optional
+	// Deprecated
+	Tier string `json:"tier,omitempty" tf:"tier,omitempty"`
 }
 
 type IothubSpec struct {
@@ -130,6 +132,10 @@ type IothubSpec struct {
 	EventHubOperationsEndpoint string `json:"eventHubOperationsEndpoint,omitempty" tf:"event_hub_operations_endpoint,omitempty"`
 	// +optional
 	EventHubOperationsPath string `json:"eventHubOperationsPath,omitempty" tf:"event_hub_operations_path,omitempty"`
+	// +optional
+	EventHubPartitionCount int64 `json:"eventHubPartitionCount,omitempty" tf:"event_hub_partition_count,omitempty"`
+	// +optional
+	EventHubRetentionInDays int64 `json:"eventHubRetentionInDays,omitempty" tf:"event_hub_retention_in_days,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	FallbackRoute []IothubSpecFallbackRoute `json:"fallbackRoute,omitempty" tf:"fallback_route,omitempty"`

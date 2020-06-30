@@ -10,8 +10,8 @@ import (
 	"time"
 
 	"github.com/digitalocean/godo"
-	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/hashicorp/terraform/helper/validation"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/validation"
 )
 
 func dataSourceDigitalOceanVolumeSnapshot() *schema.Resource {
@@ -26,7 +26,7 @@ func dataSourceDigitalOceanVolumeSnapshot() *schema.Resource {
 			"name_regex": {
 				Type:          schema.TypeString,
 				Optional:      true,
-				ValidateFunc:  validation.ValidateRegexp,
+				ValidateFunc:  validation.StringIsValidRegExp,
 				ConflictsWith: []string{"name"},
 			},
 			"region": {
@@ -65,6 +65,7 @@ func dataSourceDigitalOceanVolumeSnapshot() *schema.Resource {
 				Type:     schema.TypeFloat,
 				Computed: true,
 			},
+			"tags": tagsDataSourceSchema(),
 		},
 	}
 }
@@ -146,6 +147,7 @@ func dataSourceDigitalOceanVolumeSnapshotRead(d *schema.ResourceData, meta inter
 	d.Set("regions", snapshot.Regions)
 	d.Set("volume_id", snapshot.ResourceID)
 	d.Set("size", snapshot.SizeGigaBytes)
+	d.Set("tags", flattenTags(snapshot.Tags))
 
 	return nil
 }

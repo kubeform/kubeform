@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/hashicorp/terraform/helper/validation"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/validation"
 	"github.com/linode/linodego"
 )
 
@@ -18,13 +18,43 @@ const (
 	LinodeInstanceDeleteTimeout = 10 * time.Minute
 )
 
+var linodeInstanceDownsizeFailedMessage = `
+Did you try to resize a linode with implicit, default disks to a smaller type? The provider does
+not automatically scale the boot disk to fit an updated instance type. You may need to switch to
+an explicit disk configuration.
+
+Take a look at the example here:
+https://www.terraform.io/docs/providers/linode/r/instance.html#linode-instance-with-explicit-configs-and-disks`
+
+func resourceLinodeInstanceDeviceDisk() *schema.Resource {
+	return &schema.Resource{
+		Schema: map[string]*schema.Schema{
+			"disk_label": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				Description: "The `label` of the `disk` to map to this `device` slot.",
+			},
+			"disk_id": {
+				Type:        schema.TypeInt,
+				Optional:    true,
+				Computed:    true,
+				Description: "The Disk ID to map to this disk slot",
+			},
+			"volume_id": {
+				Type:        schema.TypeInt,
+				Optional:    true,
+				Description: "The Block Storage volume ID to map to this disk slot",
+			},
+		},
+	}
+}
+
 func resourceLinodeInstance() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceLinodeInstanceCreate,
 		Read:   resourceLinodeInstanceRead,
 		Update: resourceLinodeInstanceUpdate,
 		Delete: resourceLinodeInstanceDelete,
-		Exists: resourceLinodeInstanceExists,
 		Importer: &schema.ResourceImporter{
 			State: schema.ImportStatePassthrough,
 		},
@@ -56,9 +86,7 @@ func resourceLinodeInstance() *schema.Resource {
 				ConflictsWith: []string{"disk", "config"},
 			},
 			"stackscript_data": {
-				Type: schema.TypeMap,
-				Elem: &schema.Schema{Type: schema.TypeString},
-
+				Type:          schema.TypeMap,
 				Description:   "An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.",
 				Optional:      true,
 				ForceNew:      true,
@@ -186,7 +214,6 @@ func resourceLinodeInstance() *schema.Resource {
 			"specs": {
 				Computed: true,
 				Type:     schema.TypeList,
-				MaxItems: 1,
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"disk": {
@@ -255,7 +282,6 @@ func resourceLinodeInstance() *schema.Resource {
 			},
 			"backups": {
 				Type:        schema.TypeList,
-				MaxItems:    1,
 				Description: "Information about this Linode's backups status.",
 				Computed:    true,
 				Elem: &schema.Resource{
@@ -267,7 +293,6 @@ func resourceLinodeInstance() *schema.Resource {
 						},
 						"schedule": {
 							Type:     schema.TypeList,
-							MaxItems: 1,
 							Computed: true,
 							Elem: &schema.Resource{
 								// TODO(displague) these fields are updatable via PUT to instance
@@ -352,7 +377,6 @@ func resourceLinodeInstance() *schema.Resource {
 							MaxItems:    1,
 							Optional:    true,
 							Computed:    true,
-							Default:     nil,
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
 									"sda": {
@@ -360,196 +384,56 @@ func resourceLinodeInstance() *schema.Resource {
 										MaxItems: 1,
 										Computed: true,
 										Optional: true,
-										Default:  nil,
-										Elem: &schema.Resource{
-											Schema: map[string]*schema.Schema{
-												"disk_label": {
-													Type:        schema.TypeString,
-													Optional:    true,
-													Description: "The `label` of the `disk` to map to this `device` slot.",
-												},
-												"disk_id": {
-													Type:        schema.TypeInt,
-													Optional:    true,
-													Computed:    true,
-													Description: "The Disk ID to map to this disk slot",
-												},
-												"volume_id": {
-													Type:        schema.TypeInt,
-													Optional:    true,
-													Description: "The Block Storage volume ID to map to this disk slot",
-												},
-											},
-										},
+										Elem:     resourceLinodeInstanceDeviceDisk(),
 									},
 									"sdb": {
 										Type:     schema.TypeList,
 										MaxItems: 1,
 										Optional: true,
 										Computed: true,
-										Default:  nil,
-										Elem: &schema.Resource{
-											Schema: map[string]*schema.Schema{
-												"disk_label": {
-													Type:     schema.TypeString,
-													Optional: true,
-												},
-												"disk_id": {
-													Type:     schema.TypeInt,
-													Optional: true,
-													Computed: true,
-												},
-												"volume_id": {
-													Type:     schema.TypeInt,
-													Optional: true,
-												},
-											},
-										},
+										Elem:     resourceLinodeInstanceDeviceDisk(),
 									},
 									"sdc": {
 										Type:     schema.TypeList,
 										MaxItems: 1,
 										Optional: true,
 										Computed: true,
-										Default:  nil,
-										Elem: &schema.Resource{
-											Schema: map[string]*schema.Schema{
-												"disk_label": {
-													Type:     schema.TypeString,
-													Optional: true,
-												},
-												"disk_id": {
-													Type:     schema.TypeInt,
-													Optional: true,
-													Computed: true,
-												},
-												"volume_id": {
-													Type:     schema.TypeInt,
-													Optional: true,
-												},
-											},
-										},
+										Elem:     resourceLinodeInstanceDeviceDisk(),
 									},
 									"sdd": {
 										Type:     schema.TypeList,
 										MaxItems: 1,
 										Optional: true,
 										Computed: true,
-										Default:  nil,
-										Elem: &schema.Resource{
-											Schema: map[string]*schema.Schema{
-												"disk_label": {
-													Type:     schema.TypeString,
-													Optional: true,
-												},
-												"disk_id": {
-													Type:     schema.TypeInt,
-													Optional: true,
-													Computed: true,
-												},
-												"volume_id": {
-													Type:     schema.TypeInt,
-													Optional: true,
-												},
-											},
-										},
+										Elem:     resourceLinodeInstanceDeviceDisk(),
 									},
 									"sde": {
 										Type:     schema.TypeList,
 										MaxItems: 1,
 										Optional: true,
 										Computed: true,
-										Default:  nil,
-										Elem: &schema.Resource{
-											Schema: map[string]*schema.Schema{
-												"disk_label": {
-													Type:     schema.TypeString,
-													Optional: true,
-												},
-												"disk_id": {
-													Type:     schema.TypeInt,
-													Optional: true,
-													Computed: true,
-												},
-												"volume_id": {
-													Type:     schema.TypeInt,
-													Optional: true,
-												},
-											},
-										},
+										Elem:     resourceLinodeInstanceDeviceDisk(),
 									},
 									"sdf": {
 										Type:     schema.TypeList,
 										MaxItems: 1,
 										Optional: true,
 										Computed: true,
-										Default:  nil,
-										Elem: &schema.Resource{
-											Schema: map[string]*schema.Schema{
-												"disk_label": {
-													Type:     schema.TypeString,
-													Optional: true,
-												},
-												"disk_id": {
-													Type:     schema.TypeInt,
-													Optional: true,
-													Computed: true,
-												},
-												"volume_id": {
-													Type:     schema.TypeInt,
-													Optional: true,
-												},
-											},
-										},
+										Elem:     resourceLinodeInstanceDeviceDisk(),
 									},
 									"sdg": {
 										Type:     schema.TypeList,
 										MaxItems: 1,
 										Optional: true,
 										Computed: true,
-										Default:  nil,
-										Elem: &schema.Resource{
-											Schema: map[string]*schema.Schema{
-												"disk_label": {
-													Type:     schema.TypeString,
-													Optional: true,
-												},
-												"disk_id": {
-													Type:     schema.TypeInt,
-													Optional: true,
-													Computed: true,
-												},
-												"volume_id": {
-													Type:     schema.TypeInt,
-													Optional: true,
-												},
-											},
-										},
+										Elem:     resourceLinodeInstanceDeviceDisk(),
 									},
 									"sdh": {
 										Type:     schema.TypeList,
 										MaxItems: 1,
 										Optional: true,
 										Computed: true,
-										Default:  nil,
-
-										Elem: &schema.Resource{
-											Schema: map[string]*schema.Schema{
-												"disk_label": {
-													Type:     schema.TypeString,
-													Optional: true,
-												},
-												"disk_id": {
-													Type:     schema.TypeInt,
-													Optional: true,
-													Computed: true,
-												},
-												"volume_id": {
-													Type:     schema.TypeInt,
-													Optional: true,
-												},
-											},
-										},
+										Elem:     resourceLinodeInstanceDeviceDisk(),
 									},
 								},
 							},
@@ -714,38 +598,6 @@ func resourceLinodeInstance() *schema.Resource {
 	}
 }
 
-func validateAll(validators ...schema.SchemaValidateFunc) schema.SchemaValidateFunc {
-	var allWs []string
-	var allErrors []error
-	return func(i interface{}, k string) ([]string, []error) {
-		for _, validator := range validators {
-			ws, errors := validator(i, k)
-			allWs = append(allWs, ws...)
-			allErrors = append(allErrors, errors...)
-		}
-		return allWs, allErrors
-	}
-}
-
-func resourceLinodeInstanceExists(d *schema.ResourceData, meta interface{}) (bool, error) {
-	client := meta.(linodego.Client)
-	id, err := strconv.ParseInt(d.Id(), 10, 64)
-
-	if err != nil {
-		return false, fmt.Errorf("Error parsing Linode instance ID %s as int: %s", d.Id(), err)
-	}
-
-	_, err = client.GetInstance(context.Background(), int(id))
-	if err != nil {
-		if lerr, ok := err.(*linodego.Error); ok && lerr.Code == 404 {
-			return false, nil
-		}
-
-		return false, fmt.Errorf("Error getting Linode Instance %s: %s", d.Id(), err)
-	}
-	return true, nil
-}
-
 func resourceLinodeInstanceRead(d *schema.ResourceData, meta interface{}) error {
 	client := meta.(linodego.Client)
 	id, err := strconv.ParseInt(d.Id(), 10, 64)
@@ -810,30 +662,17 @@ func resourceLinodeInstanceRead(d *schema.ResourceData, meta interface{}) error 
 	flatAlerts := flattenInstanceAlerts(*instance)
 	flatBackups := flattenInstanceBackups(*instance)
 
-	if err := d.Set("backups", flatBackups); err != nil {
-		return fmt.Errorf("Error setting Linode Instance backups: %s", err)
-	}
-
-	if err := d.Set("specs", flatSpecs); err != nil {
-		return fmt.Errorf("Error setting Linode Instance specs: %s", err)
-	}
-
-	if err := d.Set("alerts", flatAlerts); err != nil {
-		return fmt.Errorf("Error setting Linode Instance alerts: %s", err)
-	}
+	d.Set("backups", flatBackups)
+	d.Set("specs", flatSpecs)
+	d.Set("alerts", flatAlerts)
 
 	instanceDisks, err := client.ListInstanceDisks(context.Background(), int(id), nil)
-
 	if err != nil {
 		return fmt.Errorf("Error getting the disks for the Linode instance %d: %s", id, err)
 	}
 
 	disks, swapSize := flattenInstanceDisks(instanceDisks)
-
-	if err := d.Set("disk", disks); err != nil {
-		return fmt.Errorf("Erroring setting Linode Instance disk: %s", err)
-	}
-
+	d.Set("disk", disks)
 	d.Set("swap_size", swapSize)
 
 	instanceConfigs, err := client.ListInstanceConfigs(context.Background(), int(id), nil)
@@ -849,10 +688,7 @@ func resourceLinodeInstanceRead(d *schema.ResourceData, meta interface{}) error 
 
 	configs := flattenInstanceConfigs(instanceConfigs, diskLabelIDMap)
 
-	if err := d.Set("config", configs); err != nil {
-		return fmt.Errorf("Erroring setting Linode Instance config: %s", err)
-	}
-
+	d.Set("config", configs)
 	if len(instanceConfigs) == 1 {
 		d.Set("boot_config_label", instanceConfigs[0].Label)
 	}
@@ -860,22 +696,11 @@ func resourceLinodeInstanceRead(d *schema.ResourceData, meta interface{}) error 
 	return nil
 }
 
-// sliceContains tells whether a contains x.
-func sliceContains(a []string, x string) bool {
-	for _, n := range a {
-		if x == n {
-			return true
-		}
-	}
-	return false
-}
-
 func resourceLinodeInstanceCreate(d *schema.ResourceData, meta interface{}) error {
 	client, ok := meta.(linodego.Client)
 	if !ok {
 		return fmt.Errorf("Invalid Client when creating Linode Instance")
 	}
-	d.Partial(true)
 
 	bootConfig := 0
 	createOpts := linodego.InstanceCreateOptions{
@@ -942,19 +767,6 @@ func resourceLinodeInstanceCreate(d *schema.ResourceData, meta interface{}) erro
 
 	d.SetId(fmt.Sprintf("%d", instance.ID))
 
-	// d.Set("backups_enabled", instance.BackupsEnabled)
-
-	d.SetPartial("private_ip")
-	d.SetPartial("authorized_keys")
-	d.SetPartial("authorized_users")
-	d.SetPartial("root_pass")
-	d.SetPartial("kernel")
-	d.SetPartial("image")
-	d.SetPartial("backup_id")
-	d.SetPartial("stackscript_id")
-	d.SetPartial("stackscript_data")
-	d.SetPartial("swap_size")
-
 	var ips []string
 	for _, ip := range instance.IPv4 {
 		ips = append(ips, ip.String())
@@ -1004,39 +816,36 @@ func resourceLinodeInstanceCreate(d *schema.ResourceData, meta interface{}) erro
 	// - so configs can be referenced as a boot_config_label param
 	var diskIDLabelMap map[string]int
 	var configIDLabelMap map[string]int
-	var diskIDOrdered []int
 
 	if disksOk {
 		_, err = client.WaitForEventFinished(context.Background(), instance.ID, linodego.EntityLinode, linodego.ActionLinodeCreate, *instance.Created, int(d.Timeout(schema.TimeoutCreate).Seconds()))
 		if err != nil {
-			return fmt.Errorf("Error waiting for Instance to finish creating")
+			return fmt.Errorf("Error waiting for Instance to finish creating: %s", err)
 		}
 
-		dsetRaw := d.Get("disk").([]interface{})
-		diskIDLabelMap = make(map[string]int, len(dsetRaw))
-		diskIDOrdered = make([]int, len(dsetRaw))
+		diskSpecs := d.Get("disk").([]interface{})
+		diskIDLabelMap = make(map[string]int, len(diskSpecs))
 
-		for index, dset := range dsetRaw {
-			v := dset.(map[string]interface{})
+		for _, diskSpec := range diskSpecs {
+			diskSpec := diskSpec.(map[string]interface{})
 
-			instanceDisk, err := createInstanceDisk(client, *instance, v, d)
+			instanceDisk, err := createInstanceDisk(client, *instance, diskSpec, d)
 			if err != nil {
 				return err
 			}
-
 			diskIDLabelMap[instanceDisk.Label] = instanceDisk.ID
-			diskIDOrdered[index] = instanceDisk.ID
 		}
 	}
 
 	if configsOk {
-		cset := d.Get("config").([]interface{})
+		configSpecs := d.Get("config").([]interface{})
 		detacher := makeVolumeDetacher(client, d)
 
-		configIDMap, err := createInstanceConfigsFromSet(client, instance.ID, cset, diskIDLabelMap, detacher)
+		configIDMap, err := createInstanceConfigsFromSet(client, instance.ID, configSpecs, diskIDLabelMap, detacher)
 		if err != nil {
 			return err
 		}
+
 		configIDLabelMap = make(map[string]int, len(configIDMap))
 		for k, v := range configIDMap {
 			if len(configIDLabelMap) == 1 {
@@ -1046,8 +855,6 @@ func resourceLinodeInstanceCreate(d *schema.ResourceData, meta interface{}) erro
 			configIDLabelMap[v.Label] = k
 		}
 	}
-
-	d.Partial(false)
 
 	if createOpts.Booted == nil || !*createOpts.Booted {
 		if disksOk && configsOk {
@@ -1076,9 +883,65 @@ func resourceLinodeInstanceCreate(d *schema.ResourceData, meta interface{}) erro
 	return resourceLinodeInstanceRead(d, meta)
 }
 
+func findDiskByFS(disks []linodego.InstanceDisk, fs linodego.DiskFilesystem) *linodego.InstanceDisk {
+	for _, disk := range disks {
+		if disk.Filesystem == fs {
+			return &disk
+		}
+	}
+	return nil
+}
+
+// adjustSwapSizeIfNeeded handles changes to the swap_size attribute if needed. If there is a change, this means resizing
+// the underlying main/swap disks on the instance to match the declared swap size allocation.
+//
+// returns bool describing whether the linode needs to be restarted
+func adjustSwapSizeIfNeeded(d *schema.ResourceData, client *linodego.Client, instance *linodego.Instance) (bool, error) {
+	if !d.HasChange("swap_size") {
+		return false, nil
+	}
+
+	// If the swap_size attribute is set, there are two default disks attached to the instance (the main disk of type ext4
+	// and a swap disk), as custom disk configuration via "disk" nested attributes conflicts with the swap_size.
+	bootDisk, swapDisk, err := getInstanceDefaultDisks(instance.ID, client)
+	if err != nil {
+		return false, err
+	}
+
+	oldSwapVal, newSwapVal := d.GetChange("swap_size")
+	oldSwap, newSwap := oldSwapVal.(int), newSwapVal.(int)
+	diff := newSwap - oldSwap
+	newBootDiskSize := bootDisk.Size - diff
+
+	toResize := []struct {
+		size int
+		disk *linodego.InstanceDisk
+	}{
+		{
+			size: newBootDiskSize,
+			disk: bootDisk,
+		},
+		{
+			size: newSwap,
+			disk: swapDisk,
+		},
+	}
+
+	if bootDisk.Size < newBootDiskSize {
+		// swap disk needs to be downsized first to upsize main disk
+		toResize[0], toResize[1] = toResize[1], toResize[0]
+	}
+
+	for _, resizeOp := range toResize {
+		if err := changeInstanceDiskSize(client, *instance, *resizeOp.disk, resizeOp.size, d); err != nil {
+			return true, err
+		}
+	}
+	return true, nil
+}
+
 func resourceLinodeInstanceUpdate(d *schema.ResourceData, meta interface{}) error {
 	client := meta.(linodego.Client)
-
 	id, err := strconv.ParseInt(d.Id(), 10, 64)
 	if err != nil {
 		return fmt.Errorf("Error parsing Linode Instance ID %s as int: %s", d.Id(), err)
@@ -1089,42 +952,30 @@ func resourceLinodeInstanceUpdate(d *schema.ResourceData, meta interface{}) erro
 		return fmt.Errorf("Error fetching data about the current linode: %s", err)
 	}
 
-	// Handle all simple updates that don't require reboots, configs, or disks
-	d.Partial(true)
-
 	updateOpts := linodego.InstanceUpdateOptions{}
 	simpleUpdate := false
 
 	if d.HasChange("label") {
 		updateOpts.Label = d.Get("label").(string)
-		d.SetPartial("label")
 		simpleUpdate = true
 	}
-
 	if d.HasChange("group") {
 		updateOpts.Group = d.Get("group").(string)
-		d.SetPartial("group")
 		simpleUpdate = true
 	}
-
 	if d.HasChange("tags") {
-		tags := []string{}
+		var tags []string
 		for _, tag := range d.Get("tags").(*schema.Set).List() {
 			tags = append(tags, tag.(string))
 		}
-
 		updateOpts.Tags = &tags
-		d.SetPartial("tags")
 		simpleUpdate = true
 	}
-
 	if d.HasChange("watchdog_enabled") {
 		watchdogEnabled := d.Get("watchdog_enabled").(bool)
 		updateOpts.WatchdogEnabled = &watchdogEnabled
-		d.SetPartial("watchdog_enabled")
 		simpleUpdate = true
 	}
-
 	if d.HasChange("alerts") {
 		updateOpts.Alerts = &linodego.InstanceAlert{}
 		updateOpts.Alerts.CPU = d.Get("alerts.0.cpu").(int)
@@ -1132,21 +983,17 @@ func resourceLinodeInstanceUpdate(d *schema.ResourceData, meta interface{}) erro
 		updateOpts.Alerts.NetworkIn = d.Get("alerts.0.network_in").(int)
 		updateOpts.Alerts.NetworkOut = d.Get("alerts.0.network_out").(int)
 		updateOpts.Alerts.TransferQuota = d.Get("alerts.0.transfer_quota").(int)
-		d.SetPartial("alerts")
-
 		simpleUpdate = true
 	}
 
+	// apply staged simple updates early
 	if simpleUpdate {
 		if instance, err = client.UpdateInstance(context.Background(), instance.ID, updateOpts); err != nil {
 			return fmt.Errorf("Error updating Instance %d: %s", instance.ID, err)
 		}
 	}
 
-	d.Partial(false)
-
 	if d.HasChange("backups_enabled") {
-		d.Partial(true)
 		if d.Get("backups_enabled").(bool) {
 			if err = client.EnableInstanceBackups(context.Background(), instance.ID); err != nil {
 				return err
@@ -1156,74 +1003,75 @@ func resourceLinodeInstanceUpdate(d *schema.ResourceData, meta interface{}) erro
 				return err
 			}
 		}
-		d.SetPartial("backups_enabled")
-		d.Partial(false)
 	}
 
-	var rebootInstance bool
-	var diskIDLabelMap map[string]int
-
-	tfDisksOld, tfDisksNew := d.GetChange("disk")
-	oldDiskSize, newDiskSize := getDiskSizeChange(tfDisksOld, tfDisksNew)
-	targetType := d.Get("type").(string)
-
-	if newDiskSize > oldDiskSize {
-		if d.HasChange("type") {
-			if err = changeInstanceType(&client, instance, targetType, d); err != nil {
-				return err
-			}
-			d.Set("type", targetType)
-		}
-		if rebootInstance, diskIDLabelMap, err = updateInstanceDisks(client, d, *instance, tfDisksOld, tfDisksNew); err != nil {
-			return err
-		}
-	} else {
-		if rebootInstance, diskIDLabelMap, err = updateInstanceDisks(client, d, *instance, tfDisksOld, tfDisksNew); err != nil {
-			return err
-		}
-		if d.HasChange("type") {
-			if err = changeInstanceType(&client, instance, targetType, d); err != nil {
-				return err
-			}
-			d.Set("type", targetType)
-		}
-	}
-
-	if err != nil {
-		return err
-	}
+	rebootInstance := false
 
 	if d.HasChange("private_ip") {
-		if !d.Get("private_ip").(bool) {
+		if _, ok := d.GetOk("private_ip"); !ok {
 			return fmt.Errorf("Error removing private IP address for Instance %d: Removing a Private IP address must be handled through a support ticket", instance.ID)
 		}
 
-		d.Partial(true)
-		resp, err := client.AddInstanceIPAddress(context.Background(), instance.ID, false)
-
+		privateIP, err := client.AddInstanceIPAddress(context.Background(), instance.ID, false)
 		if err != nil {
 			return fmt.Errorf("Error activating private networking on Instance %d: %s", instance.ID, err)
 		}
-
-		d.SetPartial("private_ip")
-		d.Set("private_ip_address", resp.Address)
-		d.SetPartial("private_ip_address")
-		d.Partial(false)
+		d.Set("private_ip_address", privateIP.Address)
 		rebootInstance = true
 	}
 
+	oldSpec, newSpec, err := getInstanceTypeChange(d, &client)
+	if err != nil {
+		return fmt.Errorf("Error getting resize info for instance: %s", err)
+	}
+	upsized := newSpec.Disk > oldSpec.Disk
+
+	if upsized {
+		// The linode was upsized; apply before disk changes to allocate more disk
+		if instance, err = applyInstanceTypeChange(d, &client, instance, newSpec); err != nil {
+			return fmt.Errorf("failed to change instance type: %s", err)
+		}
+		rebootInstance = true
+	}
+
+	if didChange, err := applyInstanceDiskSpec(d, &client, instance, newSpec); err == nil && didChange {
+		rebootInstance = true
+	} else if err != nil && newSpec.Disk < oldSpec.Disk && !d.HasChange("disk") {
+		// Linode was downsized but the pre-existing disk config does not fit new instance spec
+		// This might mean the user tried to downsize an instance with an implicit, default
+		return fmt.Errorf("failed to apply instance disk spec: %s."+linodeInstanceDownsizeFailedMessage, err)
+	} else if err != nil {
+		return fmt.Errorf("failed to apply instance disk spec: %s", err)
+	}
+
+	if oldSpec.ID != newSpec.ID && !upsized {
+		// linode was downsized or changed to a type with the same disk allocation
+		if instance, err = applyInstanceTypeChange(d, &client, instance, newSpec); err != nil {
+			return fmt.Errorf("failed to change instance type: %s", err)
+		}
+	}
+
+	if didChange, err := adjustSwapSizeIfNeeded(d, &client, instance); err != nil {
+		return err
+	} else if didChange {
+		rebootInstance = true
+	}
+
+	diskIDLabelMap, err := getInstanceDiskLabelIDMap(client, d, instance.ID)
+	if err != nil {
+		return fmt.Errorf("failed to get disk label to ID mappings")
+	}
+
 	tfConfigsOld, tfConfigsNew := d.GetChange("config")
-	cRebootInstance, updatedConfigMap, updatedConfigs, err := updateInstanceConfigs(client, d, *instance, tfConfigsOld, tfConfigsNew, diskIDLabelMap)
+	didChangeConfig, updatedConfigMap, updatedConfigs, err := updateInstanceConfigs(client, d, *instance, tfConfigsOld, tfConfigsNew, diskIDLabelMap)
 	if err != nil {
 		return err
 	}
-	rebootInstance = rebootInstance || cRebootInstance
+	rebootInstance = rebootInstance || didChangeConfig
 
 	bootConfig := 0
-
 	bootConfigLabel := d.Get("boot_config_label").(string)
-
-	if len(bootConfigLabel) > 0 {
+	if bootConfigLabel != "" {
 		if foundConfig, found := updatedConfigMap[bootConfigLabel]; found {
 			bootConfig = foundConfig
 		} else {
@@ -1239,16 +1087,13 @@ func resourceLinodeInstanceUpdate(d *schema.ResourceData, meta interface{}) erro
 		if err != nil {
 			return fmt.Errorf("Error rebooting Instance %d: %s", instance.ID, err)
 		}
-
 		_, err = client.WaitForEventFinished(context.Background(), id, linodego.EntityLinode, linodego.ActionLinodeReboot, *instance.Created, int(d.Timeout(schema.TimeoutUpdate).Seconds()))
 		if err != nil {
 			return fmt.Errorf("Error waiting for Instance %d to finish rebooting: %s", instance.ID, err)
 		}
-
 		if _, err = client.WaitForInstanceStatus(context.Background(), instance.ID, linodego.InstanceRunning, int(d.Timeout(schema.TimeoutUpdate).Seconds())); err != nil {
 			return fmt.Errorf("Timed-out waiting for Linode instance %d to boot: %s", instance.ID, err)
 		}
-
 	}
 
 	return resourceLinodeInstanceRead(d, meta)

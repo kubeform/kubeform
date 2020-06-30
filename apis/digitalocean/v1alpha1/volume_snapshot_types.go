@@ -52,8 +52,10 @@ type VolumeSnapshotSpec struct {
 	// +optional
 	Regions []string `json:"regions,omitempty" tf:"regions,omitempty"`
 	// +optional
-	Size     float64 `json:"size,omitempty" tf:"size,omitempty"`
-	VolumeID string  `json:"volumeID" tf:"volume_id"`
+	Size float64 `json:"size,omitempty" tf:"size,omitempty"`
+	// +optional
+	Tags     []string `json:"tags,omitempty" tf:"tags,omitempty"`
+	VolumeID string   `json:"volumeID" tf:"volume_id"`
 }
 
 type VolumeSnapshotStatus struct {

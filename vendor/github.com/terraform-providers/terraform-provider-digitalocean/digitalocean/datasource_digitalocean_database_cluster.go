@@ -3,9 +3,10 @@ package digitalocean
 import (
 	"context"
 	"fmt"
+
 	"github.com/digitalocean/godo"
-	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/hashicorp/terraform/helper/validation"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/validation"
 )
 
 func dataSourceDigitalOceanDatabaseCluster() *schema.Resource {
@@ -67,14 +68,32 @@ func dataSourceDigitalOceanDatabaseCluster() *schema.Resource {
 				Computed: true,
 			},
 
+			"private_host": {
+				Type:     schema.TypeString,
+				Computed: true,
+			},
+
 			"port": {
 				Type:     schema.TypeInt,
 				Computed: true,
 			},
 
+			"password": {
+				Type:      schema.TypeString,
+				Computed:  true,
+				Sensitive: true,
+			},
+
 			"uri": {
-				Type:     schema.TypeString,
-				Computed: true,
+				Type:      schema.TypeString,
+				Computed:  true,
+				Sensitive: true,
+			},
+
+			"private_uri": {
+				Type:      schema.TypeString,
+				Computed:  true,
+				Sensitive: true,
 			},
 
 			"database": {
@@ -86,6 +105,18 @@ func dataSourceDigitalOceanDatabaseCluster() *schema.Resource {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
+
+			"urn": {
+				Type:     schema.TypeString,
+				Computed: true,
+			},
+
+			"private_network_uuid": {
+				Type:     schema.TypeString,
+				Computed: true,
+			},
+
+			"tags": tagsSchema(),
 		},
 	}
 }
@@ -138,6 +169,7 @@ func dataSourceDigitalOceanDatabaseClusterRead(d *schema.ResourceData, meta inte
 			d.Set("size", db.SizeSlug)
 			d.Set("region", db.RegionSlug)
 			d.Set("node_count", db.NumNodes)
+			d.Set("tags", db.Tags)
 
 			if _, ok := d.GetOk("maintenance_window"); ok {
 				if err := d.Set("maintenance_window", flattenMaintWindowOpts(*db.MaintenanceWindow)); err != nil {
@@ -146,10 +178,15 @@ func dataSourceDigitalOceanDatabaseClusterRead(d *schema.ResourceData, meta inte
 			}
 
 			d.Set("host", db.Connection.Host)
+			d.Set("private_host", db.PrivateConnection.Host)
 			d.Set("port", db.Connection.Port)
 			d.Set("uri", db.Connection.URI)
+			d.Set("private_uri", db.PrivateConnection.URI)
 			d.Set("database", db.Connection.Database)
 			d.Set("user", db.Connection.User)
+			d.Set("password", db.Connection.Password)
+			d.Set("urn", db.URN())
+			d.Set("private_network_uuid", db.PrivateNetworkUUID)
 
 			break
 		}

@@ -25,18 +25,21 @@ spec:
         apiVersion:
           description: 'APIVersion defines the versioned schema of this representation
             of an object. Servers should convert recognized schemas to the latest
-            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
           type: string
         kind:
           description: 'Kind is a string value representing the REST resource this
             object represents. Servers may infer this from the endpoint the client
-            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
           type: string
         metadata:
           type: object
         spec:
           properties:
+            accessTier:
+              type: string
             attempts:
+              description: Deprecated
               format: int64
               type: integer
             contentType:
@@ -62,11 +65,14 @@ spec:
                   type: string
               type: object
             resourceGroupName:
+              description: Deprecated
               type: string
             size:
               format: int64
               type: integer
             source:
+              type: string
+            sourceContent:
               type: string
             sourceURI:
               type: string
@@ -81,9 +87,9 @@ spec:
           required:
           - name
           - providerRef
-          - resourceGroupName
           - storageAccountName
           - storageContainerName
+          - type
           type: object
         status:
           properties:
@@ -94,7 +100,10 @@ spec:
               type: integer
             output:
               properties:
+                accessTier:
+                  type: string
                 attempts:
+                  description: Deprecated
                   format: int64
                   type: integer
                 contentType:
@@ -120,11 +129,14 @@ spec:
                       type: string
                   type: object
                 resourceGroupName:
+                  description: Deprecated
                   type: string
                 size:
                   format: int64
                   type: integer
                 source:
+                  type: string
+                sourceContent:
                   type: string
                 sourceURI:
                   type: string
@@ -139,9 +151,9 @@ spec:
               required:
               - name
               - providerRef
-              - resourceGroupName
               - storageAccountName
               - storageContainerName
+              - type
               type: object
             phase:
               type: string

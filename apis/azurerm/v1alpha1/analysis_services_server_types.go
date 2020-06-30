@@ -50,8 +50,12 @@ type AnalysisServicesServerSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
+
 	// +optional
 	AdminUsers []string `json:"adminUsers,omitempty" tf:"admin_users,omitempty"`
+	// +optional
+	BackupBlobContainerURI string `json:"-" sensitive:"true" tf:"backup_blob_container_uri,omitempty"`
 	// +optional
 	EnablePowerBiService bool `json:"enablePowerBiService,omitempty" tf:"enable_power_bi_service,omitempty"`
 	// +optional
@@ -61,7 +65,9 @@ type AnalysisServicesServerSpec struct {
 	// +optional
 	QuerypoolConnectionMode string `json:"querypoolConnectionMode,omitempty" tf:"querypool_connection_mode,omitempty"`
 	ResourceGroupName       string `json:"resourceGroupName" tf:"resource_group_name"`
-	Sku                     string `json:"sku" tf:"sku"`
+	// +optional
+	ServerFullName string `json:"serverFullName,omitempty" tf:"server_full_name,omitempty"`
+	Sku            string `json:"sku" tf:"sku"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

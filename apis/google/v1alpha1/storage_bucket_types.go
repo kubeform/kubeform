@@ -66,12 +66,15 @@ type StorageBucketSpecLifecycleRuleCondition struct {
 	// +optional
 	CreatedBefore string `json:"createdBefore,omitempty" tf:"created_before,omitempty"`
 	// +optional
+	// Deprecated
 	IsLive bool `json:"isLive,omitempty" tf:"is_live,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MinItems=1
 	MatchesStorageClass []string `json:"matchesStorageClass,omitempty" tf:"matches_storage_class,omitempty"`
 	// +optional
 	NumNewerVersions int64 `json:"numNewerVersions,omitempty" tf:"num_newer_versions,omitempty"`
+	// +optional
+	WithState string `json:"withState,omitempty" tf:"with_state,omitempty"`
 }
 
 type StorageBucketSpecLifecycleRule struct {
@@ -87,6 +90,12 @@ type StorageBucketSpecLogging struct {
 	LogBucket string `json:"logBucket" tf:"log_bucket"`
 	// +optional
 	LogObjectPrefix string `json:"logObjectPrefix,omitempty" tf:"log_object_prefix,omitempty"`
+}
+
+type StorageBucketSpecRetentionPolicy struct {
+	// +optional
+	IsLocked        bool  `json:"isLocked,omitempty" tf:"is_locked,omitempty"`
+	RetentionPeriod int64 `json:"retentionPeriod" tf:"retention_period"`
 }
 
 type StorageBucketSpecVersioning struct {
@@ -106,6 +115,8 @@ type StorageBucketSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// +optional
+	BucketPolicyOnly bool `json:"bucketPolicyOnly,omitempty" tf:"bucket_policy_only,omitempty"`
 	// +optional
 	Cors []StorageBucketSpecCors `json:"cors,omitempty" tf:"cors,omitempty"`
 	// +optional
@@ -127,6 +138,11 @@ type StorageBucketSpec struct {
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
+	RequesterPays bool `json:"requesterPays,omitempty" tf:"requester_pays,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	RetentionPolicy []StorageBucketSpecRetentionPolicy `json:"retentionPolicy,omitempty" tf:"retention_policy,omitempty"`
+	// +optional
 	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 	// +optional
 	StorageClass string `json:"storageClass,omitempty" tf:"storage_class,omitempty"`
@@ -136,6 +152,7 @@ type StorageBucketSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Versioning []StorageBucketSpecVersioning `json:"versioning,omitempty" tf:"versioning,omitempty"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
 	Website []StorageBucketSpecWebsite `json:"website,omitempty" tf:"website,omitempty"`
 }
 

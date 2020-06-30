@@ -39,12 +39,20 @@ type ComputeBackendBucket struct {
 	Status            ComputeBackendBucketStatus `json:"status,omitempty"`
 }
 
+type ComputeBackendBucketSpecCdnPolicy struct {
+	// +optional
+	SignedURLCacheMaxAgeSec int64 `json:"signedURLCacheMaxAgeSec,omitempty" tf:"signed_url_cache_max_age_sec,omitempty"`
+}
+
 type ComputeBackendBucketSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	BucketName string `json:"bucketName" tf:"bucket_name"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	CdnPolicy []ComputeBackendBucketSpecCdnPolicy `json:"cdnPolicy,omitempty" tf:"cdn_policy,omitempty"`
 	// +optional
 	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
 	// +optional

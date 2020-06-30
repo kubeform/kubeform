@@ -50,10 +50,18 @@ type ApplicationInsightsSpec struct {
 	AppID           string `json:"appID,omitempty" tf:"app_id,omitempty"`
 	ApplicationType string `json:"applicationType" tf:"application_type"`
 	// +optional
+	DailyDataCapInGb float64 `json:"dailyDataCapInGb,omitempty" tf:"daily_data_cap_in_gb,omitempty"`
+	// +optional
+	DailyDataCapNotificationsDisabled bool `json:"dailyDataCapNotificationsDisabled,omitempty" tf:"daily_data_cap_notifications_disabled,omitempty"`
+	// +optional
 	InstrumentationKey string `json:"-" sensitive:"true" tf:"instrumentation_key,omitempty"`
 	Location           string `json:"location" tf:"location"`
 	Name               string `json:"name" tf:"name"`
 	ResourceGroupName  string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	RetentionInDays int64 `json:"retentionInDays,omitempty" tf:"retention_in_days,omitempty"`
+	// +optional
+	SamplingPercentage float64 `json:"samplingPercentage,omitempty" tf:"sampling_percentage,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

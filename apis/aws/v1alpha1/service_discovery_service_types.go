@@ -74,8 +74,9 @@ type ServiceDiscoveryServiceSpec struct {
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	DnsConfig []ServiceDiscoveryServiceSpecDnsConfig `json:"dnsConfig" tf:"dns_config"`
+	DnsConfig []ServiceDiscoveryServiceSpecDnsConfig `json:"dnsConfig,omitempty" tf:"dns_config,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	HealthCheckConfig []ServiceDiscoveryServiceSpecHealthCheckConfig `json:"healthCheckConfig,omitempty" tf:"health_check_config,omitempty"`
@@ -83,6 +84,8 @@ type ServiceDiscoveryServiceSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	HealthCheckCustomConfig []ServiceDiscoveryServiceSpecHealthCheckCustomConfig `json:"healthCheckCustomConfig,omitempty" tf:"health_check_custom_config,omitempty"`
 	Name                    string                                               `json:"name" tf:"name"`
+	// +optional
+	NamespaceID string `json:"namespaceID,omitempty" tf:"namespace_id,omitempty"`
 }
 
 type ServiceDiscoveryServiceStatus struct {

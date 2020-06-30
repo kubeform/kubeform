@@ -39,10 +39,23 @@ type IotDps struct {
 	Status            IotDpsStatus `json:"status,omitempty"`
 }
 
+type IotDpsSpecLinkedHub struct {
+	// +optional
+	AllocationWeight int64 `json:"allocationWeight,omitempty" tf:"allocation_weight,omitempty"`
+	// +optional
+	ApplyAllocationPolicy bool   `json:"applyAllocationPolicy,omitempty" tf:"apply_allocation_policy,omitempty"`
+	ConnectionString      string `json:"-" sensitive:"true" tf:"connection_string"`
+	// +optional
+	Hostname string `json:"hostname,omitempty" tf:"hostname,omitempty"`
+	Location string `json:"location" tf:"location"`
+}
+
 type IotDpsSpecSku struct {
 	Capacity int64  `json:"capacity" tf:"capacity"`
 	Name     string `json:"name" tf:"name"`
-	Tier     string `json:"tier" tf:"tier"`
+	// +optional
+	// Deprecated
+	Tier string `json:"tier,omitempty" tf:"tier,omitempty"`
 }
 
 type IotDpsSpec struct {
@@ -50,9 +63,13 @@ type IotDpsSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	Location          string `json:"location" tf:"location"`
-	Name              string `json:"name" tf:"name"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
+
+	// +optional
+	LinkedHub         []IotDpsSpecLinkedHub `json:"linkedHub,omitempty" tf:"linked_hub,omitempty"`
+	Location          string                `json:"location" tf:"location"`
+	Name              string                `json:"name" tf:"name"`
+	ResourceGroupName string                `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MaxItems=1
 	Sku []IotDpsSpecSku `json:"sku" tf:"sku"`
 	// +optional

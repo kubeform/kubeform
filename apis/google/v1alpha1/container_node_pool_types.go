@@ -56,16 +56,6 @@ type ContainerNodePoolSpecNodeConfigGuestAccelerator struct {
 	Type  string `json:"type" tf:"type"`
 }
 
-type ContainerNodePoolSpecNodeConfigTaint struct {
-	Effect string `json:"effect" tf:"effect"`
-	Key    string `json:"key" tf:"key"`
-	Value  string `json:"value" tf:"value"`
-}
-
-type ContainerNodePoolSpecNodeConfigWorkloadMetadataConfig struct {
-	NodeMetadata string `json:"nodeMetadata" tf:"node_metadata"`
-}
-
 type ContainerNodePoolSpecNodeConfig struct {
 	// +optional
 	DiskSizeGb int64 `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
@@ -93,13 +83,6 @@ type ContainerNodePoolSpecNodeConfig struct {
 	ServiceAccount string `json:"serviceAccount,omitempty" tf:"service_account,omitempty"`
 	// +optional
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
-	// +optional
-	// Deprecated
-	Taint []ContainerNodePoolSpecNodeConfigTaint `json:"taint,omitempty" tf:"taint,omitempty"`
-	// +optional
-	// +kubebuilder:validation:MaxItems=1
-	// Deprecated
-	WorkloadMetadataConfig []ContainerNodePoolSpecNodeConfigWorkloadMetadataConfig `json:"workloadMetadataConfig,omitempty" tf:"workload_metadata_config,omitempty"`
 }
 
 type ContainerNodePoolSpec struct {
@@ -116,15 +99,15 @@ type ContainerNodePoolSpec struct {
 	// +optional
 	InstanceGroupUrls []string `json:"instanceGroupUrls,omitempty" tf:"instance_group_urls,omitempty"`
 	// +optional
+	Location string `json:"location,omitempty" tf:"location,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Management []ContainerNodePoolSpecManagement `json:"management,omitempty" tf:"management,omitempty"`
 	// +optional
-	// Deprecated
 	MaxPodsPerNode int64 `json:"maxPodsPerNode,omitempty" tf:"max_pods_per_node,omitempty"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
-	// Deprecated
 	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -134,10 +117,12 @@ type ContainerNodePoolSpec struct {
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
+	// Deprecated
 	Region string `json:"region,omitempty" tf:"region,omitempty"`
 	// +optional
 	Version string `json:"version,omitempty" tf:"version,omitempty"`
 	// +optional
+	// Deprecated
 	Zone string `json:"zone,omitempty" tf:"zone,omitempty"`
 }
 

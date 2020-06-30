@@ -3,10 +3,9 @@ package linode
 import (
 	"context"
 	"fmt"
-	"log"
 	"time"
 
-	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/linode/linodego"
 )
 
@@ -20,7 +19,6 @@ func resourceLinodeImage() *schema.Resource {
 		Read:   resourceLinodeImageRead,
 		Update: resourceLinodeImageUpdate,
 		Delete: resourceLinodeImageDelete,
-		Exists: resourceLinodeImageExists,
 		Importer: &schema.ResourceImporter{
 			State: schema.ImportStatePassthrough,
 		},
@@ -94,33 +92,12 @@ func resourceLinodeImage() *schema.Resource {
 	}
 }
 
-func resourceLinodeImageExists(d *schema.ResourceData, meta interface{}) (bool, error) {
-	client := meta.(linodego.Client)
-
-	_, err := client.GetImage(context.Background(), d.Id())
-	if err != nil {
-		if lerr, ok := err.(*linodego.Error); ok && lerr.Code == 404 {
-			return false, nil
-		}
-
-		return false, fmt.Errorf("Error getting Linode Image ID %s: %s", d.Id(), err)
-	}
-	return true, nil
-}
-
 func resourceLinodeImageRead(d *schema.ResourceData, meta interface{}) error {
 	client := meta.(linodego.Client)
 
 	image, err := client.GetImage(context.Background(), d.Id())
-
-	found, err := resourceLinodeImageExists(d, meta)
 	if err != nil {
-		return fmt.Errorf("Error finding the specified Linode Image: %s", err)
-	}
-	if !found {
-		log.Printf("[WARN] removing Image ID %q from state because it no longer exists", d.Id())
-		d.SetId("")
-		return nil
+		return fmt.Errorf("Error getting Linode image %s: %s", d.Id(), err)
 	}
 
 	d.Set("label", image.Label)
@@ -173,14 +150,6 @@ func resourceLinodeImageCreate(d *schema.ResourceData, meta interface{}) error {
 
 	if _, err := client.WaitForInstanceDiskStatus(context.Background(), linodeID, diskID, linodego.DiskReady, int(d.Timeout(schema.TimeoutCreate).Seconds())); err != nil {
 		return fmt.Errorf("Error waiting for Linode Instance %d Disk %d to become ready while taking an Image", linodeID, diskID)
-	}
-
-	found, err := resourceLinodeImageExists(d, meta)
-	if err != nil {
-		return fmt.Errorf("Error finding the newly created Linode Image: %s", err)
-	}
-	if !found {
-		return fmt.Errorf("The Linode Image failed to be created")
 	}
 
 	return resourceLinodeImageRead(d, meta)

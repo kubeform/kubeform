@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/hashicorp/terraform/helper/validation"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/validation"
 )
 
 func dataSourceDigitalOceanFloatingIp() *schema.Resource {
@@ -46,7 +46,7 @@ func dataSourceDigitalOceanFloatingIpRead(d *schema.ResourceData, meta interface
 
 	floatingIp, resp, err := client.FloatingIPs.Get(context.Background(), ipAddress)
 	if err != nil {
-		if resp.StatusCode == 404 {
+		if resp != nil && resp.StatusCode == 404 {
 			return fmt.Errorf("floating ip not found: %s", err)
 		}
 		return fmt.Errorf("Error retrieving floating ip: %s", err)

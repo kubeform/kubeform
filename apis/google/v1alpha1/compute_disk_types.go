@@ -41,6 +41,8 @@ type ComputeDisk struct {
 
 type ComputeDiskSpecDiskEncryptionKey struct {
 	// +optional
+	KmsKeySelfLink string `json:"kmsKeySelfLink,omitempty" tf:"kms_key_self_link,omitempty"`
+	// +optional
 	RawKey string `json:"rawKey,omitempty" tf:"raw_key,omitempty"`
 	// +optional
 	Sha256 string `json:"sha256,omitempty" tf:"sha256,omitempty"`
@@ -48,12 +50,16 @@ type ComputeDiskSpecDiskEncryptionKey struct {
 
 type ComputeDiskSpecSourceImageEncryptionKey struct {
 	// +optional
+	KmsKeySelfLink string `json:"kmsKeySelfLink,omitempty" tf:"kms_key_self_link,omitempty"`
+	// +optional
 	RawKey string `json:"rawKey,omitempty" tf:"raw_key,omitempty"`
 	// +optional
 	Sha256 string `json:"sha256,omitempty" tf:"sha256,omitempty"`
 }
 
 type ComputeDiskSpecSourceSnapshotEncryptionKey struct {
+	// +optional
+	KmsKeySelfLink string `json:"kmsKeySelfLink,omitempty" tf:"kms_key_self_link,omitempty"`
 	// +optional
 	RawKey string `json:"rawKey,omitempty" tf:"raw_key,omitempty"`
 	// +optional
@@ -65,8 +71,6 @@ type ComputeDiskSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
-
 	// +optional
 	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
 	// +optional
@@ -74,11 +78,6 @@ type ComputeDiskSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	DiskEncryptionKey []ComputeDiskSpecDiskEncryptionKey `json:"diskEncryptionKey,omitempty" tf:"disk_encryption_key,omitempty"`
-	// +optional
-	DiskEncryptionKeyRaw string `json:"-" sensitive:"true" tf:"disk_encryption_key_raw,omitempty"`
-	// +optional
-	// Deprecated
-	DiskEncryptionKeySha256 string `json:"diskEncryptionKeySha256,omitempty" tf:"disk_encryption_key_sha256,omitempty"`
 	// +optional
 	Image string `json:"image,omitempty" tf:"image,omitempty"`
 	// +optional
@@ -90,6 +89,8 @@ type ComputeDiskSpec struct {
 	// +optional
 	LastDetachTimestamp string `json:"lastDetachTimestamp,omitempty" tf:"last_detach_timestamp,omitempty"`
 	Name                string `json:"name" tf:"name"`
+	// +optional
+	PhysicalBlockSizeBytes int64 `json:"physicalBlockSizeBytes,omitempty" tf:"physical_block_size_bytes,omitempty"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional

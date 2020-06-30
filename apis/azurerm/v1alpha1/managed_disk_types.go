@@ -66,6 +66,12 @@ type ManagedDiskSpec struct {
 
 	CreateOption string `json:"createOption" tf:"create_option"`
 	// +optional
+	DiskEncryptionSetID string `json:"diskEncryptionSetID,omitempty" tf:"disk_encryption_set_id,omitempty"`
+	// +optional
+	DiskIopsReadWrite int64 `json:"diskIopsReadWrite,omitempty" tf:"disk_iops_read_write,omitempty"`
+	// +optional
+	DiskMbpsReadWrite int64 `json:"diskMbpsReadWrite,omitempty" tf:"disk_mbps_read_write,omitempty"`
+	// +optional
 	DiskSizeGb int64 `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -80,7 +86,9 @@ type ManagedDiskSpec struct {
 	// +optional
 	SourceResourceID string `json:"sourceResourceID,omitempty" tf:"source_resource_id,omitempty"`
 	// +optional
-	SourceURI          string `json:"sourceURI,omitempty" tf:"source_uri,omitempty"`
+	SourceURI string `json:"sourceURI,omitempty" tf:"source_uri,omitempty"`
+	// +optional
+	StorageAccountID   string `json:"storageAccountID,omitempty" tf:"storage_account_id,omitempty"`
 	StorageAccountType string `json:"storageAccountType" tf:"storage_account_type"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

@@ -126,8 +126,9 @@ type HdinsightStormClusterSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Roles []HdinsightStormClusterSpecRoles `json:"roles" tf:"roles"`
 	// +optional
-	SshEndpoint    string                                    `json:"sshEndpoint,omitempty" tf:"ssh_endpoint,omitempty"`
-	StorageAccount []HdinsightStormClusterSpecStorageAccount `json:"storageAccount" tf:"storage_account"`
+	SshEndpoint string `json:"sshEndpoint,omitempty" tf:"ssh_endpoint,omitempty"`
+	// +optional
+	StorageAccount []HdinsightStormClusterSpecStorageAccount `json:"storageAccount,omitempty" tf:"storage_account,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	Tier string            `json:"tier" tf:"tier"`

@@ -6,9 +6,9 @@ import (
 	"log"
 	"time"
 
-	"github.com/hashicorp/terraform/helper/resource"
-	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/hashicorp/terraform/helper/validation"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/resource"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/validation"
 )
 
 func resourceDigitalOceanVolumeAttachment() *schema.Resource {
@@ -92,7 +92,7 @@ func resourceDigitalOceanVolumeAttachmentRead(d *schema.ResourceData, meta inter
 	if err != nil {
 		// If the volume is already destroyed, mark as
 		// successfully removed
-		if resp.StatusCode == 404 {
+		if resp != nil && resp.StatusCode == 404 {
 			d.SetId("")
 			return nil
 		}

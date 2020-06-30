@@ -65,6 +65,8 @@ type RedshiftClusterSpec struct {
 	// +optional
 	AllowVersionUpgrade bool `json:"allowVersionUpgrade,omitempty" tf:"allow_version_upgrade,omitempty"`
 	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// +optional
 	AutomatedSnapshotRetentionPeriod int64 `json:"automatedSnapshotRetentionPeriod,omitempty" tf:"automated_snapshot_retention_period,omitempty"`
 	// +optional
 	AvailabilityZone  string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`

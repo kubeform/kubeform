@@ -39,6 +39,11 @@ type GlueCrawler struct {
 	Status            GlueCrawlerStatus `json:"status,omitempty"`
 }
 
+type GlueCrawlerSpecCatalogTarget struct {
+	DatabaseName string   `json:"databaseName" tf:"database_name"`
+	Tables       []string `json:"tables" tf:"tables"`
+}
+
 type GlueCrawlerSpecDynamodbTarget struct {
 	Path string `json:"path" tf:"path"`
 }
@@ -70,6 +75,9 @@ type GlueCrawlerSpec struct {
 
 	// +optional
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MinItems=1
+	CatalogTarget []GlueCrawlerSpecCatalogTarget `json:"catalogTarget,omitempty" tf:"catalog_target,omitempty"`
 	// +optional
 	Classifiers []string `json:"classifiers,omitempty" tf:"classifiers,omitempty"`
 	// +optional

@@ -59,6 +59,8 @@ type AppEngineApplicationSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
+	AppID string `json:"appID,omitempty" tf:"app_id,omitempty"`
+	// +optional
 	AuthDomain string `json:"authDomain,omitempty" tf:"auth_domain,omitempty"`
 	// +optional
 	CodeBucket string `json:"codeBucket,omitempty" tf:"code_bucket,omitempty"`

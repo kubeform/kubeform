@@ -111,7 +111,7 @@ type ContainerGroupSpecContainerVolume struct {
 	// +optional
 	ReadOnly           bool   `json:"readOnly,omitempty" tf:"read_only,omitempty"`
 	ShareName          string `json:"shareName" tf:"share_name"`
-	StorageAccountKey  string `json:"storageAccountKey" tf:"storage_account_key"`
+	StorageAccountKey  string `json:"-" sensitive:"true" tf:"storage_account_key"`
 	StorageAccountName string `json:"storageAccountName" tf:"storage_account_name"`
 }
 
@@ -151,7 +151,8 @@ type ContainerGroupSpecContainer struct {
 }
 
 type ContainerGroupSpecDiagnosticsLogAnalytics struct {
-	LogType string `json:"logType" tf:"log_type"`
+	// +optional
+	LogType string `json:"logType,omitempty" tf:"log_type,omitempty"`
 	// +optional
 	Metadata     map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 	WorkspaceID  string            `json:"workspaceID" tf:"workspace_id"`
@@ -201,9 +202,11 @@ type ContainerGroupSpec struct {
 	// +optional
 	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
 	// +optional
-	IpAddressType     string `json:"ipAddressType,omitempty" tf:"ip_address_type,omitempty"`
-	Location          string `json:"location" tf:"location"`
-	Name              string `json:"name" tf:"name"`
+	IpAddressType string `json:"ipAddressType,omitempty" tf:"ip_address_type,omitempty"`
+	Location      string `json:"location" tf:"location"`
+	Name          string `json:"name" tf:"name"`
+	// +optional
+	NetworkProfileID  string `json:"networkProfileID,omitempty" tf:"network_profile_id,omitempty"`
 	OsType            string `json:"osType" tf:"os_type"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional

@@ -39,11 +39,36 @@ type CloudbuildTrigger struct {
 	Status            CloudbuildTriggerStatus `json:"status,omitempty"`
 }
 
-type CloudbuildTriggerSpecBuildStep struct {
-	// +optional
-	Args string `json:"args,omitempty" tf:"args,omitempty"`
+type CloudbuildTriggerSpecBuildStepVolumes struct {
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
+	Path string `json:"path,omitempty" tf:"path,omitempty"`
+}
+
+type CloudbuildTriggerSpecBuildStep struct {
+	// +optional
+	Args []string `json:"args,omitempty" tf:"args,omitempty"`
+	// +optional
+	Dir string `json:"dir,omitempty" tf:"dir,omitempty"`
+	// +optional
+	Entrypoint string `json:"entrypoint,omitempty" tf:"entrypoint,omitempty"`
+	// +optional
+	Env []string `json:"env,omitempty" tf:"env,omitempty"`
+	// +optional
+	ID string `json:"ID,omitempty" tf:"id,omitempty"`
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
+	SecretEnv []string `json:"secretEnv,omitempty" tf:"secret_env,omitempty"`
+	// +optional
+	Timeout string `json:"timeout,omitempty" tf:"timeout,omitempty"`
+	// +optional
+	Timing string `json:"timing,omitempty" tf:"timing,omitempty"`
+	// +optional
+	Volumes []CloudbuildTriggerSpecBuildStepVolumes `json:"volumes,omitempty" tf:"volumes,omitempty"`
+	// +optional
+	WaitFor []string `json:"waitFor,omitempty" tf:"wait_for,omitempty"`
 }
 
 type CloudbuildTriggerSpecBuild struct {
@@ -63,7 +88,7 @@ type CloudbuildTriggerSpecTriggerTemplate struct {
 	// +optional
 	Dir string `json:"dir,omitempty" tf:"dir,omitempty"`
 	// +optional
-	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	ProjectID string `json:"projectID,omitempty" tf:"project_id,omitempty"`
 	// +optional
 	RepoName string `json:"repoName,omitempty" tf:"repo_name,omitempty"`
 	// +optional
@@ -75,18 +100,27 @@ type CloudbuildTriggerSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	// Contents of the build template.
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Build []CloudbuildTriggerSpecBuild `json:"build,omitempty" tf:"build,omitempty"`
 	// +optional
+	CreateTime string `json:"createTime,omitempty" tf:"create_time,omitempty"`
+	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
+	Disabled bool `json:"disabled,omitempty" tf:"disabled,omitempty"`
+	// +optional
 	Filename string `json:"filename,omitempty" tf:"filename,omitempty"`
+	// +optional
+	IgnoredFiles []string `json:"ignoredFiles,omitempty" tf:"ignored_files,omitempty"`
+	// +optional
+	IncludedFiles []string `json:"includedFiles,omitempty" tf:"included_files,omitempty"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
 	Substitutions map[string]string `json:"substitutions,omitempty" tf:"substitutions,omitempty"`
+	// +optional
+	TriggerID string `json:"triggerID,omitempty" tf:"trigger_id,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	TriggerTemplate []CloudbuildTriggerSpecTriggerTemplate `json:"triggerTemplate,omitempty" tf:"trigger_template,omitempty"`

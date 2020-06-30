@@ -42,6 +42,8 @@ type SharedImageVersion struct {
 type SharedImageVersionSpecTargetRegion struct {
 	Name                 string `json:"name" tf:"name"`
 	RegionalReplicaCount int64  `json:"regionalReplicaCount" tf:"regional_replica_count"`
+	// +optional
+	StorageAccountType string `json:"storageAccountType,omitempty" tf:"storage_account_type,omitempty"`
 }
 
 type SharedImageVersionSpec struct {

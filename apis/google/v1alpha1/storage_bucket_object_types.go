@@ -44,11 +44,13 @@ type StorageBucketObjectSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
+
 	Bucket string `json:"bucket" tf:"bucket"`
 	// +optional
 	CacheControl string `json:"cacheControl,omitempty" tf:"cache_control,omitempty"`
 	// +optional
-	Content string `json:"content,omitempty" tf:"content,omitempty"`
+	Content string `json:"-" sensitive:"true" tf:"content,omitempty"`
 	// +optional
 	ContentDisposition string `json:"contentDisposition,omitempty" tf:"content_disposition,omitempty"`
 	// +optional
@@ -64,6 +66,10 @@ type StorageBucketObjectSpec struct {
 	// +optional
 	Md5hash string `json:"md5hash,omitempty" tf:"md5hash,omitempty"`
 	Name    string `json:"name" tf:"name"`
+	// +optional
+	OutputName string `json:"outputName,omitempty" tf:"output_name,omitempty"`
+	// +optional
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 	// +optional
 	Source string `json:"source,omitempty" tf:"source,omitempty"`
 	// +optional

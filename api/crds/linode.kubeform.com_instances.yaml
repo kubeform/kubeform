@@ -25,12 +25,12 @@ spec:
         apiVersion:
           description: 'APIVersion defines the versioned schema of this representation
             of an object. Servers should convert recognized schemas to the latest
-            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
           type: string
         kind:
           description: 'Kind is a string value representing the REST resource this
             object represents. Servers may infer this from the endpoint the client
-            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
           type: string
         metadata:
           type: object
@@ -130,10 +130,8 @@ spec:
                             selected.
                           type: string
                       type: object
-                    maxItems: 1
                     type: array
                 type: object
-              maxItems: 1
               type: array
             backupsEnabled:
               description: If this field is set to true, the created Linode will automatically
@@ -182,11 +180,16 @@ spec:
                           items:
                             properties:
                               diskID:
+                                description: The Disk ID to map to this disk slot
                                 format: int64
                                 type: integer
                               diskLabel:
+                                description: The `label` of the `disk` to map to this
+                                  `device` slot.
                                 type: string
                               volumeID:
+                                description: The Block Storage volume ID to map to
+                                  this disk slot
                                 format: int64
                                 type: integer
                             type: object
@@ -196,11 +199,16 @@ spec:
                           items:
                             properties:
                               diskID:
+                                description: The Disk ID to map to this disk slot
                                 format: int64
                                 type: integer
                               diskLabel:
+                                description: The `label` of the `disk` to map to this
+                                  `device` slot.
                                 type: string
                               volumeID:
+                                description: The Block Storage volume ID to map to
+                                  this disk slot
                                 format: int64
                                 type: integer
                             type: object
@@ -210,11 +218,16 @@ spec:
                           items:
                             properties:
                               diskID:
+                                description: The Disk ID to map to this disk slot
                                 format: int64
                                 type: integer
                               diskLabel:
+                                description: The `label` of the `disk` to map to this
+                                  `device` slot.
                                 type: string
                               volumeID:
+                                description: The Block Storage volume ID to map to
+                                  this disk slot
                                 format: int64
                                 type: integer
                             type: object
@@ -224,11 +237,16 @@ spec:
                           items:
                             properties:
                               diskID:
+                                description: The Disk ID to map to this disk slot
                                 format: int64
                                 type: integer
                               diskLabel:
+                                description: The `label` of the `disk` to map to this
+                                  `device` slot.
                                 type: string
                               volumeID:
+                                description: The Block Storage volume ID to map to
+                                  this disk slot
                                 format: int64
                                 type: integer
                             type: object
@@ -238,11 +256,16 @@ spec:
                           items:
                             properties:
                               diskID:
+                                description: The Disk ID to map to this disk slot
                                 format: int64
                                 type: integer
                               diskLabel:
+                                description: The `label` of the `disk` to map to this
+                                  `device` slot.
                                 type: string
                               volumeID:
+                                description: The Block Storage volume ID to map to
+                                  this disk slot
                                 format: int64
                                 type: integer
                             type: object
@@ -252,11 +275,16 @@ spec:
                           items:
                             properties:
                               diskID:
+                                description: The Disk ID to map to this disk slot
                                 format: int64
                                 type: integer
                               diskLabel:
+                                description: The `label` of the `disk` to map to this
+                                  `device` slot.
                                 type: string
                               volumeID:
+                                description: The Block Storage volume ID to map to
+                                  this disk slot
                                 format: int64
                                 type: integer
                             type: object
@@ -266,11 +294,16 @@ spec:
                           items:
                             properties:
                               diskID:
+                                description: The Disk ID to map to this disk slot
                                 format: int64
                                 type: integer
                               diskLabel:
+                                description: The `label` of the `disk` to map to this
+                                  `device` slot.
                                 type: string
                               volumeID:
+                                description: The Block Storage volume ID to map to
+                                  this disk slot
                                 format: int64
                                 type: integer
                             type: object
@@ -478,7 +511,6 @@ spec:
                     format: int64
                     type: integer
                 type: object
-              maxItems: 1
               type: array
             stackscriptID:
               description: The StackScript to deploy to the newly created Linode.
@@ -621,10 +653,8 @@ spec:
                                 is automatically selected.
                               type: string
                           type: object
-                        maxItems: 1
                         type: array
                     type: object
-                  maxItems: 1
                   type: array
                 backupsEnabled:
                   description: If this field is set to true, the created Linode will
@@ -674,11 +704,16 @@ spec:
                               items:
                                 properties:
                                   diskID:
+                                    description: The Disk ID to map to this disk slot
                                     format: int64
                                     type: integer
                                   diskLabel:
+                                    description: The `label` of the `disk` to map
+                                      to this `device` slot.
                                     type: string
                                   volumeID:
+                                    description: The Block Storage volume ID to map
+                                      to this disk slot
                                     format: int64
                                     type: integer
                                 type: object
@@ -688,11 +723,16 @@ spec:
                               items:
                                 properties:
                                   diskID:
+                                    description: The Disk ID to map to this disk slot
                                     format: int64
                                     type: integer
                                   diskLabel:
+                                    description: The `label` of the `disk` to map
+                                      to this `device` slot.
                                     type: string
                                   volumeID:
+                                    description: The Block Storage volume ID to map
+                                      to this disk slot
                                     format: int64
                                     type: integer
                                 type: object
@@ -702,11 +742,16 @@ spec:
                               items:
                                 properties:
                                   diskID:
+                                    description: The Disk ID to map to this disk slot
                                     format: int64
                                     type: integer
                                   diskLabel:
+                                    description: The `label` of the `disk` to map
+                                      to this `device` slot.
                                     type: string
                                   volumeID:
+                                    description: The Block Storage volume ID to map
+                                      to this disk slot
                                     format: int64
                                     type: integer
                                 type: object
@@ -716,11 +761,16 @@ spec:
                               items:
                                 properties:
                                   diskID:
+                                    description: The Disk ID to map to this disk slot
                                     format: int64
                                     type: integer
                                   diskLabel:
+                                    description: The `label` of the `disk` to map
+                                      to this `device` slot.
                                     type: string
                                   volumeID:
+                                    description: The Block Storage volume ID to map
+                                      to this disk slot
                                     format: int64
                                     type: integer
                                 type: object
@@ -730,11 +780,16 @@ spec:
                               items:
                                 properties:
                                   diskID:
+                                    description: The Disk ID to map to this disk slot
                                     format: int64
                                     type: integer
                                   diskLabel:
+                                    description: The `label` of the `disk` to map
+                                      to this `device` slot.
                                     type: string
                                   volumeID:
+                                    description: The Block Storage volume ID to map
+                                      to this disk slot
                                     format: int64
                                     type: integer
                                 type: object
@@ -744,11 +799,16 @@ spec:
                               items:
                                 properties:
                                   diskID:
+                                    description: The Disk ID to map to this disk slot
                                     format: int64
                                     type: integer
                                   diskLabel:
+                                    description: The `label` of the `disk` to map
+                                      to this `device` slot.
                                     type: string
                                   volumeID:
+                                    description: The Block Storage volume ID to map
+                                      to this disk slot
                                     format: int64
                                     type: integer
                                 type: object
@@ -758,11 +818,16 @@ spec:
                               items:
                                 properties:
                                   diskID:
+                                    description: The Disk ID to map to this disk slot
                                     format: int64
                                     type: integer
                                   diskLabel:
+                                    description: The `label` of the `disk` to map
+                                      to this `device` slot.
                                     type: string
                                   volumeID:
+                                    description: The Block Storage volume ID to map
+                                      to this disk slot
                                     format: int64
                                     type: integer
                                 type: object
@@ -976,7 +1041,6 @@ spec:
                         format: int64
                         type: integer
                     type: object
-                  maxItems: 1
                   type: array
                 stackscriptID:
                   description: The StackScript to deploy to the newly created Linode.

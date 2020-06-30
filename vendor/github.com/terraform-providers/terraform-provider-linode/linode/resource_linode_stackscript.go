@@ -6,7 +6,7 @@ import (
 	"log"
 	"strconv"
 
-	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/linode/linodego"
 )
 
@@ -16,7 +16,6 @@ func resourceLinodeStackscript() *schema.Resource {
 		Read:   resourceLinodeStackscriptRead,
 		Update: resourceLinodeStackscriptUpdate,
 		Delete: resourceLinodeStackscriptDelete,
-		Exists: resourceLinodeStackscriptExists,
 		Importer: &schema.ResourceImporter{
 			State: schema.ImportStatePassthrough,
 		},
@@ -124,24 +123,6 @@ func resourceLinodeStackscript() *schema.Resource {
 	}
 }
 
-func resourceLinodeStackscriptExists(d *schema.ResourceData, meta interface{}) (bool, error) {
-	client := meta.(linodego.Client)
-	id, err := strconv.ParseInt(d.Id(), 10, 64)
-	if err != nil {
-		return false, fmt.Errorf("Error parsing Linode Stackscript ID %s as int: %s", d.Id(), err)
-	}
-
-	_, err = client.GetStackscript(context.Background(), int(id))
-	if err != nil {
-		if lerr, ok := err.(*linodego.Error); ok && lerr.Code == 404 {
-			return false, nil
-		}
-
-		return false, fmt.Errorf("Error getting Linode Stackscript ID %s: %s", d.Id(), err)
-	}
-	return true, nil
-}
-
 func resourceLinodeStackscriptRead(d *schema.ResourceData, meta interface{}) error {
 	client := meta.(linodego.Client)
 	id, err := strconv.ParseInt(d.Id(), 10, 64)
@@ -160,66 +141,21 @@ func resourceLinodeStackscriptRead(d *schema.ResourceData, meta interface{}) err
 		return fmt.Errorf("Error finding the specified Linode Stackscript: %s", err)
 	}
 
-	if err := d.Set("label", stackscript.Label); err != nil {
-		return err
-	}
-	if err := d.Set("script", stackscript.Script); err != nil {
-		return err
-	}
-	if err := d.Set("description", stackscript.Description); err != nil {
-		return err
-	}
-	if err := d.Set("is_public", stackscript.IsPublic); err != nil {
-		return err
-	}
-	if err := d.Set("images", stackscript.Images); err != nil {
-		return err
-	}
-	if err := d.Set("rev_note", stackscript.RevNote); err != nil {
-		return err
-	}
+	d.Set("label", stackscript.Label)
+	d.Set("script", stackscript.Script)
+	d.Set("description", stackscript.Description)
+	d.Set("is_public", stackscript.IsPublic)
+	d.Set("images", stackscript.Images)
+	d.Set("rev_note", stackscript.RevNote)
 
 	// Computed
-	if err := d.Set("deployments_active", stackscript.DeploymentsActive); err != nil {
-		return err
-	}
-	if err := d.Set("deployments_total", stackscript.DeploymentsTotal); err != nil {
-		return err
-	}
-	if err := d.Set("username", stackscript.Username); err != nil {
-		return err
-	}
-	if err := d.Set("user_gravatar_id", stackscript.UserGravatarID); err != nil {
-		return err
-	}
-	if err := d.Set("created", stackscript.Created.String()); err != nil {
-		return err
-	}
-	if err := d.Set("updated", stackscript.Updated.String()); err != nil {
-		return err
-	}
-
-	if stackscript.UserDefinedFields == nil {
-		if err := d.Set("user_defined_fields", nil); err != nil {
-			return fmt.Errorf("Error setting user_defined_fields: %s", err)
-		}
-	} else {
-		var udfs []map[string]string
-		for _, udf := range *stackscript.UserDefinedFields {
-			udfs = append(udfs, map[string]string{
-				"default": udf.Default,
-				"example": udf.Example,
-				"many_of": udf.ManyOf,
-				"one_of":  udf.OneOf,
-				"label":   udf.Label,
-				"name":    udf.Name,
-			})
-		}
-		if err := d.Set("user_defined_fields", udfs); err != nil {
-			return fmt.Errorf("Error setting user_defined_fields: %s", err)
-		}
-	}
-
+	d.Set("deployments_active", stackscript.DeploymentsActive)
+	d.Set("deployments_total", stackscript.DeploymentsTotal)
+	d.Set("username", stackscript.Username)
+	d.Set("user_gravatar_id", stackscript.UserGravatarID)
+	d.Set("created", stackscript.Created.String())
+	d.Set("updated", stackscript.Updated.String())
+	setStackScriptUserDefinedFields(d, stackscript)
 	return nil
 }
 

@@ -37,8 +37,36 @@ func (c *FakeDigitaloceanV1alpha1) Certificates(namespace string) v1alpha1.Certi
 	return &FakeCertificates{c, namespace}
 }
 
+func (c *FakeDigitaloceanV1alpha1) ContainerRegistries(namespace string) v1alpha1.ContainerRegistryInterface {
+	return &FakeContainerRegistries{c, namespace}
+}
+
+func (c *FakeDigitaloceanV1alpha1) ContainerRegistryDockerCredentialses(namespace string) v1alpha1.ContainerRegistryDockerCredentialsInterface {
+	return &FakeContainerRegistryDockerCredentialses{c, namespace}
+}
+
 func (c *FakeDigitaloceanV1alpha1) DatabaseClusters(namespace string) v1alpha1.DatabaseClusterInterface {
 	return &FakeDatabaseClusters{c, namespace}
+}
+
+func (c *FakeDigitaloceanV1alpha1) DatabaseConnectionPools(namespace string) v1alpha1.DatabaseConnectionPoolInterface {
+	return &FakeDatabaseConnectionPools{c, namespace}
+}
+
+func (c *FakeDigitaloceanV1alpha1) DatabaseDbs(namespace string) v1alpha1.DatabaseDbInterface {
+	return &FakeDatabaseDbs{c, namespace}
+}
+
+func (c *FakeDigitaloceanV1alpha1) DatabaseFirewalls(namespace string) v1alpha1.DatabaseFirewallInterface {
+	return &FakeDatabaseFirewalls{c, namespace}
+}
+
+func (c *FakeDigitaloceanV1alpha1) DatabaseReplicas(namespace string) v1alpha1.DatabaseReplicaInterface {
+	return &FakeDatabaseReplicas{c, namespace}
+}
+
+func (c *FakeDigitaloceanV1alpha1) DatabaseUsers(namespace string) v1alpha1.DatabaseUserInterface {
+	return &FakeDatabaseUsers{c, namespace}
 }
 
 func (c *FakeDigitaloceanV1alpha1) Domains(namespace string) v1alpha1.DomainInterface {
@@ -81,12 +109,20 @@ func (c *FakeDigitaloceanV1alpha1) Projects(namespace string) v1alpha1.ProjectIn
 	return &FakeProjects{c, namespace}
 }
 
+func (c *FakeDigitaloceanV1alpha1) ProjectResourceses(namespace string) v1alpha1.ProjectResourcesInterface {
+	return &FakeProjectResourceses{c, namespace}
+}
+
 func (c *FakeDigitaloceanV1alpha1) Records(namespace string) v1alpha1.RecordInterface {
 	return &FakeRecords{c, namespace}
 }
 
 func (c *FakeDigitaloceanV1alpha1) SpacesBuckets(namespace string) v1alpha1.SpacesBucketInterface {
 	return &FakeSpacesBuckets{c, namespace}
+}
+
+func (c *FakeDigitaloceanV1alpha1) SpacesBucketObjects(namespace string) v1alpha1.SpacesBucketObjectInterface {
+	return &FakeSpacesBucketObjects{c, namespace}
 }
 
 func (c *FakeDigitaloceanV1alpha1) SshKeys(namespace string) v1alpha1.SshKeyInterface {
@@ -107,6 +143,10 @@ func (c *FakeDigitaloceanV1alpha1) VolumeAttachments(namespace string) v1alpha1.
 
 func (c *FakeDigitaloceanV1alpha1) VolumeSnapshots(namespace string) v1alpha1.VolumeSnapshotInterface {
 	return &FakeVolumeSnapshots{c, namespace}
+}
+
+func (c *FakeDigitaloceanV1alpha1) Vpcs(namespace string) v1alpha1.VpcInterface {
+	return &FakeVpcs{c, namespace}
 }
 
 // RESTClient returns a RESTClient that is used to communicate

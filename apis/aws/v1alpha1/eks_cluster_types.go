@@ -44,6 +44,16 @@ type EksClusterSpecCertificateAuthority struct {
 	Data string `json:"data,omitempty" tf:"data,omitempty"`
 }
 
+type EksClusterSpecIdentityOidc struct {
+	// +optional
+	Issuer string `json:"issuer,omitempty" tf:"issuer,omitempty"`
+}
+
+type EksClusterSpecIdentity struct {
+	// +optional
+	Oidc []EksClusterSpecIdentityOidc `json:"oidc,omitempty" tf:"oidc,omitempty"`
+}
+
 type EksClusterSpecVpcConfig struct {
 	// +optional
 	EndpointPrivateAccess bool `json:"endpointPrivateAccess,omitempty" tf:"endpoint_private_access,omitempty"`
@@ -73,10 +83,16 @@ type EksClusterSpec struct {
 	EnabledClusterLogTypes []string `json:"enabledClusterLogTypes,omitempty" tf:"enabled_cluster_log_types,omitempty"`
 	// +optional
 	Endpoint string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
-	Name     string `json:"name" tf:"name"`
+	// +optional
+	Identity []EksClusterSpecIdentity `json:"identity,omitempty" tf:"identity,omitempty"`
+	Name     string                   `json:"name" tf:"name"`
 	// +optional
 	PlatformVersion string `json:"platformVersion,omitempty" tf:"platform_version,omitempty"`
 	RoleArn         string `json:"roleArn" tf:"role_arn"`
+	// +optional
+	Status string `json:"status,omitempty" tf:"status,omitempty"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	Version string `json:"version,omitempty" tf:"version,omitempty"`
 	// +kubebuilder:validation:MaxItems=1

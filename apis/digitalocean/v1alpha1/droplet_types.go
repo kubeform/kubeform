@@ -47,6 +47,8 @@ type DropletSpec struct {
 	// +optional
 	Backups bool `json:"backups,omitempty" tf:"backups,omitempty"`
 	// +optional
+	CreatedAt string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
+	// +optional
 	Disk  int64  `json:"disk,omitempty" tf:"disk,omitempty"`
 	Image string `json:"image" tf:"image"`
 	// +optional
@@ -88,6 +90,8 @@ type DropletSpec struct {
 	Vcpus int64 `json:"vcpus,omitempty" tf:"vcpus,omitempty"`
 	// +optional
 	VolumeIDS []string `json:"volumeIDS,omitempty" tf:"volume_ids,omitempty"`
+	// +optional
+	VpcUUID string `json:"vpcUUID,omitempty" tf:"vpc_uuid,omitempty"`
 }
 
 type DropletStatus struct {

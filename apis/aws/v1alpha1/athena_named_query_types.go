@@ -49,6 +49,8 @@ type AthenaNamedQuerySpec struct {
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`
 	Query       string `json:"query" tf:"query"`
+	// +optional
+	Workgroup string `json:"workgroup,omitempty" tf:"workgroup,omitempty"`
 }
 
 type AthenaNamedQueryStatus struct {

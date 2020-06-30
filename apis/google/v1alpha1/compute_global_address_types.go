@@ -54,22 +54,14 @@ type ComputeGlobalAddressSpec struct {
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
 	IpVersion string `json:"ipVersion,omitempty" tf:"ip_version,omitempty"`
+	Name      string `json:"name" tf:"name"`
 	// +optional
-	LabelFingerprint string `json:"labelFingerprint,omitempty" tf:"label_fingerprint,omitempty"`
-	// +optional
-	// Deprecated
-	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
-	Name   string            `json:"name" tf:"name"`
-	// +optional
-	// Deprecated
 	Network string `json:"network,omitempty" tf:"network,omitempty"`
 	// +optional
-	// Deprecated
 	PrefixLength int64 `json:"prefixLength,omitempty" tf:"prefix_length,omitempty"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	// Deprecated
 	Purpose string `json:"purpose,omitempty" tf:"purpose,omitempty"`
 	// +optional
 	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`

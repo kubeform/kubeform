@@ -44,7 +44,19 @@ type TagSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	Name string `json:"name" tf:"name"`
+	// +optional
+	DatabasesCount int64 `json:"databasesCount,omitempty" tf:"databases_count,omitempty"`
+	// +optional
+	DropletsCount int64 `json:"dropletsCount,omitempty" tf:"droplets_count,omitempty"`
+	// +optional
+	ImagesCount int64  `json:"imagesCount,omitempty" tf:"images_count,omitempty"`
+	Name        string `json:"name" tf:"name"`
+	// +optional
+	TotalResourceCount int64 `json:"totalResourceCount,omitempty" tf:"total_resource_count,omitempty"`
+	// +optional
+	VolumeSnapshotsCount int64 `json:"volumeSnapshotsCount,omitempty" tf:"volume_snapshots_count,omitempty"`
+	// +optional
+	VolumesCount int64 `json:"volumesCount,omitempty" tf:"volumes_count,omitempty"`
 }
 
 type TagStatus struct {

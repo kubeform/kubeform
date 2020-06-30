@@ -39,6 +39,10 @@ type VirtualMachine struct {
 	Status            VirtualMachineStatus `json:"status,omitempty"`
 }
 
+type VirtualMachineSpecAdditionalCapabilities struct {
+	UltraSsdEnabled bool `json:"ultraSsdEnabled" tf:"ultra_ssd_enabled"`
+}
+
 type VirtualMachineSpecBootDiagnostics struct {
 	Enabled    bool   `json:"enabled" tf:"enabled"`
 	StorageURI string `json:"storageURI" tf:"storage_uri"`
@@ -177,6 +181,9 @@ type VirtualMachineSpec struct {
 	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	AdditionalCapabilities []VirtualMachineSpecAdditionalCapabilities `json:"additionalCapabilities,omitempty" tf:"additional_capabilities,omitempty"`
+	// +optional
 	AvailabilitySetID string `json:"availabilitySetID,omitempty" tf:"availability_set_id,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -209,6 +216,8 @@ type VirtualMachineSpec struct {
 	Plan []VirtualMachineSpecPlan `json:"plan,omitempty" tf:"plan,omitempty"`
 	// +optional
 	PrimaryNetworkInterfaceID string `json:"primaryNetworkInterfaceID,omitempty" tf:"primary_network_interface_id,omitempty"`
+	// +optional
+	ProximityPlacementGroupID string `json:"proximityPlacementGroupID,omitempty" tf:"proximity_placement_group_id,omitempty"`
 	ResourceGroupName         string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	StorageDataDisk []VirtualMachineSpecStorageDataDisk `json:"storageDataDisk,omitempty" tf:"storage_data_disk,omitempty"`

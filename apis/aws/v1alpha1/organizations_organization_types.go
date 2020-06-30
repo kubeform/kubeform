@@ -50,6 +50,17 @@ type OrganizationsOrganizationSpecAccounts struct {
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
+type OrganizationsOrganizationSpecNonMasterAccounts struct {
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// +optional
+	Email string `json:"email,omitempty" tf:"email,omitempty"`
+	// +optional
+	ID string `json:"ID,omitempty" tf:"id,omitempty"`
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+}
+
 type OrganizationsOrganizationSpecRootsPolicyTypes struct {
 	// +optional
 	Status string `json:"status,omitempty" tf:"status,omitempty"`
@@ -89,6 +100,8 @@ type OrganizationsOrganizationSpec struct {
 	MasterAccountEmail string `json:"masterAccountEmail,omitempty" tf:"master_account_email,omitempty"`
 	// +optional
 	MasterAccountID string `json:"masterAccountID,omitempty" tf:"master_account_id,omitempty"`
+	// +optional
+	NonMasterAccounts []OrganizationsOrganizationSpecNonMasterAccounts `json:"nonMasterAccounts,omitempty" tf:"non_master_accounts,omitempty"`
 	// +optional
 	Roots []OrganizationsOrganizationSpecRoots `json:"roots,omitempty" tf:"roots,omitempty"`
 }

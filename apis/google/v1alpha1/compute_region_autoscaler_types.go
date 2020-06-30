@@ -48,9 +48,11 @@ type ComputeRegionAutoscalerSpecAutoscalingPolicyLoadBalancingUtilization struct
 }
 
 type ComputeRegionAutoscalerSpecAutoscalingPolicyMetric struct {
-	Name   string  `json:"name" tf:"name"`
-	Target float64 `json:"target" tf:"target"`
-	Type   string  `json:"type" tf:"type"`
+	Name string `json:"name" tf:"name"`
+	// +optional
+	Target float64 `json:"target,omitempty" tf:"target,omitempty"`
+	// +optional
+	Type string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type ComputeRegionAutoscalerSpecAutoscalingPolicy struct {

@@ -49,8 +49,12 @@ type KeyVaultSecretSpec struct {
 	// +optional
 	ContentType string `json:"contentType,omitempty" tf:"content_type,omitempty"`
 	// +optional
+	ExpirationDate string `json:"expirationDate,omitempty" tf:"expiration_date,omitempty"`
+	// +optional
 	KeyVaultID string `json:"keyVaultID,omitempty" tf:"key_vault_id,omitempty"`
 	Name       string `json:"name" tf:"name"`
+	// +optional
+	NotBeforeDate string `json:"notBeforeDate,omitempty" tf:"not_before_date,omitempty"`
 	// +optional
 	Tags  map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	Value string            `json:"-" sensitive:"true" tf:"value"`

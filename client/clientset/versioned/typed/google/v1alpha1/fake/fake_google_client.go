@@ -29,8 +29,36 @@ type FakeGoogleV1alpha1 struct {
 	*testing.Fake
 }
 
+func (c *FakeGoogleV1alpha1) AccessContextManagerAccessLevels(namespace string) v1alpha1.AccessContextManagerAccessLevelInterface {
+	return &FakeAccessContextManagerAccessLevels{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) AccessContextManagerAccessPolicies(namespace string) v1alpha1.AccessContextManagerAccessPolicyInterface {
+	return &FakeAccessContextManagerAccessPolicies{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) AccessContextManagerServicePerimeters(namespace string) v1alpha1.AccessContextManagerServicePerimeterInterface {
+	return &FakeAccessContextManagerServicePerimeters{c, namespace}
+}
+
 func (c *FakeGoogleV1alpha1) AppEngineApplications(namespace string) v1alpha1.AppEngineApplicationInterface {
 	return &FakeAppEngineApplications{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) AppEngineDomainMappings(namespace string) v1alpha1.AppEngineDomainMappingInterface {
+	return &FakeAppEngineDomainMappings{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) AppEngineFirewallRules(namespace string) v1alpha1.AppEngineFirewallRuleInterface {
+	return &FakeAppEngineFirewallRules{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) AppEngineStandardAppVersions(namespace string) v1alpha1.AppEngineStandardAppVersionInterface {
+	return &FakeAppEngineStandardAppVersions{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) BigqueryDataTransferConfigs(namespace string) v1alpha1.BigqueryDataTransferConfigInterface {
+	return &FakeBigqueryDataTransferConfigs{c, namespace}
 }
 
 func (c *FakeGoogleV1alpha1) BigqueryDatasets(namespace string) v1alpha1.BigqueryDatasetInterface {
@@ -41,8 +69,28 @@ func (c *FakeGoogleV1alpha1) BigqueryTables(namespace string) v1alpha1.BigqueryT
 	return &FakeBigqueryTables{c, namespace}
 }
 
+func (c *FakeGoogleV1alpha1) BigtableAppProfiles(namespace string) v1alpha1.BigtableAppProfileInterface {
+	return &FakeBigtableAppProfiles{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) BigtableGcPolicies(namespace string) v1alpha1.BigtableGcPolicyInterface {
+	return &FakeBigtableGcPolicies{c, namespace}
+}
+
 func (c *FakeGoogleV1alpha1) BigtableInstances(namespace string) v1alpha1.BigtableInstanceInterface {
 	return &FakeBigtableInstances{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) BigtableInstanceIamBindings(namespace string) v1alpha1.BigtableInstanceIamBindingInterface {
+	return &FakeBigtableInstanceIamBindings{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) BigtableInstanceIamMembers(namespace string) v1alpha1.BigtableInstanceIamMemberInterface {
+	return &FakeBigtableInstanceIamMembers{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) BigtableInstanceIamPolicies(namespace string) v1alpha1.BigtableInstanceIamPolicyInterface {
+	return &FakeBigtableInstanceIamPolicies{c, namespace}
 }
 
 func (c *FakeGoogleV1alpha1) BigtableTables(namespace string) v1alpha1.BigtableTableInterface {
@@ -65,8 +113,24 @@ func (c *FakeGoogleV1alpha1) BinaryAuthorizationAttestors(namespace string) v1al
 	return &FakeBinaryAuthorizationAttestors{c, namespace}
 }
 
+func (c *FakeGoogleV1alpha1) BinaryAuthorizationAttestorIamBindings(namespace string) v1alpha1.BinaryAuthorizationAttestorIamBindingInterface {
+	return &FakeBinaryAuthorizationAttestorIamBindings{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) BinaryAuthorizationAttestorIamMembers(namespace string) v1alpha1.BinaryAuthorizationAttestorIamMemberInterface {
+	return &FakeBinaryAuthorizationAttestorIamMembers{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) BinaryAuthorizationAttestorIamPolicies(namespace string) v1alpha1.BinaryAuthorizationAttestorIamPolicyInterface {
+	return &FakeBinaryAuthorizationAttestorIamPolicies{c, namespace}
+}
+
 func (c *FakeGoogleV1alpha1) BinaryAuthorizationPolicies(namespace string) v1alpha1.BinaryAuthorizationPolicyInterface {
 	return &FakeBinaryAuthorizationPolicies{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) CloudSchedulerJobs(namespace string) v1alpha1.CloudSchedulerJobInterface {
+	return &FakeCloudSchedulerJobs{c, namespace}
 }
 
 func (c *FakeGoogleV1alpha1) CloudbuildTriggers(namespace string) v1alpha1.CloudbuildTriggerInterface {
@@ -75,6 +139,18 @@ func (c *FakeGoogleV1alpha1) CloudbuildTriggers(namespace string) v1alpha1.Cloud
 
 func (c *FakeGoogleV1alpha1) CloudfunctionsFunctions(namespace string) v1alpha1.CloudfunctionsFunctionInterface {
 	return &FakeCloudfunctionsFunctions{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) CloudfunctionsFunctionIamBindings(namespace string) v1alpha1.CloudfunctionsFunctionIamBindingInterface {
+	return &FakeCloudfunctionsFunctionIamBindings{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) CloudfunctionsFunctionIamMembers(namespace string) v1alpha1.CloudfunctionsFunctionIamMemberInterface {
+	return &FakeCloudfunctionsFunctionIamMembers{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) CloudfunctionsFunctionIamPolicies(namespace string) v1alpha1.CloudfunctionsFunctionIamPolicyInterface {
+	return &FakeCloudfunctionsFunctionIamPolicies{c, namespace}
 }
 
 func (c *FakeGoogleV1alpha1) CloudiotRegistries(namespace string) v1alpha1.CloudiotRegistryInterface {
@@ -101,12 +177,24 @@ func (c *FakeGoogleV1alpha1) ComputeBackendBuckets(namespace string) v1alpha1.Co
 	return &FakeComputeBackendBuckets{c, namespace}
 }
 
+func (c *FakeGoogleV1alpha1) ComputeBackendBucketSignedURLKeys(namespace string) v1alpha1.ComputeBackendBucketSignedURLKeyInterface {
+	return &FakeComputeBackendBucketSignedURLKeys{c, namespace}
+}
+
 func (c *FakeGoogleV1alpha1) ComputeBackendServices(namespace string) v1alpha1.ComputeBackendServiceInterface {
 	return &FakeComputeBackendServices{c, namespace}
 }
 
+func (c *FakeGoogleV1alpha1) ComputeBackendServiceSignedURLKeys(namespace string) v1alpha1.ComputeBackendServiceSignedURLKeyInterface {
+	return &FakeComputeBackendServiceSignedURLKeys{c, namespace}
+}
+
 func (c *FakeGoogleV1alpha1) ComputeDisks(namespace string) v1alpha1.ComputeDiskInterface {
 	return &FakeComputeDisks{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) ComputeDiskResourcePolicyAttachments(namespace string) v1alpha1.ComputeDiskResourcePolicyAttachmentInterface {
+	return &FakeComputeDiskResourcePolicyAttachments{c, namespace}
 }
 
 func (c *FakeGoogleV1alpha1) ComputeFirewalls(namespace string) v1alpha1.ComputeFirewallInterface {
@@ -157,6 +245,18 @@ func (c *FakeGoogleV1alpha1) ComputeInstanceGroupManagers(namespace string) v1al
 	return &FakeComputeInstanceGroupManagers{c, namespace}
 }
 
+func (c *FakeGoogleV1alpha1) ComputeInstanceIamBindings(namespace string) v1alpha1.ComputeInstanceIamBindingInterface {
+	return &FakeComputeInstanceIamBindings{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) ComputeInstanceIamMembers(namespace string) v1alpha1.ComputeInstanceIamMemberInterface {
+	return &FakeComputeInstanceIamMembers{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) ComputeInstanceIamPolicies(namespace string) v1alpha1.ComputeInstanceIamPolicyInterface {
+	return &FakeComputeInstanceIamPolicies{c, namespace}
+}
+
 func (c *FakeGoogleV1alpha1) ComputeInstanceTemplates(namespace string) v1alpha1.ComputeInstanceTemplateInterface {
 	return &FakeComputeInstanceTemplates{c, namespace}
 }
@@ -169,8 +269,28 @@ func (c *FakeGoogleV1alpha1) ComputeNetworks(namespace string) v1alpha1.ComputeN
 	return &FakeComputeNetworks{c, namespace}
 }
 
+func (c *FakeGoogleV1alpha1) ComputeNetworkEndpoints(namespace string) v1alpha1.ComputeNetworkEndpointInterface {
+	return &FakeComputeNetworkEndpoints{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) ComputeNetworkEndpointGroups(namespace string) v1alpha1.ComputeNetworkEndpointGroupInterface {
+	return &FakeComputeNetworkEndpointGroups{c, namespace}
+}
+
 func (c *FakeGoogleV1alpha1) ComputeNetworkPeerings(namespace string) v1alpha1.ComputeNetworkPeeringInterface {
 	return &FakeComputeNetworkPeerings{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) ComputeNodeGroups(namespace string) v1alpha1.ComputeNodeGroupInterface {
+	return &FakeComputeNodeGroups{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) ComputeNodeTemplates(namespace string) v1alpha1.ComputeNodeTemplateInterface {
+	return &FakeComputeNodeTemplates{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) ComputeProjectDefaultNetworkTiers(namespace string) v1alpha1.ComputeProjectDefaultNetworkTierInterface {
+	return &FakeComputeProjectDefaultNetworkTiers{c, namespace}
 }
 
 func (c *FakeGoogleV1alpha1) ComputeProjectMetadatas(namespace string) v1alpha1.ComputeProjectMetadataInterface {
@@ -195,6 +315,14 @@ func (c *FakeGoogleV1alpha1) ComputeRegionDisks(namespace string) v1alpha1.Compu
 
 func (c *FakeGoogleV1alpha1) ComputeRegionInstanceGroupManagers(namespace string) v1alpha1.ComputeRegionInstanceGroupManagerInterface {
 	return &FakeComputeRegionInstanceGroupManagers{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) ComputeReservations(namespace string) v1alpha1.ComputeReservationInterface {
+	return &FakeComputeReservations{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) ComputeResourcePolicies(namespace string) v1alpha1.ComputeResourcePolicyInterface {
+	return &FakeComputeResourcePolicies{c, namespace}
 }
 
 func (c *FakeGoogleV1alpha1) ComputeRoutes(namespace string) v1alpha1.ComputeRouteInterface {
@@ -265,6 +393,10 @@ func (c *FakeGoogleV1alpha1) ComputeTargetHTTPSProxies(namespace string) v1alpha
 	return &FakeComputeTargetHTTPSProxies{c, namespace}
 }
 
+func (c *FakeGoogleV1alpha1) ComputeTargetInstances(namespace string) v1alpha1.ComputeTargetInstanceInterface {
+	return &FakeComputeTargetInstances{c, namespace}
+}
+
 func (c *FakeGoogleV1alpha1) ComputeTargetPools(namespace string) v1alpha1.ComputeTargetPoolInterface {
 	return &FakeComputeTargetPools{c, namespace}
 }
@@ -309,8 +441,32 @@ func (c *FakeGoogleV1alpha1) DataprocClusters(namespace string) v1alpha1.Datapro
 	return &FakeDataprocClusters{c, namespace}
 }
 
+func (c *FakeGoogleV1alpha1) DataprocClusterIamBindings(namespace string) v1alpha1.DataprocClusterIamBindingInterface {
+	return &FakeDataprocClusterIamBindings{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) DataprocClusterIamMembers(namespace string) v1alpha1.DataprocClusterIamMemberInterface {
+	return &FakeDataprocClusterIamMembers{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) DataprocClusterIamPolicies(namespace string) v1alpha1.DataprocClusterIamPolicyInterface {
+	return &FakeDataprocClusterIamPolicies{c, namespace}
+}
+
 func (c *FakeGoogleV1alpha1) DataprocJobs(namespace string) v1alpha1.DataprocJobInterface {
 	return &FakeDataprocJobs{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) DataprocJobIamBindings(namespace string) v1alpha1.DataprocJobIamBindingInterface {
+	return &FakeDataprocJobIamBindings{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) DataprocJobIamMembers(namespace string) v1alpha1.DataprocJobIamMemberInterface {
+	return &FakeDataprocJobIamMembers{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) DataprocJobIamPolicies(namespace string) v1alpha1.DataprocJobIamPolicyInterface {
+	return &FakeDataprocJobIamPolicies{c, namespace}
 }
 
 func (c *FakeGoogleV1alpha1) DnsManagedZones(namespace string) v1alpha1.DnsManagedZoneInterface {
@@ -327,6 +483,10 @@ func (c *FakeGoogleV1alpha1) EndpointsServices(namespace string) v1alpha1.Endpoi
 
 func (c *FakeGoogleV1alpha1) FilestoreInstances(namespace string) v1alpha1.FilestoreInstanceInterface {
 	return &FakeFilestoreInstances{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) FirestoreIndexes(namespace string) v1alpha1.FirestoreIndexInterface {
+	return &FakeFirestoreIndexes{c, namespace}
 }
 
 func (c *FakeGoogleV1alpha1) Folders(namespace string) v1alpha1.FolderInterface {
@@ -347,6 +507,78 @@ func (c *FakeGoogleV1alpha1) FolderIamPolicies(namespace string) v1alpha1.Folder
 
 func (c *FakeGoogleV1alpha1) FolderOrganizationPolicies(namespace string) v1alpha1.FolderOrganizationPolicyInterface {
 	return &FakeFolderOrganizationPolicies{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) IapAppEngineServiceIamBindings(namespace string) v1alpha1.IapAppEngineServiceIamBindingInterface {
+	return &FakeIapAppEngineServiceIamBindings{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) IapAppEngineServiceIamMembers(namespace string) v1alpha1.IapAppEngineServiceIamMemberInterface {
+	return &FakeIapAppEngineServiceIamMembers{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) IapAppEngineServiceIamPolicies(namespace string) v1alpha1.IapAppEngineServiceIamPolicyInterface {
+	return &FakeIapAppEngineServiceIamPolicies{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) IapAppEngineVersionIamBindings(namespace string) v1alpha1.IapAppEngineVersionIamBindingInterface {
+	return &FakeIapAppEngineVersionIamBindings{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) IapAppEngineVersionIamMembers(namespace string) v1alpha1.IapAppEngineVersionIamMemberInterface {
+	return &FakeIapAppEngineVersionIamMembers{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) IapAppEngineVersionIamPolicies(namespace string) v1alpha1.IapAppEngineVersionIamPolicyInterface {
+	return &FakeIapAppEngineVersionIamPolicies{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) IapWebBackendServiceIamBindings(namespace string) v1alpha1.IapWebBackendServiceIamBindingInterface {
+	return &FakeIapWebBackendServiceIamBindings{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) IapWebBackendServiceIamMembers(namespace string) v1alpha1.IapWebBackendServiceIamMemberInterface {
+	return &FakeIapWebBackendServiceIamMembers{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) IapWebBackendServiceIamPolicies(namespace string) v1alpha1.IapWebBackendServiceIamPolicyInterface {
+	return &FakeIapWebBackendServiceIamPolicies{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) IapWebIamBindings(namespace string) v1alpha1.IapWebIamBindingInterface {
+	return &FakeIapWebIamBindings{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) IapWebIamMembers(namespace string) v1alpha1.IapWebIamMemberInterface {
+	return &FakeIapWebIamMembers{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) IapWebIamPolicies(namespace string) v1alpha1.IapWebIamPolicyInterface {
+	return &FakeIapWebIamPolicies{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) IapWebTypeAppEngineIamBindings(namespace string) v1alpha1.IapWebTypeAppEngineIamBindingInterface {
+	return &FakeIapWebTypeAppEngineIamBindings{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) IapWebTypeAppEngineIamMembers(namespace string) v1alpha1.IapWebTypeAppEngineIamMemberInterface {
+	return &FakeIapWebTypeAppEngineIamMembers{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) IapWebTypeAppEngineIamPolicies(namespace string) v1alpha1.IapWebTypeAppEngineIamPolicyInterface {
+	return &FakeIapWebTypeAppEngineIamPolicies{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) IapWebTypeComputeIamBindings(namespace string) v1alpha1.IapWebTypeComputeIamBindingInterface {
+	return &FakeIapWebTypeComputeIamBindings{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) IapWebTypeComputeIamMembers(namespace string) v1alpha1.IapWebTypeComputeIamMemberInterface {
+	return &FakeIapWebTypeComputeIamMembers{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) IapWebTypeComputeIamPolicies(namespace string) v1alpha1.IapWebTypeComputeIamPolicyInterface {
+	return &FakeIapWebTypeComputeIamPolicies{c, namespace}
 }
 
 func (c *FakeGoogleV1alpha1) KmsCryptoKeys(namespace string) v1alpha1.KmsCryptoKeyInterface {
@@ -393,6 +625,10 @@ func (c *FakeGoogleV1alpha1) LoggingFolderSinks(namespace string) v1alpha1.Loggi
 	return &FakeLoggingFolderSinks{c, namespace}
 }
 
+func (c *FakeGoogleV1alpha1) LoggingMetrics(namespace string) v1alpha1.LoggingMetricInterface {
+	return &FakeLoggingMetrics{c, namespace}
+}
+
 func (c *FakeGoogleV1alpha1) LoggingOrganizationExclusions(namespace string) v1alpha1.LoggingOrganizationExclusionInterface {
 	return &FakeLoggingOrganizationExclusions{c, namespace}
 }
@@ -407,6 +643,10 @@ func (c *FakeGoogleV1alpha1) LoggingProjectExclusions(namespace string) v1alpha1
 
 func (c *FakeGoogleV1alpha1) LoggingProjectSinks(namespace string) v1alpha1.LoggingProjectSinkInterface {
 	return &FakeLoggingProjectSinks{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) MlEngineModels(namespace string) v1alpha1.MlEngineModelInterface {
+	return &FakeMlEngineModels{c, namespace}
 }
 
 func (c *FakeGoogleV1alpha1) MonitoringAlertPolicies(namespace string) v1alpha1.MonitoringAlertPolicyInterface {
@@ -447,6 +687,10 @@ func (c *FakeGoogleV1alpha1) OrganizationPolicies(namespace string) v1alpha1.Org
 
 func (c *FakeGoogleV1alpha1) Projects(namespace string) v1alpha1.ProjectInterface {
 	return &FakeProjects{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) ProjectIamAuditConfigs(namespace string) v1alpha1.ProjectIamAuditConfigInterface {
+	return &FakeProjectIamAuditConfigs{c, namespace}
 }
 
 func (c *FakeGoogleV1alpha1) ProjectIamBindings(namespace string) v1alpha1.ProjectIamBindingInterface {
@@ -525,8 +769,24 @@ func (c *FakeGoogleV1alpha1) RuntimeconfigConfigs(namespace string) v1alpha1.Run
 	return &FakeRuntimeconfigConfigs{c, namespace}
 }
 
+func (c *FakeGoogleV1alpha1) RuntimeconfigConfigIamBindings(namespace string) v1alpha1.RuntimeconfigConfigIamBindingInterface {
+	return &FakeRuntimeconfigConfigIamBindings{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) RuntimeconfigConfigIamMembers(namespace string) v1alpha1.RuntimeconfigConfigIamMemberInterface {
+	return &FakeRuntimeconfigConfigIamMembers{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) RuntimeconfigConfigIamPolicies(namespace string) v1alpha1.RuntimeconfigConfigIamPolicyInterface {
+	return &FakeRuntimeconfigConfigIamPolicies{c, namespace}
+}
+
 func (c *FakeGoogleV1alpha1) RuntimeconfigVariables(namespace string) v1alpha1.RuntimeconfigVariableInterface {
 	return &FakeRuntimeconfigVariables{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) SccSources(namespace string) v1alpha1.SccSourceInterface {
+	return &FakeSccSources{c, namespace}
 }
 
 func (c *FakeGoogleV1alpha1) ServiceAccounts(namespace string) v1alpha1.ServiceAccountInterface {
@@ -549,8 +809,24 @@ func (c *FakeGoogleV1alpha1) ServiceAccountKeys(namespace string) v1alpha1.Servi
 	return &FakeServiceAccountKeys{c, namespace}
 }
 
+func (c *FakeGoogleV1alpha1) ServiceNetworkingConnections(namespace string) v1alpha1.ServiceNetworkingConnectionInterface {
+	return &FakeServiceNetworkingConnections{c, namespace}
+}
+
 func (c *FakeGoogleV1alpha1) SourcerepoRepositories(namespace string) v1alpha1.SourcerepoRepositoryInterface {
 	return &FakeSourcerepoRepositories{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) SourcerepoRepositoryIamBindings(namespace string) v1alpha1.SourcerepoRepositoryIamBindingInterface {
+	return &FakeSourcerepoRepositoryIamBindings{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) SourcerepoRepositoryIamMembers(namespace string) v1alpha1.SourcerepoRepositoryIamMemberInterface {
+	return &FakeSourcerepoRepositoryIamMembers{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) SourcerepoRepositoryIamPolicies(namespace string) v1alpha1.SourcerepoRepositoryIamPolicyInterface {
+	return &FakeSourcerepoRepositoryIamPolicies{c, namespace}
 }
 
 func (c *FakeGoogleV1alpha1) SpannerDatabases(namespace string) v1alpha1.SpannerDatabaseInterface {
@@ -609,6 +885,10 @@ func (c *FakeGoogleV1alpha1) StorageBucketACLs(namespace string) v1alpha1.Storag
 	return &FakeStorageBucketACLs{c, namespace}
 }
 
+func (c *FakeGoogleV1alpha1) StorageBucketAccessControls(namespace string) v1alpha1.StorageBucketAccessControlInterface {
+	return &FakeStorageBucketAccessControls{c, namespace}
+}
+
 func (c *FakeGoogleV1alpha1) StorageBucketIamBindings(namespace string) v1alpha1.StorageBucketIamBindingInterface {
 	return &FakeStorageBucketIamBindings{c, namespace}
 }
@@ -643,6 +923,14 @@ func (c *FakeGoogleV1alpha1) StorageObjectACLs(namespace string) v1alpha1.Storag
 
 func (c *FakeGoogleV1alpha1) StorageObjectAccessControls(namespace string) v1alpha1.StorageObjectAccessControlInterface {
 	return &FakeStorageObjectAccessControls{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) StorageTransferJobs(namespace string) v1alpha1.StorageTransferJobInterface {
+	return &FakeStorageTransferJobs{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) TpuNodes(namespace string) v1alpha1.TpuNodeInterface {
+	return &FakeTpuNodes{c, namespace}
 }
 
 // RESTClient returns a RESTClient that is used to communicate

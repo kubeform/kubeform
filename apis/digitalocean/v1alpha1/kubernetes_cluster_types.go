@@ -39,22 +39,11 @@ type KubernetesCluster struct {
 	Status            KubernetesClusterStatus `json:"status,omitempty"`
 }
 
-type KubernetesClusterSpecKubeConfig struct {
-	// +optional
-	ClientCertificate string `json:"clientCertificate,omitempty" tf:"client_certificate,omitempty"`
-	// +optional
-	ClientKey string `json:"clientKey,omitempty" tf:"client_key,omitempty"`
-	// +optional
-	ClusterCaCertificate string `json:"clusterCaCertificate,omitempty" tf:"cluster_ca_certificate,omitempty"`
-	// +optional
-	Host string `json:"host,omitempty" tf:"host,omitempty"`
-	// +optional
-	RawConfig string `json:"rawConfig,omitempty" tf:"raw_config,omitempty"`
-}
-
 type KubernetesClusterSpecNodePoolNodes struct {
 	// +optional
 	CreatedAt string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
+	// +optional
+	DropletID string `json:"dropletID,omitempty" tf:"droplet_id,omitempty"`
 	// +optional
 	ID string `json:"ID,omitempty" tf:"id,omitempty"`
 	// +optional
@@ -67,9 +56,20 @@ type KubernetesClusterSpecNodePoolNodes struct {
 
 type KubernetesClusterSpecNodePool struct {
 	// +optional
-	ID        string `json:"ID,omitempty" tf:"id,omitempty"`
-	Name      string `json:"name" tf:"name"`
-	NodeCount int64  `json:"nodeCount" tf:"node_count"`
+	ActualNodeCount int64 `json:"actualNodeCount,omitempty" tf:"actual_node_count,omitempty"`
+	// +optional
+	AutoScale bool `json:"autoScale,omitempty" tf:"auto_scale,omitempty"`
+	// +optional
+	ID string `json:"ID,omitempty" tf:"id,omitempty"`
+	// +optional
+	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
+	// +optional
+	MaxNodes int64 `json:"maxNodes,omitempty" tf:"max_nodes,omitempty"`
+	// +optional
+	MinNodes int64  `json:"minNodes,omitempty" tf:"min_nodes,omitempty"`
+	Name     string `json:"name" tf:"name"`
+	// +optional
+	NodeCount int64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
 	// +optional
 	Nodes []KubernetesClusterSpecNodePoolNodes `json:"nodes,omitempty" tf:"nodes,omitempty"`
 	Size  string                               `json:"size" tf:"size"`
@@ -82,6 +82,8 @@ type KubernetesClusterSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
+
 	// +optional
 	ClusterSubnet string `json:"clusterSubnet,omitempty" tf:"cluster_subnet,omitempty"`
 	// +optional
@@ -91,8 +93,7 @@ type KubernetesClusterSpec struct {
 	// +optional
 	Ipv4Address string `json:"ipv4Address,omitempty" tf:"ipv4_address,omitempty"`
 	// +optional
-	KubeConfig []KubernetesClusterSpecKubeConfig `json:"kubeConfig,omitempty" tf:"kube_config,omitempty"`
-	Name       string                            `json:"name" tf:"name"`
+	Name string `json:"name" tf:"name"`
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1
 	NodePool []KubernetesClusterSpecNodePool `json:"nodePool" tf:"node_pool"`
@@ -106,6 +107,8 @@ type KubernetesClusterSpec struct {
 	// +optional
 	UpdatedAt string `json:"updatedAt,omitempty" tf:"updated_at,omitempty"`
 	Version   string `json:"version" tf:"version"`
+	// +optional
+	VpcUUID string `json:"vpcUUID,omitempty" tf:"vpc_uuid,omitempty"`
 }
 
 type KubernetesClusterStatus struct {

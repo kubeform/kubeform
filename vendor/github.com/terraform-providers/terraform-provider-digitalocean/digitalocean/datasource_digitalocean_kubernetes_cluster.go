@@ -5,8 +5,8 @@ import (
 	"fmt"
 
 	"github.com/digitalocean/godo"
-	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/hashicorp/terraform/helper/validation"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/validation"
 )
 
 func dataSourceDigitalOceanKubernetesCluster() *schema.Resource {
@@ -25,6 +25,11 @@ func dataSourceDigitalOceanKubernetesCluster() *schema.Resource {
 			},
 
 			"version": {
+				Type:     schema.TypeString,
+				Computed: true,
+			},
+
+			"vpc_uuid": {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
@@ -71,12 +76,40 @@ func dataSourceDigitalOceanKubernetesCluster() *schema.Resource {
 							Computed: true,
 						},
 
+						"actual_node_count": {
+							Type:     schema.TypeInt,
+							Computed: true,
+						},
+
 						"node_count": {
 							Type:     schema.TypeInt,
 							Computed: true,
 						},
 
+						"auto_scale": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+
+						"min_nodes": {
+							Type:     schema.TypeInt,
+							Computed: true,
+						},
+
+						"max_nodes": {
+							Type:     schema.TypeInt,
+							Computed: true,
+						},
+
 						"tags": tagsSchema(),
+
+						"labels": {
+							Type:     schema.TypeMap,
+							Computed: true,
+							Elem: &schema.Schema{
+								Type: schema.TypeString,
+							},
+						},
 
 						"nodes": nodeSchema(),
 					},
@@ -108,7 +141,7 @@ func dataSourceDigitalOceanKubernetesClusterRead(d *schema.ResourceData, meta in
 
 	clusters, resp, err := client.Kubernetes.List(context.Background(), &godo.ListOptions{})
 	if err != nil {
-		if resp.StatusCode == 404 {
+		if resp != nil && resp.StatusCode == 404 {
 			return fmt.Errorf("No clusters found")
 		}
 
