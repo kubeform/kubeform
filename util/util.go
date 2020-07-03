@@ -260,80 +260,125 @@ func templateToGoFile(templateFile, generatedFilePath string, templateData inter
 	}
 }
 
-func GenerateModuleCRD(path, name string) string {
-	if tfconfig.IsModuleDir(path) {
-		m, _ := tfconfig.LoadModule(path)
-		var specStatements Statement
-		variables := m.Variables
-		outputs := m.Outputs
-
-		var keys []string
-		for k := range variables {
-			keys = append(keys, k)
+func parseObjectVariables(object string) map[string]*tfconfig.Variable {
+	object = strings.TrimFunc(object, func(r rune) bool {
+		return r != '{' && r != '}'
+	})
+	object = strings.Trim(object, "{}")
+	object = strings.ReplaceAll(object, " ", "")
+	object = strings.TrimSpace(object)
+	varsArray := strings.Split(object, "\n")
+	objectVars := make(map[string]*tfconfig.Variable)
+	for _, e := range varsArray {
+		parts := strings.Split(e, "=")
+		objectVars[parts[0]] = &tfconfig.Variable{
+			Name: parts[0],
+			Type: parts[1],
 		}
+	}
+	return objectVars
+}
 
-		sort.Strings(keys)
+func terraformVariablesToStatement(name string, variables map[string]*tfconfig.Variable) (Statement, map[string]map[string]*tfconfig.Variable) {
+	var specStatements Statement
 
-		for _, key := range keys {
-			variable := variables[key]
-			varName := key
-			if variable.Type == "" {
-				variable.Type = "any"
+	var keys []string
+	for k := range variables {
+		keys = append(keys, k)
+	}
+
+	sort.Strings(keys)
+
+	objects := make(map[string]map[string]*tfconfig.Variable)
+
+	for _, key := range keys {
+		variable := variables[key]
+		varName := key
+		if variable.Type == "" {
+			variable.Type = "any"
+		}
+		tk := varName + ",omitempty"
+		jk := flect.Camelize(varName)
+		id := flect.Capitalize(jk)
+		jk = jk + ",omitempty"
+		specStatements = append(specStatements, Comment("// +optional"))
+		specStatements = append(specStatements, Comment(variable.Description))
+
+		if variable.Type == "number" {
+			specStatements = append(specStatements, Id(id).Qual("encoding/json", "Number").Tag(map[string]string{"json": jk, "tf": tk}))
+		} else if variable.Type == "string" {
+			specStatements = append(specStatements, Id(id).String().Tag(map[string]string{"json": jk, "tf": tk}))
+		} else if variable.Type == "bool" {
+			specStatements = append(specStatements, Id(id).Bool().Tag(map[string]string{"json": jk, "tf": tk}))
+		} else if strings.HasPrefix(variable.Type, "object") {
+			specStatements = append(specStatements, Id(id).Id(name+id).Tag(map[string]string{"json": jk, "tf": tk}))
+			objectVars := parseObjectVariables(variable.Type)
+			objects[name+id] = objectVars
+		} else if variable.Type == "any" {
+			specStatements = append(specStatements, Id(id).Qual("encoding/json", "RawMessage").Tag(map[string]string{"json": jk, "tf": tk}))
+		} else if strings.Contains(variable.Type, "list") || strings.Contains(variable.Type, "set") {
+			typ := strings.FieldsFunc(variable.Type, func(r rune) bool {
+				return r == '(' || r == ')'
+			})
+
+			if len(typ) == 1 {
+				specStatements = append(specStatements, Id(id).Index().String().Tag(map[string]string{"json": jk, "tf": tk}))
+				continue
 			}
-			tk := varName + ",omitempty"
-			jk := flect.Camelize(varName)
-			id := flect.Capitalize(jk)
-			jk = jk + ",omitempty"
-			specStatements = append(specStatements, Comment("// +optional"))
-			specStatements = append(specStatements, Comment(variable.Description))
 
-			if variable.Type == "number" {
-				specStatements = append(specStatements, Id(id).Qual("encoding/json", "Number").Tag(map[string]string{"json": jk, "tf": tk}))
-			} else if variable.Type == "string" {
-				specStatements = append(specStatements, Id(id).String().Tag(map[string]string{"json": jk, "tf": tk}))
-			} else if variable.Type == "bool" {
-				specStatements = append(specStatements, Id(id).Bool().Tag(map[string]string{"json": jk, "tf": tk}))
-			} else if variable.Type == "any" {
-				specStatements = append(specStatements, Id(id).Qual("encoding/json", "RawMessage").Tag(map[string]string{"json": jk, "tf": tk}))
-			} else if strings.Contains(variable.Type, "list") || strings.Contains(variable.Type, "set") {
-				typ := strings.FieldsFunc(variable.Type, func(r rune) bool {
-					return r == '(' || r == ')'
-				})
-
-				if len(typ) == 1 {
-					specStatements = append(specStatements, Id(id).Index().String().Tag(map[string]string{"json": jk, "tf": tk}))
-					continue
-				}
-
-				if typ[1] == "bool" {
-					specStatements = append(specStatements, Id(id).Index().Bool().Tag(map[string]string{"json": jk, "tf": tk}))
-				} else if typ[1] == "number" {
-					specStatements = append(specStatements, Id(id).Index().Qual("encoding/json", "Number").Tag(map[string]string{"json": jk, "tf": tk}))
-				} else if typ[1] == "string" {
-					specStatements = append(specStatements, Id(id).Index().String().Tag(map[string]string{"json": jk, "tf": tk}))
-				} else if strings.Contains(variable.Type, "map") {
-					specStatements = append(specStatements, Id(id).Qual("encoding/json", "RawMessage").Tag(map[string]string{"json": jk, "tf": tk}))
-				} else {
-					fmt.Println(name, variable.Name, variable.Type)
-				}
+			if typ[1] == "bool" {
+				specStatements = append(specStatements, Id(id).Index().Bool().Tag(map[string]string{"json": jk, "tf": tk}))
+			} else if typ[1] == "number" {
+				specStatements = append(specStatements, Id(id).Index().Qual("encoding/json", "Number").Tag(map[string]string{"json": jk, "tf": tk}))
+			} else if typ[1] == "string" {
+				specStatements = append(specStatements, Id(id).Index().String().Tag(map[string]string{"json": jk, "tf": tk}))
+			} else if typ[1] == "object" {
+				specStatements = append(specStatements, Id(id).Index().Id(name+id).Tag(map[string]string{"json": jk, "tf": tk}))
+				objectVars := parseObjectVariables(variable.Type)
+				objects[name+id] = objectVars
 			} else if strings.Contains(variable.Type, "map") {
-				typ := strings.FieldsFunc(variable.Type, func(r rune) bool {
-					return r == '(' || r == ')'
-				})
-
-				if typ[1] == "bool" {
-					specStatements = append(specStatements, Id(id).Map(String()).Bool().Tag(map[string]string{"json": jk, "tf": tk}))
-				} else if typ[1] == "number" {
-					specStatements = append(specStatements, Id(id).Map(String()).Qual("encoding/json", "Number").Tag(map[string]string{"json": jk, "tf": tk}))
-				} else if typ[1] == "string" {
-					specStatements = append(specStatements, Id(id).Map(String()).String().Tag(map[string]string{"json": jk, "tf": tk}))
-				} else {
-					fmt.Println(name, variable.Name, variable.Type)
-				}
+				specStatements = append(specStatements, Id(id).Qual("encoding/json", "RawMessage").Tag(map[string]string{"json": jk, "tf": tk}))
 			} else {
 				fmt.Println(name, variable.Name, variable.Type)
 			}
+		} else if strings.Contains(variable.Type, "map") {
+			typ := strings.FieldsFunc(variable.Type, func(r rune) bool {
+				return r == '(' || r == ')'
+			})
+
+			if len(typ) == 1 {
+				specStatements = append(specStatements, Id(id).Index().Map(String()).String().Tag(map[string]string{"json": jk, "tf": tk}))
+				continue
+			}
+
+			if typ[1] == "bool" {
+				specStatements = append(specStatements, Id(id).Map(String()).Bool().Tag(map[string]string{"json": jk, "tf": tk}))
+			} else if typ[1] == "number" {
+				specStatements = append(specStatements, Id(id).Map(String()).Qual("encoding/json", "Number").Tag(map[string]string{"json": jk, "tf": tk}))
+			} else if typ[1] == "string" {
+				specStatements = append(specStatements, Id(id).Map(String()).String().Tag(map[string]string{"json": jk, "tf": tk}))
+			} else if typ[1] == "object" {
+				specStatements = append(specStatements, Id(id).Map(String()).Id(name+id).Tag(map[string]string{"json": jk, "tf": tk}))
+				objectVars := parseObjectVariables(variable.Type)
+				objects[name+id] = objectVars
+			} else {
+				fmt.Println(name, variable.Name, variable.Type)
+			}
+		} else {
+			fmt.Println(name, variable.Name, variable.Type)
 		}
+	}
+
+	return specStatements, objects
+}
+
+func GenerateModuleCRD(path, name string) string {
+	if tfconfig.IsModuleDir(path) {
+		m, _ := tfconfig.LoadModule(path)
+		variables := m.Variables
+		outputs := m.Outputs
+
+		specStatements, objects := terraformVariablesToStatement(name, variables)
 
 		specStatements = append(Statement{Id("Source").String().Tag(map[string]string{"json": "source", "tf": "source"}).Line()}, specStatements...)
 		specStatements = append(Statement{Comment("// +optional")}, specStatements...)
@@ -343,8 +388,13 @@ func GenerateModuleCRD(path, name string) string {
 
 		out := fmt.Sprintf("%#v\n\n", Type().Id(name+"Spec").Struct(specStatements...))
 
+		for objectName, objectVars := range objects {
+			objectStatements, _ := terraformVariablesToStatement(objectName, objectVars)
+			out = out + fmt.Sprintf("%#v\n\n", Type().Id(objectName).Struct(objectStatements...))
+		}
+
 		var outputStatements Statement
-		keys = []string{}
+		keys := []string{}
 		for k := range outputs {
 			keys = append(keys, k)
 		}
