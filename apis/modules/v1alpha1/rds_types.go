@@ -103,6 +103,12 @@ type RDSSpec struct {
 	// The database can't be deleted when this value is set to true.
 	DeletionProtection bool `json:"deletionProtection,omitempty" tf:"deletion_protection,omitempty"`
 	// +optional
+	// The ID of the Directory Service Active Directory domain to create the instance in
+	Domain string `json:"domain,omitempty" tf:"domain,omitempty"`
+	// +optional
+	// (Required if domain is provided) The name of the IAM role to be used when making API calls to the Directory Service
+	DomainIamRoleName string `json:"domainIamRoleName,omitempty" tf:"domain_iam_role_name,omitempty"`
+	// +optional
 	// List of log types to enable for exporting to CloudWatch logs. If omitted, no logs will be exported. Valid values (depending on engine): alert, audit, error, general, listener, slowquery, trace, postgresql (PostgreSQL), upgrade (PostgreSQL).
 	EnabledCloudwatchLogsExports []string `json:"enabledCloudwatchLogsExports,omitempty" tf:"enabled_cloudwatch_logs_exports,omitempty"`
 	// +optional
@@ -252,6 +258,12 @@ type RDSOutput struct {
 	// Specifies the identifier of the CA certificate for the DB instance
 	// +optional
 	ThisDbInstanceCaCertIdentifier string `json:"thisDbInstanceCaCertIdentifier" tf:"this_db_instance_ca_cert_identifier"`
+	// The ID of the Directory Service Active Directory domain the instance is joined to
+	// +optional
+	ThisDbInstanceDomain string `json:"thisDbInstanceDomain" tf:"this_db_instance_domain"`
+	// The name of the IAM role to be used when making API calls to the Directory Service.
+	// +optional
+	ThisDbInstanceDomainIamRoleName string `json:"thisDbInstanceDomainIamRoleName" tf:"this_db_instance_domain_iam_role_name"`
 	// The connection endpoint
 	// +optional
 	ThisDbInstanceEndpoint string `json:"thisDbInstanceEndpoint" tf:"this_db_instance_endpoint"`

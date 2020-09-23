@@ -13880,6 +13880,20 @@ func schema_kubeform_apis_modules_v1alpha1_RDSOutput(ref common.ReferenceCallbac
 							Format:      "",
 						},
 					},
+					"thisDbInstanceDomain": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The ID of the Directory Service Active Directory domain the instance is joined to",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"thisDbInstanceDomainIamRoleName": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The name of the IAM role to be used when making API calls to the Directory Service.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
 					"thisDbInstanceEndpoint": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The connection endpoint",
@@ -14136,6 +14150,20 @@ func schema_kubeform_apis_modules_v1alpha1_RDSSpec(ref common.ReferenceCallback)
 						SchemaProps: spec.SchemaProps{
 							Description: "The database can't be deleted when this value is set to true.",
 							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
+					"domain": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The ID of the Directory Service Active Directory domain to create the instance in",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"domainIamRoleName": {
+						SchemaProps: spec.SchemaProps{
+							Description: "(Required if domain is provided) The name of the IAM role to be used when making API calls to the Directory Service",
+							Type:        []string{"string"},
 							Format:      "",
 						},
 					},

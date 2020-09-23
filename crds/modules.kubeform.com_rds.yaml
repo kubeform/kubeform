@@ -105,6 +105,14 @@ spec:
               description: The database can't be deleted when this value is set to
                 true.
               type: boolean
+            domain:
+              description: The ID of the Directory Service Active Directory domain
+                to create the instance in
+              type: string
+            domainIamRoleName:
+              description: (Required if domain is provided) The name of the IAM role
+                to be used when making API calls to the Directory Service
+              type: string
             enabledCloudwatchLogsExports:
               description: 'List of log types to enable for exporting to CloudWatch
                 logs. If omitted, no logs will be exported. Valid values (depending
@@ -336,6 +344,14 @@ spec:
                 thisDbInstanceCaCertIdentifier:
                   description: Specifies the identifier of the CA certificate for
                     the DB instance
+                  type: string
+                thisDbInstanceDomain:
+                  description: The ID of the Directory Service Active Directory domain
+                    the instance is joined to
+                  type: string
+                thisDbInstanceDomainIamRoleName:
+                  description: The name of the IAM role to be used when making API
+                    calls to the Directory Service.
                   type: string
                 thisDbInstanceEndpoint:
                   description: The connection endpoint
