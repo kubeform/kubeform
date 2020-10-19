@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `linode.kubeform.com/v1alpha1` |
 |    `kind` | string | `NodebalancerConfig` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[NodebalancerConfigSpec](#nodebalancerconfigspec)***||
 | `status` | ***[NodebalancerConfigStatus](#nodebalancerconfigstatus)***||
 ## NodebalancerConfigSpec
@@ -24,9 +24,9 @@ Appears on:[NodebalancerConfig](#nodebalancerconfig), [NodebalancerConfigStatus]
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `algorithm` | ***string***| ***(Optional)*** What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source|
 | `check` | ***string***| ***(Optional)*** The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.|
 | `checkAttempts` | ***int64***| ***(Optional)*** How many times to attempt a check before considering a backend to be down. (1-30)|

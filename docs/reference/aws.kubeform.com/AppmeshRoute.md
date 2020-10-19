@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `AppmeshRoute` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[AppmeshRouteSpec](#appmeshroutespec)***||
 | `status` | ***[AppmeshRouteStatus](#appmeshroutestatus)***||
 ## AppmeshRouteSpec
@@ -24,7 +24,7 @@ Appears on:[AppmeshRoute](#appmeshroute), [AppmeshRouteStatus](#appmeshroutestat
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `arn` | ***string***| ***(Optional)*** |
 | `createdDate` | ***string***| ***(Optional)*** |
@@ -32,6 +32,7 @@ Appears on:[AppmeshRoute](#appmeshroute), [AppmeshRouteStatus](#appmeshroutestat
 | `meshName` | ***string***||
 | `name` | ***string***||
 | `spec` | ***[[]AppmeshRouteSpecSpec](#appmeshroutespecspec)***||
+| `tags` | ***map[string]string***| ***(Optional)*** |
 | `virtualRouterName` | ***string***||
 ## AppmeshRouteSpecSpec
 

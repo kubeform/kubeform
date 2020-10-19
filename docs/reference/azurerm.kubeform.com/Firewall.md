@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `Firewall` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[FirewallSpec](#firewallspec)***||
 | `status` | ***[FirewallStatus](#firewallstatus)***||
 ## FirewallSpec
@@ -24,13 +24,14 @@ Appears on:[Firewall](#firewall), [FirewallStatus](#firewallstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `ipConfiguration` | ***[[]FirewallSpecIpConfiguration](#firewallspecipconfiguration)***||
 | `location` | ***string***||
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
+| `zones` | ***[]string***| ***(Optional)*** |
 ## FirewallSpecIpConfiguration
 
 Appears on:[FirewallSpec](#firewallspec)
@@ -41,7 +42,7 @@ Appears on:[FirewallSpec](#firewallspec)
 | `name` | ***string***||
 | `privateIPAddress` | ***string***| ***(Optional)*** |
 | `publicIPAddressID` | ***string***| ***(Optional)*** |
-| `subnetID` | ***string***||
+| `subnetID` | ***string***| ***(Optional)*** |
 ## FirewallStatus
 
 Appears on:[Firewall](#firewall)

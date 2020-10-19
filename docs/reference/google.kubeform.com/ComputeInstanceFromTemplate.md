@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComputeInstanceFromTemplate` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[ComputeInstanceFromTemplateSpec](#computeinstancefromtemplatespec)***||
 | `status` | ***[ComputeInstanceFromTemplateStatus](#computeinstancefromtemplatestatus)***||
 ## ComputeInstanceFromTemplateSpec
@@ -24,9 +24,9 @@ Appears on:[ComputeInstanceFromTemplate](#computeinstancefromtemplate), [Compute
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `allowStoppingForUpdate` | ***bool***| ***(Optional)*** |
 | `attachedDisk` | ***[[]ComputeInstanceFromTemplateSpecAttachedDisk](#computeinstancefromtemplatespecattacheddisk)***| ***(Optional)*** |
 | `bootDisk` | ***[[]ComputeInstanceFromTemplateSpecBootDisk](#computeinstancefromtemplatespecbootdisk)***| ***(Optional)*** |
@@ -35,6 +35,7 @@ Appears on:[ComputeInstanceFromTemplate](#computeinstancefromtemplate), [Compute
 | `deletionProtection` | ***bool***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
 | `guestAccelerator` | ***[[]ComputeInstanceFromTemplateSpecGuestAccelerator](#computeinstancefromtemplatespecguestaccelerator)***| ***(Optional)*** |
+| `hostname` | ***string***| ***(Optional)*** |
 | `instanceID` | ***string***| ***(Optional)*** |
 | `labelFingerprint` | ***string***| ***(Optional)*** |
 | `labels` | ***map[string]string***| ***(Optional)*** |
@@ -50,6 +51,7 @@ Appears on:[ComputeInstanceFromTemplate](#computeinstancefromtemplate), [Compute
 | `scratchDisk` | ***[[]ComputeInstanceFromTemplateSpecScratchDisk](#computeinstancefromtemplatespecscratchdisk)***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
 | `serviceAccount` | ***[[]ComputeInstanceFromTemplateSpecServiceAccount](#computeinstancefromtemplatespecserviceaccount)***| ***(Optional)*** |
+| `shieldedInstanceConfig` | ***[[]ComputeInstanceFromTemplateSpecShieldedInstanceConfig](#computeinstancefromtemplatespecshieldedinstanceconfig)***| ***(Optional)*** |
 | `sourceInstanceTemplate` | ***string***||
 | `tags` | ***[]string***| ***(Optional)*** |
 | `tagsFingerprint` | ***string***| ***(Optional)*** |
@@ -62,6 +64,7 @@ Appears on:[ComputeInstanceFromTemplateSpec](#computeinstancefromtemplatespec)
 | ------ | ----- | ----------- |
 | `deviceName` | ***string***| ***(Optional)*** |
 | `diskEncryptionKeySha256` | ***string***| ***(Optional)*** |
+| `kmsKeySelfLink` | ***string***| ***(Optional)*** |
 | `mode` | ***string***| ***(Optional)*** |
 | `source` | ***string***||
 ## ComputeInstanceFromTemplateSpecBootDisk
@@ -74,6 +77,8 @@ Appears on:[ComputeInstanceFromTemplateSpec](#computeinstancefromtemplatespec)
 | `deviceName` | ***string***| ***(Optional)*** |
 | `diskEncryptionKeySha256` | ***string***| ***(Optional)*** |
 | `initializeParams` | ***[[]ComputeInstanceFromTemplateSpecBootDiskInitializeParams](#computeinstancefromtemplatespecbootdiskinitializeparams)***| ***(Optional)*** |
+| `kmsKeySelfLink` | ***string***| ***(Optional)*** |
+| `mode` | ***string***| ***(Optional)*** |
 | `source` | ***string***| ***(Optional)*** |
 ## ComputeInstanceFromTemplateSpecBootDiskInitializeParams
 
@@ -82,6 +87,7 @@ Appears on:[ComputeInstanceFromTemplateSpecBootDisk](#computeinstancefromtemplat
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `image` | ***string***| ***(Optional)*** |
+| `labels` | ***map[string]string***| ***(Optional)*** |
 | `size` | ***int64***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
 ## ComputeInstanceFromTemplateSpecGuestAccelerator
@@ -99,7 +105,6 @@ Appears on:[ComputeInstanceFromTemplateSpec](#computeinstancefromtemplatespec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `accessConfig` | ***[[]ComputeInstanceFromTemplateSpecNetworkInterfaceAccessConfig](#computeinstancefromtemplatespecnetworkinterfaceaccessconfig)***| ***(Optional)*** |
-| `address` | ***string***| ***(Optional)*** Deprecated|
 | `aliasIPRange` | ***[[]ComputeInstanceFromTemplateSpecNetworkInterfaceAliasIPRange](#computeinstancefromtemplatespecnetworkinterfacealiasiprange)***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 | `network` | ***string***| ***(Optional)*** |
@@ -112,7 +117,6 @@ Appears on:[ComputeInstanceFromTemplateSpecNetworkInterface](#computeinstancefro
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `assignedNATIP` | ***string***| ***(Optional)*** Deprecated|
 | `natIP` | ***string***| ***(Optional)*** |
 | `networkTier` | ***string***| ***(Optional)*** |
 | `publicPtrDomainName` | ***string***| ***(Optional)*** |
@@ -131,8 +135,18 @@ Appears on:[ComputeInstanceFromTemplateSpec](#computeinstancefromtemplatespec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `automaticRestart` | ***bool***| ***(Optional)*** |
+| `nodeAffinities` | ***[[]ComputeInstanceFromTemplateSpecSchedulingNodeAffinities](#computeinstancefromtemplatespecschedulingnodeaffinities)***| ***(Optional)*** |
 | `onHostMaintenance` | ***string***| ***(Optional)*** |
 | `preemptible` | ***bool***| ***(Optional)*** |
+## ComputeInstanceFromTemplateSpecSchedulingNodeAffinities
+
+Appears on:[ComputeInstanceFromTemplateSpecScheduling](#computeinstancefromtemplatespecscheduling)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `key` | ***string***||
+| `operator` | ***string***||
+| `values` | ***[]string***||
 ## ComputeInstanceFromTemplateSpecScratchDisk
 
 Appears on:[ComputeInstanceFromTemplateSpec](#computeinstancefromtemplatespec)
@@ -148,6 +162,15 @@ Appears on:[ComputeInstanceFromTemplateSpec](#computeinstancefromtemplatespec)
 | ------ | ----- | ----------- |
 | `email` | ***string***| ***(Optional)*** |
 | `scopes` | ***[]string***||
+## ComputeInstanceFromTemplateSpecShieldedInstanceConfig
+
+Appears on:[ComputeInstanceFromTemplateSpec](#computeinstancefromtemplatespec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `enableIntegrityMonitoring` | ***bool***| ***(Optional)*** |
+| `enableSecureBoot` | ***bool***| ***(Optional)*** |
+| `enableVtpm` | ***bool***| ***(Optional)*** |
 ## ComputeInstanceFromTemplateStatus
 
 Appears on:[ComputeInstanceFromTemplate](#computeinstancefromtemplate)

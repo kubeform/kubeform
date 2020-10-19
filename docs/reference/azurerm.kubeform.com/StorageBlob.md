@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `StorageBlob` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[StorageBlobSpec](#storageblobspec)***||
 | `status` | ***[StorageBlobStatus](#storageblobstatus)***||
 ## Phase(`string` alias)
@@ -28,20 +28,22 @@ Appears on:[StorageBlob](#storageblob), [StorageBlobStatus](#storageblobstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `attempts` | ***int64***| ***(Optional)*** |
+| `accessTier` | ***string***| ***(Optional)*** |
+| `attempts` | ***int64***| ***(Optional)*** Deprecated|
 | `contentType` | ***string***| ***(Optional)*** |
 | `metadata` | ***map[string]string***| ***(Optional)*** |
 | `name` | ***string***||
 | `parallelism` | ***int64***| ***(Optional)*** |
-| `resourceGroupName` | ***string***||
+| `resourceGroupName` | ***string***| ***(Optional)*** Deprecated|
 | `size` | ***int64***| ***(Optional)*** |
 | `source` | ***string***| ***(Optional)*** |
+| `sourceContent` | ***string***| ***(Optional)*** |
 | `sourceURI` | ***string***| ***(Optional)*** |
 | `storageAccountName` | ***string***||
 | `storageContainerName` | ***string***||
-| `type` | ***string***| ***(Optional)*** |
+| `type` | ***string***||
 | `url` | ***string***| ***(Optional)*** |
 ## StorageBlobStatus
 

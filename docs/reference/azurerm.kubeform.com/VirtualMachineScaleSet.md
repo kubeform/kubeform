@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `VirtualMachineScaleSet` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[VirtualMachineScaleSetSpec](#virtualmachinescalesetspec)***||
 | `status` | ***[VirtualMachineScaleSetStatus](#virtualmachinescalesetstatus)***||
 ## Phase(`string` alias)
@@ -28,9 +28,9 @@ Appears on:[VirtualMachineScaleSet](#virtualmachinescaleset), [VirtualMachineSca
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `automaticOsUpgrade` | ***bool***| ***(Optional)*** |
 | `bootDiagnostics` | ***[[]VirtualMachineScaleSetSpecBootDiagnostics](#virtualmachinescalesetspecbootdiagnostics)***| ***(Optional)*** |
 | `evictionPolicy` | ***string***| ***(Optional)*** |
@@ -48,6 +48,7 @@ Appears on:[VirtualMachineScaleSet](#virtualmachinescaleset), [VirtualMachineSca
 | `overprovision` | ***bool***| ***(Optional)*** |
 | `plan` | ***[[]VirtualMachineScaleSetSpecPlan](#virtualmachinescalesetspecplan)***| ***(Optional)*** |
 | `priority` | ***string***| ***(Optional)*** |
+| `proximityPlacementGroupID` | ***string***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
 | `rollingUpgradePolicy` | ***[[]VirtualMachineScaleSetSpecRollingUpgradePolicy](#virtualmachinescalesetspecrollingupgradepolicy)***| ***(Optional)*** |
 | `singlePlacementGroup` | ***bool***| ***(Optional)*** |

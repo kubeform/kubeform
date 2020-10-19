@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `ApplicationGateway` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[ApplicationGatewaySpec](#applicationgatewayspec)***||
 | `status` | ***[ApplicationGatewayStatus](#applicationgatewaystatus)***||
 ## ApplicationGatewaySpec
@@ -24,9 +24,9 @@ Appears on:[ApplicationGateway](#applicationgateway), [ApplicationGatewayStatus]
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `authenticationCertificate` | ***[[]ApplicationGatewaySpecAuthenticationCertificate](#applicationgatewayspecauthenticationcertificate)***| ***(Optional)*** |
 | `autoscaleConfiguration` | ***[[]ApplicationGatewaySpecAutoscaleConfiguration](#applicationgatewayspecautoscaleconfiguration)***| ***(Optional)*** |
 | `backendAddressPool` | ***[[]ApplicationGatewaySpecBackendAddressPool](#applicationgatewayspecbackendaddresspool)***||
@@ -50,6 +50,7 @@ Appears on:[ApplicationGateway](#applicationgateway), [ApplicationGatewayStatus]
 | `sslCertificate` | ***[[]ApplicationGatewaySpecSslCertificate](#applicationgatewayspecsslcertificate)***| ***(Optional)*** |
 | `sslPolicy` | ***[[]ApplicationGatewaySpecSslPolicy](#applicationgatewayspecsslpolicy)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
+| `trustedRootCertificate` | ***[[]ApplicationGatewaySpecTrustedRootCertificate](#applicationgatewayspectrustedrootcertificate)***| ***(Optional)*** |
 | `urlPathMap` | ***[[]ApplicationGatewaySpecUrlPathMap](#applicationgatewayspecurlpathmap)***| ***(Optional)*** |
 | `wafConfiguration` | ***[[]ApplicationGatewaySpecWafConfiguration](#applicationgatewayspecwafconfiguration)***| ***(Optional)*** |
 | `zones` | ***[]string***| ***(Optional)*** |
@@ -101,6 +102,7 @@ Appears on:[ApplicationGatewaySpec](#applicationgatewayspec)
 | `probeName` | ***string***| ***(Optional)*** |
 | `protocol` | ***string***||
 | `requestTimeout` | ***int64***| ***(Optional)*** |
+| `trustedRootCertificateNames` | ***[]string***| ***(Optional)*** |
 ## ApplicationGatewaySpecBackendHTTPSettingsAuthenticationCertificate
 
 Appears on:[ApplicationGatewaySpecBackendHTTPSettings](#applicationgatewayspecbackendhttpsettings)
@@ -326,6 +328,14 @@ Appears on:[ApplicationGatewaySpec](#applicationgatewayspec)
 | `minProtocolVersion` | ***string***| ***(Optional)*** |
 | `policyName` | ***string***| ***(Optional)*** |
 | `policyType` | ***string***| ***(Optional)*** |
+## ApplicationGatewaySpecTrustedRootCertificate
+
+Appears on:[ApplicationGatewaySpec](#applicationgatewayspec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `ID` | ***string***| ***(Optional)*** |
+| `name` | ***string***||
 ## ApplicationGatewaySpecUrlPathMap
 
 Appears on:[ApplicationGatewaySpec](#applicationgatewayspec)
@@ -413,3 +423,4 @@ Appears on:[ApplicationGatewayStatus](#applicationgatewaystatus)
 | `authentication_certificate.<index>.data` | ***string*** ||
 | `ssl_certificate.<index>.data` | ***string*** ||
 | `ssl_certificate.<index>.password` | ***string*** ||
+| `trusted_root_certificate.<index>.data` | ***string*** ||

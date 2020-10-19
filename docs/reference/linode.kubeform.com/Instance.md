@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `linode.kubeform.com/v1alpha1` |
 |    `kind` | string | `Instance` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[InstanceSpec](#instancespec)***||
 | `status` | ***[InstanceStatus](#instancestatus)***||
 ## InstanceSpec
@@ -24,9 +24,9 @@ Appears on:[Instance](#instance), [InstanceStatus](#instancestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `alerts` | ***[[]InstanceSpecAlerts](#instancespecalerts)***| ***(Optional)*** |
 | `authorizedKeys` | ***[]string***| ***(Optional)*** A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.|
 | `authorizedUsers` | ***[]string***| ***(Optional)*** A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.|
@@ -123,63 +123,63 @@ Appears on:[InstanceSpecConfigDevices](#instancespecconfigdevices)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `diskID` | ***int64***| ***(Optional)*** |
-| `diskLabel` | ***string***| ***(Optional)*** |
-| `volumeID` | ***int64***| ***(Optional)*** |
+| `diskID` | ***int64***| ***(Optional)*** The Disk ID to map to this disk slot|
+| `diskLabel` | ***string***| ***(Optional)*** The `label` of the `disk` to map to this `device` slot.|
+| `volumeID` | ***int64***| ***(Optional)*** The Block Storage volume ID to map to this disk slot|
 ## InstanceSpecConfigDevicesSdc
 
 Appears on:[InstanceSpecConfigDevices](#instancespecconfigdevices)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `diskID` | ***int64***| ***(Optional)*** |
-| `diskLabel` | ***string***| ***(Optional)*** |
-| `volumeID` | ***int64***| ***(Optional)*** |
+| `diskID` | ***int64***| ***(Optional)*** The Disk ID to map to this disk slot|
+| `diskLabel` | ***string***| ***(Optional)*** The `label` of the `disk` to map to this `device` slot.|
+| `volumeID` | ***int64***| ***(Optional)*** The Block Storage volume ID to map to this disk slot|
 ## InstanceSpecConfigDevicesSdd
 
 Appears on:[InstanceSpecConfigDevices](#instancespecconfigdevices)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `diskID` | ***int64***| ***(Optional)*** |
-| `diskLabel` | ***string***| ***(Optional)*** |
-| `volumeID` | ***int64***| ***(Optional)*** |
+| `diskID` | ***int64***| ***(Optional)*** The Disk ID to map to this disk slot|
+| `diskLabel` | ***string***| ***(Optional)*** The `label` of the `disk` to map to this `device` slot.|
+| `volumeID` | ***int64***| ***(Optional)*** The Block Storage volume ID to map to this disk slot|
 ## InstanceSpecConfigDevicesSde
 
 Appears on:[InstanceSpecConfigDevices](#instancespecconfigdevices)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `diskID` | ***int64***| ***(Optional)*** |
-| `diskLabel` | ***string***| ***(Optional)*** |
-| `volumeID` | ***int64***| ***(Optional)*** |
+| `diskID` | ***int64***| ***(Optional)*** The Disk ID to map to this disk slot|
+| `diskLabel` | ***string***| ***(Optional)*** The `label` of the `disk` to map to this `device` slot.|
+| `volumeID` | ***int64***| ***(Optional)*** The Block Storage volume ID to map to this disk slot|
 ## InstanceSpecConfigDevicesSdf
 
 Appears on:[InstanceSpecConfigDevices](#instancespecconfigdevices)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `diskID` | ***int64***| ***(Optional)*** |
-| `diskLabel` | ***string***| ***(Optional)*** |
-| `volumeID` | ***int64***| ***(Optional)*** |
+| `diskID` | ***int64***| ***(Optional)*** The Disk ID to map to this disk slot|
+| `diskLabel` | ***string***| ***(Optional)*** The `label` of the `disk` to map to this `device` slot.|
+| `volumeID` | ***int64***| ***(Optional)*** The Block Storage volume ID to map to this disk slot|
 ## InstanceSpecConfigDevicesSdg
 
 Appears on:[InstanceSpecConfigDevices](#instancespecconfigdevices)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `diskID` | ***int64***| ***(Optional)*** |
-| `diskLabel` | ***string***| ***(Optional)*** |
-| `volumeID` | ***int64***| ***(Optional)*** |
+| `diskID` | ***int64***| ***(Optional)*** The Disk ID to map to this disk slot|
+| `diskLabel` | ***string***| ***(Optional)*** The `label` of the `disk` to map to this `device` slot.|
+| `volumeID` | ***int64***| ***(Optional)*** The Block Storage volume ID to map to this disk slot|
 ## InstanceSpecConfigDevicesSdh
 
 Appears on:[InstanceSpecConfigDevices](#instancespecconfigdevices)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `diskID` | ***int64***| ***(Optional)*** |
-| `diskLabel` | ***string***| ***(Optional)*** |
-| `volumeID` | ***int64***| ***(Optional)*** |
+| `diskID` | ***int64***| ***(Optional)*** The Disk ID to map to this disk slot|
+| `diskLabel` | ***string***| ***(Optional)*** The `label` of the `disk` to map to this `device` slot.|
+| `volumeID` | ***int64***| ***(Optional)*** The Block Storage volume ID to map to this disk slot|
 ## InstanceSpecConfigHelpers
 
 Appears on:[InstanceSpecConfig](#instancespecconfig)

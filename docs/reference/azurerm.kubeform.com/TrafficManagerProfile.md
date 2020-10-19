@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `TrafficManagerProfile` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[TrafficManagerProfileSpec](#trafficmanagerprofilespec)***||
 | `status` | ***[TrafficManagerProfileStatus](#trafficmanagerprofilestatus)***||
 ## Phase(`string` alias)
@@ -28,7 +28,7 @@ Appears on:[TrafficManagerProfile](#trafficmanagerprofile), [TrafficManagerProfi
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `dnsConfig` | ***[[]TrafficManagerProfileSpecDnsConfig](#trafficmanagerprofilespecdnsconfig)***||
 | `fqdn` | ***string***| ***(Optional)*** |
@@ -52,9 +52,13 @@ Appears on:[TrafficManagerProfileSpec](#trafficmanagerprofilespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
+| `expectedStatusCodeRanges` | ***[]string***| ***(Optional)*** |
+| `intervalInSeconds` | ***int64***| ***(Optional)*** |
 | `path` | ***string***| ***(Optional)*** |
 | `port` | ***int64***||
 | `protocol` | ***string***||
+| `timeoutInSeconds` | ***int64***| ***(Optional)*** |
+| `toleratedNumberOfFailures` | ***int64***| ***(Optional)*** |
 ## TrafficManagerProfileStatus
 
 Appears on:[TrafficManagerProfile](#trafficmanagerprofile)

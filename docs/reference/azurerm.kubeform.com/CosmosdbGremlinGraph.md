@@ -1,0 +1,78 @@
+---
+title: CosmosdbGremlinGraph
+menu:
+  docs_{{ .version }}:
+    identifier: cosmosdbgremlingraph-azurerm.kubeform.com
+    name: CosmosdbGremlinGraph
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_{{ .version }}
+section_menu_id: reference
+---
+
+## CosmosdbGremlinGraph
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
+|    `kind` | string | `CosmosdbGremlinGraph` |
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `spec` | ***[CosmosdbGremlinGraphSpec](#cosmosdbgremlingraphspec)***||
+| `status` | ***[CosmosdbGremlinGraphStatus](#cosmosdbgremlingraphstatus)***||
+## CosmosdbGremlinGraphSpec
+
+Appears on:[CosmosdbGremlinGraph](#cosmosdbgremlingraph), [CosmosdbGremlinGraphStatus](#cosmosdbgremlingraphstatus)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
+| `id` | ***string***||
+| `accountName` | ***string***||
+| `conflictResolutionPolicy` | ***[[]CosmosdbGremlinGraphSpecConflictResolutionPolicy](#cosmosdbgremlingraphspecconflictresolutionpolicy)***||
+| `databaseName` | ***string***||
+| `indexPolicy` | ***[[]CosmosdbGremlinGraphSpecIndexPolicy](#cosmosdbgremlingraphspecindexpolicy)***||
+| `name` | ***string***||
+| `partitionKeyPath` | ***string***| ***(Optional)*** |
+| `resourceGroupName` | ***string***||
+| `throughput` | ***int64***| ***(Optional)*** |
+| `uniqueKey` | ***[[]CosmosdbGremlinGraphSpecUniqueKey](#cosmosdbgremlingraphspecuniquekey)***| ***(Optional)*** |
+## CosmosdbGremlinGraphSpecConflictResolutionPolicy
+
+Appears on:[CosmosdbGremlinGraphSpec](#cosmosdbgremlingraphspec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `conflictResolutionPath` | ***string***| ***(Optional)*** |
+| `conflictResolutionProcedure` | ***string***| ***(Optional)*** |
+| `mode` | ***string***||
+## CosmosdbGremlinGraphSpecIndexPolicy
+
+Appears on:[CosmosdbGremlinGraphSpec](#cosmosdbgremlingraphspec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `automatic` | ***bool***| ***(Optional)*** |
+| `excludedPaths` | ***[]string***| ***(Optional)*** |
+| `includedPaths` | ***[]string***| ***(Optional)*** |
+| `indexingMode` | ***string***||
+## CosmosdbGremlinGraphSpecUniqueKey
+
+Appears on:[CosmosdbGremlinGraphSpec](#cosmosdbgremlingraphspec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `paths` | ***[]string***||
+## CosmosdbGremlinGraphStatus
+
+Appears on:[CosmosdbGremlinGraph](#cosmosdbgremlingraph)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
+| `output` | ***[CosmosdbGremlinGraphSpec](#cosmosdbgremlingraphspec)***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
+## Phase(`string` alias)
+
+Appears on:[CosmosdbGremlinGraphStatus](#cosmosdbgremlingraphstatus)
+
+---

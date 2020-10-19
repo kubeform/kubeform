@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `AppsyncGraphqlAPI` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[AppsyncGraphqlAPISpec](#appsyncgraphqlapispec)***||
 | `status` | ***[AppsyncGraphqlAPIStatus](#appsyncgraphqlapistatus)***||
 ## AppsyncGraphqlAPISpec
@@ -24,8 +24,9 @@ Appears on:[AppsyncGraphqlAPI](#appsyncgraphqlapi), [AppsyncGraphqlAPIStatus](#a
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
+| `additionalAuthenticationProvider` | ***[[]AppsyncGraphqlAPISpecAdditionalAuthenticationProvider](#appsyncgraphqlapispecadditionalauthenticationprovider)***| ***(Optional)*** |
 | `arn` | ***string***| ***(Optional)*** |
 | `authenticationType` | ***string***||
 | `logConfig` | ***[[]AppsyncGraphqlAPISpecLogConfig](#appsyncgraphqlapispeclogconfig)***| ***(Optional)*** |
@@ -35,6 +36,34 @@ Appears on:[AppsyncGraphqlAPI](#appsyncgraphqlapi), [AppsyncGraphqlAPIStatus](#a
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `uris` | ***map[string]string***| ***(Optional)*** |
 | `userPoolConfig` | ***[[]AppsyncGraphqlAPISpecUserPoolConfig](#appsyncgraphqlapispecuserpoolconfig)***| ***(Optional)*** |
+## AppsyncGraphqlAPISpecAdditionalAuthenticationProvider
+
+Appears on:[AppsyncGraphqlAPISpec](#appsyncgraphqlapispec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `authenticationType` | ***string***||
+| `openidConnectConfig` | ***[[]AppsyncGraphqlAPISpecAdditionalAuthenticationProviderOpenidConnectConfig](#appsyncgraphqlapispecadditionalauthenticationprovideropenidconnectconfig)***| ***(Optional)*** |
+| `userPoolConfig` | ***[[]AppsyncGraphqlAPISpecAdditionalAuthenticationProviderUserPoolConfig](#appsyncgraphqlapispecadditionalauthenticationprovideruserpoolconfig)***| ***(Optional)*** |
+## AppsyncGraphqlAPISpecAdditionalAuthenticationProviderOpenidConnectConfig
+
+Appears on:[AppsyncGraphqlAPISpecAdditionalAuthenticationProvider](#appsyncgraphqlapispecadditionalauthenticationprovider)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `authTtl` | ***int64***| ***(Optional)*** |
+| `clientID` | ***string***| ***(Optional)*** |
+| `iatTtl` | ***int64***| ***(Optional)*** |
+| `issuer` | ***string***||
+## AppsyncGraphqlAPISpecAdditionalAuthenticationProviderUserPoolConfig
+
+Appears on:[AppsyncGraphqlAPISpecAdditionalAuthenticationProvider](#appsyncgraphqlapispecadditionalauthenticationprovider)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `appIDClientRegex` | ***string***| ***(Optional)*** |
+| `awsRegion` | ***string***| ***(Optional)*** |
+| `userPoolID` | ***string***||
 ## AppsyncGraphqlAPISpecLogConfig
 
 Appears on:[AppsyncGraphqlAPISpec](#appsyncgraphqlapispec)

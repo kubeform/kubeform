@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `CodebuildProject` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[CodebuildProjectSpec](#codebuildprojectspec)***||
 | `status` | ***[CodebuildProjectStatus](#codebuildprojectstatus)***||
 ## CodebuildProjectSpec
@@ -24,9 +24,9 @@ Appears on:[CodebuildProject](#codebuildproject), [CodebuildProjectStatus](#code
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `arn` | ***string***| ***(Optional)*** |
 | `artifacts` | ***[[]CodebuildProjectSpecArtifacts](#codebuildprojectspecartifacts)***||
 | `badgeEnabled` | ***bool***| ***(Optional)*** |
@@ -36,6 +36,7 @@ Appears on:[CodebuildProject](#codebuildproject), [CodebuildProjectStatus](#code
 | `description` | ***string***| ***(Optional)*** |
 | `encryptionKey` | ***string***| ***(Optional)*** |
 | `environment` | ***[[]CodebuildProjectSpecEnvironment](#codebuildprojectspecenvironment)***||
+| `logsConfig` | ***[[]CodebuildProjectSpecLogsConfig](#codebuildprojectspeclogsconfig)***| ***(Optional)*** |
 | `name` | ***string***||
 | `secondaryArtifacts` | ***[[]CodebuildProjectSpecSecondaryArtifacts](#codebuildprojectspecsecondaryartifacts)***| ***(Optional)*** |
 | `secondarySources` | ***[[]CodebuildProjectSpecSecondarySources](#codebuildprojectspecsecondarysources)***| ***(Optional)*** |
@@ -49,10 +50,12 @@ Appears on:[CodebuildProjectSpec](#codebuildprojectspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
+| `artifactIdentifier` | ***string***| ***(Optional)*** |
 | `encryptionDisabled` | ***bool***| ***(Optional)*** |
 | `location` | ***string***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 | `namespaceType` | ***string***| ***(Optional)*** |
+| `overrideArtifactName` | ***bool***| ***(Optional)*** |
 | `packaging` | ***string***| ***(Optional)*** |
 | `path` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
@@ -63,6 +66,7 @@ Appears on:[CodebuildProjectSpec](#codebuildprojectspec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `location` | ***string***| ***(Optional)*** |
+| `modes` | ***[]string***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
 ## CodebuildProjectSpecEnvironment
 
@@ -76,6 +80,7 @@ Appears on:[CodebuildProjectSpec](#codebuildprojectspec)
 | `image` | ***string***||
 | `imagePullCredentialsType` | ***string***| ***(Optional)*** |
 | `privilegedMode` | ***bool***| ***(Optional)*** |
+| `registryCredential` | ***[[]CodebuildProjectSpecEnvironmentRegistryCredential](#codebuildprojectspecenvironmentregistrycredential)***| ***(Optional)*** |
 | `type` | ***string***||
 ## CodebuildProjectSpecEnvironmentEnvironmentVariable
 
@@ -86,6 +91,40 @@ Appears on:[CodebuildProjectSpecEnvironment](#codebuildprojectspecenvironment)
 | `name` | ***string***||
 | `type` | ***string***| ***(Optional)*** |
 | `value` | ***string***||
+## CodebuildProjectSpecEnvironmentRegistryCredential
+
+Appears on:[CodebuildProjectSpecEnvironment](#codebuildprojectspecenvironment)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `credential` | ***string***||
+| `credentialProvider` | ***string***||
+## CodebuildProjectSpecLogsConfig
+
+Appears on:[CodebuildProjectSpec](#codebuildprojectspec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `cloudwatchLogs` | ***[[]CodebuildProjectSpecLogsConfigCloudwatchLogs](#codebuildprojectspeclogsconfigcloudwatchlogs)***| ***(Optional)*** |
+| `s3Logs` | ***[[]CodebuildProjectSpecLogsConfigS3Logs](#codebuildprojectspeclogsconfigs3logs)***| ***(Optional)*** |
+## CodebuildProjectSpecLogsConfigCloudwatchLogs
+
+Appears on:[CodebuildProjectSpecLogsConfig](#codebuildprojectspeclogsconfig)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `groupName` | ***string***| ***(Optional)*** |
+| `status` | ***string***| ***(Optional)*** |
+| `streamName` | ***string***| ***(Optional)*** |
+## CodebuildProjectSpecLogsConfigS3Logs
+
+Appears on:[CodebuildProjectSpecLogsConfig](#codebuildprojectspeclogsconfig)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `encryptionDisabled` | ***bool***| ***(Optional)*** |
+| `location` | ***string***| ***(Optional)*** |
+| `status` | ***string***| ***(Optional)*** |
 ## CodebuildProjectSpecSecondaryArtifacts
 
 Appears on:[CodebuildProjectSpec](#codebuildprojectspec)
@@ -97,6 +136,7 @@ Appears on:[CodebuildProjectSpec](#codebuildprojectspec)
 | `location` | ***string***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 | `namespaceType` | ***string***| ***(Optional)*** |
+| `overrideArtifactName` | ***bool***| ***(Optional)*** |
 | `packaging` | ***string***| ***(Optional)*** |
 | `path` | ***string***| ***(Optional)*** |
 | `type` | ***string***||

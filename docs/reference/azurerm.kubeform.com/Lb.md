@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `Lb` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[LbSpec](#lbspec)***||
 | `status` | ***[LbStatus](#lbstatus)***||
 ## LbSpec
@@ -24,7 +24,7 @@ Appears on:[Lb](#lb), [LbStatus](#lbstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `frontendIPConfiguration` | ***[[]LbSpecFrontendIPConfiguration](#lbspecfrontendipconfiguration)***| ***(Optional)*** |
 | `location` | ***string***||
@@ -40,6 +40,7 @@ Appears on:[LbSpec](#lbspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
+| `ID` | ***string***| ***(Optional)*** |
 | `inboundNATRules` | ***[]string***| ***(Optional)*** |
 | `loadBalancerRules` | ***[]string***| ***(Optional)*** |
 | `name` | ***string***||

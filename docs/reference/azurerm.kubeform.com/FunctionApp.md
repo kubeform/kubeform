@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `FunctionApp` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[FunctionAppSpec](#functionappspec)***||
 | `status` | ***[FunctionAppStatus](#functionappstatus)***||
 ## FunctionAppSpec
@@ -24,9 +24,9 @@ Appears on:[FunctionApp](#functionapp), [FunctionAppStatus](#functionappstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `appServicePlanID` | ***string***||
 | `appSettings` | ***map[string]string***| ***(Optional)*** |
 | `authSettings` | ***[[]FunctionAppSpecAuthSettings](#functionappspecauthsettings)***| ***(Optional)*** |
@@ -120,6 +120,7 @@ Appears on:[FunctionAppSpec](#functionappspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
+| `identityIDS` | ***[]string***| ***(Optional)*** |
 | `principalID` | ***string***| ***(Optional)*** |
 | `tenantID` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
@@ -130,9 +131,31 @@ Appears on:[FunctionAppSpec](#functionappspec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `alwaysOn` | ***bool***| ***(Optional)*** |
+| `cors` | ***[[]FunctionAppSpecSiteConfigCors](#functionappspecsiteconfigcors)***| ***(Optional)*** |
+| `ftpsState` | ***string***| ***(Optional)*** |
+| `http2Enabled` | ***bool***| ***(Optional)*** |
+| `ipRestriction` | ***[[]FunctionAppSpecSiteConfigIpRestriction](#functionappspecsiteconfigiprestriction)***| ***(Optional)*** |
 | `linuxFxVersion` | ***string***| ***(Optional)*** |
+| `minTLSVersion` | ***string***| ***(Optional)*** |
 | `use32BitWorkerProcess` | ***bool***| ***(Optional)*** |
+| `virtualNetworkName` | ***string***| ***(Optional)*** |
 | `websocketsEnabled` | ***bool***| ***(Optional)*** |
+## FunctionAppSpecSiteConfigCors
+
+Appears on:[FunctionAppSpecSiteConfig](#functionappspecsiteconfig)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `allowedOrigins` | ***[]string***||
+| `supportCredentials` | ***bool***| ***(Optional)*** |
+## FunctionAppSpecSiteConfigIpRestriction
+
+Appears on:[FunctionAppSpecSiteConfig](#functionappspecsiteconfig)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `ipAddress` | ***string***| ***(Optional)*** |
+| `subnetID` | ***string***| ***(Optional)*** |
 ## FunctionAppSpecSiteCredential
 
 Appears on:[FunctionAppSpec](#functionappspec)

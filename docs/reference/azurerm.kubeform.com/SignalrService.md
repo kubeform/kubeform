@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `SignalrService` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[SignalrServiceSpec](#signalrservicespec)***||
 | `status` | ***[SignalrServiceStatus](#signalrservicestatus)***||
 ## Phase(`string` alias)
@@ -28,9 +28,11 @@ Appears on:[SignalrService](#signalrservice), [SignalrServiceStatus](#signalrser
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
+| `cors` | ***[[]SignalrServiceSpecCors](#signalrservicespeccors)***| ***(Optional)*** |
+| `features` | ***[[]SignalrServiceSpecFeatures](#signalrservicespecfeatures)***| ***(Optional)*** |
 | `hostname` | ***string***| ***(Optional)*** |
 | `ipAddress` | ***string***| ***(Optional)*** |
 | `location` | ***string***||
@@ -40,6 +42,21 @@ Appears on:[SignalrService](#signalrservice), [SignalrServiceStatus](#signalrser
 | `serverPort` | ***int64***| ***(Optional)*** |
 | `sku` | ***[[]SignalrServiceSpecSku](#signalrservicespecsku)***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
+## SignalrServiceSpecCors
+
+Appears on:[SignalrServiceSpec](#signalrservicespec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `allowedOrigins` | ***[]string***||
+## SignalrServiceSpecFeatures
+
+Appears on:[SignalrServiceSpec](#signalrservicespec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `flag` | ***string***||
+| `value` | ***string***||
 ## SignalrServiceSpecSku
 
 Appears on:[SignalrServiceSpec](#signalrservicespec)

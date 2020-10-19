@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `AppServiceSlot` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[AppServiceSlotSpec](#appserviceslotspec)***||
 | `status` | ***[AppServiceSlotStatus](#appserviceslotstatus)***||
 ## AppServiceSlotSpec
@@ -24,9 +24,9 @@ Appears on:[AppServiceSlot](#appserviceslot), [AppServiceSlotStatus](#appservice
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `appServiceName` | ***string***||
 | `appServicePlanID` | ***string***||
 | `appSettings` | ***map[string]string***| ***(Optional)*** |
@@ -38,6 +38,7 @@ Appears on:[AppServiceSlot](#appserviceslot), [AppServiceSlotStatus](#appservice
 | `httpsOnly` | ***bool***| ***(Optional)*** |
 | `identity` | ***[[]AppServiceSlotSpecIdentity](#appserviceslotspecidentity)***| ***(Optional)*** |
 | `location` | ***string***||
+| `logs` | ***[[]AppServiceSlotSpecLogs](#appserviceslotspeclogs)***| ***(Optional)*** |
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
 | `siteConfig` | ***[[]AppServiceSlotSpecSiteConfig](#appserviceslotspecsiteconfig)***| ***(Optional)*** |
@@ -120,6 +121,52 @@ Appears on:[AppServiceSlotSpec](#appserviceslotspec)
 | `principalID` | ***string***| ***(Optional)*** |
 | `tenantID` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
+## AppServiceSlotSpecLogs
+
+Appears on:[AppServiceSlotSpec](#appserviceslotspec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `applicationLogs` | ***[[]AppServiceSlotSpecLogsApplicationLogs](#appserviceslotspeclogsapplicationlogs)***| ***(Optional)*** |
+| `httpLogs` | ***[[]AppServiceSlotSpecLogsHttpLogs](#appserviceslotspeclogshttplogs)***| ***(Optional)*** |
+## AppServiceSlotSpecLogsApplicationLogs
+
+Appears on:[AppServiceSlotSpecLogs](#appserviceslotspeclogs)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `azureBlobStorage` | ***[[]AppServiceSlotSpecLogsApplicationLogsAzureBlobStorage](#appserviceslotspeclogsapplicationlogsazureblobstorage)***| ***(Optional)*** |
+## AppServiceSlotSpecLogsApplicationLogsAzureBlobStorage
+
+Appears on:[AppServiceSlotSpecLogsApplicationLogs](#appserviceslotspeclogsapplicationlogs)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `level` | ***string***||
+| `retentionInDays` | ***int64***||
+## AppServiceSlotSpecLogsHttpLogs
+
+Appears on:[AppServiceSlotSpecLogs](#appserviceslotspeclogs)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `azureBlobStorage` | ***[[]AppServiceSlotSpecLogsHttpLogsAzureBlobStorage](#appserviceslotspeclogshttplogsazureblobstorage)***| ***(Optional)*** |
+| `fileSystem` | ***[[]AppServiceSlotSpecLogsHttpLogsFileSystem](#appserviceslotspeclogshttplogsfilesystem)***| ***(Optional)*** |
+## AppServiceSlotSpecLogsHttpLogsAzureBlobStorage
+
+Appears on:[AppServiceSlotSpecLogsHttpLogs](#appserviceslotspeclogshttplogs)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `retentionInDays` | ***int64***||
+## AppServiceSlotSpecLogsHttpLogsFileSystem
+
+Appears on:[AppServiceSlotSpecLogsHttpLogs](#appserviceslotspeclogshttplogs)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `retentionInDays` | ***int64***||
+| `retentionInMb` | ***int64***||
 ## AppServiceSlotSpecSiteConfig
 
 Appears on:[AppServiceSlotSpec](#appserviceslotspec)
@@ -128,6 +175,7 @@ Appears on:[AppServiceSlotSpec](#appserviceslotspec)
 | ------ | ----- | ----------- |
 | `alwaysOn` | ***bool***| ***(Optional)*** |
 | `appCommandLine` | ***string***| ***(Optional)*** |
+| `autoSwapSlotName` | ***string***| ***(Optional)*** |
 | `cors` | ***[[]AppServiceSlotSpecSiteConfigCors](#appserviceslotspecsiteconfigcors)***| ***(Optional)*** |
 | `defaultDocuments` | ***[]string***| ***(Optional)*** |
 | `dotnetFrameworkVersion` | ***string***| ***(Optional)*** |
@@ -164,8 +212,9 @@ Appears on:[AppServiceSlotSpecSiteConfig](#appserviceslotspecsiteconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `ipAddress` | ***string***||
+| `ipAddress` | ***string***| ***(Optional)*** |
 | `subnetMask` | ***string***| ***(Optional)*** |
+| `virtualNetworkSubnetID` | ***string***| ***(Optional)*** |
 ## AppServiceSlotSpecSiteCredential
 
 Appears on:[AppServiceSlotSpec](#appserviceslotspec)
@@ -197,4 +246,6 @@ Appears on:[AppServiceSlotStatus](#appserviceslotstatus)
 | `auth_settings.<index>.microsoft.<index>.client_secret` | ***string*** ||
 | `auth_settings.<index>.twitter.<index>.consumer_secret` | ***string*** ||
 | `connection_string.<index>.value` | ***string*** ||
+| `logs.<index>.application_logs.<index>.azure_blob_storage.<index>.sas_url` | ***string*** ||
+| `logs.<index>.http_logs.<index>.azure_blob_storage.<index>.sas_url` | ***string*** ||
 | `site_credential.<index>.password` | ***string*** ||

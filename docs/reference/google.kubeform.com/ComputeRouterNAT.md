@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComputeRouterNAT` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[ComputeRouterNATSpec](#computerouternatspec)***||
 | `status` | ***[ComputeRouterNATStatus](#computerouternatstatus)***||
 ## ComputeRouterNATSpec
@@ -24,9 +24,10 @@ Appears on:[ComputeRouterNAT](#computerouternat), [ComputeRouterNATStatus](#comp
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `icmpIdleTimeoutSec` | ***int64***| ***(Optional)*** |
+| `logConfig` | ***[[]ComputeRouterNATSpecLogConfig](#computerouternatspeclogconfig)***| ***(Optional)*** |
 | `minPortsPerVm` | ***int64***| ***(Optional)*** |
 | `name` | ***string***||
 | `natIPAllocateOption` | ***string***||
@@ -34,11 +35,19 @@ Appears on:[ComputeRouterNAT](#computerouternat), [ComputeRouterNATStatus](#comp
 | `project` | ***string***| ***(Optional)*** |
 | `region` | ***string***| ***(Optional)*** |
 | `router` | ***string***||
-| `sourceSubnetworkIPRangesToNAT` | ***string***| ***(Optional)*** |
+| `sourceSubnetworkIPRangesToNAT` | ***string***||
 | `subnetwork` | ***[[]ComputeRouterNATSpecSubnetwork](#computerouternatspecsubnetwork)***| ***(Optional)*** |
 | `tcpEstablishedIdleTimeoutSec` | ***int64***| ***(Optional)*** |
 | `tcpTransitoryIdleTimeoutSec` | ***int64***| ***(Optional)*** |
 | `udpIdleTimeoutSec` | ***int64***| ***(Optional)*** |
+## ComputeRouterNATSpecLogConfig
+
+Appears on:[ComputeRouterNATSpec](#computerouternatspec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `enable` | ***bool***||
+| `filter` | ***string***||
 ## ComputeRouterNATSpecSubnetwork
 
 Appears on:[ComputeRouterNATSpec](#computerouternatspec)
@@ -47,7 +56,7 @@ Appears on:[ComputeRouterNATSpec](#computerouternatspec)
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `secondaryIPRangeNames` | ***[]string***| ***(Optional)*** |
-| `sourceIPRangesToNAT` | ***[]string***| ***(Optional)*** |
+| `sourceIPRangesToNAT` | ***[]string***||
 ## ComputeRouterNATStatus
 
 Appears on:[ComputeRouterNAT](#computerouternat)

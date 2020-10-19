@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComputeImage` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[ComputeImageSpec](#computeimagespec)***||
 | `status` | ***[ComputeImageStatus](#computeimagestatus)***||
 ## ComputeImageSpec
@@ -24,11 +24,14 @@ Appears on:[ComputeImage](#computeimage), [ComputeImageStatus](#computeimagestat
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `createTimeout` | ***int64***| ***(Optional)*** Deprecated|
+| `archiveSizeBytes` | ***int64***| ***(Optional)*** |
+| `creationTimestamp` | ***string***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
+| `diskSizeGb` | ***int64***| ***(Optional)*** |
 | `family` | ***string***| ***(Optional)*** |
+| `guestOsFeatures` | ***[[]ComputeImageSpecGuestOsFeatures](#computeimagespecguestosfeatures)***| ***(Optional)*** |
 | `labelFingerprint` | ***string***| ***(Optional)*** |
 | `labels` | ***map[string]string***| ***(Optional)*** |
 | `licenses` | ***[]string***| ***(Optional)*** |
@@ -37,6 +40,13 @@ Appears on:[ComputeImage](#computeimage), [ComputeImageStatus](#computeimagestat
 | `rawDisk` | ***[[]ComputeImageSpecRawDisk](#computeimagespecrawdisk)***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
 | `sourceDisk` | ***string***| ***(Optional)*** |
+## ComputeImageSpecGuestOsFeatures
+
+Appears on:[ComputeImageSpec](#computeimagespec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `type` | ***string***| ***(Optional)*** |
 ## ComputeImageSpecRawDisk
 
 Appears on:[ComputeImageSpec](#computeimagespec)

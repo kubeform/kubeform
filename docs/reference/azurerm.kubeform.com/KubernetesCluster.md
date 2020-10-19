@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `KubernetesCluster` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[KubernetesClusterSpec](#kubernetesclusterspec)***||
 | `status` | ***[KubernetesClusterStatus](#kubernetesclusterstatus)***||
 ## KubernetesClusterSpec
@@ -24,14 +24,17 @@ Appears on:[KubernetesCluster](#kubernetescluster), [KubernetesClusterStatus](#k
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `addonProfile` | ***[[]KubernetesClusterSpecAddonProfile](#kubernetesclusterspecaddonprofile)***| ***(Optional)*** |
-| `agentPoolProfile` | ***[[]KubernetesClusterSpecAgentPoolProfile](#kubernetesclusterspecagentpoolprofile)***||
+| `agentPoolProfile` | ***[[]KubernetesClusterSpecAgentPoolProfile](#kubernetesclusterspecagentpoolprofile)***| ***(Optional)*** Deprecated|
 | `apiServerAuthorizedIPRanges` | ***[]string***| ***(Optional)*** |
+| `defaultNodePool` | ***[[]KubernetesClusterSpecDefaultNodePool](#kubernetesclusterspecdefaultnodepool)***| ***(Optional)*** |
 | `dnsPrefix` | ***string***||
+| `enablePodSecurityPolicy` | ***bool***| ***(Optional)*** |
 | `fqdn` | ***string***| ***(Optional)*** |
+| `identity` | ***[[]KubernetesClusterSpecIdentity](#kubernetesclusterspecidentity)***| ***(Optional)*** |
 | `kubeAdminConfig` | ***[[]KubernetesClusterSpecKubeAdminConfig](#kubernetesclusterspeckubeadminconfig)***| ***(Optional)*** |
 | `kubeConfig` | ***[[]KubernetesClusterSpecKubeConfig](#kubernetesclusterspeckubeconfig)***| ***(Optional)*** |
 | `kubernetesVersion` | ***string***| ***(Optional)*** |
@@ -40,6 +43,8 @@ Appears on:[KubernetesCluster](#kubernetescluster), [KubernetesClusterStatus](#k
 | `name` | ***string***||
 | `networkProfile` | ***[[]KubernetesClusterSpecNetworkProfile](#kubernetesclusterspecnetworkprofile)***| ***(Optional)*** |
 | `nodeResourceGroup` | ***string***| ***(Optional)*** |
+| `privateFqdn` | ***string***| ***(Optional)*** |
+| `privateLinkEnabled` | ***bool***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
 | `roleBasedAccessControl` | ***[[]KubernetesClusterSpecRoleBasedAccessControl](#kubernetesclusterspecrolebasedaccesscontrol)***| ***(Optional)*** |
 | `servicePrincipal` | ***[[]KubernetesClusterSpecServicePrincipal](#kubernetesclusterspecserviceprincipal)***||
@@ -52,7 +57,9 @@ Appears on:[KubernetesClusterSpec](#kubernetesclusterspec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `aciConnectorLinux` | ***[[]KubernetesClusterSpecAddonProfileAciConnectorLinux](#kubernetesclusterspecaddonprofileaciconnectorlinux)***| ***(Optional)*** |
+| `azurePolicy` | ***[[]KubernetesClusterSpecAddonProfileAzurePolicy](#kubernetesclusterspecaddonprofileazurepolicy)***| ***(Optional)*** |
 | `httpApplicationRouting` | ***[[]KubernetesClusterSpecAddonProfileHttpApplicationRouting](#kubernetesclusterspecaddonprofilehttpapplicationrouting)***| ***(Optional)*** |
+| `kubeDashboard` | ***[[]KubernetesClusterSpecAddonProfileKubeDashboard](#kubernetesclusterspecaddonprofilekubedashboard)***| ***(Optional)*** |
 | `omsAgent` | ***[[]KubernetesClusterSpecAddonProfileOmsAgent](#kubernetesclusterspecaddonprofileomsagent)***| ***(Optional)*** |
 ## KubernetesClusterSpecAddonProfileAciConnectorLinux
 
@@ -61,7 +68,14 @@ Appears on:[KubernetesClusterSpecAddonProfile](#kubernetesclusterspecaddonprofil
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***||
-| `subnetName` | ***string***||
+| `subnetName` | ***string***| ***(Optional)*** |
+## KubernetesClusterSpecAddonProfileAzurePolicy
+
+Appears on:[KubernetesClusterSpecAddonProfile](#kubernetesclusterspecaddonprofile)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `enabled` | ***bool***||
 ## KubernetesClusterSpecAddonProfileHttpApplicationRouting
 
 Appears on:[KubernetesClusterSpecAddonProfile](#kubernetesclusterspecaddonprofile)
@@ -70,6 +84,13 @@ Appears on:[KubernetesClusterSpecAddonProfile](#kubernetesclusterspecaddonprofil
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***||
 | `httpApplicationRoutingZoneName` | ***string***| ***(Optional)*** |
+## KubernetesClusterSpecAddonProfileKubeDashboard
+
+Appears on:[KubernetesClusterSpecAddonProfile](#kubernetesclusterspecaddonprofile)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `enabled` | ***bool***||
 ## KubernetesClusterSpecAddonProfileOmsAgent
 
 Appears on:[KubernetesClusterSpecAddonProfile](#kubernetesclusterspecaddonprofile)
@@ -77,7 +98,7 @@ Appears on:[KubernetesClusterSpecAddonProfile](#kubernetesclusterspecaddonprofil
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***||
-| `logAnalyticsWorkspaceID` | ***string***||
+| `logAnalyticsWorkspaceID` | ***string***| ***(Optional)*** |
 ## KubernetesClusterSpecAgentPoolProfile
 
 Appears on:[KubernetesClusterSpec](#kubernetesclusterspec)
@@ -88,6 +109,7 @@ Appears on:[KubernetesClusterSpec](#kubernetesclusterspec)
 | `count` | ***int64***| ***(Optional)*** |
 | `dnsPrefix` | ***string***| ***(Optional)*** Deprecated|
 | `enableAutoScaling` | ***bool***| ***(Optional)*** |
+| `enableNodePublicIP` | ***bool***| ***(Optional)*** |
 | `fqdn` | ***string***| ***(Optional)*** Deprecated|
 | `maxCount` | ***int64***| ***(Optional)*** |
 | `maxPods` | ***int64***| ***(Optional)*** |
@@ -99,6 +121,34 @@ Appears on:[KubernetesClusterSpec](#kubernetesclusterspec)
 | `type` | ***string***| ***(Optional)*** |
 | `vmSize` | ***string***||
 | `vnetSubnetID` | ***string***| ***(Optional)*** |
+## KubernetesClusterSpecDefaultNodePool
+
+Appears on:[KubernetesClusterSpec](#kubernetesclusterspec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `availabilityZones` | ***[]string***| ***(Optional)*** |
+| `enableAutoScaling` | ***bool***| ***(Optional)*** |
+| `enableNodePublicIP` | ***bool***| ***(Optional)*** |
+| `maxCount` | ***int64***| ***(Optional)*** |
+| `maxPods` | ***int64***| ***(Optional)*** |
+| `minCount` | ***int64***| ***(Optional)*** |
+| `name` | ***string***||
+| `nodeCount` | ***int64***| ***(Optional)*** |
+| `nodeTaints` | ***[]string***| ***(Optional)*** |
+| `osDiskSizeGb` | ***int64***| ***(Optional)*** |
+| `type` | ***string***| ***(Optional)*** |
+| `vmSize` | ***string***||
+| `vnetSubnetID` | ***string***| ***(Optional)*** |
+## KubernetesClusterSpecIdentity
+
+Appears on:[KubernetesClusterSpec](#kubernetesclusterspec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `principalID` | ***string***| ***(Optional)*** |
+| `tenantID` | ***string***| ***(Optional)*** |
+| `type` | ***string***||
 ## KubernetesClusterSpecKubeAdminConfig
 
 Appears on:[KubernetesClusterSpec](#kubernetesclusterspec)
@@ -142,11 +192,22 @@ Appears on:[KubernetesClusterSpec](#kubernetesclusterspec)
 | ------ | ----- | ----------- |
 | `dnsServiceIP` | ***string***| ***(Optional)*** |
 | `dockerBridgeCIDR` | ***string***| ***(Optional)*** |
+| `loadBalancerProfile` | ***[[]KubernetesClusterSpecNetworkProfileLoadBalancerProfile](#kubernetesclusterspecnetworkprofileloadbalancerprofile)***| ***(Optional)*** |
 | `loadBalancerSku` | ***string***| ***(Optional)*** |
 | `networkPlugin` | ***string***||
 | `networkPolicy` | ***string***| ***(Optional)*** |
 | `podCIDR` | ***string***| ***(Optional)*** |
 | `serviceCIDR` | ***string***| ***(Optional)*** |
+## KubernetesClusterSpecNetworkProfileLoadBalancerProfile
+
+Appears on:[KubernetesClusterSpecNetworkProfile](#kubernetesclusterspecnetworkprofile)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `effectiveOutboundIPS` | ***[]string***| ***(Optional)*** |
+| `managedOutboundIPCount` | ***int64***| ***(Optional)*** |
+| `outboundIPAddressIDS` | ***[]string***| ***(Optional)*** |
+| `outboundIPPrefixIDS` | ***[]string***| ***(Optional)*** |
 ## KubernetesClusterSpecRoleBasedAccessControl
 
 Appears on:[KubernetesClusterSpec](#kubernetesclusterspec)

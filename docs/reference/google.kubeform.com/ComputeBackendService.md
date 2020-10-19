@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComputeBackendService` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[ComputeBackendServiceSpec](#computebackendservicespec)***||
 | `status` | ***[ComputeBackendServiceStatus](#computebackendservicestatus)***||
 ## ComputeBackendServiceSpec
@@ -24,18 +24,20 @@ Appears on:[ComputeBackendService](#computebackendservice), [ComputeBackendServi
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
+| `affinityCookieTtlSec` | ***int64***| ***(Optional)*** |
 | `backend` | ***[[]ComputeBackendServiceSpecBackend](#computebackendservicespecbackend)***| ***(Optional)*** |
 | `cdnPolicy` | ***[[]ComputeBackendServiceSpecCdnPolicy](#computebackendservicespeccdnpolicy)***| ***(Optional)*** |
 | `connectionDrainingTimeoutSec` | ***int64***| ***(Optional)*** |
-| `customRequestHeaders` | ***[]string***| ***(Optional)*** Deprecated|
+| `creationTimestamp` | ***string***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
 | `enableCdn` | ***bool***| ***(Optional)*** |
 | `fingerprint` | ***string***| ***(Optional)*** |
 | `healthChecks` | ***[]string***||
 | `iap` | ***[[]ComputeBackendServiceSpecIap](#computebackendservicespeciap)***| ***(Optional)*** |
+| `loadBalancingScheme` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 | `portName` | ***string***| ***(Optional)*** |
 | `project` | ***string***| ***(Optional)*** |
@@ -55,8 +57,10 @@ Appears on:[ComputeBackendServiceSpec](#computebackendservicespec)
 | `description` | ***string***| ***(Optional)*** |
 | `group` | ***string***| ***(Optional)*** |
 | `maxConnections` | ***int64***| ***(Optional)*** |
+| `maxConnectionsPerEndpoint` | ***int64***| ***(Optional)*** |
 | `maxConnectionsPerInstance` | ***int64***| ***(Optional)*** |
 | `maxRate` | ***int64***| ***(Optional)*** |
+| `maxRatePerEndpoint` | ***float64***| ***(Optional)*** |
 | `maxRatePerInstance` | ***float64***| ***(Optional)*** |
 | `maxUtilization` | ***float64***| ***(Optional)*** |
 ## ComputeBackendServiceSpecCdnPolicy
@@ -66,6 +70,7 @@ Appears on:[ComputeBackendServiceSpec](#computebackendservicespec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cacheKeyPolicy` | ***[[]ComputeBackendServiceSpecCdnPolicyCacheKeyPolicy](#computebackendservicespeccdnpolicycachekeypolicy)***| ***(Optional)*** |
+| `signedURLCacheMaxAgeSec` | ***int64***| ***(Optional)*** |
 ## ComputeBackendServiceSpecCdnPolicyCacheKeyPolicy
 
 Appears on:[ComputeBackendServiceSpecCdnPolicy](#computebackendservicespeccdnpolicy)
@@ -103,3 +108,4 @@ Appears on:[ComputeBackendServiceStatus](#computebackendservicestatus)
 | Name | Type | Description |
 |------|------|-------------|
 | `iap.<index>.oauth2_client_secret` | ***string*** ||
+| `iap.<index>.oauth2_client_secret_sha256` | ***string*** ||

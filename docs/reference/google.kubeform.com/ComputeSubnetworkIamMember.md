@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComputeSubnetworkIamMember` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[ComputeSubnetworkIamMemberSpec](#computesubnetworkiammemberspec)***||
 | `status` | ***[ComputeSubnetworkIamMemberStatus](#computesubnetworkiammemberstatus)***||
 ## ComputeSubnetworkIamMemberSpec
@@ -24,14 +24,14 @@ Appears on:[ComputeSubnetworkIamMember](#computesubnetworkiammember), [ComputeSu
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `etag` | ***string***| ***(Optional)*** |
 | `member` | ***string***||
-| `project` | ***string***| ***(Optional)*** Deprecated|
-| `region` | ***string***| ***(Optional)*** Deprecated|
+| `project` | ***string***| ***(Optional)*** |
+| `region` | ***string***| ***(Optional)*** |
 | `role` | ***string***||
-| `subnetwork` | ***string***|Deprecated|
+| `subnetwork` | ***string***||
 ## ComputeSubnetworkIamMemberStatus
 
 Appears on:[ComputeSubnetworkIamMember](#computesubnetworkiammember)

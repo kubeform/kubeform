@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `Iothub` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[IothubSpec](#iothubspec)***||
 | `status` | ***[IothubStatus](#iothubstatus)***||
 ## IothubSpec
@@ -24,14 +24,16 @@ Appears on:[Iothub](#iothub), [IothubStatus](#iothubstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `endpoint` | ***[[]IothubSpecEndpoint](#iothubspecendpoint)***| ***(Optional)*** |
 | `eventHubEventsEndpoint` | ***string***| ***(Optional)*** |
 | `eventHubEventsPath` | ***string***| ***(Optional)*** |
 | `eventHubOperationsEndpoint` | ***string***| ***(Optional)*** |
 | `eventHubOperationsPath` | ***string***| ***(Optional)*** |
+| `eventHubPartitionCount` | ***int64***| ***(Optional)*** |
+| `eventHubRetentionInDays` | ***int64***| ***(Optional)*** |
 | `fallbackRoute` | ***[[]IothubSpecFallbackRoute](#iothubspecfallbackroute)***| ***(Optional)*** |
 | `fileUpload` | ***[[]IothubSpecFileUpload](#iothubspecfileupload)***| ***(Optional)*** |
 | `hostname` | ***string***| ***(Optional)*** |
@@ -115,7 +117,7 @@ Appears on:[IothubSpec](#iothubspec)
 | ------ | ----- | ----------- |
 | `capacity` | ***int64***||
 | `name` | ***string***||
-| `tier` | ***string***||
+| `tier` | ***string***| ***(Optional)*** Deprecated|
 ## IothubStatus
 
 Appears on:[Iothub](#iothub)

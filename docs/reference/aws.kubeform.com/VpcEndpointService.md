@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `VpcEndpointService` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[VpcEndpointServiceSpec](#vpcendpointservicespec)***||
 | `status` | ***[VpcEndpointServiceStatus](#vpcendpointservicestatus)***||
 ## Phase(`string` alias)
@@ -28,17 +28,19 @@ Appears on:[VpcEndpointService](#vpcendpointservice), [VpcEndpointServiceStatus]
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `acceptanceRequired` | ***bool***||
 | `allowedPrincipals` | ***[]string***| ***(Optional)*** |
 | `availabilityZones` | ***[]string***| ***(Optional)*** |
 | `baseEndpointDNSNames` | ***[]string***| ***(Optional)*** |
+| `managesVpcEndpoints` | ***bool***| ***(Optional)*** |
 | `networkLoadBalancerArns` | ***[]string***||
 | `privateDNSName` | ***string***| ***(Optional)*** |
 | `serviceName` | ***string***| ***(Optional)*** |
 | `serviceType` | ***string***| ***(Optional)*** |
 | `state` | ***string***| ***(Optional)*** |
+| `tags` | ***map[string]string***| ***(Optional)*** |
 ## VpcEndpointServiceStatus
 
 Appears on:[VpcEndpointService](#vpcendpointservice)

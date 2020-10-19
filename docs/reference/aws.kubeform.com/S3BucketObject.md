@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `S3BucketObject` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[S3BucketObjectSpec](#s3bucketobjectspec)***||
 | `status` | ***[S3BucketObjectStatus](#s3bucketobjectstatus)***||
 ## Phase(`string` alias)
@@ -28,7 +28,7 @@ Appears on:[S3BucketObject](#s3bucketobject), [S3BucketObjectStatus](#s3bucketob
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `acl` | ***string***| ***(Optional)*** |
 | `bucket` | ***string***||
@@ -40,8 +40,13 @@ Appears on:[S3BucketObject](#s3bucketobject), [S3BucketObjectStatus](#s3bucketob
 | `contentLanguage` | ***string***| ***(Optional)*** |
 | `contentType` | ***string***| ***(Optional)*** |
 | `etag` | ***string***| ***(Optional)*** |
+| `forceDestroy` | ***bool***| ***(Optional)*** |
 | `key` | ***string***||
 | `kmsKeyID` | ***string***| ***(Optional)*** |
+| `metadata` | ***map[string]string***| ***(Optional)*** |
+| `objectLockLegalHoldStatus` | ***string***| ***(Optional)*** |
+| `objectLockMode` | ***string***| ***(Optional)*** |
+| `objectLockRetainUntilDate` | ***string***| ***(Optional)*** |
 | `serverSideEncryption` | ***string***| ***(Optional)*** |
 | `source` | ***string***| ***(Optional)*** |
 | `storageClass` | ***string***| ***(Optional)*** |

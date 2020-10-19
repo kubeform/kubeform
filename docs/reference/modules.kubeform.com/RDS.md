@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `modules.kubeform.com/v1alpha1` |
 |    `kind` | string | `RDS` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[RDSSpec](#rdsspec)***||
 | `status` | ***[RDSStatus](#rdsstatus)***||
 ## Phase(`string` alias)
@@ -28,8 +28,8 @@ Appears on:[RDS](#rds)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***| ***(Optional)*** |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***| ***(Optional)*** |
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `source` | ***string***| ***(Optional)*** |
 | `allocatedStorage` | ***string***| ***(Optional)*** The allocated storage in gigabytes|
 | `allowMajorVersionUpgrade` | ***bool***| ***(Optional)*** Indicates that major version upgrades are allowed. Changing this parameter does not result in an outage and the change is asynchronously applied as soon as possible|
@@ -38,15 +38,19 @@ Appears on:[RDS](#rds)
 | `availabilityZone` | ***string***| ***(Optional)*** The Availability Zone of the RDS instance|
 | `backupRetentionPeriod` | ***encoding/json.Number***| ***(Optional)*** The days to retain backups for|
 | `backupWindow` | ***string***| ***(Optional)*** The daily time range (in UTC) during which automated backups are created if they are enabled. Example: '09:46-10:16'. Must not overlap with maintenance_window|
+| `caCertIdentifier` | ***string***| ***(Optional)*** Specifies the identifier of the CA certificate for the DB instance|
 | `characterSetName` | ***string***| ***(Optional)*** (Optional) The character set name to use for DB encoding in Oracle instances. This can't be changed. See Oracle Character Sets Supported in Amazon RDS for more information|
 | `copyTagsToSnapshot` | ***bool***| ***(Optional)*** On delete, copy all Instance tags to the final snapshot (if final_snapshot_identifier is specified)|
 | `createDbInstance` | ***bool***| ***(Optional)*** Whether to create a database instance|
-| `createDbOptionGroup` | ***bool***| ***(Optional)*** Whether to create a database option group|
+| `createDbOptionGroup` | ***bool***| ***(Optional)*** (Optional) Create a database option group|
 | `createDbParameterGroup` | ***bool***| ***(Optional)*** Whether to create a database parameter group|
 | `createDbSubnetGroup` | ***bool***| ***(Optional)*** Whether to create a database subnet group|
 | `createMonitoringRole` | ***bool***| ***(Optional)*** Create IAM role with a defined name that permits RDS to send enhanced monitoring metrics to CloudWatch Logs.|
 | `dbSubnetGroupName` | ***string***| ***(Optional)*** Name of DB subnet group. DB instance will be created in the VPC associated with the DB subnet group. If unspecified, will be created in the default VPC|
+| `deleteAutomatedBackups` | ***bool***| ***(Optional)*** Specifies whether to remove automated backups immediately after the DB instance is deleted|
 | `deletionProtection` | ***bool***| ***(Optional)*** The database can't be deleted when this value is set to true.|
+| `domain` | ***string***| ***(Optional)*** The ID of the Directory Service Active Directory domain to create the instance in|
+| `domainIamRoleName` | ***string***| ***(Optional)*** (Required if domain is provided) The name of the IAM role to be used when making API calls to the Directory Service|
 | `enabledCloudwatchLogsExports` | ***[]string***| ***(Optional)*** List of log types to enable for exporting to CloudWatch logs. If omitted, no logs will be exported. Valid values (depending on engine): alert, audit, error, general, listener, slowquery, trace, postgresql (PostgreSQL), upgrade (PostgreSQL).|
 | `engine` | ***string***| ***(Optional)*** The database engine to use|
 | `engineVersion` | ***string***| ***(Optional)*** The engine version to use|
@@ -67,7 +71,8 @@ Appears on:[RDS](#rds)
 | `multiAz` | ***bool***| ***(Optional)*** Specifies if the RDS instance is multi-AZ|
 | `name` | ***string***| ***(Optional)*** The DB name to create. If omitted, no database is created initially|
 | `optionGroupDescription` | ***string***| ***(Optional)*** The description of the option group|
-| `optionGroupName` | ***string***| ***(Optional)*** Name of the DB option group to associate. Setting this automatically disables option_group creation|
+| `optionGroupName` | ***string***| ***(Optional)*** Name of the DB option group to associate|
+| `optionGroupTimeouts` | ***map[string]string***| ***(Optional)*** Define maximum timeout for deletion of `aws_db_option_group` resource|
 | `options` | ***encoding/json.RawMessage***| ***(Optional)*** A list of Options to apply.|
 | `parameterGroupDescription` | ***string***| ***(Optional)*** Description of the DB parameter group to create|
 | `parameterGroupName` | ***string***| ***(Optional)*** Name of the DB parameter group to associate or create|

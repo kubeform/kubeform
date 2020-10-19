@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `digitalocean.kubeform.com/v1alpha1` |
 |    `kind` | string | `VolumeSnapshot` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[VolumeSnapshotSpec](#volumesnapshotspec)***||
 | `status` | ***[VolumeSnapshotStatus](#volumesnapshotstatus)***||
 ## Phase(`string` alias)
@@ -28,13 +28,14 @@ Appears on:[VolumeSnapshot](#volumesnapshot), [VolumeSnapshotStatus](#volumesnap
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `createdAt` | ***string***| ***(Optional)*** |
 | `minDiskSize` | ***int64***| ***(Optional)*** |
 | `name` | ***string***||
 | `regions` | ***[]string***| ***(Optional)*** |
 | `size` | ***float64***| ***(Optional)*** |
+| `tags` | ***[]string***| ***(Optional)*** |
 | `volumeID` | ***string***||
 ## VolumeSnapshotStatus
 

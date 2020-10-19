@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `AcmCertificate` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[AcmCertificateSpec](#acmcertificatespec)***||
 | `status` | ***[AcmCertificateStatus](#acmcertificatestatus)***||
 ## AcmCertificateSpec
@@ -24,14 +24,16 @@ Appears on:[AcmCertificate](#acmcertificate), [AcmCertificateStatus](#acmcertifi
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `arn` | ***string***| ***(Optional)*** |
+| `certificateAuthorityArn` | ***string***| ***(Optional)*** |
 | `certificateBody` | ***string***| ***(Optional)*** |
 | `certificateChain` | ***string***| ***(Optional)*** |
 | `domainName` | ***string***| ***(Optional)*** |
 | `domainValidationOptions` | ***[[]AcmCertificateSpecDomainValidationOptions](#acmcertificatespecdomainvalidationoptions)***| ***(Optional)*** |
+| `options` | ***[[]AcmCertificateSpecOptions](#acmcertificatespecoptions)***| ***(Optional)*** |
 | `subjectAlternativeNames` | ***[]string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `validationEmails` | ***[]string***| ***(Optional)*** |
@@ -46,6 +48,13 @@ Appears on:[AcmCertificateSpec](#acmcertificatespec)
 | `resourceRecordName` | ***string***| ***(Optional)*** |
 | `resourceRecordType` | ***string***| ***(Optional)*** |
 | `resourceRecordValue` | ***string***| ***(Optional)*** |
+## AcmCertificateSpecOptions
+
+Appears on:[AcmCertificateSpec](#acmcertificatespec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `certificateTransparencyLoggingPreference` | ***string***| ***(Optional)*** |
 ## AcmCertificateStatus
 
 Appears on:[AcmCertificate](#acmcertificate)

@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComputeInstanceTemplate` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[ComputeInstanceTemplateSpec](#computeinstancetemplatespec)***||
 | `status` | ***[ComputeInstanceTemplateStatus](#computeinstancetemplatestatus)***||
 ## ComputeInstanceTemplateSpec
@@ -24,7 +24,7 @@ Appears on:[ComputeInstanceTemplate](#computeinstancetemplate), [ComputeInstance
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `canIPForward` | ***bool***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
@@ -45,6 +45,7 @@ Appears on:[ComputeInstanceTemplate](#computeinstancetemplate), [ComputeInstance
 | `scheduling` | ***[[]ComputeInstanceTemplateSpecScheduling](#computeinstancetemplatespecscheduling)***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
 | `serviceAccount` | ***[[]ComputeInstanceTemplateSpecServiceAccount](#computeinstancetemplatespecserviceaccount)***| ***(Optional)*** |
+| `shieldedInstanceConfig` | ***[[]ComputeInstanceTemplateSpecShieldedInstanceConfig](#computeinstancetemplatespecshieldedinstanceconfig)***| ***(Optional)*** |
 | `tags` | ***[]string***| ***(Optional)*** |
 | `tagsFingerprint` | ***string***| ***(Optional)*** |
 ## ComputeInstanceTemplateSpecDisk
@@ -61,6 +62,7 @@ Appears on:[ComputeInstanceTemplateSpec](#computeinstancetemplatespec)
 | `diskSizeGb` | ***int64***| ***(Optional)*** |
 | `diskType` | ***string***| ***(Optional)*** |
 | `interface` | ***string***| ***(Optional)*** |
+| `labels` | ***map[string]string***| ***(Optional)*** |
 | `mode` | ***string***| ***(Optional)*** |
 | `source` | ***string***| ***(Optional)*** |
 | `sourceImage` | ***string***| ***(Optional)*** |
@@ -87,7 +89,6 @@ Appears on:[ComputeInstanceTemplateSpec](#computeinstancetemplatespec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `accessConfig` | ***[[]ComputeInstanceTemplateSpecNetworkInterfaceAccessConfig](#computeinstancetemplatespecnetworkinterfaceaccessconfig)***| ***(Optional)*** |
-| `address` | ***string***| ***(Optional)*** Deprecated|
 | `aliasIPRange` | ***[[]ComputeInstanceTemplateSpecNetworkInterfaceAliasIPRange](#computeinstancetemplatespecnetworkinterfacealiasiprange)***| ***(Optional)*** |
 | `network` | ***string***| ***(Optional)*** |
 | `networkIP` | ***string***| ***(Optional)*** |
@@ -99,7 +100,6 @@ Appears on:[ComputeInstanceTemplateSpecNetworkInterface](#computeinstancetemplat
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `assignedNATIP` | ***string***| ***(Optional)*** Deprecated|
 | `natIP` | ***string***| ***(Optional)*** |
 | `networkTier` | ***string***| ***(Optional)*** |
 ## ComputeInstanceTemplateSpecNetworkInterfaceAliasIPRange
@@ -117,8 +117,18 @@ Appears on:[ComputeInstanceTemplateSpec](#computeinstancetemplatespec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `automaticRestart` | ***bool***| ***(Optional)*** |
+| `nodeAffinities` | ***[[]ComputeInstanceTemplateSpecSchedulingNodeAffinities](#computeinstancetemplatespecschedulingnodeaffinities)***| ***(Optional)*** |
 | `onHostMaintenance` | ***string***| ***(Optional)*** |
 | `preemptible` | ***bool***| ***(Optional)*** |
+## ComputeInstanceTemplateSpecSchedulingNodeAffinities
+
+Appears on:[ComputeInstanceTemplateSpecScheduling](#computeinstancetemplatespecscheduling)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `key` | ***string***||
+| `operator` | ***string***||
+| `values` | ***[]string***||
 ## ComputeInstanceTemplateSpecServiceAccount
 
 Appears on:[ComputeInstanceTemplateSpec](#computeinstancetemplatespec)
@@ -127,6 +137,15 @@ Appears on:[ComputeInstanceTemplateSpec](#computeinstancetemplatespec)
 | ------ | ----- | ----------- |
 | `email` | ***string***| ***(Optional)*** |
 | `scopes` | ***[]string***||
+## ComputeInstanceTemplateSpecShieldedInstanceConfig
+
+Appears on:[ComputeInstanceTemplateSpec](#computeinstancetemplatespec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `enableIntegrityMonitoring` | ***bool***| ***(Optional)*** |
+| `enableSecureBoot` | ***bool***| ***(Optional)*** |
+| `enableVtpm` | ***bool***| ***(Optional)*** |
 ## ComputeInstanceTemplateStatus
 
 Appears on:[ComputeInstanceTemplate](#computeinstancetemplate)

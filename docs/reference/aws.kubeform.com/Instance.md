@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `Instance` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[InstanceSpec](#instancespec)***||
 | `status` | ***[InstanceStatus](#instancestatus)***||
 ## InstanceSpec
@@ -24,7 +24,7 @@ Appears on:[Instance](#instance), [InstanceStatus](#instancestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `ami` | ***string***||
 | `arn` | ***string***| ***(Optional)*** |
@@ -82,6 +82,7 @@ Appears on:[InstanceSpec](#instancespec)
 | `deviceName` | ***string***||
 | `encrypted` | ***bool***| ***(Optional)*** |
 | `iops` | ***int64***| ***(Optional)*** |
+| `kmsKeyID` | ***string***| ***(Optional)*** |
 | `snapshotID` | ***string***| ***(Optional)*** |
 | `volumeID` | ***string***| ***(Optional)*** |
 | `volumeSize` | ***int64***| ***(Optional)*** |
@@ -111,7 +112,9 @@ Appears on:[InstanceSpec](#instancespec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `deleteOnTermination` | ***bool***| ***(Optional)*** |
+| `encrypted` | ***bool***| ***(Optional)*** |
 | `iops` | ***int64***| ***(Optional)*** |
+| `kmsKeyID` | ***string***| ***(Optional)*** |
 | `volumeID` | ***string***| ***(Optional)*** |
 | `volumeSize` | ***int64***| ***(Optional)*** |
 | `volumeType` | ***string***| ***(Optional)*** |

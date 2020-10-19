@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `HdinsightSparkCluster` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[HdinsightSparkClusterSpec](#hdinsightsparkclusterspec)***||
 | `status` | ***[HdinsightSparkClusterStatus](#hdinsightsparkclusterstatus)***||
 ## HdinsightSparkClusterSpec
@@ -24,9 +24,9 @@ Appears on:[HdinsightSparkCluster](#hdinsightsparkcluster), [HdinsightSparkClust
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `clusterVersion` | ***string***||
 | `componentVersion` | ***[[]HdinsightSparkClusterSpecComponentVersion](#hdinsightsparkclusterspeccomponentversion)***||
 | `gateway` | ***[[]HdinsightSparkClusterSpecGateway](#hdinsightsparkclusterspecgateway)***||
@@ -36,7 +36,8 @@ Appears on:[HdinsightSparkCluster](#hdinsightsparkcluster), [HdinsightSparkClust
 | `resourceGroupName` | ***string***||
 | `roles` | ***[[]HdinsightSparkClusterSpecRoles](#hdinsightsparkclusterspecroles)***||
 | `sshEndpoint` | ***string***| ***(Optional)*** |
-| `storageAccount` | ***[[]HdinsightSparkClusterSpecStorageAccount](#hdinsightsparkclusterspecstorageaccount)***||
+| `storageAccount` | ***[[]HdinsightSparkClusterSpecStorageAccount](#hdinsightsparkclusterspecstorageaccount)***| ***(Optional)*** |
+| `storageAccountGen2` | ***[[]HdinsightSparkClusterSpecStorageAccountGen2](#hdinsightsparkclusterspecstorageaccountgen2)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `tier` | ***string***||
 ## HdinsightSparkClusterSpecComponentVersion
@@ -106,6 +107,16 @@ Appears on:[HdinsightSparkClusterSpec](#hdinsightsparkclusterspec)
 | ------ | ----- | ----------- |
 | `isDefault` | ***bool***||
 | `storageContainerID` | ***string***||
+## HdinsightSparkClusterSpecStorageAccountGen2
+
+Appears on:[HdinsightSparkClusterSpec](#hdinsightsparkclusterspec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `filesystemID` | ***string***||
+| `isDefault` | ***bool***||
+| `managedIdentityResourceID` | ***string***||
+| `storageResourceID` | ***string***||
 ## HdinsightSparkClusterStatus
 
 Appears on:[HdinsightSparkCluster](#hdinsightsparkcluster)

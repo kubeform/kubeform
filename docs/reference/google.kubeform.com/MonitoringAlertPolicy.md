@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `MonitoringAlertPolicy` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[MonitoringAlertPolicySpec](#monitoringalertpolicyspec)***||
 | `status` | ***[MonitoringAlertPolicyStatus](#monitoringalertpolicystatus)***||
 ## MonitoringAlertPolicySpec
@@ -24,17 +24,19 @@ Appears on:[MonitoringAlertPolicy](#monitoringalertpolicy), [MonitoringAlertPoli
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `combiner` | ***string***||
 | `conditions` | ***[[]MonitoringAlertPolicySpecConditions](#monitoringalertpolicyspecconditions)***||
 | `creationRecord` | ***[[]MonitoringAlertPolicySpecCreationRecord](#monitoringalertpolicyspeccreationrecord)***| ***(Optional)*** |
 | `displayName` | ***string***||
-| `enabled` | ***bool***||
-| `labels` | ***[]string***| ***(Optional)*** |
+| `documentation` | ***[[]MonitoringAlertPolicySpecDocumentation](#monitoringalertpolicyspecdocumentation)***| ***(Optional)*** |
+| `enabled` | ***bool***| ***(Optional)*** |
+| `labels` | ***[]string***| ***(Optional)*** Deprecated|
 | `name` | ***string***| ***(Optional)*** |
 | `notificationChannels` | ***[]string***| ***(Optional)*** |
 | `project` | ***string***| ***(Optional)*** |
+| `userLabels` | ***map[string]string***| ***(Optional)*** |
 ## MonitoringAlertPolicySpecConditions
 
 Appears on:[MonitoringAlertPolicySpec](#monitoringalertpolicyspec)
@@ -123,6 +125,14 @@ Appears on:[MonitoringAlertPolicySpec](#monitoringalertpolicyspec)
 | ------ | ----- | ----------- |
 | `mutateTime` | ***string***| ***(Optional)*** |
 | `mutatedBy` | ***string***| ***(Optional)*** |
+## MonitoringAlertPolicySpecDocumentation
+
+Appears on:[MonitoringAlertPolicySpec](#monitoringalertpolicyspec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `content` | ***string***| ***(Optional)*** |
+| `mimeType` | ***string***| ***(Optional)*** |
 ## MonitoringAlertPolicyStatus
 
 Appears on:[MonitoringAlertPolicy](#monitoringalertpolicy)

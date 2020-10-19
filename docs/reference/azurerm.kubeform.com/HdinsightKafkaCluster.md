@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `HdinsightKafkaCluster` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[HdinsightKafkaClusterSpec](#hdinsightkafkaclusterspec)***||
 | `status` | ***[HdinsightKafkaClusterStatus](#hdinsightkafkaclusterstatus)***||
 ## HdinsightKafkaClusterSpec
@@ -24,9 +24,9 @@ Appears on:[HdinsightKafkaCluster](#hdinsightkafkacluster), [HdinsightKafkaClust
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `clusterVersion` | ***string***||
 | `componentVersion` | ***[[]HdinsightKafkaClusterSpecComponentVersion](#hdinsightkafkaclusterspeccomponentversion)***||
 | `gateway` | ***[[]HdinsightKafkaClusterSpecGateway](#hdinsightkafkaclusterspecgateway)***||
@@ -36,7 +36,8 @@ Appears on:[HdinsightKafkaCluster](#hdinsightkafkacluster), [HdinsightKafkaClust
 | `resourceGroupName` | ***string***||
 | `roles` | ***[[]HdinsightKafkaClusterSpecRoles](#hdinsightkafkaclusterspecroles)***||
 | `sshEndpoint` | ***string***| ***(Optional)*** |
-| `storageAccount` | ***[[]HdinsightKafkaClusterSpecStorageAccount](#hdinsightkafkaclusterspecstorageaccount)***||
+| `storageAccount` | ***[[]HdinsightKafkaClusterSpecStorageAccount](#hdinsightkafkaclusterspecstorageaccount)***| ***(Optional)*** |
+| `storageAccountGen2` | ***[[]HdinsightKafkaClusterSpecStorageAccountGen2](#hdinsightkafkaclusterspecstorageaccountgen2)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `tier` | ***string***||
 ## HdinsightKafkaClusterSpecComponentVersion
@@ -107,6 +108,16 @@ Appears on:[HdinsightKafkaClusterSpec](#hdinsightkafkaclusterspec)
 | ------ | ----- | ----------- |
 | `isDefault` | ***bool***||
 | `storageContainerID` | ***string***||
+## HdinsightKafkaClusterSpecStorageAccountGen2
+
+Appears on:[HdinsightKafkaClusterSpec](#hdinsightkafkaclusterspec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `filesystemID` | ***string***||
+| `isDefault` | ***bool***||
+| `managedIdentityResourceID` | ***string***||
+| `storageResourceID` | ***string***||
 ## HdinsightKafkaClusterStatus
 
 Appears on:[HdinsightKafkaCluster](#hdinsightkafkacluster)

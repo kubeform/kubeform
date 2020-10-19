@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `BigqueryTable` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[BigqueryTableSpec](#bigquerytablespec)***||
 | `status` | ***[BigqueryTableStatus](#bigquerytablestatus)***||
 ## BigqueryTableSpec
@@ -24,13 +24,15 @@ Appears on:[BigqueryTable](#bigquerytable), [BigqueryTableStatus](#bigquerytable
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
+| `clustering` | ***[]string***| ***(Optional)*** |
 | `creationTime` | ***int64***| ***(Optional)*** |
 | `datasetID` | ***string***||
 | `description` | ***string***| ***(Optional)*** |
 | `etag` | ***string***| ***(Optional)*** |
 | `expirationTime` | ***int64***| ***(Optional)*** |
+| `externalDataConfiguration` | ***[[]BigqueryTableSpecExternalDataConfiguration](#bigquerytablespecexternaldataconfiguration)***| ***(Optional)*** |
 | `friendlyName` | ***string***| ***(Optional)*** |
 | `labels` | ***map[string]string***| ***(Optional)*** |
 | `lastModifiedTime` | ***int64***| ***(Optional)*** |
@@ -45,6 +47,39 @@ Appears on:[BigqueryTable](#bigquerytable), [BigqueryTableStatus](#bigquerytable
 | `timePartitioning` | ***[[]BigqueryTableSpecTimePartitioning](#bigquerytablespectimepartitioning)***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
 | `view` | ***[[]BigqueryTableSpecView](#bigquerytablespecview)***| ***(Optional)*** |
+## BigqueryTableSpecExternalDataConfiguration
+
+Appears on:[BigqueryTableSpec](#bigquerytablespec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `autodetect` | ***bool***||
+| `compression` | ***string***| ***(Optional)*** |
+| `csvOptions` | ***[[]BigqueryTableSpecExternalDataConfigurationCsvOptions](#bigquerytablespecexternaldataconfigurationcsvoptions)***| ***(Optional)*** |
+| `googleSheetsOptions` | ***[[]BigqueryTableSpecExternalDataConfigurationGoogleSheetsOptions](#bigquerytablespecexternaldataconfigurationgooglesheetsoptions)***| ***(Optional)*** |
+| `ignoreUnknownValues` | ***bool***| ***(Optional)*** |
+| `maxBadRecords` | ***int64***| ***(Optional)*** |
+| `sourceFormat` | ***string***||
+| `sourceUris` | ***[]string***||
+## BigqueryTableSpecExternalDataConfigurationCsvOptions
+
+Appears on:[BigqueryTableSpecExternalDataConfiguration](#bigquerytablespecexternaldataconfiguration)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `allowJaggedRows` | ***bool***| ***(Optional)*** |
+| `allowQuotedNewlines` | ***bool***| ***(Optional)*** |
+| `encoding` | ***string***| ***(Optional)*** |
+| `fieldDelimiter` | ***string***| ***(Optional)*** |
+| `quote` | ***string***||
+| `skipLeadingRows` | ***int64***| ***(Optional)*** |
+## BigqueryTableSpecExternalDataConfigurationGoogleSheetsOptions
+
+Appears on:[BigqueryTableSpecExternalDataConfiguration](#bigquerytablespecexternaldataconfiguration)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `skipLeadingRows` | ***int64***| ***(Optional)*** |
 ## BigqueryTableSpecTimePartitioning
 
 Appears on:[BigqueryTableSpec](#bigquerytablespec)
@@ -53,6 +88,7 @@ Appears on:[BigqueryTableSpec](#bigquerytablespec)
 | ------ | ----- | ----------- |
 | `expirationMs` | ***int64***| ***(Optional)*** |
 | `field` | ***string***| ***(Optional)*** |
+| `requirePartitionFilter` | ***bool***| ***(Optional)*** |
 | `type` | ***string***||
 ## BigqueryTableSpecView
 

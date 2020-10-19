@@ -1,0 +1,45 @@
+---
+title: AdvancedThreatProtection
+menu:
+  docs_{{ .version }}:
+    identifier: advancedthreatprotection-azurerm.kubeform.com
+    name: AdvancedThreatProtection
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_{{ .version }}
+section_menu_id: reference
+---
+
+## AdvancedThreatProtection
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
+|    `kind` | string | `AdvancedThreatProtection` |
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `spec` | ***[AdvancedThreatProtectionSpec](#advancedthreatprotectionspec)***||
+| `status` | ***[AdvancedThreatProtectionStatus](#advancedthreatprotectionstatus)***||
+## AdvancedThreatProtectionSpec
+
+Appears on:[AdvancedThreatProtection](#advancedthreatprotection), [AdvancedThreatProtectionStatus](#advancedthreatprotectionstatus)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
+| `id` | ***string***||
+| `enabled` | ***bool***||
+| `targetResourceID` | ***string***||
+## AdvancedThreatProtectionStatus
+
+Appears on:[AdvancedThreatProtection](#advancedthreatprotection)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
+| `output` | ***[AdvancedThreatProtectionSpec](#advancedthreatprotectionspec)***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
+## Phase(`string` alias)
+
+Appears on:[AdvancedThreatProtectionStatus](#advancedthreatprotectionstatus)
+
+---

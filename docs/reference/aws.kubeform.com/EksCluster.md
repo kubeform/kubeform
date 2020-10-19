@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `EksCluster` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[EksClusterSpec](#eksclusterspec)***||
 | `status` | ***[EksClusterStatus](#eksclusterstatus)***||
 ## EksClusterSpec
@@ -24,16 +24,19 @@ Appears on:[EksCluster](#ekscluster), [EksClusterStatus](#eksclusterstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `arn` | ***string***| ***(Optional)*** |
 | `certificateAuthority` | ***[[]EksClusterSpecCertificateAuthority](#eksclusterspeccertificateauthority)***| ***(Optional)*** |
 | `createdAt` | ***string***| ***(Optional)*** |
 | `enabledClusterLogTypes` | ***[]string***| ***(Optional)*** |
 | `endpoint` | ***string***| ***(Optional)*** |
+| `identity` | ***[[]EksClusterSpecIdentity](#eksclusterspecidentity)***| ***(Optional)*** |
 | `name` | ***string***||
 | `platformVersion` | ***string***| ***(Optional)*** |
 | `roleArn` | ***string***||
+| `status` | ***string***| ***(Optional)*** |
+| `tags` | ***map[string]string***| ***(Optional)*** |
 | `version` | ***string***| ***(Optional)*** |
 | `vpcConfig` | ***[[]EksClusterSpecVpcConfig](#eksclusterspecvpcconfig)***||
 ## EksClusterSpecCertificateAuthority
@@ -43,6 +46,20 @@ Appears on:[EksClusterSpec](#eksclusterspec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `data` | ***string***| ***(Optional)*** |
+## EksClusterSpecIdentity
+
+Appears on:[EksClusterSpec](#eksclusterspec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `oidc` | ***[[]EksClusterSpecIdentityOidc](#eksclusterspecidentityoidc)***| ***(Optional)*** |
+## EksClusterSpecIdentityOidc
+
+Appears on:[EksClusterSpecIdentity](#eksclusterspecidentity)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `issuer` | ***string***| ***(Optional)*** |
 ## EksClusterSpecVpcConfig
 
 Appears on:[EksClusterSpec](#eksclusterspec)

@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `MqBroker` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[MqBrokerSpec](#mqbrokerspec)***||
 | `status` | ***[MqBrokerStatus](#mqbrokerstatus)***||
 ## MqBrokerSpec
@@ -24,15 +24,16 @@ Appears on:[MqBroker](#mqbroker), [MqBrokerStatus](#mqbrokerstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `applyImmediately` | ***bool***| ***(Optional)*** |
 | `arn` | ***string***| ***(Optional)*** |
 | `autoMinorVersionUpgrade` | ***bool***| ***(Optional)*** |
 | `brokerName` | ***string***||
 | `configuration` | ***[[]MqBrokerSpecConfiguration](#mqbrokerspecconfiguration)***| ***(Optional)*** |
 | `deploymentMode` | ***string***| ***(Optional)*** |
+| `encryptionOptions` | ***[[]MqBrokerSpecEncryptionOptions](#mqbrokerspecencryptionoptions)***| ***(Optional)*** |
 | `engineType` | ***string***||
 | `engineVersion` | ***string***||
 | `hostInstanceType` | ***string***||
@@ -52,6 +53,14 @@ Appears on:[MqBrokerSpec](#mqbrokerspec)
 | ------ | ----- | ----------- |
 | `ID` | ***string***| ***(Optional)*** |
 | `revision` | ***int64***| ***(Optional)*** |
+## MqBrokerSpecEncryptionOptions
+
+Appears on:[MqBrokerSpec](#mqbrokerspec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `kmsKeyID` | ***string***| ***(Optional)*** |
+| `useAwsOwnedKey` | ***bool***| ***(Optional)*** |
 ## MqBrokerSpecInstances
 
 Appears on:[MqBrokerSpec](#mqbrokerspec)

@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `VirtualMachine` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[VirtualMachineSpec](#virtualmachinespec)***||
 | `status` | ***[VirtualMachineStatus](#virtualmachinestatus)***||
 ## Phase(`string` alias)
@@ -28,9 +28,10 @@ Appears on:[VirtualMachine](#virtualmachine), [VirtualMachineStatus](#virtualmac
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
+| `additionalCapabilities` | ***[[]VirtualMachineSpecAdditionalCapabilities](#virtualmachinespecadditionalcapabilities)***| ***(Optional)*** |
 | `availabilitySetID` | ***string***| ***(Optional)*** |
 | `bootDiagnostics` | ***[[]VirtualMachineSpecBootDiagnostics](#virtualmachinespecbootdiagnostics)***| ***(Optional)*** |
 | `deleteDataDisksOnTermination` | ***bool***| ***(Optional)*** |
@@ -46,6 +47,7 @@ Appears on:[VirtualMachine](#virtualmachine), [VirtualMachineStatus](#virtualmac
 | `osProfileWindowsConfig` | ***[[]VirtualMachineSpecOsProfileWindowsConfig](#virtualmachinespecosprofilewindowsconfig)***| ***(Optional)*** |
 | `plan` | ***[[]VirtualMachineSpecPlan](#virtualmachinespecplan)***| ***(Optional)*** |
 | `primaryNetworkInterfaceID` | ***string***| ***(Optional)*** |
+| `proximityPlacementGroupID` | ***string***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
 | `storageDataDisk` | ***[[]VirtualMachineSpecStorageDataDisk](#virtualmachinespecstoragedatadisk)***| ***(Optional)*** |
 | `storageImageReference` | ***[[]VirtualMachineSpecStorageImageReference](#virtualmachinespecstorageimagereference)***| ***(Optional)*** |
@@ -53,6 +55,13 @@ Appears on:[VirtualMachine](#virtualmachine), [VirtualMachineStatus](#virtualmac
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `vmSize` | ***string***||
 | `zones` | ***[]string***| ***(Optional)*** |
+## VirtualMachineSpecAdditionalCapabilities
+
+Appears on:[VirtualMachineSpec](#virtualmachinespec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `ultraSsdEnabled` | ***bool***||
 ## VirtualMachineSpecBootDiagnostics
 
 Appears on:[VirtualMachineSpec](#virtualmachinespec)

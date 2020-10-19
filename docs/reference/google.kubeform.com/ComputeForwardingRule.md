@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComputeForwardingRule` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[ComputeForwardingRuleSpec](#computeforwardingrulespec)***||
 | `status` | ***[ComputeForwardingRuleStatus](#computeforwardingrulestatus)***||
 ## ComputeForwardingRuleSpec
@@ -24,16 +24,15 @@ Appears on:[ComputeForwardingRule](#computeforwardingrule), [ComputeForwardingRu
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
+| `allPorts` | ***bool***| ***(Optional)*** |
 | `backendService` | ***string***| ***(Optional)*** |
 | `creationTimestamp` | ***string***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
 | `ipAddress` | ***string***| ***(Optional)*** |
 | `ipProtocol` | ***string***| ***(Optional)*** |
-| `ipVersion` | ***string***| ***(Optional)*** |
-| `labelFingerprint` | ***string***| ***(Optional)*** |
-| `labels` | ***map[string]string***| ***(Optional)*** Deprecated|
+| `ipVersion` | ***string***| ***(Optional)*** Deprecated|
 | `loadBalancingScheme` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 | `network` | ***string***| ***(Optional)*** |
@@ -43,8 +42,8 @@ Appears on:[ComputeForwardingRule](#computeforwardingrule), [ComputeForwardingRu
 | `project` | ***string***| ***(Optional)*** |
 | `region` | ***string***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
-| `serviceLabel` | ***string***| ***(Optional)*** Deprecated|
-| `serviceName` | ***string***| ***(Optional)*** Deprecated|
+| `serviceLabel` | ***string***| ***(Optional)*** |
+| `serviceName` | ***string***| ***(Optional)*** |
 | `subnetwork` | ***string***| ***(Optional)*** |
 | `target` | ***string***| ***(Optional)*** |
 ## ComputeForwardingRuleStatus

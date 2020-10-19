@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `digitalocean.kubeform.com/v1alpha1` |
 |    `kind` | string | `KubernetesCluster` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[KubernetesClusterSpec](#kubernetesclusterspec)***||
 | `status` | ***[KubernetesClusterStatus](#kubernetesclusterstatus)***||
 ## KubernetesClusterSpec
@@ -24,14 +24,14 @@ Appears on:[KubernetesCluster](#kubernetescluster), [KubernetesClusterStatus](#k
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `clusterSubnet` | ***string***| ***(Optional)*** |
 | `createdAt` | ***string***| ***(Optional)*** |
 | `endpoint` | ***string***| ***(Optional)*** |
 | `ipv4Address` | ***string***| ***(Optional)*** |
-| `kubeConfig` | ***[[]KubernetesClusterSpecKubeConfig](#kubernetesclusterspeckubeconfig)***| ***(Optional)*** |
-| `name` | ***string***||
+| `name` | ***string***| ***(Optional)*** |
 | `nodePool` | ***[[]KubernetesClusterSpecNodePool](#kubernetesclusterspecnodepool)***||
 | `region` | ***string***||
 | `serviceSubnet` | ***string***| ***(Optional)*** |
@@ -39,26 +39,21 @@ Appears on:[KubernetesCluster](#kubernetescluster), [KubernetesClusterStatus](#k
 | `tags` | ***[]string***| ***(Optional)*** |
 | `updatedAt` | ***string***| ***(Optional)*** |
 | `version` | ***string***||
-## KubernetesClusterSpecKubeConfig
-
-Appears on:[KubernetesClusterSpec](#kubernetesclusterspec)
-
-| Field | Type | Description |
-| ------ | ----- | ----------- |
-| `clientCertificate` | ***string***| ***(Optional)*** |
-| `clientKey` | ***string***| ***(Optional)*** |
-| `clusterCaCertificate` | ***string***| ***(Optional)*** |
-| `host` | ***string***| ***(Optional)*** |
-| `rawConfig` | ***string***| ***(Optional)*** |
+| `vpcUUID` | ***string***| ***(Optional)*** |
 ## KubernetesClusterSpecNodePool
 
 Appears on:[KubernetesClusterSpec](#kubernetesclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
+| `actualNodeCount` | ***int64***| ***(Optional)*** |
+| `autoScale` | ***bool***| ***(Optional)*** |
 | `ID` | ***string***| ***(Optional)*** |
+| `labels` | ***map[string]string***| ***(Optional)*** |
+| `maxNodes` | ***int64***| ***(Optional)*** |
+| `minNodes` | ***int64***| ***(Optional)*** |
 | `name` | ***string***||
-| `nodeCount` | ***int64***||
+| `nodeCount` | ***int64***| ***(Optional)*** |
 | `nodes` | ***[[]KubernetesClusterSpecNodePoolNodes](#kubernetesclusterspecnodepoolnodes)***| ***(Optional)*** |
 | `size` | ***string***||
 | `tags` | ***[]string***| ***(Optional)*** |
@@ -69,6 +64,7 @@ Appears on:[KubernetesClusterSpecNodePool](#kubernetesclusterspecnodepool)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `createdAt` | ***string***| ***(Optional)*** |
+| `dropletID` | ***string***| ***(Optional)*** |
 | `ID` | ***string***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 | `status` | ***string***| ***(Optional)*** |

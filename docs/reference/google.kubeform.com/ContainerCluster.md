@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ContainerCluster` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[ContainerClusterSpec](#containerclusterspec)***||
 | `status` | ***[ContainerClusterStatus](#containerclusterstatus)***||
 ## ContainerClusterSpec
@@ -24,26 +24,25 @@ Appears on:[ContainerCluster](#containercluster), [ContainerClusterStatus](#cont
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
-| `additionalZones` | ***[]string***| ***(Optional)*** |
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
+| `additionalZones` | ***[]string***| ***(Optional)*** Deprecated|
 | `addonsConfig` | ***[[]ContainerClusterSpecAddonsConfig](#containerclusterspecaddonsconfig)***| ***(Optional)*** |
 | `clusterIpv4CIDR` | ***string***| ***(Optional)*** |
+| `defaultMaxPodsPerNode` | ***int64***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
-| `enableBinaryAuthorization` | ***bool***| ***(Optional)*** Deprecated|
 | `enableKubernetesAlpha` | ***bool***| ***(Optional)*** |
 | `enableLegacyAbac` | ***bool***| ***(Optional)*** |
-| `enableTpu` | ***bool***| ***(Optional)*** Deprecated|
 | `endpoint` | ***string***| ***(Optional)*** |
 | `initialNodeCount` | ***int64***| ***(Optional)*** |
 | `instanceGroupUrls` | ***[]string***| ***(Optional)*** |
 | `ipAllocationPolicy` | ***[[]ContainerClusterSpecIpAllocationPolicy](#containerclusterspecipallocationpolicy)***| ***(Optional)*** |
+| `location` | ***string***| ***(Optional)*** |
 | `loggingService` | ***string***| ***(Optional)*** |
 | `maintenancePolicy` | ***[[]ContainerClusterSpecMaintenancePolicy](#containerclusterspecmaintenancepolicy)***| ***(Optional)*** |
 | `masterAuth` | ***[[]ContainerClusterSpecMasterAuth](#containerclusterspecmasterauth)***| ***(Optional)*** |
 | `masterAuthorizedNetworksConfig` | ***[[]ContainerClusterSpecMasterAuthorizedNetworksConfig](#containerclusterspecmasterauthorizednetworksconfig)***| ***(Optional)*** |
-| `masterIpv4CIDRBlock` | ***string***| ***(Optional)*** Deprecated|
 | `masterVersion` | ***string***| ***(Optional)*** |
 | `minMasterVersion` | ***string***| ***(Optional)*** |
 | `monitoringService` | ***string***| ***(Optional)*** |
@@ -51,17 +50,17 @@ Appears on:[ContainerCluster](#containercluster), [ContainerClusterStatus](#cont
 | `network` | ***string***| ***(Optional)*** |
 | `networkPolicy` | ***[[]ContainerClusterSpecNetworkPolicy](#containerclusterspecnetworkpolicy)***| ***(Optional)*** |
 | `nodeConfig` | ***[[]ContainerClusterSpecNodeConfig](#containerclusterspecnodeconfig)***| ***(Optional)*** |
+| `nodeLocations` | ***[]string***| ***(Optional)*** |
 | `nodePool` | ***[[]ContainerClusterSpecNodePool](#containerclusterspecnodepool)***| ***(Optional)*** |
 | `nodeVersion` | ***string***| ***(Optional)*** |
-| `podSecurityPolicyConfig` | ***[[]ContainerClusterSpecPodSecurityPolicyConfig](#containerclusterspecpodsecuritypolicyconfig)***| ***(Optional)*** Deprecated|
-| `privateCluster` | ***bool***| ***(Optional)*** Deprecated|
 | `privateClusterConfig` | ***[[]ContainerClusterSpecPrivateClusterConfig](#containerclusterspecprivateclusterconfig)***| ***(Optional)*** |
 | `project` | ***string***| ***(Optional)*** |
-| `region` | ***string***| ***(Optional)*** |
+| `region` | ***string***| ***(Optional)*** Deprecated|
 | `removeDefaultNodePool` | ***bool***| ***(Optional)*** |
 | `resourceLabels` | ***map[string]string***| ***(Optional)*** |
+| `servicesIpv4CIDR` | ***string***| ***(Optional)*** |
 | `subnetwork` | ***string***| ***(Optional)*** |
-| `zone` | ***string***| ***(Optional)*** |
+| `zone` | ***string***| ***(Optional)*** Deprecated|
 ## ContainerClusterSpecAddonsConfig
 
 Appears on:[ContainerClusterSpec](#containerclusterspec)
@@ -109,9 +108,11 @@ Appears on:[ContainerClusterSpec](#containerclusterspec)
 | `clusterIpv4CIDRBlock` | ***string***| ***(Optional)*** |
 | `clusterSecondaryRangeName` | ***string***| ***(Optional)*** |
 | `createSubnetwork` | ***bool***| ***(Optional)*** |
+| `nodeIpv4CIDRBlock` | ***string***| ***(Optional)*** |
 | `servicesIpv4CIDRBlock` | ***string***| ***(Optional)*** |
 | `servicesSecondaryRangeName` | ***string***| ***(Optional)*** |
 | `subnetworkName` | ***string***| ***(Optional)*** |
+| `useIPAliases` | ***bool***| ***(Optional)*** |
 ## ContainerClusterSpecMaintenancePolicy
 
 Appears on:[ContainerClusterSpec](#containerclusterspec)
@@ -136,7 +137,7 @@ Appears on:[ContainerClusterSpec](#containerclusterspec)
 | `clientCertificate` | ***string***| ***(Optional)*** |
 | `clientCertificateConfig` | ***[[]ContainerClusterSpecMasterAuthClientCertificateConfig](#containerclusterspecmasterauthclientcertificateconfig)***| ***(Optional)*** |
 | `clusterCaCertificate` | ***string***| ***(Optional)*** |
-| `username` | ***string***||
+| `username` | ***string***| ***(Optional)*** |
 ## ContainerClusterSpecMasterAuthClientCertificateConfig
 
 Appears on:[ContainerClusterSpecMasterAuth](#containerclusterspecmasterauth)
@@ -186,8 +187,6 @@ Appears on:[ContainerClusterSpec](#containerclusterspec)
 | `preemptible` | ***bool***| ***(Optional)*** |
 | `serviceAccount` | ***string***| ***(Optional)*** |
 | `tags` | ***[]string***| ***(Optional)*** |
-| `taint` | ***[[]ContainerClusterSpecNodeConfigTaint](#containerclusterspecnodeconfigtaint)***| ***(Optional)*** Deprecated|
-| `workloadMetadataConfig` | ***[[]ContainerClusterSpecNodeConfigWorkloadMetadataConfig](#containerclusterspecnodeconfigworkloadmetadataconfig)***| ***(Optional)*** Deprecated|
 ## ContainerClusterSpecNodeConfigGuestAccelerator
 
 Appears on:[ContainerClusterSpecNodeConfig](#containerclusterspecnodeconfig)
@@ -196,22 +195,6 @@ Appears on:[ContainerClusterSpecNodeConfig](#containerclusterspecnodeconfig)
 | ------ | ----- | ----------- |
 | `count` | ***int64***||
 | `type` | ***string***||
-## ContainerClusterSpecNodeConfigTaint
-
-Appears on:[ContainerClusterSpecNodeConfig](#containerclusterspecnodeconfig)
-
-| Field | Type | Description |
-| ------ | ----- | ----------- |
-| `effect` | ***string***||
-| `key` | ***string***||
-| `value` | ***string***||
-## ContainerClusterSpecNodeConfigWorkloadMetadataConfig
-
-Appears on:[ContainerClusterSpecNodeConfig](#containerclusterspecnodeconfig)
-
-| Field | Type | Description |
-| ------ | ----- | ----------- |
-| `nodeMetadata` | ***string***||
 ## ContainerClusterSpecNodePool
 
 Appears on:[ContainerClusterSpec](#containerclusterspec)
@@ -222,9 +205,9 @@ Appears on:[ContainerClusterSpec](#containerclusterspec)
 | `initialNodeCount` | ***int64***| ***(Optional)*** |
 | `instanceGroupUrls` | ***[]string***| ***(Optional)*** |
 | `management` | ***[[]ContainerClusterSpecNodePoolManagement](#containerclusterspecnodepoolmanagement)***| ***(Optional)*** |
-| `maxPodsPerNode` | ***int64***| ***(Optional)*** Deprecated|
+| `maxPodsPerNode` | ***int64***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
-| `namePrefix` | ***string***| ***(Optional)*** Deprecated|
+| `namePrefix` | ***string***| ***(Optional)*** |
 | `nodeConfig` | ***[[]ContainerClusterSpecNodePoolNodeConfig](#containerclusterspecnodepoolnodeconfig)***| ***(Optional)*** |
 | `nodeCount` | ***int64***| ***(Optional)*** |
 | `version` | ***string***| ***(Optional)*** |
@@ -263,8 +246,6 @@ Appears on:[ContainerClusterSpecNodePool](#containerclusterspecnodepool)
 | `preemptible` | ***bool***| ***(Optional)*** |
 | `serviceAccount` | ***string***| ***(Optional)*** |
 | `tags` | ***[]string***| ***(Optional)*** |
-| `taint` | ***[[]ContainerClusterSpecNodePoolNodeConfigTaint](#containerclusterspecnodepoolnodeconfigtaint)***| ***(Optional)*** Deprecated|
-| `workloadMetadataConfig` | ***[[]ContainerClusterSpecNodePoolNodeConfigWorkloadMetadataConfig](#containerclusterspecnodepoolnodeconfigworkloadmetadataconfig)***| ***(Optional)*** Deprecated|
 ## ContainerClusterSpecNodePoolNodeConfigGuestAccelerator
 
 Appears on:[ContainerClusterSpecNodePoolNodeConfig](#containerclusterspecnodepoolnodeconfig)
@@ -273,29 +254,6 @@ Appears on:[ContainerClusterSpecNodePoolNodeConfig](#containerclusterspecnodepoo
 | ------ | ----- | ----------- |
 | `count` | ***int64***||
 | `type` | ***string***||
-## ContainerClusterSpecNodePoolNodeConfigTaint
-
-Appears on:[ContainerClusterSpecNodePoolNodeConfig](#containerclusterspecnodepoolnodeconfig)
-
-| Field | Type | Description |
-| ------ | ----- | ----------- |
-| `effect` | ***string***||
-| `key` | ***string***||
-| `value` | ***string***||
-## ContainerClusterSpecNodePoolNodeConfigWorkloadMetadataConfig
-
-Appears on:[ContainerClusterSpecNodePoolNodeConfig](#containerclusterspecnodepoolnodeconfig)
-
-| Field | Type | Description |
-| ------ | ----- | ----------- |
-| `nodeMetadata` | ***string***||
-## ContainerClusterSpecPodSecurityPolicyConfig
-
-Appears on:[ContainerClusterSpec](#containerclusterspec)
-
-| Field | Type | Description |
-| ------ | ----- | ----------- |
-| `enabled` | ***bool***||
 ## ContainerClusterSpecPrivateClusterConfig
 
 Appears on:[ContainerClusterSpec](#containerclusterspec)

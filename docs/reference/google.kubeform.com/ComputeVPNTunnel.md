@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComputeVPNTunnel` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[ComputeVPNTunnelSpec](#computevpntunnelspec)***||
 | `status` | ***[ComputeVPNTunnelStatus](#computevpntunnelstatus)***||
 ## ComputeVPNTunnelSpec
@@ -24,25 +24,24 @@ Appears on:[ComputeVPNTunnel](#computevpntunnel), [ComputeVPNTunnelStatus](#comp
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `creationTimestamp` | ***string***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
 | `detailedStatus` | ***string***| ***(Optional)*** |
 | `ikeVersion` | ***int64***| ***(Optional)*** |
-| `labelFingerprint` | ***string***| ***(Optional)*** |
-| `labels` | ***map[string]string***| ***(Optional)*** |
 | `localTrafficSelector` | ***[]string***| ***(Optional)*** |
 | `name` | ***string***||
-| `peerIP` | ***string***||
+| `peerIP` | ***string***| ***(Optional)*** |
 | `project` | ***string***| ***(Optional)*** |
 | `region` | ***string***| ***(Optional)*** |
 | `remoteTrafficSelector` | ***[]string***| ***(Optional)*** |
 | `router` | ***string***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
 | `sharedSecretHash` | ***string***| ***(Optional)*** |
-| `targetVPNGateway` | ***string***||
+| `targetVPNGateway` | ***string***| ***(Optional)*** |
+| `tunnelID` | ***string***| ***(Optional)*** |
 ## ComputeVPNTunnelStatus
 
 Appears on:[ComputeVPNTunnel](#computevpntunnel)

@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `EmrCluster` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[EmrClusterSpec](#emrclusterspec)***||
 | `status` | ***[EmrClusterStatus](#emrclusterstatus)***||
 ## EmrClusterSpec
@@ -24,9 +24,9 @@ Appears on:[EmrCluster](#emrcluster), [EmrClusterStatus](#emrclusterstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `additionalInfo` | ***string***| ***(Optional)*** |
 | `applications` | ***[]string***| ***(Optional)*** |
 | `autoscalingRole` | ***string***| ***(Optional)*** |
@@ -34,16 +34,18 @@ Appears on:[EmrCluster](#emrcluster), [EmrClusterStatus](#emrclusterstatus)
 | `clusterState` | ***string***| ***(Optional)*** |
 | `configurations` | ***string***| ***(Optional)*** |
 | `configurationsJSON` | ***string***| ***(Optional)*** |
-| `coreInstanceCount` | ***int64***| ***(Optional)*** |
-| `coreInstanceType` | ***string***| ***(Optional)*** |
+| `coreInstanceCount` | ***int64***| ***(Optional)*** Deprecated|
+| `coreInstanceGroup` | ***[[]EmrClusterSpecCoreInstanceGroup](#emrclusterspeccoreinstancegroup)***| ***(Optional)*** |
+| `coreInstanceType` | ***string***| ***(Optional)*** Deprecated|
 | `customAmiID` | ***string***| ***(Optional)*** |
 | `ebsRootVolumeSize` | ***int64***| ***(Optional)*** |
 | `ec2Attributes` | ***[[]EmrClusterSpecEc2Attributes](#emrclusterspecec2attributes)***| ***(Optional)*** |
-| `instanceGroup` | ***[[]EmrClusterSpecInstanceGroup](#emrclusterspecinstancegroup)***| ***(Optional)*** |
+| `instanceGroup` | ***[[]EmrClusterSpecInstanceGroup](#emrclusterspecinstancegroup)***| ***(Optional)*** Deprecated|
 | `keepJobFlowAliveWhenNoSteps` | ***bool***| ***(Optional)*** |
 | `kerberosAttributes` | ***[[]EmrClusterSpecKerberosAttributes](#emrclusterspeckerberosattributes)***| ***(Optional)*** |
 | `logURI` | ***string***| ***(Optional)*** |
-| `masterInstanceType` | ***string***| ***(Optional)*** |
+| `masterInstanceGroup` | ***[[]EmrClusterSpecMasterInstanceGroup](#emrclusterspecmasterinstancegroup)***| ***(Optional)*** |
+| `masterInstanceType` | ***string***| ***(Optional)*** Deprecated|
 | `masterPublicDNS` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 | `releaseLabel` | ***string***||
@@ -63,6 +65,29 @@ Appears on:[EmrClusterSpec](#emrclusterspec)
 | `args` | ***[]string***| ***(Optional)*** |
 | `name` | ***string***||
 | `path` | ***string***||
+## EmrClusterSpecCoreInstanceGroup
+
+Appears on:[EmrClusterSpec](#emrclusterspec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `autoscalingPolicy` | ***string***| ***(Optional)*** |
+| `bidPrice` | ***string***| ***(Optional)*** |
+| `ebsConfig` | ***[[]EmrClusterSpecCoreInstanceGroupEbsConfig](#emrclusterspeccoreinstancegroupebsconfig)***| ***(Optional)*** |
+| `ID` | ***string***| ***(Optional)*** |
+| `instanceCount` | ***int64***| ***(Optional)*** |
+| `instanceType` | ***string***||
+| `name` | ***string***| ***(Optional)*** |
+## EmrClusterSpecCoreInstanceGroupEbsConfig
+
+Appears on:[EmrClusterSpecCoreInstanceGroup](#emrclusterspeccoreinstancegroup)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `iops` | ***int64***| ***(Optional)*** |
+| `size` | ***int64***||
+| `type` | ***string***||
+| `volumesPerInstance` | ***int64***| ***(Optional)*** |
 ## EmrClusterSpecEc2Attributes
 
 Appears on:[EmrClusterSpec](#emrclusterspec)
@@ -109,6 +134,28 @@ Appears on:[EmrClusterSpec](#emrclusterspec)
 | ------ | ----- | ----------- |
 | `adDomainJoinUser` | ***string***| ***(Optional)*** |
 | `realm` | ***string***||
+## EmrClusterSpecMasterInstanceGroup
+
+Appears on:[EmrClusterSpec](#emrclusterspec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `bidPrice` | ***string***| ***(Optional)*** |
+| `ebsConfig` | ***[[]EmrClusterSpecMasterInstanceGroupEbsConfig](#emrclusterspecmasterinstancegroupebsconfig)***| ***(Optional)*** |
+| `ID` | ***string***| ***(Optional)*** |
+| `instanceCount` | ***int64***| ***(Optional)*** |
+| `instanceType` | ***string***||
+| `name` | ***string***| ***(Optional)*** |
+## EmrClusterSpecMasterInstanceGroupEbsConfig
+
+Appears on:[EmrClusterSpecMasterInstanceGroup](#emrclusterspecmasterinstancegroup)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `iops` | ***int64***| ***(Optional)*** |
+| `size` | ***int64***||
+| `type` | ***string***||
+| `volumesPerInstance` | ***int64***| ***(Optional)*** |
 ## EmrClusterSpecStep
 
 Appears on:[EmrClusterSpec](#emrclusterspec)

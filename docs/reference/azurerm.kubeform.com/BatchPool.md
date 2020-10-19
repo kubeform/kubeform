@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `BatchPool` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[BatchPoolSpec](#batchpoolspec)***||
 | `status` | ***[BatchPoolStatus](#batchpoolstatus)***||
 ## BatchPoolSpec
@@ -24,8 +24,9 @@ Appears on:[BatchPool](#batchpool), [BatchPoolStatus](#batchpoolstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `accountName` | ***string***||
 | `autoScale` | ***[[]BatchPoolSpecAutoScale](#batchpoolspecautoscale)***| ***(Optional)*** |
 | `certificate` | ***[[]BatchPoolSpecCertificate](#batchpoolspeccertificate)***| ***(Optional)*** |
@@ -33,7 +34,9 @@ Appears on:[BatchPool](#batchpool), [BatchPoolStatus](#batchpoolstatus)
 | `displayName` | ***string***| ***(Optional)*** |
 | `fixedScale` | ***[[]BatchPoolSpecFixedScale](#batchpoolspecfixedscale)***| ***(Optional)*** |
 | `maxTasksPerNode` | ***int64***| ***(Optional)*** |
+| `metadata` | ***map[string]string***| ***(Optional)*** |
 | `name` | ***string***||
+| `networkConfiguration` | ***[[]BatchPoolSpecNetworkConfiguration](#batchpoolspecnetworkconfiguration)***| ***(Optional)*** |
 | `nodeAgentSkuID` | ***string***||
 | `resourceGroupName` | ***string***||
 | `startTask` | ***[[]BatchPoolSpecStartTask](#batchpoolspecstarttask)***| ***(Optional)*** |
@@ -64,7 +67,16 @@ Appears on:[BatchPoolSpec](#batchpoolspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
+| `containerRegistries` | ***[[]BatchPoolSpecContainerConfigurationContainerRegistries](#batchpoolspeccontainerconfigurationcontainerregistries)***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
+## BatchPoolSpecContainerConfigurationContainerRegistries
+
+Appears on:[BatchPoolSpecContainerConfiguration](#batchpoolspeccontainerconfiguration)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `registryServer` | ***string***||
+| `userName` | ***string***||
 ## BatchPoolSpecFixedScale
 
 Appears on:[BatchPoolSpec](#batchpoolspec)
@@ -74,6 +86,34 @@ Appears on:[BatchPoolSpec](#batchpoolspec)
 | `resizeTimeout` | ***string***| ***(Optional)*** |
 | `targetDedicatedNodes` | ***int64***| ***(Optional)*** |
 | `targetLowPriorityNodes` | ***int64***| ***(Optional)*** |
+## BatchPoolSpecNetworkConfiguration
+
+Appears on:[BatchPoolSpec](#batchpoolspec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `endpointConfiguration` | ***[[]BatchPoolSpecNetworkConfigurationEndpointConfiguration](#batchpoolspecnetworkconfigurationendpointconfiguration)***| ***(Optional)*** |
+| `subnetID` | ***string***||
+## BatchPoolSpecNetworkConfigurationEndpointConfiguration
+
+Appears on:[BatchPoolSpecNetworkConfiguration](#batchpoolspecnetworkconfiguration)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `backendPort` | ***int64***||
+| `frontendPortRange` | ***string***||
+| `name` | ***string***||
+| `networkSecurityGroupRules` | ***[[]BatchPoolSpecNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRules](#batchpoolspecnetworkconfigurationendpointconfigurationnetworksecuritygrouprules)***| ***(Optional)*** |
+| `protocol` | ***string***||
+## BatchPoolSpecNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRules
+
+Appears on:[BatchPoolSpecNetworkConfigurationEndpointConfiguration](#batchpoolspecnetworkconfigurationendpointconfiguration)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `access` | ***string***||
+| `priority` | ***int64***||
+| `sourceAddressPrefix` | ***string***||
 ## BatchPoolSpecStartTask
 
 Appears on:[BatchPoolSpec](#batchpoolspec)
@@ -140,3 +180,7 @@ Appears on:[BatchPool](#batchpool)
 Appears on:[BatchPoolStatus](#batchpoolstatus)
 
 ---
+## Sensitive Values
+| Name | Type | Description |
+|------|------|-------------|
+| `container_configuration.<index>.container_registries.<index>.password` | ***string*** ||

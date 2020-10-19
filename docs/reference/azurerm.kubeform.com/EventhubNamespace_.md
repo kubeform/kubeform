@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `EventhubNamespace_` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[EventhubNamespace_Spec](#eventhubnamespace_spec)***||
 | `status` | ***[EventhubNamespace_Status](#eventhubnamespace_status)***||
 ## EventhubNamespace_Spec
@@ -24,18 +24,44 @@ Appears on:[EventhubNamespace_](#eventhubnamespace_), [EventhubNamespace_Status]
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `autoInflateEnabled` | ***bool***| ***(Optional)*** |
 | `capacity` | ***int64***| ***(Optional)*** |
-| `kafkaEnabled` | ***bool***| ***(Optional)*** |
+| `kafkaEnabled` | ***bool***| ***(Optional)*** Deprecated|
 | `location` | ***string***||
 | `maximumThroughputUnits` | ***int64***| ***(Optional)*** |
 | `name` | ***string***||
+| `networkRulesets` | ***[[]EventhubNamespace_SpecNetworkRulesets](#eventhubnamespace_specnetworkrulesets)***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
 | `sku` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
+## EventhubNamespace_SpecNetworkRulesets
+
+Appears on:[EventhubNamespace_Spec](#eventhubnamespace_spec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `defaultAction` | ***string***||
+| `ipRule` | ***[[]EventhubNamespace_SpecNetworkRulesetsIpRule](#eventhubnamespace_specnetworkrulesetsiprule)***| ***(Optional)*** |
+| `virtualNetworkRule` | ***[[]EventhubNamespace_SpecNetworkRulesetsVirtualNetworkRule](#eventhubnamespace_specnetworkrulesetsvirtualnetworkrule)***| ***(Optional)*** |
+## EventhubNamespace_SpecNetworkRulesetsIpRule
+
+Appears on:[EventhubNamespace_SpecNetworkRulesets](#eventhubnamespace_specnetworkrulesets)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `action` | ***string***| ***(Optional)*** |
+| `ipMask` | ***string***||
+## EventhubNamespace_SpecNetworkRulesetsVirtualNetworkRule
+
+Appears on:[EventhubNamespace_SpecNetworkRulesets](#eventhubnamespace_specnetworkrulesets)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `ignoreMissingVirtualNetworkServiceEndpoint` | ***bool***| ***(Optional)*** |
+| `subnetID` | ***string***||
 ## EventhubNamespace_Status
 
 Appears on:[EventhubNamespace_](#eventhubnamespace_)

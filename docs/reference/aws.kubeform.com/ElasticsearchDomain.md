@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `ElasticsearchDomain` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[ElasticsearchDomainSpec](#elasticsearchdomainspec)***||
 | `status` | ***[ElasticsearchDomainStatus](#elasticsearchdomainstatus)***||
 ## ElasticsearchDomainSpec
@@ -24,7 +24,7 @@ Appears on:[ElasticsearchDomain](#elasticsearchdomain), [ElasticsearchDomainStat
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `accessPolicies` | ***string***| ***(Optional)*** |
 | `advancedOptions` | ***map[string]string***| ***(Optional)*** |
@@ -54,7 +54,15 @@ Appears on:[ElasticsearchDomainSpec](#elasticsearchdomainspec)
 | `dedicatedMasterType` | ***string***| ***(Optional)*** |
 | `instanceCount` | ***int64***| ***(Optional)*** |
 | `instanceType` | ***string***| ***(Optional)*** |
+| `zoneAwarenessConfig` | ***[[]ElasticsearchDomainSpecClusterConfigZoneAwarenessConfig](#elasticsearchdomainspecclusterconfigzoneawarenessconfig)***| ***(Optional)*** |
 | `zoneAwarenessEnabled` | ***bool***| ***(Optional)*** |
+## ElasticsearchDomainSpecClusterConfigZoneAwarenessConfig
+
+Appears on:[ElasticsearchDomainSpecClusterConfig](#elasticsearchdomainspecclusterconfig)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `availabilityZoneCount` | ***int64***| ***(Optional)*** |
 ## ElasticsearchDomainSpecCognitoOptions
 
 Appears on:[ElasticsearchDomainSpec](#elasticsearchdomainspec)

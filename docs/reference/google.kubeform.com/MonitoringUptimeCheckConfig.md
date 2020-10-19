@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `MonitoringUptimeCheckConfig` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[MonitoringUptimeCheckConfigSpec](#monitoringuptimecheckconfigspec)***||
 | `status` | ***[MonitoringUptimeCheckConfigStatus](#monitoringuptimecheckconfigstatus)***||
 ## MonitoringUptimeCheckConfigSpec
@@ -24,14 +24,14 @@ Appears on:[MonitoringUptimeCheckConfig](#monitoringuptimecheckconfig), [Monitor
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `contentMatchers` | ***[[]MonitoringUptimeCheckConfigSpecContentMatchers](#monitoringuptimecheckconfigspeccontentmatchers)***| ***(Optional)*** |
 | `displayName` | ***string***||
 | `httpCheck` | ***[[]MonitoringUptimeCheckConfigSpecHttpCheck](#monitoringuptimecheckconfigspechttpcheck)***| ***(Optional)*** |
-| `internalCheckers` | ***[[]MonitoringUptimeCheckConfigSpecInternalCheckers](#monitoringuptimecheckconfigspecinternalcheckers)***| ***(Optional)*** |
-| `isInternal` | ***bool***| ***(Optional)*** |
+| `internalCheckers` | ***[[]MonitoringUptimeCheckConfigSpecInternalCheckers](#monitoringuptimecheckconfigspecinternalcheckers)***| ***(Optional)*** Deprecated|
+| `isInternal` | ***bool***| ***(Optional)*** Deprecated|
 | `monitoredResource` | ***[[]MonitoringUptimeCheckConfigSpecMonitoredResource](#monitoringuptimecheckconfigspecmonitoredresource)***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 | `period` | ***string***| ***(Optional)*** |
@@ -40,6 +40,7 @@ Appears on:[MonitoringUptimeCheckConfig](#monitoringuptimecheckconfig), [Monitor
 | `selectedRegions` | ***[]string***| ***(Optional)*** |
 | `tcpCheck` | ***[[]MonitoringUptimeCheckConfigSpecTcpCheck](#monitoringuptimecheckconfigspectcpcheck)***| ***(Optional)*** |
 | `timeout` | ***string***||
+| `uptimeCheckID` | ***string***| ***(Optional)*** |
 ## MonitoringUptimeCheckConfigSpecContentMatchers
 
 Appears on:[MonitoringUptimeCheckConfigSpec](#monitoringuptimecheckconfigspec)
@@ -72,11 +73,11 @@ Appears on:[MonitoringUptimeCheckConfigSpec](#monitoringuptimecheckconfigspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `displayName` | ***string***| ***(Optional)*** |
-| `gcpZone` | ***string***| ***(Optional)*** |
-| `name` | ***string***| ***(Optional)*** |
-| `network` | ***string***| ***(Optional)*** |
-| `peerProjectID` | ***string***| ***(Optional)*** |
+| `displayName` | ***string***| ***(Optional)*** Deprecated|
+| `gcpZone` | ***string***| ***(Optional)*** Deprecated|
+| `name` | ***string***| ***(Optional)*** Deprecated|
+| `network` | ***string***| ***(Optional)*** Deprecated|
+| `peerProjectID` | ***string***| ***(Optional)*** Deprecated|
 ## MonitoringUptimeCheckConfigSpecMonitoredResource
 
 Appears on:[MonitoringUptimeCheckConfigSpec](#monitoringuptimecheckconfigspec)

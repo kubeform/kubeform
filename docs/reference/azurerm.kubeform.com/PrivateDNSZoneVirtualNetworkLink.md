@@ -1,0 +1,49 @@
+---
+title: PrivateDNSZoneVirtualNetworkLink
+menu:
+  docs_{{ .version }}:
+    identifier: privatednszonevirtualnetworklink-azurerm.kubeform.com
+    name: PrivateDNSZoneVirtualNetworkLink
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_{{ .version }}
+section_menu_id: reference
+---
+
+## PrivateDNSZoneVirtualNetworkLink
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
+|    `kind` | string | `PrivateDNSZoneVirtualNetworkLink` |
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `spec` | ***[PrivateDNSZoneVirtualNetworkLinkSpec](#privatednszonevirtualnetworklinkspec)***||
+| `status` | ***[PrivateDNSZoneVirtualNetworkLinkStatus](#privatednszonevirtualnetworklinkstatus)***||
+## Phase(`string` alias)
+
+Appears on:[PrivateDNSZoneVirtualNetworkLinkStatus](#privatednszonevirtualnetworklinkstatus)
+
+## PrivateDNSZoneVirtualNetworkLinkSpec
+
+Appears on:[PrivateDNSZoneVirtualNetworkLink](#privatednszonevirtualnetworklink), [PrivateDNSZoneVirtualNetworkLinkStatus](#privatednszonevirtualnetworklinkstatus)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
+| `id` | ***string***||
+| `name` | ***string***||
+| `privateDNSZoneName` | ***string***||
+| `registrationEnabled` | ***bool***| ***(Optional)*** |
+| `resourceGroupName` | ***string***||
+| `tags` | ***map[string]string***| ***(Optional)*** |
+| `virtualNetworkID` | ***string***||
+## PrivateDNSZoneVirtualNetworkLinkStatus
+
+Appears on:[PrivateDNSZoneVirtualNetworkLink](#privatednszonevirtualnetworklink)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
+| `output` | ***[PrivateDNSZoneVirtualNetworkLinkSpec](#privatednszonevirtualnetworklinkspec)***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
+---

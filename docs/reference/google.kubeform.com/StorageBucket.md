@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `StorageBucket` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[StorageBucketSpec](#storagebucketspec)***||
 | `status` | ***[StorageBucketStatus](#storagebucketstatus)***||
 ## Phase(`string` alias)
@@ -28,8 +28,9 @@ Appears on:[StorageBucket](#storagebucket), [StorageBucketStatus](#storagebucket
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
+| `bucketPolicyOnly` | ***bool***| ***(Optional)*** |
 | `cors` | ***[[]StorageBucketSpecCors](#storagebucketspeccors)***| ***(Optional)*** |
 | `encryption` | ***[[]StorageBucketSpecEncryption](#storagebucketspecencryption)***| ***(Optional)*** |
 | `forceDestroy` | ***bool***| ***(Optional)*** |
@@ -39,6 +40,8 @@ Appears on:[StorageBucket](#storagebucket), [StorageBucketStatus](#storagebucket
 | `logging` | ***[[]StorageBucketSpecLogging](#storagebucketspeclogging)***| ***(Optional)*** |
 | `name` | ***string***||
 | `project` | ***string***| ***(Optional)*** |
+| `requesterPays` | ***bool***| ***(Optional)*** |
+| `retentionPolicy` | ***[[]StorageBucketSpecRetentionPolicy](#storagebucketspecretentionpolicy)***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
 | `storageClass` | ***string***| ***(Optional)*** |
 | `url` | ***string***| ***(Optional)*** |
@@ -85,9 +88,10 @@ Appears on:[StorageBucketSpecLifecycleRule](#storagebucketspeclifecyclerule)
 | ------ | ----- | ----------- |
 | `age` | ***int64***| ***(Optional)*** |
 | `createdBefore` | ***string***| ***(Optional)*** |
-| `isLive` | ***bool***| ***(Optional)*** |
+| `isLive` | ***bool***| ***(Optional)*** Deprecated|
 | `matchesStorageClass` | ***[]string***| ***(Optional)*** |
 | `numNewerVersions` | ***int64***| ***(Optional)*** |
+| `withState` | ***string***| ***(Optional)*** |
 ## StorageBucketSpecLogging
 
 Appears on:[StorageBucketSpec](#storagebucketspec)
@@ -96,6 +100,14 @@ Appears on:[StorageBucketSpec](#storagebucketspec)
 | ------ | ----- | ----------- |
 | `logBucket` | ***string***||
 | `logObjectPrefix` | ***string***| ***(Optional)*** |
+## StorageBucketSpecRetentionPolicy
+
+Appears on:[StorageBucketSpec](#storagebucketspec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `isLocked` | ***bool***| ***(Optional)*** |
+| `retentionPeriod` | ***int64***||
 ## StorageBucketSpecVersioning
 
 Appears on:[StorageBucketSpec](#storagebucketspec)

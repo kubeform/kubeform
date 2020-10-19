@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `DbInstance` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[DbInstanceSpec](#dbinstancespec)***||
 | `status` | ***[DbInstanceStatus](#dbinstancestatus)***||
 ## DbInstanceSpec
@@ -24,9 +24,9 @@ Appears on:[DbInstance](#dbinstance), [DbInstanceStatus](#dbinstancestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `address` | ***string***| ***(Optional)*** |
 | `allocatedStorage` | ***int64***| ***(Optional)*** |
 | `allowMajorVersionUpgrade` | ***bool***| ***(Optional)*** |
@@ -57,12 +57,16 @@ Appears on:[DbInstance](#dbinstance), [DbInstanceStatus](#dbinstancestatus)
 | `kmsKeyID` | ***string***| ***(Optional)*** |
 | `licenseModel` | ***string***| ***(Optional)*** |
 | `maintenanceWindow` | ***string***| ***(Optional)*** |
+| `maxAllocatedStorage` | ***int64***| ***(Optional)*** |
 | `monitoringInterval` | ***int64***| ***(Optional)*** |
 | `monitoringRoleArn` | ***string***| ***(Optional)*** |
 | `multiAz` | ***bool***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 | `optionGroupName` | ***string***| ***(Optional)*** |
 | `parameterGroupName` | ***string***| ***(Optional)*** |
+| `performanceInsightsEnabled` | ***bool***| ***(Optional)*** |
+| `performanceInsightsKmsKeyID` | ***string***| ***(Optional)*** |
+| `performanceInsightsRetentionPeriod` | ***int64***| ***(Optional)*** |
 | `port` | ***int64***| ***(Optional)*** |
 | `publiclyAccessible` | ***bool***| ***(Optional)*** |
 | `replicas` | ***[]string***| ***(Optional)*** |

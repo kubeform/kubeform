@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `KmsCryptoKey` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[KmsCryptoKeySpec](#kmscryptokeyspec)***||
 | `status` | ***[KmsCryptoKeyStatus](#kmscryptokeystatus)***||
 ## KmsCryptoKeySpec
@@ -24,12 +24,23 @@ Appears on:[KmsCryptoKey](#kmscryptokey), [KmsCryptoKeyStatus](#kmscryptokeystat
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `keyRing` | ***string***||
+| `labels` | ***map[string]string***| ***(Optional)*** |
 | `name` | ***string***||
+| `purpose` | ***string***| ***(Optional)*** |
 | `rotationPeriod` | ***string***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
+| `versionTemplate` | ***[[]KmsCryptoKeySpecVersionTemplate](#kmscryptokeyspecversiontemplate)***| ***(Optional)*** |
+## KmsCryptoKeySpecVersionTemplate
+
+Appears on:[KmsCryptoKeySpec](#kmscryptokeyspec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `algorithm` | ***string***||
+| `protectionLevel` | ***string***| ***(Optional)*** |
 ## KmsCryptoKeyStatus
 
 Appears on:[KmsCryptoKey](#kmscryptokey)

@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `StorageBucketObject` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[StorageBucketObjectSpec](#storagebucketobjectspec)***||
 | `status` | ***[StorageBucketObjectStatus](#storagebucketobjectstatus)***||
 ## Phase(`string` alias)
@@ -28,11 +28,11 @@ Appears on:[StorageBucketObject](#storagebucketobject), [StorageBucketObjectStat
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `bucket` | ***string***||
 | `cacheControl` | ***string***| ***(Optional)*** |
-| `content` | ***string***| ***(Optional)*** |
 | `contentDisposition` | ***string***| ***(Optional)*** |
 | `contentEncoding` | ***string***| ***(Optional)*** |
 | `contentLanguage` | ***string***| ***(Optional)*** |
@@ -41,6 +41,8 @@ Appears on:[StorageBucketObject](#storagebucketobject), [StorageBucketObjectStat
 | `detectMd5hash` | ***string***| ***(Optional)*** |
 | `md5hash` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
+| `outputName` | ***string***| ***(Optional)*** |
+| `selfLink` | ***string***| ***(Optional)*** |
 | `source` | ***string***| ***(Optional)*** |
 | `storageClass` | ***string***| ***(Optional)*** |
 ## StorageBucketObjectStatus
@@ -54,3 +56,7 @@ Appears on:[StorageBucketObject](#storagebucketobject)
 | `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
 | `phase` | ***[Phase](#phase)***| ***(Optional)*** |
 ---
+## Sensitive Values
+| Name | Type | Description |
+|------|------|-------------|
+| `content` | ***string*** ||

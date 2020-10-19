@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `CloudiotRegistry` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[CloudiotRegistrySpec](#cloudiotregistryspec)***||
 | `status` | ***[CloudiotRegistryStatus](#cloudiotregistrystatus)***||
 ## CloudiotRegistrySpec
@@ -24,11 +24,13 @@ Appears on:[CloudiotRegistry](#cloudiotregistry), [CloudiotRegistryStatus](#clou
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `credentials` | ***[[]CloudiotRegistrySpecCredentials](#cloudiotregistryspeccredentials)***| ***(Optional)*** |
-| `eventNotificationConfig` | ***map[string]kubeform.dev/kubeform/apis/google/v1alpha1.CloudiotRegistrySpecEventNotificationConfig***| ***(Optional)*** |
+| `eventNotificationConfig` | ***map[string]kubeform.dev/kubeform/apis/google/v1alpha1.CloudiotRegistrySpecEventNotificationConfig***| ***(Optional)*** Deprecated|
+| `eventNotificationConfigs` | ***[[]CloudiotRegistrySpecEventNotificationConfigs](#cloudiotregistryspeceventnotificationconfigs)***| ***(Optional)*** |
 | `httpConfig` | ***map[string]kubeform.dev/kubeform/apis/google/v1alpha1.CloudiotRegistrySpecHttpConfig***| ***(Optional)*** |
+| `logLevel` | ***string***| ***(Optional)*** |
 | `mqttConfig` | ***map[string]kubeform.dev/kubeform/apis/google/v1alpha1.CloudiotRegistrySpecMqttConfig***| ***(Optional)*** |
 | `name` | ***string***||
 | `project` | ***string***| ***(Optional)*** |
@@ -41,6 +43,14 @@ Appears on:[CloudiotRegistrySpec](#cloudiotregistryspec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `publicKeyCertificate` | ***map[string]kubeform.dev/kubeform/apis/google/v1alpha1.CloudiotRegistrySpecCredentialsPublicKeyCertificate***| ***(Optional)*** |
+## CloudiotRegistrySpecEventNotificationConfigs
+
+Appears on:[CloudiotRegistrySpec](#cloudiotregistryspec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `pubsubTopicName` | ***string***||
+| `subfolderMatches` | ***string***| ***(Optional)*** |
 ## CloudiotRegistryStatus
 
 Appears on:[CloudiotRegistry](#cloudiotregistry)

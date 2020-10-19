@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `AppmeshVirtualNode` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[AppmeshVirtualNodeSpec](#appmeshvirtualnodespec)***||
 | `status` | ***[AppmeshVirtualNodeStatus](#appmeshvirtualnodestatus)***||
 ## AppmeshVirtualNodeSpec
@@ -24,7 +24,7 @@ Appears on:[AppmeshVirtualNode](#appmeshvirtualnode), [AppmeshVirtualNodeStatus]
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `arn` | ***string***| ***(Optional)*** |
 | `createdDate` | ***string***| ***(Optional)*** |
@@ -32,6 +32,7 @@ Appears on:[AppmeshVirtualNode](#appmeshvirtualnode), [AppmeshVirtualNodeStatus]
 | `meshName` | ***string***||
 | `name` | ***string***||
 | `spec` | ***[[]AppmeshVirtualNodeSpecSpec](#appmeshvirtualnodespecspec)***||
+| `tags` | ***map[string]string***| ***(Optional)*** |
 ## AppmeshVirtualNodeSpecSpec
 
 Appears on:[AppmeshVirtualNodeSpec](#appmeshvirtualnodespec)
@@ -112,7 +113,17 @@ Appears on:[AppmeshVirtualNodeSpecSpec](#appmeshvirtualnodespecspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `dns` | ***[[]AppmeshVirtualNodeSpecSpecServiceDiscoveryDns](#appmeshvirtualnodespecspecservicediscoverydns)***||
+| `awsCloudMap` | ***[[]AppmeshVirtualNodeSpecSpecServiceDiscoveryAwsCloudMap](#appmeshvirtualnodespecspecservicediscoveryawscloudmap)***| ***(Optional)*** |
+| `dns` | ***[[]AppmeshVirtualNodeSpecSpecServiceDiscoveryDns](#appmeshvirtualnodespecspecservicediscoverydns)***| ***(Optional)*** |
+## AppmeshVirtualNodeSpecSpecServiceDiscoveryAwsCloudMap
+
+Appears on:[AppmeshVirtualNodeSpecSpecServiceDiscovery](#appmeshvirtualnodespecspecservicediscovery)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `attributes` | ***map[string]string***| ***(Optional)*** |
+| `namespaceName` | ***string***||
+| `serviceName` | ***string***||
 ## AppmeshVirtualNodeSpecSpecServiceDiscoveryDns
 
 Appears on:[AppmeshVirtualNodeSpecSpecServiceDiscovery](#appmeshvirtualnodespecspecservicediscovery)

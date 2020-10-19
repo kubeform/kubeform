@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `StorageAccount` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[StorageAccountSpec](#storageaccountspec)***||
 | `status` | ***[StorageAccountStatus](#storageaccountstatus)***||
 ## Phase(`string` alias)
@@ -28,17 +28,18 @@ Appears on:[StorageAccount](#storageaccount), [StorageAccountStatus](#storageacc
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `accessTier` | ***string***| ***(Optional)*** |
 | `accountEncryptionSource` | ***string***| ***(Optional)*** |
 | `accountKind` | ***string***| ***(Optional)*** |
 | `accountReplicationType` | ***string***||
 | `accountTier` | ***string***||
 | `accountType` | ***string***| ***(Optional)*** Deprecated|
+| `blobProperties` | ***[[]StorageAccountSpecBlobProperties](#storageaccountspecblobproperties)***| ***(Optional)*** |
 | `customDomain` | ***[[]StorageAccountSpecCustomDomain](#storageaccountspeccustomdomain)***| ***(Optional)*** |
-| `enableAdvancedThreatProtection` | ***bool***| ***(Optional)*** |
+| `enableAdvancedThreatProtection` | ***bool***| ***(Optional)*** Deprecated|
 | `enableBlobEncryption` | ***bool***| ***(Optional)*** |
 | `enableFileEncryption` | ***bool***| ***(Optional)*** |
 | `enableHTTPSTrafficOnly` | ***bool***| ***(Optional)*** |
@@ -76,6 +77,20 @@ Appears on:[StorageAccount](#storageaccount), [StorageAccountStatus](#storageacc
 | `secondaryWebEndpoint` | ***string***| ***(Optional)*** |
 | `secondaryWebHost` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
+## StorageAccountSpecBlobProperties
+
+Appears on:[StorageAccountSpec](#storageaccountspec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `deleteRetentionPolicy` | ***[[]StorageAccountSpecBlobPropertiesDeleteRetentionPolicy](#storageaccountspecblobpropertiesdeleteretentionpolicy)***| ***(Optional)*** |
+## StorageAccountSpecBlobPropertiesDeleteRetentionPolicy
+
+Appears on:[StorageAccountSpecBlobProperties](#storageaccountspecblobproperties)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `days` | ***int64***| ***(Optional)*** |
 ## StorageAccountSpecCustomDomain
 
 Appears on:[StorageAccountSpec](#storageaccountspec)
@@ -100,7 +115,7 @@ Appears on:[StorageAccountSpec](#storageaccountspec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bypass` | ***[]string***| ***(Optional)*** |
-| `defaultAction` | ***string***| ***(Optional)*** |
+| `defaultAction` | ***string***||
 | `ipRules` | ***[]string***| ***(Optional)*** |
 | `virtualNetworkSubnetIDS` | ***[]string***| ***(Optional)*** |
 ## StorageAccountSpecQueueProperties

@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `ManagedDisk` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[ManagedDiskSpec](#manageddiskspec)***||
 | `status` | ***[ManagedDiskStatus](#manageddiskstatus)***||
 ## ManagedDiskSpec
@@ -24,9 +24,12 @@ Appears on:[ManagedDisk](#manageddisk), [ManagedDiskStatus](#manageddiskstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `createOption` | ***string***||
+| `diskEncryptionSetID` | ***string***| ***(Optional)*** |
+| `diskIopsReadWrite` | ***int64***| ***(Optional)*** |
+| `diskMbpsReadWrite` | ***int64***| ***(Optional)*** |
 | `diskSizeGb` | ***int64***| ***(Optional)*** |
 | `encryptionSettings` | ***[[]ManagedDiskSpecEncryptionSettings](#manageddiskspecencryptionsettings)***| ***(Optional)*** |
 | `imageReferenceID` | ***string***| ***(Optional)*** |
@@ -36,6 +39,7 @@ Appears on:[ManagedDisk](#manageddisk), [ManagedDiskStatus](#manageddiskstatus)
 | `resourceGroupName` | ***string***||
 | `sourceResourceID` | ***string***| ***(Optional)*** |
 | `sourceURI` | ***string***| ***(Optional)*** |
+| `storageAccountID` | ***string***| ***(Optional)*** |
 | `storageAccountType` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `zones` | ***[]string***| ***(Optional)*** |

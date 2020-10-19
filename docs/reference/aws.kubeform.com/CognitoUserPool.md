@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `CognitoUserPool` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[CognitoUserPoolSpec](#cognitouserpoolspec)***||
 | `status` | ***[CognitoUserPoolStatus](#cognitouserpoolstatus)***||
 ## CognitoUserPoolSpec
@@ -24,7 +24,7 @@ Appears on:[CognitoUserPool](#cognitouserpool), [CognitoUserPoolStatus](#cognito
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `adminCreateUserConfig` | ***[[]CognitoUserPoolSpecAdminCreateUserConfig](#cognitouserpoolspecadmincreateuserconfig)***| ***(Optional)*** |
 | `aliasAttributes` | ***[]string***| ***(Optional)*** |
@@ -81,6 +81,7 @@ Appears on:[CognitoUserPoolSpec](#cognitouserpoolspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
+| `emailSendingAccount` | ***string***| ***(Optional)*** |
 | `replyToEmailAddress` | ***string***| ***(Optional)*** |
 | `sourceArn` | ***string***| ***(Optional)*** |
 ## CognitoUserPoolSpecLambdaConfig

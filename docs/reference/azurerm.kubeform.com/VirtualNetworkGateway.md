@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `VirtualNetworkGateway` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[VirtualNetworkGatewaySpec](#virtualnetworkgatewayspec)***||
 | `status` | ***[VirtualNetworkGatewayStatus](#virtualnetworkgatewaystatus)***||
 ## Phase(`string` alias)
@@ -28,12 +28,13 @@ Appears on:[VirtualNetworkGateway](#virtualnetworkgateway), [VirtualNetworkGatew
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `activeActive` | ***bool***| ***(Optional)*** |
 | `bgpSettings` | ***[[]VirtualNetworkGatewaySpecBgpSettings](#virtualnetworkgatewayspecbgpsettings)***| ***(Optional)*** |
 | `defaultLocalNetworkGatewayID` | ***string***| ***(Optional)*** |
 | `enableBGP` | ***bool***| ***(Optional)*** |
+| `generation` | ***string***| ***(Optional)*** |
 | `ipConfiguration` | ***[[]VirtualNetworkGatewaySpecIpConfiguration](#virtualnetworkgatewayspecipconfiguration)***||
 | `location` | ***string***||
 | `name` | ***string***||

@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `AppService` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[AppServiceSpec](#appservicespec)***||
 | `status` | ***[AppServiceStatus](#appservicestatus)***||
 ## AppServiceSpec
@@ -24,9 +24,9 @@ Appears on:[AppService](#appservice), [AppServiceStatus](#appservicestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `appServicePlanID` | ***string***||
 | `appSettings` | ***map[string]string***| ***(Optional)*** |
 | `authSettings` | ***[[]AppServiceSpecAuthSettings](#appservicespecauthsettings)***| ***(Optional)*** |
@@ -153,6 +153,7 @@ Appears on:[AppServiceSpec](#appservicespec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `applicationLogs` | ***[[]AppServiceSpecLogsApplicationLogs](#appservicespeclogsapplicationlogs)***| ***(Optional)*** |
+| `httpLogs` | ***[[]AppServiceSpecLogsHttpLogs](#appservicespeclogshttplogs)***| ***(Optional)*** |
 ## AppServiceSpecLogsApplicationLogs
 
 Appears on:[AppServiceSpecLogs](#appservicespeclogs)
@@ -168,6 +169,29 @@ Appears on:[AppServiceSpecLogsApplicationLogs](#appservicespeclogsapplicationlog
 | ------ | ----- | ----------- |
 | `level` | ***string***||
 | `retentionInDays` | ***int64***||
+## AppServiceSpecLogsHttpLogs
+
+Appears on:[AppServiceSpecLogs](#appservicespeclogs)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `azureBlobStorage` | ***[[]AppServiceSpecLogsHttpLogsAzureBlobStorage](#appservicespeclogshttplogsazureblobstorage)***| ***(Optional)*** |
+| `fileSystem` | ***[[]AppServiceSpecLogsHttpLogsFileSystem](#appservicespeclogshttplogsfilesystem)***| ***(Optional)*** |
+## AppServiceSpecLogsHttpLogsAzureBlobStorage
+
+Appears on:[AppServiceSpecLogsHttpLogs](#appservicespeclogshttplogs)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `retentionInDays` | ***int64***||
+## AppServiceSpecLogsHttpLogsFileSystem
+
+Appears on:[AppServiceSpecLogsHttpLogs](#appservicespeclogshttplogs)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `retentionInDays` | ***int64***||
+| `retentionInMb` | ***int64***||
 ## AppServiceSpecSiteConfig
 
 Appears on:[AppServiceSpec](#appservicespec)
@@ -176,6 +200,7 @@ Appears on:[AppServiceSpec](#appservicespec)
 | ------ | ----- | ----------- |
 | `alwaysOn` | ***bool***| ***(Optional)*** |
 | `appCommandLine` | ***string***| ***(Optional)*** |
+| `autoSwapSlotName` | ***string***| ***(Optional)*** |
 | `cors` | ***[[]AppServiceSpecSiteConfigCors](#appservicespecsiteconfigcors)***| ***(Optional)*** |
 | `defaultDocuments` | ***[]string***| ***(Optional)*** |
 | `dotnetFrameworkVersion` | ***string***| ***(Optional)*** |
@@ -212,8 +237,9 @@ Appears on:[AppServiceSpecSiteConfig](#appservicespecsiteconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `ipAddress` | ***string***||
+| `ipAddress` | ***string***| ***(Optional)*** |
 | `subnetMask` | ***string***| ***(Optional)*** |
+| `virtualNetworkSubnetID` | ***string***| ***(Optional)*** |
 ## AppServiceSpecSiteCredential
 
 Appears on:[AppServiceSpec](#appservicespec)
@@ -266,5 +292,6 @@ Appears on:[AppServiceStatus](#appservicestatus)
 | `backup.<index>.storage_account_url` | ***string*** ||
 | `connection_string.<index>.value` | ***string*** ||
 | `logs.<index>.application_logs.<index>.azure_blob_storage.<index>.sas_url` | ***string*** ||
+| `logs.<index>.http_logs.<index>.azure_blob_storage.<index>.sas_url` | ***string*** ||
 | `site_credential.<index>.password` | ***string*** ||
 | `storage_account.<index>.access_key` | ***string*** ||

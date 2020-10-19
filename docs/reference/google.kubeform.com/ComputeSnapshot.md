@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComputeSnapshot` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[ComputeSnapshotSpec](#computesnapshotspec)***||
 | `status` | ***[ComputeSnapshotStatus](#computesnapshotstatus)***||
 ## ComputeSnapshotSpec
@@ -24,9 +24,9 @@ Appears on:[ComputeSnapshot](#computesnapshot), [ComputeSnapshotStatus](#compute
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `creationTimestamp` | ***string***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
 | `diskSizeGb` | ***int64***| ***(Optional)*** |
@@ -37,11 +37,9 @@ Appears on:[ComputeSnapshot](#computesnapshot), [ComputeSnapshotStatus](#compute
 | `project` | ***string***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
 | `snapshotEncryptionKey` | ***[[]ComputeSnapshotSpecSnapshotEncryptionKey](#computesnapshotspecsnapshotencryptionkey)***| ***(Optional)*** |
-| `snapshotEncryptionKeySha256` | ***string***| ***(Optional)*** Deprecated|
 | `snapshotID` | ***int64***| ***(Optional)*** |
 | `sourceDisk` | ***string***||
 | `sourceDiskEncryptionKey` | ***[[]ComputeSnapshotSpecSourceDiskEncryptionKey](#computesnapshotspecsourcediskencryptionkey)***| ***(Optional)*** |
-| `sourceDiskEncryptionKeySha256` | ***string***| ***(Optional)*** Deprecated|
 | `sourceDiskLink` | ***string***| ***(Optional)*** |
 | `storageBytes` | ***int64***| ***(Optional)*** |
 | `zone` | ***string***| ***(Optional)*** |
@@ -77,6 +75,4 @@ Appears on:[ComputeSnapshotStatus](#computesnapshotstatus)
 | Name | Type | Description |
 |------|------|-------------|
 | `snapshot_encryption_key.<index>.raw_key` | ***string*** ||
-| `snapshot_encryption_key_raw` | ***string*** ||
 | `source_disk_encryption_key.<index>.raw_key` | ***string*** ||
-| `source_disk_encryption_key_raw` | ***string*** ||

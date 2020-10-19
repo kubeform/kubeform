@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `BigqueryDataset` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[BigqueryDatasetSpec](#bigquerydatasetspec)***||
 | `status` | ***[BigqueryDatasetStatus](#bigquerydatasetstatus)***||
 ## BigqueryDatasetSpec
@@ -24,12 +24,15 @@ Appears on:[BigqueryDataset](#bigquerydataset), [BigqueryDatasetStatus](#bigquer
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `access` | ***[[]BigqueryDatasetSpecAccess](#bigquerydatasetspecaccess)***| ***(Optional)*** |
 | `creationTime` | ***int64***| ***(Optional)*** |
 | `datasetID` | ***string***||
+| `defaultEncryptionConfiguration` | ***[[]BigqueryDatasetSpecDefaultEncryptionConfiguration](#bigquerydatasetspecdefaultencryptionconfiguration)***| ***(Optional)*** |
+| `defaultPartitionExpirationMs` | ***int64***| ***(Optional)*** |
 | `defaultTableExpirationMs` | ***int64***| ***(Optional)*** |
+| `deleteContentsOnDestroy` | ***bool***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
 | `etag` | ***string***| ***(Optional)*** |
 | `friendlyName` | ***string***| ***(Optional)*** |
@@ -59,6 +62,13 @@ Appears on:[BigqueryDatasetSpecAccess](#bigquerydatasetspecaccess)
 | `datasetID` | ***string***||
 | `projectID` | ***string***||
 | `tableID` | ***string***||
+## BigqueryDatasetSpecDefaultEncryptionConfiguration
+
+Appears on:[BigqueryDatasetSpec](#bigquerydatasetspec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `kmsKeyName` | ***string***||
 ## BigqueryDatasetStatus
 
 Appears on:[BigqueryDataset](#bigquerydataset)

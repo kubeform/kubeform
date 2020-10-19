@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComputeDisk` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[ComputeDiskSpec](#computediskspec)***||
 | `status` | ***[ComputeDiskStatus](#computediskstatus)***||
 ## ComputeDiskSpec
@@ -24,19 +24,18 @@ Appears on:[ComputeDisk](#computedisk), [ComputeDiskStatus](#computediskstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `creationTimestamp` | ***string***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
 | `diskEncryptionKey` | ***[[]ComputeDiskSpecDiskEncryptionKey](#computediskspecdiskencryptionkey)***| ***(Optional)*** |
-| `diskEncryptionKeySha256` | ***string***| ***(Optional)*** Deprecated|
 | `image` | ***string***| ***(Optional)*** |
 | `labelFingerprint` | ***string***| ***(Optional)*** |
 | `labels` | ***map[string]string***| ***(Optional)*** |
 | `lastAttachTimestamp` | ***string***| ***(Optional)*** |
 | `lastDetachTimestamp` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
+| `physicalBlockSizeBytes` | ***int64***| ***(Optional)*** |
 | `project` | ***string***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
 | `size` | ***int64***| ***(Optional)*** |
@@ -54,6 +53,7 @@ Appears on:[ComputeDiskSpec](#computediskspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
+| `kmsKeySelfLink` | ***string***| ***(Optional)*** |
 | `rawKey` | ***string***| ***(Optional)*** |
 | `sha256` | ***string***| ***(Optional)*** |
 ## ComputeDiskSpecSourceImageEncryptionKey
@@ -62,6 +62,7 @@ Appears on:[ComputeDiskSpec](#computediskspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
+| `kmsKeySelfLink` | ***string***| ***(Optional)*** |
 | `rawKey` | ***string***| ***(Optional)*** |
 | `sha256` | ***string***| ***(Optional)*** |
 ## ComputeDiskSpecSourceSnapshotEncryptionKey
@@ -70,6 +71,7 @@ Appears on:[ComputeDiskSpec](#computediskspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
+| `kmsKeySelfLink` | ***string***| ***(Optional)*** |
 | `rawKey` | ***string***| ***(Optional)*** |
 | `sha256` | ***string***| ***(Optional)*** |
 ## ComputeDiskStatus
@@ -87,7 +89,3 @@ Appears on:[ComputeDisk](#computedisk)
 Appears on:[ComputeDiskStatus](#computediskstatus)
 
 ---
-## Sensitive Values
-| Name | Type | Description |
-|------|------|-------------|
-| `disk_encryption_key_raw` | ***string*** ||

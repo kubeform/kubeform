@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `EcsTaskDefinition` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[EcsTaskDefinitionSpec](#ecstaskdefinitionspec)***||
 | `status` | ***[EcsTaskDefinitionStatus](#ecstaskdefinitionstatus)***||
 ## EcsTaskDefinitionSpec
@@ -24,7 +24,7 @@ Appears on:[EcsTaskDefinition](#ecstaskdefinition), [EcsTaskDefinitionStatus](#e
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `arn` | ***string***| ***(Optional)*** |
 | `containerDefinitions` | ***string***||
@@ -36,6 +36,7 @@ Appears on:[EcsTaskDefinition](#ecstaskdefinition), [EcsTaskDefinitionStatus](#e
 | `networkMode` | ***string***| ***(Optional)*** |
 | `pidMode` | ***string***| ***(Optional)*** |
 | `placementConstraints` | ***[[]EcsTaskDefinitionSpecPlacementConstraints](#ecstaskdefinitionspecplacementconstraints)***| ***(Optional)*** |
+| `proxyConfiguration` | ***[[]EcsTaskDefinitionSpecProxyConfiguration](#ecstaskdefinitionspecproxyconfiguration)***| ***(Optional)*** |
 | `requiresCompatibilities` | ***[]string***| ***(Optional)*** |
 | `revision` | ***int64***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
@@ -49,6 +50,15 @@ Appears on:[EcsTaskDefinitionSpec](#ecstaskdefinitionspec)
 | ------ | ----- | ----------- |
 | `expression` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
+## EcsTaskDefinitionSpecProxyConfiguration
+
+Appears on:[EcsTaskDefinitionSpec](#ecstaskdefinitionspec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `containerName` | ***string***||
+| `properties` | ***map[string]string***| ***(Optional)*** |
+| `type` | ***string***| ***(Optional)*** |
 ## EcsTaskDefinitionSpecVolume
 
 Appears on:[EcsTaskDefinitionSpec](#ecstaskdefinitionspec)

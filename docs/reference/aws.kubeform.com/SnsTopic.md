@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `SnsTopic` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[SnsTopicSpec](#snstopicspec)***||
 | `status` | ***[SnsTopicStatus](#snstopicstatus)***||
 ## Phase(`string` alias)
@@ -28,7 +28,7 @@ Appears on:[SnsTopic](#snstopic), [SnsTopicStatus](#snstopicstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `applicationFailureFeedbackRoleArn` | ***string***| ***(Optional)*** |
 | `applicationSuccessFeedbackRoleArn` | ***string***| ***(Optional)*** |
@@ -49,6 +49,7 @@ Appears on:[SnsTopic](#snstopic), [SnsTopicStatus](#snstopicstatus)
 | `sqsFailureFeedbackRoleArn` | ***string***| ***(Optional)*** |
 | `sqsSuccessFeedbackRoleArn` | ***string***| ***(Optional)*** |
 | `sqsSuccessFeedbackSampleRate` | ***int64***| ***(Optional)*** |
+| `tags` | ***map[string]string***| ***(Optional)*** |
 ## SnsTopicStatus
 
 Appears on:[SnsTopic](#snstopic)

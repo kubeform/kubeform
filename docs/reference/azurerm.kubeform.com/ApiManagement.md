@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `ApiManagement` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[ApiManagementSpec](#apimanagementspec)***||
 | `status` | ***[ApiManagementStatus](#apimanagementstatus)***||
 ## ApiManagementSpec
@@ -24,9 +24,9 @@ Appears on:[ApiManagement](#apimanagement), [ApiManagementStatus](#apimanagement
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `additionalLocation` | ***[[]ApiManagementSpecAdditionalLocation](#apimanagementspecadditionallocation)***| ***(Optional)*** |
 | `certificate` | ***[[]ApiManagementSpecCertificate](#apimanagementspeccertificate)***| ***(Optional)*** |
 | `gatewayRegionalURL` | ***string***| ***(Optional)*** |
@@ -39,6 +39,7 @@ Appears on:[ApiManagement](#apimanagement), [ApiManagementStatus](#apimanagement
 | `notificationSenderEmail` | ***string***| ***(Optional)*** |
 | `policy` | ***[[]ApiManagementSpecPolicy](#apimanagementspecpolicy)***| ***(Optional)*** |
 | `portalURL` | ***string***| ***(Optional)*** |
+| `protocols` | ***[[]ApiManagementSpecProtocols](#apimanagementspecprotocols)***| ***(Optional)*** |
 | `publicIPAddresses` | ***[]string***| ***(Optional)*** |
 | `publisherEmail` | ***string***||
 | `publisherName` | ***string***||
@@ -47,7 +48,8 @@ Appears on:[ApiManagement](#apimanagement), [ApiManagementStatus](#apimanagement
 | `security` | ***[[]ApiManagementSpecSecurity](#apimanagementspecsecurity)***| ***(Optional)*** |
 | `signIn` | ***[[]ApiManagementSpecSignIn](#apimanagementspecsignin)***| ***(Optional)*** |
 | `signUp` | ***[[]ApiManagementSpecSignUp](#apimanagementspecsignup)***| ***(Optional)*** |
-| `sku` | ***[[]ApiManagementSpecSku](#apimanagementspecsku)***||
+| `sku` | ***[[]ApiManagementSpecSku](#apimanagementspecsku)***| ***(Optional)*** Deprecated|
+| `skuName` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## ApiManagementSpecAdditionalLocation
 
@@ -129,20 +131,34 @@ Appears on:[ApiManagementSpec](#apimanagementspec)
 | ------ | ----- | ----------- |
 | `xmlContent` | ***string***| ***(Optional)*** |
 | `xmlLink` | ***string***| ***(Optional)*** |
+## ApiManagementSpecProtocols
+
+Appears on:[ApiManagementSpec](#apimanagementspec)
+
+| Field | Type | Description |
+| ------ | ----- | ----------- |
+| `enableHttp2` | ***bool***| ***(Optional)*** |
 ## ApiManagementSpecSecurity
 
 Appears on:[ApiManagementSpec](#apimanagementspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `disableBackendSSL30` | ***bool***| ***(Optional)*** |
-| `disableBackendTLS10` | ***bool***| ***(Optional)*** |
-| `disableBackendTLS11` | ***bool***| ***(Optional)*** |
-| `disableFrontendSSL30` | ***bool***| ***(Optional)*** |
-| `disableFrontendTLS10` | ***bool***| ***(Optional)*** |
-| `disableFrontendTLS11` | ***bool***| ***(Optional)*** |
+| `disableBackendSSL30` | ***bool***| ***(Optional)*** Deprecated|
+| `disableBackendTLS10` | ***bool***| ***(Optional)*** Deprecated|
+| `disableBackendTLS11` | ***bool***| ***(Optional)*** Deprecated|
+| `disableFrontendSSL30` | ***bool***| ***(Optional)*** Deprecated|
+| `disableFrontendTLS10` | ***bool***| ***(Optional)*** Deprecated|
+| `disableFrontendTLS11` | ***bool***| ***(Optional)*** Deprecated|
 | `disableTripleDESChipers` | ***bool***| ***(Optional)*** Deprecated|
-| `disableTripleDESCiphers` | ***bool***| ***(Optional)*** |
+| `disableTripleDESCiphers` | ***bool***| ***(Optional)*** Deprecated|
+| `enableBackendSSL30` | ***bool***| ***(Optional)*** |
+| `enableBackendTLS10` | ***bool***| ***(Optional)*** |
+| `enableBackendTLS11` | ***bool***| ***(Optional)*** |
+| `enableFrontendSSL30` | ***bool***| ***(Optional)*** |
+| `enableFrontendTLS10` | ***bool***| ***(Optional)*** |
+| `enableFrontendTLS11` | ***bool***| ***(Optional)*** |
+| `enableTripleDESCiphers` | ***bool***| ***(Optional)*** |
 ## ApiManagementSpecSignIn
 
 Appears on:[ApiManagementSpec](#apimanagementspec)
@@ -173,7 +189,7 @@ Appears on:[ApiManagementSpec](#apimanagementspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `capacity` | ***int64***||
+| `capacity` | ***int64***| ***(Optional)*** |
 | `name` | ***string***||
 ## ApiManagementStatus
 

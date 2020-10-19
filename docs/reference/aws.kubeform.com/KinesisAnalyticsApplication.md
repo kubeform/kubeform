@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `KinesisAnalyticsApplication` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[KinesisAnalyticsApplicationSpec](#kinesisanalyticsapplicationspec)***||
 | `status` | ***[KinesisAnalyticsApplicationStatus](#kinesisanalyticsapplicationstatus)***||
 ## KinesisAnalyticsApplicationSpec
@@ -24,7 +24,7 @@ Appears on:[KinesisAnalyticsApplication](#kinesisanalyticsapplication), [Kinesis
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `arn` | ***string***| ***(Optional)*** |
 | `cloudwatchLoggingOptions` | ***[[]KinesisAnalyticsApplicationSpecCloudwatchLoggingOptions](#kinesisanalyticsapplicationspeccloudwatchloggingoptions)***| ***(Optional)*** |
@@ -37,6 +37,7 @@ Appears on:[KinesisAnalyticsApplication](#kinesisanalyticsapplication), [Kinesis
 | `outputs` | ***[[]KinesisAnalyticsApplicationSpecOutputs](#kinesisanalyticsapplicationspecoutputs)***| ***(Optional)*** |
 | `referenceDataSources` | ***[[]KinesisAnalyticsApplicationSpecReferenceDataSources](#kinesisanalyticsapplicationspecreferencedatasources)***| ***(Optional)*** |
 | `status` | ***string***| ***(Optional)*** |
+| `tags` | ***map[string]string***| ***(Optional)*** |
 | `version` | ***int64***| ***(Optional)*** |
 ## KinesisAnalyticsApplicationSpecCloudwatchLoggingOptions
 

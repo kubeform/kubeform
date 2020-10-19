@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `ContainerGroup` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[ContainerGroupSpec](#containergroupspec)***||
 | `status` | ***[ContainerGroupStatus](#containergroupstatus)***||
 ## ContainerGroupSpec
@@ -24,9 +24,9 @@ Appears on:[ContainerGroup](#containergroup), [ContainerGroupStatus](#containerg
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `container` | ***[[]ContainerGroupSpecContainer](#containergroupspeccontainer)***||
 | `diagnostics` | ***[[]ContainerGroupSpecDiagnostics](#containergroupspecdiagnostics)***| ***(Optional)*** |
 | `dnsNameLabel` | ***string***| ***(Optional)*** |
@@ -37,6 +37,7 @@ Appears on:[ContainerGroup](#containergroup), [ContainerGroupStatus](#containerg
 | `ipAddressType` | ***string***| ***(Optional)*** |
 | `location` | ***string***||
 | `name` | ***string***||
+| `networkProfileID` | ***string***| ***(Optional)*** |
 | `osType` | ***string***||
 | `resourceGroupName` | ***string***||
 | `restartPolicy` | ***string***| ***(Optional)*** |
@@ -131,7 +132,6 @@ Appears on:[ContainerGroupSpecContainer](#containergroupspeccontainer)
 | `name` | ***string***||
 | `readOnly` | ***bool***| ***(Optional)*** |
 | `shareName` | ***string***||
-| `storageAccountKey` | ***string***||
 | `storageAccountName` | ***string***||
 ## ContainerGroupSpecDiagnostics
 
@@ -146,7 +146,7 @@ Appears on:[ContainerGroupSpecDiagnostics](#containergroupspecdiagnostics)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `logType` | ***string***||
+| `logType` | ***string***| ***(Optional)*** |
 | `metadata` | ***map[string]string***| ***(Optional)*** |
 | `workspaceID` | ***string***||
 ## ContainerGroupSpecIdentity
@@ -185,5 +185,6 @@ Appears on:[ContainerGroupStatus](#containergroupstatus)
 | Name | Type | Description |
 |------|------|-------------|
 | `container.<index>.secure_environment_variables` | ***map[string]string*** ||
+| `container.<index>.volume.<index>.storage_account_key` | ***string*** ||
 | `diagnostics.<index>.log_analytics.<index>.workspace_key` | ***string*** ||
 | `image_registry_credential.<index>.password` | ***string*** ||

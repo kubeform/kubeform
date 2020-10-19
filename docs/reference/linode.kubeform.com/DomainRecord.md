@@ -15,7 +15,7 @@ section_menu_id: reference
 | ------ | ----- | ----------- |
 | `apiVersion` | string | `linode.kubeform.com/v1alpha1` |
 |    `kind` | string | `DomainRecord` |
-| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
+| `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[DomainRecordSpec](#domainrecordspec)***||
 | `status` | ***[DomainRecordStatus](#domainrecordstatus)***||
 ## DomainRecordSpec
@@ -24,10 +24,10 @@ Appears on:[DomainRecord](#domainrecord), [DomainRecordStatus](#domainrecordstat
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
+| `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `domainID` | ***int64***|The ID of the Domain to access.|
-| `name` | ***string***|The name of this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the subdomain being associated with an IP address.|
+| `name` | ***string***| ***(Optional)*** The name of this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the subdomain being associated with an IP address. Generated for SRV records.|
 | `port` | ***int64***| ***(Optional)*** The port this Record points to.|
 | `priority` | ***int64***| ***(Optional)*** The priority of the target host. Lower values are preferred.|
 | `protocol` | ***string***| ***(Optional)*** The protocol this Record's service communicates with. Only valid for SRV records.|
