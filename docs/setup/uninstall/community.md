@@ -1,18 +1,20 @@
 ---
-title: Uninstall | Kubeform
+title: Uninstall Kubeform Community Edition
+description: Uninstallation guide for Kubeform Community edition
 menu:
   docs_{{ .version }}:
-    identifier: uninstall-kubeform
-    name: Uninstall
-    parent: setup
-    weight: 20
+    identifier: uninstall-kubeform-community
+    name: Community Edition
+    parent: uninstallation-guide
+    weight: 10
+product_name: kubeform
 menu_name: docs_{{ .version }}
 section_menu_id: setup
 ---
 
-# Uninstall Kubeform
+# Uninstall Kubeform Community Edition
 
-To uninstall Kubeform, use the following command.
+To uninstall Kubeform Community edition, run the following command:
 
 <ul class="nav nav-tabs" id="installerTab" role="tablist">
   <li class="nav-item">
@@ -32,8 +34,8 @@ To uninstall Kubeform, use the following command.
 
 In Helm 3, release names are [scoped to a namespace](https://v3.helm.sh/docs/faq/#release-names-are-now-scoped-to-the-namespace). So, provide the namespace you used to install the operator when installing.
 
-```console
-$ helm uninstall kfc --namespace kube-system
+```bash
+$ helm uninstall kubeform --namespace kube-system
 ```
 
 </div>
@@ -41,14 +43,8 @@ $ helm uninstall kfc --namespace kube-system
 
 ## Using Helm 2
 
-```console
-$ helm delete kfc
-```
-
-If you want to remove the release from the store and make its name free for later use, Then provide the `--purge` flag:
-
-```console
-$ helm delete kfc --purge
+```bash
+$ helm delete kubeform
 ```
 
 </div>
@@ -58,8 +54,8 @@ $ helm delete kfc --purge
 
 If you prefer to not use Helm, you can generate YAMLs from Kubeform chart and uninstall using `kubectl`.
 
-```console
-$ helm template kfc appscode/kubeform --namespace kube-system | kubectl delete -f -
+```bash
+$ helm template kubeform appscode/kubeform --namespace kube-system | kubectl delete -f -
 ```
 
 </div>
