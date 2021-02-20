@@ -214,7 +214,7 @@ type RDSSpec struct {
 	// Specifies whether the DB instance is encrypted
 	StorageEncrypted bool `json:"storageEncrypted,omitempty" tf:"storage_encrypted,omitempty"`
 	// +optional
-	// One of 'standard' (magnetic), 'gp2' (general purpose SSD), or 'io1' (provisioned IOPS SSD). The default is 'io1' if iops is specified, 'standard' if not. Note that this behaviour is different from the AWS web console, where the default is 'gp2'.
+	// One of 'standard' (magnetic), 'gp2' (general purpose SSD), or 'io1' (provisioned IOPS SSD). The default is 'io1' if iops is specified, 'gp2' if not.
 	StorageType string `json:"storageType,omitempty" tf:"storage_type,omitempty"`
 	// +optional
 	// A list of VPC subnet IDs
