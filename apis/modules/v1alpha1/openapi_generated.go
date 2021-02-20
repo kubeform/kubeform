@@ -14429,7 +14429,7 @@ func schema_kubeform_apis_modules_v1alpha1_RDSSpec(ref common.ReferenceCallback)
 					},
 					"storageType": {
 						SchemaProps: spec.SchemaProps{
-							Description: "One of 'standard' (magnetic), 'gp2' (general purpose SSD), or 'io1' (provisioned IOPS SSD). The default is 'io1' if iops is specified, 'standard' if not. Note that this behaviour is different from the AWS web console, where the default is 'gp2'.",
+							Description: "One of 'standard' (magnetic), 'gp2' (general purpose SSD), or 'io1' (provisioned IOPS SSD). The default is 'io1' if iops is specified, 'gp2' if not.",
 							Type:        []string{"string"},
 							Format:      "",
 						},
