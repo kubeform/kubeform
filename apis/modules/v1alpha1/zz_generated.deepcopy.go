@@ -265,6 +265,13 @@ func (in *RDSSpec) DeepCopyInto(out *RDSSpec) {
 		*out = make(json.RawMessage, len(*in))
 		copy(*out, *in)
 	}
+	if in.S3Import != nil {
+		in, out := &in.S3Import, &out.S3Import
+		*out = make(map[string]string, len(*in))
+		for key, val := range *in {
+			(*out)[key] = val
+		}
+	}
 	if in.SubnetIDS != nil {
 		in, out := &in.SubnetIDS, &out.SubnetIDS
 		*out = make([]string, len(*in))

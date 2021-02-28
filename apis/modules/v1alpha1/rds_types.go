@@ -205,6 +205,9 @@ type RDSSpec struct {
 	// Specifies that this resource is a Replicate database, and to use this value as the source database. This correlates to the identifier of another Amazon RDS Database to replicate.
 	ReplicateSourceDb string `json:"replicateSourceDb,omitempty" tf:"replicate_source_db,omitempty"`
 	// +optional
+	// Restore from a Percona Xtrabackup in S3 (only MySQL is supported)
+	S3Import map[string]string `json:"s3Import,omitempty" tf:"s3_import,omitempty"`
+	// +optional
 	// Determines whether a final DB snapshot is created before the DB instance is deleted. If true is specified, no DBSnapshot is created. If false is specified, a DB snapshot is created before the DB instance is deleted, using the value from final_snapshot_identifier
 	SkipFinalSnapshot bool `json:"skipFinalSnapshot,omitempty" tf:"skip_final_snapshot,omitempty"`
 	// +optional

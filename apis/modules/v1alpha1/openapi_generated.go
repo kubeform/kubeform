@@ -14406,6 +14406,21 @@ func schema_kubeform_apis_modules_v1alpha1_RDSSpec(ref common.ReferenceCallback)
 							Format:      "",
 						},
 					},
+					"s3Import": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Restore from a Percona Xtrabackup in S3 (only MySQL is supported)",
+							Type:        []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 					"skipFinalSnapshot": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Determines whether a final DB snapshot is created before the DB instance is deleted. If true is specified, no DBSnapshot is created. If false is specified, a DB snapshot is created before the DB instance is deleted, using the value from final_snapshot_identifier",

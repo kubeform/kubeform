@@ -249,6 +249,12 @@ spec:
                 to use this value as the source database. This correlates to the identifier
                 of another Amazon RDS Database to replicate.
               type: string
+            s3Import:
+              additionalProperties:
+                type: string
+              description: Restore from a Percona Xtrabackup in S3 (only MySQL is
+                supported)
+              type: object
             secretRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
