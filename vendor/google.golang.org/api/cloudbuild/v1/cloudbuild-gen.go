@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC.
+// Copyright 2020 Google LLC.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
@@ -49,9 +49,10 @@ import (
 	"strconv"
 	"strings"
 
-	gensupport "google.golang.org/api/gensupport"
 	googleapi "google.golang.org/api/googleapi"
+	gensupport "google.golang.org/api/internal/gensupport"
 	option "google.golang.org/api/option"
+	internaloption "google.golang.org/api/option/internaloption"
 	htransport "google.golang.org/api/transport/http"
 )
 
@@ -68,6 +69,7 @@ var _ = googleapi.Version
 var _ = errors.New
 var _ = strings.Replace
 var _ = context.Canceled
+var _ = internaloption.WithDefaultEndpoint
 
 const apiId = "cloudbuild:v1"
 const apiName = "cloudbuild"
@@ -87,6 +89,7 @@ func NewService(ctx context.Context, opts ...option.ClientOption) (*Service, err
 	)
 	// NOTE: prepend, so we don't override user-specified scopes.
 	opts = append([]option.ClientOption{scopesOption}, opts...)
+	opts = append(opts, internaloption.WithDefaultEndpoint(basePath))
 	client, endpoint, err := htransport.NewClient(ctx, opts...)
 	if err != nil {
 		return nil, err
@@ -630,10 +633,10 @@ type BuildOptions struct {
 	// it is indicative of a build request with an incorrect configuration.
 	Volumes []*Volume `json:"volumes,omitempty"`
 
-	// WorkerPool: Option to specify a `WorkerPool` for the build. User
-	// specifies the pool
-	// with the format "[WORKERPOOL_PROJECT_ID]/[WORKERPOOL_NAME]".
-	// This is an experimental field.
+	// WorkerPool: Option to specify a `WorkerPool` for the build.
+	// Format: projects/{project}/workerPools/{workerPool}
+	//
+	// This field is experimental.
 	WorkerPool string `json:"workerPool,omitempty"`
 
 	// ForceSendFields is a list of field names (e.g. "DiskSizeGb") to
@@ -850,6 +853,8 @@ type BuildTrigger struct {
 	// Github: GitHubEventsConfig describes the configuration of a trigger
 	// that creates
 	// a build whenever a GitHub event is received.
+	//
+	// Mutually exclusive with `trigger_template`.
 	Github *GitHubEventsConfig `json:"github,omitempty"`
 
 	// Id: Output only. Unique identifier of the trigger.
@@ -857,7 +862,7 @@ type BuildTrigger struct {
 
 	// IgnoredFiles: ignored_files and included_files are file glob matches
 	// using
-	// http://godoc/pkg/path/filepath#Match extended with support for
+	// https://golang.org/pkg/path/filepath/#Match extended with support for
 	// "**".
 	//
 	// If ignored_files and changed files are both empty, then they are
@@ -884,6 +889,15 @@ type BuildTrigger struct {
 	// then we do not trigger a build.
 	IncludedFiles []string `json:"includedFiles,omitempty"`
 
+	// Name: User-assigned name of the trigger. Must be unique within the
+	// project.
+	// Trigger names must meet the following requirements:
+	//
+	// + They must contain only alphanumeric characters and dashes.
+	// + They can be 1-64 characters long.
+	// + They must begin and end with an alphanumeric character.
+	Name string `json:"name,omitempty"`
+
 	// Substitutions: Substitutions data for Build resource.
 	Substitutions map[string]string `json:"substitutions,omitempty"`
 
@@ -898,6 +912,8 @@ type BuildTrigger struct {
 	// expressions. Any branch or tag change that matches that regular
 	// expression
 	// will trigger a build.
+	//
+	// Mutually exclusive with `github`.
 	TriggerTemplate *RepoSource `json:"triggerTemplate,omitempty"`
 
 	// ServerResponse contains the HTTP response code and headers from the
@@ -1307,7 +1323,7 @@ type PullRequestFilter struct {
 	Branch string `json:"branch,omitempty"`
 
 	// CommentControl: Whether to block builds on a "/gcbrun" comment from a
-	// repository owner or
+	// repository admin or
 	// collaborator.
 	//
 	// Possible values:
@@ -1344,14 +1360,14 @@ func (s *PullRequestFilter) MarshalJSON() ([]byte, error) {
 // PushFilter: Push contains filter properties for matching GitHub git
 // pushes.
 type PushFilter struct {
-	// Branch: Regexes of branches to match.
+	// Branch: Regexes matching branches to build.
 	//
 	// The syntax of the regular expressions accepted is the syntax accepted
 	// by
 	// RE2 and described at https://github.com/google/re2/wiki/Syntax
 	Branch string `json:"branch,omitempty"`
 
-	// Tag: Regexes of tags to match.
+	// Tag: Regexes matching tags to build.
 	//
 	// The syntax of the regular expressions accepted is the syntax accepted
 	// by
@@ -1384,7 +1400,11 @@ func (s *PushFilter) MarshalJSON() ([]byte, error) {
 // RepoSource: Location of the source in a Google Cloud Source
 // Repository.
 type RepoSource struct {
-	// BranchName: Name of the branch to build.
+	// BranchName: Regex matching branches to build.
+	//
+	// The syntax of the regular expressions accepted is the syntax accepted
+	// by
+	// RE2 and described at https://github.com/google/re2/wiki/Syntax
 	BranchName string `json:"branchName,omitempty"`
 
 	// CommitSha: Explicit commit SHA to build.
@@ -1403,12 +1423,18 @@ type RepoSource struct {
 	// project ID requesting the build is assumed.
 	ProjectId string `json:"projectId,omitempty"`
 
-	// RepoName: Name of the Cloud Source Repository. If omitted, the name
-	// "default" is
-	// assumed.
+	// RepoName: Required. Name of the Cloud Source Repository.
 	RepoName string `json:"repoName,omitempty"`
 
-	// TagName: Name of the tag to build.
+	// Substitutions: Substitutions to use in a triggered build.
+	// Should only be used with RunBuildTrigger
+	Substitutions map[string]string `json:"substitutions,omitempty"`
+
+	// TagName: Regex matching tags to build.
+	//
+	// The syntax of the regular expressions accepted is the syntax accepted
+	// by
+	// RE2 and described at https://github.com/google/re2/wiki/Syntax
 	TagName string `json:"tagName,omitempty"`
 
 	// ForceSendFields is a list of field names (e.g. "BranchName") to
@@ -1858,7 +1884,7 @@ func (c *OperationsCancelCall) Header() http.Header {
 
 func (c *OperationsCancelCall) doRequest(alt string) (*http.Response, error) {
 	reqHeaders := make(http.Header)
-	reqHeaders.Set("x-goog-api-client", "gl-go/1.11.0 gdcl/20190802")
+	reqHeaders.Set("x-goog-api-client", "gl-go/"+gensupport.GoVersion()+" gdcl/20200302")
 	for k, v := range c.header_ {
 		reqHeaders[k] = v
 	}
@@ -1933,7 +1959,7 @@ func (c *OperationsCancelCall) Do(opts ...googleapi.CallOption) (*Empty, error) 
 	//     "name": {
 	//       "description": "The name of the operation resource to be cancelled.",
 	//       "location": "path",
-	//       "pattern": "^operations/.+$",
+	//       "pattern": "^operations/.*$",
 	//       "required": true,
 	//       "type": "string"
 	//     }
@@ -2011,7 +2037,7 @@ func (c *OperationsGetCall) Header() http.Header {
 
 func (c *OperationsGetCall) doRequest(alt string) (*http.Response, error) {
 	reqHeaders := make(http.Header)
-	reqHeaders.Set("x-goog-api-client", "gl-go/1.11.0 gdcl/20190802")
+	reqHeaders.Set("x-goog-api-client", "gl-go/"+gensupport.GoVersion()+" gdcl/20200302")
 	for k, v := range c.header_ {
 		reqHeaders[k] = v
 	}
@@ -2084,7 +2110,7 @@ func (c *OperationsGetCall) Do(opts ...googleapi.CallOption) (*Operation, error)
 	//     "name": {
 	//       "description": "The name of the operation resource.",
 	//       "location": "path",
-	//       "pattern": "^operations/.+$",
+	//       "pattern": "^operations/.*$",
 	//       "required": true,
 	//       "type": "string"
 	//     }
@@ -2192,7 +2218,7 @@ func (c *OperationsListCall) Header() http.Header {
 
 func (c *OperationsListCall) doRequest(alt string) (*http.Response, error) {
 	reqHeaders := make(http.Header)
-	reqHeaders.Set("x-goog-api-client", "gl-go/1.11.0 gdcl/20190802")
+	reqHeaders.Set("x-goog-api-client", "gl-go/"+gensupport.GoVersion()+" gdcl/20200302")
 	for k, v := range c.header_ {
 		reqHeaders[k] = v
 	}
@@ -2366,7 +2392,7 @@ func (c *ProjectsBuildsCancelCall) Header() http.Header {
 
 func (c *ProjectsBuildsCancelCall) doRequest(alt string) (*http.Response, error) {
 	reqHeaders := make(http.Header)
-	reqHeaders.Set("x-goog-api-client", "gl-go/1.11.0 gdcl/20190802")
+	reqHeaders.Set("x-goog-api-client", "gl-go/"+gensupport.GoVersion()+" gdcl/20200302")
 	for k, v := range c.header_ {
 		reqHeaders[k] = v
 	}
@@ -2441,13 +2467,13 @@ func (c *ProjectsBuildsCancelCall) Do(opts ...googleapi.CallOption) (*Build, err
 	//   ],
 	//   "parameters": {
 	//     "id": {
-	//       "description": "ID of the build.",
+	//       "description": "Required. ID of the build.",
 	//       "location": "path",
 	//       "required": true,
 	//       "type": "string"
 	//     },
 	//     "projectId": {
-	//       "description": "ID of the project.",
+	//       "description": "Required. ID of the project.",
 	//       "location": "path",
 	//       "required": true,
 	//       "type": "string"
@@ -2519,7 +2545,7 @@ func (c *ProjectsBuildsCreateCall) Header() http.Header {
 
 func (c *ProjectsBuildsCreateCall) doRequest(alt string) (*http.Response, error) {
 	reqHeaders := make(http.Header)
-	reqHeaders.Set("x-goog-api-client", "gl-go/1.11.0 gdcl/20190802")
+	reqHeaders.Set("x-goog-api-client", "gl-go/"+gensupport.GoVersion()+" gdcl/20200302")
 	for k, v := range c.header_ {
 		reqHeaders[k] = v
 	}
@@ -2592,7 +2618,7 @@ func (c *ProjectsBuildsCreateCall) Do(opts ...googleapi.CallOption) (*Operation,
 	//   ],
 	//   "parameters": {
 	//     "projectId": {
-	//       "description": "ID of the project.",
+	//       "description": "Required. ID of the project.",
 	//       "location": "path",
 	//       "required": true,
 	//       "type": "string"
@@ -2673,7 +2699,7 @@ func (c *ProjectsBuildsGetCall) Header() http.Header {
 
 func (c *ProjectsBuildsGetCall) doRequest(alt string) (*http.Response, error) {
 	reqHeaders := make(http.Header)
-	reqHeaders.Set("x-goog-api-client", "gl-go/1.11.0 gdcl/20190802")
+	reqHeaders.Set("x-goog-api-client", "gl-go/"+gensupport.GoVersion()+" gdcl/20200302")
 	for k, v := range c.header_ {
 		reqHeaders[k] = v
 	}
@@ -2746,13 +2772,13 @@ func (c *ProjectsBuildsGetCall) Do(opts ...googleapi.CallOption) (*Build, error)
 	//   ],
 	//   "parameters": {
 	//     "id": {
-	//       "description": "ID of the build.",
+	//       "description": "Required. ID of the build.",
 	//       "location": "path",
 	//       "required": true,
 	//       "type": "string"
 	//     },
 	//     "projectId": {
-	//       "description": "ID of the project.",
+	//       "description": "Required. ID of the project.",
 	//       "location": "path",
 	//       "required": true,
 	//       "type": "string"
@@ -2849,7 +2875,7 @@ func (c *ProjectsBuildsListCall) Header() http.Header {
 
 func (c *ProjectsBuildsListCall) doRequest(alt string) (*http.Response, error) {
 	reqHeaders := make(http.Header)
-	reqHeaders.Set("x-goog-api-client", "gl-go/1.11.0 gdcl/20190802")
+	reqHeaders.Set("x-goog-api-client", "gl-go/"+gensupport.GoVersion()+" gdcl/20200302")
 	for k, v := range c.header_ {
 		reqHeaders[k] = v
 	}
@@ -2936,7 +2962,7 @@ func (c *ProjectsBuildsListCall) Do(opts ...googleapi.CallOption) (*ListBuildsRe
 	//       "type": "string"
 	//     },
 	//     "projectId": {
-	//       "description": "ID of the project.",
+	//       "description": "Required. ID of the project.",
 	//       "location": "path",
 	//       "required": true,
 	//       "type": "string"
@@ -3059,7 +3085,7 @@ func (c *ProjectsBuildsRetryCall) Header() http.Header {
 
 func (c *ProjectsBuildsRetryCall) doRequest(alt string) (*http.Response, error) {
 	reqHeaders := make(http.Header)
-	reqHeaders.Set("x-goog-api-client", "gl-go/1.11.0 gdcl/20190802")
+	reqHeaders.Set("x-goog-api-client", "gl-go/"+gensupport.GoVersion()+" gdcl/20200302")
 	for k, v := range c.header_ {
 		reqHeaders[k] = v
 	}
@@ -3134,13 +3160,13 @@ func (c *ProjectsBuildsRetryCall) Do(opts ...googleapi.CallOption) (*Operation, 
 	//   ],
 	//   "parameters": {
 	//     "id": {
-	//       "description": "Build ID of the original build.",
+	//       "description": "Required. Build ID of the original build.",
 	//       "location": "path",
 	//       "required": true,
 	//       "type": "string"
 	//     },
 	//     "projectId": {
-	//       "description": "ID of the project.",
+	//       "description": "Required. ID of the project.",
 	//       "location": "path",
 	//       "required": true,
 	//       "type": "string"
@@ -3208,7 +3234,7 @@ func (c *ProjectsTriggersCreateCall) Header() http.Header {
 
 func (c *ProjectsTriggersCreateCall) doRequest(alt string) (*http.Response, error) {
 	reqHeaders := make(http.Header)
-	reqHeaders.Set("x-goog-api-client", "gl-go/1.11.0 gdcl/20190802")
+	reqHeaders.Set("x-goog-api-client", "gl-go/"+gensupport.GoVersion()+" gdcl/20200302")
 	for k, v := range c.header_ {
 		reqHeaders[k] = v
 	}
@@ -3281,7 +3307,7 @@ func (c *ProjectsTriggersCreateCall) Do(opts ...googleapi.CallOption) (*BuildTri
 	//   ],
 	//   "parameters": {
 	//     "projectId": {
-	//       "description": "ID of the project for which to configure automatic builds.",
+	//       "description": "Required. ID of the project for which to configure automatic builds.",
 	//       "location": "path",
 	//       "required": true,
 	//       "type": "string"
@@ -3350,7 +3376,7 @@ func (c *ProjectsTriggersDeleteCall) Header() http.Header {
 
 func (c *ProjectsTriggersDeleteCall) doRequest(alt string) (*http.Response, error) {
 	reqHeaders := make(http.Header)
-	reqHeaders.Set("x-goog-api-client", "gl-go/1.11.0 gdcl/20190802")
+	reqHeaders.Set("x-goog-api-client", "gl-go/"+gensupport.GoVersion()+" gdcl/20200302")
 	for k, v := range c.header_ {
 		reqHeaders[k] = v
 	}
@@ -3420,13 +3446,13 @@ func (c *ProjectsTriggersDeleteCall) Do(opts ...googleapi.CallOption) (*Empty, e
 	//   ],
 	//   "parameters": {
 	//     "projectId": {
-	//       "description": "ID of the project that owns the trigger.",
+	//       "description": "Required. ID of the project that owns the trigger.",
 	//       "location": "path",
 	//       "required": true,
 	//       "type": "string"
 	//     },
 	//     "triggerId": {
-	//       "description": "ID of the `BuildTrigger` to delete.",
+	//       "description": "Required. ID of the `BuildTrigger` to delete.",
 	//       "location": "path",
 	//       "required": true,
 	//       "type": "string"
@@ -3502,7 +3528,7 @@ func (c *ProjectsTriggersGetCall) Header() http.Header {
 
 func (c *ProjectsTriggersGetCall) doRequest(alt string) (*http.Response, error) {
 	reqHeaders := make(http.Header)
-	reqHeaders.Set("x-goog-api-client", "gl-go/1.11.0 gdcl/20190802")
+	reqHeaders.Set("x-goog-api-client", "gl-go/"+gensupport.GoVersion()+" gdcl/20200302")
 	for k, v := range c.header_ {
 		reqHeaders[k] = v
 	}
@@ -3575,13 +3601,13 @@ func (c *ProjectsTriggersGetCall) Do(opts ...googleapi.CallOption) (*BuildTrigge
 	//   ],
 	//   "parameters": {
 	//     "projectId": {
-	//       "description": "ID of the project that owns the trigger.",
+	//       "description": "Required. ID of the project that owns the trigger.",
 	//       "location": "path",
 	//       "required": true,
 	//       "type": "string"
 	//     },
 	//     "triggerId": {
-	//       "description": "ID of the `BuildTrigger` to get.",
+	//       "description": "Required. Identifier (`id` or `name`) of the `BuildTrigger` to get.",
 	//       "location": "path",
 	//       "required": true,
 	//       "type": "string"
@@ -3669,7 +3695,7 @@ func (c *ProjectsTriggersListCall) Header() http.Header {
 
 func (c *ProjectsTriggersListCall) doRequest(alt string) (*http.Response, error) {
 	reqHeaders := make(http.Header)
-	reqHeaders.Set("x-goog-api-client", "gl-go/1.11.0 gdcl/20190802")
+	reqHeaders.Set("x-goog-api-client", "gl-go/"+gensupport.GoVersion()+" gdcl/20200302")
 	for k, v := range c.header_ {
 		reqHeaders[k] = v
 	}
@@ -3751,7 +3777,7 @@ func (c *ProjectsTriggersListCall) Do(opts ...googleapi.CallOption) (*ListBuildT
 	//       "type": "string"
 	//     },
 	//     "projectId": {
-	//       "description": "ID of the project for which to list BuildTriggers.",
+	//       "description": "Required. ID of the project for which to list BuildTriggers.",
 	//       "location": "path",
 	//       "required": true,
 	//       "type": "string"
@@ -3840,7 +3866,7 @@ func (c *ProjectsTriggersPatchCall) Header() http.Header {
 
 func (c *ProjectsTriggersPatchCall) doRequest(alt string) (*http.Response, error) {
 	reqHeaders := make(http.Header)
-	reqHeaders.Set("x-goog-api-client", "gl-go/1.11.0 gdcl/20190802")
+	reqHeaders.Set("x-goog-api-client", "gl-go/"+gensupport.GoVersion()+" gdcl/20200302")
 	for k, v := range c.header_ {
 		reqHeaders[k] = v
 	}
@@ -3915,13 +3941,13 @@ func (c *ProjectsTriggersPatchCall) Do(opts ...googleapi.CallOption) (*BuildTrig
 	//   ],
 	//   "parameters": {
 	//     "projectId": {
-	//       "description": "ID of the project that owns the trigger.",
+	//       "description": "Required. ID of the project that owns the trigger.",
 	//       "location": "path",
 	//       "required": true,
 	//       "type": "string"
 	//     },
 	//     "triggerId": {
-	//       "description": "ID of the `BuildTrigger` to update.",
+	//       "description": "Required. ID of the `BuildTrigger` to update.",
 	//       "location": "path",
 	//       "required": true,
 	//       "type": "string"
@@ -3989,7 +4015,7 @@ func (c *ProjectsTriggersRunCall) Header() http.Header {
 
 func (c *ProjectsTriggersRunCall) doRequest(alt string) (*http.Response, error) {
 	reqHeaders := make(http.Header)
-	reqHeaders.Set("x-goog-api-client", "gl-go/1.11.0 gdcl/20190802")
+	reqHeaders.Set("x-goog-api-client", "gl-go/"+gensupport.GoVersion()+" gdcl/20200302")
 	for k, v := range c.header_ {
 		reqHeaders[k] = v
 	}
@@ -4064,13 +4090,13 @@ func (c *ProjectsTriggersRunCall) Do(opts ...googleapi.CallOption) (*Operation, 
 	//   ],
 	//   "parameters": {
 	//     "projectId": {
-	//       "description": "ID of the project.",
+	//       "description": "Required. ID of the project.",
 	//       "location": "path",
 	//       "required": true,
 	//       "type": "string"
 	//     },
 	//     "triggerId": {
-	//       "description": "ID of the trigger.",
+	//       "description": "Required. ID of the trigger.",
 	//       "location": "path",
 	//       "required": true,
 	//       "type": "string"

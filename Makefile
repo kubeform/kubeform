@@ -22,7 +22,7 @@ BIN      := kubeform
 # Produce CRDs that work back to Kubernetes 1.11 (no version conversion)
 CRD_OPTIONS          ?= "crd:trivialVersions=true"
 # https://github.com/appscodelabs/gengo-builder
-CODE_GENERATOR_IMAGE ?= appscode/gengo:release-1.18
+CODE_GENERATOR_IMAGE ?= appscode/gengo:release-1.21
 API_GROUPS           ?= $(shell find $$(pwd)/apis -maxdepth 1 -mindepth 1 -type d -printf '%f:v1alpha1 ')
 
 # This version-strategy uses git tags to set the version string
