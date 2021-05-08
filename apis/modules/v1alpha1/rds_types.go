@@ -73,7 +73,7 @@ type RDSSpec struct {
 	// Specifies the identifier of the CA certificate for the DB instance
 	CaCertIdentifier string `json:"caCertIdentifier,omitempty" tf:"ca_cert_identifier,omitempty"`
 	// +optional
-	// (Optional) The character set name to use for DB encoding in Oracle instances. This can't be changed. See Oracle Character Sets Supported in Amazon RDS for more information
+	// (Optional) The character set name to use for DB encoding in Oracle instances. This can't be changed. See Oracle Character Sets Supported in Amazon RDS and Collations and Character Sets for Microsoft SQL Server for more information. This can only be set on creation.
 	CharacterSetName string `json:"characterSetName,omitempty" tf:"character_set_name,omitempty"`
 	// +optional
 	// On delete, copy all Instance tags to the final snapshot (if final_snapshot_identifier is specified)
@@ -94,8 +94,29 @@ type RDSSpec struct {
 	// Create IAM role with a defined name that permits RDS to send enhanced monitoring metrics to CloudWatch Logs.
 	CreateMonitoringRole bool `json:"createMonitoringRole,omitempty" tf:"create_monitoring_role,omitempty"`
 	// +optional
+	// Whether to create random password for RDS primary cluster
+	CreateRandomPassword bool `json:"createRandomPassword,omitempty" tf:"create_random_password,omitempty"`
+	// +optional
+	// Additional tags for the DB instance
+	DbInstanceTags map[string]string `json:"dbInstanceTags,omitempty" tf:"db_instance_tags,omitempty"`
+	// +optional
+	// Additional tags for the DB option group
+	DbOptionGroupTags map[string]string `json:"dbOptionGroupTags,omitempty" tf:"db_option_group_tags,omitempty"`
+	// +optional
+	// Additional tags for the  DB parameter group
+	DbParameterGroupTags map[string]string `json:"dbParameterGroupTags,omitempty" tf:"db_parameter_group_tags,omitempty"`
+	// +optional
+	// Description of the DB subnet group to create
+	DbSubnetGroupDescription string `json:"dbSubnetGroupDescription,omitempty" tf:"db_subnet_group_description,omitempty"`
+	// +optional
 	// Name of DB subnet group. DB instance will be created in the VPC associated with the DB subnet group. If unspecified, will be created in the default VPC
 	DbSubnetGroupName string `json:"dbSubnetGroupName,omitempty" tf:"db_subnet_group_name,omitempty"`
+	// +optional
+	// Additional tags for the DB subnet group
+	DbSubnetGroupTags map[string]string `json:"dbSubnetGroupTags,omitempty" tf:"db_subnet_group_tags,omitempty"`
+	// +optional
+	// Determines whether to use `subnet_group_name` as is or create a unique name beginning with the `subnet_group_name` as the prefix
+	DbSubnetGroupUseNamePrefix bool `json:"dbSubnetGroupUseNamePrefix,omitempty" tf:"db_subnet_group_use_name_prefix,omitempty"`
 	// +optional
 	// Specifies whether to remove automated backups immediately after the DB instance is deleted
 	DeleteAutomatedBackups bool `json:"deleteAutomatedBackups,omitempty" tf:"delete_automated_backups,omitempty"`
@@ -123,6 +144,9 @@ type RDSSpec struct {
 	// +optional
 	// The name of your final DB snapshot when this DB instance is deleted.
 	FinalSnapshotIdentifier string `json:"finalSnapshotIdentifier,omitempty" tf:"final_snapshot_identifier,omitempty"`
+	// +optional
+	// The name which is prefixed to the final snapshot on cluster destroy
+	FinalSnapshotIdentifierPrefix string `json:"finalSnapshotIdentifierPrefix,omitempty" tf:"final_snapshot_identifier_prefix,omitempty"`
 	// +optional
 	// Specifies whether or not the mappings of AWS Identity and Access Management (IAM) accounts to database accounts are enabled
 	IamDatabaseAuthenticationEnabled bool `json:"iamDatabaseAuthenticationEnabled,omitempty" tf:"iam_database_authentication_enabled,omitempty"`
@@ -169,11 +193,14 @@ type RDSSpec struct {
 	// The description of the option group
 	OptionGroupDescription string `json:"optionGroupDescription,omitempty" tf:"option_group_description,omitempty"`
 	// +optional
-	// Name of the DB option group to associate
+	// Name of the option group
 	OptionGroupName string `json:"optionGroupName,omitempty" tf:"option_group_name,omitempty"`
 	// +optional
 	// Define maximum timeout for deletion of `aws_db_option_group` resource
 	OptionGroupTimeouts map[string]string `json:"optionGroupTimeouts,omitempty" tf:"option_group_timeouts,omitempty"`
+	// +optional
+	// Determines whether to use `option_group_name` as is or create a unique name beginning with the `option_group_name` as the prefix
+	OptionGroupUseNamePrefix bool `json:"optionGroupUseNamePrefix,omitempty" tf:"option_group_use_name_prefix,omitempty"`
 	// +optional
 	// A list of Options to apply.
 	Options json.RawMessage `json:"options,omitempty" tf:"options,omitempty"`
@@ -184,6 +211,9 @@ type RDSSpec struct {
 	// Name of the DB parameter group to associate or create
 	ParameterGroupName string `json:"parameterGroupName,omitempty" tf:"parameter_group_name,omitempty"`
 	// +optional
+	// Determines whether to use `parameter_group_name` as is or create a unique name beginning with the `parameter_group_name` as the prefix
+	ParameterGroupUseNamePrefix bool `json:"parameterGroupUseNamePrefix,omitempty" tf:"parameter_group_use_name_prefix,omitempty"`
+	// +optional
 	// A list of DB parameters (map) to apply
 	Parameters json.RawMessage `json:"parameters,omitempty" tf:"parameters,omitempty"`
 	// +optional
@@ -192,6 +222,9 @@ type RDSSpec struct {
 	// +optional
 	// Specifies whether Performance Insights are enabled
 	PerformanceInsightsEnabled bool `json:"performanceInsightsEnabled,omitempty" tf:"performance_insights_enabled,omitempty"`
+	// +optional
+	// The ARN for the KMS key to encrypt Performance Insights data.
+	PerformanceInsightsKmsKeyID string `json:"performanceInsightsKmsKeyID,omitempty" tf:"performance_insights_kms_key_id,omitempty"`
 	// +optional
 	// The amount of time in days to retain Performance Insights data. Either 7 (7 days) or 731 (2 years).
 	PerformanceInsightsRetentionPeriod json.Number `json:"performanceInsightsRetentionPeriod,omitempty" tf:"performance_insights_retention_period,omitempty"`
@@ -202,8 +235,14 @@ type RDSSpec struct {
 	// Bool to control if instance is publicly accessible
 	PubliclyAccessible bool `json:"publiclyAccessible,omitempty" tf:"publicly_accessible,omitempty"`
 	// +optional
+	// (Optional) Length of random password to create. (default: 10)
+	RandomPasswordLength json.Number `json:"randomPasswordLength,omitempty" tf:"random_password_length,omitempty"`
+	// +optional
 	// Specifies that this resource is a Replicate database, and to use this value as the source database. This correlates to the identifier of another Amazon RDS Database to replicate.
 	ReplicateSourceDb string `json:"replicateSourceDb,omitempty" tf:"replicate_source_db,omitempty"`
+	// +optional
+	// Restore from a Percona Xtrabackup in S3 (only MySQL is supported)
+	S3Import map[string]string `json:"s3Import,omitempty" tf:"s3_import,omitempty"`
 	// +optional
 	// Determines whether a final DB snapshot is created before the DB instance is deleted. If true is specified, no DBSnapshot is created. If false is specified, a DB snapshot is created before the DB instance is deleted, using the value from final_snapshot_identifier
 	SkipFinalSnapshot bool `json:"skipFinalSnapshot,omitempty" tf:"skip_final_snapshot,omitempty"`
@@ -229,9 +268,6 @@ type RDSSpec struct {
 	// (Optional) Time zone of the DB instance. timezone is currently only supported by Microsoft SQL Server. The timezone can only be set on creation. See MSSQL User Guide for more information.
 	Timezone string `json:"timezone,omitempty" tf:"timezone,omitempty"`
 	// +optional
-	// Whether to use the parameter group name prefix or not
-	UseParameterGroupNamePrefix bool `json:"useParameterGroupNamePrefix,omitempty" tf:"use_parameter_group_name_prefix,omitempty"`
-	// +optional
 	// Username for the master DB user
 	Username string `json:"username,omitempty" tf:"username,omitempty"`
 	// +optional
@@ -240,75 +276,78 @@ type RDSSpec struct {
 }
 
 type RDSOutput struct {
+	// The address of the RDS instance
+	// +optional
+	DbInstanceAddress string `json:"dbInstanceAddress" tf:"db_instance_address"`
+	// The ARN of the RDS instance
+	// +optional
+	DbInstanceArn string `json:"dbInstanceArn" tf:"db_instance_arn"`
+	// The availability zone of the RDS instance
+	// +optional
+	DbInstanceAvailabilityZone string `json:"dbInstanceAvailabilityZone" tf:"db_instance_availability_zone"`
+	// Specifies the identifier of the CA certificate for the DB instance
+	// +optional
+	DbInstanceCaCertIdentifier string `json:"dbInstanceCaCertIdentifier" tf:"db_instance_ca_cert_identifier"`
+	// The ID of the Directory Service Active Directory domain the instance is joined to
+	// +optional
+	DbInstanceDomain string `json:"dbInstanceDomain" tf:"db_instance_domain"`
+	// The name of the IAM role to be used when making API calls to the Directory Service.
+	// +optional
+	DbInstanceDomainIamRoleName string `json:"dbInstanceDomainIamRoleName" tf:"db_instance_domain_iam_role_name"`
+	// The connection endpoint
+	// +optional
+	DbInstanceEndpoint string `json:"dbInstanceEndpoint" tf:"db_instance_endpoint"`
+	// The canonical hosted zone ID of the DB instance (to be used in a Route 53 Alias record)
+	// +optional
+	DbInstanceHostedZoneID string `json:"dbInstanceHostedZoneID" tf:"db_instance_hosted_zone_id"`
+	// The RDS instance ID
+	// +optional
+	DbInstanceID string `json:"dbInstanceID" tf:"db_instance_id"`
+	// The database name
+	// +optional
+	DbInstanceName string `json:"dbInstanceName" tf:"db_instance_name"`
+	// The database password (this password may be old, because Terraform doesn't track it after initial creation)
+	// +optional
+	DbInstancePassword string `json:"dbInstancePassword" tf:"db_instance_password"`
+	// The database port
+	// +optional
+	DbInstancePort string `json:"dbInstancePort" tf:"db_instance_port"`
+	// The RDS Resource ID of this instance
+	// +optional
+	DbInstanceResourceID string `json:"dbInstanceResourceID" tf:"db_instance_resource_id"`
+	// The RDS instance status
+	// +optional
+	DbInstanceStatus string `json:"dbInstanceStatus" tf:"db_instance_status"`
+	// The master username for the database
+	// +optional
+	DbInstanceUsername string `json:"dbInstanceUsername" tf:"db_instance_username"`
+	// The master password
+	// +optional
+	DbMasterPassword string `json:"dbMasterPassword" tf:"db_master_password"`
+	// The ARN of the db option group
+	// +optional
+	DbOptionGroupArn string `json:"dbOptionGroupArn" tf:"db_option_group_arn"`
+	// The db option group id
+	// +optional
+	DbOptionGroupID string `json:"dbOptionGroupID" tf:"db_option_group_id"`
+	// The ARN of the db parameter group
+	// +optional
+	DbParameterGroupArn string `json:"dbParameterGroupArn" tf:"db_parameter_group_arn"`
+	// The db parameter group id
+	// +optional
+	DbParameterGroupID string `json:"dbParameterGroupID" tf:"db_parameter_group_id"`
+	// The ARN of the db subnet group
+	// +optional
+	DbSubnetGroupArn string `json:"dbSubnetGroupArn" tf:"db_subnet_group_arn"`
+	// The db subnet group name
+	// +optional
+	DbSubnetGroupID string `json:"dbSubnetGroupID" tf:"db_subnet_group_id"`
 	// The Amazon Resource Name (ARN) specifying the monitoring role
 	// +optional
 	EnhancedMonitoringIamRoleArn string `json:"enhancedMonitoringIamRoleArn" tf:"enhanced_monitoring_iam_role_arn"`
 	// The name of the monitoring role
 	// +optional
 	EnhancedMonitoringIamRoleName string `json:"enhancedMonitoringIamRoleName" tf:"enhanced_monitoring_iam_role_name"`
-	// The address of the RDS instance
-	// +optional
-	ThisDbInstanceAddress string `json:"thisDbInstanceAddress" tf:"this_db_instance_address"`
-	// The ARN of the RDS instance
-	// +optional
-	ThisDbInstanceArn string `json:"thisDbInstanceArn" tf:"this_db_instance_arn"`
-	// The availability zone of the RDS instance
-	// +optional
-	ThisDbInstanceAvailabilityZone string `json:"thisDbInstanceAvailabilityZone" tf:"this_db_instance_availability_zone"`
-	// Specifies the identifier of the CA certificate for the DB instance
-	// +optional
-	ThisDbInstanceCaCertIdentifier string `json:"thisDbInstanceCaCertIdentifier" tf:"this_db_instance_ca_cert_identifier"`
-	// The ID of the Directory Service Active Directory domain the instance is joined to
-	// +optional
-	ThisDbInstanceDomain string `json:"thisDbInstanceDomain" tf:"this_db_instance_domain"`
-	// The name of the IAM role to be used when making API calls to the Directory Service.
-	// +optional
-	ThisDbInstanceDomainIamRoleName string `json:"thisDbInstanceDomainIamRoleName" tf:"this_db_instance_domain_iam_role_name"`
-	// The connection endpoint
-	// +optional
-	ThisDbInstanceEndpoint string `json:"thisDbInstanceEndpoint" tf:"this_db_instance_endpoint"`
-	// The canonical hosted zone ID of the DB instance (to be used in a Route 53 Alias record)
-	// +optional
-	ThisDbInstanceHostedZoneID string `json:"thisDbInstanceHostedZoneID" tf:"this_db_instance_hosted_zone_id"`
-	// The RDS instance ID
-	// +optional
-	ThisDbInstanceID string `json:"thisDbInstanceID" tf:"this_db_instance_id"`
-	// The database name
-	// +optional
-	ThisDbInstanceName string `json:"thisDbInstanceName" tf:"this_db_instance_name"`
-	// The database password (this password may be old, because Terraform doesn't track it after initial creation)
-	// +optional
-	ThisDbInstancePassword string `json:"thisDbInstancePassword" tf:"this_db_instance_password"`
-	// The database port
-	// +optional
-	ThisDbInstancePort string `json:"thisDbInstancePort" tf:"this_db_instance_port"`
-	// The RDS Resource ID of this instance
-	// +optional
-	ThisDbInstanceResourceID string `json:"thisDbInstanceResourceID" tf:"this_db_instance_resource_id"`
-	// The RDS instance status
-	// +optional
-	ThisDbInstanceStatus string `json:"thisDbInstanceStatus" tf:"this_db_instance_status"`
-	// The master username for the database
-	// +optional
-	ThisDbInstanceUsername string `json:"thisDbInstanceUsername" tf:"this_db_instance_username"`
-	// The ARN of the db option group
-	// +optional
-	ThisDbOptionGroupArn string `json:"thisDbOptionGroupArn" tf:"this_db_option_group_arn"`
-	// The db option group id
-	// +optional
-	ThisDbOptionGroupID string `json:"thisDbOptionGroupID" tf:"this_db_option_group_id"`
-	// The ARN of the db parameter group
-	// +optional
-	ThisDbParameterGroupArn string `json:"thisDbParameterGroupArn" tf:"this_db_parameter_group_arn"`
-	// The db parameter group id
-	// +optional
-	ThisDbParameterGroupID string `json:"thisDbParameterGroupID" tf:"this_db_parameter_group_id"`
-	// The ARN of the db subnet group
-	// +optional
-	ThisDbSubnetGroupArn string `json:"thisDbSubnetGroupArn" tf:"this_db_subnet_group_arn"`
-	// The db subnet group name
-	// +optional
-	ThisDbSubnetGroupID string `json:"thisDbSubnetGroupID" tf:"this_db_subnet_group_id"`
 }
 
 type RDSStatus struct {

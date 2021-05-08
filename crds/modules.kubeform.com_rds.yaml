@@ -70,7 +70,8 @@ spec:
             characterSetName:
               description: (Optional) The character set name to use for DB encoding
                 in Oracle instances. This can't be changed. See Oracle Character Sets
-                Supported in Amazon RDS for more information
+                Supported in Amazon RDS and Collations and Character Sets for Microsoft
+                SQL Server for more information. This can only be set on creation.
               type: string
             copyTagsToSnapshot:
               description: On delete, copy all Instance tags to the final snapshot
@@ -92,11 +93,42 @@ spec:
               description: Create IAM role with a defined name that permits RDS to
                 send enhanced monitoring metrics to CloudWatch Logs.
               type: boolean
+            createRandomPassword:
+              description: Whether to create random password for RDS primary cluster
+              type: boolean
+            dbInstanceTags:
+              additionalProperties:
+                type: string
+              description: Additional tags for the DB instance
+              type: object
+            dbOptionGroupTags:
+              additionalProperties:
+                type: string
+              description: Additional tags for the DB option group
+              type: object
+            dbParameterGroupTags:
+              additionalProperties:
+                type: string
+              description: Additional tags for the  DB parameter group
+              type: object
+            dbSubnetGroupDescription:
+              description: Description of the DB subnet group to create
+              type: string
             dbSubnetGroupName:
               description: Name of DB subnet group. DB instance will be created in
                 the VPC associated with the DB subnet group. If unspecified, will
                 be created in the default VPC
               type: string
+            dbSubnetGroupTags:
+              additionalProperties:
+                type: string
+              description: Additional tags for the DB subnet group
+              type: object
+            dbSubnetGroupUseNamePrefix:
+              description: Determines whether to use `subnet_group_name` as is or
+                create a unique name beginning with the `subnet_group_name` as the
+                prefix
+              type: boolean
             deleteAutomatedBackups:
               description: Specifies whether to remove automated backups immediately
                 after the DB instance is deleted
@@ -133,6 +165,10 @@ spec:
             finalSnapshotIdentifier:
               description: The name of your final DB snapshot when this DB instance
                 is deleted.
+              type: string
+            finalSnapshotIdentifierPrefix:
+              description: The name which is prefixed to the final snapshot on cluster
+                destroy
               type: string
             iamDatabaseAuthenticationEnabled:
               description: Specifies whether or not the mappings of AWS Identity and
@@ -196,7 +232,7 @@ spec:
               description: The description of the option group
               type: string
             optionGroupName:
-              description: Name of the DB option group to associate
+              description: Name of the option group
               type: string
             optionGroupTimeouts:
               additionalProperties:
@@ -204,6 +240,11 @@ spec:
               description: Define maximum timeout for deletion of `aws_db_option_group`
                 resource
               type: object
+            optionGroupUseNamePrefix:
+              description: Determines whether to use `option_group_name` as is or
+                create a unique name beginning with the `option_group_name` as the
+                prefix
+              type: boolean
             options:
               description: A list of Options to apply.
               format: byte
@@ -214,6 +255,11 @@ spec:
             parameterGroupName:
               description: Name of the DB parameter group to associate or create
               type: string
+            parameterGroupUseNamePrefix:
+              description: Determines whether to use `parameter_group_name` as is
+                or create a unique name beginning with the `parameter_group_name`
+                as the prefix
+              type: boolean
             parameters:
               description: A list of DB parameters (map) to apply
               format: byte
@@ -225,6 +271,10 @@ spec:
             performanceInsightsEnabled:
               description: Specifies whether Performance Insights are enabled
               type: boolean
+            performanceInsightsKmsKeyID:
+              description: The ARN for the KMS key to encrypt Performance Insights
+                data.
+              type: string
             performanceInsightsRetentionPeriod:
               description: The amount of time in days to retain Performance Insights
                 data. Either 7 (7 days) or 731 (2 years).
@@ -244,11 +294,21 @@ spec:
             publiclyAccessible:
               description: Bool to control if instance is publicly accessible
               type: boolean
+            randomPasswordLength:
+              description: '(Optional) Length of random password to create. (default:
+                10)'
+              type: string
             replicateSourceDb:
               description: Specifies that this resource is a Replicate database, and
                 to use this value as the source database. This correlates to the identifier
                 of another Amazon RDS Database to replicate.
               type: string
+            s3Import:
+              additionalProperties:
+                type: string
+              description: Restore from a Percona Xtrabackup in S3 (only MySQL is
+                supported)
+              type: object
             secretRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -301,9 +361,6 @@ spec:
                 only supported by Microsoft SQL Server. The timezone can only be set
                 on creation. See MSSQL User Guide for more information.
               type: string
-            useParameterGroupNamePrefix:
-              description: Whether to use the parameter group name prefix or not
-              type: boolean
             username:
               description: Username for the master DB user
               type: string
@@ -324,80 +381,83 @@ spec:
               type: integer
             output:
               properties:
+                dbInstanceAddress:
+                  description: The address of the RDS instance
+                  type: string
+                dbInstanceArn:
+                  description: The ARN of the RDS instance
+                  type: string
+                dbInstanceAvailabilityZone:
+                  description: The availability zone of the RDS instance
+                  type: string
+                dbInstanceCaCertIdentifier:
+                  description: Specifies the identifier of the CA certificate for
+                    the DB instance
+                  type: string
+                dbInstanceDomain:
+                  description: The ID of the Directory Service Active Directory domain
+                    the instance is joined to
+                  type: string
+                dbInstanceDomainIamRoleName:
+                  description: The name of the IAM role to be used when making API
+                    calls to the Directory Service.
+                  type: string
+                dbInstanceEndpoint:
+                  description: The connection endpoint
+                  type: string
+                dbInstanceHostedZoneID:
+                  description: The canonical hosted zone ID of the DB instance (to
+                    be used in a Route 53 Alias record)
+                  type: string
+                dbInstanceID:
+                  description: The RDS instance ID
+                  type: string
+                dbInstanceName:
+                  description: The database name
+                  type: string
+                dbInstancePassword:
+                  description: The database password (this password may be old, because
+                    Terraform doesn't track it after initial creation)
+                  type: string
+                dbInstancePort:
+                  description: The database port
+                  type: string
+                dbInstanceResourceID:
+                  description: The RDS Resource ID of this instance
+                  type: string
+                dbInstanceStatus:
+                  description: The RDS instance status
+                  type: string
+                dbInstanceUsername:
+                  description: The master username for the database
+                  type: string
+                dbMasterPassword:
+                  description: The master password
+                  type: string
+                dbOptionGroupArn:
+                  description: The ARN of the db option group
+                  type: string
+                dbOptionGroupID:
+                  description: The db option group id
+                  type: string
+                dbParameterGroupArn:
+                  description: The ARN of the db parameter group
+                  type: string
+                dbParameterGroupID:
+                  description: The db parameter group id
+                  type: string
+                dbSubnetGroupArn:
+                  description: The ARN of the db subnet group
+                  type: string
+                dbSubnetGroupID:
+                  description: The db subnet group name
+                  type: string
                 enhancedMonitoringIamRoleArn:
                   description: The Amazon Resource Name (ARN) specifying the monitoring
                     role
                   type: string
                 enhancedMonitoringIamRoleName:
                   description: The name of the monitoring role
-                  type: string
-                thisDbInstanceAddress:
-                  description: The address of the RDS instance
-                  type: string
-                thisDbInstanceArn:
-                  description: The ARN of the RDS instance
-                  type: string
-                thisDbInstanceAvailabilityZone:
-                  description: The availability zone of the RDS instance
-                  type: string
-                thisDbInstanceCaCertIdentifier:
-                  description: Specifies the identifier of the CA certificate for
-                    the DB instance
-                  type: string
-                thisDbInstanceDomain:
-                  description: The ID of the Directory Service Active Directory domain
-                    the instance is joined to
-                  type: string
-                thisDbInstanceDomainIamRoleName:
-                  description: The name of the IAM role to be used when making API
-                    calls to the Directory Service.
-                  type: string
-                thisDbInstanceEndpoint:
-                  description: The connection endpoint
-                  type: string
-                thisDbInstanceHostedZoneID:
-                  description: The canonical hosted zone ID of the DB instance (to
-                    be used in a Route 53 Alias record)
-                  type: string
-                thisDbInstanceID:
-                  description: The RDS instance ID
-                  type: string
-                thisDbInstanceName:
-                  description: The database name
-                  type: string
-                thisDbInstancePassword:
-                  description: The database password (this password may be old, because
-                    Terraform doesn't track it after initial creation)
-                  type: string
-                thisDbInstancePort:
-                  description: The database port
-                  type: string
-                thisDbInstanceResourceID:
-                  description: The RDS Resource ID of this instance
-                  type: string
-                thisDbInstanceStatus:
-                  description: The RDS instance status
-                  type: string
-                thisDbInstanceUsername:
-                  description: The master username for the database
-                  type: string
-                thisDbOptionGroupArn:
-                  description: The ARN of the db option group
-                  type: string
-                thisDbOptionGroupID:
-                  description: The db option group id
-                  type: string
-                thisDbParameterGroupArn:
-                  description: The ARN of the db parameter group
-                  type: string
-                thisDbParameterGroupID:
-                  description: The db parameter group id
-                  type: string
-                thisDbSubnetGroupArn:
-                  description: The ARN of the db subnet group
-                  type: string
-                thisDbSubnetGroupID:
-                  description: The db subnet group name
                   type: string
               type: object
             phase:

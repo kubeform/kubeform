@@ -50,8 +50,11 @@ type GoogleServiceAccountSpec struct {
 	// If assigning billing role, specificy a billing account (default is to assign at the organizational level).
 	BillingAccountID string `json:"billingAccountID,omitempty" tf:"billing_account_id,omitempty"`
 	// +optional
-	// Descriptions of the created service accounts (defaults to no description)
+	// Default description of the created service accounts (defaults to no description)
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// +optional
+	// List of descriptions for the created service accounts (elements default to the value of `description`)
+	Descriptions []string `json:"descriptions,omitempty" tf:"descriptions,omitempty"`
 	// +optional
 	// Display names of the created service accounts (defaults to 'Terraform-managed service account')
 	DisplayName string `json:"displayName,omitempty" tf:"display_name,omitempty"`

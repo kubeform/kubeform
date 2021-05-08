@@ -113,6 +113,11 @@ func (in *GoogleServiceAccountSpec) DeepCopyInto(out *GoogleServiceAccountSpec) 
 		**out = **in
 	}
 	out.ProviderRef = in.ProviderRef
+	if in.Descriptions != nil {
+		in, out := &in.Descriptions, &out.Descriptions
+		*out = make([]string, len(*in))
+		copy(*out, *in)
+	}
 	if in.Names != nil {
 		in, out := &in.Names, &out.Names
 		*out = make([]string, len(*in))
@@ -243,6 +248,34 @@ func (in *RDSSpec) DeepCopyInto(out *RDSSpec) {
 		**out = **in
 	}
 	out.ProviderRef = in.ProviderRef
+	if in.DbInstanceTags != nil {
+		in, out := &in.DbInstanceTags, &out.DbInstanceTags
+		*out = make(map[string]string, len(*in))
+		for key, val := range *in {
+			(*out)[key] = val
+		}
+	}
+	if in.DbOptionGroupTags != nil {
+		in, out := &in.DbOptionGroupTags, &out.DbOptionGroupTags
+		*out = make(map[string]string, len(*in))
+		for key, val := range *in {
+			(*out)[key] = val
+		}
+	}
+	if in.DbParameterGroupTags != nil {
+		in, out := &in.DbParameterGroupTags, &out.DbParameterGroupTags
+		*out = make(map[string]string, len(*in))
+		for key, val := range *in {
+			(*out)[key] = val
+		}
+	}
+	if in.DbSubnetGroupTags != nil {
+		in, out := &in.DbSubnetGroupTags, &out.DbSubnetGroupTags
+		*out = make(map[string]string, len(*in))
+		for key, val := range *in {
+			(*out)[key] = val
+		}
+	}
 	if in.EnabledCloudwatchLogsExports != nil {
 		in, out := &in.EnabledCloudwatchLogsExports, &out.EnabledCloudwatchLogsExports
 		*out = make([]string, len(*in))
@@ -264,6 +297,13 @@ func (in *RDSSpec) DeepCopyInto(out *RDSSpec) {
 		in, out := &in.Parameters, &out.Parameters
 		*out = make(json.RawMessage, len(*in))
 		copy(*out, *in)
+	}
+	if in.S3Import != nil {
+		in, out := &in.S3Import, &out.S3Import
+		*out = make(map[string]string, len(*in))
+		for key, val := range *in {
+			(*out)[key] = val
+		}
 	}
 	if in.SubnetIDS != nil {
 		in, out := &in.SubnetIDS, &out.SubnetIDS

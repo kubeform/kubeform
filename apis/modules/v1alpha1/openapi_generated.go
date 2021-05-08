@@ -13613,9 +13613,23 @@ func schema_kubeform_apis_modules_v1alpha1_GoogleServiceAccountSpec(ref common.R
 					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Descriptions of the created service accounts (defaults to no description)",
+							Description: "Default description of the created service accounts (defaults to no description)",
 							Type:        []string{"string"},
 							Format:      "",
+						},
+					},
+					"descriptions": {
+						SchemaProps: spec.SchemaProps{
+							Description: "List of descriptions for the created service accounts (elements default to the value of `description`)",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
 						},
 					},
 					"displayName": {
@@ -13838,6 +13852,160 @@ func schema_kubeform_apis_modules_v1alpha1_RDSOutput(ref common.ReferenceCallbac
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"dbInstanceAddress": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The address of the RDS instance",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"dbInstanceArn": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The ARN of the RDS instance",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"dbInstanceAvailabilityZone": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The availability zone of the RDS instance",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"dbInstanceCaCertIdentifier": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specifies the identifier of the CA certificate for the DB instance",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"dbInstanceDomain": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The ID of the Directory Service Active Directory domain the instance is joined to",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"dbInstanceDomainIamRoleName": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The name of the IAM role to be used when making API calls to the Directory Service.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"dbInstanceEndpoint": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The connection endpoint",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"dbInstanceHostedZoneID": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The canonical hosted zone ID of the DB instance (to be used in a Route 53 Alias record)",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"dbInstanceID": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The RDS instance ID",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"dbInstanceName": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The database name",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"dbInstancePassword": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The database password (this password may be old, because Terraform doesn't track it after initial creation)",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"dbInstancePort": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The database port",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"dbInstanceResourceID": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The RDS Resource ID of this instance",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"dbInstanceStatus": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The RDS instance status",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"dbInstanceUsername": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The master username for the database",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"dbMasterPassword": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The master password",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"dbOptionGroupArn": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The ARN of the db option group",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"dbOptionGroupID": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The db option group id",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"dbParameterGroupArn": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The ARN of the db parameter group",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"dbParameterGroupID": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The db parameter group id",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"dbSubnetGroupArn": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The ARN of the db subnet group",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"dbSubnetGroupID": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The db subnet group name",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
 					"enhancedMonitoringIamRoleArn": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The Amazon Resource Name (ARN) specifying the monitoring role",
@@ -13848,153 +14016,6 @@ func schema_kubeform_apis_modules_v1alpha1_RDSOutput(ref common.ReferenceCallbac
 					"enhancedMonitoringIamRoleName": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The name of the monitoring role",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"thisDbInstanceAddress": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The address of the RDS instance",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"thisDbInstanceArn": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The ARN of the RDS instance",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"thisDbInstanceAvailabilityZone": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The availability zone of the RDS instance",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"thisDbInstanceCaCertIdentifier": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Specifies the identifier of the CA certificate for the DB instance",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"thisDbInstanceDomain": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The ID of the Directory Service Active Directory domain the instance is joined to",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"thisDbInstanceDomainIamRoleName": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The name of the IAM role to be used when making API calls to the Directory Service.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"thisDbInstanceEndpoint": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The connection endpoint",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"thisDbInstanceHostedZoneID": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The canonical hosted zone ID of the DB instance (to be used in a Route 53 Alias record)",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"thisDbInstanceID": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The RDS instance ID",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"thisDbInstanceName": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The database name",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"thisDbInstancePassword": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The database password (this password may be old, because Terraform doesn't track it after initial creation)",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"thisDbInstancePort": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The database port",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"thisDbInstanceResourceID": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The RDS Resource ID of this instance",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"thisDbInstanceStatus": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The RDS instance status",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"thisDbInstanceUsername": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The master username for the database",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"thisDbOptionGroupArn": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The ARN of the db option group",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"thisDbOptionGroupID": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The db option group id",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"thisDbParameterGroupArn": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The ARN of the db parameter group",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"thisDbParameterGroupID": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The db parameter group id",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"thisDbSubnetGroupArn": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The ARN of the db subnet group",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"thisDbSubnetGroupID": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The db subnet group name",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -14085,7 +14106,7 @@ func schema_kubeform_apis_modules_v1alpha1_RDSSpec(ref common.ReferenceCallback)
 					},
 					"characterSetName": {
 						SchemaProps: spec.SchemaProps{
-							Description: "(Optional) The character set name to use for DB encoding in Oracle instances. This can't be changed. See Oracle Character Sets Supported in Amazon RDS for more information",
+							Description: "(Optional) The character set name to use for DB encoding in Oracle instances. This can't be changed. See Oracle Character Sets Supported in Amazon RDS and Collations and Character Sets for Microsoft SQL Server for more information. This can only be set on creation.",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -14132,10 +14153,91 @@ func schema_kubeform_apis_modules_v1alpha1_RDSSpec(ref common.ReferenceCallback)
 							Format:      "",
 						},
 					},
+					"createRandomPassword": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Whether to create random password for RDS primary cluster",
+							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
+					"dbInstanceTags": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Additional tags for the DB instance",
+							Type:        []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"dbOptionGroupTags": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Additional tags for the DB option group",
+							Type:        []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"dbParameterGroupTags": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Additional tags for the  DB parameter group",
+							Type:        []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"dbSubnetGroupDescription": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Description of the DB subnet group to create",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
 					"dbSubnetGroupName": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Name of DB subnet group. DB instance will be created in the VPC associated with the DB subnet group. If unspecified, will be created in the default VPC",
 							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"dbSubnetGroupTags": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Additional tags for the DB subnet group",
+							Type:        []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"dbSubnetGroupUseNamePrefix": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Determines whether to use `subnet_group_name` as is or create a unique name beginning with the `subnet_group_name` as the prefix",
+							Type:        []string{"boolean"},
 							Format:      "",
 						},
 					},
@@ -14205,6 +14307,13 @@ func schema_kubeform_apis_modules_v1alpha1_RDSSpec(ref common.ReferenceCallback)
 					"finalSnapshotIdentifier": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The name of your final DB snapshot when this DB instance is deleted.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"finalSnapshotIdentifierPrefix": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The name which is prefixed to the final snapshot on cluster destroy",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -14316,7 +14425,7 @@ func schema_kubeform_apis_modules_v1alpha1_RDSSpec(ref common.ReferenceCallback)
 					},
 					"optionGroupName": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Name of the DB option group to associate",
+							Description: "Name of the option group",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -14334,6 +14443,13 @@ func schema_kubeform_apis_modules_v1alpha1_RDSSpec(ref common.ReferenceCallback)
 									},
 								},
 							},
+						},
+					},
+					"optionGroupUseNamePrefix": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Determines whether to use `option_group_name` as is or create a unique name beginning with the `option_group_name` as the prefix",
+							Type:        []string{"boolean"},
+							Format:      "",
 						},
 					},
 					"options": {
@@ -14354,6 +14470,13 @@ func schema_kubeform_apis_modules_v1alpha1_RDSSpec(ref common.ReferenceCallback)
 						SchemaProps: spec.SchemaProps{
 							Description: "Name of the DB parameter group to associate or create",
 							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"parameterGroupUseNamePrefix": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Determines whether to use `parameter_group_name` as is or create a unique name beginning with the `parameter_group_name` as the prefix",
+							Type:        []string{"boolean"},
 							Format:      "",
 						},
 					},
@@ -14378,6 +14501,13 @@ func schema_kubeform_apis_modules_v1alpha1_RDSSpec(ref common.ReferenceCallback)
 							Format:      "",
 						},
 					},
+					"performanceInsightsKmsKeyID": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The ARN for the KMS key to encrypt Performance Insights data.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
 					"performanceInsightsRetentionPeriod": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The amount of time in days to retain Performance Insights data. Either 7 (7 days) or 731 (2 years).",
@@ -14399,11 +14529,33 @@ func schema_kubeform_apis_modules_v1alpha1_RDSSpec(ref common.ReferenceCallback)
 							Format:      "",
 						},
 					},
+					"randomPasswordLength": {
+						SchemaProps: spec.SchemaProps{
+							Description: "(Optional) Length of random password to create. (default: 10)",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
 					"replicateSourceDb": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Specifies that this resource is a Replicate database, and to use this value as the source database. This correlates to the identifier of another Amazon RDS Database to replicate.",
 							Type:        []string{"string"},
 							Format:      "",
+						},
+					},
+					"s3Import": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Restore from a Percona Xtrabackup in S3 (only MySQL is supported)",
+							Type:        []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
 						},
 					},
 					"skipFinalSnapshot": {
@@ -14482,13 +14634,6 @@ func schema_kubeform_apis_modules_v1alpha1_RDSSpec(ref common.ReferenceCallback)
 						SchemaProps: spec.SchemaProps{
 							Description: "(Optional) Time zone of the DB instance. timezone is currently only supported by Microsoft SQL Server. The timezone can only be set on creation. See MSSQL User Guide for more information.",
 							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"useParameterGroupNamePrefix": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Whether to use the parameter group name prefix or not",
-							Type:        []string{"boolean"},
 							Format:      "",
 						},
 					},
