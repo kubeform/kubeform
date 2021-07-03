@@ -1,10 +1,10 @@
 ---
-title: Uninstall Kubeform Community Edition
-description: Uninstallation guide for Kubeform Community edition
+title: Uninstall Kubeform
+description: Uninstallation guide for Kubeform
 menu:
   docs_{{ .version }}:
-    identifier: uninstall-kubeform-community
-    name: Community Edition
+    identifier: uninstall-kubeform-overview
+    name: Overview
     parent: uninstallation-guide
     weight: 10
 product_name: kubeform
@@ -12,16 +12,13 @@ menu_name: docs_{{ .version }}
 section_menu_id: setup
 ---
 
-# Uninstall Kubeform Community Edition
+# Uninstall Kubeform
 
-To uninstall Kubeform Community edition, run the following command:
+To uninstall Kubeform, run the following command:
 
 <ul class="nav nav-tabs" id="installerTab" role="tablist">
   <li class="nav-item">
     <a class="nav-link active" id="helm3-tab" data-toggle="tab" href="#helm3" role="tab" aria-controls="helm3" aria-selected="true">Helm 3</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="helm2-tab" data-toggle="tab" href="#helm2" role="tab" aria-controls="helm2" aria-selected="false">Helm 2</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" id="script-tab" data-toggle="tab" href="#script" role="tab" aria-controls="script" aria-selected="false">YAML</a>
@@ -35,16 +32,7 @@ To uninstall Kubeform Community edition, run the following command:
 In Helm 3, release names are [scoped to a namespace](https://v3.helm.sh/docs/faq/#release-names-are-now-scoped-to-the-namespace). So, provide the namespace you used to install the operator when installing.
 
 ```bash
-$ helm uninstall kubeform --namespace kube-system
-```
-
-</div>
-<div class="tab-pane fade" id="helm2" role="tabpanel" aria-labelledby="helm2-tab">
-
-## Using Helm 2
-
-```bash
-$ helm delete kubeform
+$ helm uninstall kubeform-provider-*** --namespace kubeform
 ```
 
 </div>
@@ -55,7 +43,7 @@ $ helm delete kubeform
 If you prefer to not use Helm, you can generate YAMLs from Kubeform chart and uninstall using `kubectl`.
 
 ```bash
-$ helm template kubeform appscode/kubeform --namespace kube-system | kubectl delete -f -
+$ helm template kubeform-provider-*** appscode/kubeform-provider-*** --namespace kubeform | kubectl delete -f -
 ```
 
 </div>

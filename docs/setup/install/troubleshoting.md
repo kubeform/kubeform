@@ -30,7 +30,7 @@ For network volume such as NFS, Kubeform needs to deploy a helper deployment in 
 
 ```bash
 $ helm install kubeform-enterprise appscode/kubeform-enterprise \
-    -n kube-system                                        \
+    -n kubeform                                        \
     --set netVolAccessor.cpu=200m                         \
     --set netVolAccessor.memory=128Mi                     \
     --set netVolAccessor.runAsUser=0                      \
@@ -42,7 +42,7 @@ $ helm install kubeform-enterprise appscode/kubeform-enterprise \
 To detect Kubeform version, exec into the operator pod and run `kubeform version` command.
 
 ```bash
-$ POD_NAMESPACE=kube-system
+$ POD_NAMESPACE=kubeform
 $ POD_NAME=$(kubectl get pods -n $POD_NAMESPACE -l app.kubernetes.io/name=kubeform -o jsonpath={.items[0].metadata.name})
 $ kubectl exec $POD_NAME -c operator -n $POD_NAMESPACE -- /kubeform version
 

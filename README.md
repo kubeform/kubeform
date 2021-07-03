@@ -16,7 +16,7 @@ Kubeform by AppsCode is a Kubernetes operator provisioning cloud or on-prem reso
 
 ## Installation
 
-To install Kubeform, please follow the guide [here](https://kubeform.com/docs/latest/setup/install/).
+To install Kubeform, please follow the guide [here](https://kubeform.com/docs/latest/setup/).
 
 ## Using Kubeform
 
@@ -28,7 +28,7 @@ Want to help improve Kubeform? Please start [here](https://kubeform.com/docs/lat
 
 ## Acknowledgement
 
-- Many thanks to [Hashicorp](https://www.hashicorp.com/) for [Terraform](https://www.terraform.io/) project.
+Many thanks to [Hashicorp](https://www.hashicorp.com/) for [Terraform](https://www.terraform.io/) project.
 
 ## Support
 
