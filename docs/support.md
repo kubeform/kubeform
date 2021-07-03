@@ -15,4 +15,4 @@ aliases:
 ---
 # Support
 
-If you have found a bug with Kubeform or want to request for new features, please [file an issue](https://github.com/kubeform/project/issues/new).
+If you have found a bug with Kubeform or want to request for new features, please [file an issue](https://github.com/kubeform/kubeform/issues/new).

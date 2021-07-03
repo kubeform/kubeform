@@ -24,7 +24,7 @@ If you have a question about Kubeform or having problem using it, you can contac
 
 ## Bugs/Feature request
 
-If you have found a bug with Kubeform or want to request for new features, please [file an issue](https://github.com/kubeform/project/issues/new).
+If you have found a bug with Kubeform or want to request for new features, please [file an issue](https://github.com/kubeform/kubeform/issues/new).
 
 ## Spread the word
 

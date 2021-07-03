@@ -15,7 +15,7 @@ aliases:
 
 # DigitalOcean
 
-This guide will show you how to provision a Digitalocean Database Cluster using Kubeform.
+This guide will show you how to provision a DigitalOcean Database Cluster using Kubeform.
 
 > Examples used in this guide can be found [here](https://github.com/kubeform/docs/tree/{{< param "info.version" >}}/docs/examples/digitalocean).
 
@@ -41,11 +41,11 @@ resource "digitalocean_database_cluster" "test1" {
 }⏎
 ```
 
-This config creates a Digitalocean Database Cluster. We'll create the exact configuration using Kubeform. The steps are given below:
+This config creates a DigitalOcean Database Cluster. We'll create the exact configuration using Kubeform. The steps are given below:
 
 ## 1. Create CRD:
 
-At first, create the CRD of Digitalocean Database Cluster using the following kubectl command:
+At first, create the CRD of DigitalOcean Database Cluster using the following kubectl command:
 
 ```console
 $ kubectl apply -f https://github.com/kubeform/kubeform/raw/master/api/crds/digitalocean.kubeform.com_databaseclusters.yaml
@@ -53,7 +53,7 @@ $ kubectl apply -f https://github.com/kubeform/kubeform/raw/master/api/crds/digi
 
 ## 2. Create DigitalOcean Provider Secret
 
-Then create the secret which is necessary for provisioning the Database Cluster in Digitalocean.
+Then create the secret which is necessary for provisioning the Database Cluster in DigitalOcean.
 
 ```yaml
 apiVersion: v1
@@ -73,9 +73,9 @@ $ kubectl apply -f secret.yaml
 
 > **Note:** here, data key (eg. `token`) must be in snake case format (same as the tf configuration file)
 
-## 3. Create Digitalocean Database Cluster
+## 3. Create DigitalOcean Database Cluster
 
-Now, we'll create the Digitalocean Database Cluster CRD. The yaml is given below:
+Now, we'll create the DigitalOcean Database Cluster CRD. The yaml is given below:
 
 ```yaml
 apiVersion: digitalocean.kubeform.com/v1alpha1
@@ -101,11 +101,11 @@ Save it in a file (eg. `db_cluster.yaml`) then apply it using kubectl.
 $ kubectl apply -f db_cluster.yaml
 ```
 
-After that, an Digitalocean Database Cluster will be created!
+After that, an DigitalOcean Database Cluster will be created!
 
-## Delete Digitalocean Database Cluster
+## Delete DigitalOcean Database Cluster
 
-To delete the Digitalocean Database Cluster just run:
+To delete the DigitalOcean Database Cluster just run:
 
 ```console
 kubectl delete -f db_cluster.yaml

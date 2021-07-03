@@ -25,6 +25,6 @@ Guides show how to provision different cloud infrastructure using Kubeform. We h
 
 - **Linode :** This section describes provision different Linode infrastructure using Kubeform. Start learning from [here](/docs/guides/linode/README.md).
 
-- **DigitalOcean :** This section describes provision different Digitalocean infrastructure using Kubeform. Start learning from [here](/docs/guides/digitalocean/README.md).
+- **DigitalOcean :** This section describes provision different DigitalOcean infrastructure using Kubeform. Start learning from [here](/docs/guides/digitalocean/README.md).
 
 - **Modules :** This section describes provision different Terraform Modules can be used with Kubeform. Start learning from [here](/docs/guides/modules/README.md).
