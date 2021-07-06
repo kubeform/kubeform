@@ -172,13 +172,13 @@ kubectl delete -f linode-instance.yaml
 After applying this command we will get below error message, as we have set `terminationPolicy: DoNotTerminate`:
 
 ```text
-Error from server (instance "default/instance-test1" can't be terminated. To delete, change spec.terminationPolicy to Delete): error when deleting "linode-instance.yaml": admission webhook "instance.instance.linode.kubeform.com" denied the request: instance "default/instance-test1" can't be terminated. To delete, change spec.terminationPolicy to Delete
+Error from server (instance "default/instance-test1-update" can't be terminated. To delete, change spec.terminationPolicy to Delete): error when deleting "linode-instance.yaml": admission webhook "instance.instance.linode.kubeform.com" denied the request: instance "default/instance-test1-update" can't be terminated. To delete, change spec.terminationPolicy to Delete
 ```
 
 Let's change the `terminationPolicy` to `Delete` by using kubectl patch command.
 
 ```console
-kubectl patch -n default instance instance-test1 -p '{"spec":{"terminationPolicy":"Delete"}}' --type="merge"
+kubectl patch -n default instance instance-test1-update -p '{"spec":{"terminationPolicy":"Delete"}}' --type="merge"
 ```
 
 Now, we can delete the Instance.
