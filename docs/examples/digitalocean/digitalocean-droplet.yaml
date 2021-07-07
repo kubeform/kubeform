@@ -1,0 +1,13 @@
+apiVersion: droplet.digitalocean.kubeform.com/v1alpha1
+kind: Droplet
+metadata:
+  name: test1
+spec:
+  resource:
+    name: droplet-test1
+    image: ubuntu-18-04-x64
+    region: nyc2
+    size: s-1vcpu-1gb
+  providerRef:
+    name: do-secret
+  terminationPolicy: DoNotTerminate

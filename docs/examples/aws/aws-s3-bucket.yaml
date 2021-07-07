@@ -1,0 +1,10 @@
+apiVersion: s3.aws.kubeform.com/v1alpha1
+kind: Bucket
+metadata:
+  name: test1
+spec:
+  resource:
+    bucket: s3-bucket-test1
+  providerRef:
+    name: aws-provider-secret
+  terminationPolicy: DoNotTerminate

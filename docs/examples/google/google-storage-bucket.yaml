@@ -1,0 +1,14 @@
+apiVersion: storage.google.kubeform.com/v1alpha1
+kind: Bucket
+metadata:
+  name: test1
+spec:
+  resource:
+    name: bucket-test1
+    location: EU
+    website:
+      mainPageSuffix: index.html
+      notFoundPage: 404.html
+  providerRef:
+    name: google-provider-secret
+  terminationPolicy: DoNotTerminate

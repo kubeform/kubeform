@@ -17,7 +17,7 @@ aliases:
 
 This guide will show you how to provision (Create, Update, Delete) a DigitalOcean Droplet using Kubeform.
 
-> Examples used in this guide can be found [here](https://github.com/kubeform/docs/tree/{{< param "info.version" >}}/docs/examples/digitalocean).
+> Examples used in this guide can be found [here](https://github.com/kubeform/kubeform/tree/{{< param "info.version" >}}/docs/examples/digitalocean).
 
 At first, let's look at the `Terraform` configuration for a DigitalOcean Droplet below:
 
@@ -91,9 +91,9 @@ spec:
   terminationPolicy: DoNotTerminate
 ```
 
-Here, the `resource` field contains the DigitalOcean Droplet resource spec. Also, we can see that the provider secret is referenced using a field called `providerRef`.
+Here, the `resource` field contains the DigitalOcean Droplet spec. Also, we can see that the provider secret is referenced using a field called `providerRef`.
 
-> We can see a field named `terminationPolicy`, this is a feature of kubeform. This field can have two types of values, `Delete` or `DoNotTerminate`. When the value of this field is set to `DoNotTerminate` then the resource won't get deleted even though we apply `kubectl delete` operation, this field needs to be set to `Delete` to delete the resource. It helps to avoid accidental deletion of the resource. We will see the use of this field in `Delete DigitalOcean Droplet` part later on this page.
+> We can see a field named `terminationPolicy`, this is a feature of kubeform. This field can have two types of values, `Delete` or `DoNotTerminate`. When the value of this field is set to `DoNotTerminate` then the Droplet won't get deleted even though we apply `kubectl delete` operation, this field needs to be set to `Delete` to delete the Droplet. It helps to avoid accidental deletion of the resource. We will see the use of this field in `Delete DigitalOcean Droplet` part later on this page.
 
 Save it in a file (eg. `digitalocean-droplet.yaml`) then apply it using kubectl command.
 
@@ -139,25 +139,25 @@ After that, existing DigitalOcean Droplet will be updated!
 To delete the DigitalOcean Droplet just run:
 
 ```console
-kubectl delete -f digitalocean-droplet.yaml
+$ kubectl delete -f digitalocean-droplet.yaml
 ```
 
 After applying this command we will get below error message, as we have set `terminationPolicy: DoNotTerminate`:
 
 ```text
-Error from server (droplet "default/droplet-test1-update" can't be terminated. To delete, change spec.terminationPolicy to Delete): error when deleting "digitalocean-droplet.yaml": admission webhook "droplet.droplet.digitalocean.kubeform.com" denied the request: droplet "default/droplet-test1-update" can't be terminated. To delete, change spec.terminationPolicy to Delete
+Error from server (droplet "default/test1" can't be terminated. To delete, change spec.terminationPolicy to Delete): error when deleting "digitalocean-droplet.yaml": admission webhook "droplet.droplet.digitalocean.kubeform.com" denied the request: droplet "default/test1" can't be terminated. To delete, change spec.terminationPolicy to Delete
 ```
 
 Let's change the `terminationPolicy` to `Delete` by using kubectl patch command.
 
 ```console
-kubectl patch -n default droplet droplet-test1-update -p '{"spec":{"terminationPolicy":"Delete"}}' --type="merge"
+$ kubectl patch -n default droplet test1 -p '{"spec":{"terminationPolicy":"Delete"}}' --type="merge"
 ```
 
 Now, we can delete the Droplet.
 
 ```console
-kubectl delete -f digitalocean-droplet.yaml
+$ kubectl delete -f digitalocean-droplet.yaml
 ```
 
-After applying this command we can see that the resource has successfully got deleted!
+After applying this command we can see that the Droplet has successfully got deleted!

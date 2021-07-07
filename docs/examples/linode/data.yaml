@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: Secret
-metadata:
-  name: data
-type: "kubeform.com/linode"
-data:
-  root_pass: RmFoaW0xMjM0NQo=
-  stackscript_data: ewoidXNlciIgOiAiRmFoaW0gQWJyYXIiCn0K

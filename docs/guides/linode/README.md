@@ -17,7 +17,7 @@ aliases:
 
 This guide will show you how to provision (Create, Update, Delete) a Linode Instance using Kubeform.
 
-> Examples used in this guide can be found [here](https://github.com/kubeform/docs/tree/{{< param "info.version" >}}/docs/examples/linode).
+> Examples used in this guide can be found [here](https://github.com/kubeform/kubeform/tree/{{< param "info.version" >}}/docs/examples/linode).
 
 At first, let's look at the `Terraform` configuration for a Linode Instance below:
 
@@ -26,7 +26,7 @@ provider "linode" {
     token = "LINODE_API_TOKEN"
 }
 
-resource "linode_instance" "instance-test1" {
+resource "linode_instance" "test1" {
     image = "linode/ubuntu18.04"
 
     label = "instance-test1"
@@ -74,7 +74,7 @@ $ kubectl apply -f provider-secret.yaml
 
 ## 3. Create Secrets for Sensitive Data
 
-If we look at the terraform config, We can see that there is a field called `root_pass`. This is a sensitive field. So, we should not use these kind of sensitive values directly in the yaml. We'll create a secret to store the sensitive values like this:
+If we look at the terraform config, we can see that there is a field called `root_pass`. This is a sensitive field. So, we should not use these kinds of sensitive values directly in the yaml. We'll create a secret to store the sensitive values like this:
 
 ```yaml
 apiVersion: v1
@@ -104,7 +104,7 @@ Now, we'll create the Instance CRD. The yaml is given below:
 apiVersion: instance.linode.kubeform.com/v1alpha1
 kind: Instance
 metadata:
-  name: instance-test1
+  name: test1
 spec:
   resource:
     region: us-east
@@ -117,9 +117,9 @@ spec:
   terminationPolicy: DoNotTerminate
 ```
 
-Here, the `resource` field contains the Linode Instance resource spec. Also, we can see that the provider secret is referenced using a field called `providerRef` and the sensitive value secret is referenced using a field called `secretRef`. 
+Here, the `resource` field contains the Linode Instance spec. Also, we can see that the provider secret is referenced using a field called `providerRef` and the sensitive value secret is referenced using a field called `secretRef`. 
 
-> We can see a field named `terminationPolicy`, this is a feature of kubeform. This field can have two types of values, `Delete` or `DoNotTerminate`. When the value of this field is set to `DoNotTerminate` then the resource won't get deleted even though we apply `kubectl delete` operation, this field needs to be set to `Delete` to delete the resource. It helps to avoid accidental deletion of the resource. We will see the use of this field in `Delete Instance` part later on this page. 
+> We can see a field named `terminationPolicy`, this is a feature of kubeform. This field can have two types of values, `Delete` or `DoNotTerminate`. When the value of this field is set to `DoNotTerminate` then the Instance won't get deleted even though we apply `kubectl delete` operation, this field needs to be set to `Delete` to delete the Instance. It helps to avoid accidental deletion of the resource. We will see the use of this field in `Delete Instance` part later on this page. 
 
 Save it in a file (eg. `linode-instance.yaml`) then apply it using kubectl.
 
@@ -137,7 +137,7 @@ Now, we'll update the Instance CRD. For updating the Instance, we will modify th
 apiVersion: instance.linode.kubeform.com/v1alpha1
 kind: Instance
 metadata:
-  name: instance-test1
+  name: test1
 spec:
   resource:
     region: us-east
@@ -150,7 +150,7 @@ spec:
   terminationPolicy: DoNotTerminate
 ```
 
-Now, apply it using kubectl.
+Now, apply it using kubectl command.
 
 ```console
 $ kubectl apply -f linode-instance.yaml
@@ -166,25 +166,25 @@ After that, existing Linode Instance will be updated!
 To delete the Instance just run:
 
 ```console
-kubectl delete -f linode-instance.yaml
+$ kubectl delete -f linode-instance.yaml
 ```
 
 After applying this command we will get below error message, as we have set `terminationPolicy: DoNotTerminate`:
 
 ```text
-Error from server (instance "default/instance-test1-update" can't be terminated. To delete, change spec.terminationPolicy to Delete): error when deleting "linode-instance.yaml": admission webhook "instance.instance.linode.kubeform.com" denied the request: instance "default/instance-test1-update" can't be terminated. To delete, change spec.terminationPolicy to Delete
+Error from server (instance "default/test1" can't be terminated. To delete, change spec.terminationPolicy to Delete): error when deleting "linode-instance.yaml": admission webhook "instance.instance.linode.kubeform.com" denied the request: instance "default/test1" can't be terminated. To delete, change spec.terminationPolicy to Delete
 ```
 
 Let's change the `terminationPolicy` to `Delete` by using kubectl patch command.
 
 ```console
-kubectl patch -n default instance instance-test1-update -p '{"spec":{"terminationPolicy":"Delete"}}' --type="merge"
+$ kubectl patch -n default instance test1 -p '{"spec":{"terminationPolicy":"Delete"}}' --type="merge"
 ```
 
 Now, we can delete the Instance.
 
 ```console
-kubectl delete -f linode-instance.yaml
+$ kubectl delete -f linode-instance.yaml
 ```
 
-After applying this command we can see that the resource has successfully got deleted!
+After applying this command we can see that the Instance has successfully got deleted!
