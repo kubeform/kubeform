@@ -15,26 +15,28 @@ section_menu_id: concepts
 The following diagram shows how `Kubeform` creates a resource on a Cloud Provider (GCP, AWS, etc.).
 
 <figure align="center">
- <img alt="Kubeform Architecture" src="/docs/images/concepts/what-is-kubeform/architecture.svg">
+ <img alt="Kubeform Architecture" src="/docs/images/concepts/what-is-kubeform/architecture.jpg">
  <figcaption align="center">Fig: Kubeform Architecture</figcaption>
 </figure>
 
 The Resource Creation Process of Kubeform consists of the following steps:
 
-1. At first, a user creates a secret with access credentials of the Cloud provider where the resource will be created.
+1. At first, a user creates a provider secret with access credentials of the Cloud provider where the resource will be created.
 
-2. Then, he creates a CRD of the resource that specifies the information of the Cloud Resource. The CRD also holds the credential information.
+2. Then, he creates a sensitive secret with sensitive fields of the cloud resource that he wants to create. This is optional, if a user do not create a sensitive secret then kfc will create a sensitive secret if the cloud resource has any sensitive field.
 
-3. The KubeForm Controller (KFC) watches the created CRD.
+3. Then, he creates a CRD of the resource that specifies the information of the Cloud Resource. The CRD also points to the secrets that he created.
 
-4. Then, KFC creates `.tf` files from the CRD `Spec` and the provider secret.
+4. The KubeForm Controller (KFC) watches the created CRD and also the sensitive secret continuously.
 
-5. If the `.tfstate` file doesn't exist then KFC creates the `.tfstate` file from the `status.output` & `status.state` fields of the CRD.
+5. If the KubeForm Controller (KFC) get any new changes in sensitive secret or in the CRD it starts reconciling and the resource enters into `InProgress` phase.
+   
+6. The KubeForm Controller (KFC) Create, Update or Delete the respective cloud resource through the Resource CRUD API.  
 
-6. Then KFC runs `terraform apply` commands on the `.tfstate` file and `.tf` files that were created in the previous steps.
+7. If the resource is being Created or Updated the resource enters into `InProgress` phase. When the recociling process ends and resource successfully created or updated theen the phase is `Current`.
 
-7. After successful execution of `terraform apply` command, it creates the specified resource on the specified Cloud Provider.
+8. The KubeForm Controller (KFC) update the resource `spec.state` after successfully creating or updating the resource.
 
-8. Then `terraform apply` command updates the `tfstate` file if necessary.
+9. If the resource is being Deleted then the resource phase is `Terminating`.
 
-9. If the `.tfstate` file is updated, KFC also updates the `status.output` & `status.state` fields of the CRD.
+10. The KubeForm Controller (KFC) deletes the resource after the respective cloud resource get destroyed.

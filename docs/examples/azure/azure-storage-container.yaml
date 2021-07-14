@@ -1,0 +1,10 @@
+apiVersion: storage.azurerm.kubeform.com/v1alpha1
+kind: Container
+metadata:
+  name: test1
+spec:
+  resource:
+    name: storage-container-test1
+    storageAccountName: <STORAGE_ACCOUNT_NAME>
+  providerRef:
+    name: azure-provider-secret

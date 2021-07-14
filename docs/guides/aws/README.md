@@ -15,137 +15,145 @@ aliases:
 
 # AWS
 
-This guide will show you how to provision a AWS RDS (Relational Database Service) using Kubeform.
+This guide will show you how to provision (Create, Update, Delete) an AWS S3 Bucket using Kubeform.
 
-> Examples used in this guide can be found [here](https://github.com/kubeform/docs/tree/{{< param "info.version" >}}/docs/examples/aws).
+> Examples used in this guide can be found [here](https://github.com/kubeform/kubeform/tree/{{< param "info.version" >}}/docs/examples/aws).
 
-Look at the `Terraform` configuration below:
+At first, let's look at the `Terraform` configuration for an AWS S3 Bucket below:
 
 ```
 provider "aws" {
     access_key = "ACCESS_KEY"
 
-    region = "us-east-1"
+    region = "REGION_NAME"
 
     secret_key = "SECRET_KEY"
 }
 
-resource "aws_db_instance" "test1" {
-    allocated_storage = 5
-
-    engine = "mysql"
-
-    engine_version = "5.7"
-
-    instance_class = "db.t2.micro"
-
-    name = "mydb"
-
-    parameter_group_name = "default.mysql5.7"
-
-    password = "foobar1234"
-
-    storage_type = "gp2"
-
-    username = "foo"
-}⏎
+resource "aws_s3_bucket" "test1" {
+    bucket = "s3-bucket-test1"
+}
 ```
 
-This config creates an AWS RDS instance. We'll create the exact configuration using `kubeform`. The steps are given below:
+Now, if we apply `terraform apply` this config will create an AWS S3 Bucket. We'll create the exact configuration using `kubeform`. The steps are given below:
 
 ## 1. Create CRD:
 
-At first, create the CRD of AWS RDS using the following kubectl command:
+At first, create the CRD of AWS S3 Bucket using the following kubectl command:
 
 ```console
-$ kubectl apply -f https://github.com/kubeform/kubeform/raw/master/api/crds/aws.kubeform.com_dbinstances.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/kubeform/provider-aws-api/master/crds/s3.aws.kubeform.com_buckets.yaml
 ```
 
 ## 2. Create AWS Provider Secret
 
-Then create the secret which is necessary for provisioning the RDS instance in AWS.
+Then create the secret which is necessary for provisioning the S3 Bucket in AWS.
 
 ```yaml
 apiVersion: v1
 kind: Secret
 metadata:
-    name: aws
-type: kubeform.com/aws
-data:
-    region: dXMtZWFzdC0xCg==  # base64 encoded value of `us-east-1`
-    access_key: '<base64 encoded access key>'
-    secret_key: '<base64 encoded secret key>'
+  name: aws-provider-secret
+stringData:
+  provider: |
+    {
+        "region": "<REGION_NAME>",
+        "access_key": "<ACCESS_KEY>",
+        "secret_key": "<SECRET_KEY>"
+    }
 ```
 
-Here we can see that, the data of the secret is same as the field of the provider part in the terraform config file. Save it in a file (eg. `secret.yaml`) then apply it using kubectl.
+Here we can see that, the `provider` field of the `stringData` of the secret is same as the field of the provider part in the terraform config file. The provider secret needs to be provided in json format, under the `provider` key. Save it in a file (eg. `provider-secret.yaml`) then apply it using kubectl.
 
 ```console
-$ kubectl apply -f secret.yaml
+$ kubectl apply -f provider-secret.yaml
 ```
 
-> **Note:** here, data key (eg. `access_key`, `access_key` ) must be in snake case format (same as the tf configuration file)
+> **Note:** Here, key of the provider field of the stringData (eg. `"access_key"`, `"secret_key"` ) must be in snake case format (same as the tf configuration file)
 
+## 3. Create S3 Bucket
 
-## 3. Create Secrets for Sensitive Data
-
-If we look at the terraform config, We can see that there is a field called password. This is a sensitive field. So, we should not use this kind of sensitive value directly in the yaml. We'll create a secret to store the sensitive value like this:
+Now, we'll create the S3 Bucket CRD. The yaml is given below:
 
 ```yaml
-apiVersion: v1
-kind: Secret
+apiVersion: s3.aws.kubeform.com/v1alpha1
+kind: Bucket
 metadata:
-    name: rds-pass
-type: kubeform.com/aws
-data:
-    password: Zm9vYmFyMTIzNAo=  # base64 encoded value of `foobar1234`
+  name: test1
+spec:
+  resource:
+    bucket: s3-bucket-test1
+  providerRef:
+    name: aws-provider-secret
+  terminationPolicy: DoNotTerminate
 ```
 
-we'll reference this secret from the RDS CRD. Save it in a file (eg. `provider.yaml`) then apply it using kubectl.
+Here, the `resource` field contains the AWS S3 Bucket resource spec. Also, we can see that the provider secret is referenced using a field called `providerRef`.
+
+> We can see a field named `terminationPolicy`, this is a feature of kubeform. This field can have two values, `Delete` or `DoNotTerminate`. When the value of this field is set to `DoNotTerminate` then the resource won't get deleted even though we apply `kubectl delete` operation, this field needs to be set to `Delete` to delete the resource. It helps to avoid accidental deletion of the resource. We will see the use of this field in `Delete S3 Bucket` part later on this guide. 
+
+Save it in a file (eg. `aws-s3-bucket.yaml`) then apply it using kubectl.
 
 ```console
-$ kubectl apply -f provider.yaml
+$ kubectl apply -f aws-s3-bucket.yaml
 ```
 
-> **Note:** here, data key (eg. `password`) must be in snake case format (same as the tf configuration file)
+After applying this command, the resource will be in `InProgress` phase until the cloud creates the resource. Once the cloud resource get created, the resource will be in `Current` phase which means we have successfully created the resource.
 
-## 4. Create RDS
+## 4. Update S3 Bucket
 
-Now, we'll create the RDS CRD. The yaml is given below:
+Now, we'll update the S3 Bucket CRD. For updating the Bucket, we will modify the existing `aws-s3-bucket.yaml`, we will use a different `bucket` (`s3-bucket-test1-update`) field. The modified yaml is given below:
 
 ```yaml
-apiVersion: aws.kubeform.com/v1alpha1
-kind: DbInstance
+apiVersion: s3.aws.kubeform.com/v1alpha1
+kind: Bucket
 metadata:
     name: test1
 spec:
-    allocatedStorage: 5
-    storageType: gp2
-    engine: mysql
-    engineVersion: '5.7'
-    instanceClass: db.t2.micro
-    name: mydb
-    username: foo
-    parameterGroupName: default.mysql5.7
+    resource:
+        bucket: s3-bucket-test1-update
     providerRef:
-        name: aws
-    secretRef:
-        name: rds-pass
+        name: aws-provider-secret
+    terminationPolicy: DoNotTerminate
 ```
 
-Here, we can see that the provider secret is referenced using a field called `providerRef` and the sensitive value secret is referenced using a field called `secretRef`.
-
-Save it in a file (eg. `rds.yaml`) then apply it using kubectl.
+Now, apply it using kubectl command.
 
 ```console
-$ kubectl apply -f rds.yaml
+$ kubectl apply -f aws-s3-bucket.yaml
 ```
 
-After that, an AWS RDS will be created!
+After that, existing AWS S3 Bucket will be updated!
 
-## Delete RDS
+> **Note:** Here, we have changed the `bucket` field which is Immutable, means if we change an immutable field then the resource will first get deleted and then created. But, there are some fields which are mutable, means changing those fields, resource will be only updated/changed. So, be careful!
 
-To delete the RDS just run:
+## 5. Delete S3 Bucket
+
+To delete the S3 Bucket just run:
 
 ```console
-kubectl delete -f rds.yaml
+$ kubectl delete -f aws-s3-bucket.yaml
 ```
+
+After applying this command we will get below error message, as we have set `terminationPolicy: DoNotTerminate`:
+
+```text
+Error from server (bucket "default/test1" can't be terminated. To delete, change spec.terminationPolicy to Delete): error when deleting "aws-s3-bucket.yaml": admission webhook "bucket.s3.aws.kubeform.com" denied the request: bucket "default/test1" can't be terminated. To delete, change spec.terminationPolicy to Delete
+```
+
+Let's change the `terminationPolicy` to `Delete` by using kubectl patch command.
+
+```console
+$ kubectl patch -n default bucket test1 -p '{"spec":{"terminationPolicy":"Delete"}}' --type="merge"
+```
+
+Now, we can delete the Bucket.
+
+```console
+$ kubectl delete -f aws-s3-bucket.yaml
+```
+
+After applying this command the resource will be in `Terminating` phase until the cloud resource get destroyed. Once the cloud resource get destroyed, the resource will get deleted successfully. 
+
+
+

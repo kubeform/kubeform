@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: Secret
-metadata:
-  name: google
-type: "kubeform.com/google"
-data:
-  credentials: <Base64 encoded value of google service account json>
-  project: <Base64 encoded value of project name>
-  region: dXMtY2VudHJhbDEK
