@@ -37,7 +37,16 @@ spec:
               type: object
             spec:
               properties:
-                kubeformOutput:
+                providerRef:
+                  description: LocalObjectReference contains enough information to let
+                    you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                      TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resource:
                   properties:
                     bucketPolicyOnly:
                       description: Enables Bucket Policy Only access to a bucket. Deprecated
@@ -263,16 +272,7 @@ spec:
                   required:
                     - name
                   type: object
-                providerRef:
-                  description: LocalObjectReference contains enough information to let
-                    you locate the referenced object inside the same namespace.
-                  properties:
-                    name:
-                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                      TODO: Add other useful fields. apiVersion, kind, uid?'
-                      type: string
-                  type: object
-                resource:
+                state:
                   properties:
                     bucketPolicyOnly:
                       description: Enables Bucket Policy Only access to a bucket. Deprecated

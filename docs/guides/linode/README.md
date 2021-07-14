@@ -64,7 +64,7 @@ stringData:
 
 ```
 
-Here we can see that, the `provider` field of the `stringData` of the secret is same as the field of the provider part in the terraform config file. Save it in a file (eg. `provider-secret.yaml`) then apply it using kubectl command.
+Here we can see that, the `provider` field of the `stringData` of the secret is same as the field of the provider part in the terraform config file. The provider secret needs to be provided in json format, under the `provider` key. Save it in a file (eg. `provider-secret.yaml`) then apply it using kubectl command.
 
 ```console
 $ kubectl apply -f provider-secret.yaml
@@ -88,7 +88,7 @@ stringData:
     }
 ```
 
-we'll reference this secret from the Instance CRD. Save it in a file (eg. `sensitive-secret.yaml`) then apply it using kubectl command.
+Here, sensitive secret needs to be provided in json format, under the `input` key. We'll reference this secret from the Instance CRD. Save it in a file (eg. `sensitive-secret.yaml`) then apply it using kubectl command.
 
 ```console
 $ kubectl apply -f sensitive-secret.yaml
@@ -119,7 +119,7 @@ spec:
 
 Here, the `resource` field contains the Linode Instance spec. Also, we can see that the provider secret is referenced using a field called `providerRef` and the sensitive value secret is referenced using a field called `secretRef`. 
 
-> We can see a field named `terminationPolicy`, this is a feature of kubeform. This field can have two types of values, `Delete` or `DoNotTerminate`. When the value of this field is set to `DoNotTerminate` then the Instance won't get deleted even though we apply `kubectl delete` operation, this field needs to be set to `Delete` to delete the Instance. It helps to avoid accidental deletion of the resource. We will see the use of this field in `Delete Instance` part later on this page. 
+> We can see a field named `terminationPolicy`, this is a feature of kubeform. This field can have two values, `Delete` or `DoNotTerminate`. When the value of this field is set to `DoNotTerminate` then the Instance won't get deleted even though we apply `kubectl delete` operation, this field needs to be set to `Delete` to delete the Instance. It helps to avoid accidental deletion of the resource. We will see the use of this field in `Delete Instance` part later on this guide. 
 
 Save it in a file (eg. `linode-instance.yaml`) then apply it using kubectl.
 
@@ -127,7 +127,8 @@ Save it in a file (eg. `linode-instance.yaml`) then apply it using kubectl.
 $ kubectl apply -f linode-instance.yaml
 ```
 
-After that, a Linode Instance will be created!
+After applying this command, the resource will be in `InProgress` phase until the cloud creates the resource. Once the cloud resource get created, the resource will be in `Current` phase which means we have successfully created the resource.
+
 
 ## 5. Update Instance
 
@@ -187,4 +188,4 @@ Now, we can delete the Instance.
 $ kubectl delete -f linode-instance.yaml
 ```
 
-After applying this command we can see that the Instance has successfully got deleted!
+After applying this command the resource will be in `Terminating` phase until the cloud resource get destroyed. Once the cloud resource get destroyed, the resource will get deleted successfully. 

@@ -66,7 +66,7 @@ stringData:
     }
 ```
 
-Here we can see that, the `provider` field of the `stringData` of the secret is same as the field of the provider part in the terraform config file. Save it in a file (eg. `provider-secret.yaml`) then apply it using kubectl.
+Here we can see that, the `provider` field of the `stringData` of the secret is same as the field of the provider part in the terraform config file. The provider secret needs to be provided in json format, under the `provider` key. Save it in a file (eg. `provider-secret.yaml`) then apply it using kubectl.
 
 ```console
 $ kubectl apply -f provider-secret.yaml
@@ -94,7 +94,7 @@ spec:
 
 Here, the `resource` field contains the Azure Storage Container spec. Also, we can see that the provider secret is referenced using a field called `providerRef`.
 
-> We can see a field named `terminationPolicy`, this is a feature of kubeform. This field can have two types of values, `Delete` or `DoNotTerminate`. When the value of this field is set to `DoNotTerminate` then the resource won't get deleted even though we apply `kubectl delete` operation, this field needs to be set to `Delete` to delete the resource. It helps to avoid accidental deletion of the resource. We will see the use of this field in `Delete Azure Storage Container` part later on this page. 
+> We can see a field named `terminationPolicy`, this is a feature of kubeform. This field can have two values, `Delete` or `DoNotTerminate`. When the value of this field is set to `DoNotTerminate` then the resource won't get deleted even though we apply `kubectl delete` operation, this field needs to be set to `Delete` to delete the resource. It helps to avoid accidental deletion of the resource. We will see the use of this field in `Delete Azure Storage Container` part later on this guide. 
 
 Save it in a file (eg. `azure-storage-container.yaml`) then apply it using kubectl.
 
@@ -102,7 +102,8 @@ Save it in a file (eg. `azure-storage-container.yaml`) then apply it using kubec
 $ kubectl apply -f azure-storage-container.yaml
 ```
 
-After that, an Azure Storage Container will be created!
+After applying this command, the resource will be in `InProgress` phase until the cloud creates the resource. Once the cloud resource get created, the resource will be in `Current` phase which means we have successfully created the resource.
+
 
 ## 4. Update Azure Storage Container
 
@@ -157,6 +158,5 @@ Now, we can delete the Storage Container.
 $ kubectl delete -f azure-storage-container.yaml
 ```
 
-After applying this command we can see that the Storage Container has successfully got deleted!
-
+After applying this command the resource will be in `Terminating` phase until the cloud resource get destroyed. Once the cloud resource get destroyed, the resource will get deleted successfully. 
 

@@ -37,7 +37,16 @@ spec:
               type: object
             spec:
               properties:
-                kubeformOutput:
+                providerRef:
+                  description: LocalObjectReference contains enough information to let
+                    you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                      TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resource:
                   properties:
                     backups:
                       type: boolean
@@ -110,16 +119,7 @@ spec:
                     - region
                     - size
                   type: object
-                providerRef:
-                  description: LocalObjectReference contains enough information to let
-                    you locate the referenced object inside the same namespace.
-                  properties:
-                    name:
-                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                      TODO: Add other useful fields. apiVersion, kind, uid?'
-                      type: string
-                  type: object
-                resource:
+                state:
                   properties:
                     backups:
                       type: boolean

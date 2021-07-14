@@ -63,7 +63,7 @@ stringData:
     }
 ```
 
-Here we can see that, the `provider` field of the `stringData` of the secret is same as the field of the provider part in the terraform config file. Save it in a file (eg. `provider-secret.yaml`) then apply it using kubectl command.
+Here we can see that, the `provider` field of the `stringData` of the secret is same as the field of the provider part in the terraform config file. The provider secret needs to be provided in json format, under the `provider` key. Save it in a file (eg. `provider-secret.yaml`) then apply it using kubectl command.
 
 ```console
 $ kubectl apply -f provider-secret.yaml
@@ -93,7 +93,7 @@ spec:
 
 Here, the `resource` field contains the DigitalOcean Droplet spec. Also, we can see that the provider secret is referenced using a field called `providerRef`.
 
-> We can see a field named `terminationPolicy`, this is a feature of kubeform. This field can have two types of values, `Delete` or `DoNotTerminate`. When the value of this field is set to `DoNotTerminate` then the Droplet won't get deleted even though we apply `kubectl delete` operation, this field needs to be set to `Delete` to delete the Droplet. It helps to avoid accidental deletion of the resource. We will see the use of this field in `Delete DigitalOcean Droplet` part later on this page.
+> We can see a field named `terminationPolicy`, this is a feature of kubeform. This field can have two values, `Delete` or `DoNotTerminate`. When the value of this field is set to `DoNotTerminate` then the Droplet won't get deleted even though we apply `kubectl delete` operation, this field needs to be set to `Delete` to delete the Droplet. It helps to avoid accidental deletion of the resource. We will see the use of this field in `Delete DigitalOcean Droplet` part later on this guide.
 
 Save it in a file (eg. `digitalocean-droplet.yaml`) then apply it using kubectl command.
 
@@ -101,7 +101,8 @@ Save it in a file (eg. `digitalocean-droplet.yaml`) then apply it using kubectl 
 $ kubectl apply -f digitalocean-droplet.yaml
 ```
 
-After that, a DigitalOcean Droplet will be created!
+After applying this command, the resource will be in `InProgress` phase until the cloud creates the resource. Once the cloud resource get created, the resource will be in `Current` phase which means we have successfully created the resource.
+
 
 ## 4. Update DigitalOcean Droplet
 
@@ -160,4 +161,4 @@ Now, we can delete the Droplet.
 $ kubectl delete -f digitalocean-droplet.yaml
 ```
 
-After applying this command we can see that the Droplet has successfully got deleted!
+After applying this command the resource will be in `Terminating` phase until the cloud resource get destroyed. Once the cloud resource get destroyed, the resource will get deleted successfully. 
