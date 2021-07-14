@@ -9,7 +9,7 @@ Kubeform by AppsCode is a Kubernetes operator provisioning cloud or on-prem reso
 
 - Native kubernetes support
 - Built on Terraform
-- Supports Terraform resources and modules
+- Supports Terraform resources
 - Use cloud infrastructures as code
 - Define & Manage cloud infrastructures as Kubernetes `CRD` (Custom Resource Definition)
 - Supports multiple cloud platform
